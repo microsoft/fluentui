@@ -7,7 +7,8 @@ import {
   CardSize,
   DashboardGridLayoutWithAddCardPanel,
   DashboardGridBreakpointLayouts,
-  IThumbnailItemProps
+  IThumbnailItemProps,
+  DraggingAnimationType
 } from '@uifabric/dashboard';
 
 // Cards information that go into the layout and add card panel
@@ -102,7 +103,8 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
     addCardInfo: {
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
       addCardPanelHeader: 'Ut enim ad minim veniam',
-      addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg'
+      addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg',
+      draggingAnimation: DraggingAnimationType.Shimmer
     }
   },
   {
@@ -116,7 +118,8 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
     addCardInfo: {
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
       addCardPanelHeader: 'quis nostrud',
-      addCardPanelImageUrl: '../../../../public/images/DetailsList.svg'
+      addCardPanelImageUrl: '../../../../public/images/DetailsList.svg',
+      draggingAnimation: DraggingAnimationType.BarGraph
     }
   },
   {
@@ -130,7 +133,8 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
     addCardInfo: {
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
       addCardPanelHeader: 'exercitation ullamco',
-      addCardPanelImageUrl: '../../../../public/images/Donut.svg'
+      addCardPanelImageUrl: '../../../../public/images/Donut.svg',
+      draggingAnimation: DraggingAnimationType.DonutChart
     }
   }
 ];
@@ -140,6 +144,7 @@ export interface IDGLWithAddCardPanelState {
 }
 
 export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddCardPanelState> {
+  private refObject: HTMLElement;
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -149,7 +154,14 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
   public render(): JSX.Element {
     return (
       <>
-        <button onClick={this._openAddCardPanel}>Add Card</button>
+        <button
+          onClick={this._openAddCardPanel}
+          ref={(e: any) => {
+            this.refObject = e;
+          }}
+        >
+          Add Card
+        </button>
         <DashboardGridLayoutWithAddCardPanel
           addCardPanelCards={cardsVisibleInAddCardPanel}
           dashboardCards={cardsVisibleInLayout}
@@ -157,10 +169,16 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
           sectionTitle={'First section'}
           panelHeader={'Click to add cards to your dashboard'}
           onLayoutChange={this._onLayoutChange}
+          onPanelDismiss={this._onPanelDismiss}
+          scrollElement={this.refObject ? this.refObject.parentElement! : undefined}
         />
       </>
     );
   }
+
+  private _onPanelDismiss = () => {
+    this.setState({ isOpen: false });
+  };
 
   private _openAddCardPanel = () => {
     this.setState({ isOpen: true });

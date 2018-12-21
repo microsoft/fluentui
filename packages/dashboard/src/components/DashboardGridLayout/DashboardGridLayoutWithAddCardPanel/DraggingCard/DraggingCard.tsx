@@ -19,6 +19,7 @@ export interface IDraggingCardProps {
   initialX: number;
   cardSize: CardSize;
   draggingAnimation?: DraggingAnimationType;
+  scrollElement?: HTMLElement;
 }
 
 export class DraggingCard extends React.Component<IDraggingCardProps> {
@@ -81,7 +82,7 @@ export class DraggingCard extends React.Component<IDraggingCardProps> {
       return;
     }
 
-    // Change left and top styling on the dragging card so it renders in such a way that the curser is dragging the card from its
+    // Change left and top styling on the dragging card so that it is always next to cursor
     const draggingCardDomElement = document.getElementsByClassName('draggingCardDGL');
     if (draggingCardDomElement && draggingCardDomElement[0]) {
       (draggingCardDomElement[0] as HTMLElement).style.left = event.clientX - this.cardWidth / 2 + 'px';
@@ -120,6 +121,31 @@ export class DraggingCard extends React.Component<IDraggingCardProps> {
               top
             }
           });
+        }
+      }
+    }
+    // check if end of page is reached and scroll the viewport so that the card can be placed at the end of dashboard
+    // choose 100, as it provided enough optimum scrolling to see the content that is next
+    const scrollLength = 100;
+    // the min height of card is 396, choosing 300 as it makes part of card visible while dragging and scrolling
+    const cardPeekHeight = 300;
+    if (this.props.scrollElement) {
+      if (event.clientY > window.innerHeight - cardPeekHeight) {
+        this.props.scrollElement.scrollTop += scrollLength;
+      }
+      if (event.clientY < window.innerHeight) {
+        this.props.scrollElement.scrollTop -= scrollLength;
+      }
+    } else {
+      const viewport = document.getElementById('dglWithAddCardPanelRoot')
+        ? document.getElementById('dglWithAddCardPanelRoot')!.parentElement
+        : null;
+      if (viewport) {
+        if (event.clientY > window.innerHeight - cardPeekHeight) {
+          viewport.scrollTop += scrollLength;
+        }
+        if (event.clientY < window.innerHeight) {
+          viewport.scrollTop -= scrollLength;
         }
       }
     }

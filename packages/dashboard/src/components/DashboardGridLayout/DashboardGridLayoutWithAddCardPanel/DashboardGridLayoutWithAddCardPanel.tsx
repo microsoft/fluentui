@@ -16,7 +16,8 @@ import {
   DashboardGridBreakpointLayouts,
   DraggingAnimationType
 } from '../../../index';
-import { getCardStyles, getClassNames } from './DashboardGridLayoutWithAddCardPanel.styles';
+import { ICardStyles, getCardStyles } from './DashboardGridLayoutWithAddCardPanel.styles';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export const dragApi: ReactGridLayout.DragApiRefObject = createDragApiRef();
 export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
@@ -25,6 +26,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
 > {
   private _cardsForLayout: IDGLCard[] = [];
   private _cardsForAddCardPanel: IDGLCard[] = [];
+  private getClassNames = classNamesFunction<{}, ICardStyles>();
+  private classNames = this.getClassNames(getCardStyles!);
 
   constructor(props: IDashboardGridLayoutWithAddCardPanelProps) {
     super(props);
@@ -72,37 +75,40 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   }
 
   public render(): JSX.Element {
-    const { isOpen, isDraggable, panelHeader } = this.props;
+    const { isOpen, isDraggable, panelHeader, scrollElement } = this.props;
     return (
       <>
-        {this.state.renderDraggingCard && (
-          <DraggingCard
-            setDragMode={this._hideDraggingCard}
-            cardId={this.state.selectedCardId}
-            cardSize={this.state.selectedCardSize}
+        <div className={this.classNames.root} id="dglWithAddCardPanelRoot">
+          {this.state.renderDraggingCard && (
+            <DraggingCard
+              setDragMode={this._hideDraggingCard}
+              cardId={this.state.selectedCardId}
+              cardSize={this.state.selectedCardSize}
+              initialX={this.state.selectedCardInitialX}
+              title={this.state.selectedCardTitle}
+              draggingAnimation={this.state.draggingAnimation}
+              scrollElement={scrollElement}
+            />
+          )}
+          <AddCardPanel
+            header={panelHeader}
+            isOpen={isOpen}
+            cards={this.state.cardsForAddCardPanel}
+            moveCardFromAddCardPanelToDashboard={this._addCard}
+            onDismiss={this._onPanelDismiss}
+            draggingCardCallback={this._draggingCardCallback}
             initialX={this.state.selectedCardInitialX}
-            title={this.state.selectedCardTitle}
-            draggingAnimation={this.state.draggingAnimation}
           />
-        )}
-        <AddCardPanel
-          header={panelHeader}
-          isOpen={isOpen}
-          cards={this.state.cardsForAddCardPanel}
-          moveCardFromAddCardPanelToDashboard={this._addCard}
-          onDismiss={this._onPanelDismiss}
-          draggingCardCallback={this._draggingCardCallback}
-          initialX={this.state.selectedCardInitialX}
-        />
-        <div className="dashboardContainerClassName">
-          <DashboardGridSectionLayout
-            isDraggable={isDraggable}
-            layout={this.state.layout}
-            sections={this.state.sections}
-            cards={this.state.dashboardCards}
-            dragApi={dragApi}
-            onLayoutChange={this._onLayoutChange}
-          />
+          <div className="dashboardContainerClassName">
+            <DashboardGridSectionLayout
+              isDraggable={isDraggable}
+              layout={this.state.layout}
+              sections={this.state.sections}
+              cards={this.state.dashboardCards}
+              dragApi={dragApi}
+              onLayoutChange={this._onLayoutChange}
+            />
+          </div>
         </div>
       </>
     );
@@ -233,8 +239,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
       this._async.setTimeout(() => {
         if (document.getElementById(cardId + 'dglCard')) {
           document.getElementById(cardId + 'dglCard')!.scrollIntoView({ behavior: 'smooth' });
-          const css = getClassNames(getCardStyles!);
-          document.getElementById(cardId + 'dglCard')!.classList.add(css.fadeIn);
+          document.getElementById(cardId + 'dglCard')!.classList.add(this.classNames.fadeIn);
         }
       }, 100);
     }

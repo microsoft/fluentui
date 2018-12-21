@@ -43,6 +43,13 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
    * The callback method fired when the add card panel is dismissed
    */
   onPanelDismiss?: () => void;
+
+  /**
+   * The ref of the element that is to be scrolled when the dragging card reaches end of page
+   * The card being dragged from the add card panel is referred to as Dragging card and when it reaches end of page scrolling is applied
+   * ref passed. If ref is not passed scrolling is applied to the immediate parent element
+   */
+  scrollElement?: HTMLElement;
 }
 
 export interface IDashboardGridLayoutWithAddCardPanelState {
