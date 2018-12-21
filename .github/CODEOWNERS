@@ -30,6 +30,10 @@ fabric-website/ @jordandrako
 #### Packages
 packages/charting/ @Raghurk
 packages/dashboard/ @Raghurk
+packages/charting/ @veeray
+packages/dashboard/ @veeray
+packages/charting/ @chankev
+packages/dashboard/ @chankev
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
