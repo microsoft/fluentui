@@ -1,6 +1,6 @@
 import { ISetupBannerStyles } from './SetupBanner.types';
 
-export const getStyles = (): ISetupBannerStyles => {
+export const getStyles = (rtl: boolean): ISetupBannerStyles => {
   return {
     root: {
       display: 'flex',
@@ -12,8 +12,8 @@ export const getStyles = (): ISetupBannerStyles => {
       alignItems: 'center',
       justifyContent: 'center',
       flex: 1,
-      paddingLeft: '10px',
-      paddingRight: '10px',
+      paddingLeft: rtl ? '10px' : undefined,
+      paddingRight: rtl ? undefined : '10px',
       selectors: {
         '@media(max-width: 1000px)': [
           {
