@@ -83,12 +83,12 @@ export const DarkSemanticColors: IThemeSemanticColors = {
     body: BaseColors.WHITE,
     value: BaseColors.WHITE,
     icon: BaseColors.WHITE,
-    label: BaseColors.GRAY_AFAFAF,
+    label: BaseColors.GRAY_808080,
     disabled: BaseColors.GRAY_808080_070,
     hyperlink: BaseColors.BLUE_4894FE,
     success: BaseColors.GREEN_5DB300,
     error: BaseColors.RED_F63747,
-    placeholder: BaseColors.GRAY_808080
+    placeholder: BaseColors.GRAY_AFAFAF
   },
   statusBar: {
     okay: BaseColors.GREEN_1A3300,
@@ -146,7 +146,7 @@ export const LightSemanticColors: IThemeSemanticColors = {
     body: BaseColors.GRAY_161616,
     value: BaseColors.GRAY_161616,
     icon: BaseColors.GRAY_161616,
-    label: BaseColors.GRAY_595959,
+    label: BaseColors.GRAY_747474,
     disabled: BaseColors.GRAY_808080_070,
     hyperlink: BaseColors.BLUE_015CDA,
     success: BaseColors.GREEN_428000,
@@ -196,7 +196,7 @@ export const LightSemanticColors: IThemeSemanticColors = {
     rest: BaseColors.GRAY_808080,
     disabled: BaseColors.GRAY_808080_070,
     hover: BaseColors.GRAY_161616,
-    accent: BaseColors.BLUE_015CDA, // button in radio, check, et. al.
+    accent: BaseColors.BLUE_015CDA,
     error: BaseColors.RED_E00B1C,
     dirty: BaseColors.PURPLE_8A2DA5
   }
