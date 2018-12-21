@@ -144,7 +144,7 @@ export interface IDGLWithAddCardPanelState {
 }
 
 export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddCardPanelState> {
-  private refObject: HTMLElement;
+  private refObject: HTMLElement | null;
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -156,7 +156,7 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
       <>
         <button
           onClick={this._openAddCardPanel}
-          ref={(e: any) => {
+          ref={(e: HTMLElement | null) => {
             this.refObject = e;
           }}
         >
