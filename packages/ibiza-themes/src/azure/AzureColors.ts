@@ -40,6 +40,7 @@ export namespace BaseColors {
   export const GRAY_6B849C_006 = 'rgba(107, 132, 156, .06)';
   export const GRAY_6B849C_025 = 'rgba(107, 132, 156, .25)';
   export const GRAY_6B849C_035 = 'rgba(107, 132, 156, .35)';
+
   export const GRAY_808080_010 = 'rgba(128, 128, 128, .10)';
   export const GRAY_808080_015 = 'rgba(128, 128, 128, .15)';
   export const GRAY_808080_025 = 'rgba(128, 128, 128, .25)';
@@ -86,7 +87,8 @@ export const DarkSemanticColors: IThemeSemanticColors = {
     disabled: BaseColors.GRAY_808080_070,
     hyperlink: BaseColors.BLUE_4894FE,
     success: BaseColors.GREEN_5DB300,
-    error: BaseColors.RED_F63747
+    error: BaseColors.RED_F63747,
+    placeholder: BaseColors.GRAY_808080
   },
   statusBar: {
     okay: BaseColors.GREEN_1A3300,
@@ -148,7 +150,8 @@ export const LightSemanticColors: IThemeSemanticColors = {
     disabled: BaseColors.GRAY_808080_070,
     hyperlink: BaseColors.BLUE_015CDA,
     success: BaseColors.GREEN_428000,
-    error: BaseColors.RED_E00B1C
+    error: BaseColors.RED_E00B1C,
+    placeholder: BaseColors.GRAY_808080
   },
   statusBar: {
     okay: BaseColors.GREEN_E6FFCC,

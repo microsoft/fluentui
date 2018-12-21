@@ -13,6 +13,7 @@ export const AzureThemeLight: ITheme = createTheme({
     inputBackground: LightSemanticColors.background,
     inputText: LightSemanticColors.text.value,
     inputBorder: CommonSemanticColors.textControlOutline.rest,
-    inputBorderHovered: CommonSemanticColors.textControlOutline.hover
+    inputBorderHovered: CommonSemanticColors.textControlOutline.hover,
+    inputPlaceholderText: LightSemanticColors.text.placeholder
   }
 });

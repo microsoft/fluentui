@@ -31,14 +31,33 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         }
       ]
     ],
+    icon: {
+      bottom: 2
+    },
+    prefix: {
+      fontSize: FontSizes.size12
+    },
+    suffix: {
+      fontSize: FontSizes.size12
+    },
     field: [
       {
         color: semanticColors.inputText,
         backgroundColor: semanticColors.inputBackground,
         fontSize: FontSizes.size12,
         selectors: {
-          '::placeholder': [disabled && { color: semanticColors.inputBorder }],
-          ':-ms-input-placeholder': [disabled && { color: semanticColors.inputBorder }]
+          '::placeholder': {
+            color: semanticColors.inputPlaceholderText,
+            fontStyle: 'italic'
+          },
+          ':-ms-input-placeholder': {
+            color: semanticColors.inputPlaceholderText,
+            fontStyle: 'italic'
+          },
+          '::-webkit-input-placeholder': {
+            color: semanticColors.inputPlaceholderText,
+            fontStyle: 'italic'
+          }
         }
       },
       disabled && {

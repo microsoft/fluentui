@@ -17,6 +17,7 @@ export interface IThemeSemanticColors {
     hyperlink: string;
     success: string;
     error: string;
+    placeholder: string;
   };
   primaryButton: {
     rest: {
