@@ -1,4 +1,4 @@
-import { IThemeSemanticColors } from './IThemeSemanticColors';
+import { IAzureSemanticColors } from './IAzureSemanticColors';
 
 /* tslint:disable:no-any */
 export namespace BaseColors {
@@ -76,7 +76,7 @@ export namespace CommonSemanticColors {
   };
 }
 
-export const DarkSemanticColors: IThemeSemanticColors = {
+export const DarkSemanticColors: IAzureSemanticColors = {
   background: BaseColors.GRAY_111111,
   text: {
     heading: BaseColors.WHITE,
@@ -139,7 +139,7 @@ export const DarkSemanticColors: IThemeSemanticColors = {
   }
 };
 
-export const LightSemanticColors: IThemeSemanticColors = {
+export const LightSemanticColors: IAzureSemanticColors = {
   background: BaseColors.WHITE,
   text: {
     heading: BaseColors.GRAY_161616,
