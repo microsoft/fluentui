@@ -59,6 +59,7 @@ export class ButtonExample extends React.Component<{}, {}> {
               </ButtonStack>
               <ButtonStack>
                 <Button content="Menu button" menu={buttonMenu} />
+                <Button primary content="Menu primary button" menu={buttonMenu} />
                 <Button disabled content="Menu disabled button" menu={buttonMenu} />
                 <Button expanded content="Menu expanded button" />
                 <Button expanded primary content="Menu expanded primary button" />
