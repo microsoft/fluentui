@@ -332,11 +332,14 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
             }
           }, 0);
         }
-        this._async.setTimeout(() => {
-          if (this._entityHost.current) {
-            this._entityHost.current.focus();
-          }
-        }, 1000);
+
+        if (!this.props.preventFocusOnMount) {
+          this._async.setTimeout(() => {
+            if (this._entityHost.current) {
+              this._entityHost.current.focus();
+            }
+          }, 1000);
+        }
       }
     );
   }
