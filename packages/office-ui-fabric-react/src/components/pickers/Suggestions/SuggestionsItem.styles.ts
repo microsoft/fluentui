@@ -1,5 +1,5 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
-import { ISuggestionItemStyleProps, ISuggestionItemStyles } from './SuggestionItem.types';
+import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
 const GlobalClassNames = {
   root: 'ms-Suggestions-item',
@@ -8,7 +8,7 @@ const GlobalClassNames = {
   isSuggested: 'is-suggested'
 };
 
-export function getStyles(props: ISuggestionItemStyleProps): ISuggestionItemStyles {
+export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemStyles {
   const { className, theme, suggested } = props;
 
   const { palette } = theme;

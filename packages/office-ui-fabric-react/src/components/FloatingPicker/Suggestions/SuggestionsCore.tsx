@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css, autobind } from '../../../Utilities';
-import { styledSuggestionItem, ISuggestionModel } from '../../../Pickers';
+import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
 // tslint:disable-next-line:no-any
@@ -13,6 +13,9 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
   protected _selectedElement: HTMLDivElement;
+  private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<T> = SuggestionsItem as new (
+    props: ISuggestionItemProps<T>
+  ) => SuggestionsItem<T>;
 
   constructor(suggestionsProps: ISuggestionsCoreProps<T>) {
     super(suggestionsProps);
@@ -123,7 +126,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       showRemoveButtons,
       suggestionsContainerAriaLabel
     } = this.props;
-    const StyledTypedSuggestionsItem = styledSuggestionItem<T>();
+    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
     let { suggestions } = this.props;
 
     if (resultsMaximumNumber) {
@@ -147,7 +150,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
             role="listitem"
             aria-label={suggestion.ariaLabel}
           >
-            <StyledTypedSuggestionsItem
+            <TypedSuggestionsItem
               id={'sug-item' + index}
               suggestionModel={suggestion}
               // tslint:disable-next-line:no-any

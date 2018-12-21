@@ -1,11 +1,13 @@
 import * as React from 'react';
 
-import { BaseComponent, KeyCodes, createRef, classNamesFunction, IStyleFunctionOrObject, css } from '../../../Utilities';
+import { BaseComponent, KeyCodes, createRef, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
-import { styledSuggestionItem } from './SuggestionItem';
+import { SuggestionsItem } from './SuggestionsItem';
+import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
+import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
 import * as stylesImport from './Suggestions.scss';
 const legacyStyles: any = stylesImport;
@@ -21,6 +23,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   protected _searchForMoreButton = createRef<IButton>();
   protected _selectedElement = createRef<HTMLDivElement>();
 
+  private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
   private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
 
@@ -80,8 +83,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     // we can not use the 'styled' function without adding some helpers which can break
     // downstream consumers who did not use the new helpers.
     // We check for 'styles' prop which is going to be injected by the 'styled' HOC
-    // in the BasePicker when the typed Suggestions class is ready to be rendered and
-    // we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
+    // in BasePicker when the typed Suggestions class is ready to be rendered. If the check
+    // passes we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
     // then we just use the old SASS styles instead.
     this._classNames = styles
       ? getClassNames(styles, {
@@ -302,7 +305,22 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       suggestionsContainerAriaLabel,
       suggestionsListId
     } = this.props;
+
     let { suggestions } = this.props;
+
+    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+
+    // TODO:
+    // Move this styled component in a separate file and make it available to the public API.
+    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
+    const StyledTypedSuggestionsItem = styled<ISuggestionItemProps<T>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
+      TypedSuggestionsItem,
+      suggestionsItemStyles,
+      undefined,
+      {
+        scope: 'SuggestionItem'
+      }
+    );
 
     if (resultsMaximumNumber) {
       suggestions = suggestions.slice(0, resultsMaximumNumber);
@@ -311,8 +329,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     if (suggestions.length === 0) {
       return null;
     }
-
-    const StyledTypedSuggestionItem = styledSuggestionItem<T>();
 
     return (
       <div
@@ -331,7 +347,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
             role="option"
             aria-label={suggestion.ariaLabel}
           >
-            <StyledTypedSuggestionItem
+            <StyledTypedSuggestionsItem
               suggestionModel={suggestion}
               RenderSuggestion={onRenderSuggestion as any}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}

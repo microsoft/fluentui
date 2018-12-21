@@ -3,7 +3,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { ISuggestionModel } from './Suggestions.types';
 
 /** SuggestionItem component. */
-export interface ISuggestionItem {}
+export interface ISuggestionsItem {}
 
 /**
  * Suggestion item props. Refers to the each individual suggested items rendered within Suggestions callout.
@@ -14,7 +14,7 @@ export interface ISuggestionItemProps<T> {
    * Optional callback to access the ISuggestionItem interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: IRefObject<ISuggestionItem>;
+  componentRef?: IRefObject<ISuggestionsItem>;
 
   /** Individual suggestion object containing its properties. */
   suggestionModel: ISuggestionModel<T>;
@@ -46,21 +46,21 @@ export interface ISuggestionItemProps<T> {
   removeButtonAriaLabel?: string;
 
   /** Call to provide customized styling that will layer on top of the variant rules. */
-  styles?: IStyleFunctionOrObject<ISuggestionItemStyleProps, ISuggestionItemStyles>;
+  styles?: IStyleFunctionOrObject<ISuggestionsItemStyleProps, ISuggestionsItemStyles>;
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
 }
 
 /** The props needed to construct SuggestionItem styles. */
-export type ISuggestionItemStyleProps = Required<Pick<ISuggestionItemProps<any>, 'theme'>> &
+export type ISuggestionsItemStyleProps = Required<Pick<ISuggestionItemProps<any>, 'theme'>> &
   Pick<ISuggestionItemProps<any>, 'className'> & {
     /** Whether the suggestion item is selected or not. */
     suggested?: boolean;
   };
 
 /** Represents the stylable areas of the SuggestionItem. */
-export interface ISuggestionItemStyles {
+export interface ISuggestionsItemStyles {
   /** Root element of the suggested item. */
   root: IStyle;
 
