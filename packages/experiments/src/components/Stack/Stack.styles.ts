@@ -66,17 +66,24 @@ export const styles: IStackComponent['styles'] = props => {
       root: [
         classNames.root,
         {
+          flexWrap: 'wrap',
           maxWidth,
           maxHeight,
           width: 'auto',
           overflow: 'visible',
           height: '100%'
         },
+        horizontalAlign && {
+          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
+        },
+        vertAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        },
         className,
         {
           // not allowed to be overridden by className
           // since this is necessary in order to prevent collapsing margins
-          display: 'inline-block'
+          display: 'flex'
         }
       ],
 
@@ -92,7 +99,8 @@ export const styles: IStackComponent['styles'] = props => {
           overflow: 'visible',
           boxSizing: 'border-box',
           padding: parsePadding(padding, theme),
-          width: horizontalFill ? '100%' : 'auto',
+          // avoid unnecessary calc() calls if horizontal gap is 0
+          width: hGap.value === 0 ? '100%' : `calc(100% + ${hGap.value}${hGap.unit})`,
           maxWidth: '100vw',
 
           selectors: {
@@ -125,9 +133,6 @@ export const styles: IStackComponent['styles'] = props => {
         !horizontal && {
           flexDirection: 'column',
           height: `calc(100% + ${vGap.value}${vGap.unit})`,
-
-          // avoid unnecessary calc() calls if horizontal gap is 0
-          width: hGap.value === 0 ? '100%' : `calc(100% + ${hGap.value}${hGap.unit})`,
 
           selectors: {
             '> *': {
