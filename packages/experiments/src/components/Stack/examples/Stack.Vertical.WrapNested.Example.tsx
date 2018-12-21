@@ -107,6 +107,22 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
             <span>10</span>
           </Stack>
         </Stack>
+
+        <span>
+          <b>Note:</b>
+        </span>
+        <span>
+          Support for nested wrapping of vertical flex-boxes is scarce across browsers, especially in the way they handle overflows.
+        </span>
+        <span>Most browsers don't scale the width of the flex-box when the inner items overflow and wrap around it.</span>
+        <span>
+          The one exception to this case being Microsoft Edge that handles it correctly (though this might go soon with the switch to
+          Chromium).
+        </span>
+        <span>
+          There are ways in which we could have gone around this issue. However, we have chosen to adhere to the flex-box spec so that we
+          have the correct implementation if support comes down the line.
+        </span>
       </Stack>
     );
   }
