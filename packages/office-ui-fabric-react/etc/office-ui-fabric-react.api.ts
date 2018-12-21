@@ -294,7 +294,15 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected _ariaMap: IPickerAriaIds;
   // (undocumented)
+  protected _focusZone: React.RefObject<IFocusZone>;
+  // (undocumented)
+  protected _input: React.RefObject<IAutofill>;
+  // (undocumented)
   protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+  // (undocumented)
+  protected _root: React.RefObject<HTMLDivElement>;
+  // (undocumented)
+  protected _suggestionElement: React.RefObject<ISuggestions<T>>;
   // (undocumented)
   protected addItem: (item: T) => void;
   // (undocumented)
@@ -320,21 +328,9 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   focusInput(): void;
   // (undocumented)
-  protected focusZone: {
-    (component: IFocusZone | null): void;
-    current: IFocusZone | null;
-    value: IFocusZone | null;
-  }
-  // (undocumented)
   protected getActiveDescendant(): string | undefined;
   // (undocumented)
   protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
-  // (undocumented)
-  protected input: {
-    (component: IAutofill | null): void;
-    current: IAutofill | null;
-    value: IAutofill | null;
-  }
   // (undocumented)
   readonly items: T[];
   // (undocumented)
@@ -380,15 +376,9 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected resolveNewValue(updatedValue: string, suggestions: T[]): void;
   // (undocumented)
-  protected root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
-  // (undocumented)
   protected selection: Selection;
   // (undocumented)
-  protected suggestionElement: React.RefObject<ISuggestions<T>>;
+  protected SuggestionsOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
   // (undocumented)
   protected suggestionStore: SuggestionsController<T>;
   // (undocumented)
@@ -10393,13 +10383,9 @@ interface IStyleSheetConfig {
 }
 
 // @public
-interface ISuggestionItem {
-}
-
-// @public
 interface ISuggestionItemProps<T> {
   className?: string;
-  componentRef?: IRefObject<ISuggestionItem>;
+  componentRef?: IRefObject<ISuggestionsItem>;
   id?: string;
   isSelectedOverride?: boolean;
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
@@ -10407,16 +10393,9 @@ interface ISuggestionItemProps<T> {
   removeButtonAriaLabel?: string;
   RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
   showRemoveButton?: boolean;
-  styles?: IStyleFunctionOrObject<ISuggestionItemStyleProps, ISuggestionItemStyles>;
+  styles?: IStyleFunctionOrObject<ISuggestionsItemStyleProps, ISuggestionsItemStyles>;
   suggestionModel: ISuggestionModel<T>;
   theme?: ITheme;
-}
-
-// @public
-interface ISuggestionItemStyles {
-  closeButton: IStyle;
-  itemButton: IStyle;
-  root: IStyle;
 }
 
 // @public
@@ -10428,17 +10407,12 @@ interface ISuggestionModel<T> {
 
 // @public
 interface ISuggestions<T> {
-  // (undocumented)
   executeSelectedAction: () => void;
-  // (undocumented)
   focusAboveSuggestions: () => void;
-  // (undocumented)
   focusBelowSuggestions: () => void;
-  // (undocumented)
+  focusSearchForMoreButton: () => void;
   hasSuggestedAction: () => boolean;
-  // (undocumented)
   hasSuggestedActionSelected: () => boolean;
-  // (undocumented)
   tryHandleKeyDown: (keyCode: number, currentSuggestionIndex: number) => boolean;
 }
 
@@ -10506,6 +10480,17 @@ interface ISuggestionsHeaderFooterProps {
   renderItem: () => JSX.Element;
   // (undocumented)
   shouldShow: () => boolean;
+}
+
+// @public
+interface ISuggestionsItem {
+}
+
+// @public
+interface ISuggestionsItemStyles {
+  closeButton: IStyle;
+  itemButton: IStyle;
+  root: IStyle;
 }
 
 // @public
@@ -12066,12 +12051,6 @@ enum StickyPositionType {
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): (props: TComponentProps) => JSX.Element;
 
-// @public (undocumented)
-export function styledSuggestionItem<T>(): (props: ISuggestionItemProps<T>) => JSX.Element;
-
-// @public (undocumented)
-export function styledSuggestions<T>(): (props: ISuggestionsProps<T>) => JSX.Element;
-
 // @public
 class Stylesheet {
   constructor(config?: IStyleSheetConfig);
@@ -12090,20 +12069,11 @@ class Stylesheet {
   setConfig(config?: IStyleSheetConfig): void;
 }
 
-// @public (undocumented)
+// @public
 enum SuggestionActionType {
-  // (undocumented)
   forceResolve = 1,
-  // (undocumented)
   none = 0,
-  // (undocumented)
   searchMore = 2
-}
-
-// @public (undocumented)
-class SuggestionItemBase<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
-  // (undocumented)
-  render(): JSX.Element;
 }
 
 // @public (undocumented)
@@ -12117,26 +12087,14 @@ enum SuggestionItemType {
 }
 
 // @public (undocumented)
-class SuggestionsBase<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
+class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   constructor(suggestionsProps: ISuggestionsProps<T>);
   // (undocumented)
-  protected _forceResolveButton: {
-    (component: IButton | null): void;
-    current: IButton | null;
-    value: IButton | null;
-  }
+  protected _forceResolveButton: React.RefObject<IButton>;
   // (undocumented)
-  protected _searchForMoreButton: {
-    (component: IButton | null): void;
-    current: IButton | null;
-    value: IButton | null;
-  }
+  protected _searchForMoreButton: React.RefObject<IButton>;
   // (undocumented)
-  protected _selectedElement: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected _selectedElement: React.RefObject<HTMLDivElement>;
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
@@ -12279,6 +12237,12 @@ class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
 
 // @public (undocumented)
 class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
+  // (undocumented)
+  render(): JSX.Element;
+}
+
+// @public (undocumented)
+class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   // (undocumented)
   render(): JSX.Element;
 }
@@ -12628,7 +12592,7 @@ module ZIndexes {
 // WARNING: Unsupported export: sizeToPixels
 // WARNING: Unsupported export: presenceBoolean
 // WARNING: Unsupported export: ISuggestionsStyleProps
-// WARNING: Unsupported export: ISuggestionItemStyleProps
+// WARNING: Unsupported export: ISuggestionsItemStyleProps
 // WARNING: Unsupported export: IPickerAriaIds
 // WARNING: Unsupported export: IBasePickerStyleProps
 // WARNING: Unsupported export: NormalPeoplePicker

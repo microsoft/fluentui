@@ -7,11 +7,25 @@ import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 
 /** Suggestions component. */
 export interface ISuggestions<T> {
+  /** Execute the action selected. Can be SearchMore or ForceResolve actions. */
   executeSelectedAction: () => void;
+
+  /** Focus on the ForceResolve action above the suggestions. If not available then focus on SearchMore action. */
   focusAboveSuggestions: () => void;
+
+  /** Focus on the SearchMore action below the suggestions. If not available then focus on ForceResolve action. */
   focusBelowSuggestions: () => void;
+
+  /** Focus the SearchMore action button. */
+  focusSearchForMoreButton: () => void;
+
+  /** Whether it has any suggested actions like ForceResolve or SearchMore. */
   hasSuggestedAction: () => boolean;
+
+  /** Whether any of the suggested actions (ForceResolve or SearchMore) is selected. */
   hasSuggestedActionSelected: () => boolean;
+
+  /** Returns true if the event was handled, false otherwise. */
   tryHandleKeyDown: (keyCode: number, currentSuggestionIndex: number) => boolean;
 }
 
@@ -259,8 +273,14 @@ export interface ISuggestionModel<T> {
   ariaLabel?: string;
 }
 
+/** Enum to help identify which suggestions action button is selected. */
 export enum SuggestionActionType {
+  /** None of the actions is selected. */
   none,
+
+  /** ForceResolve action is selected. */
   forceResolve,
+
+  /** SearchMore action is selected. */
   searchMore
 }

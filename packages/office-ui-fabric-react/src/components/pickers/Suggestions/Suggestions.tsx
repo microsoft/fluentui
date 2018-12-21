@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, KeyCodes, createRef, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
+import { BaseComponent, KeyCodes, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
@@ -19,9 +19,9 @@ export interface ISuggestionsState {
 }
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
-  protected _forceResolveButton = createRef<IButton>();
-  protected _searchForMoreButton = createRef<IButton>();
-  protected _selectedElement = createRef<HTMLDivElement>();
+  protected _forceResolveButton = React.createRef<IButton>();
+  protected _searchForMoreButton = React.createRef<IButton>();
+  protected _selectedElement = React.createRef<HTMLDivElement>();
 
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
