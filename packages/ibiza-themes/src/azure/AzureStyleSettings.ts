@@ -1,3 +1,4 @@
+import { LabelStyles } from './styles/Label.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 // Roll up all style overrides in a single "Azure theme" object
 
@@ -72,9 +73,9 @@ export const AzureStyleSettings = (): any => {
     // IconButton: {
     //   styles: IconButtonStyles
     // },
-    // Label: {
-    //   styles: LabelStyles
-    // },
+    Label: {
+      styles: LabelStyles
+    },
     // Link: {
     //   styles: LinkStyles
     // },
