@@ -29,20 +29,39 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
   }
 
   public render(): JSX.Element {
-    const { items, listProps, styles, theme, shimmerLines, onRenderCustomPlaceholder, enableShimmer, ...detailsListProps } = this.props;
+    const {
+      items,
+      listProps,
+      styles,
+      theme,
+      shimmerLines,
+      onRenderCustomPlaceholder,
+      enableShimmer,
+      detailsListProps,
+      ...restProps
+    } = this.props;
+
+    let listClassName = listProps && listProps.className;
+    if (detailsListProps && detailsListProps.listProps) {
+      listClassName = detailsListProps.listProps.className;
+    }
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: listProps && listProps.className,
+      className: listClassName,
       enableShimmer
     });
 
     // Adds to the optional listProp className a fading out overlay className only when shimmer enabled.
-    const shimmeredListClassName: string = css(listProps && listProps.className, enableShimmer && classNames.root);
-    const newListProps = { ...listProps, className: shimmeredListClassName };
+    const newListProps = {
+      ...listProps,
+      ...(detailsListProps && detailsListProps.listProps),
+      className: enableShimmer ? classNames.root : ''
+    };
 
     return (
       <DetailsList
+        {...restProps}
         {...detailsListProps}
         enableShimmer={enableShimmer}
         items={enableShimmer ? this._shimmerItems : items}

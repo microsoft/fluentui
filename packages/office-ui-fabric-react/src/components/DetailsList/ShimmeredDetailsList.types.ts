@@ -3,8 +3,13 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
-  /** The theme provided by context */
-  theme?: ITheme;
+  /**
+   * DetailsList props to pass through.
+   */
+  detailsListProps?: IDetailsListProps;
+
+  /** Placeholder renderer */
+  onRenderCustomPlaceholder?: () => React.ReactNode;
 
   /** Overridable styles */
   styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
@@ -12,8 +17,8 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
   /** Number of shimmer lines to show */
   shimmerLines?: number;
 
-  /** Placeholder renderer */
-  onRenderCustomPlaceholder?: () => React.ReactNode;
+  /** The theme provided by context */
+  theme?: ITheme;
 }
 
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> &
