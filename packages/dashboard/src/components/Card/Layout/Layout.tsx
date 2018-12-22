@@ -19,7 +19,7 @@ import { IBodyTextProps } from '../BodyText/BodyText.types';
 import { IThumbnailListProps } from '../ThumbnailList/ThumbnailList.types';
 import { ICompoundButtonStackProps } from '../CompoundButtonStack/CompoundButtonStack.types';
 import { ICardHeaderProps } from '../CardHeader/CardHeader.types';
-import { IAction } from '../ActionBar/ActionBar.types';
+import { IAction, IAccessability } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { GridList } from '../GridList/GridList';
 import { IChartProps, ChartWidth, ChartHeight, ChartType } from '../Chart/Chart.types';
@@ -53,12 +53,12 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
   }
 
   public render(): JSX.Element {
-    const { header, contentArea, actions, cardSize, loading } = this.props;
+    const { header, contentArea, actions, cardSize, loading, actionBarAccessability } = this.props;
     const classNames = this.getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(contentArea!, cardSize, header);
 
     const headerElement: JSX.Element | null = this._generateHeader(header!);
-    const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
+    const footerElement: JSX.Element | null = this._generateFooter(actions!, actionBarAccessability!, classNames.footer);
     return (
       <div className={classNames.root} onMouseDown={this.onMouseDown}>
         {loading ? null : headerElement}
@@ -202,13 +202,13 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
     return <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />;
   }
 
-  private _generateFooter(actions: IAction[], className: string): JSX.Element | null {
+  private _generateFooter(actions: IAction[], actionBarAccessability: IAccessability, className: string): JSX.Element | null {
     if (actions === null || actions === undefined) {
       return null;
     }
     return (
       <div id="actionBar" className={className}>
-        <ActionBar actions={actions} />
+        <ActionBar actions={actions} overflowButtonAccessability={actionBarAccessability} />
       </div>
     );
   }

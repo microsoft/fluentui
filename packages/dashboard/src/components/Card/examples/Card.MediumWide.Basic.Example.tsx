@@ -30,7 +30,9 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
           alert('First Item clicked');
         },
         altImageText: 'First item',
-        imageAriaHidden: true
+        imageAriaHidden: true,
+        title: 'First item',
+        ariaLabel: 'First item'
       },
       {
         imageSource: '../../../public/images/download.jpg',
@@ -123,6 +125,12 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
       }
     ];
 
+    const actionBarAccessability = {
+      ariaLabel: 'more actions',
+      ariaDescription: 'more actions',
+      title: 'more'
+    };
+
     return (
       <Card
         cardFrameContent={cardFrameContent}
@@ -130,6 +138,7 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
         cardContentList={contentAreaList}
         cardSize={CardSize.mediumWide}
         actions={actions}
+        actionBarAccessability={actionBarAccessability}
       />
     );
   }

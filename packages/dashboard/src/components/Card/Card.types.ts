@@ -1,7 +1,7 @@
 import { ChartType } from './Chart/Chart.types';
 import { ICardHeaderProps } from './CardHeader/CardHeader.types';
 import { ICardContentDetails } from './Layout/Layout.types';
-import { IAction } from './ActionBar/ActionBar.types';
+import { IAction, IAccessability } from './ActionBar/ActionBar.types';
 import { ICardDropDownOption } from './CardFrame/CardFrame.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
@@ -110,6 +110,11 @@ export interface ICardFrameContent {
    * callback triggered upon clicking on the card title. Card title is clickable only when href is passed to it.
    */
   cardTitleCallback?: VoidFunction;
+
+  /**
+   * Overflow Button Accessability
+   */
+  cardFrameAccessability?: IAccessability;
 }
 
 export interface ICardProps {
@@ -127,6 +132,16 @@ export interface ICardProps {
    * The footer action bar props
    */
   actions?: IAction[];
+
+  /**
+   * Overflow Button Accessability
+   */
+  actionBarAccessability?: IAccessability;
+
+  /**
+   * role of the  card for the benefit of screen readers
+   */
+  role?: string;
 
   /**
    * The content area content details array.

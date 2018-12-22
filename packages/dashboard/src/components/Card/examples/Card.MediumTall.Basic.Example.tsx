@@ -20,7 +20,12 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
             alert('Remove clicked');
           }
         }
-      ]
+      ],
+      href: 'www.google.com',
+      cardFrameAccessability: {
+        title: 'more',
+        ariaLabel: 'more'
+      }
     };
 
     const compoundButtonStack: ICompoundAction[] = [
@@ -29,7 +34,8 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         action: () => {
           alert('Compound Button 1 clicked');
         },
-        description: 'Compund Button 1 description'
+        description: 'Compund Button 1 description',
+        ariaLabel: 'Compound Button 1'
       },
       {
         title: 'Compound Button 2',
@@ -57,12 +63,25 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         }
       }
     ];
+    const actionBarAccessability = {
+      ariaLabel: 'more actions',
+      ariaDescription: 'More actions',
+      title: 'more'
+    };
 
     const header = {
       headerText: 'Header Text ',
       annotationText: 'Annotation Text ',
       fontSize: 1
     };
-    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumTall} />;
+    return (
+      <Card
+        cardFrameContent={cardFrameContent}
+        header={header}
+        cardContentList={contentAreaList}
+        cardSize={CardSize.mediumTall}
+        actionBarAccessability={actionBarAccessability}
+      />
+    );
   }
 }

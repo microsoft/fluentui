@@ -1,4 +1,5 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IAccessability } from '../ActionBar/ActionBar.types';
 
 export interface ICardDropDownOption {
   /**
@@ -62,6 +63,11 @@ export interface ICardFrameProps {
    * Color property for the seperator
    */
   seperatorColor?: string;
+
+  /**
+   * Overflow Button Accessability
+   */
+  cardFrameAccessability?: IAccessability;
 
   /**
    * Hyperlink URL for title
