@@ -4,7 +4,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
 <div
   className=
       ms-Fabric
-      DetailsList-grouped-large-example
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;

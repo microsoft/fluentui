@@ -1,10 +1,44 @@
+// @codepen
+
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import './DetailsListExample.scss';
+
+const fileIconHeaderIconClass = mergeStyles({
+  padding: 0,
+  fontSize: '16px'
+});
+const fileIconCellClass = mergeStyles({
+  textAlign: 'center',
+  selectors: {
+    '&:before': {
+      content: '.',
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      height: '100%',
+      width: '0px',
+      visibility: 'hidden'
+    }
+  }
+});
+const fileIconImgClass = mergeStyles({
+  verticalAlign: 'middle',
+  maxHeight: '16px',
+  maxWidth: '16px'
+});
+const exampleToggleClass = mergeStyles({
+  display: 'inline-block',
+  marginBottom: '10px',
+  marginRight: '30px'
+});
+const exampleChildClass = mergeStyles({
+  display: 'block',
+  marginBottom: '10px'
+});
 
 let _items: IDocument[] = [];
 
@@ -13,24 +47,16 @@ const fileIcons: { name: string }[] = [
   { name: 'csv' },
   { name: 'docx' },
   { name: 'dotx' },
-  { name: 'mpp' },
   { name: 'mpt' },
-  { name: 'odp' },
-  { name: 'ods' },
   { name: 'odt' },
   { name: 'one' },
   { name: 'onepkg' },
   { name: 'onetoc' },
-  { name: 'potx' },
-  { name: 'ppsx' },
   { name: 'pptx' },
   { name: 'pub' },
   { name: 'vsdx' },
-  { name: 'vssx' },
-  { name: 'vstx' },
   { name: 'xls' },
   { name: 'xlsx' },
-  { name: 'xltx' },
   { name: 'xsn' }
 ];
 
@@ -43,7 +69,6 @@ export interface IDetailsListDocumentsExampleState {
 }
 
 export interface IDocument {
-  [key: string]: any;
   name: string;
   value: string;
   iconName: string;
@@ -55,10 +80,10 @@ export interface IDocument {
   fileSizeRaw: number;
 }
 
-export class DetailsListDocumentsExample extends React.Component<any, IDetailsListDocumentsExampleState> {
+export class DetailsListDocumentsExample extends React.Component<{}, IDetailsListDocumentsExampleState> {
   private _selection: Selection;
 
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
 
     //  Populate with items for demos.
@@ -93,9 +118,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
       {
         key: 'column1',
         name: 'File Type',
-        headerClassName: 'DetailsListExample-header--FileIcon',
-        className: 'DetailsListExample-cell--FileIcon',
-        iconClassName: 'DetailsListExample-Header-FileTypeIcon',
+        className: fileIconCellClass,
+        iconClassName: fileIconHeaderIconClass,
         ariaLabel: 'Column operations for File type, Press to sort on File type',
         iconName: 'Page',
         isIconOnly: true,
@@ -104,7 +128,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} alt={item.fileType + ' file icon'} />;
+          return <img src={item.iconName} className={fileIconImgClass} alt={item.fileType + ' file icon'} />;
         }
       },
       {
@@ -191,21 +215,23 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     return (
       <div>
         <Toggle
-          label="Enable Compact Mode"
+          className={exampleToggleClass}
+          label="Enable compact mode"
           checked={isCompactMode}
           onChange={this._onChangeCompactMode}
           onText="Compact"
           offText="Normal"
         />
         <Toggle
-          label="Enable Modal Selection"
+          className={exampleToggleClass}
+          label="Enable modal selection"
           checked={isModalSelection}
           onChange={this._onChangeModalSelection}
           onText="Modal"
           offText="Normal"
         />
-        <div>{selectionDetails}</div>
-        <TextField label="Filter by name:" onChange={this._onChangeText} />
+        <div className={exampleChildClass}>{selectionDetails}</div>
+        <TextField className={exampleChildClass} label="Filter by name:" onChange={this._onChangeText} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -228,10 +254,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   }
 
   public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
-    if (previousState.isModalSelection !== this.state.isModalSelection) {
-      if (!this.state.isModalSelection) {
-        this._selection.setAllSelected(false);
-      }
+    if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
+      this._selection.setAllSelected(false);
     }
   }
 
@@ -283,7 +307,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as IDocument).name;
       default:
         return `${selectionCount} items selected`;
     }
@@ -293,9 +317,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     const { columns, items } = this.state;
     let newItems: IDocument[] = items.slice();
     const newColumns: IColumn[] = columns.slice();
-    const currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
-      return column.key === currCol.key;
-    })[0];
+    const currColumn: IColumn = newColumns.filter(currCol => column.key === currCol.key)[0];
     newColumns.forEach((newCol: IColumn) => {
       if (newCol === currColumn) {
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
@@ -305,14 +327,14 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         newCol.isSortedDescending = true;
       }
     });
-    newItems = this._sortItems(newItems, currColumn.fieldName || '', currColumn.isSortedDescending);
+    newItems = this._sortItems(newItems, currColumn.fieldName as keyof IDocument, currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
       items: newItems
     });
   };
 
-  private _sortItems = (items: IDocument[], sortBy: string, descending = false): IDocument[] => {
+  private _sortItems = (items: IDocument[], sortBy: keyof IDocument, descending = false): IDocument[] => {
     if (descending) {
       return items.sort((a: IDocument, b: IDocument) => {
         if (a[sortBy] < b[sortBy]) {

@@ -50,7 +50,7 @@ export const DetailsListPageProps: IDocPageProps = {
   componentStatus: DetailsListStatus,
   examples: [
     {
-      title: 'Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns',
+      title: 'DetailsList with 500 documents, sorting, marquee selection, justified columns',
       code: DetailsListDocumentsExampleCode,
       view: <DetailsListDocumentsExample />
     }
@@ -76,25 +76,25 @@ function generateProps(example: { title: string; code: string; view: JSX.Element
 }
 
 export const DetailsListBasicPageProps: IDocPageProps = generateProps({
-  title: 'Simple DetailsList with 500 items, filtering, marquee selection',
+  title: 'Simple DetailsList',
   code: DetailsListBasicExampleCode,
   view: <DetailsListBasicExample />
 });
 
 export const DetailsListCompactPageProps: IDocPageProps = generateProps({
-  title: 'Compact DetailsList with 500 items, filtering, marquee selection',
+  title: 'Compact DetailsList with 500 items, marquee selection',
   code: DetailsListCompactExampleCode,
   view: <DetailsListCompactExample />
 });
 
 export const DetailsListSimpleGroupedPageProps: IDocPageProps = generateProps({
-  title: 'Simple Grouped DetailsList',
+  title: 'Simple grouped DetailsList',
   code: DetailsListGroupedExampleCode,
   view: <DetailsListGroupedExample />
 });
 
 export const DetailsListLargeGroupedPageProps: IDocPageProps = generateProps({
-  title: 'Large Grouped DetailsList',
+  title: 'Large grouped DetailsList',
   code: DetailsListGroupedLargeExampleCode,
   view: <DetailsListGroupedLargeExample />
 });
@@ -124,7 +124,7 @@ export const DetailsListAdvancedPageProps: IDocPageProps = generateProps({
 });
 
 export const DetailsListDragDropPageProps: IDocPageProps = generateProps({
-  title: 'Drag and Drop DetailsList with 10 items',
+  title: 'Drag and drop DetailsList with 10 items',
   code: DetailsListDragDropExampleCode,
   view: <DetailsListDragDropExample />
 });
@@ -136,7 +136,7 @@ export const DetailsListNavigatingFocusPageProps: IDocPageProps = generateProps(
 });
 
 export const DetailsListShimmerPageProps: IDocPageProps = generateProps({
-  title: 'DetailsList Shimmer - usually show before retrieving data from network',
+  title: 'DetailsList Shimmer - usually shown before retrieving data from network',
   code: DetailsListShimmerExampleCode,
   view: <DetailsListShimmerExample />
 });

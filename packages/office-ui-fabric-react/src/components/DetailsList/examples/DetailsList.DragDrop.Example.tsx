@@ -1,49 +1,54 @@
+// @codepen
+
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
-import './DetailsList.DragDrop.Example.scss';
 import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-let _draggedItem: any = null;
-let _draggedIndex = -1;
-let _items: any[];
-let _columns: IColumn[];
-export class DetailsListDragDropExample extends React.Component<
-  {},
-  {
-    items: {}[];
-    selectionDetails?: string;
-    columns: IColumn[];
-    isColumnReorderEnabled: boolean;
-    frozenColumnCountFromStart: string;
-    frozenColumnCountFromEnd: string;
+const exampleClass = mergeStyles({
+  selectors: {
+    '.dragEnter': {
+      backgroundColor: DefaultPalette.neutralLight
+    }
   }
-> {
+});
+
+let _draggedItem: IExampleItem | null = null;
+let _draggedIndex = -1;
+let _items: IExampleItem[];
+let _columns: IColumn[];
+
+export interface IDetailsListDragDropExampleState {
+  items: IExampleItem[];
+  selectionDetails?: string;
+  columns: IColumn[];
+  isColumnReorderEnabled: boolean;
+  frozenColumnCountFromStart: string;
+  frozenColumnCountFromEnd: string;
+}
+
+export class DetailsListDragDropExample extends React.Component<{}, IDetailsListDragDropExampleState> {
   private _selection: Selection;
+  private _dragDropEvents: IDragDropEvents;
 
   constructor(props: {}) {
     super(props);
 
-    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
-    this._handleColumnReorder = this._handleColumnReorder.bind(this);
-    this._getColumnReorderOptions = this._getColumnReorderOptions.bind(this);
-    this._onChangeColumnReorderEnabled = this._onChangeColumnReorderEnabled.bind(this);
-    this._onChangeStartCountText = this._onChangeStartCountText.bind(this);
-    this._onChangeEndCountText = this._onChangeEndCountText.bind(this);
-
+    this._dragDropEvents = this._getDragDropEvents();
     this._selection = new Selection();
 
     _items = _items || createListItems(10, 0);
     _columns = buildColumns(_items, true);
 
     this.state = {
-      items: createListItems(10),
+      items: _items,
       columns: _columns,
       isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
@@ -55,22 +60,22 @@ export class DetailsListDragDropExample extends React.Component<
     const { items, selectionDetails, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
 
     return (
-      <div className={'detailsListDragDropExample'}>
+      <div className={exampleClass}>
         <Toggle
-          label={'Enable Column Reorder'}
+          label="Enable Column Reorder"
           checked={isColumnReorderEnabled}
           onChange={this._onChangeColumnReorderEnabled}
-          onText={'Enabled'}
-          offText={'Disabled'}
+          onText="Enabled"
+          offText="Disabled"
         />
         <TextField
-          label={'Number of Left frozen columns:'}
+          label="Number of Left frozen columns:"
           onGetErrorMessage={this._validateNumber}
           value={frozenColumnCountFromStart}
           onChange={this._onChangeStartCountText}
         />
         <TextField
-          label={'Number of Right frozen columns:'}
+          label="Number of Right frozen columns:"
           onGetErrorMessage={this._validateNumber}
           value={frozenColumnCountFromEnd}
           onChange={this._onChangeEndCountText}
@@ -78,14 +83,14 @@ export class DetailsListDragDropExample extends React.Component<
         <div>{selectionDetails}</div>
         <MarqueeSelection selection={this._selection}>
           <DetailsList
-            setKey={'items'}
+            setKey="items"
             items={items}
             columns={columns}
             selection={this._selection}
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
-            dragDropEvents={this._getDragDropEvents()}
+            dragDropEvents={this._dragDropEvents}
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
@@ -159,22 +164,24 @@ export class DetailsListDragDropExample extends React.Component<
     };
   }
 
-  private _onItemInvoked(item: any): void {
+  private _onItemInvoked = (item: IExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
-  }
+  };
 
-  private _onRenderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
+  private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
     if (column.key === 'name') {
       return <Link data-selection-invoke={true}>{item[column.key]}</Link>;
     }
 
-    return item[column.key];
-  }
+    return (item as any)[column.key];
+  };
 
-  private _insertBeforeItem(item: any): void {
-    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+  private _insertBeforeItem(item: IExampleItem): void {
+    const draggedItems = this._selection.isIndexSelected(_draggedIndex)
+      ? (this._selection.getSelection() as IExampleItem[])
+      : [_draggedItem!];
 
-    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.

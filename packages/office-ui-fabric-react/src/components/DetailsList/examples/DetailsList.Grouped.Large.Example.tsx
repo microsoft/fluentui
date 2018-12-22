@@ -1,5 +1,6 @@
+// @codepen
+
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { IDetailsList, DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 
@@ -25,29 +26,39 @@ const _columns: IColumn[] = [
   }
 ];
 
-const _items = Array.apply(null, Array(1000)).map((_: any, num: number) => ({
-  key: num.toString(),
-  name: `Item ${num.toString()}`,
-  value: num.toString()
-}));
+interface IDetailsListGroupedLargeExampleItem {
+  key: string;
+  name: string;
+  value: string;
+}
 
-const _groups = Array.apply(null, Array(10)).map((_: any, num: number) => ({
-  key: num.toString(),
-  name: num.toString(),
-  startIndex: num * 100,
-  count: 100
-}));
+let _items: IDetailsListGroupedLargeExampleItem[];
+let _groups: IGroup[];
 
-export class DetailsListGroupedLargeExample extends BaseComponent<{}, { items: {}[] }> {
+export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
   private _root = React.createRef<IDetailsList>();
 
   constructor(props: {}) {
     super(props);
+    if (!_items) {
+      _items = Array.apply(null, Array(1000)).map((_: any, num: number) => ({
+        key: num.toString(),
+        name: `Item ${num.toString()}`,
+        value: num.toString()
+      }));
+
+      _groups = Array.apply(null, Array(10)).map((_: any, num: number) => ({
+        key: num.toString(),
+        name: num.toString(),
+        startIndex: num * 100,
+        count: 100
+      }));
+    }
   }
 
   public render() {
     return (
-      <Fabric className="DetailsList-grouped-large-example">
+      <Fabric>
         <DetailsList
           componentRef={this._root}
           items={_items}

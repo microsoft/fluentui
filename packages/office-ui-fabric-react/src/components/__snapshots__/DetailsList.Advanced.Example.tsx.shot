@@ -2,7 +2,33 @@
 
 exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1`] = `
 <div
-  className="ms-DetailsListAdvancedExample"
+  className=
+
+      & .ms-CommandBar {
+        margin-bottom: 40px;
+      }
+      & .ms-DetailsRow-cell .ms-Link {
+        display: block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      & .ms-DetailsHeader-divider {
+        display: inline-block;
+        height: 100%;
+      }
+      & .ms-DetailsHeader-divider-bar {
+        background: #0078d4;
+        bottom: 0px;
+        display: none;
+        position: absolute;
+        top: 0px;
+        width: 1px;
+        z-index: 5;
+      }
+      & .ms-DetailsHeader-divider:hover + .ms-DetailsHeader-divider-bar {
+        display: inline;
+      }
 >
   <button
     aria-checked={false}

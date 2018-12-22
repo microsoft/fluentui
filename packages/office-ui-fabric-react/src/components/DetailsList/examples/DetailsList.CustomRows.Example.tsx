@@ -1,10 +1,10 @@
+// @codepen
+
 import * as React from 'react';
 import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowCheckProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import './DetailsListExample.scss';
+import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
-let _items: any[];
+let _items: IExampleItem[];
 
 export class DetailsListCustomRowsExample extends React.Component {
   constructor(props: {}) {
@@ -24,7 +24,7 @@ export class DetailsListCustomRowsExample extends React.Component {
   private _onRenderCheck = (props: IDetailsRowCheckProps): JSX.Element => {
     return (
       <div
-        className={css('ms-DetailsRow-check DetailsListExample-customCheck', props.anySelected && 'is-any-selected')}
+        style={props.anySelected ? { opacity: 1 } : undefined}
         role="button"
         aria-pressed={props.isSelected}
         data-selection-toggle={true}

@@ -1,10 +1,18 @@
+// @codepen
+
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const _items: any[] = [];
+const exampleChildClass = mergeStyles({
+  display: 'block',
+  marginBottom: '10px'
+});
+
+const _items: IDetailsListBasicExampleItem[] = [];
 
 const _columns: IColumn[] = [
   {
@@ -27,14 +35,19 @@ const _columns: IColumn[] = [
   }
 ];
 
-export class DetailsListBasicExample extends React.Component<
-  {},
-  {
-    items: {}[];
-    selectionDetails: {};
-    showItemIndexInView: boolean;
-  }
-> {
+export interface IDetailsListBasicExampleItem {
+  key: number;
+  name: string;
+  value: number;
+}
+
+export interface IDetailsListBasicExampleState {
+  items: IDetailsListBasicExampleItem[];
+  selectionDetails: {};
+  showItemIndexInView: boolean;
+}
+
+export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
   private _selection: Selection;
   private _detailsList = React.createRef<IDetailsList>();
 
@@ -68,15 +81,14 @@ export class DetailsListBasicExample extends React.Component<
 
     return (
       <div>
-        <div>{selectionDetails}</div>
-        <div>
-          <Checkbox
-            label="Show index of the first item in view when unmounting"
-            checked={this.state.showItemIndexInView}
-            onChange={this._onShowItemIndexInViewChanged}
-          />
-        </div>
-        <TextField label="Filter by name:" onChange={this._onChange} />
+        <div className={exampleChildClass}>{selectionDetails}</div>
+        <Checkbox
+          className={exampleChildClass}
+          label="Show index of the first item in view when unmounting"
+          checked={this.state.showItemIndexInView}
+          onChange={this._onShowItemIndexInViewChanged}
+        />
+        <TextField className={exampleChildClass} label="Filter by name:" onChange={this._onFilter} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             componentRef={this._detailsList}
@@ -109,19 +121,19 @@ export class DetailsListBasicExample extends React.Component<
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as IDetailsListBasicExampleItem).name;
       default:
         return `${selectionCount} items selected`;
     }
   }
 
-  private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
+  private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 
-  private _onItemInvoked(item: any): void {
+  private _onItemInvoked = (item: IDetailsListBasicExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
-  }
+  };
 
   private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({

@@ -1,10 +1,11 @@
+// @codepen
+
 import * as React from 'react';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import './DetailsListExample.scss';
 
 export interface IDetailsListNavigatingFocusExampleState {
-  items: any;
+  items: string[];
   initialFocusedIndex?: number;
 }
 
@@ -53,6 +54,6 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
   };
 }
 
-function generateItems(parent: string): void {
+function generateItems(parent: string): string[] {
   return Array.prototype.map.call('abcdefghi', (name: string) => parent + name);
 }

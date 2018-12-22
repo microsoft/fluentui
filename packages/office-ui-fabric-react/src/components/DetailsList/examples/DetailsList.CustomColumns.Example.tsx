@@ -1,14 +1,16 @@
+// @codepen
+
 import * as React from 'react';
-import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 
-let _items: any[];
+let _items: IExampleItem[];
 
 export interface IDetailsListCustomColumnsExampleState {
-  sortedItems?: any[];
-  columns?: IColumn[];
+  sortedItems: IExampleItem[];
+  columns: IColumn[];
 }
 
 export class DetailsListCustomColumnsExample extends React.Component<{}, IDetailsListCustomColumnsExampleState> {
@@ -28,7 +30,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     return (
       <DetailsList
-        items={sortedItems as any[]}
+        items={sortedItems}
         setKey="set"
         columns={columns}
         onRenderItemColumn={_renderItemColumn}
@@ -52,9 +54,9 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     }
 
     // Sort the items.
-    sortedItems = sortedItems!.concat([]).sort((a, b) => {
-      const firstValue = a[column.fieldName || ''];
-      const secondValue = b[column.fieldName || ''];
+    sortedItems = [...sortedItems].sort((a: any, b: any) => {
+      const firstValue = a[column.fieldName!];
+      const secondValue = b[column.fieldName!];
 
       if (isSortedDescending) {
         return firstValue > secondValue ? -1 : 1;
@@ -66,7 +68,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     // Reset the items and columns to match the state.
     this.setState({
       sortedItems: sortedItems,
-      columns: columns!.map(col => {
+      columns: columns.map(col => {
         col.isSorted = col.key === column.key;
 
         if (col.isSorted) {
@@ -87,7 +89,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
   }
 }
 
-function _buildColumns() {
+function _buildColumns(): IColumn[] {
   const columns = buildColumns(_items);
 
   const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
@@ -99,8 +101,8 @@ function _buildColumns() {
   return columns;
 }
 
-function _renderItemColumn(item: any, index: number, column: IColumn) {
-  const fieldContent = item[column.fieldName || ''];
+function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
+  const fieldContent = item[column.fieldName as keyof IExampleItem] as string;
 
   switch (column.key) {
     case 'thumbnail':

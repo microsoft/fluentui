@@ -1,13 +1,23 @@
+// @codepen
+
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const _items: {
+const exampleChildClass = mergeStyles({
+  display: 'block',
+  marginBottom: '10px'
+});
+
+export interface IDetailsListCompactExampleItem {
   key: number;
   name: string;
   value: number;
-}[] = [];
+}
+
+const _items: IDetailsListCompactExampleItem[] = [];
 
 const _columns = [
   {
@@ -28,13 +38,12 @@ const _columns = [
   }
 ];
 
-export class DetailsListCompactExample extends React.Component<
-  {},
-  {
-    items: {}[];
-    selectionDetails: string;
-  }
-> {
+export interface IDetailsListCompactExampleState {
+  items: {}[];
+  selectionDetails: string;
+}
+
+export class DetailsListCompactExample extends React.Component<{}, IDetailsListCompactExampleState> {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -66,8 +75,8 @@ export class DetailsListCompactExample extends React.Component<
 
     return (
       <div>
-        <div>{selectionDetails}</div>
-        <TextField label="Filter by name:" onChange={this._onChange} />
+        <div className={exampleChildClass}>{selectionDetails}</div>
+        <TextField className={exampleChildClass} label="Filter by name:" onChange={this._onFilter} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -93,17 +102,17 @@ export class DetailsListCompactExample extends React.Component<
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as IDetailsListCompactExampleItem).name;
       default:
         return `${selectionCount} items selected`;
     }
   }
 
-  private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
+  private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
   };
 
-  private _onItemInvoked(item: any): void {
+  private _onItemInvoked(item: IDetailsListCompactExampleItem): void {
     alert(`Item invoked: ${item.name}`);
   }
 }

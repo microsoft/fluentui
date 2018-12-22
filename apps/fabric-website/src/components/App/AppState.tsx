@@ -447,6 +447,16 @@ export const AppState: IAppState = {
                           .DetailsListNavigatingFocusComponentPage
                       )
                     )
+                },
+                {
+                  title: 'Shimmer',
+                  url: '#/components/detailslist/shimmer',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Shimmer DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListShimmerComponentPage').DetailsListShimmerComponentPage)
+                    )
                 }
               ]
             },
