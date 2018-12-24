@@ -87,7 +87,7 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
     overflowItems.forEach((action: IAction, i: number) => {
       items.push({ key: i.toString(), name: action.title, onClick: action.action, title: action.title });
     });
-    const { overflowButtonAccessability } = this.props;
+    const { overflowButtonAccessibility } = this.props;
     return (
       <DefaultButton
         menuProps={{
@@ -103,10 +103,10 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
         }}
         onClick={this._onClick}
         styles={overflowButtonStyles}
-        ariaLabel={overflowButtonAccessability ? overflowButtonAccessability!.ariaLabel : undefined}
-        title={overflowButtonAccessability ? overflowButtonAccessability!.title : undefined}
-        ariaDescription={overflowButtonAccessability ? overflowButtonAccessability!.ariaDescription : undefined}
-        ariaHidden={overflowButtonAccessability ? overflowButtonAccessability!.ariaHidden : undefined}
+        ariaLabel={overflowButtonAccessibility ? overflowButtonAccessibility!.ariaLabel : undefined}
+        title={overflowButtonAccessibility ? overflowButtonAccessibility!.title : undefined}
+        ariaDescription={overflowButtonAccessibility ? overflowButtonAccessibility!.ariaDescription : undefined}
+        ariaHidden={overflowButtonAccessibility ? overflowButtonAccessibility!.ariaHidden : undefined}
       />
     );
   };

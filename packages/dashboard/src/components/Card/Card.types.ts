@@ -1,7 +1,7 @@
 import { ChartType } from './Chart/Chart.types';
 import { ICardHeaderProps } from './CardHeader/CardHeader.types';
 import { ICardContentDetails } from './Layout/Layout.types';
-import { IAction, IAccessability } from './ActionBar/ActionBar.types';
+import { IAction, IAccessibility } from './ActionBar/ActionBar.types';
 import { ICardDropDownOption } from './CardFrame/CardFrame.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
@@ -112,9 +112,9 @@ export interface ICardFrameContent {
   cardTitleCallback?: VoidFunction;
 
   /**
-   * Overflow Button Accessability
+   * Overflow Button Accessibility
    */
-  cardFrameAccessability?: IAccessability;
+  cardFrameAccessibility?: IAccessibility;
 }
 
 export interface ICardProps {
@@ -134,9 +134,9 @@ export interface ICardProps {
   actions?: IAction[];
 
   /**
-   * Overflow Button Accessability
+   * Overflow Button Accessibility
    */
-  actionBarAccessability?: IAccessability;
+  actionBarAccessibility?: IAccessibility;
 
   /**
    * role of the  card for the benefit of screen readers

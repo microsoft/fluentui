@@ -24,7 +24,7 @@ export class Card extends React.Component<ICardProps, ICardState> {
   }
 
   public render(): JSX.Element {
-    const { cardFrameContent, header, cardContentList, actions, disableDrag, loading, actionBarAccessability, role } = this.props;
+    const { cardFrameContent, header, cardContentList, actions, disableDrag, loading, actionBarAccessibility, role } = this.props;
     const getClassNames = classNamesFunction<ICardProps, ICardStyles>();
     const classNames = getClassNames(getStyles);
     // getRTL() utility function returns true when RTL is experienced. Setting the direction this way as a wrapper was introduced
@@ -39,7 +39,7 @@ export class Card extends React.Component<ICardProps, ICardState> {
           target={cardFrameContent.target}
           disableDrag={disableDrag === undefined ? false : disableDrag}
           cardTitleCallback={cardFrameContent.cardTitleCallback}
-          cardFrameAccessability={cardFrameContent.cardFrameAccessability}
+          cardFrameAccessibility={cardFrameContent.cardFrameAccessibility}
         >
           <Layout
             header={header}
@@ -47,7 +47,7 @@ export class Card extends React.Component<ICardProps, ICardState> {
             cardSize={this.state.cardSize}
             actions={actions}
             loading={loading}
-            actionBarAccessability={actionBarAccessability}
+            actionBarAccessibility={actionBarAccessibility}
           />
         </CardFrame>
       </div>

@@ -19,7 +19,7 @@ export interface IActionBarStyles {
   root: IStyle;
 }
 
-export interface IAccessability {
+export interface IAccessibility {
   /**
    * Defines the title for the benefit of tooltip
    */
@@ -76,7 +76,7 @@ export interface IActionBarProps {
   actions: IAction[];
 
   /**
-   * Overflow Button Accessability
+   * Overflow Button Accessibility
    */
-  overflowButtonAccessability?: IAccessability;
+  overflowButtonAccessibility?: IAccessibility;
 }

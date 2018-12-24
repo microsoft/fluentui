@@ -22,7 +22,7 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         }
       ],
       href: 'www.google.com',
-      cardFrameAccessability: {
+      cardFrameAccessibility: {
         title: 'more',
         ariaLabel: 'more'
       }
@@ -63,7 +63,7 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         }
       }
     ];
-    const actionBarAccessability = {
+    const actionBarAccessibility = {
       ariaLabel: 'more actions',
       ariaDescription: 'More actions',
       title: 'more'
@@ -80,7 +80,7 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         header={header}
         cardContentList={contentAreaList}
         cardSize={CardSize.mediumTall}
-        actionBarAccessability={actionBarAccessability}
+        actionBarAccessibility={actionBarAccessibility}
       />
     );
   }

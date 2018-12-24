@@ -14,7 +14,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ICardFrameProps, ICardFrameStyles>();
-    const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor, disableDrag, cardFrameAccessability } = this.props;
+    const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor, disableDrag, cardFrameAccessibility } = this.props;
     const classNames = getClassNames(getStyles, {
       cardTitle,
       fontFamily,
@@ -77,10 +77,10 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
               className={classNames.ellipsisButtonStyle}
               menuIconProps={{ iconName: 'More' }}
               split={false}
-              ariaLabel={cardFrameAccessability ? cardFrameAccessability!.ariaLabel : undefined}
-              ariaDescription={cardFrameAccessability ? cardFrameAccessability!.ariaDescription : undefined}
-              ariaHidden={cardFrameAccessability ? cardFrameAccessability!.ariaHidden : undefined}
-              title={cardFrameAccessability ? cardFrameAccessability!.title : undefined}
+              ariaLabel={cardFrameAccessibility ? cardFrameAccessibility!.ariaLabel : undefined}
+              ariaDescription={cardFrameAccessibility ? cardFrameAccessibility!.ariaDescription : undefined}
+              ariaHidden={cardFrameAccessibility ? cardFrameAccessibility!.ariaHidden : undefined}
+              title={cardFrameAccessibility ? cardFrameAccessibility!.title : undefined}
               menuProps={{
                 calloutProps: {
                   styles: {

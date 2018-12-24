@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Add support of accessability for the card component",
+      "comment": "Add support of accessibility for the card component",
       "type": "patch"
     }
   ],

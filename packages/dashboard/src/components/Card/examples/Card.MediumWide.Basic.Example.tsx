@@ -125,7 +125,7 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
       }
     ];
 
-    const actionBarAccessability = {
+    const actionBarAccessibility = {
       ariaLabel: 'more actions',
       ariaDescription: 'more actions',
       title: 'more'
@@ -138,7 +138,7 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
         cardContentList={contentAreaList}
         cardSize={CardSize.mediumWide}
         actions={actions}
-        actionBarAccessability={actionBarAccessability}
+        actionBarAccessibility={actionBarAccessibility}
       />
     );
   }
