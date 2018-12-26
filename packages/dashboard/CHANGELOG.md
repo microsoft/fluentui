@@ -1,6 +1,48 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Dec 2018 13:34:57 GMT and should not be manually modified.
+
+## 0.41.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- Minor RTL improvement and bug fix in setup banner
+
+## 0.41.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- Improved low resolution support and added shimmer to setup banner
+
+## 0.40.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Adding LTR to layout even though RTL is experienced. This way the cards are visible on the layout. Setting RTL to the content of the card, this is necessary as a wrapper was introduced which explicitly said ltr
+
+## 0.39.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Adding aria-hidden and alt property for the image of Thumbnail item in ThumbnailList component
+
+## 0.38.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Support to horizontal compact dashboard cards
+
+## 0.37.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Using _async fabric utility functions to prevent timeout leaks
 
 ## 0.37.0
 Fri, 30 Nov 2018 13:37:17 GMT

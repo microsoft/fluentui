@@ -365,8 +365,14 @@ export interface IColumn {
 
   /**
    * If specified will allow the column to be collapsed when rendered in justified layout.
+   * @deprecated Use `isCollapsible`
    */
   isCollapsable?: boolean;
+
+  /**
+   * If specified will allow the column to be collapsed when rendered in justified layout.
+   */
+  isCollapsible?: boolean;
 
   /**
    * Determines if the column is currently sorted. Renders a sort arrow in the column header.
@@ -584,7 +590,7 @@ export enum DetailsListLayoutMode {
 
   /**
    * Manages which columns are visible, tries to size them according to their min/max rules and drops
-   * off columns that can't fit and have isCollapsable set.
+   * off columns that can't fit and have isCollapsible set.
    */
   justified = 1
 }

@@ -73,14 +73,13 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
           </div>
         )}
         {children && <div className={this._classNames.dataWrapper}>{children}</div>}
-        {ariaLabel &&
-          !isDataLoaded && (
-            <div role="status" aria-live="polite">
-              <DelayedRender>
-                <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
-              </DelayedRender>
-            </div>
-          )}
+        {ariaLabel && !isDataLoaded && (
+          <div role="status" aria-live="polite">
+            <DelayedRender>
+              <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
+            </DelayedRender>
+          </div>
+        )}
       </div>
     );
   }

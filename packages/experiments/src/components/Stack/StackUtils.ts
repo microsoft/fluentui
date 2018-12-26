@@ -5,19 +5,9 @@
 import { Alignment } from './Stack.types';
 import { ITheme } from '../../Styling';
 
-const horizontalAlignmentMap: { [key: string]: string } = {
-  left: 'start',
-  right: 'end'
-};
-
 const verticalAlignmentMap: { [key: string]: string } = {
   top: 'start',
   bottom: 'end'
-};
-
-// Converts the alignment expected by a HorizontalStack to an alignment expected by a Stack.
-export const getHorizontalAlignment = (alignment: string | undefined): Alignment => {
-  return (horizontalAlignmentMap[alignment!] || alignment) as Alignment;
 };
 
 // Converts the alignment expected by a VerticalStack to an alignment expected by a Stack.

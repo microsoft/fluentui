@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -433,7 +433,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       case DateRangeType.Week:
       case DateRangeType.WorkWeek:
         weeks.forEach((week: IDayInfo[], weekIndex: number) => {
-          const minIndex = week.findIndex(item => item.isInBounds);
+          const minIndex = findIndex(week, (item: IDayInfo) => {
+            return item.isInBounds;
+          });
           const maxIndex = this._findLastIndex(week, (item: IDayInfo) => {
             return item.isInBounds;
           });
@@ -808,7 +810,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
    * otherwise
    * @param items Array of items to be iterated over using the predicate
    * @param predicate find calls predicate once for each element of the array, in descending
-   * order, until it finds one where predicate returns true. If such an element is found,
+   * order, until it finds one where predicate returns true if such an element is found.
    */
   private _findLastIndex<T>(items: T[], predicate: (item: T) => boolean): number {
     for (let i = items.length - 1; i >= 0; i--) {

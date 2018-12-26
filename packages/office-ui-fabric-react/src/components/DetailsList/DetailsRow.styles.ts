@@ -3,7 +3,7 @@ import { AnimationClassNames, FontSizes, HighContrastSelector, IStyle, getFocusS
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
-  compact: 'ms-DetailsList--Compact',
+  compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
@@ -21,10 +21,15 @@ export const DEFAULT_CELL_STYLE_PROPS: ICellStyleProps = {
   cellExtraRightPadding: 24
 };
 
+// Source of default row heights to share.
+export const DEFAULT_ROW_HEIGHTS = {
+  rowHeight: 42,
+  compactRowHeight: 32
+};
+
 // Constant values
 let values = {
-  rowHeight: 42,
-  compactRowHeight: 32,
+  ...DEFAULT_ROW_HEIGHTS,
   rowVerticalPadding: 11,
   compactRowVerticalPadding: 6,
   rowShimmerLineHeight: 7,

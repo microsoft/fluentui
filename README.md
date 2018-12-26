@@ -160,20 +160,15 @@ Before you get started, **make sure you have read the [Git branch setup instruct
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
 1.  `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-2.  `npm install` _For Windows developers, please read the next section before running this_
-3.  `npm start`
+2. `cd office-ui-fabric-react`  
+3. `npm install`
+4.  `npm start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 To build and run tests for all packages in the repo, you can run `npm run build` from the root.
 
 To build individual packages within the `packages/*/` folders, you can use `npm run build` in each individually. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
-
-## Note for Windows Developers on npm 6.x
-
-Due to a known bug in #5174, Windows developers who are using npm 6.x should downgrade to use `npm` v5.6.0 for now:
-
-`npm i -g npm@5.6.0`
 
 ## Testing
 

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+
+## 6.27.1
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
 
 ## 6.27.0
 Thu, 15 Nov 2018 13:36:22 GMT
