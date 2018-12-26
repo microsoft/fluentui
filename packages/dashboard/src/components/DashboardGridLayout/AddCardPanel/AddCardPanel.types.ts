@@ -44,6 +44,11 @@ export interface IAddCardPanelProps extends IBaseProps {
    * This is helpful when the user wants to put the card in add card panel
    */
   initialX: number;
+
+  /**
+   * Panel close button aria label
+   */
+  closeButtonAriaLabel?: string;
 }
 
 export interface IAddCardPanelState {

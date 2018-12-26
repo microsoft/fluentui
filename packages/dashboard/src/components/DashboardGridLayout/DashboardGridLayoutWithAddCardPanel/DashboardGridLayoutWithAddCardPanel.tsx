@@ -7,7 +7,6 @@ import {
 } from './DashboardGridLayoutWithAddCardPanel.types';
 import { DraggingCard } from './DraggingCard/DraggingCard';
 import {
-  AddCardPanel,
   DashboardGridSectionLayout,
   IDGLCard,
   IDashboardCardLayout,
@@ -17,6 +16,7 @@ import {
   DraggingAnimationType
 } from '../../../index';
 import { ICardStyles, getCardStyles } from './DashboardGridLayoutWithAddCardPanel.styles';
+import { AddCardPanel } from '../AddCardPanel/AddCardPanel';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export const dragApi: ReactGridLayout.DragApiRefObject = createDragApiRef();
@@ -75,7 +75,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   }
 
   public render(): JSX.Element {
-    const { isOpen, isDraggable, panelHeader, scrollElement } = this.props;
+    const { isOpen, isDraggable, addCardPanelProps, scrollElement } = this.props;
     return (
       <>
         <div className={this.classNames.root} id="dglWithAddCardPanelRoot">
@@ -91,7 +91,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
             />
           )}
           <AddCardPanel
-            header={panelHeader}
+            header={addCardPanelProps ? addCardPanelProps.panelHeader : undefined}
+            closeButtonAriaLabel={addCardPanelProps ? addCardPanelProps.panelCloseButtonAriaLabel : undefined}
             isOpen={isOpen}
             cards={this.state.cardsForAddCardPanel}
             moveCardFromAddCardPanelToDashboard={this._addCard}

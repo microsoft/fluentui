@@ -52,6 +52,16 @@ export interface IAddCardProps {
    * The dragging animation type for the add card. Used for rendering animation in the dragging card
    */
   draggingAnimation?: DraggingAnimationType;
+
+  /**
+   * The aria label for the add card '+' icon
+   */
+  addCardIconAriaLabel?: string;
+
+  /**
+   * The alt text for the image in the add card representation
+   */
+  addCardImageAltText?: string;
 }
 
 export interface IAddCardStyles {
@@ -79,11 +89,6 @@ export interface IAddCardStyles {
    * Styles for bodyText of add card representation
    */
   bodyText: IStyle;
-
-  /**
-   * Styles for the add icon for add card
-   */
-  icon: IStyle;
 
   /**
    * Styles for the wrapper for add icon of add card

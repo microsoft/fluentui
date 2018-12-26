@@ -32,7 +32,7 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   /**
    * The header for the add card panel
    */
-  panelHeader?: string;
+  addCardPanelProps?: IAddCardPanelProps;
 
   /**
    * The callback being called each time after a layout change
@@ -50,6 +50,18 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
    * ref passed. If ref is not passed scrolling is applied to the immediate parent element
    */
   scrollElement?: HTMLElement;
+}
+
+export interface IAddCardPanelProps {
+  /**
+   * The header for the add card panel
+   */
+  panelHeader?: string;
+
+  /**
+   * The aria label for the panel's close button
+   */
+  panelCloseButtonAriaLabel?: string;
 }
 
 export interface IDashboardGridLayoutWithAddCardPanelState {

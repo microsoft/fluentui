@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { classNamesFunction, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, BaseComponent, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 
 import { AddCard } from './AddCard/AddCard';
 import { getStyles } from './AddCardPanel.styles';
@@ -17,10 +17,11 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
   }
 
   public render(): JSX.Element {
-    const { header, isOpen, cards } = this.props;
+    const { header, isOpen, cards, closeButtonAriaLabel } = this.props;
     return (
       <>
         <Panel
+          closeButtonAriaLabel={closeButtonAriaLabel}
           onRenderBody={this._renderAddCardItems.bind(this, cards, header)}
           type={PanelType.custom}
           customWidth={'480px'}
@@ -65,13 +66,17 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
             draggingCardCallback={this._draggingCardCallback}
             expandAddCardPanelBack={this._expandAddCardPanelBack}
             draggingAnimation={addCardItem.addCardInfo ? addCardItem.addCardInfo.draggingAnimation : undefined}
+            addCardIconAriaLabel={addCardItem.addCardInfo ? addCardItem.addCardInfo.addCardIconAriaLabel : undefined}
+            addCardImageAltText={addCardItem.addCardInfo ? addCardItem.addCardInfo.addCardImageAltText : undefined}
           />
         </div>
       );
     });
     return (
       <div className={classNames.contentRoot}>
-        <div className={classNames.header}>{header}</div>
+        <div className={classNames.header} tabIndex={0} aria-label={header}>
+          {header}
+        </div>
         {addCardItemsList}
       </div>
     );
@@ -80,12 +85,22 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
   // checking if dragging card is brought close to add card panel and if so expanding add card panel back
   // for user to place dragging card back in add card panel
   private _moveHandler = (event: MouseEvent) => {
-    if (event.clientX - this.props.initialX > 400) {
-      this.setState({
-        flyoutStyle: {}
-      });
-      window.document.removeEventListener('mousemove', this._moveHandler);
-      return;
+    if (getRTL()) {
+      if (this.props.initialX - event.clientX > 400) {
+        this.setState({
+          flyoutStyle: {}
+        });
+        window.document.removeEventListener('mousemove', this._moveHandler);
+        return;
+      }
+    } else {
+      if (event.clientX - this.props.initialX > 400) {
+        this.setState({
+          flyoutStyle: {}
+        });
+        window.document.removeEventListener('mousemove', this._moveHandler);
+        return;
+      }
     }
   };
 
@@ -98,15 +113,27 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
     draggingAnimation?: DraggingAnimationType
   ) => {
     window.document.addEventListener('mousemove', this._moveHandler);
-    this.setState({
-      flyoutStyle: {
-        transitionProperty: 'margin-right',
-        transitionDuration: '0ms',
-        transitionTimingFunction: 'cubic-bezier(0.8, 0, 0.2, 1)',
-        marginLeft: '0px',
-        marginRight: '-416px'
-      }
-    });
+    if (getRTL()) {
+      this.setState({
+        flyoutStyle: {
+          transitionProperty: 'margin-right',
+          transitionDuration: '0ms',
+          transitionTimingFunction: 'cubic-bezier(0.8, 0, 0.2, 1)',
+          marginRight: '0px',
+          marginLeft: '-416px'
+        }
+      });
+    } else {
+      this.setState({
+        flyoutStyle: {
+          transitionProperty: 'margin-right',
+          transitionDuration: '0ms',
+          transitionTimingFunction: 'cubic-bezier(0.8, 0, 0.2, 1)',
+          marginLeft: '0px',
+          marginRight: '-416px'
+        }
+      });
+    }
     this.props.draggingCardCallback(cardId, title, cardSize, initialX, draggingAnimation);
   };
 
@@ -123,15 +150,27 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
     if (this.props.moveCardFromAddCardPanelToDashboard) {
       this.props.moveCardFromAddCardPanelToDashboard(cardId);
     }
-    this.setState({
-      flyoutStyle: {
-        transitionProperty: 'margin-right',
-        transitionDuration: '400ms',
-        transitionTimingFunction: 'cubic-bezier(0.8, 0, 0.2, 1)',
-        marginLeft: '0px',
-        marginRight: '-416px'
-      }
-    });
+    if (getRTL()) {
+      this.setState({
+        flyoutStyle: {
+          transitionProperty: 'margin-right',
+          transitionDuration: '400ms',
+          transitionTimingFunction: 'cubic-bezier(0.8, 0, 0.2, 1)',
+          marginRight: '0px',
+          marginLeft: '-416px'
+        }
+      });
+    } else {
+      this.setState({
+        flyoutStyle: {
+          transitionProperty: 'margin-right',
+          transitionDuration: '400ms',
+          transitionTimingFunction: 'cubic-bezier(0.8, 0, 0.2, 1)',
+          marginLeft: '0px',
+          marginRight: '-416px'
+        }
+      });
+    }
     // the time for which the add card panel stays half hidden after successfully adding a card
     this._async.setTimeout(() => {
       this.setState({ flyoutStyle: {} });
