@@ -7,6 +7,7 @@ import {
   CardSize,
   DashboardGridLayoutWithAddCardPanel,
   DashboardGridBreakpointLayouts,
+  IAddCardPanelProps,
   IThumbnailItemProps,
   DraggingAnimationType
 } from '@uifabric/dashboard';
@@ -104,7 +105,9 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
       addCardPanelHeader: 'Ut enim ad minim veniam',
       addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg',
-      draggingAnimation: DraggingAnimationType.Shimmer
+      draggingAnimation: DraggingAnimationType.Shimmer,
+      addCardIconAriaLabel: 'Click to add first card to dashboard',
+      addCardImageAltText: 'Alt text for the first card representation in the add card panel'
     }
   },
   {
@@ -139,6 +142,11 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
   }
 ];
 
+const addCardPanelProps: IAddCardPanelProps = {
+  panelHeader: 'Click to add cards to your dashboard',
+  panelCloseButtonAriaLabel: 'Close the add card panel'
+};
+
 export interface IDGLWithAddCardPanelState {
   isOpen: boolean;
 }
@@ -167,7 +175,7 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
           dashboardCards={cardsVisibleInLayout}
           isOpen={this.state.isOpen}
           sectionTitle={'First section'}
-          panelHeader={'Click to add cards to your dashboard'}
+          addCardPanelProps={addCardPanelProps}
           onLayoutChange={this._onLayoutChange}
           onPanelDismiss={this._onPanelDismiss}
           scrollElement={this.refObject ? this.refObject.parentElement! : undefined}
