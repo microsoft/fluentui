@@ -11,6 +11,6 @@ export type IHTMLButtonSlot = ISlotProp<React.ButtonHTMLAttributes<any>>;
 export const IconShorthandProp: keyof IIconProps = 'iconName';
 export type IIconSlot = ISlotProp<IIconProps, 'iconName'>;
 
-export type IHorizontalStackSlot = ISlotProp<IStackProps>;
 export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
+export type IStackSlot = ISlotProp<IStackProps>;
 export type ITextSlot = ISlotProp<ITextProps, 'children'>;

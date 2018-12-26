@@ -7,6 +7,7 @@ import { stackProps } from './SlotExampleUtils';
 // tslint:disable:jsx-key
 export class SlotsContentExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
+    // TODO: why are some of these examples appearing with bold text?
     return (
       <Stack {...stackProps}>
         <Button content={1}>

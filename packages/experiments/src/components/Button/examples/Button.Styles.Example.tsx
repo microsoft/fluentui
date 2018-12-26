@@ -120,6 +120,25 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   content="Icon Styles Function: Red Icon via Icon Theme"
                 />
               </ButtonStack>
+              <ButtonStack>
+                <Button
+                  content="Button Classname"
+                  className="button-classname"
+                />
+                <Button
+                  content="Icon Classname"
+                  icon={{
+                    iconName: "PeopleAdd",
+                    className: "icon-classname"
+                  }}
+                />
+                <Button
+                  content={{
+                    children: "Content Classname",
+                    className: "content-classname"
+                  }}
+                />
+              </ButtonStack>
             </Stack>
           </div>
         </Stack>

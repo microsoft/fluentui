@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { createElementWrapper, createFactory, getSlots, ISlot, ISlotProp, ISlotRenderFunction, ISlotDefinition, IUserProps } from './slots';
+import { createElementWrapper, createFactory, getSlots } from './slots';
+import { IFactoryProps, ISlot, ISlotProp, ISlotRenderFunction, ISlotDefinition } from './ISlots';
 
 describe('createElementWrapper', () => {
   let reactCalls: number;
@@ -64,56 +65,62 @@ describe('createFactory', () => {
   };
 
   it(`passes componentProps without userProps`, () => {
-    const component = mount(createFactory(TestComponent)(componentProps));
+    const component = mount(createFactory(TestComponent)(componentProps, undefined, undefined));
     expect(component.props()).toEqual(componentProps);
   });
 
   it(`passes userProp string as child`, () => {
-    const component = mount(createFactory(TestComponent)(componentProps, userPropString));
+    const component = mount(createFactory(TestComponent)(componentProps, userPropString, undefined));
     expect(component.props()).toEqual({ ...componentProps, children: userPropString });
   });
 
   it(`passes userProp integer as child`, () => {
-    const component = mount(createFactory(TestComponent)(componentProps, 42));
+    const component = mount(createFactory(TestComponent)(componentProps, 42, undefined));
     expect(component.props()).toEqual({ ...componentProps, children: 42 });
   });
 
   it(`passes userProp string as defaultProp`, () => {
-    const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, userPropString));
+    const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, userPropString, undefined));
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: userPropString });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
-    const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, 42));
+    const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, 42, undefined));
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: 42 });
   });
 
   it('merges userProps over componentProps', () => {
-    const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, userProps));
+    const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, userProps, undefined));
     expect(component.props()).toEqual({ ...componentProps, ...userProps });
   });
 
   it('renders userProp integer as children', () => {
-    const component = renderer.create(createFactory(TestComponent)(componentProps, 42));
+    const component = renderer.create(createFactory(TestComponent)(componentProps, 42, undefined));
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp string as children', () => {
-    const component = renderer.create(createFactory(TestComponent)(componentProps, userPropString));
+    const component = renderer.create(createFactory(TestComponent)(componentProps, userPropString, undefined));
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp JSX with one prop', () => {
-    const component = renderer.create(createFactory(TestComponent)(componentProps, <p id="I should be the only prop in the output" />));
+    const component = renderer.create(createFactory(TestComponent)(
+      componentProps,
+      <p id="I should be the only prop in the output" />,
+      undefined));
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp function with one prop', () => {
     const component = renderer.create(
-      createFactory(TestComponent)(componentProps, () => <p id="I should be the only prop in the output" />)
+      createFactory(TestComponent)(
+        componentProps,
+        () => <p id="I should be the only prop in the output" />,
+        undefined)
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -127,30 +134,32 @@ describe('createFactory', () => {
       return <div {...props} />;
     };
 
-    createFactory(TestComponent, factoryOptions)(componentProps, userPropsFunction);
+    createFactory(TestComponent, factoryOptions)(componentProps, userPropsFunction, undefined);
   });
 });
 
 describe('getSlots', () => {
-  interface ITestSlotComponent1Props {
+  interface ITestSlotComponent1Props extends IFactoryProps {
     testSlot1Prop?: string;
   }
-  interface ITestSlotComponent2Props {
+  interface ITestSlotComponent2Props extends IFactoryProps {
     testSlot2Prop?: string;
   }
   interface ITestSlots {
-    testSlot1?: ISlotProp<ITestSlotComponent1Props>;
-    testSlot2?: ISlotProp<ITestSlotComponent2Props>;
+    testSlot1: ISlotProp<ITestSlotComponent1Props>;
+    testSlot2: ISlotProp<ITestSlotComponent2Props>;
   }
 
-  interface ITestProps extends ITestSlots, IUserProps<ITestSlots> {}
+  interface ITestProps extends ITestSlots { }
 
   it(`creates slots and passes merged props to them`, done => {
-    const testUserProps: ITestProps = {
-      testSlot1: { testSlot1Prop: 'userProp1' },
-      classNames: {
-        testSlot1: 'testSlot1Classname',
-        testSlot2: 'testSlot2Classname'
+    const testUserProps = {
+      testSlot1: {
+        className: 'testSlot1Classname',
+        testSlot1Prop: 'userProp1'
+      },
+      testSlot2: {
+        className: 'testSlot2Classname'
       }
     };
 
@@ -166,7 +175,7 @@ describe('getSlots', () => {
         // User props should override slot props
         expect(props).toEqual({
           ...testUserProps.testSlot1,
-          className: testUserProps.classNames.testSlot1
+          className: testUserProps.testSlot1.className
         });
         return null;
       },
@@ -174,7 +183,7 @@ describe('getSlots', () => {
         // No user prop for slot in this case, so slot props should be present
         expect(props).toEqual({
           ...testSlot2Props,
-          className: testUserProps.classNames.testSlot2
+          className: testUserProps.testSlot2.className
         });
         done();
         return null;

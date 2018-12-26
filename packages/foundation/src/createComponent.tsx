@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { concatStyleSets, IProcessedStyleSet, IStyleSet, ITheme, mergeStyleSets } from '@uifabric/styling';
-// import { Customizations, CustomizerContext, ICustomizerContext, IStyleFunctionOrObject } from '@uifabric/utilities';
+import { concatStyleSets, IStyleSet, ITheme, mergeStyleSets } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { assign } from './utilities';
 
-import { IComponent, ICustomizationProps, IStatelessComponent, IStyleableComponentProps } from './IComponent';
+import {
+  IComponent,
+  ICustomizationProps,
+  IStatelessComponent,
+  IStyleableComponentProps,
+  IStylesFunctionOrObject,
+  ITokenBase
+} from './IComponent';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -76,6 +82,8 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
             // TODO: Phase 2: phase out old approach with any existing components using createComponent (mostly Persona with style sections)
             //        If Mark's Persona PR is merged before this one, may be able to take this out entirely.
             if (!component.tokens) {
+              // NOTE: this old approach will have no type safety due to type conflicts with new approach. to be removed entirely.
+
               const { styles: settingsStyles, ...settingsRest } = settings;
               // TODO: this next line is basically saying 'theme' prop will ALWAYS be available from getCustomizations.
               //        is there mechanism that guarantees theme and other request fields will be defined?
@@ -85,9 +93,9 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
               //          all the way from Customizations with something like { { K in fields }: object}? hmm
               //        if not, how does existing "theme!" styles code work without risk of failing (assuming it doesn't fail)?
               // For now cast return value as if theme is always available.
-              const styledProps: TViewProps & IStyledProps<ITheme> = { ...settingsRest, ...(mergedProps as any) };
+              const styledProps = { ...settingsRest, ...(mergedProps as any) };
 
-              const viewComponentProps: IViewComponentProps<TViewProps, IProcessedStyleSet<TStyleSet>> = {
+              const viewComponentProps = {
                 ...(mergedProps as any),
                 ...{
                   classNames: mergeStyleSets(
@@ -129,8 +137,7 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
                 //        and tokens rather than pass them through separately?
                 //        Figure out a way to deal with this without using cast to any.
                 //          const viewComponentProps: TViewProps & ISlotProps<> =
-                _defaultStyles: styles,
-                _defaultTheme: theme
+                _defaultStyles: styles
               } as any;
 
               return component.view(viewComponentProps);
@@ -171,8 +178,7 @@ function _evaluateStyle<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleS
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>
 ): Partial<TStyleSet> | undefined {
   if (typeof styles === 'function') {
-    // return styles(props, theme);
-    return styles(props, theme);
+    return styles(props, theme, {} as TTokens);
   }
 
   return styles;

@@ -1,4 +1,4 @@
-import { IProcessedStyleSet, IStyleSet, ITheme } from '@uifabric/styling';
+import { IProcessedStyleSet, IStyle, IStyleSet, ITheme } from '@uifabric/styling';
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -145,3 +145,5 @@ export type IStatelessComponent<TComponentProps, TTokens, TStyleSet extends ISty
   IComponentOptions<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>,
   'state'
   >;
+
+export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };

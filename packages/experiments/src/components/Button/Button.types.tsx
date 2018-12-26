@@ -1,7 +1,6 @@
-import { IComponent, ISlotProp, IStyleableComponentProps } from '../../Foundation';
-import { IStyle } from '../../Styling';
+import { IComponent, ISlotProp, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IRefObject } from 'office-ui-fabric-react';
-import { IContextualMenuSlot, IHTMLButtonSlot, IHorizontalStackSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
+import { IContextualMenuSlot, IHTMLButtonSlot, IStackSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonTokens, IButtonStyles>;
 
@@ -15,7 +14,7 @@ export type IButtonSlot = ISlotProp<IButtonProps>;
 
 export interface IButtonSlots {
   root?: IHTMLButtonSlot;
-  stack?: IHorizontalStackSlot;
+  stack?: IStackSlot;
   content?: ITextSlot;
   icon?: IIconSlot;
   menu?: IContextualMenuSlot;
@@ -116,9 +115,7 @@ export type IButtonStyleVariables = { [PVariant in IButtonVariants]?: { [PState 
 //          is now possible:
 //          <Button icon="PeopleAdd" circular styles={{ icon: { color: 'pink ' } }} />
 //        And this also means the definition of IStyle may not be correct. Should possibly be a lookup on slot's component styles type.
-// TODO: centralize these types where possible. for example, this could be:
-//        export type IButtonStyles = ISlotComponentStyles<IButtonSlots>;
-export type IButtonStyles = { [key in keyof IButtonSlots]: IStyle };
+export type IButtonStyles = IComponentStyles<IButtonSlots>;
 
 export type IButtonViewProps = IButtonProps & {
   onMenuDismiss: () => void;
