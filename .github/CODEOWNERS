@@ -28,12 +28,8 @@ fabric-website/ @jordandrako
 # todo-app/
 
 #### Packages
-packages/charting/ @Raghurk
-packages/dashboard/ @Raghurk
-packages/charting/ @veeray
-packages/dashboard/ @veeray
-packages/charting/ @chankev
-packages/dashboard/ @chankev
+packages/charting/ @Raghurk @veeray @chankev
+packages/dashboard/ @Raghurk @veeray @chankev
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
@@ -69,14 +65,14 @@ Callout/  @joschect
 # Checkbox/
 ChoiceGroup/   @srideshpande
 # ColorPicker/
-# ComboBox/
+ComboBox/ @ecraig12345
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
 DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
-# Dropdown/
+Dropdown/ @ecraig12345
 # Fabric/
 # FacePile/
 FolderCover/ @ThomasMichon
