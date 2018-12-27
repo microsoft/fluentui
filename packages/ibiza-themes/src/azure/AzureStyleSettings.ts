@@ -4,6 +4,7 @@ import { commandBarButtonStyles } from './styles/CommandBarButton.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
+import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOptions.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
@@ -40,9 +41,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // Checkbox: {
     //   styles: CheckboxStyles
     // },
-    // ChoiceGroupOption: {
-    //   styles: ChoiceGroupOptionStyles
-    // },
+    ChoiceGroupOption: {
+      styles: ChoiceGroupOptionStyles
+    },
     // ColorPickerGridCell: {
     //   styles: ColorPickerGridCellStyles
     // },

@@ -15,8 +15,13 @@ export const AzureThemeLight: ITheme = createTheme({
     inputBorder: CommonSemanticColors.textControlOutline.rest,
     inputBorderHovered: CommonSemanticColors.textControlOutline.hover,
     inputPlaceholderText: LightSemanticColors.text.placeholder,
-    labelText: LightSemanticColors.text.label,
     menuItemBackgroundHovered: LightSemanticColors.item.hover,
-    menuItemBackgroundChecked: LightSemanticColors.item.select
+    menuItemBackgroundChecked: LightSemanticColors.item.select,
+    // extended
+    labelText: LightSemanticColors.text.label,
+    controlOutline: LightSemanticColors.controlOutlines.rest,
+    controlOutlineDisabled: LightSemanticColors.controlOutlines.disabled,
+    controlOutlineHovered: LightSemanticColors.controlOutlines.hover,
+    controlAccent: LightSemanticColors.controlOutlines.accent
   }
 });
