@@ -1,6 +1,7 @@
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
+import * as StyleConstants from '../Constants';
 
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
   const { checked, disabled, theme, hasIcon, hasImage } = props;
@@ -74,7 +75,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           }
         },
       (hasIcon || hasImage) && {
-        borderWidth: 1,
+        borderWidth: StyleConstants.borderWidth,
         borderColor: checked ? extendedSemanticColors.controlOutline : semanticColors.bodyBackground
       },
       disabled && {
