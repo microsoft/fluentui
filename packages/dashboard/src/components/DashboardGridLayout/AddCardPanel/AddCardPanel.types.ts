@@ -1,6 +1,6 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { IDGLCard } from '../../../index';
+import { IDGLCard, CardSize, DraggingAnimationType } from '../../../index';
 
 export interface IAddCardPanelProps extends IBaseProps {
   /**
@@ -27,6 +27,28 @@ export interface IAddCardPanelProps extends IBaseProps {
    * The callback method called upon add card panel dimiss
    */
   onDismiss?: () => void;
+
+  /**
+   * The callback that is called when a card is dragged, with the necessary card information
+   */
+  draggingCardCallback: (
+    cardId: string,
+    title: string,
+    cardSzie: CardSize,
+    initialX: number,
+    draggingAnimation?: DraggingAnimationType
+  ) => void;
+
+  /**
+   * The cards initial x position of add card, used to determine when to open the add card panel back
+   * This is helpful when the user wants to put the card in add card panel
+   */
+  initialX: number;
+
+  /**
+   * Panel close button aria label
+   */
+  closeButtonAriaLabel?: string;
 }
 
 export interface IAddCardPanelState {

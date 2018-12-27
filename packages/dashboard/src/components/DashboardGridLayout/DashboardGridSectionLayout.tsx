@@ -189,6 +189,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
               actions={card.actions}
               cardContentList={card.cardContentList}
               cardSize={card.cardSize}
+              loading={card.loading}
             />
           </div>
         );
