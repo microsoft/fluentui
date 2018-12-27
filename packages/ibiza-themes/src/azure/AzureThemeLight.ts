@@ -15,6 +15,8 @@ export const AzureThemeLight: ITheme = createTheme({
     inputBorder: CommonSemanticColors.textControlOutline.rest,
     inputBorderHovered: CommonSemanticColors.textControlOutline.hover,
     inputPlaceholderText: LightSemanticColors.text.placeholder,
-    labelText: LightSemanticColors.text.label
+    labelText: LightSemanticColors.text.label,
+    menuItemBackgroundHovered: LightSemanticColors.item.hover,
+    menuItemBackgroundChecked: LightSemanticColors.item.select
   }
 });
