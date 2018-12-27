@@ -1,6 +1,56 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 04 Dec 2018 13:36:40 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Dec 2018 22:17:52 GMT and should not be manually modified.
+
+## 6.49.0
+Tue, 18 Dec 2018 22:17:52 GMT
+
+### Minor changes
+
+- Pagination: Add unit tests for control and fix button styles.
+
+## 6.48.2
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- Form: fix wrong imports from OUFR dependency.
+
+## 6.48.1
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Patches
+
+- Change type usage for consistency. Fix Stack styling bug.
+
+## 6.48.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- remove references to ITypography
+
+### Patches
+
+- Stack: Renaming horizontalAlignment, verticalAlignment, fillHorizontal and fillVertical to horizontalAlign, verticalAlign, horizontalFill and verticalFill respectively.
+
+## 6.47.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Using single Stack component with 'horizontal' prop instead of separate HorizontalStack and VerticalStack components.
+
+### Patches
+
+- Add new Slots feature. Convert Button to use. Add Slots page with examples.
+
+## 6.46.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Pagination: Exported component from top level export
 
 ## 6.45.0
 Tue, 04 Dec 2018 13:36:40 GMT

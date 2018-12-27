@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '../index';
-import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
+import { Stack, Text } from '@uifabric/experiments';
 import { ContextualMenu, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
@@ -10,17 +10,21 @@ const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
-const ButtonStack = (props: { children: JSX.Element[] }) => <HorizontalStack gap={buttonGap}>{props.children}</HorizontalStack>;
+const ButtonStack = (props: { children: JSX.Element[] }) => (
+  <Stack horizontal gap={buttonGap}>
+    {props.children}
+  </Stack>
+);
 
 const ButtonSet = () => (
-  <VerticalStack gap={headingGap} padding={8}>
+  <Stack gap={headingGap} padding={8}>
     <div>
-      <VerticalStack gap={buttonGap}>
+      <Stack gap={buttonGap}>
         <ButtonStack>
-          <Button text="Default button" />
-          <Button disabled text="Disabled default button" />
-          <Button primary text="Primary button" />
-          <Button disabled primary text="Primary disabled button" />
+          <Button content="Default button" />
+          <Button disabled content="Disabled default button" />
+          <Button primary content="Primary button" />
+          <Button disabled primary content="Primary disabled button" />
         </ButtonStack>
         <ButtonStack>
           <Button icon="PeopleAdd" circular />
@@ -29,9 +33,9 @@ const ButtonSet = () => (
           <Button icon="Attach" circular primary disabled />
         </ButtonStack>
         <ButtonStack>
-          <Button icon="Upload" text="Button with string icon" />
-          <Button icon={{ iconName: 'Share' }} text="Button with iconProps" />
-          <Button icon={<Icon iconName="Download" />} text="Button with custom icon" />
+          <Button icon="Upload" content="Button with string icon" />
+          <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
+          <Button icon={<Icon iconName="Download" />} content="Button with custom icon" />
         </ButtonStack>
         <ButtonStack>
           <Button>
@@ -44,33 +48,33 @@ const ButtonSet = () => (
           </Button>
         </ButtonStack>
         <ButtonStack>
-          <Button text="Menu button" menu={buttonMenu} />
-          <Button disabled text="Menu disabled button" menu={buttonMenu} />
-          <Button expanded text="Menu expanded button" />
-          <Button expanded primary text="Menu expanded primary button" />
+          <Button content="Menu button" menu={buttonMenu} />
+          <Button disabled content="Menu disabled button" menu={buttonMenu} />
+          <Button expanded content="Menu expanded button" />
+          <Button expanded primary content="Menu expanded primary button" />
         </ButtonStack>
         <ButtonStack>
           <Button icon="Share" menu={buttonMenu}>
-            <VerticalStack padding="8px 0" as="span" gap={4} horizontalAlign="left">
+            <Stack padding="8px 0" as="span" gap={4} horizontalAlign="start">
               <Text>I am a compound multiline button.</Text>
-              <Text variant="caption">I can have a caption.</Text>
-            </VerticalStack>
+              <Text variant="small">I can have a caption.</Text>
+            </Stack>
           </Button>
-          <Button disabled text="Menu disabled button" />
-          <Button expanded text="Menu expanded button" />
+          <Button disabled content="Menu disabled button" />
+          <Button expanded content="Menu expanded button" />
         </ButtonStack>
         <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />
-      </VerticalStack>
+      </Stack>
     </div>
-  </VerticalStack>
+  </Stack>
 );
 
 export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <VerticalStack gap={sectionGap}>
+      <Stack gap={sectionGap}>
         <ButtonSet />
-      </VerticalStack>
+      </Stack>
     );
   }
 }

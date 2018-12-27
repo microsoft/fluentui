@@ -2,6 +2,116 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.41.1",
+      "tag": "@uifabric/dashboard_v0.41.1",
+      "date": "Fri, 21 Dec 2018 13:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor RTL improvement and bug fix in setup banner",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "390d08667838cd74178de60c1b6eb405adddded0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.117.0 <7.0.0` to `>=6.117.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.41.0",
+      "tag": "@uifabric/dashboard_v0.41.0",
+      "date": "Thu, 20 Dec 2018 13:39:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improved low resolution support and added shimmer to setup banner",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "6efe965edb93f6e94a73319b8df17f07862e4727"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.116.2 <7.0.0` to `>=6.117.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.40.0",
+      "tag": "@uifabric/dashboard_v0.40.0",
+      "date": "Mon, 17 Dec 2018 13:36:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding LTR to layout even though RTL is experienced. This way the cards are visible on the layout. Setting RTL to the content of the card, this is necessary as a wrapper was introduced which explicitly said ltr",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "3b264340152480c25fc368e6ef0f1fdb947cbd87"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.48.1 <7.0.0` to `>=6.48.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.114.0 <7.0.0` to `>=6.115.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.39.0",
+      "tag": "@uifabric/dashboard_v0.39.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding aria-hidden and alt property for the image of Thumbnail item in ThumbnailList component",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1b4d8172eba0e0edea10e6d4497aaa8b0419bab6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.4 <7.0.0` to `>=6.10.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.48.0 <7.0.0` to `>=6.48.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.113.0 <7.0.0` to `>=6.114.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.38.0",
+      "tag": "@uifabric/dashboard_v0.38.0",
+      "date": "Tue, 11 Dec 2018 13:36:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support to horizontal compact dashboard cards",
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "930e81c6c9669384ff037b87e7a86b6886c267fa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.46.0 <7.0.0` to `>=6.47.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.2 <7.0.0` to `>=6.112.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.37.1",
       "tag": "@uifabric/dashboard_v0.37.1",
       "date": "Tue, 04 Dec 2018 13:36:40 GMT",

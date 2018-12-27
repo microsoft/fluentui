@@ -18,6 +18,7 @@ export class PaginationButtonsBasicExample extends React.Component<{}, IPaginati
         pageCount={27}
         itemsPerPage={10}
         totalItemCount={268}
+        format={'buttons'}
         previousPageAriaLabel={'previous page'}
         nextPageAriaLabel={'next page'}
         firstPageAriaLabel={'first page'}
@@ -33,5 +34,5 @@ export class PaginationButtonsBasicExample extends React.Component<{}, IPaginati
     this.setState({
       selectedPageIndex: index
     });
-  }
+  };
 }

@@ -142,6 +142,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -951,6 +952,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -1774,7 +1776,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
-            height: 40px;
+            height: 42px;
             justify-content: center;
             margin-bottom: 0px;
             margin-left: 0px;
@@ -2294,6 +2296,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -3103,6 +3106,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
