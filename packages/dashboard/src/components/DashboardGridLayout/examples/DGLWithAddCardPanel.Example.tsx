@@ -9,7 +9,7 @@ import {
   DashboardGridBreakpointLayouts,
   IThumbnailItemProps,
   DraggingAnimationType
-} from '@uifabric/dashboard';
+} from '../../../index';
 
 // Cards information that go into the layout and add card panel
 const cardFrameContent = {
