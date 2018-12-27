@@ -9,7 +9,7 @@ Fabric React is a collection of robust React-based components designed to make i
 
 ## Who uses UI Fabric?
 
-![image](https://user-images.githubusercontent.com/1110944/41632827-ac599f98-73f0-11e8-9d27-2bfe8ee7adf4.png)
+![image](https://user-images.githubusercontent.com/785361/50458071-45b58d00-0915-11e9-90c0-ad8789c99db5.png)
 
 \+ 45 additional Microsoft sites and products
 
