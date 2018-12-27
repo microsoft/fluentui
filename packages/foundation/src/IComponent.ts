@@ -22,15 +22,22 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
   (props: TViewProps, theme: ITheme, tokens: TTokens) => Partial<TStyleSet>;
 
-export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenFunctionOrObject<TViewProps, TTokens>> { }
-export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
-
-// export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => TTokens;
-export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => ITokenBase<TViewProps, TTokens>;
-
 export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
   | IStylesFunction<TViewProps, TTokens, TStyleSet>
   | Partial<TStyleSet>;
+
+// export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
+// export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens>;
+export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | false | null | undefined;
+
+// export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenFunctionOrObject<TViewProps, TTokens>> { }
+// export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenBase<TViewProps, TTokens>> { }
+export interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> { }
+
+// export type IToken<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
+export type IToken<TViewProps, TTokens> = ITokenBase<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
+
+export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => IToken<TViewProps, TTokens>;
 
 export type ITokenFunctionOrObject<TViewProps, TTokens> =
   | ITokenFunction<TViewProps, TTokens>
@@ -117,7 +124,7 @@ export interface IComponentOptions<TComponentProps, TViewProps, TTokens, TStyleS
   /**
    * Tokens prop to pass into component.
    */
-  tokens?: ITokenBase<TViewProps, TTokens>;
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.

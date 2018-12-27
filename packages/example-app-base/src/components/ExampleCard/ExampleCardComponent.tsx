@@ -28,13 +28,14 @@ export interface IExampleCardComponentStyles {
 
 // tslint:disable-next-line:typedef
 const ExampleCardComponentView: IExampleCardComponent['view'] = props => {
-  // TODO: finalize approach
+  // TODO: finalize approach. classNames usage here will have to be adjusted on final approach in createComponent.
   // TODO: make sure this doesn't break website that doesn't use dropdowns
   // const Slots = getSlots<typeof props, IButtonSlots>(props, {
   //   root: 'div'
   // });
   // return props.children ? <Slots.root>{props.children}</Slots.root> : null;
-  return props.children ? <div className={props.classNames.root}>{props.children}</div> : null;
+  // tslint:disable:no-any
+  return props.children ? <div className={(props as any).classNames.root}>{props.children}</div> : null;
 };
 
 export const ExampleCardComponent: React.StatelessComponent<IExampleCardComponentProps> = createStatelessComponent({

@@ -1,3 +1,4 @@
+// TODO: this entire module will probably be obsoleted by tokens utilities in Foundation
 export type IComponentStyleVariables<TComponentViewProps, TComponentStyleVariablesTypes> =
   | TComponentStyleVariablesTypes
   | ((props: TComponentViewProps) => TComponentStyleVariablesTypes)
@@ -7,7 +8,7 @@ export function resolveStyleVariables<
   TViewProps,
   TStyleVariablesTypes,
   TStyleVariables extends IComponentStyleVariables<TViewProps, TStyleVariablesTypes>
->(props: TViewProps, ...variableArray: TStyleVariables[]): TStyleVariablesTypes {
+  >(props: TViewProps, ...variableArray: TStyleVariables[]): TStyleVariablesTypes {
   return Object.assign(
     {},
     ...variableArray.map(variables => (typeof variables === 'function' ? (variables as Function)(props) : variables))

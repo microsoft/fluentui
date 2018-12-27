@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { createFactory, IFactoryComponent } from '@uifabric/foundation';
-import { Text as FabricText, ITextProps } from '../Text';
 import { Icon as FabricIcon, IIconProps } from 'office-ui-fabric-react';
+import { createFactory, IFactoryComponent } from '../Foundation';
+import { Text as FabricText, ITextProps } from '../Text';
 
 // TODO: All contents of this file should be moved to each respective component after Slots utilities are promoted.
 

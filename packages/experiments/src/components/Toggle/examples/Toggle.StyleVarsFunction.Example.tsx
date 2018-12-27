@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Toggle } from '../index';
-import { IToggleViewProps, IToggleStyleVariablesTypes } from '../Toggle.types';
+import { IToggleComponent } from '../Toggle.types';
 
-const styleVarsFunction = (props: IToggleViewProps): IToggleStyleVariablesTypes => {
+const toggleTokens: IToggleComponent['tokens'] = props => {
   return {
     ...(props.checked ? { textColor: 'green' } : { textColor: 'red' }),
     ...(props.disabled
@@ -21,7 +21,7 @@ export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
           onText="On"
           offText="Off"
           onChange={this._onChange}
-          styleVariables={styleVarsFunction}
+          tokens={toggleTokens}
         />
         <Toggle
           defaultChecked={false}
@@ -29,7 +29,7 @@ export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
           onText="On"
           offText="Off"
           onChange={this._onChange}
-          styleVariables={styleVarsFunction}
+          tokens={toggleTokens}
         />
         <Toggle
           defaultChecked={true}
@@ -37,7 +37,7 @@ export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
           label="Disabled and checked"
           onText="On"
           offText="Off"
-          styleVariables={styleVarsFunction}
+          tokens={toggleTokens}
         />
         <Toggle
           defaultChecked={false}
@@ -45,7 +45,7 @@ export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
           label="Disabled and unchecked"
           onText="On"
           offText="Off"
-          styleVariables={styleVarsFunction}
+          tokens={toggleTokens}
         />
       </div>
     );

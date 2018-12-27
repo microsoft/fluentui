@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentAs, IRefObject } from '../../Utilities';
+import { IRefObject } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { IHTMLButtonSlot, IHTMLSlot, ILabelSlot } from '../../utilities/factoryComponents.types';
 
-export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
+export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleTokens, IToggleStyles>;
 
-export type IToggleSlots = 'root' | 'label' | 'container' | 'pill' | 'thumb' | 'text';
+export interface IToggleSlots {
+  root?: IHTMLSlot;
+  label?: ILabelSlot;
+  container?: IHTMLSlot;
+  pill?: IHTMLButtonSlot;
+  thumb?: IHTMLSlot;
+  text?: ILabelSlot;
+}
 
 export interface IToggle {
   focus: () => void;
@@ -16,22 +23,12 @@ export interface IToggle {
 /**
  * Toggle component props.
  */
-export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps, IToggleStyles> {
-  /**
-   * Render the root element as another type.
-   */
-  as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
-
+export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<IToggleViewProps, IToggleTokens, IToggleStyles> {
   /**
    * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IToggle>;
-
-  /**
-   * A label for the toggle.
-   */
-  label?: string;
 
   /**
    * Text to display when toggle is ON.
@@ -75,16 +72,10 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
    * Optional keytip for this toggle
    */
   keytipProps?: IKeytipProps;
-
-  /**
-   * Style variables for Toggle.
-   */
-  // TODO: convert to tokens
-  styleVariables?: IToggleStyleVariables;
 }
 
-export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps'> &
-  Required<Pick<IToggleProps, 'checked' | 'styleVariables'>> & {
+export type IToggleViewProps = Pick<IToggleProps, 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps' | 'text'> &
+  Required<Pick<IToggleProps, 'checked' | 'tokens'>> & {
     /**
      * Toggle input callback triggered by mouse and keyboard input.
      */
@@ -93,12 +84,8 @@ export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' |
     /**
      * Root element class name.
      */
+    // TODO: shouldn't this be at props level and not view-only?
     className?: string;
-
-    /**
-     * Text to display next to the toggle.
-     */
-    text?: string;
 
     /**
      * Reference to the toggle button.
@@ -109,7 +96,7 @@ export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' |
 /**
  * Styles for the Toggle component.
  */
-export interface IToggleStyleVariablesTypes {
+export interface IToggleTokens {
   pillBackground?: string;
   pillHoveredBackground?: string;
   pillBorderColor?: string;
@@ -128,6 +115,4 @@ export interface IToggleStyleVariablesTypes {
   textHighContrastColor?: string;
 }
 
-export type IToggleStyleVariables = IToggleStyleVariablesTypes | ((props: IToggleViewProps) => IToggleStyleVariablesTypes) | undefined;
-
-export type IToggleStyles = { [key in IToggleSlots]: IStyle };
+export type IToggleStyles = IComponentStyles<IToggleSlots>;

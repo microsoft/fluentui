@@ -34,6 +34,7 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
     if (keytipProps) {
       nativeKeytipProps = this._getKtpAttrs(keytipProps, ariaDescribedBy);
     }
+    // TODO: is this improperly assuming children is always just a function and not a function in an array?
     return children(nativeKeytipProps);
   }
 

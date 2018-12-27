@@ -4,12 +4,6 @@ import { IContextualMenuSlot, IHTMLButtonSlot, IStackSlot, IIconSlot, ITextSlot 
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonTokens, IButtonStyles>;
 
-// States should only be javascript evaluated states. (Not css states.)
-// TODO: remove
-export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
-
-export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
-
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
 export interface IButtonSlots {
@@ -40,15 +34,10 @@ export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IBu
   // remove
   renderTestButton?: boolean;
 
-  // 'variant' prop vs. boolean for each variant (primary, secondary, circular, etc.)
-  // TODO: remove variant prop. make sure new way isn't using
-  variant?: IButtonVariants;
-  tokens?: IButtonStyleVariablesTypes;
-
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface IButtonStyleVariablesTypes {
+export interface IButtonTokens {
   backgroundColor?: string;
   backgroundColorHovered?: string;
   backgroundColorPressed?: string;
@@ -98,13 +87,6 @@ export interface IButtonStyleVariablesTypes {
   circularMinHeight?: number | string;
   circularMinWidth?: number | string;
 }
-
-// TODO: collapse after old impl is removed
-// export type IButtonTokenTypes = IButtonStyleVariablesTypes;
-export type IButtonTokens = IButtonStyleVariablesTypes;
-
-export type IButtonStyleVariables = { [PVariant in IButtonVariants]?: { [PState in IButtonStates]?: IButtonStyleVariablesTypes } };
-// export type IButtonTokens = Partial<IButtonTokenTypes>;
 
 // TODO: Call this out in PR.
 // TODO: How will this approach affect subcomponentStyles?

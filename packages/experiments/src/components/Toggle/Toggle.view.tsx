@@ -1,28 +1,39 @@
-import * as React from 'react';
+/** @jsx createElementWrapper */
 import { KeytipData } from 'office-ui-fabric-react/lib/KeytipData';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IToggleComponent } from './Toggle.types';
+
+import { createElementWrapper, getSlots } from '../../Foundation';
 import { inputProperties, getNativeProps } from '../../Utilities';
+import { IToggleComponent, IToggleSlots } from './Toggle.types';
 
 export const ToggleView: IToggleComponent['view'] = props => {
-  const { as: RootType = 'div', label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
+  const { label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
   const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
 
+  const Slots = getSlots<typeof props, IToggleSlots>(props, {
+    root: 'div',
+    label: Label,
+    container: 'div',
+    pill: 'button',
+    thumb: 'div',
+    text: Label
+  });
+
+  // TODO: find a way to remove check against existence of label and text for rendering if possible
   return (
-    <RootType className={props.classNames.root}>
+    <Slots.root>
       {label && (
-        <Label htmlFor={this._id} className={props.classNames.label}>
+        <Slots.label htmlFor={this._id}>
           {label}
-        </Label>
+        </Slots.label>
       )}
 
-      <div className={props.classNames.container}>
+      <Slots.container>
         <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
-            <button
+            <Slots.pill
               {...toggleNativeProps}
               {...keytipAttributes}
-              className={props.classNames.pill}
               disabled={disabled}
               id={this._id}
               type="button"
@@ -35,12 +46,12 @@ export const ToggleView: IToggleComponent['view'] = props => {
               onChange={onChange}
               onClick={onClick}
             >
-              <div className={props.classNames.thumb} />
-            </button>
+              <Slots.thumb />
+            </Slots.pill>
           )}
         </KeytipData>
-        {text && <Label className={props.classNames.text}>{text}</Label>}
-      </div>
-    </RootType>
+        {text && <Slots.text>{text}</Slots.text>}
+      </Slots.container>
+    </Slots.root>
   );
 };

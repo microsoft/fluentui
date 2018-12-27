@@ -152,7 +152,7 @@ const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme) => {
 //   contentPadding: ''
 // }
 
-export const ButtonTokens: IButtonComponent['tokens'] = props => ([
+export const ButtonTokens: IButtonComponent['tokens'] = (props, theme) => ([
   baseTokens,
   !props.disabled && enabledTokens,
   props.expanded && expandedTokens,
@@ -164,15 +164,8 @@ export const ButtonTokens: IButtonComponent['tokens'] = props => ([
   props.disabled && disabledTokens,
 ]);
 
-// TODO: should be able to support lookup types here
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) => {
-  // console.log('ButtonStyles theme: ' + theme);
   const { circular, className } = props;
-
-  // if (props.circular) {
-  //   console.log('circular contentPadding: ' + tokens.contentPadding);
-  //   console.log('circular borderColorPressed: ' + tokens.borderColorPressed);
-  // }
 
   const globalClassNames = getGlobalClassNames(
     {

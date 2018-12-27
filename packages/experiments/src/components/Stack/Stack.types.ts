@@ -4,9 +4,12 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
+export type IStackComponent = IStatelessComponent<IStackProps, IStackTokens, IStackStyles>;
 
-export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+// TODO: convert any props to tokens?
+export interface IStackTokens { }
+
+export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */
@@ -88,13 +91,9 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
    * @defaultvalue false
    */
   wrap?: boolean;
-
-  /**
-   * Custom styles to apply to the Stack.
-   */
-  styles?: IStyleFunctionOrObject<IStackProps, IStackStyles>;
 }
 
+// TODO: convert to slots
 export interface IStackStyles {
   /**
    * Style set for the root element.

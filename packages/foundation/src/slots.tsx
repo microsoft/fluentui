@@ -34,10 +34,15 @@ export function createElementWrapper<P>(
   if (slotType.isSlot) {
     // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
     // TODO: should this be mutating? does React mutate children subprop with createElement?
+    // TODO: should probably only call toArray with more than 1 child?
     children = React.Children.toArray(children);
     return slotType({ ...(props as any), children });
   } else {
-    return React.createElement(type, props, children);
+    // TODO: Are there some cases where children should NOT be spread? Also, spreading reraises perf question.
+    //        Children had to be spread to avoid breaking KeytipData in Toggle.view:
+    //        react-dom.development.js:18931 Uncaught TypeError: children is not a function
+    //        Without spread, function child is a child array of one element
+    return React.createElement(type, props, ...children);
   }
 }
 
@@ -162,6 +167,7 @@ export function getSlots
       if (processedProps && processedProps[name] && processedProps[name].children) {
         // Since createElementWrapper bypasses createElement, use React.Children.toArray to make sure children are properly assigned keys.
         // TODO: should this be mutating? does React mutate children subprop with createElement?
+        // TODO: should probably only call toArray with more than 1 child?
         processedProps[name].children = React.Children.toArray(processedProps[name].children);
       }
 

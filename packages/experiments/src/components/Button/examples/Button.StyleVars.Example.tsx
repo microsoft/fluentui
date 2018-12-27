@@ -13,6 +13,7 @@ const buttonGap = 12;
 // TODO: if kept, rename to tokens
 export class ButtonStyleVarsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
+    // TODO: add Button with token function using props
     const ButtonSet = (props: IButtonProps) => (
       <Stack horizontal verticalAlign='center' gap={8}>
         <Button {...props} />

@@ -9,7 +9,7 @@ import {
   IStatelessComponent,
   IStyleableComponentProps,
   IStylesFunctionOrObject,
-  ITokenBase
+  IToken
 } from './IComponent';
 
 /**
@@ -221,7 +221,7 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
 // };
 
 function _resolveTokens<TViewProps, TTokens>
-  (props: TViewProps, theme: ITheme, ...allTokens: (ITokenBase<TViewProps, TTokens> | undefined)[]): TTokens {
+  (props: TViewProps, theme: ITheme, ...allTokens: (IToken<TViewProps, TTokens> | false | null | undefined)[]): TTokens {
   const tokens = {};
 
   for (let currentTokens of allTokens) {
