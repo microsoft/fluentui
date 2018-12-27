@@ -63,9 +63,6 @@ export class AddCard extends React.Component<IAddCardProps> {
   private dragPlaceholder = () => {
     window.document.addEventListener('mousemove', this.handleInitialMove);
     window.document.addEventListener('mouseup', this._releaseDrag);
-    window.document.addEventListener('mouseup', () => {
-      window.document.removeEventListener('mousemove', this.handleInitialMove);
-    });
   };
 
   private handleInitialMove = (event: MouseEvent) => {
