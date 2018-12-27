@@ -17,6 +17,28 @@ export const AzureThemeLight: ITheme = createTheme({
     inputPlaceholderText: LightSemanticColors.text.placeholder,
     menuItemBackgroundHovered: LightSemanticColors.item.hover,
     menuItemBackgroundChecked: LightSemanticColors.item.select,
+
+    // primary button
+    primaryButtonBackground: LightSemanticColors.primaryButton.rest.background,
+    primaryButtonBackgroundDisabled: LightSemanticColors.disabledButton.background,
+    primaryButtonBackgroundHovered: LightSemanticColors.primaryButton.hover.background,
+    primaryButtonBackgroundPressed: LightSemanticColors.primaryButton.pressed.background,
+    primaryButtonText: LightSemanticColors.primaryButton.rest.text,
+    primaryButtonTextPressed: LightSemanticColors.primaryButton.pressed.text,
+    primaryButtonTextDisabled: LightSemanticColors.disabledButton.text,
+    primaryButtonTextHovered: LightSemanticColors.primaryButton.hover.text,
+
+    // secondary button
+    buttonBackground: LightSemanticColors.secondaryButton.rest.background,
+    buttonBackgroundDisabled: LightSemanticColors.disabledButton.background,
+    buttonBackgroundHovered: LightSemanticColors.secondaryButton.hover.background,
+    buttonBackgroundPressed: LightSemanticColors.secondaryButton.pressed.background,
+    buttonText: LightSemanticColors.secondaryButton.rest.text,
+    buttonTextPressed: LightSemanticColors.secondaryButton.pressed.text,
+    buttonTextDisabled: LightSemanticColors.disabledButton.text,
+    buttonTextHovered: LightSemanticColors.secondaryButton.hover.text,
+    // buttonBorder: LightSemanticColors.secondaryButton.rest.border,
+
     // extended
     labelText: LightSemanticColors.text.label,
     controlOutline: LightSemanticColors.controlOutlines.rest,

@@ -113,20 +113,23 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   disabledButton: {
     background: BaseColors.GRAY_808080_010,
-    text: BaseColors.GRAY_111111 // get color
+    text: BaseColors.GRAY_808080_070 // get color
   },
   secondaryButton: {
     rest: {
       background: BaseColors.GRAY_111111,
-      border: BaseColors.BLUE_4894FE
+      border: BaseColors.BLUE_4894FE,
+      text: BaseColors.BLUE_4894FE
     },
     hover: {
       background: BaseColors.GRAY_111111,
-      border: BaseColors.BLUE_6CA9FE
+      border: BaseColors.BLUE_6CA9FE,
+      text: BaseColors.BLUE_6CA9FE
     },
     pressed: {
       background: BaseColors.GRAY_111111, // get color
-      border: BaseColors.BLUE_257FFE
+      border: BaseColors.BLUE_257FFE,
+      text: BaseColors.BLUE_257FFE
     }
   },
   controlOutlines: {
@@ -180,20 +183,23 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   disabledButton: {
     background: BaseColors.GRAY_808080_010,
-    text: BaseColors.GRAY_111111 // get color
+    text: BaseColors.GRAY_808080_070 // get color
   },
   secondaryButton: {
     rest: {
       background: BaseColors.WHITE,
-      border: BaseColors.BLUE_015CDA
+      border: BaseColors.BLUE_015CDA,
+      text: BaseColors.BLUE_015CDA
     },
     hover: {
-      background: BaseColors.GRAY_111111, // get color
-      border: BaseColors.BLUE_016AFE
+      background: BaseColors.GRAY_808080_010, // get color
+      border: BaseColors.BLUE_016AFE,
+      text: BaseColors.BLUE_016AFE
     },
     pressed: {
-      background: BaseColors.GRAY_111111, // get color
-      border: BaseColors.BLUE_014DB7
+      background: BaseColors.GRAY_808080_010, // get color
+      border: BaseColors.BLUE_014DB7,
+      text: BaseColors.BLUE_014DB7
     }
   },
   controlOutlines: {

@@ -5,6 +5,9 @@ import { DropdownStyles } from './styles/DropDown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOptions.styles';
+import { primaryButtonStyles } from './styles/PrimaryButton.styles';
+import { defaultButtonStyles } from './styles/DefaultButton.styles';
+import { compoundButtonStyles } from './styles/CompoundButton.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
@@ -32,9 +35,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     CommandBarButton: {
       styles: commandBarButtonStyles(theme)
     },
-    // CompoundButton: {
-    //   styles: CompoundButtonStyles(extendedTheme)
-    // },
+    CompoundButton: {
+      styles: compoundButtonStyles(theme)
+    },
     // Check: {
     //   styles: CheckStyles
     // },
@@ -56,9 +59,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // DatePicker: {
     //   styles: DatePickerStyles
     // },
-    // DefaultButton: {
-    //   styles: DefaultButtonStyles(extendedTheme)
-    // },
+    DefaultButton: {
+      styles: defaultButtonStyles(theme)
+    },
     // DetailsRow: {
     //   styles: DetailsRowStyles
     // },
@@ -92,9 +95,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // PlainCard: {
     //   styles: PlainCardStyles
     // },
-    // PrimaryButton: {
-    //   styles: PrimaryButtonStyles
-    // },
+    PrimaryButton: {
+      styles: primaryButtonStyles(theme)
+    },
     // Rating: {
     //   styles: RatingStyles
     // },
