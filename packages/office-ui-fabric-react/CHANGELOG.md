@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 20 Dec 2018 13:39:35 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Dec 2018 13:33:49 GMT and should not be manually modified.
+
+## 6.117.2
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Patches
+
+- Adding option to prevent focus on Coachmark mount
+
+## 6.117.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- ContextualMenu: fix opening submenus with hrefs
 
 ## 6.117.0
 Thu, 20 Dec 2018 13:39:35 GMT

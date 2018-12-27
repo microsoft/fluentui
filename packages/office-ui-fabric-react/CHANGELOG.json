@@ -2,6 +2,34 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.117.2",
+      "tag": "office-ui-fabric-react_v6.117.2",
+      "date": "Mon, 24 Dec 2018 13:33:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding option to prevent focus on Coachmark mount",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "14a4614b6b48d799e018e7c734024ecfa6d4a82b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.117.1",
+      "tag": "office-ui-fabric-react_v6.117.1",
+      "date": "Fri, 21 Dec 2018 13:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: fix opening submenus with hrefs",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "f2922d6242b952e8d76dea1a9a6d056c5f58f843"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.117.0",
       "tag": "office-ui-fabric-react_v6.117.0",
       "date": "Thu, 20 Dec 2018 13:39:35 GMT",

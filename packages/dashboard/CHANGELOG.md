@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 20 Dec 2018 13:39:35 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Dec 2018 13:34:57 GMT and should not be manually modified.
+
+## 0.41.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- Minor RTL improvement and bug fix in setup banner
 
 ## 0.41.0
 Thu, 20 Dec 2018 13:39:35 GMT
