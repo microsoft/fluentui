@@ -7,12 +7,12 @@ export const IbizaCustomizationsDark: ICustomizations = {
   settings: {
     theme: { ...AzureThemeDark }
   },
-  scopedSettings: { ...AzureStyleSettings() }
+  scopedSettings: { ...AzureStyleSettings(AzureThemeDark) }
 };
 
 export const IbizaCustomizationsLight: ICustomizations = {
   settings: {
     theme: { ...AzureThemeLight }
   },
-  scopedSettings: { ...AzureStyleSettings() }
+  scopedSettings: { ...AzureStyleSettings(AzureThemeLight) }
 };

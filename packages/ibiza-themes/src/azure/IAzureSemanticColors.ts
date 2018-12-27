@@ -59,4 +59,8 @@ export interface IAzureSemanticColors {
     error: string;
     dirty: string;
   };
+  item: {
+    hover: string;
+    select: string;
+  };
 }

@@ -1,11 +1,14 @@
+import { ITheme } from 'office-ui-fabric-react';
+import { CommandBarStyles } from './styles/CommandBar.styles';
+import { commandBarButtonStyles } from './styles/CommandBarButton.styles';
+import { DropdownStyles } from './styles/DropDown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
-// Roll up all style overrides in a single "Azure theme" object
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
 // tslint:disable-next-line:no-any
-export const AzureStyleSettings = (): any => {
+export const AzureStyleSettings = (theme: ITheme): any => {
   return {
     // Breadcrumb: {
     //   styles: BreadcrumbStyles
@@ -22,12 +25,12 @@ export const AzureStyleSettings = (): any => {
     // ColorSlider: {
     //   styles: ColorSliderStyles
     // },
-    // CommandBar: {
-    //   styles: CommandBarStyles
-    // },
-    // CommandBarButton: {
-    //   styles: CommandBarButtonStyles(extendedTheme)
-    // },
+    CommandBar: {
+      styles: CommandBarStyles
+    },
+    CommandBarButton: {
+      styles: commandBarButtonStyles(theme)
+    },
     // CompoundButton: {
     //   styles: CompoundButtonStyles(extendedTheme)
     // },
@@ -64,9 +67,9 @@ export const AzureStyleSettings = (): any => {
     // DialogFooter: {
     //   styles: DialogFooterStyles
     // },
-    // Dropdown: {
-    //   styles: DropdownStyles
-    // },
+    Dropdown: {
+      styles: DropdownStyles
+    },
     // ExpandingCard: {
     //   styles: ExpandingCardStyles
     // },

@@ -136,6 +136,10 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     accent: BaseColors.BLUE_4894FE, // button in radio, check, et. al.
     error: BaseColors.RED_F63747,
     dirty: BaseColors.PURPLE_C87FDC
+  },
+  item: {
+    hover: BaseColors.GRAY_808080_015,
+    select: BaseColors.GRAY_808080_025
   }
 };
 
@@ -199,5 +203,9 @@ export const LightSemanticColors: IAzureSemanticColors = {
     accent: BaseColors.BLUE_015CDA,
     error: BaseColors.RED_E00B1C,
     dirty: BaseColors.PURPLE_8A2DA5
+  },
+  item: {
+    hover: BaseColors.BLUE_55B3FF_010,
+    select: BaseColors.BLUE_55B3FF_020
   }
 };
