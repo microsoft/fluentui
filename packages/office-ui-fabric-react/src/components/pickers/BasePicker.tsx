@@ -118,9 +118,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           items: newProps.selectedItems
         },
         () => {
-          if (focusIndex >= 0) {
-            this.resetFocus(focusIndex);
-          }
+          // Need to reset focus in the same that we do if an item is selected by a non-controlled component
+          this.resetFocus(focusIndex);
         }
       );
     }
@@ -790,7 +789,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
    */
   private _updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
-      // If the component is a controlled component then the controlling component will need
+      // If the component is a controlled component then the controlling component will need to add or remove the items.
       this.onChange(items);
     } else {
       this.setState({ items: items }, () => {
