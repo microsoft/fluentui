@@ -15,6 +15,8 @@ export const AzureThemeDark: ITheme = createTheme({
     inputBorder: CommonSemanticColors.textControlOutline.rest,
     inputBorderHovered: CommonSemanticColors.textControlOutline.hover,
     inputPlaceholderText: DarkSemanticColors.text.placeholder,
+    link: DarkSemanticColors.controlOutlines.accent,
+    linkHovered: DarkSemanticColors.controlOutlines.accent,
     menuItemBackgroundHovered: DarkSemanticColors.item.hover,
     menuItemBackgroundChecked: DarkSemanticColors.item.select,
     // extended
