@@ -1,8 +1,7 @@
-import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/';
 
 export const primaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
-  console.dir(theme);
   const { semanticColors } = theme;
 
   return {

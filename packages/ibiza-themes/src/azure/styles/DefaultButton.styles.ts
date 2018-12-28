@@ -3,7 +3,6 @@ import * as StyleConstants from '../Constants';
 import { ITheme } from 'office-ui-fabric-react/';
 
 export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
-  console.dir(theme);
   const { semanticColors } = theme;
 
   return {
