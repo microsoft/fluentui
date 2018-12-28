@@ -8,45 +8,55 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
-    text: {
-      fontSize: FontSizes.size12
-    },
+    text: [
+      {
+        fontSize: FontSizes.size12,
+        color: semanticColors.bodyText
+      },
+      disabled && {
+        color: semanticColors.disabledBodyText
+      }
+    ],
     checkbox: [
       {
-        backgroundColor: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.bodyBackground
+      },
+      checked && {
         borderColor: extendedSemanticColors.controlOutline
       },
       disabled && {
         borderColor: extendedSemanticColors.controlOutlineDisabled
-      },
-      checked && {
-        borderColor: extendedSemanticColors.controlOutline
       }
     ],
-    checkmark: {
-      color: semanticColors.focusBorder
-    }
-    /*   root: [
-        !disabled && [
-          !checked && {
-            selectors: {
-              // ':hover .ms-Checkbox-text': { color: palette.neutralDark },
-              // ':hover .ms-Checkbox-checkmark': { color: NeutralColors.gray120 } // color not in the palette or semanticColors
-            }
-          },
-          checked && {
-            selectors: {
-              ':hover .ms-Checkbox-checkbox': {
-                // background: palette.themeDark,
-                // borderColor: palette.themeDark
-              },
-              ':focus .ms-Checkbox-checkbox': {
-                // background: palette.themeDark,
-                // borderColor: palette.themeDark
-              }
+    checkmark: [
+      {
+        color: semanticColors.focusBorder
+      },
+      disabled && {
+        color: extendedSemanticColors.controlOutlineDisabled
+      }
+    ],
+    root: [
+      !disabled && [
+        !checked && {
+          selectors: {
+            '.ms-Checkbox-label:hover .ms-Checkbox-checkbox': { borderColor: extendedSemanticColors.controlOutlineHovered },
+            '.ms-Checkbox-label:hover .ms-Checkbox-checkmark': { color: semanticColors.bodyBackground }
+          }
+        },
+        checked && {
+          selectors: {
+            ':hover .ms-Checkbox-checkbox': {
+              background: semanticColors.bodyBackground,
+              borderColor: extendedSemanticColors.controlOutlineHovered
+            },
+            ':focus .ms-Checkbox-checkbox': {
+              background: semanticColors.bodyBackground,
+              borderColor: extendedSemanticColors.focusBorder
             }
           }
-        ]
-      ] */
+        }
+      ]
+    ]
   };
 };

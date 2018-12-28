@@ -6,7 +6,6 @@ export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
   const { theme, disabled } = props;
   const { semanticColors } = theme;
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
-  console.log(extendedSemanticColors.labelText);
 
   return {
     root: [
