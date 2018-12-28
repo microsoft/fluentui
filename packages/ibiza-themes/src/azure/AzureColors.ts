@@ -113,7 +113,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   disabledButton: {
     background: BaseColors.GRAY_808080_010,
-    text: BaseColors.GRAY_111111 // get color
+    text: BaseColors.GRAY_808080_070 // get color
   },
   secondaryButton: {
     rest: {
@@ -180,7 +180,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   disabledButton: {
     background: BaseColors.GRAY_808080_010,
-    text: BaseColors.GRAY_111111 // get color
+    text: BaseColors.GRAY_808080_070 // get color
   },
   secondaryButton: {
     rest: {
@@ -188,11 +188,11 @@ export const LightSemanticColors: IAzureSemanticColors = {
       border: BaseColors.BLUE_015CDA
     },
     hover: {
-      background: BaseColors.GRAY_111111, // get color
+      background: BaseColors.GRAY_808080_010, // get color
       border: BaseColors.BLUE_016AFE
     },
     pressed: {
-      background: BaseColors.GRAY_111111, // get color
+      background: BaseColors.GRAY_808080_010, // get color
       border: BaseColors.BLUE_014DB7
     }
   },
