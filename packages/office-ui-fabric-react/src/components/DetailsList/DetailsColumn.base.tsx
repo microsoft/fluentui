@@ -93,7 +93,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                       : undefined
                   }
                   aria-describedby={
-                    this.props.onRenderColumnHeaderTooltip || this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
+                    !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
                   }
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}

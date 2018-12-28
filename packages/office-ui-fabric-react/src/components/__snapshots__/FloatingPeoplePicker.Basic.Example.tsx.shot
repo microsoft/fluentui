@@ -3,7 +3,11 @@
 exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx correctly 1`] = `
 <div>
   <div
-    className="ms-SearchBoxSmallExample"
+    style={
+      Object {
+        "width": 208,
+      }
+    }
   >
     <div
       className=

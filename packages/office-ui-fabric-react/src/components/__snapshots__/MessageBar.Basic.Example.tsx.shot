@@ -526,7 +526,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.
   </label>
   <div
-    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -693,6 +692,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <button
+          aria-controls="MessageBar5"
+          aria-expanded={false}
           aria-label="See more"
           className=
               ms-Button
@@ -3370,7 +3371,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked, single line, with dismiss button and truncated text - custom styles
   </label>
   <div
-    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -3539,6 +3539,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <button
+          aria-controls="MessageBar48"
+          aria-expanded={false}
           aria-label="See more"
           className=
               ms-Button

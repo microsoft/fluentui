@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Dec 2018 13:33:49 GMT and should not be manually modified.
+
+## 0.13.0
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Minor changes
+
+- Export animations as strings instead of objects
+- Add Facepile styles to theme
 
 ## 0.12.0
 Fri, 14 Dec 2018 13:35:30 GMT

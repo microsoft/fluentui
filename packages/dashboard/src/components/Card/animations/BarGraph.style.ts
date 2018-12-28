@@ -111,8 +111,6 @@ export const getStyles = (): IBarGraphStyles => {
       flexWrap: 'nowrap',
       justifyContent: 'space-between',
       opacity: '0.6',
-      marginLeft: '15%',
-      marginTop: '10%',
       selectors: {
         ' > :nth-child(1)': {
           height: '50%'
