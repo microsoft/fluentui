@@ -10,7 +10,8 @@ export const CommandBarStyles = (props: ICommandBarStyleProps): Partial<ICommand
       {
         backgroundColor: semanticColors.bodyBackground,
         borderBottomWidth: StyleConstants.borderWidth,
-        borderBottomStyle: StyleConstants.borderSolid
+        borderBottomStyle: StyleConstants.borderSolid,
+        borderBottomColor: semanticColors.inputBorder
       }
     ]
   };

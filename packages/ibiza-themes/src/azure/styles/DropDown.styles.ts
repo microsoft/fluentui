@@ -116,6 +116,9 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdownItemHeader: {
       color: semanticColors.focusBorder
     },
-    errorMessage: { color: semanticColors.errorText }
+    errorMessage: {
+      color: semanticColors.errorText,
+      fontSize: FontSizes.size12
+    }
   };
 };
