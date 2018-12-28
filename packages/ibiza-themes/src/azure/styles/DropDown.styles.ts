@@ -70,6 +70,9 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         }
       }
     ],
+    dropdownDivider: {
+      backgroundColor: semanticColors.inputBorder
+    },
     title: [
       {
         borderColor: semanticColors.inputBorder
