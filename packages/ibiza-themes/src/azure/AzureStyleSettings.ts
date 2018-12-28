@@ -1,4 +1,6 @@
 import { ITheme } from 'office-ui-fabric-react';
+import { CheckboxStyles } from './styles/Checkbox.styles';
+import { comboBoxStyles } from './styles/ComboBox.styles';
 import { CommandBarStyles } from './styles/CommandBar.styles';
 import { commandBarButtonStyles } from './styles/CommandBarButton.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
@@ -38,18 +40,18 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // Check: {
     //   styles: CheckStyles
     // },
-    // Checkbox: {
-    //   styles: CheckboxStyles
-    // },
+    Checkbox: {
+      styles: CheckboxStyles
+    },
     ChoiceGroupOption: {
       styles: ChoiceGroupOptionStyles
     },
     // ColorPickerGridCell: {
     //   styles: ColorPickerGridCellStyles
     // },
-    // ComboBox: {
-    //   styles: ComboBoxStyles
-    // },
+    ComboBox: {
+      styles: comboBoxStyles(theme)
+    },
     // ContextualMenu: {
     //   styles: ContextualMenuStyles
     // },
