@@ -9,7 +9,29 @@ export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
 
   return {
     root: {
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size12,
+      selectors: {
+        '.ms-Button': {
+          backgroundColor: semanticColors.bodyBackground,
+          color: semanticColors.inputText
+        },
+        '.ms-Button:hover': {
+          backgroundColor: semanticColors.bodyBackground,
+          color: semanticColors.inputText
+        }
+      }
+    },
+    rootDisabled: {
+      selectors: {
+        '.ms-Button': {
+          backgroundColor: semanticColors.disabledBackground,
+          color: semanticColors.inputText
+        },
+        '.ms-Button:hover': {
+          backgroundColor: semanticColors.disabledBackground,
+          color: semanticColors.inputText
+        }
+      }
     },
     rootFocused: {
       borderColor: semanticColors.focusBorder
