@@ -118,7 +118,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           items: newProps.selectedItems
         },
         () => {
-          // Need to reset focus in the same that we do if an item is selected by a non-controlled component
+          // Need to reset focus in the same that way that we do if an item is selected by a non-controlled component
+          // See _onSelectedItemsUpdated.
           this.resetFocus(focusIndex);
         }
       );
