@@ -14,6 +14,15 @@ const VerticalStackGrowExampleCode = require('!raw-loader!@uifabric/experiments/
 import { VerticalStackShrinkExample } from './examples/Stack.Vertical.Shrink.Example';
 const VerticalStackShrinkExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.Shrink.Example.tsx') as string;
 
+import { VerticalStackWrapExample } from './examples/Stack.Vertical.Wrap.Example';
+const VerticalStackWrapExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.Wrap.Example.tsx') as string;
+
+import { VerticalStackWrapAdvancedExample } from './examples/Stack.Vertical.WrapAdvanced.Example';
+const VerticalStackWrapAdvancedExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.WrapAdvanced.Example.tsx') as string;
+
+import { VerticalStackWrapNestedExample } from './examples/Stack.Vertical.WrapNested.Example';
+const VerticalStackWrapNestedExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.WrapNested.Example.tsx') as string;
+
 import { VerticalStackVerticalAlignExample } from './examples/Stack.Vertical.VerticalAlign.Example';
 const VerticalStackVerticalAlignExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.VerticalAlign.Example.tsx') as string;
 
@@ -73,6 +82,15 @@ export class StackPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Vertical Stack - Shrinking Items" code={VerticalStackShrinkExampleCode}>
               <VerticalStackShrinkExample />
+            </ExampleCard>
+            <ExampleCard title="Vertical Stack - Wrapping - Basic" code={VerticalStackWrapExampleCode}>
+              <VerticalStackWrapExample />
+            </ExampleCard>
+            <ExampleCard title="Vertical Stack - Wrapping - Advanced" code={VerticalStackWrapAdvancedExampleCode}>
+              <VerticalStackWrapAdvancedExample />
+            </ExampleCard>
+            <ExampleCard title="Vertical Stack - Wrapping - Nested" code={VerticalStackWrapNestedExampleCode}>
+              <VerticalStackWrapNestedExample />
             </ExampleCard>
             <ExampleCard title="Vertical Stack - Vertical Alignments" code={VerticalStackVerticalAlignExampleCode}>
               <VerticalStackVerticalAlignExample />
