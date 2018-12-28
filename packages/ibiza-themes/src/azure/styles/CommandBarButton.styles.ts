@@ -39,36 +39,33 @@ export const commandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.disabledBodyText
     },
-    splitButtonMenuButton: [
-      {
-        backgroundColor: semanticColors.bodyBackground,
-        selectors: {
-          ':hover': {
-            backgroundColor: semanticColors.menuItemBackgroundHovered
-          }
+    splitButtonMenuButton: {
+      backgroundColor: semanticColors.bodyBackground,
+      selectors: {
+        ':hover': {
+          backgroundColor: semanticColors.menuItemBackgroundHovered
         }
       }
-    ],
-    splitButtonMenuButtonChecked: [
-      {
-        backgroundColor: semanticColors.bodyBackground,
-        selectors: {
-          ':hover': {
-            backgroundColor: semanticColors.menuItemBackgroundHovered
-          }
+    },
+    splitButtonMenuButtonChecked: {
+      backgroundColor: semanticColors.bodyBackground,
+      selectors: {
+        ':hover': {
+          backgroundColor: semanticColors.menuItemBackgroundHovered
         }
       }
-    ],
-    splitButtonMenuButtonExpanded: [
-      {
-        backgroundColor: semanticColors.bodyBackground,
-        selectors: {
-          ':hover': {
-            backgroundColor: semanticColors.menuItemBackgroundHovered
-          }
+    },
+    splitButtonMenuButtonDisabled: {
+      backgroundColor: semanticColors.bodyBackground
+    },
+    splitButtonMenuButtonExpanded: {
+      backgroundColor: semanticColors.bodyBackground,
+      selectors: {
+        ':hover': {
+          backgroundColor: semanticColors.menuItemBackgroundHovered
         }
       }
-    ],
+    },
     splitButtonMenuIcon: {
       color: semanticColors.bodyText
     }
