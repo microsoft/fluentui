@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 21 Dec 2018 13:34:57 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Dec 2018 13:35:08 GMT and should not be manually modified.
+
+## 0.42.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
 
 ## 0.41.1
 Fri, 21 Dec 2018 13:34:57 GMT
