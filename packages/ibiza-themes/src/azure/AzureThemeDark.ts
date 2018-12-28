@@ -33,10 +33,10 @@ export const AzureThemeDark: ITheme = createTheme({
     buttonBackgroundDisabled: DarkSemanticColors.disabledButton.background,
     buttonBackgroundHovered: DarkSemanticColors.secondaryButton.hover.background,
     buttonBackgroundPressed: DarkSemanticColors.secondaryButton.pressed.background,
-    buttonText: DarkSemanticColors.secondaryButton.rest.text,
-    buttonTextPressed: DarkSemanticColors.secondaryButton.pressed.text,
+    buttonText: DarkSemanticColors.secondaryButton.rest.border,
+    buttonTextPressed: DarkSemanticColors.secondaryButton.pressed.border,
     buttonTextDisabled: DarkSemanticColors.disabledButton.text,
-    buttonTextHovered: DarkSemanticColors.secondaryButton.hover.text,
+    buttonTextHovered: DarkSemanticColors.secondaryButton.hover.border,
     // buttonBorder: DarkSemanticColors.secondaryButton.rest.border,
     buttonBorderDisabled: DarkSemanticColors.disabledButton.background,
     // extended

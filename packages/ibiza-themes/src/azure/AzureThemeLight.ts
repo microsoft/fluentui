@@ -33,10 +33,10 @@ export const AzureThemeLight: ITheme = createTheme({
     buttonBackgroundDisabled: LightSemanticColors.disabledButton.background,
     buttonBackgroundHovered: LightSemanticColors.secondaryButton.hover.background,
     buttonBackgroundPressed: LightSemanticColors.secondaryButton.pressed.background,
-    buttonText: LightSemanticColors.secondaryButton.rest.text,
-    buttonTextPressed: LightSemanticColors.secondaryButton.pressed.text,
+    buttonText: LightSemanticColors.secondaryButton.rest.border,
+    buttonTextPressed: LightSemanticColors.secondaryButton.pressed.border,
     buttonTextDisabled: LightSemanticColors.disabledButton.text,
-    buttonTextHovered: LightSemanticColors.secondaryButton.hover.text,
+    buttonTextHovered: LightSemanticColors.secondaryButton.hover.border,
     // buttonBorder: LightSemanticColors.secondaryButton.rest.border,
 
     // extended

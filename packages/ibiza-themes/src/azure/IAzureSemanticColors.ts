@@ -41,17 +41,14 @@ export interface IAzureSemanticColors {
     rest: {
       background: string;
       border: string;
-      text: string;
     };
     hover: {
       background: string;
       border: string;
-      text: string;
     };
     pressed: {
       background: string;
       border: string;
-      text: string;
     };
   };
   controlOutlines: {
