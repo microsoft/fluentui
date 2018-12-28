@@ -1,3 +1,4 @@
 export * from './Callout';
 export * from './Callout.types';
+export * from './FocusTrapCallout';
 export * from '../../common/DirectionalHint';
