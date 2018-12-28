@@ -19,6 +19,7 @@ export const AzureThemeLight: ITheme = createTheme({
     linkHovered: LightSemanticColors.controlOutlines.accent,
     menuItemBackgroundHovered: LightSemanticColors.item.hover,
     menuItemBackgroundChecked: LightSemanticColors.item.select,
+    menuItemBackgroundPressed: LightSemanticColors.item.select,
     // extended
     labelText: LightSemanticColors.text.label,
     controlOutline: LightSemanticColors.controlOutlines.rest,
