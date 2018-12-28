@@ -2,7 +2,7 @@ import { IComponent, ISlotProp, IComponentStyles, IStyleableComponentProps } fro
 import { IFontWeight, IRefObject } from 'office-ui-fabric-react';
 import { IContextualMenuSlot, IHTMLButtonSlot, IStackSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
 
-export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonTokens, IButtonStyles>;
+export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles, IButtonTokens>;
 
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
@@ -19,7 +19,7 @@ export interface IButtonSlots {
 
 export interface IButton { }
 
-export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles> {
+export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IButtonProps, IButtonStyles, IButtonTokens> {
   componentRef?: IRefObject<IButton>;
   className?: string;
   href?: string;

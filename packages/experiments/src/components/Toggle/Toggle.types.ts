@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { IComponent, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IRefObject } from '../../Utilities';
+import { IComponentAs, IRefObject } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { IHTMLButtonSlot, IHTMLSlot, ILabelSlot } from '../../utilities/factoryComponents.types';
 
-export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleTokens, IToggleStyles>;
+export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens>;
 
 export interface IToggleSlots {
   root?: IHTMLSlot;
@@ -23,7 +23,13 @@ export interface IToggle {
 /**
  * Toggle component props.
  */
-export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<IToggleViewProps, IToggleTokens, IToggleStyles> {
+// TODO: should 'as' prop be reinserted with Slots impl?
+export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<IToggleViewProps, IToggleStyles, IToggleTokens> {
+  /**
+ * Render the root element as another type.
+ */
+  as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+
   /**
    * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -74,7 +80,7 @@ export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<ITo
   keytipProps?: IKeytipProps;
 }
 
-export type IToggleViewProps = Pick<IToggleProps, 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps' | 'text'> &
+export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps' | 'text'> &
   Required<Pick<IToggleProps, 'checked' | 'tokens'>> & {
     /**
      * Toggle input callback triggered by mouse and keyboard input.

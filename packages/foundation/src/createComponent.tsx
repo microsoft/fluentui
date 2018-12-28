@@ -37,15 +37,15 @@ import {
  * @param {IComponent} component
  * @param {IComponentProviders} providers
  */
-export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
-  component: IComponent<TComponentProps, TViewProps, TTokens, TStyleSet, TStatics>
+export function createComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}>(
+  component: IComponent<TComponentProps, TViewProps, TStyleSet, TTokens, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
       // TODO: createComponent is also probably affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
       <CustomizerContext.Consumer>
         {(context: ICustomizerContext) => {
-          const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
+          const settings: ICustomizationProps<TViewProps, TStyleSet, TTokens> = _getCustomizations(
             component.displayName,
             context,
             component.fields
@@ -66,7 +66,7 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
             // }
             // TODO: for full 'fields' support, 'rest' props from customizations need to pass onto view.
             //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
-            const mergedProps: IStyleableComponentProps<TViewProps, TTokens, TStyleSet> = viewProps
+            const mergedProps: IStyleableComponentProps<TViewProps, TStyleSet, TTokens> = viewProps
               ? {
                 ...(componentProps as any),
                 ...(viewProps as any)
@@ -77,8 +77,9 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
             // TODO: before we can get rid of old code, the following things need to change with existing experimental components:
             //        1. styles functions need to take in theme as separate arg
             //        2. need to be converted to slots? how else will subcomponents get styling?
-            // TODO: is the new way forcing all subcomponents to be slots as written? how else will subcomponents get styling?
-            //        is this forcing a requirement that every styleable section needs to be a slot?
+            // TODO: Is the new way forcing all subcomponents to be slots as written? how else will subcomponents get styling?
+            //        Is this forcing a requirement that every styleable section needs to be a slot?
+            //        How will components apply classNames/styling if they don't use Slots?
             // TODO: Phase 2: phase out old approach with any existing components using createComponent (mostly Persona with style sections)
             //        If Mark's Persona PR is merged before this one, may be able to take this out entirely.
             if (!component.tokens) {
@@ -162,10 +163,10 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
  *
  * @see {@link createComponent} for more information.
  */
-export function createStatelessComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
-  component: IStatelessComponent<TComponentProps, TTokens, TStyleSet, TStatics>
+export function createStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}>(
+  component: IStatelessComponent<TComponentProps, TStyleSet, TTokens, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
-  return createComponent(component as IComponent<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>);
+  return createComponent(component as IComponent<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>);
 }
 
 /**
@@ -220,20 +221,23 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
 //   return tokens;
 // };
 
+// TODO: add tests to deal with various cases: no tokens, undefined, etc.
 function _resolveTokens<TViewProps, TTokens>
   (props: TViewProps, theme: ITheme, ...allTokens: (IToken<TViewProps, TTokens> | false | null | undefined)[]): TTokens {
   const tokens = {};
 
   for (let currentTokens of allTokens) {
-    currentTokens = typeof currentTokens === 'function'
-      ? currentTokens(props, theme)
-      : currentTokens;
+    if (currentTokens) {
+      currentTokens = typeof currentTokens === 'function'
+        ? currentTokens(props, theme)
+        : currentTokens;
 
-    if (Array.isArray(currentTokens)) {
-      currentTokens = _resolveTokens(props, theme, ...currentTokens);
+      if (Array.isArray(currentTokens)) {
+        currentTokens = _resolveTokens(props, theme, ...currentTokens);
+      }
+
+      Object.assign(tokens, ...(currentTokens as any));
     }
-
-    Object.assign(tokens, ...(currentTokens as any));
   }
 
   // TODO: does it make sense that all tokens will always be optional? {} should be a valid TTokens object, if that's true.
@@ -252,7 +256,7 @@ function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TSt
   displayName: string,
   context: ICustomizerContext,
   fields?: string[]
-): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
+): ICustomizationProps<TViewProps, TStyleSet, TTokens> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
   // TODO: remove styleVariables

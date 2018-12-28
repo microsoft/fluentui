@@ -5,7 +5,7 @@ import { IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens } from './
 import { createComponent } from '../../Foundation';
 
 export const Toggle: React.StatelessComponent<IToggleProps> =
-  createComponent<IToggleProps, IToggleViewProps, IToggleTokens, IToggleStyles>({
+  createComponent<IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens>({
     displayName: 'Toggle',
     view,
     state,

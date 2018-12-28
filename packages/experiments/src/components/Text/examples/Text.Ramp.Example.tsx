@@ -1,7 +1,15 @@
-import * as React from 'react';
-import { Text, Stack } from '@uifabric/experiments';
-import { IFontStyles, IStyle } from '@uifabric/experiments/lib/Styling';
-import { createStatelessComponent, IStyleableComponentProps, IStatelessComponent } from '@uifabric/experiments/lib/Foundation';
+/** @jsx createElementWrapper */
+import { Text, Stack, IStackProps } from '@uifabric/experiments';
+import { IFontStyles } from '@uifabric/experiments/lib/Styling';
+import {
+  createElementWrapper,
+  createStatelessComponent,
+  getSlots,
+  IComponentStyles,
+  ISlotProp,
+  IStyleableComponentProps,
+  IStatelessComponent
+} from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
@@ -23,41 +31,50 @@ const Variants: ISetting<keyof IFontStyles>[] = [
   { name: 'mega', usage: 'usage here.' }
 ];
 
-interface ITableStyles {
-  root: IStyle;
-  table: IStyle;
-  header: IStyle;
+type IHTMLSlot = ISlotProp<React.HTMLAttributes<any>>;
+type IStackSlot = ISlotProp<IStackProps>;
+
+interface ITableSlots {
+  root?: IStackSlot;
+  table?: IHTMLSlot;
+  header?: IHTMLSlot;
 }
 
-// Note I intuitively tried to extend IStyleableComponentProps... this was confusing.
-interface ITableProps extends IStyleableComponentProps<ITableProps, ITableStyles> {
+type ITableStyles = IComponentStyles<ITableSlots>;
+
+interface ITableProps extends ITableSlots, IStyleableComponentProps<ITableProps, {}, ITableStyles> {
   className?: string;
-  title: string;
   headers: string[];
-  children: React.ReactNode;
+  title: string;
 }
 
-type ITableComponent = IStatelessComponent<ITableProps, ITableStyles>;
+type ITableComponent = IStatelessComponent<ITableProps, {}, ITableStyles>;
 
-const TableView: ITableComponent['view'] = props => (
-  <Stack className={props.className} gap={20}>
+const TableView: ITableComponent['view'] = props => {
+  const Slots = getSlots<typeof props, ITableSlots>(props, {
+    root: Stack,
+    table: 'table',
+    header: 'tr'
+  });
+
+  return (<Slots.root className={props.className} gap={20}>
     <Text variant="medium">{props.title}</Text>
-    <table className={props.classNames.table}>
+    <Slots.table>
       <thead>
-        <tr className={props.classNames.header}>
+        <Slots.header>
           {props.headers.map((header: string) => (
             <Text key={header} as="td">
               {header}
             </Text>
           ))}
-        </tr>
+        </Slots.header>
       </thead>
       <tbody>{props.children}</tbody>
-    </table>
-  </Stack>
-);
+    </Slots.table>
+  </Slots.root>);
+};
 
-const Table = createStatelessComponent<ITableProps, ITableStyles>({
+const Table = createStatelessComponent<ITableProps, {}, ITableStyles>({
   view: TableView,
   displayName: 'Table',
   styles: {
@@ -67,7 +84,8 @@ const Table = createStatelessComponent<ITableProps, ITableStyles>({
     header: {
       borderBottom: '1px solid black'
     }
-  }
+  },
+  tokens: {}
 });
 
 interface ITableRowProps {

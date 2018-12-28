@@ -47,15 +47,15 @@ export type ITokenFunctionOrObject<TViewProps, TTokens> =
  * Optional props for styleable components. If these props are present, they will automatically be
  * used by Foundation when applying theming and styling.
  */
-export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
+export interface IStyleableComponentProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}> {
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   theme?: ITheme;
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
-export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
-  IStyleableComponentProps<TViewProps, TTokens, TStyleSet> &
-  Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
+export type ICustomizationProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens> =
+  IStyleableComponentProps<TViewProps, TStyleSet, TTokens> &
+  Required<Pick<IStyleableComponentProps<TViewProps, TStyleSet, TTokens>, 'theme'>>;
 
 /**
  * Props added by Foundation for styles functions.
@@ -96,7 +96,9 @@ export type IViewComponent<TViewProps, TProcessedStyleSet> = React.StatelessComp
  * Component used by foundation to tie elements together.
  * @see createComponent for generic type documentation.
  */
-export interface IComponentOptions<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> {
+// TODO: Should Tokens be an optional member/type like state?
+// TODO: Should take in TSlots instead of TStyleSet? (force stylset to be derived from slots?)
+export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> {
   /**
    * Display name to identify component in React hierarchy.
    */
@@ -136,21 +138,24 @@ export interface IComponentOptions<TComponentProps, TViewProps, TTokens, TStyleS
 /**
  * Variant of IComponentOptions for stateful components with appropriate typing and required properties.
  */
-export type IComponent<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = IComponentOptions<
+export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> =
+  IComponentOptions<
   TComponentProps,
   TViewProps,
-  TTokens,
   TStyleSet,
+  TTokens,
   TStatics
   > &
-  Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>, 'state'>>;
+  Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>, 'state'>>;
 
 /**
  * Variant of IComponentOptions for stateless components with appropriate typing and required properties.
  */
-export type IStatelessComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = Omit<
-  IComponentOptions<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>,
+export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> = Omit<
+  IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>,
   'state'
   >;
 
+// TODO: Is this type really needed? Particularly if styles can be derived from slots in IComponentOptions?
+// TODO: Is IStyle the right type here? This should probably be a map of keys to Slot component styles prop instead.
 export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };

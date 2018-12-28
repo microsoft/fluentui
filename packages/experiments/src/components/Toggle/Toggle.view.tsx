@@ -7,11 +7,11 @@ import { inputProperties, getNativeProps } from '../../Utilities';
 import { IToggleComponent, IToggleSlots } from './Toggle.types';
 
 export const ToggleView: IToggleComponent['view'] = props => {
-  const { label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
+  const { as: RootType = 'div', label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
   const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
 
   const Slots = getSlots<typeof props, IToggleSlots>(props, {
-    root: 'div',
+    root: RootType,
     label: Label,
     container: 'div',
     pill: 'button',

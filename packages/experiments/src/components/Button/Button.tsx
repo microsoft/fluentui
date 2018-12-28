@@ -6,7 +6,7 @@ import { ButtonView as view } from './Button.view';
 import { ButtonStyles as styles, ButtonTokens as tokens } from './Button.styles';
 
 export const Button: React.StatelessComponent<IButtonProps> =
-  createComponent<IButtonProps, IButtonViewProps, IButtonTokens, IButtonStyles>({
+  createComponent<IButtonProps, IButtonViewProps, IButtonStyles, IButtonTokens>({
     displayName: 'Button',
     styles,
     state,

@@ -1,11 +1,9 @@
 import { IStyle } from '../../../Styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
 
-export type IStackItemComponent = IStatelessComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
+export type IStackItemComponent = IStatelessComponent<IStackItemProps, IStackItemStyles>;
 
-export interface IStackItemTokens { };
-
-export interface IStackItemProps extends IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps extends IStyleableComponentProps<IStackItemProps, IStackItemStyles> {
   /**
    * How to render the StackItem.
    */

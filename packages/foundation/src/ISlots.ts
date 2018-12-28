@@ -33,7 +33,7 @@ export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: IFactoryComponen
 /**
  * Created Slot structure used for rendering by components.
  */
-export type ISlot<TProps> = ((componentProps: IPropsWithChildren<TProps>) => JSX.Element) & { isSlot?: boolean };
+export type ISlot<TProps> = ((componentProps: IPropsWithChildren<TProps> | undefined | null) => JSX.Element) & { isSlot?: boolean };
 
 /**
  * Interface for a slot factory that consumes both componnent and user slot prop and generates rendered output.

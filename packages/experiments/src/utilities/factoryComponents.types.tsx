@@ -12,6 +12,7 @@ export type IHTMLSlot = ISlotProp<React.HTMLAttributes<any>>;
 export const IconShorthandProp: keyof IIconProps = 'iconName';
 export type IIconSlot = ISlotProp<IIconProps, 'iconName'>;
 
+// TODO: move experimental components into respective types files
 export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
 export type ILabelSlot = ISlotProp<ILabelProps, 'children'>;
 export type IStackSlot = ISlotProp<IStackProps>;

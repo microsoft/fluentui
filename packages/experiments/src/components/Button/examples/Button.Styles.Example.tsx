@@ -75,9 +75,9 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   icon='PeopleAdd'
                   content={{
                     children: "Content Styles Function: Theme.warningHighlight Text",
-                    styles: (props) => {
+                    styles: (props, theme) => {
                       console.log('Text styles function called');
-                      return { root: { color: props.theme.semanticColors.warningHighlight } };
+                      return { root: { color: theme.semanticColors.warningHighlight } };
                     }
                   }}
                 />
@@ -87,9 +87,9 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   icon="PeopleAdd"
                   content={{
                     children: "Content Styles Function: Red Text via Content Theme",
-                    styles: (props) => {
+                    styles: (props, theme) => {
                       console.log('Text styles function with custom theme called');
-                      return { root: { color: props.theme.semanticColors.buttonText } };
+                      return { root: { color: theme.semanticColors.buttonText } };
                     },
                     theme: testTheme
                   }}
@@ -101,7 +101,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                     iconName: "PeopleAdd",
                     styles: (props) => {
                       console.log('Icon styles function called');
-                      return { root: { color: props.theme.semanticColors.warningHighlight } };
+                      return { root: { color: props.theme!.semanticColors.warningHighlight } };
                     }
                   }}
                   content="Icon Styles Function: Theme.warningHighlight Icon"
@@ -113,7 +113,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                     iconName: "PeopleAdd",
                     styles: (props) => {
                       console.log('Icon styles function with custom theme called');
-                      return { root: { color: props.theme.semanticColors.buttonText } };
+                      return { root: { color: props.theme!.semanticColors.buttonText } };
                     },
                     theme: testTheme
                   }}

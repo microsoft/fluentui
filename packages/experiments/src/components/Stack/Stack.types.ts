@@ -1,15 +1,11 @@
 import { IStyle } from '../../Styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IStyleFunctionOrObject } from '../../Utilities';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-export type IStackComponent = IStatelessComponent<IStackProps, IStackTokens, IStackStyles>;
+export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
 
-// TODO: convert any props to tokens?
-export interface IStackTokens { }
-
-export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */

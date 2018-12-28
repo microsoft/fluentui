@@ -32,10 +32,16 @@ export function createElementWrapper<P>(
 ): React.ReactElement<P> | JSX.Element | null {
   const slotType = type as ISlot<P>;
   if (slotType.isSlot) {
-    // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
-    // TODO: should this be mutating? does React mutate children subprop with createElement?
-    // TODO: should probably only call toArray with more than 1 child?
-    children = React.Children.toArray(children);
+    const numChildren = React.Children.count(children);
+    if (numChildren === 0) {
+      return slotType(props);
+    }
+    if (numChildren > 1) {
+      // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+      // TODO: should this be mutating? does React mutate children subprop with createElement?
+      // TODO: will toArray clobber existing keys?
+      children = React.Children.toArray(children);
+    }
     return slotType({ ...(props as any), children });
   } else {
     // TODO: Are there some cases where children should NOT be spread? Also, spreading reraises perf question.
@@ -85,7 +91,7 @@ export function createFactory<TProps>(
 
     const finalClassName = mergeStyles(
       defaultStyles,
-      componentProps.className,
+      componentProps && componentProps.className,   // componentProps will be null if component passes in no props
       //  TODO: Callout: What was reasoning for this call in prototype?
       //        Seems to lead to multiple executions of userProp styles functions in examples.
       //        In both styled and createComponent (at least old version) components, this function will get called again.
@@ -102,7 +108,8 @@ export function createFactory<TProps>(
       //  If this is needed, it will result in multiple processing against userProps.styles and generate a call stack mess with
       //    theme being needed. To avoid multiple processing, should styles prop be pulled out of userProps?
       //  TODO: Do test cases for this exercising and confirming priority with ALL args present.
-      //  TODO: Also do test case with new component as slot to verify token styling works.
+      //  TODO: Token styling. Also do test case with new component as slot to verify token styling works.
+      //  TODO: Theme in props for styled components. Can't assume this is styles function with separate theme arg.
       // _evaluateStyle(finalProps, theme, userProps && userProps.styles),    and tokens?
       userProps && userProps.className
     );
@@ -164,10 +171,10 @@ export function getSlots
   // TODO: need to check if userProps is defined? what is passed here when no props are passed to Button?
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
-      if (processedProps && processedProps[name] && processedProps[name].children) {
+      if (processedProps && processedProps[name] && processedProps[name].children && React.Children.count(processedProps[name].children)) {
         // Since createElementWrapper bypasses createElement, use React.Children.toArray to make sure children are properly assigned keys.
         // TODO: should this be mutating? does React mutate children subprop with createElement?
-        // TODO: should probably only call toArray with more than 1 child?
+        // TODO: will toArray clobber existing keys?
         processedProps[name].children = React.Children.toArray(processedProps[name].children);
       }
 
