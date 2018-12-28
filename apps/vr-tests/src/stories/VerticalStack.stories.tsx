@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
 import { Stack } from '@uifabric/experiments/lib/Stack';
 import { Fabric } from 'office-ui-fabric-react';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, DefaultPalette, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const rootStyles = {
   background: DefaultPalette.themeTertiary
@@ -17,7 +17,7 @@ const itemStyles = {
   padding: 5
 };
 
-const boxStyles = {
+const boxStyles: IStyle = {
   ...itemStyles,
   display: 'flex',
   justifyContent: 'center' as 'center',

@@ -73,15 +73,6 @@ export class DraggingCard extends React.Component<IDraggingCardProps> {
   };
 
   private moveHandler = (event: MouseEvent) => {
-    // check if the dragging card has been brought too close to add card panel, if so stop rendering dragging card and place the card back
-    // used to place the dragging card back in the add card panel
-    if (event.clientX - this.props.initialX > 400) {
-      window.document.removeEventListener('mouseup', this.stopPlaceholder);
-      window.document.removeEventListener('mousemove', this.moveHandler);
-      this.props.setDragMode();
-      return;
-    }
-
     // Change left and top styling on the dragging card so that it is always next to cursor
     const draggingCardDomElement = document.getElementsByClassName('draggingCardDGL');
     if (draggingCardDomElement && draggingCardDomElement[0]) {

@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, FontSizes } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IAddCardStyles {
   /**
@@ -13,7 +13,7 @@ export interface IAddCardStyles {
 export const getStyles = (): IAddCardStyles => {
   return {
     container: {
-      zIndex: 12000000,
+      zIndex: 10,
       touchAction: 'none',
       position: 'absolute',
       backgroundColor: 'rgb(255, 255, 255)',
@@ -32,7 +32,7 @@ export const getStyles = (): IAddCardStyles => {
       fontFamily: 'Segoe UI',
       fontWeight: '600',
       lineHeight: '16px',
-      fontSize: '14px !important',
+      fontSize: FontSizes.medium,
       outline: 'transparent',
       paddingTop: '17px',
       paddingLeft: '15px'
