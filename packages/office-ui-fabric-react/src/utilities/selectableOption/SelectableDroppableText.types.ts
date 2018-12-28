@@ -95,4 +95,9 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
    * Descriptive label for the ISelectableDroppableText Error Message
    */
   errorMessage?: string;
+
+  /**
+   * Input placeholder text. Displayed until option is selected.
+   */
+  placeholder?: string;
 }

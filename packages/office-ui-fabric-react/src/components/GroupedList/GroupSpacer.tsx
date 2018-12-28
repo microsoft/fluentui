@@ -5,7 +5,7 @@ import { getStyles } from './GroupSpacer.styles';
 
 const getClassNames = classNamesFunction<IGroupSpacerStyleProps, IGroupSpacerStyles>();
 
-const SPACER_WIDTH = 36;
+export const SPACER_WIDTH = 32;
 
 export const GroupSpacer = styled<IGroupSpacerProps, IGroupSpacerStyleProps, IGroupSpacerStyles>(
   (props: IGroupSpacerProps) => {

@@ -156,6 +156,14 @@ export interface ICardProps {
   loading?: boolean;
 }
 
+export enum DraggingAnimationType {
+  BarGraph = 'BarGraph',
+  DonutChart = 'DonutChart',
+  HorizontalBarGraph = 'HorizontalBarGraph',
+  LineChart = 'LineChart',
+  Shimmer = 'Shimmer'
+}
+
 export interface IAddCardInfo {
   /**
    * The body text that goes with add card representation of card
@@ -172,6 +180,21 @@ export interface IAddCardInfo {
    * The image to be shown beside card details in add card panel
    */
   addCardPanelImageUrl?: string;
+
+  /**
+   * The dragging animation type for the add card. Used for rendering animation in the dragging card
+   */
+  draggingAnimation?: DraggingAnimationType;
+
+  /**
+   * The aria label for the add card '+' icon
+   */
+  addCardIconAriaLabel?: string;
+
+  /**
+   * The alt text for the image in the add card representation
+   */
+  addCardImageAltText?: string;
 }
 
 export interface ICard extends ICardProps {
