@@ -3,6 +3,7 @@ import { CheckboxStyles } from './styles/Checkbox.styles';
 import { comboBoxStyles } from './styles/ComboBox.styles';
 import { CommandBarStyles } from './styles/CommandBar.styles';
 import { commandBarButtonStyles } from './styles/CommandBarButton.styles';
+import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
@@ -56,9 +57,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     ComboBox: {
       styles: comboBoxStyles(theme)
     },
-    // ContextualMenu: {
-    //   styles: ContextualMenuStyles
-    // },
+    ContextualMenu: {
+      styles: ContextualMenuStyles
+    },
     // DatePicker: {
     //   styles: DatePickerStyles
     // },

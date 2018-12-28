@@ -29,6 +29,11 @@ export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
         }
       }
     },
+    divider: {
+      backgroundColor: semanticColors.inputBorder,
+      border: 'none',
+      height: '1px'
+    },
     errorMessage: {
       color: semanticColors.errorText,
       fontSize: FontSizes.size12
