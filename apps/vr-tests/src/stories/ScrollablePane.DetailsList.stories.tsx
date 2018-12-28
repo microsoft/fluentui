@@ -1,4 +1,8 @@
+/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
+import Screener, { Steps } from 'screener-storybook/src/screener';
+import { storiesOf } from '@storybook/react';
+import { FabricDecorator } from '../utilities';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
@@ -17,6 +21,9 @@ import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import './ScrollablePane.DetailsList.Story.scss';
 
 const _columns: IColumn[] = [
   {
@@ -85,13 +92,13 @@ interface IItem {
   test6: string;
 }
 
-export class ScrollablePaneDetailsListExample extends React.Component<
+class ScrollablePaneDetailsListStory extends React.Component<
   {},
   {
     items: {}[];
     selectionDetails: string;
   }
-> {
+  > {
   private _scrollablePane = React.createRef<IScrollablePane>();
   private _selection: Selection;
   private readonly _items: IItem[];
@@ -105,7 +112,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     for (let i = 0; i < 200; i++) {
       items.push({
         key: i,
-        test1: lorem(2),
+        test1: i === 0 ? lorem(7) : lorem(2),
         test2: lorem(2),
         test3: lorem(2),
         test4: lorem(2),
@@ -133,41 +140,33 @@ export class ScrollablePaneDetailsListExample extends React.Component<
       <div
         style={{
           height: '80vh',
-          position: 'relative'
+          position: 'relative',
+          maxHeight: 'inherit',
+          width: '500px'
         }}
       >
-        <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto}>
-          <Sticky stickyPosition={StickyPositionType.Header}>{selectionDetails}</Sticky>
-          <TextField
-            label="Filter by name:"
-            // tslint:disable-next-line:jsx-no-lambda
-            onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string) =>
-              this.setState({
-                items: text ? this._items.filter((item: IItem) => hasText(item, text)) : this._items
-              })
-            }
-          />
-          <Sticky stickyPosition={StickyPositionType.Header}>
-            <h1 style={{ margin: '0px' }}>Item List</h1>
-          </Sticky>
-          <MarqueeSelection selection={this._selection}>
-            <DetailsList
-              items={items}
-              columns={_columns}
-              setKey="set"
-              layoutMode={DetailsListLayoutMode.fixedColumns}
-              constrainMode={ConstrainMode.unconstrained}
-              onRenderDetailsHeader={onRenderDetailsHeader}
-              onRenderDetailsFooter={onRenderDetailsFooter}
-              selection={this._selection}
-              selectionPreservedOnEmptyClick={true}
-              ariaLabelForSelectionColumn="Toggle selection"
-              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-              // tslint:disable-next-line:jsx-no-lambda
-              onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
-            />
-          </MarqueeSelection>
-        </ScrollablePane>
+        <Fabric>
+          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '500px', border: '1px solid #edebe9' }}>
+            {/* providing backgroundColor as no parent element for the test has this property defined */}
+            <Sticky stickyPosition={StickyPositionType.Header} stickyBackgroundColor={getTheme().palette.white}
+              stickyClassName={'stickyListTitle'}>
+              <h1 style={{ margin: '0px' }}>Item List</h1>
+            </Sticky>
+            <MarqueeSelection selection={this._selection}>
+              <DetailsList
+                items={items}
+                columns={_columns}
+                setKey="set"
+                layoutMode={DetailsListLayoutMode.fixedColumns}
+                constrainMode={ConstrainMode.unconstrained}
+                onRenderDetailsHeader={onRenderDetailsHeader}
+                onRenderDetailsFooter={onRenderDetailsFooter}
+                selection={this._selection}
+                selectionPreservedOnEmptyClick={true}
+              />
+            </MarqueeSelection>
+          </ScrollablePane>
+        </Fabric>
       </div>
     );
   }
@@ -225,3 +224,24 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
 function hasText(item: IItem, text: string): boolean {
   return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;
 }
+
+storiesOf('ScrollablePane Details List', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 2")
+        .snapshot('scroll down by a small amount so that the first row is still visible', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
+        .snapshot('scroll down to the bottom', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
+        .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('ScrollablePane Details List with sticky header & footer', () => (
+    <ScrollablePaneDetailsListStory />
+  ));

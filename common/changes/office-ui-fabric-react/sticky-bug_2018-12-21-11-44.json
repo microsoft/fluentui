@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "checking if sticky content offsetHeight is in sync with nonStickyContent offsetHeight",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "hatrived@microsoft.com"
+}
