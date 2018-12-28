@@ -1,6 +1,7 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/';
 import * as StyleConstants from '../Constants';
+import { FontSizes } from '../AzureType';
 
 export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
@@ -13,6 +14,7 @@ export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
+      fontSize: FontSizes.size12,
       backgroundColor: semanticColors.buttonBackground,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
       selectors: {
