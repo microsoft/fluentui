@@ -1,9 +1,13 @@
-import { IStyle } from '../../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IHTMLSlot } from '../../../utilities/factoryComponents.types';
 
 export type IStackItemComponent = IStatelessComponent<IStackItemProps, IStackItemStyles>;
 
-export interface IStackItemProps extends IStyleableComponentProps<IStackItemProps, IStackItemStyles> {
+export interface IStackItemSlots {
+  root?: IHTMLSlot;
+}
+
+export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemStyles> {
   /**
    * How to render the StackItem.
    */
@@ -51,9 +55,4 @@ export interface IStackItemProps extends IStyleableComponentProps<IStackItemProp
   fillVertical?: boolean;
 }
 
-export interface IStackItemStyles {
-  /**
-   * Style set for the root element.
-   */
-  root: IStyle;
-}
+export type IStackItemStyles = IComponentStyles<IStackItemSlots>;

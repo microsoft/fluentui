@@ -9,7 +9,7 @@ export interface ITextSlots {
 }
 
 // Inputs to the component
-export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextStyles> {
+export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextStyles> {
   /**
    * Optionally render the component as another component type or primitive.
    */

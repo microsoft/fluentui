@@ -1,8 +1,9 @@
+/** @jsx createElementWrapper */
 import * as React from 'react';
-import { createStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { createElementWrapper, createStatelessComponent, getSlots, IStyleableComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
-import { IStackComponent, IStackProps, IStackStyles } from './Stack.types';
+import { IStackComponent, IStackProps, IStackSlots, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
 import { mergeStyles } from '../../Styling';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
@@ -11,7 +12,7 @@ const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IS
   .type;
 
 const view: IStackComponent['view'] = props => {
-  const { as: RootType = 'div', classNames, shrinkItems, wrap, ...rest } = props;
+  const { as: RootType = 'div', shrinkItems, wrap, ...rest } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -51,20 +52,25 @@ const view: IStackComponent['view'] = props => {
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
+  const Slots = getSlots<typeof props, IStackSlots>(props, {
+    root: RootType,
+    inner: 'div'
+  });
+
   if (wrap) {
     return (
-      <RootType className={classNames.root}>
-        <div {...nativeProps} className={classNames.inner}>
+      <Slots.root>
+        <Slots.inner {...nativeProps}>
           {stackChildren}
-        </div>
-      </RootType>
+        </Slots.inner>
+      </Slots.root>
     );
   }
 
   return (
-    <RootType {...nativeProps} className={classNames.root}>
+    <Slots.root {...nativeProps}>
       {stackChildren}
-    </RootType>
+    </Slots.root>
   );
 };
 
@@ -76,9 +82,11 @@ type IStackStatics = typeof StackStatics;
 
 export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
-} = createStatelessComponent<IStackProps, IStackStyles, IStackStatics>({
+} = createStatelessComponent<IStackProps, IStackStyles, {}, IStackStatics>({
   displayName: 'Stack',
   styles,
+  // TODO: temporarily here to work with "new" createComponent. remove.
+  tokens: {},
   view,
   statics: StackStatics
 });

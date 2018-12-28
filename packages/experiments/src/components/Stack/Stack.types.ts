@@ -1,11 +1,16 @@
-import { IStyle } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IHTMLSlot } from '../../utilities/factoryComponents.types';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
 
-export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+export interface IStackSlots {
+  root?: IHTMLSlot;
+  inner?: IHTMLSlot;
+}
+
+export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */
@@ -90,14 +95,4 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
 }
 
 // TODO: convert to slots
-export interface IStackStyles {
-  /**
-   * Style set for the root element.
-   */
-  root: IStyle;
-
-  /**
-   * Style set for the inner element (only when the wrap property is true).
-   */
-  inner: IStyle;
-}
+export type IStackStyles = IComponentStyles<IStackSlots>;

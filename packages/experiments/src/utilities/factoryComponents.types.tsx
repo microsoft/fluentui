@@ -5,6 +5,7 @@ import { ISlotProp } from '../Foundation';
 // TODO: All contents of this file should be moved to each respective component after Slots utilities are promoted.
 
 // HTML Types
+// TODO: Move to Foundation?
 export type IHTMLButtonSlot = ISlotProp<React.ButtonHTMLAttributes<any>>;
 export type IHTMLSlot = ISlotProp<React.HTMLAttributes<any>>;
 
