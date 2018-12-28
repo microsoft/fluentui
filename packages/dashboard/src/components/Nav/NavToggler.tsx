@@ -119,6 +119,7 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
         barClassName={classNames.navItemBarMarker}
         focusedStyle={classNames.focusedStyle}
         role="menu"
+        title={link.title}
       />
     );
   }
