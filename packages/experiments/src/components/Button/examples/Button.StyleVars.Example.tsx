@@ -7,8 +7,6 @@ const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
 
 const sectionGap = 32;
-const headingGap = 16;
-const buttonGap = 12;
 
 // TODO: if kept, rename to tokens
 export class ButtonStyleVarsExample extends React.Component<{}, {}> {
@@ -44,12 +42,6 @@ export class ButtonStyleVarsExample extends React.Component<{}, {}> {
         <ButtonSet
           icon={(iconProps, IconType) => <IconType {...iconProps} iconName='upload' />}
           content='Menu button with icon'
-          menu={buttonMenu}
-        />
-        <ButtonSet
-          icon='upload'
-          content='Split button'
-          split
           menu={buttonMenu}
         />
       </Stack>

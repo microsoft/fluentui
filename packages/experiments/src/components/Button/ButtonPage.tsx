@@ -22,10 +22,10 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title=" Button Ramps" code={ButtonExampleCode}>
               <ButtonExample />
             </ExampleCard>
-            <ExampleCard title="Button Styles" code={ButtonExampleCode}>
+            <ExampleCard title="Button Styles" code={ButtonStylesExampleCode}>
               <ButtonStylesExample />
             </ExampleCard>
-            <ExampleCard title="Button Style Variables" code={ButtonExampleCode}>
+            <ExampleCard title="Button Style Variables" code={ButtonStyleVarsExampleCode}>
               <ButtonStyleVarsExample />
             </ExampleCard>
           </div>

@@ -17,6 +17,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
   // const buttonProps = { ...getNativeProps(props, ['button'], ['icon']) };
   const buttonProps = { ...getNativeProps(rest, buttonProperties) };
 
+  // TODO: is there a way to avoid use of 'typeof props' to make this cleaner?
   const Slots = getSlots<typeof props, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: Stack,
