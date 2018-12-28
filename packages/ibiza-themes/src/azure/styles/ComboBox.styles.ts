@@ -21,7 +21,7 @@ export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       border: 'none',
       boxShadow: Depths.depth8,
       selectors: {
-        ['.ms-Callout-main']: {
+        '.ms-Callout-main': {
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
