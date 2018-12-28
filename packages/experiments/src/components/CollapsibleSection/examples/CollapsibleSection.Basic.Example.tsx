@@ -10,9 +10,7 @@ export class CollapsibleSectionBasicExample extends React.Component<{}, {}> {
           <CollapsibleSection
             key={1}
             defaultCollapsed={true}
-            titleProps={{
-              text: `Title 1`
-            }}
+            title='Title 1'
           >
             Content 1
           </CollapsibleSection>

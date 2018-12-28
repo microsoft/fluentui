@@ -1,34 +1,35 @@
-import * as React from 'react';
+/** @jsx createElementWrapper */
+import { createElementWrapper, getSlots } from '../../Foundation';
 
-import { ICollapsibleSectionComponent } from './CollapsibleSection.types';
+import { ICollapsibleSectionComponent, ICollapsibleSectionSlots } from './CollapsibleSection.types';
 import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
 
 export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = props => {
   const {
     collapsed,
-    titleAs: TitleType = CollapsibleSectionTitle,
     titleElementRef,
-    titleProps,
     children,
     onClick,
     onKeyDown,
     indent
   } = props;
 
-  // TODO: we're stomping on titleProps here with callbacks and ref. need to deal with both
-  //        state and user values or limit the props exposed to user.
+  const Slots = getSlots<typeof props, ICollapsibleSectionSlots>(props, {
+    root: 'div',
+    title: CollapsibleSectionTitle,
+    body: 'div'
+  });
+
   return (
-    <div className={props.classNames.root} onKeyDown={props.onRootKeyDown}>
-      <TitleType
-        {...titleProps}
+    <Slots.root onKeyDown={props.onRootKeyDown}>
+      <Slots.title
         collapsed={props.collapsed}
         focusElementRef={titleElementRef}
-        defaultCollapsed={true}
         onClick={onClick}
         onKeyDown={onKeyDown}
         indent={indent}
       />
-      <div className={props.classNames.body}>{!collapsed && children}</div>
-    </div>
+      <Slots.body>{!collapsed && children}</Slots.body>
+    </Slots.root>
   );
 };

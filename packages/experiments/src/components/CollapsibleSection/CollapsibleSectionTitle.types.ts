@@ -1,11 +1,22 @@
-import { IStyle, RefObject } from 'office-ui-fabric-react';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IRefObject } from '../../Utilities';
+import { IComponentStyles, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IHTMLButtonSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
 
 export type ICollapsibleSectionTitleComponent = IStatelessComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>;
 
+// TODO: callout: shorthand to a slot with its own shorthand actually works!! **mind blown**
+export type ICollapsibleSectionTitleSlot = ISlotProp<ICollapsibleSectionTitleProps, 'text'>;
+
+export interface ICollapsibleSectionTitleSlots {
+  root?: IHTMLButtonSlot;
+  // TODO: consider renaming icon to chevron before promotion to align with other props
+  icon?: IIconSlot;
+  text?: ITextSlot;
+}
+
 export interface ICollapsibleSectionTitleProps
-  extends IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
-  focusElementRef?: RefObject<HTMLElement>;
+  extends ICollapsibleSectionTitleSlots, IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
+  focusElementRef?: IRefObject<HTMLButtonElement>;
   /**
    * Collapsed state of body associated with this component.
    */
@@ -23,18 +34,9 @@ export interface ICollapsibleSectionTitleProps
    */
   chevronDisabled?: boolean;
   /**
-   * Title text.
-   */
-  text?: string;
-
-  /**
    * Indentation of title.
    */
   indent?: number;
 }
 
-export interface ICollapsibleSectionTitleStyles {
-  root: IStyle;
-  icon: IStyle;
-  text: IStyle;
-}
+export type ICollapsibleSectionTitleStyles = IComponentStyles<ICollapsibleSectionTitleSlots>;

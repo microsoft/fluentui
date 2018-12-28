@@ -8,19 +8,23 @@ export const CollapsibleSection: React.StatelessComponent<ICollapsibleSectionPro
   ICollapsibleSectionProps,
   ICollapsibleSectionViewProps,
   ICollapsibleSectionStyles
->({
-  displayName: 'CollapsibleSection',
-  view: CollapsibleSectionView,
-  state: CollapsibleSectionState,
-  styles: collapsibleSectionStyles
-});
+  >({
+    displayName: 'CollapsibleSection',
+    view: CollapsibleSectionView,
+    state: CollapsibleSectionState,
+    styles: collapsibleSectionStyles,
+    // TODO: temporarily here to work with "new" createComponent. remove.
+    tokens: {}
+  });
 
 // TODO: This is only here for testing createComponent and should be removed before promoting to production
 export const CollapsibleSectionStateless: React.StatelessComponent<ICollapsibleSectionProps> = createStatelessComponent<
   ICollapsibleSectionProps,
   ICollapsibleSectionStyles
->({
-  displayName: 'CollapsibleSection',
-  view: CollapsibleSectionView,
-  styles: collapsibleSectionStyles
-});
+  >({
+    displayName: 'CollapsibleSection',
+    view: CollapsibleSectionView,
+    styles: collapsibleSectionStyles,
+    // TODO: temporarily here to work with "new" createComponent. remove.
+    tokens: {}
+  });

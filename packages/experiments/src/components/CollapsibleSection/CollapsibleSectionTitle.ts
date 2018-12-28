@@ -1,13 +1,18 @@
-import { createStatelessComponent } from '../../Foundation';
+import { createFactory, createStatelessComponent, IFactoryComponent } from '../../Foundation';
 import { CollapsibleSectionTitleView as view } from './CollapsibleSectionTitle.view';
 import { getStyles as styles } from './CollapsibleSectionTitle.styles';
 import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './CollapsibleSectionTitle.types';
 
-export const CollapsibleSectionTitle: React.StatelessComponent = createStatelessComponent<
+export const CollapsibleSectionTitle: IFactoryComponent<ICollapsibleSectionTitleProps> = createStatelessComponent<
   ICollapsibleSectionTitleProps,
   ICollapsibleSectionTitleStyles
->({
-  displayName: 'CollapsibleSectionTitle',
-  view,
-  styles
-});
+  >({
+    displayName: 'CollapsibleSectionTitle',
+    view,
+    styles,
+    // TODO: temporarily here to work with "new" createComponent. remove.
+    tokens: {},
+  });
+
+// TODO: add factories for all experimental createComponents
+CollapsibleSectionTitle.create = createFactory(CollapsibleSectionTitle, { defaultProp: 'text' });
