@@ -55,7 +55,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
             suggestionsHeaderText: 'Suggested Tags',
             noResultsFoundText: 'No Color Tags Found'
           }}
-          itemLimit={2}
+          itemLimit={1}
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
@@ -74,7 +74,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
             suggestionsHeaderText: 'Suggested Tags',
             noResultsFoundText: 'No Color Tags Found'
           }}
-          itemLimit={2}
+          itemLimit={1}
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
@@ -99,8 +99,8 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
   private _onFilterChanged = (filterText: string, tagList: ITag[]): ITag[] => {
     return filterText
       ? _testTags
-          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-          .filter(tag => !this._listContainsDocument(tag, tagList))
+        .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+        .filter(tag => !this._listContainsDocument(tag, tagList))
       : [];
   };
 

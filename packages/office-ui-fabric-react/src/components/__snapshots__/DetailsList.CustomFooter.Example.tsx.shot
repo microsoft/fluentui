@@ -118,7 +118,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {

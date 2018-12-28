@@ -184,7 +184,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
-                  aria-hidden={true}
                   className=
 
                       {
@@ -371,7 +370,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
-                  aria-hidden={true}
                   className=
 
                       {
@@ -547,7 +545,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
-                  aria-hidden={true}
                   className=
 
                       {
@@ -711,7 +708,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
-                  aria-hidden={true}
                   className=
 
                       {
@@ -900,7 +896,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
 
                         {
@@ -944,7 +939,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 </span>
               </span>
               <i
-                aria-hidden={true}
                 className=
 
                     {

@@ -41,7 +41,8 @@ const DefaultFields = ['theme', 'styles'];
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
   TStyleProps,
-  TStyleSet extends IStyleSet<TStyleSet>
+  TStyleSet extends IStyleSet<TStyleSet>,
+  aType = any
 >(
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -52,7 +53,7 @@ export function styled<
 
   const { scope, fields = DefaultFields } = customizable;
 
-  class Wrapped extends React.Component<TComponentProps, {}> {
+  class Wrapped<aType> extends React.Component<TComponentProps, {}> {
     public static displayName = `Styled${Component.displayName || Component.name}`;
 
     private _inCustomizerContext = false;

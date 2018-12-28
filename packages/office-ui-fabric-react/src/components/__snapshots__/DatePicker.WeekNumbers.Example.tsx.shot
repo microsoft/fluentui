@@ -141,7 +141,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               value=""
             />
             <i
-              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   msDatePickerDisabled
@@ -361,7 +360,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {

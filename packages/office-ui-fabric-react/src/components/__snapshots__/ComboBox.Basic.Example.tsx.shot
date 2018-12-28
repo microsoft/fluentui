@@ -287,7 +287,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -725,7 +724,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1039,7 +1037,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1353,7 +1350,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1667,7 +1663,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1981,7 +1976,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -2295,7 +2289,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -2579,7 +2572,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -2872,7 +2864,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -3187,7 +3178,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -3501,7 +3491,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

@@ -114,7 +114,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
@@ -287,7 +286,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
@@ -419,7 +417,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
@@ -554,7 +551,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
@@ -707,7 +703,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
@@ -862,7 +857,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
@@ -1014,7 +1008,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {

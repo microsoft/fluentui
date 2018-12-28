@@ -204,18 +204,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // then we just use the old SASS styles instead.
     const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
       ? getClassNames(styles, {
-          theme,
-          className,
-          isFocused,
-          inputClassName: inputProps && inputProps.className
-        })
+        theme,
+        className,
+        isFocused,
+        inputClassName: inputProps && inputProps.className
+      })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
-          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
-          itemsWrapper: legacyStyles.pickerItems,
-          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
-        };
+        root: css('ms-BasePicker', className ? className : ''),
+        text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+        itemsWrapper: legacyStyles.pickerItems,
+        input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+        screenReaderText: legacyStyles.screenReaderOnly
+      };
 
     return (
       <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown}>
@@ -855,17 +855,17 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     // then we just use the old SASS styles instead.
     const classNames: Partial<IProcessedStyleSet<IBasePickerStyles>> = styles
       ? getClassNames(styles, {
-          theme,
-          className,
-          isFocused,
-          inputClassName: inputProps && inputProps.className
-        })
+        theme,
+        className,
+        isFocused,
+        inputClassName: inputProps && inputProps.className
+      })
       : {
-          root: css('ms-BasePicker', className ? className : ''),
-          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
-          input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
-        };
+        root: css('ms-BasePicker', className ? className : ''),
+        text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+        input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
+        screenReaderText: legacyStyles.screenReaderOnly
+      };
 
     return (
       <div ref={this.root}>

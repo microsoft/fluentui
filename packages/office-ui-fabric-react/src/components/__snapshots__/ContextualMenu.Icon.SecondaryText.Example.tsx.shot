@@ -119,7 +119,6 @@ exports[`Component Examples renders ContextualMenu.Icon.SecondaryText.Example.ts
         </div>
       </div>
       <i
-        aria-hidden={true}
         className=
             ms-Button-menuIcon
             {

@@ -192,7 +192,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
@@ -516,7 +515,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
@@ -731,7 +729,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
@@ -936,7 +933,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
@@ -1144,7 +1140,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
@@ -1344,7 +1339,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
