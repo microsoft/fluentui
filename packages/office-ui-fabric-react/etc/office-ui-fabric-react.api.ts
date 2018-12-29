@@ -1289,12 +1289,6 @@ export function focusClear(): IRawStyle;
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public (undocumented)
-class FocusTrapCallout extends BaseComponent<IFocusTrapCalloutProps, {}> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
 class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements IFocusTrapZone {
   // (undocumented)
   componentDidMount(): void;
@@ -7719,7 +7713,6 @@ interface IFitContentToBoundsOptions {
 
 // @public (undocumented)
 interface IFocusTrapCalloutProps extends ICalloutProps {
-  // (undocumented)
   focusTrapProps?: IFocusTrapZoneProps;
 }
 
@@ -12537,6 +12530,7 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: FocusTrapCallout
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check

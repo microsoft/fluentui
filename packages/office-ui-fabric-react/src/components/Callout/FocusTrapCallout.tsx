@@ -1,23 +1,13 @@
 import * as React from 'react';
 
-import { BaseComponent } from '../../Utilities';
 import { Callout } from './Callout';
-import { ICalloutProps } from './Callout.types';
-import { FocusTrapZone, IFocusTrapZoneProps } from '../FocusTrapZone';
+import { IFocusTrapCalloutProps } from './FocusTrapCallout.types';
+import { FocusTrapZone } from '../../FocusTrapZone';
 
-export interface IFocusTrapCalloutProps extends ICalloutProps {
-  /*
-   * Optional props to be passed on to FocusTrapZone
-   */
-  focusTrapProps?: IFocusTrapZoneProps;
-}
-
-export class FocusTrapCallout extends BaseComponent<IFocusTrapCalloutProps, {}> {
-  public render() {
-    return (
-      <Callout {...this.props}>
-        <FocusTrapZone {...this.props.focusTrapProps}>{this.props.children}</FocusTrapZone>
-      </Callout>
-    );
-  }
-}
+export const FocusTrapCallout: React.StatelessComponent<IFocusTrapCalloutProps> = (props: IFocusTrapCalloutProps): JSX.Element => {
+  return (
+    <Callout {...props}>
+      <FocusTrapZone {...props.focusTrapProps}>{props.children}</FocusTrapZone>
+    </Callout>
+  );
+};
