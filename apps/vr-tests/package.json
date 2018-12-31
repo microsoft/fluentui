@@ -4,7 +4,7 @@
   "version": "6.0.0",
   "private": true,
   "scripts": {
-    "build": "",
+    "build": "node ../../scripts/build.js ts --commonJsOnly",
     "clean": "",
     "code-style": "node -v",
     "screener": "screener-storybook --conf screener.config.js",
