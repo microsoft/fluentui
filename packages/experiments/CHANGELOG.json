@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.49.1",
+      "tag": "@uifabric/experiments_v6.49.1",
+      "date": "Mon, 31 Dec 2018 13:37:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Implementing wrapping of vertical stacks and adding examples for it, fixing bugs in wrapping of horizontal stacks.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "410922aad2271f96e3c01dd600028128ffa38eaa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.118.0 <7.0.0` to `>=6.118.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.0",
       "tag": "@uifabric/experiments_v6.49.0",
       "date": "Tue, 18 Dec 2018 22:17:52 GMT",
