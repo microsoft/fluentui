@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "update pivot component to use semantic slots from design redlines",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
