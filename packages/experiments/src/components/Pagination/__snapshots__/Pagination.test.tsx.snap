@@ -109,22 +109,30 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           className=
               ms-Button-icon
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
                 display: inline-block;
                 flex-shrink: 0;
+                font-family: "FabricMDL2Icons-1";
                 font-size: 16px;
+                font-style: normal;
+                font-weight: normal;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
+                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
           data-icon-name="Previous"
           role="presentation"
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -224,22 +232,30 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           className=
               ms-Button-icon
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
                 display: inline-block;
                 flex-shrink: 0;
+                font-family: "FabricMDL2Icons-8";
                 font-size: 16px;
+                font-style: normal;
+                font-weight: normal;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
+                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
           data-icon-name="CaretSolidLeft"
           role="presentation"
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <button
@@ -865,22 +881,30 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           className=
               ms-Button-icon
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
                 display: inline-block;
                 flex-shrink: 0;
+                font-family: "FabricMDL2Icons-8";
                 font-size: 16px;
+                font-style: normal;
+                font-weight: normal;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
+                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
           data-icon-name="CaretSolidRight"
           role="presentation"
-        />
+        >
+          
+        </i>
       </div>
     </button>
     <div
@@ -987,22 +1011,30 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             className=
                 ms-Button-icon
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   color: #0078d4;
                   display: inline-block;
                   flex-shrink: 0;
+                  font-family: "FabricMDL2Icons-1";
                   font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
+                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
             data-icon-name="Next"
             role="presentation"
-          />
+          >
+            
+          </i>
         </div>
       </button>
     </div>
@@ -1123,22 +1155,30 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         className=
             ms-Button-icon
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #a6a6a6;
               display: inline-block;
               flex-shrink: 0;
+              font-family: "FabricMDL2Icons-1";
               font-size: 16px;
+              font-style: normal;
+              font-weight: normal;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
+              speak: none;
               text-align: center;
               vertical-align: middle;
             }
         data-icon-name="Previous"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
   </button>
   <button
@@ -1238,22 +1278,30 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         className=
             ms-Button-icon
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #a6a6a6;
               display: inline-block;
               flex-shrink: 0;
+              font-family: "FabricMDL2Icons-8";
               font-size: 16px;
+              font-style: normal;
+              font-weight: normal;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
+              speak: none;
               text-align: center;
               vertical-align: middle;
             }
         data-icon-name="CaretSolidLeft"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
   </button>
   <div
@@ -1516,21 +1564,29 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             className=
                 ms-Button-icon
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   display: inline-block;
                   flex-shrink: 0;
+                  font-family: "FabricMDL2Icons";
                   font-size: 12px;
+                  font-style: normal;
+                  font-weight: normal;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
+                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
             data-icon-name="ChevronDown"
             role="presentation"
-          />
+          >
+            
+          </i>
         </div>
       </button>
     </div>
@@ -1628,21 +1684,29 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         className=
             ms-Button-icon
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
               flex-shrink: 0;
+              font-family: "FabricMDL2Icons-8";
               font-size: 16px;
+              font-style: normal;
+              font-weight: normal;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
+              speak: none;
               text-align: center;
               vertical-align: middle;
             }
         data-icon-name="CaretSolidRight"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
   </button>
   <button
@@ -1738,21 +1802,29 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         className=
             ms-Button-icon
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               display: inline-block;
               flex-shrink: 0;
+              font-family: "FabricMDL2Icons-1";
               font-size: 16px;
+              font-style: normal;
+              font-weight: normal;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
+              speak: none;
               text-align: center;
               vertical-align: middle;
             }
         data-icon-name="Next"
         role="presentation"
-      />
+      >
+        
+      </i>
     </div>
   </button>
 </div>
