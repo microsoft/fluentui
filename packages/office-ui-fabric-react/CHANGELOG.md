@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 31 Dec 2018 13:37:56 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jan 2019 13:36:37 GMT and should not be manually modified.
+
+## 6.118.2
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Patches
+
+- update pivot component to use semantic slots from design redlines
 
 ## 6.118.1
 Mon, 31 Dec 2018 13:37:56 GMT

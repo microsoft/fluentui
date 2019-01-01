@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 31 Dec 2018 13:37:56 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jan 2019 13:36:37 GMT and should not be manually modified.
+
+## 6.50.0
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Minor changes
+
+- Adds PersonaCoin and VerticalPersona
 
 ## 6.49.1
 Mon, 31 Dec 2018 13:37:56 GMT
