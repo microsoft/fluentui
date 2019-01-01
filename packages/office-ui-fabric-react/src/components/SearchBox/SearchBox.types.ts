@@ -67,9 +67,9 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 
   /**
    * The default value of the text in the SearchBox, in the case of an uncontrolled component.
-   * Up till now, this has not been implemented, deprecating. Will re-implement if uncontrolled
+   * Deprecating prop since so far, this has not been implemented. Will un-deprecate if uncontrolled
    * component behavior is implemented.
-   * @deprecated Not implmented.
+   * @deprecated Not implemented.
    */
   defaultValue?: string;
 
@@ -101,7 +101,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   underlined?: boolean;
 
   /**
-   * Theme (provided through customization.)
+   * Theme (provided through customization).
    */
   theme?: ITheme;
 
