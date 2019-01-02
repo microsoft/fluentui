@@ -1,119 +1,50 @@
-module.exports = function(options) {
-  const glob = require('glob');
-  const path = require('path');
-  const requireResolveCwd = require('../require-resolve-cwd');
+// @ts-check
 
-  const _fileNameToClassMap = {};
+const path = require('path');
+const { sassTask } = require('just-task-preset');
+const postcssModules = require('postcss-modules');
 
-  // Return a promise.
-  return processFiles();
+function createTypeScriptModule(fileName, css) {
+  const { splitStyles } = require('@microsoft/load-themed-styles');
 
-  function processFiles() {
-    const promises = [];
-    const files = glob.sync(path.resolve(process.cwd(), 'src/**/*.scss'));
+  // Create a source file.
+  const source = [
+    `/* tslint:disable */`,
+    `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
+    `loadStyles(${JSON.stringify(splitStyles(css))});`
+  ];
 
-    if (files.length) {
-      const sass = require('node-sass');
-      const fs = require('fs');
-      const postcss = require('postcss');
-      const autoprefixer = require('autoprefixer')({ browsers: ['> 1%', 'last 2 versions', 'ie >= 11'] });
-      const modules = require('postcss-modules')({
-        getJSON,
-        generateScopedName
-      });
+  const map = _fileNameToClassMap[fileName];
 
-      files.forEach(fileName => {
-        fileName = path.resolve(fileName);
-
-        promises.push(
-          new Promise((resolve, reject) => {
-            sass.render(
-              {
-                file: fileName,
-                outputStyle: 'compressed',
-                importer: patchSassUrl,
-                includePaths: [path.resolve(process.cwd(), 'node_modules')]
-              },
-              (err, result) => {
-                if (err) {
-                  reject(path.relative(process.cwd(), fileName) + ': ' + err);
-                } else {
-                  const css = result.css.toString();
-
-                  postcss([autoprefixer, modules])
-                    .process(css, { from: fileName })
-                    .then(result => {
-                      fs.writeFileSync(fileName + '.ts', createTypeScriptModule(fileName, result.css));
-                      resolve();
-                    });
-                }
-              }
-            );
-          })
-        );
-      });
-    }
-
-    return Promise.all(promises);
+  for (let prop in map) {
+    source.push(`export const ${prop} = "${map[prop]}";`);
   }
 
-  function generateScopedName(name, fileName, css) {
-    const crypto = require('crypto');
+  return source.join('\n');
+}
 
-    return (
-      name +
-      '_' +
-      crypto
-        .createHmac('sha1', fileName)
-        .update(css)
-        .digest('hex')
-        .substring(0, 8)
-    );
-  }
+const modules = postcssModules({
+  getJSON,
+  generateScopedName
+});
+const _fileNameToClassMap = {};
 
-  function getJSON(cssFileName, json) {
-    _fileNameToClassMap[path.resolve(cssFileName)] = json;
-  }
+function generateScopedName(name, fileName, css) {
+  const crypto = require('crypto');
 
-  function createTypeScriptModule(fileName, css) {
-    const { splitStyles } = require('@microsoft/load-themed-styles');
+  return (
+    name +
+    '_' +
+    crypto
+      .createHmac('sha1', fileName)
+      .update(css)
+      .digest('hex')
+      .substring(0, 8)
+  );
+}
 
-    // Create a source file.
-    const source = [
-      `/* tslint:disable */`,
-      `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-      `loadStyles(${JSON.stringify(splitStyles(css))});`
-    ];
+function getJSON(cssFileName, json) {
+  _fileNameToClassMap[path.resolve(cssFileName)] = json;
+}
 
-    const map = _fileNameToClassMap[fileName];
-
-    for (let prop in map) {
-      source.push(`export const ${prop} = "${map[prop]}";`);
-    }
-
-    return source.join('\n');
-  }
-
-  function requireResolvePackageUrl(packageUrl) {
-    const fullName = packageUrl + (packageUrl.endsWith('.scss') ? '' : '.scss');
-
-    try {
-      return requireResolveCwd(fullName);
-    } catch (e) {
-      // try again with a private reference
-      return requireResolveCwd(path.join(path.dirname(fullName), `_${path.basename(fullName)}`));
-    }
-  }
-
-  function patchSassUrl(url, prev, done) {
-    let newUrl = url;
-
-    if (url[0] === '~') {
-      newUrl = requireResolvePackageUrl(url.substr(1));
-    } else if (url === 'stdin') {
-      newUrl = '';
-    }
-
-    return { file: newUrl };
-  }
-};
+exports.sass = sassTask(createTypeScriptModule, [modules]);

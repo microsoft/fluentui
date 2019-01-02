@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build-webpack-utils.js",
+    "build": "node ../../scripts/just.js build-commonjs-only",
     "code-style": "node ../../scripts/code-style.js",
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5"
