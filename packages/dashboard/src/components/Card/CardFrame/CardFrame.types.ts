@@ -1,5 +1,4 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IAccessibility } from '../ActionBar/ActionBar.types';
 
 export interface ICardDropDownOption {
   /**
@@ -65,9 +64,14 @@ export interface ICardFrameProps {
   seperatorColor?: string;
 
   /**
-   * Overflow Button Accessibility
+   * Defines the title for the benefit of tooltip
    */
-  cardFrameAccessibility?: IAccessibility;
+  cardFrameMenuTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  cardFrameMenuAriaLabel?: string;
 
   /**
    * Hyperlink URL for title

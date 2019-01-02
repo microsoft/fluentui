@@ -22,10 +22,8 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         }
       ],
       href: 'www.google.com',
-      cardFrameAccessibility: {
-        title: 'more',
-        ariaLabel: 'more'
-      }
+      cardFrameMenuTitle: 'more',
+      cardFrameMenuAriaLabel: 'more'
     };
 
     const compoundButtonStack: ICompoundAction[] = [
@@ -63,11 +61,9 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         }
       }
     ];
-    const actionBarAccessibility = {
-      ariaLabel: 'more actions',
-      ariaDescription: 'More actions',
-      title: 'more'
-    };
+    const actionBarOverflowButtonTitle = 'more actions';
+    const actionBarOverflowButtonAriaLabel = 'more actions';
+    const actionBarOverflowButtonAriaDescription = 'more actions';
 
     const header = {
       headerText: 'Header Text ',
@@ -80,7 +76,9 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         header={header}
         cardContentList={contentAreaList}
         cardSize={CardSize.mediumTall}
-        actionBarAccessibility={actionBarAccessibility}
+        actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
+        actionBarOverflowButtonAriaLabel={actionBarOverflowButtonAriaLabel}
+        actionBarOverflowButtonAriaDescription={actionBarOverflowButtonAriaDescription}
       />
     );
   }

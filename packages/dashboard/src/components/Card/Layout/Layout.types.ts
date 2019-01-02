@@ -4,7 +4,7 @@ import { IBodyTextProps } from '../BodyText/BodyText.types';
 import { IThumbnailListProps } from '../ThumbnailList/ThumbnailList.types';
 import { CardSize, CardContentType, Priority } from '../Card.types';
 import { ICompoundButtonStackProps } from '../CompoundButtonStack/CompoundButtonStack.types';
-import { IAction, IAccessibility } from '../ActionBar/ActionBar.types';
+import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { IChartProps } from '../Chart/Chart.types';
 import { IMultiCountProps } from '@uifabric/dashboard';
@@ -44,9 +44,21 @@ export interface ILayoutProps {
   actions?: IAction[];
 
   /**
-   * Overflow Button Accessibility
+   * Defines the title for the benefit of tooltip
    */
-  actionBarAccessibility?: IAccessibility;
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
 
   /**
    * Defines the current card size

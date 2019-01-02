@@ -18,31 +18,6 @@ export interface IActionBarStyles {
    */
   root: IStyle;
 }
-
-export interface IAccessibility {
-  /**
-   * Defines the title for the benefit of tooltip
-   */
-  title?: string;
-
-  /**
-   * The aria label of the button for the benefit of screen readers.
-   */
-  ariaLabel?: string;
-
-  /**
-   * Detailed description of the button for the benefit of screen readers.
-   *
-   * Besides the compound button, other button types will need more information provided to screen reader.
-   */
-  ariaDescription?: string;
-
-  /**
-   * If provided and is true it adds an 'aria-hidden' attribute instructing screen readers to ignore the element.
-   */
-  ariaHidden?: boolean;
-}
-
 export interface IAction {
   /**
    * Defines the title of the button
@@ -76,7 +51,19 @@ export interface IActionBarProps {
   actions: IAction[];
 
   /**
-   * Overflow Button Accessibility
+   * Defines the title for the benefit of tooltip
    */
-  overflowButtonAccessibility?: IAccessibility;
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
 }

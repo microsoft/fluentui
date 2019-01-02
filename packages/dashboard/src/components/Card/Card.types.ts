@@ -1,7 +1,7 @@
 import { ChartType } from './Chart/Chart.types';
 import { ICardHeaderProps } from './CardHeader/CardHeader.types';
 import { ICardContentDetails } from './Layout/Layout.types';
-import { IAction, IAccessibility } from './ActionBar/ActionBar.types';
+import { IAction } from './ActionBar/ActionBar.types';
 import { ICardDropDownOption } from './CardFrame/CardFrame.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
@@ -112,9 +112,14 @@ export interface ICardFrameContent {
   cardTitleCallback?: VoidFunction;
 
   /**
-   * Overflow Button Accessibility
+   * Defines the title for the benefit of tooltip
    */
-  cardFrameAccessibility?: IAccessibility;
+  cardFrameMenuTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  cardFrameMenuAriaLabel?: string;
 }
 
 export interface ICardProps {
@@ -134,9 +139,21 @@ export interface ICardProps {
   actions?: IAction[];
 
   /**
-   * Overflow Button Accessibility
+   * Defines the title for the benefit of tooltip
    */
-  actionBarAccessibility?: IAccessibility;
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
 
   /**
    * role of the  card for the benefit of screen readers

@@ -125,11 +125,9 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
       }
     ];
 
-    const actionBarAccessibility = {
-      ariaLabel: 'more actions',
-      ariaDescription: 'more actions',
-      title: 'more'
-    };
+    const actionBarOverflowButtonTitle = 'more actions';
+    const actionBarOverflowButtonAriaLabel = 'more actions';
+    const actionBarOverflowButtonAriaDescription = 'more actions';
 
     return (
       <Card
@@ -138,7 +136,9 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
         cardContentList={contentAreaList}
         cardSize={CardSize.mediumWide}
         actions={actions}
-        actionBarAccessibility={actionBarAccessibility}
+        actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
+        actionBarOverflowButtonAriaLabel={actionBarOverflowButtonAriaLabel}
+        actionBarOverflowButtonAriaDescription={actionBarOverflowButtonAriaDescription}
       />
     );
   }
