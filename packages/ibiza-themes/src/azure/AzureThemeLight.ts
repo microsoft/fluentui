@@ -3,6 +3,7 @@ import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 
 export const AzureThemeLight: ITheme = createTheme({
   palette: {
+    accent: LightSemanticColors.controlOutlines.accent,
     white: LightSemanticColors.background
   },
   semanticColors: {

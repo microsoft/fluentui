@@ -10,6 +10,7 @@ import { defaultButtonStyles } from './styles/DefaultButton.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
+import { PanelStyles } from './styles/Panel.styles';
 import { primaryButtonStyles } from './styles/PrimaryButton.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { SliderStyles } from './styles/Slider.styles';
@@ -100,6 +101,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // PlainCard: {
     //   styles: PlainCardStyles
     // },
+    Panel: {
+      styles: PanelStyles
+    },
     PrimaryButton: {
       styles: primaryButtonStyles(theme)
     },
