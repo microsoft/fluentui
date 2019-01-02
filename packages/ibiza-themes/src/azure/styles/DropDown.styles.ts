@@ -110,6 +110,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       fontSize: FontSizes.size12,
       backgroundColor: semanticColors.menuItemBackgroundChecked,
       color: semanticColors.bodyText,
+      fontWeight: 'bold',
       selectors: {
         '&:hover:focus': {
           color: semanticColors.bodyText
