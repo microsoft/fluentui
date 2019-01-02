@@ -18,6 +18,8 @@ export interface IAddCardPanelProps extends IBaseProps {
    */
   cards?: IDGLCard[];
 
+  emptyCardContent: string;
+
   /**
    * The callback method to switch between add card panel and the dashboard grid layout
    */
@@ -68,4 +70,14 @@ export interface IAddCardPanelStyles {
    * Style for the content wrapper of add card panel
    */
   contentRoot: IStyle;
+
+  /**
+   * Style set for when no cards available in add card panel
+   */
+  emptyCardStyles: IStyle;
+
+  /**
+   * Style set for when no cards available in add card panel
+   */
+  emptyCardContentStyles: IStyle;
 }

@@ -160,6 +160,7 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
     };
   }
   public render(): JSX.Element {
+    const emptyCardContent = 'You already have all the cards on your home page';
     return (
       <>
         <button
@@ -179,6 +180,7 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
           onLayoutChange={this._onLayoutChange}
           onPanelDismiss={this._onPanelDismiss}
           scrollElement={this.refObject ? this.refObject.parentElement! : undefined}
+          emptyCardContent={emptyCardContent}
         />
       </>
     );

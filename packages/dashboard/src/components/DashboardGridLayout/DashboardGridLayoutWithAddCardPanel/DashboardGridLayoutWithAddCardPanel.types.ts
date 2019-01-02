@@ -50,6 +50,8 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
    * ref passed. If ref is not passed scrolling is applied to the immediate parent element
    */
   scrollElement?: HTMLElement;
+
+  emptyCardContent?: string;
 }
 
 export interface IAddCardPanelProps {

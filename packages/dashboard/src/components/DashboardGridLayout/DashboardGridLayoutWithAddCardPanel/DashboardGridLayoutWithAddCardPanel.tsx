@@ -75,7 +75,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
   }
 
   public render(): JSX.Element {
-    const { isOpen, isDraggable, addCardPanelProps, scrollElement } = this.props;
+    const { isOpen, isDraggable, addCardPanelProps, scrollElement, emptyCardContent } = this.props;
     return (
       <>
         <div className={this.classNames.root} id="dglWithAddCardPanelRoot">
@@ -99,6 +99,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
             onDismiss={this._onPanelDismiss}
             draggingCardCallback={this._draggingCardCallback}
             initialX={this.state.selectedCardInitialX}
+            emptyCardContent={emptyCardContent!}
           />
           <div className="dashboardContainerClassName">
             <DashboardGridSectionLayout

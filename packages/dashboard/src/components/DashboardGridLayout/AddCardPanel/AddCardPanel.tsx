@@ -22,7 +22,7 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
       <>
         <Panel
           closeButtonAriaLabel={closeButtonAriaLabel}
-          onRenderBody={this._renderAddCardItems.bind(this, cards, header)}
+          onRenderBody={this._renderAddCardItems.bind(this, cards, header, isOpen)}
           type={PanelType.custom}
           customWidth={'480px'}
           isOpen={isOpen}
@@ -41,9 +41,20 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
     }
   };
 
-  private _renderAddCardItems = (addCardItems: IDGLCard[], header: string): JSX.Element => {
+  private _getEmptyCard = (): string => {
+    const emptyCardArray = ['./src/images/horizontal bar char.svg', './src/images/line graph.svg', './src/images/vertical bar chart.svg'];
+    const randomCard = emptyCardArray[Math.floor(Math.random() * emptyCardArray.length)];
+    return randomCard;
+  };
+
+  private _renderAddCardItems = (addCardItems: IDGLCard[], header: string, isOpen: boolean): JSX.Element => {
     const getClassNames = classNamesFunction<{}, IAddCardPanelStyles>();
     const classNames = getClassNames(getStyles!);
+    // checking if panel close state is obtained. If so, returning empty JSX element
+
+    if (!isOpen) {
+      return <></>;
+    }
     const addCardItemsList: JSX.Element[] = [];
     addCardItems.map((addCardItem: IDGLCard, index: number) => {
       addCardItemsList.push(
@@ -74,10 +85,19 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
     });
     return (
       <div className={classNames.contentRoot}>
-        <div className={classNames.header} tabIndex={0} aria-label={header}>
-          {header}
-        </div>
-        {addCardItemsList}
+        {addCardItems.length > 0 ? (
+          <>
+            <div className={classNames.header} tabIndex={0} aria-label={header}>
+              {header}
+            </div>
+            {addCardItemsList}
+          </>
+        ) : (
+          <div className={classNames.emptyCardStyles}>
+            <img draggable={false} src={this._getEmptyCard()} />
+            <div className={classNames.emptyCardContentStyles}>{this.props.emptyCardContent}</div>
+          </div>
+        )}
       </div>
     );
   };
