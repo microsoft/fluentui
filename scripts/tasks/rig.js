@@ -6,9 +6,10 @@ const { ts } = require('./ts');
 const { tslint } = require('./tslint');
 const { webpack } = require('./webpack');
 const { outdated, selfupdate } = require('./outdated');
-const { apiExtractor } = require('./apiExtractor');
-const buildCodepenExamples = require('../tasks/build-codepen-examples');
-const lintImports = require('../tasks/lint-imports');
+const { apiExtractor, updateApi } = require('./apiExtractor');
+const buildCodepenExamples = require('./build-codepen-examples');
+const lintImports = require('./lint-imports');
+const prettier = require('./prettier');
 
 exports.rig = {
   clean,
@@ -21,6 +22,8 @@ exports.rig = {
   outdated,
   selfupdate,
   apiExtractor,
+  updateApi,
   buildCodepenExamples,
-  lintImports
+  lintImports,
+  prettier
 };
