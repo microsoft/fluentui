@@ -12,10 +12,11 @@ export interface ICollapsibleSectionSlots {
   body?: IHTMLSlot;
 }
 
-export interface ICollapsibleSection { }
+export interface ICollapsibleSection {}
 
-export interface ICollapsibleSectionProps extends ICollapsibleSectionSlots,
-  IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles> {
+export interface ICollapsibleSectionProps
+  extends ICollapsibleSectionSlots,
+    IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles> {
   /**
    * Optional callback to access the ICollapsibleSectionComponent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -67,4 +68,3 @@ export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'inden
   };
 
 export type ICollapsibleSectionStyles = IComponentStyles<ICollapsibleSectionSlots>;
-

@@ -9,23 +9,27 @@ const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} i
 const sectionGap = 32;
 
 // TODO: if kept, rename to tokens
+// tslint:disable:jsx-no-lambda
 export class ButtonStyleVarsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     // TODO: add Button with token function using props
     const ButtonSet = (props: IButtonProps) => (
-      <Stack horizontal verticalAlign='center' gap={8}>
+      <Stack horizontal verticalAlign="center" gap={8}>
         <Button {...props} />
         <Button {...props} secondary />
         <Button {...props} primary />
         <Button {...props} disabled />
-        <Button {...props} tokens={{
-          backgroundColor: 'red',
-          backgroundColorHovered: 'pink',
-          color: 'white',
-          colorHovered: 'white',
-          iconColor: 'white',
-          iconColorHovered: 'white'
-        }} />
+        <Button
+          {...props}
+          tokens={{
+            backgroundColor: 'red',
+            backgroundColorHovered: 'pink',
+            color: 'white',
+            colorHovered: 'white',
+            iconColor: 'white',
+            iconColorHovered: 'white'
+          }}
+        />
       </Stack>
     );
 
@@ -33,15 +37,15 @@ export class ButtonStyleVarsExample extends React.Component<{}, {}> {
     return (
       <Stack gap={sectionGap}>
         <ButtonSet />
-        <ButtonSet content='No Icon' />
+        <ButtonSet content="No Icon" />
         <ButtonSet content={<Spinner />} />
-        <ButtonSet icon='upload' content='Button with Icon' />
-        <ButtonSet icon='upload' href='http://www.microsoft.com' content='Button with href' />
+        <ButtonSet icon="upload" content="Button with Icon" />
+        <ButtonSet icon="upload" href="http://www.microsoft.com" content="Button with href" />
         <ButtonSet circular />
-        <ButtonSet circular icon='share' />
+        <ButtonSet circular icon="share" />
         <ButtonSet
-          icon={(iconProps, IconType) => <IconType {...iconProps} iconName='upload' />}
-          content='Menu button with icon'
+          icon={(iconProps, IconType) => <IconType {...iconProps} iconName="upload" />}
+          content="Menu button with icon"
           menu={buttonMenu}
         />
       </Stack>

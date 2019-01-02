@@ -3,7 +3,6 @@ import { getFocusStyle, getGlobalClassNames } from '../../Styling';
 
 // TODO: how are we going to deal with globalClassNames? same way through styles?
 
-
 // TODO: reconcile existing nested style variables with tokens. is the codepen's flatter approach a full replacement?
 // TODO: did David intend for new flatter approach? assume so for now unless big holes appear
 // TODO: how will Button.state fit into this approach?
@@ -127,7 +126,7 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme) => {
     iconColorPressed: semanticColors.primaryButtonTextPressed,
 
     borderColor: semanticColors.primaryButtonBorder
-  }
+  };
 };
 
 const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme) => {
@@ -140,8 +139,8 @@ const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme) => {
     color: semanticColors.primaryButtonTextPressed,
     colorHovered: semanticColors.primaryButtonTextPressed,
     colorPressed: semanticColors.primaryButtonTextPressed
-  }
-}
+  };
+};
 
 // TODO: old impl before tokens were expanded. remove this code if expanded approach is kept.
 // const circularTokens = {
@@ -152,7 +151,7 @@ const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme) => {
 //   contentPadding: ''
 // }
 
-export const ButtonTokens: IButtonComponent['tokens'] = (props, theme) => ([
+export const ButtonTokens: IButtonComponent['tokens'] = (props, theme) => [
   baseTokens,
   !props.disabled && enabledTokens,
   props.expanded && expandedTokens,
@@ -161,8 +160,8 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme) => ([
   props.secondary && secondaryTokens,
   // TODO: old impl before tokens were expanded. remove this code if expanded approach is kept.
   // props.circular && circularTokens,
-  props.disabled && disabledTokens,
-]);
+  props.disabled && disabledTokens
+];
 
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) => {
   const { circular, className } = props;
@@ -282,10 +281,10 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) =
       bottom: 6,
       display: 'inline-block',
       left: 0,
-      opacity: .7,
+      opacity: 0.7,
       position: 'absolute',
       top: 6,
       width: 1
-    },
-  }
+    }
+  };
 };

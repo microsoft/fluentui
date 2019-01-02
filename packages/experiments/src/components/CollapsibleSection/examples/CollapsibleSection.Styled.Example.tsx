@@ -71,11 +71,7 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
           <b>Stateful Components</b>
         </p>
         <FocusZone>
-          <CollapsibleSection
-            key={1}
-            defaultCollapsed={false}
-            title='No Styling'
-          >
+          <CollapsibleSection key={1} defaultCollapsed={false} title="No Styling">
             Body
           </CollapsibleSection>
           <br />
@@ -154,11 +150,7 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
           <p>
             <b>Stateless Components</b>
           </p>
-          <CollapsibleSectionStateless
-            key={7}
-            collapsed={false}
-            title='No Styling'
-          >
+          <CollapsibleSectionStateless key={7} collapsed={false} title="No Styling">
             Body
           </CollapsibleSectionStateless>
           <br />
@@ -235,7 +227,7 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             </CollapsibleSectionStateless>
           </Customizer>
         </FocusZone>
-      </div >
+      </div>
     );
   }
 }
