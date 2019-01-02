@@ -36,12 +36,12 @@ export function createElementWrapper<P>(
     if (numChildren === 0) {
       return slotType(props);
     }
-    if (numChildren > 1) {
-      // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
-      // TODO: should this be mutating? does React mutate children subprop with createElement?
-      // TODO: will toArray clobber existing keys?
-      children = React.Children.toArray(children);
-    }
+
+    // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+    // TODO: should this be mutating? does React mutate children subprop with createElement?
+    // TODO: will toArray clobber existing keys?
+    children = React.Children.toArray(children);
+
     return slotType({ ...(props as any), children });
   } else {
     // TODO: Are there some cases where children should NOT be spread? Also, spreading reraises perf question.
@@ -86,12 +86,12 @@ export function createFactory<TProps>(
     // const finalProps = componentProps;
     const finalProps = {
       ...(componentProps as any),
-      ...((typeof userProps === 'object') && userProps as any)
+      ...(typeof userProps === 'object' && (userProps as any))
     };
 
     const finalClassName = mergeStyles(
       defaultStyles,
-      componentProps && componentProps.className,   // componentProps will be null if component passes in no props
+      componentProps && componentProps.className, // componentProps will be null if component passes in no props
       //  TODO: Callout: What was reasoning for this call in prototype?
       //        Seems to lead to multiple executions of userProp styles functions in examples.
       //        In both styled and createComponent (at least old version) components, this function will get called again.
@@ -160,19 +160,18 @@ function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps, TSlots
  * @param slots Slot definition object defining the default slot component for each slot.
  * @returns An set of created slots that components can render in JSX.
  */
-export function getSlots
-  <TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(
-    userProps: TProps,
-    slots: ISlotDefinition<Required<TSlots>>
-  ): ISlots<Required<TSlots>> {
+export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(
+  userProps: TProps,
+  slots: ISlotDefinition<Required<TSlots>>
+): ISlots<Required<TSlots>> {
   const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
   const processedProps = userProps as TProps & IProcessedSlotProps<TSlots>;
 
   // TODO: need to check if userProps is defined? what is passed here when no props are passed to Button?
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
-      if (processedProps && processedProps[name] && processedProps[name].children && React.Children.count(processedProps[name].children)) {
-        // Since createElementWrapper bypasses createElement, use React.Children.toArray to make sure children are properly assigned keys.
+      if (processedProps && processedProps[name] && React.Children.count(processedProps[name].children) > 0) {
+        // TODO: verify this toArray call is needed. explain why in comment, if so
         // TODO: should this be mutating? does React mutate children subprop with createElement?
         // TODO: will toArray clobber existing keys?
         processedProps[name].children = React.Children.toArray(processedProps[name].children);
@@ -185,7 +184,7 @@ export function getSlots
           componentProps as any,
           processedProps[name],
           // TODO: is this check needed (put in temporarily until createComponent is updated)? what about for backwards compatibility?
-          processedProps._defaultStyles && processedProps._defaultStyles[name],
+          processedProps._defaultStyles && processedProps._defaultStyles[name]
           // TODO: David had this, make sure it's not needed:
           // componentProps.children
         );
