@@ -7,7 +7,12 @@ export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
   const semanticColors = theme.semanticColors as IExtendedSemanticColors;
   return {
     main: {
-      backgroundColor: semanticColors.bodyBackground
+      backgroundColor: semanticColors.bodyBackground,
+      selectors: {
+        '&.ms-Panel-main': {
+          border: 'none'
+        }
+      }
     },
     closeButton: {
       color: semanticColors.controlOutline,
