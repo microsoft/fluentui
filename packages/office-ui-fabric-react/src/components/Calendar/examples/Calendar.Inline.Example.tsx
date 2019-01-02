@@ -72,15 +72,6 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
     }
 
-    const today: Date = new Date();
-    const restrictedDates: Date[] = [
-      new Date(today.getFullYear(), today.getMonth(), 15),
-      new Date(today.getFullYear(), today.getMonth(), 27),
-      new Date(today.getFullYear(), today.getMonth(), 12),
-      new Date(today.getFullYear(), today.getMonth(), 18),
-      new Date(today.getFullYear(), today.getMonth(), 15)
-    ];
-
     return (
       <div style={divStyle}>
         {
@@ -119,7 +110,6 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           showWeekNumbers={this.props.showWeekNumbers}
           minDate={this.props.minDate}
           maxDate={this.props.maxDate}
-          restrictedDates={restrictedDates}
           showSixWeeksByDefault={this.props.showSixWeeksByDefault}
           workWeekDays={this.props.workWeekDays}
         />
