@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Dec 2018 13:33:49 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jan 2019 13:36:37 GMT and should not be manually modified.
+
+## 6.118.2
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Patches
+
+- update pivot component to use semantic slots from design redlines
+
+## 6.118.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Pickers: Fix issue where suggestions wouldn't dismiss for controlled pickers
+- Fix Nav selected item's pseudo element
+
+## 6.118.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- ComboBox will prioritize ariaLabel property over label for accessibility. Aria labels for Dropdown and ComboBox options do not default to item text.
+
+### Patches
+
+- FocusZone: Respect the onKeydown handler even it is inside inner focus zone.
+- checking if sticky content offsetHeight is in sync with nonStickyContent offsetHeight
 
 ## 6.117.2
 Mon, 24 Dec 2018 13:33:49 GMT

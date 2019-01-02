@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 18 Dec 2018 22:17:52 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Jan 2019 13:36:37 GMT and should not be manually modified.
+
+## 6.50.0
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Minor changes
+
+- Adds PersonaCoin and VerticalPersona
+
+## 6.49.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Stack: Implementing wrapping of vertical stacks and adding examples for it, fixing bugs in wrapping of horizontal stacks.
 
 ## 6.49.0
 Tue, 18 Dec 2018 22:17:52 GMT

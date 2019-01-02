@@ -6,15 +6,12 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "noEmit": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": [
-      "webpack-env"
-    ]
+    "types": ["webpack-env"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

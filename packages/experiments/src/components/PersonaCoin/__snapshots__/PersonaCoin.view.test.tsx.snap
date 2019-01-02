@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonaCoinView renders a coin with a contact icon 1`] = `
+<div
+  className="test-cn-root"
+>
+  <i
+    aria-hidden={true}
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+    data-icon-name="Contact"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaCoinView renders a coin with a contact icon for a Chinese name 1`] = `
+<div
+  className="test-cn-root"
+>
+  <i
+    aria-hidden={true}
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+    data-icon-name="Contact"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaCoinView renders a coin with the initials JB 1`] = `
+<div
+  className="test-cn-root"
+>
+  <span
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
+          white-space: nowrap;
+        }
+  >
+    JB
+  </span>
+</div>
+`;
+
+exports[`PersonaCoinView renders a correct persona 1`] = `
+<div
+  className="test-cn-root"
+>
+  <span
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
+          white-space: nowrap;
+        }
+  >
+    JB
+  </span>
+</div>
+`;
+
+exports[`PersonaCoinView renders a red coin 1`] = `
+<div
+  className="test-cn-root"
+>
+  <span
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
+          white-space: nowrap;
+        }
+  >
+    JB
+  </span>
+</div>
+`;
+
+exports[`PersonaCoinView renders presence correctly when a very large coin is rendered 1`] = `
+<div
+  className="test-cn-root"
+>
+  <i
+    aria-hidden={true}
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+    data-icon-name="Contact"
+    role="presentation"
+  >
+    
+  </i>
+  <div
+    className=
+        ms-Persona-presence
+        test-cn-presence
+        {
+          -ms-high-contrast-adjust: none;
+          background-clip: content-box;
+          background-color: #E81123;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          bottom: -2px;
+          box-sizing: content-box;
+          height: 12px;
+          position: absolute;
+          right: -2px;
+          text-align: center;
+          top: auto;
+          width: 12px;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background-color: WindowText;
+          border-color: Window;
+        }
+    style={
+      Object {
+        "height": "33.333333333333336px",
+        "width": "33.333333333333336px",
+      }
+    }
+  >
+    <i
+      aria-hidden={true}
+      className=
+          ms-Persona-presenceIcon
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #ffffff;
+            display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-size: 6px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 12px;
+            speak: none;
+            vertical-align: top;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Window;
+          }
+      data-icon-name="SkypeMinus"
+      role="presentation"
+      style={
+        Object {
+          "fontSize": "16.666666666666668px",
+          "lineHeight": "33.333333333333336px",
+        }
+      }
+    >
+      
+    </i>
+  </div>
+</div>
+`;
+
+exports[`PersonaCoinView renders presence when it is passed 1`] = `
+<div
+  className="test-cn-root"
+>
+  <i
+    aria-hidden={true}
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+    data-icon-name="Contact"
+    role="presentation"
+  >
+    
+  </i>
+  <div
+    className=
+        ms-Persona-presence
+        test-cn-presence
+        {
+          -ms-high-contrast-adjust: none;
+          background-clip: content-box;
+          background-color: #E81123;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          bottom: -2px;
+          box-sizing: content-box;
+          height: 12px;
+          position: absolute;
+          right: -2px;
+          text-align: center;
+          top: auto;
+          width: 12px;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background-color: WindowText;
+          border-color: Window;
+        }
+    style={
+      Object {
+        "height": "16px",
+        "width": "16px",
+      }
+    }
+  >
+    <i
+      aria-hidden={true}
+      className=
+          ms-Persona-presenceIcon
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #ffffff;
+            display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-size: 6px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 12px;
+            speak: none;
+            vertical-align: top;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            color: Window;
+          }
+      data-icon-name="SkypeMinus"
+      role="presentation"
+      style={
+        Object {
+          "fontSize": "8px",
+          "lineHeight": "16px",
+        }
+      }
+    >
+      
+    </i>
+  </div>
+</div>
+`;
+
+exports[`PersonaCoinView renders the coin with the provided image 1`] = `
+<div
+  className="test-cn-root"
+>
+  <span
+    className=
+        test-cn-initials
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          webkit-font-smoothing: antialiased;
+          white-space: nowrap;
+        }
+  >
+    EG
+  </span>
+  <div
+    className=
+        ms-Image
+        test-cn-image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          border-radius: 50%;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 48,
+        "width": 48,
+      }
+    }
+  >
+    <img
+      alt=""
+      className=
+          ms-Image-image
+          ms-Image-image--cover
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            height: auto;
+            left: 50% /* @noflip */;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 100%;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets//persona-male.png"
+    />
+  </div>
+</div>
+`;

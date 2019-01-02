@@ -1,13 +1,13 @@
 module.exports = function(options) {
   options = options || {};
+  options.commonjsOnly = options.commonjsOnly || process.argv.indexOf('--commonJsOnly') > -1;
+
   const path = require('path');
   const exec = require('../exec');
-  const resolve = require('resolve');
   const typescriptPath = 'node ' + require.resolve('typescript/lib/tsc');
   const libPath = path.resolve(process.cwd(), 'lib');
   const srcPath = path.resolve(process.cwd(), 'src');
-  const extraParams =
-    '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
+  const extraParams = '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
 
   // Flag to keep track of if we already logged errors.
   // Since we run the ts builds in parallel, we do not want
