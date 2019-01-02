@@ -68,9 +68,9 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
             //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
             const mergedProps: IStyleableComponentProps<TViewProps, TStyleSet, TTokens> = viewProps
               ? {
-                ...(componentProps as any),
-                ...(viewProps as any)
-              }
+                  ...(componentProps as any),
+                  ...(viewProps as any)
+                }
               : componentProps;
 
             // TODO: is this the best way to trigger old vs. new behavior?
@@ -80,6 +80,8 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
             // TODO: Is the new way forcing all subcomponents to be slots as written? how else will subcomponents get styling?
             //        Is this forcing a requirement that every styleable section needs to be a slot?
             //        How will components apply classNames/styling if they don't use Slots?
+            //        Can users just fall back to using getClassNames similar to existing styled approach?
+            //        If so document as fallback if users don't want to use Slots for style sections.
             // TODO: Phase 2: phase out old approach with any existing components using createComponent (mostly Persona with style sections)
             //        If Mark's Persona PR is merged before this one, may be able to take this out entirely.
             if (!component.tokens) {
@@ -195,9 +197,13 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
   props: TProps,
   theme: ITheme,
   tokens: TTokens,
-  ...allStyles: (IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined)[]): ReturnType<typeof concatStyleSets> {
-  return concatStyleSets(...allStyles.map((styles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined) =>
-    (typeof styles === 'function') ? styles(props, theme, tokens) : styles));
+  ...allStyles: (IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined)[]
+): ReturnType<typeof concatStyleSets> {
+  return concatStyleSets(
+    ...allStyles.map((styles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined) =>
+      typeof styles === 'function' ? styles(props, theme, tokens) : styles
+    )
+  );
 }
 
 /**
@@ -222,15 +228,16 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
 // };
 
 // TODO: add tests to deal with various cases: no tokens, undefined, etc.
-function _resolveTokens<TViewProps, TTokens>
-  (props: TViewProps, theme: ITheme, ...allTokens: (IToken<TViewProps, TTokens> | false | null | undefined)[]): TTokens {
+function _resolveTokens<TViewProps, TTokens>(
+  props: TViewProps,
+  theme: ITheme,
+  ...allTokens: (IToken<TViewProps, TTokens> | false | null | undefined)[]
+): TTokens {
   const tokens = {};
 
   for (let currentTokens of allTokens) {
     if (currentTokens) {
-      currentTokens = typeof currentTokens === 'function'
-        ? currentTokens(props, theme)
-        : currentTokens;
+      currentTokens = typeof currentTokens === 'function' ? currentTokens(props, theme) : currentTokens;
 
       if (Array.isArray(currentTokens)) {
         currentTokens = _resolveTokens(props, theme, ...currentTokens);
