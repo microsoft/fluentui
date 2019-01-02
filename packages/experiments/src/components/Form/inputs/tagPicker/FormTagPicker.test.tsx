@@ -7,7 +7,7 @@ import * as sinon from 'sinon';
 import { Form } from '../../Form';
 import { DEFAULT_DEBOUNCE } from '../../FormBaseInput';
 import { FormTagPicker } from './FormTagPicker';
-import { ITag } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
+import { ITag } from 'office-ui-fabric-react/lib/Pickers';
 
 describe('FormTagPicker Unit Tests', () => {
   describe('Renders for all combinations of props', () => {

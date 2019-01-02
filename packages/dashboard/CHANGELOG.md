@@ -1,6 +1,34 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Dec 2018 13:35:08 GMT and should not be manually modified.
+
+## 0.42.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+
+## 0.41.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- Minor RTL improvement and bug fix in setup banner
+
+## 0.41.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- Improved low resolution support and added shimmer to setup banner
+
+## 0.40.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Adding LTR to layout even though RTL is experienced. This way the cards are visible on the layout. Setting RTL to the content of the card, this is necessary as a wrapper was introduced which explicitly said ltr
 
 ## 0.39.0
 Fri, 14 Dec 2018 13:35:30 GMT

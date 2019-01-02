@@ -14,6 +14,7 @@ import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
+import { FacepileStyles } from './styles/Facepile.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
@@ -97,6 +98,9 @@ export const FluentStyles: any = {
   },
   ExpandingCard: {
     styles: ExpandingCardStyles
+  },
+  Facepile: {
+    styles: FacepileStyles
   },
   IconButton: {
     styles: IconButtonStyles

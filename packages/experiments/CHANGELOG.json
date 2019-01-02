@@ -2,6 +2,82 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.0",
+      "tag": "@uifabric/experiments_v6.50.0",
+      "date": "Tue, 01 Jan 2019 13:36:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds PersonaCoin and VerticalPersona",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "7f1ea319689b3e93fd18e7a6595f0f2310768de0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.118.1 <7.0.0` to `>=6.118.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.49.1",
+      "tag": "@uifabric/experiments_v6.49.1",
+      "date": "Mon, 31 Dec 2018 13:37:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Implementing wrapping of vertical stacks and adding examples for it, fixing bugs in wrapping of horizontal stacks.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "410922aad2271f96e3c01dd600028128ffa38eaa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.118.0 <7.0.0` to `>=6.118.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.49.0",
+      "tag": "@uifabric/experiments_v6.49.0",
+      "date": "Tue, 18 Dec 2018 22:17:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pagination: Add unit tests for control and fix button styles.",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "603030a34f5efc0df98dfa581c9094f4c69646b9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.116.0 <7.0.0` to `>=6.116.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.48.2",
+      "tag": "@uifabric/experiments_v6.48.2",
+      "date": "Mon, 17 Dec 2018 13:36:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Form: fix wrong imports from OUFR dependency.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e103fa2c76efe67af4f9577a39e2d8b574d2d631"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.114.0 <7.0.0` to `>=6.115.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.48.1",
       "tag": "@uifabric/experiments_v6.48.1",
       "date": "Fri, 14 Dec 2018 13:35:30 GMT",

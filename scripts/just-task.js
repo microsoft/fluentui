@@ -42,7 +42,7 @@ task(
   )
 );
 
-task('build-webpack-utils', rig.ts.commonjsOnly);
+task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api'));
 

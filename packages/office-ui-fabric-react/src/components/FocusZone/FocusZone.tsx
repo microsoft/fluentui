@@ -302,18 +302,18 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       return;
     }
 
-    if (document.activeElement === this._root.current && this._isInnerZone) {
-      // If this element has focus, it is being controlled by a parent.
-      // Ignore the keystroke.
-      return;
-    }
-
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
     }
 
     // If the default has been prevented, do not process keyboard events.
     if (ev.isDefaultPrevented()) {
+      return;
+    }
+
+    if (document.activeElement === this._root.current && this._isInnerZone) {
+      // If this element has focus, it is being controlled by a parent.
+      // Ignore the keystroke.
       return;
     }
 
