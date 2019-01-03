@@ -21,7 +21,7 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
           }
         }
       ],
-      href: 'www.google.com',
+      href: 'https://developer.microsoft.com/en-us/fabric',
       cardFrameMenuTitle: 'more',
       cardFrameMenuAriaLabel: 'more'
     };
