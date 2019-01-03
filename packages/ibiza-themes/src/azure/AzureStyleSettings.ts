@@ -14,12 +14,17 @@ import { PanelStyles } from './styles/Panel.styles';
 import { primaryButtonStyles } from './styles/PrimaryButton.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { SliderStyles } from './styles/Slider.styles';
+import { iconButtonStyles } from './styles/IconButton.styles';
+import { actionButtonStyles } from './styles/ActionButton.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
 // tslint:disable-next-line:no-any
 export const AzureStyleSettings = (theme: ITheme): any => {
   return {
+    ActionButton: {
+      styles: actionButtonStyles(theme)
+    },
     // Breadcrumb: {
     //   styles: BreadcrumbStyles
     // },
@@ -83,9 +88,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // ExpandingCard: {
     //   styles: ExpandingCardStyles
     // },
-    // IconButton: {
-    //   styles: IconButtonStyles
-    // },
+    IconButton: {
+      styles: iconButtonStyles(theme)
+    },
     Label: {
       styles: LabelStyles
     },
