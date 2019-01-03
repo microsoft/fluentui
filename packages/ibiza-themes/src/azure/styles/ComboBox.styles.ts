@@ -18,6 +18,9 @@ export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
         '.ms-Button:hover': {
           backgroundColor: semanticColors.bodyBackground,
           color: semanticColors.inputText
+        },
+        '&.is-open': {
+          borderColor: semanticColors.focusBorder
         }
       }
     },
@@ -38,6 +41,9 @@ export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     rootError: {
       borderColor: semanticColors.errorBackground
+    },
+    rootPressed: {
+      borderColor: semanticColors.focusBorder
     },
     callout: {
       border: 'none',
