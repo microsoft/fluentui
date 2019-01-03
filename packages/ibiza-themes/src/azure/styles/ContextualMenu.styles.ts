@@ -30,11 +30,22 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
               fontSize: FontSizes.size12
             }
           ],
+          splitPrimary: {
+            fontSize: FontSizes.size12
+          },
           divider: {
             backgroundColor: semanticColors.inputBorder
           },
           icon: {
             color: semanticColors.focusBorder
+          },
+          item: {
+            selectors: {
+              '.is-expanded': {
+                backgroundColor: semanticColors.menuItemBackgroundHovered,
+                color: semanticColors.inputText
+              }
+            }
           }
         };
       }

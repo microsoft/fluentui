@@ -2,6 +2,9 @@ import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { CommonSemanticColors, DarkSemanticColors } from './AzureColors';
 
 export const AzureThemeDark: ITheme = createTheme({
+  palette: {
+    themePrimary: DarkSemanticColors.controlOutlines.accent
+  },
   semanticColors: {
     bodyBackground: DarkSemanticColors.background,
     bodyText: DarkSemanticColors.text.body,
