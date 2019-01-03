@@ -42,7 +42,11 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
   };
 
   private _getEmptyCard = (): string => {
-    const emptyCardArray = ['./src/images/horizontal bar char.svg', './src/images/line graph.svg', './src/images/vertical bar chart.svg'];
+    const emptyCardArray = [
+      './src/images/AddCardPanelEmptyState/horizontalBarChar.svg',
+      './src/images/AddCardPanelEmptyState/lineGraph.svg',
+      './src/images/AddCardPanelEmptyState/verticalBarChart.svg'
+    ];
     const randomCard = emptyCardArray[Math.floor(Math.random() * emptyCardArray.length)];
     return randomCard;
   };
@@ -95,7 +99,7 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
         ) : (
           <div className={classNames.emptyCardStyles}>
             <img draggable={false} src={this._getEmptyCard()} />
-            <div className={classNames.emptyCardContentStyles}>{this.props.emptyCardContent}</div>
+            <div className={classNames.emptyPanelMessageStyles}>{this.props.emptyPanelMessage}</div>
           </div>
         )}
       </div>

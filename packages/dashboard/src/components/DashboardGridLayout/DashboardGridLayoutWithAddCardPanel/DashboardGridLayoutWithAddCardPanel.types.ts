@@ -50,8 +50,6 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
    * ref passed. If ref is not passed scrolling is applied to the immediate parent element
    */
   scrollElement?: HTMLElement;
-
-  emptyCardContent?: string;
 }
 
 export interface IAddCardPanelProps {
@@ -64,6 +62,11 @@ export interface IAddCardPanelProps {
    * The aria label for the panel's close button
    */
   panelCloseButtonAriaLabel?: string;
+
+  /**
+   * Message shown in add card panel empty state
+   */
+  emptyPanelMessage?: string;
 }
 
 export interface IDashboardGridLayoutWithAddCardPanelState {

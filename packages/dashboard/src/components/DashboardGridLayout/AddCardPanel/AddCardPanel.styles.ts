@@ -21,7 +21,7 @@ export const getStyles = (): IAddCardPanelStyles => {
       height: '200px',
       width: '200px'
     },
-    emptyCardContentStyles: {
+    emptyPanelMessageStyles: {
       fontFamily: DefaultFontStyles.medium.fontFamily,
       lineHeight: '20px',
       fontSize: '14px',
