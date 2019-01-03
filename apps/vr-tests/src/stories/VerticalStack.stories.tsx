@@ -176,6 +176,31 @@ storiesOf('VerticalStack', module)
       <Stack.Item className={styles.shrinkItem}>5</Stack.Item>
     </Stack>
   ))
+  .addStory(
+    'Wrap',
+    () => (
+      <Fabric>
+        <Stack {...defaultProps} verticalGap={10} wrap className={styles.fixedHeight}>
+          <span className={styles.boxItem}>1</span>
+          <span className={styles.boxItem}>2</span>
+          <span className={styles.boxItem}>3</span>
+          <span className={styles.boxItem}>4</span>
+          <span className={styles.boxItem}>5</span>
+          <span className={styles.boxItem}>6</span>
+          <span className={styles.boxItem}>7</span>
+          <span className={styles.boxItem}>8</span>
+          <span className={styles.boxItem}>9</span>
+          <span className={styles.boxItem}>10</span>
+          <span className={styles.boxItem}>11</span>
+          <span className={styles.boxItem}>12</span>
+          <span className={styles.boxItem}>13</span>
+          <span className={styles.boxItem}>14</span>
+          <span className={styles.boxItem}>15</span>
+        </Stack>
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory('Box shadow around items', () => (
     <Fabric>
       <Stack {...defaultProps} gap={25}>
