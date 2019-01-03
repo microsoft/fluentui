@@ -10891,6 +10891,7 @@ interface ITooltip {
 // @public (undocumented)
 interface ITooltipHost {
   dismiss: () => void;
+  show: () => void;
 }
 
 // @public
@@ -12434,6 +12435,8 @@ class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState
   dismiss: () => void;
   // (undocumented)
   render(): JSX.Element;
+  // (undocumented)
+  show: () => void;
 }
 
 // @public (undocumented)
