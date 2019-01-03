@@ -104,6 +104,12 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
    * Additional CSS class(es) to apply to the CalendarMonth.
    */
   className?: string;
+
+  /**
+   * Whether the year picker is hidden
+   * @defaultvalue false
+   */
+  yearPickerHidden?: boolean;
 }
 
 export interface ICalendarMonthStyleProps {

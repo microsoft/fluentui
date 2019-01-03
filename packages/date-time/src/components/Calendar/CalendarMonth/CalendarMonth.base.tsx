@@ -15,18 +15,34 @@ import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } f
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
 import { KeyCodes } from '@uifabric/utilities';
+import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
+import { CalendarYear } from '../CalendarYear/CalendarYear';
 
 const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>();
 
-export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
+export interface ICalendarMonthState {
+  isYearPickerVisible?: boolean;
+}
+
+export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
   public static defaultProps: Partial<ICalendarMonthProps> = {
     styles: getStyles,
     strings: undefined,
     navigationIcons: defaultIconStrings,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks
+    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+    yearPickerHidden: false
   };
 
   private _navigatedMonth: HTMLButtonElement;
+  private _calendarYearRef = React.createRef<ICalendarYear>();
+
+  constructor(props: ICalendarMonthProps) {
+    super(props);
+
+    this.state = {
+      isYearPickerVisible: false
+    };
+  }
 
   public render(): JSX.Element {
     const {
@@ -59,10 +75,31 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!this.props.onHeaderSelect,
+      hasHeaderClickCallback: !!onHeaderSelect,
       highlightCurrentMonth: highlightCurrentMonth,
       highlightSelectedMonth: highlightSelectedMonth
     });
+
+    if (this.state.isYearPickerVisible) {
+      return (
+        <CalendarYear
+          minYear={minDate ? minDate.getFullYear() : undefined}
+          maxYear={maxDate ? maxDate.getFullYear() : undefined}
+          onSelectYear={this._onSelectYear}
+          navigationIcons={navigationIcons}
+          onHeaderSelect={this._onYearPickerHeaderSelect}
+          selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
+          onRenderYear={this._onRenderYear}
+          strings={{
+            rangeAriaLabel: this._yearRangeToString
+          }}
+          componentRef={this._calendarYearRef}
+          styles={styles}
+          highlightCurrentYear={highlightCurrentMonth}
+          highlightSelectedYear={highlightSelectedMonth}
+        />
+      );
+    }
 
     return (
       <div className={classNames.root}>
@@ -199,9 +236,52 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
   };
 
   private _onHeaderSelect = (): void => {
-    const { onHeaderSelect } = this.props;
-    if (onHeaderSelect) {
+    const { onHeaderSelect, yearPickerHidden } = this.props;
+    if (!yearPickerHidden) {
+      this.setState({ isYearPickerVisible: true });
+    } else if (onHeaderSelect) {
       onHeaderSelect();
     }
+  };
+
+  private _onSelectYear = (selectedYear: number) => {
+    const { navigatedDate, onNavigateDate, maxDate, minDate } = this.props;
+    const navYear = navigatedDate.getFullYear();
+    if (navYear !== selectedYear) {
+      let newNavigationDate = new Date(navigatedDate.getTime());
+      newNavigationDate.setFullYear(selectedYear);
+      // for min and max dates, adjust the new navigation date - perhaps this should be
+      // checked on the master navigation date handler (i.e. in Calendar)
+      if (maxDate && newNavigationDate > maxDate) {
+        newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
+      } else if (minDate && newNavigationDate < minDate) {
+        newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
+      }
+      onNavigateDate(newNavigationDate, true);
+    }
+    this.setState({ isYearPickerVisible: false });
+  };
+
+  private _onYearPickerHeaderSelect = (): void => {
+    this.setState({ isYearPickerVisible: false });
+  };
+
+  private _onRenderYear = (year: number) => {
+    return this._yearToString(year);
+  };
+
+  private _yearToString = (year: number) => {
+    const { navigatedDate, dateTimeFormatter } = this.props;
+    if (dateTimeFormatter) {
+      // create a date based on the current nav date
+      const yearFormattingDate = new Date(navigatedDate.getTime());
+      yearFormattingDate.setFullYear(year);
+      return dateTimeFormatter.formatYear(yearFormattingDate);
+    }
+    return String(year);
+  };
+
+  private _yearRangeToString = (yearRange: ICalendarYearRange) => {
+    return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
   };
 }
