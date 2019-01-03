@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStackProps, ITextProps } from '@uifabric/experiments';
+import { IStackProps, ITextProps, IPersonaCoinProps } from '@uifabric/experiments';
 import { IContextualMenuProps, IIconProps, ILabelProps } from 'office-ui-fabric-react';
 import { ISlotProp } from '../Foundation';
 
@@ -23,3 +23,4 @@ export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
 export type ILabelSlot = ISlotProp<ILabelProps, 'children'>;
 export type IStackSlot = ISlotProp<IStackProps>;
 export type ITextSlot = ISlotProp<ITextProps, 'children'>;
+export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps>;

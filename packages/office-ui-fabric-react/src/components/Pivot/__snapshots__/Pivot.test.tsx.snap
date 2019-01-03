@@ -100,7 +100,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -253,7 +253,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -451,7 +451,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -605,7 +605,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -767,7 +767,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -990,7 +990,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1143,7 +1143,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1341,7 +1341,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1507,7 +1507,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1713,7 +1713,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1866,7 +1866,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2063,7 +2063,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2229,7 +2229,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #333333;
+              color: #212121;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
