@@ -78,6 +78,48 @@ export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           }
         }
       }
+    },
+    rootChecked: {
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      border: `1px solid ${semanticColors.buttonTextPressed}`,
+      selectors: {
+        ...labelTextColor(semanticColors.buttonText),
+        '&.ms-Button--compoundPrimary.is-checked': {
+          backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+          border: `0px`,
+          selectors: {
+            ...labelTextColor(semanticColors.primaryButtonTextPressed)
+          }
+        }
+      }
+    },
+    rootCheckedHovered: {
+      backgroundColor: semanticColors.buttonBackgroundHovered,
+      border: `1px solid ${semanticColors.buttonTextPressed}`,
+      selectors: {
+        ...labelTextColor(semanticColors.buttonTextHovered),
+        '&.ms-Button--compoundPrimary.is-checked:hover': {
+          backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+          border: `0px`,
+          selectors: {
+            ...labelTextColor(semanticColors.primaryButtonTextHovered)
+          }
+        }
+      }
+    },
+    rootCheckedPressed: {
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      border: `1px solid ${semanticColors.buttonTextPressed}`,
+      selectors: {
+        ...labelTextColor(semanticColors.buttonTextPressed),
+        '&.ms-Button--compoundPrimary.is-checked:active': {
+          backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+          border: `0px`,
+          selectors: {
+            ...labelTextColor(semanticColors.primaryButtonTextPressed)
+          }
+        }
+      }
     }
   };
 };

@@ -20,6 +20,15 @@ export const primaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     rootPressed: {
       backgroundColor: semanticColors.primaryButtonBackgroundPressed,
       color: semanticColors.primaryButtonTextPressed
+    },
+    rootChecked: {
+      backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+      color: semanticColors.primaryButtonTextPressed,
+      border: 'none'
+    },
+    rootCheckedHovered: {
+      backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+      color: semanticColors.primaryButtonTextHovered
     }
   };
 };
