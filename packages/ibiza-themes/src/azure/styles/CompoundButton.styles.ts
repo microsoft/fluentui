@@ -81,9 +81,9 @@ export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     },
     rootChecked: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      border: `1px solid ${semanticColors.buttonTextPressed}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       selectors: {
-        ...labelTextColor(semanticColors.buttonText),
+        ...labelTextColor(semanticColors.buttonTextPressed),
         '&.ms-Button--compoundPrimary.is-checked': {
           backgroundColor: semanticColors.primaryButtonBackgroundPressed,
           border: `0px`,
@@ -95,7 +95,7 @@ export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     },
     rootCheckedHovered: {
       backgroundColor: semanticColors.buttonBackgroundHovered,
-      border: `1px solid ${semanticColors.buttonTextPressed}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       selectors: {
         ...labelTextColor(semanticColors.buttonTextHovered),
         '&.ms-Button--compoundPrimary.is-checked:hover': {
@@ -109,7 +109,7 @@ export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     },
     rootCheckedPressed: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      border: `1px solid ${semanticColors.buttonTextPressed}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       selectors: {
         ...labelTextColor(semanticColors.buttonTextPressed),
         '&.ms-Button--compoundPrimary.is-checked:active': {

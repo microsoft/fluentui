@@ -29,6 +29,10 @@ export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       backgroundColor: semanticColors.buttonBackgroundHovered,
       color: semanticColors.buttonTextHovered
     },
+    rootCheckedPressed: {
+      order: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      color: semanticColors.buttonTextPressed
+    },
     splitButtonContainer: {
       selectors: {
         // standard button
@@ -99,6 +103,7 @@ export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         // primary button dropdown hover
         '.ms-Button--primary + .ms-Button': {
           backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+          border: 'none',
           color: semanticColors.primaryButtonTextHovered,
           selectors: {
             '.ms-Button-menuIcon': {
@@ -124,6 +129,9 @@ export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         },
         // secondary button dropdown hover
         '.ms-Button--default + .ms-Button': {
+          backgroundColor: semanticColors.buttonBackgroundHovered,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+          borderLeft: 'none',
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.buttonBackgroundHovered,
@@ -189,6 +197,7 @@ export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         // secondary button dropdown checked
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
           color: semanticColors.buttonTextPressed,
           selectors: {
             '.ms-Button-menuIcon': {
@@ -239,6 +248,8 @@ export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
           color: semanticColors.buttonTextHovered,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+          borderLeft: 'none',
           selectors: {
             '.ms-Button-menuIcon': {
               color: semanticColors.buttonTextHovered
