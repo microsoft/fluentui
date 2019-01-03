@@ -120,6 +120,19 @@ export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           }
         }
       }
+    },
+    rootCheckedDisabled: {
+      backgroundColor: semanticColors.buttonBackgroundDisabled,
+      border: '0px',
+      selectors: {
+        ...labelTextColor(semanticColors.buttonTextDisabled),
+        '&.ms-Button--compoundPrimary.is-checked.is-disabled': {
+          backgroundColor: semanticColors.buttonBackgroundDisabled,
+          selectors: {
+            ...labelTextColor(semanticColors.buttonTextDisabled)
+          }
+        }
+      }
     }
   };
 };

@@ -12,6 +12,8 @@ export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`
     },
     rootDisabled: {
+      backgroundColor: semanticColors.buttonBackgroundDisabled,
+      color: semanticColors.buttonTextDisabled,
       border: `0px`
     },
     rootHovered: {
