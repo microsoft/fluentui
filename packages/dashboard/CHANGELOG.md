@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 28 Dec 2018 13:35:08 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jan 2019 13:33:55 GMT and should not be manually modified.
+
+## 0.42.1
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Patches
+
+- Adding focus for action bar overflow button
+- Add tooltip for navbar expended button
 
 ## 0.42.0
 Fri, 28 Dec 2018 13:35:08 GMT
