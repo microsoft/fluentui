@@ -3,7 +3,7 @@ import { CommonSemanticColors, DarkSemanticColors } from './AzureColors';
 
 export const AzureThemeDark: ITheme = createTheme({
   palette: {
-    accent: DarkSemanticColors.controlOutlines.accent
+    themePrimary: DarkSemanticColors.controlOutlines.accent
   },
   semanticColors: {
     bodyBackground: DarkSemanticColors.background,
