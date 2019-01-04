@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Allows a custom value format function to be passed to the Slider component",
+      "comment": "Slider: Allows a custom value format function to be passed which formats the value label",
       "type": "minor"
     }
   ],
