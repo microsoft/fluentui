@@ -442,8 +442,8 @@
       "versionPolicyName": "lockedMajor"
     },
     {
-      "packageName": "@uifabric/ibiza-themes",
-      "projectFolder": "packages/ibiza-themes",
+      "packageName": "@uifabric/azure-themes",
+      "projectFolder": "packages/azure-themes",
       "shouldPublish": false
     }
   ]

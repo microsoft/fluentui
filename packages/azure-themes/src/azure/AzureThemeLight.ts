@@ -3,7 +3,8 @@ import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 
 export const AzureThemeLight: ITheme = createTheme({
   palette: {
-    themePrimary: LightSemanticColors.controlOutlines.accent
+    themePrimary: LightSemanticColors.controlOutlines.accent,
+    neutralDark: LightSemanticColors.text.body
   },
   semanticColors: {
     bodyBackground: LightSemanticColors.background,
@@ -32,6 +33,13 @@ export const AzureThemeLight: ITheme = createTheme({
     inputPlaceholderText: LightSemanticColors.text.placeholder,
     link: LightSemanticColors.controlOutlines.accent,
     linkHovered: LightSemanticColors.controlOutlines.accent,
+    listBackground: LightSemanticColors.background,
+    listHeaderBackgroundPressed: LightSemanticColors.item.hover,
+    listItemBackgroundChecked: LightSemanticColors.item.select,
+    listItemBackgroundCheckedHovered: LightSemanticColors.item.select,
+    listItemBackgroundHovered: LightSemanticColors.item.hover,
+    listText: LightSemanticColors.text.body,
+    listTextColor: LightSemanticColors.text.body,
     menuItemBackgroundHovered: LightSemanticColors.item.hover,
     menuItemBackgroundChecked: LightSemanticColors.item.select,
     menuItemBackgroundPressed: LightSemanticColors.item.select,
@@ -43,6 +51,7 @@ export const AzureThemeLight: ITheme = createTheme({
     primaryButtonTextDisabled: LightSemanticColors.disabledButton.text,
     primaryButtonTextHovered: LightSemanticColors.primaryButton.hover.text,
     primaryButtonTextPressed: LightSemanticColors.primaryButton.pressed.text,
+    variantBorder: CommonSemanticColors.dividers.lineSeparator,
     // extended
     controlAccent: LightSemanticColors.controlOutlines.accent,
     controlOutline: LightSemanticColors.controlOutlines.rest,

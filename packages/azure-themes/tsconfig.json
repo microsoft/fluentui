@@ -15,20 +15,12 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
+    "types": ["jest", "webpack-env"],
     "paths": {
-      "@uifabric/ibiza-theme/lib/*": [
-        "./src/*"
-      ],
-      "@uifabric/ibiza-theme": [
-        "./src"
-      ]
+      "@uifabric/azure-themes/lib/*": ["./src/*"],
+      "@uifabric/azure-themes": ["./src"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

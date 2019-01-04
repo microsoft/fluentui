@@ -3,7 +3,8 @@ import { CommonSemanticColors, DarkSemanticColors } from './AzureColors';
 
 export const AzureThemeDark: ITheme = createTheme({
   palette: {
-    themePrimary: DarkSemanticColors.controlOutlines.accent
+    themePrimary: DarkSemanticColors.controlOutlines.accent,
+    neutralDark: DarkSemanticColors.text.body
   },
   semanticColors: {
     bodyBackground: DarkSemanticColors.background,
@@ -32,6 +33,13 @@ export const AzureThemeDark: ITheme = createTheme({
     inputPlaceholderText: DarkSemanticColors.text.placeholder,
     link: DarkSemanticColors.controlOutlines.accent,
     linkHovered: DarkSemanticColors.controlOutlines.accent,
+    listBackground: DarkSemanticColors.background,
+    listHeaderBackgroundPressed: DarkSemanticColors.item.hover,
+    listItemBackgroundChecked: DarkSemanticColors.item.select,
+    listItemBackgroundCheckedHovered: DarkSemanticColors.item.select,
+    listItemBackgroundHovered: DarkSemanticColors.item.hover,
+    listText: DarkSemanticColors.text.body,
+    listTextColor: DarkSemanticColors.text.body,
     menuItemBackgroundChecked: DarkSemanticColors.item.select,
     menuItemBackgroundHovered: DarkSemanticColors.item.hover,
     menuItemBackgroundPressed: DarkSemanticColors.item.select,
@@ -43,6 +51,7 @@ export const AzureThemeDark: ITheme = createTheme({
     primaryButtonTextDisabled: DarkSemanticColors.disabledButton.text,
     primaryButtonTextHovered: DarkSemanticColors.primaryButton.hover.text,
     primaryButtonTextPressed: DarkSemanticColors.primaryButton.pressed.text,
+    variantBorder: CommonSemanticColors.dividers.lineSeparator,
     // extended colors
     controlAccent: DarkSemanticColors.controlOutlines.accent,
     controlOutline: DarkSemanticColors.controlOutlines.rest,
