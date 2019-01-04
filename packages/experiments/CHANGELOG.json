@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.1",
+      "tag": "@uifabric/experiments_v6.50.1",
+      "date": "Fri, 04 Jan 2019 13:36:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Adding vertical stack wrapping test to vr-tests.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ba51a82e52f5c31c03af7e233ba76beaa33a5af"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.0",
       "tag": "@uifabric/experiments_v6.50.0",
       "date": "Tue, 01 Jan 2019 13:36:37 GMT",

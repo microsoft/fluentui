@@ -18,7 +18,6 @@ export interface IActionBarStyles {
    */
   root: IStyle;
 }
-
 export interface IAction {
   /**
    * Defines the title of the button
@@ -50,4 +49,21 @@ export interface IActionBarProps {
    * List of actions this action bar is going to support
    */
   actions: IAction[];
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
 }
