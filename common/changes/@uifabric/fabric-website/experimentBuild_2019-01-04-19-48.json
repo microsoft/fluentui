@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Documentation: Adding npm alias to allow devs to build to experiments and updating documentation to reflect it.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
