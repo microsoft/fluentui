@@ -27,6 +27,34 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
+// TODO: document each of these cases (IStyle vs. IStyles interfaces) as to which work and why or why not:
+//        is nesting styles from both component level and slot level possible?
+//        styled component vs. foundation component limitations?
+// {/* <Button
+//   icon={{ styles: { background: "blue" } }} // adds the className with background: blue to className of component
+//   //OR
+//   icon={{
+//     styles: {
+//       root: { background: "blue" },
+//       imageContainer: { border: "2px solid blue" }
+//     }
+//   }}
+//   styles={{
+//     icon: {
+//       background: "blue" // className applied to icon root
+//     },
+//     // OR
+//     icon: {
+//       root: {
+//         background: "blue"
+//       },
+//       imageContainer: {
+//         border: "2px solid blue"
+//       }
+//     }
+//   }}
+// />; */}
+
 // tslint:disable:jsx-no-lambda
 export class ButtonStylesExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -40,6 +68,22 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button icon="PeopleAdd" content={{ children: 'Slot Theme: Purple Text', theme: testTheme }} />
               </ButtonStack>
               <ButtonStack>
+                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (root)" styles={{ root: { color: 'red' } }} />
+                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (stack)" styles={{ stack: { color: 'red' } }} />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  icon="PeopleAdd"
+                  content="Root Styles Object: Red Text"
+                  // TODO: Callout: This line generates a TS error... by design. Intrinsic elements can't be passed styles props.
+                  //        However this prevents mixing intrinsic elements and component props. This is done to ensure type safety.
+                  //        Using 'style' or 'className' for intrinsic elements should be a good fallback for niche scenarios.
+                  // root={{ styles: { color: 'red' } }}
+                  root={{ style: { color: 'red' } }}
+                />
+                <Button icon="PeopleAdd" content="Stack Styles Object: Red Text" stack={{ styles: { root: { color: 'red' } } }} />
+              </ButtonStack>
+              <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Styles Object: Pink Icon" styles={{ icon: { color: 'pink ' } }} />
                 <Button icon={{ iconName: 'PeopleAdd', styles: { root: { color: 'pink ' } } }} content="Icon Styles Object: Pink Icon" />
               </ButtonStack>
@@ -47,10 +91,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon="PeopleAdd"
                   content="Button Styles Function: Theme.warningHighlight Content"
-                  styles={(props, theme) => {
-                    console.log('Button styles function called');
-                    return { content: { color: theme.semanticColors.warningHighlight } };
-                  }}
+                  styles={(props, theme) => ({ content: { color: theme.semanticColors.warningHighlight } })}
                 />
               </ButtonStack>
               <ButtonStack>
@@ -67,10 +108,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   renderTestButton
                   button={{
                     content: 'Nested Button Styles Function: Theme.warningHighlight Content',
-                    styles: (props, theme) => {
-                      console.log('Nested button styles function called');
-                      return { content: { color: theme.semanticColors.warningHighlight } };
-                    }
+                    styles: (props, theme) => ({ content: { color: theme.semanticColors.warningHighlight } })
                   }}
                 />
               </ButtonStack>
@@ -79,10 +117,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   icon="PeopleAdd"
                   content={{
                     children: 'Content Styles Function: Theme.warningHighlight Text',
-                    styles: (props, theme) => {
-                      console.log('Text styles function called');
-                      return { root: { color: theme.semanticColors.warningHighlight } };
-                    }
+                    styles: (props, theme) => ({ root: { color: theme.semanticColors.warningHighlight } })
                   }}
                 />
               </ButtonStack>
@@ -91,10 +126,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   icon="PeopleAdd"
                   content={{
                     children: 'Content Styles Function: Red Text via Content Theme',
-                    styles: (props, theme) => {
-                      console.log('Text styles function with custom theme called');
-                      return { root: { color: theme.semanticColors.buttonText } };
-                    },
+                    styles: (props, theme) => ({ root: { color: theme.semanticColors.buttonText } }),
                     theme: testTheme
                   }}
                 />
@@ -103,10 +135,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: props => {
-                      console.log('Icon styles function called');
-                      return { root: { color: props.theme!.semanticColors.warningHighlight } };
-                    }
+                    styles: props => ({ root: { color: props.theme!.semanticColors.warningHighlight } })
                   }}
                   content="Icon Styles Function: Theme.warningHighlight Icon"
                 />
@@ -115,10 +144,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: props => {
-                      console.log('Icon styles function with custom theme called');
-                      return { root: { color: props.theme!.semanticColors.buttonText } };
-                    },
+                    styles: props => ({ root: { color: props.theme!.semanticColors.buttonText } }),
                     theme: testTheme
                   }}
                   content="Icon Styles Function: Red Icon via Icon Theme"

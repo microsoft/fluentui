@@ -1,22 +1,31 @@
 import * as React from 'react';
 import { Button, IButtonProps } from '../index';
 import { Stack } from '@uifabric/experiments';
-import { ContextualMenu, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
+import { ContextualMenu, createTheme, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
 
 const sectionGap = 32;
 
+const testTheme = createTheme({
+  semanticColors: {
+    buttonText: 'red'
+  },
+  fonts: {
+    medium: {
+      color: 'purple'
+    }
+  }
+});
+
 // TODO: if kept, rename to tokens
 // tslint:disable:jsx-no-lambda
 export class ButtonStyleVarsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    // TODO: add Button with token function using props
     const ButtonSet = (props: IButtonProps) => (
       <Stack horizontal verticalAlign="center" gap={8}>
         <Button {...props} />
-        <Button {...props} secondary />
         <Button {...props} primary />
         <Button {...props} disabled />
         <Button
@@ -33,7 +42,6 @@ export class ButtonStyleVarsExample extends React.Component<{}, {}> {
       </Stack>
     );
 
-    // TODO: why is baseToken minWidth and minHeight not applying to first button set?
     return (
       <Stack gap={sectionGap}>
         <ButtonSet />
@@ -48,6 +56,31 @@ export class ButtonStyleVarsExample extends React.Component<{}, {}> {
           content="Menu button with icon"
           menu={buttonMenu}
         />
+        <Stack horizontal verticalAlign="center" gap={8}>
+          <Button
+            primary
+            icon="PeopleAdd"
+            content="Token Function: Red BG, White Text"
+            tokens={(props, theme) =>
+              props.primary && {
+                backgroundColor: 'red',
+                backgroundColorHovered: 'pink',
+                color: 'white',
+                colorHovered: 'white',
+                iconColor: 'white',
+                iconColorHovered: 'white'
+              }
+            }
+          />
+          <Button
+            icon="PeopleAdd"
+            content="Token Function: Red Icon (via theme), Purple Text"
+            theme={testTheme}
+            tokens={(props, theme) => ({
+              color: theme.fonts.medium.color
+            })}
+          />
+        </Stack>
       </Stack>
     );
   }

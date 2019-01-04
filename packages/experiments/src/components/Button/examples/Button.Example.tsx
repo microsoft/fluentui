@@ -26,21 +26,14 @@ export class ButtonExample extends React.Component<{}, {}> {
               <ButtonStack>
                 <Button content="Default button" />
                 <Button disabled content="Disabled default button" />
-              </ButtonStack>
-              <ButtonStack>
                 <Button primary content="Primary button" />
                 <Button disabled primary content="Primary disabled button" />
               </ButtonStack>
               <ButtonStack>
-                <Button secondary content="Secondary button" />
-                <Button disabled secondary content="Secondary disabled button" />
-              </ButtonStack>
-              <ButtonStack>
+                <Button icon="PeopleAdd" circular />
                 <Button icon="Phone" circular disabled />
                 <Button icon="FontSize" circular primary />
                 <Button icon="Attach" circular primary disabled />
-                <Button icon="FontSize" circular secondary />
-                <Button icon="Attach" circular secondary disabled />
               </ButtonStack>
               <ButtonStack>
                 <Button icon="Upload" content="Button with string icon" />

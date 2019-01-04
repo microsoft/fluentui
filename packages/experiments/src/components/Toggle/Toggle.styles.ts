@@ -65,24 +65,16 @@ const toggleCheckedDisabledTokens: IToggleComponent['tokens'] = (props, theme) =
   };
 };
 
-export const ToggleTokens: IToggleComponent['tokens'] = props => ([
+export const ToggleTokens: IToggleComponent['tokens'] = props => [
   props.checked && toggleCheckedVariables,
-  props.disabled && [
-    toggleDisabledTokens,
-    props.checked && toggleCheckedDisabledTokens
-  ],
-  !props.disabled && [
-    toggleEnabledTokens,
-    props.checked && toggleCheckedEnabledTokens
-  ]
-]);
+  props.disabled && [toggleDisabledTokens, props.checked && toggleCheckedDisabledTokens],
+  !props.disabled && [toggleEnabledTokens, props.checked && toggleCheckedEnabledTokens]
+];
 
 export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens) => {
   const { className, disabled, checked } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  console.log('ToggleStyles');
 
   return {
     root: [

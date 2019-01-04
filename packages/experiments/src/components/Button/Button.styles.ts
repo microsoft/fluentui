@@ -1,49 +1,28 @@
 import { IButtonComponent } from './Button.types';
 import { getFocusStyle, getGlobalClassNames } from '../../Styling';
 
-// TODO: how are we going to deal with globalClassNames? same way through styles?
-
-// TODO: reconcile existing nested style variables with tokens. is the codepen's flatter approach a full replacement?
-// TODO: did David intend for new flatter approach? assume so for now unless big holes appear
-// TODO: how will Button.state fit into this approach?
-// TODO: callout: decision to pass theme to token functions
-// const baseTokens = {
-//   backgroundColor: 'transparent',
-//   backgroundColorHovered: '#eee',
-//   color: 'black',
-//   borderColor: 'transparent',
-//   borderWidth: 2,
-//   borderRadius: 2
-// };
-
 const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
-  // console.log('baseTokens theme: ' + theme);
   return {
-    borderRadius: 0, // root
-    borderWidth: 0, // root
-
-    // sizing
+    borderRadius: 0,
+    borderWidth: 0,
     minWidth: 100,
     minHeight: 32,
     lineHeight: 1,
-    contentPadding: '8px 16px', // root
-
-    // subcomponent "text"
+    contentPadding: '8px 16px',
     textFamily: 'default',
     textSize: 14,
-    // tslint:disable-next-line:no-any
-    textWeight: 700 as any,
-
-    // subcomponent "icon"
     iconSize: 14,
-    iconWeight: 400,
+    iconWeight: 400
+  };
+};
 
-    // Circular tokens
-    circularBorderRadius: '50%',
-    circularBorderWidth: 1,
-    circularMinWidth: 32,
-    circularMinHeight: 32,
-    circularContentPadding: ''
+const circularTokens: IButtonComponent['tokens'] = (props, theme) => {
+  return {
+    borderRadius: '50%',
+    borderWidth: 1,
+    minWidth: 32,
+    minHeight: 32,
+    contentPadding: ''
   };
 };
 
@@ -62,7 +41,7 @@ const enabledTokens: IButtonComponent['tokens'] = (props, theme) => {
     colorHovered: semanticColors.buttonTextHovered,
     colorPressed: semanticColors.buttonTextPressed,
 
-    borderColor: semanticColors.buttonBorder, // root
+    borderColor: semanticColors.buttonBorder,
     borderColorHovered: semanticColors.buttonBorder,
     borderColorPressed: semanticColors.buttonBorder
   };
@@ -84,8 +63,8 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
     color: semanticColors.buttonTextDisabled,
 
     borderColor: semanticColors.buttonBorderDisabled,
-    borderColorHovered: semanticColors.buttonBorderDisabled, // root:hover
-    borderColorPressed: semanticColors.buttonBorderDisabled // root:active  };
+    borderColorHovered: semanticColors.buttonBorderDisabled,
+    borderColorPressed: semanticColors.buttonBorderDisabled
   };
 };
 
@@ -100,14 +79,6 @@ const expandedTokens: IButtonComponent['tokens'] = (props, theme) => {
     colorHovered: semanticColors.buttonTextPressed,
     colorPressed: semanticColors.buttonTextPressed
   };
-};
-
-// TODO: do we need a secondary button variant?
-// TODO: how should theme be applied to secondary buttons?
-const secondaryTokens: IButtonComponent['tokens'] = {
-  backgroundColor: 'inherit',
-  backgroundColorHovered: '#c8c8c8',
-  borderColor: '#c8c8c8'
 };
 
 const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme) => {
@@ -142,29 +113,18 @@ const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
-// TODO: old impl before tokens were expanded. remove this code if expanded approach is kept.
-// const circularTokens = {
-//   borderRadius: '50%',
-//   borderWidth: 1,
-//   minWidth: 32,
-//   minHeight: 32,
-//   contentPadding: ''
-// }
-
 export const ButtonTokens: IButtonComponent['tokens'] = (props, theme) => [
   baseTokens,
   !props.disabled && enabledTokens,
   props.expanded && expandedTokens,
   props.primary && primaryEnabledTokens,
   props.primary && props.expanded && primaryExpandedTokens,
-  props.secondary && secondaryTokens,
-  // TODO: old impl before tokens were expanded. remove this code if expanded approach is kept.
-  // props.circular && circularTokens,
+  props.circular && circularTokens,
   props.disabled && disabledTokens
 ];
 
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) => {
-  const { circular, className } = props;
+  const { className } = props;
 
   const globalClassNames = getGlobalClassNames(
     {
@@ -182,46 +142,28 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) =
         backgroundColor: tokens.backgroundColor,
         borderColor: tokens.borderColor,
         borderRadius: tokens.borderRadius,
-        // borderRadius: circular ? tokens.circularBorderRadius : tokens.borderRadius,
         borderStyle: 'solid',
         borderWidth: tokens.borderWidth,
-        // borderWidth: circular ? tokens.circularBorderWidth : tokens.borderWidth,
         boxSizing: 'border-box',
         color: tokens.color,
         cursor: 'default',
         display: 'inline-block',
         fontSize: tokens.textSize,
-        // TODO: how will fonts play into tokens?
-        // fontFamily: tokens.fontFamily,
         fontWeight: tokens.textWeight,
         height: tokens.height,
-        // height: circular ? tokens.circularHeight : tokens.height,
         justifyContent: 'center',
-        // TODO: this lineHeight was originally in examples but causes bottom of text to cut off
-        // lineHeight: '1',
         margin: 0,
         minWidth: tokens.minWidth,
-        // minWidth: circular ? tokens.circularMinWidth : tokens.minWidth,
         minHeight: tokens.minHeight,
-        // minHeight: circular ? tokens.circularMinHeight : tokens.minHeight,
         overflow: 'hidden',
         padding: 0,
-        // TODO: from prototype. from split button impl?
-        // padding: "0 8px",
-        // paddingRight: props.split ? '0' : '8px',
         textDecoration: 'none',
         textAlign: 'center',
         userSelect: 'none',
         verticalAlign: 'baseline',
         width: tokens.width,
-        // width: circular ? tokens.circularWidth : tokens.width,
 
         selectors: {
-          // TODO: reconcile new way (props check) vs. old way
-          // ':hover': !props.disabled && {
-          //   background: tokens.backgroundColorHovered
-          // },
-          // Old Way:
           ':hover': {
             backgroundColor: tokens.backgroundColorHovered,
             color: tokens.colorHovered,
@@ -240,18 +182,10 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) =
           }
         }
       },
-      circular && {
-        borderRadius: tokens.circularBorderRadius,
-        borderWidth: tokens.circularBorderWidth,
-        height: tokens.circularHeight,
-        width: tokens.circularWidth,
-        minHeight: tokens.circularMinHeight,
-        minWidth: tokens.circularMinWidth
-      },
       className
     ],
     stack: {
-      padding: circular ? tokens.circularContentPadding : tokens.contentPadding,
+      padding: tokens.contentPadding,
       height: '100%'
     },
     icon: [

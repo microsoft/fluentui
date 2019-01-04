@@ -13,12 +13,20 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 //  + consistent with stardust
 //  - Micah no likes
 
+// TODO: Known TypeScript issue is widening return type checks when using function type declarations.
+//        Effect is that mistyped property keys on returned style objects will not generate errors.
+//        This affects lookup types used as functional decorations on IComponent and IStatelessComponent, e.g.:
+//        export const styles: IStackComponent['styles'] = props => {
+//        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
+
 // TODO: update or move to IStyleFunction.ts? is the naming confusing?
 // TOOO: move all types out, into IComponent.ts?
 // TODO: call out impacts of these new types.
 //        obviates IStyleFunctionOrObject
 //        now have theme as separate arg for both tokens and styles functions
 // TODO: if this type is kept with tokens as separate arg, it should be erased out of props arg to make sure people don't use wrong tokens
+// TODO: should Partial be used in any of these if IComponentStyles is just going to make every slot style optional?
+//        (see if it fixes styles function object returning having no type safety)
 export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TViewProps,
   theme: ITheme,
@@ -133,12 +141,6 @@ export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extend
    */
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
-
-// TODO: Known TypeScript issue is widening return type checks when using function type declarations.
-//        Effect is that mistyped property keys on returned style objects will not generate errors.
-//        This affects lookup types used as functional decorations on IComponent and IStatelessComponent, e.g.:
-//        export const styles: IStackComponent['styles'] = props => {
-//        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
 
 /**
  * Variant of IComponentOptions for stateful components with appropriate typing and required properties.

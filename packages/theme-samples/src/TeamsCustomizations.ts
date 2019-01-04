@@ -50,48 +50,54 @@ export const TeamsCustomizations: ICustomizations = {
       tokens: (props: any) => {
         return [
           {
-            borderRadius: 3,
-            borderWidth: 2,
-            circularBorderWidth: 1,
             iconSize: 16,
             iconWeight: 700,
-            textWeight: 400,
-            contentPadding: '4px 32px',
+            textWeight: 400
+          },
+          !props.circular && {
+            borderRadius: 3,
+            borderWidth: 2,
+            contentPadding: '4px 32px'
+          },
+          props.circular && {
+            borderWidth: 1
           },
           !props.disabled && {
-            iconColor: '#252424',
+            iconColor: '#252424', // this hardcoding doesn't work well with variants
             borderColorHovered: 'transparent',
             borderColorPressed: 'transparent'
           },
           props.expanded && {
             borderColor: 'transparent'
           },
-          props.circular && !props.disabled && {
-            backgroundColorHovered: '#464775',
-            backgroundColorPressed: '#464775',
-            textColorHovered: '#fff',
-            textColorPressed: '#fff',
-            iconColorHovered: '#fff',
-            iconColorPressed: '#fff'
-          },
-          props.primary && !props.disabled && {
-            iconColor: 'white'
-          }
-        ];
-      },
-      // TODO: include styles functions in themes as a test to make sure they still work. cover with tests.
-      styles: (props: any) => {
-        return {
-          icon: [
-            {
-              color: 'pink'
+          props.circular &&
+            !props.disabled && {
+              backgroundColorHovered: '#464775', // this hardcoding doesn't work well with variants
+              backgroundColorPressed: '#464775', // this hardcoding doesn't work well with variants
+              textColorHovered: '#fff',
+              textColorPressed: '#fff',
+              iconColorHovered: '#fff',
+              iconColorPressed: '#fff'
             },
-            props.circular && {
-              color: 'purple'
+          props.primary &&
+            !props.disabled && {
+              iconColor: 'white'
             }
-          ]
-        };
+        ];
       }
+      // TODO: include styles functions in themes as a test to make sure they still work. cover with tests.
+      // styles: (props: any) => {
+      //   return {
+      //     icon: [
+      //       {
+      //         color: 'pink'
+      //       },
+      //       props.circular && {
+      //         color: 'purple'
+      //       }
+      //     ]
+      //   };
+      // }
     }
   }
 };

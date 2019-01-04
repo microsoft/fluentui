@@ -20,14 +20,22 @@ export const WordCustomizations: ICustomizations = {
 
   scopedSettings: {
     Button: {
-      tokens: {
-        borderWidth: 1,
-        minHeight: 26,
-        textSize: 13.5,
-        lineHeight: 13.5,
-        textWeight: 600,
-        iconSize: 12,
-        contentPadding: '0px 6px'
+      // TODO: try and figure out type safety
+      // TODO: as a test, see if every line of production Button's styling can be changed with a token
+      // tslint:disable:no-any
+      tokens: (props: any) => {
+        return [
+          {
+            borderWidth: 1,
+            textSize: 13.5,
+            textWeight: 600,
+            iconSize: 12,
+            contentPadding: '0px 6px'
+          },
+          !props.circular && {
+            minHeight: 26
+          }
+        ];
       }
     }
   }

@@ -25,7 +25,6 @@ export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IBu
   href?: string;
 
   primary?: boolean;
-  secondary?: boolean;
   circular?: boolean;
   disabled?: boolean;
   expanded?: boolean;
@@ -63,32 +62,6 @@ export interface IButtonTokens {
   lineHeight?: number | string;
   minWidth?: number | string;
   minHeight?: number | string;
-
-  // TODO: Call this out in PR.
-  // TODO: How do we simulate David's "baseState" from the styleVariables approach?
-  //        Without that, any theme base tokens will override ALL tokened styles in the component.
-  //        The only way around that is to:
-  //          1. Assume consumers "safely" apply tokens by guarding against all prop variants
-  //          2. Require re-applying component default tokens to each variant.
-  //        Both are bad, fragile (will break if tokens are added), uninituitive, and expose implementation.
-  //        Other solutions?:
-  //          3. Go back to 'variant' prop with `baseState` value?
-  //          4. Provide helper to functions such as isBaseVariant()?
-  //          5. Some other override token method? Would also need to allow user to override AGAIN for circular and could be messy.
-  //          6. Expand tokens as needed? contentPadding and circularContentPadding.. also requires (width, height, minWidth, etc.)
-  //              Need to get with Jason Morse about this approach. There are some good arguments to defining a "common" set of tokens
-  //              across all component types and variants and claims that Layer provides that ability.
-  //        Going with approach 6 for now as it's the easiest to implement and pull out.
-  // TODO: CircularButton HOC component? vertical vs. horizontal stack.
-  //        This should be a last resort because we don't want state/props in either token or component naming.
-  // TODO: remove these. filter out base variant in theme. these types of tokens won't scale
-  circularBorderRadius?: number | string;
-  circularBorderWidth?: number | string;
-  circularContentPadding?: number | string;
-  circularHeight?: number | string;
-  circularWidth?: number | string;
-  circularMinHeight?: number | string;
-  circularMinWidth?: number | string;
 }
 
 // TODO: Call this out in PR.
@@ -99,7 +72,8 @@ export interface IButtonTokens {
 //        New createComponent changes seem to mixin subcomponent styles objects, which means targeting a subcomponents style sections
 //          is now possible:
 //          <Button icon="PeopleAdd" circular styles={{ icon: { color: 'pink ' } }} />
-//        And this also means the definition of IStyle may not be correct. Should possibly be a lookup on slot's component styles type.
+// TODO: And this also means the definition of IStyle may not be correct. Should possibly be a lookup on slot's component styles type.
+//        See examples in Button.Styles.example
 export type IButtonStyles = IComponentStyles<IButtonSlots>;
 
 export type IButtonViewProps = IButtonProps & {
