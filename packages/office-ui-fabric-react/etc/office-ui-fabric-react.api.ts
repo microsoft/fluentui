@@ -2461,6 +2461,7 @@ interface ICheckboxStyleProps {
 interface ICheckboxStyles {
   checkbox?: IStyle;
   checkmark?: IStyle;
+  input?: IStyle;
   label?: IStyle;
   root?: IStyle;
   text?: IStyle;
