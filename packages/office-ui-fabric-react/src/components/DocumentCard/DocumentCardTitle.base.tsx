@@ -76,8 +76,6 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       showAsSecondaryTitle
     });
 
-    console.log('class names:', this._classNames);
-
     let documentCardTitle;
     if (shouldTruncate && this._isTruncated) {
       documentCardTitle = (

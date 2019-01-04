@@ -4,11 +4,8 @@ import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
 import { DocumentCardLogo } from './DocumentCardLogo';
 import { PersonaInitialsColor } from '../../Persona';
-import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
-import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
-import { ILinkProps } from '../../Link';
 
 export interface IDocumentCard {
   /**
@@ -65,100 +62,6 @@ export enum DocumentCardType {
    * Compact layout. Displays the preview beside the details, rather than above.
    */
   compact = 1
-}
-
-export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-
-  /**
-   * One or more preview images to display.
-   */
-  previewImages: IDocumentCardPreviewImage[];
-
-  /**
-   * The function return string that will describe the number of overflow documents.
-   * such as  (overflowCount: number) =\> `+${ overflowCount } more`,
-   */
-  getOverflowDocumentCountText?: (overflowCount: number) => string;
-}
-
-export interface IDocumentCardPreviewImage {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-
-  /**
-   * File name for the document this preview represents.
-   */
-  name?: string;
-
-  /**
-   * URL to view the file.
-   * @deprecated Use `href` inside of `linkProps` instead.
-   */
-  url?: string;
-
-  /**
-   * Props to pass to Link component
-   */
-  linkProps?: ILinkProps;
-
-  /**
-   * Path to the preview image.
-   */
-  previewImageSrc?: string;
-
-  /**
-   * Deprecated at v1.3.6, to be removed at \>= v2.0.0.
-   * @deprecated To be removed at v2.0.0.
-   */
-  errorImageSrc?: string;
-
-  /**
-   * Path to the icon associated with this document type.
-   *
-   */
-  iconSrc?: string;
-
-  /**
-   * If provided, forces the preview image to be this width.
-   */
-  width?: number;
-
-  /**
-   * If provided, forces the preview image to be this height.
-   */
-  height?: number;
-
-  /**
-   * Used to determine how to size the image to fit the dimensions of the component.
-   * If both dimensions are provided, then the image is fit using ImageFit.scale, otherwise ImageFit.none is used.
-   */
-  imageFit?: ImageFit;
-
-  /**
-   * Hex color value of the line below the preview, which should correspond to the document type.
-   *
-   * Deprecated at v4.17.1, to be removed at \>= v5.0.0.
-   * @deprecated To be removed at v5.0.0.
-   */
-  accentColor?: string;
-
-  /**
-   * The props for the preview icon.
-   * If provided, icon will be rendered instead of image.
-   */
-  previewIconProps?: IIconProps;
-
-  /**
-   * The props for the preview icon container classname.
-   * If provided, icon container classname will be used..
-   */
-  previewIconContainerClass?: string;
 }
 
 export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {

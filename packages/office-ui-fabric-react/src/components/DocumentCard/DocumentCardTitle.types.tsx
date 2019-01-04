@@ -1,6 +1,6 @@
-import { DocumentCardTitleBase } from './DocumentCardTitle.base';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { DocumentCardTitleBase } from './DocumentCardTitle.base';
 
 export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
   /**
