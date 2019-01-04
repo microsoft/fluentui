@@ -29,15 +29,18 @@
 }
 
 // When a DocumentCardTitle follows a DocumentCardLocation, we want to reduce the padding
+// @todo: How can this be handled with CSS-in-JS?
 .location + .title {
   padding-top: 4px;
 }
 
 // Modifier: Compact layout
+// @todo: How can this be handled with CSS-in-JS?
 .rootIsCompact {
   display: flex;
   max-width: 480px;
   height: 109px;
+
   :global(.ms-DocumentCard-details) {
     display: flex;
     flex-direction: column;
@@ -277,30 +280,6 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   @include padding(0px, 16px, 8px, 16px);
   display: block;
   font-size: $ms-font-size-s;
-}
-
-/** Title **/
-$DocumentCard-title-lineHeight: 21px;
-.title {
-  padding: 8px 16px;
-  display: block;
-  @include ms-font-l;
-  color: $ms-color-neutralPrimary;
-  height: 38px; // Two lines of text, making sure the third line is hidden
-  line-height: $DocumentCard-title-lineHeight;
-  overflow: hidden;
-  word-wrap: break-word;
-}
-
-.secondaryTitle {
-  padding: 8px 16px;
-  display: block;
-  @include ms-font-m;
-  color: $ms-color-neutralSecondary;
-  line-height: 18px;
-  overflow: hidden;
-  word-wrap: break-word;
-  height: 45px;
 }
 
 .logo {

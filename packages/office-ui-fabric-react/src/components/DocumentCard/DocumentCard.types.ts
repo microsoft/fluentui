@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DocumentCardTitle } from './DocumentCardTitle';
 import { DocumentCardLocation } from './DocumentCardLocation';
 import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
@@ -160,31 +159,6 @@ export interface IDocumentCardPreviewImage {
    * If provided, icon container classname will be used..
    */
   previewIconContainerClass?: string;
-}
-
-export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitle> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-
-  /**
-   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string.
-   * For example, a collection of four documents would have a string of "Document.docx +3".
-   */
-  title: string;
-
-  /**
-   * Whether we truncate the title to fit within the box. May have a performance impact.
-   * @defaultvalue true
-   */
-  shouldTruncate?: boolean;
-
-  /**
-   * Whether show as title as secondary title style such as smaller font and lighter color.
-   * @defaultvalue false
-   */
-  showAsSecondaryTitle?: boolean;
 }
 
 export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
