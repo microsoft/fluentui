@@ -294,15 +294,7 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected _ariaMap: IPickerAriaIds;
   // (undocumented)
-  protected _focusZone: React.RefObject<IFocusZone>;
-  // (undocumented)
-  protected _input: React.RefObject<IAutofill>;
-  // (undocumented)
   protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-  // (undocumented)
-  protected _root: React.RefObject<HTMLDivElement>;
-  // (undocumented)
-  protected _suggestionElement: React.RefObject<ISuggestions<T>>;
   // (undocumented)
   protected addItem: (item: T) => void;
   // (undocumented)
@@ -328,9 +320,13 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   focusInput(): void;
   // (undocumented)
+  protected focusZone: React.RefObject<IFocusZone>;
+  // (undocumented)
   protected getActiveDescendant(): string | undefined;
   // (undocumented)
   protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
+  // (undocumented)
+  protected input: React.RefObject<IAutofill>;
   // (undocumented)
   readonly items: T[];
   // (undocumented)
@@ -376,9 +372,13 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected resolveNewValue(updatedValue: string, suggestions: T[]): void;
   // (undocumented)
+  protected root: React.RefObject<HTMLDivElement>;
+  // (undocumented)
   protected selection: Selection;
   // (undocumented)
-  protected SuggestionsOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  protected suggestionElement: React.RefObject<ISuggestions<T>>;
+  // (undocumented)
+  protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
   // (undocumented)
   protected suggestionStore: SuggestionsController<T>;
   // (undocumented)
