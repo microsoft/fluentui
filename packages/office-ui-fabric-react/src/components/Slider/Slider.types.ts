@@ -110,7 +110,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Optional function to format the slider value.
    */
-  valueFormat?: (value: number | undefined) => string;
+  valueFormat?: (value: number) => string;
 }
 
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &

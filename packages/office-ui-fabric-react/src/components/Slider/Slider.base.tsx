@@ -119,7 +119,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               />
             </div>
           </div>
-          {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value) : value}</Label>}
+          {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value!) : value}</Label>}
         </div>
       </div>
     ) as React.ReactElement<{}>;
