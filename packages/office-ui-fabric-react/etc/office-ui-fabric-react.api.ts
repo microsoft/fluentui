@@ -7713,6 +7713,11 @@ interface IFitContentToBoundsOptions {
 }
 
 // @public (undocumented)
+interface IFocusTrapCalloutProps extends ICalloutProps {
+  focusTrapProps?: IFocusTrapZoneProps;
+}
+
+// @public (undocumented)
 interface IFocusTrapZone {
   focus: () => void;
 }
@@ -12529,6 +12534,7 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: FocusTrapCallout
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check
