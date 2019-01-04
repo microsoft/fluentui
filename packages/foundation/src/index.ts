@@ -1,4 +1,4 @@
 export * from './createComponent';
-export * from './themeProvider';
+export * from './ThemeProvider';
 
 import './version';

@@ -22,6 +22,7 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     dataValue,
     ariaLabel,
     ariaExpanded,
+    title,
     role,
     rootClassName,
     barClassName,
@@ -61,6 +62,7 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
       aria-expanded={ariaExpanded}
       role={role}
       className={focusedStyle}
+      title={title}
     >
       <div className={rootClassName} aria-hidden="true">
         <hr className={barClassName} />

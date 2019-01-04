@@ -3,8 +3,9 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
-import { VerticalStack } from '@uifabric/experiments/lib/Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { Stack } from '@uifabric/experiments/lib/Stack';
+import { Fabric } from 'office-ui-fabric-react';
+import { mergeStyleSets, DefaultPalette, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const rootStyles = {
   background: DefaultPalette.themeTertiary
@@ -16,7 +17,7 @@ const itemStyles = {
   padding: 5
 };
 
-const boxStyles = {
+const boxStyles: IStyle = {
   ...itemStyles,
   display: 'flex',
   justifyContent: 'center' as 'center',
@@ -52,79 +53,162 @@ const styles = mergeStyleSets({
 const defaultProps = {
   className: styles.root,
   children: [
-    <span key={1} className={styles.boxItem}>1</span>,
-    <span key={2} className={styles.boxItem}>2</span>,
-    <span key={3} className={styles.boxItem}>3</span>
+    <span key={1} className={styles.boxItem}>
+      1
+    </span>,
+    <span key={2} className={styles.boxItem}>
+      2
+    </span>,
+    <span key={3} className={styles.boxItem}>
+      3
+    </span>
   ]
 };
 
 storiesOf('VerticalStack', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
-  .addStory('Default', () => (
-    <VerticalStack {...defaultProps} />
-  ), { rtl: true })
+  .addDecorator(story => <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addStory(
+    'Default',
+    () => (
+      <Fabric>
+        <Stack {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory('Padding', () => (
-    <VerticalStack {...defaultProps} padding={10} />
+    <Fabric>
+      <Stack {...defaultProps} padding={10} />
+    </Fabric>
   ))
   .addStory('Gap', () => (
-    <VerticalStack {...defaultProps} gap={10} />
+    <Fabric>
+      <Stack {...defaultProps} gap={10} />
+    </Fabric>
   ))
   .addStory('Vertically centered', () => (
-    <VerticalStack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="center" className={styles.fixedHeight} />
+    </Fabric>
   ))
   .addStory('Bottom-aligned', () => (
-    <VerticalStack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+    </Fabric>
   ))
   .addStory('Space around', () => (
-    <VerticalStack {...defaultProps} verticalAlign="space-around" className={styles.fixedHeight} />
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="space-around" className={styles.fixedHeight} />
+    </Fabric>
   ))
   .addStory('Space between', () => (
-    <VerticalStack {...defaultProps} verticalAlign="space-between" className={styles.fixedHeight} />
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="space-between" className={styles.fixedHeight} />
+    </Fabric>
   ))
   .addStory('Space evenly', () => (
-    <VerticalStack {...defaultProps} verticalAlign="space-evenly" className={styles.fixedHeight} />
+    <Fabric>
+      <Stack {...defaultProps} verticalAlign="space-evenly" className={styles.fixedHeight} />
+    </Fabric>
   ))
   .addStory('Horizontally centered', () => (
-    <VerticalStack {...defaultProps} horizontalAlign="center" />
+    <Fabric>
+      <Stack {...defaultProps} horizontalAlign="center" />
+    </Fabric>
   ))
-  .addStory('Right-aligned', () => (
-    <VerticalStack {...defaultProps} horizontalAlign="right" />
-  ), { rtl: true })
-  .addStory('Item alignments', () => (
-    <VerticalStack {...defaultProps} gap={10}>
-      <VerticalStack.Item align="auto" className={styles.item}>Auto-aligned item</VerticalStack.Item>
-      <VerticalStack.Item align="stretch" className={styles.item}>Stretch-aligned item</VerticalStack.Item>
-      <VerticalStack.Item align="baseline" className={styles.item}>Baseline-aligned item</VerticalStack.Item>
-      <VerticalStack.Item align="start" className={styles.item}>Start-aligned item</VerticalStack.Item>
-      <VerticalStack.Item align="center" className={styles.item}>Center-aligned item</VerticalStack.Item>
-      <VerticalStack.Item align="end" className={styles.item}>End-aligned item</VerticalStack.Item>
-    </VerticalStack>
-  ), { rtl: true })
+  .addStory(
+    'Right-aligned',
+    () => (
+      <Fabric>
+        <Stack {...defaultProps} horizontalAlign="end" />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Item alignments',
+    () => (
+      <Stack {...defaultProps} gap={10}>
+        <Stack.Item align="auto" className={styles.item}>
+          Auto-aligned item
+        </Stack.Item>
+        <Stack.Item align="stretch" className={styles.item}>
+          Stretch-aligned item
+        </Stack.Item>
+        <Stack.Item align="baseline" className={styles.item}>
+          Baseline-aligned item
+        </Stack.Item>
+        <Stack.Item align="start" className={styles.item}>
+          Start-aligned item
+        </Stack.Item>
+        <Stack.Item align="center" className={styles.item}>
+          Center-aligned item
+        </Stack.Item>
+        <Stack.Item align="end" className={styles.item}>
+          End-aligned item
+        </Stack.Item>
+      </Stack>
+    ),
+    { rtl: true }
+  )
   .addStory('Growing items', () => (
-    <VerticalStack {...defaultProps} gap={10} className={styles.fixedHeight}>
-      <VerticalStack.Item grow={3} className={styles.item}>Grow is 3</VerticalStack.Item>
-      <VerticalStack.Item grow={2} className={styles.item}>Grow is 2</VerticalStack.Item>
-      <VerticalStack.Item grow className={styles.item}>Grow is 1</VerticalStack.Item>
-    </VerticalStack>
+    <Stack {...defaultProps} gap={10} className={styles.fixedHeight}>
+      <Stack.Item grow={3} className={styles.item}>
+        Grow is 3
+      </Stack.Item>
+      <Stack.Item grow={2} className={styles.item}>
+        Grow is 2
+      </Stack.Item>
+      <Stack.Item grow className={styles.item}>
+        Grow is 1
+      </Stack.Item>
+    </Stack>
   ))
   .addStory('Shrinking items', () => (
-    <VerticalStack {...defaultProps} gap={10} shrinkItems className={styles.fixedHeight}>
-      <VerticalStack.Item className={styles.shrinkItem}>1</VerticalStack.Item>
-      <VerticalStack.Item preventShrink className={styles.shrinkItem}>2 (does not shrink)</VerticalStack.Item>
-      <VerticalStack.Item className={styles.shrinkItem}>3</VerticalStack.Item>
-      <VerticalStack.Item className={styles.shrinkItem}>4</VerticalStack.Item>
-      <VerticalStack.Item className={styles.shrinkItem}>5</VerticalStack.Item>
-    </VerticalStack>
+    <Stack {...defaultProps} gap={10} shrinkItems className={styles.fixedHeight}>
+      <Stack.Item className={styles.shrinkItem}>1</Stack.Item>
+      <Stack.Item preventShrink className={styles.shrinkItem}>
+        2 (does not shrink)
+      </Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>3</Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>4</Stack.Item>
+      <Stack.Item className={styles.shrinkItem}>5</Stack.Item>
+    </Stack>
   ))
+  .addStory(
+    'Wrap',
+    () => (
+      <Fabric>
+        <Stack {...defaultProps} verticalGap={10} wrap className={styles.fixedHeight}>
+          <span className={styles.boxItem}>1</span>
+          <span className={styles.boxItem}>2</span>
+          <span className={styles.boxItem}>3</span>
+          <span className={styles.boxItem}>4</span>
+          <span className={styles.boxItem}>5</span>
+          <span className={styles.boxItem}>6</span>
+          <span className={styles.boxItem}>7</span>
+          <span className={styles.boxItem}>8</span>
+          <span className={styles.boxItem}>9</span>
+          <span className={styles.boxItem}>10</span>
+          <span className={styles.boxItem}>11</span>
+          <span className={styles.boxItem}>12</span>
+          <span className={styles.boxItem}>13</span>
+          <span className={styles.boxItem}>14</span>
+          <span className={styles.boxItem}>15</span>
+        </Stack>
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory('Box shadow around items', () => (
-    <VerticalStack {...defaultProps} gap={25}>
-      <span className={styles.shadowItem}>1</span>
-      <span className={styles.shadowItem}>2</span>
-      <span className={styles.shadowItem}>3</span>
-      <span className={styles.shadowItem}>4</span>
-      <span className={styles.shadowItem}>5</span>
-    </VerticalStack>
+    <Fabric>
+      <Stack {...defaultProps} gap={25}>
+        <span className={styles.shadowItem}>1</span>
+        <span className={styles.shadowItem}>2</span>
+        <span className={styles.shadowItem}>3</span>
+        <span className={styles.shadowItem}>4</span>
+        <span className={styles.shadowItem}>5</span>
+      </Stack>
+    </Fabric>
   ));

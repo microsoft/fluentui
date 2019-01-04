@@ -2,10 +2,14 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
   'setState',
   'render',
   'componentWillMount',
+  'UNSAFE_componentWillMount',
   'componentDidMount',
   'componentWillReceiveProps',
+  'UNSAFE_componentWillReceiveProps',
   'shouldComponentUpdate',
   'componentWillUpdate',
+  'getSnapshotBeforeUpdate',
+  'UNSAFE_componentWillUpdate',
   'componentDidUpdate',
   'componentWillUnmount'
 ];

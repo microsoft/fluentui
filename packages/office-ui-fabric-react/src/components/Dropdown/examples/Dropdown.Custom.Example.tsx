@@ -47,10 +47,9 @@ export class DropdownCustomExample extends React.Component {
   private _onRenderOption = (option: IDropdownOption): JSX.Element => {
     return (
       <div className="dropdownExample-option">
-        {option.data &&
-          option.data.icon && (
-            <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
-          )}
+        {option.data && option.data.icon && (
+          <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+        )}
         <span>{option.text}</span>
       </div>
     );
@@ -61,10 +60,9 @@ export class DropdownCustomExample extends React.Component {
 
     return (
       <div className="dropdownExample-option">
-        {option.data &&
-          option.data.icon && (
-            <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
-          )}
+        {option.data && option.data.icon && (
+          <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+        )}
         <span>{option.text}</span>
       </div>
     );

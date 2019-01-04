@@ -6,11 +6,7 @@ import { FabricDecorator } from '../utilities';
 import { HoverCard } from 'office-ui-fabric-react';
 
 let onRenderCompactCard = (item: any) => {
-  return (
-    <div>
-      Content
-    </div>
-  );
+  return <div>Content</div>;
 };
 
 const expandingCardProps = {
@@ -20,20 +16,17 @@ const expandingCardProps = {
 
 storiesOf('HoverCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
-    >
-      {story()}
-    </Screener>
-  )).addStory('Root', () => (
-    <HoverCard
-      expandingCardProps={expandingCardProps}
-      instantOpenOnClick={true}
-    >
-      Hover over me
-    </HoverCard>
-  ), { rtl: true });
+  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addStory(
+    'Root',
+    () => (
+      <HoverCard
+        expandingCardProps={expandingCardProps}
+        instantOpenOnClick={true}
+        styles={{ host: { fontFamily: 'Segoe UI', fontSize: '14px', color: '#333333' } }}
+      >
+        Hover over me
+      </HoverCard>
+    ),
+    { rtl: true }
+  );
