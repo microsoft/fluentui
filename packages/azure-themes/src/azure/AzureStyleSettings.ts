@@ -1,5 +1,6 @@
 import { ITheme } from 'office-ui-fabric-react';
 import { CheckboxStyles } from './styles/Checkbox.styles';
+import { CheckStyles, DetailsRowStyles, DetailsListStyles } from './styles/DetailsList.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOptions.styles';
 import { comboBoxStyles } from './styles/ComboBox.styles';
 import { CommandBarStyles } from './styles/CommandBar.styles';
@@ -49,9 +50,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     CompoundButton: {
       styles: compoundButtonStyles(theme)
     },
-    // Check: {
-    //   styles: CheckStyles
-    // },
+    Check: {
+      styles: CheckStyles
+    },
     Checkbox: {
       styles: CheckboxStyles
     },
@@ -73,9 +74,12 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     DefaultButton: {
       styles: defaultButtonStyles(theme)
     },
-    // DetailsRow: {
-    //   styles: DetailsRowStyles
-    // },
+    DetailsList: {
+      styles: DetailsListStyles
+    },
+    DetailsRow: {
+      styles: DetailsRowStyles
+    },
     // DialogContent: {
     //   styles: DialogContentStyles
     // },
