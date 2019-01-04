@@ -164,7 +164,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       calloutProps,
       underlined,
       allFocusable,
-      calendarAs: CalendarType = Calendar
+      calendarAs: CalendarType = Calendar,
+      tabIndex
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -206,6 +207,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             value={formattedDate}
             componentRef={this._textField}
             underlined={underlined}
+            tabIndex={tabIndex}
           />
         </div>
         {isDatePickerShown && (
