@@ -95,7 +95,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore
         })
       : {
-          root: css('ms-Suggestions', className ? className : '', legacyStyles.root),
+          root: css('ms-Suggestions', className, legacyStyles.root),
           title: css('ms-Suggestions-title', legacyStyles.suggestionsTitle),
           searchForMoreButton: css('ms-SearchMore-button', legacyStyles.actionButton, {
             ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
