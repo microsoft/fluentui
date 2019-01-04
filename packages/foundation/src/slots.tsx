@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
+// import { _evaluateStyle } from './utilities';
 import {
   IFactoryComponent,
   IFactoryOptions,
@@ -110,7 +111,11 @@ export function createFactory<TProps>(
       //  TODO: Do test cases for this exercising and confirming priority with ALL args present.
       //  TODO: Token styling. Also do test case with new component as slot to verify token styling works.
       //  TODO: Theme in props for styled components. Can't assume this is styles function with separate theme arg.
-      // _evaluateStyle(finalProps, theme, userProps && userProps.styles),    and tokens?
+      //  TODO: David mentioned this was only meant to be applied to intrinsic elements (div, etc.)
+      //          where style functions otherwise wouldn't be evaluated.
+      //          Does this hold with my observations above about priority?
+      //  TODO: also evaluate tokens
+      // _evaluateStyle(finalProps, theme, userProps && userProps.styles),
       userProps && userProps.className
     );
 

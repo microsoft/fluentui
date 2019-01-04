@@ -19,8 +19,11 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 //        obviates IStyleFunctionOrObject
 //        now have theme as separate arg for both tokens and styles functions
 // TODO: if this type is kept with tokens as separate arg, it should be erased out of props arg to make sure people don't use wrong tokens
-export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
-  (props: TViewProps, theme: ITheme, tokens: TTokens) => Partial<TStyleSet>;
+export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
+  props: TViewProps,
+  theme: ITheme,
+  tokens: TTokens
+) => Partial<TStyleSet>;
 
 export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
   | IStylesFunction<TViewProps, TTokens, TStyleSet>
@@ -32,29 +35,31 @@ export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps,
 
 // export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenFunctionOrObject<TViewProps, TTokens>> { }
 // export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenBase<TViewProps, TTokens>> { }
-export interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> { }
+export interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {}
 
 // export type IToken<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
 export type IToken<TViewProps, TTokens> = ITokenBase<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
 
 export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => IToken<TViewProps, TTokens>;
 
-export type ITokenFunctionOrObject<TViewProps, TTokens> =
-  | ITokenFunction<TViewProps, TTokens>
-  | TTokens;
+export type ITokenFunctionOrObject<TViewProps, TTokens> = ITokenFunction<TViewProps, TTokens> | TTokens;
 
 /**
  * Optional props for styleable components. If these props are present, they will automatically be
  * used by Foundation when applying theming and styling.
  */
 export interface IStyleableComponentProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}> {
+  className?: string;
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   theme?: ITheme;
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
-export type ICustomizationProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens> =
-  IStyleableComponentProps<TViewProps, TStyleSet, TTokens> &
+export type ICustomizationProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens> = IStyleableComponentProps<
+  TViewProps,
+  TStyleSet,
+  TTokens
+> &
   Required<Pick<IStyleableComponentProps<TViewProps, TStyleSet, TTokens>, 'theme'>>;
 
 /**
@@ -138,14 +143,13 @@ export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extend
 /**
  * Variant of IComponentOptions for stateful components with appropriate typing and required properties.
  */
-export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> =
-  IComponentOptions<
+export type IComponent<
   TComponentProps,
   TViewProps,
-  TStyleSet,
-  TTokens,
-  TStatics
-  > &
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TTokens = {},
+  TStatics = {}
+> = IComponentOptions<TComponentProps, TViewProps, TStyleSet, TTokens, TStatics> &
   Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>, 'state'>>;
 
 /**
@@ -154,7 +158,7 @@ export type IComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<
 export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> = Omit<
   IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>,
   'state'
-  >;
+>;
 
 // TODO: Is this type really needed? Particularly if styles can be derived from slots in IComponentOptions?
 // TODO: Is IStyle the right type here? This should probably be a map of keys to Slot component styles prop instead.

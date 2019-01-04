@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { concatStyleSets, IStyleSet, ITheme, mergeStyleSets } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
-import { assign } from './utilities';
+import { assign, _evaluateStyle } from './utilities';
 
 import {
   IComponent,
@@ -169,22 +169,6 @@ export function createStatelessComponent<TComponentProps, TStyleSet extends ISty
   component: IStatelessComponent<TComponentProps, TStyleSet, TTokens, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   return createComponent(component as IComponent<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>);
-}
-
-/**
- * Evaluate styles based on type to return consistent TStyleSet.
- */
-// TODO: remove when old createComponent is removed
-function _evaluateStyle<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
-  props: TViewProps,
-  theme: ITheme,
-  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>
-): Partial<TStyleSet> | undefined {
-  if (typeof styles === 'function') {
-    return styles(props, theme, {} as TTokens);
-  }
-
-  return styles;
 }
 
 /**

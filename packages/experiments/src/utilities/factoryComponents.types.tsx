@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStackProps, ITextProps, IPersonaCoinProps } from '@uifabric/experiments';
-import { IContextualMenuProps, IIconProps, ILabelProps } from 'office-ui-fabric-react';
+import { IStackProps, ITextProps } from '@uifabric/experiments';
+import { IContextualMenuProps, IIconProps, ILabelProps, IPersonaPresenceProps } from 'office-ui-fabric-react';
 import { ISlotProp } from '../Foundation';
 
 // TODO: All contents of this file should be moved to each respective component after Slots utilities are promoted.
@@ -19,8 +19,9 @@ export const IconShorthandProp: keyof IIconProps = 'iconName';
 export type IIconSlot = ISlotProp<IIconProps, 'iconName'>;
 
 // TODO: move experimental components into respective types files
+// TODO: should these all have create functions? (at least the shorthand ones)
 export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
 export type ILabelSlot = ISlotProp<ILabelProps, 'children'>;
+export type IPersonaPresenceSlot = ISlotProp<IPersonaPresenceProps, 'presence'>;
 export type IStackSlot = ISlotProp<IStackProps>;
 export type ITextSlot = ISlotProp<ITextProps, 'children'>;
-export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps>;

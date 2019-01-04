@@ -1,11 +1,12 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
-import { ITextSlot, IHTMLDivSlot, IPersonaCoinSlot } from '../../../utilities/factoryComponents.types';
+import { ITextSlot, IHTMLSlot } from '../../../utilities/factoryComponents.types';
+import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
 export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles>;
 
 export interface IVerticalPersonaSlots {
-  root?: IHTMLDivSlot;
+  root?: IHTMLSlot;
   primaryText?: ITextSlot;
   secondaryText?: ITextSlot;
   coin?: IPersonaCoinSlot;
@@ -28,6 +29,7 @@ export interface IVerticalPersonaStyles {
   coin: IStyle; // TODO: Check if this works after Jason his PR
 }
 
+// TODO: convert this to tokens
 export interface IVerticalPersonaStyleVariableTypes {
   verticalPersonaWidth: number;
   text: ITextStyleVariables;

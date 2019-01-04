@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '../index';
 import { Stack } from '@uifabric/experiments';
-import { createTheme } from 'office-ui-fabric-react';
+import { createTheme, ContextualMenu, IContextualMenuProps } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
   semanticColors: {
@@ -17,6 +17,9 @@ const testTheme = createTheme({
 const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
+
+const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
+const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   <Stack horizontal gap={buttonGap}>
@@ -134,6 +137,19 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   content={{
                     children: 'Content Classname',
                     className: 'content-classname'
+                  }}
+                />
+                <Button
+                  content="All Classnames"
+                  icon="PeopleAdd"
+                  menu={buttonMenu}
+                  styles={{
+                    root: 'root-classname',
+                    stack: 'stack-classname',
+                    content: 'content-classname',
+                    icon: 'image-classname',
+                    menu: 'menu-classname',
+                    menuIcon: 'menu-classname'
                   }}
                 />
               </ButtonStack>

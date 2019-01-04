@@ -1,36 +1,37 @@
-import * as React from 'react';
+/** @jsx createElementWrapper */
 import { Icon } from 'office-ui-fabric-react';
+import { createElementWrapper, getSlots } from '../../Foundation';
+import { PersonaPresence } from '../../utilities/factoryComponents';
 import { Text } from '../../Text';
-import { IPersonaCoinComponent } from './PersonaCoin.types';
+import { IPersonaCoinComponent, IPersonaCoinSlots } from './PersonaCoin.types';
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';
-import { PersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 import { getInitials, getRTL } from '../../Utilities';
 import { DEFAULT_PERSONA_COIN_SIZE } from './PersonaCoin.styles';
 
 const PersonaCoinInitials: IPersonaCoinComponent['view'] = props => {
-  const initials = props.initials || getInitials(props.text, getRTL(), props.allowPhoneInitials);
+  const initials = (typeof props.initials === 'string' && props.initials) || getInitials(props.text, getRTL(), props.allowPhoneInitials);
 
   if (initials) {
-    return <Text className={props.classNames.initials}>{initials}</Text>;
+    return <Text className={props.className}>{initials}</Text>;
   }
 
-  return <Icon className={props.classNames.initials} iconName="Contact" />;
+  return <Icon iconName="Contact" className={props.className} />;
 };
 
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
   const coinSize = props.size || DEFAULT_PERSONA_COIN_SIZE;
 
+  const Slots = getSlots<typeof props, IPersonaCoinSlots>(props, {
+    root: 'div',
+    image: PersonaCoinImage,
+    initials: PersonaCoinInitials,
+    presence: PersonaPresence
+  });
+
   return (
-    <div className={props.classNames.root}>
-      <PersonaCoinInitials
-        coinColor={props.coinColor}
-        initials={props.initials}
-        text={props.text}
-        allowPhoneInitials={props.allowPhoneInitials}
-        classNames={props.classNames}
-      />
-      <PersonaCoinImage
-        classNames={props.classNames}
+    <Slots.root>
+      <Slots.initials initials={props.initials} text={props.text} allowPhoneInitials={props.allowPhoneInitials} />
+      <Slots.image
         src={props.imageUrl}
         dimension={coinSize}
         onPhotoLoadingStateChange={props.onPhotoLoadingStateChange}
@@ -38,7 +39,7 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
         imageShouldStartVisible={props.imageShouldStartVisible}
         imageAlt={props.imageAlt}
       />
-      {props.presence ? <PersonaPresence presence={props.presence} coinSize={coinSize} size={coinSize} styles={props.classNames} /> : null}
-    </div>
+      {props.presence ? <Slots.presence coinSize={coinSize} size={coinSize} /> : null}
+    </Slots.root>
   );
 };

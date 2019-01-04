@@ -17,7 +17,7 @@ export interface IButtonSlots {
   button?: IButtonSlot;
 }
 
-export interface IButton { }
+export interface IButton {}
 
 export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IButtonProps, IButtonStyles, IButtonTokens> {
   componentRef?: IRefObject<IButton>;
@@ -79,6 +79,9 @@ export interface IButtonTokens {
   //              Need to get with Jason Morse about this approach. There are some good arguments to defining a "common" set of tokens
   //              across all component types and variants and claims that Layer provides that ability.
   //        Going with approach 6 for now as it's the easiest to implement and pull out.
+  // TODO: CircularButton HOC component? vertical vs. horizontal stack.
+  //        This should be a last resort because we don't want state/props in either token or component naming.
+  // TODO: remove these. filter out base variant in theme. these types of tokens won't scale
   circularBorderRadius?: number | string;
   circularBorderWidth?: number | string;
   circularContentPadding?: number | string;

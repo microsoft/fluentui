@@ -1,8 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VerticalPersonaView renders correctly with a text and secondary text 1`] = `
+exports[`VerticalPersona renders correctly with a text and secondary text 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 0;
+        width: 122px;
+      }
 >
   <div
     className=
@@ -46,13 +59,18 @@ exports[`VerticalPersonaView renders correctly with a text and secondary text 1`
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #333333;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: SegoeUI;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
+          height: 35px;
+          line-height: 17.5px;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
         }
   >
     James Bond
@@ -63,13 +81,18 @@ exports[`VerticalPersonaView renders correctly with a text and secondary text 1`
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #666666;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-family: SegoeUI;
+          font-size: 12px;
           font-weight: 400;
+          height: 35px;
+          line-height: 1.42;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 6px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
         }
   >
     Super secret agent
@@ -77,9 +100,22 @@ exports[`VerticalPersonaView renders correctly with a text and secondary text 1`
 </div>
 `;
 
-exports[`VerticalPersonaView renders correctly with only a text 1`] = `
+exports[`VerticalPersona renders correctly with only a text 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 0;
+        width: 122px;
+      }
 >
   <div
     className=
@@ -123,13 +159,18 @@ exports[`VerticalPersonaView renders correctly with only a text 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #333333;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: SegoeUI;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
+          height: 35px;
+          line-height: 17.5px;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
         }
   >
     James Bond
@@ -137,9 +178,22 @@ exports[`VerticalPersonaView renders correctly with only a text 1`] = `
 </div>
 `;
 
-exports[`VerticalPersonaView renders the coin with the passed coinProps 1`] = `
+exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 0;
+        width: 122px;
+      }
 >
   <div
     className=
@@ -183,13 +237,18 @@ exports[`VerticalPersonaView renders the coin with the passed coinProps 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #333333;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: SegoeUI;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
+          height: 35px;
+          line-height: 17.5px;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
         }
   >
     James Bond
@@ -200,13 +259,18 @@ exports[`VerticalPersonaView renders the coin with the passed coinProps 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #666666;
           display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-family: SegoeUI;
+          font-size: 12px;
           font-weight: 400;
+          height: 35px;
+          line-height: 1.42;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 6px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
         }
   >
     Super secret agent
