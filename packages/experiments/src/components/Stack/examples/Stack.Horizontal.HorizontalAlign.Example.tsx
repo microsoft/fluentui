@@ -25,42 +25,42 @@ export class HorizontalStackHorizontalAlignExample extends React.Component<{}, {
     return (
       <Stack gap={5}>
         <span>Left-aligned</span>
-        <Stack horizontal horizontalAlignment="start" className={styles.root}>
+        <Stack horizontal horizontalAlign="start" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </Stack>
 
         <span>Horizontally centered</span>
-        <Stack horizontal horizontalAlignment="center" className={styles.root}>
+        <Stack horizontal horizontalAlign="center" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </Stack>
 
         <span>Right-aligned</span>
-        <Stack horizontal horizontalAlignment="end" className={styles.root}>
+        <Stack horizontal horizontalAlign="end" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </Stack>
 
         <span>Horizontal space around items</span>
-        <Stack horizontal horizontalAlignment="space-around" className={styles.root}>
+        <Stack horizontal horizontalAlign="space-around" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </Stack>
 
         <span>Horizontal space between items</span>
-        <Stack horizontal horizontalAlignment="space-between" className={styles.root}>
+        <Stack horizontal horizontalAlign="space-between" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </Stack>
 
         <span>Items horizontally evenly spaced</span>
-        <Stack horizontal horizontalAlignment="space-evenly" className={styles.root}>
+        <Stack horizontal horizontalAlign="space-evenly" className={styles.root}>
           <span>1</span>
           <span>2</span>
           <span>3</span>

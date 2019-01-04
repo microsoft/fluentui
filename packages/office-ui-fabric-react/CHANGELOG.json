@@ -2,6 +2,335 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.119.0",
+      "tag": "office-ui-fabric-react_v6.119.0",
+      "date": "Thu, 03 Jan 2019 13:33:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TooltipHost: add show method",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "ee47b5ece8c90294d966391435866ca741336603"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix calendar accessibility edge bug preventing row and column info from being populated correctly",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "4de63d3c06119b2f58bee9d59a62458213b40b12"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.118.2",
+      "tag": "office-ui-fabric-react_v6.118.2",
+      "date": "Tue, 01 Jan 2019 13:36:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update pivot component to use semantic slots from design redlines",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3b81aaf6998b7e40ba641e9b2c0d7cd8c14f1cb7"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.118.1",
+      "tag": "office-ui-fabric-react_v6.118.1",
+      "date": "Mon, 31 Dec 2018 13:37:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pickers: Fix issue where suggestions wouldn't dismiss for controlled pickers",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "d039e735e504e0578eb9ff194bf0759be2ea544b"
+          },
+          {
+            "comment": "Fix Nav selected item's pseudo element",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "98cf89fcc7fbe6ece43055738409c390231ab5b4"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.118.0",
+      "tag": "office-ui-fabric-react_v6.118.0",
+      "date": "Fri, 28 Dec 2018 13:35:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ComboBox will prioritize ariaLabel property over label for accessibility. Aria labels for Dropdown and ComboBox options do not default to item text.",
+            "author": "Conor Wuertz <conor.wuertz@gmail.com>",
+            "commit": "51f3c7aef81ebcf1d2b5c91aa36cf5fb53c2ca68"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: Respect the onKeydown handler even it is inside inner focus zone.",
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "3575ea953fa07b6ffd1f1f931205f7e93db6fe79"
+          },
+          {
+            "comment": "checking if sticky content offsetHeight is in sync with nonStickyContent offsetHeight",
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "6f8fdbdab5696d018744d9953430299ba2ea5d7c"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.117.2",
+      "tag": "office-ui-fabric-react_v6.117.2",
+      "date": "Mon, 24 Dec 2018 13:33:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding option to prevent focus on Coachmark mount",
+            "author": "Nick Durak <nickdurak@gmail.com>",
+            "commit": "14a4614b6b48d799e018e7c734024ecfa6d4a82b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.117.1",
+      "tag": "office-ui-fabric-react_v6.117.1",
+      "date": "Fri, 21 Dec 2018 13:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: fix opening submenus with hrefs",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "f2922d6242b952e8d76dea1a9a6d056c5f58f843"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.117.0",
+      "tag": "office-ui-fabric-react_v6.117.0",
+      "date": "Thu, 20 Dec 2018 13:39:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "GroupedList: add compact mode and styles cleanup across GroupedList and DetailsList. Change expand button icon. Consolidate style values in between mentioned components.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c14a4a9aca451afebbad178286e91a38a3628671"
+          },
+          {
+            "comment": "Pickers: convert PeoplePicker items to CSS-in-JS. Expose some components to the surface API and rename them to solve ambiguity issues. Fix some imports in ExtendedPicker and FloatingPicker caused by my API changes.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4e3f82e76e31aaaa34485c1653a521a5ec65fd14"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.116.2",
+      "tag": "office-ui-fabric-react_v6.116.2",
+      "date": "Wed, 19 Dec 2018 13:39:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: fix conditional rendering of aria-describedby",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "56337fc127dfcf18d67147e4c6b27577d6171948"
+          },
+          {
+            "comment": "Dropdown: only select aria-activedescendant when open to fix screen reader output for required dropdown",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8ac14c293f16201ed1bf1fec7547af17e347f6a0"
+          },
+          {
+            "comment": "DetailsList: Fix custom footer example's footer row not full width.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "e09dbcf675fbaa48462cf5c60b293f71f7dd4fa0"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Correct typo in PivotDonts.md",
+            "author": "matei-oltean <matei.oltean@gmail.com>",
+            "commit": "74f602bf522e0074f17dafefb9cae8b37e04cf37"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.116.1",
+      "tag": "office-ui-fabric-react_v6.116.1",
+      "date": "Tue, 18 Dec 2018 22:17:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: add aria-expanded and aria-controls to See More button",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "038de3509418cbcd5fbbbde1c6bdfb5c61775fec"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Pivot: Removing swiping references in component documentation.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4a7feb158196f1284baa451a6102e7e3a8a3e888"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.116.0",
+      "tag": "office-ui-fabric-react_v6.116.0",
+      "date": "Tue, 18 Dec 2018 13:36:49 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ComboBox: add placeholder prop",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "044ff2a6b44b05572b7c17ef309a598b757d717f"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.115.0",
+      "tag": "office-ui-fabric-react_v6.115.0",
+      "date": "Mon, 17 Dec 2018 13:36:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "BaseComponent: Remove componentWillReceiveProps usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "b2c512db6892047c208234265f7cbc8796f00074"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Persona: fixing how coinProps are passed through from Persona to PersonaCoin.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e2edffa27f64fc0af3e462f3868ce9a652176669"
+          },
+          {
+            "comment": "Pickers: convert `TagItem` to use CSS-in-JS. Add `TagItemSuggestion` functional component. Move `TagPicker` related interfaces to a `TagPicker.types.ts` file. Cleanup some TSDocs in `BasePicker.types.ts`.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e103fa2c76efe67af4f9577a39e2d8b574d2d631"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.27.0 <7.0.0` to `>=6.27.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.114.0",
+      "tag": "office-ui-fabric-react_v6.114.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: add isCollapsible and deprecate isCollapsable",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "faf1cb2cda7bb8aa5b165b3e9fdb7664ee809830"
+          },
+          {
+            "comment": "Persona: change type of the 'coinProps' type to IPersonaCoinProps.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "548c965d7acde55d063e1e938560032802eaf9a1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Correct hover and highlight states for Calendar (DateRangeType.Week)",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "b8ae5fa7a50a999d7d7668b054c525efd01cebbf"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.113.0",
+      "tag": "office-ui-fabric-react_v6.113.0",
+      "date": "Thu, 13 Dec 2018 13:37:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "theming: remove ITypography",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "eaba75caa15a4c8e5f96b85836d0d1d44c9d50a3"
+          },
+          {
+            "comment": "Pickers: Convert TagPicker and PeoplePicker to use CSS-in-JS. Support SASS styling for custom pickers extended from BasePicker. Fix tests not using componentRef to access component methods. Cleanup TagPicker example page.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "cece26501f732c81412ed2b6c5a1804b7999295f"
+          }
+        ],
+        "none": [
+          {
+            "comment": "DetailsHeader Test: Assert elements in test are non-null to reduce IDE noise.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "e338fc1c92d1ec44dec5db92915773677a282f0d"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsHeader: Fix \"Select All\" state not persisted across component mounts when optional selection prop provided.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "bd8a9a8d4c1fe42039c00fb4d691da58ac6b8cad"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.38.0 <7.0.0` to `>=6.39.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.112.0",
+      "tag": "office-ui-fabric-react_v6.112.0",
+      "date": "Tue, 11 Dec 2018 13:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: changed drop hint display to none to not occupy any space",
+            "author": "Arko Gupta <arkogupta16@gmail.com>",
+            "commit": "f8829f629acbdf549a95f317766319d814363946"
+          },
+          {
+            "comment": "Dropdown: wrap items list in FocusZone to prevent auto-scrolling to first list item",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "d680703ef355edcb1ced63657515a88893ae2ad8"
+          },
+          {
+            "comment": "Fix merge conflict resulting in build error.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "8d9f2859f341b2965ca4aee0318ce9e56db696c6"
+          },
+          {
+            "comment": "Adds a just:build script to OUFR to begin integration with Just",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "4a92195f6863a73846908e2a7a6e3be649ce9a18"
+          },
+          {
+            "comment": "Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "e9dbbf09c51976d6258fd60c21d49f3b78508801"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Coachmark: Move style interfaces to Coachmark.types.ts file and add styled wrapper around to enable use of Customizer to theme the component.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "9d45bbd27f092c6d6788c45d1a19ee5a63a8ad84"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.111.2",
       "tag": "office-ui-fabric-react_v6.111.2",
       "date": "Mon, 10 Dec 2018 13:35:53 GMT",

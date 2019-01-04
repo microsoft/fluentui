@@ -15,6 +15,7 @@ export interface IExampleState {
   showBoxShadow: boolean;
   preventOverflow: boolean;
   shrinkItems: boolean;
+  wrap: boolean;
   stackHeight: number;
   autoHeight: boolean;
   gap: number;
@@ -36,6 +37,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       showBoxShadow: false,
       preventOverflow: false,
       shrinkItems: false,
+      wrap: false,
       stackHeight: 200,
       autoHeight: true,
       gap: 0,
@@ -56,6 +58,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       showBoxShadow,
       preventOverflow,
       shrinkItems,
+      wrap,
       stackHeight,
       autoHeight,
       gap,
@@ -111,7 +114,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
               <Stack horizontal>
                 <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} styles={{ root: { marginRight: 10 } }} />
-                <Checkbox label="Shrink items" onChange={this._onShrinkItemsChange} />
+                <Checkbox label="Shrink items" onChange={this._onShrinkItemsChange} styles={{ root: { marginRight: 10 } }} />
+                <Checkbox label="Wrap items" onChange={this._onWrapChange} />
               </Stack>
             </Stack>
           </Stack.Item>
@@ -144,7 +148,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <Stack horizontal gap={20} verticalAlignment="bottom">
+              <Stack horizontal gap={20} verticalAlign="bottom">
                 <Stack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
@@ -227,10 +231,11 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
 
         <Stack
           shrinkItems={shrinkItems}
+          wrap={wrap}
           gap={gap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
-          verticalAlignment={verticalAlignment}
-          horizontalAlignment={horizontalAlignment}
+          verticalAlign={verticalAlignment}
+          horizontalAlign={horizontalAlignment}
           className={styles.root}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
@@ -271,6 +276,10 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
 
   private _onShrinkItemsChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
     this.setState({ shrinkItems: isChecked });
+  };
+
+  private _onWrapChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
+    this.setState({ wrap: isChecked });
   };
 
   private _onStackHeightChange = (value: number): void => {

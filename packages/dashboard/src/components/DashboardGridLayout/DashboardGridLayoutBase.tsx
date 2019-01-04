@@ -69,28 +69,30 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
     const { layouts } = this.state;
 
     return (
-      <ResponsiveReactGridLayout
-        isDraggable={this.props.isDraggable || true}
-        breakpoints={this.props.breakpoints}
-        cols={this.props.cols}
-        className={classNames.root}
-        margin={this.props.margin}
-        containerPadding={[0, 0]}
-        isResizable={this.props.isResizable || false}
-        rowHeight={this.props.rowHeight}
-        layouts={layouts}
-        verticalCompact={true}
-        onDrag={this.props.onDrag}
-        onDragStart={this.props.onDragStart}
-        onDragStop={this.props.onDragStop}
-        onBreakpointChange={this.props.onBreakPointChange}
-        dragApiRef={this.props.dragApi}
-        onWidthChange={this.props.onWidthChange}
-        {...this.props}
-        onLayoutChange={this._onLayoutChanged}
-      >
-        {this.props.children}
-      </ResponsiveReactGridLayout>
+      <div dir="ltr">
+        <ResponsiveReactGridLayout
+          isDraggable={this.props.isDraggable || true}
+          breakpoints={this.props.breakpoints}
+          cols={this.props.cols}
+          className={classNames.root}
+          margin={this.props.margin}
+          containerPadding={[0, 0]}
+          isResizable={this.props.isResizable || false}
+          rowHeight={this.props.rowHeight}
+          layouts={layouts}
+          verticalCompact={true}
+          onDrag={this.props.onDrag}
+          onDragStart={this.props.onDragStart}
+          onDragStop={this.props.onDragStop}
+          onBreakpointChange={this.props.onBreakPointChange}
+          dragApiRef={this.props.dragApi}
+          onWidthChange={this.props.onWidthChange}
+          {...this.props}
+          onLayoutChange={this._onLayoutChanged}
+        >
+          {this.props.children}
+        </ResponsiveReactGridLayout>
+      </div>
     );
   }
 

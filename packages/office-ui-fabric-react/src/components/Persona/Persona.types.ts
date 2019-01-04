@@ -4,10 +4,11 @@ import { PersonaBase } from './Persona.base';
 import { ImageLoadState } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
+import { PersonaCoinBase } from './PersonaCoin/PersonaCoin.base';
 
 export interface IPersona {}
 
-export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
+export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
   /**
    * Primary text to display, usually the name of the person.
    */
@@ -127,7 +128,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
   /**
    * Optional HTML element props for Persona coin.
    */
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: IPersonaCoinProps;
 
   /**
    * Theme provided by High-Order Component.

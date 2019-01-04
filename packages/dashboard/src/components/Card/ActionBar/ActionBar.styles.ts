@@ -31,6 +31,12 @@ export const overflowButtonStyles: IButtonStyles = {
       },
       ':hover::after': {
         display: 'none'
+      },
+      ':focus': {
+        border: 'solid black 0.5px'
+      },
+      ':focus::after': {
+        display: 'none'
       }
     }
   }

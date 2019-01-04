@@ -52,11 +52,11 @@ const view: IStackComponent['view'] = props => {
 
   if (wrap) {
     return (
-      <div className={classNames.root}>
-        <RootType {...nativeProps} className={classNames.inner}>
+      <RootType className={classNames.root}>
+        <div {...nativeProps} className={classNames.inner}>
           {stackChildren}
-        </RootType>
-      </div>
+        </div>
+      </RootType>
     );
   }
 

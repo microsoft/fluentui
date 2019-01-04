@@ -3535,7 +3535,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           Number of items to render
         </label>
         <div
-          aria-activedescendant="Dropdown64-option"
           aria-describedby="Dropdown64-option"
           aria-expanded="false"
           aria-labelledby="Dropdown64-label"

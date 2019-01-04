@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Add support of accessibility for the card component",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "gorigarajesh@gmail.com"
+}

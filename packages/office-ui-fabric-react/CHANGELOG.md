@@ -1,6 +1,140 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Dec 2018 13:35:53 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jan 2019 13:33:55 GMT and should not be manually modified.
+
+## 6.119.0
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Minor changes
+
+- TooltipHost: add show method
+
+### Patches
+
+- Fix calendar accessibility edge bug preventing row and column info from being populated correctly
+
+## 6.118.2
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Patches
+
+- update pivot component to use semantic slots from design redlines
+
+## 6.118.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Pickers: Fix issue where suggestions wouldn't dismiss for controlled pickers
+- Fix Nav selected item's pseudo element
+
+## 6.118.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- ComboBox will prioritize ariaLabel property over label for accessibility. Aria labels for Dropdown and ComboBox options do not default to item text.
+
+### Patches
+
+- FocusZone: Respect the onKeydown handler even it is inside inner focus zone.
+- checking if sticky content offsetHeight is in sync with nonStickyContent offsetHeight
+
+## 6.117.2
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Patches
+
+- Adding option to prevent focus on Coachmark mount
+
+## 6.117.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- ContextualMenu: fix opening submenus with hrefs
+
+## 6.117.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- GroupedList: add compact mode and styles cleanup across GroupedList and DetailsList. Change expand button icon. Consolidate style values in between mentioned components.
+- Pickers: convert PeoplePicker items to CSS-in-JS. Expose some components to the surface API and rename them to solve ambiguity issues. Fix some imports in ExtendedPicker and FloatingPicker caused by my API changes.
+
+## 6.116.2
+Wed, 19 Dec 2018 13:39:07 GMT
+
+### Patches
+
+- DetailsList: fix conditional rendering of aria-describedby
+- Dropdown: only select aria-activedescendant when open to fix screen reader output for required dropdown
+- DetailsList: Fix custom footer example's footer row not full width.
+
+## 6.116.1
+Tue, 18 Dec 2018 22:17:52 GMT
+
+### Patches
+
+- MessageBar: add aria-expanded and aria-controls to See More button
+
+## 6.116.0
+Tue, 18 Dec 2018 13:36:49 GMT
+
+### Minor changes
+
+- ComboBox: add placeholder prop
+
+## 6.115.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Persona: fixing how coinProps are passed through from Persona to PersonaCoin.
+- Pickers: convert `TagItem` to use CSS-in-JS. Add `TagItemSuggestion` functional component. Move `TagPicker` related interfaces to a `TagPicker.types.ts` file. Cleanup some TSDocs in `BasePicker.types.ts`.
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
+
+## 6.114.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- DetailsList: add isCollapsible and deprecate isCollapsable
+- Persona: change type of the 'coinProps' type to IPersonaCoinProps.
+
+### Patches
+
+- Correct hover and highlight states for Calendar (DateRangeType.Week)
+
+## 6.113.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- theming: remove ITypography
+- Pickers: Convert TagPicker and PeoplePicker to use CSS-in-JS. Support SASS styling for custom pickers extended from BasePicker. Fix tests not using componentRef to access component methods. Cleanup TagPicker example page.
+
+### Patches
+
+- DetailsHeader: Fix "Select All" state not persisted across component mounts when optional selection prop provided.
+
+## 6.112.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Coachmark: Move style interfaces to Coachmark.types.ts file and add styled wrapper around to enable use of Customizer to theme the component.
+
+### Patches
+
+- DetailsList: changed drop hint display to none to not occupy any space
+- Dropdown: wrap items list in FocusZone to prevent auto-scrolling to first list item
+- Fix merge conflict resulting in build error.
+- Adds a just:build script to OUFR to begin integration with Just
+- Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
 
 ## 6.111.2
 Mon, 10 Dec 2018 13:35:53 GMT

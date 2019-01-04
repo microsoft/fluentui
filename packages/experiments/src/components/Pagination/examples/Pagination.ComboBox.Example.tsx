@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pagination, PaginationFormat } from '@uifabric/experiments/lib/Pagination';
+import { Pagination } from '@uifabric/experiments/lib/Pagination';
 
 export interface IPaginationBasicExampleState {
   selectedPageIndex: number;
@@ -18,7 +18,7 @@ export class PaginationComboBoxExample extends React.Component<{}, IPaginationBa
         selectedPageIndex={this.state.selectedPageIndex}
         pageCount={pageCount}
         onPageChange={this.onPageChange}
-        format={PaginationFormat.comboBox}
+        format={'comboBox'}
         comboBoxAriaLabel={`${pageCount} pages available`}
         previousPageAriaLabel={'previous page'}
         nextPageAriaLabel={'next page'}
