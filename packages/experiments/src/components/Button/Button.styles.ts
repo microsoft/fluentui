@@ -189,7 +189,7 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
           padding: state.contentPadding,
           height: '100%'
         },
-        text: {
+        content: {
           overflow: 'visible'
         }
       };

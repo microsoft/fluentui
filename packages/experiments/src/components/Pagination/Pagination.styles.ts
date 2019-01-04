@@ -1,4 +1,4 @@
-import { IPaginationStyles, IPaginationStyleProps, PaginationFormat } from './Pagination.types';
+import { IPaginationStyles, IPaginationStyleProps } from './Pagination.types';
 import { getGlobalClassNames, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
@@ -19,7 +19,7 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
   return {
     root: [
       classNames.root,
-      PaginationFormat.buttons === format && {
+      'buttons' === format && {
         listStyle: 'none',
         display: 'flex',
         flexDirection: 'column',
@@ -46,13 +46,18 @@ export function getStyles(props: IPaginationStyleProps): IPaginationStyles {
         minHeight: '32px',
         color: palette.black,
         selectors: {
-          '&:aria-selected=true': {
-            color: palette.blue,
-            fontWeight: 'bold'
-          },
           '&[aria-selected=true]': {
             color: palette.blue,
-            fontWeight: 'bold'
+            cursor: 'default',
+            fontWeight: 'bold',
+            textDecoration: 'underline'
+          },
+          '&:hover[aria-selected=true]': {
+            color: palette.blue,
+            backgroundColor: 'transparent'
+          },
+          ':active': {
+            backgroundColor: 'transparent'
           }
         }
       }

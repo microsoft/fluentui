@@ -110,6 +110,16 @@ export interface ICardFrameContent {
    * callback triggered upon clicking on the card title. Card title is clickable only when href is passed to it.
    */
   cardTitleCallback?: VoidFunction;
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  cardFrameMenuTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  cardFrameMenuAriaLabel?: string;
 }
 
 export interface ICardProps {
@@ -127,6 +137,28 @@ export interface ICardProps {
    * The footer action bar props
    */
   actions?: IAction[];
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
+
+  /**
+   * role of the  card for the benefit of screen readers
+   */
+  role?: string;
 
   /**
    * The content area content details array.
@@ -156,6 +188,14 @@ export interface ICardProps {
   loading?: boolean;
 }
 
+export enum DraggingAnimationType {
+  BarGraph = 'BarGraph',
+  DonutChart = 'DonutChart',
+  HorizontalBarGraph = 'HorizontalBarGraph',
+  LineChart = 'LineChart',
+  Shimmer = 'Shimmer'
+}
+
 export interface IAddCardInfo {
   /**
    * The body text that goes with add card representation of card
@@ -172,6 +212,21 @@ export interface IAddCardInfo {
    * The image to be shown beside card details in add card panel
    */
   addCardPanelImageUrl?: string;
+
+  /**
+   * The dragging animation type for the add card. Used for rendering animation in the dragging card
+   */
+  draggingAnimation?: DraggingAnimationType;
+
+  /**
+   * The aria label for the add card '+' icon
+   */
+  addCardIconAriaLabel?: string;
+
+  /**
+   * The alt text for the image in the add card representation
+   */
+  addCardImageAltText?: string;
 }
 
 export interface ICard extends ICardProps {

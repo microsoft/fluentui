@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalPersonaView renders correctly with a text and secondary text 1`] = `
+<div
+  className="test-cn-root"
+>
+  <div
+    className=
+
+        {
+          align-items: center;
+          background-color: #5E4B8B;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          height: 48px;
+          justify-content: center;
+          position: relative;
+          width: 48px;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: inherit;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 19.2px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            webkit-font-smoothing: antialiased;
+            white-space: nowrap;
+          }
+    >
+      JB
+    </span>
+  </div>
+  <span
+    className=
+        test-cn-text
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
+    James Bond
+  </span>
+  <span
+    className=
+        test-cn-secondaryText
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
+    Super secret agent
+  </span>
+</div>
+`;
+
+exports[`VerticalPersonaView renders correctly with only a text 1`] = `
+<div
+  className="test-cn-root"
+>
+  <div
+    className=
+
+        {
+          align-items: center;
+          background-color: #5E4B8B;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          height: 48px;
+          justify-content: center;
+          position: relative;
+          width: 48px;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: inherit;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 19.2px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            webkit-font-smoothing: antialiased;
+            white-space: nowrap;
+          }
+    >
+      JB
+    </span>
+  </div>
+  <span
+    className=
+        test-cn-text
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
+    James Bond
+  </span>
+</div>
+`;
+
+exports[`VerticalPersonaView renders the coin with the passed coinProps 1`] = `
+<div
+  className="test-cn-root"
+>
+  <div
+    className=
+
+        {
+          align-items: center;
+          background-color: red;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          height: 48px;
+          justify-content: center;
+          position: relative;
+          width: 48px;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: inherit;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 19.2px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            webkit-font-smoothing: antialiased;
+            white-space: nowrap;
+          }
+    >
+      MI6
+    </span>
+  </div>
+  <span
+    className=
+        test-cn-text
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
+    James Bond
+  </span>
+  <span
+    className=
+        test-cn-secondaryText
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
+        }
+  >
+    Super secret agent
+  </span>
+</div>
+`;

@@ -53,12 +53,27 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
   }
 
   public render(): JSX.Element {
-    const { header, contentArea, actions, cardSize, loading } = this.props;
+    const {
+      header,
+      contentArea,
+      actions,
+      cardSize,
+      loading,
+      actionBarOverflowButtonTitle,
+      actionBarOverflowButtonAriaLabel,
+      actionBarOverflowButtonAriaDescription
+    } = this.props;
     const classNames = this.getClassNames(getStyles, { cardSize, header });
     const content: JSX.Element | null = this._generateContentArea(contentArea!, cardSize, header);
 
     const headerElement: JSX.Element | null = this._generateHeader(header!);
-    const footerElement: JSX.Element | null = this._generateFooter(actions!, classNames.footer);
+    const footerElement: JSX.Element | null = this._generateFooter(
+      actions!,
+      actionBarOverflowButtonTitle!,
+      actionBarOverflowButtonAriaLabel!,
+      actionBarOverflowButtonAriaDescription!,
+      classNames.footer
+    );
     return (
       <div className={classNames.root} onMouseDown={this.onMouseDown}>
         {loading ? null : headerElement}
@@ -202,13 +217,24 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
     return <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />;
   }
 
-  private _generateFooter(actions: IAction[], className: string): JSX.Element | null {
+  private _generateFooter(
+    actions: IAction[],
+    actionBarOverflowButtonTitle: string,
+    actionBarOverflowButtonAriaLabel: string,
+    actionBarOverflowButtonAriaDescription: string,
+    className: string
+  ): JSX.Element | null {
     if (actions === null || actions === undefined) {
       return null;
     }
     return (
       <div id="actionBar" className={className}>
-        <ActionBar actions={actions} />
+        <ActionBar
+          actions={actions}
+          actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
+          actionBarOverflowButtonAriaLabel={actionBarOverflowButtonAriaLabel}
+          actionBarOverflowButtonAriaDescription={actionBarOverflowButtonAriaDescription}
+        />
       </div>
     );
   }

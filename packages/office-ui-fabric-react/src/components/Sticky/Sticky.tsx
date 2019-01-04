@@ -127,9 +127,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.props.children !== nextProps.children ||
       (this._nonStickyContent &&
         this._nonStickyContent.current &&
-        this._placeHolder &&
-        this._placeHolder.current &&
-        this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight)) as boolean;
+        ((this._placeHolder &&
+          this._placeHolder.current &&
+          this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight) ||
+          (this.stickyContentTop && this._nonStickyContent.current.offsetHeight !== this.stickyContentTop.offsetHeight) ||
+          (this.stickyContentBottom && this._nonStickyContent.current.offsetHeight !== this.stickyContentBottom.offsetHeight)))) as boolean;
   }
 
   public render(): JSX.Element {

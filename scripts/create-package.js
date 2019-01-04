@@ -28,7 +28,7 @@ const today = new Date().toUTCString();
 
 // Paths
 const packagePath = path.join(process.cwd(), 'packages', newPackageName);
-const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates');
+const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates', 'create-package');
 if (fs.existsSync(packagePath)) {
   console.error(`New package path ${packagePath} already exists.`);
   return;
@@ -131,7 +131,8 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   // Keys of this object are Mustache "tag" keys: a tag like {{packageName}} in the template
   // will be replaced with view.packageName.
   const view = {
-    packageName: newPackageNpmName,
+    packageName: newPackageName,
+    packageNpmName: newPackageNpmName,
     friendlyPackageName: pascalCasePackage,
     todayDate: today
   };
