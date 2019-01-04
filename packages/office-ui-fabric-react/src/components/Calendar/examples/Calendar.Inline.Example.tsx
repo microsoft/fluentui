@@ -94,12 +94,12 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
             </span>
           </div>
         )}
-        {(this.props.restrictedDates) && (
+        {this.props.restrictedDates && (
           <div>
             Disabled date(s):
             <span>
               {' '}
-              {this.props.restrictedDates.map((d) => d.toLocaleDateString()).join(', ')}
+              {this.props.restrictedDates.length > 0 ? this.props.restrictedDates.map(d => d.toLocaleDateString()).join(', ') : 'Not set'}
             </span>
           </div>
         )}
