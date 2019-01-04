@@ -511,11 +511,11 @@ describe('ComboBox', () => {
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
     const inputElement = comboBoxRoot.find('input');
     inputElement.simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option');
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
 
-    ReactTestUtils.Simulate.click(buttons[0]);
-    ReactTestUtils.Simulate.click(buttons[1]);
-    ReactTestUtils.Simulate.click(buttons[2]);
+    ReactTestUtils.Simulate.change(buttons[0]);
+    ReactTestUtils.Simulate.change(buttons[1]);
+    ReactTestUtils.Simulate.change(buttons[2]);
 
     expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 1, 2]);
   });
@@ -524,11 +524,11 @@ describe('ComboBox', () => {
     const onItemClickMock = jest.fn();
     wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
     wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option');
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
 
-    ReactTestUtils.Simulate.click(buttons[0]);
-    ReactTestUtils.Simulate.click(buttons[1]);
-    ReactTestUtils.Simulate.click(buttons[2]);
+    ReactTestUtils.Simulate.change(buttons[0]);
+    ReactTestUtils.Simulate.change(buttons[1]);
+    ReactTestUtils.Simulate.change(buttons[2]);
 
     expect(onItemClickMock).toHaveBeenCalledTimes(3);
   });
@@ -539,7 +539,7 @@ describe('ComboBox', () => {
     wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
     const buttons = document.querySelectorAll('.ms-ComboBox-option');
 
-    (buttons[0] as HTMLButtonElement).click();
+    (buttons[0] as HTMLInputElement).click();
 
     expect(onItemClickMock).toHaveBeenCalledTimes(1);
   });
