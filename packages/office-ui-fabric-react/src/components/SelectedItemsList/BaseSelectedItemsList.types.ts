@@ -17,7 +17,7 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 // Type T is the type of the item that is displayed
 // For example, if the picker is displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
-export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
+export interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
   componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
 
   /**
@@ -56,12 +56,12 @@ export interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
 
   /**
    * Aria label for the 'X' button in the selected item component.
-   * @default ''
+   * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
   /**
    * A callback when an item is deleted
-   * @deprecated Please use onItemsDeleted
+   * @deprecated Use `onItemsDeleted` instead.
    */
   onItemDeleted?: (deletedItem: T) => void;
 

@@ -3,6 +3,7 @@ import { ISuggestionModel } from '../../Pickers';
 import { IPersonaProps } from '../../Persona';
 import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import { IRefObject } from '../../Utilities';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -15,7 +16,7 @@ export interface IBaseFloatingPicker {
   hidePicker: () => void;
 
   /** Shows the picker
-   * @param updateValue optional param to indicate whether to update the query string
+   * @param updateValue - Optional param to indicate whether to update the query string
    */
   showPicker: (updateValue?: boolean) => void;
 
@@ -31,8 +32,8 @@ export interface IBaseFloatingPicker {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
-export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseFloatingPicker | null) => void;
+export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
+  componentRef?: IRefObject<IBaseFloatingPicker>;
 
   /**
    * The suggestions store

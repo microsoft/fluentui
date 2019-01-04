@@ -180,7 +180,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 
 >
   <div
-    aria-activedescendant="Dropdown0-option"
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
     className=

@@ -12,13 +12,6 @@ interface IFontFace extends IRawFontStyle {
 }
 
 // @public
-enum InjectionMode {
-  appendChild = 2,
-  insertNode = 1,
-  none = 0
-}
-
-// @public
 interface IRawStyle extends IRawStyleBase {
   displayName?: string;
   selectors?: {
@@ -73,4 +66,6 @@ class Stylesheet {
 // WARNING: Unsupported export: IProcessedStyleSet
 // WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IFontWeight
+// WARNING: Unsupported export: InjectionMode
+// WARNING: Unsupported export: InjectionMode
 // (No @packagedocumentation comment for this package)

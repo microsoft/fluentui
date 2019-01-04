@@ -45,469 +45,363 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
             display: flex;
           }
     >
-      <div
-        aria-describedby="id__0"
-        className="ms-FocusZone"
-        data-focuszone-id="FocusZone1"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-        role="listbox"
+      <ul
+        className=
+            ms-Facepile-members
+            {
+              display: flex;
+              list-style-type: none;
+              margin-bottom: -2px;
+              margin-left: -2px;
+              margin-right: -2px;
+              margin-top: -2px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+            }
       >
-        <ul
+        <li
           className=
-              ms-Facepile-members
+              ms-Facepile-member
               {
-                display: flex;
-                list-style-type: none;
-                margin-bottom: -2px;
-                margin-left: -2px;
-                margin-right: -2px;
-                margin-top: -2px;
-                overflow: hidden;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
               }
         >
-          <li
+          <div
             className=
-                ms-Facepile-member
+                ms-Facepile-itemButton
+                ms-Facepile-person
                 {
-                  display: inline-flex;
-                  flex: 0 0 auto;
-                  margin-bottom: 2px;
-                  margin-left: 2px;
-                  margin-right: 2px;
-                  margin-top: 2px;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  cursor: pointer;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
                 }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data="50%"
+            data-is-focusable={true}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            role="option"
+            title="Annie Lindqvist"
           >
             <div
               className=
-                  ms-Facepile-itemButton
-                  ms-Facepile-person
-                  {
-                    background-color: transparent;
-                    border-radius: 50%;
-                    border: none;
-                    cursor: pointer;
-                    display: inline;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    text-align: center;
-                    vertical-align: top;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                  }
-              data="50%"
-              data-is-focusable={true}
-              onMouseMove={[Function]}
-              onMouseOut={[Function]}
-              role="option"
-              title="Annie Lindqvist"
-            >
-              <div
-                className=
-                    ms-Persona-coin
-                    ms-Persona--size32
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                    }
-                size={11}
-              >
-                <div
-                  className=
-                      ms-Persona-imageArea
-                      {
-                        flex: 0 0 auto;
-                        height: 32px;
-                        position: relative;
-                        text-align: center;
-                        width: 32px;
-                      }
-                >
-                  <div
-                    className=
-                        ms-Image
-                        ms-Persona-image
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          border-radius: 50%;
-                          border: 0px;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
-                          height: 32px;
-                          left: 0px;
-                          margin-right: 10px;
-                          overflow: hidden;
-                          perspective: 1px;
-                          position: absolute;
-                          top: 0px;
-                          width: 32px;
-                        }
-                    style={
-                      Object {
-                        "height": 32,
-                        "width": 32,
-                      }
-                    }
-                  >
-                    <img
-                      alt=""
-                      className=
-                          ms-Image-image
-                          ms-Image-image--cover
-                          ms-Image-image--portrait
-                          is-notLoaded
-                          is-fadeIn
-                          {
-                            display: block;
-                            height: auto;
-                            left: 50% /* @noflip */;
-                            opacity: 0;
-                            position: absolute;
-                            top: 50%;
-                            transform: translate(-50%,-50%);
-                            width: 100%;
-                          }
-                      onError={[Function]}
-                      onLoad={[Function]}
-                      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li
-            className=
-                ms-Facepile-member
-                {
-                  display: inline-flex;
-                  flex: 0 0 auto;
-                  margin-bottom: 2px;
-                  margin-left: 2px;
-                  margin-right: 2px;
-                  margin-top: 2px;
-                }
-          >
-            <div
-              className=
-                  ms-Facepile-itemButton
-                  ms-Facepile-person
-                  {
-                    background-color: transparent;
-                    border-radius: 50%;
-                    border: none;
-                    cursor: pointer;
-                    display: inline;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    text-align: center;
-                    vertical-align: top;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                  }
-              data="$1,000"
-              data-is-focusable={true}
-              onMouseMove={[Function]}
-              onMouseOut={[Function]}
-              role="option"
-              title="Aaron Reid"
-            >
-              <div
-                className=
-                    ms-Persona-coin
-                    ms-Persona--size32
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                    }
-                size={11}
-              >
-                <div
-                  className=
-                      ms-Persona-imageArea
-                      {
-                        flex: 0 0 auto;
-                        height: 32px;
-                        position: relative;
-                        text-align: center;
-                        width: 32px;
-                      }
-                >
-                  <div
-                    className=
-                        ms-Image
-                        ms-Persona-image
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          border-radius: 50%;
-                          border: 0px;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 14px;
-                          font-weight: 400;
-                          height: 32px;
-                          left: 0px;
-                          margin-right: 10px;
-                          overflow: hidden;
-                          perspective: 1px;
-                          position: absolute;
-                          top: 0px;
-                          width: 32px;
-                        }
-                    style={
-                      Object {
-                        "height": 32,
-                        "width": 32,
-                      }
-                    }
-                  >
-                    <img
-                      alt=""
-                      className=
-                          ms-Image-image
-                          ms-Image-image--cover
-                          ms-Image-image--portrait
-                          is-notLoaded
-                          is-fadeIn
-                          {
-                            display: block;
-                            height: auto;
-                            left: 50% /* @noflip */;
-                            opacity: 0;
-                            position: absolute;
-                            top: 50%;
-                            transform: translate(-50%,-50%);
-                            width: 100%;
-                          }
-                      onError={[Function]}
-                      onLoad={[Function]}
-                      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li
-            className=
-                ms-Facepile-member
-                {
-                  display: inline-flex;
-                  flex: 0 0 auto;
-                  margin-bottom: 2px;
-                  margin-left: 2px;
-                  margin-right: 2px;
-                  margin-top: 2px;
-                }
-          >
-            <button
-              className=
-                  ms-Button
-                  ms-Facepile-itemButton
-                  ms-Facepile-person
-                  ms-Button--facepile
+                  ms-Persona-coin
+                  ms-Persona--size32
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
-                    border-radius: 50%;
-                    border: none;
-                    box-sizing: border-box;
-                    cursor: pointer;
-                    display: inline;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    outline: transparent;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
                   }
-                  &::-moz-focus-inner {
-                    border: 0px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ButtonText;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-              data="75%"
-              data-is-focusable={true}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseMove={[Function]}
-              onMouseOut={[Function]}
-              onMouseUp={[Function]}
-              role="option"
-              title="Alex Lundberg"
-              type="button"
+              size={11}
             >
               <div
                 className=
-                    ms-Button-flexContainer
+                    ms-Persona-imageArea
                     {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: center;
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
                     }
               >
                 <div
                   className=
-                      ms-Persona-coin
-                      ms-Persona--size32
+                      ms-Image
+                      ms-Persona-image
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
+                        border-radius: 50%;
+                        border: 0px;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
+                        height: 32px;
+                        left: 0px;
+                        margin-right: 10px;
+                        overflow: hidden;
+                        perspective: 1px;
+                        position: absolute;
+                        top: 0px;
+                        width: 32px;
                       }
-                  size={11}
+                  style={
+                    Object {
+                      "height": 32,
+                      "width": 32,
+                    }
+                  }
                 >
-                  <div
+                  <img
+                    alt=""
                     className=
-                        ms-Persona-imageArea
+                        ms-Image-image
+                        ms-Image-image--cover
+                        ms-Image-image--portrait
+                        is-notLoaded
+                        is-fadeIn
                         {
-                          flex: 0 0 auto;
-                          height: 32px;
-                          position: relative;
-                          text-align: center;
-                          width: 32px;
+                          display: block;
+                          height: auto;
+                          left: 50% /* @noflip */;
+                          opacity: 0;
+                          position: absolute;
+                          top: 50%;
+                          transform: translate(-50%,-50%);
+                          width: 100%;
                         }
-                  >
-                    <div
-                      aria-hidden="true"
-                      className=
-                          ms-Persona-initials
-                          {
-                            background-color: #1E7145;
-                            border-radius: 50%;
-                            color: #ffffff;
-                            font-size: 14px;
-                            font-weight: 400;
-                            height: 32px;
-                            line-height: 32px;
-                          }
-                          @media screen and (-ms-high-contrast: active){& {
-                            -ms-high-contrast-adjust: none;
-                            background-color: Window !important;
-                            border: 1px solid WindowText;
-                            box-sizing: border-box;
-                            color: WindowText;
-                          }
-                    >
-                      <span>
-                        AL
-                      </span>
-                    </div>
-                  </div>
+                    onError={[Function]}
+                    onLoad={[Function]}
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                  />
                 </div>
               </div>
-            </button>
-          </li>
-          <li
+            </div>
+          </div>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <div
             className=
-                ms-Facepile-member
+                ms-Facepile-itemButton
+                ms-Facepile-person
                 {
-                  display: inline-flex;
-                  flex: 0 0 auto;
-                  margin-bottom: 2px;
-                  margin-left: 2px;
-                  margin-right: 2px;
-                  margin-top: 2px;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  cursor: pointer;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
                 }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data="$1,000"
+            data-is-focusable={true}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            role="option"
+            title="Aaron Reid"
           >
             <div
               className=
-                  ms-Facepile-itemButton
-                  ms-Facepile-person
+                  ms-Persona-coin
+                  ms-Persona--size32
                   {
-                    background-color: transparent;
-                    border-radius: 50%;
-                    border: none;
-                    cursor: pointer;
-                    display: inline;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    text-align: center;
-                    vertical-align: top;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                   }
-                  &::-moz-focus-inner {
-                    border: 0px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
+              size={11}
+            >
+              <div
+                className=
+                    ms-Persona-imageArea
+                    {
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
+                    }
+              >
+                <div
+                  className=
+                      ms-Image
+                      ms-Persona-image
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        border-radius: 50%;
+                        border: 0px;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 32px;
+                        left: 0px;
+                        margin-right: 10px;
+                        overflow: hidden;
+                        perspective: 1px;
+                        position: absolute;
+                        top: 0px;
+                        width: 32px;
+                      }
+                  style={
+                    Object {
+                      "height": 32,
+                      "width": 32,
+                    }
                   }
-              data="4 hrs"
-              data-is-focusable={true}
-              onMouseMove={[Function]}
-              onMouseOut={[Function]}
-              role="option"
-              title="Roko Kolar"
+                >
+                  <img
+                    alt=""
+                    className=
+                        ms-Image-image
+                        ms-Image-image--cover
+                        ms-Image-image--portrait
+                        is-notLoaded
+                        is-fadeIn
+                        {
+                          display: block;
+                          height: auto;
+                          left: 50% /* @noflip */;
+                          opacity: 0;
+                          position: absolute;
+                          top: 50%;
+                          transform: translate(-50%,-50%);
+                          width: 100%;
+                        }
+                    onError={[Function]}
+                    onLoad={[Function]}
+                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                ms-Button--facepile
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  display: inline;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 0px;
+                  content: "";
+                  left: 0px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  border: none;
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > * {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+            data="75%"
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseUp={[Function]}
+            role="option"
+            title="Alex Lundberg"
+            type="button"
+          >
+            <div
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
             >
               <div
                 className=
@@ -538,7 +432,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                     className=
                         ms-Persona-initials
                         {
-                          background-color: #00ABA9;
+                          background-color: #1E7145;
                           border-radius: 50%;
                           color: #ffffff;
                           font-size: 14px;
@@ -555,111 +449,207 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                         }
                   >
                     <span>
-                      RK
+                      AL
                     </span>
                   </div>
                 </div>
               </div>
             </div>
-          </li>
-          <li
+          </button>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <div
             className=
-                ms-Facepile-member
+                ms-Facepile-itemButton
+                ms-Facepile-person
                 {
-                  display: inline-flex;
-                  flex: 0 0 auto;
-                  margin-bottom: 2px;
-                  margin-left: 2px;
-                  margin-right: 2px;
-                  margin-top: 2px;
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  cursor: pointer;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
                 }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data="4 hrs"
+            data-is-focusable={true}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            role="option"
+            title="Roko Kolar"
           >
             <div
               className=
-                  ms-Facepile-itemButton
-                  ms-Facepile-person
+                  ms-Persona-coin
+                  ms-Persona--size32
                   {
-                    background-color: transparent;
-                    border-radius: 50%;
-                    border: none;
-                    cursor: pointer;
-                    display: inline;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    text-align: center;
-                    vertical-align: top;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                   }
-                  &::-moz-focus-inner {
-                    border: 0px;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                  }
-              data="25%"
-              data-is-focusable={true}
-              onMouseMove={[Function]}
-              onMouseOut={[Function]}
-              role="option"
-              title="Christian Bergqvist"
+              size={11}
             >
               <div
                 className=
-                    ms-Persona-coin
-                    ms-Persona--size32
+                    ms-Persona-imageArea
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
                     }
-                size={11}
               >
                 <div
+                  aria-hidden="true"
                   className=
-                      ms-Persona-imageArea
+                      ms-Persona-initials
                       {
-                        flex: 0 0 auto;
+                        background-color: #00ABA9;
+                        border-radius: 50%;
+                        color: #ffffff;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: 32px;
-                        position: relative;
-                        text-align: center;
-                        width: 32px;
+                        line-height: 32px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        -ms-high-contrast-adjust: none;
+                        background-color: Window !important;
+                        border: 1px solid WindowText;
+                        box-sizing: border-box;
+                        color: WindowText;
                       }
                 >
-                  <div
-                    aria-hidden="true"
-                    className=
-                        ms-Persona-initials
-                        {
-                          background-color: #00A300;
-                          border-radius: 50%;
-                          color: #ffffff;
-                          font-size: 14px;
-                          font-weight: 400;
-                          height: 32px;
-                          line-height: 32px;
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          -ms-high-contrast-adjust: none;
-                          background-color: Window !important;
-                          border: 1px solid WindowText;
-                          box-sizing: border-box;
-                          color: WindowText;
-                        }
-                  >
-                    <span>
-                      CB
-                    </span>
-                  </div>
+                  <span>
+                    RK
+                  </span>
                 </div>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </li>
+        <li
+          className=
+              ms-Facepile-member
+              {
+                display: inline-flex;
+                flex: 0 0 auto;
+                margin-bottom: 2px;
+                margin-left: 2px;
+                margin-right: 2px;
+                margin-top: 2px;
+              }
+        >
+          <div
+            className=
+                ms-Facepile-itemButton
+                ms-Facepile-person
+                {
+                  background-color: transparent;
+                  border-radius: 50%;
+                  border: none;
+                  cursor: pointer;
+                  display: inline;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  text-align: center;
+                  vertical-align: top;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
+            data="25%"
+            data-is-focusable={true}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            role="option"
+            title="Christian Bergqvist"
+          >
+            <div
+              className=
+                  ms-Persona-coin
+                  ms-Persona--size32
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
+              size={11}
+            >
+              <div
+                className=
+                    ms-Persona-imageArea
+                    {
+                      flex: 0 0 auto;
+                      height: 32px;
+                      position: relative;
+                      text-align: center;
+                      width: 32px;
+                    }
+              >
+                <div
+                  aria-hidden="true"
+                  className=
+                      ms-Persona-initials
+                      {
+                        background-color: #00A300;
+                        border-radius: 50%;
+                        color: #ffffff;
+                        font-size: 14px;
+                        font-weight: 400;
+                        height: 32px;
+                        line-height: 32px;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        -ms-high-contrast-adjust: none;
+                        background-color: Window !important;
+                        border: 1px solid WindowText;
+                        box-sizing: border-box;
+                        color: WindowText;
+                      }
+                >
+                  <span>
+                    CB
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
   <div
@@ -703,7 +693,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider5"
+        htmlFor="Slider4"
       >
         Number of Personas:
       </label>
@@ -716,7 +706,8 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               flex-wrap: nowrap;
             }
       >
-        <button
+        <div
+          aria-disabled={false}
           aria-label="Number of Personas:"
           aria-valuemax={5}
           aria-valuemin={1}
@@ -726,8 +717,10 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               ms-Slider-showValue
               ms-Slider-showTransitions
               {
+                align-items: center;
                 background: transparent;
                 border: none;
+                display: flex;
                 flex-grow: 1;
                 height: 28px;
                 line-height: 28px;
@@ -804,13 +797,13 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                 transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                 width: 16px;
               }
-          disabled={false}
-          id="Slider5"
+          data-is-focusable={true}
+          id="Slider4"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
           role="slider"
-          type="button"
+          tabIndex={0}
         >
           <div
             className=
@@ -872,7 +865,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               }
             />
           </div>
-        </button>
+        </div>
         <label
           className=
               ms-Label
@@ -937,16 +930,15 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown6"
-        id="Dropdown6-label"
+        htmlFor="Dropdown5"
+        id="Dropdown5-label"
       >
         Overflow Button Type:
       </label>
       <div
-        aria-activedescendant="Dropdown6-option"
-        aria-describedby="Dropdown6-option"
+        aria-describedby="Dropdown5-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown6-label"
+        aria-labelledby="Dropdown5-label"
         className=
             ms-Dropdown
             {
@@ -1033,7 +1025,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               border-color: #a80000;
             }
         data-is-focusable={true}
-        id="Dropdown6"
+        id="Dropdown5"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -1076,7 +1068,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown6-option"
+          id="Dropdown5-option"
           role="option"
         >
           <span>

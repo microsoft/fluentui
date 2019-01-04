@@ -4,6 +4,8 @@ import * as renderer from 'react-test-renderer';
 import { Customizer } from './Customizer';
 import { IStyle, Stylesheet, InjectionMode, IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
+import { Customizations } from './Customizations';
+import { safeCreate } from '@uifabric/test-utilities';
 
 interface ITestStyles {
   root: IStyle;
@@ -11,9 +13,11 @@ interface ITestStyles {
 interface ITestProps {
   cool?: boolean;
   styles?: IStyleFunctionOrObject<{}, ITestStyles>;
+  children?: React.ReactNode;
 }
 
 let _lastProps: ITestProps | undefined;
+let _renderCount: number;
 
 const getClassNames = classNamesFunction<{}, ITestStyles>();
 
@@ -22,10 +26,19 @@ class TestBase extends React.Component<ITestProps> {
     super(props);
     _lastProps = props;
   }
+
   public render(): JSX.Element {
+    _renderCount++;
+
     const classNames = getClassNames(this.props.styles, this.props);
 
-    return <div className={classNames.root} />;
+    return <div className={classNames.root}>{this.props.children}</div>;
+  }
+}
+
+class ShortCircuit extends React.PureComponent {
+  public render(): JSX.Element {
+    return <div>{this.props.children}</div>;
   }
 }
 
@@ -40,6 +53,8 @@ const Test = styled<ITestProps, {}, ITestStyles>(TestBase, TestStyles, undefined
 describe('styled', () => {
   beforeEach(() => {
     _lastProps = undefined;
+    _renderCount = 0;
+
     Stylesheet.getInstance().setConfig({
       injectionMode: InjectionMode.none
     });
@@ -47,19 +62,20 @@ describe('styled', () => {
   });
 
   it('renders base styles (background red)', () => {
-    const component = renderer.create(<Test />);
-
-    // Test that defaults are the base styles (red).
-    expect(component.toJSON()).toMatchSnapshot();
+    safeCreate(<Test />, (component: renderer.ReactTestRenderer) => {
+      // Test that defaults are the base styles (red).
+      expect(component.toJSON()).toMatchSnapshot();
+    });
   });
 
   it('allows user overrides (background green)', () => {
-    const component = renderer.create(<Test styles={{ root: { background: 'green' } }} />);
-    expect(component.toJSON()).toMatchSnapshot();
+    safeCreate(<Test styles={{ root: { background: 'green' } }} />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
   });
 
   it('allows for contextual overrides (background yellow)', () => {
-    const component = renderer.create(
+    safeCreate(
       <Customizer
         scopedSettings={{
           Test: {
@@ -72,13 +88,15 @@ describe('styled', () => {
         }}
       >
         <Test />
-      </Customizer>
+      </Customizer>,
+      (component: renderer.ReactTestRenderer) => {
+        expect(component.toJSON()).toMatchSnapshot();
+      }
     );
-    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('allows for contextual overrides mixed under user overrides (background yellow, color red)', () => {
-    const component = renderer.create(
+    safeCreate(
       <Customizer
         scopedSettings={{
           Test: {
@@ -91,13 +109,68 @@ describe('styled', () => {
         }}
       >
         <Test styles={{ root: { color: 'red' } }} />
-      </Customizer>
+      </Customizer>,
+      (component: renderer.ReactTestRenderer) => {
+        expect(component.toJSON()).toMatchSnapshot();
+      }
     );
-    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('can process style props (background blue)', () => {
-    const component = renderer.create(<Test cool />);
-    expect(component.toJSON()).toMatchSnapshot();
+    safeCreate(<Test cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('can re-render on customization mutations', () => {
+    safeCreate(<Test />, () => {
+      expect(_renderCount).toEqual(1);
+      Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+      expect(_renderCount).toEqual(2);
+    });
+  });
+
+  it('can re-render the minimal times when nesting', () => {
+    safeCreate(
+      <Test>
+        <Test />
+        <Test />
+      </Test>,
+      () => {
+        expect(_renderCount).toEqual(3);
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        expect(_renderCount).toEqual(6);
+      }
+    );
+  });
+
+  it('can re-render the minimal times when nesting and in a Customizer', () => {
+    safeCreate(
+      <Customizer>
+        <Test />
+      </Customizer>,
+      () => {
+        expect(_renderCount).toEqual(1);
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        expect(_renderCount).toEqual(2);
+      }
+    );
+  });
+
+  it('can re-render the minimal times when inside of a pure component', () => {
+    safeCreate(
+      <Customizer>
+        <Test>
+          <ShortCircuit>
+            <Test />
+          </ShortCircuit>
+        </Test>
+      </Customizer>,
+      () => {
+        expect(_renderCount).toEqual(2);
+        Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
+        expect(_renderCount).toEqual(4);
+      }
+    );
   });
 });

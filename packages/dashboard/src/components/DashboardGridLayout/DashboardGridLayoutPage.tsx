@@ -6,12 +6,15 @@ import { DashboardGridLayoutSectionsExample } from './examples/DashboardGridLayo
 import { DashboardGridLayoutSectionsNoncollapsibleExample } from './examples/DashboardGridLayout.SectionsNonCollapse.Example';
 import { DashboardGridLayoutSectionsWithCardNodesExample } from './examples/DashboardGridLayout.Sections.WithCardNodes.Example';
 import { DashboardGridLayoutDragApiExample } from './examples/DashboardGridLayout.DragApi.Example';
+import { DGLWithAddCardPanelExample } from './examples/DGLWithAddCardPanel.Example';
+
 const DashboardGridLayoutExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Example.tsx') as string;
 const DashboardGridLayoutCardExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Card.Example.tsx') as string;
 const DashboardGridLayoutSectionsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Sections.Example.tsx') as string;
 const DashboardGridLayoutSectionsNoncollapsibleExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.SectionsNonCollapse.Example.tsx') as string;
 const DashboardGridLayoutSectionsWithCardNodesExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.Sections.WithCardNodes.Example.tsx') as string;
 const DashboardGridLayoutDragApiExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DashboardGridLayout.DragApi.Example.tsx') as string;
+const DashboardGridLayoutWithAddCardPanelExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/DashboardGridLayout/examples/DGLWithAddCardPanel.Example.tsx') as string;
 
 export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -21,6 +24,14 @@ export class DashboardGridLayoutPage extends React.Component<IComponentDemoPageP
         componentName="DashboardGridLayout"
         exampleCards={
           <div>
+            <ExampleCard
+              title="DashboardGridLayout with add card panel example"
+              isScrollable={true}
+              isOptIn={true}
+              code={DashboardGridLayoutWithAddCardPanelExampleCode}
+            >
+              <DGLWithAddCardPanelExample />
+            </ExampleCard>
             <ExampleCard title="DashboardGridLayout" isScrollable={true} isOptIn={true} code={DashboardGridLayoutExampleCode}>
               <DashboardGridLayoutExample />
             </ExampleCard>

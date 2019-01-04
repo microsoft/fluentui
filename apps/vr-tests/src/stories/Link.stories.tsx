@@ -25,25 +25,29 @@ storiesOf('Link', module)
     'Root',
     () => (
       <div className=".ms-Fabric--isFocusVisible">
-        <Link href="#">I'm a link</Link>
+        <Link href="#" styles={{ root: { fontSize: '14px' } }}>
+          I'm a link
+        </Link>
       </div>
     ),
     { rtl: true }
   )
   .addStory('Disabled', () => (
     <div className=".ms-Fabric--isFocusVisible">
-      <Link href="#" disabled>
+      <Link href="#" disabled styles={{ root: { fontSize: '14px' } }}>
         I'm a disabled link
-      </Link>{' '}
+      </Link>
     </div>
   ))
   .addStory('No Href', () => (
     <div className=".ms-Fabric--isFocusVisible">
-      <Link>I'm rendered as a button because I have no href</Link>
+      <Link styles={{ root: { fontSize: '14px' } }}>I'm rendered as a button because I have no href</Link>
     </div>
   ))
   .addStory('No Href Disabled', () => (
     <div className=".ms-Fabric--isFocusVisible">
-      <Link disabled>I'm rendered as a button because I have no href and am disabled</Link>
+      <Link disabled styles={{ root: { fontSize: '14px' } }}>
+        I'm rendered as a button because I have no href and am disabled
+      </Link>
     </div>
   ));

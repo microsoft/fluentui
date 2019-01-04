@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { IDetailsList, DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import './DetailsList.Grouped.Example.scss';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 const _columns = [
   {
@@ -56,16 +57,18 @@ export class DetailsListGroupedExample extends BaseComponent<
   {
     items: {}[];
     showItemIndexInView: boolean;
+    isCompactMode: boolean;
   }
 > {
-  private _root = createRef<IDetailsList>();
+  private _root = React.createRef<IDetailsList>();
 
   constructor(props: {}) {
     super(props);
 
     this.state = {
       items: _items,
-      showItemIndexInView: false
+      showItemIndexInView: false,
+      isCompactMode: false
     };
   }
 
@@ -77,7 +80,7 @@ export class DetailsListGroupedExample extends BaseComponent<
   }
 
   public render() {
-    const { items } = this.state;
+    const { items, isCompactMode } = this.state;
 
     return (
       <Fabric className="DetailsList-grouped-example">
@@ -89,6 +92,13 @@ export class DetailsListGroupedExample extends BaseComponent<
           />
         </div>
         <DefaultButton onClick={this._addItem} text="Add an item" />
+        <Toggle
+          label="Enable Compact Mode"
+          checked={isCompactMode}
+          onChange={this._onChangeCompactMode}
+          onText="Compact"
+          offText="Normal"
+        />
         <DetailsList
           componentRef={this._root}
           items={items}
@@ -119,6 +129,7 @@ export class DetailsListGroupedExample extends BaseComponent<
             showEmptyGroups: true
           }}
           onRenderItemColumn={this._onRenderColumn}
+          compact={isCompactMode}
         />
       </Fabric>
     );
@@ -163,5 +174,9 @@ export class DetailsListGroupedExample extends BaseComponent<
     this.setState({
       showItemIndexInView: checked
     });
+  };
+
+  private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ isCompactMode: checked });
   };
 }

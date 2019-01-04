@@ -12,7 +12,12 @@ import { IIconProps } from '../../Icon';
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ILinkProps } from '../../Link';
 
-export interface IDocumentCard {}
+export interface IDocumentCard {
+  /**
+   * Sets focus to the DocumentCard.
+   */
+  focus: () => void;
+}
 
 export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   /**
@@ -23,7 +28,7 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
 
   /**
    * The type of DocumentCard to display.
-   * @default DocumentCardType.normal
+   * @defaultvalue DocumentCardType.normal
    */
   type?: DocumentCardType;
 
@@ -47,8 +52,8 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
    * Hex color value of the line below the card, which should correspond to the document type.
    * This should only be supplied when using the 'compact' card layout.
    *
-   * Deprecated at v4.17.1, to be removed at >= v5.0.0.
-   * @deprecated
+   * Deprecated at v4.17.1, to be removed at \>= v5.0.0.
+   * @deprecated To be removed at v5.0.0.
    */
   accentColor?: string;
 }
@@ -77,7 +82,7 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
 
   /**
    * The function return string that will describe the number of overflow documents.
-   * such as  (overflowCount: number) => `+${ overflowCount } more`,
+   * such as  (overflowCount: number) =\> `+${ overflowCount } more`,
    */
   getOverflowDocumentCountText?: (overflowCount: number) => string;
 }
@@ -95,7 +100,7 @@ export interface IDocumentCardPreviewImage {
 
   /**
    * URL to view the file.
-   * @deprecated Use href inside of linkProps instead.
+   * @deprecated Use `href` inside of `linkProps` instead.
    */
   url?: string;
 
@@ -110,8 +115,8 @@ export interface IDocumentCardPreviewImage {
   previewImageSrc?: string;
 
   /**
-   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * @deprecated
+   * Deprecated at v1.3.6, to be removed at \>= v2.0.0.
+   * @deprecated To be removed at v2.0.0.
    */
   errorImageSrc?: string;
 
@@ -140,8 +145,8 @@ export interface IDocumentCardPreviewImage {
   /**
    * Hex color value of the line below the preview, which should correspond to the document type.
    *
-   * Deprecated at v4.17.1, to be removed at >= v5.0.0.
-   * @deprecated
+   * Deprecated at v4.17.1, to be removed at \>= v5.0.0.
+   * @deprecated To be removed at v5.0.0.
    */
   accentColor?: string;
 
@@ -158,7 +163,7 @@ export interface IDocumentCardPreviewImage {
   previewIconContainerClass?: string;
 }
 
-export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
+export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitle> {
   /**
    * Gets the component ref.
    */
@@ -183,7 +188,7 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
   showAsSecondaryTitle?: boolean;
 }
 
-export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
+export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
   /**
    * Gets the component ref.
    */
@@ -210,7 +215,7 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
   ariaLabel?: string;
 }
 
-export interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {
+export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
   /**
    * Gets the component ref.
    */
@@ -257,7 +262,7 @@ export interface IDocumentCardActivityPerson {
   initialsColor?: PersonaInitialsColor;
 }
 
-export interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {
+export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {
   /**
    * Gets the component ref.
    */
@@ -274,7 +279,7 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
   views?: Number;
 }
 
-export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
+export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogo> {
   /**
    * Gets the component ref.
    */
@@ -290,7 +295,7 @@ export interface IDocumentCardLogoProps extends React.Props<DocumentCardLogo> {
   logoName?: string;
 }
 
-export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus> {
+export interface IDocumentCardStatusProps extends React.ClassAttributes<DocumentCardStatus> {
   /**
    * Gets the component ref.
    */

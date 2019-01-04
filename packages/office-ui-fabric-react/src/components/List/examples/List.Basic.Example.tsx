@@ -31,8 +31,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
   public render(): JSX.Element {
     const { items: originalItems } = this.props;
     const { items } = this.state;
-    const resultCountText =
-      items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
+    const resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
 
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
@@ -54,13 +53,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
   private _onRenderCell(item: any, index: number | undefined): JSX.Element {
     return (
       <div className="ms-ListBasicExample-itemCell" data-is-focusable={true}>
-        <Image
-          className="ms-ListBasicExample-itemImage"
-          src={item.thumbnail}
-          width={50}
-          height={50}
-          imageFit={ImageFit.cover}
-        />
+        <Image className="ms-ListBasicExample-itemImage" src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
         <div className="ms-ListBasicExample-itemContent">
           <div className="ms-ListBasicExample-itemName">{item.name}</div>
           <div className="ms-ListBasicExample-itemIndex">{`Item ${index}`}</div>

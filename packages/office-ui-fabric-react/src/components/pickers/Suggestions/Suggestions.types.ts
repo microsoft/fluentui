@@ -3,7 +3,7 @@ import { ISuggestionModel } from './SuggestionsController';
 import { IRefObject, IRenderFunction, KeyCodes } from '../../../Utilities';
 import { IPersonaProps } from '../../Persona/Persona.types';
 
-export interface ISuggestionsProps<T> extends React.Props<any> {
+export interface ISuggestionsProps<T> extends React.ClassAttributes<any> {
   /**
    * Gets the component ref.
    */
@@ -104,7 +104,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
   /**
    * Indicates if the text in resultsFooter or resultsFooterFull should be shown at the end of the suggestion list.
-   * @default true.
+   * @defaultvalue true.
    */
   isResultsFooterVisible?: boolean;
   /**

@@ -11,13 +11,7 @@ export interface IExampleState {
 
 export class PieChartDynamicExample extends React.Component<IPieChartProps, IExampleState> {
   private _colors = [
-    [
-      DefaultPalette.blueLight,
-      DefaultPalette.blue,
-      DefaultPalette.tealLight,
-      DefaultPalette.teal,
-      DefaultPalette.greenLight
-    ],
+    [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.tealLight, DefaultPalette.teal, DefaultPalette.greenLight],
     [DefaultPalette.purpleLight, DefaultPalette.purple, DefaultPalette.magentaLight, DefaultPalette.magenta],
     [DefaultPalette.yellowLight, DefaultPalette.yellow, DefaultPalette.orangeLighter, DefaultPalette.orangeLight],
     [DefaultPalette.neutralLight, DefaultPalette.neutralQuaternary, DefaultPalette.neutralTertiary]
@@ -27,12 +21,7 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
     super(props);
     this.state = {
       dynamicData: [{ x: 'A', y: 25 }, { x: 'B', y: 10 }, { x: 'C', y: 60 }, { x: 'D', y: 5 }],
-      colors: [
-        DefaultPalette.blueLight,
-        DefaultPalette.purpleLight,
-        DefaultPalette.yellowLight,
-        DefaultPalette.neutralLight
-      ]
+      colors: [DefaultPalette.blueLight, DefaultPalette.purpleLight, DefaultPalette.yellowLight, DefaultPalette.neutralLight]
     };
 
     this._changeData = this._changeData.bind(this);

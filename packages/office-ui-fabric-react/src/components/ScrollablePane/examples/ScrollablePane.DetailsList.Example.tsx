@@ -10,7 +10,7 @@ import {
   IDetailsFooterProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { ScrollablePane, IScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
@@ -57,7 +57,7 @@ const _columns: IColumn[] = [
   },
   {
     key: 'column5',
-    name: 'Test 4',
+    name: 'Test 5',
     fieldName: 'test5',
     minWidth: 100,
     maxWidth: 200,
@@ -92,7 +92,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     selectionDetails: string;
   }
 > {
-  private _scrollablePane = createRef<IScrollablePane>();
+  private _scrollablePane = React.createRef<IScrollablePane>();
   private _selection: Selection;
   private readonly _items: IItem[];
 
@@ -124,8 +124,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<
       items: items,
       selectionDetails: this._getSelectionDetails()
     };
-
-    this._onDetailsListColumnResized = this._onDetailsListColumnResized.bind(this);
   }
 
   public render(): JSX.Element {
@@ -154,7 +152,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           </Sticky>
           <MarqueeSelection selection={this._selection}>
             <DetailsList
-              onColumnResize={this._onDetailsListColumnResized}
               items={items}
               columns={_columns}
               setKey="set"
@@ -186,13 +183,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<
       default:
         return `${selectionCount} items selected`;
     }
-  }
-
-  // When the DetailsList columns are resized, this may cause a horizontal scroll bar to appear or
-  // disappear within ScrollablePane. This rerenders the component to ensure that the floating
-  // footer does not overlap with the scroll bar.
-  private _onDetailsListColumnResized() {
-    this.forceUpdate();
   }
 }
 

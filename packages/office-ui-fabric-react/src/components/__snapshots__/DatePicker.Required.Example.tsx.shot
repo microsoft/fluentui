@@ -32,7 +32,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout0"
+      aria-owns="DatePicker-Callout1"
       role="combobox"
     >
       <div
@@ -90,7 +90,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   content: ' *';
                   padding-right: 12px;
                 }
-            htmlFor="TextField1"
+            htmlFor="DatePicker0-label"
             required={true}
           >
             Date required (with label)
@@ -118,7 +118,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   position: relative;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -165,7 +165,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField1"
+              id="DatePicker0-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -236,7 +236,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
     <div
       aria-expanded={false}
       aria-haspopup="true"
-      aria-owns="DatePicker-Callout3"
+      aria-owns="DatePicker-Callout4"
       role="combobox"
     >
       <div
@@ -288,7 +288,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   position: relative;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -342,7 +342,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                     color: #666666;
                     opacity: 1;
                   }
-              id="TextField4"
+              id="DatePicker3-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}

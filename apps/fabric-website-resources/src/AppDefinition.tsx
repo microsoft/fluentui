@@ -54,16 +54,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/checkbox'
         },
         {
+          component: require<any>('./components/pages/ChoiceGroupPage').ChoiceGroupPage,
+          key: 'ChoiceGroup',
+          name: 'ChoiceGroup',
+          url: '#/examples/choicegroup'
+        },
+        {
           component: require<any>('./components/pages/CoachmarkPage').CoachmarkPage,
           key: 'Coachmark',
           name: 'Coachmark',
           url: '#/examples/coachmark'
         },
         {
-          component: require<any>('./components/pages/ChoiceGroupPage').ChoiceGroupPage,
-          key: 'ChoiceGroup',
-          name: 'ChoiceGroup',
-          url: '#/examples/choicegroup'
+          component: require<any>('./components/pages/ColorPickerPage').ColorPickerPage,
+          key: 'ColorPicker',
+          name: 'ColorPicker',
+          url: '#/examples/colorpicker'
         },
         {
           component: require<any>('./components/pages/ComboBoxPage').ComboBoxPage,
@@ -205,6 +211,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/floatingpeoplepicker'
         },
         {
+          component: require<any>('./components/pages/GroupedListPage').GroupedListPage,
+          key: 'GroupedList',
+          name: 'GroupedList',
+          url: '#examples/groupedlist'
+        },
+        {
           component: require<any>('./components/pages/HoverCardPage').HoverCardPage,
           key: 'HoverCard',
           name: 'HoverCard',
@@ -217,6 +229,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/icon'
         },
         {
+          component: require<any>('./components/pages/ImagePage').ImagePage,
+          key: 'Image',
+          name: 'Image',
+          url: '#/examples/image'
+        },
+        {
           component: require<any>('./components/pages/KeytipsPage').KeytipsPage,
           key: 'Keytips',
           name: 'Keytips',
@@ -227,6 +245,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Label',
           name: 'Label',
           url: '#/examples/label'
+        },
+        {
+          component: require<any>('./components/pages/LayerPage').LayerPage,
+          key: 'Layer',
+          name: 'Layer',
+          url: '#/examples/layer'
         },
         {
           component: require<any>('./components/pages/LinkPage').LinkPage,
@@ -253,10 +277,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/modal'
         },
         {
-          component: require<any>('./components/pages/OverlayPage').OverlayPage,
-          key: 'Overlay',
-          name: 'Overlay',
-          url: '#/examples/overlay'
+          component: require<any>('./components/pages/NavPage').NavPage,
+          key: 'Nav',
+          name: 'Nav',
+          url: '#/examples/nav'
         },
         {
           component: require<any>('./components/pages/OverflowSetPage').OverflowSetPage,
@@ -265,16 +289,16 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/overflowset'
         },
         {
+          component: require<any>('./components/pages/OverlayPage').OverlayPage,
+          key: 'Overlay',
+          name: 'Overlay',
+          url: '#/examples/overlay'
+        },
+        {
           component: require<any>('./components/pages/PanelPage').PanelPage,
           key: 'Panel',
           name: 'Panel',
           url: '#/examples/panel'
-        },
-        {
-          component: require<any>('./components/pages/PickersPage').PickersPage,
-          key: 'Pickers',
-          name: 'Pickers',
-          url: '#/examples/pickers'
         },
         {
           component: require<any>('./components/pages/PeoplePickerPage').PeoplePickerPage,
@@ -287,6 +311,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Persona',
           name: 'Persona',
           url: '#/examples/persona'
+        },
+        {
+          component: require<any>('./components/pages/PickersPage').PickersPage,
+          key: 'Pickers',
+          name: 'Pickers',
+          url: '#/examples/pickers'
         },
         {
           component: require<any>('./components/pages/PivotPage').PivotPage,
@@ -325,16 +355,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/searchbox'
         },
         {
+          component: require<any>('./components/pages/SelectedPeopleListPage').SelectedPeopleListPage,
+          key: 'SelectedPeopleList',
+          name: 'SelectedPeopleList',
+          url: '#examples/selectedpeoplelist'
+        },
+        {
           component: require<any>('./components/pages/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',
           url: '#/examples/shimmer'
         },
         {
-          component: require<any>('./components/pages/SelectedPeopleListPage').SelectedPeopleListPage,
-          key: 'SelectedPeopleList',
-          name: 'SelectedPeopleList',
-          url: '#examples/selectedpeoplelist'
+          component: require<any>('./components/pages/SliderPage').SliderPage,
+          key: 'Slider',
+          name: 'Slider',
+          url: '#/examples/slider'
         },
         {
           component: require<any>('./components/pages/SpinButtonPage').SpinButtonPage,
@@ -384,46 +420,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('./components/pages/ColorPickerPage').ColorPickerPage,
-          key: 'ColorPicker',
-          name: 'ColorPicker',
-          url: '#/examples/colorpicker'
-        },
-        {
           component: require<any>('./components/pages/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
           key: 'ExtendedPeoplePicker',
           name: 'ExtendedPeoplePicker',
           url: '#examples/extendedpeoplepicker'
-        },
-        {
-          component: require<any>('./components/pages/GroupedListPage').GroupedListPage,
-          key: 'GroupedList',
-          name: 'GroupedList',
-          url: '#examples/groupedlist'
-        },
-        {
-          component: require<any>('./components/pages/ImagePage').ImagePage,
-          key: 'Image',
-          name: 'Image',
-          url: '#/examples/image'
-        },
-        {
-          component: require<any>('./components/pages/LayerPage').LayerPage,
-          key: 'Layer',
-          name: 'Layer',
-          url: '#/examples/layer'
-        },
-        {
-          component: require<any>('./components/pages/NavPage').NavPage,
-          key: 'Nav',
-          name: 'Nav',
-          url: '#/examples/nav'
-        },
-        {
-          component: require<any>('./components/pages/SliderPage').SliderPage,
-          key: 'Slider',
-          name: 'Slider',
-          url: '#/examples/slider'
         }
       ],
       name: 'Extended components'

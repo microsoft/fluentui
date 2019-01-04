@@ -7,14 +7,14 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
   const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
-  const pillCheckedDisabledBackground = semanticColors.disabledBodyText;
+  const pillCheckedDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbBackground = semanticColors.inputBorderHovered;
   const thumbCheckedBackground = semanticColors.inputForegroundChecked;
-  const thumbDisabledBackground = semanticColors.disabledBodyText;
+  const thumbDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
   const pillBorderColor = semanticColors.smallInputBorder;
   const pillBorderHoveredColor = semanticColors.inputBorderHovered;
-  const pillBorderDisabledColor = semanticColors.disabledBodyText;
+  const pillBorderDisabledColor = semanticColors.disabledBodySubtext;
   const textDisabledColor = semanticColors.disabledText;
 
   return {

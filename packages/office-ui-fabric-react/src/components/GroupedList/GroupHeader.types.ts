@@ -17,12 +17,20 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
    * Custom classname
    */
   className?: string;
+
+  /**
+   * GroupedList id for aria-controls
+   */
+  groupedListId?: string;
 }
 
 export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> &
   Pick<IGroupHeaderProps, 'selected' | 'className'> & {
     /** Is Header collapsed */
     isCollapsed?: boolean;
+
+    /** Whether the group header is in compact mode or not */
+    compact?: boolean;
   };
 
 export interface IGroupHeaderStyles {

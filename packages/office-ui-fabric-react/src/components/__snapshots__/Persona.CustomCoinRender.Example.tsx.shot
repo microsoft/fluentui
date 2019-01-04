@@ -181,7 +181,11 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -203,7 +207,11 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -239,7 +247,11 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}

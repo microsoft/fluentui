@@ -3,6 +3,7 @@
 exports[`DocumentCard renders DocumentCard correctly 1`] = `
 <div
   className="ms-DocumentCard"
+  data-is-focusable={false}
 >
   <div
     className="ms-DocumentCardPreview"
@@ -33,7 +34,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
               }
-          role="persentation"
+          role="presentation"
           size={11}
         >
           <div

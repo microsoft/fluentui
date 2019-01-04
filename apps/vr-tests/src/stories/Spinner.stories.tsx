@@ -7,26 +7,35 @@ import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 storiesOf('Spinner', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
-    >
-      {story()}
-    </Screener>
-  )).addStory('Extra small', () => (
-    <Spinner size={SpinnerSize.xSmall} />
-  )).addStory('Small', () => (
-    <Spinner size={SpinnerSize.small} />
-  )).addStory('Medium', () => (
-    <Spinner size={SpinnerSize.medium} />
-  )).addStory('Large', () => (
-    <Spinner size={SpinnerSize.large} />
-  )).addStory('Label', () => (
+  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addStory('Extra small', () => <Spinner size={SpinnerSize.xSmall} />)
+  .addStory('Small', () => <Spinner size={SpinnerSize.small} />)
+  .addStory('Medium', () => <Spinner size={SpinnerSize.medium} />)
+  .addStory('Large', () => <Spinner size={SpinnerSize.large} />)
+  .addStory('Label', () => (
+    <Spinner styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }} size={SpinnerSize.medium} label="Spinner label" />
+  ))
+  .addStory('Label at top', () => (
     <Spinner
+      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
       size={SpinnerSize.medium}
-      label='Spinner label'
+      label="Spinner label"
+      labelPosition="top"
+    />
+  ))
+  .addStory('Label on the right', () => (
+    <Spinner
+      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      size={SpinnerSize.medium}
+      label="Spinner label"
+      labelPosition="right"
+    />
+  ))
+  .addStory('Label on the left', () => (
+    <Spinner
+      styles={{ label: { fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      size={SpinnerSize.medium}
+      label="Spinner label"
+      labelPosition="left"
     />
   ));

@@ -1,15 +1,6 @@
 import * as React from 'react';
 
-import {
-  BaseComponent,
-  KeyCodes,
-  assign,
-  elementContains,
-  getRTLSafeKeyCode,
-  IRenderFunction,
-  createRef,
-  classNamesFunction
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, assign, elementContains, getRTLSafeKeyCode, IRenderFunction, classNamesFunction } from '../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -30,14 +21,16 @@ import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ISelectionZone, IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
+import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { IList, List, IListProps, ScrollToMode } from '../../List';
+import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+// For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
+import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -54,7 +47,6 @@ export interface IDetailsListState {
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
 const CHECKBOX_WIDTH = 40;
-const GROUP_EXPAND_WIDTH = 36;
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
@@ -70,16 +62,17 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    enableShimmer: false
+    enableShimmer: false,
+    compact: false
   };
 
   // References
-  private _root = createRef<HTMLDivElement>();
-  private _header = createRef<IDetailsHeader>();
-  private _groupedList = createRef<IGroupedList>();
-  private _list = createRef<IList>();
-  private _focusZone = createRef<IFocusZone>();
-  private _selectionZone = createRef<ISelectionZone>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _header = React.createRef<IDetailsHeader>();
+  private _groupedList = React.createRef<IGroupedList>();
+  private _list = React.createRef<List>();
+  private _focusZone = React.createRef<IFocusZone>();
+  private _selectionZone = React.createRef<SelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRowBase };
@@ -212,6 +205,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
     const { checkboxVisibility, items, setKey, selectionMode = this._selection.mode, columns, viewport, compact } = this.props;
+    const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
+
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -244,6 +239,13 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
     if (newProps.selectionMode !== selectionMode) {
       shouldForceUpdates = true;
+    }
+
+    if (isAllGroupsCollapsed === undefined && (newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined)) {
+      this.setState({
+        isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
+        isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
+      });
     }
 
     if (shouldForceUpdates) {
@@ -355,6 +357,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}
         getGroupHeight={getGroupHeight}
+        compact={compact}
       />
     ) : (
       <List
@@ -671,15 +674,26 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
+  private _notifyColumnsResized(): void {
+    this.state.adjustedColumns.forEach(column => {
+      if (column.onColumnResize) {
+        column.onColumnResize(column.currentWidth);
+      }
+    });
+  }
+
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
     const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
     const { width: viewportWidth } = this.props.viewport!;
 
     if (adjustedColumns) {
-      this.setState({
-        adjustedColumns: adjustedColumns,
-        lastWidth: viewportWidth
-      });
+      this.setState(
+        {
+          adjustedColumns: adjustedColumns,
+          lastWidth: viewportWidth
+        },
+        this._notifyColumnsResized
+      );
     }
   }
 
@@ -786,7 +800,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      if (column.calculatedWidth! - minWidth >= overflowWidth || !column.isCollapsable) {
+      if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsable || column.isCollapsible)) {
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth = availableWidth;
       } else {
@@ -1042,6 +1056,7 @@ export function buildColumns(
           minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
           isCollapsable: !!columns.length,
+          isCollapsible: !!columns.length,
           isMultiline: isMultiline === undefined ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,

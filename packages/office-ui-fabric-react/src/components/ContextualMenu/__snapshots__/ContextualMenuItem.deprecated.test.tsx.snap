@@ -60,7 +60,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
           "className": "checkmarkIcon",
           "iconName": "",
@@ -101,7 +101,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
             "className": "checkmarkIcon",
             "iconName": "",
@@ -135,8 +135,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
@@ -205,7 +203,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
           "className": "icon",
         },
@@ -218,7 +216,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
           "className": "subMenuIcon",
           "iconName": "ChevronRight",
@@ -256,7 +254,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
             "className": "icon",
           },
@@ -269,7 +267,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
             "className": "subMenuIcon",
             "iconName": "ChevronRight",
@@ -298,8 +296,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
@@ -364,7 +360,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
           "className": "icon",
         },
@@ -401,7 +397,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
             "className": "icon",
           },
@@ -432,8 +428,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;
@@ -506,7 +500,7 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
           "className": "icon",
           "iconName": "itemIcon",
@@ -560,7 +554,7 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
             "className": "icon",
             "iconName": "itemIcon",
@@ -603,8 +597,6 @@ ShallowWrapper {
         },
       },
     },
-    "attachTo": undefined,
-    "hydrateIn": undefined,
   },
 }
 `;

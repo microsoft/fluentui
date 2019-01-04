@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  TilesList,
-  ITilesGridSegment,
-  ITilesGridItem,
-  TilesGridMode,
-  ITileSize
-} from '@uifabric/experiments/lib/TilesList';
+import { TilesList, ITilesGridSegment, ITilesGridItem, TilesGridMode, ITileSize } from '@uifabric/experiments/lib/TilesList';
 
 export interface IBasicItem {
   color: string;
