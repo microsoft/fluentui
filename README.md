@@ -3,6 +3,7 @@
 ##### The React-based front-end framework for building experiences for Office and Office 365.
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
+
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
 
 Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
@@ -160,8 +161,8 @@ Before you get started, **make sure you have read the [Git branch setup instruct
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
 1.  `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-2. `cd office-ui-fabric-react`  
-3. `npm install`
+2.  `cd office-ui-fabric-react`
+3.  `npm install`
 4.  `npm start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
@@ -182,13 +183,15 @@ The repo contains many packages, each which may have dependencies on each other.
 npm install -g @microsoft/rush
 ```
 
-To use rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build.)
+To use rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build.) If you don't have rush globally installed, you can also use `npm run buildfast` to achieve this, since this command abstracts `rush build`.
 
-To can also build up to a specific project using the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, you can run:
+You can also build up to a specific project using the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, you can run:
 
 ```bash
 rush build --to office-ui-fabric-react
 ```
+
+Finally, since contributing to the experiments package is an important and common activity, we have abstracted `rush build --to experiments` so you can build up to experiments without having rush globally installed. You can use `npm run experiments` to achieve this.
 
 ## Licenses
 
