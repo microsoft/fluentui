@@ -121,6 +121,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
     ],
     label: [
       'ms-Checkbox-label',
+      theme.fonts.medium,
       {
         display: 'flex',
         alignItems: isUsingCustomLabelRender ? 'center' : 'flex-start',

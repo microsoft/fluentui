@@ -98,12 +98,10 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
               ref={this._checkBox}
               name={name}
               id={this._id}
-              role="checkbox"
               title={title}
               onChange={this._onChange}
               onFocus={this._onFocus}
               onBlur={this._onBlur}
-              aria-checked={isChecked}
               aria-disabled={disabled}
               aria-label={ariaLabel}
               aria-labelledby={ariaLabelledBy}
