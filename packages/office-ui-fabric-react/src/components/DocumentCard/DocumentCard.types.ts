@@ -51,7 +51,7 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   /**
    * Aria role assigned to the documentCard (Eg. button, link).
    * Use this to override the default assignment.
-   * When onClick is provided, default role will be 'button'. When onClickHref is provided, default role will be 'link'.
+   * @defaultvalue When `onClick` is provided, default role will be 'button'. When `onClickHref` is provided, default role will be 'link'.
    */
   role?: string;
 
