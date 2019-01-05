@@ -32,7 +32,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> impleme
     }
 
     // if this element is actionable it should have an aria role
-    const role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    const role = this.props.role || (actionable ? (onClick ? 'button' : 'link') : undefined);
     const tabIndex = actionable ? 0 : undefined;
 
     return (
