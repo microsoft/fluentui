@@ -35,7 +35,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-checked={false}
       aria-labelledby="labelID"
       className=
 
@@ -56,16 +55,20 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      role="checkbox"
       type="checkbox"
     />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: flex-start;
             cursor: pointer;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
             text-align: left;
             user-select: none;
@@ -189,7 +192,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-checked={true}
       className=
 
           {
@@ -210,16 +212,20 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      role="checkbox"
       type="checkbox"
     />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: flex-start;
             cursor: pointer;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
             text-align: left;
             user-select: none;
@@ -311,7 +317,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-checked={false}
       aria-disabled={true}
       className=
 
@@ -333,16 +338,20 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      role="checkbox"
       type="checkbox"
     />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: flex-start;
             cursor: default;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
             text-align: left;
             user-select: none;
@@ -436,7 +445,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-checked={true}
       aria-disabled={true}
       className=
 
@@ -459,16 +467,20 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      role="checkbox"
       type="checkbox"
     />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: flex-start;
             cursor: default;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
             text-align: left;
             user-select: none;
@@ -584,7 +596,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-checked={false}
       checked={false}
       className=
 
@@ -605,16 +616,20 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      role="checkbox"
       type="checkbox"
     />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: flex-start;
             cursor: pointer;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
             text-align: left;
             user-select: none;
@@ -724,7 +739,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-checked={false}
       className=
 
           {
@@ -744,17 +758,21 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      role="checkbox"
       type="checkbox"
     />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: flex-start;
             cursor: pointer;
             display: flex;
             flex-direction: row-reverse;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             justify-content: flex-end;
             position: relative;
             text-align: left;
@@ -864,7 +882,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-checked={false}
       className=
 
           {
@@ -884,16 +901,20 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      role="checkbox"
       type="checkbox"
     />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: center;
             cursor: pointer;
             display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
             text-align: left;
             user-select: none;
