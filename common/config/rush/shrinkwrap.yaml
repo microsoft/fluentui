@@ -105,7 +105,7 @@ dependencies:
   jju: 1.4.0
   jscodeshift: 0.5.1
   json-loader: 0.5.7
-  just-task: 0.7.4
+  just-task: 0.7.5
   just-task-preset: 0.6.3
   lint-staged: 7.3.0
   loader-utils: 1.1.0
@@ -8187,7 +8187,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-0k5o7ib718oQJN/W29IhAaRPf+rAHMKIQGpBO2yYVNYpttEZWunYoknv6TjW/IK6gM49130LqYZ6Jt2kfkZkKg==
-  /just-task/0.7.4:
+  /just-task/0.7.5:
     dependencies:
       chalk: 2.4.2
       resolve: 1.9.0
@@ -8197,7 +8197,7 @@ packages:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-yxk12bHzhyoQUcTpgg6GdOfTxEWCfe+u8ELz1aYCHYYp2blhedk9xs0iXd7xQ/5FEOk6EjrPDpuqM7azfx+iXQ==
+      integrity: sha512-fXLsJugfL5iItKefEfnfZAENaXLMACuFmivZVnE12YzCxQ6bs+4VcGJxgoasEDwyP1cRYYIlqd8kR4wvd1jaig==
   /keycode/2.2.0:
     dev: false
     resolution:
@@ -9860,16 +9860,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-3sslG3zJbEYcaC4YVAvDorjGxc7tv6KVATnLPZONiljsUncvihe9BQoVCEs0RZ1kmf4Hk9OBqlZfJZWI4GanKA==
-  /os-locale/3.0.1:
-    dependencies:
-      execa: 0.10.0
-      lcid: 2.0.0
-      mem: 4.0.0
-    dev: false
-    engines:
-      node: '>=6'
-    resolution:
-      integrity: sha512-7g5e7dmXPtzcP4bgsZ8ixDVqA7oWYuEz4lOSujeWyliPai4gfVDiFIcwBg3aGCPnmSGfzOKTK3ccPn0CKv3DBw==
   /os-locale/3.1.0:
     dependencies:
       execa: 1.0.0
@@ -14562,7 +14552,7 @@ packages:
       decamelize: 1.2.0
       find-up: 3.0.0
       get-caller-file: 1.0.3
-      os-locale: 3.0.1
+      os-locale: 3.1.0
       require-directory: 2.1.1
       require-main-filename: 1.0.1
       set-blocking: 2.0.0
@@ -14725,7 +14715,7 @@ packages:
       jscodeshift: 0.5.1
       json-loader: 0.5.7
       jsonc-parser: 2.0.2
-      just-task: 0.7.4
+      just-task: 0.7.5
       just-task-preset: /just-task-preset/0.6.3/8322411d5c8f271222caf8a99e9af2f2
       lint-staged: 7.3.0
       mkdirp: 0.5.1
@@ -14761,7 +14751,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-Pj41Xal1G3mgVkQFIqObhCZdpMsoZlCVepfOMpfrFKKn3CzbiietbIzsEnTJ0s0P9lBUlkOMNDCZAJtkl+naFQ==
+      integrity: sha512-fwI/usUG+mHCfcEsEftbSdgucR3gJPMUCBdYlkN+uWADXQ6RfMHKNXcSnvj7xtsJ7aXL/psRuWbYfMh+11M0eA==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -15468,7 +15458,7 @@ specifiers:
   jju: ^1.4.0
   jscodeshift: ^0.5.0
   json-loader: ^0.5.7
-  just-task: ^0.7.4
+  just-task: ^0.7.5
   just-task-preset: ^0.6.3
   lint-staged: ^7.0.5
   loader-utils: ^1.1.0
