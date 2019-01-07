@@ -6,7 +6,7 @@ const horizontalPadding = 16;
 const imageSize = 32;
 const personaTextGutter = 8;
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   root: 'ms-DocumentCardActivity',
   multiplePeople: 'ms-DocumentCardActivity--multiplePeople',
   details: 'ms-DocumentCardActivity-details',

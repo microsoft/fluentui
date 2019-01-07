@@ -1,7 +1,7 @@
 import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardTitleStyleProps, IDocumentCardTitleStyles } from './DocumentCardTitle.types';
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   root: 'ms-DocumentCardTitle'
 };
 

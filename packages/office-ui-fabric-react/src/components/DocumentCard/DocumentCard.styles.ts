@@ -1,5 +1,9 @@
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames, FontSizes } from '../../Styling';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
+import { GlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
+import { GlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
+import { GlobalClassNames as titleClassNames } from './DocumentCardTitle.styles';
+import { GlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCard',
@@ -24,7 +28,12 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         maxWidth: '320px',
         minWidth: '206px',
         userSelect: 'none',
-        position: 'relative'
+        position: 'relative',
+        selectors: {
+          [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
+            paddingTop: '4px'
+          }
+        }
       },
       actionable && [
         classNames.rootActionable,
@@ -52,7 +61,27 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         {
           display: 'flex',
           maxWidth: '480px',
-          height: '109px'
+          height: '109px',
+          selectors: {
+            [`.${previewClassNames.root}`]: {
+              borderRight: `1px solid ${palette.neutralLight}`,
+              borderBottom: 0, // Remove the usual border from the preview
+              maxHeight: '106px',
+              maxWidth: '144px'
+            },
+            [`.${previewClassNames.previewFileTypeIcon}`]: {
+              maxHeight: '32px',
+              maxWidth: '32px'
+            },
+            [`.${activityClassNames.root}`]: {
+              paddingBottom: '12px'
+            },
+            [`.${titleClassNames.root}`]: {
+              paddingBottom: '12px 16px 8px 16px',
+              fontSize: FontSizes.mediumPlus,
+              lineHeight: '16px'
+            }
+          }
         }
       ],
       className
