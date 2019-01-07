@@ -7,7 +7,31 @@ export const getStyles = (): IAddCardStyles => {
       width: '100%',
       display: 'flex',
       flexDirection: 'row',
-      marginBottom: '32px'
+      marginBottom: '32px',
+      cursor: 'move',
+      selectors: {
+        ':hover': {
+          selectors: {
+            i: {
+              display: 'block'
+            }
+          }
+        },
+        ':not(:hover)': {
+          selectors: {
+            i: {
+              display: 'none'
+            }
+          }
+        },
+        ':focus-within': {
+          selectors: {
+            i: {
+              display: 'block'
+            }
+          }
+        }
+      }
     },
     imageWrapper: {
       width: '150px',
@@ -33,10 +57,6 @@ export const getStyles = (): IAddCardStyles => {
     bodyText: {
       fontSize: FontSizes.small,
       lineHeight: '16px'
-    },
-    icon: {
-      // do not remove even though empty. Used for styling add card plus button in panel
-      // look in AddCard.tsx file for it's usage
     },
     iconWrapper: {
       width: '14px',

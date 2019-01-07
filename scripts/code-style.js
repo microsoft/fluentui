@@ -1,5 +1,2 @@
-const runTasks = require('./run-task');
-
-let tasks = ['prettier', 'tslint'];
-
-runTasks(tasks);
+const { just } = require('./just.js');
+just('code-style');

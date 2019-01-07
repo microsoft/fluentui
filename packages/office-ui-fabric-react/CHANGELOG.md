@@ -1,6 +1,82 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Dec 2018 13:39:07 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Jan 2019 13:34:38 GMT and should not be manually modified.
+
+## 6.120.0
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Minor changes
+
+- Add FocusTrapCallout component
+- Exposes the tabIndex of the TextField in the DatePicker
+- Slider: Allows a custom value format function to be passed which formats the value label
+- DocumentCard: add optional aria role property to allow override the default aria role.
+
+### Patches
+
+- ChoiceGroup: exposing focus() method in IChoiceGroup and makes sure it is implemented.
+- Fix outline for Modals and Dialogs in High Contrast mode
+- SearchBox: fix handling of null value
+
+## 6.119.0
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Minor changes
+
+- TooltipHost: add show method
+
+### Patches
+
+- Fix calendar accessibility edge bug preventing row and column info from being populated correctly
+
+## 6.118.2
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Patches
+
+- update pivot component to use semantic slots from design redlines
+
+## 6.118.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Pickers: Fix issue where suggestions wouldn't dismiss for controlled pickers
+- Fix Nav selected item's pseudo element
+
+## 6.118.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- ComboBox will prioritize ariaLabel property over label for accessibility. Aria labels for Dropdown and ComboBox options do not default to item text.
+
+### Patches
+
+- FocusZone: Respect the onKeydown handler even it is inside inner focus zone.
+- checking if sticky content offsetHeight is in sync with nonStickyContent offsetHeight
+
+## 6.117.2
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Patches
+
+- Adding option to prevent focus on Coachmark mount
+
+## 6.117.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- ContextualMenu: fix opening submenus with hrefs
+
+## 6.117.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- GroupedList: add compact mode and styles cleanup across GroupedList and DetailsList. Change expand button icon. Consolidate style values in between mentioned components.
+- Pickers: convert PeoplePicker items to CSS-in-JS. Expose some components to the surface API and rename them to solve ambiguity issues. Fix some imports in ExtendedPicker and FloatingPicker caused by my API changes.
 
 ## 6.116.2
 Wed, 19 Dec 2018 13:39:07 GMT

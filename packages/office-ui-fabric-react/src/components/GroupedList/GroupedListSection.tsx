@@ -27,6 +27,9 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
    */
   componentRef?: () => void;
 
+  /** Whether to render in compact mode */
+  compact?: boolean;
+
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
@@ -176,7 +179,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupFooter = this._onRenderGroupFooter,
       onShouldVirtualize,
       groupedListClassNames,
-      groups
+      groups,
+      compact
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -185,13 +189,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     const hasNestedGroups = group && group.children && group.children.length > 0;
 
     const dividerProps: IGroupDividerProps = {
-      group: group,
-      groupIndex: groupIndex,
+      group,
+      groupIndex,
       groupLevel: group ? group.level : 0,
       isSelected,
-      viewport: viewport,
-      selectionMode: selectionMode,
-      groups: groups
+      viewport,
+      selectionMode,
+      groups,
+      compact
     };
 
     const ariaControlsProps: IGroupHeaderProps = {
@@ -330,7 +335,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupShowAll,
       onRenderGroupFooter,
       onShouldVirtualize,
-      group
+      group,
+      compact
     } = this.props;
 
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
@@ -359,6 +365,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupFooter={onRenderGroupFooter}
         onShouldVirtualize={onShouldVirtualize}
         groups={group!.children}
+        compact={compact}
       />
     ) : null;
   };
