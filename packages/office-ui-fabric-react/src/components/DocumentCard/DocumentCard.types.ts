@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DocumentCardLocation } from './DocumentCardLocation';
 import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
-import { DocumentCardLogo } from './DocumentCardLogo';
 import { PersonaInitialsColor } from '../../Persona';
 import { IButtonProps } from '../../Button';
 import { IBaseProps, IRefObject } from '../../Utilities';
@@ -153,20 +152,4 @@ export interface IDocumentCardActionsProps extends React.ClassAttributes<Documen
    * The number of views this document has received.
    */
   views?: Number;
-}
-
-export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogo> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-  /**
-   * Describes DocumentCard Logo badge.
-   */
-  logoIcon: string;
-
-  /**
-   * Describe Logo name, optional.
-   */
-  logoName?: string;
 }

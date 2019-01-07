@@ -214,10 +214,3 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
     cursor: pointer;
   }
 }
-
-.logo {
-  font-size: 32px;
-  color: $ms-color-themePrimary;
-  display: block;
-  @include ms-padding(16px, 16px, 0, 16px);
-}
