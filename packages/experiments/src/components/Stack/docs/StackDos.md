@@ -1,3 +1,3 @@
-- Use to define the layout of components.
-- Take into account that this component's functionality relies on the implementation of flexbox by browsers.
+- Use anywhere you would use flexbox.
+- Take into account that the overall performance of the component depends on browser support for flexbox.
 - Take into account that wrapping only works in the direction of the Stack.

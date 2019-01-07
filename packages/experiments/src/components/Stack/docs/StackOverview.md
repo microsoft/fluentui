@@ -5,7 +5,7 @@ A Stack is a container-type component that abstracts the implementation of a fle
 Although Stack has a number of different properties, there are three in particular that define the overall layout that the component has:
 
 1. Direction: Refers to whether the stacking of children components is horizontal or vertical. By default the Stack component is vertical, but can be turned horizontal by adding the `horizontal` property when using the component.
-2. Alignment: Refers to how are the children components aligned inside the container. This is controlled via the `verticalAlign` and `horizontalAlign` properties.
+2. Alignment: Refers to how the children components are aligned inside the container. This is controlled via the `verticalAlign` and `horizontalAlign` properties. One thing to notice here is that while flexbox containers align always across the cross axis, Stack aims to remove the mental strain involved in this process by making the `verticalAlign` and `horizontalAlign` properties always follow the vertical and horizontal axes, respectively, regardless of the direction of the Stack.
 3. Spacing: Refers to the space that exists between children components inside the Stack. This is controlled via the `gap` and `verticalGap` properties.
 
 ## Stack Wrapping
