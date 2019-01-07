@@ -11,12 +11,12 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
-    "code-style": "node ../../scripts/code-style.js",
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean",
+    "code-style": "node ../../scripts/just.js code-style",
     "start": "node ../../scripts/start.js",
-    "production": "node --max_old_space_size=8192 ../../scripts/build.js --production",
-    "dogfood": "node --max_old_space_size=8192 ../../scripts/build.js --dogfood",
+    "production": "node --max_old_space_size=8192 ../../scripts/just.js build --production",
+    "dogfood": "node --max_old_space_size=8192 ../../scripts/just.js build --dogfood",
     "startuhf": "node ../../scripts/start.js --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",

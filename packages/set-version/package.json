@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js"
+    "build": "node ../../scripts/just.js build"
   },
   "disabledTasks": [
     "copy",

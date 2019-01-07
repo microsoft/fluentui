@@ -22,12 +22,12 @@
     "lib/version.js"
   ],
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean",
     "start": "node ../../scripts/start.js",
     "test": "react-scripts-ts test --env=jsdom",
     "start-test": "node ../../scripts/start-test.js",
-    "update-snapshots": "node ../../scripts/build.js jest -u"
+    "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",

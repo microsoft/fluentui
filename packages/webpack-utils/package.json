@@ -12,8 +12,8 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/just.js build-commonjs-only",
-    "code-style": "node ../../scripts/code-style.js",
-    "clean": "node ../../scripts/clean.js",
+    "code-style": "node ../../scripts/just.js code-style",
+    "clean": "node ../../scripts/just.js clean",
     "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5"
   },
   "disabledTasks": [

@@ -14,8 +14,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean"
   },
   "disabledTasks": [
     "jest",

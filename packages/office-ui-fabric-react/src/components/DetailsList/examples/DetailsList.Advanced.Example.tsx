@@ -544,9 +544,11 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       }
 
       const newColumns = columns as IColumn[];
-      newColumns.filter(matchColumn => matchColumn.key === key).forEach((groupedColumn: IColumn) => {
-        groupedColumn.isGrouped = true;
-      });
+      newColumns
+        .filter(matchColumn => matchColumn.key === key)
+        .forEach((groupedColumn: IColumn) => {
+          groupedColumn.isGrouped = true;
+        });
       this.setState({
         items: groupedItems,
         columns: newColumns,
