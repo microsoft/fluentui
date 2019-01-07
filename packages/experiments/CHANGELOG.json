@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.2",
+      "tag": "@uifabric/experiments_v6.50.2",
+      "date": "Mon, 07 Jan 2019 13:34:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "772ed841dfc27654f76e2f2ce8ef30e776ab064c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.119.0 <7.0.0` to `>=6.120.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.1",
       "tag": "@uifabric/experiments_v6.50.1",
       "date": "Fri, 04 Jan 2019 13:36:07 GMT",

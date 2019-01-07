@@ -39,6 +39,13 @@ export class SliderBasicExample extends React.Component<
             onChange={(value: any) => this.setState({ value })}
             showValue={true}
           />
+          <Slider
+            label="Example with formatted value:"
+            max={100}
+            // tslint:disable-next-line:jsx-no-lambda
+            valueFormat={(value: number) => `${value}%`}
+            showValue={true}
+          />
         </div>
         <div className="ms-SliderVertical ">
           <div className="ms-verticalBox">
@@ -68,6 +75,16 @@ export class SliderBasicExample extends React.Component<
           </div>
           <div className="ms-verticalBox">
             <Slider label="Controlled example:" max={10} vertical={true} showValue={true} />
+          </div>
+          <div className="ms-verticalBox">
+            <Slider
+              label="Example with formatted value:"
+              max={100}
+              // tslint:disable-next-line:jsx-no-lambda
+              valueFormat={(value: number) => `${value}%`}
+              showValue={true}
+              vertical={true}
+            />
           </div>
         </div>
       </div>

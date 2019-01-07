@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 03 Jan 2019 13:33:55 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Jan 2019 13:34:38 GMT and should not be manually modified.
+
+## 6.120.0
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Minor changes
+
+- Add FocusTrapCallout component
+- Exposes the tabIndex of the TextField in the DatePicker
+- Slider: Allows a custom value format function to be passed which formats the value label
+- DocumentCard: add optional aria role property to allow override the default aria role.
+
+### Patches
+
+- ChoiceGroup: exposing focus() method in IChoiceGroup and makes sure it is implemented.
+- Fix outline for Modals and Dialogs in High Contrast mode
+- SearchBox: fix handling of null value
 
 ## 6.119.0
 Thu, 03 Jan 2019 13:33:55 GMT
