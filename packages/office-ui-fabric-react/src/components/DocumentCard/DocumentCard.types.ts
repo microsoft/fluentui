@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
 import { IBaseProps, IRefObject } from '../../Utilities';
-import { DocumentCardActions } from './DocumentCardActions';
 
 export interface IDocumentCard {
   /**
@@ -58,21 +56,4 @@ export enum DocumentCardType {
    * Compact layout. Displays the preview beside the details, rather than above.
    */
   compact = 1
-}
-
-export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-
-  /**
-   * The actions available for this document.
-   */
-  actions: IButtonProps[];
-
-  /**
-   * The number of views this document has received.
-   */
-  views?: Number;
 }
