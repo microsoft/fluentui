@@ -106,6 +106,11 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * Optional mixin for additional props on the thumb button within the slider.
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * Optional function to format the slider value.
+   */
+  valueFormat?: (value: number) => string;
 }
 
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
