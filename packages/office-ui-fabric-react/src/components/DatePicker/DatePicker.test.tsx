@@ -34,6 +34,24 @@ describe('DatePicker', () => {
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
+  // if isDatePickerShown is not set, the DatePicker should not
+  // be rendered and therefore aria-owns should not exist
+  it('should not render DatePicker when isDatePickerShown is not set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: false });
+
+    expect(datePicker.find('[aria-owns]')).toHaveLength(0);
+  });
+
+  // if isDatePickerShown is set, the DatePicker should be rendered
+  // and aria-owns should exist with a valid id
+  it('should not render DatePicker when isDatePickerShown is not set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+
+    expect(datePicker.find('[aria-owns]')).toHaveLength(1);
+  });
+
   it('should not open DatePicker when disabled, with label', () => {
     const wrapper = mount(<DatePickerBase disabled label="label" />);
     wrapper.find('i').simulate('click');
