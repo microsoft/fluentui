@@ -1,3 +1,4 @@
 - Use anywhere you would use flexbox.
 - Take into account that the overall performance of the component depends on browser support for flexbox.
 - Take into account that wrapping only works in the direction of the Stack.
+- Use StackItems to apply Stack properties to children components.
