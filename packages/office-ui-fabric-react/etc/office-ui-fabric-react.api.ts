@@ -2275,6 +2275,7 @@ interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTM
   navigationIcons?: ICalendarIconStrings;
   onDismiss?: () => void;
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+  restrictedDates?: Date[];
   selectDateOnClick?: boolean;
   // @deprecated
   shouldFocusOnMount?: boolean;
