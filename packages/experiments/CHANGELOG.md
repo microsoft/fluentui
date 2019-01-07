@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 01 Jan 2019 13:36:37 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jan 2019 13:36:07 GMT and should not be manually modified.
+
+## 6.50.1
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Stack: Adding vertical stack wrapping test to vr-tests.
 
 ## 6.50.0
 Tue, 01 Jan 2019 13:36:37 GMT

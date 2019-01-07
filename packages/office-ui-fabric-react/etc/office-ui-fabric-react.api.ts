@@ -578,7 +578,7 @@ enum CheckboxVisibility {
 }
 
 // @public (undocumented)
-class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
+class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
   // (undocumented)
   componentWillReceiveProps(newProps: IChoiceGroupProps): void;
@@ -2495,6 +2495,7 @@ interface ICheckStyles {
 
 // @public (undocumented)
 interface IChoiceGroup {
+  focus: () => void;
 }
 
 // @public (undocumented)
@@ -6762,6 +6763,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   showWeekNumbers?: boolean;
   strings?: IDatePickerStrings;
   styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+  tabIndex?: number;
   theme?: ITheme;
   today?: Date;
   underlined?: boolean;
@@ -7397,6 +7399,7 @@ interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   componentRef?: IRefObject<IDocumentCard>;
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   onClickHref?: string;
+  role?: string;
   type?: DocumentCardType;
 }
 
@@ -7709,6 +7712,11 @@ interface IFitContentToBoundsOptions {
   contentSize: ISize;
   maxScale?: number;
   mode: FitMode;
+}
+
+// @public (undocumented)
+interface IFocusTrapCalloutProps extends ICalloutProps {
+  focusTrapProps?: IFocusTrapZoneProps;
 }
 
 // @public (undocumented)
@@ -12528,6 +12536,7 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: FocusTrapCallout
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check

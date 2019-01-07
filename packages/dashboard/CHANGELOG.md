@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 03 Jan 2019 13:33:55 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jan 2019 13:36:07 GMT and should not be manually modified.
+
+## 0.42.2
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Add support of accessibility for the card component
 
 ## 0.42.1
 Thu, 03 Jan 2019 13:33:55 GMT
