@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IBaseProps, IRefObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IDocumentCard {
   /**
@@ -45,6 +46,21 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
    * @deprecated To be removed at v5.0.0.
    */
   accentColor?: string;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Optional override class name
+   */
+  className?: string;
 }
 
 export enum DocumentCardType {
@@ -56,4 +72,30 @@ export enum DocumentCardType {
    * Compact layout. Displays the preview beside the details, rather than above.
    */
   compact = 1
+}
+
+export interface IDocumentCardStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Optional override class name
+   */
+  className?: string;
+
+  /**
+   * True when the card has a click action.
+   */
+  actionable?: boolean;
+
+  /**
+   * Compact variant of the card.
+   */
+  compact?: boolean;
+}
+
+export interface IDocumentCardStyles {
+  root: IStyle;
 }
