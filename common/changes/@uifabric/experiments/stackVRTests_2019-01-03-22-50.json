@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "makotom@microsoft.com"
+}

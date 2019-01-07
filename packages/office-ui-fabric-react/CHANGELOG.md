@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 Jan 2019 13:36:37 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Jan 2019 13:33:55 GMT and should not be manually modified.
+
+## 6.119.0
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Minor changes
+
+- TooltipHost: add show method
+
+### Patches
+
+- Fix calendar accessibility edge bug preventing row and column info from being populated correctly
 
 ## 6.118.2
 Tue, 01 Jan 2019 13:36:37 GMT

@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.119.0",
+      "tag": "office-ui-fabric-react_v6.119.0",
+      "date": "Thu, 03 Jan 2019 13:33:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "TooltipHost: add show method",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "ee47b5ece8c90294d966391435866ca741336603"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix calendar accessibility edge bug preventing row and column info from being populated correctly",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "4de63d3c06119b2f58bee9d59a62458213b40b12"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.118.2",
       "tag": "office-ui-fabric-react_v6.118.2",
       "date": "Tue, 01 Jan 2019 13:36:37 GMT",

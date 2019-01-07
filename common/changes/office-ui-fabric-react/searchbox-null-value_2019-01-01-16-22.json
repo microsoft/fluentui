@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "type": "none"
+      "comment": "SearchBox: fix handling of null value",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "elcraig@microsoft.com"
 }
