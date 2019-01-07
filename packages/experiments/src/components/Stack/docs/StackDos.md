@@ -1,0 +1,3 @@
+- Use to define the layout of components.
+- Take into account that this component's functionality relies on the implementation of flexbox by browsers.
+- Take into account that wrapping only works in the direction of the Stack.
