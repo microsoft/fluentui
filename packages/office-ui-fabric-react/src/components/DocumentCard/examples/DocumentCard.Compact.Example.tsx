@@ -111,7 +111,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview {...previewOutlookUsingIcon} />
           <DocumentCardDetails>
-            <DocumentCardTitle title="Conversation about anual report from SharePoint conference" shouldTruncate={true} />
+            <DocumentCardTitle title="Conversation about annual from SharePoint conference" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Sent a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}

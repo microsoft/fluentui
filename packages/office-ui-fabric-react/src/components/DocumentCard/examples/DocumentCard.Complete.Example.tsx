@@ -161,7 +161,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
             <DocumentCardTitle
-              title="Conversation about anual report a very long long name, Title should be truncated on the long name."
+              title="Conversation about annual report a very long long name, Title should be truncated on the long name."
               shouldTruncate={true}
             />
             <DocumentCardTitle
@@ -185,7 +185,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         <DocumentCard onClickHref="http://bing.com">
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
-            <DocumentCardTitle title="Conversation about anual Report" />
+            <DocumentCardTitle title="Conversation about annual Report" />
             <DocumentCardTitle title="This is the email content preview, help." showAsSecondaryTitle={true} />
             <DocumentCardStatus statusIcon="attach" status=" 3 Attachments" />
           </div>
@@ -202,7 +202,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         <DocumentCard onClickHref="http://bing.com">
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
-            <DocumentCardTitle title="Conversation about anual report" shouldTruncate={true} />
+            <DocumentCardTitle title="Conversation about annual report" shouldTruncate={true} />
             <DocumentCardTitle
               title="This is the email content preview, please feel free to give!"
               shouldTruncate={true}
