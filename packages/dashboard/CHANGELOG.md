@@ -1,6 +1,28 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 21 Dec 2018 13:34:57 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Jan 2019 13:36:07 GMT and should not be manually modified.
+
+## 0.42.2
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Add support of accessibility for the card component
+
+## 0.42.1
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Patches
+
+- Adding focus for action bar overflow button
+- Add tooltip for navbar expended button
+
+## 0.42.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
 
 ## 0.41.1
 Fri, 21 Dec 2018 13:34:57 GMT

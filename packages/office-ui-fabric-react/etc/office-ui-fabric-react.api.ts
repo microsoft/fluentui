@@ -578,7 +578,7 @@ enum CheckboxVisibility {
 }
 
 // @public (undocumented)
-class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
+class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
   // (undocumented)
   componentWillReceiveProps(newProps: IChoiceGroupProps): void;
@@ -2275,6 +2275,7 @@ interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTM
   navigationIcons?: ICalendarIconStrings;
   onDismiss?: () => void;
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+  restrictedDates?: Date[];
   selectDateOnClick?: boolean;
   // @deprecated
   shouldFocusOnMount?: boolean;
@@ -2495,6 +2496,7 @@ interface ICheckStyles {
 
 // @public (undocumented)
 interface IChoiceGroup {
+  focus: () => void;
 }
 
 // @public (undocumented)
@@ -6762,6 +6764,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   showWeekNumbers?: boolean;
   strings?: IDatePickerStrings;
   styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+  tabIndex?: number;
   theme?: ITheme;
   today?: Date;
   underlined?: boolean;
@@ -7397,6 +7400,7 @@ interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   componentRef?: IRefObject<IDocumentCard>;
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   onClickHref?: string;
+  role?: string;
   type?: DocumentCardType;
 }
 
@@ -7709,6 +7713,11 @@ interface IFitContentToBoundsOptions {
   contentSize: ISize;
   maxScale?: number;
   mode: FitMode;
+}
+
+// @public (undocumented)
+interface IFocusTrapCalloutProps extends ICalloutProps {
+  focusTrapProps?: IFocusTrapZoneProps;
 }
 
 // @public (undocumented)
@@ -10203,6 +10212,7 @@ interface ISliderProps extends React.ClassAttributes<SliderBase> {
   styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
   theme?: ITheme;
   value?: number;
+  valueFormat?: (value: number) => string;
   vertical?: boolean;
 }
 
@@ -10891,6 +10901,7 @@ interface ITooltip {
 // @public (undocumented)
 interface ITooltipHost {
   dismiss: () => void;
+  show: () => void;
 }
 
 // @public
@@ -12434,6 +12445,8 @@ class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState
   dismiss: () => void;
   // (undocumented)
   render(): JSX.Element;
+  // (undocumented)
+  show: () => void;
 }
 
 // @public (undocumented)
@@ -12525,6 +12538,7 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: FocusTrapCallout
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check
