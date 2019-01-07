@@ -222,6 +222,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
    * Whether the CalendarDay close button should be shown or not.
    */
   showCloseButton?: boolean;
+
+  /**
+   * The tabIndex of the TextField
+   */
+  tabIndex?: number;
 }
 
 export interface IDatePickerStrings {
