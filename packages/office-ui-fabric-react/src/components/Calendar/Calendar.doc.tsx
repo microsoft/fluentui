@@ -78,7 +78,7 @@ export const CalendarPageProps: IDocPageProps = {
       )
     },
     {
-      title: `Inline Calendar with week selection, date boundary (minDate, maxDate), disabled dates (restrictedDates)
+      title: `Inline Calendar with week selection, date boundary (minDate, maxDate), disabled dates (restrictedDates),
         and overlaid year picker when month header is clicked`,
       code: CalendarInlineExampleCode,
 
