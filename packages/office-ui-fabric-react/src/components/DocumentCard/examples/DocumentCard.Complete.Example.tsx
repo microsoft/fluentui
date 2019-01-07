@@ -3,6 +3,7 @@ import {
   DocumentCard,
   DocumentCardActions,
   DocumentCardActivity,
+  DocumentCardDetails,
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle,
@@ -220,13 +221,13 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         <p />
         <DocumentCard onClickHref="http://bing.com">
           <DocumentCardPreview {...previewPropsUsingIcon} />
-          <div className="ms-DocumentCard-details">
+          <DocumentCardDetails>
             <DocumentCardTitle title="View and share files" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Created a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
-          </div>
+          </DocumentCardDetails>
         </DocumentCard>
       </div>
     );
