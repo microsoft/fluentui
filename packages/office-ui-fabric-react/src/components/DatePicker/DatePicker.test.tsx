@@ -45,7 +45,7 @@ describe('DatePicker', () => {
 
   // if isDatePickerShown is set, the DatePicker should be rendered
   // and aria-owns should exist with a valid id
-  it('should not render DatePicker when isDatePickerShown is not set', () => {
+  it('should render DatePicker when isDatePickerShown is set', () => {
     const datePicker = mount(<DatePickerBase />);
     datePicker.setState({ isDatePickerShown: true });
 
