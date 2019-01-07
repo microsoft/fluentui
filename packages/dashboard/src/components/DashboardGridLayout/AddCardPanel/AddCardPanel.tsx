@@ -98,7 +98,7 @@ export class AddCardPanel extends BaseComponent<IAddCardPanelProps, IAddCardPane
           </>
         ) : (
           <div className={classNames.emptyCardStyles}>
-            <img draggable={false} src={this._getEmptyCard()} />
+            <img draggable={false} src={this._getEmptyCard()} alt={'Animation Image'} />
             <div className={classNames.emptyPanelMessageStyles}>{this.props.emptyPanelMessage}</div>
           </div>
         )}
