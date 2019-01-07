@@ -4,7 +4,7 @@ import { IComboBoxStyles } from 'office-ui-fabric-react/lib/ComboBox';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
 
-export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
+export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
   const { semanticColors } = theme;
 
   return {
@@ -67,6 +67,7 @@ export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       fontSize: FontSizes.size12
     },
     optionsContainer: {
+      verticalAlign: 'middle',
       selectors: {
         '.ms-ComboBox-header': {
           color: semanticColors.focusBorder,
@@ -76,8 +77,10 @@ export const comboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
           color: semanticColors.bodyText,
           fontSize: FontSizes.size12,
           selectors: {
-            '&:hover:focus': {
-              backgroundColor: semanticColors.menuItemBackgroundHovered
+            ':hover': {
+              backgroundColor: semanticColors.menuItemBackgroundHovered,
+              border: '1px solid transparent',
+              color: semanticColors.bodyText
             }
           }
         },

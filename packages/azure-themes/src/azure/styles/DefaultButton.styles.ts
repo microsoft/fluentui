@@ -3,7 +3,7 @@ import * as StyleConstants from '../Constants';
 import { ITheme } from 'office-ui-fabric-react/';
 import { FontSizes } from '../AzureType';
 
-export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
+export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
 
   return {
@@ -30,7 +30,7 @@ export const defaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextHovered
     },
     rootCheckedPressed: {
-      order: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       color: semanticColors.buttonTextPressed
     },
     splitButtonContainer: {

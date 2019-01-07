@@ -3,7 +3,7 @@ import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from '../AzureType';
 
-export const commandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
+export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
 
   return {

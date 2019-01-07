@@ -1,7 +1,7 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/';
 
-export const primaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
+export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
 
   return {

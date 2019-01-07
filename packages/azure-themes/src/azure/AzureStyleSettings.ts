@@ -2,21 +2,21 @@ import { ITheme } from 'office-ui-fabric-react';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { CheckStyles, DetailsRowStyles, DetailsListStyles } from './styles/DetailsList.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOptions.styles';
-import { comboBoxStyles } from './styles/ComboBox.styles';
+import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CommandBarStyles } from './styles/CommandBar.styles';
-import { commandBarButtonStyles } from './styles/CommandBarButton.styles';
-import { compoundButtonStyles } from './styles/CompoundButton.styles';
+import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
+import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
-import { defaultButtonStyles } from './styles/DefaultButton.styles';
+import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { PanelStyles } from './styles/Panel.styles';
-import { primaryButtonStyles } from './styles/PrimaryButton.styles';
+import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { SliderStyles } from './styles/Slider.styles';
-import { iconButtonStyles } from './styles/IconButton.styles';
-import { actionButtonStyles } from './styles/ActionButton.styles';
+import { IconButtonStyles } from './styles/IconButton.styles';
+import { ActionButtonStyles } from './styles/ActionButton.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
@@ -24,7 +24,7 @@ import { actionButtonStyles } from './styles/ActionButton.styles';
 export const AzureStyleSettings = (theme: ITheme): any => {
   return {
     ActionButton: {
-      styles: actionButtonStyles(theme)
+      styles: ActionButtonStyles(theme)
     },
     // Breadcrumb: {
     //   styles: BreadcrumbStyles
@@ -45,10 +45,10 @@ export const AzureStyleSettings = (theme: ITheme): any => {
       styles: CommandBarStyles
     },
     CommandBarButton: {
-      styles: commandBarButtonStyles(theme)
+      styles: CommandBarButtonStyles(theme)
     },
     CompoundButton: {
-      styles: compoundButtonStyles(theme)
+      styles: CompoundButtonStyles(theme)
     },
     Check: {
       styles: CheckStyles
@@ -63,7 +63,7 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     //   styles: ColorPickerGridCellStyles
     // },
     ComboBox: {
-      styles: comboBoxStyles(theme)
+      styles: ComboBoxStyles(theme)
     },
     ContextualMenu: {
       styles: ContextualMenuStyles
@@ -72,7 +72,7 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     //   styles: DatePickerStyles
     // },
     DefaultButton: {
-      styles: defaultButtonStyles(theme)
+      styles: DefaultButtonStyles(theme)
     },
     DetailsList: {
       styles: DetailsListStyles
@@ -93,7 +93,7 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     //   styles: ExpandingCardStyles
     // },
     IconButton: {
-      styles: iconButtonStyles(theme)
+      styles: IconButtonStyles(theme)
     },
     Label: {
       styles: LabelStyles
@@ -114,7 +114,7 @@ export const AzureStyleSettings = (theme: ITheme): any => {
       styles: PanelStyles
     },
     PrimaryButton: {
-      styles: primaryButtonStyles(theme)
+      styles: PrimaryButtonStyles(theme)
     },
     // Rating: {
     //   styles: RatingStyles

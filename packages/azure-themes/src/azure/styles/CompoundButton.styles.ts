@@ -3,7 +3,7 @@ import { ITheme } from 'office-ui-fabric-react/';
 import * as StyleConstants from '../Constants';
 import { FontSizes } from '../AzureType';
 
-export const compoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
+export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
   const labelTextColor = (color: string) => {
     return {
