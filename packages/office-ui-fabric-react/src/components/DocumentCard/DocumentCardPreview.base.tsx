@@ -20,7 +20,7 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
   public render(): JSX.Element {
     const { previewImages, styles, theme, className } = this.props;
     let style, preview;
-    let isFileList = previewImages.length > 1;
+    const isFileList = previewImages.length > 1;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
