@@ -9304,7 +9304,7 @@ interface IPlainCard {
 
 // @public
 interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, IPlainCardStyleProps> {
-  onRenderPlainCard?: IRenderFunction<IPlainCardProps>;
+  onRenderPlainCard?: IRenderFunction<any>;
 }
 
 // @public (undocumented)
