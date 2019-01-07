@@ -10211,6 +10211,7 @@ interface ISliderProps extends React.ClassAttributes<SliderBase> {
   styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
   theme?: ITheme;
   value?: number;
+  valueFormat?: (value: number) => string;
   vertical?: boolean;
 }
 
