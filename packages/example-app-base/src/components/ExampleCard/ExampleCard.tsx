@@ -55,9 +55,8 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
 // tslint:disable-next-line:typedef
 const regionStyles: IExampleCardComponent['styles'] = (props, theme) => ({
   root: {
-    // TODO: these !'s shouldn't be needed regardless of final theme arg approach
-    backgroundColor: props.theme!.semanticColors.bodyBackground,
-    color: props.theme!.semanticColors.bodyText
+    backgroundColor: theme.semanticColors.bodyBackground,
+    color: theme.semanticColors.bodyText
   }
 });
 
@@ -110,9 +109,9 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
             this._themeCustomizations = exampleCardCustomizations;
             this._themeOptions = exampleCardCustomizations
               ? exampleCardCustomizations.map((item: IExampleCardCustomizations, index: number) => ({
-                key: index,
-                text: 'Theme: ' + item.title
-              }))
+                  key: index,
+                  text: 'Theme: ' + item.title
+                }))
               : [];
           }
 
@@ -161,8 +160,8 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
                   <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
                 </ThemeProvider>
               ) : (
-                  exampleCardContent
-                )}
+                exampleCardContent
+              )}
 
               {this._getDosAndDonts()}
             </div>

@@ -58,6 +58,7 @@ describe('createFactory', () => {
   const userProps = { user: 'userValue', id: 'userIdValue', children: ['User Child 1', 'User Child 2'] };
   const userPropString = 'userPropString';
   const defaultProp = 'shorthand-prop';
+  const emptyClassName = { className: '' };
   const factoryOptions = { defaultProp };
 
   const TestComponent = (props: any) => {
@@ -66,32 +67,32 @@ describe('createFactory', () => {
 
   it(`passes componentProps without userProps`, () => {
     const component = mount(createFactory(TestComponent)(componentProps, undefined, undefined));
-    expect(component.props()).toEqual(componentProps);
+    expect(component.props()).toEqual({ ...componentProps, ...emptyClassName });
   });
 
   it(`passes userProp string as child`, () => {
     const component = mount(createFactory(TestComponent)(componentProps, userPropString, undefined));
-    expect(component.props()).toEqual({ ...componentProps, children: userPropString });
+    expect(component.props()).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as child`, () => {
     const component = mount(createFactory(TestComponent)(componentProps, 42, undefined));
-    expect(component.props()).toEqual({ ...componentProps, children: 42 });
+    expect(component.props()).toEqual({ ...componentProps, children: 42, ...emptyClassName });
   });
 
   it(`passes userProp string as defaultProp`, () => {
     const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, userPropString, undefined));
-    expect(component.props()).toEqual({ ...componentProps, [defaultProp]: userPropString });
+    expect(component.props()).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
     const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, 42, undefined));
-    expect(component.props()).toEqual({ ...componentProps, [defaultProp]: 42 });
+    expect(component.props()).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
   });
 
   it('merges userProps over componentProps', () => {
     const component = mount(createFactory(TestComponent, factoryOptions)(componentProps, userProps, undefined));
-    expect(component.props()).toEqual({ ...componentProps, ...userProps });
+    expect(component.props()).toEqual({ ...componentProps, ...userProps, ...emptyClassName });
   });
 
   it('renders userProp integer as children', () => {
@@ -107,20 +108,16 @@ describe('createFactory', () => {
   });
 
   it('renders userProp JSX with one prop', () => {
-    const component = renderer.create(createFactory(TestComponent)(
-      componentProps,
-      <p id="I should be the only prop in the output" />,
-      undefined));
+    const component = renderer.create(
+      createFactory(TestComponent)(componentProps, <p id="I should be the only prop in the output" />, undefined)
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp function with one prop', () => {
     const component = renderer.create(
-      createFactory(TestComponent)(
-        componentProps,
-        () => <p id="I should be the only prop in the output" />,
-        undefined)
+      createFactory(TestComponent)(componentProps, () => <p id="I should be the only prop in the output" />, undefined)
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -128,7 +125,7 @@ describe('createFactory', () => {
 
   it(`passes props and type arguments to userProp function`, done => {
     const userPropsFunction: ISlotRenderFunction<typeof userProps> = (props, type) => {
-      expect(props).toEqual(componentProps);
+      expect(props).toEqual({ ...componentProps, ...emptyClassName });
       expect(type).toEqual(TestComponent);
       done();
       return <div {...props} />;
@@ -150,7 +147,7 @@ describe('getSlots', () => {
     testSlot2: ISlotProp<ITestSlotComponent2Props>;
   }
 
-  interface ITestProps extends ITestSlots { }
+  interface ITestProps extends ITestSlots {}
 
   it(`creates slots and passes merged props to them`, done => {
     const testUserProps = {

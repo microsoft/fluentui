@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
-// import { _evaluateStyle } from './utilities';
 import {
   IFactoryComponent,
   IFactoryOptions,
@@ -83,44 +82,13 @@ export function createFactory<TProps>(
 
     // Construct the final props for the component by merging component props, user props, and the
     // generated class name.
-    // TODO: final approach has to ensure this is done before calling user render functions
-    // const finalProps = componentProps;
+    const finalClassName = mergeStyles(defaultStyles, componentProps && componentProps.className, userProps && userProps.className);
+
     const finalProps = {
       ...(componentProps as any),
-      ...(typeof userProps === 'object' && (userProps as any))
+      ...(typeof userProps === 'object' && (userProps as any)),
+      className: finalClassName
     };
-
-    const finalClassName = mergeStyles(
-      defaultStyles,
-      componentProps && componentProps.className, // componentProps will be null if component passes in no props
-      //  TODO: Callout: What was reasoning for this call in prototype?
-      //        Seems to lead to multiple executions of userProp styles functions in examples.
-      //        In both styled and createComponent (at least old version) components, this function will get called again.
-      //          styled: called via classNamesFunction
-      //          old createComponent: called via _evaulateStyles
-      //          new createComponent: called via _resolveStyles
-      //        Even for Slots, slot component props are accounted for at the top level of the slot component's
-      //          styled/createComponent call in the same locations listed above and don't need to be reevaluated here.
-      //        Is the reason for merging in classnames? What are implications for absorbing classnames here without styling?
-      //          Seems that priority of userProps.styles could be lost against userProps.className, which means that ALL
-      //          styling merged here will override userProps.styles? (Instead of userProps.styles having second highest priority.)
-      //          Can't just pass in className from componentProps and userProps since that isn't a merge.
-      //        What about tokens? If this is needed, wouldn't we need to do resolveTokens and resolveStyles here?
-      //  If this is needed, it will result in multiple processing against userProps.styles and generate a call stack mess with
-      //    theme being needed. To avoid multiple processing, should styles prop be pulled out of userProps?
-      //  TODO: Do test cases for this exercising and confirming priority with ALL args present.
-      //  TODO: Token styling. Also do test case with new component as slot to verify token styling works.
-      //  TODO: Theme in props for styled components. Can't assume this is styles function with separate theme arg.
-      //  TODO: David mentioned this was only meant to be applied to intrinsic elements (div, etc.)
-      //          where style functions otherwise wouldn't be evaluated.
-      //          Does this hold with my observations above about priority?
-      //  TODO: also evaluate tokens
-      // _evaluateStyle(finalProps, theme, userProps && userProps.styles),
-      userProps && userProps.className
-    );
-
-    // TODO: mergeStyles outputs "" instead of undefined, which breaks tests. pass on or filter out?
-    finalProps.className = finalClassName === '' ? undefined : finalClassName;
 
     // If we're rendering a function, let the user resolve how to render given the original component
     // and final args.
@@ -190,8 +158,6 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
           processedProps[name],
           // TODO: is this check needed (put in temporarily until createComponent is updated)? what about for backwards compatibility?
           processedProps._defaultStyles && processedProps._defaultStyles[name]
-          // TODO: David had this, make sure it's not needed:
-          // componentProps.children
         );
       };
       slot.isSlot = true;

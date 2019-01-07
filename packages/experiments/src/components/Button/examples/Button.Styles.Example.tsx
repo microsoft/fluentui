@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '../index';
 import { Stack } from '@uifabric/experiments';
-import { createTheme, ContextualMenu, IContextualMenuProps } from 'office-ui-fabric-react';
+import { createTheme, ContextualMenu, IContextualMenuProps, mergeStyles } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
   semanticColors: {
@@ -27,37 +27,11 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// TODO: document each of these cases (IStyle vs. IStyles interfaces) as to which work and why or why not:
-//        is nesting styles from both component level and slot level possible?
-//        styled component vs. foundation component limitations?
-// {/* <Button
-//   icon={{ styles: { background: "blue" } }} // adds the className with background: blue to className of component
-//   //OR
-//   icon={{
-//     styles: {
-//       root: { background: "blue" },
-//       imageContainer: { border: "2px solid blue" }
-//     }
-//   }}
-//   styles={{
-//     icon: {
-//       background: "blue" // className applied to icon root
-//     },
-//     // OR
-//     icon: {
-//       root: {
-//         background: "blue"
-//       },
-//       imageContainer: {
-//         border: "2px solid blue"
-//       }
-//     }
-//   }}
-// />; */}
-
 // tslint:disable:jsx-no-lambda
 export class ButtonStylesExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
+    const testClassName = mergeStyles({ color: 'blue' });
+
     return (
       <Stack gap={sectionGap}>
         <Stack gap={headingGap} padding={8}>
@@ -72,15 +46,6 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button icon="PeopleAdd" content="Button Styles Object: Red Text (stack)" styles={{ stack: { color: 'red' } }} />
               </ButtonStack>
               <ButtonStack>
-                <Button
-                  icon="PeopleAdd"
-                  content="Root Styles Object: Red Text"
-                  // TODO: Callout: This line generates a TS error... by design. Intrinsic elements can't be passed styles props.
-                  //        However this prevents mixing intrinsic elements and component props. This is done to ensure type safety.
-                  //        Using 'style' or 'className' for intrinsic elements should be a good fallback for niche scenarios.
-                  // root={{ styles: { color: 'red' } }}
-                  root={{ style: { color: 'red' } }}
-                />
                 <Button icon="PeopleAdd" content="Stack Styles Object: Red Text" stack={{ styles: { root: { color: 'red' } } }} />
               </ButtonStack>
               <ButtonStack>
@@ -176,6 +141,54 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                     icon: 'image-classname',
                     menu: 'menu-classname',
                     menuIcon: 'menu-classname'
+                  }}
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  content="Icon ClassName Overrides Button Styles: Blue Icon"
+                  styles={{
+                    icon: {
+                      color: 'red'
+                    }
+                  }}
+                  icon={{
+                    iconName: 'PeopleAdd',
+                    className: testClassName
+                  }}
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  icon="PeopleAdd"
+                  content={{
+                    children: 'Text ClassName: Blue Text',
+                    className: testClassName
+                  }}
+                />
+                <Button
+                  icon="PeopleAdd"
+                  content={{
+                    children: 'Text Styles Overrides ClassName: Red Text',
+                    styles: { root: { color: 'red' } },
+                    className: testClassName
+                  }}
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  content="Icon ClassName: Blue Icon"
+                  icon={{
+                    iconName: 'PeopleAdd',
+                    className: testClassName
+                  }}
+                />
+                <Button
+                  content="Icon Styles Overrides ClassName: Red Icon"
+                  icon={{
+                    iconName: 'PeopleAdd',
+                    styles: { root: { color: 'red' } },
+                    className: testClassName
                   }}
                 />
               </ButtonStack>

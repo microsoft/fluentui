@@ -1,17 +1,6 @@
-import { IProcessedStyleSet, IStyle, IStyleSet, ITheme } from '@uifabric/styling';
+import { IStyle, IStyleSet, ITheme } from '@uifabric/styling';
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
-// TODO: call out token naming, arguments for/against:
-//  Token:
-//  + new concept implying usage across platforms
-//  + Micah likes
-//  - does not have style naming, is closely related to "styles" but name does not imply it
-//  - does not seem to match "standard" def, which seems to imply tokens are more like semanticColors
-//  StyleVars:
-//  + implies association with existing "styles", which is true because both complement each other
-//  + consistent with stardust
-//  - Micah no likes
 
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.
 //        Effect is that mistyped property keys on returned style objects will not generate errors.
@@ -20,7 +9,6 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 //        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
 
 // TODO: update or move to IStyleFunction.ts? is the naming confusing?
-// TOOO: move all types out, into IComponent.ts?
 // TODO: call out impacts of these new types.
 //        obviates IStyleFunctionOrObject
 //        now have theme as separate arg for both tokens and styles functions
@@ -37,15 +25,10 @@ export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyl
   | IStylesFunction<TViewProps, TTokens, TStyleSet>
   | Partial<TStyleSet>;
 
-// export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
-// export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens>;
 export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | false | null | undefined;
 
-// export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenFunctionOrObject<TViewProps, TTokens>> { }
-// export interface ITokenBaseArray<TViewProps, TTokens> extends Array<ITokenBase<TViewProps, TTokens>> { }
 export interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {}
 
-// export type IToken<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
 export type IToken<TViewProps, TTokens> = ITokenBase<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
 
 export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => IToken<TViewProps, TTokens>;
@@ -71,13 +54,6 @@ export type ICustomizationProps<TViewProps, TStyleSet extends IStyleSet<TStyleSe
   Required<Pick<IStyleableComponentProps<TViewProps, TStyleSet, TTokens>, 'theme'>>;
 
 /**
- * Props added by Foundation for styles functions.
- */
-// export interface IStyledProps<TTheme> {
-//   theme: TTheme;
-// }
-
-/**
  * Enforce props contract on state components, including the view prop and its shape.
  */
 export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
@@ -91,26 +67,11 @@ export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps 
 export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
 
 /**
- * The props that get passed to view components.
- */
-// TODO: remove?
-// export type IViewComponentProps<TViewProps, TProcessedStyleSet> = TViewProps & {
-//   classNames: TProcessedStyleSet;
-// };
-
-/**
- * A helper type for defining view components, including its properties.
- */
-// export type IViewComponent<TViewProps, TProcessedStyleSet> =
-//    React.StatelessComponent<IViewComponentProps<TViewProps, TProcessedStyleSet>>;
-export type IViewComponent<TViewProps, TProcessedStyleSet> = React.StatelessComponent<TViewProps>;
-
-/**
  * Component used by foundation to tie elements together.
  * @see createComponent for generic type documentation.
  */
 // TODO: Should Tokens be an optional member/type like state?
-// TODO: Should take in TSlots instead of TStyleSet? (force stylset to be derived from slots?)
+// TODO: Should take in TSlots instead of TStyleSet? (force styleset to be derived from slots?)
 export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> {
   /**
    * Display name to identify component in React hierarchy.
@@ -127,7 +88,7 @@ export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extend
   /**
    * React view stateless component.
    */
-  view: IViewComponent<TViewProps, IProcessedStyleSet<TStyleSet>>;
+  view: React.StatelessComponent<TViewProps>;
   /**
    * Optional state component that processes TComponentProps into TViewProps.
    */

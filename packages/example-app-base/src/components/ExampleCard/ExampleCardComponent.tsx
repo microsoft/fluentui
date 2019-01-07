@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { createStatelessComponent, getSlots, IStatelessComponent, IStyleableComponentProps } from '@uifabric/foundation';
+import {
+  createStatelessComponent,
+  getSlots,
+  IComponentStyles,
+  ISlotProp,
+  IStatelessComponent,
+  IStyleableComponentProps
+} from '@uifabric/foundation';
+
 import {
   Customizations,
   CustomizerContext,
@@ -15,27 +23,33 @@ import {
 // This file exists only to create a temporary stateless component for applying styles.
 // TODO: Once Stack (or any other Foundation created layout component) is promoted out of experiments,
 //        we can remove this file AND remove foundation as a dependency of example-app-base.
-export type IExampleCardComponent = IStatelessComponent<IExampleCardComponentProps, IExampleCardTokens, IExampleCardComponentStyles>;
+// tslint:disable:no-any
+export type IHTMLSlot = ISlotProp<React.HTMLAttributes<any>>;
 
-export interface IExampleCardComponentProps extends
-  IStyleableComponentProps<IExampleCardComponentProps, IExampleCardTokens, IExampleCardComponentStyles> { }
+export type IExampleCardComponent = IStatelessComponent<IExampleCardComponentProps, IExampleCardComponentStyles>;
 
-export interface IExampleCardTokens { }
+export type IExampleCardComponentSlots = {
+  root?: IHTMLSlot;
+};
 
-export interface IExampleCardComponentStyles {
-  root: IStyle;
-}
+export interface IExampleCardComponentProps
+  extends IExampleCardComponentSlots,
+    IStyleableComponentProps<IExampleCardComponentProps, IExampleCardComponentStyles> {}
+
+export type IExampleCardComponentStyles = IComponentStyles<IExampleCardComponentSlots>;
 
 // tslint:disable-next-line:typedef
 const ExampleCardComponentView: IExampleCardComponent['view'] = props => {
-  // TODO: finalize approach. classNames usage here will have to be adjusted on final approach in createComponent.
   // TODO: make sure this doesn't break website that doesn't use dropdowns
-  // const Slots = getSlots<typeof props, IButtonSlots>(props, {
-  //   root: 'div'
-  // });
-  // return props.children ? <Slots.root>{props.children}</Slots.root> : null;
-  // tslint:disable:no-any
-  return props.children ? <div className={(props as any).classNames.root}>{props.children}</div> : null;
+  if (!props.children) {
+    return null;
+  }
+
+  const Slots = getSlots<typeof props, IExampleCardComponentSlots>(props, {
+    root: 'div'
+  });
+
+  return <Slots.root>{props.children}</Slots.root>;
 };
 
 export const ExampleCardComponent: React.StatelessComponent<IExampleCardComponentProps> = createStatelessComponent({

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { concatStyleSets, IStyleSet, ITheme, mergeStyleSets } from '@uifabric/styling';
+import { concatStyleSets, IStyleSet, ITheme } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
-import { assign, _evaluateStyle } from './utilities';
+import { assign } from './utilities';
 
 import {
   IComponent,
@@ -42,9 +42,17 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
 ): React.StatelessComponent<TComponentProps> & TStatics {
   const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
-      // TODO: createComponent is also probably affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
+      // TODO: createComponent is also affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
       <CustomizerContext.Consumer>
         {(context: ICustomizerContext) => {
+          // TODO: this next line is basically saying 'theme' prop will ALWAYS be available from getCustomizations
+          //        via ICustomizationProps cast. Is there mechanism that guarantees theme and other request fields will be defined?
+          //        is there a static init that guarantees theme will be provided?
+          //        what happens if createTheme/loadTheme is not called?
+          //        if so, convey through getCustomizations typing keying off fields. can we convey this
+          //          all the way from Customizations with something like { { K in fields }: object}? hmm
+          //        if not, how does existing "theme!" styles code work without risk of failing (assuming it doesn't fail)?
+          // For now cast return value as if theme is always available.
           const settings: ICustomizationProps<TViewProps, TStyleSet, TTokens> = _getCustomizations(
             component.displayName,
             context,
@@ -73,78 +81,19 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
                 }
               : componentProps;
 
-            // TODO: is this the best way to trigger old vs. new behavior?
-            // TODO: before we can get rid of old code, the following things need to change with existing experimental components:
-            //        1. styles functions need to take in theme as separate arg
-            //        2. need to be converted to slots? how else will subcomponents get styling?
-            // TODO: Is the new way forcing all subcomponents to be slots as written? how else will subcomponents get styling?
-            //        Is this forcing a requirement that every styleable section needs to be a slot?
-            //        How will components apply classNames/styling if they don't use Slots?
-            //        Can users just fall back to using getClassNames similar to existing styled approach?
-            //        If so document as fallback if users don't want to use Slots for style sections.
-            // TODO: Phase 2: phase out old approach with any existing components using createComponent (mostly Persona with style sections)
-            //        If Mark's Persona PR is merged before this one, may be able to take this out entirely.
-            if (!component.tokens) {
-              // NOTE: this old approach will have no type safety due to type conflicts with new approach. to be removed entirely.
+            const theme = mergedProps.theme || settings.theme;
 
-              const { styles: settingsStyles, ...settingsRest } = settings;
-              // TODO: this next line is basically saying 'theme' prop will ALWAYS be available from getCustomizations.
-              //        is there mechanism that guarantees theme and other request fields will be defined?
-              //        is there a static init that guarantees theme will be provided?
-              //        what happens if createTheme/loadTheme is not called?
-              //        if so, convey through getCustomizations typing keying off fields. can we convey this
-              //          all the way from Customizations with something like { { K in fields }: object}? hmm
-              //        if not, how does existing "theme!" styles code work without risk of failing (assuming it doesn't fail)?
-              // For now cast return value as if theme is always available.
-              const styledProps = { ...settingsRest, ...(mergedProps as any) };
+            const tokens = _resolveTokens(mergedProps, theme, component.tokens, settings.tokens, mergedProps.tokens);
+            const styles = _resolveStyles(mergedProps, theme, tokens, component.styles, settings.styles, mergedProps.styles);
 
-              const viewComponentProps = {
-                ...(mergedProps as any),
-                ...{
-                  classNames: mergeStyleSets(
-                    // TOOD: need theme arg to resolve styles? will need to do this if ALL createComponent styles functions have
-                    //        theme as a separate argument.
-                    _evaluateStyle(styledProps, styledProps.theme, component.styles),
-                    _evaluateStyle(styledProps, styledProps.theme, settingsStyles),
-                    _evaluateStyle(styledProps, styledProps.theme, mergedProps.styles)
-                  )
-                }
-              };
+            const viewComponentProps: TViewProps = {
+              ...mergedProps,
+              // TODO: Figure out a way to deal with this without using cast to any.
+              //          const viewComponentProps: TViewProps & ISlotProps<> =
+              _defaultStyles: styles
+            } as any;
 
-              return component.view(viewComponentProps);
-            } else {
-              const theme = mergedProps.theme || settings.theme;
-
-              // console.log('settings.styles: ' + settings.styles);
-
-              // TOOD: Callout: This new approach removes classNames from props and makes it unavailable to views. This basically means
-              //        that Slots are required for each style section. Is this what we want? Are there use cases where there'll be style
-              //        sections not associated with Slots? If so, how will they have className applied?
-              //        Stack seems to have a case of this with "wrap" prop and "inner" section but is Stack doing the right thing?
-              // TODO: Callout: Resolving tokens and styles here means only `theme` prop at component level will apply. Any theme props
-              //        passed to slots by user or internal to component will not take effect since they are not available here.
-
-              // TODO: keep themes as part of mergedProps or make separate variable? (might clean up awkward typings to make it separate)
-              // TODO: then again, createComponent shouldn't know about settings that are being passed on... it should NOT be a separate arg
-              // TODO: david mentioned avoiding mixins for perf, but with theme (and other fields) coming from either settings or props,
-              //        I don't think we have a choice.. they need to be mixed in
-              // TODO: conclusion: createComponent has to know about key settings (styles, tokens) already, so if tokens is the only other
-              //        one, just keep it separate. All other customized settings (Layer fields, etc.) need to be forwarded in merged Props.
-              const tokens = _resolveTokens(mergedProps, theme, component.tokens, settings.tokens, mergedProps.tokens);
-              const styles = _resolveStyles(mergedProps, theme, tokens, component.styles, settings.styles, mergedProps.styles);
-
-              const viewComponentProps: TViewProps = {
-                ...mergedProps,
-                // TODO: This is a "hidden" prop that view components shouldn't be aware of.
-                //        Is this the best way to do this? Are we sure we don't want to create new objects with theme
-                //        and tokens rather than pass them through separately?
-                //        Figure out a way to deal with this without using cast to any.
-                //          const viewComponentProps: TViewProps & ISlotProps<> =
-                _defaultStyles: styles
-              } as any;
-
-              return component.view(viewComponentProps);
-            }
+            return component.view(viewComponentProps);
           };
           return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
         }}
@@ -189,27 +138,6 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
     )
   );
 }
-
-/**
- * Resolve all token functions with props and flatten results along with all token objects.
- */
-// const _resolveTokens = (props, theme, ...allTokens) => {
-//   const tokens = {};
-
-//   for (let currentTokens of allTokens) {
-//     currentTokens = typeof currentTokens === 'function'
-//       ? currentTokens(props, theme)
-//       : currentTokens;
-
-//     if (Array.isArray(currentTokens)) {
-//       currentTokens = _resolveTokens(props, theme, ...currentTokens);
-//     }
-
-//     Object.assign(tokens, ...currentTokens);
-//   }
-
-//   return tokens;
-// };
 
 // TODO: add tests to deal with various cases: no tokens, undefined, etc.
 function _resolveTokens<TViewProps, TTokens>(
