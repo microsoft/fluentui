@@ -234,8 +234,6 @@ interface IFontFace extends IRawFontStyle {
 // @public
 interface IFontStyles {
   // (undocumented)
-  default: IRawStyle;
-  // (undocumented)
   large: IRawStyle;
   // (undocumented)
   medium: IRawStyle;
@@ -349,6 +347,7 @@ interface IRawStyle extends IRawStyleBase {
 
 // @public (undocumented)
 interface IScheme {
+  defaultFontStyle: IRawStyle;
   disableGlobalClassNames: boolean;
   // (undocumented)
   effects: IEffects;
