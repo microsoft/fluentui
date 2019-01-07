@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {
   IDGLCard,
+  Card,
+  Priority,
+  CardContentType,
   CardSize,
   DashboardGridLayoutWithAddCardPanel,
   DashboardGridBreakpointLayouts,
@@ -8,6 +11,41 @@ import {
   DraggingAnimationType
 } from '@uifabric/dashboard';
 
+const cardFrameContent = {
+  cardTitle: 'Small Card',
+  cardDropDownOptions: [
+    {
+      key: 'Remove',
+      name: 'Remove',
+      icon: 'PageRemove',
+      ariaLabel: 'Remove card',
+      title: 'Remove card',
+      onClick: () => {
+        alert('Remove clicked');
+      }
+    }
+  ]
+};
+
+const contentAreaList = [
+  {
+    priority: Priority.Priority1,
+    cardContentType: CardContentType.BodyText,
+    content: {
+      subHeaderText: 'Subheader Text',
+      bodyText: 'Body Text'
+    }
+  }
+];
+
+const header = {
+  headerText: 'Header Text ',
+  annotationText: 'Annotation Text '
+};
+
+const exampleCard = (
+  <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.small} />
+);
 const cardsVisibleInLayout: IDGLCard[] = [
   {
     id: 'first',
@@ -19,7 +57,7 @@ const cardsVisibleInLayout: IDGLCard[] = [
       addCardIconAriaLabel: 'Click to add first card to dashboard',
       addCardImageAltText: 'Alt text for the first card representation in the add card panel'
     },
-    renderElement: <div>Dashboard Card 1</div>,
+    renderElement: exampleCard,
     cardSize: CardSize.mediumTall
   },
   {
@@ -30,7 +68,7 @@ const cardsVisibleInLayout: IDGLCard[] = [
       addCardPanelImageUrl: '../../../../public/images/DetailsList.svg',
       draggingAnimation: DraggingAnimationType.BarGraph
     },
-    renderElement: <div>Dashboard Card 2</div>,
+    renderElement: exampleCard,
     cardSize: CardSize.mediumWide
   }
 ];
@@ -46,7 +84,7 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
       addCardIconAriaLabel: 'Click to add first card to dashboard',
       addCardImageAltText: 'Alt text for the first card representation in the add card panel'
     },
-    renderElement: <div>Add Card Panel Card 1</div>,
+    renderElement: exampleCard,
     cardSize: CardSize.mediumTall
   },
   {
@@ -57,7 +95,7 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
       addCardPanelImageUrl: '../../../../public/images/DetailsList.svg',
       draggingAnimation: DraggingAnimationType.BarGraph
     },
-    renderElement: <div>Add Card Panel Card 2</div>,
+    renderElement: exampleCard,
     cardSize: CardSize.mediumWide
   },
   {
@@ -68,7 +106,7 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
       addCardPanelImageUrl: '../../../../public/images/Donut.svg',
       draggingAnimation: DraggingAnimationType.DonutChart
     },
-    renderElement: <div>Add Card Panel Card 3</div>,
+    renderElement: exampleCard,
     cardSize: CardSize.large
   }
 ];
