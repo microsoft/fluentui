@@ -143,7 +143,7 @@ class ScrollablePaneDetailsListStory extends React.Component<
         }}
       >
         <Fabric>
-          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '500px', border: '1px solid #edebe9' }}>
+          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '800px', border: '1px solid #edebe9' }}>
             {/* providing backgroundColor as no parent element for the test has this property defined */}
             <Sticky stickyPosition={StickyPositionType.Header} stickyBackgroundColor={getTheme().palette.white}>
               <h1 style={{ margin: '0px' }}>Item List</h1>
