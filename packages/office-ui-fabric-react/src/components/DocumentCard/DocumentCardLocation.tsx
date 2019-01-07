@@ -1,17 +1,11 @@
-import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
-import { IDocumentCardLocationProps } from './DocumentCard.types';
-import * as stylesImport from './DocumentCard.scss';
-const styles: any = stylesImport;
+import { styled } from '../../Utilities';
+import { DocumentCardLocationBase } from './DocumentCardLocation.base';
+import { getStyles } from './DocumentCardLocation.styles';
+import { IDocumentCardLocationProps, IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';
 
-export class DocumentCardLocation extends BaseComponent<IDocumentCardLocationProps, any> {
-  public render(): JSX.Element {
-    const { location, locationHref, ariaLabel, onClick } = this.props;
-
-    return (
-      <a className={css('ms-DocumentCardLocation', styles.location)} href={locationHref} onClick={onClick} aria-label={ariaLabel}>
-        {location}
-      </a>
-    );
-  }
-}
+export const DocumentCardLocation = styled<IDocumentCardLocationProps, IDocumentCardLocationStyleProps, IDocumentCardLocationStyles>(
+  DocumentCardLocationBase,
+  getStyles,
+  undefined,
+  { scope: 'DocumentCardLocationBase' }
+);

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { DocumentCardLocation } from './DocumentCardLocation';
 import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
 import { PersonaInitialsColor } from '../../Persona';
@@ -61,33 +60,6 @@ export enum DocumentCardType {
    * Compact layout. Displays the preview beside the details, rather than above.
    */
   compact = 1
-}
-
-export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-
-  /**
-   * Text for the location of the document.
-   */
-  location: string;
-
-  /**
-   * URL to navigate to for this location.
-   */
-  locationHref?: string;
-
-  /**
-   * Function to call when the location is clicked.
-   */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
-
-  /**
-   * Aria label for the link to the document location.
-   */
-  ariaLabel?: string;
 }
 
 export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
