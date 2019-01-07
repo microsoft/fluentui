@@ -4,9 +4,9 @@ A Stack is a container-type component that abstracts the implementation of a fle
 
 Although Stack has a number of different properties, there are three in particular that define the overall layout that the component has:
 
-- Direction: Refers to whether the stacking of children components is horizontal or vertical. By default the Stack component is vertical, but can be turned horizontal by adding the `horizontal` property when using the component.
-- Alignment: Refers to how are the children components aligned inside the container. This is controlled via the `verticalAlign` and `horizontalAlign` properties.
-- Spacing: Refers to the space that exists between children components inside the Stack. This is controlled via the `gap` ad `verticalGap` properties.
+1. Direction: Refers to whether the stacking of children components is horizontal or vertical. By default the Stack component is vertical, but can be turned horizontal by adding the `horizontal` property when using the component.
+2. Alignment: Refers to how are the children components aligned inside the container. This is controlled via the `verticalAlign` and `horizontalAlign` properties.
+3. Spacing: Refers to the space that exists between children components inside the Stack. This is controlled via the `gap` and `verticalGap` properties.
 
 ## Stack Wrapping
 
