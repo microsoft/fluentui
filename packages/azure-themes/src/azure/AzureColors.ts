@@ -36,7 +36,7 @@ export namespace BaseColors {
   export const BLACK = '#000000';
   export const WHITE = '#ffffff';
 
-  export const GRAY_000000_006 = 'rgba(0, 0, 0, .6)';
+  export const GRAY_000000_060 = 'rgba(0, 0, 0, .6)';
   export const GRAY_6B849C_006 = 'rgba(107, 132, 156, .06)';
   export const GRAY_6B849C_025 = 'rgba(107, 132, 156, .25)';
   export const GRAY_6B849C_035 = 'rgba(107, 132, 156, .35)';
@@ -64,7 +64,7 @@ export namespace CommonSemanticColors {
   export const backgrounds = {
     disabled: BaseColors.GRAY_808080_010,
     section: BaseColors.GRAY_6B849C_006,
-    overlay: BaseColors.GRAY_000000_006
+    overlay: BaseColors.GRAY_000000_060
   };
   export const textControlOutline = {
     rest: BaseColors.GRAY_808080_070,
