@@ -1538,4 +1538,21 @@ describe('FocusZone', () => {
     expect(inputA.tabIndex).toBe(-1);
     expect(buttonB.tabIndex).toBe(0);
   });
+
+  it('should call onKeyDown handler even within another FocusZone', () => {
+    const keyDownHandler = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <FocusZone>
+        <FocusZone className="innerFocusZone" onKeyDown={keyDownHandler} data-is-focusable={true}>
+          Inner Focus Zone
+        </FocusZone>
+      </FocusZone>
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const innerFocusZone = focusZone.querySelector('.innerFocusZone') as HTMLElement;
+    ReactTestUtils.Simulate.keyDown(innerFocusZone, { which: KeyCodes.del });
+
+    expect(keyDownHandler).toBeCalled();
+  });
 });

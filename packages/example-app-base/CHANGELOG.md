@@ -1,6 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 11 Dec 2018 13:36:20 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+
+## 6.10.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- replace references to isCollapsable with isCollapsible
+
+### Patches
+
+- Remove types and modules no longer needed due to Foundation changes.
 
 ## 6.9.4
 Tue, 11 Dec 2018 13:36:20 GMT

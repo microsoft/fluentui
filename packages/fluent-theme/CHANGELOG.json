@@ -2,6 +2,49 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.13.0",
+      "tag": "@uifabric/fluent-theme_v0.13.0",
+      "date": "Mon, 24 Dec 2018 13:33:49 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export animations as strings instead of objects",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "80dd303e8481eb0917c8a8caa6b9a594e0420f69"
+          },
+          {
+            "comment": "Add Facepile styles to theme",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "ed10d6723d7ca6480d06f478eb1dd93a4eca488d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.117.1 <7.0.0` to `>=6.117.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.12.0",
+      "tag": "@uifabric/fluent-theme_v0.12.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add dependency to @uifabric/styling.  Fix imports for FluentTheme.ts",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "c97df6629cb0ec0f0fb375f15032b2f722293d6e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.113.0 <7.0.0` to `>=6.114.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.2",
       "tag": "@uifabric/fluent-theme_v0.11.2",
       "date": "Thu, 13 Dec 2018 13:37:01 GMT",
