@@ -21,7 +21,7 @@
     "start": "node ../../scripts/start.js"
   },
   "disabledTasks": [
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/react": "16.3.16",

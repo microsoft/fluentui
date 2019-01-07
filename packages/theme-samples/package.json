@@ -20,7 +20,7 @@
   "disabledTasks": [
     "jest",
     "sass",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",

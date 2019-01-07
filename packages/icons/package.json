@@ -23,7 +23,7 @@
     "karma",
     "jest",
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",

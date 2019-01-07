@@ -74,6 +74,6 @@
   },
   "disabledTasks": [
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ]
 }

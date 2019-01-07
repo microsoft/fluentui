@@ -23,7 +23,7 @@
     "karma",
     "jest",
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/react": "16.3.16",

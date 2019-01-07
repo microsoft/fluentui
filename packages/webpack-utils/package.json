@@ -21,7 +21,7 @@
     "karma",
     "webpack",
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",

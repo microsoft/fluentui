@@ -10,7 +10,7 @@
     "start": "node ../../scripts/start.js"
   },
   "disabledTasks": [
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",

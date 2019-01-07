@@ -46,7 +46,7 @@
   },
   "disabledTasks": [
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
