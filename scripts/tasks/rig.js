@@ -14,6 +14,7 @@ const lintImports = require('./lint-imports');
 const prettier = require('./prettier');
 const bundleSizeCollect = require('./bundle-size-collect');
 const checkForModifiedFiles = require('./check-for-modified-files');
+const generateVersionFiles = require('./generate-version-files');
 
 exports.rig = {
   clean,
@@ -31,5 +32,6 @@ exports.rig = {
   lintImports,
   prettier,
   bundleSizeCollect,
-  checkForModifiedFiles
+  checkForModifiedFiles,
+  generateVersionFiles
 };

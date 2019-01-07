@@ -1,5 +1,5 @@
 const path = require('path');
-const resources = require('../../scripts/tasks/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
 
 module.exports = resources.createServeConfig({
   entry: './src/index.tsx',
