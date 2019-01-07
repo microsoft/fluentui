@@ -40,16 +40,35 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase />);
     datePicker.setState({ isDatePickerShown: false });
 
-    expect(datePicker.find('[aria-owns]')).toHaveLength(0);
+    expect(datePicker.getDOMNode().getAttribute('aria-owns')).toBeNull();
   });
 
   // if isDatePickerShown is set, the DatePicker should be rendered
-  // and aria-owns should exist with a valid id
+  // and aria-owns should exist
   it('should render DatePicker when isDatePickerShown is set', () => {
     const datePicker = mount(<DatePickerBase />);
     datePicker.setState({ isDatePickerShown: true });
 
-    expect(datePicker.find('[aria-owns]')).toHaveLength(1);
+    expect(
+      datePicker
+        .find('[aria-owns]')
+        .getDOMNode()
+        .getAttribute('aria-owns')
+    ).toBeDefined();
+  });
+
+  // if isDatePickerShown is set, the DatePicker should be rendered
+  // and the calloutId should exist in the DOM
+  it('should render DatePicker and calloutId must exist in the DOM when isDatePickerShown is set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+
+    const calloutId = datePicker
+      .find('[aria-owns]')
+      .getDOMNode()
+      .getAttribute('aria-owns');
+
+    expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
   });
 
   it('should not open DatePicker when disabled, with label', () => {
