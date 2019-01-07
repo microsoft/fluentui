@@ -21,9 +21,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _hasFocusHandler: boolean;
   private _hasClickHandler: boolean;
 
-  public componentWillMount(): void {
-    FocusTrapZone._focusStack.push(this);
-  }
+  public componentWillMount(): void {}
 
   public componentDidMount(): void {
     this._bringFocusIntoZone();
@@ -45,23 +43,15 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
     if (!prevForceFocusInsideTrap && newForceFocusInsideTrap) {
       // Transition from forceFocusInsideTrap disabled to enabled. Emulate what happens when a FocusTrapZone gets mounted
-      FocusTrapZone._focusStack.push(this);
       this._bringFocusIntoZone();
     } else if (prevForceFocusInsideTrap && !newForceFocusInsideTrap) {
       // Transition from forceFocusInsideTrap enabled to disabled. Emulate what happens when a FocusTrapZone gets unmounted
-      FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
-        return this !== value;
-      });
       this._returnFocusToInitiator();
     }
   }
 
   public componentWillUnmount(): void {
     this._events.dispose();
-    FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
-      return this !== value;
-    });
-
     this._returnFocusToInitiator();
   }
 
@@ -116,6 +106,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _bringFocusIntoZone(): void {
     const { elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
 
+    FocusTrapZone._focusStack.push(this);
+
     this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
       ? elementToFocusOnDismiss
       : (document.activeElement as HTMLElement);
@@ -126,6 +118,10 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
   private _returnFocusToInitiator(): void {
     const { ignoreExternalFocusing } = this.props;
+
+    FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
+      return this !== value;
+    });
 
     const activeElement = document.activeElement as HTMLElement;
     if (
