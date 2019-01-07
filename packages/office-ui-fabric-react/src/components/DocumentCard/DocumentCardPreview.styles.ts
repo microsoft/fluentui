@@ -9,7 +9,7 @@ export const GlobalClassNames = {
 };
 
 export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardPreviewStyles => {
-  const { theme, className, isFileList, previewIconClassName } = props;
+  const { theme, className, isFileList } = props;
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -32,8 +32,7 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         alignItems: 'center',
         justifyContent: 'center',
         height: '100%'
-      },
-      previewIconClassName
+      }
     ],
     previewFileTypeIcon: [
       classNames.previewFileTypeIcon,

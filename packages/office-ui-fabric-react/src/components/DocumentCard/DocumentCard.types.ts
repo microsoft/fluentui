@@ -43,6 +43,11 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   accentColor?: string;
 
   /**
+   * Child components to render within the card.
+   */
+  children?: React.ReactNode;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
   styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;

@@ -3,6 +3,8 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardActivityBase } from './DocumentCardActivity.base';
 
+export interface IDocumentCardActivity {}
+
 export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
   /**
    * Gets the component ref.

@@ -128,11 +128,6 @@ export interface IDocumentCardPreviewStyleProps {
    * Is it a list of files rather than a preview image?
    */
   isFileList?: boolean;
-
-  /**
-   * Optional override class name for the preview icon
-   */
-  previewIconClassName?: string;
 }
 
 export interface IDocumentCardPreviewStyles {

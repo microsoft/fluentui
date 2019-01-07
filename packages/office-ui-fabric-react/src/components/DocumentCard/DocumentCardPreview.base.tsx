@@ -1,15 +1,15 @@
 import * as React from 'react';
+import { Icon } from '../../Icon';
+import { Image } from '../../Image';
+import { Link } from '../../Link';
+import { IProcessedStyleSet } from '../../Styling';
+import { BaseComponent, classNamesFunction, css } from '../../Utilities';
 import {
-  IDocumentCardPreviewProps,
   IDocumentCardPreviewImage,
+  IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,
   IDocumentCardPreviewStyles
 } from './DocumentCardPreview.types';
-import { Image } from '../../Image';
-import { Icon } from '../../Icon';
-import { Link } from '../../Link';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 
 const LIST_ITEM_COUNT = 3;
 const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>();
@@ -25,8 +25,7 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isFileList,
-      previewIconClassName: previewImages[0].previewIconContainerClass
+      isFileList
     });
 
     if (previewImages.length > 1) {
@@ -52,11 +51,11 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
   }
 
   private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    const { width, height, imageFit, previewIconProps } = previewImage;
+    const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
 
     if (previewIconProps) {
       return (
-        <div className={this._classNames.previewIcon} style={{ width: width, height: height }}>
+        <div className={css(this._classNames.previewIcon, previewIconContainerClass)} style={{ width: width, height: height }}>
           <Icon {...previewIconProps} />
         </div>
       );
