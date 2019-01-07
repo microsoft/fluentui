@@ -108,7 +108,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItemSelected: {
       fontSize: FontSizes.size12,
-      backgroundColor: semanticColors.menuItemBackgroundChecked,
+      backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
       fontWeight: 'bold',
       selectors: {

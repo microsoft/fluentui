@@ -39,8 +39,6 @@ export const AzureThemeDark: ITheme = createTheme({
     listItemBackgroundCheckedHovered: DarkSemanticColors.item.select,
     listItemBackgroundHovered: DarkSemanticColors.item.hover,
     listText: DarkSemanticColors.text.body,
-    listTextColor: DarkSemanticColors.text.body,
-    menuItemBackgroundChecked: DarkSemanticColors.item.select,
     menuItemBackgroundHovered: DarkSemanticColors.item.hover,
     menuItemBackgroundPressed: DarkSemanticColors.item.select,
     primaryButtonBackground: DarkSemanticColors.primaryButton.rest.background,

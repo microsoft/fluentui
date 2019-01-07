@@ -85,7 +85,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
           }
         },
         '.is-checked': {
-          backgroundColor: semanticColors.menuItemBackgroundChecked
+          backgroundColor: semanticColors.listItemBackgroundChecked
         },
         '.is-disabled': {
           color: semanticColors.disabledBodyText

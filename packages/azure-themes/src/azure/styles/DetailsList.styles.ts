@@ -79,13 +79,13 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
     root: [
       {
         borderColor: semanticColors.variantBorder,
-        color: semanticColors.listTextColor,
+        color: semanticColors.listText,
         fontSize: FontSizes.size12
       },
       !isSelected && [
         {
           background: semanticColors.listBackground,
-          color: semanticColors.listTextColor,
+          color: semanticColors.listText,
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.listItemBackgroundHovered
@@ -118,7 +118,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
     ],
     cell: [
       {
-        color: semanticColors.listTextColor
+        color: semanticColors.listText
       }
     ]
   };

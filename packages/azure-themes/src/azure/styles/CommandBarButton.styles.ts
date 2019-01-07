@@ -32,7 +32,7 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       color: semanticColors.bodyText
     },
     rootChecked: {
-      backgroundColor: semanticColors.menuItemBackgroundChecked,
+      backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText
     },
     rootDisabled: {
