@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix the typing of ExpandingCard component props.",
+      "comment": "Fix the typing of ExpandingCard/PlainCard component props.",
       "type": "patch"
     }
   ],
