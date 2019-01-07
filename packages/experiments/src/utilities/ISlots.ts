@@ -41,7 +41,8 @@ export type ISlot<TProps> = ((componentProps: IPropsWithChildren<TProps> | undef
 export type ISlotFactory<TProps> = (
   componentProps: TProps & IFactoryProps,
   userProps: (ISlotProp<TProps> & IFactoryProps) | undefined,
-  defaultStyles: IStyle) => JSX.Element;
+  defaultStyles: IStyle
+) => JSX.Element;
 
 /**
  * Interface for aggregated Slots objects used internally by components.
@@ -69,10 +70,10 @@ export interface IProcessedSlotProps<TSlots> {
  * TShorthandProp as React children. If TShorthandProp is excluded, there is no default prop and no children are allowed.
  */
 export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = never> =
-  TProps |
-  JSX.Element |
-  ISlotRenderFunction<TProps> |
-  (TShorthandProp extends keyof TProps ? TProps[TShorthandProp] : React.ReactNode);
+  | TProps
+  | JSX.Element
+  | ISlotRenderFunction<TProps>
+  | (TShorthandProp extends keyof TProps ? TProps[TShorthandProp] : React.ReactNode);
 
 /**
  * Render function interface used by Slot props.
