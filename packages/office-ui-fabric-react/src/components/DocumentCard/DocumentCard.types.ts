@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { DocumentCardActivity } from './DocumentCardActivity';
-import { DocumentCardActions } from './DocumentCardActions';
-import { PersonaInitialsColor } from '../../Persona';
 import { IButtonProps } from '../../Button';
 import { IBaseProps, IRefObject } from '../../Utilities';
+import { DocumentCardActions } from './DocumentCardActions';
 
 export interface IDocumentCard {
   /**
@@ -60,53 +58,6 @@ export enum DocumentCardType {
    * Compact layout. Displays the preview beside the details, rather than above.
    */
   compact = 1
-}
-
-export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<{}>;
-
-  /**
-   * Describes the activity that has taken place, such as "Created Feb 23, 2016".
-   */
-  activity: string;
-
-  /**
-   * One or more people who are involved in this activity.
-   */
-  people: IDocumentCardActivityPerson[];
-}
-
-export interface IDocumentCardActivityPerson {
-  /**
-   * The name of the person.
-   */
-  name: string;
-
-  /**
-   * Path to the profile photo of the person.
-   */
-  profileImageSrc: string;
-
-  /**
-   * The user's initials to display in the profile photo area when there is no image.
-   */
-  initials?: string;
-
-  /**
-   * Whether initials are calculated for phone numbers and number sequences.
-   * Example: Set property to true to get initials for project names consisting of numbers only.
-   * @defaultvalue false
-   */
-  allowPhoneInitials?: boolean;
-
-  /**
-   * The background color when the user's initials are displayed.
-   * @defaultvalue PersonaInitialsColor.blue
-   */
-  initialsColor?: PersonaInitialsColor;
 }
 
 export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {

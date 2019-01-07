@@ -54,11 +54,6 @@ export interface IDocumentCardLocationStyleProps {
    * Optional override class name
    */
   className?: string;
-
-  /**
-   * Is this a secondary title?
-   */
-  showAsSecondaryTitle?: boolean;
 }
 
 export interface IDocumentCardLocationStyles {
