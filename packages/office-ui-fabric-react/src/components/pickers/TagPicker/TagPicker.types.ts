@@ -15,7 +15,7 @@ export interface ITag {
 }
 
 /** TagPicker component props */
-export interface ITagPickerProps extends IBasePickerProps<ITag> { }
+export interface ITagPickerProps extends IBasePickerProps<ITag> {}
 
 /** TagItem component props */
 export interface ITagItemProps extends IPickerItemProps<ITag> {

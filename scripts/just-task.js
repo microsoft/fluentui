@@ -1,7 +1,7 @@
 // @ts-check
 
 const { task, series, parallel, condition, option, argv, logger } = require('just-task');
-const { rig } = require('./just-tasks');
+const { rig } = require('./tasks/rig');
 const path = require('path');
 const fs = require('fs');
 
@@ -22,6 +22,8 @@ Object.keys(rig).forEach(taskFunction => {
   }
 });
 
+task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)));
+
 task(
   'build',
   series(
@@ -32,17 +34,17 @@ task(
       condition('tslint', () => !argv().min),
       condition('jest', () => !argv().min),
       series(
-        parallel(condition('ts:commonjs', () => !argv().min), 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)),
+        'ts',
         condition('lint-imports', () => !argv().min),
-        parallel(
-          condition('webpack', () => !argv().min),
-          condition('api-extractor', () => !argv().min),
-          condition('build-codepen-examples', () => !argv().min)
-        )
+        parallel(condition('webpack', () => !argv().min), condition('api-extractor', () => !argv().min), 'build-codepen-examples')
       )
     )
   )
 );
+
+task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
+task('code-style', series('prettier', 'tslint'));
+task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api'));
 
 // Utility functions
 

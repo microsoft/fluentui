@@ -43,8 +43,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   public componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
+      // If the user passes in null, substitute an empty string
+      // (passing null is not allowed per typings, but users might do it anyway)
       this.setState({
-        value: newProps.value
+        value: newProps.value || ''
       });
     }
   }

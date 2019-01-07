@@ -65,7 +65,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public render(): React.ReactElement<{}> {
-    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, styles, theme } = this.props;
+    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, valueFormat, styles, theme } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
@@ -119,7 +119,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               />
             </div>
           </div>
-          {showValue && <Label className={classNames.valueLabel}>{value}</Label>}
+          {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value!) : value}</Label>}
         </div>
       </div>
     ) as React.ReactElement<{}>;

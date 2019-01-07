@@ -143,6 +143,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   maxDate?: Date;
 
   /**
+   * If set the Calendar will not allow selection of dates in this array.
+   */
+  restrictedDates?: Date[];
+
+  /**
    * Whether the calendar should show 6 weeks by default.
    * @defaultvalue false
    */
