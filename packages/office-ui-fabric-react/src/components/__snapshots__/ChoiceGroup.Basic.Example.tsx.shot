@@ -6,7 +6,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
     className=
         defaultChoiceGroup
 
-    role="application"
   >
     <div
       aria-labelledby="ChoiceGroup0-label"
