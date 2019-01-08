@@ -1,6 +1,6 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import * as StyleConstants from '../Constants';
-import { ITheme } from 'office-ui-fabric-react/';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { FontSizes } from '../AzureType';
 
 export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {

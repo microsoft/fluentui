@@ -1,5 +1,5 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { ITheme } from 'office-ui-fabric-react/';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import * as StyleConstants from '../Constants';
 import { FontSizes } from '../AzureType';
 

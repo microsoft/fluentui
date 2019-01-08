@@ -1,4 +1,4 @@
-import { ITheme } from 'office-ui-fabric-react';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Depths } from '../AzureDepths';
 import { IComboBoxStyles } from 'office-ui-fabric-react/lib/ComboBox';
 import { FontSizes } from '../AzureType';
