@@ -5,39 +5,41 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
-const fileIconHeaderIconClass = mergeStyles({
-  padding: 0,
-  fontSize: '16px'
-});
-const fileIconCellClass = mergeStyles({
-  textAlign: 'center',
-  selectors: {
-    '&:before': {
-      content: '.',
-      display: 'inline-block',
-      verticalAlign: 'middle',
-      height: '100%',
-      width: '0px',
-      visibility: 'hidden'
+const classNames = mergeStyleSets({
+  fileIconHeaderIcon: {
+    padding: 0,
+    fontSize: '16px'
+  },
+  fileIconCell: {
+    textAlign: 'center',
+    selectors: {
+      '&:before': {
+        content: '.',
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        height: '100%',
+        width: '0px',
+        visibility: 'hidden'
+      }
     }
+  },
+  fileIconImg: {
+    verticalAlign: 'middle',
+    maxHeight: '16px',
+    maxWidth: '16px'
+  },
+  exampleToggle: {
+    display: 'inline-block',
+    marginBottom: '10px',
+    marginRight: '30px'
+  },
+  exampleChild: {
+    display: 'block',
+    marginBottom: '10px'
   }
-});
-const fileIconImgClass = mergeStyles({
-  verticalAlign: 'middle',
-  maxHeight: '16px',
-  maxWidth: '16px'
-});
-const exampleToggleClass = mergeStyles({
-  display: 'inline-block',
-  marginBottom: '10px',
-  marginRight: '30px'
-});
-const exampleChildClass = mergeStyles({
-  display: 'block',
-  marginBottom: '10px'
 });
 
 let _items: IDocument[] = [];
@@ -118,8 +120,8 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       {
         key: 'column1',
         name: 'File Type',
-        className: fileIconCellClass,
-        iconClassName: fileIconHeaderIconClass,
+        className: classNames.fileIconCell,
+        iconClassName: classNames.fileIconHeaderIcon,
         ariaLabel: 'Column operations for File type, Press to sort on File type',
         iconName: 'Page',
         isIconOnly: true,
@@ -128,7 +130,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={fileIconImgClass} alt={item.fileType + ' file icon'} />;
+          return <img src={item.iconName} className={classNames.fileIconImg} alt={item.fileType + ' file icon'} />;
         }
       },
       {
@@ -215,7 +217,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     return (
       <div>
         <Toggle
-          className={exampleToggleClass}
+          className={classNames.exampleToggle}
           label="Enable compact mode"
           checked={isCompactMode}
           onChange={this._onChangeCompactMode}
@@ -223,15 +225,15 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
           offText="Normal"
         />
         <Toggle
-          className={exampleToggleClass}
+          className={classNames.exampleToggle}
           label="Enable modal selection"
           checked={isModalSelection}
           onChange={this._onChangeModalSelection}
           onText="Modal"
           offText="Normal"
         />
-        <div className={exampleChildClass}>{selectionDetails}</div>
-        <TextField className={exampleChildClass} label="Filter by name:" onChange={this._onChangeText} />
+        <div className={classNames.exampleChild}>{selectionDetails}</div>
+        <TextField className={classNames.exampleChild} label="Filter by name:" onChange={this._onChangeText} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}

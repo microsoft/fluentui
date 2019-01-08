@@ -169,11 +169,12 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
   };
 
   private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
-    if (column.key === 'name') {
-      return <Link data-selection-invoke={true}>{item[column.key]}</Link>;
+    const key = column.key as keyof IExampleItem;
+    if (key === 'name') {
+      return <Link data-selection-invoke={true}>{item[key]}</Link>;
     }
 
-    return (item as any)[column.key];
+    return String(item[key]);
   };
 
   private _insertBeforeItem(item: IExampleItem): void {

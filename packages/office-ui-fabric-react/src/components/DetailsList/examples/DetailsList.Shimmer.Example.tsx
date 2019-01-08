@@ -50,15 +50,18 @@ export class DetailsListShimmerExample extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <ShimmeredDetailsList
-        shimmerLines={15}
-        enableShimmer={true}
-        items={_items}
-        columns={_columns}
-        setKey="set"
-        layoutMode={DetailsListLayoutMode.justified}
-        isHeaderVisible={true}
-      />
+      <div>
+        <div style={{ marginBottom: '20px' }}>Note: this list will always appear in the shimmered "loading" state</div>
+        <ShimmeredDetailsList
+          shimmerLines={15}
+          enableShimmer={true}
+          items={_items}
+          columns={_columns}
+          setKey="set"
+          layoutMode={DetailsListLayoutMode.justified}
+          isHeaderVisible={true}
+        />
+      </div>
     );
   }
 }

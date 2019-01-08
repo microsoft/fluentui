@@ -79,6 +79,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
         <TextField className={exampleChildClass} label="Filter by name:" onChange={this._onFilter} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
+            compact={true}
             items={items}
             columns={_columns}
             setKey="set"
@@ -86,7 +87,6 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
             selection={this._selection}
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
-            compact={true}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />

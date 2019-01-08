@@ -4,7 +4,6 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const exampleChildClass = mergeStyles({
@@ -44,7 +43,6 @@ export interface IDetailsListBasicExampleItem {
 export interface IDetailsListBasicExampleState {
   items: IDetailsListBasicExampleItem[];
   selectionDetails: {};
-  showItemIndexInView: boolean;
 }
 
 export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
@@ -71,8 +69,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
 
     this.state = {
       items: _items,
-      selectionDetails: this._getSelectionDetails(),
-      showItemIndexInView: false
+      selectionDetails: this._getSelectionDetails()
     };
   }
 
@@ -82,12 +79,6 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     return (
       <div>
         <div className={exampleChildClass}>{selectionDetails}</div>
-        <Checkbox
-          className={exampleChildClass}
-          label="Show index of the first item in view when unmounting"
-          checked={this.state.showItemIndexInView}
-          onChange={this._onShowItemIndexInViewChanged}
-        />
         <TextField className={exampleChildClass} label="Filter by name:" onChange={this._onFilter} />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
@@ -105,13 +96,6 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
         </MarqueeSelection>
       </div>
     );
-  }
-
-  public componentWillUnmount() {
-    if (this.state.showItemIndexInView) {
-      const itemIndexInView = this._detailsList!.current!.getStartItemIndexInView();
-      alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
-    }
   }
 
   private _getSelectionDetails(): string {
@@ -133,11 +117,5 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
 
   private _onItemInvoked = (item: IDetailsListBasicExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
-  };
-
-  private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
-    this.setState({
-      showItemIndexInView: checked
-    });
   };
 }

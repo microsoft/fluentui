@@ -38,7 +38,7 @@ const _columns: IColumn[] = [
   }
 ];
 // NOTE: If changing these, also change the initial definition of state.groups below
-const _initialRedNdx = 0;
+const _initialRedIndex = 0;
 const _initialRedCount = 2;
 const _initialGreenIndex = 2;
 const _initialGreenCount = 0;
@@ -93,7 +93,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
         {
           key: 'groupred0',
           name: 'By "red"',
-          startIndex: _initialRedNdx,
+          startIndex: _initialRedIndex,
           count: _initialRedCount
         },
         {

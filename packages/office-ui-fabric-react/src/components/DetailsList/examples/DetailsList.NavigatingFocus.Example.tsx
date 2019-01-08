@@ -15,7 +15,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     initialFocusedIndex: undefined
   };
 
-  private _columns = [
+  private _columns: IColumn[] = [
     {
       key: 'filepath',
       name: 'File path',

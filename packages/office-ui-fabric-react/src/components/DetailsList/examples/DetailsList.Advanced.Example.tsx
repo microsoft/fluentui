@@ -19,7 +19,6 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
@@ -74,7 +73,6 @@ export interface IDetailsListAdvancedExampleState {
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
   selectionCount: number;
-  showRenderDividerView: boolean;
 }
 
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
@@ -106,7 +104,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
       columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
-      showRenderDividerView: false,
       contextualMenuProps: undefined,
       sortedColumnKey: 'name',
       isSortedDescending: false,
@@ -145,15 +142,9 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className={rootClass}>
-        <Checkbox
-          label="Show custom color column-divider on hover"
-          checked={this.state.showRenderDividerView}
-          onChange={this._onRenderDividerCheckboxChange}
-        />
-        <br />
         <CommandBar items={this._getCommandItems()} farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]} />
 
-        {isGrouped ? <TextField label="Group Item Limit" onChange={this._onItemLimitChanged} /> : null}
+        {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
 
         <DetailsList
           setKey="items"
@@ -185,26 +176,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       </div>
     );
   }
-
-  private _onRenderDividerCheckboxChange = (event: React.FormEvent<HTMLInputElement>, showRenderDividerView: boolean): void => {
-    const columns = [...this.state.columns];
-    for (let i = 0; i < columns.length; i++) {
-      // based on the state of checkbox, either adding the onRenderDivider callback or removing it
-      if (showRenderDividerView) {
-        columns[i] = {
-          ...columns[i],
-          onRenderDivider: this._onRenderDivider
-        };
-      } else {
-        const { onRenderDivider, ..._column } = columns[i];
-        columns[i] = _column;
-      }
-    }
-    this.setState({
-      showRenderDividerView,
-      columns
-    });
-  };
 
   private _onRenderDivider = (
     columnProps: IDetailsColumnProps,
@@ -275,21 +246,15 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onLayoutChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-    this.setState({
-      layoutMode: menuItem.data
-    });
+    this.setState({ layoutMode: menuItem.data });
   };
 
   private _onConstrainModeChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-    this.setState({
-      constrainMode: menuItem.data
-    });
+    this.setState({ constrainMode: menuItem.data });
   };
 
   private _onSelectionChanged = (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem): void => {
-    this.setState({
-      selectionMode: menuItem.data
-    });
+    this.setState({ selectionMode: menuItem.data });
   };
 
   private _onItemLimitChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
@@ -297,9 +262,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     if (isNaN(newValue)) {
       newValue = DEFAULT_ITEM_LIMIT;
     }
-    this.setState({
-      groupItemLimit: newValue
-    });
+    this.setState({ groupItemLimit: newValue });
   };
 
   private _getCommandItems = (): IContextualMenuItem[] => {
@@ -489,7 +452,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     if (isGroupable(column.key)) {
       items.push({
         key: 'groupBy',
-        name: 'Group By ' + column.name,
+        name: 'Group by ' + column.name,
         iconProps: { iconName: 'GroupedDescending' },
         canCheck: true,
         checked: column.isGrouped,
@@ -696,6 +659,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     const columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
+      column.onRenderDivider = this._onRenderDivider;
       column.onColumnContextMenu = onColumnContextMenu;
       column.ariaLabel = `Operations for ${column.name}`;
       if (column.key === 'thumbnail') {
