@@ -219,7 +219,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     className={css('ms-DatePicker-goToday js-goToday', styles.goToday, {
                       [styles.goTodayInlineMonth]: isMonthPickerVisible
                     })}
-                    onClick={this._onGotoTodayClick}
+                    onClick={this._onGotoToday}
                     onKeyDown={this._onGotoTodayKeyDown}
                     tabIndex={0}
                   >
@@ -300,21 +300,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   };
 
   private _onGotoToday = (): void => {
-    const { dateRangeType, firstDayOfWeek, today, workWeekDays, selectDateOnClick } = this.props;
+    const { dateRangeType, firstDayOfWeek, today, workWeekDays } = this.props;
 
-    if (selectDateOnClick) {
-      // When using Defaultprops, TypeScript doesn't know that React is going to inject defaults
-      // so we use exclamation mark as a hint to the type checker (see link below)
-      // https://decembersoft.com/posts/error-ts2532-optional-react-component-props-in-typescript/
-      const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
-      this._onSelectDate(today!, dates);
-    }
+    const dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!, workWeekDays!);
 
+    this._onSelectDate(today!, dates);
     this._navigateDayPickerDay(today!);
-  };
-
-  private _onGotoTodayClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._onGotoToday();
   };
 
   private _onGotoTodayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
