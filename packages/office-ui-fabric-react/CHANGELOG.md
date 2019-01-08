@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Jan 2019 13:34:38 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+
+## 6.121.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Allow disabling specific dates on the calendar in addition to the max and min dates.
+
+### Patches
+
+- CalendarYear: convert from componentWillReceiveProps to getDerivedStateFromProps
 
 ## 6.120.0
 Mon, 07 Jan 2019 13:34:37 GMT
