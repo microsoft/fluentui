@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Adding new example page for DetailsList that shows proper headerClassName application with mergeStyles",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "brandth@microsoft.com"
+}
