@@ -1,5 +1,5 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { FontSizes, HighContrastSelector, ZIndexes } from '../../Styling';
+import { FontSizes, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
