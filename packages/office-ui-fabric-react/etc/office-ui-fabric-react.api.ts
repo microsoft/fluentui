@@ -1296,8 +1296,6 @@ class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements I
   // (undocumented)
   componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
   // (undocumented)
-  componentWillMount(): void;
-  // (undocumented)
   componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
   // (undocumented)
   componentWillUnmount(): void;

@@ -21,8 +21,6 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _hasFocusHandler: boolean;
   private _hasClickHandler: boolean;
 
-  public componentWillMount(): void {}
-
   public componentDidMount(): void {
     this._bringFocusIntoZone();
     this._updateEventHandlers(this.props);
