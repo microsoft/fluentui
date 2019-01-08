@@ -18,6 +18,9 @@ const DetailsListCustomRowsExampleCode = require('!raw-loader!office-ui-fabric-r
 import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
 const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
+import { DetailsListCustomHeaderExample } from './examples/DetailsList.CustomHeader.Example';
+const DetailsListCustomHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomHeader.Example.tsx') as string;
+
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
 
@@ -115,6 +118,12 @@ export const DetailsListCustomGroupHeadersPageProps: IDocPageProps = generatePro
   title: 'Rendering custom group headers',
   code: DetailsListCustomGroupHeadersExampleCode,
   view: <DetailsListCustomGroupHeadersExample />
+});
+
+export const DetailsListCustomHeaderPageProps: IDocPageProps = generateProps({
+  title: 'Applying custom styling through mergeStyles to column headers.',
+  code: DetailsListCustomHeaderExampleCode,
+  view: <DetailsListCustomHeaderExample />
 });
 
 export const DetailsListAdvancedPageProps: IDocPageProps = generateProps({

@@ -133,6 +133,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/CustomGroupHeaders'
         },
         {
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomHeaderPage').DetailsListCustomHeaderPage,
+          key: 'DetailsList - CustomHeader',
+          name: 'DetailsList - CustomHeader',
+          url: '#/examples/detailslist/CustomHeader'
+        },
+        {
           component: require<any>('./components/pages/DetailsList/DetailsListCustomRowsPage').DetailsListCustomRowsPage,
           key: 'DetailsList - CustomRows',
           name: 'DetailsList - CustomRows',
