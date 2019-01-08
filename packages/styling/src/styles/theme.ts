@@ -114,11 +114,16 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     }
   }
 
+  if (theme.fonts) {
+    for (const fontStyle of Object.keys(theme.fonts)) {
+      defaultFontStyles[fontStyle] = merge(defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
+    }
+  }
+
   return {
     palette: newPalette,
     fonts: {
-      ...defaultFontStyles,
-      ...theme.fonts
+      ...defaultFontStyles
     },
     defaultFontStyle: theme.defaultFontStyle || DefaultFontStyles.medium,
     semanticColors: newSemanticColors,
