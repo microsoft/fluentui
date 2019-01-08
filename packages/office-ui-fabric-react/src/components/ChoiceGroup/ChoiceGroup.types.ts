@@ -6,6 +6,11 @@ import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utili
 
 export interface IChoiceGroup {
   /**
+   * Gets the current checked option.
+   */
+  optionChecked: IChoiceGroupOption | undefined;
+
+  /**
    * Sets focus to the choiceGroup.
    */
   focus: () => void;

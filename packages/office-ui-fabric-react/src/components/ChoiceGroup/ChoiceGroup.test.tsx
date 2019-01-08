@@ -6,7 +6,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
-import { IChoiceGroupOption } from './ChoiceGroup.types';
+import { IChoiceGroupOption, IChoiceGroup } from './ChoiceGroup.types';
 import { resetIds } from '../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
@@ -183,5 +183,17 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[1] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
     expect((choiceOptions[2] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
     expect((choiceOptions[3] as HTMLInputElement).getAttribute('aria-label')).toEqual('Custom aria label');
+  });
+
+  it('can be accessed to get the current checked option', () => {
+    const choiceGroupRef = React.createRef<IChoiceGroup>();
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" componentRef={choiceGroupRef} />);
+
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+
+    expect(choiceGroupRef.current!.optionChecked).toBeUndefined();
+    ReactTestUtils.Simulate.change(choiceOptions[0]);
+    expect(choiceGroupRef.current!.optionChecked).toBeDefined();
+    expect(choiceGroupRef.current!.optionChecked).toEqual(TEST_OPTIONS[0]);
   });
 });
