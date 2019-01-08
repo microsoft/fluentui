@@ -1,5 +1,7 @@
-import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, createTheme } from './theme';
+import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme } from './theme';
 import { IPartialTheme } from '../interfaces/index';
+import { IRawStyle } from '@uifabric/merge-styles';
+import { DefaultFontStyles } from './DefaultFontStyles';
 
 describe('registerOnThemeChangeCallback', () => {
   let callback = jest.fn();
@@ -29,5 +31,31 @@ describe('registerOnThemeChangeCallback', () => {
   it('didnt pass null to the callback', () => {
     expect(callback.mock.calls[0][0]).toBeTruthy();
     expect(callback.mock.calls[1][0]).toBeTruthy();
+  });
+});
+
+describe('loadTheme', () => {
+  describe('specify defaultFontStyle', () => {
+    it('applies defaultFontStyle to fonts and retains all other default values', () => {
+      const defaultFontStyle: IRawStyle = { fontFamily: 'Segoe UI' };
+      const userTheme = { defaultFontStyle: defaultFontStyle };
+      loadTheme(userTheme);
+      const newTheme = getTheme();
+
+      expect(newTheme.fonts.tiny.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.xSmall.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.small.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.smallPlus.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.medium.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.mediumPlus.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.large.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.xLarge.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.xxLarge.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.superLarge.fontFamily).toEqual('Segoe UI');
+      expect(newTheme.fonts.mega.fontFamily).toEqual('Segoe UI');
+
+      expect(newTheme.fonts.tiny.fontSize).toEqual(DefaultFontStyles.tiny.fontSize);
+      expect(newTheme.fonts.tiny.fontWeight).toEqual(DefaultFontStyles.tiny.fontWeight);
+    });
   });
 });

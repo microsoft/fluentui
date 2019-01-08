@@ -107,17 +107,17 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  let defaultFontStyle: IFontStyles = DefaultFontStyles;
+  let defaultFontStyles: IFontStyles = DefaultFontStyles;
   if (theme.defaultFontStyle) {
     for (const fontStyle of Object.keys(DefaultFontStyles)) {
-      defaultFontStyle[fontStyle] = { ...defaultFontStyle[fontStyle], ...theme.defaultFontStyle };
+      defaultFontStyles[fontStyle] = { ...defaultFontStyles[fontStyle], ...theme.defaultFontStyle };
     }
   }
 
   return {
     palette: newPalette,
     fonts: {
-      ...defaultFontStyle,
+      ...defaultFontStyles,
       ...theme.fonts
     },
     defaultFontStyle: theme.defaultFontStyle || DefaultFontStyles.medium,
