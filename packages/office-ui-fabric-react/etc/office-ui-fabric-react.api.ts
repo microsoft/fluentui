@@ -578,7 +578,7 @@ enum CheckboxVisibility {
 }
 
 // @public (undocumented)
-class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
+class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
   // (undocumented)
   componentWillReceiveProps(newProps: IChoiceGroupProps): void;
@@ -1293,7 +1293,7 @@ class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements I
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
-  componentWillMount(): void;
+  componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
   // (undocumented)
   componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
   // (undocumented)
@@ -2275,6 +2275,7 @@ interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTM
   navigationIcons?: ICalendarIconStrings;
   onDismiss?: () => void;
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+  restrictedDates?: Date[];
   selectDateOnClick?: boolean;
   // @deprecated
   shouldFocusOnMount?: boolean;
@@ -2496,6 +2497,7 @@ interface ICheckStyles {
 
 // @public (undocumented)
 interface IChoiceGroup {
+  focus: () => void;
 }
 
 // @public (undocumented)
@@ -6763,6 +6765,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   showWeekNumbers?: boolean;
   strings?: IDatePickerStrings;
   styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+  tabIndex?: number;
   theme?: ITheme;
   today?: Date;
   underlined?: boolean;
@@ -7398,6 +7401,7 @@ interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   componentRef?: IRefObject<IDocumentCard>;
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   onClickHref?: string;
+  role?: string;
   type?: DocumentCardType;
 }
 
@@ -7567,8 +7571,8 @@ interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingC
   compactCardHeight?: number;
   expandedCardHeight?: number;
   mode?: ExpandingCardMode;
-  onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
-  onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
+  onRenderCompactCard?: IRenderFunction<any>;
+  onRenderExpandedCard?: IRenderFunction<any>;
 }
 
 // @public (undocumented)
@@ -7710,6 +7714,11 @@ interface IFitContentToBoundsOptions {
   contentSize: ISize;
   maxScale?: number;
   mode: FitMode;
+}
+
+// @public (undocumented)
+interface IFocusTrapCalloutProps extends ICalloutProps {
+  focusTrapProps?: IFocusTrapZoneProps;
 }
 
 // @public (undocumented)
@@ -9297,7 +9306,7 @@ interface IPlainCard {
 
 // @public
 interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, IPlainCardStyleProps> {
-  onRenderPlainCard?: IRenderFunction<IPlainCardProps>;
+  onRenderPlainCard?: IRenderFunction<any>;
 }
 
 // @public (undocumented)
@@ -10204,6 +10213,7 @@ interface ISliderProps extends React.ClassAttributes<SliderBase> {
   styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
   theme?: ITheme;
   value?: number;
+  valueFormat?: (value: number) => string;
   vertical?: boolean;
 }
 
@@ -11546,7 +11556,7 @@ class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public (undocumented)
@@ -12529,6 +12539,7 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: FocusTrapCallout
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check

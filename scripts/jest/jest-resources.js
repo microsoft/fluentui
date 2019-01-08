@@ -1,5 +1,5 @@
 const path = require('path');
-const merge = require('./merge');
+const merge = require('../tasks/merge');
 const resolve = require('resolve');
 
 const styleMockPath = (module.exports = {
@@ -27,11 +27,7 @@ const styleMockPath = (module.exports = {
 
         setupFiles: [path.resolve(__dirname, 'jest-setup.js')],
 
-        moduleDirectories: [
-          'node_modules',
-          path.resolve(process.cwd(), 'node_modules'),
-          path.resolve(__dirname, '../node_modules')
-        ],
+        moduleDirectories: ['node_modules', path.resolve(process.cwd(), 'node_modules'), path.resolve(__dirname, '../node_modules')],
 
         globals: {
           'ts-jest': {

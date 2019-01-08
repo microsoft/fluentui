@@ -179,7 +179,9 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
    * Updates the componentRef (by calling it with "this" when necessary.)
    */
   protected _updateComponentRef(currentProps: IBaseProps, newProps: IBaseProps = {}): void {
-    if (currentProps.componentRef !== newProps.componentRef) {
+    // currentProps *should* always be defined, but verify that just in case a subclass is manually
+    // calling a lifecycle method with no parameters (which has happened) or other odd usage.
+    if (currentProps && newProps && currentProps.componentRef !== newProps.componentRef) {
       this._setComponentRef(currentProps.componentRef, null);
       this._setComponentRef(newProps.componentRef, this);
     }
