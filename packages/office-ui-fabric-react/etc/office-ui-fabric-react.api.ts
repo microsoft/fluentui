@@ -1114,7 +1114,7 @@ class EventGroup {
   static isObserved(target: any, eventName: string): boolean;
   // (undocumented)
   off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void;
-  on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void;
+  on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
   onAll(target: any, events: {
           [key: string]: (args?: any) => void;
       }, useCapture?: boolean): void;
