@@ -586,6 +586,7 @@ class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState
   static defaultProps: IChoiceGroupProps;
   // (undocumented)
   focus(): void;
+  readonly optionChecked: IChoiceGroupOption | undefined;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -2497,6 +2498,7 @@ interface ICheckStyles {
 // @public (undocumented)
 interface IChoiceGroup {
   focus: () => void;
+  optionChecked: IChoiceGroupOption | undefined;
 }
 
 // @public (undocumented)
