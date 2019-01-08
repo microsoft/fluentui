@@ -129,9 +129,9 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   ignoreExternalFocusing?: boolean;
 
   /**
-   * Indicates whether Panel should force focus inside the focus trap zone
+   * Indicates whether Panel should force focus inside the focus trap zone.
+   * If not explicitly specified, behavior aligns with FocusTrapZone's default behavior.
    * Deprecated, use `focusTrapZoneProps`.
-   * @defaultvalue true
    * @deprecated Use `focusTrapZoneProps`.
    */
   forceFocusInsideTrap?: boolean;
