@@ -70,8 +70,8 @@ const _makeElementScrollAllower = () => {
       return;
     }
 
-    events.on(element, 'touchstart', _saveClientY);
-    events.on(element, 'touchmove', _preventOverscrolling);
+    events.on(element, 'touchstart', _saveClientY, { passive: false });
+    events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
 
     _element = element;
   };
