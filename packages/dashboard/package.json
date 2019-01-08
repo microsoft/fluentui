@@ -26,7 +26,7 @@
     "clean": "node ../../scripts/just.js clean",
     "start": "node ../../scripts/start.js",
     "test": "react-scripts-ts test --env=jsdom",
-    "start-test": "node ../../scripts/start-test.js",
+    "start-test": "node ../../scripts/just.js jest-watch",
     "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "devDependencies": {

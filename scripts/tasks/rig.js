@@ -2,7 +2,7 @@
 
 const { clean } = require('./clean');
 const { copy } = require('./copy');
-const { jest } = require('./jest');
+const { jest, jestWatch } = require('./jest');
 const { sass } = require('./sass');
 const { ts } = require('./ts');
 const { tslint } = require('./tslint');
@@ -20,6 +20,7 @@ exports.rig = {
   clean,
   copy,
   jest,
+  jestWatch,
   sass,
   ts,
   tslint,
