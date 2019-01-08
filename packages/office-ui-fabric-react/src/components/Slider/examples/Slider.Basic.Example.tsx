@@ -7,7 +7,7 @@ export class SliderBasicExample extends React.Component<
   {
     value: number;
   }
-> {
+  > {
   constructor(props: {}) {
     super(props);
 
