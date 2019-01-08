@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, IButtonProps } from '../index';
-import { Stack } from '@uifabric/experiments';
+import { Button, IButtonProps, Stack } from '@uifabric/experiments';
 import { ContextualMenu, createTheme, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
@@ -19,9 +18,8 @@ const testTheme = createTheme({
   }
 });
 
-// TODO: if kept, rename to tokens
 // tslint:disable:jsx-no-lambda
-export class ButtonStyleVarsExample extends React.Component<{}, {}> {
+export class ButtonTokensExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const ButtonSet = (props: IButtonProps) => (
       <Stack horizontal verticalAlign="center" gap={8}>

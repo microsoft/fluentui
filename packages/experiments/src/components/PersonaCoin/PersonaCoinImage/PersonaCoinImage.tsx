@@ -47,7 +47,5 @@ export const PersonaCoinImage: React.StatelessComponent<IPersonaCoinImageProps> 
 >({
   displayName: 'PersonaCoinImage',
   view: PersonaCoinImageView,
-  styles: personaCoinImageStyles,
-  // TODO: temporarily here to work with "new" createComponent. remove.
-  tokens: {}
+  styles: personaCoinImageStyles
 });

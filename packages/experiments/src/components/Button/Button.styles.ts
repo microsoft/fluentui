@@ -1,29 +1,25 @@
 import { IButtonComponent } from './Button.types';
 import { getFocusStyle, getGlobalClassNames } from '../../Styling';
 
-const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
-  return {
-    borderRadius: 0,
-    borderWidth: 0,
-    minWidth: 100,
-    minHeight: 32,
-    lineHeight: 1,
-    contentPadding: '8px 16px',
-    textFamily: 'default',
-    textSize: 14,
-    iconSize: 14,
-    iconWeight: 400
-  };
+const baseTokens: IButtonComponent['tokens'] = {
+  borderRadius: 0,
+  borderWidth: 0,
+  minWidth: 100,
+  minHeight: 32,
+  lineHeight: 1,
+  contentPadding: '8px 16px',
+  textFamily: 'default',
+  textSize: 14,
+  iconSize: 14,
+  iconWeight: 400
 };
 
-const circularTokens: IButtonComponent['tokens'] = (props, theme) => {
-  return {
-    borderRadius: '50%',
-    borderWidth: 1,
-    minWidth: 32,
-    minHeight: 32,
-    contentPadding: ''
-  };
+const circularTokens: IButtonComponent['tokens'] = {
+  borderRadius: '50%',
+  borderWidth: 1,
+  minWidth: 32,
+  minHeight: 32,
+  contentPadding: ''
 };
 
 const enabledTokens: IButtonComponent['tokens'] = (props, theme) => {

@@ -55,8 +55,7 @@ export type ISlotProps<TProps extends TSlots, TSlots> = { [key in keyof TSlots]:
  */
 // TODO: also use this type in createComponent somehow to bind types. (it should output this type)
 // TODO: this should be able to take advantage of the relationship between slots and component styles
-// TODO: bad name, change. this is more like "resolved / default styles from createComponent"
-export interface IProcessedSlotProps<TSlots> {
+export interface IDefaultSlotProps<TSlots> {
   _defaultStyles: IComponentStyles<TSlots>;
 }
 

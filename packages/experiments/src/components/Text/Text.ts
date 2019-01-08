@@ -7,8 +7,6 @@ import { TextStyles as styles } from './Text.styles';
 export const Text: React.StatelessComponent<ITextProps> = createStatelessComponent<ITextProps, ITextStyles>({
   displayName: 'Text',
   styles,
-  // TODO: temporarily here to work with "new" createComponent. remove.
-  tokens: {},
   view
 });
 

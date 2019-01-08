@@ -1,8 +1,10 @@
-import { IComponentStyles, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 import { IHTMLSlot } from '../../utilities/factoryComponents.types';
 
 export type ITextComponent = IStatelessComponent<ITextProps, ITextStyles>;
+
+export type ITextSlot = ISlotProp<ITextProps, 'children'>;
 
 export interface ITextSlots {
   root?: IHTMLSlot;

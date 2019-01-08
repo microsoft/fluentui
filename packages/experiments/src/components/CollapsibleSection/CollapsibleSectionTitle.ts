@@ -6,13 +6,11 @@ import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from '.
 export const CollapsibleSectionTitle: IFactoryComponent<ICollapsibleSectionTitleProps> = createStatelessComponent<
   ICollapsibleSectionTitleProps,
   ICollapsibleSectionTitleStyles
-  >({
-    displayName: 'CollapsibleSectionTitle',
-    view,
-    styles,
-    // TODO: temporarily here to work with "new" createComponent. remove.
-    tokens: {},
-  });
+>({
+  displayName: 'CollapsibleSectionTitle',
+  view,
+  styles
+});
 
 // TODO: add factories for all experimental createComponents
 CollapsibleSectionTitle.create = createFactory(CollapsibleSectionTitle, { defaultProp: 'text' });

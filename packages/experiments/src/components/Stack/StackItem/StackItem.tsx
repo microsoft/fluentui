@@ -12,7 +12,7 @@ const view: IStackItemComponent['view'] = props => {
   }
 
   const Slots = getSlots<typeof props, IStackItemSlots>(props, {
-    root: 'span',
+    root: 'span'
   });
 
   return <Slots.root>{first}</Slots.root>;
@@ -21,8 +21,6 @@ const view: IStackItemComponent['view'] = props => {
 export const StackItem: React.StatelessComponent<IStackItemProps> = createStatelessComponent<IStackItemProps, IStackItemStyles>({
   displayName: 'StackItem',
   styles,
-  // TODO: temporarily here to work with "new" createComponent. remove.
-  tokens: {},
   view
 });
 

@@ -6,10 +6,9 @@ import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon, Text } from '../../utilities/factoryComponents';
 
 import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
-import { Button } from './Button';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, renderTestButton, ...rest } = props;
+  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties) };
@@ -21,8 +20,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
     icon: Icon,
     content: Text,
     menu: ContextualMenu,
-    menuIcon: Icon,
-    button: Button
+    menuIcon: Icon
   });
 
   return (
@@ -35,7 +33,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
       <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
         <Slots.icon />
         <Slots.content />
-        {renderTestButton && <Slots.button />}
         {children}
         {Menu && (
           <Stack.Item>

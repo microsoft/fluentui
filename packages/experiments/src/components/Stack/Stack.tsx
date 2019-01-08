@@ -60,18 +60,12 @@ const view: IStackComponent['view'] = props => {
   if (wrap) {
     return (
       <Slots.root>
-        <Slots.inner {...nativeProps}>
-          {stackChildren}
-        </Slots.inner>
+        <Slots.inner {...nativeProps}>{stackChildren}</Slots.inner>
       </Slots.root>
     );
   }
 
-  return (
-    <Slots.root {...nativeProps}>
-      {stackChildren}
-    </Slots.root>
-  );
+  return <Slots.root {...nativeProps}>{stackChildren}</Slots.root>;
 };
 
 const StackStatics = {
@@ -85,8 +79,6 @@ export const Stack: React.StatelessComponent<IStackProps> & {
 } = createStatelessComponent<IStackProps, IStackStyles, {}, IStackStatics>({
   displayName: 'Stack',
   styles,
-  // TODO: temporarily here to work with "new" createComponent. remove.
-  tokens: {},
   view,
   statics: StackStatics
 });

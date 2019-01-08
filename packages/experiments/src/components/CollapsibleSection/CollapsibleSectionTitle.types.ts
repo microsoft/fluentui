@@ -1,6 +1,7 @@
 import { IRefObject } from '../../Utilities';
 import { IComponentStyles, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IHTMLButtonSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
+import { ITextSlot } from '../../Text';
+import { IHTMLButtonSlot, IIconSlot } from '../../utilities/factoryComponents.types';
 
 export type ICollapsibleSectionTitleComponent = IStatelessComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>;
 
@@ -15,7 +16,8 @@ export interface ICollapsibleSectionTitleSlots {
 }
 
 export interface ICollapsibleSectionTitleProps
-  extends ICollapsibleSectionTitleSlots, IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
+  extends ICollapsibleSectionTitleSlots,
+    IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
   focusElementRef?: IRefObject<HTMLButtonElement>;
   /**
    * Collapsed state of body associated with this component.

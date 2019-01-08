@@ -9,7 +9,5 @@ export const VerticalPersona: React.StatelessComponent<IVerticalPersonaProps> = 
 >({
   displayName: 'VerticalPersona',
   view: VerticalPersonaView,
-  styles: VerticalPersonaStyles,
-  // TODO: temporarily here to work with "new" createComponent. remove.
-  tokens: {}
+  styles: VerticalPersonaStyles
 });

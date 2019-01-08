@@ -8,22 +8,15 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 //        export const styles: IStackComponent['styles'] = props => {
 //        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
 
-// TODO: update or move to IStyleFunction.ts? is the naming confusing?
-// TODO: call out impacts of these new types.
-//        obviates IStyleFunctionOrObject
-//        now have theme as separate arg for both tokens and styles functions
-// TODO: if this type is kept with tokens as separate arg, it should be erased out of props arg to make sure people don't use wrong tokens
-// TODO: should Partial be used in any of these if IComponentStyles is just going to make every slot style optional?
-//        (see if it fixes styles function object returning having no type safety)
 export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TViewProps,
   theme: ITheme,
   tokens: TTokens
-) => Partial<TStyleSet>;
+) => TStyleSet;
 
 export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
   | IStylesFunction<TViewProps, TTokens, TStyleSet>
-  | Partial<TStyleSet>;
+  | TStyleSet;
 
 export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | false | null | undefined;
 

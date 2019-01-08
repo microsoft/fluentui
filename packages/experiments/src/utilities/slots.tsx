@@ -10,7 +10,7 @@ import {
   ISlotFactory,
   ISlotProps,
   ISlotRenderFunction,
-  IProcessedSlotProps
+  IDefaultSlotProps
 } from './ISlots';
 
 /**
@@ -138,7 +138,7 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
   slots: ISlotDefinition<Required<TSlots>>
 ): ISlots<Required<TSlots>> {
   const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
-  const processedProps = userProps as TProps & IProcessedSlotProps<TSlots>;
+  const processedProps = userProps as TProps & IDefaultSlotProps<TSlots>;
 
   // TODO: need to check if userProps is defined? what is passed here when no props are passed to Button?
   for (const name in slots) {

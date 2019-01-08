@@ -49,9 +49,7 @@ export const Accordion: React.StatelessComponent<IAccordionProps> & {
   displayName: 'Accordion',
   styles,
   view,
-  statics: AccordionStatics,
-  // TODO: temporarily here to work with "new" createComponent. remove.
-  tokens: {}
+  statics: AccordionStatics
 });
 
 export default Accordion;

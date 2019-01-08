@@ -3,13 +3,11 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 
 import { ButtonExample } from './examples/Button.Example';
 import { ButtonStylesExample } from './examples/Button.Styles.Example';
-import { ButtonStyleVarsExample } from './examples/Button.StyleVars.Example';
+import { ButtonTokensExample } from './examples/Button.Tokens.Example';
 
 const ButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Example.tsx') as string;
-const ButtonStylesExampleCode =
-  require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Styles.Example.tsx') as string;
-const ButtonStyleVarsExampleCode =
-  require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.StyleVars.Example.tsx') as string;
+const ButtonStylesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Styles.Example.tsx') as string;
+const ButtonTokensExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -25,8 +23,8 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Button Styles" code={ButtonStylesExampleCode}>
               <ButtonStylesExample />
             </ExampleCard>
-            <ExampleCard title="Button Style Variables" code={ButtonStyleVarsExampleCode}>
-              <ButtonStyleVarsExample />
+            <ExampleCard title="Button Style Variables" code={ButtonTokensExampleCode}>
+              <ButtonTokensExample />
             </ExampleCard>
           </div>
         }

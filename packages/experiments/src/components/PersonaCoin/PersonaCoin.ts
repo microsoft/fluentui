@@ -6,7 +6,5 @@ import { createStatelessComponent } from '../../Foundation';
 export const PersonaCoin: React.StatelessComponent<IPersonaCoinProps> = createStatelessComponent<IPersonaCoinProps, IPersonaCoinStyles>({
   displayName: 'PersonaCoin',
   view: PersonaCoinView,
-  styles: PersonaCoinStyles,
-  // TODO: temporarily here to work with "new" createComponent. remove.
-  tokens: {}
+  styles: PersonaCoinStyles
 });

@@ -1,6 +1,7 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
 import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
-import { ITextSlot, IHTMLSlot } from '../../../utilities/factoryComponents.types';
+import { ITextSlot } from '../../../Text';
+import { IHTMLSlot } from '../../../utilities/factoryComponents.types';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
 export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles>;
@@ -23,10 +24,10 @@ export interface IVerticalPersonaProps
 }
 
 export interface IVerticalPersonaStyles {
-  root: IStyle;
-  primaryText: IStyle;
-  secondaryText: IStyle;
-  coin: IStyle; // TODO: Check if this works after Jason his PR
+  root?: IStyle;
+  primaryText?: IStyle;
+  secondaryText?: IStyle;
+  coin?: IStyle; // TODO: Check if this works after Jason his PR
 }
 
 // TODO: convert this to tokens

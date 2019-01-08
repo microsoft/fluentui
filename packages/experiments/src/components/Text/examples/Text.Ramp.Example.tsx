@@ -57,21 +57,23 @@ const TableView: ITableComponent['view'] = props => {
     header: 'tr'
   });
 
-  return (<Slots.root className={props.className} gap={20}>
-    <Text variant="medium">{props.title}</Text>
-    <Slots.table>
-      <thead>
-        <Slots.header>
-          {props.headers.map((header: string) => (
-            <Text key={header} as="td">
-              {header}
-            </Text>
-          ))}
-        </Slots.header>
-      </thead>
-      <tbody>{props.children}</tbody>
-    </Slots.table>
-  </Slots.root>);
+  return (
+    <Slots.root className={props.className} gap={20}>
+      <Text variant="medium">{props.title}</Text>
+      <Slots.table>
+        <thead>
+          <Slots.header>
+            {props.headers.map((header: string) => (
+              <Text key={header} as="td">
+                {header}
+              </Text>
+            ))}
+          </Slots.header>
+        </thead>
+        <tbody>{props.children}</tbody>
+      </Slots.table>
+    </Slots.root>
+  );
 };
 
 const Table = createStatelessComponent<ITableProps, {}, ITableStyles>({
@@ -84,8 +86,7 @@ const Table = createStatelessComponent<ITableProps, {}, ITableStyles>({
     header: {
       borderBottom: '1px solid black'
     }
-  },
-  tokens: {}
+  }
 });
 
 interface ITableRowProps {

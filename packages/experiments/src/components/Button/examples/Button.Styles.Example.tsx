@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button } from '../index';
-import { Stack } from '@uifabric/experiments';
+import { Button, Stack } from '@uifabric/experiments';
 import { createTheme, ContextualMenu, IContextualMenuProps, mergeStyles } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
@@ -65,16 +64,6 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   content="Button Styles Function: Purple Icon via Button Theme"
                   styles={(props, theme) => ({ icon: { color: theme.fonts.medium.color } })}
                   theme={testTheme}
-                />
-              </ButtonStack>
-              <ButtonStack>
-                <Button
-                  icon="PeopleAdd"
-                  renderTestButton
-                  button={{
-                    content: 'Nested Button Styles Function: Theme.warningHighlight Content',
-                    styles: (props, theme) => ({ content: { color: theme.semanticColors.warningHighlight } })
-                  }}
                 />
               </ButtonStack>
               <ButtonStack>

@@ -1,9 +1,11 @@
-import { IComponentStyles, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { IHTMLSlot } from '../../utilities/factoryComponents.types';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
+
+export type IStackSlot = ISlotProp<IStackProps>;
 
 export interface IStackSlots {
   root?: IHTMLSlot;
