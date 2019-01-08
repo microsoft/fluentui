@@ -2,6 +2,43 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.43.0",
+      "tag": "@uifabric/dashboard_v0.43.0",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "920e5a4ea25203d58baa89441ab0da9a7c099a49"
+          },
+          {
+            "comment": "Adding support for JSX.Element to DGLWithAddCardPanel. Still maintaining support for RTL/LTR and accessibility.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "920e5a4ea25203d58baa89441ab0da9a7c099a49"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.4` to `^0.28.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.2 <7.0.0` to `>=6.50.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.42.2",
       "tag": "@uifabric/dashboard_v0.42.2",
       "date": "Fri, 04 Jan 2019 13:36:07 GMT",

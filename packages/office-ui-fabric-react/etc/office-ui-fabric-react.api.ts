@@ -11555,7 +11555,7 @@ class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public (undocumented)
