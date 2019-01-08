@@ -193,15 +193,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     const setSize = data.primaryItems.length + (data.overflowItems.length > 0 ? 1 : 0);
 
     data.primaryItems = data.primaryItems.map((item, i) => {
-      item['posinset'] = i + 1;
-      item['setsize'] = setSize;
+      item.posinset = i + 1;
+      item.setsize = setSize;
       return item;
     });
 
     if (data.farItems) {
       data.farItems = data.farItems.map((item, i, array) => {
-        item['posinset'] = i + 1;
-        item['setsize'] = array.length;
+        item.posinset = i + 1;
+        item.setsize = array.length;
         return item;
       });
     }
