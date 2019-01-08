@@ -57,5 +57,26 @@ describe('loadTheme', () => {
       expect(newTheme.fonts.tiny.fontSize).toEqual(DefaultFontStyles.tiny.fontSize);
       expect(newTheme.fonts.tiny.fontWeight).toEqual(DefaultFontStyles.tiny.fontWeight);
     });
+    it('applies defaultFontStyle and fonts to theme and retains all other default values', () => {
+      const defaultFontStyle: IRawStyle = { fontFamily: 'Foo' };
+      const userTheme = { defaultFontStyle: defaultFontStyle, fonts: { large: { fontFamily: 'Bar' } } };
+      loadTheme(userTheme);
+      const newTheme = getTheme();
+
+      expect(newTheme.fonts.tiny.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.xSmall.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.small.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.smallPlus.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.medium.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.mediumPlus.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.large.fontFamily).toEqual('Bar');
+      expect(newTheme.fonts.xLarge.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.xxLarge.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.superLarge.fontFamily).toEqual('Foo');
+      expect(newTheme.fonts.mega.fontFamily).toEqual('Foo');
+
+      expect(newTheme.fonts.tiny.fontSize).toEqual(DefaultFontStyles.tiny.fontSize);
+      expect(newTheme.fonts.tiny.fontWeight).toEqual(DefaultFontStyles.tiny.fontWeight);
+    });
   });
 });
