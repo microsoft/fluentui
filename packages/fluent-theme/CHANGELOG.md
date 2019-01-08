@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 24 Dec 2018 13:33:49 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+
+## 0.13.1
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Replacing references to 'office-ui-fabric-react/lib/Styling' with references to '@uifabric/styling' in fluent-theme package.
 
 ## 0.13.0
 Mon, 24 Dec 2018 13:33:49 GMT
