@@ -189,26 +189,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     return <OverflowButtonType {...overflowProps as IButtonProps} />;
   };
 
-  private _prepareDataForCacheKey(data: ICommandBarData): ICommandBarData {
-    const setSize = data.primaryItems.length + (data.overflowItems.length > 0 ? 1 : 0);
-
-    data.primaryItems = data.primaryItems.map((item, i) => {
-      item.posinset = i + 1;
-      item.setsize = setSize;
-      return item;
-    });
-
-    if (data.farItems) {
-      data.farItems = data.farItems.map((item, i, array) => {
-        item.posinset = i + 1;
-        item.setsize = array.length;
-        return item;
-      });
-    }
-
-    return data;
-  }
-
   private _computeCacheKey(data: ICommandBarData): string {
     const { primaryItems, farItems = [], overflowItems } = data;
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
@@ -236,7 +216,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems = [movedItem, ...overflowItems];
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
-      const newData = this._prepareDataForCacheKey({ ...data, primaryItems, overflowItems });
+      const newData = { ...data, primaryItems, overflowItems };
       cacheKey = this._computeCacheKey(newData);
 
       if (onDataReduced) {
@@ -263,7 +243,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       // if shiftOnReduce, movedItem goes first, otherwise, last.
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
-      const newData = this._prepareDataForCacheKey({ ...data, primaryItems, overflowItems });
+      const newData = { ...data, primaryItems, overflowItems };
       cacheKey = this._computeCacheKey(newData);
 
       if (onDataGrown) {
