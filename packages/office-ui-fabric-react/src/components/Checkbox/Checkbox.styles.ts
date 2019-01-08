@@ -108,7 +108,6 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
             outline: '1px solid ' + theme.palette.neutralSecondary,
-            zIndex: ZIndexes.FocusStyle,
             outlineOffset: '2px',
             selectors: {
               [HighContrastSelector]: {
@@ -169,7 +168,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         overflow: 'hidden'
       },
       !reversed
-        ? {
+        ? // this margin on the checkbox is for backwards compat.
+          // notably it has the effect where a customRender is used, there will be only a 4px margin from checkbox to label.
+          // the label by default would have another 4px margin for a total of 8px margin between checkbox and label.
+          // we don't combine the two (and move it into the text) to not incur a breaking change for everyone using custom render atm.
+          {
             marginRight: 4
           }
         : {

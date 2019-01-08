@@ -3127,7 +3127,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             .ms-Fabric--isFocusVisible &:focus + label::before {
               outline-offset: 2px;
               outline: 1px solid #666666;
-              z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
@@ -3268,7 +3267,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             .ms-Fabric--isFocusVisible &:focus + label::before {
               outline-offset: 2px;
               outline: 1px solid #666666;
-              z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
@@ -3409,7 +3407,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             .ms-Fabric--isFocusVisible &:focus + label::before {
               outline-offset: 2px;
               outline: 1px solid #666666;
-              z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;

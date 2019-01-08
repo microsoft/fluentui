@@ -65,7 +65,6 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
           .ms-Fabric--isFocusVisible &:focus + label::before {
             outline-offset: 2px;
             outline: 1px solid #666666;
-            z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
