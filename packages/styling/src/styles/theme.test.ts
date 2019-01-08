@@ -64,7 +64,7 @@ describe('loadTheme', () => {
       const newTheme = getTheme();
 
       expect(newTheme.fonts.tiny.fontFamily).toEqual('Foo');
-      expect(newTheme.fonts.tiny.fontSize).toEqual(DefaultFontStyles.tiny.fontSize);
+      expect(newTheme.fonts.tiny.fontSize).toEqual('10px');
       expect(newTheme.fonts.tiny.fontWeight).toEqual(DefaultFontStyles.tiny.fontWeight);
 
       expect(newTheme.fonts.xSmall.fontFamily).toEqual('Foo');
