@@ -44,6 +44,6 @@
     "typescript": "2.8.4"
   },
   "disabledTasks": [
-    "api-extractor"
+    "verify-api-extractor"
   ]
 }

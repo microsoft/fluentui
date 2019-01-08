@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "disabledTasks": [
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",

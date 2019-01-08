@@ -16,12 +16,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
-    "code-style": "node ../../scripts/code-style.js",
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean",
+    "code-style": "node ../../scripts/just.js code-style",
     "start": "node ../../scripts/tasks/build-codepen-examples.js && node ../../scripts/start.js",
     "start-test": "node ../../scripts/start-test.js",
-    "update-snapshots": "node ../../scripts/build.js jest -u"
+    "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
@@ -74,6 +74,6 @@
   },
   "disabledTasks": [
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ]
 }

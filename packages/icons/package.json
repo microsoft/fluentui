@@ -14,16 +14,16 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
-    "code-style": "node ../../scripts/code-style.js"
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean",
+    "code-style": "node ../../scripts/just.js code-style"
   },
   "disabledTasks": [
     "sass",
     "karma",
     "jest",
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",

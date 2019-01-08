@@ -7,13 +7,13 @@
     "lib/version.js"
   ],
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean",
     "start": "node ../../scripts/start.js"
   },
   "disabledTasks": [
     "tslint",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",

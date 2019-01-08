@@ -15,13 +15,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
-    "code-style": "node ../../scripts/code-style.js",
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean",
+    "code-style": "node ../../scripts/just.js code-style",
     "start": "node ../../scripts/start.js"
   },
   "disabledTasks": [
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/react": "16.3.16",
