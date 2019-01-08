@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "IFontStyles: add default property",
+      "comment": "ITheme: add defaultFontStyles property",
       "type": "minor"
     }
   ],

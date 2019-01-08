@@ -1,8 +1,8 @@
 {
   "changes": [
     {
-      "comment": "IFontStyles: add default property",
       "packageName": "office-ui-fabric-react",
+      "comment": "ITheme: add defaultFontStyles property",
       "type": "minor"
     }
   ],
