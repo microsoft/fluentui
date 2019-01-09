@@ -637,4 +637,60 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
     expect(onValidate).toHaveBeenCalledTimes(2);
   });
+
+  it('should call `onValidValueUpdated` with normalized value when input box blurs', () => {
+    const onValidValueUpdate: jest.Mock = jest.fn();
+    const exampleNewValue = '18';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidValueUpdated={onValidValueUpdate} />);
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
+    ReactTestUtils.Simulate.blur(inputDOM);
+    expect(onValidValueUpdate).toBeCalledWith(exampleNewValue);
+  });
+
+  it('should call `onValidValueUpdated` with normalized value when press enter in input box', () => {
+    const onValidValueUpdate: jest.Mock = jest.fn();
+    const exampleNewValue = '19';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidValueUpdated={onValidValueUpdate} />);
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
+    expect(onValidValueUpdate).toBeCalledWith(exampleNewValue);
+  });
+
+  it('should call `onValidValueUpdated` when click increase or decrease button.', () => {
+    const onValidValueUpdate: jest.Mock = jest.fn();
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton label="label" defaultValue="20" onValidValueUpdated={onValidValueUpdate} />
+    );
+
+    const upButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-UpButton')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.mouseDown(upButtonDOM);
+    ReactTestUtils.Simulate.mouseUp(upButtonDOM);
+    expect(onValidValueUpdate).toBeCalledWith('21');
+
+    const downButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-DownButton')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.mouseDown(downButtonDOM);
+    ReactTestUtils.Simulate.mouseUp(downButtonDOM);
+    expect(onValidValueUpdate).toBeCalledWith('20');
+  });
+
+  it('should call `onValidValueUpdated` with the last valid value when recover from invalid input', () => {
+    const onValidValueUpdate: jest.Mock = jest.fn();
+    const exampleValue = '22';
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton label="label" defaultValue={exampleValue} onValidValueUpdated={onValidValueUpdate} />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent('a-invalid-value'));
+    ReactTestUtils.Simulate.blur(inputDOM);
+    expect(onValidValueUpdate).toBeCalledWith(exampleValue);
+  });
 });
