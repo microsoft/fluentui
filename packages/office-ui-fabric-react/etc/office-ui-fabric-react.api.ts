@@ -11123,7 +11123,7 @@ class ListPeoplePickerBase extends MemberListPeoplePicker {
   }
 }
 
-// @public (undocumented)
+// @public
 export function loadFonts(theme: ITheme): {
     [name: string]: string;
 };

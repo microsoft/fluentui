@@ -492,7 +492,7 @@ export function keyframes(timeline: {
     [key: string]: {};
 }): string;
 
-// @public (undocumented)
+// @public
 export function loadFonts(theme: ITheme): {
     [name: string]: string;
 };
