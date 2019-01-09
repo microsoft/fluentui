@@ -56,7 +56,10 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
 export const AzureThemeLight: ITheme = createTheme({
   palette: {
     themePrimary: LightSemanticColors.controlOutlines.accent,
-    neutralDark: LightSemanticColors.text.body
+    neutralDark: LightSemanticColors.text.body,
+    neutralLight: LightSemanticColors.item.hover, // shimmer elements
+    neutralLighter: LightSemanticColors.item.hover, // shimmer elements
+    white: LightSemanticColors.background // shimmer elements
   },
   semanticColors: lightExtendedSemanticColors
 });

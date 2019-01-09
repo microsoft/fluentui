@@ -5,6 +5,7 @@ import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: DarkSemanticColors.background,
   bodyText: DarkSemanticColors.text.body,
+  bodyDivider: CommonSemanticColors.dividers.lineSeparator,
   buttonBackground: DarkSemanticColors.secondaryButton.rest.background,
   buttonBackgroundChecked: DarkSemanticColors.secondaryButton.pressed.background,
   buttonBackgroundCheckedHovered: DarkSemanticColors.secondaryButton.hover.background,
@@ -51,7 +52,10 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
 export const AzureThemeDark: ITheme = createTheme({
   palette: {
     themePrimary: DarkSemanticColors.controlOutlines.accent,
-    neutralDark: DarkSemanticColors.text.body
+    neutralDark: DarkSemanticColors.text.body,
+    neutralLight: DarkSemanticColors.item.hover, // shimmer elements
+    neutralLighter: DarkSemanticColors.item.hover, // shimmer elements
+    white: DarkSemanticColors.background // shimmer elements
   },
   semanticColors: darkExtendedSemanticColors
 });
