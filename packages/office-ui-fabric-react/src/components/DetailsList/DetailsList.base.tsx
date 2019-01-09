@@ -201,6 +201,15 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (this.props.onDidUpdate) {
       this.props.onDidUpdate(this);
     }
+
+    if (prevProps.dragDropEvents !== this.props.dragDropEvents) {
+      this._dragDropHelper = this.props.dragDropEvents
+        ? new DragDropHelper({
+            selection: this.props.selection || new Selection({ onSelectionChanged: undefined, getKey: this.props.getKey }),
+            minimumPixelsForDrag: this.props.minimumPixelsForDrag
+          })
+        : null;
+    }
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
