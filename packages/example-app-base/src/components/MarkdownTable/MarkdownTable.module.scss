@@ -1,0 +1,59 @@
+@import '../../common/common';
+
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  :global(.ms-Image) {
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.THead .Tr,
+.TBody .Tr:not(:last-of-type) {
+  border-bottom: 1px solid $ms-color-neutralTertiary;
+}
+
+.THead {
+  .Tr {
+    border-color: $ms-color-neutralPrimary;
+  }
+}
+
+.TBody {}
+
+.Tr {}
+
+.Td {
+  color: $ms-color-neutralSecondary;
+}
+
+.Th {
+  font-weight: 600;
+  color: $ms-color-neutralPrimary;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.Th,
+.Td {
+  font-size: 14px; // @TODO replace with fluent variable
+  padding: 14px;
+  vertical-align: top;
+
+  &:first-of-type {
+    @include ms-padding-left(0);
+  }
+
+  // Make images follow text alignment.
+  &[style*="text-align"] {
+    :global(.ms-mdImage) {
+      img {
+        display: inline-block;
+      }
+    }
+  }
+}
