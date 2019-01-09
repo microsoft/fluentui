@@ -84,6 +84,10 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       }
     ],
     linkIsSelected: [
+      {
+        paddingLeft: '11px',
+        paddingRight: '11px'
+      },
       !rootIsLarge && {
         fontSize: FontSizes.size14
       },
