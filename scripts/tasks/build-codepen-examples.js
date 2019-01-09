@@ -1,6 +1,6 @@
 module.exports = function() {
   const path = require('path');
-  const transformer = require('./codepen-examples-transform');
+  const transformer = require('../codepen/codepen-examples-transform');
   const glob = require('glob');
   const files = glob.sync(path.resolve(__dirname, '../../packages/*/src/components/**/examples/*Example*.tsx'));
 

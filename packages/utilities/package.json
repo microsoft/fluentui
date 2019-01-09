@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "6.27.1",
+  "version": "6.27.2",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,12 +14,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "code-style": "node ../../scripts/code-style.js",
-    "clean": "node ../../scripts/clean.js",
-    "start-test": "node ../../scripts/start-test.js",
+    "build": "node ../../scripts/just.js build",
+    "code-style": "node ../../scripts/just.js code-style",
+    "clean": "node ../../scripts/just.js clean",
+    "start-test": "node ../../scripts/just.js jest-watch",
     "update-api": "node ../../scripts/update-api.js",
-    "update-snapshots": "node ../../scripts/build.js jest -u"
+    "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "disabledTasks": [
     "copy",

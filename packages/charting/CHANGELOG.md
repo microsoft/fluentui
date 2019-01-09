@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+
+## 0.28.5
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Basic conversions from componentWillReceiveProps to getDerivedStateFromProps
 
 ## 0.28.4
 Wed, 14 Nov 2018 13:34:01 GMT

@@ -573,7 +573,7 @@ export function portalContainsElement(target: HTMLElement, parent?: HTMLElement)
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public
