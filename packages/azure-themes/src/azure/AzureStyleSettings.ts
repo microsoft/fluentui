@@ -20,6 +20,7 @@ import { ModalStyles } from './styles/Modal.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
+import { ProgressIndicatorStyles } from './styles/ProgressIndicator.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
@@ -122,6 +123,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     PrimaryButton: {
       styles: PrimaryButtonStyles(theme)
+    },
+    ProgressIndicator: {
+      styles: ProgressIndicatorStyles
     },
     // Rating: {
     //   styles: RatingStyles
