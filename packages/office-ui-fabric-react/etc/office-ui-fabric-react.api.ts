@@ -10303,6 +10303,7 @@ interface ISpinButtonProps {
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onIncrement?: (value: string) => string | void;
   onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
+  onValidValueUpdated?: (value: string) => void;
   precision?: number;
   step?: number;
   styles?: Partial<ISpinButtonStyles>;

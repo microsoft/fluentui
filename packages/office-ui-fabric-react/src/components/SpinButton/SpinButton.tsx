@@ -344,6 +344,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
         this._lastValidValue = newValue;
         this._valueToValidate = undefined;
         this.setState({ value: newValue });
+
+        if (this.props.onValidValueUpdated) {
+          this.props.onValidValueUpdated(newValue);
+        }
       }
     }
   };
@@ -373,6 +377,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     if (newValue) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
+
+      if (this.props.onValidValueUpdated) {
+        this.props.onValidValueUpdated(newValue);
+      }
     }
 
     if (this._spinningByMouse !== shouldSpin) {

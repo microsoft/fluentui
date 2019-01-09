@@ -118,6 +118,12 @@ export interface ISpinButtonProps {
   onDecrement?: (value: string) => string | void;
 
   /**
+   * This callback is triggered after SpinButton normalized and validated the user input value.
+   * @param value - The normalized and valid value in the input box.
+   */
+  onValidValueUpdated?: (value: string) => void;
+
+  /**
    * A callback for when the user put focus on the picker
    */
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
