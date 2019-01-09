@@ -100,7 +100,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           borderColor: 'transparent'
         },
         '&:hover:focus': {
-          backgroundColor: semanticColors.menuItemBackgroundHovered,
+          backgroundColor: semanticColors.listItemBackgroundHovered,
           color: semanticColors.bodyText,
           borderColor: 'transparent'
         }
@@ -112,16 +112,16 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdownItemSelected: {
       fontSize: FontSizes.size12,
-      backgroundColor: semanticColors.menuItemBackgroundChecked,
+      backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
       fontWeight: 'bold',
       selectors: {
         '&:hover': {
-          backgroundColor: semanticColors.menuItemBackgroundChecked,
+          backgroundColor: semanticColors.listItemBackgroundChecked,
           borderColor: 'transparent'
         },
         '&:hover:focus': {
-          backgroundColor: semanticColors.menuItemBackgroundChecked,
+          backgroundColor: semanticColors.listItemBackgroundChecked,
           borderColor: 'transparent',
           color: semanticColors.bodyText
         }
