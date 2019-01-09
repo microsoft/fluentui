@@ -7,12 +7,14 @@ import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Exampl
 import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
 import { SpinButtonBasicWithIconDisabledExample } from './examples/SpinButton.BasicWithIconDisabled.Example';
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
+import { SpinButtonControlledExample } from './examples/SpinButton.Controlled.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
 import { SpinButtonStatus } from './SpinButton.checklist';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
 const SpinButtonBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/SpinButton/SpinButton.Basic.Example.Codepen.txt') as string;
 const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
+const SpinButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Controlled.Example.tsx') as string;
 const SpinButtonStatefulExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
 const SpinButtonBasicWithIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithIcon.Example.tsx') as string;
 const SpinButtonBasicWithIconDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithIconDisabled.Example.tsx') as string;
@@ -35,6 +37,11 @@ export const SpinButtonPageProps: IDocPageProps = {
       title: 'Basic Disabled SpinButton',
       code: SpinButtonBasicDisabledExampleCode,
       view: <SpinButtonBasicDisabledExample />
+    },
+    {
+      title: 'Controlled SpinButton',
+      code: SpinButtonControlledExampleCode,
+      view: <SpinButtonControlledExample />
     },
     {
       title: 'Stateful SpinButton',
