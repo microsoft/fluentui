@@ -5,6 +5,7 @@ import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: LightSemanticColors.background,
   bodyText: LightSemanticColors.text.body,
+  bodyDivider: CommonSemanticColors.dividers.lineSeparator,
   buttonBackground: LightSemanticColors.secondaryButton.rest.background,
   buttonBackgroundChecked: LightSemanticColors.secondaryButton.pressed.background,
   buttonBackgroundCheckedHovered: LightSemanticColors.secondaryButton.hover.background,

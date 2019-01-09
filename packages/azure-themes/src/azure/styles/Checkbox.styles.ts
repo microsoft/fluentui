@@ -40,17 +40,17 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       !disabled && [
         !checked && {
           selectors: {
-            '.ms-Checkbox-label:hover .ms-Checkbox-checkbox': { borderColor: extendedSemanticColors.controlOutlineHovered },
-            '.ms-Checkbox-label:hover .ms-Checkbox-checkmark': { color: semanticColors.bodyBackground }
+            ':hover .ms-Checkbox-label .ms-Checkbox-checkbox': { borderColor: extendedSemanticColors.controlOutlineHovered },
+            ':hover .ms-Checkbox-label .ms-Checkbox-checkmark': { color: semanticColors.bodyBackground }
           }
         },
         checked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': {
+            ':hover .ms-Checkbox-label .ms-Checkbox-checkbox': {
               background: semanticColors.bodyBackground,
               borderColor: extendedSemanticColors.controlOutlineHovered
             },
-            ':focus .ms-Checkbox-checkbox': {
+            ':focus .ms-Checkbox-label .ms-Checkbox-checkbox': {
               background: semanticColors.bodyBackground,
               borderColor: extendedSemanticColors.focusBorder
             }
