@@ -492,6 +492,9 @@ export function keyframes(timeline: {
     [key: string]: {};
 }): string;
 
+// @public (undocumented)
+export function loadFonts(theme: ITheme): any;
+
 // @public
 export function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 

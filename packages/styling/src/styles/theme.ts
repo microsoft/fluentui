@@ -74,7 +74,7 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   _theme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
-  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
+  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ...loadFonts(_theme) });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
 
@@ -87,6 +87,20 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   });
 
   return _theme;
+}
+
+// tslint:disable-next-line:no-any
+export function loadFonts(theme: ITheme): any {
+  const lines = {};
+
+  for (const fontName of Object.keys(theme.fonts)) {
+    const font = theme.fonts[fontName];
+    for (const propName of Object.keys(font)) {
+      const name = 'ms-font-' + fontName + '-' + propName;
+      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+    }
+  }
+  return lines;
 }
 
 /**
