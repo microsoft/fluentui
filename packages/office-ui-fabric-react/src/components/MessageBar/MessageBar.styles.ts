@@ -173,6 +173,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             margin: 0,
             selectors: {
               [HighContrastSelector]: {
+                background: 'WindowText',
+                color: 'Window',
                 content: ' '
               }
             }
