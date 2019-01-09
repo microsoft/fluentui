@@ -167,19 +167,6 @@ class ScrollablePaneDetailsListStory extends React.Component<
       </div>
     );
   }
-
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
-
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  }
 }
 
 function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
