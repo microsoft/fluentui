@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Jan 2019 13:35:35 GMT and should not be manually modified.
+
+## 6.122.0
+Wed, 09 Jan 2019 13:35:35 GMT
+
+### Minor changes
+
+- Checkbox: Refactored to use an <input type="checkbox"> instead of "button", fixing several longstanding bugs along the way.
+- ChoiceGroup: Removed role='application' from root-div
+
+### Patches
+
+- Fixed: the commandbar will no longer flicker when resized
+- CommandBar: minor perf improvement in computing cache key
+- Fix the typing of ExpandingCard/PlainCard component props.
+- FocusTrapZone - Make forceFocusInsideTrap prop changes modify focus
 
 ## 6.121.0
 Tue, 08 Jan 2019 13:34:49 GMT

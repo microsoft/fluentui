@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.122.0",
+      "tag": "office-ui-fabric-react_v6.122.0",
+      "date": "Wed, 09 Jan 2019 13:35:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed: the commandbar will no longer flicker when resized",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "4f86b90aa5e54f5acc4408f6da52fb516ec6142c"
+          },
+          {
+            "comment": "CommandBar: minor perf improvement in computing cache key",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a3b5fae29a52c85285d0432eeecf1eecacae9b52"
+          },
+          {
+            "comment": "Fix the typing of ExpandingCard/PlainCard component props.",
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "b610d7b055434e708b6ac8dfd8fe96d4345a7145"
+          },
+          {
+            "comment": "FocusTrapZone - Make forceFocusInsideTrap prop changes modify focus",
+            "author": "Burney Jia <byjia5@gmail.com>",
+            "commit": "ccbd24dadd72b52303a674db00b58869a4a37987"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Checkbox: Refactored to use an <input type=\"checkbox\"> instead of \"button\", fixing several longstanding bugs along the way.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "6139ee9c01b0fc89c06d341fae06f584d7315920"
+          },
+          {
+            "comment": "ChoiceGroup: Removed role='application' from root-div",
+            "author": "HalcyonPride <goodguyjosh@outlook.com>",
+            "commit": "c19c76036e3dc0220f9e93b4aa13d0f1a411c081"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.121.0",
       "tag": "office-ui-fabric-react_v6.121.0",
       "date": "Tue, 08 Jan 2019 13:34:49 GMT",
