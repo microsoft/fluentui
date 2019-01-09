@@ -93,7 +93,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
   public componentWillReceiveProps(newProps: ISpinButtonProps): void {
-    this._lastValidValue = this.state.value;
     let value: string = newProps.value ? newProps.value : String(newProps.min);
     if (newProps.defaultValue) {
       value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
