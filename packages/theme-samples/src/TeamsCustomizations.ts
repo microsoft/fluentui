@@ -44,8 +44,6 @@ export const TeamsCustomizations: ICustomizations = {
 
   scopedSettings: {
     Button: {
-      // TODO: try and figure out type safety
-      // TODO: as a test, see if every line of production Button's styling can be changed with a token
       // tslint:disable:no-any
       tokens: (props: any) => {
         return [
@@ -85,19 +83,6 @@ export const TeamsCustomizations: ICustomizations = {
             }
         ];
       }
-      // TODO: include styles functions in themes as a test to make sure they still work. cover with tests.
-      // styles: (props: any) => {
-      //   return {
-      //     icon: [
-      //       {
-      //         color: 'pink'
-      //       },
-      //       props.circular && {
-      //         color: 'purple'
-      //       }
-      //     ]
-      //   };
-      // }
     }
   }
 };

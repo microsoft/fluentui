@@ -63,7 +63,6 @@ export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentTy
  * Component used by foundation to tie elements together.
  * @see createComponent for generic type documentation.
  */
-// TODO: Should Tokens be an optional member/type like state?
 // TODO: Should take in TSlots instead of TStyleSet? (force styleset to be derived from slots?)
 export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> {
   /**

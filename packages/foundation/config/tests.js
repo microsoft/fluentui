@@ -1,6 +1,5 @@
 /** Jest test setup file. */
 
-// TODO: is this the right way to import? foundation doesn't have OUFR dependency like very other instance of this file
 const { setIconOptions } = require('@uifabric/styling');
 const { configure } = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');

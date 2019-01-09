@@ -5,7 +5,6 @@ import { IHTMLButtonSlot, IIconSlot } from '../../utilities/factoryComponents.ty
 
 export type ICollapsibleSectionTitleComponent = IStatelessComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>;
 
-// TODO: callout: shorthand to a slot with its own shorthand actually works!! **mind blown**
 export type ICollapsibleSectionTitleSlot = ISlotProp<ICollapsibleSectionTitleProps, 'text'>;
 
 export interface ICollapsibleSectionTitleSlots {

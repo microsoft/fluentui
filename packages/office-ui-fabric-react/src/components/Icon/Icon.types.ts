@@ -28,7 +28,6 @@ export enum IconType {
   Image = 100001
 }
 
-// TODO: why does Icon not have a theme prop? oversight?
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon

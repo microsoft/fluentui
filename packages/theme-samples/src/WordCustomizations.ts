@@ -20,8 +20,6 @@ export const WordCustomizations: ICustomizations = {
 
   scopedSettings: {
     Button: {
-      // TODO: try and figure out type safety
-      // TODO: as a test, see if every line of production Button's styling can be changed with a token
       // tslint:disable:no-any
       tokens: (props: any) => {
         return [

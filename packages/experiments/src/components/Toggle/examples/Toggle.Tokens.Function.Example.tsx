@@ -11,7 +11,7 @@ const toggleTokens: IToggleComponent['tokens'] = props => {
   };
 };
 
-export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
+export class ToggleTokensFunctionExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
@@ -31,22 +31,8 @@ export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
           onChange={this._onChange}
           tokens={toggleTokens}
         />
-        <Toggle
-          defaultChecked={true}
-          disabled={true}
-          label="Disabled and checked"
-          onText="On"
-          offText="Off"
-          tokens={toggleTokens}
-        />
-        <Toggle
-          defaultChecked={false}
-          disabled={true}
-          label="Disabled and unchecked"
-          onText="On"
-          offText="Off"
-          tokens={toggleTokens}
-        />
+        <Toggle defaultChecked={true} disabled={true} label="Disabled and checked" onText="On" offText="Off" tokens={toggleTokens} />
+        <Toggle defaultChecked={false} disabled={true} label="Disabled and unchecked" onText="On" offText="Off" tokens={toggleTokens} />
       </div>
     );
   }

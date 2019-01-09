@@ -9,8 +9,9 @@ import { ISlotProp } from '../Foundation';
 // export type IHTMLButtonSlot = ISlotProp<React.ButtonHTMLAttributes<any>>;
 export type IHTMLButtonSlot = ISlotProp<JSX.IntrinsicElements['button']>;
 
-// TODO: expand IHTMLSlot into more finite types like IHTMLButtonSlot with lookups?
-//        something will need to change to access ref attribute of React.ClassAttributes
+// TODO: Expand IHTMLSlot into more finite types like IHTMLButtonSlot with lookups?
+//        Something will need to change to access ref attribute of React.ClassAttributes.
+//        Add example testing ref usage on an intrinsic slot and fix any type errors.
 export type IHTMLSlot = ISlotProp<React.HTMLAttributes<any>>;
 
 // Icon Types

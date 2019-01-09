@@ -5,6 +5,8 @@ export class ToggleExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
+        <Toggle defaultChecked={true} onText="No Label" offText="No Label" onChange={this._onChange} />
+        <Toggle defaultChecked={true} label="No Text" onChange={this._onChange} />
         <Toggle defaultChecked={true} label="Enabled and checked" onText="On" offText="Off" onChange={this._onChange} />
         <Toggle defaultChecked={false} label="Enabled and unchecked" onText="On" offText="Off" onChange={this._onChange} />
         <Toggle defaultChecked={true} disabled={true} label="Disabled and checked" onText="On" offText="Off" />

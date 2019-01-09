@@ -30,9 +30,6 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
     className
   } = props;
 
-  // TODO: finalize this theme mess
-  // const theme = themeArg || props.theme;
-
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const vertAlign = getVerticalAlignment(verticalAlign);

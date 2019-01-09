@@ -187,7 +187,8 @@ describe('getSlots', () => {
       }
     };
 
-    const createdSlots = getSlots<ITestProps, ITestSlots>(testUserProps, testSlotDefinition);
+    // Simulate inserting _defaultStyles as createComponent would
+    const createdSlots = getSlots<ITestProps, ITestSlots>({ ...testUserProps, _defaultStyles: {} } as any, testSlotDefinition);
 
     expect(createdSlots.testSlot1).toBeDefined();
     expect(createdSlots.testSlot1.isSlot).toBeTruthy();

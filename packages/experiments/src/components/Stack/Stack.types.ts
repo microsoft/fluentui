@@ -96,5 +96,4 @@ export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStac
   wrap?: boolean;
 }
 
-// TODO: convert to slots
 export type IStackStyles = IComponentStyles<IStackSlots>;

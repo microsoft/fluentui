@@ -1,6 +1,6 @@
 /** @jsx createElementWrapper */
 import { KeytipData } from 'office-ui-fabric-react/lib/KeytipData';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Label } from '../../utilities/factoryComponents';
 
 import { createElementWrapper, getSlots } from '../../Foundation';
 import { inputProperties, getNativeProps } from '../../Utilities';
@@ -22,11 +22,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
   // TODO: find a way to remove check against existence of label and text for rendering if possible
   return (
     <Slots.root>
-      {label && (
-        <Slots.label htmlFor={this._id}>
-          {label}
-        </Slots.label>
-      )}
+      <Slots.label htmlFor={this._id}>{label}</Slots.label>
 
       <Slots.container>
         <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
@@ -50,7 +46,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
             </Slots.pill>
           )}
         </KeytipData>
-        {text && <Slots.text>{text}</Slots.text>}
+        <Slots.text>{text}</Slots.text>
       </Slots.container>
     </Slots.root>
   );

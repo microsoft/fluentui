@@ -20,7 +20,7 @@ const tokens3: IToggleTokens = {
   textColor: 'darkred'
 };
 
-export class ToggleStyleVarsInterfaceExample extends React.Component<{}, {}> {
+export class ToggleTokensObjectExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     // TODO: Example 1 is flickering when toggling state compared to master. it appears to be flickering non-hovered state
     //        The entire DOM structure seems to be recreated on Toggle, which is probably causing the issue.

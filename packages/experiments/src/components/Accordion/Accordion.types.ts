@@ -10,7 +10,6 @@ export interface IAccordionSlots {
 }
 
 export interface IAccordionProps extends IAccordionSlots, IStyleableComponentProps<IAccordionProps, IAccordionStyles> {
-  className?: string;
   collapseItems?: boolean;
 }
 

@@ -7,6 +7,10 @@ import { IHTMLButtonSlot, IHTMLSlot, ILabelSlot } from '../../utilities/factoryC
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens>;
 
+// TODO: resolve these issues:
+//    * text is a view-only slot and should not be exposed
+//    * offText and onText should be slots
+//    * consider removing slots as standalone interface instead of creating multiple slots interfaces
 export interface IToggleSlots {
   root?: IHTMLSlot;
   label?: ILabelSlot;
@@ -23,11 +27,10 @@ export interface IToggle {
 /**
  * Toggle component props.
  */
-// TODO: should 'as' prop be reinserted with Slots impl?
 export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<IToggleViewProps, IToggleStyles, IToggleTokens> {
   /**
- * Render the root element as another type.
- */
+   * Render the root element as another type.
+   */
   as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
 
   /**
@@ -80,18 +83,15 @@ export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<ITo
   keytipProps?: IKeytipProps;
 }
 
-export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps' | 'text'> &
+export type IToggleViewProps = Pick<
+  IToggleProps,
+  'as' | 'className' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps' | 'text'
+> &
   Required<Pick<IToggleProps, 'checked' | 'tokens'>> & {
     /**
      * Toggle input callback triggered by mouse and keyboard input.
      */
     onClick?: (ev: React.MouseEvent<Element>) => void;
-
-    /**
-     * Root element class name.
-     */
-    // TODO: shouldn't this be at props level and not view-only?
-    className?: string;
 
     /**
      * Reference to the toggle button.

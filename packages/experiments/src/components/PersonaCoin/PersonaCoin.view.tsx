@@ -28,6 +28,7 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
     presence: PersonaPresence
   });
 
+  // TODO: push props.presence check to factoryComponents (if needed? what happens if check is removed?)
   return (
     <Slots.root>
       <Slots.initials initials={props.initials} text={props.text} allowPhoneInitials={props.allowPhoneInitials} />

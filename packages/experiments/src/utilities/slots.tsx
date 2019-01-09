@@ -156,8 +156,7 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
           processedProps[name],
-          // TODO: is this check needed (put in temporarily until createComponent is updated)? what about for backwards compatibility?
-          processedProps._defaultStyles && processedProps._defaultStyles[name]
+          processedProps._defaultStyles[name]
         );
       };
       slot.isSlot = true;
