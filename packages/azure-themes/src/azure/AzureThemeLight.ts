@@ -58,8 +58,8 @@ export const AzureThemeLight: ITheme = createTheme({
   palette: {
     themePrimary: LightSemanticColors.controlOutlines.accent,
     neutralDark: LightSemanticColors.text.body,
-    neutralLight: LightSemanticColors.item.hover, // shimmer elements
-    neutralLighter: LightSemanticColors.item.hover, // shimmer elements
+    neutralLight: CommonSemanticColors.backgrounds.section, // shimmer elements
+    neutralLighter: CommonSemanticColors.backgrounds.section, // shimmer elements
     white: LightSemanticColors.background // shimmer elements
   },
   semanticColors: lightExtendedSemanticColors
