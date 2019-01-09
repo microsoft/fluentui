@@ -46,7 +46,13 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   primaryButtonTextDisabled: DarkSemanticColors.disabledButton.text,
   primaryButtonTextHovered: DarkSemanticColors.primaryButton.hover.text,
   primaryButtonTextPressed: DarkSemanticColors.primaryButton.pressed.text,
-  variantBorder: CommonSemanticColors.dividers.lineSeparator
+  variantBorder: CommonSemanticColors.dividers.lineSeparator,
+  // extended
+  controlAccent: DarkSemanticColors.controlOutlines.accent,
+  controlOutline: DarkSemanticColors.controlOutlines.rest,
+  controlOutlineDisabled: DarkSemanticColors.controlOutlines.disabled,
+  controlOutlineHovered: DarkSemanticColors.controlOutlines.hover,
+  labelText: DarkSemanticColors.text.label
 };
 
 export const AzureThemeDark: ITheme = createTheme({
