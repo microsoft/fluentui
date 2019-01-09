@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { IPageImageSetProps, PageHeader, PageImageSet, PageParagraph, PageTag } from '../templates/index';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Image, IImageProps } from 'office-ui-fabric-react/lib/Image';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import Markdown, { IMarkdownProps } from 'markdown-to-jsx';
+import { DefaultButton, Image, IImageProps, Link } from 'office-ui-fabric-react';
+import * as MDTable from '../MarkdownTable/index';
+import { IPageImageSetProps, PageHeader, PageImageSet, PageParagraph, PageTag } from '../templates/index';
 
 function _getImageSetProps(props: React.Props<{}>, markdownProps: IPageMarkdownProps): IPageImageSetProps | undefined {
   let imageSet: IImageProps[] | undefined;
@@ -69,7 +68,8 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
         }
       },
       a: {
-        component: Link
+        component: Link,
+        props: { className: 'ms-mdLink' }
       },
       ul: {
         component: (props: React.HTMLAttributes<HTMLElement>) => {
@@ -82,10 +82,36 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
         }
       },
       img: {
-        component: Image
+        component: Image,
+        props: { className: 'ms-mdImage' }
       },
       button: {
-        component: DefaultButton
+        component: DefaultButton,
+        props: { className: 'ms-mdButton' }
+      },
+      table: {
+        component: MDTable.MarkdownTable,
+        props: { className: 'ms-mdTable', wrapperClassName: 'ms-mdTable-wrapper' }
+      },
+      thead: {
+        component: MDTable.MarkdownTHead,
+        props: { className: 'ms-mdTable-thead' }
+      },
+      tbody: {
+        component: MDTable.MarkdownTBody,
+        props: { className: 'ms-mdTable-tbody' }
+      },
+      tr: {
+        component: MDTable.MarkdownTr,
+        props: { className: 'ms-mdTable-tr' }
+      },
+      th: {
+        component: MDTable.MarkdownCell,
+        props: { as: 'th', className: 'ms-mdTable-th' }
+      },
+      td: {
+        component: MDTable.MarkdownCell,
+        props: { className: 'ms-mdTable-td' }
       }
     }
   }
@@ -101,4 +127,15 @@ export interface IPageMarkdownProps {
   resources?: IPageMarkdownResources;
   children: string;
 }
-export const PageMarkdown = (props: IPageMarkdownProps) => <Markdown {...getMarkdownProps(props)}>{props.children}</Markdown>;
+
+export class PageMarkdown extends React.Component<IPageMarkdownProps, {}> {
+  public static displayName = 'PageMarkdown';
+
+  public render(): JSX.Element {
+    return (
+      <div className="ms-PageMarkdown">
+        <Markdown {...getMarkdownProps(this.props)}>{this.props.children}</Markdown>
+      </div>
+    );
+  }
+}
