@@ -1,63 +1,58 @@
-import * as React from 'react';
-import { IButtonComponent, IButtonViewProps } from './Button.types';
-import { Text } from '../../Text';
-import { HorizontalStack } from '../../Stack';
-import { Icon, IIconProps } from 'office-ui-fabric-react';
+/** @jsx createElementWrapper */
+import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
+import { Stack } from '../../Stack';
+import { ContextualMenu } from 'office-ui-fabric-react';
 import { getNativeProps, buttonProperties } from '../../Utilities';
+import { Icon, Text } from '../../utilities/factoryComponents';
+import { createElementWrapper, getSlots } from '../../utilities/slots';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const {
-    classNames,
-    as: RootType = _deriveRootType(props),
-    menu: Menu,
-    children,
-    text,
-    icon: IconProp,
-    expanded,
-    disabled,
-    onMenuDismiss,
-    menuTarget,
-    ...rest
-  } = props;
+  const { classNames, menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
 
-  const buttonProps = getNativeProps(rest, buttonProperties);
+  // TODO: 'href' is anchor property... consider getNativeProps by root type
+  const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
+
+  const Slots = getSlots<typeof props, IButtonSlots>(props, {
+    root: _deriveRootType(props),
+    stack: Stack,
+    icon: Icon,
+    content: Text,
+    menu: ContextualMenu,
+    menuIcon: Icon
+  });
 
   return (
-    <RootType
+    <Slots.root
       type="button" // stack doesn't take in native button props
       role="button"
       {...buttonProps}
       aria-disabled={disabled}
-      className={classNames.root}
     >
-      <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center">
-        {IconProp && typeof IconProp === 'string' && <Icon className={classNames.icon} iconName={IconProp} />}
-        {IconProp &&
-          typeof IconProp === 'object' &&
-          (React.isValidElement(IconProp) ? (
-            IconProp
-          ) : (
-            <Icon
-              className={classNames.icon}
-              {
-                // tslint:disable-next-line:no-any
-                ...IconProp as IIconProps
-              }
-            />
-          ))}
-        {text && <Text className={classNames.text}>{text}</Text>}
+      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center">
+        {icon && <Slots.icon />}
+        {content && <Slots.content />}
         {children}
         {Menu && (
-          <HorizontalStack.Item>
-            <Icon className={classNames.menuIcon} iconName="ChevronDown" />
-          </HorizontalStack.Item>
+          <Stack.Item>
+            <Slots.menuIcon iconName="ChevronDown" />
+          </Stack.Item>
         )}
-      </HorizontalStack>
-      {expanded && Menu && <Menu target={menuTarget} onDismiss={onMenuDismiss} />}
-    </RootType>
+      </Slots.stack>
+      {expanded && Menu && <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} />}
+    </Slots.root>
   );
 };
 
-function _deriveRootType(props: IButtonViewProps): React.ReactType {
+// TODO: test with split button approach.
+//        should split button be another component?
+//        can Button's slots be manipulated to create an HOC split button?
+// { split && (
+// <Slot as='span' userProps={splitContainer}>
+//   <Slot as={Divider} userProps={divider} />
+//   <Slot as={Icon} userProps={menuChevron} />
+// </Slot>
+// )}
+
+function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
   return !!props.href ? 'a' : 'button';
 }

@@ -1,5 +1,5 @@
 const path = require('path');
-const resources = require('../../scripts/tasks/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
 
 const BUNDLE_NAME = 'dashboard';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
@@ -12,6 +12,23 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   output: {
     libraryTarget: 'var',
     library: 'FabricDashboardGridLayout'
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader' // translates CSS into CommonJS
+          }
+        ]
+      }
+    ]
   },
 
   externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],

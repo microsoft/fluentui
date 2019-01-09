@@ -1,9 +1,9 @@
-import { IRatingStyleProps } from 'office-ui-fabric-react/lib/Rating';
+import { IRatingStyleProps, IRatingStyles } from 'office-ui-fabric-react/lib/Rating';
 import { NeutralColors } from '../FluentColors';
 
-export const RatingStyles = (props: IRatingStyleProps) => {
+export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> => {
   const { disabled, readOnly, theme } = props;
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     root: [
@@ -13,7 +13,7 @@ export const RatingStyles = (props: IRatingStyleProps) => {
             // This is part 1 of highlighting all stars up to the one the user is hovering over
             '&:hover': {
               selectors: {
-                '.ms-RatingStar-back': { color: NeutralColors.gray160 }
+                '.ms-RatingStar-back': { color: palette.neutralPrimary }
               }
             }
           }
@@ -24,11 +24,11 @@ export const RatingStyles = (props: IRatingStyleProps) => {
         color: NeutralColors.gray80
       },
       disabled && {
-        color: semanticColors.disabledBodyText
+        color: semanticColors.disabledBodySubtext
       }
     ],
     ratingStarFront: {
-      color: NeutralColors.gray160
+      color: palette.neutralPrimary
     },
     ratingButton: [
       !disabled &&

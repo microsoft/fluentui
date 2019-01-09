@@ -6,7 +6,17 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
-export interface ITooltipHost {}
+export interface ITooltipHost {
+  /**
+   * Shows the tooltip.
+   */
+  show: () => void;
+
+  /**
+   * Dismisses the tooltip.
+   */
+  dismiss: () => void;
+}
 
 export enum TooltipOverflowMode {
   /** Only show tooltip if parent DOM element is overflowing */

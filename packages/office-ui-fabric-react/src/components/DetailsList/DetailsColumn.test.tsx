@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-import { IColumn, ColumnActionsMode } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
+import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
 import { mount } from 'enzyme';
 import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
-import { assign } from '@uifabric/utilities';
+import { assign, IRenderFunction } from '@uifabric/utilities';
+import { ITooltipHostProps, TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 let mockOnColumnClick: jest.Mock<{}>;
 let baseColumn: IColumn;
@@ -124,5 +125,86 @@ describe('DetailsColumn', () => {
     columnHeaderTitle.simulate('click');
 
     expect(mockOnColumnClick.mock.calls.length).toBe(0);
+  });
+
+  it('by default, has aria-describedby set for columns which provide an ariaLabel value', () => {
+    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    let component: any;
+    const columns = [column];
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    expect(component.find('[aria-describedby]')).toHaveLength(1);
+  });
+
+  it("by default, has a node present in the DOM referenced by the column's aria-describedby attribute", () => {
+    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    let component: any;
+    const columns = [column];
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const ariaDescribedByEl = component
+      .find('[aria-describedby]')
+      .first()
+      .getDOMNode();
+    const referenceId = ariaDescribedByEl.getAttribute('aria-describedby');
+
+    expect(component.exists(`#${referenceId}`)).toBe(true);
+  });
+
+  it('if custom DetailsHeader has optional onRenderColumnHeaderTooltip, do not render invalid aria-describedby attribute', () => {
+    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    let component: any;
+    const columns = [column];
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        onRenderDetailsHeader={(props: IDetailsHeaderProps, defaultRenderer?: IRenderFunction<IDetailsHeaderProps>) => {
+          return defaultRenderer!({
+            ...props,
+            onRenderColumnHeaderTooltip: (tooltipProps: ITooltipHostProps, tooltipRenderer?: IRenderFunction<ITooltipHostProps>) => {
+              return <TooltipHost {...tooltipProps} />;
+            }
+          });
+        }}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    expect(component.exists('[aria-describedby]')).toBe(false);
   });
 });

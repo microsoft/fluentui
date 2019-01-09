@@ -4,6 +4,7 @@ import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { DetailsRow } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { createListItems, createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
@@ -13,7 +14,11 @@ const groupDepth = 3;
 let _items: any[];
 let _groups: IGroup[];
 
-export class GroupedListBasicExample extends React.Component {
+export interface IGroupedListExampleState {
+  isCompactMode?: boolean;
+}
+
+export class GroupedListBasicExample extends React.Component<{}, IGroupedListExampleState> {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -25,21 +30,37 @@ export class GroupedListBasicExample extends React.Component {
     this._onRenderCell = this._onRenderCell.bind(this);
     this._selection = new Selection();
     this._selection.setItems(_items);
+
+    this.state = {
+      isCompactMode: false
+    };
   }
 
   public render(): JSX.Element {
+    const { isCompactMode } = this.state;
+
     return (
-      <FocusZone>
-        <SelectionZone selection={this._selection} selectionMode={SelectionMode.multiple}>
-          <GroupedList
-            items={_items}
-            onRenderCell={this._onRenderCell}
-            selection={this._selection}
-            selectionMode={SelectionMode.multiple}
-            groups={_groups}
-          />
-        </SelectionZone>
-      </FocusZone>
+      <div>
+        <Toggle
+          label="Enable Compact Mode"
+          checked={isCompactMode}
+          onChange={this._onChangeCompactMode}
+          onText="Compact"
+          offText="Normal"
+        />
+        <FocusZone>
+          <SelectionZone selection={this._selection} selectionMode={SelectionMode.multiple}>
+            <GroupedList
+              items={_items}
+              onRenderCell={this._onRenderCell}
+              selection={this._selection}
+              selectionMode={SelectionMode.multiple}
+              groups={_groups}
+              compact={isCompactMode}
+            />
+          </SelectionZone>
+        </FocusZone>
+      </div>
     );
   }
 
@@ -64,7 +85,12 @@ export class GroupedListBasicExample extends React.Component {
         itemIndex={itemIndex}
         selection={selection}
         selectionMode={SelectionMode.multiple}
+        compact={this.state.isCompactMode}
       />
     );
   }
+
+  private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ isCompactMode: checked });
+  };
 }

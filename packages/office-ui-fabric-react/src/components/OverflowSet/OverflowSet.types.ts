@@ -25,7 +25,7 @@ export interface IOverflowSet {
   focusElement(childElement?: HTMLElement): boolean;
 }
 
-export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
+export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
   /**
    * Gets the component ref.
    */

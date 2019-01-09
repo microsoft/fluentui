@@ -82,6 +82,49 @@ describe('Facepile', () => {
     expect(findNodes(wrapper, '.ms-Facepile-itemButton').length).toEqual(6);
   });
 
+  it('renders descriptive overflow button with comma-delimited persona names as title value by default', () => {
+    const personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
+    const maxDisplayablePersonas: number = 5;
+
+    const wrapper = mount(
+      <Facepile
+        personas={personas}
+        maxDisplayablePersonas={maxDisplayablePersonas}
+        overflowButtonProps={{}}
+        overflowButtonType={OverflowButtonType.descriptive}
+      />
+    );
+
+    const overflowPersonasTitle = personas
+      .slice(maxDisplayablePersonas, personas.length)
+      .map((p: IFacepilePersona) => p.personaName)
+      .join(', ');
+
+    expect(
+      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
+        .getDOMNode()
+        .attributes.getNamedItem('title')
+    ).toHaveProperty('value', overflowPersonasTitle);
+  });
+
+  it('renders a descriptive overflow button with a custom title', () => {
+    const personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
+    const title: string = 'custom title';
+    const wrapper = mount(
+      <Facepile
+        personas={personas}
+        maxDisplayablePersonas={5}
+        overflowButtonProps={{ title }}
+        overflowButtonType={OverflowButtonType.descriptive}
+      />
+    );
+    expect(
+      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
+        .getDOMNode()
+        .attributes.getNamedItem('title')
+    ).toHaveProperty('value', title);
+  });
+
   it('renders no more than maximum allowed personas', () => {
     const wrapper = mount(
       <Facepile personas={facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas)} maxDisplayablePersonas={2} />

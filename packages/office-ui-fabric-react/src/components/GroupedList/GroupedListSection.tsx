@@ -4,7 +4,7 @@ import { IGroupHeaderProps } from './GroupHeader.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
-import { BaseComponent, IRenderFunction, IDisposable, createRef, IClassNames } from '../../Utilities';
+import { BaseComponent, IRenderFunction, IDisposable, IClassNames } from '../../Utilities';
 
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
 
@@ -18,7 +18,7 @@ import { assign, css, getId } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
 
-export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
+export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
   groupedListClassNames?: IClassNames<IGroupedListStyles>;
 
@@ -26,6 +26,9 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
    * Gets the component ref.
    */
   componentRef?: () => void;
+
+  /** Whether to render in compact mode */
+  compact?: boolean;
 
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
@@ -107,8 +110,8 @@ export interface IGroupedListSectionState {
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, IGroupedListSectionState> {
-  private _root = createRef<HTMLDivElement>();
-  private _list = createRef<List>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _list = React.createRef<List>();
   private _id: string;
 
   private _dragDropSubscription: IDisposable;
@@ -176,7 +179,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupFooter = this._onRenderGroupFooter,
       onShouldVirtualize,
       groupedListClassNames,
-      groups
+      groups,
+      compact
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -185,13 +189,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     const hasNestedGroups = group && group.children && group.children.length > 0;
 
     const dividerProps: IGroupDividerProps = {
-      group: group,
-      groupIndex: groupIndex,
+      group,
+      groupIndex,
       groupLevel: group ? group.level : 0,
       isSelected,
-      viewport: viewport,
-      selectionMode: selectionMode,
-      groups: groups
+      viewport,
+      selectionMode,
+      groups,
+      compact
     };
 
     const ariaControlsProps: IGroupHeaderProps = {
@@ -211,6 +216,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader)}
         {group && group.isCollapsed ? null : hasNestedGroups ? (
           <List
+            role="presentation"
             ref={this._list}
             items={group!.children}
             onRenderCell={this._renderSubGroup}
@@ -295,6 +301,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     return (
       <List
+        role="grid"
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}
@@ -328,7 +335,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupShowAll,
       onRenderGroupFooter,
       onShouldVirtualize,
-      group
+      group,
+      compact
     } = this.props;
 
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
@@ -357,6 +365,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupFooter={onRenderGroupFooter}
         onShouldVirtualize={onShouldVirtualize}
         groups={group!.children}
+        compact={compact}
       />
     ) : null;
   };

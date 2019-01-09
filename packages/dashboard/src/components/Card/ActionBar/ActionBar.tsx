@@ -85,15 +85,17 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
   private _renderOverflowItems = (overflowItems: IAction[]) => {
     const items: IContextualMenuItem[] = [];
     overflowItems.forEach((action: IAction, i: number) => {
-      items.push({ key: i.toString(), name: action.title, onClick: action.action });
+      items.push({ key: i.toString(), name: action.title, onClick: action.action, title: action.title });
     });
+    const { actionBarOverflowButtonAriaDescription, actionBarOverflowButtonAriaLabel, actionBarOverflowButtonTitle } = this.props;
     return (
       <DefaultButton
         menuProps={{
           calloutProps: {
             styles: {
               root: {
-                boxShadow: '0px 1.2px 3.6px rgba(0,0,0,0.18), 0px 6.4px 14.4px rgba(0,0,0,0.22)'
+                boxShadow: '0px 1.2px 3.6px rgba(0,0,0,0.18), 0px 6.4px 14.4px rgba(0,0,0,0.22)',
+                border: 'none'
               }
             }
           },
@@ -101,6 +103,9 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
         }}
         onClick={this._onClick}
         styles={overflowButtonStyles}
+        ariaLabel={actionBarOverflowButtonAriaLabel}
+        title={actionBarOverflowButtonTitle}
+        ariaDescription={actionBarOverflowButtonAriaDescription}
       />
     );
   };
@@ -108,7 +113,14 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
   private _renderButton = (action: IOverflowSetItemProps) => {
     const customStyles = getCustomActionBarButtonStyles();
     return (
-      <DefaultButton ariaLabel={action.title} primary={action.primary} text={action.title} onClick={action.action} styles={customStyles} />
+      <DefaultButton
+        ariaLabel={action.title}
+        primary={action.primary}
+        text={action.title}
+        onClick={action.action}
+        styles={customStyles}
+        title={action.title}
+      />
     );
   };
 }

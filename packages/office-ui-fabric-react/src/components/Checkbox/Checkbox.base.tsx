@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, getId, createRef, classNamesFunction, mergeAriaAttributeValues } from '../../Utilities';
+import { BaseComponent, getId, classNamesFunction, mergeAriaAttributeValues } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
@@ -16,12 +16,12 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
     boxSide: 'start'
   };
 
-  private _checkBox = createRef<HTMLElement>();
+  private _checkBox = React.createRef<HTMLInputElement>();
   private _id: string;
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   /**
-   * Initialize a new instance of the TopHeaderV2
+   * Initialize a new instance of the Checkbox
    * @param props - Props for the component
    * @param context - Context or initial state for the base component.
    */
@@ -86,37 +86,36 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
-          <button
-            {...inputProps}
-            data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-            {...checked !== undefined && { checked }}
-            {...defaultChecked !== undefined && { defaultChecked }}
-            disabled={disabled}
-            ref={this._checkBox}
-            name={name}
-            id={this._id}
-            role="checkbox"
-            type="button"
-            title={title}
-            className={this._classNames.root}
-            onClick={this._onClick}
-            onFocus={this._onFocus}
-            onBlur={this._onBlur}
-            aria-checked={isChecked}
-            aria-disabled={disabled}
-            aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
-            aria-posinset={ariaPositionInSet}
-            aria-setsize={ariaSetSize}
-          >
+          <div className={this._classNames.root}>
+            <input
+              type="checkbox"
+              {...inputProps}
+              data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+              {...checked !== undefined && { checked }}
+              {...defaultChecked !== undefined && { defaultChecked }}
+              disabled={disabled}
+              className={this._classNames.input}
+              ref={this._checkBox}
+              name={name}
+              id={this._id}
+              title={title}
+              onChange={this._onChange}
+              onFocus={this._onFocus}
+              onBlur={this._onBlur}
+              aria-disabled={disabled}
+              aria-label={ariaLabel}
+              aria-labelledby={ariaLabelledBy}
+              aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
+              aria-posinset={ariaPositionInSet}
+              aria-setsize={ariaSetSize}
+            />
             <label className={this._classNames.label} htmlFor={this._id}>
               <div className={this._classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
                 <Icon iconName="CheckMark" {...checkmarkIconProps} className={this._classNames.checkmark} />
               </div>
               {onRenderLabel(this.props, this._onRenderLabel)}
             </label>
-          </button>
+          </div>
         )}
       </KeytipData>
     );
@@ -148,11 +147,9 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
     }
   };
 
-  private _onClick = (ev: React.FormEvent<HTMLElement>): void => {
+  private _onChange = (ev: React.FormEvent<HTMLElement>): void => {
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
-    ev.preventDefault();
-    ev.stopPropagation();
 
     if (!disabled) {
       if (onChange) {

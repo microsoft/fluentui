@@ -25,13 +25,10 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="ShimmerExample"
         exampleCards={
           <div>
-            <ExampleCard title="Shimmer with basic elements using the &quot;shimmerElements&quot; prop" code={ShimmerBasicExampleCode}>
+            <ExampleCard title='Shimmer with basic elements using the "shimmerElements" prop' code={ShimmerBasicExampleCode}>
               <ShimmerBasicExample />
             </ExampleCard>
-            <ExampleCard
-              title="Shimmer with custom elements using the &quot;customElementsGroup&quot; prop"
-              code={ShimmerCustomExampleCode}
-            >
+            <ExampleCard title='Shimmer with custom elements using the "customElementsGroup" prop' code={ShimmerCustomExampleCode}>
               <ShimmerCustomElementsExample />
             </ExampleCard>
             <ExampleCard title="Shimmer swapping with the content it replaces" code={ShimmerLoadDataExampleCode}>
@@ -43,7 +40,7 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
             >
               <ShimmerApplicationExample />
             </ExampleCard>
-            <ExampleCard title="Style override of shimmering wave using &quot;styles&quot; prop" code={ShimmerStylingExampleCode}>
+            <ExampleCard title='Style override of shimmering wave using "styles" prop' code={ShimmerStylingExampleCode}>
               <ShimmerStylingExample />
             </ExampleCard>
           </div>

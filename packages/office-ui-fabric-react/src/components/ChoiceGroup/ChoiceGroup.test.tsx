@@ -23,7 +23,13 @@ describe('ChoiceGroup', () => {
   });
 
   it('renders ChoiceGroup correctly', () => {
-    const component = renderer.create(<ChoiceGroup options={TEST_OPTIONS} required />);
+    const component = renderer.create(<ChoiceGroup className="testClassName" options={TEST_OPTIONS} required />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('label does not have className prop from parent', () => {
+    const component = renderer.create(<ChoiceGroup className="testClassName" label="testLabel" options={TEST_OPTIONS} required />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -147,22 +153,18 @@ describe('ChoiceGroup', () => {
     expect(extraAttributeGetter(1)).toBeNull();
   });
 
-  // By default, we need to assign the role 'application' on the containing div
-  // because JAWS doesn't call OnKeyDown without this role
-  it('has role="application" by default on the containing element', () => {
-    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} />);
-    const choiceGroupEl: Element = choiceGroup.getDOMNode();
-    const role = choiceGroupEl.getAttribute('role');
-
-    expect(role).toEqual('application');
-  });
-
   it('has role attribute that can be omitted', () => {
     const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" />);
     const choiceGroupEl: Element = choiceGroup.getDOMNode();
     const role = choiceGroupEl.getAttribute('role');
-
     expect(role).toEqual('');
+  });
+
+  it('can assign a role attribute to the containing element', () => {
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="Test" />);
+    const choiceGroupEl: Element = choiceGroup.getDOMNode();
+    const role = choiceGroupEl.getAttribute('role');
+    expect(role).toEqual('Test');
   });
 
   it('can assign a custom aria label', () => {

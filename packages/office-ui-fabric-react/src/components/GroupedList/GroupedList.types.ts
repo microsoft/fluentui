@@ -27,7 +27,7 @@ export interface IGroupedList extends IList {
   toggleCollapseAll: (allCollapsed: boolean) => void;
 }
 
-export interface IGroupedListProps extends React.Props<GroupedListBase> {
+export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   /**
    * Theme that is passed in from Higher Order Component
    */
@@ -46,6 +46,9 @@ export interface IGroupedListProps extends React.Props<GroupedListBase> {
 
   /** Optional class name to add to the root element. */
   className?: string;
+
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
 
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
@@ -229,6 +232,9 @@ export interface IGroupRenderProps {
 export interface IGroupDividerProps {
   componentRef?: IRefObject<{}>;
 
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
+
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
 
@@ -297,6 +303,9 @@ export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> 
   Pick<IGroupedListProps, 'className'> & {
     /** whether or not the group is collapsed */
     isCollapsed?: boolean;
+
+    /** Whether the group is in compact mode or not */
+    compact?: boolean;
   };
 
 export interface IGroupedListStyles {

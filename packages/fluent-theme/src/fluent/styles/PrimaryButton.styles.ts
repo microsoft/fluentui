@@ -1,7 +1,8 @@
 import { fluentBorderRadius } from './styleConstants';
 import { CommunicationColors, NeutralColors } from '../FluentColors';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
-export const PrimaryButtonStyles = {
+export const PrimaryButtonStyles: Partial<IButtonStyles> = {
   root: {
     borderRadius: fluentBorderRadius,
     border: 'none',

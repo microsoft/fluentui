@@ -1,6 +1,36 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+
+## 6.27.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Deprecate utility using legacy context
+- BaseComponent: when updating componentRef, handle case where current or previous props are not given
+
+## 6.27.1
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
+
+## 6.27.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- Styled: now reacts to loadTheme changes even when not wrapped in a Customizer.
+
+## 6.26.0
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Minor changes
+
+- Add osDetector utility
 
 ## 6.25.0
 Wed, 31 Oct 2018 12:32:41 GMT

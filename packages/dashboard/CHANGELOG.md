@@ -1,6 +1,129 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+
+## 0.43.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+- Adding support for JSX.Element to DGLWithAddCardPanel. Still maintaining support for RTL/LTR and accessibility.
+
+### Patches
+
+- Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps
+
+## 0.42.2
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Add support of accessibility for the card component
+
+## 0.42.1
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Patches
+
+- Adding focus for action bar overflow button
+- Add tooltip for navbar expended button
+
+## 0.42.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+
+## 0.41.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- Minor RTL improvement and bug fix in setup banner
+
+## 0.41.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- Improved low resolution support and added shimmer to setup banner
+
+## 0.40.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Adding LTR to layout even though RTL is experienced. This way the cards are visible on the layout. Setting RTL to the content of the card, this is necessary as a wrapper was introduced which explicitly said ltr
+
+## 0.39.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Adding aria-hidden and alt property for the image of Thumbnail item in ThumbnailList component
+
+## 0.38.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Support to horizontal compact dashboard cards
+
+## 0.37.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Using _async fabric utility functions to prevent timeout leaks
+
+## 0.37.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Adding add card experience to DGL, providing respective callbacks and examples
+
+### Patches
+
+- Add missing dependency
+
+## 0.36.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- RecommendationBanner improvements to support Visualizations and ImageIllustration by default
+
+## 0.35.1
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Patches
+
+- add default fonts from fabric  for dashboard package 
+
+## 0.35.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- Adding SetupCard and SetupCardBanner.
+
+## 0.34.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- Adding props for card to send props to dataviz in charting package
+
+## 0.33.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Fixes #5849: get rid of explicit loader syntax inside component file
+- Updating context menu shadow styling for card frame and action bar
 
 ## 0.33.0
 Tue, 06 Nov 2018 13:31:09 GMT

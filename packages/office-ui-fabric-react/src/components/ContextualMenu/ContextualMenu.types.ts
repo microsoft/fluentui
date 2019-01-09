@@ -363,9 +363,10 @@ export interface IContextualMenuItem {
 
   /**
    * Properties to apply to a submenu to this item.
-   * The ContextualMenu will provide default values for 'target', 'onDismiss', 'isSubMenu',
-   *  'id', 'shouldFocusOnMount', 'directionalHint', 'className', and 'gapSpace', all of which
-   *  can be overridden.
+   *
+   * The ContextualMenu will provide default values for `target`, `onDismiss`, `isSubMenu`,
+   * `id`, `shouldFocusOnMount`, `directionalHint`, `className`, and `gapSpace`, all of which
+   * can be overridden.
    */
   subMenuProps?: IContextualMenuProps;
 
@@ -489,7 +490,7 @@ export interface IContextualMenuItem {
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
  */
-export interface IContextualMenuSection extends React.Props<any> {
+export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
    * The items to include inside the section.
    */

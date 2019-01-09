@@ -155,8 +155,8 @@ export class Nav extends React.Component<INavProps, INavState> {
       page.pages && title === 'Components' && !this.state.filterState
         ? this._renderSortedLinks(page.pages, title)
         : page.pages
-          ? this._renderLinkList(page.pages, true, title)
-          : null;
+        ? this._renderLinkList(page.pages, true, title)
+        : null;
     const { searchQuery } = this.state;
     const text = page.title;
     let linkText = <>{text}</>;
@@ -193,12 +193,11 @@ export class Nav extends React.Component<INavProps, INavState> {
           )}
           key={linkIndex}
         >
-          {!page.isUhfLink &&
-            (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
-              <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
-                {linkText}
-              </a>
-            )}
+          {!page.isUhfLink && (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
+            <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
+              {linkText}
+            </a>
+          )}
           {childLinks}
         </li>
       </>

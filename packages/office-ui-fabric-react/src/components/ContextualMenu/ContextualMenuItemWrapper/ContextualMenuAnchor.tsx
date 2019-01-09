@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { anchorProperties, getNativeProps, createRef } from '../../../Utilities';
+import { anchorProperties, getNativeProps } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
-  private _anchor = createRef<HTMLAnchorElement>();
+  private _anchor = React.createRef<HTMLAnchorElement>();
 
   public render() {
     const {
@@ -67,6 +67,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               onClick={this._onItemClick}
               onMouseEnter={this._onItemMouseEnter}
               onMouseLeave={this._onItemMouseLeave}
+              onMouseMove={this._onItemMouseMove}
               onKeyDown={itemHasSubmenu ? this._onItemKeyDown : null}
             >
               <ChildrenRenderer
@@ -74,7 +75,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
                 item={item}
                 classNames={classNames}
                 index={index}
-                onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
+                onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}
                 hasIcons={hasIcons}
                 openSubMenu={openSubMenu}
                 dismissSubMenu={dismissSubMenu}

@@ -8,6 +8,7 @@ export interface ICustomizerContext {
 
 export const CustomizerContext = React.createContext<ICustomizerContext>({
   customizations: {
+    inCustomizerContext: false,
     settings: {},
     scopedSettings: {}
   }
@@ -79,6 +80,8 @@ export type ICustomizerProps = IBaseProps &
  * @public
  */
 export class Customizer extends BaseComponent<ICustomizerProps> {
+  private _changeCount = 0;
+
   public componentDidMount(): void {
     Customizations.observe(this._onCustomizationChange);
   }
@@ -120,7 +123,8 @@ export function mergeCustomizations(props: ICustomizerProps, parentContext: ICus
   return {
     customizations: {
       settings: mergeSettings(customizations.settings, props.settings),
-      scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings)
+      scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings),
+      inCustomizerContext: true
     }
   };
 }

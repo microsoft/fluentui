@@ -1,6 +1,31 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+
+## 6.8.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Remove string refs from IconGrid
+
+## 6.8.1
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Patches
+
+- Add missing dependency
+
+## 6.8.0
+Wed, 07 Nov 2018 13:31:00 GMT
+
+### Minor changes
+
+- Add TopNav and mobile left nav to local and non-UHF site. Allow left nav to be accessed by keyboard.
+
+### Patches
+
+- Website: Update iconography implementation documentation
 
 ## 6.7.2
 Tue, 06 Nov 2018 13:31:09 GMT

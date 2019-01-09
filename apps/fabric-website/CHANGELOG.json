@@ -2,6 +2,76 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.8.2",
+      "tag": "@uifabric/fabric-website_v6.8.2",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove string refs from IconGrid",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.2 <7.0.0` to `>=6.50.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.1",
+      "tag": "@uifabric/fabric-website_v6.8.1",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing dependency",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8276c66fdf75a4ad8b03614fd4e7c6e2c52203e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/fabric-website_v6.8.0",
+      "date": "Wed, 07 Nov 2018 13:31:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add TopNav and mobile left nav to local and non-UHF site. Allow left nav to be accessed by keyboard.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "9580e27dd0bae4e6c57f8298a8602f3d8220ca8b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Website: Update iconography implementation documentation",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "1d6c20753150e5337137a492d4cde3ff9b59a7fe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.1 <7.0.0` to `>=6.100.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.7.2",
       "tag": "@uifabric/fabric-website_v6.7.2",
       "date": "Tue, 06 Nov 2018 13:31:09 GMT",

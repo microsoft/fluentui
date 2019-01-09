@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef, getNativeProps, inputProperties } from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -19,8 +19,8 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     clearButtonProps: { ariaLabel: 'Clear text' }
   };
 
-  private _rootElement = createRef<HTMLDivElement>();
-  private _inputElement = createRef<HTMLInputElement>();
+  private _rootElement = React.createRef<HTMLDivElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
 
   public constructor(props: ISearchBoxProps) {
@@ -43,8 +43,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   public componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
+      // If the user passes in null, substitute an empty string
+      // (passing null is not allowed per typings, but users might do it anyway)
       this.setState({
-        value: newProps.value
+        value: newProps.value || ''
       });
     }
   }
@@ -142,7 +144,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   }
 
   private _onClickFocus = () => {
-    const inputElement = this._inputElement.value;
+    const inputElement = this._inputElement.current;
     if (inputElement) {
       this.focus();
       inputElement.selectionStart = inputElement.selectionEnd = 0;
