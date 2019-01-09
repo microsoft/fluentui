@@ -9598,7 +9598,6 @@ interface IRGB {
 
 // @public (undocumented)
 interface IScheme {
-  defaultFontStyle: IRawStyle;
   disableGlobalClassNames: boolean;
   // (undocumented)
   effects: IEffects;

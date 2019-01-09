@@ -16,10 +16,6 @@ export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 export interface IScheme {
   palette: IPalette;
   fonts: IFontStyles;
-  /**
-   * Use this property to specify attribute defaults.
-   */
-  defaultFontStyle: IRawStyle;
   semanticColors: ISemanticColors;
   isInverted: boolean;
 
@@ -55,16 +51,18 @@ export interface ITheme extends IScheme {
 }
 
 export type IPartialTheme = {
-  [P in keyof Pick<
-    ITheme,
-    | 'palette'
-    | 'fonts'
-    | 'defaultFontStyle'
-    | 'semanticColors'
-    | 'isInverted'
-    | 'disableGlobalClassNames'
-    | 'spacing'
-    | 'schemes'
-    | 'effects'
-  >]?: Partial<ITheme[P]>
+  palette?: Partial<IPalette>;
+  fonts?: Partial<IFontStyles>;
+
+  /**
+   * Use this property to specify font property defaults.
+   */
+  defaultFontStyle?: IRawStyle;
+
+  semanticColors?: Partial<ISemanticColors>;
+  isInverted?: boolean;
+  disableGlobalClassNames?: boolean;
+  spacing?: Partial<ISpacing>;
+  effects?: Partial<IEffects>;
+  schemes?: { [P in ISchemeNames]?: IScheme };
 };
