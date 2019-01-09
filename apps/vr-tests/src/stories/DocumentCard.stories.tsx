@@ -127,26 +127,4 @@ storiesOf('DocumentCard', module)
         {DocActivity}
       </DocumentCard>
     </Fabric>
-  ))
-  .addStory(
-    'With Views',
-    () => (
-      <Fabric>
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
-          <DocumentCardPreview {...previewPropsCompact} />
-          <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
-          {DocActivity}
-          <DocumentCardActions
-            actions={[
-              {
-                iconProps: { iconName: 'Share' },
-                ariaLabel: 'share action'
-              }
-            ]}
-            views={432}
-          />
-        </DocumentCard>
-      </Fabric>
-    ),
-    { rtl: true }
-  );
+  ));
