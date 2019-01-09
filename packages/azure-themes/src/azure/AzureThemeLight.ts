@@ -60,6 +60,7 @@ export const AzureThemeLight: ITheme = createTheme({
     neutralDark: LightSemanticColors.text.body,
     neutralLight: CommonSemanticColors.backgrounds.section, // shimmer elements
     neutralLighter: CommonSemanticColors.backgrounds.section, // shimmer elements
+    neutralQuaternaryAlt: LightSemanticColors.item.select, // expand button on list controls
     white: LightSemanticColors.background // shimmer elements
   },
   semanticColors: lightExtendedSemanticColors
