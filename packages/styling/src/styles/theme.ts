@@ -89,8 +89,7 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   return _theme;
 }
 
-// tslint:disable-next-line:no-any
-export function loadFonts(theme: ITheme): any {
+export function loadFonts(theme: ITheme): { [name: string]: string } {
   const lines = {};
 
   for (const fontName of Object.keys(theme.fonts)) {
