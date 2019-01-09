@@ -116,5 +116,4 @@ export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TSt
 >;
 
 // TODO: Is this type really needed? Particularly if styles can be derived from slots in IComponentOptions?
-// TODO: Is IStyle the right type here? This should probably be a map of keys to Slot component styles prop instead.
 export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };

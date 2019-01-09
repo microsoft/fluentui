@@ -140,7 +140,6 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
   const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
   const processedProps = userProps as TProps & IDefaultSlotProps<TSlots>;
 
-  // TODO: need to check if userProps is defined? what is passed here when no props are passed to Button?
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
       if (processedProps && processedProps[name] && React.Children.count(processedProps[name].children) > 0) {

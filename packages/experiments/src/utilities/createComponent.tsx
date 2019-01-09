@@ -139,7 +139,6 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
   );
 }
 
-// TODO: add tests to deal with various cases: no tokens, undefined, etc.
 function _resolveTokens<TViewProps, TTokens>(
   props: TViewProps,
   theme: ITheme,

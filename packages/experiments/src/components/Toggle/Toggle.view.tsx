@@ -19,7 +19,6 @@ export const ToggleView: IToggleComponent['view'] = props => {
     text: Label
   });
 
-  // TODO: find a way to remove check against existence of label and text for rendering if possible
   return (
     <Slots.root>
       <Slots.label htmlFor={this._id}>{label}</Slots.label>

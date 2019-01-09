@@ -28,7 +28,6 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
     presence: PersonaPresence
   });
 
-  // TODO: push props.presence check to factoryComponents (if needed? what happens if check is removed?)
   return (
     <Slots.root>
       <Slots.initials initials={props.initials} text={props.text} allowPhoneInitials={props.allowPhoneInitials} />
@@ -40,7 +39,7 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
         imageShouldStartVisible={props.imageShouldStartVisible}
         imageAlt={props.imageAlt}
       />
-      {props.presence ? <Slots.presence coinSize={coinSize} size={coinSize} /> : null}
+      <Slots.presence coinSize={coinSize} size={coinSize} />
     </Slots.root>
   );
 };
