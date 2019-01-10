@@ -340,13 +340,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     if (this.state.value !== undefined && this._valueToValidate !== undefined && this._valueToValidate !== this._lastValidValue) {
       const newValue = this._onValidate!(this._valueToValidate, event);
       if (newValue) {
+        if (this.props.onValidValueUpdated && this._lastValidValue !== newValue) {
+          this.props.onValidValueUpdated(newValue);
+        }
+
         this._lastValidValue = newValue;
         this._valueToValidate = undefined;
         this.setState({ value: newValue });
-
-        if (this.props.onValidValueUpdated) {
-          this.props.onValidValueUpdated(newValue);
-        }
       }
     }
   };
@@ -374,12 +374,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _updateValue = (shouldSpin: boolean, stepDelay: number, stepFunction: (value: string) => string | void): void => {
     const newValue: string | void = stepFunction(this.state.value);
     if (newValue) {
-      this._lastValidValue = newValue;
-      this.setState({ value: newValue });
-
-      if (this.props.onValidValueUpdated) {
+      if (this.props.onValidValueUpdated && this._lastValidValue !== newValue) {
         this.props.onValidValueUpdated(newValue);
       }
+
+      this._lastValidValue = newValue;
+      this.setState({ value: newValue });
     }
 
     if (this._spinningByMouse !== shouldSpin) {

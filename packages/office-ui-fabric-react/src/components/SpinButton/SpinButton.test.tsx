@@ -682,15 +682,14 @@ describe('SpinButton', () => {
 
   it('should call `onValidValueUpdated` with the last valid value when recover from invalid input', () => {
     const onValidValueUpdate: jest.Mock = jest.fn();
-    const exampleValue = '22';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label="label" defaultValue={exampleValue} onValidValueUpdated={onValidValueUpdate} />
+      <SpinButton label="label" defaultValue="22" onValidValueUpdated={onValidValueUpdate} />
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('a-invalid-value'));
     ReactTestUtils.Simulate.blur(inputDOM);
-    expect(onValidValueUpdate).toBeCalledWith(exampleValue);
+    expect(onValidValueUpdate).not.toBeCalled();
   });
 });
