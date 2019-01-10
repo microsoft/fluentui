@@ -21,12 +21,18 @@ export class SpinButtonControlledExample extends React.Component<{}, ISpinButton
         <SpinButton
           label="SpinButton as controlled component:"
           value={this.state.value}
+          min={-50}
+          max={50}
+          step={2}
           onValidValueUpdated={value => this.setState({ value })}
         />
         <br />
         <SpinButton
           label="SpinButton synchronous the value:"
           value={this.state.value}
+          min={-50}
+          max={50}
+          step={2}
           onValidValueUpdated={value => this.setState({ value })}
         />
       </div>
