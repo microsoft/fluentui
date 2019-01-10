@@ -17,7 +17,6 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     id,
     href,
     target,
-    onClick,
     dataHint,
     dataValue,
     ariaLabel,
@@ -49,6 +48,9 @@ export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
     width: '48px',
     display: rightIconName === 'OpenInNewWindow' ? 'none' : 'inline-block'
   };
+
+  // if there is a href and target honour href and do not execute onclick
+  const onClick = !!href && !!target ? undefined : props.onClick;
 
   return (
     <a
