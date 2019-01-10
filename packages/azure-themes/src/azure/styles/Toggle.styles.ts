@@ -1,6 +1,7 @@
 import { FontSizes } from '../AzureType';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib';
+import { BaseColors } from '../AzureColors';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { theme, disabled, checked } = props;
@@ -20,9 +21,9 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: extendedSemanticColors.controlOutlineDisabled
       },
       !checked &&
-        disabled && {
-          backgroundColor: semanticColors.disabledBackground
-        }
+      disabled && {
+        backgroundColor: semanticColors.disabledBackground
+      }
     ],
     //toggle circle
     thumb: [
@@ -33,9 +34,9 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         backgroundColor: semanticColors.disabledBodyText
       },
       checked &&
-        !disabled && {
-          backgroundColor: 'white'
-        }
+      !disabled && {
+        backgroundColor: BaseColors.WHITE
+      }
     ],
     root: [
       {
