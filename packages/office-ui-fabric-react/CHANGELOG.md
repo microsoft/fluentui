@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jan 2019 13:34:59 GMT and should not be manually modified.
+
+## 6.124.0
+Thu, 10 Jan 2019 13:34:59 GMT
+
+### Minor changes
+
+- Pickers: converting to CSS-in-JS suggestions part of the pickers. Move some interfaces and create styled versions of each subcomponent base. Fix imports and more cleanup.
 
 ## 6.123.0
 Thu, 10 Jan 2019 04:58:48 GMT

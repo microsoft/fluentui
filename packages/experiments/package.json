@@ -61,7 +61,7 @@
     "@uifabric/merge-styles": ">=6.15.0 <7.0.0",
     "@uifabric/styling": ">=6.40.0 <7.0.0",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": ">=6.123.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.124.0 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

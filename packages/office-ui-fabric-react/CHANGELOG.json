@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.124.0",
+      "tag": "office-ui-fabric-react_v6.124.0",
+      "date": "Thu, 10 Jan 2019 13:34:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: converting to CSS-in-JS suggestions part of the pickers. Move some interfaces and create styled versions of each subcomponent base. Fix imports and more cleanup.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "d3baf56050d036612bdb6a600b6ca6fbe4516ca6"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.123.0",
       "tag": "office-ui-fabric-react_v6.123.0",
       "date": "Thu, 10 Jan 2019 04:58:48 GMT",
