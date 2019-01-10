@@ -75,7 +75,7 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
         height: IMAGE_SIZE,
         position: 'absolute',
         top: VERTICAL_PADDING,
-        width: `calc(100% - #{HORIZONTAL_PADDING + IMAGE_SIZE + PERSONA_TEXT_GUTTER + HORIZONTAL_PADDING}px)`
+        width: `calc(100% - ${HORIZONTAL_PADDING + IMAGE_SIZE + PERSONA_TEXT_GUTTER + HORIZONTAL_PADDING}px)`
       }
     ],
     name: [

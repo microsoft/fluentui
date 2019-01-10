@@ -577,7 +577,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               left: 72px;
               position: absolute;
               top: 8px;
-              width: calc(100% - #{horizontalPadding + imageSize + personaTextGutter + horizontalPadding}px);
+              width: calc(100% - 72px);
             }
       >
         <span
@@ -1453,7 +1453,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               left: 72px;
               position: absolute;
               top: 8px;
-              width: calc(100% - #{horizontalPadding + imageSize + personaTextGutter + horizontalPadding}px);
+              width: calc(100% - 72px);
             }
       >
         <span
@@ -1867,7 +1867,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               left: 72px;
               position: absolute;
               top: 8px;
-              width: calc(100% - #{horizontalPadding + imageSize + personaTextGutter + horizontalPadding}px);
+              width: calc(100% - 72px);
             }
       >
         <span
@@ -2239,7 +2239,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               left: 72px;
               position: absolute;
               top: 8px;
-              width: calc(100% - #{horizontalPadding + imageSize + personaTextGutter + horizontalPadding}px);
+              width: calc(100% - 72px);
             }
       >
         <span
@@ -2528,7 +2528,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 left: 56px;
                 position: absolute;
                 top: 8px;
-                width: calc(100% - #{horizontalPadding + imageSize + personaTextGutter + horizontalPadding}px);
+                width: calc(100% - 72px);
               }
         >
           <span

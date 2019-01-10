@@ -286,7 +286,7 @@ exports[`Component Examples renders DocumentCard.Basic.Example.tsx correctly 1`]
             left: 56px;
             position: absolute;
             top: 8px;
-            width: calc(100% - #{horizontalPadding + imageSize + personaTextGutter + horizontalPadding}px);
+            width: calc(100% - 72px);
           }
     >
       <span
