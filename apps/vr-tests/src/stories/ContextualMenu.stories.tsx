@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react';
+import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem, DefaultButton } from 'office-ui-fabric-react';
 
 const items: IContextualMenuItem[] = [
   {
@@ -321,7 +321,8 @@ storiesOf('ContextualMenu', module)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
-        .snapshot('default2', { cropTo: '.ms-Layer' })
+        .click('#button')
+        .snapshot('menu opened', { cropTo: '.ms-Layer' })
         .hover('#parent')
         .snapshot('parent hovered', { cropTo: '.ms-Layer' })
         .hover('#item1')
@@ -333,4 +334,6 @@ storiesOf('ContextualMenu', module)
       {story()}
     </Screener>
   ))
-  .addStory('With submenus with hrefs', () => <ContextualMenu items={itemsWithSubmenuHrefs} />);
+  .addStory('With submenus with hrefs', () => (
+    <DefaultButton id="button" text="Click for ContextualMenu" menuProps={{ items: itemsWithSubmenuHrefs }} />
+  ));
