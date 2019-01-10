@@ -1,6 +1,6 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import { ContextualMenu } from 'office-ui-fabric-react';
-import { createElementWrapper, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '../../Foundation';
 import { Stack } from '../../Stack';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon, Text } from '../../utilities/factoryComponents';

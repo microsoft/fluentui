@@ -1,5 +1,5 @@
-/** @jsx createElementWrapper */
-import { createElementWrapper, getSlots } from '../../Foundation';
+/** @jsx withSlots */
+import { withSlots, getSlots } from '../../Foundation';
 import { getNativeProps, divProperties } from '../../Utilities';
 import { ITextComponent, ITextSlots } from './Text.types';
 

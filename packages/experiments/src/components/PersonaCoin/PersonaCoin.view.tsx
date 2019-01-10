@@ -1,6 +1,6 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import { Icon } from 'office-ui-fabric-react';
-import { createElementWrapper, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '../../Foundation';
 import { PersonaPresence } from '../../utilities/factoryComponents';
 import { Text } from '../../Text';
 import { IPersonaCoinComponent, IPersonaCoinSlots } from './PersonaCoin.types';

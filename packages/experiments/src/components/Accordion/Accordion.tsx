@@ -1,6 +1,6 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import * as React from 'react';
-import { createElementWrapper, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '../../Foundation';
 import { createStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { CollapsibleSection, ICollapsibleSectionProps, ICollapsibleSectionStyles } from '../../CollapsibleSection';
 import { IAccordionComponent, IAccordionProps, IAccordionSlots, IAccordionStyles } from './Accordion.types';

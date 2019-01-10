@@ -1,6 +1,6 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import * as React from 'react';
-import { createElementWrapper, createStatelessComponent, getSlots } from '../../../Foundation';
+import { withSlots, createStatelessComponent, getSlots } from '../../../Foundation';
 import { IStackItemComponent, IStackItemProps, IStackItemSlots, IStackItemStyles } from './StackItem.types';
 import { styles } from './StackItem.styles';
 

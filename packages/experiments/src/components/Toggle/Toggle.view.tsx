@@ -1,8 +1,8 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import { KeytipData } from 'office-ui-fabric-react/lib/KeytipData';
 import { Label } from '../../utilities/factoryComponents';
 
-import { createElementWrapper, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '../../Foundation';
 import { inputProperties, getNativeProps } from '../../Utilities';
 import { IToggleComponent, IToggleSlots } from './Toggle.types';
 

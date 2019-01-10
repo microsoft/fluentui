@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { createElementWrapper, createFactory, getSlots } from './slots';
+import { withSlots, createFactory, getSlots } from './slots';
 import { IFactoryProps, ISlot, ISlotProp, ISlotRenderFunction, ISlotDefinition } from './ISlots';
 
-describe('createElementWrapper', () => {
+describe('withSlots', () => {
   let reactCalls: number;
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('createElementWrapper', () => {
   });
 
   it('calls React.createElement by default', () => {
-    createElementWrapper('span');
+    withSlots('span');
 
     expect(reactCalls).toEqual(1);
   });
@@ -31,7 +31,7 @@ describe('createElementWrapper', () => {
       return <div />;
     };
 
-    createElementWrapper(factoryComponent);
+    withSlots(factoryComponent);
 
     expect(reactCalls).toEqual(1);
     expect(factoryCalls).toEqual(0);
@@ -46,7 +46,7 @@ describe('createElementWrapper', () => {
     };
     factoryComponent.isSlot = true;
 
-    createElementWrapper(factoryComponent);
+    withSlots(factoryComponent);
 
     expect(reactCalls).toEqual(0);
     expect(factoryCalls).toEqual(1);

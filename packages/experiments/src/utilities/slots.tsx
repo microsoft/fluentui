@@ -16,15 +16,15 @@ import {
 /**
  * This function removes Slots from the React hierarchy by wrapping React.createElement and bypassing it for Slot components.
  *
- * To use this function on a per-file basis, put the following in a comment block: @jsx createElementWrapper
+ * To use this function on a per-file basis, put the following in a comment block: @jsx withSlots
  * As of writing, this line must be the FIRST LINE in the file to work correctly.
  *
- * Usage of this pragma also requires an import statement of SlotModule such as: import { createElementWrapper } from '<path>/slots';
+ * Usage of this pragma also requires an import statement of SlotModule such as: import { withSlots } from '@uifabric/foundation';
  *
  * @see React.createElement
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
-export function createElementWrapper<P>(
+export function withSlots<P>(
   type: ISlot<P> | React.SFC<P> | string,
   props?: React.Attributes & P | null,
   // tslint:disable-next-line:missing-optional-annotation
@@ -40,6 +40,9 @@ export function createElementWrapper<P>(
     // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
     // TODO: should this be mutating? does React mutate children subprop with createElement?
     // TODO: will toArray clobber existing keys?
+    // TODO: React generates warnings because it doesn't detect hidden member _store that is set in createElement.
+    //        Even children passed to createElement without keys don't generate this warning.
+    //        Is there a better way to prevent Slots from appearing in hierarchy? toArray doesn't address root issue.
     children = React.Children.toArray(children);
 
     return slotType({ ...(props as any), children });
@@ -149,6 +152,9 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
         processedProps[name].children = React.Children.toArray(processedProps[name].children);
       }
 
+      // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
+      //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
+      //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
       const slot: ISlot<keyof TSlots> = componentProps => {
         return renderSlot(
           slots[name],

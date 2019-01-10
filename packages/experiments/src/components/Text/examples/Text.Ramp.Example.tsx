@@ -1,8 +1,8 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import { Text, Stack, IStackProps } from '@uifabric/experiments';
 import { IFontStyles } from '@uifabric/experiments/lib/Styling';
 import {
-  createElementWrapper,
+  withSlots,
   createStatelessComponent,
   getSlots,
   IComponentStyles,

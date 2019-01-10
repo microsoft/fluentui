@@ -1,6 +1,6 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import * as React from 'react';
-import { createElementWrapper, createStatelessComponent, getSlots, IStyleableComponentProps } from '../../Foundation';
+import { withSlots, createStatelessComponent, getSlots, IStyleableComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
 import { IStackComponent, IStackProps, IStackSlots, IStackStyles } from './Stack.types';
@@ -59,8 +59,8 @@ const view: IStackComponent['view'] = props => {
 
   if (wrap) {
     return (
-      <Slots.root>
-        <Slots.inner {...nativeProps}>{stackChildren}</Slots.inner>
+      <Slots.root {...nativeProps}>
+        <Slots.inner>{stackChildren}</Slots.inner>
       </Slots.root>
     );
   }

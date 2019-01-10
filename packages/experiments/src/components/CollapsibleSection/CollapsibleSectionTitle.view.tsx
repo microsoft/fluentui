@@ -1,7 +1,7 @@
-/** @jsx createElementWrapper */
+/** @jsx withSlots */
 import { Text } from '../../Text';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { createElementWrapper, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '../../Foundation';
 import { ICollapsibleSectionTitleComponent, ICollapsibleSectionTitleSlots } from './CollapsibleSectionTitle.types';
 
 export const CollapsibleSectionTitleView: ICollapsibleSectionTitleComponent['view'] = props => {

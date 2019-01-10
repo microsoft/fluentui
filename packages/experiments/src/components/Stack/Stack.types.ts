@@ -19,16 +19,6 @@ export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStac
   as?: string | React.ReactType<IStackProps>;
 
   /**
-   * CSS class name used to style the Stack.
-   */
-  className?: string;
-
-  /**
-   * Inline styling.
-   */
-  style?: React.CSSProperties;
-
-  /**
    * Whether to render Stack child elements horizontally.
    * @defaultvalue false
    */
