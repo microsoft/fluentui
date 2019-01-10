@@ -82,8 +82,8 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
       <input
         aria-disabled={false}
         aria-labelledby="Label0"
-        aria-valuemax={100}
-        aria-valuemin={0}
+        aria-valuemax={50}
+        aria-valuemin={-50}
         aria-valuenow={37}
         autoComplete="off"
         className=
@@ -457,7 +457,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
         htmlFor="input9"
         id="Label8"
       >
-        SpinButton synchronous the value:will
+        SpinButton synchronous the value:
       </label>
     </div>
     <div
@@ -484,8 +484,8 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
       <input
         aria-disabled={false}
         aria-labelledby="Label8"
-        aria-valuemax={100}
-        aria-valuemin={0}
+        aria-valuemax={50}
+        aria-valuemin={-50}
         aria-valuenow={37}
         autoComplete="off"
         className=
