@@ -1,8 +1,4 @@
-export interface ISuggestionModel<T> {
-  item: T;
-  selected: boolean;
-  ariaLabel?: string;
-}
+import { ISuggestionModel } from './Suggestions.types';
 
 export class SuggestionsController<T> {
   public currentIndex: number;

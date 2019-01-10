@@ -1,6 +1,51 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Jan 2019 13:34:38 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jan 2019 13:34:59 GMT and should not be manually modified.
+
+## 6.124.0
+Thu, 10 Jan 2019 13:34:59 GMT
+
+### Minor changes
+
+- Pickers: converting to CSS-in-JS suggestions part of the pickers. Move some interfaces and create styled versions of each subcomponent base. Fix imports and more cleanup.
+
+## 6.123.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
+
+### Patches
+
+- Fix issues of marquee selection for IE
+- Pickers: Fix so controlled pickers will only focus when it has focus
+
+## 6.122.0
+Wed, 09 Jan 2019 13:35:35 GMT
+
+### Minor changes
+
+- Checkbox: Refactored to use an <input type="checkbox"> instead of "button", fixing several longstanding bugs along the way.
+- ChoiceGroup: Removed role='application' from root-div
+
+### Patches
+
+- Fixed: the commandbar will no longer flicker when resized
+- CommandBar: minor perf improvement in computing cache key
+- Fix the typing of ExpandingCard/PlainCard component props.
+- FocusTrapZone - Make forceFocusInsideTrap prop changes modify focus
+
+## 6.121.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Allow disabling specific dates on the calendar in addition to the max and min dates.
+
+### Patches
+
+- CalendarYear: convert from componentWillReceiveProps to getDerivedStateFromProps
 
 ## 6.120.0
 Mon, 07 Jan 2019 13:34:37 GMT

@@ -5,7 +5,6 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
   className=
       testClassName
 
-  role="application"
 >
   <div
     aria-labelledby="ChoiceGroup0-label"
@@ -413,7 +412,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
   className=
       testClassName
 
-  role="application"
 >
   <div
     className=

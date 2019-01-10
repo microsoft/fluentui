@@ -1,5 +1,5 @@
 let path = require('path');
-let resources = require('../../scripts/tasks/webpack-resources');
+let resources = require('../../scripts/webpack/webpack-resources');
 const devServerConfig = {
   inline: true,
   port: 4321

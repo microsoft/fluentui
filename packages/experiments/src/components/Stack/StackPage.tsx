@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 
 // Vertical Stack Examples
 import { VerticalStackBasicExample } from './examples/Stack.Vertical.Basic.Example';
@@ -141,22 +141,12 @@ export class StackPage extends React.Component<IComponentDemoPageProps, {}> {
             ]}
           />
         }
-        overview={<div />}
+        overview={
+          <PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/docs/StackOverview.md')}</PageMarkdown>
+        }
         bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
+        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/docs/StackDos.md')}</PageMarkdown>}
+        donts={<PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Stack/docs/StackDonts.md')}</PageMarkdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { ISuggestionModel } from './Suggestions/SuggestionsController';
+import { ISuggestionModel } from './Suggestions/Suggestions.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -20,7 +20,7 @@ export interface IBasePicker<T> {
 }
 
 // Type T is the type of the item that is displayed
-// and searched for by the people picker. For example, if the picker is
+// and searched for by the picker. For example, if the picker is
 // displaying persona's then type T could either be of Persona or IPersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
   /**

@@ -1,5 +1,4 @@
-const { createConfig } = require('../../scripts/tasks/jest-resources');
-const path = require('path');
+const { createConfig } = require('../../scripts/jest/jest-resources');
 
 const config = createConfig({
   snapshotSerializers: [path.resolve(__dirname)]
