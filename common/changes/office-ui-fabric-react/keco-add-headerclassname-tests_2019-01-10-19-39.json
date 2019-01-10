@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Add test for existance of headerClassName if provided",
+      "comment": "DetailsList: Add test for existence of headerClassName if provided",
       "type": "patch"
     }
   ],
