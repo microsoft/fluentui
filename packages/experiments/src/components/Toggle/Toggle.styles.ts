@@ -1,5 +1,5 @@
 import { IToggleComponent } from './Toggle.types';
-import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Toggle',
@@ -75,6 +75,26 @@ export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens) =
   const { className, disabled, checked } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const textStyles: IStyle = [
+    classNames.text,
+    {
+      selectors: {
+        // Workaround: make rules more sepecific than Label rules.
+        '&&': {
+          color: tokens.textColor,
+          padding: '0',
+          margin: '0 10px',
+          userSelect: 'none',
+          selectors: {
+            [HighContrastSelector]: {
+              color: tokens.textHighContrastColor
+            }
+          }
+        }
+      }
+    }
+  ];
 
   return {
     root: [
@@ -180,24 +200,7 @@ export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens) =
         }
       }
     ],
-    text: [
-      classNames.text,
-      {
-        selectors: {
-          // Workaround: make rules more sepecific than Label rules.
-          '&&': {
-            color: tokens.textColor,
-            padding: '0',
-            margin: '0 10px',
-            userSelect: 'none',
-            selectors: {
-              [HighContrastSelector]: {
-                color: tokens.textHighContrastColor
-              }
-            }
-          }
-        }
-      }
-    ]
+    offText: textStyles,
+    onText: textStyles
   };
 };

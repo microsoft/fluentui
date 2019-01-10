@@ -7,17 +7,41 @@ import { IHTMLButtonSlot, IHTMLSlot, ILabelSlot } from '../../utilities/factoryC
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens>;
 
-// TODO: resolve these issues:
-//    * text is a view-only slot and should not be exposed
-//    * offText and onText should be slots
-//    * consider removing slots as standalone interface instead of creating multiple slots interfaces
 export interface IToggleSlots {
+  /**
+   * Root element.
+   */
   root?: IHTMLSlot;
+
+  /**
+   * A label for the toggle.
+   */
   label?: ILabelSlot;
+
+  /**
+   * Container for the toggle pill and the text next to it.
+   */
   container?: IHTMLSlot;
+
+  /**
+   * Pill, rendered as a button.
+   */
   pill?: IHTMLButtonSlot;
+
+  /**
+   * Thumb inside of the pill.
+   */
   thumb?: IHTMLSlot;
-  text?: ILabelSlot;
+
+  /**
+   * Text to display when toggle is ON.
+   */
+  onText?: ILabelSlot;
+
+  /**
+   * Text to display when toggle is OFF.
+   */
+  offText?: ILabelSlot;
 }
 
 export interface IToggle {
@@ -38,16 +62,6 @@ export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<ITo
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IToggle>;
-
-  /**
-   * Text to display when toggle is ON.
-   */
-  onText?: string;
-
-  /**
-   * Text to display when toggle is OFF.
-   */
-  offText?: string;
 
   /**
    * Text for screen-reader to announce as the name of the toggle.
@@ -83,21 +97,17 @@ export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<ITo
   keytipProps?: IKeytipProps;
 }
 
-export type IToggleViewProps = Pick<
-  IToggleProps,
-  'as' | 'className' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps' | 'text'
-> &
-  Required<Pick<IToggleProps, 'checked' | 'tokens'>> & {
-    /**
-     * Toggle input callback triggered by mouse and keyboard input.
-     */
-    onClick?: (ev: React.MouseEvent<Element>) => void;
+export type IToggleViewProps = IToggleProps & {
+  /**
+   * Toggle input callback triggered by mouse and keyboard input.
+   */
+  onClick?: (ev: React.MouseEvent<Element>) => void;
 
-    /**
-     * Reference to the toggle button.
-     */
-    toggleButtonRef?: React.RefObject<HTMLButtonElement>;
-  };
+  /**
+   * Reference to the toggle button.
+   */
+  toggleButtonRef?: React.RefObject<HTMLButtonElement>;
+};
 
 /**
  * Styles for the Toggle component.
