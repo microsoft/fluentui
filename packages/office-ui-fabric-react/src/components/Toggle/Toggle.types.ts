@@ -68,6 +68,11 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   disabled?: boolean;
 
   /**
+   * Whether the label (not the onText/offText) should be positioned on the left (right in RTL) side from the toggle control.
+   */
+  inlineLabel?: boolean;
+
+  /**
    * Callback issued when the value changes.
    */
   onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
@@ -116,6 +121,11 @@ export interface IToggleStyleProps {
    * Component is checked.
    */
   checked?: boolean;
+
+  /**
+   * Label positioned inline (left or right in RTL).
+   */
+  inlineLabel?: boolean;
 }
 
 /**

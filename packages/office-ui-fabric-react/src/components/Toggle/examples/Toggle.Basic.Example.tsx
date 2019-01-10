@@ -43,6 +43,26 @@ export class ToggleBasicExample extends React.Component {
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
         />
+        <Toggle
+          defaultChecked={true}
+          label="With inline label"
+          inlineLabel={true}
+          onText="On"
+          offText="Off"
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          onChange={this._onChange}
+        />
+        <Toggle
+          defaultChecked={true}
+          disabled={true}
+          label="Disabled with inline label"
+          inlineLabel={true}
+          onText="On"
+          offText="Off"
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+        />
       </div>
     );
   }
