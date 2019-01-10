@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.40.0",
+      "tag": "@uifabric/styling_v6.40.0",
+      "date": "Thu, 10 Jan 2019 04:58:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ITheme: add defaultFontStyles property",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "04558fe11e54e6c0f1db85e14c32f65cfb1d502f"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.39.0",
       "tag": "@uifabric/styling_v6.39.0",
       "date": "Thu, 13 Dec 2018 13:37:01 GMT",
