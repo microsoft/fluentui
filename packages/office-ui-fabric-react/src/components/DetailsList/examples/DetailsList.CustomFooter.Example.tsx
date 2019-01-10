@@ -147,6 +147,7 @@ export class DetailsListCustomFooterExample extends React.Component<
   ): JSX.Element {
     return (
       <DetailsRow
+        {...detailsFooterProps}
         columns={detailsFooterProps!.columns as IColumn[]}
         item={{}}
         itemIndex={-1}

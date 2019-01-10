@@ -1,10 +1,8 @@
 import { Customizations, merge } from '@uifabric/utilities';
-import { IPalette, ISemanticColors, ITheme, IPartialTheme, ISemanticTextColors } from '../interfaces/index';
-import { ITypography, IPartialTypography, IFontVariant } from '../interfaces/ITypography';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
-import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { DefaultEffects } from './DefaultEffects';
 
@@ -13,7 +11,6 @@ let _theme: ITheme = createTheme({
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
-  typography: DefaultTypography,
   disableGlobalClassNames: false
 });
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
@@ -110,37 +107,27 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  const typography = merge<ITypography>({}, DefaultTypography, theme.typography as ITypography);
-  const { variants } = typography;
+  let defaultFontStyles: IFontStyles = DefaultFontStyles;
+  if (theme.defaultFontStyle) {
+    for (const fontStyle of Object.keys(DefaultFontStyles)) {
+      defaultFontStyles[fontStyle] = { ...defaultFontStyles[fontStyle], ...theme.defaultFontStyle };
+    }
+  }
 
-  for (const variantName in variants) {
-    if (variants.hasOwnProperty(variantName)) {
-      const variant: IFontVariant = {
-        ...variants.default,
-        ...variants[variantName]
-      };
-
-      variant.family = _expandFrom(variant.family, typography.families);
-      variant.size = _expandFrom(variant.size, typography.sizes);
-      variant.weight = _expandFrom(variant.weight, typography.weights);
-      variant.color = _expandFrom(variant.color, newSemanticColors);
-      variant.hoverColor = _expandFrom(variant.hoverColor, newSemanticColors);
-      variant.disabledColor = _expandFrom(variant.disabledColor, newSemanticColors);
-
-      variants[variantName] = variant;
+  if (theme.fonts) {
+    for (const fontStyle of Object.keys(theme.fonts)) {
+      defaultFontStyles[fontStyle] = merge(defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
     }
   }
 
   return {
     palette: newPalette,
     fonts: {
-      ...DefaultFontStyles,
-      ...theme.fonts
+      ...defaultFontStyles
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
-    typography: typography as ITypography,
     spacing: {
       ...DefaultSpacing,
       ...theme.spacing

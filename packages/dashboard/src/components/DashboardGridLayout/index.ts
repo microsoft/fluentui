@@ -4,6 +4,3 @@ export * from './DashboardGridLayout.types';
 export * from './DashboardGridLayoutWithAddCardPanel/DashboardGridLayoutWithAddCardPanel';
 export * from './DashboardGridLayoutWithAddCardPanel/DashboardGridLayoutWithAddCardPanel.types';
 export * from './AddCardPanel/AddCardPanel';
-export * from './AddCardPanel/AddCardPanel.types';
-export * from './AddCardPanel/AddCard/AddCard';
-export * from './AddCardPanel/AddCard/AddCard.types';

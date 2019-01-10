@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+
+## 6.8.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Remove string refs from IconGrid
 
 ## 6.8.1
 Fri, 30 Nov 2018 13:37:17 GMT

@@ -1,12 +1,13 @@
 import * as React from 'react';
+
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
+import { TagPicker, IBasePicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
+
 import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
-const _testTags = [
+const _testTags: ITag[] = [
   'black',
   'blue',
   'brown',
@@ -24,8 +25,13 @@ const _testTags = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
+export interface ITagPickerDemoPageState {
+  isPickerDisabled?: boolean;
+}
+
 export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageState> {
-  private _picker: TagPicker;
+  // All pickers extend from BasePicker specifying the item type.
+  private _picker = React.createRef<IBasePicker<ITag>>();
 
   constructor(props: {}) {
     super(props);
@@ -62,7 +68,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
         <br />
         Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
         <TagPicker
-          componentRef={this._resolveRef('_picker')}
+          componentRef={this._picker}
           onResolveSuggestions={this._onFilterChangedNoFilter}
           onItemSelected={this._onItemSelected}
           getTextFromItem={this._getTextFromItem}
@@ -82,7 +88,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     );
   }
 
-  private _getTextFromItem(item: any): any {
+  private _getTextFromItem(item: ITag): string {
     return item.name;
   }
 
@@ -92,7 +98,7 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
     });
   };
 
-  private _onFilterChanged = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
+  private _onFilterChanged = (filterText: string, tagList: ITag[]): ITag[] => {
     return filterText
       ? _testTags
           .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
@@ -100,18 +106,18 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
       : [];
   };
 
-  private _onFilterChangedNoFilter = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
+  private _onFilterChangedNoFilter = (filterText: string, tagList: ITag[]): ITag[] => {
     return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   };
 
-  private _onItemSelected = (item: { key: string; name: string }): { key: string; name: string } | null => {
-    if (this._listContainsDocument(item, this._picker.items)) {
+  private _onItemSelected = (item: ITag): ITag | null => {
+    if (this._picker.current && this._listContainsDocument(item, this._picker.current.items)) {
       return null;
     }
     return item;
   };
 
-  private _listContainsDocument(tag: { key: string; name: string }, tagList: { key: string; name: string }[]) {
+  private _listContainsDocument(tag: ITag, tagList?: ITag[]) {
     if (!tagList || !tagList.length || tagList.length === 0) {
       return false;
     }

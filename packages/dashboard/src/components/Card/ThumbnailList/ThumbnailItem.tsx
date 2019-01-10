@@ -13,12 +13,30 @@ export class ThumbnailItem extends React.Component<IThumbnailItemProps> {
     const getClassNames = classNamesFunction<IThumbnailItemProps, IThumbnailItemStyles>();
     const classNames = getClassNames(getThumbnailItemStyles);
     const customStyles = getCustomCommandBarStyles();
-    const { imageSource, subheaderText, description } = this.props;
+    const {
+      altImageText,
+      imageAriaHidden,
+      imageSource,
+      subheaderText,
+      description,
+      ariaDescription,
+      title,
+      ariaHidden,
+      ariaLabel
+    } = this.props;
     return (
       <div className={classNames.root}>
         <div className={classNames.image}>
-          <Image src={imageSource} />
-          <CompoundButton secondaryText={description} styles={customStyles} onClick={this.props.handleThumbnailItemClick}>
+          <Image src={imageSource} aria-hidden={imageAriaHidden} alt={altImageText} />
+          <CompoundButton
+            secondaryText={description}
+            styles={customStyles}
+            onClick={this.props.handleThumbnailItemClick}
+            ariaLabel={ariaLabel}
+            ariaDescription={ariaDescription}
+            ariaHidden={ariaHidden}
+            title={title}
+          >
             {subheaderText}
           </CompoundButton>
         </div>

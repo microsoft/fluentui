@@ -88,6 +88,8 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
             onClick={this._onClick}
             iconProps={{ iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' }}
             ariaLabel={this.props.overflowButtonAriaLabel}
+            aria-expanded={this.state.expandSingleLine}
+            aria-controls={this.state.labelId}
           />
         </div>
       );
@@ -118,10 +120,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
-      <div
-        className={this._classNames.root}
-        aria-expanded={!this.props.actions && this.props.truncated ? this.state.expandSingleLine : undefined}
-      >
+      <div className={this._classNames.root}>
         <div className={this._classNames.content}>
           {this._getIconSpan()}
           {this._renderInnerText()}

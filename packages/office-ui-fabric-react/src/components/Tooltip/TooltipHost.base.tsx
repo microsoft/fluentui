@@ -111,6 +111,10 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     }
   }
 
+  public show = (): void => {
+    this._toggleTooltip(true);
+  };
+
   public dismiss = (): void => {
     this._hideTooltip();
   };

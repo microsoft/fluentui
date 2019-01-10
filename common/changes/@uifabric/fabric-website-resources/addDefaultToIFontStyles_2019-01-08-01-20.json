@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Prettier changes",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "natalie.ethell@microsoft.com"
+}

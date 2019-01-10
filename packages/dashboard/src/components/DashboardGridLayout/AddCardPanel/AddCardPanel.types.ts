@@ -1,7 +1,8 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IDGLCard } from '../../../index';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IDGLCard, CardSize, DraggingAnimationType } from '../../../index';
 
-export interface IAddCardPanelProps {
+export interface IAddCardPanelProps extends IBaseProps {
   /**
    * The title for the add card panel
    */
@@ -21,14 +22,36 @@ export interface IAddCardPanelProps {
    * The callback method to switch between add card panel and the dashboard grid layout
    */
   moveCardFromAddCardPanelToDashboard?: (cardId: string) => void;
+
+  /**
+   * The callback method called upon add card panel dimiss
+   */
+  onDismiss?: () => void;
+
+  /**
+   * The callback that is called when a card is dragged, with the necessary card information
+   */
+  draggingCardCallback: (
+    cardId: string,
+    title: string,
+    cardSzie: CardSize,
+    initialX: number,
+    draggingAnimation?: DraggingAnimationType
+  ) => void;
+
+  /**
+   * The cards initial x position of add card, used to determine when to open the add card panel back
+   * This is helpful when the user wants to put the card in add card panel
+   */
+  initialX: number;
+
+  /**
+   * Panel close button aria label
+   */
+  closeButtonAriaLabel?: string;
 }
 
 export interface IAddCardPanelState {
-  /**
-   * The callback method to switch between add card panel and the dashboard grid layout
-   */
-  isOpen: boolean;
-
   /**
    * The styles(half closing of panel) applied to the flyout after successfully adding a card
    */

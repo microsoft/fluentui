@@ -10,7 +10,7 @@ export interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardSt
   /**
    *  Render function to populate compact content area
    */
-  onRenderPlainCard?: IRenderFunction<IPlainCardProps>;
+  onRenderPlainCard?: IRenderFunction<any>;
 }
 
 export interface IPlainCardStyleProps extends IBaseCardStyleProps {}

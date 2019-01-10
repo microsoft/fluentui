@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 29 Nov 2018 19:34:12 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Dec 2018 13:34:21 GMT and should not be manually modified.
+
+## 6.4.1
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Patches
+
+- Recognize additional file extensions
 
 ## 6.4.0
 Thu, 29 Nov 2018 19:34:12 GMT

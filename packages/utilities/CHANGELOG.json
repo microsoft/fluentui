@@ -2,6 +2,39 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.27.2",
+      "tag": "@uifabric/utilities_v6.27.2",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecate utility using legacy context",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          },
+          {
+            "comment": "BaseComponent: when updating componentRef, handle case where current or previous props are not given",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "698ab96e08f44a568b8a4e53aa247674b264133a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.27.1",
+      "tag": "@uifabric/utilities_v6.27.1",
+      "date": "Mon, 17 Dec 2018 13:36:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "BaseComponent: Remove componentWillReceiveProps usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "b2c512db6892047c208234265f7cbc8796f00074"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.27.0",
       "tag": "@uifabric/utilities_v6.27.0",
       "date": "Thu, 15 Nov 2018 13:36:22 GMT",

@@ -142,7 +142,7 @@ class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.C
   protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<TProps>): void;
   readonly className: string;
   componentDidMount(): void;
-  componentWillReceiveProps(newProps: Readonly<TProps>, newContext: any): void;
+  componentDidUpdate(prevProps: TProps, prevState: TState): void;
   componentWillUnmount(): void;
   // @deprecated (undocumented)
   static onError: ((errorMessage?: string, ex?: any) => void);
@@ -320,21 +320,13 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   focusInput(): void;
   // (undocumented)
-  protected focusZone: {
-    (component: IFocusZone | null): void;
-    current: IFocusZone | null;
-    value: IFocusZone | null;
-  }
+  protected focusZone: React.RefObject<IFocusZone>;
   // (undocumented)
   protected getActiveDescendant(): string | undefined;
   // (undocumented)
-  protected getSuggestionsAlert(): JSX.Element | undefined;
+  protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
   // (undocumented)
-  protected input: {
-    (component: IAutofill | null): void;
-    current: IAutofill | null;
-    value: IAutofill | null;
-  }
+  protected input: React.RefObject<IAutofill>;
   // (undocumented)
   readonly items: T[];
   // (undocumented)
@@ -380,19 +372,11 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected resolveNewValue(updatedValue: string, suggestions: T[]): void;
   // (undocumented)
-  protected root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
   protected selection: Selection;
   // (undocumented)
-  protected suggestionElement: {
-    (component: Suggestions<T> | null): void;
-    current: Suggestions<T> | null;
-    value: Suggestions<T> | null;
-  }
+  protected suggestionElement: React.RefObject<ISuggestions<T>>;
   // (undocumented)
   protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
   // (undocumented)
@@ -578,7 +562,7 @@ enum CheckboxVisibility {
 }
 
 // @public (undocumented)
-class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
+class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
   // (undocumented)
   componentWillReceiveProps(newProps: IChoiceGroupProps): void;
@@ -594,7 +578,7 @@ class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
-class Coachmark extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
+class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
   constructor(props: ICoachmarkProps);
   // (undocumented)
   componentDidMount(): void;
@@ -699,13 +683,11 @@ class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public
-class CompactPeoplePicker extends BasePeoplePicker {
-  // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
-  // (undocumented)
+class CompactPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
-    onRenderItem: (props: IPeoplePickerItemProps) => JSX.Element;
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
   }
 }
 
@@ -775,7 +757,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public (undocumented)
-export function createGenericItem(name: string, currentValidationState: ValidationState, allowPhoneInitials: boolean): IGenericItem & {
+export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & {
     key: React.Key;
 };
 
@@ -908,6 +890,7 @@ class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState
   // (undocumented)
   static defaultProps: {
     checkboxVisibility: CheckboxVisibility;
+    compact: boolean;
     constrainMode: ConstrainMode;
     enableShimmer: boolean;
     isHeaderVisible: boolean;
@@ -1114,8 +1097,8 @@ class EventGroup {
   // (undocumented)
   static isObserved(target: any, eventName: string): boolean;
   // (undocumented)
-  off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void;
-  on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void;
+  off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+  on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
   onAll(target: any, events: {
           [key: string]: (args?: any) => void;
       }, useCapture?: boolean): void;
@@ -1155,11 +1138,7 @@ class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   constructor(props: ISelectedPeopleItemProps);
   // (undocumented)
-  protected persona: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected persona: React.RefObject<HTMLDivElement>;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -1298,7 +1277,7 @@ class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements I
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
-  componentWillMount(): void;
+  componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
   // (undocumented)
   componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
   // (undocumented)
@@ -1540,6 +1519,7 @@ class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState
   componentWillReceiveProps(newProps: IGroupedListProps): void;
   // (undocumented)
   static defaultProps: {
+    compact: boolean;
     groupProps: {
     }
     isHeaderVisible: boolean;
@@ -1920,7 +1900,7 @@ interface IBaseFloatingPickerSuggestionProps {
   shouldSelectFirstItem?: () => boolean;
 }
 
-// @public (undocumented)
+// @public
 interface IBasePicker<T> {
   focus: () => void;
   focusInput: () => void;
@@ -1930,7 +1910,6 @@ interface IBasePicker<T> {
 // @public (undocumented)
 interface IBasePickerProps<T> extends React.Props<any> {
   className?: string;
-  // (undocumented)
   componentRef?: IRefObject<IBasePicker<T>>;
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
   defaultSelectedItems?: T[];
@@ -1960,6 +1939,8 @@ interface IBasePickerProps<T> extends React.Props<any> {
           input: string;
       }) => string) | string;
   selectedItems?: T[];
+  styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -1984,6 +1965,15 @@ interface IBasePickerState {
   suggestionsLoading?: boolean;
   // (undocumented)
   suggestionsVisible?: boolean;
+}
+
+// @public
+interface IBasePickerStyles {
+  input: IStyle;
+  itemsWrapper: IStyle;
+  root: IStyle;
+  screenReaderText: IStyle;
+  text: IStyle;
 }
 
 // @public (undocumented)
@@ -2021,7 +2011,7 @@ interface IBaseSelectedItemsList<T> {
 }
 
 // @public (undocumented)
-interface IBaseSelectedItemsListProps<T> extends React.Props<any> {
+interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
   canRemoveItem?: (item: T) => boolean;
   // (undocumented)
   componentRef?: IRefObject<IBaseSelectedItemsList<T>>;
@@ -2269,6 +2259,7 @@ interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTM
   navigationIcons?: ICalendarIconStrings;
   onDismiss?: () => void;
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+  restrictedDates?: Date[];
   selectDateOnClick?: boolean;
   // @deprecated
   shouldFocusOnMount?: boolean;
@@ -2455,6 +2446,7 @@ interface ICheckboxStyleProps {
 interface ICheckboxStyles {
   checkbox?: IStyle;
   checkmark?: IStyle;
+  input?: IStyle;
   label?: IStyle;
   root?: IStyle;
   text?: IStyle;
@@ -2489,6 +2481,7 @@ interface ICheckStyles {
 
 // @public (undocumented)
 interface IChoiceGroup {
+  focus: () => void;
 }
 
 // @public (undocumented)
@@ -2619,8 +2612,8 @@ interface ICoachmark {
   dismiss?: (ev?: any) => void;
 }
 
-// @public (undocumented)
-interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
+// @public
+interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   ariaAlertText?: string;
   ariaDescribedBy?: string;
   ariaDescribedByText?: string;
@@ -2649,6 +2642,7 @@ interface ICoachmarkProps extends React.ClassAttributes<Coachmark> {
   onMouseMove?: (e: MouseEvent) => void;
   positioningContainerProps?: IPositioningContainerProps;
   preventDismissOnLostFocus?: boolean;
+  preventFocusOnMount?: boolean;
   styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
   target: HTMLElement | string | null;
   // @deprecated
@@ -2673,6 +2667,40 @@ interface ICoachmarkState {
   targetAlignment?: RectangleEdge;
   targetPosition?: RectangleEdge;
   transformOrigin?: string;
+}
+
+// @public
+interface ICoachmarkStyleProps {
+  beaconColorOne?: string;
+  beaconColorTwo?: string;
+  // @deprecated
+  collapsed?: boolean;
+  // (undocumented)
+  color?: string;
+  delayBeforeCoachmarkAnimation?: string;
+  entityHostHeight?: string;
+  entityHostWidth?: string;
+  height?: string;
+  isBeaconAnimating: boolean;
+  isCollapsed: boolean;
+  isMeasured: boolean;
+  isMeasuring: boolean;
+  transformOrigin?: string;
+  width?: string;
+}
+
+// @public
+interface ICoachmarkStyles {
+  ariaContainer?: IStyle;
+  childrenContainer: IStyle;
+  collapsed?: IStyle;
+  entityHost?: IStyle;
+  entityInnerHost: IStyle;
+  pulsingBeacon?: IStyle;
+  root?: IStyle;
+  rotateAnimationLayer?: IStyle;
+  scaleAnimationLayer?: IStyle;
+  translateAnimationContainer?: IStyle;
 }
 
 // @public (undocumented)
@@ -2855,7 +2883,9 @@ interface IColumn {
   headerClassName?: string;
   iconClassName?: string;
   iconName?: string;
+  // @deprecated
   isCollapsable?: boolean;
+  isCollapsible?: boolean;
   isFiltered?: boolean;
   isGrouped?: boolean;
   isIconOnly?: boolean;
@@ -6719,6 +6749,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   showWeekNumbers?: boolean;
   strings?: IDatePickerStrings;
   styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+  tabIndex?: number;
   theme?: ITheme;
   today?: Date;
   underlined?: boolean;
@@ -7354,6 +7385,7 @@ interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   componentRef?: IRefObject<IDocumentCard>;
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   onClickHref?: string;
+  role?: string;
   type?: DocumentCardType;
 }
 
@@ -7414,7 +7446,6 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
   onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
   options: IDropdownOption[];
-  placeholder?: string;
   // @deprecated
   placeHolder?: string;
   responsiveMode?: ResponsiveMode;
@@ -7492,11 +7523,11 @@ interface IEventRecord {
   // (undocumented)
   objectCallback?: (args?: any) => void;
   // (undocumented)
+  options?: boolean | AddEventListenerOptions;
+  // (undocumented)
   parent: any;
   // (undocumented)
   target: any;
-  // (undocumented)
-  useCapture: boolean;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -7524,8 +7555,8 @@ interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingC
   compactCardHeight?: number;
   expandedCardHeight?: number;
   mode?: ExpandingCardMode;
-  onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
-  onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
+  onRenderCompactCard?: IRenderFunction<any>;
+  onRenderExpandedCard?: IRenderFunction<any>;
 }
 
 // @public (undocumented)
@@ -7670,6 +7701,11 @@ interface IFitContentToBoundsOptions {
 }
 
 // @public (undocumented)
+interface IFocusTrapCalloutProps extends ICalloutProps {
+  focusTrapProps?: IFocusTrapZoneProps;
+}
+
+// @public (undocumented)
 interface IFocusTrapZone {
   focus: () => void;
 }
@@ -7726,40 +7762,6 @@ interface IFontFace extends IRawFontStyle {
   unicodeRange?: ICSSRule | string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontFamilies {
-  // (undocumented)
-  default: string;
-  // (undocumented)
-  monospace: string;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontSizes {
-  // (undocumented)
-  large: string;
-  // (undocumented)
-  medium: string;
-  // (undocumented)
-  mediumPlus: string;
-  // (undocumented)
-  mega: string;
-  // (undocumented)
-  mini: string;
-  // (undocumented)
-  small: string;
-  // (undocumented)
-  smallPlus: string;
-  // (undocumented)
-  xLarge: string;
-  // (undocumented)
-  xSmall: string;
-  // (undocumented)
-  xxLarge: string;
-}
-
 // @public
 interface IFontStyles {
   // (undocumented)
@@ -7784,59 +7786,6 @@ interface IFontStyles {
   xSmall: IRawStyle;
   // (undocumented)
   xxLarge: IRawStyle;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariant {
-  // (undocumented)
-  color?: keyof ISemanticTextColors;
-  // (undocumented)
-  disabledColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  family: keyof IFontFamilies | string;
-  // (undocumented)
-  hoverColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  size: keyof IFontSizes | number | string;
-  // (undocumented)
-  weight: keyof IFontWeights | number;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariants {
-  // (undocumented)
-  caption: Partial<IFontVariant>;
-  // (undocumented)
-  default: Partial<IFontVariant>;
-  // (undocumented)
-  h1: Partial<IFontVariant>;
-  // (undocumented)
-  h2: Partial<IFontVariant>;
-  // (undocumented)
-  h3: Partial<IFontVariant>;
-  // (undocumented)
-  h4: Partial<IFontVariant>;
-  // (undocumented)
-  h5: Partial<IFontVariant>;
-  // (undocumented)
-  link: Partial<IFontVariant>;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontWeights {
-  // (undocumented)
-  bold: IFontWeight;
-  // (undocumented)
-  default: IFontWeight;
-  // (undocumented)
-  light: IFontWeight;
-  // (undocumented)
-  regular: IFontWeight;
-  // (undocumented)
-  semibold: IFontWeight;
 }
 
 // @public (undocumented)
@@ -7932,6 +7881,7 @@ interface IGroup {
 
 // @public (undocumented)
 interface IGroupDividerProps {
+  compact?: boolean;
   // (undocumented)
   componentRef?: IRefObject<{}>;
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -7966,6 +7916,7 @@ interface IGroupedList extends IList {
 // @public (undocumented)
 interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   className?: string;
+  compact?: boolean;
   componentRef?: IRefObject<IGroupedList>;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
@@ -8215,7 +8166,7 @@ interface IImageStyles {
   root: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   // WARNING: The name "aria-label" contains unsupported characters; API names should use only letters, numbers, and underscores
   aria-label?: string;
@@ -8793,7 +8744,7 @@ interface IOverflowSetItemProps {
 }
 
 // @public (undocumented)
-interface IOverflowSetProps extends React.Props<OverflowSetBase> {
+interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
   // (undocumented)
   className?: string;
   componentRef?: IRefObject<IOverflowSet>;
@@ -9028,13 +8979,58 @@ interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaPr
 interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
 }
 
+// @public
+interface IPeoplePickerItemSelectedProps extends IPickerItemProps<IPersonaProps & {
+    ValidationState: ValidationState;
+}>, IPeoplePickerItemSharedProps {
+  styles?: IStyleFunctionOrObject<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>;
+}
+
+// @public
+interface IPeoplePickerItemSelectedStyles {
+  itemContent: IStyle;
+  removeButton: IStyle;
+  root: IStyle;
+  subComponentStyles: IPeoplePickerItemSelectedSubComponentStyles;
+}
+
+// @public
+interface IPeoplePickerItemSelectedSubComponentStyles {
+  persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
+  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
+}
+
+// @public
+interface IPeoplePickerItemSharedProps {
+  className?: string;
+  theme?: ITheme;
+}
+
 // @public (undocumented)
 interface IPeoplePickerItemState {
   // (undocumented)
   contextualMenuVisible: boolean;
 }
 
-// @public (undocumented)
+// @public
+interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemSharedProps {
+  compact?: boolean;
+  personaProps?: IPersonaProps;
+  styles?: IStyleFunctionOrObject<IPeoplePickerItemSuggestionStyleProps, IPeoplePickerItemSuggestionStyles>;
+  suggestionsProps?: IBasePickerSuggestionsProps;
+}
+
+// @public
+interface IPeoplePickerItemSuggestionStyles {
+  personaWrapper: IStyle;
+  root: IStyle;
+}
+
+// @public @deprecated
+interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {
+}
+
+// @public
 interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
 }
 
@@ -9133,9 +9129,9 @@ interface IPersonaProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase> {
+interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
   allowPhoneInitials?: boolean;
-  coinProps?: React.HTMLAttributes<HTMLDivElement>;
+  coinProps?: IPersonaCoinProps;
   coinSize?: number;
   hidePersonaDetails?: boolean;
   imageAlt?: string;
@@ -9199,22 +9195,24 @@ interface IPersonaStyles {
   textContent: IStyle;
 }
 
-// @public (undocumented)
+// @public @deprecated
+interface IPersonaWithMenu extends IPersonaProps {
+  menuItems?: IContextualMenuItem[];
+}
+
+// @public
+interface IPickerItem {
+}
+
+// @public
 interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement> {
-  // (undocumented)
-  componentRef?: IRefObject<{}>;
-  // (undocumented)
+  componentRef?: IRefObject<IPickerItem>;
   index: number;
-  // (undocumented)
   item: T;
-  // (undocumented)
   key?: string | number;
   onItemChange?: (item: T, index: number) => void;
-  // (undocumented)
   onRemoveItem?: () => void;
-  // (undocumented)
   removeButtonAriaLabel?: string;
-  // (undocumented)
   selected?: boolean;
 }
 
@@ -9241,7 +9239,7 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 // @public (undocumented)
-interface IPivotProps extends React.Props<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
+interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   componentRef?: IRefObject<IPivot>;
   getTabId?: (itemKey: string, index: number) => string;
@@ -9289,7 +9287,7 @@ interface IPlainCard {
 
 // @public
 interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, IPlainCardStyleProps> {
-  onRenderPlainCard?: IRenderFunction<IPlainCardProps>;
+  onRenderPlainCard?: IRenderFunction<any>;
 }
 
 // @public (undocumented)
@@ -9379,7 +9377,7 @@ interface IProgressIndicator {
 }
 
 // @public (undocumented)
-interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
+interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   ariaValueText?: string;
   barHeight?: number;
   className?: string;
@@ -9451,6 +9449,7 @@ interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   size?: RatingSize;
   styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
   theme?: ITheme;
+  unselectedIcon?: string;
 }
 
 // @public (undocumented)
@@ -9596,9 +9595,6 @@ interface IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
   spacing: ISpacing;
-  // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-  // @internal
-  typography: ITypography;
 }
 
 // @public (undocumented)
@@ -9758,6 +9754,7 @@ interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponen
   onRenderOption?: IRenderFunction<ISelectableOption>;
   options?: any;
   panelProps?: IPanelProps;
+  placeholder?: string;
   required?: boolean;
   selectedKey?: string | number | string[] | number[];
 }
@@ -10179,7 +10176,7 @@ interface ISlider {
 }
 
 // @public (undocumented)
-interface ISliderProps extends React.Props<SliderBase> {
+interface ISliderProps extends React.ClassAttributes<SliderBase> {
   ariaLabel?: string;
   ariaValueText?: (value: number) => string;
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
@@ -10197,6 +10194,7 @@ interface ISliderProps extends React.Props<SliderBase> {
   styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
   theme?: ITheme;
   value?: number;
+  valueFormat?: (value: number) => string;
   vertical?: boolean;
 }
 
@@ -10396,37 +10394,38 @@ interface IStyleSheetConfig {
   onInsertRule?: (rule: string) => void;
 }
 
-// @public (undocumented)
+// @public
 interface ISuggestionItemProps<T> {
-  // (undocumented)
   className?: string;
-  // (undocumented)
-  componentRef?: IRefObject<{}>;
-  // (undocumented)
+  componentRef?: IRefObject<ISuggestionsItem>;
   id?: string;
-  // (undocumented)
   isSelectedOverride?: boolean;
-  // (undocumented)
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-  // (undocumented)
   onRemoveItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   removeButtonAriaLabel?: string;
-  // (undocumented)
   RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
-  // (undocumented)
   showRemoveButton?: boolean;
-  // (undocumented)
+  styles?: IStyleFunctionOrObject<ISuggestionsItemStyleProps, ISuggestionsItemStyles>;
   suggestionModel: ISuggestionModel<T>;
+  theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface ISuggestionModel<T> {
-  // (undocumented)
   ariaLabel?: string;
-  // (undocumented)
   item: T;
-  // (undocumented)
   selected: boolean;
+}
+
+// @public
+interface ISuggestions<T> {
+  executeSelectedAction: () => void;
+  focusAboveSuggestions: () => void;
+  focusBelowSuggestions: () => void;
+  focusSearchForMoreButton: () => void;
+  hasSuggestedAction: () => boolean;
+  hasSuggestedActionSelected: () => boolean;
+  tryHandleKeyDown: (keyCode: number, currentSuggestionIndex: number) => boolean;
 }
 
 // @public (undocumented)
@@ -10495,10 +10494,21 @@ interface ISuggestionsHeaderFooterProps {
   shouldShow: () => boolean;
 }
 
-// @public (undocumented)
+// @public
+interface ISuggestionsItem {
+}
+
+// @public
+interface ISuggestionsItemStyles {
+  closeButton: IStyle;
+  itemButton: IStyle;
+  root: IStyle;
+}
+
+// @public
 interface ISuggestionsProps<T> extends React.Props<any> {
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<ISuggestions<T>>;
   createGenericItem?: () => void;
   forceResolveText?: string;
   isLoading?: boolean;
@@ -10524,6 +10534,7 @@ interface ISuggestionsProps<T> extends React.Props<any> {
   searchingText?: string;
   showForceResolve?: () => boolean;
   showRemoveButtons?: boolean;
+  styles?: IStyleFunctionOrObject<{}, {}>;
   suggestions: ISuggestionModel<T>[];
   suggestionsAvailableAlertText?: string;
   suggestionsClassName?: string;
@@ -10531,12 +10542,30 @@ interface ISuggestionsProps<T> extends React.Props<any> {
   suggestionsHeaderText?: string;
   suggestionsItemClassName?: string;
   suggestionsListId?: string;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
 interface ISuggestionsState {
   // (undocumented)
   selectedActionType: SuggestionActionType;
+}
+
+// @public
+interface ISuggestionsStyles {
+  forceResolveButton: IStyle;
+  noSuggestions: IStyle;
+  root: IStyle;
+  searchForMoreButton: IStyle;
+  subComponentStyles: ISuggestionsSubComponentStyles;
+  suggestionsAvailable: IStyle;
+  suggestionsContainer: IStyle;
+  title: IStyle;
+}
+
+// @public
+interface ISuggestionsSubComponentStyles {
+  spinner: IStyleFunctionOrObject<ISpinnerStyleProps, any>;
 }
 
 // @public
@@ -10594,21 +10623,40 @@ interface ISwatchColorPickerStyles {
   tableCell: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ITag {
-  // (undocumented)
   key: string;
-  // (undocumented)
   name: string;
 }
 
-// @public (undocumented)
+// @public
 interface ITagItemProps extends IPickerItemProps<ITag> {
-  // (undocumented)
+  className?: string;
   enableTagFocusInDisabledPicker?: boolean;
+  styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
+  theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
+interface ITagItemStyles {
+  close: IStyle;
+  root: IStyle;
+  text: IStyle;
+}
+
+// @public
+interface ITagItemSuggestionProps extends React.AllHTMLAttributes<HTMLElement> {
+  className?: string;
+  styles?: IStyleFunctionOrObject<ITagItemSuggestionStyleProps, ITagItemSuggestionStyles>;
+  theme?: ITheme;
+}
+
+// @public
+interface ITagItemSuggestionStyles {
+  suggestionTextOverflow?: IStyle;
+}
+
+// @public
 interface ITagPickerProps extends IBasePickerProps<ITag> {
 }
 
@@ -10866,6 +10914,7 @@ interface ITooltip {
 // @public (undocumented)
 interface ITooltipHost {
   dismiss: () => void;
+  show: () => void;
 }
 
 // @public
@@ -10931,19 +10980,6 @@ interface ITooltipStyles {
   content: IStyle;
   root: IStyle;
   subText: IStyle;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface ITypography {
-  // (undocumented)
-  families: IFontFamilies;
-  // (undocumented)
-  sizes: IFontSizes;
-  // (undocumented)
-  variants: IFontVariants;
-  // (undocumented)
-  weights: IFontWeights;
 }
 
 // @public (undocumented)
@@ -11091,13 +11127,11 @@ class List extends BaseComponent<IListProps, IListState>, implements IList {
 }
 
 // @public
-class ListPeoplePicker extends MemberListPeoplePicker {
-  // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
-  // (undocumented)
+class ListPeoplePickerBase extends MemberListPeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
-    onRenderItem: (props: IPeoplePickerItemProps) => JSX.Element;
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
   }
 }
 
@@ -11228,13 +11262,11 @@ class NavBase extends BaseComponent<INavProps, INavState>, implements INav {
 }
 
 // @public
-class NormalPeoplePicker extends BasePeoplePicker {
-  // WARNING: The type "IPeoplePickerItemProps" needs to be exported by the package (e.g. added to index.ts)
-  // (undocumented)
+class NormalPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
-    onRenderItem: (props: IPeoplePickerItemProps) => JSX.Element;
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
   }
 }
 
@@ -11466,11 +11498,7 @@ class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
 class Popup extends BaseComponent<IPopupProps, IPopupState> {
   constructor(props: IPopupProps);
   // (undocumented)
-  _root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  _root: React.RefObject<HTMLDivElement>;
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
@@ -11540,7 +11568,7 @@ class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public (undocumented)
@@ -12054,13 +12082,10 @@ class Stylesheet {
   setConfig(config?: IStyleSheetConfig): void;
 }
 
-// @public (undocumented)
+// @public
 enum SuggestionActionType {
-  // (undocumented)
   forceResolve = 1,
-  // (undocumented)
   none = 0,
-  // (undocumented)
   searchMore = 2
 }
 
@@ -12078,23 +12103,11 @@ enum SuggestionItemType {
 class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   constructor(suggestionsProps: ISuggestionsProps<T>);
   // (undocumented)
-  protected _forceResolveButton: {
-    (component: IButton | null): void;
-    current: IButton | null;
-    value: IButton | null;
-  }
+  protected _forceResolveButton: React.RefObject<IButton>;
   // (undocumented)
-  protected _searchForMoreButton: {
-    (component: IButton | null): void;
-    current: IButton | null;
-    value: IButton | null;
-  }
+  protected _searchForMoreButton: React.RefObject<IButton>;
   // (undocumented)
-  protected _selectedElement: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected _selectedElement: React.RefObject<HTMLDivElement>;
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
@@ -12278,9 +12291,9 @@ class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwat
 }
 
 // @public (undocumented)
-class TagPicker extends BasePicker<ITag, ITagPickerProps> {
+class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   // (undocumented)
-  protected static defaultProps: {
+  static defaultProps: {
     onRenderItem: (props: ITagItemProps) => JSX.Element;
     onRenderSuggestionsItem: (props: ITag) => JSX.Element;
   }
@@ -12430,6 +12443,8 @@ class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState
   dismiss: () => void;
   // (undocumented)
   render(): JSX.Element;
+  // (undocumented)
+  show: () => void;
 }
 
 // @public (undocumented)
@@ -12453,13 +12468,10 @@ export function updateH(color: IColor, h: number): IColor;
 // @public (undocumented)
 export function updateSV(color: IColor, s: number, v: number): IColor;
 
-// @public (undocumented)
+// @public
 enum ValidationState {
-  // (undocumented)
   invalid = 2,
-  // (undocumented)
   valid = 0,
-  // (undocumented)
   warning = 1
 }
 
@@ -12524,6 +12536,7 @@ module ZIndexes {
 
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
+// WARNING: Unsupported export: FocusTrapCallout
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: DirectionalHint
 // WARNING: Unsupported export: Check
@@ -12532,6 +12545,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ChoiceGroupOption
 // WARNING: Unsupported export: OnFocusCallback
 // WARNING: Unsupported export: OnChangeCallback
+// WARNING: Unsupported export: Coachmark
 // WARNING: Unsupported export: COACHMARK_ATTRIBUTE_NAME
 // WARNING: Unsupported export: ICoachmarkTypes
 // WARNING: Unsupported export: MAX_COLOR_SATURATION
@@ -12593,8 +12607,26 @@ module ZIndexes {
 // WARNING: Unsupported export: sizeBoolean
 // WARNING: Unsupported export: sizeToPixels
 // WARNING: Unsupported export: presenceBoolean
+// WARNING: Unsupported export: ISuggestionsStyleProps
+// WARNING: Unsupported export: ISuggestionsItemStyleProps
 // WARNING: Unsupported export: IPickerAriaIds
+// WARNING: Unsupported export: IBasePickerStyleProps
+// WARNING: Unsupported export: NormalPeoplePicker
+// WARNING: Unsupported export: CompactPeoplePicker
+// WARNING: Unsupported export: ListPeoplePicker
+// WARNING: Unsupported export: IPeoplePickerItemSelectedStyleProps
+// WARNING: Unsupported export: IPeoplePickerItemSuggestionStyleProps
+// WARNING: Unsupported export: PeoplePickerItemBase
+// WARNING: Unsupported export: PeoplePickerItem
+// WARNING: Unsupported export: PeoplePickerItemSuggestionBase
+// WARNING: Unsupported export: PeoplePickerItemSuggestion
+// WARNING: Unsupported export: TagPicker
+// WARNING: Unsupported export: ITagItemStyleProps
+// WARNING: Unsupported export: ITagItemSuggestionStyleProps
+// WARNING: Unsupported export: TagItemBase
 // WARNING: Unsupported export: TagItem
+// WARNING: Unsupported export: TagItemSuggestionBase
+// WARNING: Unsupported export: TagItemSuggestion
 // WARNING: Unsupported export: Pivot
 // WARNING: Unsupported export: IPivotStyleProps
 // WARNING: Unsupported export: IPositioningContainerTypes
