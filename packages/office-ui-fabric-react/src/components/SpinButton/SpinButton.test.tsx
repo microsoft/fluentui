@@ -638,7 +638,7 @@ describe('SpinButton', () => {
     expect(onValidate).toHaveBeenCalledTimes(2);
   });
 
-  it('should call `onValidValueUpdated` with normalized value when input box blurs', () => {
+  it('should call `onValidValueUpdated` with value when input box blurs', () => {
     const onValidValueUpdate: jest.Mock = jest.fn();
     const exampleNewValue = '18';
 
@@ -650,7 +650,7 @@ describe('SpinButton', () => {
     expect(onValidValueUpdate).toBeCalledWith(exampleNewValue);
   });
 
-  it('should call `onValidValueUpdated` with normalized value when press enter in input box', () => {
+  it('should call `onValidValueUpdated` with value when press enter in input box', () => {
     const onValidValueUpdate: jest.Mock = jest.fn();
     const exampleNewValue = '19';
 
@@ -660,6 +660,20 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
     expect(onValidValueUpdate).toBeCalledWith(exampleNewValue);
+  });
+
+  it('should call `onValidValueUpdated` with value when press up/down arrow keys in input box', () => {
+    const onValidValueUpdate: jest.Mock = jest.fn();
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton label="label" defaultValue="15" onValidValueUpdated={onValidValueUpdate} />
+    );
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.up });
+    expect(onValidValueUpdate).toBeCalledWith('16');
+    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.down });
+    expect(onValidValueUpdate).toBeCalledWith('15');
   });
 
   it('should call `onValidValueUpdated` when click increase or decrease button.', () => {
