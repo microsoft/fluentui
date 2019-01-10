@@ -24,6 +24,7 @@ import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { ProgressIndicatorStyles } from './styles/ProgressIndicator.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
+import { ToggleStyles } from './styles/Toggle.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 
@@ -145,9 +146,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // },
     TextField: {
       styles: TextFieldStyles
+    },
+    Toggle: {
+      styles: ToggleStyles
     }
-    // Toggle: {
-    //   styles: ToggleStyles
-    // }
   };
 };
