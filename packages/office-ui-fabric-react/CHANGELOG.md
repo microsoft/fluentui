@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Jan 2019 13:35:35 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+
+## 6.123.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
+
+### Patches
+
+- Fix issues of marquee selection for IE
+- Pickers: Fix so controlled pickers will only focus when it has focus
 
 ## 6.122.0
 Wed, 09 Jan 2019 13:35:35 GMT

@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.123.0",
+      "tag": "office-ui-fabric-react_v6.123.0",
+      "date": "Thu, 10 Jan 2019 04:58:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ITheme: add defaultFontStyles property",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "04558fe11e54e6c0f1db85e14c32f65cfb1d502f"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix issues of marquee selection for IE",
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "a94c63addc3e8a1679417ffa9d5db7d016ebccca"
+          },
+          {
+            "comment": "Pickers: Fix so controlled pickers will only focus when it has focus",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "aab8f62851d91184b3c2ac7758dae2bc822e40bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.39.0 <7.0.0` to `>=6.40.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.122.0",
       "tag": "office-ui-fabric-react_v6.122.0",
       "date": "Wed, 09 Jan 2019 13:35:35 GMT",
