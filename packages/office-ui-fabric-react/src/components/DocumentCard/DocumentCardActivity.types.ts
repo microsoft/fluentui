@@ -9,7 +9,7 @@ export interface IDocumentCardActivityProps extends React.ClassAttributes<Docume
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardActivity>;
 
   /**
    * Describes the activity that has taken place, such as "Created Feb 23, 2016".

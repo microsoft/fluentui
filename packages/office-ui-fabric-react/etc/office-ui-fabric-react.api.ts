@@ -7265,12 +7265,16 @@ interface IDocumentCard {
   focus: () => void;
 }
 
+// @public (undocumented)
+interface IDocumentCardActions {
+}
+
 // WARNING: The type "DocumentCardActionsBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
 interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
   actions: IButtonProps[];
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardActions>;
   styles?: IStyleFunctionOrObject<IDocumentCardActionsStyleProps, IDocumentCardActionsStyles>;
   theme?: ITheme;
   views?: Number;
@@ -7312,7 +7316,7 @@ interface IDocumentCardActivityPerson {
 interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
   activity: string;
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardActivity>;
   people: IDocumentCardActivityPerson[];
   styles?: IStyleFunctionOrObject<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>;
   theme?: ITheme;
@@ -7349,7 +7353,7 @@ interface IDocumentCardDetails {
 // @public (undocumented)
 interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardDetails>;
   styles?: IStyleFunctionOrObject<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>;
   theme?: ITheme;
 }
@@ -7366,12 +7370,16 @@ interface IDocumentCardDetailsStyles {
   root: IStyle;
 }
 
+// @public (undocumented)
+interface IDocumentCardLocation {
+}
+
 // WARNING: The type "DocumentCardLocationBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
 interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
   ariaLabel?: string;
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardLocation>;
   location: string;
   locationHref?: string;
   onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
@@ -7391,11 +7399,15 @@ interface IDocumentCardLocationStyles {
   root: IStyle;
 }
 
+// @public (undocumented)
+interface IDocumentCardLogo {
+}
+
 // WARNING: The type "DocumentCardLogoBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
 interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardLogo>;
   logoIcon: string;
   logoName?: string;
   styles?: IStyleFunctionOrObject<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>;
@@ -7412,6 +7424,10 @@ interface IDocumentCardLogoStyleProps {
 interface IDocumentCardLogoStyles {
   // (undocumented)
   root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardPreview {
 }
 
 // @public (undocumented)
@@ -7437,7 +7453,7 @@ interface IDocumentCardPreviewImage {
 // @public (undocumented)
 interface IDocumentCardPreviewProps extends IBaseProps<{}> {
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardPreview>;
   getOverflowDocumentCountText?: (overflowCount: number) => string;
   previewImages: IDocumentCardPreviewImage[];
   styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
@@ -7490,7 +7506,7 @@ interface IDocumentCardStatus {
 // @public (undocumented)
 interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardStatus>;
   status: string;
   statusIcon?: string;
   styles?: IStyleFunctionOrObject<IDocumentCardStatusStyleProps, IDocumentCardStatusStyles>;
@@ -7523,11 +7539,15 @@ interface IDocumentCardStyles {
   root: IStyle;
 }
 
+// @public (undocumented)
+interface IDocumentCardTitle {
+}
+
 // WARNING: The type "DocumentCardTitleBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
 interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardTitle>;
   shouldTruncate?: boolean;
   showAsSecondaryTitle?: boolean;
   styles?: IStyleFunctionOrObject<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>;

@@ -4,11 +4,13 @@ import { ILinkProps } from '../../Link';
 import { IStyle, ITheme } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+export interface IDocumentCardPreview {}
+
 export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardPreview>;
 
   /**
    * One or more preview images to display.

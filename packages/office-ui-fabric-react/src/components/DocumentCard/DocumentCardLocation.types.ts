@@ -2,11 +2,12 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardLocationBase } from './DocumentCardLocation.base';
 
+export interface IDocumentCardLocation {}
 export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardLocation>;
 
   /**
    * Text for the location of the document.

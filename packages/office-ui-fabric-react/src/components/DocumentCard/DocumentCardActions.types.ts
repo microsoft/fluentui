@@ -3,11 +3,13 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardActionsBase } from './DocumentCardActions.base';
 
+export interface IDocumentCardActions {}
+
 export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardActions>;
 
   /**
    * The actions available for this document.

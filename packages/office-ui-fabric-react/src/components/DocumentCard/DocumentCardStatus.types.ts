@@ -8,7 +8,7 @@ export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardStatus>;
 
   /**
    * Describes DocumentCard status icon.

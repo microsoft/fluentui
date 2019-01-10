@@ -2,11 +2,13 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardLogoBase } from './DocumentCardLogo.base';
 
+export interface IDocumentCardLogo {}
+
 export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardLogo>;
   /**
    * Describes DocumentCard Logo badge.
    */

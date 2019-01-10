@@ -8,7 +8,7 @@ export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetai
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardDetails>;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules

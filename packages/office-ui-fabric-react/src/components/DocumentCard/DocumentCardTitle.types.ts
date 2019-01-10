@@ -2,11 +2,13 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardTitleBase } from './DocumentCardTitle.base';
 
+export interface IDocumentCardTitle {}
+
 export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
   /**
    * Gets the component ref.
    */
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<IDocumentCardTitle>;
 
   /**
    * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string.
