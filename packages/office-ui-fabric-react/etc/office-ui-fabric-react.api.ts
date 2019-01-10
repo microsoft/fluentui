@@ -10745,7 +10745,7 @@ interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTM
   addonString?: string;
   ariaLabel?: string;
   autoAdjustHeight?: boolean;
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
   borderless?: boolean;
   className?: string;
   // @deprecated (undocumented)
