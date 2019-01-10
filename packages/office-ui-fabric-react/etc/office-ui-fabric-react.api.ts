@@ -10856,6 +10856,7 @@ interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   componentRef?: IRefObject<IToggle>;
   defaultChecked?: boolean;
   disabled?: boolean;
+  inlineLabel?: boolean;
   keytipProps?: IKeytipProps;
   label?: string;
   // @deprecated (undocumented)
@@ -10882,6 +10883,7 @@ interface IToggleStyleProps {
   checked?: boolean;
   className?: string;
   disabled?: boolean;
+  inlineLabel?: boolean;
   theme: ITheme;
 }
 
