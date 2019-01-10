@@ -7,5 +7,5 @@ export const DocumentCardPreview = styled<IDocumentCardPreviewProps, IDocumentCa
   DocumentCardPreviewBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardPreviewBase' }
+  { scope: 'DocumentCardPreview' }
 );

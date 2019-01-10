@@ -7,5 +7,5 @@ export const DocumentCardLocation = styled<IDocumentCardLocationProps, IDocument
   DocumentCardLocationBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardLocationBase' }
+  { scope: 'DocumentCardLocation' }
 );

@@ -7,5 +7,5 @@ export const DocumentCardTitle = styled<IDocumentCardTitleProps, IDocumentCardTi
   DocumentCardTitleBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardTitleBase' }
+  { scope: 'DocumentCardTitle' }
 );

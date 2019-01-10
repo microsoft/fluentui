@@ -7,5 +7,5 @@ export const DocumentCardLogo = styled<IDocumentCardLogoProps, IDocumentCardLogo
   DocumentCardLogoBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardLogoBase' }
+  { scope: 'DocumentCardLogo' }
 );

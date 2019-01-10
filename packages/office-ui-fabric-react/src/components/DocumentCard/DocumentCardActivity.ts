@@ -7,5 +7,5 @@ export const DocumentCardActivity = styled<IDocumentCardActivityProps, IDocument
   DocumentCardActivityBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardActivityBase' }
+  { scope: 'DocumentCardActivity' }
 );

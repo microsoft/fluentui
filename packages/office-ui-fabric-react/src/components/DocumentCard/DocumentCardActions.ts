@@ -7,5 +7,5 @@ export const DocumentCardActions = styled<IDocumentCardActionsProps, IDocumentCa
   DocumentCardActionsBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardActionsBase' }
+  { scope: 'DocumentCardActions' }
 );

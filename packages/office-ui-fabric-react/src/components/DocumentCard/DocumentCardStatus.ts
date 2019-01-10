@@ -7,5 +7,5 @@ export const DocumentCardStatus = styled<IDocumentCardStatusProps, IDocumentCard
   DocumentCardStatusBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardStatusBase' }
+  { scope: 'DocumentCardStatus' }
 );

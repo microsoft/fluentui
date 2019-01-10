@@ -10,5 +10,5 @@ export const DocumentCardDetails = styled<IDocumentCardDetailsProps, IDocumentCa
   DocumentCardDetailsBase,
   getStyles,
   undefined,
-  { scope: 'DocumentCardDetailsBase' }
+  { scope: 'DocumentCardDetails' }
 );
