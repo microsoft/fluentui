@@ -90,28 +90,24 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
         props: { className: 'ms-mdButton' }
       },
       table: {
-        component: MDTable.MarkdownTable,
-        props: { className: 'ms-mdTable', wrapperClassName: 'ms-mdTable-wrapper' }
+        component: MDTable.MarkdownTable
       },
       thead: {
-        component: MDTable.MarkdownTHead,
-        props: { className: 'ms-mdTable-thead' }
+        component: MDTable.MarkdownTHead
       },
       tbody: {
-        component: MDTable.MarkdownTBody,
-        props: { className: 'ms-mdTable-tbody' }
+        component: MDTable.MarkdownTBody
       },
       tr: {
-        component: MDTable.MarkdownTr,
-        props: { className: 'ms-mdTable-tr' }
+        component: MDTable.MarkdownTr
       },
       th: {
         component: MDTable.MarkdownCell,
-        props: { as: 'th', className: 'ms-mdTable-th' }
+        props: { as: 'th' }
       },
       td: {
         component: MDTable.MarkdownCell,
-        props: { className: 'ms-mdTable-td' }
+        props: { as: 'td' }
       }
     }
   }

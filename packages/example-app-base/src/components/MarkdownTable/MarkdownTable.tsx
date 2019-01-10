@@ -1,17 +1,32 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
-import { IMarkdownTableProps } from './MarkdownTable.types';
-import * as styles from './MarkdownTable.module.scss';
+import { classNamesFunction, styled } from 'office-ui-fabric-react';
+import { IMarkdownTableProps, IMarkdownTableStyleProps, IMarkdownTableStyles } from './MarkdownTable.types';
+import { getStyles } from './MarkdownTable.styles';
 
-export class MarkdownTable extends React.Component<IMarkdownTableProps> {
+const getClassNames = classNamesFunction<IMarkdownTableStyleProps, IMarkdownTableStyles>();
+
+export class MarkdownTableBase extends React.Component<IMarkdownTableProps> {
   public render(): JSX.Element {
-    const { children, className, wrapperClassName } = this.props;
+    const { children, className, styles, theme } = this.props;
+
+    const classNames = getClassNames(styles, {
+      theme: theme!,
+      className
+    });
+
     return (
-      <div className={css('ms-MarkdownTable-wrapper', wrapperClassName)}>
-        <table {...this.props} className={css('ms-MarkdownTable', styles.Table, className)}>
+      <div className={classNames.root}>
+        <table {...this.props} className={classNames.table}>
           {children}
         </table>
       </div>
     );
   }
 }
+
+export const MarkdownTable = styled<IMarkdownTableProps, IMarkdownTableStyleProps, IMarkdownTableStyles>(
+  MarkdownTableBase,
+  getStyles,
+  undefined,
+  { scope: 'MarkdownTable' }
+);

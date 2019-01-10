@@ -1,22 +1,32 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react';
-import { IMarkdownTableCellProps } from './MarkdownTable.types';
-import * as styles from './MarkdownTable.module.scss';
+import { classNamesFunction, styled } from 'office-ui-fabric-react';
+import { IMarkdownTableCellProps, IMarkdownTableStyleProps, IMarkdownTableStyles } from './MarkdownTable.types';
+import { getStyles } from './MarkdownTable.styles';
 
-export class MarkdownCell extends React.Component<IMarkdownTableCellProps> {
-  public static defaultProps = {
-    as: 'td'
-  };
+const getClassNames = classNamesFunction<IMarkdownTableStyleProps, IMarkdownTableStyles>();
 
+export class MarkdownCellBase extends React.Component<IMarkdownTableCellProps> {
   public render(): JSX.Element {
-    const { as, children, className } = this.props;
+    const { as = 'td', children, styles, theme } = this.props;
+
+    const classNames = getClassNames(styles, {
+      theme: theme!
+    });
+
     const Tag = as;
-    const cellClassName = (as === 'td' && styles.Td) || (as === 'th' && styles.Th);
+    const cellClassName = (as === 'td' && classNames.td) || (as === 'th' && classNames.th) || '';
 
     return (
-      <Tag {...this.props} className={css('ms-Table-td', cellClassName, className)}>
+      <Tag {...this.props} className={cellClassName}>
         {children}
       </Tag>
     );
   }
 }
+
+export const MarkdownCell = styled<IMarkdownTableCellProps, IMarkdownTableStyleProps, IMarkdownTableStyles>(
+  MarkdownCellBase,
+  getStyles,
+  undefined,
+  { scope: 'MardownCell' }
+);

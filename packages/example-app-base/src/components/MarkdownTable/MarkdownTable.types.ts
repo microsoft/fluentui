@@ -1,7 +1,13 @@
+import { IStyle, ITheme, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+
 export interface IMarkdownTableProps {
   className?: string;
-  wrapperClassName?: string;
-  style?: object;
+
+  /** Theme provided by High-Order Component. */
+  theme?: ITheme;
+
+  /** Call to provide customized styling that will layer on top of the variant rules. */
+  styles?: IStyleFunctionOrObject<IMarkdownTableStyleProps, IMarkdownTableStyles>;
 }
 
 export interface IMarkdownTableCellProps extends IMarkdownTableProps {
@@ -10,4 +16,16 @@ export interface IMarkdownTableCellProps extends IMarkdownTableProps {
    * @default 'td'
    */
   as: 'th' | 'td';
+}
+
+export type IMarkdownTableStyleProps = Required<Pick<IMarkdownTableProps, 'theme'>> & Pick<IMarkdownTableProps, 'className'>;
+
+export interface IMarkdownTableStyles {
+  root: IStyle;
+  table: IStyle;
+  thead: IStyle;
+  tbody: IStyle;
+  tr: IStyle;
+  td: IStyle;
+  th: IStyle;
 }
