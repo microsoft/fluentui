@@ -1097,8 +1097,8 @@ class EventGroup {
   // (undocumented)
   static isObserved(target: any, eventName: string): boolean;
   // (undocumented)
-  off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void;
-  on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void;
+  off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+  on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
   onAll(target: any, events: {
           [key: string]: (args?: any) => void;
       }, useCapture?: boolean): void;
@@ -7523,11 +7523,11 @@ interface IEventRecord {
   // (undocumented)
   objectCallback?: (args?: any) => void;
   // (undocumented)
+  options?: boolean | AddEventListenerOptions;
+  // (undocumented)
   parent: any;
   // (undocumented)
   target: any;
-  // (undocumented)
-  useCapture: boolean;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
