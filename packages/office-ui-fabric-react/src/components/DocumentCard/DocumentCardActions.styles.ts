@@ -38,8 +38,8 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
         selectors: {
           '.ms-Button': {
             fontSize: '16px',
-            height: `${actionSize}px`,
-            width: `${actionSize}px`
+            height: actionSize,
+            width: actionSize
           },
           '.ms-Button:hover .ms-Button-icon': {
             color: theme.semanticColors.buttonText,
