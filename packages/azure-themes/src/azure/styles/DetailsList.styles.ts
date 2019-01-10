@@ -16,6 +16,8 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   return {
     circle: [
       {
+        paddingTop: '1px',
+        paddingLeft: '1px',
         color: semanticColors.listBackground,
         backgroundColor: semanticColors.listBackground,
         borderColor: semanticColors.controlOutline,
@@ -49,20 +51,16 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
           textTransform: 'uppercase',
           borderTop: 'none',
           selectors: {
-            '.ms-DetailsHeader-cell': {
+            '.ms-DetailsHeader-cellTitle': {
               backgroundColor: semanticColors.listBackground,
               borderRightWidth: StyleConstants.borderWidth,
               borderRightStyle: StyleConstants.borderSolid,
               borderRightColor: semanticColors.listBackground
             },
-            ':hover .ms-DetailsHeader-cell': {
+            ':hover .ms-DetailsHeader-cellTitle': {
               borderRightWidth: StyleConstants.borderWidth,
               borderRightStyle: StyleConstants.borderSolid,
               borderRightColor: semanticColors.variantBorder
-            },
-            '.ms-DetailsHeader-cellSizer': {
-              marginRight: '-8px;',
-              marginLeft: '-8px;'
             }
           }
         }

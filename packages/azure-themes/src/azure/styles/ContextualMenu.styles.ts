@@ -20,7 +20,12 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
           borderWidth: StyleConstants.borderWidth,
-          boxShadow: Depths.depth8
+          boxShadow: Depths.depth8,
+          selectors: {
+            '.ms-Callout-beak': {
+              backgroundColor: semanticColors.inputBackground
+            }
+          }
         }
       },
       menuItem: (itemStyleProps: IContextualMenuItemStyleProps): Partial<IContextualMenuItemStyles> => {
