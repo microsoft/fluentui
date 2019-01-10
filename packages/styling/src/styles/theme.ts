@@ -93,7 +93,7 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
  * Loads font variables into a JSON object.
  * @param theme - The theme object
  */
-export function loadFonts(theme: ITheme): { [name: string]: string } {
+function loadFonts(theme: ITheme): { [name: string]: string } {
   const lines = {};
 
   for (const fontName of Object.keys(theme.fonts)) {
