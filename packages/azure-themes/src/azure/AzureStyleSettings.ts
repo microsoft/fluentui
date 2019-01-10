@@ -10,6 +10,7 @@ import { CommandBarStyles } from './styles/CommandBar.styles';
 import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
+import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
@@ -76,9 +77,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     ContextualMenu: {
       styles: ContextualMenuStyles
     },
-    // DatePicker: {
-    //   styles: DatePickerStyles
-    // },
+    DatePicker: {
+      styles: DatePickerStyles
+    },
     DefaultButton: {
       styles: DefaultButtonStyles(theme)
     },
