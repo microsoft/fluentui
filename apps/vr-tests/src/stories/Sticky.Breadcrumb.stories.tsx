@@ -90,7 +90,7 @@ interface IItem {
   test6: string;
 }
 
-export class ScrollablePaneStickyBreadcrumbDetailsListExample extends React.Component<
+export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
   {},
   {
     items: {}[];
@@ -205,7 +205,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
   );
 }
 
-storiesOf('Sticky Breadcrumb Details List', module)
+storiesOf('Sticky breadcrumb and sticy details list header', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -223,5 +223,5 @@ storiesOf('Sticky Breadcrumb Details List', module)
     </Screener>
   ))
   .addStory('ScrollablePane Sticky Breadcrumb Details List', () => (
-    <ScrollablePaneStickyBreadcrumbDetailsListExample />
+    <ScrollablePaneStickyBreadcrumbExample />
   ));
