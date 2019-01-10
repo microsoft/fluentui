@@ -22,7 +22,7 @@ import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Breadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import * as styles from './Sticky.Breadcrumb.stories.scss';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const _columns: IColumn[] = [
   {
@@ -106,7 +106,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
     const items: IItem[] = [];
 
     // Populate with items for demos.
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 100; i++) {
       items.push({
         key: i,
         test1: i === 0 ? lorem(7) : lorem(2),
@@ -125,6 +125,13 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
 
   public render(): JSX.Element {
     const { items } = this.state;
+    const breadcrumbStyle = {
+      root: [
+        {
+          margin: '0 0 0 0'
+        }
+      ]
+    };
 
     return (
       <div
@@ -137,15 +144,15 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
       >
         <Fabric>
           <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '500px', border: '1px solid #edebe9' }}>
-            <Sticky stickyPosition={StickyPositionType.Header} stickyClassName={styles.stickyHeader}>
+            <Sticky
+              stickyPosition={StickyPositionType.Header}
+              stickyBackgroundColor={getTheme().palette.white}
+            >
               <Breadcrumb
+                styles={breadcrumbStyle}
                 items={[
                   { text: 'Files', key: 'Files' },
-                  { text: 'This is folder 1', key: 'f1' },
-                  { text: 'This is folder 2', key: 'f2' },
-                  { text: 'This is folder 3', key: 'f3' },
-                  { text: 'This is folder 4', key: 'f4' },
-                  { text: 'This is folder 5', key: 'f5', isCurrentItem: true }
+                  { text: 'This is folder 1', key: 'f1', isCurrentItem: true }
                 ]}
                 ariaLabel={'breadcrumb-test'}
               />
@@ -187,7 +194,7 @@ function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRend
 
 function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} stickyClassName={styles.stickyFooter} >
+    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} >
       <div style={{ display: 'inline-block' }}>
         <DetailsRow
           columns={props.columns}
@@ -222,6 +229,12 @@ storiesOf('Sticky breadcrumb and sticy details list header', module)
         .snapshot('scroll down to the bottom', { cropTo: '.testWrapper' })
         .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
         .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = 10")
+        .snapshot('scroll left', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 10")
+        .snapshot('scroll down when scroll left is non-zero', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
+        .snapshot('scroll back to the top when scroll left is non-zero', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
