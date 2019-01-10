@@ -118,9 +118,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           items: newProps.selectedItems
         },
         () => {
-          // Need to reset focus in the same that way that we do if an item is selected by a non-controlled component
-          // See _onSelectedItemsUpdated.
-          this.resetFocus(focusIndex);
+          // Only update the focus if this component is currently focused to ensure that the basepicker
+          // doesn't steal focus from something else.
+          if (this.state.isFocused) {
+            // Need to reset focus in the same that way that we do if an item is selected by a non-controlled component
+            // See _onSelectedItemsUpdated.
+            this.resetFocus(focusIndex);
+          }
         }
       );
     }
