@@ -1,10 +1,10 @@
 import { getGlobalClassNames, FontSizes, FontWeights } from '../../Styling';
 import { IDocumentCardActivityStyleProps, IDocumentCardActivityStyles } from './DocumentCardActivity.types';
 
-const verticalPadding = 8;
-const horizontalPadding = 16;
-const imageSize = 32;
-const personaTextGutter = 8;
+const VERTICAL_PADDING = 8;
+const HORIZONTAL_PADDING = 16;
+const IMAGE_SIZE = 32;
+const PERSONA_TEXT_GUTTER = 8;
 
 export const GlobalClassNames = {
   root: 'ms-DocumentCardActivity',
@@ -27,7 +27,7 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
       classNames.root,
       multiplePeople && classNames.multiplePeople,
       {
-        padding: `${verticalPadding}px ${horizontalPadding}px`,
+        padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px`,
         position: 'relative'
       },
       className
@@ -46,8 +46,8 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
         verticalAlign: 'top',
         position: 'relative',
         textAlign: 'center',
-        width: imageSize,
-        height: imageSize,
+        width: IMAGE_SIZE,
+        height: IMAGE_SIZE,
 
         selectors: {
           '&:after': {
@@ -70,12 +70,12 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
       classNames.details,
       {
         left: multiplePeople
-          ? `${horizontalPadding + imageSize * 1.5 + personaTextGutter}px`
-          : `${horizontalPadding + imageSize + personaTextGutter}px`,
-        height: imageSize,
+          ? `${HORIZONTAL_PADDING + IMAGE_SIZE * 1.5 + PERSONA_TEXT_GUTTER}px`
+          : `${HORIZONTAL_PADDING + IMAGE_SIZE + PERSONA_TEXT_GUTTER}px`,
+        height: IMAGE_SIZE,
         position: 'absolute',
-        top: verticalPadding,
-        width: `calc(100% - #{horizontalPadding + imageSize + personaTextGutter + horizontalPadding}px)`
+        top: VERTICAL_PADDING,
+        width: `calc(100% - #{HORIZONTAL_PADDING + IMAGE_SIZE + PERSONA_TEXT_GUTTER + HORIZONTAL_PADDING}px)`
       }
     ],
     name: [
