@@ -21,6 +21,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Breadcrumb } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import * as styles from './Sticky.Breadcrumb.stories.scss';
 
 const _columns: IColumn[] = [
@@ -129,41 +130,45 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
       <div
         style={{
           height: '80vh',
-          position: 'relative'
+          position: 'relative',
+          maxHeight: 'inherit',
+          width: '500px'
         }}
       >
-        <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto}>
-          <Sticky stickyPosition={StickyPositionType.Header} stickyClassName={styles.stickyHeader}>
-            <Breadcrumb
-              items={[
-                { text: 'Files', key: 'Files' },
-                { text: 'This is folder 1', key: 'f1' },
-                { text: 'This is folder 2', key: 'f2' },
-                { text: 'This is folder 3', key: 'f3' },
-                { text: 'This is folder 4', key: 'f4' },
-                { text: 'This is folder 5', key: 'f5', isCurrentItem: true }
-              ]}
-              ariaLabel={'breadcrumb-test'}
-            />
-          </Sticky>
-          <MarqueeSelection selection={this._selection}>
-            <DetailsList
-              items={items}
-              columns={_columns}
-              setKey="set"
-              layoutMode={DetailsListLayoutMode.fixedColumns}
-              constrainMode={ConstrainMode.unconstrained}
-              onRenderDetailsHeader={onRenderDetailsHeader}
-              onRenderDetailsFooter={onRenderDetailsFooter}
-              selection={this._selection}
-              selectionPreservedOnEmptyClick={true}
-              ariaLabelForSelectionColumn="Toggle selection"
-              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-              // tslint:disable-next-line:jsx-no-lambda
-              onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
-            />
-          </MarqueeSelection>
-        </ScrollablePane>
+        <Fabric>
+          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '500px', border: '1px solid #edebe9' }}>
+            <Sticky stickyPosition={StickyPositionType.Header} stickyClassName={styles.stickyHeader}>
+              <Breadcrumb
+                items={[
+                  { text: 'Files', key: 'Files' },
+                  { text: 'This is folder 1', key: 'f1' },
+                  { text: 'This is folder 2', key: 'f2' },
+                  { text: 'This is folder 3', key: 'f3' },
+                  { text: 'This is folder 4', key: 'f4' },
+                  { text: 'This is folder 5', key: 'f5', isCurrentItem: true }
+                ]}
+                ariaLabel={'breadcrumb-test'}
+              />
+            </Sticky>
+            <MarqueeSelection selection={this._selection}>
+              <DetailsList
+                items={items}
+                columns={_columns}
+                setKey="set"
+                layoutMode={DetailsListLayoutMode.fixedColumns}
+                constrainMode={ConstrainMode.unconstrained}
+                onRenderDetailsHeader={onRenderDetailsHeader}
+                onRenderDetailsFooter={onRenderDetailsFooter}
+                selection={this._selection}
+                selectionPreservedOnEmptyClick={true}
+                ariaLabelForSelectionColumn="Toggle selection"
+                ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+                // tslint:disable-next-line:jsx-no-lambda
+                onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
+              />
+            </MarqueeSelection>
+          </ScrollablePane>
+        </Fabric>
       </div>
     );
   }
