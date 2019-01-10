@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Ensure headerClassName is processed properly within DetailsList",
+      "comment": "DetailsList: Ensure the headerClassName prop is processed properly when mergeStyles is used",
       "type": "patch"
     }
   ],
