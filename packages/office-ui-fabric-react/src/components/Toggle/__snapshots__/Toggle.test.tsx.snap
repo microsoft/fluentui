@@ -158,7 +158,7 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
           font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
-          margin-right: 10px;
+          margin-right: 16px;
           margin-top: 0px;
           overflow-wrap: break-word;
           padding-bottom: 5px;

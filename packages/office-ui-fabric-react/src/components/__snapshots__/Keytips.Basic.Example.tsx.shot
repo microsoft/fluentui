@@ -1041,8 +1041,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   }
                   && {
                     margin-bottom: 0;
-                    margin-left: 10px;
-                    margin-right: 10px;
+                    margin-left: 8px;
+                    margin-right: 8px;
                     margin-top: 0;
                     padding-bottom: 0;
                     padding-left: 0;

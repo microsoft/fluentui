@@ -45,7 +45,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         }
       },
       inlineLabel && {
-        marginRight: 10
+        marginRight: 16
       }
     ],
 
@@ -198,7 +198,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
           // Workaround: make rules more specific than Label rules.
           '&&': {
             padding: '0',
-            margin: '0 10px',
+            margin: '0 8px',
             userSelect: 'none'
           }
         }

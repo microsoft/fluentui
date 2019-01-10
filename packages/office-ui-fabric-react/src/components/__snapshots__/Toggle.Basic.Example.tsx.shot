@@ -166,8 +166,8 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             }
             && {
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
@@ -330,8 +330,8 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             }
             && {
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
@@ -494,8 +494,8 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             && {
               color: #a6a6a6;
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
@@ -658,8 +658,8 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             && {
               color: #a6a6a6;
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
@@ -707,7 +707,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 10px;
+            margin-right: 16px;
             margin-top: 0px;
             overflow-wrap: break-word;
             padding-bottom: 5px;
@@ -835,8 +835,8 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             }
             && {
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
@@ -881,7 +881,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             font-weight: 400;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 10px;
+            margin-right: 16px;
             margin-top: 0px;
             overflow-wrap: break-word;
             padding-bottom: 5px;
@@ -1001,8 +1001,8 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             && {
               color: #a6a6a6;
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
