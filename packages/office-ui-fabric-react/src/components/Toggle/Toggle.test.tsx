@@ -22,6 +22,12 @@ describe('Toggle', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders toggle correctly with inline label', () => {
+    const component = renderer.create(<Toggle label="Label" inlineLabel={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders aria-label', () => {
     const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
 
