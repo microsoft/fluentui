@@ -4,6 +4,9 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
+import { IStackSlots } from '../Stack.types';
+import { IStackItemSlots } from '../StackItem/StackItem.types';
+import { IComponentStyles } from '../../../Foundation';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
@@ -72,21 +75,22 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       emptyChildren
     } = this.state;
 
-    const styles = mergeStyleSets({
-      root: [
-        {
-          background: DefaultPalette.themeTertiary,
-          minHeight: 100,
-          marginLeft: 10,
-          marginRight: 10,
-          width: `calc(${wrapperWidth}% - 20px)`
-        },
-        preventOverflow && {
-          overflow: 'hidden' as 'hidden'
-        }
-      ],
+    const rootStyles: IComponentStyles<IStackSlots> = {
+      root: {
+        background: DefaultPalette.themeTertiary,
+        minHeight: 100,
+        marginLeft: 10,
+        marginRight: 10,
+        width: `calc(${wrapperWidth}% - 20px)`,
+        overflow: preventOverflow ? 'hidden' : 'visible'
+      },
+      inner: {
+        overflow: preventOverflow ? 'hidden' : 'visible'
+      }
+    };
 
-      item: {
+    const itemStyles: IComponentStyles<IStackItemSlots> = {
+      root: {
         width: 50,
         height: 50,
         display: 'flex',
@@ -95,12 +99,6 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
         background: DefaultPalette.themePrimary,
         color: DefaultPalette.white,
         boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : ''
-      }
-    });
-
-    const stackStyles = {
-      inner: {
-        overflow: preventOverflow ? 'hidden' : ('visible' as 'hidden' | 'visible')
       }
     };
 
@@ -257,16 +255,19 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           horizontalAlign={horizontalAlignment}
           verticalAlign={verticalAlignment}
-          className={styles.root}
-          styles={stackStyles}
+          styles={rootStyles}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return hideEmptyChildren ? <Stack.Item key={index} className={styles.item} /> : <span key={index} className={styles.item} />;
+              return hideEmptyChildren ? (
+                <Stack.Item key={index} styles={itemStyles} />
+              ) : (
+                <span key={index} className={mergeStyleSets(itemStyles).root} />
+              );
             }
 
             return (
-              <span key={index} className={styles.item}>
+              <span key={index} className={mergeStyleSets(itemStyles).root}>
                 {value}
               </span>
             );

@@ -1,5 +1,5 @@
 import { Customizations, merge } from '@uifabric/utilities';
-import { IPalette, ISemanticColors, ITheme, IPartialTheme, ISemanticTextColors } from '../interfaces/index';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
@@ -107,11 +107,23 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
+  let defaultFontStyles: IFontStyles = DefaultFontStyles;
+  if (theme.defaultFontStyle) {
+    for (const fontStyle of Object.keys(DefaultFontStyles)) {
+      defaultFontStyles[fontStyle] = { ...defaultFontStyles[fontStyle], ...theme.defaultFontStyle };
+    }
+  }
+
+  if (theme.fonts) {
+    for (const fontStyle of Object.keys(theme.fonts)) {
+      defaultFontStyles[fontStyle] = merge(defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
+    }
+  }
+
   return {
     palette: newPalette,
     fonts: {
-      ...DefaultFontStyles,
-      ...theme.fonts
+      ...defaultFontStyles
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,

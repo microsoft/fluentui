@@ -3,6 +3,8 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
+import { IStackSlots } from '../Stack.types';
+import { IComponentStyles } from '../../../Foundation';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
@@ -32,7 +34,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
   public render(): JSX.Element {
     const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
 
-    const styles = mergeStyleSets({
+    const rootStyles: IComponentStyles<IStackSlots> = {
       root: {
         background: DefaultPalette.themeTertiary,
         width: `${stackWidth}%`,
@@ -48,12 +50,14 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
             color: DefaultPalette.white
           }
         }
-      },
+      }
+    };
 
+    const containerStyles = {
       container: {
         height: containerHeight
       }
-    });
+    };
 
     return (
       <Stack gap={10}>
@@ -111,7 +115,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           </Stack.Item>
         </Stack>
 
-        <div className={styles.container}>
+        <div className={mergeStyleSets(containerStyles).container}>
           <Stack
             horizontal
             verticalFill
@@ -119,7 +123,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
             gap={30}
             horizontalAlign={horizontalAlignment}
             verticalAlign={verticalAlignment}
-            className={styles.root}
+            styles={rootStyles}
           >
             <span>1</span>
             <span>2</span>

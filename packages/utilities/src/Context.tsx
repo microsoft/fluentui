@@ -1,6 +1,10 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
+/**
+ * @deprecated This function uses the legacy context API, which is deprecated and should not be
+ * used in new code. Please migrate to the new context API. https://reactjs.org/docs/context.html
+ */
 export function provideContext<TContext, TProps>(
   contextTypes: PropTypes.ValidationMap<TContext>,
   mapPropsToContext: (props: TProps) => TContext

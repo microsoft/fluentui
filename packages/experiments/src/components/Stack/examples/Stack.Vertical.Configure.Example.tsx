@@ -4,6 +4,9 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
+import { IStackSlots } from '../Stack.types';
+import { IStackItemSlots } from '../StackItem/StackItem.types';
+import { IComponentStyles } from '../../../Foundation';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
@@ -72,7 +75,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       emptyChildren
     } = this.state;
 
-    const styles = mergeStyleSets({
+    const rootStyles: IComponentStyles<IStackSlots> = {
       root: [
         {
           background: DefaultPalette.themeTertiary,
@@ -83,9 +86,11 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         preventOverflow && {
           overflow: 'hidden' as 'hidden'
         }
-      ],
+      ]
+    };
 
-      item: {
+    const itemStyles: IComponentStyles<IStackItemSlots> = {
+      root: {
         width: 50,
         height: 50,
         display: 'flex',
@@ -95,7 +100,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         color: DefaultPalette.white,
         boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : ''
       }
-    });
+    };
 
     return (
       <Stack gap={10}>
@@ -236,15 +241,19 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           verticalAlign={verticalAlignment}
           horizontalAlign={horizontalAlignment}
-          className={styles.root}
+          styles={rootStyles}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return hideEmptyChildren ? <Stack.Item key={index} className={styles.item} /> : <span key={index} className={styles.item} />;
+              return hideEmptyChildren ? (
+                <Stack.Item key={index} styles={itemStyles} />
+              ) : (
+                <span key={index} className={mergeStyleSets(itemStyles).root} />
+              );
             }
 
             return (
-              <span key={index} className={styles.item}>
+              <span key={index} className={mergeStyleSets(itemStyles).root}>
                 {value}
               </span>
             );

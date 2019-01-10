@@ -2,7 +2,10 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackSlots } from '../Stack.types';
+import { IStackItemSlots } from '../StackItem/StackItem.types';
+import { IComponentStyles } from '../../../Foundation';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackWidth: number;
@@ -17,14 +20,16 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
   }
 
   public render(): JSX.Element {
-    const styles = mergeStyleSets({
+    const rootStyles: IComponentStyles<IStackSlots> = {
       root: {
         background: DefaultPalette.themeTertiary,
         width: `${this.state.stackWidth}%`,
         overflow: 'hidden'
-      },
+      }
+    };
 
-      item: {
+    const itemStyles: IComponentStyles<IStackItemSlots> = {
+      root: {
         height: 50,
         display: 'flex',
         alignItems: 'center',
@@ -33,7 +38,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
         background: DefaultPalette.themePrimary,
         overflow: 'hidden'
       }
-    });
+    };
 
     return (
       <Stack gap={5}>
@@ -46,17 +51,17 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
           showValue={true}
           onChange={this._onWidthChange}
         />
-        <Stack horizontal gap={5} shrinkItems padding={10} className={styles.root}>
-          <Stack.Item grow className={styles.item}>
+        <Stack horizontal gap={5} shrinkItems padding={10} styles={rootStyles}>
+          <Stack.Item grow styles={itemStyles}>
             I shrink
           </Stack.Item>
-          <Stack.Item grow className={styles.item}>
+          <Stack.Item grow styles={itemStyles}>
             I shrink
           </Stack.Item>
-          <Stack.Item grow preventShrink className={styles.item} styles={{ root: { width: 500 } }}>
+          <Stack.Item grow preventShrink styles={{ root: { ...(itemStyles.root as any), ...{ width: 500 } } }}>
             I don't shrink
           </Stack.Item>
-          <Stack.Item grow className={styles.item}>
+          <Stack.Item grow styles={itemStyles}>
             I shrink
           </Stack.Item>
         </Stack>

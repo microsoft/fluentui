@@ -2,6 +2,119 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.122.0",
+      "tag": "office-ui-fabric-react_v6.122.0",
+      "date": "Wed, 09 Jan 2019 13:35:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed: the commandbar will no longer flicker when resized",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "4f86b90aa5e54f5acc4408f6da52fb516ec6142c"
+          },
+          {
+            "comment": "CommandBar: minor perf improvement in computing cache key",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a3b5fae29a52c85285d0432eeecf1eecacae9b52"
+          },
+          {
+            "comment": "Fix the typing of ExpandingCard/PlainCard component props.",
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "b610d7b055434e708b6ac8dfd8fe96d4345a7145"
+          },
+          {
+            "comment": "FocusTrapZone - Make forceFocusInsideTrap prop changes modify focus",
+            "author": "Burney Jia <byjia5@gmail.com>",
+            "commit": "ccbd24dadd72b52303a674db00b58869a4a37987"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Checkbox: Refactored to use an <input type=\"checkbox\"> instead of \"button\", fixing several longstanding bugs along the way.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "6139ee9c01b0fc89c06d341fae06f584d7315920"
+          },
+          {
+            "comment": "ChoiceGroup: Removed role='application' from root-div",
+            "author": "HalcyonPride <goodguyjosh@outlook.com>",
+            "commit": "c19c76036e3dc0220f9e93b4aa13d0f1a411c081"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.121.0",
+      "tag": "office-ui-fabric-react_v6.121.0",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CalendarYear: convert from componentWillReceiveProps to getDerivedStateFromProps",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Allow disabling specific dates on the calendar in addition to the max and min dates.",
+            "author": "CharlesgdHill <44102734+CharlesgdHill@users.noreply.github.com>",
+            "commit": "f2c044c09020bc452d92f6d68c6c00a579e77112"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.27.1 <7.0.0` to `>=6.27.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.120.0",
+      "tag": "office-ui-fabric-react_v6.120.0",
+      "date": "Mon, 07 Jan 2019 13:34:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add FocusTrapCallout component",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "1b5b098751d24eb8d5b6a10a5d5fa4689b866f47"
+          },
+          {
+            "comment": "Exposes the tabIndex of the TextField in the DatePicker",
+            "author": "kisiebel <40902158+kisiebel@users.noreply.github.com>",
+            "commit": "18786fd6f04a0275c96e81591bf431669e2b45c1"
+          },
+          {
+            "comment": "Slider: Allows a custom value format function to be passed which formats the value label",
+            "author": "ethanroday <ethan.roday@gmail.com>",
+            "commit": "f78c3d367e87df2b99aa34fc1932fe438a93014e"
+          },
+          {
+            "comment": "DocumentCard: add optional aria role property to allow override the default aria role.",
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "5d4bfd992ceb201a30b2233d0803ce750cabeeed"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ChoiceGroup: exposing focus() method in IChoiceGroup and makes sure it is implemented.",
+            "author": "devaradhanm <demuruge@microsoft.com>",
+            "commit": "8d03346547b9ee29102b2128347b003753029137"
+          },
+          {
+            "comment": "Fix outline for Modals and Dialogs in High Contrast mode",
+            "author": "Frank Oppervoll-Larsen <crazyfraggle@gmail.com>",
+            "commit": "d5320e5be4ddc4ea55ac1b4608cdd0f6df935c33"
+          },
+          {
+            "comment": "SearchBox: fix handling of null value",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "e065424cae0bdc82597bd74f997d97456bd11f20"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.119.0",
       "tag": "office-ui-fabric-react_v6.119.0",
       "date": "Thu, 03 Jan 2019 13:33:55 GMT",

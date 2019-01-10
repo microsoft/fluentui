@@ -2,7 +2,9 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackSlots } from '../Stack.types';
+import { IComponentStyles } from '../../../Foundation';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackHeight: number;
@@ -19,7 +21,7 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
   public render(): JSX.Element {
     const { stackHeight } = this.state;
 
-    const styles = mergeStyleSets({
+    const styles: IComponentStyles<IStackSlots> = {
       root: {
         background: DefaultPalette.themeTertiary,
         height: stackHeight,
@@ -35,7 +37,7 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
           }
         }
       }
-    });
+    };
 
     return (
       <Stack gap={10}>
@@ -49,7 +51,7 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
           onChange={this._onHeightChange}
         />
 
-        <Stack wrap gap={20} className={styles.root}>
+        <Stack wrap gap={20} styles={styles}>
           <span>1</span>
           <span>2</span>
           <span>3</span>

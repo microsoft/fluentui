@@ -1,11 +1,13 @@
 // @codepen
 import * as React from 'react';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackSlots } from '../Stack.types';
+import { IComponentStyles } from '../../../Foundation';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class HorizontalStackVerticalAlignExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const styles = mergeStyleSets({
+    const styles: IComponentStyles<IStackSlots> = {
       root: {
         background: DefaultPalette.themeTertiary,
         height: 100,
@@ -21,26 +23,26 @@ export class HorizontalStackVerticalAlignExample extends React.Component<{}, {}>
           }
         }
       }
-    });
+    };
 
     return (
       <Stack gap={5}>
         <span>Top-aligned</span>
-        <Stack horizontal verticalAlign="top" className={styles.root}>
+        <Stack horizontal verticalAlign="top" styles={styles}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </Stack>
 
         <span>Vertically centered</span>
-        <Stack horizontal verticalAlign="center" className={styles.root}>
+        <Stack horizontal verticalAlign="center" styles={styles}>
           <span>1</span>
           <span>2</span>
           <span>3</span>
         </Stack>
 
         <span>Bottom-aligned</span>
-        <Stack horizontal verticalAlign="bottom" className={styles.root}>
+        <Stack horizontal verticalAlign="bottom" styles={styles}>
           <span>1</span>
           <span>2</span>
           <span>3</span>

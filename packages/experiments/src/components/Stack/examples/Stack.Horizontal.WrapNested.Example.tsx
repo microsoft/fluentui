@@ -2,7 +2,9 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackSlots } from '../Stack.types';
+import { IComponentStyles } from '../../../Foundation';
+import { IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackWidth: number;
@@ -26,13 +28,15 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
       color: DefaultPalette.white
     } as IStyleSet<{}>;
 
-    const styles = mergeStyleSets({
+    const rootStyles: IComponentStyles<IStackSlots> = {
       root: {
         background: DefaultPalette.themeTertiary,
         width: `${this.state.stackWidth}%`
-      },
+      }
+    };
 
-      stackOne: {
+    const stackOneStyles: IComponentStyles<IStackSlots> = {
+      root: {
         background: DefaultPalette.neutralTertiary,
         selectors: {
           '& span': {
@@ -40,9 +44,11 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
             background: DefaultPalette.themePrimary
           }
         }
-      },
+      }
+    };
 
-      stackTwo: {
+    const stackTwoStyles: IComponentStyles<IStackSlots> = {
+      root: {
         background: DefaultPalette.neutralSecondary,
         selectors: {
           '& span': {
@@ -50,9 +56,11 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
             background: DefaultPalette.themeDark
           }
         }
-      },
+      }
+    };
 
-      stackThree: {
+    const stackThreeStyles: IComponentStyles<IStackSlots> = {
+      root: {
         background: DefaultPalette.neutralPrimary,
         selectors: {
           '& span': {
@@ -61,7 +69,7 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
           }
         }
       }
-    });
+    };
 
     return (
       <Stack gap={10}>
@@ -75,8 +83,8 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
           onChange={this._onWidthChange}
         />
 
-        <Stack horizontal wrap gap={40} verticalGap={30} className={styles.root}>
-          <Stack horizontal wrap gap={30} verticalGap={10} className={styles.stackOne}>
+        <Stack horizontal wrap gap={40} verticalGap={30} styles={rootStyles}>
+          <Stack horizontal wrap gap={30} verticalGap={10} styles={stackOneStyles}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
@@ -86,13 +94,13 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
             <span>7</span>
           </Stack>
 
-          <Stack horizontal wrap gap={50} verticalGap={20} className={styles.stackTwo}>
+          <Stack horizontal wrap gap={50} verticalGap={20} styles={stackTwoStyles}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
           </Stack>
 
-          <Stack horizontal wrap className={styles.stackThree}>
+          <Stack horizontal wrap styles={stackThreeStyles}>
             <span>1</span>
             <span>2</span>
             <span>3</span>

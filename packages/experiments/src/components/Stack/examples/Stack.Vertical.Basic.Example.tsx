@@ -1,62 +1,67 @@
 // @codepen
 import * as React from 'react';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackSlots } from '../Stack.types';
+import { IStackItemSlots } from '../StackItem/StackItem.types';
+import { IComponentStyles } from '../../../Foundation';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const styles = mergeStyleSets({
+    const rootStyles: IComponentStyles<IStackSlots> = {
       root: {
         background: DefaultPalette.themeTertiary
-      },
+      }
+    };
 
-      item: {
+    const itemStyles: IComponentStyles<IStackItemSlots> = {
+      root: {
         color: DefaultPalette.white,
         background: DefaultPalette.themePrimary,
         padding: 5
       }
-    });
+    };
 
     return (
       <Stack gap={5}>
         <span>Default vertical stack</span>
-        <Stack className={styles.root}>
+        <Stack styles={rootStyles}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Vertical gap between items</span>
-        <Stack gap={10} padding={10} className={styles.root}>
+        <Stack gap={10} padding={10} styles={rootStyles}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack gap={5} padding={10} className={styles.root}>
-          <Stack.Item align="auto" className={styles.item}>
+        <Stack gap={5} padding={10} styles={rootStyles}>
+          <Stack.Item align="auto" styles={itemStyles}>
             <span>Auto-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="stretch" className={styles.item}>
+          <Stack.Item align="stretch" styles={itemStyles}>
             <span>Stretch-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="baseline" className={styles.item}>
+          <Stack.Item align="baseline" styles={itemStyles}>
             <span>Baseline-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="start" className={styles.item}>
+          <Stack.Item align="start" styles={itemStyles}>
             <span>Start-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="center" className={styles.item}>
+          <Stack.Item align="center" styles={itemStyles}>
             <span>Center-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="end" className={styles.item}>
+          <Stack.Item align="end" styles={itemStyles}>
             <span>End-aligned item</span>
           </Stack.Item>
         </Stack>
 
         <span>Clickable vertical stack</span>
-        <Stack onClick={this._onClick} padding={10} className={styles.root}>
+        <Stack onClick={this._onClick} padding={10} styles={rootStyles}>
           <span>Click inside this box</span>
         </Stack>
       </Stack>
