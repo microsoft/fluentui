@@ -25,7 +25,7 @@ export class SpinButtonControlledExample extends React.Component<{}, ISpinButton
         />
         <br />
         <SpinButton
-          label="SpinButton synchronous the value:will"
+          label="SpinButton synchronous the value:"
           value={this.state.value}
           onValidValueUpdated={value => this.setState({ value })}
         />
