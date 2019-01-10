@@ -379,8 +379,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-autocomplete={this._getAriaAutoCompleteValue()}
                 role="combobox"
                 readOnly={disabled || !allowFreeform}
-                aria-labelledby={label && !ariaLabel ? id + '-label' : undefined}
-                aria-label={ariaLabel}
+                aria-labelledby={label && id + '-label'}
+                aria-label={ariaLabel && !label ? ariaLabel : undefined}
                 aria-describedby={keytipAttributes['aria-describedby']}
                 aria-activedescendant={this._getAriaActiveDescentValue()}
                 aria-disabled={disabled}
@@ -1186,7 +1186,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
           aria-selected={isSelected ? 'true' : 'false'}
-          ariaLabel={item.ariaLabel}
+          ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
           title={title}
         >
@@ -1200,7 +1200,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ) : (
         <Checkbox
           id={id + '-list' + item.index}
-          ariaLabel={item.ariaLabel}
+          ariaLabel={this._getPreviewText(item)}
           key={item.key}
           data-index={item.index}
           styles={checkboxStyles}
