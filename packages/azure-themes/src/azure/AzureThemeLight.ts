@@ -1,6 +1,8 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
+import { FontSizes } from './AzureType';
+import * as StyleConstants from './Constants';
 
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: LightSemanticColors.background,
@@ -67,6 +69,12 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusWarningIcon: CommonSemanticColors.icons.warning
 };
 export const AzureThemeLight: ITheme = createTheme({
+  fonts: {
+    medium: {
+      fontFamily: StyleConstants.fontFamily,
+      fontSize: FontSizes.size12
+    }
+  },
   palette: {
     themePrimary: LightSemanticColors.controlOutlines.accent,
     neutralDark: LightSemanticColors.text.body,

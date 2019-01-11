@@ -1,6 +1,8 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { CommonSemanticColors, DarkSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
+import { FontSizes } from './AzureType';
+import * as StyleConstants from './Constants';
 
 const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: DarkSemanticColors.background,
@@ -68,6 +70,12 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
 };
 
 export const AzureThemeDark: ITheme = createTheme({
+  fonts: {
+    medium: {
+      fontFamily: StyleConstants.fontFamily,
+      fontSize: FontSizes.size12
+    }
+  },
   palette: {
     themePrimary: DarkSemanticColors.controlOutlines.accent,
     neutralDark: DarkSemanticColors.text.body,
