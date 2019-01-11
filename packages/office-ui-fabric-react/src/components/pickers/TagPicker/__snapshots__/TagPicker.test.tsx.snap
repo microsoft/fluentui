@@ -38,6 +38,7 @@ exports[`TagPicker renders correctly 1`] = `
               flex-wrap: wrap;
               min-height: 30px;
               min-width: 180px;
+              position: relative;
             }
             &:hover {
               border-color: #333333;
