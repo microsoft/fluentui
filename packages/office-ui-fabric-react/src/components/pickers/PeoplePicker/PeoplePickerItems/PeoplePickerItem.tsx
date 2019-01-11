@@ -46,14 +46,13 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
       <div className={classNames.itemContent} id={'selectedItemPersona-' + itemId}>
         <Persona size={PersonaSize.size28} styles={personaStyles} coinProps={{ styles: personaCoinStyles }} {...item} />
       </div>
-      {!disabled && (
-        <IconButton
-          onClick={onRemoveItem}
-          iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
-          className={classNames.removeButton}
-          ariaLabel={removeButtonAriaLabel}
-        />
-      )}
+      <IconButton
+        onClick={onRemoveItem}
+        disabled={disabled}
+        iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+        className={classNames.removeButton}
+        ariaLabel={removeButtonAriaLabel}
+      />
     </div>
   );
 };
