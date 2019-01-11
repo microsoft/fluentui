@@ -1,5 +1,6 @@
 import { getGlobalClassNames, hiddenContentStyle } from '../../Styling';
 import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import { cssColor, IRGB } from '../../utilities/color/colors';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',
@@ -9,15 +10,19 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
-  const { className, theme, isFocused, inputClassName } = props;
+  const { className, theme, isFocused, inputClassName, disabled } = props;
 
   if (!theme) {
     throw new Error('theme is undefined or null in base BasePicker getStyles function.');
   }
-  const { semanticColors } = theme;
+  const { semanticColors, palette } = theme;
   const { inputBorder, inputBorderHovered, inputFocusBorderAlt } = semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  // The following lines are to create a semi-transparent color overlay for the disabled state with designer's approval.
+  const rgbColor: IRGB | undefined = cssColor(palette.neutralQuaternaryAlt);
+  const disabledOverlayColor = rgbColor ? `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.29)` : 'transparent';
 
   return {
     root: [classNames.root, className],
@@ -25,6 +30,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
       classNames.text,
       {
         display: 'flex',
+        position: 'relative',
         flexWrap: 'wrap',
         alignItems: 'center',
         boxSizing: 'border-box',
@@ -32,15 +38,31 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         minHeight: 30,
         border: `1px solid ${inputBorder}`
       },
-      !isFocused && {
+      !isFocused &&
+        !disabled && {
+          selectors: {
+            ':hover': {
+              borderColor: inputBorderHovered
+            }
+          }
+        },
+      isFocused &&
+        !disabled && {
+          borderColor: inputFocusBorderAlt
+        },
+      disabled && {
+        borderColor: 'transparent',
         selectors: {
-          ':hover': {
-            borderColor: inputBorderHovered
+          '&:after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            background: disabledOverlayColor
           }
         }
-      },
-      isFocused && {
-        borderColor: inputFocusBorderAlt
       }
     ],
     itemsWrapper: [

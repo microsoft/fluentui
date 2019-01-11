@@ -34,14 +34,19 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         maxWidth: 300,
         background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
         selectors: {
-          ':hover': {
-            background: disabled ? palette.neutralLighter : !selected ? palette.neutralLight : palette.themePrimary,
-            selectors: {
-              '.ms-TagItem-close': {
-                color: palette.neutralPrimary
-              }
-            }
-          },
+          ':hover': [
+            !disabled &&
+              !selected && {
+                background: palette.neutralLight,
+                selectors: {
+                  '.ms-TagItem-close': {
+                    color: palette.neutralPrimary
+                  }
+                }
+              },
+            disabled && { background: palette.neutralLighter },
+            selected && !disabled && { background: palette.themePrimary }
+          ],
           [HighContrastSelector]: {
             border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`
           }
@@ -89,6 +94,13 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           },
           [HighContrastSelector]: {
             color: 'HighlightText'
+          }
+        }
+      },
+      disabled && {
+        selectors: {
+          '.ms-Button-icon': {
+            color: theme.semanticColors.buttonText
           }
         }
       }

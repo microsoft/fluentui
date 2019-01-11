@@ -144,7 +144,14 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
             }
           }
         }
-      ]
+      ],
+      disabled && {
+        selectors: {
+          '.ms-Button-icon': {
+            color: theme.semanticColors.buttonText
+          }
+        }
+      }
     ],
     subComponentStyles: {
       persona: {
