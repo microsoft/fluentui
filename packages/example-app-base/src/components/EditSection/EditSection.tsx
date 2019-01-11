@@ -15,21 +15,20 @@ export class EditSection extends React.Component<IEditSectionProps, {}> {
 
     return (
       this._shouldRender && (
-        <div className={className}>
-          <TooltipHost
-            key={`${title}-${section}-editButton`}
-            content={`Edit ${title} ${readableSection}`}
-            id={`${title}-${section}-editButtonHost`}
-          >
-            <IconButton
-              aria-labelledby={`${title}-${section}-editButtonHost`}
-              iconProps={{ iconName: 'Edit' }}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-            />
-          </TooltipHost>
-        </div>
+        <TooltipHost
+          key={`${title}-${section}-editButton`}
+          content={`Edit ${title} ${readableSection}`}
+          id={`${title}-${section}-editButtonHost`}
+          hostClassName={className}
+        >
+          <IconButton
+            aria-labelledby={`${title}-${section}-editButtonHost`}
+            iconProps={{ iconName: 'Edit' }}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        </TooltipHost>
       )
     );
   }
