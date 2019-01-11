@@ -5,13 +5,22 @@ about: Interested in contributing a new component to Fabric? This template inclu
 ---
 <!-- Use this template for new components or new component varients -->
 
-## Which product teams/scenarios need this control
-<!-- The more teams/scenarios that would use this control the better chance it will get prioritized -->
-
 ## Component details
 
-<!-- Please provide a general description of the component(s) being added -->
+### Description
 
+
+### Which product teams/scenarios need this control
+<!-- The more teams/scenarios that would use this control the better chance it will get prioritized -->
+
+
+### Design assets
+<!-- Please provide links to redlines or screenshots of intended component design -->
+
+### Component ownership
+<!-- Are there one or more people who can help maintain this component over time? Who will address bugs? -->
+
+## Component composition
 
 ### Imports/Dependencies
 <!-- What other components/modules will your component be using -->
@@ -20,20 +29,18 @@ about: Interested in contributing a new component to Fabric? This template inclu
 <!-- Consider creating smaller composable components vs a single larger one
 See https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#build-many-smaller-components-and-compose-them-together -->
 
-### Intended package
+### Intended package/s
 <!-- If this is a prototype component, start in @uifabric/experiments. If you feel that there is a new package required, please indicate the requested name here. -->
 
-### Code mockup/example
-<!-- List/describe all expected props -->
+## Component code
 
-__Code Sample__
+### Example code
 
 ```
 
 ```
 
 <!-- View naming guidelines here https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Design#naming-guidance -->
-__Types__
 
 ### Public methods
 | Name      | Type     | Description |
@@ -56,22 +63,15 @@ __Types__
 |-----------|----------|---------------|-------------|
 | className | string   |               | Optional class name to be added to the root |
 
+## Component Progress
 
+### Current state 
 
-### Design assets
-<!-- Please provide links to redlines or screenshots of intended component design -->
-
-### Component ownership
-<!-- Are there one or more people who can help maintain this component over time? Who will address bugs? -->
-
-### Deadlines
-<!-- is this needed to meet a deadline? -->
-
-## Todos
+### Todos
 
 - [ ] Add Todos
 
-## Steps
+### Steps
 
 - [ ] Themable
 - [ ] Unit tests
