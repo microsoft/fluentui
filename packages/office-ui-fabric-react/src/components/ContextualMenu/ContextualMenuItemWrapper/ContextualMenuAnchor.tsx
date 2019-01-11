@@ -67,6 +67,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               onClick={this._onItemClick}
               onMouseEnter={this._onItemMouseEnter}
               onMouseLeave={this._onItemMouseLeave}
+              onMouseMove={this._onItemMouseMove}
               onKeyDown={itemHasSubmenu ? this._onItemKeyDown : null}
             >
               <ChildrenRenderer
@@ -74,7 +75,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
                 item={item}
                 classNames={classNames}
                 index={index}
-                onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
+                onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}
                 hasIcons={hasIcons}
                 openSubMenu={openSubMenu}
                 dismissSubMenu={dismissSubMenu}

@@ -18,7 +18,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           font-weight: 400;
         }
         {
-          height: 22px;
+          height: 32px;
         }
     id="Rating0"
   >
@@ -29,10 +29,9 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           ms-RatingStar-root--small
           {
             display: inline-block;
-            padding-bottom: 1px;
           }
           {
-            height: 22px;
+            height: 32px;
           }
       data-focuszone-id="FocusZone2"
       data-is-focusable={true}
@@ -49,16 +48,17 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -83,6 +83,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -119,6 +120,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -185,16 +187,17 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -219,6 +222,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -255,6 +259,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -321,16 +326,17 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -355,6 +361,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -391,6 +398,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -457,16 +465,17 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -491,6 +500,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -527,6 +537,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >
@@ -593,16 +604,17 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             {
               background-color: transparent;
               border: none;
+              box-sizing: content-box;
               cursor: pointer;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               outline: transparent;
-              padding-bottom: 3px;
-              padding-left: 0px;
-              padding-right: 3px;
-              padding-top: 3px;
+              padding-bottom: 8px;
+              padding-left: 2px;
+              padding-right: 2px;
+              padding-top: 8px;
               position: relative;
             }
             &::-moz-focus-inner {
@@ -627,6 +639,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             }
             {
               font-size: 16px;
+              height: 16px;
               line-height: 16px;
             }
         disabled={true}
@@ -663,6 +676,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-RatingStar-container
               {
                 display: inline-block;
+                height: inherit;
                 position: relative;
               }
         >

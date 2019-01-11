@@ -1,21 +1,30 @@
 import { IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IStyle } from '../../Styling';
-import { IIconProps, IContextualMenuProps, IFontWeight } from 'office-ui-fabric-react';
+import { IFontWeight, IRefObject } from 'office-ui-fabric-react';
+import { IContextualMenuSlot, IHTMLButtonSlot, IHorizontalStackSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
 
-// States should only be javascript evluated states. (Not css states.)
+// States should only be javascript evaluated states. (Not css states.)
 export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
 
 export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
 
-export type IButtonSlots = 'root' | 'stack' | 'text' | 'icon' | 'menuIcon';
+export interface IButtonSlots {
+  root?: IHTMLButtonSlot;
+  stack?: IHorizontalStackSlot;
+  content?: ITextSlot;
+  icon?: IIconSlot;
+  menu?: IContextualMenuSlot;
+  menuIcon?: IIconSlot;
+}
 
-export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IButtonStyles> {
-  as?: keyof JSX.IntrinsicElements;
+export interface IButton {}
+
+export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IButtonProps, IButtonStyles> {
+  componentRef?: IRefObject<IButton>;
   className?: string;
   href?: string;
-  text?: string;
 
   primary?: boolean;
   circular?: boolean;
@@ -26,8 +35,6 @@ export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IBu
   variant?: IButtonVariants;
 
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-  menu?: React.ReactType<IContextualMenuProps>;
-  icon?: string | IIconProps | JSX.Element;
   styleVariables?: IButtonStyleVariables;
 }
 
@@ -61,7 +68,7 @@ export interface IButtonStyleVariablesTypes {
 
 export type IButtonStyleVariables = { [PVariant in IButtonVariants]?: { [PState in IButtonStates]?: IButtonStyleVariablesTypes } };
 
-export type IButtonStyles = { [key in IButtonSlots]: IStyle };
+export type IButtonStyles = { [key in keyof IButtonSlots]: IStyle };
 
 export type IButtonViewProps = IButtonProps & {
   onMenuDismiss: () => void;

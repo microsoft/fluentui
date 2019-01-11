@@ -342,7 +342,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         this.setState({
           positions: newPositions
         });
-      } else {
+      } else if (this._positionAttempts > 0) {
+        // Only call the onPositioned callback if the callout has been re-positioned at least once.
         this._positionAttempts = 0;
         if (this.props.onPositioned) {
           this.props.onPositioned(this.state.positions);

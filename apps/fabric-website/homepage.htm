@@ -1,3 +1,5 @@
+<div id="metadata" title="Home - Office UI Fabric" description="The official front-end framework for building experiences that fit seamlessly into Office and Office 365."
+  style="visibility:hidden"></div>
 <style>
   body,
   html {
@@ -17,57 +19,67 @@
 
 <div id="main">
   <div class="loading">
-    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/loading.gif" alt="Loading"
-      width="32" height="32" />
+    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif"
+      alt="Loading" width="32" height="32" />
   </div>
 </div>
 
 <script type="text/javascript">
-  var isProduction = false;
-  var isDogfood = false;
-  var now = Date.now();
-  var today = new Date();
-  var todaysDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  var noCompress = getParameterByName('noCompress');
   var entryPointFilename = 'fabric-sitev5';
-  var baseProductionUrl = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
-  var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
+  var appPath = '';
+  var configPrefix = 'fabric-website-df';
+  var Flight = {};
 
-  // Query params
-  var devUrlParam = getParameterByName('devUrl');
-  var dogfoodParam = getParameterByName('isDogfood');
-  var productionParam = getParameterByName('isProduction');
-
-  if (location.hostname == 'developer.microsoft.com' || productionParam) {
-    isProduction = true;
-  } else if (location.hostname.indexOf('devx') > -1 || dogfoodParam) {
-    isDogfood = true;
-    entryPointFilename = 'fabric-sitev5-df';
+  if (location.hostname === 'developer.microsoft.com') {
+    configPrefix = 'fabric-website-prod';
   }
 
-  var scripts = [];
+  var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
-  if (devUrlParam) {
-    scripts.push(devUrlParam);
-  } else if (isDogfood) {
-    scripts.push(baseDogfoodUrl + entryPointFilename + '.js?date=' + now);
-  } else {
-    scripts.push(baseProductionUrl + entryPointFilename + '.min.js?date=' + todaysDate);
-  }
+  loadScripts(configScript, function () {
+    if (window.Flight) {
+      appPath += window.Flight.baseCDNUrl;
 
-  loadScript(scripts);
-
-  function loadScript(n) {
-    for (var i = 0; i < n.length; i++) {
-      var s = document.createElement('script');
-      s.src = n[i];
-      s.async = false;
-      document.body.appendChild(s);
+      loadAppScripts(appPath);
     }
+  });
+
+  // Simple synchronous script loader with callback. Adapted from https://stackoverflow.com/questions/1866717
+  function loadScripts(array, callback) {
+    var loader = function (src, handler) {
+      var script = document.createElement('script');
+      script.src = src;
+      script.onload = script.onreadystatechange = function () {
+        script.onreadystatechange = script.onload = null;
+        handler();
+      }
+      var head = document.getElementsByTagName('head')[0];
+      (head || document.body).appendChild(script);
+    };
+    (function run() {
+      if (array.length != 0) {
+        loader(array.shift(), run);
+      } else {
+        callback && callback();
+      }
+    })();
+  }
+
+  function loadAppScripts(appPath) {
+    if (noCompress) {
+      appPath += entryPointFilename + '.js';
+    } else {
+      appPath += entryPointFilename + '.min.js';
+    }
+
+    var scripts = [appPath];
+    loadScripts(scripts);
   }
 
   function getParameterByName(name, url) {
     if (!url) {
-      url = window.location.href;
+      url = window.location.search;
     }
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -76,5 +88,4 @@
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
-
 </script>

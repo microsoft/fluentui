@@ -178,8 +178,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
   }
 
   /**
-   * Deprecated. Use onResize instead.
-   * @deprecated
+   * Deprecated, use `onResize` instead.
+   * @deprecated Use `onResize` instead.
    */
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     this.onResize(ev);

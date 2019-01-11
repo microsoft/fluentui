@@ -27,10 +27,10 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <span
           id="selected-items-id__0"
+          role="list"
         />
         <input
           aria-autocomplete="both"
@@ -51,6 +51,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
           onInput={[Function]}
           onKeyDown={[Function]}
           role="combobox"
+          spellCheck={false}
           value=""
         />
       </div>
@@ -59,14 +60,14 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
 </div>
 `;
 
-exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
+exports[`Pickers BasePicker renders BasePicker with inputProps supply classnames correctly 1`] = `
 <div
   className="ms-BasePicker"
   onKeyDown={[Function]}
 >
   <div
     className="ms-FocusZone"
-    data-focuszone-id="FocusZone70"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -86,20 +87,115 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
     >
       <div
         className="ms-BasePicker-text"
-        role="list"
       >
         <span
-          id="selected-items-id__69"
+          id="selected-items-id__0"
+          role="list"
         />
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-describedby="selected-items-id__69"
+          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"
           autoComplete="off"
-          className="ms-BasePicker-input"
+          className="ms-BasePicker-input testclass "
+          data-lpignore={true}
+          id="pckSelectedUser"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClick={[Function]}
+          onCompositionEnd={[Function]}
+          onCompositionStart={[Function]}
+          onFocus={[Function]}
+          onInput={[Function]}
+          onKeyDown={[Function]}
+          placeholder="Bitte einen Benutzer angeben..."
+          role="combobox"
+          spellCheck={false}
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
+<div
+  className=
+      ms-BasePicker
+
+  onKeyDown={[Function]}
+>
+  <div
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      className="ms-SelectionZone"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDoubleClick={[Function]}
+      onFocusCapture={[Function]}
+      onKeyDown={[Function]}
+      onKeyDownCapture={[Function]}
+      onMouseDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className=
+            ms-BasePicker-text
+            {
+              align-items: center;
+              border: 1px solid #a6a6a6;
+              box-sizing: border-box;
+              display: flex;
+              flex-wrap: wrap;
+              min-height: 30px;
+              min-width: 180px;
+            }
+            &:hover {
+              border-color: #333333;
+            }
+      >
+        <span
+          className=
+              ms-BasePicker-itemsWrapper
+              {
+                display: flex;
+                flex-wrap: wrap;
+              }
+          id="selected-items-id__0"
+          role="list"
+        />
+        <input
+          aria-autocomplete="both"
+          aria-controls=" "
+          aria-describedby="selected-items-id__0"
+          aria-expanded={false}
+          aria-haspopup="true"
+          autoCapitalize="off"
+          autoComplete="off"
+          className=
+              ms-BasePicker-input
+              {
+                align-self: flex-end;
+                border: none;
+                flex-grow: 1;
+                height: 34px;
+                outline: none;
+                padding-bottom: 0;
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: 0;
+              }
           data-lpignore={true}
           onBlur={[Function]}
           onChange={[Function]}
@@ -110,6 +206,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
           onInput={[Function]}
           onKeyDown={[Function]}
           role="combobox"
+          spellCheck={false}
           value=""
         />
       </div>

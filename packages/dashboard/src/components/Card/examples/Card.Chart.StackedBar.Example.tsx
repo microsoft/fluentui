@@ -1,20 +1,12 @@
 import * as React from 'react';
 import { IChartProps as IChartingProps } from '@uifabric/charting';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  ChartType,
-  ICardProps,
-  ICardContentDetails,
-  IChartProps,
-  Priority
-} from '@uifabric/dashboard';
+import { Card, CardContentType, CardSize, ChartType, ICardProps, ICardContentDetails, IChartProps, Priority } from '@uifabric/dashboard';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export class StackedBarChartExample extends React.Component<{}, {}> {
+export class StackedBarChartExample extends React.Component<{}, { loading: boolean }> {
   constructor(props: ICardProps) {
     super(props);
+    this.state = { loading: true };
   }
 
   public render(): JSX.Element {
@@ -39,9 +31,7 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
         chartTitle: 'Monitored',
         chartData: [
           { legend: 'Legend 1 text', data: 40, color: DefaultPalette.accent },
-          { legend: 'Legend 2 text', data: 23, color: DefaultPalette.green },
-          { legend: 'Legend 3 text', data: 35, color: DefaultPalette.orange },
-          { legend: 'Legend 4 text', data: 87, color: DefaultPalette.blue }
+          { legend: 'Legend 2 text', data: 23, color: DefaultPalette.green }
         ]
       }
     ];
@@ -65,7 +55,8 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
     const chartContent1: IChartProps = {
       chartType: ChartType.StackedBarChart,
       chartData: firstChartData,
-      chartUpdatedOn: 'Updated 6:20 pm today'
+      chartUpdatedOn: 'Updated 6:20 pm today',
+      hideDenominator: [true]
     };
 
     const chartContent2: IChartProps = {
@@ -90,13 +81,17 @@ export class StackedBarChartExample extends React.Component<{}, {}> {
     const header = {
       headerText: 'Header Text '
     };
-
+    const that = this;
+    setTimeout(() => {
+      that.setState({ loading: false });
+    }, 10000);
     return (
       <Card
         cardFrameContent={cardFrameContent}
         header={header}
         cardContentList={contentAreaList}
         cardSize={CardSize.large}
+        loading={this.state.loading}
       />
     );
   }

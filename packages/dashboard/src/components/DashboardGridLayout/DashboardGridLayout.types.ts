@@ -183,3 +183,10 @@ export interface IDashboardGridLayoutProps {
    */
   onWidthChange?: (containerWidth: number, margin: [number, number], cols: number, containerPadding: [number, number]) => void;
 }
+
+export interface IDashboardGridLayoutBaseState {
+  /**
+   * Layouts for all breakpoints, stored internally to look for layout changes and run compaction
+   */
+  layouts?: Layouts;
+}

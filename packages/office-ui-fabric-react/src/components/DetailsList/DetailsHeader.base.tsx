@@ -72,7 +72,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       columnReorderProps,
       columnResizeDetails: undefined,
       groupNestingDepth: this.props.groupNestingDepth,
-      isAllCollapsed: this.props.isAllCollapsed
+      isAllCollapsed: this.props.isAllCollapsed,
+      isAllSelected: !!this.props.selection && this.props.selection.isAllSelected()
     };
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
@@ -149,6 +150,12 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     } else {
       this.setState({ columnReorderProps });
     }
+
+    if (newProps.isAllCollapsed !== undefined) {
+      this.setState({
+        isAllCollapsed: newProps.isAllCollapsed
+      });
+    }
   }
 
   public componentWillUnmount(): void {
@@ -169,6 +176,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       viewport,
       onColumnClick,
       onColumnContextMenu,
+      onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
       theme
     } = this.props;
@@ -176,7 +184,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
-    const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
     if (!this._dragDropHelper && columnReorderProps) {
       this._dragDropHelper = new DragDropHelper({
         selection: {
@@ -203,7 +210,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     });
 
     const classNames = this._classNames;
-
+    const isRTL = getRTL();
     return (
       <FocusZone
         role="row"
@@ -261,7 +268,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
           <div className={classNames.cellIsGroupExpander} onClick={this._onToggleCollapseAll} data-is-focusable={true}>
-            <Icon className={classNames.collapseButton} iconName="ChevronDown" />
+            <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
         <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
@@ -283,6 +290,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               dragDropHelper={this._dragDropHelper}
               onColumnClick={onColumnClick}
               onColumnContextMenu={onColumnContextMenu}
+              // Do not render tooltips by default, but allow for override via props.
+              onRenderColumnHeaderTooltip={this.props.onRenderColumnHeaderTooltip}
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
               cellStyleProps={this.props.cellStyleProps}
             />,
@@ -402,14 +411,14 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
   private _resetDropHints(): void {
     if (this._currentDropHintIndex >= 0) {
-      this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'hidden');
+      this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'none');
       this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
     }
   }
 
-  private _updateDropHintElement(element: HTMLElement, property: string) {
-    (element.childNodes[1] as HTMLElement).style.visibility = property;
-    (element.childNodes[0] as HTMLElement).style.visibility = property;
+  private _updateDropHintElement(element: HTMLElement, displayProperty: string) {
+    (element.childNodes[1] as HTMLElement).style.display = displayProperty;
+    (element.childNodes[0] as HTMLElement).style.display = displayProperty;
   }
 
   private _getDropHintPositions = (): void => {
@@ -456,6 +465,16 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   };
 
+  private _liesBetween(target: number, left: number, right: number): boolean {
+    return getRTL() ? target <= left && target >= right : target >= left && target <= right;
+  }
+  private _isBefore(a: number, b: number): boolean {
+    return getRTL() ? a >= b : a <= b;
+  }
+  private _isAfter(a: number, b: number): boolean {
+    return getRTL() ? a <= b : a >= b;
+  }
+
   /**
    * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
    *
@@ -468,8 +487,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const currentDropHintIndex = this._currentDropHintIndex!;
       if (this._isValidCurrentDropHintIndex()) {
         if (
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex!].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex!].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex!].startX,
+            this._dropHintDetails[currentDropHintIndex!].endX
+          )
         ) {
           return;
         }
@@ -484,21 +506,27 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const currentIndex: number = frozenColumnCountFromStart!;
       const lastValidColumn = columns.length - frozenColumnCountFromEnd!;
       let indexToUpdate = -1;
-      if (eventXRelativePosition <= this._dropHintDetails[currentIndex].endX) {
+      if (this._isBefore(eventXRelativePosition, this._dropHintDetails[currentIndex].endX)) {
         indexToUpdate = currentIndex;
-      } else if (eventXRelativePosition >= this._dropHintDetails[lastValidColumn].startX) {
+      } else if (this._isAfter(eventXRelativePosition, this._dropHintDetails[lastValidColumn].startX)) {
         indexToUpdate = lastValidColumn;
       } else if (this._isValidCurrentDropHintIndex()) {
         if (
           this._dropHintDetails[currentDropHintIndex! + 1] &&
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! + 1].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! + 1].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex! + 1].startX,
+            this._dropHintDetails[currentDropHintIndex! + 1].endX
+          )
         ) {
           indexToUpdate = currentDropHintIndex! + 1;
         } else if (
           this._dropHintDetails[currentDropHintIndex! - 1] &&
-          eventXRelativePosition >= this._dropHintDetails[currentDropHintIndex! - 1].startX &&
-          eventXRelativePosition <= this._dropHintDetails[currentDropHintIndex! - 1].endX
+          this._liesBetween(
+            eventXRelativePosition,
+            this._dropHintDetails[currentDropHintIndex! - 1].startX,
+            this._dropHintDetails[currentDropHintIndex! - 1].endX
+          )
         ) {
           indexToUpdate = currentDropHintIndex! - 1;
         }
@@ -509,14 +537,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         while (startIndex < endIndex) {
           const middleIndex = Math.ceil((endIndex + startIndex!) / 2);
           if (
-            eventXRelativePosition >= this._dropHintDetails[middleIndex].startX &&
-            eventXRelativePosition <= this._dropHintDetails[middleIndex].endX
+            this._liesBetween(eventXRelativePosition, this._dropHintDetails[middleIndex].startX, this._dropHintDetails[middleIndex].endX)
           ) {
             indexToUpdate = middleIndex;
             break;
-          } else if (eventXRelativePosition < this._dropHintDetails[middleIndex].originX) {
+          } else if (this._isBefore(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             endIndex = middleIndex;
-          } else if (eventXRelativePosition > this._dropHintDetails[middleIndex].originX) {
+          } else if (this._isAfter(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             startIndex = middleIndex;
           }
         }
@@ -528,7 +555,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         }
       } else if (currentDropHintIndex !== indexToUpdate && indexToUpdate >= 0) {
         this._resetDropHints();
-        this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'visible');
+        this._updateDropHintElement(this._dropHintDetails[indexToUpdate].dropHintElementRef, 'inline-block');
         this._currentDropHintIndex = indexToUpdate;
       }
     }

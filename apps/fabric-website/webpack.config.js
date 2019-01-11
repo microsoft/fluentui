@@ -1,9 +1,9 @@
-module.exports = function(argv) {
+module.exports = function(env) {
   const path = require('path');
   const resources = require('../../scripts/tasks/webpack-resources');
   const version = require('./package.json').version;
-  const isDogfoodArg = argv.indexOf('--dogfood') > -1;
-  const isProductionArg = argv.indexOf('--production') > -1;
+  const isDogfoodArg = env && !env.production;
+  const isProductionArg = env && env.production;
   const now = Date.now();
 
   // Production defaults

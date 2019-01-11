@@ -22,7 +22,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     expandedCardOpenDelay: 1500,
     instantOpenOnClick: false,
     setInitialFocus: false,
-    openHotKey: KeyCodes.c,
+    openHotKey: KeyCodes.c as KeyCodes,
     type: HoverCardType.expanding
   };
 
@@ -68,9 +68,14 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     if (prevState.isHoverCardVisible !== this.state.isHoverCardVisible) {
       if (this.state.isHoverCardVisible) {
         this._async.setTimeout(() => {
-          this.setState({
-            mode: ExpandingCardMode.expanded
-          });
+          this.setState(
+            {
+              mode: ExpandingCardMode.expanded
+            },
+            () => {
+              this.props.onCardExpand && this.props.onCardExpand();
+            }
+          );
         }, this.props.expandedCardOpenDelay!);
         this.props.onCardVisible && this.props.onCardVisible();
       } else {

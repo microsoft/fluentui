@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { CompoundButton } from 'office-ui-fabric-react/lib/Button';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  ICompoundButtonStackProps,
-  ICompoundButtonStackStyles,
-  ICompoundAction,
-  ButtonSize
-} from './CompoundButtonStack.types';
+import { ICompoundButtonStackProps, ICompoundButtonStackStyles, ICompoundAction, ButtonSize } from './CompoundButtonStack.types';
 import { getStyles } from './CompoundButtonStack.styles';
 import { getCustomCompoundButtonStyles } from './CompoundButton.styles';
 
@@ -31,7 +26,10 @@ export class CompoundButtonStack extends React.Component<ICompoundButtonStackPro
             key={index}
             secondaryText={action.description}
             primary={action.primary}
-            ariaLabel={action.title}
+            ariaLabel={action.ariaLabel}
+            ariaDescription={action.ariaDescription}
+            ariaHidden={action.ariaHidden}
+            title={action.title}
             text={action.title}
             onClick={action.action}
             styles={customStyles}

@@ -10,6 +10,186 @@
   },
   "glyphs": [
     {
+      "name": "Commitments",
+      "unicode": "EC4D"
+    },
+    {
+      "name": "ThisPC",
+      "unicode": "EC4E"
+    },
+    {
+      "name": "MusicNote",
+      "unicode": "EC4F"
+    },
+    {
+      "name": "MicOff",
+      "unicode": "EC54"
+    },
+    {
+      "name": "EdgeLogo",
+      "unicode": "EC60"
+    },
+    {
+      "name": "CompletedSolid",
+      "unicode": "EC61"
+    },
+    {
+      "name": "AlbumRemove",
+      "unicode": "EC62"
+    },
+    {
+      "name": "MessageFill",
+      "unicode": "EC70"
+    },
+    {
+      "name": "TabletSelected",
+      "unicode": "EC74"
+    },
+    {
+      "name": "MobileSelected",
+      "unicode": "EC75"
+    },
+    {
+      "name": "LaptopSelected",
+      "unicode": "EC76"
+    },
+    {
+      "name": "TVMonitorSelected",
+      "unicode": "EC77"
+    },
+    {
+      "name": "DeveloperTools",
+      "unicode": "EC7A"
+    },
+    {
+      "name": "Shapes",
+      "unicode": "EC7C"
+    },
+    {
+      "name": "InsertTextBox",
+      "unicode": "EC7D"
+    },
+    {
+      "name": "LowerBrightness",
+      "unicode": "EC8A"
+    },
+    {
+      "name": "WebComponents",
+      "unicode": "EC8B"
+    },
+    {
+      "name": "OfflineStorage",
+      "unicode": "EC8C"
+    },
+    {
+      "name": "DOM",
+      "unicode": "EC8D"
+    },
+    {
+      "name": "CloudUpload",
+      "unicode": "EC8E"
+    },
+    {
+      "name": "ScrollUpDown",
+      "unicode": "EC8F"
+    },
+    {
+      "name": "DateTime",
+      "unicode": "EC92"
+    },
+    {
+      "name": "Event",
+      "unicode": "ECA3"
+    },
+    {
+      "name": "Cake",
+      "unicode": "ECA4"
+    },
+    {
+      "name": "Org",
+      "unicode": "ECA6"
+    },
+    {
+      "name": "PartyLeader",
+      "unicode": "ECA7"
+    },
+    {
+      "name": "DRM",
+      "unicode": "ECA8"
+    },
+    {
+      "name": "CloudAdd",
+      "unicode": "ECA9"
+    },
+    {
+      "name": "AppIconDefault",
+      "unicode": "ECAA"
+    },
+    {
+      "name": "Photo2Add",
+      "unicode": "ECAB"
+    },
+    {
+      "name": "Photo2Remove",
+      "unicode": "ECAC"
+    },
+    {
+      "name": "POI",
+      "unicode": "ECAF"
+    },
+    {
+      "name": "AddTo",
+      "unicode": "ECC8"
+    },
+    {
+      "name": "RadioBtnOff",
+      "unicode": "ECCA"
+    },
+    {
+      "name": "RadioBtnOn",
+      "unicode": "ECCB"
+    },
+    {
+      "name": "ExploreContent",
+      "unicode": "ECCD"
+    },
+    {
+      "name": "Product",
+      "unicode": "ECDC"
+    },
+    {
+      "name": "ProgressLoopInner",
+      "unicode": "ECDE"
+    },
+    {
+      "name": "ProgressLoopOuter",
+      "unicode": "ECDF"
+    },
+    {
+      "name": "Blocked2",
+      "unicode": "ECE4"
+    },
+    {
+      "name": "FangBody",
+      "unicode": "ECEB"
+    },
+    {
+      "name": "PageHeader",
+      "unicode": "ECEE"
+    },
+    {
+      "name": "ChatInviteFriend",
+      "unicode": "ECFE"
+    },
+    {
+      "name": "Brush",
+      "unicode": "ECFF"
+    },
+    {
+      "name": "Shirt",
+      "unicode": "ED00"
+    },
+    {
       "name": "Crown",
       "unicode": "ED01"
     },
@@ -20,6 +200,10 @@
     {
       "name": "ScaleUp",
       "unicode": "ED09"
+    },
+    {
+      "name": "QRCode",
+      "unicode": "ED14"
     },
     {
       "name": "Feedback",
@@ -224,190 +408,6 @@
     {
       "name": "PeopleBlock",
       "unicode": "ED91"
-    },
-    {
-      "name": "PeopleRepeat",
-      "unicode": "ED92"
-    },
-    {
-      "name": "PeopleAlert",
-      "unicode": "ED93"
-    },
-    {
-      "name": "PeoplePause",
-      "unicode": "ED94"
-    },
-    {
-      "name": "TransferCall",
-      "unicode": "ED95"
-    },
-    {
-      "name": "AddPhone",
-      "unicode": "ED96"
-    },
-    {
-      "name": "UnknownCall",
-      "unicode": "ED97"
-    },
-    {
-      "name": "NoteReply",
-      "unicode": "ED98"
-    },
-    {
-      "name": "NoteForward",
-      "unicode": "ED99"
-    },
-    {
-      "name": "NotePinned",
-      "unicode": "ED9A"
-    },
-    {
-      "name": "RemoveOccurrence",
-      "unicode": "ED9B"
-    },
-    {
-      "name": "Timeline",
-      "unicode": "ED9C"
-    },
-    {
-      "name": "EditNote",
-      "unicode": "ED9D"
-    },
-    {
-      "name": "CircleHalfFull",
-      "unicode": "ED9E"
-    },
-    {
-      "name": "Room",
-      "unicode": "ED9F"
-    },
-    {
-      "name": "Unsubscribe",
-      "unicode": "EDA0"
-    },
-    {
-      "name": "Subscribe",
-      "unicode": "EDA1"
-    },
-    {
-      "name": "HardDrive",
-      "unicode": "EDA2"
-    },
-    {
-      "name": "RecurringTask",
-      "unicode": "EDB2"
-    },
-    {
-      "name": "TaskManager",
-      "unicode": "EDB7"
-    },
-    {
-      "name": "TaskManagerMirrored",
-      "unicode": "EDB8"
-    },
-    {
-      "name": "Combine",
-      "unicode": "EDBB"
-    },
-    {
-      "name": "Split",
-      "unicode": "EDBC"
-    },
-    {
-      "name": "DoubleChevronUp",
-      "unicode": "EDBD"
-    },
-    {
-      "name": "DoubleChevronLeft",
-      "unicode": "EDBE"
-    },
-    {
-      "name": "DoubleChevronRight",
-      "unicode": "EDBF"
-    },
-    {
-      "name": "TextBox",
-      "unicode": "EDC2"
-    },
-    {
-      "name": "TextField",
-      "unicode": "EDC3"
-    },
-    {
-      "name": "NumberField",
-      "unicode": "EDC4"
-    },
-    {
-      "name": "Dropdown",
-      "unicode": "EDC5"
-    },
-    {
-      "name": "BookingsLogo",
-      "unicode": "EDC7"
-    },
-    {
-      "name": "ClassNotebookLogoInverse",
-      "unicode": "EDC8"
-    },
-    {
-      "name": "DelveAnalyticsLogo",
-      "unicode": "EDCA"
-    },
-    {
-      "name": "DocsLogoInverse",
-      "unicode": "EDCB"
-    },
-    {
-      "name": "Dynamics365Logo",
-      "unicode": "EDCC"
-    },
-    {
-      "name": "DynamicSMBLogo",
-      "unicode": "EDCD"
-    },
-    {
-      "name": "OfficeAssistantLogo",
-      "unicode": "EDCE"
-    },
-    {
-      "name": "OfficeStoreLogo",
-      "unicode": "EDCF"
-    },
-    {
-      "name": "OneNoteEduLogoInverse",
-      "unicode": "EDD0"
-    },
-    {
-      "name": "PlannerLogo",
-      "unicode": "EDD1"
-    },
-    {
-      "name": "PowerApps",
-      "unicode": "EDD2"
-    },
-    {
-      "name": "Suitcase",
-      "unicode": "EDD3"
-    },
-    {
-      "name": "ProjectLogoInverse",
-      "unicode": "EDD4"
-    },
-    {
-      "name": "CaretLeft8",
-      "unicode": "EDD5"
-    },
-    {
-      "name": "CaretRight8",
-      "unicode": "EDD6"
-    },
-    {
-      "name": "CaretUp8",
-      "unicode": "EDD7"
-    },
-    {
-      "name": "CaretDown8",
-      "unicode": "EDD8"
     }
   ]
 }

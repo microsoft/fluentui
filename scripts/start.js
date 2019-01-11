@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const fs = require('fs');
 const commandLineArgs = require('command-line-args');

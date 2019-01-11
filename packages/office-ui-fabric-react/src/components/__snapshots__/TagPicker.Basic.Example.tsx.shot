@@ -44,13 +44,13 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           z-index: 1;
         }
         &:hover .ms-Checkbox-checkbox {
-          border-color: #212121;
+          border-color: #333333;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
-          border-color: #212121;
+          border-color: #333333;
         }
         &:hover .ms-Checkbox-checkmark {
           color: #a6a6a6;
@@ -157,7 +157,9 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
   </button>
   Filter items in suggestions: This picker will filter added items from the search suggestions.
   <div
-    className="ms-BasePicker"
+    className=
+        ms-BasePicker
+
     onKeyDown={[Function]}
   >
     <div
@@ -181,11 +183,30 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
         role="presentation"
       >
         <div
-          className="ms-BasePicker-text"
-          role="list"
+          className=
+              ms-BasePicker-text
+              {
+                align-items: center;
+                border: 1px solid #a6a6a6;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 30px;
+                min-width: 180px;
+              }
+              &:hover {
+                border-color: #333333;
+              }
         >
           <span
+            className=
+                ms-BasePicker-itemsWrapper
+                {
+                  display: flex;
+                  flex-wrap: wrap;
+                }
             id="selected-items-id__1"
+            role="list"
           />
           <input
             aria-autocomplete="both"
@@ -196,7 +217,19 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
-            className="ms-BasePicker-input"
+            className=
+                ms-BasePicker-input
+                {
+                  align-self: flex-end;
+                  border: none;
+                  flex-grow: 1;
+                  height: 34px;
+                  outline: none;
+                  padding-bottom: 0;
+                  padding-left: 6px;
+                  padding-right: 6px;
+                  padding-top: 0;
+                }
             data-lpignore={true}
             disabled={false}
             onBlur={[Function]}
@@ -208,6 +241,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onInput={[Function]}
             onKeyDown={[Function]}
             role="combobox"
+            spellCheck={false}
             value=""
           />
         </div>
@@ -217,7 +251,9 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
   <br />
   Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
   <div
-    className="ms-BasePicker"
+    className=
+        ms-BasePicker
+
     onKeyDown={[Function]}
   >
     <div
@@ -241,11 +277,30 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
         role="presentation"
       >
         <div
-          className="ms-BasePicker-text"
-          role="list"
+          className=
+              ms-BasePicker-text
+              {
+                align-items: center;
+                border: 1px solid #a6a6a6;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 30px;
+                min-width: 180px;
+              }
+              &:hover {
+                border-color: #333333;
+              }
         >
           <span
+            className=
+                ms-BasePicker-itemsWrapper
+                {
+                  display: flex;
+                  flex-wrap: wrap;
+                }
             id="selected-items-id__3"
+            role="list"
           />
           <input
             aria-autocomplete="both"
@@ -256,7 +311,19 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
-            className="ms-BasePicker-input"
+            className=
+                ms-BasePicker-input
+                {
+                  align-self: flex-end;
+                  border: none;
+                  flex-grow: 1;
+                  height: 34px;
+                  outline: none;
+                  padding-bottom: 0;
+                  padding-left: 6px;
+                  padding-right: 6px;
+                  padding-top: 0;
+                }
             data-lpignore={true}
             disabled={false}
             onBlur={[Function]}
@@ -268,6 +335,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onInput={[Function]}
             onKeyDown={[Function]}
             role="combobox"
+            spellCheck={false}
             value=""
           />
         </div>

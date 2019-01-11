@@ -47,6 +47,9 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
   /** Optional class name to add to the root element. */
   className?: string;
 
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
+
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
@@ -142,7 +145,7 @@ export interface IGroup {
 
   /**
    * Deprecated at 1.0.0, selection state will be controled by the selection store only.
-   * @deprecated
+   * @deprecated At 1.0.0, selection state wil be controlled by the selection store only.
    */
   isSelected?: boolean;
 
@@ -215,7 +218,7 @@ export interface IGroupRenderProps {
 
   /**
    * Flag to indicate whether to ignore the collapsing icon on header.
-   * @default CheckboxVisibility.visible
+   * @defaultvalue CheckboxVisibility.visible
    */
   collapseAllVisibility?: CollapseAllVisibility;
 
@@ -228,6 +231,9 @@ export interface IGroupRenderProps {
 
 export interface IGroupDividerProps {
   componentRef?: IRefObject<{}>;
+
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
 
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
@@ -251,8 +257,8 @@ export interface IGroupDividerProps {
   selected?: boolean;
 
   /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
-   * @deprecated
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use `selected` instead.
+   * @deprecated Use `selected` instead.
    */
   isSelected?: boolean;
 
@@ -297,6 +303,9 @@ export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> 
   Pick<IGroupedListProps, 'className'> & {
     /** whether or not the group is collapsed */
     isCollapsed?: boolean;
+
+    /** Whether the group is in compact mode or not */
+    compact?: boolean;
   };
 
 export interface IGroupedListStyles {

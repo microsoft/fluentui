@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, classNamesFunction, IClassNames, getRTL } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
@@ -60,7 +60,9 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       expandButtonProps,
       theme,
       styles,
-      className
+      className,
+      groupedListId,
+      compact
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -69,11 +71,14 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     const currentlySelected = isSelected || selected;
 
+    const isRTL = getRTL();
+
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
       selected: currentlySelected,
-      isCollapsed
+      isCollapsed,
+      compact
     });
 
     if (!group) {
@@ -108,8 +113,15 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
           <div className={this._classNames.dropIcon}>
             <Icon iconName="Tag" />
           </div>
-          <button type="button" className={this._classNames.expand} onClick={this._onToggleCollapse} {...expandButtonProps}>
-            <Icon className={this._classNames.expandIsCollapsed} iconName="ChevronDown" />
+          <button
+            type="button"
+            className={this._classNames.expand}
+            onClick={this._onToggleCollapse}
+            aria-expanded={group ? !group.isCollapsed : undefined}
+            aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
+            {...expandButtonProps}
+          >
+            <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}

@@ -1,3 +1,4 @@
+import { ChartType } from './Chart/Chart.types';
 import { ICardHeaderProps } from './CardHeader/CardHeader.types';
 import { ICardContentDetails } from './Layout/Layout.types';
 import { IAction } from './ActionBar/ActionBar.types';
@@ -109,6 +110,16 @@ export interface ICardFrameContent {
    * callback triggered upon clicking on the card title. Card title is clickable only when href is passed to it.
    */
   cardTitleCallback?: VoidFunction;
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  cardFrameMenuTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  cardFrameMenuAriaLabel?: string;
 }
 
 export interface ICardProps {
@@ -126,6 +137,28 @@ export interface ICardProps {
    * The footer action bar props
    */
   actions?: IAction[];
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
+
+  /**
+   * role of the  card for the benefit of screen readers
+   */
+  role?: string;
 
   /**
    * The content area content details array.
@@ -148,6 +181,52 @@ export interface ICardProps {
    * @default false
    */
   disableDrag?: boolean;
+
+  /**
+   * load animations for loading  dashboard card
+   */
+  loading?: boolean;
+}
+
+export enum DraggingAnimationType {
+  BarGraph = 'BarGraph',
+  DonutChart = 'DonutChart',
+  HorizontalBarGraph = 'HorizontalBarGraph',
+  LineChart = 'LineChart',
+  Shimmer = 'Shimmer'
+}
+
+export interface IAddCardInfo {
+  /**
+   * The body text that goes with add card representation of card
+   * This body text appears when the card is in add card panel and has not been yet added to layout
+   */
+  addCardPanelBodyText?: string;
+
+  /**
+   * The header text that goes with add card representation of card
+   */
+  addCardPanelHeader?: string;
+
+  /**
+   * The image to be shown beside card details in add card panel
+   */
+  addCardPanelImageUrl?: string;
+
+  /**
+   * The dragging animation type for the add card. Used for rendering animation in the dragging card
+   */
+  draggingAnimation?: DraggingAnimationType;
+
+  /**
+   * The aria label for the add card '+' icon
+   */
+  addCardIconAriaLabel?: string;
+
+  /**
+   * The alt text for the image in the add card representation
+   */
+  addCardImageAltText?: string;
 }
 
 export interface ICard extends ICardProps {
@@ -157,11 +236,35 @@ export interface ICard extends ICardProps {
   id: string;
 }
 
+export interface IDGLCard extends ICardProps {
+  /**
+   * The card id, which must be unique within the dashboard
+   */
+  id: string;
+
+  /**
+   * The add card info for each card
+   */
+  addCardInfo?: IAddCardInfo;
+
+  /**
+   * The x position on which the card is supposed  to be placed
+   */
+  x: number;
+
+  /**
+   * The y position on which card is supposed to be placed
+   */
+  y: number;
+}
+
 export interface ICardState {
   /**
    * The card size state
    */
   cardSize: CardSize;
+
+  chartType?: ChartType;
 }
 
 export interface ICardStyles {

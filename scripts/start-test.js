@@ -1,3 +1,5 @@
+const customArgs = process && process.argv ? process.argv.slice(2).join(' ') : '';
+
 require('./tasks/jest')({
-  'args': '--watch -i'
-});;
+  args: `--watch -i ${customArgs}`
+});
