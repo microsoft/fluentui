@@ -4,7 +4,7 @@
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node ../../scripts/just.js copy"
   },
   "license": "MIT",
   "dependencies": {
