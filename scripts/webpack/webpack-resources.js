@@ -80,7 +80,8 @@ module.exports = {
       {
         devServer: {
           inline: true,
-          port: 4322
+          port: 4322,
+          contentBase: path.resolve(process.cwd(), 'dist')
         },
 
         mode: 'development',
