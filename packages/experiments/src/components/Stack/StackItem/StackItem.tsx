@@ -11,7 +11,7 @@ const view: IStackItemComponent['view'] = props => {
     return null;
   }
 
-  const Slots = getSlots<typeof props, IStackItemSlots>(props, {
+  const Slots = getSlots<IStackItemProps, IStackItemSlots>(props, {
     root: 'span'
   });
 

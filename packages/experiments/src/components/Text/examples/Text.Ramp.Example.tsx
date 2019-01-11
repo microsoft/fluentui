@@ -51,7 +51,7 @@ interface ITableProps extends ITableSlots, IStyleableComponentProps<ITableProps,
 type ITableComponent = IStatelessComponent<ITableProps, {}, ITableStyles>;
 
 const TableView: ITableComponent['view'] = props => {
-  const Slots = getSlots<typeof props, ITableSlots>(props, {
+  const Slots = getSlots<ITableProps, ITableSlots>(props, {
     root: Stack,
     table: 'table',
     header: 'tr'

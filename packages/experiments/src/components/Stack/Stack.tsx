@@ -52,7 +52,7 @@ const view: IStackComponent['view'] = props => {
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
-  const Slots = getSlots<typeof props, IStackSlots>(props, {
+  const Slots = getSlots<IStackProps, IStackSlots>(props, {
     root: RootType,
     inner: 'div'
   });

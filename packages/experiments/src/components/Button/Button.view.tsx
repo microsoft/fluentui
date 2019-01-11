@@ -5,7 +5,7 @@ import { Stack } from '../../Stack';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon, Text } from '../../utilities/factoryComponents';
 
-import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
+import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
@@ -13,8 +13,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties) };
 
-  // TODO: is there a way to avoid use of 'typeof props' to make this cleaner?
-  const Slots = getSlots<typeof props, IButtonSlots>(props, {
+  const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: Stack,
     icon: Icon,

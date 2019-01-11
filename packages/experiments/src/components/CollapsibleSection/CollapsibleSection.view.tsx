@@ -1,13 +1,13 @@
 /** @jsx withSlots */
 import { withSlots, getSlots } from '../../Foundation';
 
-import { ICollapsibleSectionComponent, ICollapsibleSectionSlots } from './CollapsibleSection.types';
+import { ICollapsibleSectionComponent, ICollapsibleSectionProps, ICollapsibleSectionSlots } from './CollapsibleSection.types';
 import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
 
 export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = props => {
   const { collapsed, titleElementRef, children, onClick, onKeyDown, indent } = props;
 
-  const Slots = getSlots<typeof props, ICollapsibleSectionSlots>(props, {
+  const Slots = getSlots<ICollapsibleSectionProps, ICollapsibleSectionSlots>(props, {
     root: 'div',
     title: CollapsibleSectionTitle,
     body: 'div'

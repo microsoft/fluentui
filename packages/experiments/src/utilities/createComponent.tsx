@@ -11,6 +11,7 @@ import {
   IStylesFunctionOrObject,
   IToken
 } from './IComponent';
+import { IDefaultSlotProps } from './ISlots';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -59,22 +60,13 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
             component.fields
           );
 
-          const renderView = (viewProps?: TViewProps) => {
+          const renderView = (viewProps?: TViewProps & IStyleableComponentProps<TViewProps, TStyleSet, TTokens>) => {
             // The approach here is to allow state components to provide only the props they care about, automatically
             //    merging user props and state props together. This ensures all props are passed properly to view,
             //    including children and styles.
-            // What we really need to be able to do here either type force TViewProps to be TComponentProps when StateComponent
-            //    is undefined OR logically something like code below. Until we figure out how to do this, cast mergedProps as
-            //    IStyleableComponentProps since componentProps does not necessarily extend TViewProps. Until then we're sacrificing
-            //    a bit of type safety to prevent the need of duplicating this function.
-            // if (StateComponent) {
-            //   type TViewProps = TViewProps;
-            // } else {
-            //   type TViewProps = TComponentProps;
-            // }
             // TODO: for full 'fields' support, 'rest' props from customizations need to pass onto view.
             //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
-            const mergedProps: IStyleableComponentProps<TViewProps, TStyleSet, TTokens> = viewProps
+            const mergedProps: TViewProps & IStyleableComponentProps<TViewProps, TStyleSet, TTokens> = viewProps
               ? {
                   ...(componentProps as any),
                   ...(viewProps as any)
@@ -86,12 +78,10 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
             const tokens = _resolveTokens(mergedProps, theme, component.tokens, settings.tokens, mergedProps.tokens);
             const styles = _resolveStyles(mergedProps, theme, tokens, component.styles, settings.styles, mergedProps.styles);
 
-            const viewComponentProps: TViewProps = {
-              ...mergedProps,
-              // TODO: Figure out a way to deal with this without using cast to any.
-              //          const viewComponentProps: TViewProps & ISlotProps<> =
+            const viewComponentProps: typeof mergedProps & IDefaultSlotProps<any> = {
+              ...(mergedProps as any),
               _defaultStyles: styles
-            } as any;
+            };
 
             return component.view(viewComponentProps);
           };
@@ -123,9 +113,6 @@ export function createStatelessComponent<TComponentProps, TStyleSet extends ISty
 /**
  * Resolve all styles functions with both props and tokens and flatten results along with all styles objects.
  */
-// const _resolveStyles = (props, theme, tokens, ...allStyles) =>
-//   concatStyleSets(...allStyles.map(styles => (typeof styles === 'function') ? styles(props, theme, tokens) : styles));
-
 function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   props: TProps,
   theme: ITheme,

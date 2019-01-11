@@ -7,7 +7,7 @@ import { PersonaPresence as FabricPersonaPresence } from 'office-ui-fabric-react
 import { createFactory, IFactoryComponent } from '../Foundation';
 import { Text as FabricText, ITextProps } from '../Text';
 
-// TODO: All contents of this file should be moved to each respective component after Slots utilities are promoted.
+// TODO: All contents of this file should be moved to each respective component after slots utilities are promoted.
 // TODO: This means that components would also have to be modified not to generate rendered output if their props don't call for it.
 // TODO: IFactoryComponent typing is not allowing components to use them in JSX.
 //        Needs to be React.StatelessComponent, perhaps?

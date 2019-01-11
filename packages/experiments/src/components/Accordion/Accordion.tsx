@@ -30,7 +30,7 @@ const view: IAccordionComponent['view'] = props => {
     }
   );
 
-  const Slots = getSlots<typeof props, IAccordionSlots>(props, {
+  const Slots = getSlots<ICollapsibleSectionProps, IAccordionSlots>(props, {
     root: 'div'
   });
 

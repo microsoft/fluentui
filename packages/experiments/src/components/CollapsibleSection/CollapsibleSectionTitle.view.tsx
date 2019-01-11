@@ -2,10 +2,14 @@
 import { Text } from '../../Text';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { withSlots, getSlots } from '../../Foundation';
-import { ICollapsibleSectionTitleComponent, ICollapsibleSectionTitleSlots } from './CollapsibleSectionTitle.types';
+import {
+  ICollapsibleSectionTitleComponent,
+  ICollapsibleSectionTitleProps,
+  ICollapsibleSectionTitleSlots
+} from './CollapsibleSectionTitle.types';
 
 export const CollapsibleSectionTitleView: ICollapsibleSectionTitleComponent['view'] = props => {
-  const Slots = getSlots<typeof props, ICollapsibleSectionTitleSlots>(props, {
+  const Slots = getSlots<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleSlots>(props, {
     root: 'button',
     icon: Icon,
     text: Text

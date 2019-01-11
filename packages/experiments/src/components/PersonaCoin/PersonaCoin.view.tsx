@@ -3,7 +3,7 @@ import { Icon } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
 import { PersonaPresence } from '../../utilities/factoryComponents';
 import { Text } from '../../Text';
-import { IPersonaCoinComponent, IPersonaCoinSlots } from './PersonaCoin.types';
+import { IPersonaCoinComponent, IPersonaCoinProps, IPersonaCoinSlots } from './PersonaCoin.types';
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';
 import { getInitials, getRTL } from '../../Utilities';
 import { DEFAULT_PERSONA_COIN_SIZE } from './PersonaCoin.styles';
@@ -21,7 +21,7 @@ const PersonaCoinInitials: IPersonaCoinComponent['view'] = props => {
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
   const coinSize = props.size || DEFAULT_PERSONA_COIN_SIZE;
 
-  const Slots = getSlots<typeof props, IPersonaCoinSlots>(props, {
+  const Slots = getSlots<IPersonaCoinProps, IPersonaCoinSlots>(props, {
     root: 'div',
     image: PersonaCoinImage,
     initials: PersonaCoinInitials,

@@ -14,12 +14,14 @@ import {
 } from './ISlots';
 
 /**
- * This function removes Slots from the React hierarchy by wrapping React.createElement and bypassing it for Slot components.
+ * This function is required for any module that uses slots.
  *
- * To use this function on a per-file basis, put the following in a comment block: @jsx withSlots
- * As of writing, this line must be the FIRST LINE in the file to work correctly.
+ * This function is a slot resolver that automatically evaluates slot functions to generate React elements.
+ * A byproduct of this resolver is that it removes slots from the React hierarchy by bypassing React.createElement.
  *
+ * To use this function on a per-file basis, put the following directive in a comment block: @jsx withSlots
  * Usage of this pragma also requires an import statement of SlotModule such as: import { withSlots } from '@uifabric/foundation';
+ * Also, this directive must be the FIRST LINE in the file to work correctly.
  *
  * @see React.createElement
  */
@@ -42,7 +44,7 @@ export function withSlots<P>(
     // TODO: will toArray clobber existing keys?
     // TODO: React generates warnings because it doesn't detect hidden member _store that is set in createElement.
     //        Even children passed to createElement without keys don't generate this warning.
-    //        Is there a better way to prevent Slots from appearing in hierarchy? toArray doesn't address root issue.
+    //        Is there a better way to prevent slots from appearing in hierarchy? toArray doesn't address root issue.
     children = React.Children.toArray(children);
 
     return slotType({ ...(props as any), children });
@@ -131,7 +133,7 @@ function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps, TSlots
 }
 
 /**
- * This function generates slots that can be used in JSX given a definition of Slots and their corresponding types.
+ * This function generates slots that can be used in JSX given a definition of slots and their corresponding types.
  * @param userProps Props as pass to component.
  * @param slots Slot definition object defining the default slot component for each slot.
  * @returns An set of created slots that components can render in JSX.
@@ -141,15 +143,17 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
   slots: ISlotDefinition<Required<TSlots>>
 ): ISlots<Required<TSlots>> {
   const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
-  const processedProps = userProps as TProps & IDefaultSlotProps<TSlots>;
+
+  // userProps already has default props mixed in by createComponent. Recast here to gain typing for this function.
+  const mixedProps = userProps as TProps & IDefaultSlotProps<TSlots>;
 
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
-      if (processedProps && processedProps[name] && React.Children.count(processedProps[name].children) > 0) {
+      if (mixedProps && mixedProps[name] && React.Children.count(mixedProps[name].children) > 0) {
         // TODO: verify this toArray call is needed. explain why in comment, if so
         // TODO: should this be mutating? does React mutate children subprop with createElement?
         // TODO: will toArray clobber existing keys?
-        processedProps[name].children = React.Children.toArray(processedProps[name].children);
+        mixedProps[name].children = React.Children.toArray(mixedProps[name].children);
       }
 
       // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
@@ -160,8 +164,8 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
-          processedProps[name],
-          processedProps._defaultStyles[name]
+          mixedProps[name],
+          mixedProps._defaultStyles[name]
         );
       };
       slot.isSlot = true;

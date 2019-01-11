@@ -4,13 +4,13 @@ import { Label } from '../../utilities/factoryComponents';
 
 import { withSlots, getSlots } from '../../Foundation';
 import { inputProperties, getNativeProps } from '../../Utilities';
-import { IToggleComponent, IToggleSlots } from './Toggle.types';
+import { IToggleComponent, IToggleProps, IToggleSlots } from './Toggle.types';
 
 export const ToggleView: IToggleComponent['view'] = props => {
   const { as: RootType = 'div', label, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
   const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
 
-  const Slots = getSlots<typeof props, IToggleSlots>(props, {
+  const Slots = getSlots<IToggleProps, IToggleSlots>(props, {
     root: RootType,
     label: Label,
     container: 'div',

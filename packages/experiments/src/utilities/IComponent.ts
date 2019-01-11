@@ -63,7 +63,6 @@ export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentTy
  * Component used by foundation to tie elements together.
  * @see createComponent for generic type documentation.
  */
-// TODO: Should take in TSlots instead of TStyleSet? (force styleset to be derived from slots?)
 export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> {
   /**
    * Display name to identify component in React hierarchy.
@@ -115,5 +114,4 @@ export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TSt
   'state'
 >;
 
-// TODO: Is this type really needed? Particularly if styles can be derived from slots in IComponentOptions?
 export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };

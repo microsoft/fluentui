@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IContextualMenuProps, IIconProps, ILabelProps, IPersonaPresenceProps } from 'office-ui-fabric-react';
 import { ISlotProp } from '../Foundation';
 
-// TODO: All contents of this file should be moved to each respective component after Slots utilities are promoted.
+// TODO: All contents of this file should be moved to each respective component after slots utilities are promoted.
 
 // HTML Types
 // TODO: Move to Foundation?

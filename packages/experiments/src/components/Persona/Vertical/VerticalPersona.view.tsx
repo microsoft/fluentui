@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { PersonaCoin } from '../../PersonaCoin/PersonaCoin';
 import { getSlots } from '../../../Foundation';
-import { IVerticalPersonaComponent, IVerticalPersonaSlots } from './VerticalPersona.types';
+import { IVerticalPersonaComponent, IVerticalPersonaProps, IVerticalPersonaSlots } from './VerticalPersona.types';
 import { PersonaText } from '../PersonaText/PersonaText';
 
 export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
-  const Slots = getSlots<typeof props, IVerticalPersonaSlots>(props, {
+  const Slots = getSlots<IVerticalPersonaProps, IVerticalPersonaSlots>(props, {
     root: 'div',
     primaryText: PersonaText,
     secondaryText: PersonaText,

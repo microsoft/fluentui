@@ -26,7 +26,7 @@ export interface IFactoryOptions<TProps> {
 export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
 
 /**
- * An interface for defining Slots. Each key in TSlot must point to an IFactoryComponent.
+ * An interface for defining slots. Each key in TSlot must point to an IFactoryComponent.
  */
 export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: IFactoryComponent<TSlots[prop]> };
 
@@ -45,7 +45,7 @@ export type ISlotFactory<TProps> = (
 ) => JSX.Element;
 
 /**
- * Interface for aggregated Slots objects used internally by components.
+ * Interface for aggregated slots objects used internally by components.
  */
 export type ISlots<TSlots> = { [slot in keyof TSlots]: ISlot<TSlots[slot]> };
 export type ISlotProps<TProps extends TSlots, TSlots> = { [key in keyof TSlots]: ISlotProp<TProps[key]> };
@@ -53,8 +53,6 @@ export type ISlotProps<TProps extends TSlots, TSlots> = { [key in keyof TSlots]:
 /**
  * User properties that are automatically applied by Slot utilities using slot name.
  */
-// TODO: also use this type in createComponent somehow to bind types. (it should output this type)
-// TODO: this should be able to take advantage of the relationship between slots and component styles
 export interface IDefaultSlotProps<TSlots> {
   _defaultStyles: IComponentStyles<TSlots>;
 }
