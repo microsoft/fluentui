@@ -16,9 +16,13 @@
 # docs/  docs@example.com
 
 #### Core build stuff
-scripts/ @dzearing
-package.json @cliffkoh
+scripts/ @dzearing @kenotron @ecraig12345
+package.json @cliffkoh @kenotron @ecraig12345
 */package.json @cliffkoh
+webpack.config.js @kenotron @ecraig12345
+webpack.serve.config.js @kenotron @ecraig12345
+jest.config.js @kenotron @ecraig12345
+tsconfig.json @kenotron @ecraig12345
 
 #### Apps
 # component-demo/
