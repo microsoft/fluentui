@@ -23,6 +23,11 @@ webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345
 tsconfig.json @kenotron @ecraig12345
+rush.json @kenotron @ecraig12345
+LICENSE @kenotron @ecraig12345
+.travis.yml @kenotron @ecraig12345
+.appveyor.yml @kenotron @ecraig12345
+.npmrc @kenotron @ecraig12345
 
 #### Apps
 # component-demo/
