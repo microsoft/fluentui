@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getFocusStyle, HighContrastSelector, FontSizes } from '../../../Styling';
+import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
 const GlobalClassNames = {
