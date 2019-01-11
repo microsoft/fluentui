@@ -76,7 +76,12 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
     return (
       <div>
         <div className={exampleChildClass}>{selectionDetails}</div>
-        <TextField className={exampleChildClass} label="Filter by name:" onChange={this._onFilter} />
+        <TextField
+          className={exampleChildClass}
+          label="Filter by name:"
+          onChange={this._onFilter}
+          styles={{ root: { maxWidth: '300px' } }}
+        />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             compact={true}

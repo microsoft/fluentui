@@ -5,14 +5,19 @@ import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { IDetailsList, DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const exampleChildClass = mergeStyles({
-  display: 'block',
-  marginBottom: '10px'
+const margin = '0 20px 20px 0';
+const controlWrapperClass = mergeStyles({
+  display: 'flex',
+  alignItems: 'center',
+  flexWrap: 'wrap'
 });
+const toggleStyles: Partial<IToggleStyles> = {
+  label: { display: 'inline-block', marginLeft: '10px', marginBottom: '3px' },
+  root: { display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', margin: margin }
+};
 
 export interface IDetailsListGroupedExampleItem {
   key: string;
@@ -92,19 +97,19 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
       groups: [
         {
           key: 'groupred0',
-          name: 'By "red"',
+          name: 'Color: "red"',
           startIndex: _initialRedIndex,
           count: _initialRedCount
         },
         {
           key: 'groupgreen2',
-          name: 'By "green"',
+          name: 'Color: "green"',
           startIndex: _initialGreenIndex,
           count: _initialGreenCount
         },
         {
           key: 'groupblue2',
-          name: 'By "blue"',
+          name: 'Color: "blue"',
           startIndex: _initialBlueIndex,
           count: _initialBlueCount
         }
@@ -117,7 +122,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
   public componentWillUnmount() {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._root.current!.getStartItemIndexInView();
-      console.log('unmounting, getting first item index that was in view: ' + itemIndexInView);
+      alert('first item index that was in view: ' + itemIndexInView);
     }
   }
 
@@ -125,22 +130,17 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
     const { items, groups, isCompactMode } = this.state;
 
     return (
-      <Fabric style={{ display: 'block' }}>
-        <Checkbox
-          className={exampleChildClass}
-          label="Show index of the first item in view when unmounting"
-          checked={this.state.showItemIndexInView}
-          onChange={this._onShowItemIndexInViewChanged}
-        />
-        <DefaultButton className={exampleChildClass} onClick={this._addItem} text="Add an item" />
-        <Toggle
-          className={exampleChildClass}
-          label="Enable compact mode"
-          checked={isCompactMode}
-          onChange={this._onChangeCompactMode}
-          onText="Compact"
-          offText="Normal"
-        />
+      <Fabric>
+        <div className={controlWrapperClass}>
+          <DefaultButton onClick={this._addItem} text="Add an item" styles={{ root: { margin: margin } }} />
+          <Toggle label="Compact mode" checked={isCompactMode} onChange={this._onChangeCompactMode} styles={toggleStyles} />
+          <Toggle
+            label="Show index of first item in view when unmounting"
+            checked={this.state.showItemIndexInView}
+            onChange={this._onShowItemIndexInViewChanged}
+            styles={toggleStyles}
+          />
+        </div>
         <DetailsList
           componentRef={this._root}
           items={items}
@@ -183,15 +183,13 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
   };
 
   private _onRenderColumn(item: IDetailsListGroupedExampleItem, index: number, column: IColumn) {
-    const value = item && column && column.fieldName ? (item as any)[column.fieldName] || '' : '';
+    const value = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListGroupedExampleItem] || '' : '';
 
     return <div data-is-focusable={true}>{value}</div>;
   }
 
-  private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
-    this.setState({
-      showItemIndexInView: checked
-    });
+  private _onShowItemIndexInViewChanged = (event: React.MouseEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({ showItemIndexInView: checked });
   };
 
   private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {

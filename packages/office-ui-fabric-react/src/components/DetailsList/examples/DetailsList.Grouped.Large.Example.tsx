@@ -44,7 +44,7 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
       _items = Array.apply(null, Array(1000)).map((_: any, num: number) => ({
         key: num.toString(),
         name: `Item ${num.toString()}`,
-        value: num.toString()
+        value: (num % 10).toString()
       }));
 
       _groups = Array.apply(null, Array(10)).map((_: any, num: number) => ({
@@ -73,6 +73,6 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
   }
 
   private _getGroupHeight = (group: IGroup) => {
-    return GROUP_HEADER_HEIGHT + GROUP_ITEM_HEIGHT * group.count;
+    return GROUP_HEADER_HEIGHT + (group.isCollapsed ? 0 : GROUP_ITEM_HEIGHT * group.count);
   };
 }

@@ -2,23 +2,27 @@
 
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, Selection, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
-import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const exampleClass = mergeStyles({
-  selectors: {
-    '.dragEnter': {
-      backgroundColor: DefaultPalette.neutralLight
-    }
-  }
+const theme = getTheme();
+const margin = '0 30px 20px 0';
+const dragEnterClass = mergeStyles({
+  backgroundColor: theme.palette.neutralLight
 });
+const controlWrapperClass = mergeStyles({
+  display: 'flex',
+  flexWrap: 'wrap'
+});
+const textFieldStyles: Partial<ITextFieldStyles> = {
+  root: { margin: margin },
+  fieldGroup: { maxWidth: '100px' }
+};
 
 let _draggedItem: IExampleItem | null = null;
 let _draggedIndex = -1;
@@ -27,7 +31,6 @@ let _columns: IColumn[];
 
 export interface IDetailsListDragDropExampleState {
   items: IExampleItem[];
-  selectionDetails?: string;
   columns: IColumn[];
   isColumnReorderEnabled: boolean;
   frozenColumnCountFromStart: string;
@@ -57,30 +60,34 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
+    const { items, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
 
     return (
-      <div className={exampleClass}>
-        <Toggle
-          label="Enable Column Reorder"
-          checked={isColumnReorderEnabled}
-          onChange={this._onChangeColumnReorderEnabled}
-          onText="Enabled"
-          offText="Disabled"
-        />
-        <TextField
-          label="Number of Left frozen columns:"
-          onGetErrorMessage={this._validateNumber}
-          value={frozenColumnCountFromStart}
-          onChange={this._onChangeStartCountText}
-        />
-        <TextField
-          label="Number of Right frozen columns:"
-          onGetErrorMessage={this._validateNumber}
-          value={frozenColumnCountFromEnd}
-          onChange={this._onChangeEndCountText}
-        />
-        <div>{selectionDetails}</div>
+      <div>
+        <div className={controlWrapperClass}>
+          <Toggle
+            label="Enable column reorder"
+            checked={isColumnReorderEnabled}
+            onChange={this._onChangeColumnReorderEnabled}
+            onText="Enabled"
+            offText="Disabled"
+            styles={{ root: { margin: margin } }}
+          />
+          <TextField
+            label="Number of left frozen columns"
+            onGetErrorMessage={this._validateNumber}
+            value={frozenColumnCountFromStart}
+            onChange={this._onChangeStartCountText}
+            styles={textFieldStyles}
+          />
+          <TextField
+            label="Number of right frozen columns"
+            onGetErrorMessage={this._validateNumber}
+            value={frozenColumnCountFromEnd}
+            onChange={this._onChangeEndCountText}
+            styles={textFieldStyles}
+          />
+        </div>
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             setKey="items"
@@ -143,8 +150,9 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
         return true;
       },
       onDragEnter: (item?: any, event?: DragEvent) => {
-        return 'dragEnter';
-      }, // return string is the css classes that will be added to the entering element.
+        // return string is the css classes that will be added to the entering element.
+        return dragEnterClass;
+      },
       onDragLeave: (item?: any, event?: DragEvent) => {
         return;
       },

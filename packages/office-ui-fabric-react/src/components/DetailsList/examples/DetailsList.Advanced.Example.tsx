@@ -10,7 +10,7 @@ import {
   ColumnActionsMode,
   ConstrainMode,
   DetailsList,
-  DetailsListLayoutMode as LayoutMode,
+  DetailsListLayoutMode,
   IColumn,
   IGroup,
   Selection,
@@ -20,31 +20,33 @@ import {
 import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
+const theme = getTheme();
+const classNames = mergeStyleSets({
+  headerDivider: {
+    display: 'inline-block',
+    height: '100%'
+  },
+  headerDividerBar: {
+    display: 'none',
+    background: theme.palette.themePrimary,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    width: '1px',
+    zIndex: 5
+  },
+  linkField: {
+    display: 'block',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    maxWidth: '100%'
+  }
+});
 const rootClass = mergeStyles({
   selectors: {
-    '.ms-CommandBar': { marginBottom: '40px' },
-    '.ms-DetailsRow-cell .ms-Link': {
-      display: 'block',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-      maxWidth: '100%'
-    },
-    '.ms-DetailsHeader-divider': {
-      display: 'inline-block',
-      height: '100%'
-    },
-    '.ms-DetailsHeader-divider-bar': {
-      display: 'none',
-      background: DefaultPalette.themePrimary,
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      width: '1px',
-      zIndex: 5
-    },
-    '.ms-DetailsHeader-divider:hover + .ms-DetailsHeader-divider-bar': {
+    [`.${classNames.headerDivider}:hover + .${classNames.headerDividerBar}`]: {
       display: 'inline'
     }
   }
@@ -69,7 +71,7 @@ export interface IDetailsListAdvancedExampleState {
   isLazyLoaded?: boolean;
   isSortedDescending?: boolean;
   items: IExampleItem[];
-  layoutMode?: LayoutMode;
+  layoutMode?: DetailsListLayoutMode;
   selectionMode?: SelectionMode;
   sortedColumnKey?: string;
   selectionCount: number;
@@ -98,7 +100,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       selectionCount: 0,
       groups: undefined,
       groupItemLimit: DEFAULT_ITEM_LIMIT,
-      layoutMode: LayoutMode.justified,
+      layoutMode: DetailsListLayoutMode.justified,
       constrainMode: ConstrainMode.horizontalConstrained,
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
@@ -114,6 +116,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   public render(): JSX.Element {
     const {
+      canResizeColumns,
       checkboxVisibility,
       columns,
       constrainMode,
@@ -121,6 +124,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       groupItemLimit,
       groups,
       isHeaderVisible,
+      isLazyLoaded,
       items,
       layoutMode,
       selectionMode
@@ -142,7 +146,19 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return (
       <div className={rootClass}>
-        <CommandBar items={this._getCommandItems()} farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]} />
+        <CommandBar
+          styles={{ root: { marginBottom: '40px' } }}
+          items={this._getCommandItems(
+            canResizeColumns,
+            checkboxVisibility,
+            constrainMode,
+            isHeaderVisible,
+            isLazyLoaded,
+            layoutMode,
+            selectionMode
+          )}
+          farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
+        />
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
 
@@ -184,8 +200,8 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     const { columnIndex } = columnProps;
     return (
       <React.Fragment key={`divider-wrapper-${columnIndex}`}>
-        <span className="ms-DetailsHeader-divider">{defaultRenderer(columnProps)}</span>
-        <span className="ms-DetailsHeader-divider-bar" />
+        <span className={classNames.headerDivider}>{defaultRenderer(columnProps)}</span>
+        <span className={classNames.headerDividerBar} />
       </React.Fragment>
     );
   };
@@ -265,9 +281,15 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     this.setState({ groupItemLimit: newValue });
   };
 
-  private _getCommandItems = (): IContextualMenuItem[] => {
-    const { canResizeColumns, checkboxVisibility, constrainMode, isHeaderVisible, isLazyLoaded, layoutMode, selectionMode } = this.state;
-
+  private _getCommandItems = (
+    canResizeColumns?: boolean,
+    checkboxVisibility?: CheckboxVisibility,
+    constrainMode?: ConstrainMode,
+    isHeaderVisible?: boolean,
+    isLazyLoaded?: boolean,
+    layoutMode?: DetailsListLayoutMode,
+    selectionMode?: SelectionMode
+  ): IContextualMenuItem[] => {
     return [
       {
         key: 'addRow',
@@ -350,20 +372,20 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
               subMenuProps: {
                 items: [
                   {
-                    key: LayoutMode[LayoutMode.fixedColumns],
+                    key: DetailsListLayoutMode[DetailsListLayoutMode.fixedColumns],
                     text: 'Fixed columns',
                     canCheck: true,
-                    checked: layoutMode === LayoutMode.fixedColumns,
+                    checked: layoutMode === DetailsListLayoutMode.fixedColumns,
                     onClick: this._onLayoutChanged,
-                    data: LayoutMode.fixedColumns
+                    data: DetailsListLayoutMode.fixedColumns
                   },
                   {
-                    key: LayoutMode[LayoutMode.justified],
+                    key: DetailsListLayoutMode[DetailsListLayoutMode.justified],
                     text: 'Justified columns',
                     canCheck: true,
-                    checked: layoutMode === LayoutMode.justified,
+                    checked: layoutMode === DetailsListLayoutMode.justified,
                     onClick: this._onLayoutChanged,
-                    data: LayoutMode.justified
+                    data: DetailsListLayoutMode.justified
                   }
                 ]
               }
@@ -520,15 +542,23 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     });
   };
 
-  private _onSortColumn = (key: string, isSortedDescending: boolean): void => {
-    const sortedItems = _items.slice(0).sort((a: any, b: any) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+  private _onSortColumn = (columnKey: string, isSortedDescending: boolean): void => {
+    const sortedItems = _copyAndSort(_items, columnKey, isSortedDescending);
 
     this.setState({
       items: sortedItems,
       groups: undefined,
-      columns: this._buildColumns(sortedItems, true, this._onColumnClick, key, isSortedDescending, undefined, this._onColumnContextMenu),
+      columns: this._buildColumns(
+        sortedItems,
+        true,
+        this._onColumnClick,
+        columnKey,
+        isSortedDescending,
+        undefined,
+        this._onColumnContextMenu
+      ),
       isSortedDescending: isSortedDescending,
-      sortedColumnKey: key
+      sortedColumnKey: columnKey
     });
   };
 
@@ -546,7 +576,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         newGroups = [...groups];
         groupedItems = this._groupByKey(newGroups, items, key as keyof IExampleItem);
       } else {
-        groupedItems = this._copyAndSort(items, key);
+        groupedItems = _copyAndSort(items, key);
         newGroups = this._getGroups(groupedItems, key as keyof IExampleItem);
       }
 
@@ -573,17 +603,13 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           groupedItems = groupedItems.concat(childGroupedItems);
         } else {
           const itemsInGroup = items.slice(group.startIndex, group.startIndex + group.count);
-          const nextLevelGroupedItems = this._copyAndSort(itemsInGroup, key);
+          const nextLevelGroupedItems = _copyAndSort(itemsInGroup, key);
           groupedItems = groupedItems.concat(nextLevelGroupedItems);
           group.children = this._getGroups(nextLevelGroupedItems, key, group);
         }
       }
     }
     return groupedItems;
-  }
-
-  private _copyAndSort<T>(items: T[], columnKey: string): T[] {
-    return items.slice(0).sort((a: any, b: any) => (a[columnKey] < b[columnKey] ? -1 : 1));
   }
 
   private _getGroups(groupedItems: IExampleItem[], key: keyof IExampleItem, parentGroup?: IGroup): IGroup[] {
@@ -669,11 +695,11 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         column.isMultiline = true;
         column.minWidth = 200;
       } else if (column.key === 'name') {
-        column.onRender = item => <Link data-selection-invoke={true}>{item.name}</Link>;
+        column.onRender = (item: IExampleItem) => <Link data-selection-invoke={true}>{item.name}</Link>;
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
-        column.onRender = item => (
-          <Link href="https://microsoft.com" target="_blank" rel="noopener">
+        column.onRender = (item: IExampleItem) => (
+          <Link className={classNames.linkField} href="https://microsoft.com" target="_blank" rel="noopener">
             {item.key}
           </Link>
         );
@@ -684,4 +710,9 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     return columns;
   }
+}
+
+function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boolean): T[] {
+  const key = columnKey as keyof T;
+  return items.slice(0).sort((a: T, b: T) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
 }

@@ -4,22 +4,22 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { mergeStyleSets, DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
+const theme = getTheme();
 const classNames = mergeStyleSets({
-  header: {
-    borderTop: '1px solid ' + DefaultPalette.neutralQuaternary,
-    borderBottom: '1px solid ' + DefaultPalette.neutralQuaternary,
+  headerAndFooter: {
+    borderTop: '1px solid ' + theme.palette.neutralQuaternary,
+    borderBottom: '1px solid ' + theme.palette.neutralQuaternary,
     padding: '8px',
     margin: '8px 0',
-    background: DefaultPalette.neutralLighterAlt,
-    boxShadow: '0 0 20px -8px ' + DefaultPalette.black,
+    background: theme.palette.neutralLighterAlt,
     // Overlay the sizer bars
     position: 'relative',
     zIndex: 100
   },
   headerTitle: [
-    DefaultFontStyles.xLarge,
+    theme.fonts.xLarge,
     {
       padding: '4px 0'
     }
@@ -65,8 +65,8 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
 
   private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
     return (
-      <div className={classNames.header}>
-        <div className={classNames.headerTitle}>{`I am a custom header for: ${props.group!.name}`}</div>
+      <div className={classNames.headerAndFooter}>
+        <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
         <div className={classNames.headerLinkSet}>
           <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
             {props.isSelected ? 'Remove selection' : 'Select group'}
@@ -81,8 +81,8 @@ export class DetailsListCustomGroupHeadersExample extends React.Component {
 
   private _onRenderGroupFooter = (props: IGroupDividerProps): JSX.Element => {
     return (
-      <div className={classNames.header}>
-        <div className={classNames.headerTitle}>{`I'm a custom footer for: ${props.group!.name}`}</div>
+      <div className={classNames.headerAndFooter}>
+        <em>{`Custom footer for ${props.group!.name}`}</em>
       </div>
     );
   };

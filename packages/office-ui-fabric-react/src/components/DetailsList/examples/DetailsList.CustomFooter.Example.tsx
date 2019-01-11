@@ -18,7 +18,7 @@ export interface IDetailsListCustomFooterExampleItem {
   value: number;
 }
 
-const _items: IDetailsListCustomFooterExampleItem[] = [{ key: 0, name: 'Item 0', value: 0 }, { key: 1, name: 'Item 1', value: 1 }];
+const _items: IDetailsListCustomFooterExampleItem[] = [];
 
 const _columns: IColumn[] = [
   {
@@ -27,8 +27,7 @@ const _columns: IColumn[] = [
     fieldName: 'name',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for name'
+    isResizable: true
   },
   {
     key: 'column2',
@@ -36,12 +35,19 @@ const _columns: IColumn[] = [
     fieldName: 'value',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+    isResizable: true
   }
 ];
 
 export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
+  constructor(props: {}) {
+    super(props);
+    if (_items.length === 0) {
+      for (let i = 0; i < 5; i++) {
+        _items.push({ key: i, name: 'Item ' + i, value: i });
+      }
+    }
+  }
   public render(): JSX.Element {
     return (
       <div>
@@ -85,5 +91,5 @@ function _renderDetailsFooterItemColumn(item: IDetailsListCustomFooterExampleIte
 }
 
 function _onRenderCheckForFooterRow(props: IDetailsRowCheckProps): JSX.Element {
-  return <DetailsRowCheck {...props} style={{ visibility: 'hidden' }} selected={true} />;
+  return <DetailsRowCheck {...props} styles={{ root: { visibility: 'hidden' } }} selected={true} />;
 }

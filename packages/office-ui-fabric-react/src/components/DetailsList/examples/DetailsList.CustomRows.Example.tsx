@@ -1,9 +1,11 @@
 // @codepen
 
 import * as React from 'react';
-import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowCheckProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
+const theme = getTheme();
 let _items: IExampleItem[];
 
 export class DetailsListCustomRowsExample extends React.Component {
@@ -18,19 +20,12 @@ export class DetailsListCustomRowsExample extends React.Component {
   }
 
   private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {
-    return <DetailsRow {...props} onRenderCheck={this._onRenderCheck} aria-busy={false} />;
-  };
+    const customStyles: Partial<IDetailsRowStyles> = {};
+    if (props.itemIndex % 2 === 0) {
+      // Every other row renders with a different background color
+      customStyles.root = { backgroundColor: theme.palette.themeLighterAlt };
+    }
 
-  private _onRenderCheck = (props: IDetailsRowCheckProps): JSX.Element => {
-    return (
-      <div
-        style={props.anySelected ? { opacity: 1 } : undefined}
-        role="button"
-        aria-pressed={props.isSelected}
-        data-selection-toggle={true}
-      >
-        <input type="checkbox" checked={props.isSelected} />
-      </div>
-    );
+    return <DetailsRow {...props} styles={customStyles} />;
   };
 }

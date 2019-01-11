@@ -5,6 +5,7 @@ import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilit
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 let _items: IExampleItem[];
 
@@ -54,16 +55,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     }
 
     // Sort the items.
-    sortedItems = [...sortedItems].sort((a: any, b: any) => {
-      const firstValue = a[column.fieldName!];
-      const secondValue = b[column.fieldName!];
-
-      if (isSortedDescending) {
-        return firstValue > secondValue ? -1 : 1;
-      } else {
-        return firstValue > secondValue ? 1 : -1;
-      }
-    });
+    sortedItems = _copyAndSort(sortedItems, column.fieldName!, isSortedDescending);
 
     // Reset the items and columns to match the state.
     this.setState({
@@ -113,7 +105,7 @@ function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
 
     case 'color':
       return (
-        <span data-selection-disabled={true} style={{ color: fieldContent, height: '100%', display: 'block' }}>
+        <span data-selection-disabled={true} className={mergeStyles({ color: fieldContent, height: '100%', display: 'block' })}>
           {fieldContent}
         </span>
       );
@@ -121,4 +113,9 @@ function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
     default:
       return <span>{fieldContent}</span>;
   }
+}
+
+function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boolean): T[] {
+  const key = columnKey as keyof T;
+  return items.slice(0).sort((a: T, b: T) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
 }
