@@ -42,7 +42,7 @@ const IconButtonStyles = (props: IMessageBarStyleProps): IStyle => {
     },
 
     messageBarType === MessageBarType.success && {
-      backgroundColor: semanticColors.statusInformationBackground,
+      backgroundColor: semanticColors.statusSuccessBackground,
       selectors: {
         '.ms-Button-icon': {
           color: semanticColors.statusSuccessText,
@@ -100,7 +100,7 @@ const RootStyles = (props: IMessageBarStyleProps): IStyle => {
 
   return [
     (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) && {
-      backgroundColor: semanticColors.statusInformationBackground,
+      backgroundColor: semanticColors.statusErrorBackground,
       color: semanticColors.statusErrorText,
       selectors: {
         '.ms-Button-icon': {
@@ -201,19 +201,36 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
 
   return {
     actions: {
+      // Buttons utilizes an alpha channel < 1 for their pressed and hover state background colors.
+      // This styling effectively makes the button background the body background and applies hover / active styles to next child down.
       selectors: {
         '.ms-Button': {
-          backgroundColor: semanticColors.buttonBackground,
+          backgroundColor: semanticColors.bodyBackground,
           color: semanticColors.buttonText,
+          padding: '0px',
           border: `1px solid ${semanticColors.buttonText}`,
           selectors: {
+            '.ms-Button-flexContainer': {
+              paddingLeft: '16px',
+              paddingRight: '16px',
+              selectors: {
+                ':hover': {
+                  backgroundColor: semanticColors.buttonBackgroundHovered,
+                  color: semanticColors.buttonTextHovered
+                },
+                ':active': {
+                  backgroundColor: semanticColors.buttonBackgroundPressed,
+                  color: semanticColors.buttonTextPressed
+                }
+              }
+            },
             ':hover': {
-              backgroundColor: semanticColors.buttonBackgroundHovered,
-              color: semanticColors.buttonTextHovered
+              backgroundColor: semanticColors.bodyBackground,
+              color: semanticColors.buttonText
             },
             ':active': {
-              backgroundColor: semanticColors.buttonBackgroundPressed,
-              color: semanticColors.buttonTextPressed
+              backgroundColor: semanticColors.bodyBackground,
+              color: semanticColors.buttonText
             }
           }
         }
@@ -225,19 +242,19 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
     expandSingleLine: iconButtonStyles,
     icon: [
       (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) && {
-        color: semanticColors.statusErrorText
+        color: semanticColors.statusErrorIcon
       },
 
       messageBarType === MessageBarType.info && {
-        color: semanticColors.statusInformationText
+        color: semanticColors.statusInformationIcon
       },
 
       messageBarType === MessageBarType.success && {
-        color: semanticColors.statusSuccessText
+        color: semanticColors.statusSuccessIcon
       },
 
       (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) && {
-        color: semanticColors.statusWarningText
+        color: semanticColors.statusWarningIcon
       },
 
       !messageBarType && {
