@@ -1,9 +1,9 @@
 import * as React from 'react';
-// import * as ReactDOM from 'react-dom';
-// import * as ReactTestUtils from 'react-dom/test-utils';
+import * as ReactDOM from 'react-dom';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
-// import { IBasePicker } from '../BasePicker.types';
+import { IBasePicker } from '../BasePicker.types';
 import { resetIds } from '@uifabric/utilities';
 import { people } from './examples/PeoplePickerExampleData';
 import { NormalPeoplePicker } from './PeoplePicker';
@@ -32,92 +32,67 @@ describe('PeoplePicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  // it('can search for and select tags', () => {
-  //   const root = document.createElement('div');
-  //   document.body.appendChild(root);
+  it('can search for, select people and remove them', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
 
-  //   const picker = React.createRef<IBasePicker<ITag>>();
+    const picker = React.createRef<IBasePicker<IPersonaProps>>();
 
-  //   ReactDOM.render(<TagPicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />, root);
+    ReactDOM.render(<NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} componentRef={picker} />, root);
 
-  //   const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-  //   input.focus();
-  //   input.value = 'bl';
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'Valentyna';
 
-  //   ReactTestUtils.Simulate.input(input);
+    ReactTestUtils.Simulate.input(input);
 
-  //   const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    expect(suggestions).toBeDefined();
 
-  //   expect(suggestions).toBeDefined();
-  //   const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    expect(suggestionOptions.length).toEqual(1);
 
-  //   expect(suggestionOptions.length).toEqual(2);
-  //   ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
+    expect(currentPicker![0].text).toEqual('Valentyna Lovrique');
 
-  //   const currentPicker = picker.current!.items;
-  //   expect(currentPicker).toHaveLength(1);
-  //   expect(currentPicker![0].name).toEqual('black');
+    const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
+    expect(removeButton).toBeDefined();
 
-  //   ReactDOM.unmountComponentAtNode(root);
-  // });
+    ReactTestUtils.Simulate.click(removeButton);
+    const currentPickerAfterRemove = picker.current!.items;
+    expect(currentPickerAfterRemove).toHaveLength(0);
 
-  // it('can be a controlled component', () => {
-  //   const root = document.createElement('div');
-  //   document.body.appendChild(root);
+    ReactDOM.unmountComponentAtNode(root);
+  });
 
-  //   const pickerBeforeUpdate = React.createRef<IBasePicker<ITag>>();
-  //   const pickerAfterUpdate = React.createRef<IBasePicker<ITag>>();
+  it('can not remove people when disabled', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
 
-  //   ReactDOM.
-  // render(<TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} componentRef={pickerBeforeUpdate} />, root);
-  //   const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    const picker = React.createRef<IBasePicker<IPersonaProps>>();
+    const selectedPeople = people.splice(0, 1);
+    ReactDOM.render(
+      <NormalPeoplePicker
+        onResolveSuggestions={onResolveSuggestions}
+        componentRef={picker}
+        disabled={true}
+        defaultSelectedItems={selectedPeople}
+      />,
+      root
+    );
 
-  //   input.focus();
-  //   input.value = 'bl';
-  //   ReactTestUtils.Simulate.input(input);
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
 
-  //   const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    const removeButton = document.querySelector('.ms-PickerItem-removeButton') as HTMLButtonElement;
+    expect(removeButton).toBeDefined();
 
-  //   ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    ReactTestUtils.Simulate.click(removeButton);
+    const currentPickerAfterClick = picker.current!.items;
+    expect(currentPickerAfterClick).toHaveLength(1);
 
-  //   const currentPicker = pickerBeforeUpdate.current!.items;
-  //   expect(currentPicker).toHaveLength(0);
-
-  //   ReactDOM.render(
-  //     <TagPicker
-  //       onResolveSuggestions={onResolveSuggestions}
-  //       selectedItems={[{ key: 'testColor', name: 'testColor' }]}
-  //       componentRef={pickerAfterUpdate}
-  //     />,
-  //     root
-  //   );
-
-  //   const updatedPicker = pickerAfterUpdate.current!.items;
-  //   expect(updatedPicker).toHaveLength(1);
-  //   expect(updatedPicker![0].name).toEqual('testColor');
-
-  //   ReactDOM.unmountComponentAtNode(root);
-  // });
-  // it('fires change events correctly for controlled components', done => {
-  //   const root = document.createElement('div');
-  //   document.body.appendChild(root);
-  //   const onChange = (items: ITag[] | undefined): void => {
-  //     expect(items!.length).toBe(1);
-  //     expect(items![0].name).toBe('black');
-  //     done();
-  //   };
-
-  //   ReactDOM.render(<TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[]} onChange={onChange} />, root);
-  //   const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-
-  //   input.focus();
-  //   input.value = 'bl';
-  //   ReactTestUtils.Simulate.input(input);
-
-  //   const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
-
-  //   ReactTestUtils.Simulate.click(suggestionOptions[0]);
-
-  //   ReactDOM.unmountComponentAtNode(root);
-  // });
+    ReactDOM.unmountComponentAtNode(root);
+  });
 });
