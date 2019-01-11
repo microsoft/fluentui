@@ -1,9 +1,9 @@
 import { getGlobalClassNames, FontSizes } from '../../Styling';
 import { IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
 
-const actionSize = 34;
-const horizontalPadding = 12;
-const verticalPadding = 4;
+const ACTION_SIZE = 34;
+const HORIZONTAL_PADDING = 12;
+const VERTICAL_PADDING = 4;
 
 const GlobalClassNames = {
   root: 'ms-DocumentCardActions',
@@ -21,8 +21,8 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
     root: [
       classNames.root,
       {
-        height: `${actionSize}px`,
-        padding: `${verticalPadding}px ${horizontalPadding}px`,
+        height: `${ACTION_SIZE}px`,
+        padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px`,
         position: 'relative'
       },
       className
@@ -38,8 +38,8 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
         selectors: {
           '.ms-Button': {
             fontSize: '16px',
-            height: actionSize,
-            width: actionSize
+            height: ACTION_SIZE,
+            width: ACTION_SIZE
           },
           '.ms-Button:hover .ms-Button-icon': {
             color: theme.semanticColors.buttonText,
@@ -52,7 +52,7 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
       classNames.views,
       {
         textAlign: 'right',
-        lineHeight: actionSize
+        lineHeight: ACTION_SIZE
       }
     ],
     viewsIcon: {

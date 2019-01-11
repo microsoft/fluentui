@@ -7,7 +7,6 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardStatusStyleProps): IDocumentCardStatusStyles => {
   const { className, theme } = props;
-  // const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

@@ -5,7 +5,7 @@ export const GlobalClassNames = {
   root: 'ms-DocumentCardPreview',
   icon: 'ms-DocumentCardPreview-icon',
   iconContainer: 'ms-DocumentCardPreview-iconContainer',
-  previewFileTypeIcon: 'ms-DocumentCardPreview-icon'
+  previewFileTypeIcon: 'ms-DocumentCardPreview-previewFileTypeIcon'
 };
 
 export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardPreviewStyles => {
