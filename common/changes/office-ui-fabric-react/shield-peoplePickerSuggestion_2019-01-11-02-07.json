@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "PeoplePicker: addjust height of the picker suggestion item to follow the toolkit redline.",
+      "comment": "PeoplePicker: adjust height of the picker suggestion item to follow the toolkit redline.",
       "type": "patch"
     }
   ],
