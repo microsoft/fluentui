@@ -14,7 +14,7 @@ import { getStyles } from './PeoplePickerItem.styles';
 const getClassNames = classNamesFunction<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>();
 
 export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
-  const { item, onRemoveItem, index, selected, removeButtonAriaLabel, styles, theme, className } = props;
+  const { item, onRemoveItem, index, selected, removeButtonAriaLabel, styles, theme, className, disabled } = props;
 
   const itemId = getId();
 
@@ -22,6 +22,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
     theme: theme!,
     className,
     selected,
+    disabled,
     invalid: item.ValidationState === ValidationState.warning
   });
 
@@ -45,12 +46,14 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
       <div className={classNames.itemContent} id={'selectedItemPersona-' + itemId}>
         <Persona size={PersonaSize.size28} styles={personaStyles} coinProps={{ styles: personaCoinStyles }} {...item} />
       </div>
-      <IconButton
-        onClick={onRemoveItem}
-        iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
-        className={classNames.removeButton}
-        ariaLabel={removeButtonAriaLabel}
-      />
+      {!disabled && (
+        <IconButton
+          onClick={onRemoveItem}
+          iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+          className={classNames.removeButton}
+          ariaLabel={removeButtonAriaLabel}
+        />
+      )}
     </div>
   );
 };

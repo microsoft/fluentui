@@ -11,7 +11,7 @@ const GlobalClassNames = {
 const TAG_HEIGHT = 26;
 
 export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
-  const { className, theme, selected } = props;
+  const { className, theme, selected, disabled } = props;
 
   const { palette } = theme;
 
@@ -32,17 +32,17 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         display: 'flex',
         flexWrap: 'nowrap',
         maxWidth: 300,
-        background: !selected ? palette.neutralLighter : palette.neutralQuaternary,
+        background: !selected || disabled ? palette.neutralLighter : palette.neutralQuaternary,
         selectors: {
           ':hover': {
-            background: !selected ? palette.neutralLight : palette.neutralQuaternaryAlt
+            background: disabled ? palette.neutralLighter : !selected ? palette.neutralLight : palette.neutralQuaternaryAlt
           },
           [HighContrastSelector]: {
             border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`
           }
         }
       },
-      selected && [classNames.isSelected],
+      selected && !disabled && [classNames.isSelected],
       className
     ],
     text: [

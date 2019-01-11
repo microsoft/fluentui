@@ -12,7 +12,7 @@ const GlobalClassNames = {
 const REMOVE_BUTTON_SIZE = 28;
 
 export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles {
-  const { className, theme, selected, invalid } = props;
+  const { className, theme, selected, invalid, disabled } = props;
 
   const { palette } = theme;
 
@@ -20,7 +20,8 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
 
   const personaPrimaryTextStyles: IStyle = [
     selected &&
-      !invalid && {
+      !invalid &&
+      !disabled && {
         color: palette.white,
         selectors: {
           [HighContrastSelector]: {
@@ -28,19 +29,19 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           }
         }
       },
-    invalid &&
-      !selected && {
-        color: palette.redDark,
-        borderBottom: `2px dotted ${palette.redDark}`,
-        selectors: {
-          '$root:hover &': {
-            // override Persona root:hover selector
-            color: palette.redDark
-          }
+    ((invalid && !selected) || (invalid && selected && disabled)) && {
+      color: palette.redDark,
+      borderBottom: `2px dotted ${palette.redDark}`,
+      selectors: {
+        '$root:hover &': {
+          // override Persona root:hover selector
+          color: palette.redDark
         }
-      },
+      }
+    },
     invalid &&
-      selected && {
+      selected &&
+      !disabled && {
         color: palette.white,
         borderBottom: `2px dotted ${palette.white}`
       }
@@ -68,29 +69,31 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         verticalAlign: 'middle',
         selectors: {
           ':hover': {
-            background: !selected ? palette.neutralLight : ''
+            background: !selected && !disabled ? palette.neutralLight : ''
           },
           [HighContrastSelector]: {
             border: '1px solid WindowText'
           }
         }
       },
-      selected && [
-        classNames.isSelected,
-        {
-          background: palette.themePrimary,
-          selectors: {
-            [HighContrastSelector]: {
-              borderColor: 'HighLight',
-              background: 'Highlight',
-              MsHighContrastAdjust: 'none'
+      selected &&
+        !disabled && [
+          classNames.isSelected,
+          {
+            background: palette.themePrimary,
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'HighLight',
+                background: 'Highlight',
+                MsHighContrastAdjust: 'none'
+              }
             }
           }
-        }
-      ],
+        ],
       invalid && [classNames.isInvalid],
       invalid &&
-        selected && {
+        selected &&
+        !disabled && {
           background: palette.redDark
         },
       className

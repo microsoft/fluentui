@@ -13,7 +13,8 @@ export const TagItemBase = (props: ITagItemProps) => {
   const classNames = getClassNames(styles, {
     theme: theme!,
     className,
-    selected
+    selected,
+    disabled
   });
 
   return (
