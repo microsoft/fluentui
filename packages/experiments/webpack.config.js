@@ -26,20 +26,5 @@ module.exports = [
       library: 'FabricExperiments'
     }
   }),
-
-  resources.createServeConfig({
-    entry: './src/demo/index.tsx',
-    mode: 'production',
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    },
-    output: {
-      filename: 'demo-app.js'
-    },
-
-    resolve: {
-      alias
-    }
-  })
+  require('./webpack.serve.config')
 ];
