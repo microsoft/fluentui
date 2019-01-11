@@ -52,7 +52,19 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   controlOutline: LightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: LightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: LightSemanticColors.controlOutlines.hover,
-  labelText: LightSemanticColors.text.label
+  labelText: LightSemanticColors.text.label,
+  statusErrorBackground: LightSemanticColors.statusBar.error,
+  statusErrorText: LightSemanticColors.text.body,
+  statusErrorIcon: CommonSemanticColors.icons.error,
+  statusInformationBackground: LightSemanticColors.statusBar.information,
+  statusInformationText: LightSemanticColors.text.body,
+  statusInformationIcon: CommonSemanticColors.icons.information,
+  statusSuccessBackground: LightSemanticColors.statusBar.okay,
+  statusSuccessText: LightSemanticColors.text.body,
+  statusSuccessIcon: CommonSemanticColors.icons.okay,
+  statusWarningBackground: LightSemanticColors.statusBar.warning,
+  statusWarningText: LightSemanticColors.text.body,
+  statusWarningIcon: CommonSemanticColors.icons.warning
 };
 export const AzureThemeLight: ITheme = createTheme({
   palette: {
