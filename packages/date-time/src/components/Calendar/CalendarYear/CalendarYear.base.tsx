@@ -187,7 +187,6 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
         type="button"
-        tabIndex={0}
         aria-label={prevAriaLabel}
         disabled={disabled}
       >
@@ -237,7 +236,6 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
         type="button"
-        tabIndex={0}
         aria-label={nextAriaLabel}
         disabled={this.isDisabled}
       >
@@ -301,7 +299,6 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           onKeyDown={this._onHeaderKeyDown}
           aria-label={ariaLabel}
           role="button"
-          tabIndex={0}
         >
           {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
         </button>
