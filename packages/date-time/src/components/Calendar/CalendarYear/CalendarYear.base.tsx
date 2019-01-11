@@ -54,9 +54,9 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
 
     return (
       <button
-        className={css('ms-DatePicker-yearOption', classNames.yearButton, {
-          [`ms-DatePicker-day--highlighted ${classNames.selectedYear}`]: selected,
-          [`ms-DatePicker-yearOption--disabled ${classNames.disabledStyle}`]: disabled
+        className={css(classNames.yearButton, {
+          [classNames.selectedYear]: selected,
+          [classNames.disabledStyle]: disabled
         })}
         type="button"
         role="gridcell"
@@ -127,7 +127,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
     }
     return (
       <FocusZone>
-        <div className={css('ms-DatePicker-optionGrid', classNames.yearGridContainer)} role="grid">
+        <div className={classNames.yearGridContainer} role="grid">
           <div role="row">{cells}</div>
         </div>
       </FocusZone>
@@ -181,8 +181,8 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
     return (
       <button
-        className={css('ms-DatePicker-prevDecade', classNames.yearNavigationButton, {
-          [`ms-DatePicker-prevDecade--disabled ${classNames.disabledStyle}`]: disabled
+        className={css(classNames.yearNavigationButton, {
+          [classNames.disabledStyle]: disabled
         })}
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
@@ -230,8 +230,8 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
 
     return (
       <button
-        className={css(classNames.yearNavigationButton, 'ms-DatePicker-nextDecade', {
-          [`ms-DatePicker-nextDecade--disabled ${classNames.disabledStyle}`]: disabled
+        className={css(classNames.yearNavigationButton, {
+          [classNames.disabledStyle]: disabled
         })}
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
@@ -268,7 +268,7 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
     });
 
     return (
-      <div className={css('ms-DatePicker-decadeComponents', classNames.yearNavigationButtonsContainer)}>
+      <div className={classNames.yearNavigationButtonsContainer}>
         <CalendarYearNavPrev {...this.props} />
         <CalendarYearNavNext {...this.props} />
       </div>
@@ -294,7 +294,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
         : undefined;
       return (
         <button
-          className={css('ms-DatePicker-currentDecade js-showYearPicker', classNames.currentYearButton)}
+          className={classNames.currentYearButton}
           onClick={this._onHeaderSelect}
           onKeyDown={this._onHeaderKeyDown}
           aria-label={ariaLabel}
@@ -338,7 +338,7 @@ class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
     });
 
     return (
-      <div className={css('ms-DatePicker-header', classNames.headerContainer)}>
+      <div className={classNames.headerContainer}>
         {this._onRenderTitle()}
         {this._onRenderNav()}
       </div>
@@ -387,7 +387,7 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
     });
 
     return (
-      <div className={css('ms-DatePicker-yearPicker', classNames.root)}>
+      <div className={classNames.root}>
         {this._renderHeader()}
         {this._renderGrid()}
       </div>
