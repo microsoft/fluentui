@@ -100,6 +100,7 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
 interface ICalendarYearGrid {
   focus(): void;
 }
+
 class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> implements ICalendarYearGrid {
   private _selectedCellRef: CalendarYearGridCell;
   private _currentCellRef: CalendarYearGridCell;
@@ -111,6 +112,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
       this._currentCellRef.focus();
     }
   }
+
   public render(): JSX.Element {
     const { styles, theme, className, fromYear, toYear } = this.props;
 
@@ -121,10 +123,12 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
 
     let year = fromYear;
     const cells = [];
+
     while (year <= toYear) {
       cells.push(this._renderCell(year));
       year++;
     }
+
     return (
       <FocusZone>
         <div className={classNames.yearGridContainer} role="grid">
@@ -133,11 +137,13 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
       </FocusZone>
     );
   }
+
   private _renderCell = (year: number): React.ReactNode => {
     const { styles, theme, minYear, maxYear, onSelectYear, selectedYear } = this.props;
     const selected = year === selectedYear;
     const disabled = (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
     const current = year === new Date().getFullYear();
+
     return (
       <CalendarYearGridCell
         {...this.props}
@@ -153,13 +159,16 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
       />
     );
   };
+
   private _onSelectedCellRef = (ref: CalendarYearGridCell) => {
     this._selectedCellRef = ref;
   };
+
   private _onCurrentCellRef = (ref: CalendarYearGridCell) => {
     this._currentCellRef = ref;
   };
 }
+
 class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
     const { styles, theme, className, navigationIcons, strings, onSelectPrev } = this.props;
@@ -194,21 +203,25 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
       </button>
     );
   }
+
   get isDisabled(): boolean {
     const { minYear } = this.props;
     return minYear !== undefined && this.props.fromYear < minYear;
   }
+
   private _onSelectPrev = () => {
     if (!this.isDisabled && this.props.onSelectPrev) {
       this.props.onSelectPrev();
     }
   };
+
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (ev.which === KeyCodes.enter) {
       this._onSelectPrev();
     }
   };
 }
+
 class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
     const { styles, theme, className, navigationIcons, strings, onSelectNext } = this.props;
@@ -243,21 +256,25 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
       </button>
     );
   }
+
   get isDisabled(): boolean {
     const { maxYear } = this.props;
     return maxYear !== undefined && this.props.fromYear + CELL_COUNT > maxYear;
   }
+
   private _onSelectNext = () => {
     if (!this.isDisabled && this.props.onSelectNext) {
       this.props.onSelectNext();
     }
   };
+
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (ev.which === KeyCodes.enter) {
       this._onSelectNext();
     }
   };
 }
+
 class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
     const { styles, theme, className } = this.props;
@@ -275,6 +292,7 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
     );
   }
 }
+
 class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
     const { styles, theme, className, fromYear, toYear, onHeaderSelect, strings } = this.props;
@@ -292,6 +310,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           ? (rangeAriaLabel as string)
           : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
         : undefined;
+
       return (
         <button
           className={classNames.currentYearButton}
@@ -304,22 +323,26 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
         </button>
       );
     }
+
     return (
       <div className={classNames.currentYear}>
         {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
       </div>
     );
   }
+
   private _onHeaderSelect = () => {
     if (this.props.onHeaderSelect) {
       this.props.onHeaderSelect();
     }
   };
+
   private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (this.props.onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       this.props.onHeaderSelect();
     }
   };
+
   private _onRenderYear = (year: number) => {
     if (this.props.onRenderYear) {
       return this.props.onRenderYear(year);
@@ -327,6 +350,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
     return year;
   };
 }
+
 class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
     const { styles, theme, className } = this.props;
@@ -344,12 +368,14 @@ class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
       </div>
     );
   }
+
   private _onRenderTitle = () => {
     if (this.props.onRenderTitle) {
       return this.props.onRenderTitle(this.props);
     }
     return <CalendarYearTitle {...this.props} />;
   };
+
   private _onRenderNav = () => {
     return <CalendarYearNav {...this.props} />;
   };
@@ -433,6 +459,7 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
     const { selectedYear, navigatedYear } = props;
     const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
     const fromYear = Math.floor(rangeYear / 10) * 10;
+
     return {
       fromYear: fromYear,
       navigatedYear: navigatedYear,
