@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { EditSection } from './EditSection';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -9,6 +10,9 @@ export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IEditSection>;
+
+  /** Optional className for the root element. */
+  className?: string;
 
   /**
    * The name of the Component
@@ -25,7 +29,7 @@ export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
    * This checks if the content is a function before showing
    * the EditSection button.
    */
-  sectionContent: JSX.Element;
+  sectionContent?: React.ReactNode;
 
   /**
    * Override for section name.
