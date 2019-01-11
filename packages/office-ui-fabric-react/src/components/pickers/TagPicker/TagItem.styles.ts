@@ -32,17 +32,28 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         display: 'flex',
         flexWrap: 'nowrap',
         maxWidth: 300,
-        background: !selected || disabled ? palette.neutralLighter : palette.neutralQuaternary,
+        background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
         selectors: {
           ':hover': {
-            background: disabled ? palette.neutralLighter : !selected ? palette.neutralLight : palette.neutralQuaternaryAlt
+            background: disabled ? palette.neutralLighter : !selected ? palette.neutralLight : palette.themePrimary,
+            selectors: {
+              '.ms-TagItem-close': {
+                color: palette.neutralPrimary
+              }
+            }
           },
           [HighContrastSelector]: {
             border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`
           }
         }
       },
-      selected && !disabled && [classNames.isSelected],
+      selected &&
+        !disabled && [
+          classNames.isSelected,
+          {
+            color: palette.white
+          }
+        ],
       className
     ],
     text: [
@@ -58,15 +69,28 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
     close: [
       classNames.close,
       {
-        cursor: 'pointer',
         color: palette.neutralSecondary,
-        fontSize: FontSizes.small,
-        display: 'inline-block',
-        textAlign: 'center',
-        verticalAlign: 'top',
         width: 30,
         height: '100%',
-        flexShrink: 0
+        flex: '0 0 auto',
+        selectors: {
+          ':hover': {
+            background: palette.neutralQuaternaryAlt,
+            color: palette.neutralPrimary
+          }
+        }
+      },
+      selected && {
+        color: palette.white,
+        selectors: {
+          ':hover': {
+            color: palette.white,
+            background: palette.themeDark
+          },
+          [HighContrastSelector]: {
+            color: 'HighlightText'
+          }
+        }
       }
     ]
   };
