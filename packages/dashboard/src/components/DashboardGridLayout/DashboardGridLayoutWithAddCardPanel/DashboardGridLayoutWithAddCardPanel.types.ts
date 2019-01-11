@@ -35,6 +35,11 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   addCardPanelProps?: IAddCardPanelProps;
 
   /**
+   * Describes the layout of the cards to display in the DashboardGridLayou
+   */
+  layout: DashboardGridBreakpointLayouts;
+
+  /**
    * The callback being called each time after a layout change
    */
   onLayoutChange?: (newLayout: DashboardGridBreakpointLayouts) => void;
@@ -62,6 +67,11 @@ export interface IAddCardPanelProps {
    * The aria label for the panel's close button
    */
   panelCloseButtonAriaLabel?: string;
+
+  /**
+   * Message shown in add card panel empty state
+   */
+  emptyPanelMessage?: string;
 }
 
 export interface IDashboardGridLayoutWithAddCardPanelState {
@@ -115,4 +125,10 @@ export interface IDashboardGridLayoutWithAddCardPanelState {
    * This value is sent to DraggingCard which then renders the required animaiton in it
    */
   draggingAnimation?: DraggingAnimationType;
+
+  /**
+   * The jsx elements to  be rendered in the DGL. Calculated intially based on props
+   * Added and removed to the exisiting lot later based on user interation of adding a new card or removing a existing card
+   */
+  cardNodes: JSX.Element[];
 }

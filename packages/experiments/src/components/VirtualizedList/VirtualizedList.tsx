@@ -54,16 +54,11 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
       this._render(scrollTop);
     });
 
-    this.componentDidUpdate();
+    this._updateObservedElements();
   }
 
   public componentDidUpdate(): void {
-    // (Re-)register with the observer after every update, this way we'll get an intersection event immediately if one of the spacer
-    // elements is visible right now.
-    for (const key of Object.keys(this._spacerElements)) {
-      const ref = this._spacerElements[key];
-      this.context.scrollContainer.observe(ref);
-    }
+    this._updateObservedElements();
   }
 
   public componentWillUpdate(): void {
@@ -82,6 +77,15 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
         {items}
       </div>
     );
+  }
+
+  private _updateObservedElements(): void {
+    // (Re-)register with the observer after every update, so we'll get an intersection event immediately if one of the spacer
+    // elements is visible right now.
+    for (const key of Object.keys(this._spacerElements)) {
+      const ref = this._spacerElements[key];
+      this.context.scrollContainer.observe(ref);
+    }
   }
 
   private _renderItems(scrollTop: number, viewportHeight: number): (JSX.Element | null)[] {

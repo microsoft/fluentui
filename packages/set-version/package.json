@@ -14,14 +14,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js"
+    "build": "node ../../scripts/just.js build"
   },
   "disabledTasks": [
     "copy",
     "karma",
     "webpack",
     "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",

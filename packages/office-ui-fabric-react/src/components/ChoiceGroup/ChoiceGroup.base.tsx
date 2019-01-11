@@ -1,8 +1,9 @@
 import * as React from 'react';
+
 import { Label } from '../../Label';
-import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption/index';
-import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, classNamesFunction, getId, find } from '../../Utilities';
+import { BaseComponent, classNamesFunction, find, getId } from '../../Utilities';
+import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
+import { ChoiceGroupOption, OnChangeCallback, OnFocusCallback } from './ChoiceGroupOption/index';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -13,7 +14,7 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
+export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   public static defaultProps: IChoiceGroupProps = {
     options: []
   };
@@ -53,7 +54,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public render(): JSX.Element {
-    const { className, theme, styles, options, label, required, disabled, name, role = 'application' } = this.props;
+    const { className, theme, styles, options, label, required, disabled, name, role } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -74,8 +75,6 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
 
     return (
-      // By default, we need to assign the role 'application' on the containing div
-      // because JAWS doesn't call OnKeyDown without this role
       <div role={role} className={classNames.applicationRole}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
           {label && (

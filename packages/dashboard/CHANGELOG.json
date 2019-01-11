@@ -2,6 +2,84 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.43.1",
+      "tag": "@uifabric/dashboard_v0.43.1",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "\"update grid list cursor to pointer\"",
+            "author": "VamshidharReddyEnumula <vamshidharenumula@gmail.com>",
+            "commit": "ae34a0747c39859af296a4d2082b9e944d83a5b1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.3 <7.0.0` to `>=6.50.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.0 <7.0.0` to `>=6.124.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.0",
+      "tag": "@uifabric/dashboard_v0.43.0",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "920e5a4ea25203d58baa89441ab0da9a7c099a49"
+          },
+          {
+            "comment": "Adding support for JSX.Element to DGLWithAddCardPanel. Still maintaining support for RTL/LTR and accessibility.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "920e5a4ea25203d58baa89441ab0da9a7c099a49"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.4` to `^0.28.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.2 <7.0.0` to `>=6.50.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.42.2",
+      "tag": "@uifabric/dashboard_v0.42.2",
+      "date": "Fri, 04 Jan 2019 13:36:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add support of accessibility for the card component",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "61e2d71584c6a8572dd21cd2c999b1cef3579a95"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.0 <7.0.0` to `>=6.50.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.42.1",
       "tag": "@uifabric/dashboard_v0.42.1",
       "date": "Thu, 03 Jan 2019 13:33:55 GMT",

@@ -684,4 +684,29 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
     expect(_sourceIndex).toBe(2);
   });
+
+  it('should set optional headerClassName on header if provided', () => {
+    const headerClassName: string = 'foo';
+    const column: IColumn = {
+      key: 'a',
+      name: 'a',
+      fieldName: 'a',
+      minWidth: 200,
+      maxWidth: 400,
+      calculatedWidth: 200,
+      isResizable: true,
+      headerClassName
+    };
+
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={[column]}
+      />
+    );
+
+    expect(component.find(`.${headerClassName}`).exists()).toBe(true);
+  });
 });
