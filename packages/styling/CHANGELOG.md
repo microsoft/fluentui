@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 13 Dec 2018 13:37:01 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+
+## 6.40.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
 
 ## 6.39.0
 Thu, 13 Dec 2018 13:37:01 GMT

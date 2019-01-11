@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.4",
+      "tag": "@uifabric/experiments_v6.50.4",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Made message bar visible in High Contrast",
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "a62ab7fe6f395d2b9cde89de915e7f4976942056"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.0 <7.0.0` to `>=6.124.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.3",
       "tag": "@uifabric/experiments_v6.50.3",
       "date": "Tue, 08 Jan 2019 13:34:49 GMT",

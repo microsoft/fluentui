@@ -30,6 +30,9 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         font-size: 12px;
         font-weight: 400;
       }
+      @media screen and (-ms-high-contrast: active){& {
+        background: windowText;
+      }
 >
   <div
     className=
@@ -54,7 +57,8 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           top: 0px;
         }
         @media screen and (-ms-high-contrast: active){&:before {
-          border: 1px solid WindowText;
+          background: WindowText;
+          color: Window;
           content:  ;
         }
   >
@@ -94,6 +98,10 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
         data-icon-name="Info"
         role="presentation"
       >
@@ -122,6 +130,10 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             margin-left: 8px;
             margin-right: 8px;
             margin-top: 8px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            color: window;
           }
       id="MessageBar0"
     >
