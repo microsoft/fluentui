@@ -1,5 +1,5 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IBaseProps, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDGLCard, CardSize, DraggingAnimationType } from '../../../index';
 
 export interface IAddCardPanelProps extends IBaseProps {
@@ -17,6 +17,16 @@ export interface IAddCardPanelProps extends IBaseProps {
    * The list of cards to render in the add card panel
    */
   cards?: IDGLCard[];
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IAddCardPanelStyleProps, IAddCardPanelStyles>;
 
   /**
    * Message shown in add card panel empty state
@@ -83,4 +93,11 @@ export interface IAddCardPanelStyles {
    * Style set for when no cards available in add card panel
    */
   emptyPanelMessageStyles: IStyle;
+}
+
+export interface IAddCardPanelStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
 }

@@ -1,7 +1,8 @@
-import { IAddCardPanelStyles } from './AddCardPanel.types';
-import { FontSizes, DefaultFontStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IAddCardPanelStyles, IAddCardPanelStyleProps } from './AddCardPanel.types';
+import { FontSizes, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export const getStyles = (): IAddCardPanelStyles => {
+export const getStyles = (props: IAddCardPanelStyleProps): IAddCardPanelStyles => {
+  const { theme } = props;
   return {
     header: {
       fontWeight: 700,
@@ -22,9 +23,8 @@ export const getStyles = (): IAddCardPanelStyles => {
       width: '200px'
     },
     emptyPanelMessageStyles: {
-      fontFamily: DefaultFontStyles.medium.fontFamily,
+      ...theme!.fonts.medium,
       lineHeight: '20px',
-      fontSize: '14px',
       textAlign: 'center',
       color: DefaultPalette.black,
       paddingTop: '32px'
