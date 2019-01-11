@@ -113,7 +113,8 @@ const cardsVisibleInAddCardPanel: IDGLCard[] = [
 
 const addCardPanelProps: IAddCardPanelProps = {
   panelHeader: 'Click to add cards to your dashboard',
-  panelCloseButtonAriaLabel: 'Close the add card panel'
+  panelCloseButtonAriaLabel: 'Close the add card panel',
+  emptyPanelMessage: 'You already have all the cards on your home page'
 };
 
 export interface IDGLWithAddCardPanelState {
