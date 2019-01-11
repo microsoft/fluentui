@@ -1,6 +1,28 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+
+## 0.13.2
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Patches
+
+- Rating: Use palette colors where possible
+
+## 0.13.1
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Replacing references to 'office-ui-fabric-react/lib/Styling' with references to '@uifabric/styling' in fluent-theme package.
+
+## 0.13.0
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Minor changes
+
+- Export animations as strings instead of objects
+- Add Facepile styles to theme
 
 ## 0.12.0
 Fri, 14 Dec 2018 13:35:30 GMT

@@ -1,6 +1,21 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+
+## 6.28.0
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Minor changes
+
+- Scroll: use scrollableParent in _preventOverscrolling, allow EventGroup.on to take event options
+
+## 6.27.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Deprecate utility using legacy context
+- BaseComponent: when updating componentRef, handle case where current or previous props are not given
 
 ## 6.27.1
 Mon, 17 Dec 2018 13:36:58 GMT

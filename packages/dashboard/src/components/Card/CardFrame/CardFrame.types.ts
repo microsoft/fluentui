@@ -64,6 +64,16 @@ export interface ICardFrameProps {
   seperatorColor?: string;
 
   /**
+   * Defines the title for the benefit of tooltip
+   */
+  cardFrameMenuTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  cardFrameMenuAriaLabel?: string;
+
+  /**
    * Hyperlink URL for title
    */
   href?: string;

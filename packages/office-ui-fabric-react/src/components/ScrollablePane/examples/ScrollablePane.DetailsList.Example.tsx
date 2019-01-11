@@ -57,7 +57,7 @@ const _columns: IColumn[] = [
   },
   {
     key: 'column5',
-    name: 'Test 4',
+    name: 'Test 5',
     fieldName: 'test5',
     minWidth: 100,
     maxWidth: 200,

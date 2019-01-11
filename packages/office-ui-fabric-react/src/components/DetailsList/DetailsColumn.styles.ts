@@ -72,7 +72,6 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
   return {
     root: [
       getCellStyles(props),
-      headerClassName,
       theme.fonts.small,
       isActionable && [
         classNames.isActionable,
@@ -104,7 +103,8 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
             display: 'block'
           }
         }
-      }
+      },
+      headerClassName
     ],
 
     gripperBarVerticalStyle: [

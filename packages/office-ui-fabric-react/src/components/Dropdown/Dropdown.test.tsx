@@ -480,8 +480,8 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
-        ReactTestUtils.Simulate.click(secondItemElement);
+        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item > input[type="checkbox"]')[1] as HTMLElement;
+        ReactTestUtils.Simulate.change(secondItemElement);
       } finally {
         expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('1, 2');
       }

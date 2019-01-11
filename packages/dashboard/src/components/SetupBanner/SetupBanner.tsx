@@ -9,7 +9,7 @@ import {
   ShimmerElementType as ElemType
 } from 'office-ui-fabric-react';
 import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 
 import { getStyles } from './SetupBanner.styles';
 import { ISetupBannerAction, ISetupBannerProps, ISetupBannerStyles, SetupBannerActionType } from './SetupBanner.types';
@@ -18,7 +18,7 @@ export class SetupBanner extends React.Component<ISetupBannerProps, {}> {
   public render(): JSX.Element {
     const { className, headerText, onRenderBody, onRenderVisualization } = this.props;
     const getClassNames = classNamesFunction<{}, ISetupBannerStyles>();
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles(getRTL()));
 
     const visualizationPartition = onRenderVisualization
       ? typeof onRenderVisualization === 'object'

@@ -1,6 +1,132 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 20 Dec 2018 13:39:35 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+
+## 6.124.1
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Ensure coachmark layers under header
+- Changed colors to make message bar more visible.
+- DetailsList: Ensure the headerClassName prop is processed properly when mergeStyles is used
+- CombBox: revert change to aria label
+- ContextualMenu: fix hovering on items in IE
+- Modal, Dialog: Update styling to work with changes to allowScrollOnElement (change overflowY from auto to hidden)
+- DetailsList: Add test for existence of headerClassName if provided
+
+## 6.124.0
+Thu, 10 Jan 2019 13:34:59 GMT
+
+### Minor changes
+
+- Pickers: converting to CSS-in-JS suggestions part of the pickers. Move some interfaces and create styled versions of each subcomponent base. Fix imports and more cleanup.
+
+## 6.123.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
+
+### Patches
+
+- Fix issues of marquee selection for IE
+- Pickers: Fix so controlled pickers will only focus when it has focus
+
+## 6.122.0
+Wed, 09 Jan 2019 13:35:35 GMT
+
+### Minor changes
+
+- Checkbox: Refactored to use an <input type="checkbox"> instead of "button", fixing several longstanding bugs along the way.
+- ChoiceGroup: Removed role='application' from root-div
+
+### Patches
+
+- Fixed: the commandbar will no longer flicker when resized
+- CommandBar: minor perf improvement in computing cache key
+- Fix the typing of ExpandingCard/PlainCard component props.
+- FocusTrapZone - Make forceFocusInsideTrap prop changes modify focus
+
+## 6.121.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Allow disabling specific dates on the calendar in addition to the max and min dates.
+
+### Patches
+
+- CalendarYear: convert from componentWillReceiveProps to getDerivedStateFromProps
+
+## 6.120.0
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Minor changes
+
+- Add FocusTrapCallout component
+- Exposes the tabIndex of the TextField in the DatePicker
+- Slider: Allows a custom value format function to be passed which formats the value label
+- DocumentCard: add optional aria role property to allow override the default aria role.
+
+### Patches
+
+- ChoiceGroup: exposing focus() method in IChoiceGroup and makes sure it is implemented.
+- Fix outline for Modals and Dialogs in High Contrast mode
+- SearchBox: fix handling of null value
+
+## 6.119.0
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Minor changes
+
+- TooltipHost: add show method
+
+### Patches
+
+- Fix calendar accessibility edge bug preventing row and column info from being populated correctly
+
+## 6.118.2
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Patches
+
+- update pivot component to use semantic slots from design redlines
+
+## 6.118.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Pickers: Fix issue where suggestions wouldn't dismiss for controlled pickers
+- Fix Nav selected item's pseudo element
+
+## 6.118.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- ComboBox will prioritize ariaLabel property over label for accessibility. Aria labels for Dropdown and ComboBox options do not default to item text.
+
+### Patches
+
+- FocusZone: Respect the onKeydown handler even it is inside inner focus zone.
+- checking if sticky content offsetHeight is in sync with nonStickyContent offsetHeight
+
+## 6.117.2
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Patches
+
+- Adding option to prevent focus on Coachmark mount
+
+## 6.117.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- ContextualMenu: fix opening submenus with hrefs
 
 ## 6.117.0
 Thu, 20 Dec 2018 13:39:35 GMT
