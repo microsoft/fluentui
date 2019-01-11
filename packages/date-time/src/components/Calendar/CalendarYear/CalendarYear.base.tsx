@@ -48,15 +48,15 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      highlightCurrentYear: highlightCurrentYear,
-      highlightSelectedYear: highlightSelectedYear
+      highlightCurrent: highlightCurrentYear,
+      highlightSelected: highlightSelectedYear
     });
 
     return (
       <button
-        className={css(classNames.yearButton, {
-          [classNames.selectedYear]: selected,
-          [classNames.disabledStyle]: disabled
+        className={css(classNames.itemButton, {
+          [classNames.selected]: selected,
+          [classNames.disabled]: disabled
         })}
         type="button"
         role="gridcell"
@@ -131,7 +131,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
 
     return (
       <FocusZone>
-        <div className={classNames.yearGridContainer} role="grid">
+        <div className={classNames.gridContainer} role="grid">
           <div role="row">{cells}</div>
         </div>
       </FocusZone>
@@ -139,7 +139,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
   }
 
   private _renderCell = (year: number): React.ReactNode => {
-    const { styles, theme, minYear, maxYear, onSelectYear, selectedYear } = this.props;
+    const { theme, minYear, maxYear, onSelectYear, selectedYear } = this.props;
     const selected = year === selectedYear;
     const disabled = (minYear !== undefined && year < minYear) || (maxYear !== undefined && year > maxYear);
     const current = year === new Date().getFullYear();
@@ -154,7 +154,6 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
         disabled={disabled}
         onSelectYear={onSelectYear}
         ref={selected ? this._onSelectedCellRef : current ? this._onCurrentCellRef : undefined}
-        styles={styles}
         theme={theme}
       />
     );
@@ -190,8 +189,8 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
     return (
       <button
-        className={css(classNames.yearNavigationButton, {
-          [classNames.disabledStyle]: disabled
+        className={css(classNames.navigationButton, {
+          [classNames.disabled]: disabled
         })}
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
@@ -243,8 +242,8 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
 
     return (
       <button
-        className={css(classNames.yearNavigationButton, {
-          [classNames.disabledStyle]: disabled
+        className={css(classNames.navigationButton, {
+          [classNames.disabled]: disabled
         })}
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
@@ -285,7 +284,7 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
     });
 
     return (
-      <div className={classNames.yearNavigationButtonsContainer}>
+      <div className={classNames.navigationButtonsContainer}>
         <CalendarYearNavPrev {...this.props} />
         <CalendarYearNavNext {...this.props} />
       </div>
@@ -313,7 +312,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
       return (
         <button
-          className={classNames.currentYearButton}
+          className={classNames.currentItemButton}
           onClick={this._onHeaderSelect}
           onKeyDown={this._onHeaderKeyDown}
           aria-label={ariaLabel}
@@ -325,7 +324,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
     }
 
     return (
-      <div className={classNames.currentYear}>
+      <div className={classNames.current}>
         {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
       </div>
     );

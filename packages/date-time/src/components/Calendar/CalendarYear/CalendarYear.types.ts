@@ -1,6 +1,7 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ICalendarIconStrings } from '../Calendar.types';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { ITheme } from '@uifabric/styling';
+import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 export interface ICalendarYear {
   focus(): void;
@@ -109,57 +110,9 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
   onRenderYear?: (year: number) => React.ReactNode;
 }
 
-export interface ICalendarYearStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
+export interface ICalendarYearStyleProps extends ICalendarPickerStyleProps {}
 
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-
-  /**
-   * Whether the header can be clicked
-   */
-  hasHeaderClickCallback?: boolean;
-
-  /**
-   * Whether the month picker should highlight the current year
-   */
-  highlightCurrentYear?: boolean;
-
-  /**
-   * Whether the month picker should highlight the selected year
-   */
-  highlightSelectedYear?: boolean;
-}
-
-export interface ICalendarYearStyles {
-  /**
-   * Style for the root element.
-   */
-  root: IStyle;
-
-  headerContainer: IStyle;
-
-  currentYearButton: IStyle;
-
-  yearNavigationButtonsContainer: IStyle;
-
-  yearNavigationButton: IStyle;
-
-  yearGridContainer: IStyle;
-
-  yearButton: IStyle;
-
-  currentYear: IStyle;
-
-  selectedYear: IStyle;
-
-  disabledStyle: IStyle;
-}
+export interface ICalendarYearStyles extends ICalendarPickerStyles {}
 
 export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarYearRange {
   /**
