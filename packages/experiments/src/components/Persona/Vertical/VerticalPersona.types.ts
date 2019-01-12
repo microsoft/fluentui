@@ -1,13 +1,12 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
 import { ITextSlot } from '../../../Text';
-import { IHTMLSlot } from '../../../utilities/factoryComponents.types';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
 export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles>;
 
 export interface IVerticalPersonaSlots {
-  root?: IHTMLSlot;
+  root?: IHTMLDivSlot;
   primaryText?: ITextSlot;
   secondaryText?: ITextSlot;
   coin?: IPersonaCoinSlot;

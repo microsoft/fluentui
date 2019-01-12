@@ -1,7 +1,7 @@
 import { IRefObject } from '../../Utilities';
-import { IComponentStyles, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLButtonSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { ITextSlot } from '../../Text';
-import { IHTMLButtonSlot, IIconSlot } from '../../utilities/factoryComponents.types';
+import { IIconSlot } from '../../utilities/factoryComponents.types';
 
 export type ICollapsibleSectionTitleComponent = IStatelessComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>;
 
@@ -9,8 +9,7 @@ export type ICollapsibleSectionTitleSlot = ISlotProp<ICollapsibleSectionTitlePro
 
 export interface ICollapsibleSectionTitleSlots {
   root?: IHTMLButtonSlot;
-  // TODO: consider renaming icon to chevron before promotion to align with other props
-  icon?: IIconSlot;
+  chevron?: IIconSlot;
   text?: ITextSlot;
 }
 

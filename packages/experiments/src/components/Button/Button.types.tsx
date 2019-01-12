@@ -1,6 +1,6 @@
-import { IComponent, ISlotProp, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLButtonSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IRefObject } from 'office-ui-fabric-react';
-import { IContextualMenuSlot, IHTMLButtonSlot, IIconSlot } from '../../utilities/factoryComponents.types';
+import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
 import { IStackSlot } from '../../Stack';
 import { ITextSlot } from '../../Text';
 

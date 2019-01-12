@@ -4,10 +4,22 @@ import { IComponentStyles } from './IComponent';
 /**
  * Signature of components that have component factories.
  */
-export type IFactoryComponent<TProps> = React.ReactType<TProps> & {
+export interface ISlotCreator<TProps> {
   create?: ISlotFactory<TProps>;
-};
+}
 
+/**
+ * Slottable version of React.ComponentType.
+ */
+export type ISlottableComponentType<TProps> = React.ComponentType<TProps> & ISlotCreator<TProps>;
+
+/**
+ * Slottable version of React.ReactType.
+ */
+export type ISlottableReactType<TProps> = React.ReactType<TProps> & ISlotCreator<TProps>;
+
+// TODO: still needed? if so, rename. ISlotProps?
+// TODO: consider renaming ISlotProps and ISlotProp as well.
 export interface IFactoryProps {
   className?: string;
 }
@@ -26,9 +38,9 @@ export interface IFactoryOptions<TProps> {
 export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
 
 /**
- * An interface for defining slots. Each key in TSlot must point to an IFactoryComponent.
+ * An interface for defining slots. Each key in TSlot must point to an ISlottableType.
  */
-export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: IFactoryComponent<TSlots[prop]> };
+export type ISlotDefinition<TSlots> = { [prop in keyof TSlots]: ISlottableReactType<TSlots[prop]> };
 
 /**
  * Created Slot structure used for rendering by components.

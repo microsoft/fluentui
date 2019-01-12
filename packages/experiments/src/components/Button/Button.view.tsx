@@ -2,8 +2,9 @@
 import { ContextualMenu } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
 import { Stack } from '../../Stack';
+import { Text } from '../../Text';
 import { getNativeProps, buttonProperties } from '../../Utilities';
-import { Icon, Text } from '../../utilities/factoryComponents';
+import { Icon } from '../../utilities/factoryComponents';
 
 import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
 

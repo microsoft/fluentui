@@ -36,7 +36,7 @@ const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, 
 });
 
 const getCustomizerTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme) => ({
-  icon: { color: theme.semanticColors.link },
+  chevron: { color: theme.semanticColors.link },
   text: { color: theme.semanticColors.link }
 });
 

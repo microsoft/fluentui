@@ -23,7 +23,7 @@ export const getStyles: ICollapsibleSectionTitleComponent['styles'] = (props, th
       }
     }
   ],
-  icon: [
+  chevron: [
     {
       flexShrink: 0,
       padding: 0,

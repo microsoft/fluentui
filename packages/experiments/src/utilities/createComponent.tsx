@@ -145,8 +145,6 @@ function _resolveTokens<TViewProps, TTokens>(
     }
   }
 
-  // TODO: does it make sense that all tokens will always be optional? {} should be a valid TTokens object, if that's true.
-  // TODO: is it practical to have TTokens extends {} or object somehow to avoid this cast?
   return tokens as TTokens;
 }
 

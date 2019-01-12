@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLButtonSlot, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IComponentAs, IRefObject } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
-import { IHTMLButtonSlot, IHTMLSlot, ILabelSlot } from '../../utilities/factoryComponents.types';
+import { ILabelSlot } from '../../utilities/factoryComponents.types';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens>;
 
@@ -11,7 +11,7 @@ export interface IToggleSlots {
   /**
    * Root element.
    */
-  root?: IHTMLSlot;
+  root?: IHTMLDivSlot;
 
   /**
    * A label for the toggle.
@@ -21,7 +21,7 @@ export interface IToggleSlots {
   /**
    * Container for the toggle pill and the text next to it.
    */
-  container?: IHTMLSlot;
+  container?: IHTMLDivSlot;
 
   /**
    * Pill, rendered as a button.
@@ -31,7 +31,7 @@ export interface IToggleSlots {
   /**
    * Thumb inside of the pill.
    */
-  thumb?: IHTMLSlot;
+  thumb?: IHTMLDivSlot;
 
   /**
    * Text to display when toggle is ON.

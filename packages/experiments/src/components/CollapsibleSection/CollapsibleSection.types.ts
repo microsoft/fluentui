@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
 import { IRefObject } from '../../Utilities';
-import { IHTMLSlot } from '../../utilities/factoryComponents.types';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 
 export type ICollapsibleSectionComponent = IComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
 
 export interface ICollapsibleSectionSlots {
-  root?: IHTMLSlot;
+  root?: IHTMLDivSlot;
   title?: ICollapsibleSectionTitleSlot;
-  body?: IHTMLSlot;
+  body?: IHTMLDivSlot;
 }
 
 export interface ICollapsibleSection {}

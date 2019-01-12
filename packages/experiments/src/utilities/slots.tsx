@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
 import {
-  IFactoryComponent,
+  ISlottableReactType,
   IFactoryOptions,
   ISlot,
   ISlots,
@@ -89,6 +89,7 @@ export function createFactory<TProps>(
     // generated class name.
     const finalClassName = mergeStyles(defaultStyles, componentProps && componentProps.className, userProps && userProps.className);
 
+    // TODO: what if componentProps has styles prop? Here it is completely overridden by userProps without merging.
     const finalProps = {
       ...(componentProps as any),
       ...(typeof userProps === 'object' && (userProps as any)),
@@ -119,7 +120,7 @@ const defaultFactory = memoizeFunction(type => createFactory(type));
  * @param componentProps The properties passed into slot from within the component.
  * @param userProps The user properties passed in from outside of the component.
  */
-function renderSlot<TComponent extends IFactoryComponent<TProps>, TProps, TSlots>(
+function renderSlot<TComponent extends ISlottableReactType<TProps>, TProps, TSlots>(
   ComponentType: TComponent,
   componentProps: TProps,
   userProps: TProps,
@@ -149,13 +150,6 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
 
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
-      if (mixedProps && mixedProps[name] && React.Children.count(mixedProps[name].children) > 0) {
-        // TODO: verify this toArray call is needed. explain why in comment, if so
-        // TODO: should this be mutating? does React mutate children subprop with createElement?
-        // TODO: will toArray clobber existing keys?
-        mixedProps[name].children = React.Children.toArray(mixedProps[name].children);
-      }
-
       // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
       //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
       //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
