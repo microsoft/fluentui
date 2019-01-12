@@ -29,11 +29,13 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
 
   /**
    * Text to display when toggle is ON.
+   * Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.
    */
   onText?: string;
 
   /**
    * Text to display when toggle is OFF.
+   * Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.
    */
   offText?: string;
 
@@ -68,7 +70,9 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   disabled?: boolean;
 
   /**
-   * Whether the label (not the onText/offText) should be positioned on the left (right in RTL) side from the toggle control.
+   * Whether the label (not the onText/offText) should be positioned inline with the toggle control.
+   * Left (right in RTL) side when on/off text provided VS right (left in RTL) side when no on/off text.
+   * Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.
    */
   inlineLabel?: boolean;
 
@@ -123,9 +127,14 @@ export interface IToggleStyleProps {
   checked?: boolean;
 
   /**
-   * Label positioned inline (left or right in RTL).
+   * Whether label should be positioned inline with the toggle.
    */
   inlineLabel?: boolean;
+
+  /**
+   * Whether the user did not specify a on/off text. Influencing only when inlineLabel is used.
+   */
+  onOffMissing?: boolean;
 }
 
 /**

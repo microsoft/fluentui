@@ -73,7 +73,8 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       className,
       disabled,
       checked,
-      inlineLabel
+      inlineLabel,
+      onOffMissing: !onText && !offText
     });
 
     return (

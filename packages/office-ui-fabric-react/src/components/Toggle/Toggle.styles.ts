@@ -2,7 +2,7 @@ import { HighContrastSelector, getFocusStyle } from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
-  const { theme, className, disabled, checked, inlineLabel } = props;
+  const { theme, className, disabled, checked, inlineLabel, onOffMissing } = props;
   const { semanticColors } = theme;
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
@@ -44,9 +44,15 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
           }
         }
       },
-      inlineLabel && {
-        marginRight: 16
-      }
+      inlineLabel &&
+        !onOffMissing && {
+          marginRight: 16
+        },
+      onOffMissing &&
+        inlineLabel && {
+          order: 1,
+          marginLeft: 16
+        }
     ],
 
     container: [
