@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
@@ -51,6 +52,18 @@ describe('DatePicker', () => {
     textField.simulate('change', { target: { value: '' } }).simulate('blur');
 
     expect(onSelectDate).toHaveBeenCalledTimes(2);
+
+    datePicker.unmount();
+  });
+
+  it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+    const onSelectDate = jest.fn();
+    const datePicker = mount(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
+
+    datePicker.setState({ isDatePickerShown: true });
+    ReactTestUtils.Simulate.click(document.querySelector('.ms-DatePicker-day--today') as HTMLButtonElement);
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
 
     datePicker.unmount();
   });
