@@ -93,7 +93,8 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
-  it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+  // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
+  it.skip('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
     const onSelectDate = jest.fn();
     const datePicker = mount(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
 
