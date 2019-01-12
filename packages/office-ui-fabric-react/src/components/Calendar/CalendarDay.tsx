@@ -267,6 +267,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     return (
                       <td
                         key={day.key}
+                        onClick={day.isInBounds ? day.onSelected : undefined}
                         className={css(
                           styles.dayWrapper,
                           'ms-DatePicker-day',
@@ -315,7 +316,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           })}
                           role={'button'}
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
-                          onClick={day.isInBounds ? day.onSelected : undefined}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
