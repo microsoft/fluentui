@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/dashboard",
+      "packageName": "@uifabric/test-utilities",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/dashboard",
+  "packageName": "@uifabric/test-utilities",
   "email": "kchau@microsoft.com"
 }

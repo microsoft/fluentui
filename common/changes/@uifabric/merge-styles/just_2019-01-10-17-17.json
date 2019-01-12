@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/dashboard",
+      "packageName": "@uifabric/merge-styles",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/dashboard",
+  "packageName": "@uifabric/merge-styles",
   "email": "kchau@microsoft.com"
 }

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Relaxed type restrictions on possible values for 'autoComplete' attribute on TextField component.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "patrik@themediaexchange.nl"
+}

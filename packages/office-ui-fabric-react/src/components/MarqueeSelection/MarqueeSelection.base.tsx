@@ -283,7 +283,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       const index = Number(element.getAttribute('data-selection-index'));
       if (selection.isIndexSelected(index)) {
         const itemRect = element.getBoundingClientRect();
-        if (this._isPointInRectangle(itemRect, { x: ev.x, y: ev.y })) {
+        if (this._isPointInRectangle(itemRect, { x: ev.clientX, y: ev.clientY })) {
           return true;
         }
       }
