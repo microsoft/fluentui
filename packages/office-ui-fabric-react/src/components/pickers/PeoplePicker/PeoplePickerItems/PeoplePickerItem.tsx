@@ -37,7 +37,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
   return (
     <div
       className={classNames.root}
-      data-is-focusable={true}
+      data-is-focusable={!disabled}
       data-is-sub-focuszone={true}
       data-selection-index={index}
       role={'listitem'}
