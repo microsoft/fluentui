@@ -189,6 +189,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -211,6 +212,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -233,6 +235,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -256,6 +259,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -278,6 +282,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -300,6 +305,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -322,6 +328,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -346,6 +353,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -368,6 +376,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -390,6 +399,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -412,6 +422,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -434,6 +445,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -456,6 +468,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -478,6 +491,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -502,6 +516,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -524,6 +539,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -546,6 +562,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -568,6 +585,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -590,6 +608,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -612,6 +631,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -634,6 +654,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -658,6 +679,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -680,6 +702,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -702,6 +725,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -724,6 +748,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -746,6 +771,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -768,6 +794,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -790,6 +817,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -814,6 +842,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -836,6 +865,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -858,6 +888,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -880,6 +911,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -902,6 +934,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -924,6 +957,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -946,6 +980,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
