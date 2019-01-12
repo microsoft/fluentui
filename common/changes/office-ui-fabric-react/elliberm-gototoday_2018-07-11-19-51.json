@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Changed colors to make message bar more visible.",
+      "comment": "Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "betrue"
+  "email": ""
 }
