@@ -1474,7 +1474,7 @@ export function getScrollbarWidth(): number;
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export function getSubmenuItems(item: IContextualMenuItem): any;
+export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
@@ -6635,7 +6635,6 @@ interface IContextualMenuState {
   contextualMenuTarget?: Element;
   // (undocumented)
   dismissedMenuItemKey?: string;
-  // (undocumented)
   expandedByMouseClick?: boolean;
   // (undocumented)
   expandedMenuItemKey?: string;
@@ -10745,7 +10744,7 @@ interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTM
   addonString?: string;
   ariaLabel?: string;
   autoAdjustHeight?: boolean;
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
   borderless?: boolean;
   className?: string;
   // @deprecated (undocumented)

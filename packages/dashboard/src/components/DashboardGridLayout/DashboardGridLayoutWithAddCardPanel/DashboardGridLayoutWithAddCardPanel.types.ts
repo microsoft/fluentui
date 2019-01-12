@@ -67,6 +67,11 @@ export interface IAddCardPanelProps {
    * The aria label for the panel's close button
    */
   panelCloseButtonAriaLabel?: string;
+
+  /**
+   * Message shown in add card panel empty state
+   */
+  emptyPanelMessage?: string;
 }
 
 export interface IDashboardGridLayoutWithAddCardPanelState {

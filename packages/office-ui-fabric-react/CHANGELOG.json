@@ -2,6 +2,55 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.124.1",
+      "tag": "office-ui-fabric-react_v6.124.1",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure coachmark layers under header",
+            "author": "Benjamin Kaiser <benjaminjkaiser@gmail.com>",
+            "commit": "658aacf829d240008ab1b387d0a6ce46583f8b76"
+          },
+          {
+            "comment": "Changed colors to make message bar more visible.",
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "a62ab7fe6f395d2b9cde89de915e7f4976942056"
+          },
+          {
+            "comment": "DetailsList: Ensure the headerClassName prop is processed properly when mergeStyles is used",
+            "author": "brandonthomas <brandonthomas@users.noreply.github.com>",
+            "commit": "69bd99ac1524335da07507c1f1e17606c6a32563"
+          },
+          {
+            "comment": "CombBox: revert change to aria label",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "296db80ae6b9936b4628847aca4df6a94a33b946"
+          },
+          {
+            "comment": "ContextualMenu: fix hovering on items in IE",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "42d509f2df3180411aa786dfac0eea8a7230b308"
+          },
+          {
+            "comment": "Modal, Dialog: Update styling to work with changes to allowScrollOnElement (change overflowY from auto to hidden)",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c9613c6206dd9f13c4712c93e91bcbef46d18169"
+          },
+          {
+            "comment": "DetailsList: Add test for existence of headerClassName if provided",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "699fa828b66d5507cfb76851cc0947b4bf54e798"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.27.2 <7.0.0` to `>=6.28.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.124.0",
       "tag": "office-ui-fabric-react_v6.124.0",
       "date": "Thu, 10 Jan 2019 13:34:59 GMT",
