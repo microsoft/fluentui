@@ -25,7 +25,7 @@
     "build": "node ../../scripts/just.js build",
     "just": "node ../../scripts/just.js",
     "clean": "node ../../scripts/just.js clean",
-    "start": "node ../../scripts/start.js",
+    "start": "node ../../scripts/just.js dev",
     "test": "react-scripts-ts test --env=jsdom",
     "start-test": "node ../../scripts/just.js jest-watch",
     "update-snapshots": "node ../../scripts/just.js jest -u"

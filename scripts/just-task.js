@@ -12,6 +12,8 @@ option('production');
 // Adds an alias for 'npm-install-mode' for backwards compatibility
 option('min', { alias: 'npm-install-mode' });
 
+option('webpackConfig', { alias: 'w' });
+
 Object.keys(rig).forEach(taskFunction => {
   if (typeof rig[taskFunction] === 'function') {
     registerTask(kebabCase(taskFunction), rig[taskFunction]);
@@ -45,6 +47,7 @@ task(
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+task('dev', series('clean', 'copy', 'sass', 'build-codepen-examples', 'webpack-dev-server'));
 
 // Utility functions
 
