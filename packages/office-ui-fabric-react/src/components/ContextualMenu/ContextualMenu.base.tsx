@@ -46,6 +46,7 @@ const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemSt
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
+  /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
   expandedByMouseClick?: boolean;
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
@@ -57,7 +58,7 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-export function getSubmenuItems(item: IContextualMenuItem) {
+export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
@@ -306,7 +307,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           gapSpace={gapSpace}
           coverTarget={coverTarget}
           doNotLayer={doNotLayer}
-          className={css('ms-ContextualMenu-Callout', calloutProps ? calloutProps.className : undefined)}
+          className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
           setInitialFocus={shouldFocusOnMount}
           onDismiss={this.props.onDismiss}
           onScroll={this._onScroll}
@@ -316,7 +317,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           hidden={this.props.hidden}
         >
           <div
-            role={'menu'}
+            role="menu"
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
@@ -876,8 +877,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
     const targetElement = ev.currentTarget as HTMLElement;
 
-    // Always do this check to make sure we record
-    // a mouseMove if needed (even if we are timed out)
+    // Always do this check to make sure we record a mouseMove if needed (even if we are timed out)
     if (this._shouldUpdateFocusOnMouseEvent) {
       this._gotMouseMove = true;
     } else {
@@ -1003,8 +1003,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this.setState({
           // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
           // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-          // between a real click event and a keypress event.
-          expandedByMouseClick: ev.nativeEvent.detail !== 0
+          // between a real click event and a keypress event (detail should be the number of mouse clicks).
+          // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
+          // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
+          // and "" for pressing "Enter" with Narrator on.
+          expandedByMouseClick: ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse'
         });
         this._onItemSubMenuExpand(item, target);
       }
@@ -1076,7 +1079,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _getSubmenuProps() {
     const { submenuTarget, expandedMenuItemKey } = this.state;
     const item = this._findItemByKey(expandedMenuItemKey!);
-    let submenuProps = null;
+    let submenuProps: IContextualMenuProps | null = null;
 
     if (item) {
       submenuProps = {

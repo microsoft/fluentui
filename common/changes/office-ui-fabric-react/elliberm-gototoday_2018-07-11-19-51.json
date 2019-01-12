@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Fix so controlled pickers will only focus when it has focus",
+      "comment": "Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": ""
 }

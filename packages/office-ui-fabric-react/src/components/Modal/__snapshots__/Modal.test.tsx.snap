@@ -139,6 +139,7 @@ exports[`Modal renders Modal correctly 1`] = `
                   flex-grow: 1;
                   overflow-y: auto;
                 }
+            data-is-scrollable={true}
           >
             Test Content
           </div>

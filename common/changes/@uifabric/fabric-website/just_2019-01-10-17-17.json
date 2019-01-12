@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/experiments",
+      "packageName": "@uifabric/fabric-website",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/experiments",
+  "packageName": "@uifabric/fabric-website",
   "email": "kchau@microsoft.com"
 }

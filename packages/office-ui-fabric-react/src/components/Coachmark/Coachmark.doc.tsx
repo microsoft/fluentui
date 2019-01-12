@@ -12,7 +12,8 @@ export const CoachmarkPageProps: IDocPageProps = {
     {
       title: 'Coachmark Basic',
       code: CoachmarkBasicExampleCode,
-      view: <CoachmarkBasicExample />
+      view: <CoachmarkBasicExample />,
+      isScrollable: false
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Coachmark/Coachmark.types.ts')],

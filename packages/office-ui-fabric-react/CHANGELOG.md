@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 09 Jan 2019 13:35:35 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+
+## 6.124.1
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Ensure coachmark layers under header
+- Changed colors to make message bar more visible.
+- DetailsList: Ensure the headerClassName prop is processed properly when mergeStyles is used
+- CombBox: revert change to aria label
+- ContextualMenu: fix hovering on items in IE
+- Modal, Dialog: Update styling to work with changes to allowScrollOnElement (change overflowY from auto to hidden)
+- DetailsList: Add test for existence of headerClassName if provided
+
+## 6.124.0
+Thu, 10 Jan 2019 13:34:59 GMT
+
+### Minor changes
+
+- Pickers: converting to CSS-in-JS suggestions part of the pickers. Move some interfaces and create styled versions of each subcomponent base. Fix imports and more cleanup.
+
+## 6.123.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
+
+### Patches
+
+- Fix issues of marquee selection for IE
+- Pickers: Fix so controlled pickers will only focus when it has focus
 
 ## 6.122.0
 Wed, 09 Jan 2019 13:35:35 GMT

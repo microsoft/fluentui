@@ -25,7 +25,10 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
     <div
       className=
           ms-TextField-wrapper
-
+          {
+            display: block;
+            margin-bottom: 10px;
+          }
     >
       <label
         className=
@@ -36,13 +39,13 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
-              display: block;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
-              margin-right: 0px;
+              margin-right: 10px;
               margin-top: 0px;
               overflow-wrap: break-word;
               padding-bottom: 5px;
@@ -64,13 +67,14 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
-              display: flex;
+              display: inline-flex;
               flex-direction: row;
               height: 32px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              max-width: 100px;
               padding-bottom: 0px;
               padding-left: 0px;
               padding-right: 0px;
@@ -208,7 +212,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           color: #212121;
         }
     data-is-focusable={true}
-    id="ContextualMenuButton2"
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

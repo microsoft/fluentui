@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/utilities",
+      "packageName": "@uifabric/example-app-base",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/utilities",
+  "packageName": "@uifabric/example-app-base",
   "email": "kchau@microsoft.com"
 }
