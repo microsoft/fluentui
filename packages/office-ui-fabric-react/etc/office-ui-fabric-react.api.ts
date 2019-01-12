@@ -10895,6 +10895,7 @@ interface IToggleStyleProps {
   className?: string;
   disabled?: boolean;
   inlineLabel?: boolean;
+  onOffMissing?: boolean;
   theme: ITheme;
 }
 

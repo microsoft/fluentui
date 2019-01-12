@@ -28,6 +28,12 @@ describe('Toggle', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders toggle correctly with inline label and on/off text provided', () => {
+    const component = renderer.create(<Toggle label="Label" inlineLabel={true} onText="On" offText="Off" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders aria-label', () => {
     const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
 
