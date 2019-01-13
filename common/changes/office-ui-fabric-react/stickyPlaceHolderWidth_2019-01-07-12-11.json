@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Horizontal scrollbar not available for a grouped details list (all groups collapsed) when header is sticky",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "hatrived@microsoft.com"
+}
