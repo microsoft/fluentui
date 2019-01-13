@@ -58,12 +58,10 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps> {
   }
 
   private _getCellText(item: any, column: IColumn): string {
-    let value = item && column && column.fieldName ? item[column.fieldName] : '';
-
-    if (value === null || value === undefined) {
-      value = '';
+    if (item && column && column.fieldName) {
+      return item[column.fieldName] || '';
     }
 
-    return value;
+    return '';
   }
 }
