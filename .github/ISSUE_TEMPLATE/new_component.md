@@ -3,7 +3,7 @@ name: New Component
 about: Interested in contributing a new component to Fabric? This template includes necessary information to get started, and steps to completion
 
 ---
-<!-- Use this template for new components or new component varients -->
+<!-- Use this template for new components or new component variants -->
 
 ## Component details
 
