@@ -95,15 +95,18 @@ function runPrettierMultiProject(files, runAsync) {
   }
 
   const configPaths = Object.keys(configMap);
-  console.log('CONFIG PATHS: ' + configPaths);
-  console.log(JSON.stringify(configMap));
-  let promise = Promise.resolve();
   // Run all the prettier commands in sequence
-  for (const configPath of configPaths) {
-    promise = runPrettier(configMap[configPath], configPath, runAsync);
+  if (runAsync) {
+    let promise = Promise.resolve();
+    for (const configPath of configPaths) {
+      promise = promise.then(() => runPrettier(configMap[configPath], configPath, true));
+    }
+    return promise;
+  } else {
+    for (const configPath of configPaths) {
+      runPrettier(configMap[configPath], configPath);
+    }
   }
-
-  return runAsync ? promise : undefined;
 }
 
 module.exports = { runPrettierForProject, runPrettierMultiProject };
