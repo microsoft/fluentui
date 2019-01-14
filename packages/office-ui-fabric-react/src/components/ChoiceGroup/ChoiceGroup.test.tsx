@@ -191,9 +191,9 @@ describe('ChoiceGroup', () => {
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
-    expect(choiceGroupRef.current!.optionChecked).toBeUndefined();
+    expect(choiceGroupRef.current!.checkedOption).toBeUndefined();
     ReactTestUtils.Simulate.change(choiceOptions[0]);
-    expect(choiceGroupRef.current!.optionChecked).toBeDefined();
-    expect(choiceGroupRef.current!.optionChecked).toEqual(TEST_OPTIONS[0]);
+    expect(choiceGroupRef.current!.checkedOption).toBeDefined();
+    expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
   });
 });

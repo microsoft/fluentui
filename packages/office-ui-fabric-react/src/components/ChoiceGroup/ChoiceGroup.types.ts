@@ -8,7 +8,7 @@ export interface IChoiceGroup {
   /**
    * Gets the current checked option.
    */
-  optionChecked: IChoiceGroupOption | undefined;
+  checkedOption: IChoiceGroupOption | undefined;
 
   /**
    * Sets focus to the choiceGroup.

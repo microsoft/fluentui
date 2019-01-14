@@ -45,7 +45,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   /**
    * Gets the current checked option.
    */
-  public get optionChecked(): IChoiceGroupOption | undefined {
+  public get checkedOption(): IChoiceGroupOption | undefined {
     const { options = [] } = this.props;
     const { keyChecked: key } = this.state;
     return find(options, (value: IChoiceGroupOption) => value.key === key);
