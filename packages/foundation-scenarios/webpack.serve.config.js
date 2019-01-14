@@ -19,8 +19,8 @@ module.exports = resources.createServeConfig({
   resolve: {
     alias: {
       '@uifabric/foundation-scenarios/src': path.join(__dirname, 'src'),
-      '@uifabric/foundation-scenarios/lib': path.join(__dirname, 'lib'),
-      '@uifabric/foundation-scenarios': path.join(__dirname, 'lib'),
+      '@uifabric/foundation-scenarios/lib': path.join(__dirname, 'src'),
+      '@uifabric/foundation-scenarios': path.join(__dirname, 'src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }
