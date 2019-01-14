@@ -74,13 +74,12 @@ module.exports = {
   },
 
   createServeConfig(customConfig) {
-    const WebpackNotifierPlugin = require('webpack-notifier');
-
     return merge(
       {
         devServer: {
           inline: true,
-          port: 4322
+          port: 4322,
+          contentBase: path.resolve(process.cwd(), 'dist')
         },
 
         mode: 'development',
@@ -144,7 +143,7 @@ module.exports = {
           // TODO: will investigate why this doesn't work on mac
           // new WebpackNotifierPlugin(),
           new ForkTsCheckerWebpackPlugin(),
-          new webpack.ProgressPlugin()
+          ...(process.env.TRAVIS ? [] : [new webpack.ProgressPlugin()])
         ]
       },
       customConfig
