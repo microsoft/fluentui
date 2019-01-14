@@ -198,9 +198,6 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) =
     content: {
       overflow: 'visible'
     },
-    menuIcon: {
-      color: tokens.iconColor
-    },
     splitContainer: {
       height: '100%',
       position: 'relative',
