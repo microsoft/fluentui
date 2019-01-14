@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
@@ -26,8 +24,7 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
 
 let _draggedItem: IExampleItem | null = null;
 let _draggedIndex = -1;
-let _items: IExampleItem[];
-let _columns: IColumn[];
+const _items: IExampleItem[] = createListItems(10, 0);
 
 export interface IDetailsListDragDropExampleState {
   items: IExampleItem[];
@@ -47,12 +44,9 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
     this._dragDropEvents = this._getDragDropEvents();
     this._selection = new Selection();
 
-    _items = _items || createListItems(10, 0);
-    _columns = buildColumns(_items, true);
-
     this.state = {
       items: _items,
-      columns: _columns,
+      columns: buildColumns(_items, true),
       isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
       frozenColumnCountFromEnd: '0'

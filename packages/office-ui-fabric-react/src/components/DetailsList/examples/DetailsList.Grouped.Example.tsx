@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { IDetailsList, DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -130,7 +129,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
     const { items, groups, isCompactMode } = this.state;
 
     return (
-      <Fabric>
+      <div>
         <div className={controlWrapperClass}>
           <DefaultButton onClick={this._addItem} text="Add an item" styles={{ root: { margin: margin } }} />
           <Toggle label="Compact mode" checked={isCompactMode} onChange={this._onChangeCompactMode} styles={toggleStyles} />
@@ -154,7 +153,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
           onRenderItemColumn={this._onRenderColumn}
           compact={isCompactMode}
         />
-      </Fabric>
+      </div>
     );
   }
 

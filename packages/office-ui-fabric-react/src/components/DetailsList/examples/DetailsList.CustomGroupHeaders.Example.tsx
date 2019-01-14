@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
@@ -35,31 +33,22 @@ const classNames = mergeStyleSets({
 const ITEMS_PER_GROUP = 20;
 const GROUP_COUNT = 20;
 
-let _items: IExampleItem[];
-let _groups: IGroup[];
+const _items: IExampleItem[] = createListItems(500);
+const _groups: IGroup[] = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
 
 export class DetailsListCustomGroupHeadersExample extends React.Component {
-  constructor(props: {}) {
-    super(props);
-
-    _items = _items || createListItems(500);
-    _groups = _groups || createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
-  }
-
   public render(): JSX.Element {
     return (
-      <div>
-        <DetailsList
-          items={_items}
-          groups={_groups}
-          groupProps={{
-            onRenderHeader: this._onRenderGroupHeader,
-            onRenderFooter: this._onRenderGroupFooter
-          }}
-          ariaLabelForSelectionColumn="Toggle selection"
-          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-        />
-      </div>
+      <DetailsList
+        items={_items}
+        groups={_groups}
+        groupProps={{
+          onRenderHeader: this._onRenderGroupHeader,
+          onRenderFooter: this._onRenderGroupFooter
+        }}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+      />
     );
   }
 

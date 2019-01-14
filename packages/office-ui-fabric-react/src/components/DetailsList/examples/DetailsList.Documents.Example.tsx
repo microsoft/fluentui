@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -42,26 +40,6 @@ const classNames = mergeStyleSets({
   }
 });
 
-let _items: IDocument[] = [];
-
-const fileIcons: { name: string }[] = [
-  { name: 'accdb' },
-  { name: 'csv' },
-  { name: 'docx' },
-  { name: 'dotx' },
-  { name: 'mpt' },
-  { name: 'odt' },
-  { name: 'one' },
-  { name: 'onepkg' },
-  { name: 'onetoc' },
-  { name: 'pptx' },
-  { name: 'pub' },
-  { name: 'vsdx' },
-  { name: 'xls' },
-  { name: 'xlsx' },
-  { name: 'xsn' }
-];
-
 export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
   items: IDocument[];
@@ -82,41 +60,15 @@ export interface IDocument {
   fileSizeRaw: number;
 }
 
+const _items: IDocument[] = _generateDocuments();
+
 export class DetailsListDocumentsExample extends React.Component<{}, IDetailsListDocumentsExampleState> {
   private _selection: Selection;
 
   constructor(props: {}) {
     super(props);
 
-    //  Populate with items for demos.
-    if (_items.length === 0) {
-      for (let i = 0; i < 500; i++) {
-        const randomDate = this._randomDate(new Date(2012, 0, 1), new Date());
-        const randomFileSize = this._randomFileSize();
-        const randomFileType = this._randomFileIcon();
-        let fileName: string = lorem(2).replace(/\W/g, '');
-        let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, '');
-        fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
-        userName = userName
-          .split(' ')
-          .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
-          .join(' ');
-        _items.push({
-          name: fileName,
-          value: fileName,
-          iconName: randomFileType.url,
-          fileType: randomFileType.docType,
-          modifiedBy: userName,
-          dateModified: randomDate.dateFormatted,
-          dateModifiedValue: randomDate.value,
-          fileSize: randomFileSize.value,
-          fileSizeRaw: randomFileSize.rawSize
-        });
-      }
-      _items = this._sortItems(_items, 'name');
-    }
-
-    const _columns: IColumn[] = [
+    const columns: IColumn[] = [
       {
         key: 'column1',
         name: 'File Type',
@@ -204,7 +156,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
 
     this.state = {
       items: _items,
-      columns: _columns,
+      columns: columns,
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
       isCompactMode: false
@@ -277,31 +229,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     alert(`Item invoked: ${item.name}`);
   }
 
-  private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string } {
-    const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-    const dateData = {
-      value: date.valueOf(),
-      dateFormatted: date.toLocaleDateString()
-    };
-    return dateData;
-  }
-
-  private _randomFileIcon(): { docType: string; url: string } {
-    const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
-    return {
-      docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
-    };
-  }
-
-  private _randomFileSize(): { value: string; rawSize: number } {
-    const fileSize: number = Math.floor(Math.random() * 100) + 30;
-    return {
-      value: `${fileSize} KB`,
-      rawSize: fileSize
-    };
-  }
-
   private _getSelectionDetails(): string {
     const selectionCount = this._selection.getSelectedCount();
 
@@ -317,7 +244,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
 
   private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns, items } = this.state;
-    let newItems: IDocument[] = items.slice();
     const newColumns: IColumn[] = columns.slice();
     const currColumn: IColumn = newColumns.filter(currCol => column.key === currCol.key)[0];
     newColumns.forEach((newCol: IColumn) => {
@@ -329,34 +255,86 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         newCol.isSortedDescending = true;
       }
     });
-    newItems = this._sortItems(newItems, currColumn.fieldName as keyof IDocument, currColumn.isSortedDescending);
+    const newItems = _copyAndSort(items, currColumn.fieldName!, currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
       items: newItems
     });
   };
+}
 
-  private _sortItems = (items: IDocument[], sortBy: keyof IDocument, descending = false): IDocument[] => {
-    if (descending) {
-      return items.sort((a: IDocument, b: IDocument) => {
-        if (a[sortBy] < b[sortBy]) {
-          return 1;
-        }
-        if (a[sortBy] > b[sortBy]) {
-          return -1;
-        }
-        return 0;
-      });
-    } else {
-      return items.sort((a: IDocument, b: IDocument) => {
-        if (a[sortBy] < b[sortBy]) {
-          return -1;
-        }
-        if (a[sortBy] > b[sortBy]) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boolean): T[] {
+  const key = columnKey as keyof T;
+  return items.slice(0).sort((a: T, b: T) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+}
+
+function _generateDocuments() {
+  const items: IDocument[] = [];
+  for (let i = 0; i < 500; i++) {
+    const randomDate = _randomDate(new Date(2012, 0, 1), new Date());
+    const randomFileSize = _randomFileSize();
+    const randomFileType = _randomFileIcon();
+    let fileName: string = lorem(2).replace(/\W/g, '');
+    let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, '');
+    fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
+    userName = userName
+      .split(' ')
+      .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
+      .join(' ');
+    items.push({
+      name: fileName,
+      value: fileName,
+      iconName: randomFileType.url,
+      fileType: randomFileType.docType,
+      modifiedBy: userName,
+      dateModified: randomDate.dateFormatted,
+      dateModifiedValue: randomDate.value,
+      fileSize: randomFileSize.value,
+      fileSizeRaw: randomFileSize.rawSize
+    });
+  }
+  return items;
+}
+
+function _randomDate(start: Date, end: Date): { value: number; dateFormatted: string } {
+  const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  const dateData = {
+    value: date.valueOf(),
+    dateFormatted: date.toLocaleDateString()
+  };
+  return dateData;
+}
+
+const fileIcons: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpt' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xsn' }
+];
+
+function _randomFileIcon(): { docType: string; url: string } {
+  const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+  return {
+    docType,
+    url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+  };
+}
+
+function _randomFileSize(): { value: string; rawSize: number } {
+  const fileSize: number = Math.floor(Math.random() * 100) + 30;
+  return {
+    value: `${fileSize} KB`,
+    rawSize: fileSize
   };
 }

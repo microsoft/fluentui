@@ -4,6 +4,7 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const exampleChildClass = mergeStyles({
@@ -18,6 +19,13 @@ export interface IDetailsListCompactExampleItem {
 }
 
 const _items: IDetailsListCompactExampleItem[] = [];
+for (let i = 0; i < 200; i++) {
+  _items.push({
+    key: i,
+    name: 'Item ' + i,
+    value: i
+  });
+}
 
 const _columns = [
   {
@@ -49,17 +57,6 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
   constructor(props: {}) {
     super(props);
 
-    // Populate with items for demos.
-    if (_items.length === 0) {
-      for (let i = 0; i < 200; i++) {
-        _items.push({
-          key: i,
-          name: 'Item ' + i,
-          value: i
-        });
-      }
-    }
-
     this._selection = new Selection({
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
@@ -74,7 +71,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
     const { items, selectionDetails } = this.state;
 
     return (
-      <div>
+      <Fabric>
         <div className={exampleChildClass}>{selectionDetails}</div>
         <TextField
           className={exampleChildClass}
@@ -96,7 +93,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
-      </div>
+      </Fabric>
     );
   }
 

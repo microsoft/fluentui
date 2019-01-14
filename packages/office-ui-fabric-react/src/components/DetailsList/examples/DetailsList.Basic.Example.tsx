@@ -4,6 +4,7 @@ import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const exampleChildClass = mergeStyles({
@@ -11,7 +12,15 @@ const exampleChildClass = mergeStyles({
   marginBottom: '10px'
 });
 
+// Populate with items for demos.
 const _items: IDetailsListBasicExampleItem[] = [];
+for (let i = 0; i < 200; i++) {
+  _items.push({
+    key: i,
+    name: 'Item ' + i,
+    value: i
+  });
+}
 
 const _columns: IColumn[] = [
   {
@@ -52,17 +61,6 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
   constructor(props: {}) {
     super(props);
 
-    // Populate with items for demos.
-    if (_items.length === 0) {
-      for (let i = 0; i < 200; i++) {
-        _items.push({
-          key: i,
-          name: 'Item ' + i,
-          value: i
-        });
-      }
-    }
-
     this._selection = new Selection({
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
@@ -77,7 +75,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     const { items, selectionDetails } = this.state;
 
     return (
-      <div>
+      <Fabric>
         <div className={exampleChildClass}>{selectionDetails}</div>
         <TextField
           className={exampleChildClass}
@@ -99,7 +97,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
             onItemInvoked={this._onItemInvoked}
           />
         </MarqueeSelection>
-      </div>
+      </Fabric>
     );
   }
 

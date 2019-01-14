@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -7,7 +5,7 @@ import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-let _items: IExampleItem[];
+const _items: IExampleItem[] = createListItems(500);
 
 export interface IDetailsListCustomColumnsExampleState {
   sortedItems: IExampleItem[];
@@ -15,16 +13,10 @@ export interface IDetailsListCustomColumnsExampleState {
 }
 
 export class DetailsListCustomColumnsExample extends React.Component<{}, IDetailsListCustomColumnsExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    _items = _items || createListItems(500);
-
-    this.state = {
-      sortedItems: _items,
-      columns: _buildColumns()
-    };
-  }
+  public state: IDetailsListCustomColumnsExampleState = {
+    sortedItems: _items,
+    columns: _buildColumns()
+  };
 
   public render() {
     const { sortedItems, columns } = this.state;

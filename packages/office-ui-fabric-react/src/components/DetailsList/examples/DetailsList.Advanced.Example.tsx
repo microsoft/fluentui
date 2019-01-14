@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -57,7 +55,7 @@ const PAGING_SIZE = 10;
 const PAGING_DELAY = 5000;
 const ITEMS_COUNT = 5000;
 
-let _items: IExampleItem[];
+const _items: IExampleItem[] = createListItems(ITEMS_COUNT);
 
 export interface IDetailsListAdvancedExampleState {
   canResizeColumns?: boolean;
@@ -83,10 +81,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   constructor(props: {}) {
     super(props);
-
-    if (!_items) {
-      _items = createListItems(ITEMS_COUNT);
-    }
 
     this._getCommandItems = memoizeFunction(this._getCommandItems);
 

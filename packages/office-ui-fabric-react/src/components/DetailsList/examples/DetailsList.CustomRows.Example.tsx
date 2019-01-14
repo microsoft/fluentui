@@ -1,20 +1,12 @@
-// @codepen
-
 import * as React from 'react';
 import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
-let _items: IExampleItem[];
+const _items: IExampleItem[] = createListItems(500);
 
 export class DetailsListCustomRowsExample extends React.Component {
-  constructor(props: {}) {
-    super(props);
-
-    _items = _items || createListItems(500);
-  }
-
   public render() {
     return <DetailsList items={_items} setKey="set" onRenderRow={this._onRenderRow} />;
   }

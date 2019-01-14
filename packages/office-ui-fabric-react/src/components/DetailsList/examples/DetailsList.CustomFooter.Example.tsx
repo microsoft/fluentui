@@ -19,6 +19,13 @@ export interface IDetailsListCustomFooterExampleItem {
 }
 
 const _items: IDetailsListCustomFooterExampleItem[] = [];
+for (let i = 0; i < 5; i++) {
+  _items.push({
+    key: i,
+    name: 'Item ' + i,
+    value: i
+  });
+}
 
 const _columns: IColumn[] = [
   {
@@ -40,28 +47,18 @@ const _columns: IColumn[] = [
 ];
 
 export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
-  constructor(props: {}) {
-    super(props);
-    if (_items.length === 0) {
-      for (let i = 0; i < 5; i++) {
-        _items.push({ key: i, name: 'Item ' + i, value: i });
-      }
-    }
-  }
   public render(): JSX.Element {
     return (
-      <div>
-        <DetailsList
-          items={_items}
-          columns={_columns}
-          setKey="set"
-          layoutMode={DetailsListLayoutMode.fixedColumns}
-          selectionPreservedOnEmptyClick={true}
-          ariaLabelForSelectionColumn="Toggle selection"
-          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-          onRenderDetailsFooter={this._onRenderDetailsFooter}
-        />
-      </div>
+      <DetailsList
+        items={_items}
+        columns={_columns}
+        setKey="set"
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        selectionPreservedOnEmptyClick={true}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        onRenderDetailsFooter={this._onRenderDetailsFooter}
+      />
     );
   }
 
