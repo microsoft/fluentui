@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IComponent, IComponentStyles, IHTMLButtonSlot, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IComponentAs, IRefObject } from '../../Utilities';
+import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ILabelSlot } from '../../utilities/factoryComponents.types';
 
@@ -51,17 +51,14 @@ export interface IToggle {
 /**
  * Toggle component props.
  */
-export interface IToggleProps extends IToggleSlots, IStyleableComponentProps<IToggleViewProps, IToggleStyles, IToggleTokens> {
+export interface IToggleProps
+  extends IToggleSlots,
+    IStyleableComponentProps<IToggleViewProps, IToggleStyles, IToggleTokens>,
+    IBaseProps<IToggleProps> {
   /**
    * Render the root element as another type.
    */
   as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<IToggle>;
 
   /**
    * Text for screen-reader to announce as the name of the toggle.

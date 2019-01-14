@@ -5,7 +5,7 @@ import { ToggleExample } from './examples/Toggle.Example';
 const ToggleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Example.tsx') as string;
 
 import { ToggleTokensObjectExample } from './examples/Toggle.Tokens.Object.Example';
-const ToggleTokensInterfaceExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Tokens.Object.Example.tsx') as string;
+const ToggleTokensObjectExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Tokens.Object.Example.tsx') as string;
 
 import { ToggleTokensFunctionExample } from './examples/Toggle.Tokens.Function.Example';
 const ToggleTokensFunctionExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Tokens.Function.Example.tsx') as string;
@@ -21,10 +21,10 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Default Toggles" code={ToggleExampleCode}>
               <ToggleExample />
             </ExampleCard>
-            <ExampleCard title="Toggle components when modifying style variables" code={ToggleTokensInterfaceExampleCode}>
+            <ExampleCard title="Toggle components with token objects" code={ToggleTokensObjectExampleCode}>
               <ToggleTokensObjectExample />
             </ExampleCard>
-            <ExampleCard title="Toggle components when sending a function as style variables" code={ToggleTokensFunctionExampleCode}>
+            <ExampleCard title="Toggle components with token functions" code={ToggleTokensFunctionExampleCode}>
               <ToggleTokensFunctionExample />
             </ExampleCard>
           </div>

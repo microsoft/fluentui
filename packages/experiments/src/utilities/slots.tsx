@@ -142,7 +142,7 @@ function renderSlot<TComponent extends ISlottableReactType<TProps>, TProps, TSlo
  * This function generates slots that can be used in JSX given a definition of slots and their corresponding types.
  * @param userProps Props as pass to component.
  * @param slots Slot definition object defining the default slot component for each slot.
- * @returns An set of created slots that components can render in JSX.
+ * @returns A set of created slots that components can render in JSX.
  */
 export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(
   userProps: TProps,

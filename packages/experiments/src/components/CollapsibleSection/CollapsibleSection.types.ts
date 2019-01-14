@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IComponent, IComponentStyles, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
-import { IRefObject } from '../../Utilities';
+import { IBaseProps, IRefObject } from '../../Utilities';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 
 export type ICollapsibleSectionComponent = IComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
@@ -15,18 +15,8 @@ export interface ICollapsibleSection {}
 
 export interface ICollapsibleSectionProps
   extends ICollapsibleSectionSlots,
-    IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles> {
-  /**
-   * Optional callback to access the ICollapsibleSectionComponent interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ICollapsibleSection>;
-
-  /**
-   * Additional class name to provide on the root element.
-   */
-  className?: string;
-
+    IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>,
+    IBaseProps<ICollapsibleSectionProps> {
   /**
    * Default and initial collapsed state if collapsed prop is not provided.
    * @default true

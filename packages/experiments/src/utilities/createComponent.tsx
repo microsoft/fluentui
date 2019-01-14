@@ -24,7 +24,7 @@ import { IDefaultSlotProps } from './ISlots';
  *
  * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
- * State component is optional. If state not provided, created component is essentially a functional stateless component.
+ * State component is optional. If state is not provided, created component is essentially a functional stateless component.
  *
  * TComponentProps: A styleable props interface for the created component.
  * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
@@ -153,7 +153,7 @@ function _resolveTokens<TViewProps, TTokens>(
  *
  * @param displayName Displayable name for component.
  * @param context React context passed to component containing contextual settings.
- * @param fields Optional list of properties of to grab from global store and context.
+ * @param fields Optional list of properties to grab from global store and context.
  */
 function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   displayName: string,
