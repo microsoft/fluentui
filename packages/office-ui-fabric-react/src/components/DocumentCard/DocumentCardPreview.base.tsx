@@ -1,24 +1,36 @@
 import * as React from 'react';
-import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.types';
-import { Image } from '../../Image';
 import { Icon } from '../../Icon';
+import { Image } from '../../Image';
 import { Link } from '../../Link';
-import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './DocumentCard.scss';
-const styles: any = stylesImport;
+import { IProcessedStyleSet } from '../../Styling';
+import { BaseComponent, classNamesFunction, css } from '../../Utilities';
+import {
+  IDocumentCardPreviewImage,
+  IDocumentCardPreviewProps,
+  IDocumentCardPreviewStyleProps,
+  IDocumentCardPreviewStyles
+} from './DocumentCardPreview.types';
 
 const LIST_ITEM_COUNT = 3;
+const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>();
 
-export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps, any> {
+export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewProps, any> {
+  private _classNames: IProcessedStyleSet<IDocumentCardPreviewStyles>;
+
   public render(): JSX.Element {
-    const { previewImages } = this.props;
+    const { previewImages, styles, theme, className } = this.props;
     let style, preview;
-    let isFileList = false;
+    const isFileList = previewImages.length > 1;
+
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      isFileList
+    });
 
     if (previewImages.length > 1) {
       // Render a list of files
       preview = this._renderPreviewList(previewImages);
-      isFileList = true;
     } else if (previewImages.length === 1) {
       // Render a single preview
       preview = this._renderPreviewImage(previewImages[0]);
@@ -32,7 +44,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     }
 
     return (
-      <div className={css('ms-DocumentCardPreview', styles.preview, isFileList && 'is-fileList ' + styles.previewIsFileList)} style={style}>
+      <div className={this._classNames.root} style={style}>
         {preview}
       </div>
     );
@@ -40,11 +52,10 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
 
   private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
-    const iconContainerClass = previewIconContainerClass ? previewIconContainerClass : 'ms-DocumentCardPreview-iconContainer';
 
     if (previewIconProps) {
       return (
-        <div className={css(iconContainerClass, styles.previewIconContainer)} style={{ width: width, height: height }}>
+        <div className={css(this._classNames.previewIcon, previewIconContainerClass)} style={{ width: width, height: height }}>
           <Icon {...previewIconProps} />
         </div>
       );
@@ -54,7 +65,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
 
     let icon;
     if (previewImage.iconSrc) {
-      icon = <Image className={css('ms-DocumentCardPreview-icon', styles.icon)} src={previewImage.iconSrc} role="presentation" alt="" />;
+      icon = <Image className={this._classNames.previewFileTypeIcon} src={previewImage.iconSrc} role="presentation" alt="" />;
     }
 
     return (
@@ -81,22 +92,15 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     // Create list items for the documents to be shown
     const fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
       <li key={fileIndex}>
-        <Image
-          className={css('ms-DocumentCardPreview-fileListIcon', styles.fileListIcon)}
-          src={file.iconSrc}
-          role="presentation"
-          alt=""
-          width="16px"
-          height="16px"
-        />
+        <Image className={this._classNames.fileListIcon} src={file.iconSrc} role="presentation" alt="" width="16px" height="16px" />
         <Link {...(file.linkProps, { href: file.url || (file.linkProps && file.linkProps.href) })}>{file.name}</Link>
       </li>
     ));
 
     return (
       <div>
-        <ul className={css('ms-DocumentCardPreview-fileList', styles.fileList)}>{fileListItems}</ul>
-        {overflowText && <span className={css('ms-DocumentCardPreview-fileListMore', styles.fileListMore)}>{overflowText}</span>}
+        <ul className={this._classNames.fileList}>{fileListItems}</ul>
+        {overflowText && <span className={this._classNames.fileListOverflowText}>{overflowText}</span>}
       </div>
     );
   };

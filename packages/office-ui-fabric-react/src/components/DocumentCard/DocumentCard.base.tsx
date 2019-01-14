@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { IDocumentCard, IDocumentCardProps, DocumentCardType } from './DocumentCard.types';
-import { BaseComponent, KeyCodes, css } from '../../Utilities';
-import * as stylesImport from './DocumentCard.scss';
-const styles: any = stylesImport;
+import { IProcessedStyleSet } from '../../Styling';
+import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
+import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 
-export class DocumentCard extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
+const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
+
+export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
   };
 
   private _rootElement = React.createRef<HTMLDivElement>();
+  private _classNames: IProcessedStyleSet<IDocumentCardStyles>;
 
   constructor(props: IDocumentCardProps) {
     super(props);
@@ -20,8 +22,15 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> impleme
   }
 
   public render(): JSX.Element {
-    const { onClick, onClickHref, children, className, type, accentColor } = this.props;
+    const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
     const actionable = onClick || onClickHref ? true : false;
+
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      actionable,
+      compact: type === DocumentCardType.compact ? true : false
+    });
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
@@ -32,7 +41,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> impleme
     }
 
     // if this element is actionable it should have an aria role
-    const role = this.props.role || (actionable ? (onClick ? 'button' : 'link') : undefined);
+    const role = this.props.role || actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
     return (
@@ -41,15 +50,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> impleme
         tabIndex={tabIndex}
         data-is-focusable={actionable}
         role={role}
-        className={css(
-          'ms-DocumentCard',
-          styles.root,
-          {
-            ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable,
-            ['ms-DocumentCard--compact ' + styles.rootIsCompact]: type === DocumentCardType.compact ? true : false
-          },
-          className
-        )}
+        className={this._classNames.root}
         onKeyDown={actionable ? this._onKeyDown : undefined}
         onClick={actionable ? this._onClick : undefined}
         style={style}

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { BaseComponent, css } from '../../Utilities';
-import { IDocumentCardTitleProps } from './DocumentCard.types';
-import * as stylesImport from './DocumentCard.scss';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { IDocumentCardTitleProps, IDocumentCardTitleStyleProps, IDocumentCardTitleStyles } from './DocumentCardTitle.types';
+import { IProcessedStyleSet } from '../../Styling';
 
-const styles: any = stylesImport;
+const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;
@@ -21,11 +21,12 @@ const TRUNCATION_MAX_LENGTH_SECONDARY = 130 - TRUNCATION_SEPARATOR.length;
 const TRUNCATION_FIRST_PIECE_LONGER_BY = 10;
 const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
 
-export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
+export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
   private _titleElement = React.createRef<HTMLDivElement>();
   private _scrollTimerId: number;
   private _truncatedTitleAtWidth: number;
   private _isTruncated: boolean;
+  private _classNames: IProcessedStyleSet<IDocumentCardTitleStyles>;
 
   constructor(props: IDocumentCardTitleProps) {
     super(props);
@@ -66,17 +67,19 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
   }
 
   public render(): JSX.Element {
-    const { title, shouldTruncate, showAsSecondaryTitle } = this.props;
+    const { title, shouldTruncate, showAsSecondaryTitle, styles, theme, className } = this.props;
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
+
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      showAsSecondaryTitle
+    });
 
     let documentCardTitle;
     if (shouldTruncate && this._isTruncated) {
       documentCardTitle = (
-        <div
-          className={css('ms-DocumentCardTitle', showAsSecondaryTitle ? styles.secondaryTitle : styles.title)}
-          ref={this._titleElement}
-          title={title}
-        >
+        <div className={this._classNames.root} ref={this._titleElement} title={title}>
           {truncatedTitleFirstPiece}
           &hellip;
           {truncatedTitleSecondPiece}
@@ -84,11 +87,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
       );
     } else {
       documentCardTitle = (
-        <div
-          className={css('ms-DocumentCardTitle', showAsSecondaryTitle ? styles.secondaryTitle : styles.title)}
-          ref={this._titleElement}
-          title={title}
-        >
+        <div className={this._classNames.root} ref={this._titleElement} title={title}>
           {title}
         </div>
       );

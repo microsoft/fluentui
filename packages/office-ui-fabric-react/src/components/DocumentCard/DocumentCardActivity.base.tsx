@@ -1,29 +1,39 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
-import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.types';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
+import {
+  IDocumentCardActivityProps,
+  IDocumentCardActivityPerson,
+  IDocumentCardActivityStyleProps,
+  IDocumentCardActivityStyles
+} from './DocumentCardActivity.types';
+import { IProcessedStyleSet } from '../../Styling';
 import { PersonaSize } from '../../Persona';
 import { PersonaCoin } from '../../PersonaCoin';
-import * as stylesImport from './DocumentCard.scss';
-const styles: any = stylesImport;
 
-export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
+const getClassNames = classNamesFunction<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>();
+
+export class DocumentCardActivityBase extends BaseComponent<IDocumentCardActivityProps, any> {
+  private _classNames: IProcessedStyleSet<IDocumentCardActivityStyles>;
+
   public render(): JSX.Element | null {
-    const { activity, people } = this.props;
+    const { activity, people, styles, theme, className } = this.props;
+
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      className,
+      multiplePeople: people.length > 1
+    });
 
     if (!people || people.length === 0) {
       return null;
     }
 
     return (
-      <div
-        className={css('ms-DocumentCardActivity', styles.activity, {
-          ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
-        })}
-      >
+      <div className={this._classNames.root}>
         {this._renderAvatars(people)}
-        <div className={css('ms-DocumentCardActivity-details', styles.activityDetails)}>
-          <span className={css('ms-DocumentCardActivity-name', styles.name)}>{this._getNameString(people)}</span>
-          <span className={css('ms-DocumentCardActivity-activity', styles.activityActivity)}>{activity}</span>
+        <div className={this._classNames.details}>
+          <span className={this._classNames.name}>{this._getNameString(people)}</span>
+          <span className={this._classNames.activity}>{activity}</span>
         </div>
       </div>
     );
@@ -31,7 +41,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
 
   private _renderAvatars(people: IDocumentCardActivityPerson[]): React.ReactElement<{}> {
     return (
-      <div className={css('ms-DocumentCardActivity-avatars', styles.avatars)}>
+      <div className={this._classNames.avatars}>
         {people.length > 1 ? this._renderAvatar(people[1]) : null}
         {this._renderAvatar(people[0])}
       </div>
@@ -40,7 +50,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
 
   private _renderAvatar(person: IDocumentCardActivityPerson): JSX.Element {
     return (
-      <div className={css('ms-DocumentCardActivity-avatar', styles.avatar)}>
+      <div className={this._classNames.avatar}>
         <PersonaCoin
           imageInitials={person.initials}
           text={person.name}
