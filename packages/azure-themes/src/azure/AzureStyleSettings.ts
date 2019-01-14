@@ -22,11 +22,11 @@ import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { ProgressIndicatorStyles } from './styles/ProgressIndicator.styles';
-import { TextFieldStyles } from './styles/TextField.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
-import { ToggleStyles } from './styles/Toggle.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { TextFieldStyles } from './styles/TextField.styles';
+import { ToggleStyles } from './styles/Toggle.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
