@@ -564,6 +564,7 @@ enum CheckboxVisibility {
 // @public (undocumented)
 class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
+  readonly checkedOption: IChoiceGroupOption | undefined;
   // (undocumented)
   componentWillReceiveProps(newProps: IChoiceGroupProps): void;
   // (undocumented)
@@ -2420,6 +2421,7 @@ interface ICheckStyles {
 
 // @public (undocumented)
 interface IChoiceGroup {
+  checkedOption: IChoiceGroupOption | undefined;
   focus: () => void;
 }
 
