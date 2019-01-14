@@ -2889,6 +2889,7 @@ interface IColumn {
   isFiltered?: boolean;
   isGrouped?: boolean;
   isIconOnly?: boolean;
+  isMenuOpen?: boolean;
   isMultiline?: boolean;
   isPadded?: boolean;
   isResizable?: boolean;
