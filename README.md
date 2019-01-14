@@ -191,8 +191,6 @@ You can also build up to a specific project using the `--to <package>` argument.
 rush build --to office-ui-fabric-react
 ```
 
-Finally, since contributing to the experiments package is an important and common activity, we have abstracted `rush build --to experiments` so you can build up to experiments without having rush globally installed. You can use `npm run experiments` to achieve this.
-
 ## Licenses
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
