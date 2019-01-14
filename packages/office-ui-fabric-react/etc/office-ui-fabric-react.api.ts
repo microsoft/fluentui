@@ -320,21 +320,13 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   focusInput(): void;
   // (undocumented)
-  protected focusZone: {
-    (component: IFocusZone | null): void;
-    current: IFocusZone | null;
-    value: IFocusZone | null;
-  }
+  protected focusZone: React.RefObject<IFocusZone>;
   // (undocumented)
   protected getActiveDescendant(): string | undefined;
   // (undocumented)
   protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
   // (undocumented)
-  protected input: {
-    (component: IAutofill | null): void;
-    current: IAutofill | null;
-    value: IAutofill | null;
-  }
+  protected input: React.RefObject<IAutofill>;
   // (undocumented)
   readonly items: T[];
   // (undocumented)
@@ -380,19 +372,11 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected resolveNewValue(updatedValue: string, suggestions: T[]): void;
   // (undocumented)
-  protected root: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
   protected selection: Selection;
   // (undocumented)
-  protected suggestionElement: {
-    (component: Suggestions<T> | null): void;
-    current: Suggestions<T> | null;
-    value: Suggestions<T> | null;
-  }
+  protected suggestionElement: React.RefObject<ISuggestions<T>>;
   // (undocumented)
   protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
   // (undocumented)
@@ -988,67 +972,6 @@ enum DialogType {
 export function disableBodyScroll(): void;
 
 // @public (undocumented)
-class DocumentCard extends BaseComponent<IDocumentCardProps, any>, implements IDocumentCard {
-  constructor(props: IDocumentCardProps);
-  // (undocumented)
-  static defaultProps: IDocumentCardProps;
-  // (undocumented)
-  focus(): void;
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
-  // (undocumented)
-  render(): JSX.Element | null;
-}
-
-// @public (undocumented)
-class DocumentCardLocation extends BaseComponent<IDocumentCardLocationProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardLogo extends BaseComponent<IDocumentCardLogoProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardStatus extends BaseComponent<IDocumentCardStatusProps, any> {
-  constructor(props: IDocumentCardStatusProps);
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
-  constructor(props: IDocumentCardTitleProps);
-  // (undocumented)
-  componentDidMount(): void;
-  // (undocumented)
-  componentDidUpdate(): void;
-  // (undocumented)
-  componentWillReceiveProps(newProps: IDocumentCardTitleProps): void;
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
 enum DocumentCardType {
   compact = 1,
   normal = 0
@@ -1113,8 +1036,8 @@ class EventGroup {
   // (undocumented)
   static isObserved(target: any, eventName: string): boolean;
   // (undocumented)
-  off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void;
-  on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void;
+  off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+  on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
   onAll(target: any, events: {
           [key: string]: (args?: any) => void;
       }, useCapture?: boolean): void;
@@ -1293,7 +1216,7 @@ class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements I
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
-  componentWillMount(): void;
+  componentDidUpdate(prevProps: IFocusTrapZoneProps): void;
   // (undocumented)
   componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
   // (undocumented)
@@ -1490,7 +1413,7 @@ export function getScrollbarWidth(): number;
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
-export function getSubmenuItems(item: IContextualMenuItem): any;
+export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
@@ -2462,6 +2385,7 @@ interface ICheckboxStyleProps {
 interface ICheckboxStyles {
   checkbox?: IStyle;
   checkmark?: IStyle;
+  input?: IStyle;
   label?: IStyle;
   root?: IStyle;
   text?: IStyle;
@@ -6650,7 +6574,6 @@ interface IContextualMenuState {
   contextualMenuTarget?: Element;
   // (undocumented)
   dismissedMenuItemKey?: string;
-  // (undocumented)
   expandedByMouseClick?: boolean;
   // (undocumented)
   expandedMenuItemKey?: string;
@@ -7327,10 +7250,40 @@ interface IDocumentCard {
 }
 
 // @public (undocumented)
-interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {
+interface IDocumentCardActions {
+}
+
+// WARNING: The type "DocumentCardActionsBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
   actions: IButtonProps[];
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardActions>;
+  styles?: IStyleFunctionOrObject<IDocumentCardActionsStyleProps, IDocumentCardActionsStyles>;
+  theme?: ITheme;
   views?: Number;
+}
+
+// @public (undocumented)
+interface IDocumentCardActionsStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardActionsStyles {
+  // (undocumented)
+  action: IStyle;
+  // (undocumented)
+  root: IStyle;
+  // (undocumented)
+  views: IStyle;
+  // (undocumented)
+  viewsIcon: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardActivity {
 }
 
 // @public (undocumented)
@@ -7342,27 +7295,123 @@ interface IDocumentCardActivityPerson {
   profileImageSrc: string;
 }
 
+// WARNING: The type "DocumentCardActivityBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
-interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
+interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
   activity: string;
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardActivity>;
   people: IDocumentCardActivityPerson[];
+  styles?: IStyleFunctionOrObject<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
-interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
+interface IDocumentCardActivityStyleProps {
+  className?: string;
+  multiplePeople?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardActivityStyles {
+  // (undocumented)
+  activity: IStyle;
+  // (undocumented)
+  avatar: IStyle;
+  // (undocumented)
+  avatars: IStyle;
+  // (undocumented)
+  details: IStyle;
+  // (undocumented)
+  name: IStyle;
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardDetails {
+}
+
+// WARNING: The type "DocumentCardDetailsBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardDetails>;
+  styles?: IStyleFunctionOrObject<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardDetailsStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardDetailsStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardLocation {
+}
+
+// WARNING: The type "DocumentCardLocationBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
   ariaLabel?: string;
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardLocation>;
   location: string;
   locationHref?: string;
   onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
+  styles?: IStyleFunctionOrObject<IDocumentCardLocationStyleProps, IDocumentCardLocationStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
-interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogo> {
-  componentRef?: IRefObject<{}>;
+interface IDocumentCardLocationStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardLocationStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardLogo {
+}
+
+// WARNING: The type "DocumentCardLogoBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardLogo>;
   logoIcon: string;
   logoName?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardLogoStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardLogoStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardPreview {
 }
 
 // @public (undocumented)
@@ -7387,44 +7436,120 @@ interface IDocumentCardPreviewImage {
 
 // @public (undocumented)
 interface IDocumentCardPreviewProps extends IBaseProps<{}> {
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardPreview>;
   getOverflowDocumentCountText?: (overflowCount: number) => string;
   previewImages: IDocumentCardPreviewImage[];
+  styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardPreviewStyleProps {
+  className?: string;
+  isFileList?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardPreviewStyles {
+  // (undocumented)
+  fileList: IStyle;
+  // (undocumented)
+  fileListIcon: IStyle;
+  // (undocumented)
+  fileListOverflowText: IStyle;
+  // (undocumented)
+  previewFileTypeIcon: IStyle;
+  // (undocumented)
+  previewIcon: IStyle;
+  // (undocumented)
+  root: IStyle;
 }
 
 // @public (undocumented)
 interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   // @deprecated
   accentColor?: string;
+  children?: React.ReactNode;
   className?: string;
   componentRef?: IRefObject<IDocumentCard>;
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   onClickHref?: string;
   role?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
+  theme?: ITheme;
   type?: DocumentCardType;
 }
 
 // @public (undocumented)
-interface IDocumentCardStatusProps extends React.ClassAttributes<DocumentCardStatus> {
-  componentRef?: IRefObject<{}>;
+interface IDocumentCardStatus {
+}
+
+// WARNING: The type "DocumentCardStatusBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardStatus>;
   status: string;
   statusIcon?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardStatusStyleProps, IDocumentCardStatusStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
-interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitle> {
-  componentRef?: IRefObject<{}>;
+interface IDocumentCardStatusStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardStatusStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardStyleProps {
+  actionable?: boolean;
+  className?: string;
+  compact?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardTitle {
+}
+
+// WARNING: The type "DocumentCardTitleBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardTitle>;
   shouldTruncate?: boolean;
   showAsSecondaryTitle?: boolean;
+  styles?: IStyleFunctionOrObject<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>;
+  theme?: ITheme;
   title: string;
 }
 
 // @public (undocumented)
-interface IDocumentCardTitleState {
+interface IDocumentCardTitleStyleProps {
+  className?: string;
+  showAsSecondaryTitle?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardTitleStyles {
   // (undocumented)
-  truncatedTitleFirstPiece?: string;
-  // (undocumented)
-  truncatedTitleSecondPiece?: string;
+  root: IStyle;
 }
 
 // @public (undocumented)
@@ -7538,11 +7663,11 @@ interface IEventRecord {
   // (undocumented)
   objectCallback?: (args?: any) => void;
   // (undocumented)
+  options?: boolean | AddEventListenerOptions;
+  // (undocumented)
   parent: any;
   // (undocumented)
   target: any;
-  // (undocumented)
-  useCapture: boolean;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -7570,8 +7695,8 @@ interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingC
   compactCardHeight?: number;
   expandedCardHeight?: number;
   mode?: ExpandingCardMode;
-  onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
-  onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
+  onRenderCompactCard?: IRenderFunction<any>;
+  onRenderExpandedCard?: IRenderFunction<any>;
 }
 
 // @public (undocumented)
@@ -9219,22 +9344,19 @@ interface IPersonaWithMenu extends IPersonaProps {
   menuItems?: IContextualMenuItem[];
 }
 
-// @public (undocumented)
+// @public
+interface IPickerItem {
+}
+
+// @public
 interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement> {
-  // (undocumented)
-  componentRef?: IRefObject<{}>;
-  // (undocumented)
+  componentRef?: IRefObject<IPickerItem>;
   index: number;
-  // (undocumented)
   item: T;
-  // (undocumented)
   key?: string | number;
   onItemChange?: (item: T, index: number) => void;
-  // (undocumented)
   onRemoveItem?: () => void;
-  // (undocumented)
   removeButtonAriaLabel?: string;
-  // (undocumented)
   selected?: boolean;
 }
 
@@ -9309,7 +9431,7 @@ interface IPlainCard {
 
 // @public
 interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, IPlainCardStyleProps> {
-  onRenderPlainCard?: IRenderFunction<IPlainCardProps>;
+  onRenderPlainCard?: IRenderFunction<any>;
 }
 
 // @public (undocumented)
@@ -10416,37 +10538,38 @@ interface IStyleSheetConfig {
   onInsertRule?: (rule: string) => void;
 }
 
-// @public (undocumented)
+// @public
 interface ISuggestionItemProps<T> {
-  // (undocumented)
   className?: string;
-  // (undocumented)
-  componentRef?: IRefObject<{}>;
-  // (undocumented)
+  componentRef?: IRefObject<ISuggestionsItem>;
   id?: string;
-  // (undocumented)
   isSelectedOverride?: boolean;
-  // (undocumented)
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-  // (undocumented)
   onRemoveItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   removeButtonAriaLabel?: string;
-  // (undocumented)
   RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
-  // (undocumented)
   showRemoveButton?: boolean;
-  // (undocumented)
+  styles?: IStyleFunctionOrObject<ISuggestionsItemStyleProps, ISuggestionsItemStyles>;
   suggestionModel: ISuggestionModel<T>;
+  theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface ISuggestionModel<T> {
-  // (undocumented)
   ariaLabel?: string;
-  // (undocumented)
   item: T;
-  // (undocumented)
   selected: boolean;
+}
+
+// @public
+interface ISuggestions<T> {
+  executeSelectedAction: () => void;
+  focusAboveSuggestions: () => void;
+  focusBelowSuggestions: () => void;
+  focusSearchForMoreButton: () => void;
+  hasSuggestedAction: () => boolean;
+  hasSuggestedActionSelected: () => boolean;
+  tryHandleKeyDown: (keyCode: number, currentSuggestionIndex: number) => boolean;
 }
 
 // @public (undocumented)
@@ -10515,10 +10638,21 @@ interface ISuggestionsHeaderFooterProps {
   shouldShow: () => boolean;
 }
 
-// @public (undocumented)
+// @public
+interface ISuggestionsItem {
+}
+
+// @public
+interface ISuggestionsItemStyles {
+  closeButton: IStyle;
+  itemButton: IStyle;
+  root: IStyle;
+}
+
+// @public
 interface ISuggestionsProps<T> extends React.Props<any> {
   className?: string;
-  componentRef?: IRefObject<{}>;
+  componentRef?: IRefObject<ISuggestions<T>>;
   createGenericItem?: () => void;
   forceResolveText?: string;
   isLoading?: boolean;
@@ -10544,6 +10678,7 @@ interface ISuggestionsProps<T> extends React.Props<any> {
   searchingText?: string;
   showForceResolve?: () => boolean;
   showRemoveButtons?: boolean;
+  styles?: IStyleFunctionOrObject<{}, {}>;
   suggestions: ISuggestionModel<T>[];
   suggestionsAvailableAlertText?: string;
   suggestionsClassName?: string;
@@ -10551,12 +10686,30 @@ interface ISuggestionsProps<T> extends React.Props<any> {
   suggestionsHeaderText?: string;
   suggestionsItemClassName?: string;
   suggestionsListId?: string;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
 interface ISuggestionsState {
   // (undocumented)
   selectedActionType: SuggestionActionType;
+}
+
+// @public
+interface ISuggestionsStyles {
+  forceResolveButton: IStyle;
+  noSuggestions: IStyle;
+  root: IStyle;
+  searchForMoreButton: IStyle;
+  subComponentStyles: ISuggestionsSubComponentStyles;
+  suggestionsAvailable: IStyle;
+  suggestionsContainer: IStyle;
+  title: IStyle;
+}
+
+// @public
+interface ISuggestionsSubComponentStyles {
+  spinner: IStyleFunctionOrObject<ISpinnerStyleProps, any>;
 }
 
 // @public
@@ -10736,7 +10889,7 @@ interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTM
   addonString?: string;
   ariaLabel?: string;
   autoAdjustHeight?: boolean;
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
   borderless?: boolean;
   className?: string;
   // @deprecated (undocumented)
@@ -11559,7 +11712,7 @@ class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public (undocumented)
@@ -12073,13 +12226,10 @@ class Stylesheet {
   setConfig(config?: IStyleSheetConfig): void;
 }
 
-// @public (undocumented)
+// @public
 enum SuggestionActionType {
-  // (undocumented)
   forceResolve = 1,
-  // (undocumented)
   none = 0,
-  // (undocumented)
   searchMore = 2
 }
 
@@ -12097,23 +12247,11 @@ enum SuggestionItemType {
 class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   constructor(suggestionsProps: ISuggestionsProps<T>);
   // (undocumented)
-  protected _forceResolveButton: {
-    (component: IButton | null): void;
-    current: IButton | null;
-    value: IButton | null;
-  }
+  protected _forceResolveButton: React.RefObject<IButton>;
   // (undocumented)
-  protected _searchForMoreButton: {
-    (component: IButton | null): void;
-    current: IButton | null;
-    value: IButton | null;
-  }
+  protected _searchForMoreButton: React.RefObject<IButton>;
   // (undocumented)
-  protected _selectedElement: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  protected _selectedElement: React.RefObject<HTMLDivElement>;
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
@@ -12575,6 +12713,15 @@ module ZIndexes {
 // WARNING: Unsupported export: DialogContent
 // WARNING: Unsupported export: DialogFooter
 // WARNING: Unsupported export: VerticalDivider
+// WARNING: Unsupported export: DocumentCard
+// WARNING: Unsupported export: DocumentCardActions
+// WARNING: Unsupported export: DocumentCardActivity
+// WARNING: Unsupported export: DocumentCardDetails
+// WARNING: Unsupported export: DocumentCardLocation
+// WARNING: Unsupported export: DocumentCardPreview
+// WARNING: Unsupported export: DocumentCardTitle
+// WARNING: Unsupported export: DocumentCardLogo
+// WARNING: Unsupported export: DocumentCardStatus
 // WARNING: Unsupported export: Dropdown
 // WARNING: Unsupported export: IDropdownStyleProps
 // WARNING: Unsupported export: people
@@ -12613,6 +12760,8 @@ module ZIndexes {
 // WARNING: Unsupported export: sizeBoolean
 // WARNING: Unsupported export: sizeToPixels
 // WARNING: Unsupported export: presenceBoolean
+// WARNING: Unsupported export: ISuggestionsStyleProps
+// WARNING: Unsupported export: ISuggestionsItemStyleProps
 // WARNING: Unsupported export: IPickerAriaIds
 // WARNING: Unsupported export: IBasePickerStyleProps
 // WARNING: Unsupported export: NormalPeoplePicker

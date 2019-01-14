@@ -42,7 +42,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
       selectedCardId: '',
       selectedCardInitialX: 0,
       selectedCardSize: CardSize.small,
-      selectedCardTitle: ''
+      selectedCardTitle: '',
+      cardNodes: [<div key="section0" />]
     };
   }
 
@@ -51,11 +52,16 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
       this._cardsForAddCardPanel = this.props.addCardPanelCards;
       this._cardsForLayout = this.props.dashboardCards;
       const cardIds: string[] = [];
-      const layout: DashboardGridBreakpointLayouts = this.state.layout;
+      const cardNodes: JSX.Element[] = [];
+      const layout: DashboardGridBreakpointLayouts = { lg: [{ i: 'section0', y: 0, x: 0, size: CardSize.section }] };
+      layout.lg = layout.lg!.concat(this.props.layout.lg!);
       this.props.dashboardCards.map((card: IDGLCard) => {
         cardIds.push(card.id);
-        const cardLayout: IDashboardCardLayout = { i: card.id, x: card.x, y: card.y, size: card.cardSize };
-        layout.lg!.push(cardLayout);
+        cardNodes.push(
+          <div key={card.id} id={card.id + 'dglCard'}>
+            {card.renderElement}
+          </div>
+        );
       });
       this.props.addCardPanelCards.map((card: IDGLCard) => {
         cardIds.push(card.id);
@@ -69,7 +75,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
         cardsForAddCardPanel: this._cardsForAddCardPanel,
         dashboardCards: this._cardsForLayout,
         sections: [sectionsInfo],
-        layout: layout
+        layout: layout,
+        cardNodes
       });
     }
   }
@@ -99,13 +106,14 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
             onDismiss={this._onPanelDismiss}
             draggingCardCallback={this._draggingCardCallback}
             initialX={this.state.selectedCardInitialX}
+            emptyPanelMessage={addCardPanelProps ? addCardPanelProps.emptyPanelMessage : undefined}
           />
           <div className="dashboardContainerClassName">
             <DashboardGridSectionLayout
+              cardNodes={this.state.cardNodes}
               isDraggable={isDraggable}
               layout={this.state.layout}
               sections={this.state.sections}
-              cards={this.state.dashboardCards}
               dragApi={dragApi}
               onLayoutChange={this._onLayoutChange}
             />
@@ -154,12 +162,18 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
       const addCardPanelCards = this.state.cardsForAddCardPanel;
       let cardIndex: number = -1;
       const newLayout: DashboardGridBreakpointLayouts = { lg: [] };
+      const cardNodes = this.state.cardNodes;
       // find the card selected in the list of cards in add card panel
       addCardPanelCards.map((card: IDGLCard, index: number) => {
         if (card.id === newlyAddedCardId) {
           cardIndex = index;
           const cardLayout: IDashboardCardLayout = { i: card.id, x: newlyAddedCard.x, y: newlyAddedCard.y, size: card.cardSize };
           newLayout.lg!.push(cardLayout);
+          cardNodes.push(
+            <div key={card.id} id={card.id + 'dglCard'}>
+              {card.renderElement}
+            </div>
+          );
         }
       });
       newLayout.lg = newLayout.lg!.concat(this.state.layout.lg!);
@@ -172,7 +186,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
         this.setState({
           cardsForAddCardPanel: addCardPanelCards,
           dashboardCards: newLayoutCards,
-          layout: newLayout
+          layout: newLayout,
+          cardNodes
         });
       }
     } else {
@@ -231,10 +246,17 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
       const cardSelected = addCardPanelCards.splice(cardIndex, 1);
       const layoutCards: IDGLCard[] = this.state.dashboardCards;
       layoutCards.push(cardSelected[0]);
+      const cardNodes = this.state.cardNodes;
+      cardNodes.push(
+        <div key={cardSelected[0].id} id={cardSelected[0].id + 'dglCard'}>
+          {cardSelected[0].renderElement}
+        </div>
+      );
       this.setState({
         cardsForAddCardPanel: addCardPanelCards,
         dashboardCards: layoutCards,
-        layout: layout
+        layout,
+        cardNodes
       });
       // scroll to the card that was added to the layout
       this._async.setTimeout(() => {
@@ -264,7 +286,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
         if (lastElement.y === lastButOneElement.y) {
           // last two cards on same level
           newCardXPosition = 0;
-          newCardYPosition = lastElement.y + 1;
+          newCardYPosition = lastElement.y + 4;
           return { x: newCardXPosition, y: newCardYPosition };
         } else {
           // not on same level
@@ -288,7 +310,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
           newCardXPosition = lastElement.x + 1;
           newCardYPosition = lastElement.y;
         } else {
-          newCardYPosition = lastElement.y + 1;
+          newCardYPosition = lastElement.y + 4;
         }
         return { x: newCardXPosition, y: newCardYPosition };
       } else {

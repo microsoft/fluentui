@@ -67,7 +67,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -210,7 +210,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -353,7 +353,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -496,7 +496,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -639,7 +639,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #eaeaea;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -828,7 +828,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 0px;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -969,7 +969,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 0px;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -1110,7 +1110,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 0px;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -1251,7 +1251,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 0px;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -1392,7 +1392,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #eaeaea;
                     border-radius: 0px;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -1589,7 +1589,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -1732,7 +1732,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -1875,7 +1875,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -2018,7 +2018,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -2165,7 +2165,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -2308,7 +2308,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -2451,7 +2451,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -2594,7 +2594,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -2741,7 +2741,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -2884,7 +2884,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -3027,7 +3027,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -3170,7 +3170,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #333333;
                     cursor: pointer;
@@ -3362,7 +3362,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #a6a6a6;
                     cursor: default;
@@ -3511,7 +3511,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #a6a6a6;
                     cursor: default;
@@ -3660,7 +3660,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #a6a6a6;
                     cursor: default;
@@ -3809,7 +3809,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #a6a6a6;
                     cursor: default;
@@ -3958,7 +3958,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     border-radius: 100%;
-                    border: none;
+                    border: 1px solid transparent;
                     box-sizing: border-box;
                     color: #a6a6a6;
                     cursor: default;

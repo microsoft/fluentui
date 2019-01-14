@@ -9,6 +9,6 @@
     "code-style": "node -v"
   },
   "disabledTasks": [
-    "api-extractor"
+    "verify-api-extractor"
   ]
 }

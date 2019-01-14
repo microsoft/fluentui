@@ -216,15 +216,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems = [movedItem, ...overflowItems];
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
-      data.primaryItems = primaryItems;
-      data.overflowItems = overflowItems;
-      cacheKey = this._computeCacheKey(data);
+      const newData = { ...data, primaryItems, overflowItems };
+      cacheKey = this._computeCacheKey(newData);
 
       if (onDataReduced) {
         onDataReduced(movedItem);
       }
 
-      return { ...data, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;
@@ -244,15 +244,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       // if shiftOnReduce, movedItem goes first, otherwise, last.
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
-      data.primaryItems = primaryItems;
-      data.overflowItems = overflowItems;
-      cacheKey = this._computeCacheKey(data);
+      const newData = { ...data, primaryItems, overflowItems };
+      cacheKey = this._computeCacheKey(newData);
 
       if (onDataGrown) {
         onDataGrown(movedItem);
       }
 
-      return { ...data, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;
