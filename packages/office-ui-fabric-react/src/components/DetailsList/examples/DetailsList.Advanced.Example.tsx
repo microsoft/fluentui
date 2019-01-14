@@ -52,7 +52,7 @@ const rootClass = mergeStyles({
 
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
-const PAGING_DELAY = 5000;
+const PAGING_DELAY = 2000;
 const ITEMS_COUNT = 5000;
 
 const _items: IExampleItem[] = createListItems(ITEMS_COUNT);
