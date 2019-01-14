@@ -2,8 +2,8 @@ The Announced component aims to fill several of the accessibility gaps that exis
 It provides text for the screen reader in certain scenarios that are lacking comprehensive updates, particularly those showing
 the completion status or progress of operation(s).
 
-Some real-world applications of the component include copying, uploading, deleting, or moving many files, "lazy loading" of
-page sections that do not appear all at once, and appearance of search results.
+Some real-world applications of the component include copying, uploading, or moving many files, deleting or renaming a single file,
+"lazy loading" of page sections that do not appear all at once, and appearance of search results.
 
 ## Use cases
 
@@ -15,7 +15,7 @@ Editing text, deletion
 
 | Do                | Don't             |
 | ----------------- | ----------------- |
-| Announce success  | Announce repeated status unless the time has gone over a specified threshold. |
+| Announce success.  | Announce status during progress unless the time has gone over a specified threshold. |
 
 #### Scenarios
 1. User renames a file
@@ -24,18 +24,16 @@ Editing text, deletion
 
     Usage:
     ```
-    <Announced id={announcementId} message='Mail deleted' />
+    <Announced id={announcementId} message='File renamed' />
     ```
 
-    By default, the announced component should wait for .5 seconds.
+2. User deletes an email
 
-2. User deletes more than 1 email in a short amount of time
-
-    In this case, we want to debounce the Announced component's status message so that there is only one message per sequence of operations instead of one per individual operation. This way, the component can still push relevant status messages without making them overwhelming.
+    When the file is deleted successfully, use the Announced component to announce the message immediately.
 
     Usage:
     ```
-    <Announced id={sequenceId} message='5 mails deleted' />
+    <Announced id={sequenceId} message='Mail deleted' />
     ```
 
 ***
@@ -47,31 +45,33 @@ Pages, custom lists and libraries
 
 | Do                | Don't             |
 | ----------------- | ----------------- |
-| Announce progress after a specified threshold or if a user focuses on a section.  | Announce when each individual page section has loaded, unless it has been over a specified period of time or if focus is placed on the section.  |
+| Announce progress after a specified threshold.  | Announce when each individual page section has loaded, unless it has been over a specified period of time.  |
 
 #### Scenarios
-1. User attempts to focus on a section of the page that is still loading
+1. User waits for a page to load and the progress of the page loading is known.
 
     Usage:
     ```
-    <Announced id={announcementId} message='Cards are loading' />
+    <Announced id={sequenceId} message='50% complete' />
     ```
+
+    There should only be one announced message per group of sections loaded, unless it has been over a specified period of time. A user can decide on a reasonable delay that sends out a status message after a chosen amount of time has passed.
 
 ***
 ### Bulk async long running operations
-Operations that require multiple sub operations, such as the simultaneous uploading of several files.
+Operations that require multiple sub operations, such as the moving of several files.
 
 #### Examples
 Copying, uploading, or moving many items
 
 | Do                | Don't             |
 | ----------------- | ----------------- |
-| Announce overall status without focus  | Announce sub-operations unless focus is placed on the items  |
+| Announce overall status without focus.  | Announce sub-operations.  |
 
 #### Scenarios
-1. User moves 100 items to another folder
+1. User moves 30 items to another folder
 
-    Similar to some previous scenarios mentioned above, we want to debounce so that there is only one annouced message per group of items instead of per item operation. It would not be desirable to read off when every single item is moved to the other folder. Instead, a user can provide a message that sends out a status message after a chosen amount of time has passed.
+    Similar to some previous scenarios mentioned above, we want to debounce so that there is only one annouced message per group of items instead of per item operation. It would not be desirable to read off when every single item is moved to the other folder. Instead, a user can decide on a delay that sends out a status message after a chosen amount of time has passed.
 
     Usage:
     ```
@@ -81,7 +81,7 @@ Copying, uploading, or moving many items
     Announced would also handle the "completed" status.
 
 ***
-### **TODO Needs Review**: Asynchronous resolution of contacts or search results
+### Asynchronous resolution of contacts or search results
 Appearance of search like results such as in contact fields, or search boxes.
 
 #### Examples
@@ -89,7 +89,7 @@ To: line in mail clients, search boxes
 
 | Do                | Don't             |
 | ----------------- | ----------------- |
-| Announce the number of search results found | Announce every search result unless focus is placed on the result |
+| Announce the number of search results found. | Announce the content of each search result. |
 
 #### Scenarios
 1. User types the letter 'A' into a picker
