@@ -76,7 +76,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         ...TextHoverStyle()
       },
       '.ms-DatePicker-goToday:hover': {
-        color: semanticColors.linkHovered
+        color: semanticColors.bodyText
       },
       '.ms-DatePicker-yearOption:hover': {
         ...TextHoverStyle()
@@ -109,7 +109,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       '.ms-DatePicker-day--outfocus': { color: fade },
       '.ms-DatePicker-monthAndYear': { color: focus },
       '.ms-DatePicker-weekday': { color: focus, fontWeight: StyleConstants.fontWeightBold },
-      '.ms-DatePicker-monthOption': { color: focus },
+      '.ms-DatePicker-monthOption': { color: focus, fontWeight: StyleConstants.fontWeightBold },
       '.ms-DatePicker-currentYear': { color: focus },
       '.ms-DatePicker-prevMonth': { color: focus },
       '.ms-DatePicker-nextMonth': { color: focus },
@@ -118,8 +118,8 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       '.ms-DatePicker-prevDecade': { color: focus },
       '.ms-DatePicker-nextDecade': { color: focus },
       '.ms-DatePicker-goToday': { color: focus },
-      '.ms-DatePicker-goToday[disabled]': { color: fade },
-      '.ms-DatePicker-yearOption': { color: focus },
+      '.ms-DatePicker-goToday[disabled]': { display: 'none' },
+      '.ms-DatePicker-yearOption': { color: focus, fontWeight: StyleConstants.fontWeightBold },
       '.ms-DatePicker-yearOption--disabled': { color: fade },
       '.ms-DatePicker-monthOption--disabled': { color: fade },
       '.ms-DatePicker-day--disabled': { color: fade },
@@ -136,7 +136,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   return {
     callout: {
       fontSize: FontSizes.size12,
-
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
       selectors: {
@@ -165,7 +164,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         border: `${StyleConstants.borderWidth} solid ${semanticColors.disabledBodyText}`,
         color: semanticColors.disabledBodyText
       }
-    ],
-    textField: {}
+    ]
   };
 };
