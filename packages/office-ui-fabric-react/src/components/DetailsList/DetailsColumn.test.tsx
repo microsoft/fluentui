@@ -207,4 +207,54 @@ describe('DetailsColumn', () => {
 
     expect(component.exists('[aria-describedby]')).toBe(false);
   });
+
+  it('Examine aria-expanded value when columnActionMode is not hasDropDown', () => {
+    const column = assign({}, baseColumn, { columnActionsMode: ColumnActionsMode.clickable, isMenuOpen: true });
+    const columns = [column];
+    let component: any;
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const columnHeader = component.find(DetailsColumn);
+    const columnHeaderTitle = columnHeader.find('.ms-DetailsHeader-cellTitle');
+
+    expect(columnHeaderTitle.getDOMNode().getAttribute('aria-expanded')).toBe(null);
+  });
+
+  it('Examine aria-expanded value when columnActionMode is hasDropDown with isMenuOpen property set', () => {
+    const column = assign({}, baseColumn, { columnActionsMode: ColumnActionsMode.hasDropdown, isMenuOpen: true });
+    const columns = [column];
+    let component: any;
+
+    component = mount(
+      <DetailsList
+        items={[]}
+        setKey={'key1'}
+        initialFocusedIndex={0}
+        skipViewportMeasures={true}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        componentRef={ref => (component = ref)}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
+
+    const columnHeader = component.find(DetailsColumn);
+    const columnHeaderTitle = columnHeader.find('.ms-DetailsHeader-cellTitle');
+
+    expect(columnHeaderTitle.getDOMNode().getAttribute('aria-expanded')).toBe('true');
+  });
 });
