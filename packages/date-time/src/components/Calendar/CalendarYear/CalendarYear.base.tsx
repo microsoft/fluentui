@@ -29,6 +29,29 @@ const DefaultNavigationIcons: ICalendarIconStrings = {
   closeIcon: 'CalculatorMultiply'
 };
 
+export interface ICalendarYearState {
+  fromYear: number;
+  navigatedYear?: number;
+  selectedYear?: number;
+}
+
+interface ICalendarYearGrid {
+  focus(): void;
+}
+
+interface ICalendarYearGridCellProps extends ICalendarYearProps {
+  year: number;
+  current?: boolean;
+  selected?: boolean;
+  disabled?: boolean;
+  onSelectYear?: (year: number) => void;
+  onRenderYear?: (year: number) => React.ReactNode;
+}
+
+interface ICalendarYearGridProps extends ICalendarYearProps, ICalendarYearRange {
+  selectedYear?: number;
+}
+
 interface ICalendarYearGridCell {
   focus(): void;
 }
@@ -95,10 +118,6 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
       this.props.onSelectYear(this.props.year);
     }
   };
-}
-
-interface ICalendarYearGrid {
-  focus(): void;
 }
 
 class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> implements ICalendarYearGrid {
@@ -379,11 +398,6 @@ class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
     return <CalendarYearNav {...this.props} />;
   };
 }
-export interface ICalendarYearState {
-  fromYear: number;
-  navigatedYear?: number;
-  selectedYear?: number;
-}
 
 export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
   private _gridRef: CalendarYearGrid;
@@ -465,17 +479,4 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
       selectedYear: selectedYear
     };
   }
-}
-
-interface ICalendarYearGridCellProps extends ICalendarYearProps {
-  year: number;
-  current?: boolean;
-  selected?: boolean;
-  disabled?: boolean;
-  onSelectYear?: (year: number) => void;
-  onRenderYear?: (year: number) => React.ReactNode;
-}
-
-interface ICalendarYearGridProps extends ICalendarYearProps, ICalendarYearRange {
-  selectedYear?: number;
 }
