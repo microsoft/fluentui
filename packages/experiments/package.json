@@ -18,7 +18,7 @@
     "just": "node ../../scripts/just.js",
     "clean": "node ../../scripts/just.js clean",
     "code-style": "node ../../scripts/just.js code-style",
-    "start": "node ../../scripts/start.js",
+    "start": "node ../../scripts/just.js dev",
     "start-test": "node ../../scripts/just.js jest-watch",
     "update-snapshots": "node ../../scripts/just.js jest -u"
   },
@@ -36,7 +36,7 @@
     "@types/resemblejs": "~1.3.28",
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=6.10.0 <7.0.0",
+    "@uifabric/example-app-base": ">=6.11.0 <7.0.0",
     "@uifabric/jest-serializer-merge-styles": ">=6.0.6 <7.0.0",
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
     "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
@@ -62,7 +62,7 @@
     "@uifabric/merge-styles": ">=6.15.0 <7.0.0",
     "@uifabric/styling": ">=6.40.0 <7.0.0",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": ">=6.124.1 <7.0.0",
+    "office-ui-fabric-react": ">=6.124.2 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

@@ -326,13 +326,11 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
   .table {
-    &:not(.weekNumbers) {
-      margin-right: 30px;
-    }
     .dayWrapper,
     .weekday {
       width: 30px;
     }
+    width: 225px;
   }
 }
 

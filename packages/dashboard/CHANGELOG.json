@@ -2,6 +2,33 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.43.2",
+      "tag": "@uifabric/dashboard_v0.43.2",
+      "date": "Mon, 14 Jan 2019 13:39:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Empty card state for addCardPanel",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "c7818d841cb506a22cb1aec633ba80e1680113c9"
+          },
+          {
+            "comment": "Revert horizontal compaction and fix left nav external links to open based on target attr",
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "f7e5a036aa72e564c069408c8f270867834af72f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.10.0 <7.0.0` to `>=6.11.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.1 <7.0.0` to `>=6.124.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.43.1",
       "tag": "@uifabric/dashboard_v0.43.1",
       "date": "Fri, 11 Jan 2019 05:00:46 GMT",
