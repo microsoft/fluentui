@@ -27,7 +27,7 @@ for (const color in palette) {
   colorLines.push(`$${name}: "[theme:${color}, default: ${palette[color]}]";`);
 }
 
-const paletteOutputFilename = '_themePalette.scss';
+const paletteOutputFilename = '_themeOverrides.scss';
 fs.writeFileSync(path.join(srcRoot, paletteOutputFilename), colorLines.join('\n'));
 
 // load semantic colors
@@ -39,5 +39,5 @@ for (const color in semanticColors) {
   semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color]}]';`);
 }
 
-const semanticOutputFilename = '_semanticColors.scss';
+const semanticOutputFilename = '_semanticSlots.scss';
 fs.writeFileSync(path.join(srcRoot, semanticOutputFilename), semanticLines.join('\n'));
