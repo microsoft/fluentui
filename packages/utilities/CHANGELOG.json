@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.28.0",
+      "tag": "@uifabric/utilities_v6.28.0",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Scroll: use scrollableParent in _preventOverscrolling, allow EventGroup.on to take event options",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c9613c6206dd9f13c4712c93e91bcbef46d18169"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.27.2",
       "tag": "@uifabric/utilities_v6.27.2",
       "date": "Tue, 08 Jan 2019 13:34:49 GMT",

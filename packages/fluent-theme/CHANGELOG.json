@@ -2,6 +2,28 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.13.2",
+      "tag": "@uifabric/fluent-theme_v0.13.2",
+      "date": "Thu, 10 Jan 2019 04:58:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Rating: Use palette colors where possible",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "d0ccedbd10c9072c75ce79cde3801bdfb0ac8925"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.39.0 <7.0.0` to `>=6.40.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.122.0 <7.0.0` to `>=6.123.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.1",
       "tag": "@uifabric/fluent-theme_v0.13.1",
       "date": "Tue, 08 Jan 2019 13:34:49 GMT",

@@ -14,11 +14,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
-    "start": "node ../../scripts/start.js",
-    "start-test": "node ../../scripts/start-test.js",
-    "update-snapshots": "node ../../scripts/build.js jest -u"
+    "build": "node ../../scripts/just.js build",
+    "clean": "node ../../scripts/just.js clean",
+    "start": "node ../../scripts/just.js dev",
+    "start-test": "node ../../scripts/just.js jest-watch",
+    "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "devDependencies": {
     "@types/enzyme": "{{{typesEnzyme}}}",

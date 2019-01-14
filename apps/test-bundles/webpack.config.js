@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const resources = require('../../scripts/tasks/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
 
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];

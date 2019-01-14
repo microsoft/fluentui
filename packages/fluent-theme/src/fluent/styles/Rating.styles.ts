@@ -3,7 +3,7 @@ import { NeutralColors } from '../FluentColors';
 
 export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> => {
   const { disabled, readOnly, theme } = props;
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     root: [
@@ -13,7 +13,7 @@ export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> =
             // This is part 1 of highlighting all stars up to the one the user is hovering over
             '&:hover': {
               selectors: {
-                '.ms-RatingStar-back': { color: NeutralColors.gray160 }
+                '.ms-RatingStar-back': { color: palette.neutralPrimary }
               }
             }
           }
@@ -28,7 +28,7 @@ export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> =
       }
     ],
     ratingStarFront: {
-      color: NeutralColors.gray160
+      color: palette.neutralPrimary
     },
     ratingButton: [
       !disabled &&
