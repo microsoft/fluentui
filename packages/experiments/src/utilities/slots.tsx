@@ -13,6 +13,11 @@ import {
   IDefaultSlotProps
 } from './ISlots';
 
+// TODO: Is getting only div props for 'root' slots is pretty limiting? Or is it exactly as it needs to be?
+//        Another example is getting Toggle state for `label` slot render functions. Should it get Toggle props instead?
+//        Needs more usage to rationalize the best approach. If we want component props, component props are passed
+//        as each slot as rendered and aren't available when getSlots is called. This would substantially change this approach.
+
 /**
  * This function is required for any module that uses slots.
  *

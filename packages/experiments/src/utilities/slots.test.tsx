@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { withSlots, createFactory, getSlots } from './slots';
-import { IFactoryProps, ISlot, ISlotProp, ISlotRenderFunction, ISlotDefinition } from './ISlots';
+import { IProcessedSlotProps, ISlot, ISlotProp, ISlotRenderFunction, ISlotDefinition } from './ISlots';
 
 describe('withSlots', () => {
   let reactCalls: number;
@@ -136,10 +136,10 @@ describe('createFactory', () => {
 });
 
 describe('getSlots', () => {
-  interface ITestSlotComponent1Props extends IFactoryProps {
+  interface ITestSlotComponent1Props extends IProcessedSlotProps {
     testSlot1Prop?: string;
   }
-  interface ITestSlotComponent2Props extends IFactoryProps {
+  interface ITestSlotComponent2Props extends IProcessedSlotProps {
     testSlot2Prop?: string;
   }
   interface ITestSlots {
