@@ -8,7 +8,7 @@
     "just": "node ../../scripts/just.js",
     "clean": "node ../../scripts/just.js clean",
     "code-style": "node ../../scripts/just.js code-style",
-    "start": "node ../../scripts/start.js"
+    "start": "node ../../scripts/just.js dev"
   },
   "disabledTasks": [
     "verify-api-extractor"
@@ -26,7 +26,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": ">=6.124.1 <7.0.0",
+    "office-ui-fabric-react": ">=6.124.2 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
     "typescript": "2.8.4",
