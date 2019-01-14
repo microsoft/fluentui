@@ -68,7 +68,7 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
   /**
    * Callback action when the header is selected
    */
-  onHeaderSelect?: () => void;
+  onHeaderSelect?: (focus: boolean) => void;
 
   /**
    * If set the Calendar will not allow navigation to or selection of a year earlier than this value.

@@ -332,13 +332,13 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
   private _onHeaderSelect = () => {
     if (this.props.onHeaderSelect) {
-      this.props.onHeaderSelect();
+      this.props.onHeaderSelect(true);
     }
   };
 
   private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     if (this.props.onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      this.props.onHeaderSelect();
+      this.props.onHeaderSelect(true);
     }
   };
 

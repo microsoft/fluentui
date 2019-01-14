@@ -35,6 +35,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
   private _navigatedMonth: HTMLButtonElement;
   private _calendarYearRef = React.createRef<ICalendarYear>();
+  private _focusOnUpdate: boolean;
 
   constructor(props: ICalendarMonthProps) {
     super(props);
@@ -42,6 +43,13 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     this.state = {
       isYearPickerVisible: false
     };
+  }
+
+  public componentDidUpdate(): void {
+    if (this._focusOnUpdate) {
+      this.focus();
+      this._focusOnUpdate = false;
+    }
   }
 
   public render(): JSX.Element {
@@ -187,7 +195,9 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
   }
 
   public focus = () => {
-    if (this._navigatedMonth && this._navigatedMonth.value) {
+    if (this._calendarYearRef.current) {
+      this._calendarYearRef.current.focus();
+    } else if (this._navigatedMonth) {
       this._navigatedMonth.focus();
     }
   };
@@ -238,6 +248,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
   private _onHeaderSelect = (): void => {
     const { onHeaderSelect, yearPickerHidden } = this.props;
     if (!yearPickerHidden) {
+      this._focusOnUpdate = true;
       this.setState({ isYearPickerVisible: true });
     } else if (onHeaderSelect) {
       onHeaderSelect();
@@ -245,6 +256,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
   };
 
   private _onSelectYear = (selectedYear: number) => {
+    this._focusOnUpdate = true;
     const { navigatedDate, onNavigateDate, maxDate, minDate } = this.props;
     const navYear = navigatedDate.getFullYear();
     if (navYear !== selectedYear) {
@@ -262,7 +274,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     this.setState({ isYearPickerVisible: false });
   };
 
-  private _onYearPickerHeaderSelect = (): void => {
+  private _onYearPickerHeaderSelect = (focus: boolean): void => {
+    this._focusOnUpdate = focus;
     this.setState({ isYearPickerVisible: false });
   };
 
