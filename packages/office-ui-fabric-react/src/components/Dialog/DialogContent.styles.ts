@@ -26,7 +26,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       isClose && classNames.close,
       {
         flexGrow: 1,
-        overflowY: 'auto' // required for IE11
+        overflowY: 'hidden' // required for allowScrollOnElement
       },
       className
     ],

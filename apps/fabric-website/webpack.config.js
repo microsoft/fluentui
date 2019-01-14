@@ -1,6 +1,6 @@
 module.exports = function(env) {
   const path = require('path');
-  const resources = require('../../scripts/tasks/webpack-resources');
+  const resources = require('../../scripts/webpack/webpack-resources');
   const version = require('./package.json').version;
   const isDogfoodArg = env && !env.production;
   const isProductionArg = env && env.production;

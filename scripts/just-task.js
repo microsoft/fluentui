@@ -12,6 +12,10 @@ option('production');
 // Adds an alias for 'npm-install-mode' for backwards compatibility
 option('min', { alias: 'npm-install-mode' });
 
+option('prdeploy');
+
+option('webpackConfig', { alias: 'w' });
+
 Object.keys(rig).forEach(taskFunction => {
   if (typeof rig[taskFunction] === 'function') {
     registerTask(kebabCase(taskFunction), rig[taskFunction]);
@@ -22,7 +26,7 @@ Object.keys(rig).forEach(taskFunction => {
   }
 });
 
-task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)));
+task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min && !argv().prdeploy)));
 
 task(
   'build',
@@ -31,12 +35,16 @@ task(
     'copy',
     'sass',
     parallel(
-      condition('tslint', () => !argv().min),
-      condition('jest', () => !argv().min),
+      condition('tslint', () => !argv().min && !argv().prdeploy),
+      condition('jest', () => !argv().min && !argv().prdeploy),
       series(
         'ts',
-        condition('lint-imports', () => !argv().min),
-        parallel(condition('webpack', () => !argv().min), condition('api-extractor', () => !argv().min), 'build-codepen-examples')
+        condition('lint-imports', () => !argv().min && !argv().prdeploy),
+        parallel(
+          condition('webpack', () => !argv().min),
+          condition('verify-api-extractor', () => !argv().min && !argv().prdeploy),
+          'build-codepen-examples'
+        )
       )
     )
   )
@@ -44,7 +52,8 @@ task(
 
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
-task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api'));
+task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+task('dev', series('clean', 'copy', 'sass', 'build-codepen-examples', 'webpack-dev-server'));
 
 // Utility functions
 

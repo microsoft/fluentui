@@ -9,17 +9,16 @@ export class Arc extends React.Component<IArcProps, {}> {
     arc: shape.arc()
   };
 
-  public updateChart = (newProps: IArcProps) => {
-    newProps.arc.innerRadius(newProps.innerRadius);
-    newProps.arc.outerRadius(newProps.outerRadius);
-  };
-  public componentWillMount(): void {
-    this.updateChart(this.props);
+  public state: {} = {};
+
+  public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): null {
+    _updateChart(nextProps);
+    return null;
   }
 
-  public componentWillReceiveProps(newProps: IArcProps): void {
-    this.updateChart(newProps);
-  }
+  public updateChart = (newProps: IArcProps) => {
+    _updateChart(newProps);
+  };
 
   public render(): JSX.Element {
     const { color, arc } = this.props;
@@ -44,4 +43,9 @@ export class LabeledArc extends Arc {
       </g>
     );
   }
+}
+
+function _updateChart(newProps: IArcProps): void {
+  newProps.arc.innerRadius(newProps.innerRadius);
+  newProps.arc.outerRadius(newProps.outerRadius);
 }

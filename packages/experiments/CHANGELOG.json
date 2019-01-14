@@ -2,6 +2,74 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.4",
+      "tag": "@uifabric/experiments_v6.50.4",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Made message bar visible in High Contrast",
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "a62ab7fe6f395d2b9cde89de915e7f4976942056"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.0 <7.0.0` to `>=6.124.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.3",
+      "tag": "@uifabric/experiments_v6.50.3",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Adding documentation for the Overview, Do's and Dont's sections of the component page.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "9ae54921bc0b1cfb55001f53824acd813fadb49a"
+          },
+          {
+            "comment": "VirtualizedList: fix componentDidUpdate usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "698ab96e08f44a568b8a4e53aa247674b264133a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.4` to `^0.28.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.0 <1.0.0` to `>=0.13.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.2",
+      "tag": "@uifabric/experiments_v6.50.2",
+      "date": "Mon, 07 Jan 2019 13:34:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "772ed841dfc27654f76e2f2ce8ef30e776ab064c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.119.0 <7.0.0` to `>=6.120.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.1",
       "tag": "@uifabric/experiments_v6.50.1",
       "date": "Fri, 04 Jan 2019 13:36:07 GMT",

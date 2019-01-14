@@ -4,7 +4,7 @@ import {
   IDialogFooterStyleProps,
   IDialogFooterStyles
 } from 'office-ui-fabric-react/lib/Dialog';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontWeights } from '@uifabric/styling';
 
 import { FontSizes } from '../FluentType';
 import { fluentBorderRadius } from './styleConstants';

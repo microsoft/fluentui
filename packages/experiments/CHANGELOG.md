@@ -1,6 +1,28 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 04 Jan 2019 13:36:07 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+
+## 6.50.4
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Made message bar visible in High Contrast
+
+## 6.50.3
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Stack: Adding documentation for the Overview, Do's and Dont's sections of the component page.
+- VirtualizedList: fix componentDidUpdate usage
+
+## 6.50.2
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Patches
+
+- Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.
 
 ## 6.50.1
 Fri, 04 Jan 2019 13:36:07 GMT

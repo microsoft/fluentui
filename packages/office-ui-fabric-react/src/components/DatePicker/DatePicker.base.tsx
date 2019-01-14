@@ -164,7 +164,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       calloutProps,
       underlined,
       allFocusable,
-      calendarAs: CalendarType = Calendar
+      calendarAs: CalendarType = Calendar,
+      tabIndex
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -181,7 +182,13 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     return (
       <div {...nativeProps} className={classNames.root}>
-        <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
+        <div
+          ref={this._datePickerDiv}
+          role="combobox"
+          aria-expanded={isDatePickerShown}
+          aria-haspopup="true"
+          aria-owns={isDatePickerShown ? calloutId : undefined}
+        >
           <TextField
             id={this._id + '-label'}
             label={label}
@@ -206,6 +213,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             value={formattedDate}
             componentRef={this._textField}
             underlined={underlined}
+            tabIndex={tabIndex}
           />
         </div>
         {isDatePickerShown && (
@@ -418,7 +426,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
         if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
-          date = this.state.selectedDate;
+          return;
         } else {
           date = parseDateFromString!(inputValue);
 
