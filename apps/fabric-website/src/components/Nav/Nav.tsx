@@ -45,7 +45,8 @@ const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
   }
 };
 
-const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme) => {
+const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
+  const { theme } = props;
   return {
     root: [
       {
@@ -120,7 +121,8 @@ export class Nav extends React.Component<INavProps, INavState> {
       return (
         <li key={categoryIndex} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
-            title={{ text: page.title, styles: getTitleStyles }}
+            titleAs={CollapsibleSectionTitle}
+            titleProps={{ text: page.title, styles: getTitleStyles }}
             styles={{ body: [{ marginLeft: '28px' }] }}
             defaultCollapsed={!_hasActiveChild(page)}
           >
