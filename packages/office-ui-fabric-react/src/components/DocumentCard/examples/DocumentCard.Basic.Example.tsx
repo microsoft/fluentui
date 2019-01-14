@@ -17,7 +17,7 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://google.com'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
