@@ -85,5 +85,15 @@ describe('loadTheme', () => {
       expect(newTheme.fonts.mega.fontSize).toEqual('10px');
       expect(newTheme.fonts.mega.fontWeight).toEqual(DefaultFontStyles.mega.fontWeight);
     });
+    it('applies fonts to theme and does not mutate the DefaultFontStyles object', () => {
+      const defaultFontStyles = { ...DefaultFontStyles };
+
+      const userTheme = { fonts: { small: { fontSize: '20px' } } };
+      loadTheme(userTheme);
+      const newTheme = getTheme();
+
+      expect(newTheme.fonts.small.fontSize).toEqual('20px');
+      expect(defaultFontStyles.small.fontSize).toEqual(DefaultFontStyles.small.fontSize);
+    });
   });
 });

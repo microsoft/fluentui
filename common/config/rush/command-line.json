@@ -143,7 +143,19 @@
     {
       "longName": "--npm-install-mode",
       "parameterKind": "flag",
+      "description": "Skips tasks that are irrelevant during npm install (alias of --min)",
+      "associatedCommands": ["build", "rebuild"]
+    },
+    {
+      "longName": "--min",
+      "parameterKind": "flag",
       "description": "Skips tasks that are irrelevant during npm install",
+      "associatedCommands": ["build", "rebuild"]
+    },
+    {
+      "longName": "--prdeploy",
+      "parameterKind": "flag",
+      "description": "Skips tasks that are irrelevant during PR Deploy",
       "associatedCommands": ["build", "rebuild"]
     }
     // {

@@ -6,7 +6,7 @@ const { jest, jestWatch } = require('./jest');
 const { sass } = require('./sass');
 const { ts } = require('./ts');
 const { tslint } = require('./tslint');
-const { webpack } = require('./webpack');
+const { webpack, webpackDevServer } = require('./webpack');
 const { outdated, selfupdate } = require('./outdated');
 const { verifyApiExtractor, updateApiExtractor } = require('./api-extractor');
 const buildCodepenExamples = require('./build-codepen-examples');
@@ -25,6 +25,7 @@ exports.rig = {
   ts,
   tslint,
   webpack,
+  webpackDevServer,
   outdated,
   selfupdate,
   verifyApiExtractor,
