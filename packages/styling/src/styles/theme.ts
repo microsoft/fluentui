@@ -107,16 +107,17 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  let defaultFontStyles: IFontStyles = DefaultFontStyles;
+  let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
+
   if (theme.defaultFontStyle) {
-    for (const fontStyle of Object.keys(DefaultFontStyles)) {
-      defaultFontStyles[fontStyle] = { ...defaultFontStyles[fontStyle], ...theme.defaultFontStyle };
+    for (const fontStyle of Object.keys(defaultFontStyles)) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
     }
   }
 
   if (theme.fonts) {
     for (const fontStyle of Object.keys(theme.fonts)) {
-      defaultFontStyles[fontStyle] = merge(defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
     }
   }
 
