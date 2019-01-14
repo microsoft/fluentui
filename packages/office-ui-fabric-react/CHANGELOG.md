@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Jan 2019 13:39:22 GMT and should not be manually modified.
+
+## 6.124.2
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Patches
+
+- DatePicker: only set aria-owns when callout is rendered [#6931]
+- Fix DatePicker firing two onSelectDate events when allowTextInput is true
+- Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument
+- Relaxed type restrictions on possible values for 'autoComplete' attribute on TextField component.
+- ActionButton: Fix focus outline getting clipped when the action button sits within a container with `overflow:'hidden'`.
+- DatePicker: Temporarily disable failing DatePicker test which uses document.querySelector
+- Horizontal scrollbar not available for a grouped details list (all groups collapsed) when header is sticky
 
 ## 6.124.1
 Fri, 11 Jan 2019 05:00:46 GMT
