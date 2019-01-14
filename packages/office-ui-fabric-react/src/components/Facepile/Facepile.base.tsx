@@ -41,7 +41,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const { _classNames } = this;
 
     // Add a check to make sure maxDisplayalePersonas is defined to cover the edge case of it being 0.
-    const numPersonasToShow: number = typeof maxDisplayablePersonas !== 'undefined' ?
+    const numPersonasToShow: number = typeof maxDisplayablePersonas === 'number' ?
       Math.min(personas.length, maxDisplayablePersonas ) : personas.length;
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
