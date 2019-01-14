@@ -14,7 +14,7 @@
     "_rushRebuild": "node common/scripts/install-run-rush.js rebuild --production --verbose --lint",
     "_rushRebuildCi": "node common/scripts/install-run-rush.js rebuild --verbose --lint",
     "_rushRebuildFast": "node common/scripts/install-run-rush.js rebuild",
-    "postinstall": "npm run _rushInstall && npm run _rushBuildToExperiments -- --npm-install-mode",
+    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "start": "cd apps && cd fabric-website-resources && npm start",
