@@ -40,6 +40,24 @@ const classNames = mergeStyleSets({
   }
 });
 
+const fileIcons: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpt' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xsn' }
+];
+
 export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
   items: IDocument[];
@@ -304,24 +322,6 @@ function _randomDate(start: Date, end: Date): { value: number; dateFormatted: st
   };
   return dateData;
 }
-
-const fileIcons: { name: string }[] = [
-  { name: 'accdb' },
-  { name: 'csv' },
-  { name: 'docx' },
-  { name: 'dotx' },
-  { name: 'mpt' },
-  { name: 'odt' },
-  { name: 'one' },
-  { name: 'onepkg' },
-  { name: 'onetoc' },
-  { name: 'pptx' },
-  { name: 'pub' },
-  { name: 'vsdx' },
-  { name: 'xls' },
-  { name: 'xlsx' },
-  { name: 'xsn' }
-];
 
 function _randomFileIcon(): { docType: string; url: string } {
   const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
