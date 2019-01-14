@@ -40,9 +40,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
     ],
     link: [
       {
-        color: semanticColors.buttonText,
-        paddingLeft: '11px',
-        paddingRight: '11px'
+        color: semanticColors.buttonText
       },
       !rootIsLarge && {
         fontSize: FontSizes.size14
@@ -84,16 +82,12 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       }
     ],
     linkIsSelected: [
-      {
-        paddingLeft: '11px',
-        paddingRight: '11px'
-      },
       !rootIsLarge && {
         fontSize: FontSizes.size14
       },
       !rootIsTabs && {
         color: semanticColors.bodyText,
-        padding: '1px',
+        paddingBottom: '1px',
         selectors: {
           ':hover': {
             border: StyleConstants.borderNone
