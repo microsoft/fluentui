@@ -22,7 +22,7 @@ storiesOf('Toggle', module)
   .addStory('Disabled unchecked', () => <Toggle {...baseProps} defaultChecked={false} disabled={true} />)
   .addStory('With inline label', () => <Toggle {...baseProps} defaultChecked={true} disabled={false} inlineLabel={true} />)
   .addStory('With inline label disabled', () => <Toggle {...baseProps} defaultChecked={true} disabled={true} inlineLabel={true} />)
-  .addStory('With inline label disabled and without onText and offText', () =>
+  .addStory('With inline label and without onText and offText', () =>
     <Toggle label={'Toggle label'} defaultChecked={true} disabled={false} inlineLabel={true} />
   )
   .addStory('With inline label disabled and without onText and offText', () =>
