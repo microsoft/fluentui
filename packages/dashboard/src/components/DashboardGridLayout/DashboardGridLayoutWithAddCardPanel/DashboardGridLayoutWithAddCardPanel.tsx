@@ -106,6 +106,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
             onDismiss={this._onPanelDismiss}
             draggingCardCallback={this._draggingCardCallback}
             initialX={this.state.selectedCardInitialX}
+            emptyPanelMessage={addCardPanelProps ? addCardPanelProps.emptyPanelMessage : undefined}
           />
           <div className="dashboardContainerClassName">
             <DashboardGridSectionLayout

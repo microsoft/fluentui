@@ -223,7 +223,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onDataReduced(movedItem);
       }
 
-      return { ...newData, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;
@@ -250,7 +251,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         onDataGrown(movedItem);
       }
 
-      return { ...newData, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;

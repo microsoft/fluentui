@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+
+## 6.50.4
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Made message bar visible in High Contrast
 
 ## 6.50.3
 Tue, 08 Jan 2019 13:34:49 GMT
