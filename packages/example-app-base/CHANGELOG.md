@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Jan 2019 13:39:22 GMT and should not be manually modified.
+
+## 6.11.0
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Minor changes
+
+- **New:** MarkdownTable components for use in PageMarkdown.\n**EditSection:** Allow content to be more flexible in order to render.\n**PageMarkdown:** Override table elements with new MarkdownTable components, add global classNames, add static displayName.
 
 ## 6.10.0
 Fri, 14 Dec 2018 13:35:30 GMT

@@ -445,6 +445,11 @@
       "packageName": "@uifabric/azure-themes",
       "projectFolder": "packages/azure-themes",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/pr-deploy-site",
+      "projectFolder": "apps/pr-deploy-site",
+      "shouldPublish": false
     }
   ]
 }

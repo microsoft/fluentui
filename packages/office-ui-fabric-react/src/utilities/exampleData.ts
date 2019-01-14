@@ -39,7 +39,8 @@ export function createGroups(
   startIndex: number,
   itemsPerGroup: number,
   level: number = 0,
-  key: string = ''
+  key: string = '',
+  isCollapsed?: boolean
 ): IGroup[] {
   if (key !== '') {
     key = key + '-';
@@ -52,6 +53,7 @@ export function createGroups(
       name: 'group ' + key + index,
       startIndex: index * count + startIndex,
       level: level,
+      isCollapsed: isCollapsed,
       children:
         groupDepth > 1 ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) : []
     };
