@@ -43,7 +43,7 @@ task(
 );
 
 // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
-task('build-jest-serializer-merge-styles', series('tslint', 'jest'));
+task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
