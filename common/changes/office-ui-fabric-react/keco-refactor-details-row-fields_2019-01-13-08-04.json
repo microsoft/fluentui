@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Remove reliance on setState and duplicate columns iteration",
+      "comment": "DetailsList: DetailsRowFields redundant setState and columns iteration",
       "type": "patch"
     }
   ],
