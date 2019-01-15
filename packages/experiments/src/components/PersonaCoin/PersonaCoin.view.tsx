@@ -21,6 +21,8 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
 
   if (coinSize === 10) {
     if (props.presence) {
+      // TODO: why do we need to pass size twice?
+      return <Slots.presence coinSize={coinSize} size={coinSize} />;
     }
     return <Slots.coinAlternativeForSmallestSize />;
   }
