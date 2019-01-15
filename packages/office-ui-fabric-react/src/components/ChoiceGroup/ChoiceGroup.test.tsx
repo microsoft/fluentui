@@ -77,7 +77,7 @@ describe('ChoiceGroup', () => {
   });
 
   it('An individual choice option can be disabled', () => {
-    const options = merge([], TEST_OPTIONS);
+    const options: IChoiceGroupOption[] = merge([], TEST_OPTIONS) as IChoiceGroupOption[];
     options[0].disabled = true;
 
     const choiceGroup = mount(<ChoiceGroup label="testgroup" options={options} required={true} />);
