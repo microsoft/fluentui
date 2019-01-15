@@ -5,11 +5,13 @@ import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 
 const getCellText = (item: any, column: IColumn): string => {
-  if (item && column && column.fieldName) {
-    return item[column.fieldName] || '';
+  let value = item && column && column.fieldName ? item[column.fieldName] : '';
+
+  if (value === null || value === undefined) {
+    value = '';
   }
 
-  return '';
+  return value;
 };
 
 export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps> {
