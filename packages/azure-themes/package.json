@@ -25,6 +25,7 @@
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.6 <7.0.0",
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
     "@uifabric/tslint-rules": ">=1.0.0 <2.0.0"
   },

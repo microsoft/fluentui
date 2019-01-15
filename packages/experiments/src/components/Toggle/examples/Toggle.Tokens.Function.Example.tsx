@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Toggle } from '../index';
-import { IToggleViewProps, IToggleStyleVariablesTypes } from '../Toggle.types';
+import { IToggleComponent } from '../Toggle.types';
 
-const styleVarsFunction = (props: IToggleViewProps): IToggleStyleVariablesTypes => {
+const toggleTokens: IToggleComponent['tokens'] = props => {
   return {
     ...(props.checked ? { textColor: 'green' } : { textColor: 'red' }),
     ...(props.disabled
@@ -11,7 +11,7 @@ const styleVarsFunction = (props: IToggleViewProps): IToggleStyleVariablesTypes 
   };
 };
 
-export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
+export class ToggleTokensFunctionExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
@@ -21,7 +21,7 @@ export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
           onText="On"
           offText="Off"
           onChange={this._onChange}
-          styleVariables={styleVarsFunction}
+          tokens={toggleTokens}
         />
         <Toggle
           defaultChecked={false}
@@ -29,24 +29,10 @@ export class ToggleStyleVarsFunctionExample extends React.Component<{}, {}> {
           onText="On"
           offText="Off"
           onChange={this._onChange}
-          styleVariables={styleVarsFunction}
+          tokens={toggleTokens}
         />
-        <Toggle
-          defaultChecked={true}
-          disabled={true}
-          label="Disabled and checked"
-          onText="On"
-          offText="Off"
-          styleVariables={styleVarsFunction}
-        />
-        <Toggle
-          defaultChecked={false}
-          disabled={true}
-          label="Disabled and unchecked"
-          onText="On"
-          offText="Off"
-          styleVariables={styleVarsFunction}
-        />
+        <Toggle defaultChecked={true} disabled={true} label="Disabled and checked" onText="On" offText="Off" tokens={toggleTokens} />
+        <Toggle defaultChecked={false} disabled={true} label="Disabled and unchecked" onText="On" offText="Off" tokens={toggleTokens} />
       </div>
     );
   }

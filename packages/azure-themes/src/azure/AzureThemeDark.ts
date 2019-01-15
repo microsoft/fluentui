@@ -1,6 +1,8 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { CommonSemanticColors, DarkSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
+import { FontSizes } from './AzureType';
+import * as StyleConstants from './Constants';
 
 const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: DarkSemanticColors.background,
@@ -52,10 +54,28 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   controlOutline: DarkSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: DarkSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: DarkSemanticColors.controlOutlines.hover,
-  labelText: DarkSemanticColors.text.label
+  labelText: DarkSemanticColors.text.label,
+  statusErrorBackground: DarkSemanticColors.statusBar.error,
+  statusErrorText: DarkSemanticColors.text.body,
+  statusErrorIcon: CommonSemanticColors.icons.error,
+  statusInformationBackground: DarkSemanticColors.statusBar.information,
+  statusInformationText: DarkSemanticColors.text.body,
+  statusInformationIcon: CommonSemanticColors.icons.information,
+  statusSuccessBackground: DarkSemanticColors.statusBar.okay,
+  statusSuccessText: DarkSemanticColors.text.body,
+  statusSuccessIcon: CommonSemanticColors.icons.okay,
+  statusWarningBackground: DarkSemanticColors.statusBar.warning,
+  statusWarningText: DarkSemanticColors.text.body,
+  statusWarningIcon: CommonSemanticColors.icons.warning
 };
 
 export const AzureThemeDark: ITheme = createTheme({
+  fonts: {
+    medium: {
+      fontFamily: StyleConstants.fontFamily,
+      fontSize: FontSizes.size12
+    }
+  },
   palette: {
     themePrimary: DarkSemanticColors.controlOutlines.accent,
     neutralDark: DarkSemanticColors.text.body,

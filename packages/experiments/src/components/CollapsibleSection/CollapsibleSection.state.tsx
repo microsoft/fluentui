@@ -24,7 +24,7 @@ export type ICollapsibleSectionState = Pick<
 >;
 
 export class CollapsibleSectionState extends BaseState<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionState> {
-  private _titleElement = React.createRef<HTMLElement>();
+  private _titleElement = React.createRef<HTMLButtonElement>();
 
   constructor(props: CollapsibleSectionState['props']) {
     super(props, {

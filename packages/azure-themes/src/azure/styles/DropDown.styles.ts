@@ -78,7 +78,8 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         borderColor: semanticColors.inputBorder
       },
       hasError && {
-        borderColor: semanticColors.errorBackground
+        borderColor: semanticColors.errorBackground,
+        borderWidth: StyleConstants.borderWidthError
       },
       isOpen &&
         !hasError && {

@@ -9,10 +9,12 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          margin-bottom: 8px;
+          margin-bottom: 10px;
+          margin-right: 30px;
         }
   >
     <label
@@ -42,7 +44,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           }
       htmlFor="Toggle0"
     >
-      Enable Compact Mode
+      Enable compact mode
     </label>
     <div
       className=
@@ -172,10 +174,12 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          margin-bottom: 8px;
+          margin-bottom: 10px;
+          margin-right: 30px;
         }
   >
     <label
@@ -205,7 +209,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           }
       htmlFor="Toggle1"
     >
-      Enable Modal Selection
+      Enable modal selection
     </label>
     <div
       className=
@@ -328,7 +332,14 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       </label>
     </div>
   </div>
-  <div>
+  <div
+    className=
+
+        {
+          display: block;
+          margin-bottom: 10px;
+        }
+  >
     No items selected
   </div>
   <div
@@ -337,7 +348,8 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         {
           box-shadow: none;
           box-sizing: border-box;
-          margin-bottom: 0px;
+          display: block;
+          margin-bottom: 10px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
