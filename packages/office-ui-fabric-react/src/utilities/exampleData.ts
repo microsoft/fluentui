@@ -14,8 +14,19 @@ const DATA = {
   location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
 };
 
-// tslint:disable-next-line:no-any
-export function createListItems(count: number, startIndex: number = 0): any {
+export interface IExampleItem {
+  thumbnail: string;
+  key: string;
+  name: string;
+  description: string;
+  color: string;
+  shape: string;
+  location: string;
+  width: number;
+  height: number;
+}
+
+export function createListItems(count: number, startIndex: number = 0): IExampleItem[] {
   return Array.apply(null, Array(count)).map((item: number, index: number) => {
     const size = 150 + Math.round(Math.random() * 100);
 

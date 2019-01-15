@@ -1,26 +1,21 @@
-import { IStyle } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IComponentStyles, IHTMLDivSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
 
-export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+export type IStackSlot = ISlotProp<IStackProps>;
+
+export interface IStackSlots {
+  root?: IHTMLDivSlot;
+  inner?: IHTMLDivSlot;
+}
+
+export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */
   as?: string | React.ReactType<IStackProps>;
-
-  /**
-   * CSS class name used to style the Stack.
-   */
-  className?: string;
-
-  /**
-   * Inline styling.
-   */
-  style?: React.CSSProperties;
 
   /**
    * Whether to render Stack child elements horizontally.
@@ -88,21 +83,6 @@ export interface IStackProps extends IStyleableComponentProps<IStackProps, IStac
    * @defaultvalue false
    */
   wrap?: boolean;
-
-  /**
-   * Custom styles to apply to the Stack.
-   */
-  styles?: IStyleFunctionOrObject<IStackProps, IStackStyles>;
 }
 
-export interface IStackStyles {
-  /**
-   * Style set for the root element.
-   */
-  root: IStyle;
-
-  /**
-   * Style set for the inner element (only when the wrap property is true).
-   */
-  inner: IStyle;
-}
+export type IStackStyles = IComponentStyles<IStackSlots>;

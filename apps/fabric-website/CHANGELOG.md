@@ -1,6 +1,15 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+
+## 6.8.3
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Add shimmered DetailsList to website
+- Documentation: Updating README to mention buildfast as an advanced build alternative.
+- Updates for new CollapsibleSection API.
 
 ## 6.8.2
 Tue, 08 Jan 2019 13:34:49 GMT

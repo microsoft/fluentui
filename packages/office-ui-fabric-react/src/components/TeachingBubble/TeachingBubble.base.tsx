@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import {
   ITeachingBubbleProps,
@@ -32,7 +32,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     }
   };
 
-  public rootElement = createRef<HTMLDivElement>();
+  public rootElement = React.createRef<HTMLDivElement>();
   private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
