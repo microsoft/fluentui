@@ -7,6 +7,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   if (!theme) {
     return {};
   }
+
   const { semanticColors } = theme;
   const TextHoverStyle = () => {
     return {
@@ -89,50 +90,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       }
     };
   };
-  const CalloutStyle = (focus: string, fade: string) => {
-    return {
-      // week row bottom border
-      '.ms-DatePicker-table > thead > tr': {
-        borderBottom: `${StyleConstants.borderWidth} solid ${semanticColors.bodyText}`
-      },
-      // all day td elements
-      '.ms-DatePicker-day': {
-        border: 'none',
-        selectors: {
-          '.ms-DatePicker-day-button': {
-            fontWeight: StyleConstants.fontWeightBold
-          }
-        }
-      },
-      '.ms-DatePicker-day--infocus': { color: focus },
-      '.ms-DatePicker-currentDecade': { color: focus },
-      '.ms-DatePicker-day--outfocus': { color: fade },
-      '.ms-DatePicker-monthAndYear': { color: focus },
-      '.ms-DatePicker-weekday': { color: focus, fontWeight: StyleConstants.fontWeightBold },
-      '.ms-DatePicker-monthOption': { color: focus, fontWeight: StyleConstants.fontWeightBold },
-      '.ms-DatePicker-currentYear': { color: focus },
-      '.ms-DatePicker-prevMonth': { color: focus },
-      '.ms-DatePicker-nextMonth': { color: focus },
-      '.ms-DatePicker-prevYear': { color: focus },
-      '.ms-DatePicker-nextYear': { color: focus },
-      '.ms-DatePicker-prevDecade': { color: focus },
-      '.ms-DatePicker-nextDecade': { color: focus },
-      '.ms-DatePicker-goToday': { color: focus },
-      '.ms-DatePicker-goToday[disabled]': { display: 'none' },
-      '.ms-DatePicker-yearOption': { color: focus, fontWeight: StyleConstants.fontWeightBold },
-      '.ms-DatePicker-yearOption--disabled': { color: fade },
-      '.ms-DatePicker-monthOption--disabled': { color: fade },
-      '.ms-DatePicker-day--disabled': { color: fade },
-      '.ms-DatePicker-nextDecade--disabled': { color: fade },
-      '.ms-DatePicker-prevDecade--disabled': { color: fade },
-      '.ms-DatePicker-prevYear--disabled': { color: fade },
-      '.ms-DatePicker-nextYear--disabled': { color: fade },
-      '.ms-DatePicker-prevMonth--disabled': { color: fade },
-      '.ms-DatePicker-nextMonth--disabled': { color: fade },
-      ...TodayAndSelectedDayStyle(),
-      ...HoverStyles()
-    };
-  };
   return {
     callout: {
       fontSize: FontSizes.size12,
@@ -143,7 +100,44 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
           fontWeight: StyleConstants.fontWeightBold,
           backgroundColor: semanticColors.bodyBackground
         },
-        ...CalloutStyle(semanticColors.bodyText, semanticColors.bodyText)
+        '.ms-DatePicker-table > thead > tr': {
+          borderBottom: `${StyleConstants.borderWidth} solid ${semanticColors.bodyText}`
+        },
+        '.ms-DatePicker-day': {
+          border: 'none',
+          selectors: {
+            '.ms-DatePicker-day-button': {
+              fontWeight: StyleConstants.fontWeightBold
+            }
+          }
+        },
+        '.ms-DatePicker-day--infocus': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-currentDecade': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-day--outfocus': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-monthAndYear': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-weekday': { color: semanticColors.bodyBackground, fontWeight: StyleConstants.fontWeightBold },
+        '.ms-DatePicker-monthOption': { color: semanticColors.bodyBackground, fontWeight: StyleConstants.fontWeightBold },
+        '.ms-DatePicker-currentYear': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-prevMonth': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-nextMonth': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-prevYear': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-nextYear': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-prevDecade': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-nextDecade': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-goToday': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-goToday[disabled]': { display: 'none' },
+        '.ms-DatePicker-yearOption': { color: semanticColors.bodyBackground, fontWeight: StyleConstants.fontWeightBold },
+        '.ms-DatePicker-yearOption--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-monthOption--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-day--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-nextDecade--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-prevDecade--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-prevYear--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-nextYear--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-prevMonth--disabled': { color: semanticColors.bodyBackground },
+        '.ms-DatePicker-nextMonth--disabled': { color: semanticColors.bodyBackground },
+        ...TodayAndSelectedDayStyle(),
+        ...HoverStyles()
       }
     },
     icon: [
