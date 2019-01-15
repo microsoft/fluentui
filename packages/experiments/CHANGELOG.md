@@ -1,6 +1,49 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 18 Dec 2018 22:17:52 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+
+## 6.50.4
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Made message bar visible in High Contrast
+
+## 6.50.3
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Stack: Adding documentation for the Overview, Do's and Dont's sections of the component page.
+- VirtualizedList: fix componentDidUpdate usage
+
+## 6.50.2
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Patches
+
+- Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.
+
+## 6.50.1
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Stack: Adding vertical stack wrapping test to vr-tests.
+
+## 6.50.0
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Minor changes
+
+- Adds PersonaCoin and VerticalPersona
+
+## 6.49.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Stack: Implementing wrapping of vertical stacks and adding examples for it, fixing bugs in wrapping of horizontal stacks.
 
 ## 6.49.0
 Tue, 18 Dec 2018 22:17:52 GMT

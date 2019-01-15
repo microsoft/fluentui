@@ -11,7 +11,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: none;
+        border: 1px solid transparent;
         box-sizing: border-box;
         color: #333333;
         cursor: pointer;

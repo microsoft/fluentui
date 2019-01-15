@@ -20,7 +20,10 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
             alert('Remove clicked');
           }
         }
-      ]
+      ],
+      href: 'https://developer.microsoft.com/en-us/fabric',
+      cardFrameMenuTitle: 'more',
+      cardFrameMenuAriaLabel: 'more'
     };
 
     const compoundButtonStack: ICompoundAction[] = [
@@ -29,7 +32,8 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         action: () => {
           alert('Compound Button 1 clicked');
         },
-        description: 'Compund Button 1 description'
+        description: 'Compund Button 1 description',
+        ariaLabel: 'Compound Button 1'
       },
       {
         title: 'Compound Button 2',
@@ -57,12 +61,25 @@ export class MediumTallCardBasicExample extends React.Component<{}, {}> {
         }
       }
     ];
+    const actionBarOverflowButtonTitle = 'more actions';
+    const actionBarOverflowButtonAriaLabel = 'more actions';
+    const actionBarOverflowButtonAriaDescription = 'more actions';
 
     const header = {
       headerText: 'Header Text ',
       annotationText: 'Annotation Text ',
       fontSize: 1
     };
-    return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.mediumTall} />;
+    return (
+      <Card
+        cardFrameContent={cardFrameContent}
+        header={header}
+        cardContentList={contentAreaList}
+        cardSize={CardSize.mediumTall}
+        actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
+        actionBarOverflowButtonAriaLabel={actionBarOverflowButtonAriaLabel}
+        actionBarOverflowButtonAriaDescription={actionBarOverflowButtonAriaDescription}
+      />
+    );
   }
 }

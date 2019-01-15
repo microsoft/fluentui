@@ -110,6 +110,16 @@ export interface ICardFrameContent {
    * callback triggered upon clicking on the card title. Card title is clickable only when href is passed to it.
    */
   cardTitleCallback?: VoidFunction;
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  cardFrameMenuTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  cardFrameMenuAriaLabel?: string;
 }
 
 export interface ICardProps {
@@ -127,6 +137,28 @@ export interface ICardProps {
    * The footer action bar props
    */
   actions?: IAction[];
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
+
+  /**
+   * role of the  card for the benefit of screen readers
+   */
+  role?: string;
 
   /**
    * The content area content details array.
@@ -204,7 +236,7 @@ export interface ICard extends ICardProps {
   id: string;
 }
 
-export interface IDGLCard extends ICardProps {
+export interface IDGLCard {
   /**
    * The card id, which must be unique within the dashboard
    */
@@ -216,14 +248,14 @@ export interface IDGLCard extends ICardProps {
   addCardInfo?: IAddCardInfo;
 
   /**
-   * The x position on which the card is supposed  to be placed
+   * The JSX element to be rendered
    */
-  x: number;
+  renderElement: JSX.Element;
 
   /**
-   * The y position on which card is supposed to be placed
+   * The size of the DGL card
    */
-  y: number;
+  cardSize: CardSize;
 }
 
 export interface ICardState {

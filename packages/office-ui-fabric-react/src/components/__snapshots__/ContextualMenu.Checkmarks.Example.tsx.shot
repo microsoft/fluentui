@@ -74,7 +74,6 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
         color: #212121;
       }
   data-is-focusable={true}
-  id="ContextualMenuButton2"
   onClick={[Function]}
   onKeyDown={[Function]}
   onKeyPress={[Function]}

@@ -8,7 +8,12 @@ import { IStyle, ITheme } from '../../Styling';
 
 export interface ITooltipHost {
   /**
-   * Dismisses the tooltip
+   * Shows the tooltip.
+   */
+  show: () => void;
+
+  /**
+   * Dismisses the tooltip.
    */
   dismiss: () => void;
 }
