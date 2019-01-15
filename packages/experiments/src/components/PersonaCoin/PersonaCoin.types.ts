@@ -1,11 +1,13 @@
-import { ImageLoadState } from 'office-ui-fabric-react';
-import { IComponentStyles, IHTMLDivSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { ImageLoadState, IRefObject } from 'office-ui-fabric-react';
+import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
 
-export type IPersonaCoinComponent = IStatelessComponent<IPersonaCoinProps, IPersonaCoinStyles>;
+export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinViewProps, IPersonaCoinStyles>;
 
 export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps> | string;
+
+export type IPersonaCoinForSmallestSizeSlot = ISlotProp<{}>;
 
 export interface IPersonaCoinSlots {
   /**
@@ -27,6 +29,10 @@ export interface IPersonaCoinSlots {
    * Slot for the presence element
    */
   presence?: IPersonaPresenceSlot;
+  /**
+   * Slot for the alternative coin for the smallest persona size
+   */
+  coinAlternativeForSmallestSize?: IPersonaCoinForSmallestSizeSlot;
 }
 
 export type PersonaCoinSize = 10 | 16 | 24 | 28 | 32 | 40 | 48 | 56 | 72 | 100;
@@ -90,6 +96,15 @@ export interface IPersonaCoinProps extends IPersonaCoinSlots, IStyleableComponen
    * @defaultvalue 'white'
    */
   initialsColor?: string;
+
+  /**
+   * Optional callback used to set a ref to the component
+   */
+  componentRef?: IRefObject<IPersonaCoinViewProps>;
+}
+
+export interface IPersonaCoinViewProps extends IPersonaCoinProps {
+  isPictureLoaded: boolean;
 }
 
 export type IPersonaCoinStyles = IComponentStyles<IPersonaCoinSlots>;
