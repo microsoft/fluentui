@@ -54,7 +54,7 @@ export interface IToggle {
 export interface IToggleProps
   extends IToggleSlots,
     IStyleableComponentProps<IToggleViewProps, IToggleStyles, IToggleTokens>,
-    IBaseProps<IToggleProps> {
+    IBaseProps<IToggle> {
   /**
    * Render the root element as another type.
    */

@@ -23,7 +23,7 @@ export interface IButton {}
 export interface IButtonProps
   extends IButtonSlots,
     IStyleableComponentProps<IButtonProps, IButtonStyles, IButtonTokens>,
-    IBaseProps<IButtonProps> {
+    IBaseProps<IButton> {
   href?: string;
 
   primary?: boolean;

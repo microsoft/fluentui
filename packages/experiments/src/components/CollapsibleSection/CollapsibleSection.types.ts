@@ -16,7 +16,7 @@ export interface ICollapsibleSection {}
 export interface ICollapsibleSectionProps
   extends ICollapsibleSectionSlots,
     IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>,
-    IBaseProps<ICollapsibleSectionProps> {
+    IBaseProps<ICollapsibleSection> {
   /**
    * Default and initial collapsed state if collapsed prop is not provided.
    * @default true
