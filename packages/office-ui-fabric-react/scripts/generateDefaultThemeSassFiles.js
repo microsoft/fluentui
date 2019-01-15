@@ -23,7 +23,7 @@ fs.writeFileSync(path.join(srcRoot, fontsOutputFilename), lines.join('\n'));
 const palette = defaultTheme.palette;
 const colorLines = [];
 for (const color in palette) {
-  const name = 'ms-font-' + color;
+  const name = 'ms-color-' + color;
   colorLines.push(`$${name}: "[theme:${color}, default: ${palette[color]}]";`);
 }
 
