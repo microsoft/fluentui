@@ -20,9 +20,6 @@ Note that if you do not provide enough information to reproduce the issue, we ma
 
 ### Environment Information 
  
- <!-- 
-  ** If using the website, note that the website is often behind. You can find the current version the website uses at the home page (i.e. at the landing page of uifabric.io).
- -->
 - __Package version(s)__: (fill this out) 
 - __Browser and OS versions__: (fill this out if relevant)
 
