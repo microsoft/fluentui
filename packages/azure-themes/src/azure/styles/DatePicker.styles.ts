@@ -91,11 +91,11 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   };
   const CalloutStyle = (focus: string, fade: string) => {
     return {
-      //week row bottom border
+      // week row bottom border
       '.ms-DatePicker-table > thead > tr': {
         borderBottom: `${StyleConstants.borderWidth} solid ${semanticColors.bodyText}`
       },
-      //all day td elements
+      // all day td elements
       '.ms-DatePicker-day': {
         border: 'none',
         selectors: {

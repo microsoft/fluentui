@@ -25,7 +25,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
           backgroundColor: semanticColors.disabledBackground
         }
     ],
-    //toggle circle
+    // toggle circle
     thumb: [
       {
         backgroundColor: extendedSemanticColors.controlOutlineHovered
