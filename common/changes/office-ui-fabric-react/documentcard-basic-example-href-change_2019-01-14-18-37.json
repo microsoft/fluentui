@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Changed href in basic example to bing.com",
+      "comment": "DocumentCard: changed href in basic example to bing.com",
       "type": "patch"
     }
   ],
