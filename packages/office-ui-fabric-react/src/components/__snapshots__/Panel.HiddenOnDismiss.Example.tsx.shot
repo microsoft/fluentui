@@ -177,6 +177,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
     >
       <div
         aria-labelledby="Panel3-headerText"
+        aria-modal="true"
         className=
 
             {
