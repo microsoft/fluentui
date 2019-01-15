@@ -1,3 +1,5 @@
+// @codepen
+
 import * as React from 'react';
 import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';

@@ -1,3 +1,5 @@
+// @codepen
+
 import * as React from 'react';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { Link } from 'office-ui-fabric-react/lib/Link';

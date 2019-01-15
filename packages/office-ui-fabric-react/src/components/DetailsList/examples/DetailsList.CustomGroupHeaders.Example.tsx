@@ -1,3 +1,5 @@
+// @codepen
+
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
