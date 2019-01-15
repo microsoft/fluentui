@@ -17,8 +17,8 @@
 
 #### Core build stuff
 scripts/ @dzearing @kenotron @ecraig12345
-package.json @cliffkoh @kenotron @ecraig12345
-*/package.json @cliffkoh
+package.json @kenotron @ecraig12345
+*/package.json @dzearing
 webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345

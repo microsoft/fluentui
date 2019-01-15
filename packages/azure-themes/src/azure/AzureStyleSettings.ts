@@ -16,6 +16,7 @@ import { DropdownStyles } from './styles/DropDown.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
+import { MessageBarStyles } from './styles/MessageBar.styles';
 import { ModalStyles } from './styles/Modal.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
@@ -108,6 +109,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     Link: {
       styles: LinkStyles
+    },
+    MessageBar: {
+      styles: MessageBarStyles
     },
     Modal: {
       styles: ModalStyles

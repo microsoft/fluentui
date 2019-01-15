@@ -17,7 +17,7 @@
     "build": "node ../../scripts/just.js build",
     "just": "node ../../scripts/just.js",
     "clean": "node ../../scripts/just.js clean",
-    "start": "node ../../scripts/start.js",
+    "start": "node ../../scripts/just.js dev",
     "start-test": "node ../../scripts/just.js jest-watch",
     "update-api": "node ../../scripts/update-api.js"
   },
@@ -30,7 +30,7 @@
     "@types/react-dom": "16.0.5",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/jest-serializer-merge-styles": ">=6.0.6 <7.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.7 <7.0.0",
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
     "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
     "enzyme": "^3.4.1",

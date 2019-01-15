@@ -5,14 +5,14 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { createRef, resetIds } from '../../Utilities';
+import { resetIds } from '../../Utilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
 import { ITextFieldStyles, ITextField } from './TextField.types';
 
 describe('TextField', () => {
-  const textFieldRef = createRef<TextFieldBase>();
+  const textFieldRef = React.createRef<TextFieldBase>();
 
   beforeEach(() => {
     resetIds();

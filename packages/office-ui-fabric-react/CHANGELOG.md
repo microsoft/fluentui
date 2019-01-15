@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jan 2019 13:36:46 GMT and should not be manually modified.
+
+## 6.125.0
+Tue, 15 Jan 2019 13:36:46 GMT
+
+### Minor changes
+
+- theming: add loadFonts function and register font variables
+- Icon: Pass theme to styles functions.
+- ChoiceGroup: adds a getter method to IChoiceGroup to allow grabbing the current checked option through the componentRef.
+
+### Patches
+
+- Add type for example list items
+- Convert DocumentCard to MergeStyles
+- DocumentCard: changed href in basic example to bing.com
+- Copy over hasDynamicChildren and hasMenu for persisted keytips
+- Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- PeoplePicker: adjust height of the picker suggestion item to follow the toolkit redline.
+- Fix issue with Facepile not using maxDisplayablePersonas prop if its value is 0
+
+## 6.124.2
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Patches
+
+- DatePicker: only set aria-owns when callout is rendered [#6931]
+- Fix DatePicker firing two onSelectDate events when allowTextInput is true
+- Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument
+- Relaxed type restrictions on possible values for 'autoComplete' attribute on TextField component.
+- ActionButton: Fix focus outline getting clipped when the action button sits within a container with `overflow:'hidden'`.
+- DatePicker: Temporarily disable failing DatePicker test which uses document.querySelector
+- Horizontal scrollbar not available for a grouped details list (all groups collapsed) when header is sticky
 
 ## 6.124.1
 Fri, 11 Jan 2019 05:00:46 GMT

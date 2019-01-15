@@ -1,18 +1,20 @@
-/** @jsx createElementWrapper */
-import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
-import { Stack } from '../../Stack';
+/** @jsx withSlots */
 import { ContextualMenu } from 'office-ui-fabric-react';
+import { withSlots, getSlots } from '../../Foundation';
+import { Stack } from '../../Stack';
+import { Text } from '../../Text';
 import { getNativeProps, buttonProperties } from '../../Utilities';
-import { Icon, Text } from '../../utilities/factoryComponents';
-import { createElementWrapper, getSlots } from '../../utilities/slots';
+import { Icon } from '../../utilities/factoryComponents';
+
+import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { classNames, menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
+  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
-  const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
+  const buttonProps = { ...getNativeProps(rest, buttonProperties) };
 
-  const Slots = getSlots<typeof props, IButtonSlots>(props, {
+  const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
     root: _deriveRootType(props),
     stack: Stack,
     icon: Icon,
@@ -28,9 +30,9 @@ export const ButtonView: IButtonComponent['view'] = props => {
       {...buttonProps}
       aria-disabled={disabled}
     >
-      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center">
-        {icon && <Slots.icon />}
-        {content && <Slots.content />}
+      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
+        <Slots.icon />
+        <Slots.content />
         {children}
         {Menu && (
           <Stack.Item>
@@ -46,7 +48,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
 // TODO: test with split button approach.
 //        should split button be another component?
 //        can Button's slots be manipulated to create an HOC split button?
-// { split && (
+// {split && (
 // <Slot as='span' userProps={splitContainer}>
 //   <Slot as={Divider} userProps={divider} />
 //   <Slot as={Icon} userProps={menuChevron} />
