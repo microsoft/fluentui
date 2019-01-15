@@ -564,6 +564,7 @@ enum CheckboxVisibility {
 // @public (undocumented)
 class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
+  readonly checkedOption: IChoiceGroupOption | undefined;
   // (undocumented)
   componentWillReceiveProps(newProps: IChoiceGroupProps): void;
   // (undocumented)
@@ -970,67 +971,6 @@ enum DialogType {
 
 // @public
 export function disableBodyScroll(): void;
-
-// @public (undocumented)
-class DocumentCard extends BaseComponent<IDocumentCardProps, any>, implements IDocumentCard {
-  constructor(props: IDocumentCardProps);
-  // (undocumented)
-  static defaultProps: IDocumentCardProps;
-  // (undocumented)
-  focus(): void;
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
-  // (undocumented)
-  render(): JSX.Element | null;
-}
-
-// @public (undocumented)
-class DocumentCardLocation extends BaseComponent<IDocumentCardLocationProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardLogo extends BaseComponent<IDocumentCardLogoProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps, any> {
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardStatus extends BaseComponent<IDocumentCardStatusProps, any> {
-  constructor(props: IDocumentCardStatusProps);
-  // (undocumented)
-  render(): JSX.Element;
-}
-
-// @public (undocumented)
-class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
-  constructor(props: IDocumentCardTitleProps);
-  // (undocumented)
-  componentDidMount(): void;
-  // (undocumented)
-  componentDidUpdate(): void;
-  // (undocumented)
-  componentWillReceiveProps(newProps: IDocumentCardTitleProps): void;
-  // (undocumented)
-  render(): JSX.Element;
-}
 
 // @public (undocumented)
 enum DocumentCardType {
@@ -2481,6 +2421,7 @@ interface ICheckStyles {
 
 // @public (undocumented)
 interface IChoiceGroup {
+  checkedOption: IChoiceGroupOption | undefined;
   focus: () => void;
 }
 
@@ -7312,10 +7253,40 @@ interface IDocumentCard {
 }
 
 // @public (undocumented)
-interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActions> {
+interface IDocumentCardActions {
+}
+
+// WARNING: The type "DocumentCardActionsBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
   actions: IButtonProps[];
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardActions>;
+  styles?: IStyleFunctionOrObject<IDocumentCardActionsStyleProps, IDocumentCardActionsStyles>;
+  theme?: ITheme;
   views?: Number;
+}
+
+// @public (undocumented)
+interface IDocumentCardActionsStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardActionsStyles {
+  // (undocumented)
+  action: IStyle;
+  // (undocumented)
+  root: IStyle;
+  // (undocumented)
+  views: IStyle;
+  // (undocumented)
+  viewsIcon: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardActivity {
 }
 
 // @public (undocumented)
@@ -7327,27 +7298,123 @@ interface IDocumentCardActivityPerson {
   profileImageSrc: string;
 }
 
+// WARNING: The type "DocumentCardActivityBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
-interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivity> {
+interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
   activity: string;
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardActivity>;
   people: IDocumentCardActivityPerson[];
+  styles?: IStyleFunctionOrObject<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
-interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocation> {
+interface IDocumentCardActivityStyleProps {
+  className?: string;
+  multiplePeople?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardActivityStyles {
+  // (undocumented)
+  activity: IStyle;
+  // (undocumented)
+  avatar: IStyle;
+  // (undocumented)
+  avatars: IStyle;
+  // (undocumented)
+  details: IStyle;
+  // (undocumented)
+  name: IStyle;
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardDetails {
+}
+
+// WARNING: The type "DocumentCardDetailsBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardDetails>;
+  styles?: IStyleFunctionOrObject<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardDetailsStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardDetailsStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardLocation {
+}
+
+// WARNING: The type "DocumentCardLocationBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
   ariaLabel?: string;
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardLocation>;
   location: string;
   locationHref?: string;
   onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
+  styles?: IStyleFunctionOrObject<IDocumentCardLocationStyleProps, IDocumentCardLocationStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
-interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogo> {
-  componentRef?: IRefObject<{}>;
+interface IDocumentCardLocationStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardLocationStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardLogo {
+}
+
+// WARNING: The type "DocumentCardLogoBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardLogo>;
   logoIcon: string;
   logoName?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardLogoStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardLogoStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardPreview {
 }
 
 // @public (undocumented)
@@ -7372,44 +7439,120 @@ interface IDocumentCardPreviewImage {
 
 // @public (undocumented)
 interface IDocumentCardPreviewProps extends IBaseProps<{}> {
-  componentRef?: IRefObject<{}>;
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardPreview>;
   getOverflowDocumentCountText?: (overflowCount: number) => string;
   previewImages: IDocumentCardPreviewImage[];
+  styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardPreviewStyleProps {
+  className?: string;
+  isFileList?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardPreviewStyles {
+  // (undocumented)
+  fileList: IStyle;
+  // (undocumented)
+  fileListIcon: IStyle;
+  // (undocumented)
+  fileListOverflowText: IStyle;
+  // (undocumented)
+  previewFileTypeIcon: IStyle;
+  // (undocumented)
+  previewIcon: IStyle;
+  // (undocumented)
+  root: IStyle;
 }
 
 // @public (undocumented)
 interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   // @deprecated
   accentColor?: string;
+  children?: React.ReactNode;
   className?: string;
   componentRef?: IRefObject<IDocumentCard>;
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   onClickHref?: string;
   role?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
+  theme?: ITheme;
   type?: DocumentCardType;
 }
 
 // @public (undocumented)
-interface IDocumentCardStatusProps extends React.ClassAttributes<DocumentCardStatus> {
-  componentRef?: IRefObject<{}>;
+interface IDocumentCardStatus {
+}
+
+// WARNING: The type "DocumentCardStatusBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardStatus>;
   status: string;
   statusIcon?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardStatusStyleProps, IDocumentCardStatusStyles>;
+  theme?: ITheme;
 }
 
 // @public (undocumented)
-interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitle> {
-  componentRef?: IRefObject<{}>;
+interface IDocumentCardStatusStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardStatusStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardStyleProps {
+  actionable?: boolean;
+  className?: string;
+  compact?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IDocumentCardTitle {
+}
+
+// WARNING: The type "DocumentCardTitleBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardTitle>;
   shouldTruncate?: boolean;
   showAsSecondaryTitle?: boolean;
+  styles?: IStyleFunctionOrObject<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>;
+  theme?: ITheme;
   title: string;
 }
 
 // @public (undocumented)
-interface IDocumentCardTitleState {
+interface IDocumentCardTitleStyleProps {
+  className?: string;
+  showAsSecondaryTitle?: boolean;
+  theme: ITheme;
+}
+
+// @public (undocumented)
+interface IDocumentCardTitleStyles {
   // (undocumented)
-  truncatedTitleFirstPiece?: string;
-  // (undocumented)
-  truncatedTitleSecondPiece?: string;
+  root: IStyle;
 }
 
 // @public (undocumented)
@@ -8060,6 +8203,8 @@ interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
   imageProps?: IImageProps;
   styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
+  // (undocumented)
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -8088,6 +8233,8 @@ interface IIconStyleProps {
   isPlaceholder: boolean;
   // (undocumented)
   styles?: Partial<IIconStyles>;
+  // (undocumented)
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -9877,7 +10024,7 @@ interface ISelectionZone {
 }
 
 // @public (undocumented)
-interface ISelectionZoneProps extends React.Props<SelectionZone> {
+interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   // (undocumented)
   componentRef?: () => void;
   // (undocumented)
@@ -10666,7 +10813,7 @@ interface ITeachingBubble {
 }
 
 // @public
-interface ITeachingBubbleProps extends React.Props<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
   ariaDescribedBy?: string;
   ariaLabelledBy?: string;
   calloutProps?: ICalloutProps;
@@ -12317,11 +12464,7 @@ class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBu
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
-  rootElement: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  rootElement: React.RefObject<HTMLDivElement>;
 }
 
 // @public (undocumented)
@@ -12345,11 +12488,7 @@ class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITea
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
-  rootElement: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  rootElement: React.RefObject<HTMLDivElement>;
 }
 
 // @public (undocumented)
@@ -12569,6 +12708,15 @@ module ZIndexes {
 // WARNING: Unsupported export: DialogContent
 // WARNING: Unsupported export: DialogFooter
 // WARNING: Unsupported export: VerticalDivider
+// WARNING: Unsupported export: DocumentCard
+// WARNING: Unsupported export: DocumentCardActions
+// WARNING: Unsupported export: DocumentCardActivity
+// WARNING: Unsupported export: DocumentCardDetails
+// WARNING: Unsupported export: DocumentCardLocation
+// WARNING: Unsupported export: DocumentCardPreview
+// WARNING: Unsupported export: DocumentCardTitle
+// WARNING: Unsupported export: DocumentCardLogo
+// WARNING: Unsupported export: DocumentCardStatus
 // WARNING: Unsupported export: Dropdown
 // WARNING: Unsupported export: IDropdownStyleProps
 // WARNING: Unsupported export: people

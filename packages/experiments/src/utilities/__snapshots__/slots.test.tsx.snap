@@ -14,6 +14,7 @@ exports[`createFactory renders userProp function with one prop 1`] = `
 
 exports[`createFactory renders userProp integer as children 1`] = `
 <div
+  className=""
   component="componentValue"
   id="componentIdValue"
 >
@@ -23,6 +24,7 @@ exports[`createFactory renders userProp integer as children 1`] = `
 
 exports[`createFactory renders userProp string as children 1`] = `
 <div
+  className=""
   component="componentValue"
   id="componentIdValue"
 >

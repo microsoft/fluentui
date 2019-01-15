@@ -1,8 +1,9 @@
+/** @jsx withSlots */
 import * as React from 'react';
-import { createStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { withSlots, createStatelessComponent, getSlots, IStyleableComponentProps } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
-import { IStackComponent, IStackProps, IStackStyles } from './Stack.types';
+import { IStackComponent, IStackProps, IStackSlots, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
 import { mergeStyles } from '../../Styling';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
@@ -11,7 +12,7 @@ const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IS
   .type;
 
 const view: IStackComponent['view'] = props => {
-  const { as: RootType = 'div', classNames, shrinkItems, wrap, ...rest } = props;
+  const { as: RootType = 'div', shrinkItems, wrap, ...rest } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -27,6 +28,7 @@ const view: IStackComponent['view'] = props => {
 
       if (child.type === StackItemType) {
         // If child is a StackItem, we need to pass down the className of ITS first child to the StackItem for mergeStylesSet to work
+        // TODO: how will this be affected by mergeStyleSets being removed from createComponent?
         const children = child.props ? child.props.children : undefined;
         const stackItemFirstChildren = React.Children.toArray(children) as React.ReactElement<{ className?: string }>[];
         const stackItemFirstChild = stackItemFirstChildren && stackItemFirstChildren[0];
@@ -50,21 +52,20 @@ const view: IStackComponent['view'] = props => {
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
+  const Slots = getSlots<IStackProps, IStackSlots>(props, {
+    root: RootType,
+    inner: 'div'
+  });
+
   if (wrap) {
     return (
-      <RootType className={classNames.root}>
-        <div {...nativeProps} className={classNames.inner}>
-          {stackChildren}
-        </div>
-      </RootType>
+      <Slots.root {...nativeProps}>
+        <Slots.inner>{stackChildren}</Slots.inner>
+      </Slots.root>
     );
   }
 
-  return (
-    <RootType {...nativeProps} className={classNames.root}>
-      {stackChildren}
-    </RootType>
-  );
+  return <Slots.root {...nativeProps}>{stackChildren}</Slots.root>;
 };
 
 const StackStatics = {
@@ -75,7 +76,7 @@ type IStackStatics = typeof StackStatics;
 
 export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
-} = createStatelessComponent<IStackProps, IStackStyles, IStackStatics>({
+} = createStatelessComponent<IStackProps, IStackStyles, {}, IStackStatics>({
   displayName: 'Stack',
   styles,
   view,

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { BaseComponent, getId, KeyCodes, customizable, calculatePrecision, precisionRound, createRef } from '../../Utilities';
+import { BaseComponent, getId, KeyCodes, customizable, calculatePrecision, precisionRound } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
@@ -51,7 +51,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
-  private _input = createRef<HTMLInputElement>();
+  private _input = React.createRef<HTMLInputElement>();
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
