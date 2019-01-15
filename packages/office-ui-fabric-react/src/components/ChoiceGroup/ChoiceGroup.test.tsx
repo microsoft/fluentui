@@ -7,7 +7,7 @@ import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption, IChoiceGroup } from './ChoiceGroup.types';
-import { resetIds } from '../../Utilities';
+import { merge, resetIds } from '../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1' } as IChoiceGroupOption,
@@ -77,10 +77,10 @@ describe('ChoiceGroup', () => {
   });
 
   it('An individual choice option can be disabled', () => {
-    const options = { ...TEST_OPTIONS };
+    const options = merge([], TEST_OPTIONS);
     options[0].disabled = true;
 
-    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} />);
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={options} required={true} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
@@ -191,5 +191,11 @@ describe('ChoiceGroup', () => {
     ReactTestUtils.Simulate.change(choiceOptions[0]);
     expect(choiceGroupRef.current!.checkedOption).toBeDefined();
     expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
+  });
+
+  it('sets the first enabled option to focusable, even with an invalid defaultSelectedKey', () => {
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} defaultSelectedKey="X" />);
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
   });
 });
