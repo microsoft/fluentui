@@ -4,58 +4,46 @@ import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Persona } from 'office-ui-fabric-react/lib/Persona';
 
 const header: React.SFC<IDetailPanelHeaderProps> = (props: IDetailPanelHeaderProps) => {
-    const _onRenderAction = (): JSX.Element | null => {
-        const { quickActions } = props;
-        if (quickActions) {
-            return (
-                <div>
-                    {quickActions
-                        .filter((_: IQuickAction) => !!!_.hide)
-                        .map((_: IQuickAction, i: number) => (
-                            <span key={`${i}_${_.actionName}`}>
-                                <IconButton
-                                    iconProps={{ iconName: _.icon }}
-                                    onClick={_.onClick}
-                                    title={_.actionName}
-                                />
-                            </span>
-                        ))}
-                </div>
-            )
-        }
-
-        return null;
+  const _onRenderAction = (): JSX.Element | null => {
+    const { quickActions } = props;
+    if (quickActions) {
+      return (
+        <div>
+          {quickActions
+            .filter((_: IQuickAction) => !!!_.hide)
+            .map((_: IQuickAction, i: number) => (
+              <span key={`${i}_${_.actionName}`}>
+                <IconButton iconProps={{ iconName: _.icon }} onClick={_.onClick} title={_.actionName} />
+              </span>
+            ))}
+        </div>
+      );
     }
 
-    const _onRenderStatus = (): JSX.Element | null => {
-        const { status } = props;
+    return null;
+  };
 
-        if (status !== undefined) {
-            return <div>{status}</div>
-        }
+  const _onRenderStatus = (): JSX.Element | null => {
+    const { status } = props;
 
-        return null;
+    if (status !== undefined) {
+      return <div>{status}</div>;
     }
 
-    const _renderElement = () => {
-        const { title, personaHeader } = props;
+    return null;
+  };
 
-        if (personaHeader) {
-            return (
-                <Persona
-                    primaryText={title}
-                    onRenderSecondaryText={_onRenderAction}
-                    onRenderTertiaryText={_onRenderStatus}
-                />
-            );
-        }
+  const _renderElement = () => {
+    const { title, personaHeader } = props;
 
-        return (<div>{title}</div>);
+    if (personaHeader) {
+      return <Persona primaryText={title} onRenderSecondaryText={_onRenderAction} onRenderTertiaryText={_onRenderStatus} />;
     }
 
-    return _renderElement();
-}
+    return <div>{title}</div>;
+  };
 
-export {
-    header as Header
-}
+  return _renderElement();
+};
+
+export { header as Header };

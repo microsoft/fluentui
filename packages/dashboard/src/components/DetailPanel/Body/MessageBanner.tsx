@@ -4,42 +4,39 @@ import * as React from 'react';
 import { IDetailPanelMessageBannerProps } from '../DetailPanel.types';
 
 interface IDetailPanelMessageBannerStates {
-    show: boolean;
+  show: boolean;
 }
 
-class MessageBanner extends React.PureComponent<IDetailPanelMessageBannerProps, IDetailPanelMessageBannerStates>{
-    constructor(props: IDetailPanelMessageBannerProps) {
-        super(props);
-        this.state = { show: true };
+class MessageBanner extends React.PureComponent<IDetailPanelMessageBannerProps, IDetailPanelMessageBannerStates> {
+  constructor(props: IDetailPanelMessageBannerProps) {
+    super(props);
+    this.state = { show: true };
+  }
+
+  public render(): JSX.Element | null {
+    const { show } = this.state;
+    if (show) {
+      const { message, messageType, onDismissAction } = this.props;
+      if (message) {
+        return (
+          <MessageBar messageBarType={messageType} onDismiss={onDismissAction ? this._onDismissMessage : undefined}>
+            {message}
+          </MessageBar>
+        );
+      }
     }
 
-    public render(): JSX.Element | null {
-        const { show } = this.state;
-        if (show) {
-            const { message, messageType, onDismissAction } = this.props;
-            if (message) {
-                return (
-                    <MessageBar
-                        messageBarType={messageType}
-                        onDismiss={onDismissAction ? this._onDismissMessage : undefined}
-                    >
-                        {message}
-                    </MessageBar>
-                );
-            }
-        }
+    return null;
+  }
 
-        return null;
+  private _onDismissMessage() {
+    const { onDismissAction } = this.props;
+    if (onDismissAction) {
+      onDismissAction();
     }
 
-    private _onDismissMessage() {
-        const { onDismissAction } = this.props;
-        if (onDismissAction) {
-            onDismissAction();
-        }
-
-        this.setState({ show: false });
-    }
+    this.setState({ show: false });
+  }
 }
 
 export { MessageBanner };
