@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add aria-expanded to the DetailList column header",
+      "comment": "DetailsList: add isMenuOpen property on IColumn interface and add aria-expanded to the DetailsList column header.",
       "type": "minor"
     }
   ],
