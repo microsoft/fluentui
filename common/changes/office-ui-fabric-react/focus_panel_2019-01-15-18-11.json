@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Setting the aria-modal flag to true on Panel because it's considered modal and currently, focus is going outside the Panel component while Narrator's in scan mode. This alone will not solve this problem fully because we're still waiting on Narrator to support aria-modal.",
+      "comment": "Panel: setting the aria-modal to true to prevent loosing focus when using Narrator in scan mode.",
       "type": "patch"
     }
   ],
