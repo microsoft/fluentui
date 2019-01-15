@@ -1,8 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PersonaCoinView renders a coin with a contact icon 1`] = `
+exports[`PersonaCoin renders a coin with a contact icon 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: #2D89EF;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 48px;
+        justify-content: center;
+        position: relative;
+        width: 48px;
+      }
 >
   <i
     className=
@@ -12,6 +24,7 @@ exports[`PersonaCoinView renders a coin with a contact icon 1`] = `
           -webkit-font-smoothing: antialiased;
           display: inline-block;
           font-family: "FabricMDL2Icons-0";
+          font-size: 19.2px;
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -24,9 +37,21 @@ exports[`PersonaCoinView renders a coin with a contact icon 1`] = `
 </div>
 `;
 
-exports[`PersonaCoinView renders a coin with a contact icon for a Chinese name 1`] = `
+exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: #00A300;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 48px;
+        justify-content: center;
+        position: relative;
+        width: 48px;
+      }
 >
   <i
     className=
@@ -36,6 +61,7 @@ exports[`PersonaCoinView renders a coin with a contact icon for a Chinese name 1
           -webkit-font-smoothing: antialiased;
           display: inline-block;
           font-family: "FabricMDL2Icons-0";
+          font-size: 19.2px;
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -48,9 +74,21 @@ exports[`PersonaCoinView renders a coin with a contact icon for a Chinese name 1
 </div>
 `;
 
-exports[`PersonaCoinView renders a coin with the initials JB 1`] = `
+exports[`PersonaCoin renders a coin with the initials JB 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: #2D89EF;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 48px;
+        justify-content: center;
+        position: relative;
+        width: 48px;
+      }
 >
   <span
     className=
@@ -61,7 +99,7 @@ exports[`PersonaCoinView renders a coin with the initials JB 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-size: 19.2px;
           font-weight: 400;
           moz-osx-font-smoothing: grayscale;
           overflow: hidden;
@@ -75,9 +113,21 @@ exports[`PersonaCoinView renders a coin with the initials JB 1`] = `
 </div>
 `;
 
-exports[`PersonaCoinView renders a correct persona 1`] = `
+exports[`PersonaCoin renders a correct persona 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: #5E4B8B;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 48px;
+        justify-content: center;
+        position: relative;
+        width: 48px;
+      }
 >
   <span
     className=
@@ -88,7 +138,7 @@ exports[`PersonaCoinView renders a correct persona 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-size: 19.2px;
           font-weight: 400;
           moz-osx-font-smoothing: grayscale;
           overflow: hidden;
@@ -102,9 +152,21 @@ exports[`PersonaCoinView renders a correct persona 1`] = `
 </div>
 `;
 
-exports[`PersonaCoinView renders a red coin 1`] = `
+exports[`PersonaCoin renders a red coin 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: red;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 48px;
+        justify-content: center;
+        position: relative;
+        width: 48px;
+      }
 >
   <span
     className=
@@ -115,7 +177,7 @@ exports[`PersonaCoinView renders a red coin 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-size: 19.2px;
           font-weight: 400;
           moz-osx-font-smoothing: grayscale;
           overflow: hidden;
@@ -129,9 +191,21 @@ exports[`PersonaCoinView renders a red coin 1`] = `
 </div>
 `;
 
-exports[`PersonaCoinView renders presence correctly when a very large coin is rendered 1`] = `
+exports[`PersonaCoin renders presence correctly when a very large coin is rendered 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: #00A300;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 100px;
+        justify-content: center;
+        position: relative;
+        width: 100px;
+      }
 >
   <i
     className=
@@ -141,6 +215,7 @@ exports[`PersonaCoinView renders presence correctly when a very large coin is re
           -webkit-font-smoothing: antialiased;
           display: inline-block;
           font-family: "FabricMDL2Icons-0";
+          font-size: 40px;
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -153,7 +228,6 @@ exports[`PersonaCoinView renders presence correctly when a very large coin is re
   <div
     className=
         ms-Persona-presence
-        test-cn-presence
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
@@ -214,9 +288,21 @@ exports[`PersonaCoinView renders presence correctly when a very large coin is re
 </div>
 `;
 
-exports[`PersonaCoinView renders presence when it is passed 1`] = `
+exports[`PersonaCoin renders presence when it is passed 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: #00A300;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 48px;
+        justify-content: center;
+        position: relative;
+        width: 48px;
+      }
 >
   <i
     className=
@@ -226,6 +312,7 @@ exports[`PersonaCoinView renders presence when it is passed 1`] = `
           -webkit-font-smoothing: antialiased;
           display: inline-block;
           font-family: "FabricMDL2Icons-0";
+          font-size: 19.2px;
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -238,7 +325,6 @@ exports[`PersonaCoinView renders presence when it is passed 1`] = `
   <div
     className=
         ms-Persona-presence
-        test-cn-presence
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
@@ -299,9 +385,21 @@ exports[`PersonaCoinView renders presence when it is passed 1`] = `
 </div>
 `;
 
-exports[`PersonaCoinView renders the coin with the provided image 1`] = `
+exports[`PersonaCoin renders the coin with the provided image 1`] = `
 <div
-  className="test-cn-root"
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        background-color: #00A300;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        height: 48px;
+        justify-content: center;
+        position: relative;
+        width: 48px;
+      }
 >
   <span
     className=
@@ -312,7 +410,7 @@ exports[`PersonaCoinView renders the coin with the provided image 1`] = `
           color: inherit;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-size: 19.2px;
           font-weight: 400;
           moz-osx-font-smoothing: grayscale;
           overflow: hidden;
@@ -334,8 +432,12 @@ exports[`PersonaCoinView renders the coin with the provided image 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
+          height: 48px;
+          left: 0px;
           overflow: hidden;
-          position: relative;
+          position: absolute;
+          top: 0px;
+          width: 48px;
         }
     style={
       Object {
