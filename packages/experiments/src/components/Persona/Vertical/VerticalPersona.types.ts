@@ -3,7 +3,7 @@ import { IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../
 import { ITextSlot } from '../../../Text';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
-export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles>;
+export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles, IVerticalPersonaTokens>;
 
 export interface IVerticalPersonaSlots {
   root?: IHTMLDivSlot;
@@ -16,10 +16,9 @@ export interface IVerticalPersonaSlots {
 // If you don't want these props to be included in your component, just remove this extension.
 export interface IVerticalPersonaProps
   extends IVerticalPersonaSlots,
-    IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaStyles> {
+    IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaStyles, IVerticalPersonaTokens> {
   vertical: true;
   text: string;
-  styleVariables?: IVerticalPersonaStyleVariableTypes;
 }
 
 export interface IVerticalPersonaStyles {
@@ -29,27 +28,15 @@ export interface IVerticalPersonaStyles {
   coin?: IStyle; // TODO: Check if this works after Jason his PR
 }
 
-// TODO: convert this to tokens
-export interface IVerticalPersonaStyleVariableTypes {
-  verticalPersonaWidth: number;
-  text: ITextStyleVariables;
-  primaryText: IPrimaryTextStyleVariables;
-  secondaryText: ISecondaryTextStyleVariables;
-}
-
-export interface ITextStyleVariables {
-  height: number;
-  fontFamily: string;
-  textPaddingLeftAndRight: number;
-}
-
-export interface IPrimaryTextStyleVariables {
-  paddingTop: string;
-  fontSize: string;
-  fontWeight: IFontWeight;
-}
-
-export interface ISecondaryTextStyleVariables {
-  paddingTop: string;
-  fontSize: string;
+export interface IVerticalPersonaTokens {
+  verticalPersonaWidth?: number;
+  fontFamily?: string;
+  textMaxHeight?: number;
+  textPaddingLeftAndRight?: number;
+  primaryTextPaddingTop?: string;
+  primaryTextFontSize?: string;
+  primaryTextFontWeight?: IFontWeight;
+  secondaryTextPaddingTop?: string;
+  secondaryTextFontSize?: string;
+  secondaryTextFontWeight?: IFontWeight;
 }

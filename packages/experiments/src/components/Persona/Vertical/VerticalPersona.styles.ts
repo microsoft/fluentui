@@ -1,52 +1,47 @@
-import { merge } from 'office-ui-fabric-react/lib/Utilities';
-import { IVerticalPersonaComponent, IVerticalPersonaStyleVariableTypes } from './VerticalPersona.types';
+import { IVerticalPersonaComponent } from './VerticalPersona.types';
 
-export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props, theme) => {
-  const baseVariables: IVerticalPersonaStyleVariableTypes = {
+export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props, theme) => {
+  return {
     verticalPersonaWidth: 122,
-    text: {
-      height: 35,
-      fontFamily: 'SegoeUI',
-      textPaddingLeftAndRight: 8
-    },
-    primaryText: {
-      paddingTop: '8px',
-      fontSize: '14px',
-      fontWeight: 600
-    },
-    secondaryText: {
-      paddingTop: '6px',
-      fontSize: '12px'
-    }
+    // TODO: Use font from theme?
+    fontFamily: 'SegoeUI',
+    textMaxHeight: 35,
+    textPaddingLeftAndRight: 8,
+    primaryTextPaddingTop: '8px',
+    primaryTextFontSize: '14px',
+    primaryTextFontWeight: 600,
+    secondaryTextPaddingTop: '6px',
+    secondaryTextFontSize: '12px',
+    secondaryTextFontWeight: 300
   };
+};
 
-  const variables = props.styleVariables ? merge(baseVariables, props.styleVariables) : baseVariables;
-
+export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props, theme, tokens) => {
   return {
     root: {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      width: `${variables.verticalPersonaWidth}px`,
-      padding: `0 ${variables.text.textPaddingLeftAndRight}px`,
+      width: `${tokens.verticalPersonaWidth}px`,
+      padding: `0 ${tokens.textPaddingLeftAndRight}px`,
       boxSizing: 'border-box'
     },
     primaryText: {
-      paddingTop: variables.primaryText.paddingTop,
-      maxHeight: variables.text.height,
-      fontFamily: variables.text.fontFamily,
-      fontSize: variables.primaryText.fontSize,
-      fontWeight: variables.primaryText.fontWeight,
+      paddingTop: tokens.primaryTextPaddingTop,
+      maxHeight: tokens.textMaxHeight,
+      fontFamily: tokens.fontFamily,
+      fontSize: tokens.primaryTextFontSize,
+      fontWeight: tokens.primaryTextFontWeight,
       color: theme.palette.neutralPrimary,
       textAlign: 'center',
       whiteSpace: 'initial'
     },
     secondaryText: {
-      paddingTop: variables.secondaryText.paddingTop,
-      height: variables.text.height,
-      fontFamily: variables.text.fontFamily,
-      fontSize: variables.secondaryText.fontSize,
+      paddingTop: tokens.secondaryTextPaddingTop,
+      maxHeight: tokens.textMaxHeight,
+      fontFamily: tokens.fontFamily,
+      fontSize: tokens.secondaryTextFontSize,
       lineHeight: '1.42',
       textAlign: 'center',
       whiteSpace: 'initial',
