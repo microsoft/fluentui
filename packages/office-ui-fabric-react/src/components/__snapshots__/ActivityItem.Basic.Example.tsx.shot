@@ -30,7 +30,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {
@@ -237,7 +236,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {
@@ -384,7 +382,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {
