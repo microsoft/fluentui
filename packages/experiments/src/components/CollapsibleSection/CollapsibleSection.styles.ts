@@ -6,9 +6,7 @@ const GlobalClassNames = {
   body: 'ms-CollapsibleSection-body'
 };
 
-export const collapsibleSectionStyles: ICollapsibleSectionComponent['styles'] = props => {
-  const { theme } = props;
-
+export const collapsibleSectionStyles: ICollapsibleSectionComponent['styles'] = (props, theme) => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {

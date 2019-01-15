@@ -7,7 +7,7 @@ const sectionGap = 32;
 const headingGap = 16;
 const personaCoinGap = 12;
 
-const PersonaCoinStack = (props: { children: JSX.Element[] }) => (
+const PersonaCoinStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   <Stack horizontal gap={personaCoinGap}>
     {props.children}
   </Stack>
@@ -33,6 +33,12 @@ export class PersonaCoinExample extends React.Component<{}, {}> {
             <PersonaCoinStack>
               <PersonaCoin initials="JB" />
               <PersonaCoin initials="王力" />
+            </PersonaCoinStack>
+          </Stack>
+          <Stack gap={personaCoinGap}>
+            <Text>Initials not available</Text>
+            <PersonaCoinStack>
+              <PersonaCoin />
             </PersonaCoinStack>
           </Stack>
         </Stack>

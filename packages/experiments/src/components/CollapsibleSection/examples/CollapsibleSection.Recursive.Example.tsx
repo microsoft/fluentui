@@ -91,9 +91,7 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
         <CollapsibleSection
           key={i}
           defaultCollapsed={true}
-          titleProps={{
-            text: _folderItems[randomFolder]
-          }}
+          title={_folderItems[randomFolder]}
           indent={this.props.indent}
         >
           <CollapsibleSectionFolder indent={(this.props.indent || 0) + 1} />
