@@ -1,15 +1,14 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, createStatelessComponent, getSlots, IStyleableComponentProps } from '../../Foundation';
+import { withSlots, createStatelessComponent, getSlots } from '../../Foundation';
 import StackItem from './StackItem/StackItem';
-import { IStackItemProps, IStackItemStyles } from './StackItem/StackItem.types';
+import { IStackItemProps } from './StackItem/StackItem.types';
 import { IStackComponent, IStackProps, IStackSlots, IStackStyles } from './Stack.types';
 import { styles } from './Stack.styles';
 import { mergeStyles } from '../../Styling';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
-const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps> & IStyleableComponentProps<IStackItemProps, IStackItemStyles>)
-  .type;
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
 const view: IStackComponent['view'] = props => {
   const { as: RootType = 'div', shrinkItems, wrap, ...rest } = props;
