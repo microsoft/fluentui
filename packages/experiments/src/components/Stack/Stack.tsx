@@ -8,7 +8,7 @@ import { styles } from './Stack.styles';
 import { mergeStyles } from '../../Styling';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
-const StackItemType = <StackItem />.type;
+const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
 const view: IStackComponent['view'] = props => {
   const { as: RootType = 'div', shrinkItems, wrap, ...rest } = props;

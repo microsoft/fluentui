@@ -33,7 +33,7 @@ const outputFiles = {
 
 // Error strings
 const errorCreatingComponentDir = 'Error creating component directory';
-const errorComponentName = 'Please pass in the component name using --name ExcitingNewComponentName (without appending Component)';
+const errorComponentName = 'Please pass in the component name using --name';
 
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
