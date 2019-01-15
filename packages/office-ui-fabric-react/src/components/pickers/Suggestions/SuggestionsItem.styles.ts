@@ -56,6 +56,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
       {
         width: '100%',
         padding: 0,
+        border: 'none',
         height: '100%',
         selectors: {
           [HighContrastSelector]: {
