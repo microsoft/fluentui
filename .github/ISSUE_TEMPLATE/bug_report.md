@@ -3,9 +3,7 @@ name: Bug report
 about: Found a bug in Fabric? Please let us know.
 
 ---
-<!-- 🚨 STOP 🚨 𝗦𝗧𝗢𝗣 🚨 𝑺𝑻𝑶𝑷 🚨
-
-We’re here to help, but we need a few things from you! 
+<!--  
 
 Please help us reduce duplicates by doing the following steps before logging an issue:
   * Search: https://github.com/OfficeDev/office-ui-fabric-react/search?type=Issues
