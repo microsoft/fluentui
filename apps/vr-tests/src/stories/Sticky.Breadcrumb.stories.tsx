@@ -139,11 +139,11 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
           height: '80vh',
           position: 'relative',
           maxHeight: 'inherit',
-          width: '500px'
+          width: '900px'
         }}
       >
         <Fabric>
-          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '500px', border: '1px solid #edebe9' }}>
+          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '900px', border: '1px solid #edebe9' }}>
             <Sticky
               stickyPosition={StickyPositionType.Header}
               stickyBackgroundColor={getTheme().palette.white}
@@ -152,7 +152,9 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
                 styles={breadcrumbStyle}
                 items={[
                   { text: 'Files', key: 'Files' },
-                  { text: 'This is folder 1', key: 'f1', isCurrentItem: true }
+                  { text: 'This is folder 1', key: 'f1' },
+                  { text: 'This is folder 2', key: 'f2' },
+                  { text: 'This is folder 3', key: 'f3', isCurrentItem: true }
                 ]}
                 ariaLabel={'breadcrumb-test'}
               />
@@ -217,24 +219,24 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
   );
 }
 
-storiesOf('Sticky breadcrumb and sticy details list header', module)
+storiesOf('Sticky breadcrumb and sticky details list header', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 2")
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 5")
         .snapshot('scroll down by a small amount so that the first row is still visible and the header becomes sticky', { cropTo: '.testWrapper' })
         .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
         .snapshot('scroll down to the bottom', { cropTo: '.testWrapper' })
         .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
         .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = 10")
-        .snapshot('scroll left', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 10")
-        .snapshot('scroll down when scroll left is non-zero', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = 40")
+        .snapshot('scroll right', { cropTo: '.testWrapper' })
+        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
+        .snapshot('scroll down when horizontal scroll is non-zero', { cropTo: '.testWrapper' })
         .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
-        .snapshot('scroll back to the top when scroll left is non-zero', { cropTo: '.testWrapper' })
+        .snapshot('scroll back to the top when horizontal scroll is non-zero', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
