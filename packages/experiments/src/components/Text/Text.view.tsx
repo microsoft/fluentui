@@ -1,8 +1,18 @@
-import * as React from 'react';
-import { ITextComponent } from './Text.types';
+/** @jsx withSlots */
+import { withSlots, getSlots } from '../../Foundation';
+import { getNativeProps, divProperties } from '../../Utilities';
+import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 
 export const TextView: ITextComponent['view'] = props => {
-  const { inline, className, as: RootType = 'span', variant, wrap, classNames, ...rest } = props;
+  if (!props.children) {
+    return null;
+  }
 
-  return <RootType {...rest} className={classNames.root} />;
+  const { inline, className, as: RootType = 'span', variant, wrap, ...rest } = props;
+
+  const Slots = getSlots<ITextProps, ITextSlots>(props, {
+    root: RootType
+  });
+
+  return <Slots.root {...getNativeProps(rest, divProperties)} />;
 };

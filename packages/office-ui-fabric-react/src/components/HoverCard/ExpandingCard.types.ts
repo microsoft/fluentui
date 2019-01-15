@@ -29,12 +29,12 @@ export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExp
   /**
    *  Render function to populate compact content area
    */
-  onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
+  onRenderCompactCard?: IRenderFunction<any>;
 
   /**
    *  Render function to populate expanded content area
    */
-  onRenderExpandedCard?: IRenderFunction<IExpandingCardProps>;
+  onRenderExpandedCard?: IRenderFunction<any>;
 }
 
 export enum ExpandingCardMode {

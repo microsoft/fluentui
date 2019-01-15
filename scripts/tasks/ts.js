@@ -10,7 +10,7 @@ function getExtraTscParams(args) {
   return { pretty: true, target: 'es5', ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath) }) };
 }
 
-exports.ts = {
+module.exports.ts = {
   commonjs: () => {
     const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib-commonjs', module: 'commonjs' });

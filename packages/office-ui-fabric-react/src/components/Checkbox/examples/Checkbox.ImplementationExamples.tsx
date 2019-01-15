@@ -1,6 +1,6 @@
+// @codepen
 import * as React from 'react';
 import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
@@ -67,9 +67,9 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
 
         <Checkbox label="Controlled checkbox" checked={isChecked} onChange={this._onControlledCheckboxChange} styles={checkboxStyles} />
 
-        <Checkbox label='Checkbox rendered with boxSide "end"' boxSide="end" styles={checkboxStyles} />
+        <Checkbox label='Checkbox rendered with boxSide "end" test' boxSide="end" styles={checkboxStyles} />
 
-        <Checkbox label="Persona Checkbox" styles={checkboxStyles} onRenderLabel={this._renderPersonaLabel} />
+        <Checkbox label="Persona Checkbox" styles={checkboxStyles} onRenderLabel={this._renderLabelWithLink} />
       </div>
     );
   }
@@ -82,8 +82,11 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     this.setState({ isChecked: checked! });
   };
 
-  private _renderPersonaLabel(props: ICheckboxProps): JSX.Element {
-    const DEFAULT_IMAGE_URL = '/_layouts/15/userphoto.aspx?size=S&accountname=';
-    return <Persona text={props.label} imageUrl={DEFAULT_IMAGE_URL} size={PersonaSize.size32} />;
+  private _renderLabelWithLink(props: ICheckboxProps): JSX.Element {
+    return (
+      <span>
+        This is a <a href="https://www.microsoft.com">link</a> inside a label.
+      </span>
+    );
   }
 }

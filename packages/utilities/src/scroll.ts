@@ -47,6 +47,11 @@ const _makeElementScrollAllower = () => {
 
     const clientY = event.targetTouches[0].clientY - _previousClientY;
 
+    const scrollableParent = findScrollableParent(event.target as HTMLElement);
+    if (scrollableParent) {
+      _element = scrollableParent;
+    }
+
     // if the element is scrolled to the top,
     // prevent the user from scrolling up
     if (_element.scrollTop === 0 && clientY > 0) {
@@ -65,8 +70,8 @@ const _makeElementScrollAllower = () => {
       return;
     }
 
-    events.on(element, 'touchstart', _saveClientY);
-    events.on(element, 'touchmove', _preventOverscrolling);
+    events.on(element, 'touchstart', _saveClientY, { passive: false });
+    events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
 
     _element = element;
   };

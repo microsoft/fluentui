@@ -6,7 +6,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
-import { IChoiceGroupOption } from './ChoiceGroup.types';
+import { IChoiceGroupOption, IChoiceGroup } from './ChoiceGroup.types';
 import { resetIds } from '../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
@@ -153,22 +153,18 @@ describe('ChoiceGroup', () => {
     expect(extraAttributeGetter(1)).toBeNull();
   });
 
-  // By default, we need to assign the role 'application' on the containing div
-  // because JAWS doesn't call OnKeyDown without this role
-  it('has role="application" by default on the containing element', () => {
-    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} />);
-    const choiceGroupEl: Element = choiceGroup.getDOMNode();
-    const role = choiceGroupEl.getAttribute('role');
-
-    expect(role).toEqual('application');
-  });
-
   it('has role attribute that can be omitted', () => {
     const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" />);
     const choiceGroupEl: Element = choiceGroup.getDOMNode();
     const role = choiceGroupEl.getAttribute('role');
-
     expect(role).toEqual('');
+  });
+
+  it('can assign a role attribute to the containing element', () => {
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="Test" />);
+    const choiceGroupEl: Element = choiceGroup.getDOMNode();
+    const role = choiceGroupEl.getAttribute('role');
+    expect(role).toEqual('Test');
   });
 
   it('can assign a custom aria label', () => {
@@ -183,5 +179,17 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[1] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
     expect((choiceOptions[2] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
     expect((choiceOptions[3] as HTMLInputElement).getAttribute('aria-label')).toEqual('Custom aria label');
+  });
+
+  it('can be accessed to get the current checked option', () => {
+    const choiceGroupRef = React.createRef<IChoiceGroup>();
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" componentRef={choiceGroupRef} />);
+
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+
+    expect(choiceGroupRef.current!.checkedOption).toBeUndefined();
+    ReactTestUtils.Simulate.change(choiceOptions[0]);
+    expect(choiceGroupRef.current!.checkedOption).toBeDefined();
+    expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
   });
 });

@@ -1,6 +1,33 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 04 Jan 2019 13:36:07 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Jan 2019 13:39:22 GMT and should not be manually modified.
+
+## 0.43.2
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Patches
+
+- Add Empty card state for addCardPanel
+- Revert horizontal compaction and fix left nav external links to open based on target attr
+
+## 0.43.1
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- "update grid list cursor to pointer"
+
+## 0.43.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+- Adding support for JSX.Element to DGLWithAddCardPanel. Still maintaining support for RTL/LTR and accessibility.
+
+### Patches
+
+- Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps
 
 ## 0.42.2
 Fri, 04 Jan 2019 13:36:07 GMT

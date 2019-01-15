@@ -1,12 +1,13 @@
 import { IStyle } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 
 export type IAccordionComponent = IStatelessComponent<IAccordionProps, IAccordionStyles>;
 
-export interface IAccordionProps extends IStyleableComponentProps<IAccordionProps, IAccordionStyles> {
-  renderAs?: string | React.ReactType<IAccordionProps>;
-  className?: string;
+export interface IAccordionSlots {
+  root?: IHTMLDivSlot;
+}
 
+export interface IAccordionProps extends IAccordionSlots, IStyleableComponentProps<IAccordionProps, IAccordionStyles> {
   collapseItems?: boolean;
 }
 
