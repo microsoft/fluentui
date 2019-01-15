@@ -34,9 +34,15 @@ fs.writeFileSync(path.join(srcRoot, paletteOutputFilename), colorLines.join('\n'
 
 const semanticColors = defaultTheme.semanticColors;
 const semanticLines = [];
+const deprecatedTag = ' /* @deprecated */';
+
 for (const color in semanticColors) {
   const name = color + 'Color';
-  semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color]}]';`);
+  if (semanticColors[color].indexOf(deprecatedTag) >= 0) {
+    semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color].replace(deprecatedTag, '')}]'; ${deprecatedTag}`);
+  } else {
+    semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color]}]'; `);
+  }
 }
 
 const semanticOutputFilename = '_semanticSlots.scss';
