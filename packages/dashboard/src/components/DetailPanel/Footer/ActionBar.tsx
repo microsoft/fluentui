@@ -9,8 +9,7 @@ import {
 } from '../DetailPanel.types';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-
-
+import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 type DetailPanelActionBarProps = IDetailPanelActionBarProps & IDetailPanelBaseSetStatesAction;
 
@@ -19,12 +18,14 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
     onCallBack: FunctionCallback<IDetailPanelActionResult | void>,
     primary: boolean,
     message?: string,
-    inlineSpinner?: boolean) => () => {
-      const { onSetLoadingAnimation, onSetMessageBanner } = props;
-      // Set to loading
-      onSetLoadingAnimation(primary ? LoadingTheme.OnPrimaryButtonClick : LoadingTheme.OnSecondaryButtonClick, message, inlineSpinner);
+    inlineSpinner?: boolean
+  ) => () => {
+    const { onSetLoadingAnimation, onSetMessageBanner } = props;
+    // Set to loading
+    onSetLoadingAnimation(primary ? LoadingTheme.OnPrimaryButtonClick : LoadingTheme.OnSecondaryButtonClick, message, inlineSpinner);
 
-      Promise.resolve(onCallBack()).then((_: IDetailPanelActionResult) => {
+    Promise.resolve(onCallBack())
+      .then((_: IDetailPanelActionResult) => {
         // Set stop loading
         onSetLoadingAnimation();
 
@@ -36,16 +37,21 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
             onSetMessageBanner(_.messageBanner);
           }
         }
-      }).catch((err: IDetailPanelErrorResult) => {
+      })
+      .catch((err: IDetailPanelErrorResult) => {
         if (err) {
           // set message banner
-          onSetMessageBanner(err.messageBannerSetting);
+          const messageBannerSetting = Object.assign({}, err.messageBannerSetting);
+          if(messageBannerSetting.messageType===undefined){
+            messageBannerSetting.messageType = MessageBarType.error;
+          }
+          onSetMessageBanner(messageBannerSetting);
         }
 
         // set stop loading
         onSetLoadingAnimation();
-      })
-    };
+      });
+  };
 
   const _renderElement = () => {
     const {
@@ -64,34 +70,33 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
     return (
       <div>
         <div>
-          {(primaryButtonText && onPrimaryAction) &&
-            <PrimaryButton
-              onClick={_wrapLoadingAnimation(onPrimaryAction, true, onPrimaryActionMessage, primaryActionInlineSpinner)}
-            >
+          {primaryButtonText && onPrimaryAction && (
+            <PrimaryButton onClick={_wrapLoadingAnimation(onPrimaryAction, true, onPrimaryActionMessage, primaryActionInlineSpinner)}>
               {primaryButtonText}
-            </PrimaryButton>}
+            </PrimaryButton>
+          )}
         </div>
         <div>
-          {(secondaryButtonText && onSecondaryAction) &&
+          {secondaryButtonText && onSecondaryAction && (
             <DefaultButton
               onClick={_wrapLoadingAnimation(onSecondaryAction, false, onSecondaryActionMessage, secondaryActionInlineSpinner)}
             >
               {secondaryButtonText}
-            </DefaultButton>}
+            </DefaultButton>
+          )}
         </div>
         <div>
-          {linkText &&
-            <Link href={linkHref} target={'_blank'} onClick={onLinkAction} >
+          {linkText && (
+            <Link href={linkHref} target={'_blank'} onClick={onLinkAction}>
               {linkText}
-            </Link>}
+            </Link>
+          )}
         </div>
       </div>
-    )
+    );
   };
 
   return _renderElement();
-}
-
-export {
-  actionBar as ActionBar
 };
+
+export { actionBar as ActionBar };

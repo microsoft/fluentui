@@ -125,6 +125,11 @@ export interface IMainBodyProps {
      * On click the back on current L2
      */
     onL2BackClick?: (l2Id: string | number) => void;
+
+    /**
+     * Callback on close the detail panel
+     */
+    onDetailPanelDimiss?: () => void;
 }
 
 export interface IBodyContainerProps {
@@ -139,8 +144,18 @@ export interface IBodyContainerProps {
     messageBanner?: IDetailPanelMessageBannerProps;
 
     /**
-    * Content to display in the main area
-    */
+     * Loading element
+     */
+    loadingElement?: JSX.Element;
+
+    /**
+     * Set the loading element inline
+     */
+    inlineLoading?: boolean;
+
+    /**
+     * Content to display in the main area
+     */
     mainContent?: JSX.Element;
 
     /**
@@ -159,10 +174,7 @@ export interface IBodyContainerProps {
     onBack?: () => void;
 }
 
-export interface IBodyContainerBaseProps {
-
-
-}
+export interface IBodyContainerBaseProps { }
 
 export interface IDetailPanelBaseSetStatesAction {
     /**
@@ -208,6 +220,4 @@ export interface IDetailPanelActionBarProps {
     onSecondaryActionMessage?: string;
 }
 
-export interface IDetailPanelProps extends IMainBodyProps {
-
-}
+export interface IDetailPanelProps extends IMainBodyProps { }

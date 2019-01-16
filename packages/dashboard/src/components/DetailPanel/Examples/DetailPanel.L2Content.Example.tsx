@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DetailPanel } from '../DetailPanel';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IDetailPanelHeaderProps, IDetailPanelErrorResult, IDetailPanelActionBarProps } from '../DetailPanel.types';
+import { IDetailPanelHeaderProps, IDetailPanelErrorResult, IDetailPanelActionBarProps, IDetailPanelActionResult } from '../DetailPanel.types';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 
 interface IDetailPanelL2ContentExampleStates {
@@ -9,7 +9,7 @@ interface IDetailPanelL2ContentExampleStates {
     currentL2Id?: string;
 }
 
-export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetailPanelL2ContentExampleStates>{
+export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetailPanelL2ContentExampleStates> {
     constructor(props: {}) {
         super(props);
         this.state = { show: false, currentL2Id: undefined };
@@ -19,21 +19,31 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
         const { show, currentL2Id } = this.state;
         if (show) {
             const header: IDetailPanelHeaderProps = {
-                title: " I am the main header"
+                title: ' I am the main header'
             };
 
             return (
                 <DetailPanel
                     mainHeader={header}
                     mainContent={this.getMainContent()}
+                    onDetailPanelDimiss={() => { this.setState({ show: false, currentL2Id: undefined }) }}
+                    onL2BackClick={() => { this.setState({ currentL2Id: undefined }) }}
                     currentL2Id={currentL2Id}
                     onGetL2Header={this._onGetL2Header}
                     onGetL2Content={this._onGetL2Content}
                     onGetL2ActionBar={this._onGetL2ActionBar}
                 />
-            )
+            );
         } else {
-            return <PrimaryButton onClick={() => { this.setState({ show: true }) }}>Open</PrimaryButton>
+            return (
+                <PrimaryButton
+                    onClick={() => {
+                        this.setState({ show: true });
+                    }}
+                >
+                    Open
+        </PrimaryButton>
+            );
         }
     }
 
@@ -42,24 +52,36 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
             <div>
                 <div>Main content</div>
                 <ul>
-                    <li >
-                        <Link onClick={() => { this.setState({ currentL2Id: 'cat' }) }}>
+                    <li>
+                        <Link
+                            onClick={() => {
+                                this.setState({ currentL2Id: 'cat' });
+                            }}
+                        >
                             CAT
-                    </Link>
-                    </li>
-                    <li >
-                        <Link onClick={() => { this.setState({ currentL2Id: 'dog' }) }}>
-                            DOG
-                    </Link>
+            </Link>
                     </li>
                     <li>
-                        <Link onClick={() => { this.setState({ currentL2Id: 'bird' }) }}>
+                        <Link
+                            onClick={() => {
+                                this.setState({ currentL2Id: 'dog' });
+                            }}
+                        >
+                            DOG
+            </Link>
+                    </li>
+                    <li>
+                        <Link
+                            onClick={() => {
+                                this.setState({ currentL2Id: 'bird' });
+                            }}
+                        >
                             Bird
-                    </Link>
+            </Link>
                     </li>
                 </ul>
             </div>
-        )
+        );
     }
 
     private _onGetL2Header(l2Id: string) {
@@ -77,19 +99,46 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
                         messageBannerSetting: {
                             message: `Error message of ${l2Id}`
                         }
-                    }
-                    reject(err)
+                    };
+                    reject(err);
                 }
 
-                resolve(<div>Content of {l2Id}</div>)
+                resolve(<div>Content of {l2Id}</div>);
             }, 1000);
-        })
+        });
     }
 
-    private _onGetL2ActionBar(l2Id: string) {
-        const actionBar: IDetailPanelActionBarProps = {
+    private _onDelaySubmit = (forceReject: boolean) => () => {
+        return new Promise((resolve: (value: IDetailPanelActionResult) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
+            setTimeout(() => {
+                if (forceReject) {
+                    reject({
+                        messageBannerSetting: {
+                            message: 'Failed on submit'
+                        }
+                    })
+                }
+
+                resolve({
+
+                })
+            }, 1000);
+        });
+    }
+
+    private _onGetL2ActionBar = (l2Id: string) => {
+        let actionBar: IDetailPanelActionBarProps = {
             primaryButtonText: `Primary ${l2Id}`,
-            onPrimaryAction: () => { alert(l2Id) }
+            onPrimaryAction: () => {
+                alert(l2Id);
+            }
+        };
+
+        if (l2Id === 'cat') {
+            actionBar.onPrimaryAction = this._onDelaySubmit(true);
+            actionBar.secondaryButtonText = 'Cat 2nd';
+            actionBar.onSecondaryAction = this._onDelaySubmit(false);
+            actionBar.secondaryActionInlineSpinner = true;
         }
 
         return actionBar;

@@ -7,7 +7,7 @@ interface IDetailPanelBasicExampleStates {
     show: boolean;
 }
 
-export class DetailPanelBasicExample extends React.PureComponent<{}, IDetailPanelBasicExampleStates>{
+export class DetailPanelBasicExample extends React.PureComponent<{}, IDetailPanelBasicExampleStates> {
     constructor(props: {}) {
         super(props);
         this.state = { show: false };
@@ -17,17 +17,25 @@ export class DetailPanelBasicExample extends React.PureComponent<{}, IDetailPane
         const { show } = this.state;
         if (show) {
             const header: IDetailPanelHeaderProps = {
-                title: " I am a basic detail panel"
+                title: ' I am a basic detail panel'
             };
 
             return (
                 <DetailPanel
                     mainHeader={header}
                     mainContent={<div>Main content!</div>}
-                />
-            )
+                    onDetailPanelDimiss={() => { this.setState({ show: false }) }}
+                />);
         } else {
-            return <PrimaryButton onClick={() => { this.setState({ show: true }) }}>Open</PrimaryButton>
+            return (
+                <PrimaryButton
+                    onClick={() => {
+                        this.setState({ show: true });
+                    }}
+                >
+                    Open
+        </PrimaryButton>
+            );
         }
     }
 }

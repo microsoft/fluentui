@@ -56,7 +56,7 @@ export const AppDefinition: IAppDefinition = {
           key: 'DetailPanel',
           name: 'DetailPanel',
           url: '#/examples/detailpanel'
-        },
+        }
       ]
     }
   ],
