@@ -1,6 +1,5 @@
 import { getGlobalClassNames, hiddenContentStyle } from '../../Styling';
 import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
-import { cssColor, IRGB } from '../../utilities/color/colors';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',
@@ -15,14 +14,16 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   if (!theme) {
     throw new Error('theme is undefined or null in base BasePicker getStyles function.');
   }
-  const { semanticColors, palette } = theme;
+  const { semanticColors } = theme;
   const { inputBorder, inputBorderHovered, inputFocusBorderAlt } = semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // The following lines are to create a semi-transparent color overlay for the disabled state with designer's approval.
-  const rgbColor: IRGB | undefined = cssColor(palette.neutralQuaternaryAlt);
-  const disabledOverlayColor = rgbColor ? `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.29)` : 'transparent';
+  // @todo: investigate the performance cost of the calculation below and apply if negligible. Replacing with a static color for now.
+  // const rgbColor: IRGB | undefined = cssColor(palette.neutralQuaternaryAlt);
+  // const disabledOverlayColor = rgbColor ? `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.29)` : 'transparent';
+  const disabledOverlayColor = 'rgba(218, 218, 218, 0.29)';
 
   return {
     root: [classNames.root, className],
