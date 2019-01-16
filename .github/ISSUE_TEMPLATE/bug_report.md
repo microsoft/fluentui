@@ -4,12 +4,15 @@ about: Found a bug in Fabric? Please let us know.
 
 ---
 <!--  
+Thanks for contacting us! We're here to help.
 
-Please help us reduce duplicates by doing the following steps before logging an issue:
+Before you report an issue, check if it's been reported before:
+
   * Search: https://github.com/OfficeDev/office-ui-fabric-react/search?type=Issues
   * Search by area or component: https://github.com/OfficeDev/office-ui-fabric-react/issues/labels
   
 Please provide a reproduction of the bug in a codepen, if possible. Here’s how:
+
   * Goto https://aka.ms/fabricpen for a starting codepen 
   * You can also use the "Export to Codepen" feature for the various components in our documentation site.
   * Alternatively, you can also use https://aka.ms/fabricdemo to get permanent repro links if the repro occurs with an example. 
