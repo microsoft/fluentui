@@ -104,7 +104,6 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {

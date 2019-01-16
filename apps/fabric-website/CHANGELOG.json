@@ -2,6 +2,38 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.8.3",
+      "tag": "@uifabric/fabric-website_v6.8.3",
+      "date": "Tue, 15 Jan 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add shimmered DetailsList to website",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "45a18462510041769b034a495a9fab906d20a8a6"
+          },
+          {
+            "comment": "Documentation: Updating README to mention buildfast as an advanced build alternative.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "bc14f20836eed44160a53d367285cbd2110f752c"
+          },
+          {
+            "comment": "Updates for new CollapsibleSection API.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1a3f5371a2f69c564c27094d602745a5d747253d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.4 <7.0.0` to `>=6.50.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.2 <7.0.0` to `>=6.125.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.2",
       "tag": "@uifabric/fabric-website_v6.8.2",
       "date": "Tue, 08 Jan 2019 13:34:49 GMT",

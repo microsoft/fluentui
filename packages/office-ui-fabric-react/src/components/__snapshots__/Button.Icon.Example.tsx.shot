@@ -101,7 +101,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
         className=
             ms-Button-icon
             {

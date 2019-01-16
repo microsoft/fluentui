@@ -6,8 +6,8 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
-import { IChoiceGroupOption } from './ChoiceGroup.types';
-import { resetIds } from '../../Utilities';
+import { IChoiceGroupOption, IChoiceGroup } from './ChoiceGroup.types';
+import { merge, resetIds } from '../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1' } as IChoiceGroupOption,
@@ -77,10 +77,10 @@ describe('ChoiceGroup', () => {
   });
 
   it('An individual choice option can be disabled', () => {
-    const options = { ...TEST_OPTIONS };
+    const options: IChoiceGroupOption[] = merge([], TEST_OPTIONS) as IChoiceGroupOption[];
     options[0].disabled = true;
 
-    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} />);
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={options} required={true} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
@@ -179,5 +179,23 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[1] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
     expect((choiceOptions[2] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
     expect((choiceOptions[3] as HTMLInputElement).getAttribute('aria-label')).toEqual('Custom aria label');
+  });
+
+  it('can be accessed to get the current checked option', () => {
+    const choiceGroupRef = React.createRef<IChoiceGroup>();
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" componentRef={choiceGroupRef} />);
+
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+
+    expect(choiceGroupRef.current!.checkedOption).toBeUndefined();
+    ReactTestUtils.Simulate.change(choiceOptions[0]);
+    expect(choiceGroupRef.current!.checkedOption).toBeDefined();
+    expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
+  });
+
+  it('sets the first enabled option to focusable, even with an invalid defaultSelectedKey', () => {
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} defaultSelectedKey="X" />);
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
   });
 });

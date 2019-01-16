@@ -22,7 +22,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   protected _forceResolveButton = React.createRef<IButton>();
   protected _searchForMoreButton = React.createRef<IButton>();
   protected _selectedElement = React.createRef<HTMLDivElement>();
-
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
   private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;

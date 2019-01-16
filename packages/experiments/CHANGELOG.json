@@ -2,6 +2,68 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.6",
+      "tag": "@uifabric/experiments_v6.50.6",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Foundation typings to require Tokens.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "34319d03cd433df8110b4028fddb3041c108cfcd"
+          },
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prettier changes from a master merge with conflicts.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "eeddb4f7f7a2595229eb75cf3af10410da1ca26a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.5",
+      "tag": "@uifabric/experiments_v6.50.5",
+      "date": "Tue, 15 Jan 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Convert all compoenents to use Slots. Add experimental Tokens feature.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1a3f5371a2f69c564c27094d602745a5d747253d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `>=0.1.3 <1.0.0` to `>=0.1.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.40.0 <7.0.0` to `>=6.41.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.2 <7.0.0` to `>=6.125.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.6 <7.0.0` to `>=6.0.7 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.4",
       "tag": "@uifabric/experiments_v6.50.4",
       "date": "Fri, 11 Jan 2019 05:00:46 GMT",
