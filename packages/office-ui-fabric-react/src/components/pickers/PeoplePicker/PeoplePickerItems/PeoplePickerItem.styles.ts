@@ -1,4 +1,5 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector, IStyle } from '../../../../Styling';
+import { GlobalClassNames as iconButtonClassNames } from '../../../Button/BaseButton.classNames';
 import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
 const GlobalClassNames = {
@@ -14,7 +15,7 @@ const REMOVE_BUTTON_SIZE = 28;
 export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles {
   const { className, theme, selected, invalid, disabled } = props;
 
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -147,8 +148,8 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       ],
       disabled && {
         selectors: {
-          '.ms-Button-icon': {
-            color: theme.semanticColors.buttonText
+          [`.${iconButtonClassNames.msButtonIcon}`]: {
+            color: semanticColors.buttonText
           }
         }
       }

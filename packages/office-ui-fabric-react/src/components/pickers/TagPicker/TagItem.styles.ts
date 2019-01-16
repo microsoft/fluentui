@@ -1,4 +1,5 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
+import { GlobalClassNames as iconButtonClassNames } from '../../Button/BaseButton.classNames';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
 const GlobalClassNames = {
@@ -99,8 +100,8 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
       },
       disabled && {
         selectors: {
-          '.ms-Button-icon': {
-            color: theme.semanticColors.buttonText
+          [`.${iconButtonClassNames.msButtonIcon}`]: {
+            color: palette.neutralSecondary
           }
         }
       }

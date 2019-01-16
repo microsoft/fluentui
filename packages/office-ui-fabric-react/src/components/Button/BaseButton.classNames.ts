@@ -14,7 +14,7 @@ export interface IButtonClassNames {
   screenReaderText?: string;
 }
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   msButton: 'ms-Button',
   msButtonIcon: 'ms-Button-icon',
   msButtonMenuIcon: 'ms-Button-menuIcon',
