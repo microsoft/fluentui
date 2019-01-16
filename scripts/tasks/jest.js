@@ -15,5 +15,6 @@ exports.jestWatch = () =>
     ...(process.env.TRAVIS && { runInBand: true }),
     ...(process.env.TRAVIS || argv().production ? { coverage: true } : undefined),
     ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined),
-    _: ['--watch', '-i', ...(argv()._ ? argv()._.filter(arg => arg !== 'jest-watch') : [])]
+    watch: true,
+    _: ['-i', ...(argv()._ ? argv()._.filter(arg => arg !== 'jest-watch') : [])]
   });
