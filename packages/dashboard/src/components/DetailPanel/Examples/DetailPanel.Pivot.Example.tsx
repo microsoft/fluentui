@@ -158,9 +158,11 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
         } as IDetailPanelPivotBodyItem,
         {
           headerText: 'JSX',
-          content: (<div>
-            <ColorPicker color={'#000000'} />
-          </div>)
+          content: (
+            <div>
+              <ColorPicker color={'#000000'} />
+            </div>
+          )
         } as IDetailPanelPivotBodyItem,
         {
           headerText: 'Delayed Details',
@@ -261,10 +263,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
                 },
                 {
                   title: 'Related tasks',
-                  links: [
-                    { linkText: 'Microsoft information protection' },
-                    { linkText: 'Office 365 Advanced Threat Protection' }
-                  ]
+                  links: [{ linkText: 'Microsoft information protection' }, { linkText: 'Office 365 Advanced Threat Protection' }]
                 },
                 {
                   title: 'Learn more',
@@ -301,7 +300,6 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
                   alert('printing');
                 }
               }
-
             } as IDetailPanelConfirmationResultProps
           } as IDetailPanelActionResult);
         } else {

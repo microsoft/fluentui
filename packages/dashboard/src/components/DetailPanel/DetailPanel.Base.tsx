@@ -66,15 +66,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
   }
 
   public render(): JSX.Element | null {
-    const {
-      pageReady,
-      messageBanner,
-      loadingElement,
-      contentElement,
-      currentL2Id,
-      inlineLoading,
-      actionBar,
-      confirmation } = this.state;
+    const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar, confirmation } = this.state;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
@@ -288,7 +280,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
 
   private _setConfirmationResult = (props: IDetailPanelConfirmationResultProps) => {
     this.setState({ confirmation: props });
-  }
+  };
 
   private _onBackAction = () => {
     const { onL2BackClick } = this.props;
