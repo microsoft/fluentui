@@ -1,146 +1,153 @@
 import * as React from 'react';
 import { DetailPanel } from '../DetailPanel';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IDetailPanelHeaderProps, IDetailPanelErrorResult, IDetailPanelActionBarProps, IDetailPanelActionResult } from '../DetailPanel.types';
+import {
+  IDetailPanelHeaderProps,
+  IDetailPanelErrorResult,
+  IDetailPanelActionBarProps,
+  IDetailPanelActionResult
+} from '../DetailPanel.types';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 
 interface IDetailPanelL2ContentExampleStates {
-    show: boolean;
-    currentL2Id?: string;
+  show: boolean;
+  currentL2Id?: string;
 }
 
 export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetailPanelL2ContentExampleStates> {
-    constructor(props: {}) {
-        super(props);
-        this.state = { show: false, currentL2Id: undefined };
-    }
+  constructor(props: {}) {
+    super(props);
+    this.state = { show: false, currentL2Id: undefined };
+  }
 
-    public render() {
-        const { show, currentL2Id } = this.state;
-        if (show) {
-            const header: IDetailPanelHeaderProps = {
-                title: ' I am the main header'
-            };
+  public render() {
+    const { show, currentL2Id } = this.state;
+    if (show) {
+      const header: IDetailPanelHeaderProps = {
+        title: ' I am the main header'
+      };
 
-            return (
-                <DetailPanel
-                    mainHeader={header}
-                    mainContent={this.getMainContent()}
-                    onDetailPanelDimiss={() => { this.setState({ show: false, currentL2Id: undefined }) }}
-                    onL2BackClick={() => { this.setState({ currentL2Id: undefined }) }}
-                    currentL2Id={currentL2Id}
-                    onGetL2Header={this._onGetL2Header}
-                    onGetL2Content={this._onGetL2Content}
-                    onGetL2ActionBar={this._onGetL2ActionBar}
-                />
-            );
-        } else {
-            return (
-                <PrimaryButton
-                    onClick={() => {
-                        this.setState({ show: true });
-                    }}
-                >
-                    Open
+      return (
+        <DetailPanel
+          mainHeader={header}
+          mainContent={this.getMainContent()}
+          onDetailPanelDimiss={() => {
+            this.setState({ show: false, currentL2Id: undefined });
+          }}
+          onL2BackClick={() => {
+            this.setState({ currentL2Id: undefined });
+          }}
+          currentL2Id={currentL2Id}
+          onGetL2Header={this._onGetL2Header}
+          onGetL2Content={this._onGetL2Content}
+          onGetL2ActionBar={this._onGetL2ActionBar}
+        />
+      );
+    } else {
+      return (
+        <PrimaryButton
+          onClick={() => {
+            this.setState({ show: true });
+          }}
+        >
+          Open
         </PrimaryButton>
-            );
-        }
+      );
     }
+  }
 
-    private getMainContent() {
-        return (
-            <div>
-                <div>Main content</div>
-                <ul>
-                    <li>
-                        <Link
-                            onClick={() => {
-                                this.setState({ currentL2Id: 'cat' });
-                            }}
-                        >
-                            CAT
+  private getMainContent() {
+    return (
+      <div>
+        <div>Main content</div>
+        <ul>
+          <li>
+            <Link
+              onClick={() => {
+                this.setState({ currentL2Id: 'cat' });
+              }}
+            >
+              CAT
             </Link>
-                    </li>
-                    <li>
-                        <Link
-                            onClick={() => {
-                                this.setState({ currentL2Id: 'dog' });
-                            }}
-                        >
-                            DOG
+          </li>
+          <li>
+            <Link
+              onClick={() => {
+                this.setState({ currentL2Id: 'dog' });
+              }}
+            >
+              DOG
             </Link>
-                    </li>
-                    <li>
-                        <Link
-                            onClick={() => {
-                                this.setState({ currentL2Id: 'bird' });
-                            }}
-                        >
-                            Bird
+          </li>
+          <li>
+            <Link
+              onClick={() => {
+                this.setState({ currentL2Id: 'bird' });
+              }}
+            >
+              Bird
             </Link>
-                    </li>
-                </ul>
-            </div>
-        );
-    }
+          </li>
+        </ul>
+      </div>
+    );
+  }
 
-    private _onGetL2Header(l2Id: string) {
-        return {
-            title: `I am the header of ${l2Id}`
-        } as IDetailPanelHeaderProps;
-    }
+  private _onGetL2Header(l2Id: string) {
+    return {
+      title: `I am the header of ${l2Id}`
+    } as IDetailPanelHeaderProps;
+  }
 
-    private _onGetL2Content(l2Id: string) {
-        return new Promise((resolve: (element: JSX.Element) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
-            setTimeout(() => {
-                if (l2Id === 'bird') {
-                    const err: IDetailPanelErrorResult = {
-                        pageTitle: `Title of ${l2Id}`,
-                        messageBannerSetting: {
-                            message: `Error message of ${l2Id}`
-                        }
-                    };
-                    reject(err);
-                }
-
-                resolve(<div>Content of {l2Id}</div>);
-            }, 1000);
-        });
-    }
-
-    private _onDelaySubmit = (forceReject: boolean) => () => {
-        return new Promise((resolve: (value: IDetailPanelActionResult) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
-            setTimeout(() => {
-                if (forceReject) {
-                    reject({
-                        messageBannerSetting: {
-                            message: 'Failed on submit'
-                        }
-                    })
-                }
-
-                resolve({
-
-                })
-            }, 1000);
-        });
-    }
-
-    private _onGetL2ActionBar = (l2Id: string) => {
-        let actionBar: IDetailPanelActionBarProps = {
-            primaryButtonText: `Primary ${l2Id}`,
-            onPrimaryAction: () => {
-                alert(l2Id);
+  private _onGetL2Content(l2Id: string) {
+    return new Promise((resolve: (element: JSX.Element) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
+      setTimeout(() => {
+        if (l2Id === 'bird') {
+          const err: IDetailPanelErrorResult = {
+            pageTitle: `Title of ${l2Id}`,
+            messageBannerSetting: {
+              message: `Error message of ${l2Id}`
             }
-        };
-
-        if (l2Id === 'cat') {
-            actionBar.onPrimaryAction = this._onDelaySubmit(true);
-            actionBar.secondaryButtonText = 'Cat 2nd';
-            actionBar.onSecondaryAction = this._onDelaySubmit(false);
-            actionBar.secondaryActionInlineSpinner = true;
+          };
+          reject(err);
         }
 
-        return actionBar;
+        resolve(<div>Content of {l2Id}</div>);
+      }, 1000);
+    });
+  }
+
+  private _onDelaySubmit = (forceReject: boolean) => () => {
+    return new Promise((resolve: (value: IDetailPanelActionResult) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
+      setTimeout(() => {
+        if (forceReject) {
+          reject({
+            messageBannerSetting: {
+              message: 'Failed on submit'
+            }
+          });
+        }
+
+        resolve({});
+      }, 1000);
+    });
+  };
+
+  private _onGetL2ActionBar = (l2Id: string) => {
+    let actionBar: IDetailPanelActionBarProps = {
+      primaryButtonText: `Primary ${l2Id}`,
+      onPrimaryAction: () => {
+        alert(l2Id);
+      }
+    };
+
+    if (l2Id === 'cat') {
+      actionBar.onPrimaryAction = this._onDelaySubmit(true);
+      actionBar.secondaryButtonText = 'Cat 2nd';
+      actionBar.onSecondaryAction = this._onDelaySubmit(false);
+      actionBar.secondaryActionInlineSpinner = true;
     }
+
+    return actionBar;
+  };
 }

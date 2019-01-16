@@ -42,7 +42,7 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
         if (err) {
           // set message banner
           const messageBannerSetting = Object.assign({}, err.messageBannerSetting);
-          if(messageBannerSetting.messageType===undefined){
+          if (messageBannerSetting.messageType === undefined) {
             messageBannerSetting.messageType = MessageBarType.error;
           }
           onSetMessageBanner(messageBannerSetting);
