@@ -476,7 +476,7 @@ export interface IColumn {
    */
   filterAriaLabel?: string;
   /**
-   * Whether the dropdown menu is opened
+   * Indicates whether a dropdown menu is open so that the appropriate ARIA attributes are rendered.
    */
   isMenuOpen?: boolean;
 }
