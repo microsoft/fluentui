@@ -1,9 +1,9 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
-import { IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IHTMLDivSlot, IStyleableComponentProps } from '../../../Foundation';
 import { ITextSlot } from '../../../Text';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
-export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles>;
+export type IVerticalPersonaComponent = IComponent<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles>;
 
 export interface IVerticalPersonaSlots {
   root?: IHTMLDivSlot;

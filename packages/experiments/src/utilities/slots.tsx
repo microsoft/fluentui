@@ -159,6 +159,7 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
       //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
       //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
       const slot: ISlot<keyof TSlots> = componentProps => {
+        // TODO: detect withSlots usage here or elsewhere (via existence of type property?) and warn if withSlots is not used
         return renderSlot(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
