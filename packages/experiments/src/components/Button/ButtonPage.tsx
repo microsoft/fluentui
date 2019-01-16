@@ -23,7 +23,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Button Styles" code={ButtonStylesExampleCode}>
               <ButtonStylesExample />
             </ExampleCard>
-            <ExampleCard title="Button Style Variables" code={ButtonTokensExampleCode}>
+            <ExampleCard title="Button Tokens" code={ButtonTokensExampleCode}>
               <ButtonTokensExample />
             </ExampleCard>
           </div>

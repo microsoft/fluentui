@@ -4,7 +4,7 @@ import { ToggleState as state } from './Toggle.state';
 import { IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens } from './Toggle.types';
 import { createComponent } from '../../Foundation';
 
-export const Toggle: React.StatelessComponent<IToggleProps> = createComponent<IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens>(
+export const Toggle: React.StatelessComponent<IToggleProps> = createComponent<IToggleProps, IToggleViewProps, IToggleTokens, IToggleStyles>(
   {
     displayName: 'Toggle',
     view,

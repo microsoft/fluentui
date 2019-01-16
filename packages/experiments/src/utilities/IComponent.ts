@@ -32,19 +32,19 @@ export type ITokenFunctionOrObject<TViewProps, TTokens> = ITokenFunction<TViewPr
  * Optional props for styleable components. If these props are present, they will automatically be
  * used by Foundation when applying theming and styling.
  */
-export interface IStyleableComponentProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}> {
+export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
   className?: string;
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   theme?: ITheme;
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
-export type ICustomizationProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens> = IStyleableComponentProps<
+export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = IStyleableComponentProps<
   TViewProps,
-  TStyleSet,
-  TTokens
+  TTokens,
+  TStyleSet
 > &
-  Required<Pick<IStyleableComponentProps<TViewProps, TStyleSet, TTokens>, 'theme'>>;
+  Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
 
 /**
  * Enforce props contract on state components, including the view prop and its shape.
@@ -63,7 +63,7 @@ export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentTy
  * Component used by foundation to tie elements together.
  * @see createComponent for generic type documentation.
  */
-export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> {
+export interface IComponentOptions<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> {
   /**
    * Display name to identify component in React hierarchy.
    */
@@ -97,20 +97,20 @@ export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extend
 /**
  * Variant of IComponentOptions for stateful components with appropriate typing and required properties.
  */
-export type IComponent<
+export type IComponent<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = IComponentOptions<
   TComponentProps,
   TViewProps,
-  TStyleSet extends IStyleSet<TStyleSet>,
-  TTokens = {},
-  TStatics = {}
-> = IComponentOptions<TComponentProps, TViewProps, TStyleSet, TTokens, TStatics> &
-  Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>, 'state'>>;
+  TTokens,
+  TStyleSet,
+  TStatics
+> &
+  Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>, 'state'>>;
 
 /**
  * Variant of IComponentOptions for stateless components with appropriate typing and required properties.
  */
-export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> = Omit<
-  IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>,
+export type IStatelessComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}> = Omit<
+  IComponentOptions<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>,
   'state'
 >;
 

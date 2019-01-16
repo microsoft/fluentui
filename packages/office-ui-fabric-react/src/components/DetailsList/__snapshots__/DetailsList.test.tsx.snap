@@ -237,7 +237,6 @@ exports[`DetailsList renders List correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -267,7 +266,6 @@ exports[`DetailsList renders List correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -819,7 +817,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -849,7 +846,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -1989,7 +1985,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2019,7 +2014,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -2572,7 +2566,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2602,7 +2595,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -3530,7 +3522,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -3560,7 +3551,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -4620,7 +4610,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             onClick={[Function]}
           >
             <i
-              aria-hidden={true}
               className=
                   ms-DetailsHeader-collapseButton
                   {
@@ -4994,7 +4983,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {
@@ -5061,7 +5049,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               type="button"
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {
@@ -5634,7 +5621,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {
@@ -5701,7 +5687,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               type="button"
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {

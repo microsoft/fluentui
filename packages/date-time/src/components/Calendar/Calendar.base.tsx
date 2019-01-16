@@ -200,7 +200,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
               today={this.props.today}
               highlightCurrentMonth={highlightCurrentMonth!}
               highlightSelectedMonth={highlightSelectedMonth!}
-              onHeaderSelect={onHeaderSelect}
+              onHeaderSelect={this._onHeaderSelect}
               navigationIcons={navigationIcons!}
               dateTimeFormatter={this.props.dateTimeFormatter!}
               minDate={minDate}
@@ -288,9 +288,10 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   };
 
   private _onHeaderSelect = (): void => {
+    const { showMonthPickerAsOverlay } = this.props;
     this.setState({
-      isDayPickerVisible: !this.state.isDayPickerVisible,
-      isMonthPickerVisible: !this.state.isMonthPickerVisible
+      isDayPickerVisible: !(showMonthPickerAsOverlay && this.state.isDayPickerVisible),
+      isMonthPickerVisible: !(showMonthPickerAsOverlay && this.state.isMonthPickerVisible)
     });
 
     this._focusOnUpdate = true;

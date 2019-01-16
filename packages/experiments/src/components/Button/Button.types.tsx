@@ -5,7 +5,7 @@ import { IStackSlot } from '../../Stack';
 import { ITextSlot } from '../../Text';
 import { IBaseProps } from '../../Utilities';
 
-export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles, IButtonTokens>;
+export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonTokens, IButtonStyles>;
 
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
@@ -22,7 +22,7 @@ export interface IButton {}
 
 export interface IButtonProps
   extends IButtonSlots,
-    IStyleableComponentProps<IButtonProps, IButtonStyles, IButtonTokens>,
+    IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
     IBaseProps<IButton> {
   href?: string;
 
