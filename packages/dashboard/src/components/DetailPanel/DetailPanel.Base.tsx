@@ -6,13 +6,15 @@ import {
   IDetailPanelActionBarProps,
   IDetailPanelBaseProps,
   IDetailPanelHeaderProps,
-  IDetailPanelErrorResult
+  IDetailPanelErrorResult,
+  IDetailPanelConfirmationResultProps
 } from './DetailPanel.types';
 import { Loading } from './Body/Loading';
 import { BaseContainer } from './BaseContainer';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { _isReactComponent } from './Utils';
 import { DetailPanelPivotBody } from './Body/DetailPanelPivotBody';
+import { ConfirmationResult } from './Body/ConfirmationResult';
 
 interface IMainBodyStates {
   pageReady: boolean;
@@ -22,6 +24,7 @@ interface IMainBodyStates {
   contentElement?: JSX.Element;
   actionBar?: IDetailPanelActionBarProps;
   currentL2Id?: string | number;
+  confirmation?: IDetailPanelConfirmationResultProps;
 }
 
 interface IMainBodySnapshot {
@@ -40,7 +43,8 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       inlineLoading: undefined,
       contentElement: this._getMainContent(),
       actionBar: props.mainActionBar,
-      currentL2Id: undefined
+      currentL2Id: undefined,
+      confirmation: undefined
     };
   }
 
@@ -62,11 +66,33 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
   }
 
   public render(): JSX.Element | null {
-    const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar } = this.state;
+    const {
+      pageReady,
+      messageBanner,
+      loadingElement,
+      contentElement,
+      currentL2Id,
+      inlineLoading,
+      actionBar,
+      confirmation } = this.state;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
       return null;
+    }
+
+    // render confirmation result page if any
+    if (confirmation) {
+      return (
+        <BaseContainer
+          onDismiss={this._onDismissAction}
+          onSetLoadingAnimation={this._setLoadingAnimation}
+          mainContent={<ConfirmationResult {...confirmation} />}
+          actionBar={confirmation.actionBar}
+          inlineLoading={inlineLoading}
+          loadingElement={loadingElement}
+        />
+      );
     }
 
     return (
@@ -75,6 +101,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
         onDismiss={this._onDismissAction}
         onSetLoadingAnimation={this._setLoadingAnimation}
         onSetMessageBanner={this._setMessageBanner}
+        onSetConfirmationResult={this._setConfirmationResult}
         header={this._getCurrentHeader(false)}
         messageBanner={messageBanner}
         mainContent={contentElement}
@@ -97,7 +124,6 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
         this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad);
         Promise.resolve(onGetL2Content(snapshot.nextL2Id))
           .then((element: JSX.Element) => {
-
             this.setState({
               contentElement: element,
               currentL2Id: snapshot.nextL2Id,
@@ -159,11 +185,8 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       }
 
       return (
-        <DetailPanelPivotBody
-          {...mainContent}
-          onGetLoadingElement={this._getPageLoadingAnimation}
-          onSetActionBar={this._setActionBar}
-        />);
+        <DetailPanelPivotBody {...mainContent} onGetLoadingElement={this._getPageLoadingAnimation} onSetActionBar={this._setActionBar} />
+      );
     }
 
     return undefined;
@@ -185,17 +208,6 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     }
 
     return header;
-  };
-
-  private _getCurrentActionBar = () => {
-    const { mainActionBar, onGetL2ActionBar } = this.props;
-    const { currentL2Id: currentL2Key } = this.state;
-
-    if (currentL2Key && onGetL2ActionBar) {
-      return onGetL2ActionBar(currentL2Key);
-    }
-
-    return mainActionBar;
   };
 
   private _getPageLoadingAnimation = (loadingTheme: LoadingTheme, themeId?: string | number, message?: string, forceInline?: boolean) => {
@@ -234,11 +246,10 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
 
           break;
 
-        case LoadingTheme.OnPivotItemLoad:
-          {
-            loadingElement = <Loading loadingType={LoadingType.Content} message={message} />;
-            break;
-          }
+        case LoadingTheme.OnPivotItemLoad: {
+          loadingElement = <Loading loadingType={LoadingType.Content} message={message} />;
+          break;
+        }
 
         default: {
           loadingElement = <Loading loadingType={LoadingType.None} message={message} />;
@@ -274,6 +285,10 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       this.setState({ actionBar: undefined });
     }
   };
+
+  private _setConfirmationResult = (props: IDetailPanelConfirmationResultProps) => {
+    this.setState({ confirmation: props });
+  }
 
   private _onBackAction = () => {
     const { onL2BackClick } = this.props;

@@ -28,7 +28,8 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
                   content={_.content}
                   actionBar={_.actionBar}
                   onGetLoadingElement={onGetLoadingElement}
-                  onSetActionBar={onSetActionBar} />
+                  onSetActionBar={onSetActionBar}
+                />
               </PivotItem>
             );
           })}

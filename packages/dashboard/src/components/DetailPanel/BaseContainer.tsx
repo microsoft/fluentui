@@ -36,11 +36,14 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
       return null;
     }
     const { header } = props;
-    return (
-      <div>
-        <Header {...header} />
-      </div>
-    );
+    if (header) {
+      return (
+        <div>
+          <Header {...header} />
+        </div>
+      );
+    }
+    return null;
   };
 
   const _renderMessageBanner = () => {
@@ -60,7 +63,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
       return null;
     }
 
-    const { actionBar, onSetMessageBanner, onSetLoadingAnimation, onSetActionBar } = props;
+    const { actionBar, onSetMessageBanner, onSetLoadingAnimation, onSetActionBar, onSetConfirmationResult } = props;
 
     if (actionBar) {
       return (
@@ -69,6 +72,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
           onSetLoadingAnimation={onSetLoadingAnimation}
           onSetMessageBanner={onSetMessageBanner}
           onSetActionBar={onSetActionBar}
+          onSetConfirmationResult={onSetConfirmationResult}
         />
       );
     }

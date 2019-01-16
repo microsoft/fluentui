@@ -20,9 +20,7 @@ const detailInfoTile: React.SFC<IDetailInfoTileProps> = (props: IDetailInfoTileP
       {message && <div className={css.message}>{message}</div>}
       {actionText && onAction && (
         <div className={css.action}>
-          <Link onClick={_onTileClick}>
-            {actionText}
-          </Link>
+          <Link onClick={_onTileClick}>{actionText}</Link>
         </div>
       )}
     </div>

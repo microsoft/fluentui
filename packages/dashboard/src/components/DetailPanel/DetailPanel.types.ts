@@ -172,7 +172,7 @@ export interface IBaseContainerProps {
     /**
      * Main content header props
      */
-    header: IDetailPanelHeaderProps;
+    header?: IDetailPanelHeaderProps;
 
     /**
      * Message banner settings
@@ -226,7 +226,12 @@ export interface IDetailPanelBaseCommonAction {
     /**
      * Set the action bar props
      */
-    onSetActionBar?: (actionBar: IDetailPanelActionBarProps) => void;
+    onSetActionBar?: (actionBar?: IDetailPanelActionBarProps) => void;
+
+    /**
+     * On set the final confirmation page
+     */
+    onSetConfirmationResult?: (props: IDetailPanelConfirmationResultProps) => void;
 
     /**
      * Call back to get the loading animation element
@@ -236,59 +241,178 @@ export interface IDetailPanelBaseCommonAction {
 
 export interface IDetailPanelErrorResult {
     /**
-     * Override page title on initial load or L2 content load fail
-     */
-    pageTitle?: string;
-
-    /**
      * Message bar display setting
      */
     messageBannerSetting: IDetailPanelMessageBannerProps;
 }
 
 export interface IDetailPanelActionResult {
+    /**
+     * Show message banner of result confirmation
+     */
     messageBanner?: IDetailPanelMessageBannerProps;
-    confirmationPage?: any;
+
+    /**
+     * Show a confirmation page template
+     */
+    confirmationPage?: IDetailPanelConfirmationResultProps;
 }
 
 export interface IDetailPanelActionBarProps {
-    submittingMessage?: string;
+    /**
+     * Primary button text
+     */
     primaryButtonText?: string;
+
+    /**
+     * Secondary button text
+     */
     secondaryButtonText?: string;
+
+    /**
+     * Link href for the link button
+     */
     linkHref?: string;
+
+    /**
+     * Text for the link button
+     */
     linkText?: string;
+
+    /**
+     * Call back on secondary button click
+     */
     onSecondaryAction?: () => FlatOrPromise<IDetailPanelActionResult | void>;
+
+    /**
+     * Call back on primary button click
+     */
     onPrimaryAction?: () => FlatOrPromise<IDetailPanelActionResult | void>;
+
+    /**
+     * Call back on link button click
+     */
     onLinkAction?: () => void;
+
+    /**
+     * Use inline spinner on primary click submitting
+     */
     primaryActionInlineSpinner?: boolean;
+
+    /**
+     * Use inline spinner on secondary click submitting
+     */
     secondaryActionInlineSpinner?: boolean;
+
+    /**
+     * Message showing on primary submitting
+     */
     onPrimaryActionMessage?: string;
+
+    /**
+     * Message showing on secondary submitting
+     */
     onSecondaryActionMessage?: string;
 }
 
 export interface IDetailInfoTileProps {
+    /**
+     * Id of the tile
+     */
     tileId?: string | number;
+
+    /**
+     * Title of the tile
+     */
     title: string;
+
+    /**
+     * Message line of the tile
+     */
     message?: string;
+
+    /**
+     * Action text of the tile
+     */
     actionText?: string;
+
+    /**
+     * On click action of the tile
+     */
     onAction?: (tileId?: string | number) => void;
 }
 
 export interface IDetailPanelPivotItemProps {
+    /**
+     * On pivot content load method
+     */
     onContentLoad?: FunctionCallback<JSX.Element | IDetailInfoTileProps[]>;
+
+    /**
+     * Content of pivot, if this is assigned @property {onContentLoad} will be ignored
+     */
     content?: JSX.Element | IDetailInfoTileProps[];
+
+    /**
+     * Current item key
+     */
     itemKey?: string;
+
+    /**
+     * Action bar setting for current pivot item
+     */
     actionBar?: IDetailPanelActionBarProps;
 }
 
 export interface IDetailPanelPivotBodyItem extends IDetailPanelPivotItemProps {
+    /**
+     * Header text of a pivot item
+     */
     headerText: string;
 }
 
 export interface IDetailPanelPivotBodyProps {
+    /**
+     * Pivot selected key
+     */
     selectedPivotKey?: string;
+
+    /**
+     * On pivot link click
+     */
     onPivotLinkClick?: (key: string) => void;
+
+    /**
+     * Pivot items
+     */
     items: IDetailPanelPivotBodyItem[];
+}
+
+export interface IDetailPanelConfirmationStatusText {
+    status: ConfirmationStatus;
+    title: string;
+    items?: string[];
+}
+
+export interface IDetailPanelConfirmationLinkItem {
+    linkText: string;
+    linkAction?: () => void;
+    linkHref?: string;
+    linkTarget?: '_self' | '_blank' | '_parent' | '_top';
+}
+
+export interface IDetailPanelConfirmationLinks {
+    title: string;
+    links: IDetailPanelConfirmationLinkItem[];
+}
+
+export interface IDetailPanelConfirmationResultProps {
+    overallStatus?: ConfirmationStatus;
+    headerText: string;
+    descriptionText?: string | JSX.Element;
+    statusItems?: () => IDetailPanelConfirmationStatusText[];
+    linkList?: () => IDetailPanelConfirmationLinks[];
+    actionBar?: IDetailPanelActionBarProps;
 }
 
 export interface IDetailPanelProps extends IDetailPanelBaseProps { }

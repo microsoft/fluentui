@@ -106,7 +106,6 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
       setTimeout(() => {
         if (l2Id === 'bird') {
           const err: IDetailPanelErrorResult = {
-            pageTitle: `Title of ${l2Id}`,
             messageBannerSetting: {
               message: `Error message of ${l2Id}`
             }

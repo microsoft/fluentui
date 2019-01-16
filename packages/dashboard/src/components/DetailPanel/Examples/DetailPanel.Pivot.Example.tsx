@@ -10,9 +10,12 @@ import {
   IDetailPanelPivotBodyProps,
   IDetailPanelPivotBodyItem,
   IDetailInfoTileProps,
-  IQuickAction
+  IQuickAction,
+  IDetailPanelConfirmationResultProps,
+  ConfirmationStatus
 } from '../DetailPanel.types';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 interface IDetailPanelL2PivotExampleStates {
   show: boolean;
@@ -137,7 +140,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           alert('Expiration');
         }
       } as IDetailInfoTileProps
-    ]
+    ];
   }
 
   private getMainContent() {
@@ -148,27 +151,45 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           content: this.getTiles(),
           actionBar: {
             primaryButtonText: 'Primary Detail',
-            onPrimaryAction: () => { alert('Primary detail') }
+            onPrimaryAction: () => {
+              alert('Primary detail');
+            }
           } as IDetailPanelActionBarProps
+        } as IDetailPanelPivotBodyItem,
+        {
+          headerText: 'JSX',
+          content: (<div>
+            <ColorPicker color={'#000000'} />
+          </div>)
         } as IDetailPanelPivotBodyItem,
         {
           headerText: 'Delayed Details',
           onContentLoad: () => {
             return new Promise((resolve: (value: IDetailInfoTileProps[]) => void) => {
               setTimeout(() => {
-                resolve(this.getTiles())
+                resolve(this.getTiles());
               }, 2000);
-            })
-          }
+            });
+          },
+          actionBar: {
+            primaryButtonText: 'Primary Delayed Details',
+            onPrimaryAction: () => {
+              alert('Primary Delayed Details');
+            }
+          } as IDetailPanelActionBarProps
         } as IDetailPanelPivotBodyItem,
         {
-          headerText: 'General JSX',
+          headerText: 'Delayed JSX',
           onContentLoad: () => {
             return new Promise((resolve: (value: JSX.Element) => void) => {
               setTimeout(() => {
-                resolve(<div><ColorPicker color={'#000000'} /></div>)
+                resolve(
+                  <div>
+                    <ColorPicker color={'#000000'} />
+                  </div>
+                );
               }, 2000);
-            })
+            });
           }
         } as IDetailPanelPivotBodyItem,
         {
@@ -180,14 +201,13 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
                   messageBannerSetting: {
                     message: 'Failed on loading pivot item'
                   }
-                }
+                };
 
                 reject(err);
               }, 2000);
-            })
+            });
           }
         } as IDetailPanelPivotBodyItem
-
       ]
     } as IDetailPanelPivotBodyProps;
   }
@@ -203,7 +223,6 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
       setTimeout(() => {
         if (l2Id === 'bird') {
           const err: IDetailPanelErrorResult = {
-            pageTitle: `Title of ${l2Id}`,
             messageBannerSetting: {
               message: `Error message of ${l2Id}`
             }
@@ -216,7 +235,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
     });
   }
 
-  private _onDelaySubmit = (forceReject: boolean) => () => {
+  private _onDelaySubmit = (forceReject: boolean, useConfirmationPage?: boolean) => () => {
     return new Promise((resolve: (value: IDetailPanelActionResult) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
       setTimeout(() => {
         if (forceReject) {
@@ -227,7 +246,72 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           });
         }
 
-        resolve({});
+        if (useConfirmationPage) {
+          resolve({
+            confirmationPage: {
+              overallStatus: ConfirmationStatus.Success,
+              headerText: 'I am a dummy confirmation page',
+              descriptionText:
+                // tslint:disable-next-line:max-line-length
+                'Now people in your organization can apply labels to sensitive information. Track how your new  labels are being used in the new sensitivity labels card on your home page. Edit your labels in the Security Center.',
+              linkList: () => [
+                {
+                  title: 'Next steps',
+                  links: [{ linkText: 'Set up protection settings for sensitive data in the Security Center' }]
+                },
+                {
+                  title: 'Related tasks',
+                  links: [
+                    { linkText: 'Microsoft information protection' },
+                    { linkText: 'Office 365 Advanced Threat Protection' }
+                  ]
+                },
+                {
+                  title: 'Learn more',
+                  links: [{ linkText: 'Documentation link' }, { linkText: 'Documentation link' }]
+                }
+              ],
+              statusItems: () => [
+                {
+                  status: ConfirmationStatus.Failed,
+                  title: 'Email aliases couldn’t be removed',
+                  items: ['aliasone@contoso.com', 'onealias@contoso.com']
+                },
+                {
+                  status: ConfirmationStatus.Success,
+                  title: 'Calendar events removed on invitees’ calendars'
+                },
+                {
+                  status: ConfirmationStatus.Success,
+                  title: 'Mailbox delegate permissions removed'
+                },
+                {
+                  status: ConfirmationStatus.Success,
+                  title: 'Licenses unassigned',
+                  items: ['Microsoft 365 E3', 'Office 365 Business Premium']
+                }
+              ],
+              actionBar: {
+                primaryButtonText: 'Copy',
+                onPrimaryAction: () => {
+                  alert('copied');
+                },
+                secondaryButtonText: 'Print',
+                onSecondaryAction: () => {
+                  alert('printing');
+                }
+              }
+
+            } as IDetailPanelConfirmationResultProps
+          } as IDetailPanelActionResult);
+        } else {
+          resolve({
+            messageBanner: {
+              messageType: MessageBarType.success,
+              message: 'You did it'
+            }
+          } as IDetailPanelActionResult);
+        }
       }, 1000);
     });
   };
@@ -241,9 +325,18 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
     };
 
     if (l2Id === 'cat') {
-      actionBar.onPrimaryAction = this._onDelaySubmit(true);
+      actionBar.onPrimaryAction = this._onDelaySubmit(false);
       actionBar.secondaryButtonText = 'Cat 2nd';
-      actionBar.onSecondaryAction = this._onDelaySubmit(false);
+      actionBar.onPrimaryActionMessage = 'Cat is meowing';
+      actionBar.onSecondaryAction = this._onDelaySubmit(false, true);
+      actionBar.secondaryActionInlineSpinner = true;
+    }
+
+    if (l2Id === 'dog') {
+      actionBar.onPrimaryAction = this._onDelaySubmit(true);
+      actionBar.secondaryButtonText = 'Dog 2nd';
+      actionBar.onPrimaryActionMessage = 'Dog is barking';
+      actionBar.onSecondaryAction = this._onDelaySubmit(false, true);
       actionBar.secondaryActionInlineSpinner = true;
     }
 

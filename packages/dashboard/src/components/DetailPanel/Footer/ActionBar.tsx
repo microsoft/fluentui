@@ -20,7 +20,7 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
     message?: string,
     inlineSpinner?: boolean
   ) => () => {
-    const { onSetLoadingAnimation, onSetMessageBanner } = props;
+    const { onSetLoadingAnimation, onSetMessageBanner, onSetConfirmationResult } = props;
     // Set to loading
     onSetLoadingAnimation!(primary ? LoadingTheme.OnPrimaryButtonClick : LoadingTheme.OnSecondaryButtonClick, message, inlineSpinner);
 
@@ -34,6 +34,7 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
         if (_) {
           if (_.confirmationPage) {
             // Render confirmation page as finale of the detail panel
+            onSetConfirmationResult!(_.confirmationPage);
           } else if (_.messageBanner) {
             // set message banner
             onSetMessageBanner!(_.messageBanner);

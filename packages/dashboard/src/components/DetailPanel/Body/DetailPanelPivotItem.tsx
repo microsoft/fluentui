@@ -28,20 +28,16 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
     }
 
     public render() {
-        return (
-            <div>
-                {this._renderContent()}
-            </div>
-        );
+        return <div>{this._renderContent()}</div>;
     }
 
     public componentDidMount() {
         const { onContentLoad, onGetLoadingElement, itemKey, actionBar, onSetActionBar } = this.props;
-        if (actionBar && onSetActionBar) {
-            onSetActionBar(actionBar);
-        }
 
         if (onContentLoad) {
+            if (onSetActionBar) {
+                onSetActionBar(undefined);
+            }
             const loadingElement = onGetLoadingElement!(LoadingTheme.OnPivotItemLoad, itemKey);
 
             this.setState({ loadingElement: loadingElement });
@@ -52,6 +48,10 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
                         loadingElement: undefined,
                         contentElement: this._renderElement(_)
                     });
+
+                    if (onSetActionBar) {
+                        onSetActionBar(actionBar);
+                    }
                 })
                 .catch((err: IDetailPanelErrorResult) => {
                     // Set error message
@@ -59,17 +59,24 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
                         const messageBanner = (
                             <MessageBanner
                                 message={err.messageBannerSetting.message}
-                                messageType={err.messageBannerSetting.messageType === undefined ? MessageBarType.error : err.messageBannerSetting.messageType}
-                            />);
+                                messageType={
+                                    err.messageBannerSetting.messageType === undefined ? MessageBarType.error : err.messageBannerSetting.messageType
+                                }
+                            />
+                        );
                         this.setState({
                             contentElement: messageBanner
                         });
                     }
 
                     this.setState({
-                        loadingElement: undefined,
+                        loadingElement: undefined
                     });
                 });
+        } else {
+            if (onSetActionBar) {
+                onSetActionBar(actionBar);
+            }
         }
     }
 
@@ -90,7 +97,7 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
         }
 
         return null;
-    }
+    };
 
     private _renderElement = (content: JSX.Element | IDetailInfoTileProps[]) => {
         // Just render the content
