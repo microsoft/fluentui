@@ -85,7 +85,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
-            aria-hidden={true}
             className=
 
                 {
@@ -282,7 +281,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
-            aria-hidden={true}
             className=
 
                 {

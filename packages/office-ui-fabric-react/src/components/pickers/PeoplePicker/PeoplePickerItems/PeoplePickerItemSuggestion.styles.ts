@@ -14,7 +14,7 @@ export function getStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeople
       classNames.root,
       {
         width: '100%',
-        padding: '7px 12px'
+        padding: '4px 12px'
       },
       className
     ],

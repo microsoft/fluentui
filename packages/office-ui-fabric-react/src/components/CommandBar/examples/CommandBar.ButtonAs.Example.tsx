@@ -35,7 +35,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
           }}
           buttonAs={customButton}
           items={this.getItems()}
-          overflowItems={this.getOverlflowItems()}
+          overflowItems={this.getOverflowItems()}
           farItems={this.getFarItems()}
           ariaLabel={'Use left and right arrow keys to navigate between commands'}
         />
@@ -101,7 +101,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
     ];
   };
 
-  private getOverlflowItems = () => {
+  private getOverflowItems = () => {
     return [
       {
         key: 'move',

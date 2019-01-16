@@ -1,6 +1,8 @@
 import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
+import { FontSizes } from './AzureType';
+import * as StyleConstants from './Constants';
 
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: LightSemanticColors.background,
@@ -52,9 +54,27 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   controlOutline: LightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: LightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: LightSemanticColors.controlOutlines.hover,
-  labelText: LightSemanticColors.text.label
+  labelText: LightSemanticColors.text.label,
+  statusErrorBackground: LightSemanticColors.statusBar.error,
+  statusErrorText: LightSemanticColors.text.body,
+  statusErrorIcon: CommonSemanticColors.icons.error,
+  statusInformationBackground: LightSemanticColors.statusBar.information,
+  statusInformationText: LightSemanticColors.text.body,
+  statusInformationIcon: CommonSemanticColors.icons.information,
+  statusSuccessBackground: LightSemanticColors.statusBar.okay,
+  statusSuccessText: LightSemanticColors.text.body,
+  statusSuccessIcon: CommonSemanticColors.icons.okay,
+  statusWarningBackground: LightSemanticColors.statusBar.warning,
+  statusWarningText: LightSemanticColors.text.body,
+  statusWarningIcon: CommonSemanticColors.icons.warning
 };
 export const AzureThemeLight: ITheme = createTheme({
+  fonts: {
+    medium: {
+      fontFamily: StyleConstants.fontFamily,
+      fontSize: FontSizes.size12
+    }
+  },
   palette: {
     themePrimary: LightSemanticColors.controlOutlines.accent,
     neutralDark: LightSemanticColors.text.body,

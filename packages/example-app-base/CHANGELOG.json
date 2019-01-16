@@ -2,6 +2,44 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.11.1",
+      "tag": "@uifabric/example-app-base_v6.11.1",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/example-app-base_v6.11.0",
+      "date": "Mon, 14 Jan 2019 13:39:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**New:** MarkdownTable components for use in PageMarkdown.\\n**EditSection:** Allow content to be more flexible in order to render.\\n**PageMarkdown:** Override table elements with new MarkdownTable components, add global classNames, add static displayName.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "326ec7786c33863ad822f40a93bd4b752fe31220"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.1 <7.0.0` to `>=6.124.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.0",
       "tag": "@uifabric/example-app-base_v6.10.0",
       "date": "Fri, 14 Dec 2018 13:35:30 GMT",

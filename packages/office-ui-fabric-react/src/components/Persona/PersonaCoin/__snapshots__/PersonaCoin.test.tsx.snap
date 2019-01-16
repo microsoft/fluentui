@@ -256,7 +256,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -810,7 +809,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1046,7 +1044,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Icon-placeHolder
               ms-Persona-presenceIcon
@@ -1362,7 +1359,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Icon-placeHolder
               ms-Persona-presenceIcon
@@ -1636,7 +1632,6 @@ exports[`PersonaCoin renders correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {

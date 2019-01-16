@@ -33,13 +33,25 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       selectedKey: 'defaultSelectedKey'
     });
 
+    const validDefaultSelectedKey: boolean = !!props.options && props.options.some(option => option.key === props.defaultSelectedKey);
+
     this.state = {
-      keyChecked: props.defaultSelectedKey === undefined ? this._getKeyChecked(props)! : props.defaultSelectedKey,
+      keyChecked:
+        props.defaultSelectedKey === undefined || !validDefaultSelectedKey ? this._getKeyChecked(props)! : props.defaultSelectedKey,
       keyFocused: undefined
     };
 
     this._id = getId('ChoiceGroup');
     this._labelId = getId('ChoiceGroupLabel');
+  }
+
+  /**
+   * Gets the current checked option.
+   */
+  public get checkedOption(): IChoiceGroupOption | undefined {
+    const { options = [] } = this.props;
+    const { keyChecked: key } = this.state;
+    return find(options, (value: IChoiceGroupOption) => value.key === key);
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
