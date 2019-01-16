@@ -187,7 +187,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         }
                   >
                     <i
-                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -217,7 +216,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   </div>
                 </button>
                 <i
-                  aria-hidden={true}
                   className=
                       ms-Breadcrumb-chevron
                       {
@@ -379,7 +377,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   </div>
                 </button>
                 <i
-                  aria-hidden={true}
                   className=
                       ms-Breadcrumb-chevron
                       {
@@ -541,7 +538,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                   </div>
                 </button>
                 <i
-                  aria-hidden={true}
                   className=
                       ms-Breadcrumb-chevron
                       {

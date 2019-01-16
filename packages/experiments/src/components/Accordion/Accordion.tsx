@@ -1,13 +1,12 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '../../Foundation';
-import { createStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { CollapsibleSection, ICollapsibleSectionProps, ICollapsibleSectionStyles } from '../../CollapsibleSection';
-import { IAccordionComponent, IAccordionProps, IAccordionSlots, IAccordionStyles } from './Accordion.types';
+import { createStatelessComponent } from '../../Foundation';
+import { CollapsibleSection, ICollapsibleSectionProps } from '../../CollapsibleSection';
+import { IAccordionComponent, IAccordionProps, IAccordionSlots, IAccordionStyles, IAccordionTokens } from './Accordion.types';
 import { styles } from './Accordion.styles';
 
-const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps> &
-  IStyleableComponentProps<ICollapsibleSectionProps, ICollapsibleSectionStyles>).type;
+const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps>).type;
 
 const view: IAccordionComponent['view'] = props => {
   const { collapseItems } = props;
@@ -45,7 +44,7 @@ type IAccordionStatics = typeof AccordionStatics;
 
 export const Accordion: React.StatelessComponent<IAccordionProps> & {
   Item: React.StatelessComponent<ICollapsibleSectionProps>;
-} = createStatelessComponent<IAccordionProps, IAccordionStyles, {}, IAccordionStatics>({
+} = createStatelessComponent<IAccordionProps, IAccordionStyles, IAccordionTokens, IAccordionStatics>({
   displayName: 'Accordion',
   styles,
   view,

@@ -10,6 +10,7 @@ import { CommandBarStyles } from './styles/CommandBar.styles';
 import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
+import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
@@ -22,10 +23,11 @@ import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { ProgressIndicatorStyles } from './styles/ProgressIndicator.styles';
-import { TextFieldStyles } from './styles/TextField.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { TextFieldStyles } from './styles/TextField.styles';
+import { ToggleStyles } from './styles/Toggle.styles';
 
 // TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
 //        this 'any' once we upgrade to TS3.1+
@@ -77,9 +79,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     ContextualMenu: {
       styles: ContextualMenuStyles
     },
-    // DatePicker: {
-    //   styles: DatePickerStyles
-    // },
+    DatePicker: {
+      styles: DatePickerStyles
+    },
     DefaultButton: {
       styles: DefaultButtonStyles(theme)
     },
@@ -148,9 +150,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     // },
     TextField: {
       styles: TextFieldStyles
+    },
+    Toggle: {
+      styles: ToggleStyles
     }
-    // Toggle: {
-    //   styles: ToggleStyles
-    // }
   };
 };

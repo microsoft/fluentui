@@ -17,7 +17,6 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
       }
 >
   <i
-    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -55,7 +54,6 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
       }
 >
   <i
-    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -210,7 +208,6 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
       }
 >
   <i
-    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -258,7 +255,6 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
     }
   >
     <i
-      aria-hidden={true}
       className=
           ms-Persona-presenceIcon
           {
@@ -309,7 +305,6 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
       }
 >
   <i
-    aria-hidden={true}
     className=
         test-cn-initials
         {
@@ -357,7 +352,6 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
     }
   >
     <i
-      aria-hidden={true}
       className=
           ms-Persona-presenceIcon
           {

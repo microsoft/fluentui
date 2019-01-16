@@ -53,7 +53,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {
@@ -81,7 +80,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {
@@ -1002,7 +1000,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {
@@ -1028,7 +1025,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     role="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {

@@ -3,7 +3,11 @@ import { IComponentStyles, IHTMLButtonSlot, ISlotProp, IStatelessComponent, ISty
 import { ITextSlot } from '../../Text';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 
-export type ICollapsibleSectionTitleComponent = IStatelessComponent<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles>;
+export type ICollapsibleSectionTitleComponent = IStatelessComponent<
+  ICollapsibleSectionTitleProps,
+  ICollapsibleSectionTitleTokens,
+  ICollapsibleSectionTitleStyles
+>;
 
 export type ICollapsibleSectionTitleSlot = ISlotProp<ICollapsibleSectionTitleProps, 'text'>;
 
@@ -15,7 +19,7 @@ export interface ICollapsibleSectionTitleSlots {
 
 export interface ICollapsibleSectionTitleProps
   extends ICollapsibleSectionTitleSlots,
-    IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles> {
+    IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleTokens, ICollapsibleSectionTitleStyles> {
   focusElementRef?: IRefObject<HTMLButtonElement>;
   /**
    * Collapsed state of body associated with this component.
@@ -38,5 +42,7 @@ export interface ICollapsibleSectionTitleProps
    */
   indent?: number;
 }
+
+export interface ICollapsibleSectionTitleTokens {}
 
 export type ICollapsibleSectionTitleStyles = IComponentStyles<ICollapsibleSectionTitleSlots>;
