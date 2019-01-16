@@ -18,8 +18,26 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
         }
       }
     ],
+    clearButton: {
+      selectors: {
+        '.ms-Button': {
+          color: semanticColors.inputText,
+          selectors: {
+            ':hover': {
+              color: semanticColors.inputText
+            },
+            ':active': {
+              color: semanticColors.inputText
+            }
+          }
+        }
+      }
+    },
     field: {
       color: semanticColors.inputText
+    },
+    icon: {
+      color: semanticColors.focusBorder
     }
   };
 };

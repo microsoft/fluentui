@@ -42,6 +42,15 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     this._labelId = getId('ChoiceGroupLabel');
   }
 
+  /**
+   * Gets the current checked option.
+   */
+  public get checkedOption(): IChoiceGroupOption | undefined {
+    const { options = [] } = this.props;
+    const { keyChecked: key } = this.state;
+    return find(options, (value: IChoiceGroupOption) => value.key === key);
+  }
+
   public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
     const oldKeyChecked = this._getKeyChecked(this.props);

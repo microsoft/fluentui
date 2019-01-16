@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.5",
+      "tag": "@uifabric/experiments_v6.50.5",
+      "date": "Tue, 15 Jan 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Convert all compoenents to use Slots. Add experimental Tokens feature.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1a3f5371a2f69c564c27094d602745a5d747253d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `>=0.1.3 <1.0.0` to `>=0.1.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.40.0 <7.0.0` to `>=6.41.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.2 <7.0.0` to `>=6.125.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.6 <7.0.0` to `>=6.0.7 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.4",
       "tag": "@uifabric/experiments_v6.50.4",
       "date": "Fri, 11 Jan 2019 05:00:46 GMT",

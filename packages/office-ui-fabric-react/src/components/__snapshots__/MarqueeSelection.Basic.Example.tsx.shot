@@ -125,7 +125,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
