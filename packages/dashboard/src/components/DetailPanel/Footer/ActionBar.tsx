@@ -22,19 +22,21 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
   ) => () => {
     const { onSetLoadingAnimation, onSetMessageBanner } = props;
     // Set to loading
-    onSetLoadingAnimation(primary ? LoadingTheme.OnPrimaryButtonClick : LoadingTheme.OnSecondaryButtonClick, message, inlineSpinner);
+    onSetLoadingAnimation!(primary ? LoadingTheme.OnPrimaryButtonClick : LoadingTheme.OnSecondaryButtonClick, message, inlineSpinner);
 
+    // clear message
+    onSetMessageBanner!();
     Promise.resolve(onCallBack())
       .then((_: IDetailPanelActionResult) => {
         // Set stop loading
-        onSetLoadingAnimation();
+        onSetLoadingAnimation!();
 
         if (_) {
           if (_.confirmationPage) {
             // Render confirmation page as finale of the detail panel
           } else if (_.messageBanner) {
             // set message banner
-            onSetMessageBanner(_.messageBanner);
+            onSetMessageBanner!(_.messageBanner);
           }
         }
       })
@@ -45,11 +47,11 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
           if (messageBannerSetting.messageType === undefined) {
             messageBannerSetting.messageType = MessageBarType.error;
           }
-          onSetMessageBanner(messageBannerSetting);
+          onSetMessageBanner!(messageBannerSetting);
         }
 
         // set stop loading
-        onSetLoadingAnimation();
+        onSetLoadingAnimation!();
       });
   };
 

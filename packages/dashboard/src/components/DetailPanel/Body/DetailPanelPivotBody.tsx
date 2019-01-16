@@ -16,14 +16,19 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
   };
 
   const _renderElement = () => {
-    const { selectedPivotKey, items, onGetLoadingAnimation } = props;
+    const { selectedPivotKey, items, onGetLoadingElement, onSetActionBar } = props;
     return (
       <Pivot selectedKey={selectedPivotKey} onLinkClick={_onPivotItemClick}>
         {items &&
           items.map((_: IDetailPanelPivotBodyItem, i: number) => {
             return (
               <PivotItem key={`${i}_${_.itemKey}`} {..._}>
-                <DetailPanelPivotItem onContentLoad={_.onContentLoad} content={_.content} onGetLoadingAnimation={onGetLoadingAnimation} />
+                <DetailPanelPivotItem
+                  onContentLoad={_.onContentLoad}
+                  content={_.content}
+                  actionBar={_.actionBar}
+                  onGetLoadingElement={onGetLoadingElement}
+                  onSetActionBar={onSetActionBar} />
               </PivotItem>
             );
           })}

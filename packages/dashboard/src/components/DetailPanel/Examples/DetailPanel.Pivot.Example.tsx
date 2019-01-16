@@ -12,7 +12,7 @@ import {
   IDetailInfoTileProps,
   IQuickAction
 } from '../DetailPanel.types';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 interface IDetailPanelL2PivotExampleStates {
   show: boolean;
@@ -87,62 +87,107 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
     }
   }
 
+  private getTiles() {
+    return [
+      {
+        title: 'Name',
+        message: 'Contoso.com',
+        actionText: 'Rename domain',
+        onAction: () => {
+          this.setState({ currentL2Id: 'cat' });
+        }
+      } as IDetailInfoTileProps,
+      {
+        title: 'Health',
+        message: 'Status = Healthy​',
+        actionText: 'Detail',
+        onAction: () => {
+          this.setState({ currentL2Id: 'dog' });
+        }
+      } as IDetailInfoTileProps,
+      {
+        title: 'Purpose',
+        message: 'Exchange, SharePoint',
+        actionText: 'Change Purpose',
+        onAction: () => {
+          this.setState({ currentL2Id: 'bird' });
+        }
+      } as IDetailInfoTileProps,
+      {
+        title: 'Privacy',
+        message: 'Privacy Enabled',
+        actionText: 'Privacy',
+        onAction: () => {
+          alert('Privacy');
+        }
+      } as IDetailInfoTileProps,
+      {
+        title: 'Name',
+        message: 'Contoso.com',
+        actionText: 'Rename domain',
+        onAction: () => {
+          alert('Rename domain');
+        }
+      } as IDetailInfoTileProps,
+      {
+        title: 'Expiration',
+        message: new Date().toLocaleDateString(),
+        actionText: 'Detail',
+        onAction: () => {
+          alert('Expiration');
+        }
+      } as IDetailInfoTileProps
+    ]
+  }
+
   private getMainContent() {
     return {
       items: [
         {
           headerText: 'Details',
-          content: [
-            {
-              title: 'Name',
-              message: 'Contoso.com',
-              actionText: 'Rename domain',
-              onAction: () => {
-                alert('Name');
-              }
-            } as IDetailInfoTileProps,
-            {
-              title: 'Health',
-              message: 'Status = Healthy​',
-              actionText: 'Detail',
-              onAction: () => {
-                alert('Health');
-              }
-            } as IDetailInfoTileProps,
-            {
-              title: 'Purpose',
-              message: 'Exchange, SharePoint',
-              actionText: 'Change Purpose',
-              onAction: () => {
-                alert('Change Purpose');
-              }
-            } as IDetailInfoTileProps,
-            {
-              title: 'Privacy',
-              message: 'Privacy Enabled',
-              actionText: 'Privacy',
-              onAction: () => {
-                alert('Privacy');
-              }
-            } as IDetailInfoTileProps,
-            {
-              title: 'Name',
-              message: 'Contoso.com',
-              actionText: 'Rename domain',
-              onAction: () => {
-                alert('Rename domain');
-              }
-            } as IDetailInfoTileProps,
-            {
-              title: 'Expiration',
-              message: new Date().toLocaleDateString(),
-              actionText: 'Detail',
-              onAction: () => {
-                alert('Expiration');
-              }
-            } as IDetailInfoTileProps
-          ]
+          content: this.getTiles(),
+          actionBar: {
+            primaryButtonText: 'Primary Detail',
+            onPrimaryAction: () => { alert('Primary detail') }
+          } as IDetailPanelActionBarProps
+        } as IDetailPanelPivotBodyItem,
+        {
+          headerText: 'Delayed Details',
+          onContentLoad: () => {
+            return new Promise((resolve: (value: IDetailInfoTileProps[]) => void) => {
+              setTimeout(() => {
+                resolve(this.getTiles())
+              }, 2000);
+            })
+          }
+        } as IDetailPanelPivotBodyItem,
+        {
+          headerText: 'General JSX',
+          onContentLoad: () => {
+            return new Promise((resolve: (value: JSX.Element) => void) => {
+              setTimeout(() => {
+                resolve(<div><ColorPicker color={'#000000'} /></div>)
+              }, 2000);
+            })
+          }
+        } as IDetailPanelPivotBodyItem,
+        {
+          headerText: 'Load error',
+          onContentLoad: () => {
+            return new Promise((_resolve: (value: JSX.Element) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
+              setTimeout(() => {
+                const err: IDetailPanelErrorResult = {
+                  messageBannerSetting: {
+                    message: 'Failed on loading pivot item'
+                  }
+                }
+
+                reject(err);
+              }, 2000);
+            })
+          }
         } as IDetailPanelPivotBodyItem
+
       ]
     } as IDetailPanelPivotBodyProps;
   }

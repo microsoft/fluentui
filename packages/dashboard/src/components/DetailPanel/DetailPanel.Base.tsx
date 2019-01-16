@@ -62,7 +62,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
   }
 
   public render(): JSX.Element | null {
-    const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading } = this.state;
+    const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar } = this.state;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
@@ -75,11 +75,10 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
         onDismiss={this._onDismissAction}
         onSetLoadingAnimation={this._setLoadingAnimation}
         onSetMessageBanner={this._setMessageBanner}
-        onSetActionBar={this._setActionBar}
         header={this._getCurrentHeader(false)}
         messageBanner={messageBanner}
         mainContent={contentElement}
-        actionBar={this._getCurrentActionBar()}
+        actionBar={actionBar}
         loadingElement={loadingElement}
         inlineLoading={inlineLoading}
       />
@@ -92,16 +91,18 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     snapshot: IMainBodySnapshot | null
   ) {
     if (snapshot) {
-      const { onGetL2Content, mainContent } = this.props;
+      const { onGetL2Content, onGetL2ActionBar, mainActionBar } = this.props;
       if (snapshot.nextL2Id && onGetL2Content) {
         // Set loading animation
         this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad);
         Promise.resolve(onGetL2Content(snapshot.nextL2Id))
           .then((element: JSX.Element) => {
+
             this.setState({
               contentElement: element,
               currentL2Id: snapshot.nextL2Id,
-              messageBanner: undefined
+              messageBanner: undefined,
+              actionBar: onGetL2ActionBar ? onGetL2ActionBar(snapshot.nextL2Id!) : undefined
             });
             this._setLoadingAnimation();
           })
@@ -115,7 +116,8 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
               this.setState({
                 messageBanner: messageBannerSetting,
                 contentElement: undefined,
-                currentL2Id: snapshot.nextL2Id
+                currentL2Id: snapshot.nextL2Id,
+                actionBar: undefined
               });
             }
 
@@ -126,7 +128,8 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
         this.setState({
           contentElement: this._getMainContent(),
           currentL2Id: undefined,
-          messageBanner: undefined
+          messageBanner: undefined,
+          actionBar: mainActionBar
         });
       }
     }
@@ -149,13 +152,18 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
   }
 
   private _getMainContent = () => {
-    const { mainContent, onGetLoadingAnimation } = this.props;
+    const { mainContent } = this.props;
     if (mainContent) {
       if (_isReactComponent(mainContent)) {
         return mainContent;
       }
 
-      return <DetailPanelPivotBody {...mainContent} onGetLoadingAnimation={onGetLoadingAnimation} />;
+      return (
+        <DetailPanelPivotBody
+          {...mainContent}
+          onGetLoadingElement={this._getPageLoadingAnimation}
+          onSetActionBar={this._setActionBar}
+        />);
     }
 
     return undefined;
@@ -225,6 +233,12 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
           }
 
           break;
+
+        case LoadingTheme.OnPivotItemLoad:
+          {
+            loadingElement = <Loading loadingType={LoadingType.Content} message={message} />;
+            break;
+          }
 
         default: {
           loadingElement = <Loading loadingType={LoadingType.None} message={message} />;
