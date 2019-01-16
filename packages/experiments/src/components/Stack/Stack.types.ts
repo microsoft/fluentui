@@ -2,7 +2,7 @@ import { IComponentStyles, IHTMLDivSlot, ISlotProp, IStatelessComponent, IStylea
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
+export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles, IStackTokens>;
 
 export type IStackSlot = ISlotProp<IStackProps>;
 
@@ -11,7 +11,10 @@ export interface IStackSlots {
   inner?: IHTMLDivSlot;
 }
 
-export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+export interface IStackProps
+  extends IStackSlots,
+    IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>,
+    React.HTMLAttributes<HTMLElement> {
   /**
    * How to render the Stack.
    */
@@ -84,5 +87,7 @@ export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStac
    */
   wrap?: boolean;
 }
+
+export interface IStackTokens {}
 
 export type IStackStyles = IComponentStyles<IStackSlots>;

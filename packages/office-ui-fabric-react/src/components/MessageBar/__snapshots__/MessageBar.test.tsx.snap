@@ -85,7 +85,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {

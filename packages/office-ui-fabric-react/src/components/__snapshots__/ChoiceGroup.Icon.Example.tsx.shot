@@ -218,7 +218,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     }
               >
                 <i
-                  aria-hidden={true}
                   className=
 
                       {
@@ -432,7 +431,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     }
               >
                 <i
-                  aria-hidden={true}
                   className=
 
                       {
@@ -641,7 +639,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                     }
               >
                 <i
-                  aria-hidden={true}
                   className=
 
                       {

@@ -3,7 +3,7 @@ import { IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../
 import { ITextSlot } from '../../../Text';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
-export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles>;
+export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles>;
 
 export interface IVerticalPersonaSlots {
   root?: IHTMLDivSlot;
@@ -16,11 +16,13 @@ export interface IVerticalPersonaSlots {
 // If you don't want these props to be included in your component, just remove this extension.
 export interface IVerticalPersonaProps
   extends IVerticalPersonaSlots,
-    IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaStyles> {
+    IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles> {
   vertical: true;
   text: string;
   styleVariables?: IVerticalPersonaStyleVariableTypes;
 }
+
+export interface IVerticalPersonaTokens {}
 
 export interface IVerticalPersonaStyles {
   root?: IStyle;

@@ -181,7 +181,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -349,7 +348,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -517,7 +515,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -685,7 +682,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
