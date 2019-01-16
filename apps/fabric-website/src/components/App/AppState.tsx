@@ -360,6 +360,19 @@ export const AppState: IAppState = {
                     )
                 },
                 {
+                  title: 'Large Grouped',
+                  url: '#/components/detailslist/largegrouped',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Large Grouped DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/DetailsList/DetailsListLargeGroupedComponentPage')
+                          .DetailsListLargeGroupedComponentPage
+                      )
+                    )
+                },
+                {
                   title: 'Custom Item Columns',
                   url: '#/components/detailslist/customitemcolumns',
                   isFilterable: true,
@@ -446,6 +459,16 @@ export const AppState: IAppState = {
                         require<any>('../../pages/Components/DetailsList/DetailsListNavigatingFocusComponentPage')
                           .DetailsListNavigatingFocusComponentPage
                       )
+                    )
+                },
+                {
+                  title: 'Shimmer',
+                  url: '#/components/detailslist/shimmer',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Shimmer DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListShimmerComponentPage').DetailsListShimmerComponentPage)
                     )
                 }
               ]

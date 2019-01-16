@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`print can be used in snapshots 1`] = `
+<div
+  className=
+
+      {
+        animation-delay: 500ms;
+        animation-name: keyframes from{opacity:0;color:red;}to{opacity:1;color:green;};
+      }
+/>
+`;

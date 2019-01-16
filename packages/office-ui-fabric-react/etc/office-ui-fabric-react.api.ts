@@ -564,6 +564,7 @@ enum CheckboxVisibility {
 // @public (undocumented)
 class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
+  readonly checkedOption: IChoiceGroupOption | undefined;
   // (undocumented)
   componentWillReceiveProps(newProps: IChoiceGroupProps): void;
   // (undocumented)
@@ -2420,6 +2421,7 @@ interface ICheckStyles {
 
 // @public (undocumented)
 interface IChoiceGroup {
+  checkedOption: IChoiceGroupOption | undefined;
   focus: () => void;
 }
 
@@ -8200,6 +8202,8 @@ interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
   imageProps?: IImageProps;
   styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
+  // (undocumented)
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -8228,6 +8232,8 @@ interface IIconStyleProps {
   isPlaceholder: boolean;
   // (undocumented)
   styles?: Partial<IIconStyles>;
+  // (undocumented)
+  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -10017,7 +10023,7 @@ interface ISelectionZone {
 }
 
 // @public (undocumented)
-interface ISelectionZoneProps extends React.Props<SelectionZone> {
+interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   // (undocumented)
   componentRef?: () => void;
   // (undocumented)
@@ -10806,7 +10812,7 @@ interface ITeachingBubble {
 }
 
 // @public
-interface ITeachingBubbleProps extends React.Props<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
   ariaDescribedBy?: string;
   ariaLabelledBy?: string;
   calloutProps?: ICalloutProps;
@@ -12457,11 +12463,7 @@ class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBu
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
-  rootElement: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  rootElement: React.RefObject<HTMLDivElement>;
 }
 
 // @public (undocumented)
@@ -12485,11 +12487,7 @@ class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITea
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
-  rootElement: {
-    (component: HTMLDivElement | null): void;
-    current: HTMLDivElement | null;
-    value: HTMLDivElement | null;
-  }
+  rootElement: React.RefObject<HTMLDivElement>;
 }
 
 // @public (undocumented)

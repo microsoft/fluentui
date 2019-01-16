@@ -12,7 +12,6 @@ class JestReporter extends DefaultReporter {
   log(message) {
     process.stdout.write(message + '\n');
   }
-
 }
 
 module.exports = JestReporter;

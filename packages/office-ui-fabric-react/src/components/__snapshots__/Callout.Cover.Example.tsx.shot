@@ -194,7 +194,6 @@ exports[`Component Examples renders Callout.Cover.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Dropdown-caretDown
                 {

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+
+## 6.50.5
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Convert all compoenents to use Slots. Add experimental Tokens feature.
 
 ## 6.50.4
 Fri, 11 Jan 2019 05:00:46 GMT

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Icon: removing aria-hidden attribute.",
+      "packageName": "@uifabric/dashboard",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "dzearing@microsoft.com"
+}

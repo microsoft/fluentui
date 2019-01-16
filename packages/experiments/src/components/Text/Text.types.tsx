@@ -1,19 +1,16 @@
-import { IStyle } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSpanSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
-export type ITextComponent = IStatelessComponent<ITextProps, ITextStyles>;
+export type ITextComponent = IStatelessComponent<ITextProps, ITextTokens, ITextStyles>;
 
-// Styles for the component
-export interface ITextStyles {
-  /**
-   * Style for the root element.
-   */
-  root: IStyle;
+export type ITextSlot = ISlotProp<ITextProps, 'children'>;
+
+export interface ITextSlots {
+  root?: IHTMLSpanSlot;
 }
 
 // Inputs to the component
-export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextStyles> {
+export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles> {
   /**
    * Optionally render the component as another component type or primitive.
    */
@@ -45,3 +42,7 @@ export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextSt
    */
   wrap?: boolean;
 }
+
+export interface ITextTokens {}
+
+export type ITextStyles = IComponentStyles<ITextSlots>;

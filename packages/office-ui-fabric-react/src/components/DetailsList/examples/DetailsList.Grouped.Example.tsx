@@ -1,13 +1,30 @@
+// @codepen
+
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { IDetailsList, DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import './DetailsList.Grouped.Example.scss';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { IDetailsList, DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const _columns = [
+const margin = '0 20px 20px 0';
+const controlWrapperClass = mergeStyles({
+  display: 'flex',
+  alignItems: 'center',
+  flexWrap: 'wrap'
+});
+const toggleStyles: Partial<IToggleStyles> = {
+  label: { display: 'inline-block', marginLeft: '10px', marginBottom: '3px' },
+  root: { display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', margin: margin }
+};
+
+export interface IDetailsListGroupedExampleItem {
+  key: string;
+  name: string;
+  color: string;
+}
+
+const _columns: IColumn[] = [
   {
     key: 'name',
     name: 'Name',
@@ -24,7 +41,14 @@ const _columns = [
     maxWidth: 200
   }
 ];
-const _items = [
+// NOTE: If changing these, also change the initial definition of state.groups below
+const _initialRedIndex = 0;
+const _initialRedCount = 2;
+const _initialGreenIndex = 2;
+const _initialGreenCount = 0;
+const _initialBlueIndex = 2;
+const _initialBlueCount = 3;
+const _items: IDetailsListGroupedExampleItem[] = [
   {
     key: 'a',
     name: 'a',
@@ -52,14 +76,15 @@ const _items = [
   }
 ];
 
-export class DetailsListGroupedExample extends BaseComponent<
-  {},
-  {
-    items: {}[];
-    showItemIndexInView: boolean;
-    isCompactMode: boolean;
-  }
-> {
+export interface IDetailsListGroupedExampleState {
+  items: IDetailsListGroupedExampleItem[];
+  groups: IGroup[];
+  showItemIndexInView: boolean;
+  isCompactMode: boolean;
+}
+const _blueGroupIndex = 2;
+
+export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGroupedExampleState> {
   private _root = React.createRef<IDetailsList>();
 
   constructor(props: {}) {
@@ -67,6 +92,27 @@ export class DetailsListGroupedExample extends BaseComponent<
 
     this.state = {
       items: _items,
+      // This is based on the definition of _items
+      groups: [
+        {
+          key: 'groupred0',
+          name: 'Color: "red"',
+          startIndex: _initialRedIndex,
+          count: _initialRedCount
+        },
+        {
+          key: 'groupgreen2',
+          name: 'Color: "green"',
+          startIndex: _initialGreenIndex,
+          count: _initialGreenCount
+        },
+        {
+          key: 'groupblue2',
+          name: 'Color: "blue"',
+          startIndex: _initialBlueIndex,
+          count: _initialBlueCount
+        }
+      ],
       showItemIndexInView: false,
       isCompactMode: false
     };
@@ -74,54 +120,30 @@ export class DetailsListGroupedExample extends BaseComponent<
 
   public componentWillUnmount() {
     if (this.state.showItemIndexInView) {
-      const itemIndexInView = this._root!.current!.getStartItemIndexInView();
-      alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
+      const itemIndexInView = this._root.current!.getStartItemIndexInView();
+      alert('first item index that was in view: ' + itemIndexInView);
     }
   }
 
   public render() {
-    const { items, isCompactMode } = this.state;
+    const { items, groups, isCompactMode } = this.state;
 
     return (
-      <Fabric className="DetailsList-grouped-example">
-        <div>
-          <Checkbox
-            label="Show index of the first item in view when unmounting"
+      <div>
+        <div className={controlWrapperClass}>
+          <DefaultButton onClick={this._addItem} text="Add an item" styles={{ root: { margin: margin } }} />
+          <Toggle label="Compact mode" checked={isCompactMode} onChange={this._onChangeCompactMode} styles={toggleStyles} />
+          <Toggle
+            label="Show index of first item in view when unmounting"
             checked={this.state.showItemIndexInView}
             onChange={this._onShowItemIndexInViewChanged}
+            styles={toggleStyles}
           />
         </div>
-        <DefaultButton onClick={this._addItem} text="Add an item" />
-        <Toggle
-          label="Enable Compact Mode"
-          checked={isCompactMode}
-          onChange={this._onChangeCompactMode}
-          onText="Compact"
-          offText="Normal"
-        />
         <DetailsList
           componentRef={this._root}
           items={items}
-          groups={[
-            {
-              key: 'groupred0',
-              name: 'By "red"',
-              startIndex: 0,
-              count: 2
-            },
-            {
-              key: 'groupgreen2',
-              name: 'By "green"',
-              startIndex: 2,
-              count: 0
-            },
-            {
-              key: 'groupblue2',
-              name: 'By "blue"',
-              startIndex: 2,
-              count: items.length - 2
-            }
-          ]}
+          groups={groups}
           columns={_columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
@@ -131,12 +153,14 @@ export class DetailsListGroupedExample extends BaseComponent<
           onRenderItemColumn={this._onRenderColumn}
           compact={isCompactMode}
         />
-      </Fabric>
+      </div>
     );
   }
 
   private _addItem = (): void => {
     const items = this.state.items;
+    const groups = [...this.state.groups];
+    groups[_blueGroupIndex].count++;
 
     this.setState(
       {
@@ -146,7 +170,8 @@ export class DetailsListGroupedExample extends BaseComponent<
             name: 'New item ' + items.length,
             color: 'blue'
           }
-        ])
+        ]),
+        groups
       },
       () => {
         if (this._root.current) {
@@ -156,24 +181,14 @@ export class DetailsListGroupedExample extends BaseComponent<
     );
   };
 
-  private _onRenderColumn(item: any, index: number, column: IColumn) {
-    let value = item && column && column.fieldName ? item[column.fieldName] : '';
+  private _onRenderColumn(item: IDetailsListGroupedExampleItem, index: number, column: IColumn) {
+    const value = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListGroupedExampleItem] || '' : '';
 
-    if (value === null || value === undefined) {
-      value = '';
-    }
-
-    return (
-      <div className={'grouped-example-column'} data-is-focusable={true}>
-        {value}
-      </div>
-    );
+    return <div data-is-focusable={true}>{value}</div>;
   }
 
-  private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
-    this.setState({
-      showItemIndexInView: checked
-    });
+  private _onShowItemIndexInViewChanged = (event: React.MouseEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({ showItemIndexInView: checked });
   };
 
   private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {

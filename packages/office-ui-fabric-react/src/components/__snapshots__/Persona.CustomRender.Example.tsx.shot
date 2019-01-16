@@ -142,7 +142,6 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -219,7 +218,6 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
       >
         <div>
           <i
-            aria-hidden={true}
             className=
                 ms-JobIconExample
                 {
