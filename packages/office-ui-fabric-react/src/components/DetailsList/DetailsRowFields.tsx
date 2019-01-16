@@ -4,25 +4,28 @@ import { BaseComponent, css } from '../../Utilities';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 
-export interface IDetailsRowFieldsState {
-  cellContent: React.ReactNode[];
-}
+const getCellText = (item: any, column: IColumn): string => {
+  let value = item && column && column.fieldName ? item[column.fieldName] : '';
 
-export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
-  constructor(props: IDetailsRowFieldsProps) {
-    super(props);
-
-    this.state = this._getState(props);
+  if (value === null || value === undefined) {
+    value = '';
   }
 
-  public componentWillReceiveProps(newProps: IDetailsRowFieldsProps): void {
-    this.setState(this._getState(newProps));
-  }
+  return value;
+};
 
+export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps> {
   public render(): JSX.Element {
-    const { columns, columnStartIndex, shimmer, rowClassNames, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
-
-    const { cellContent } = this.state;
+    const {
+      columns,
+      columnStartIndex,
+      shimmer,
+      rowClassNames,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      item,
+      itemIndex,
+      onRenderItemColumn
+    } = this.props;
 
     return (
       <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
@@ -34,6 +37,9 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
                 cellStyleProps.cellLeftPadding +
                 cellStyleProps.cellRightPadding +
                 (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+
+          const { onRender = onRenderItemColumn } = column;
+          const cellContentsRender = onRender && !shimmer ? onRender(item, itemIndex, column) : getCellText(item, column);
 
           return (
             <div
@@ -53,41 +59,11 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               data-automationid="DetailsRowCell"
               data-automation-key={column.key}
             >
-              {cellContent[columnIndex]}
+              {cellContentsRender}
             </div>
           );
         })}
       </div>
     );
-  }
-
-  private _getState(props: IDetailsRowFieldsProps): IDetailsRowFieldsState {
-    const { item, itemIndex, onRenderItemColumn, shimmer } = props;
-
-    return {
-      cellContent: props.columns.map(column => {
-        let cellContent;
-
-        try {
-          const render = column.onRender || onRenderItemColumn;
-
-          cellContent = render && !shimmer ? render(item, itemIndex, column) : this._getCellText(item, column);
-        } catch (e) {
-          /* no-op */
-        }
-
-        return cellContent;
-      })
-    };
-  }
-
-  private _getCellText(item: any, column: IColumn): void {
-    let value = item && column && column.fieldName ? item[column.fieldName] : '';
-
-    if (value === null || value === undefined) {
-      value = '';
-    }
-
-    return value;
   }
 }
