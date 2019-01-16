@@ -161,5 +161,5 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
     }
 
     return null;
-  }
+  };
 }

@@ -151,16 +151,15 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
   private _getMainContent = () => {
     const { mainContent, onGetLoadingAnimation } = this.props;
     if (mainContent) {
-
       if (_isReactComponent(mainContent)) {
         return mainContent;
       }
 
-      return <DetailPanelPivotBody {...mainContent} onGetLoadingAnimation={onGetLoadingAnimation} />
+      return <DetailPanelPivotBody {...mainContent} onGetLoadingAnimation={onGetLoadingAnimation} />;
     }
 
     return undefined;
-  }
+  };
 
   private _getCurrentHeader = (titleTextOnly?: boolean) => {
     const { mainHeader, onGetL2Header } = this.props;

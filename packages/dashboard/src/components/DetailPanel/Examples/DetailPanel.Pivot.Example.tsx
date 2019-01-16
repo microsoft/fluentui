@@ -35,18 +35,24 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           {
             icon: 'AADLogo',
             actionName: 'AADLogo',
-            onClick: () => { alert('AADLogo'); }
+            onClick: () => {
+              alert('AADLogo');
+            }
           } as IQuickAction,
           {
             icon: 'ATPLogo',
             actionName: 'ATPLogo',
-            onClick: () => { alert('ATPLogo'); }
+            onClick: () => {
+              alert('ATPLogo');
+            }
           } as IQuickAction,
           {
             icon: 'CalendarSettingsMirrored',
             actionName: 'CalendarSettingsMirrored',
-            onClick: () => { alert('CalendarSettingsMirrored'); }
-          } as IQuickAction,
+            onClick: () => {
+              alert('CalendarSettingsMirrored');
+            }
+          } as IQuickAction
         ],
         status: 'Default'
       };
@@ -91,42 +97,54 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
               title: 'Name',
               message: 'Contoso.com',
               actionText: 'Rename domain',
-              onAction: () => { alert('Name'); }
+              onAction: () => {
+                alert('Name');
+              }
             } as IDetailInfoTileProps,
             {
               title: 'Health',
               message: 'Status = Healthy​',
               actionText: 'Detail',
-              onAction: () => { alert('Health'); }
+              onAction: () => {
+                alert('Health');
+              }
             } as IDetailInfoTileProps,
             {
               title: 'Purpose',
               message: 'Exchange, SharePoint',
               actionText: 'Change Purpose',
-              onAction: () => { alert('Change Purpose'); }
+              onAction: () => {
+                alert('Change Purpose');
+              }
             } as IDetailInfoTileProps,
             {
               title: 'Privacy',
               message: 'Privacy Enabled',
               actionText: 'Privacy',
-              onAction: () => { alert('Privacy'); }
+              onAction: () => {
+                alert('Privacy');
+              }
             } as IDetailInfoTileProps,
             {
               title: 'Name',
               message: 'Contoso.com',
               actionText: 'Rename domain',
-              onAction: () => { alert('Rename domain'); }
+              onAction: () => {
+                alert('Rename domain');
+              }
             } as IDetailInfoTileProps,
             {
               title: 'Expiration',
               message: new Date().toLocaleDateString(),
               actionText: 'Detail',
-              onAction: () => { alert('Expiration'); }
+              onAction: () => {
+                alert('Expiration');
+              }
             } as IDetailInfoTileProps
           ]
         } as IDetailPanelPivotBodyItem
       ]
-    } as IDetailPanelPivotBodyProps
+    } as IDetailPanelPivotBodyProps;
   }
 
   private _onGetL2Header(l2Id: string) {
@@ -195,5 +213,5 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
     }
 
     return null;
-  }
+  };
 }

@@ -22,13 +22,10 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
         {items &&
           items.map((_: IDetailPanelPivotBodyItem, i: number) => {
             return (
-              <PivotItem key={`${i}_${_.itemKey}`} {..._} >
-                <DetailPanelPivotItem
-                  onContentLoad={_.onContentLoad}
-                  content={_.content}
-                  onGetLoadingAnimation={onGetLoadingAnimation}
-                />
-              </PivotItem>);
+              <PivotItem key={`${i}_${_.itemKey}`} {..._}>
+                <DetailPanelPivotItem onContentLoad={_.onContentLoad} content={_.content} onGetLoadingAnimation={onGetLoadingAnimation} />
+              </PivotItem>
+            );
           })}
       </Pivot>
     );

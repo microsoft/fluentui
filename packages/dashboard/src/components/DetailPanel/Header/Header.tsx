@@ -37,7 +37,14 @@ const header: React.SFC<IDetailPanelHeaderProps> = (props: IDetailPanelHeaderPro
     const { title, personaHeader } = props;
 
     if (personaHeader) {
-      return <Persona size={PersonaSize.size100} primaryText={title} onRenderSecondaryText={_onRenderAction} onRenderTertiaryText={_onRenderStatus} />;
+      return (
+        <Persona
+          size={PersonaSize.size100}
+          primaryText={title}
+          onRenderSecondaryText={_onRenderAction}
+          onRenderTertiaryText={_onRenderStatus}
+        />
+      );
     }
 
     return <div>{title}</div>;
