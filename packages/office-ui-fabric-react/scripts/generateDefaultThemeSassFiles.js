@@ -9,8 +9,9 @@ const lines = [];
 for (const fontName in fonts) {
   const font = fonts[fontName];
   for (const propName in font) {
-    const name = 'ms-font-' + fontName + '-' + propName;
-    lines.push(`$${name}: "[theme:${name}, default: ${font[propName]}]";`);
+    const themeName = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+    const name = 'ms-font-' + themeName;
+    lines.push(`$${name}: "[theme:${themeName}, default: ${font[propName]}]";`);
   }
 }
 
