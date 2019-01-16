@@ -24,7 +24,7 @@ Editing text, deletion
 
     Usage:
     ```
-    <Announced id={announcementId} message='File renamed' />
+    <Announced id={announcedId} message='File renamed' />
     ```
 
 2. User deletes an email
@@ -33,7 +33,7 @@ Editing text, deletion
 
     Usage:
     ```
-    <Announced id={sequenceId} message='Mail deleted' />
+    <Announced id={announcedId} message='Mail deleted' />
     ```
 
 ***
@@ -52,10 +52,12 @@ Pages, custom lists and libraries
 
     Usage:
     ```
-    <Announced id={sequenceId} message='50% complete' />
+    <Announced id={announcedId} message='50% complete' />
     ```
 
     There should only be one announced message per group of sections loaded, unless it has been over a specified period of time. A user can decide on a reasonable delay that sends out a status message after a chosen amount of time has passed.
+
+    Announced would also handle the "completed" status.
 
 ***
 ### Bulk async long running operations
@@ -75,10 +77,8 @@ Copying, uploading, or moving many items
 
     Usage:
     ```
-    <Announced id={sequenceId} message='30 items moved' />
+    <Announced id={announcedId} message='30 items moved' />
     ```
-
-    Announced would also handle the "completed" status.
 
 ***
 ### Asynchronous resolution of contacts or search results
@@ -98,7 +98,7 @@ To: line in mail clients, search boxes
 
     Usage:
     ```
-    <Announced id={announcementId} message='7 items found' />
+    <Announced id={announcedId} message='7 items found' />
     ```
 
     By default, the announced component should wait for .5 seconds before sending out the status message, in case the user keeps typing in the picker, to avoid reading unneccessary updates.
