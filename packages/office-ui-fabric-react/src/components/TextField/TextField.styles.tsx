@@ -24,7 +24,7 @@ const globalClassNames = {
 };
 
 function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> {
-  const { underlined, disabled } = props;
+  const { underlined, disabled, focused } = props;
   return () => ({
     root: [
       underlined &&
@@ -38,7 +38,15 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILa
         paddingRight: 0,
         lineHeight: '22px',
         height: 32
-      }
+      },
+      underlined &&
+        focused && {
+          selectors: {
+            [HighContrastSelector]: {
+              height: 31 // -1px to prevent jumpiness in HC with the increased border-width to 2px
+            }
+          }
+        }
     ]
   });
 }
@@ -87,29 +95,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       underlined && classNames.underlined,
       normalize,
       {
-        position: 'relative',
-        selectors: {
-          [HighContrastSelector]: {
-            borderWidth: 2
-          }
-        }
+        position: 'relative'
       },
-      focused && {
-        borderColor: semanticColors.inputFocusBorderAlt
-      },
-      underlined &&
-        !focused && {
-          border: `0px solid ${semanticColors.inputBorder}`
-        },
-      underlined &&
-        !disabled &&
-        !focused && {
-          selectors: {
-            ':hover': {
-              borderColor: semanticColors.inputBorderHovered
-            }
-          }
-        },
       className
     ],
     wrapper: [
@@ -118,27 +105,27 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         display: 'flex',
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: 'inherit',
+        borderBottomColor: semanticColors.inputBorder,
         width: '100%'
       },
       hasErrorMessage && {
-        borderColor: semanticColors.errorText,
+        borderBottomColor: semanticColors.errorText,
         selectors: {
           '&:focus, &:hover': {
-            borderColor: semanticColors.errorText
+            borderBottomColor: semanticColors.errorText
           }
         }
       },
       hasErrorMessage &&
         underlined &&
         !disabled && {
-          borderBottom: `1px solid ${semanticColors.errorText}`,
+          borderBottomColor: semanticColors.errorText,
           selectors: {
             ':focus': {
-              borderBottom: `1px solid ${semanticColors.errorText}`
+              borderBottomColor: semanticColors.errorText
             },
             ':hover': {
-              borderBottom: `1px solid ${semanticColors.errorText}`
+              borderBottomColor: semanticColors.errorText
             }
           }
         },
@@ -147,12 +134,15 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           borderBottomColor: semanticColors.disabledBackground
         },
       underlined &&
-        !disabled && {
+        !disabled &&
+        !focused &&
+        !hasErrorMessage && {
           selectors: {
             ':hover': {
+              borderBottomColor: semanticColors.inputBorderHovered,
               selectors: {
                 [HighContrastSelector]: {
-                  borderColor: 'Highlight'
+                  borderBottomColor: 'Highlight'
                 }
               }
             }
@@ -160,9 +150,11 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       underlined &&
         focused && {
+          borderBottomColor: semanticColors.inputFocusBorderAlt,
           selectors: {
             [HighContrastSelector]: {
-              borderColor: 'Highlight'
+              borderBottomWidth: 2,
+              borderBottomColor: 'Highlight'
             }
           }
         }
@@ -195,8 +187,20 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       borderless && {
         borderColor: 'transparent',
-        borderWidth: 0
+        selectors: {
+          ':hover': {
+            borderColor: 'transparent'
+          }
+        }
       },
+      borderless &&
+        focused && {
+          selectors: {
+            ':hover': {
+              borderColor: 'transparent'
+            }
+          }
+        },
       !focused &&
         !disabled && {
           selectors: {
@@ -220,9 +224,17 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       underlined && {
         flex: '1 1 0px',
-        borderWidth: 0,
+        border: 'none',
         textAlign: 'left'
       },
+      underlined &&
+        focused && {
+          selectors: {
+            [HighContrastSelector]: {
+              height: 31 // -1px to prevent jumpiness in HC with the increased border-width to 2px
+            }
+          }
+        },
       underlined &&
         disabled && {
           backgroundColor: 'transparent'
@@ -323,10 +335,19 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       focused && {
         selectors: {
           [HighContrastSelector]: {
-            padding: '0 11px 0 11px'
+            paddingLeft: 11,
+            paddingRight: 11
           }
         }
       },
+      focused &&
+        multiline && {
+          selectors: {
+            [HighContrastSelector]: {
+              paddingTop: 4 // take into consideration the 2px increased border-width
+            }
+          }
+        },
       inputClassName
     ],
     icon: [
