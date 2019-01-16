@@ -21,6 +21,7 @@ import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { MessageBarStyles } from './styles/MessageBar.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { NavStyles } from './styles/Nav.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
@@ -30,7 +31,6 @@ import { RatingStyles } from './styles/Rating.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
-import { SwatchColorPickerStyles } from './styles/SwatchColorPicker.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -122,6 +122,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     Modal: {
       styles: ModalStyles
+    },
+    Nav: {
+      styles: NavStyles
     },
     Pivot: {
       styles: PivotStyles
