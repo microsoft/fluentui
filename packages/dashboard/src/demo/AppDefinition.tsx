@@ -50,7 +50,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'SetupBanner',
           name: 'SetupBanner',
           url: '#/examples/setupbanner'
-        }
+        },
+        {
+          component: require<any>('../components/DetailPanel/DetailPanelPage').DetailPanelPage,
+          key: 'DetailPanel',
+          name: 'DetailPanel',
+          url: '#/examples/detailpanel'
+        },
       ]
     }
   ],
