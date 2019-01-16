@@ -30,8 +30,8 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   inputBorder: CommonSemanticColors.textControlOutline.rest,
   inputBorderHovered: CommonSemanticColors.textControlOutline.hover,
   inputPlaceholderText: DarkSemanticColors.text.placeholder,
-  link: DarkSemanticColors.controlOutlines.accent,
-  linkHovered: DarkSemanticColors.controlOutlines.accent,
+  link: DarkSemanticColors.text.hyperlink,
+  linkHovered: DarkSemanticColors.text.hyperlink,
   listBackground: DarkSemanticColors.background,
   listHeaderBackgroundPressed: DarkSemanticColors.item.hover,
   listItemBackgroundChecked: DarkSemanticColors.item.select,
@@ -78,10 +78,12 @@ export const AzureThemeDark: ITheme = createTheme({
   },
   palette: {
     themePrimary: DarkSemanticColors.controlOutlines.accent,
+    neutralPrimary: DarkSemanticColors.text.body,
     neutralDark: DarkSemanticColors.text.body,
     neutralLight: DarkSemanticColors.item.hover, // shimmer elements
     neutralLighter: DarkSemanticColors.item.hover, // shimmer elements
     neutralQuaternaryAlt: DarkSemanticColors.item.select, // expand button on list controls
+    neutralSecondary: DarkSemanticColors.text.label, // persona
     white: DarkSemanticColors.background // shimmer elements
   },
   semanticColors: darkExtendedSemanticColors

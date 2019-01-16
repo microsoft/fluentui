@@ -21,11 +21,14 @@ import { MessageBarStyles } from './styles/MessageBar.styles';
 import { ModalStyles } from './styles/Modal.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
+import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { ProgressIndicatorStyles } from './styles/ProgressIndicator.styles';
+import { RatingStyles } from './styles/Rating.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { SwatchColorPickerStyles } from './styles/SwatchColorPicker.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -100,9 +103,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     Dropdown: {
       styles: DropdownStyles
     },
-    // ExpandingCard: {
-    //   styles: ExpandingCardStyles
-    // },
+    ExpandingCard: {
+      styles: ExpandingCardStyles
+    },
     IconButton: {
       styles: IconButtonStyles(theme)
     },
@@ -121,9 +124,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     Pivot: {
       styles: PivotStyles
     },
-    // PlainCard: {
-    //   styles: PlainCardStyles
-    // },
+    PlainCard: {
+      styles: PlainCardStyles
+    },
     Panel: {
       styles: PanelStyles
     },
@@ -133,9 +136,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     ProgressIndicator: {
       styles: ProgressIndicatorStyles
     },
-    // Rating: {
-    //   styles: RatingStyles
-    // },
+    Rating: {
+      styles: RatingStyles
+    },
     Slider: {
       styles: SliderStyles
     },
@@ -144,6 +147,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     SpinButton: {
       styles: SpinButtonStyles(theme)
+    },
+    SwatchColorPicker: {
+      styles: SwatchColorPickerStyles
     },
     // TeachingBubble: {
     //   styles: TeachingBubbleStyles
