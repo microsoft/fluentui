@@ -2,7 +2,7 @@ import { HighContrastSelector, getFocusStyle } from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
-  const { theme, className, disabled, checked } = props;
+  const { theme, className, disabled, checked, inlineLabel, onOffMissing } = props;
   const { semanticColors } = theme;
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
@@ -27,6 +27,10 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       {
         marginBottom: '8px'
       },
+      inlineLabel && {
+        display: 'flex',
+        alignItems: 'center'
+      },
       className
     ],
 
@@ -39,7 +43,16 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             color: 'GrayText'
           }
         }
-      }
+      },
+      inlineLabel &&
+        !onOffMissing && {
+          marginRight: 16
+        },
+      onOffMissing &&
+        inlineLabel && {
+          order: 1,
+          marginLeft: 16
+        }
     ],
 
     container: [
@@ -188,10 +201,10 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       'ms-Toggle-stateText',
       {
         selectors: {
-          // Workaround: make rules more sepecific than Label rules.
+          // Workaround: make rules more specific than Label rules.
           '&&': {
             padding: '0',
-            margin: '0 10px',
+            margin: '0 8px',
             userSelect: 'none'
           }
         }
