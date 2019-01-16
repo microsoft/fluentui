@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.43.3",
+      "tag": "@uifabric/dashboard_v0.43.3",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.5 <7.0.0` to `>=6.50.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.43.2",
       "tag": "@uifabric/dashboard_v0.43.2",
       "date": "Mon, 14 Jan 2019 13:39:22 GMT",

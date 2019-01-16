@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 15 Jan 2019 13:36:46 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jan 2019 13:38:45 GMT and should not be manually modified.
+
+## 6.126.0
+Wed, 16 Jan 2019 13:38:45 GMT
+
+### Minor changes
+
+- Toggle: adds ability to render with the label inline (left side and right in RTL).
+
+### Patches
+
+- Panel: setting the aria-modal to true to prevent loosing focus when using Narrator in scan mode.
+- Icons: Remove aria-hidden to fix narrator focus bug
+- DetailsList: Remove redundant columns iteration, array allocation, and setState call in DetailsRowFields
 
 ## 6.125.0
 Tue, 15 Jan 2019 13:36:46 GMT
