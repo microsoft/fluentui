@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   FunctionCallback,
-  IDetailPanelBaseSetStatesAction,
+  IDetailPanelBaseCommonAction,
   LoadingTheme,
   IDetailPanelErrorResult,
   IDetailPanelActionBarProps,
@@ -11,7 +11,7 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button'
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
-type DetailPanelActionBarProps = IDetailPanelActionBarProps & IDetailPanelBaseSetStatesAction;
+type DetailPanelActionBarProps = IDetailPanelActionBarProps & IDetailPanelBaseCommonAction;
 
 const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActionBarProps) => {
   const _wrapLoadingAnimation = (

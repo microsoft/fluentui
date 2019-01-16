@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { IDetailPanelBaseSetStatesAction, IBodyContainerProps } from './DetailPanel.types';
+import { IDetailPanelBaseCommonAction, IBaseContainerProps } from './DetailPanel.types';
 import { MessageBanner } from './Body/MessageBanner';
 import { ActionBar } from './Footer/ActionBar';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Header } from './Header';
+import { _isReactComponent } from './Utils';
 
-type BodyContainerType = IBodyContainerProps & IDetailPanelBaseSetStatesAction;
+type BodyContainerType = IBaseContainerProps & IDetailPanelBaseCommonAction;
 
 const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) => {
   const _shouldHideOnLoading = () => {
@@ -73,8 +74,20 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
     }
     return null;
   };
+
+  const _renderBody = () => {
+    const { mainContent } = props;
+
+    if (_isReactComponent(mainContent)) {
+      return mainContent;
+    }
+
+    return null;
+  }
+
   const _renderElement = () => {
-    const { mainContent, loadingElement, inlineLoading } = props;
+    const { loadingElement, inlineLoading } = props;
+
     return (
       <Panel
         isOpen={true}
@@ -88,7 +101,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
         {(!loadingElement || (loadingElement && inlineLoading)) && (
           <>
             {_renderMessageBanner()}
-            {mainContent}
+            {_renderBody()}
           </>
         )}
       </Panel>

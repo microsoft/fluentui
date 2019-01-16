@@ -4,7 +4,7 @@ import {
   LoadingTheme,
   IDetailPanelMessageBannerProps,
   IDetailPanelActionBarProps,
-  IMainBodyProps,
+  IDetailPanelBaseProps,
   IDetailPanelHeaderProps,
   IDetailPanelErrorResult
 } from './DetailPanel.types';
@@ -26,7 +26,7 @@ interface IMainBodySnapshot {
   nextL2Id?: string | number;
 }
 
-type MainBodyProps = IMainBodyProps;
+type MainBodyProps = IDetailPanelBaseProps;
 
 class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates> {
   constructor(props: MainBodyProps) {
@@ -93,7 +93,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       const { onGetL2Content, mainContent } = this.props;
       if (snapshot.nextL2Id && onGetL2Content) {
         // Set loading animation
-        this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad);
+        this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad, snapshot.nextL2Id);
         Promise.resolve(onGetL2Content(snapshot.nextL2Id))
           .then((element: JSX.Element) => {
             this.setState({
@@ -175,12 +175,12 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     return mainActionBar;
   };
 
-  private _getPageLoadingAnimation = (loadingTheme: LoadingTheme, message?: string, forceInline?: boolean) => {
+  private _getPageLoadingAnimation = (loadingTheme: LoadingTheme, themeId?: string | number, message?: string, forceInline?: boolean) => {
     const { onGetLoadingAnimation } = this.props;
     let loadingElement;
     if (onGetLoadingAnimation) {
       try {
-        loadingElement = onGetLoadingAnimation(loadingTheme);
+        loadingElement = onGetLoadingAnimation(loadingTheme, themeId);
       } catch (err) {
         console.error('Fail on onGetLoadingAnimation', loadingTheme, err);
       }
@@ -220,9 +220,9 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     return loadingElement;
   };
 
-  private _setLoadingAnimation = (loadingTheme?: LoadingTheme, message?: string, forceInline?: boolean) => {
+  private _setLoadingAnimation = (loadingTheme?: LoadingTheme, themeId?: string | number, message?: string, forceInline?: boolean) => {
     if (loadingTheme) {
-      const element = this._getPageLoadingAnimation(loadingTheme, message, forceInline);
+      const element = this._getPageLoadingAnimation(loadingTheme, themeId, message, forceInline);
       this.setState({ loadingElement: element, inlineLoading: !!forceInline });
     } else {
       this.setState({ loadingElement: undefined, inlineLoading: undefined });
