@@ -149,7 +149,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         },
       underlined &&
-        focused && {
+        focused &&
+        !hasErrorMessage && {
           borderBottomColor: semanticColors.inputFocusBorderAlt,
           selectors: {
             [HighContrastSelector]: {
