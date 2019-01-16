@@ -555,12 +555,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
     <div
       className=
           ms-TextField-wrapper
-          {
-            border-bottom-color: #a80000;
-          }
-          &:focus, &:hover {
-            border-bottom-color: #a80000;
-          }
+
     >
       <label
         className=

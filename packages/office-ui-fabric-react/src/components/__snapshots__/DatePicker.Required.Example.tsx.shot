@@ -291,6 +291,9 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   right: -10px;
                   top: -5px;
                 }
+                @media screen and (-ms-high-contrast: active){&:after {
+                  right: -14px;
+                }
           >
             <input
               aria-invalid={false}

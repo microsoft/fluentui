@@ -442,14 +442,11 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
           display: flex;
           width: 100%;
         }
-        &:focus, &:hover {
-          border-bottom-color: #a80000;
-        }
-        &:focus {
-          border-bottom-color: #a80000;
-        }
         &:hover {
           border-bottom-color: #a80000;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-bottom-color: Highlight;
         }
   >
     <label
@@ -660,14 +657,11 @@ exports[`TextField renders multiline TextField correctly with props affecting st
           display: flex;
           width: 100%;
         }
-        &:focus, &:hover {
-          border-bottom-color: #a80000;
-        }
-        &:focus {
-          border-bottom-color: #a80000;
-        }
         &:hover {
           border-bottom-color: #a80000;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-bottom-color: Highlight;
         }
   >
     <label
@@ -879,14 +873,11 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
           display: flex;
           width: 100%;
         }
-        &:focus, &:hover {
-          border-bottom-color: #a80000;
-        }
-        &:focus {
-          border-bottom-color: #a80000;
-        }
         &:hover {
           border-bottom-color: #a80000;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-bottom-color: Highlight;
         }
   >
     <label

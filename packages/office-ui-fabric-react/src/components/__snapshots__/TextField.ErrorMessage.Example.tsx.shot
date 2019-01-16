@@ -284,12 +284,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     <div
       className=
           ms-TextField-wrapper
-          {
-            border-bottom-color: #a80000;
-          }
-          &:focus, &:hover {
-            border-bottom-color: #a80000;
-          }
+
     >
       <label
         className=
@@ -691,12 +686,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     <div
       className=
           ms-TextField-wrapper
-          {
-            border-bottom-color: #a80000;
-          }
-          &:focus, &:hover {
-            border-bottom-color: #a80000;
-          }
+
     >
       <label
         className=
@@ -1389,12 +1379,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     <div
       className=
           ms-TextField-wrapper
-          {
-            border-bottom-color: #a80000;
-          }
-          &:focus, &:hover {
-            border-bottom-color: #a80000;
-          }
+
     >
       <label
         className=
@@ -1794,12 +1779,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
       <div
         className=
             ms-TextField-wrapper
-            {
-              border-bottom-color: #a80000;
-            }
-            &:focus, &:hover {
-              border-bottom-color: #a80000;
-            }
+
       >
         <label
           className=
