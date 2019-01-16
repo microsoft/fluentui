@@ -189,6 +189,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
+              }
           onClick={[Function]}
         >
           Jack Howden
@@ -477,6 +490,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
+              }
           onClick={[Function]}
         >
           Javiera Márquez
@@ -535,6 +561,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
+              }
           onClick={[Function]}
         >
           Amelia Povalіy
@@ -592,6 +631,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               &:focus {
                 color: #0078d4;
+              }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
               }
           onClick={[Function]}
         >
@@ -933,6 +985,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
+              }
           onClick={[Function]}
         >
           Robert Larsson
@@ -990,6 +1055,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               &:focus {
                 color: #0078d4;
+              }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
               }
           onClick={[Function]}
         >
@@ -1387,6 +1465,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:focus {
                 color: #0078d4;
               }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
+              }
           onClick={[Function]}
         >
           Jin Cheng
@@ -1444,6 +1535,19 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               }
               &:focus {
                 color: #0078d4;
+              }
+              &:focus::after {
+                bottom: 0;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+                content: " ";
+                left: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+              }
+              &image {
+                display: inline-block;
+                line-height: 0;
               }
           onClick={[Function]}
         >

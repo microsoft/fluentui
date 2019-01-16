@@ -26,6 +26,19 @@ exports[`Link renders Link correctly 1`] = `
       &:focus {
         color: #0078d4;
       }
+      &:focus::after {
+        bottom: 0;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+        content: " ";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      &image {
+        display: inline-block;
+        line-height: 0;
+      }
   href="#"
   onClick={[Function]}
 >
@@ -86,6 +99,19 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       &:focus {
         color: #0078d4;
       }
+      &:focus::after {
+        bottom: 0;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+        content: " ";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      &image {
+        display: inline-block;
+        line-height: 0;
+      }
   onClick={[Function]}
 >
   I'm a div
@@ -118,6 +144,19 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
       &:focus {
         color: #0078d4;
+      }
+      &:focus::after {
+        bottom: 0;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+        content: " ";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      &image {
+        display: inline-block;
+        line-height: 0;
       }
   href="#"
   onClick={[Function]}
@@ -177,6 +216,19 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       &:focus {
         color: #0078d4;
+      }
+      &:focus::after {
+        bottom: 0;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+        content: " ";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      &image {
+        display: inline-block;
+        line-height: 0;
       }
   onClick={[Function]}
 >
@@ -322,6 +374,19 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       }
       &:focus {
         color: #0078d4;
+      }
+      &:focus::after {
+        bottom: 0;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+        content: " ";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      &image {
+        display: inline-block;
+        line-height: 0;
       }
   onClick={[Function]}
 >

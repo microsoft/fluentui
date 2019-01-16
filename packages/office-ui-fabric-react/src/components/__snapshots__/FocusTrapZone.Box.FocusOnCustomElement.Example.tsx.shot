@@ -305,6 +305,19 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             &:focus {
               color: #0078d4;
             }
+            &:focus::after {
+              bottom: 0;
+              box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset;
+              content: " ";
+              left: 0;
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            &image {
+              display: inline-block;
+              line-height: 0;
+            }
         onClick={[Function]}
       >
         Hyperlink inside FocusTrapZone

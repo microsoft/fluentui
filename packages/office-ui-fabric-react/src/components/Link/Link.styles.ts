@@ -84,6 +84,19 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           },
           '&:focus': {
             color: semanticColors.link
+          },
+          '&:focus::after': {
+            content: '" "',
+            position: 'absolute',
+            left: '0',
+            top: '0',
+            right: '0',
+            bottom: '0',
+            boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8) inset'
+          },
+          '&image': {
+            display: 'inline-block',
+            lineHeight: '0'
           }
         }
       },
