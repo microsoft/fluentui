@@ -5,6 +5,8 @@ import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { CheckStyles, DetailsRowStyles, DetailsListStyles } from './styles/DetailsList.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOptions.styles';
+import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
+import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CommandBarStyles } from './styles/CommandBar.styles';
 import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
@@ -46,15 +48,15 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     CalloutContent: {
       styles: CalloutContentStyles
     },
-    // ColorPicker: {
-    //   styles: ColorPickerStyles
-    // },
-    // ColorRectangle: {
-    //   styles: ColorRectangleStyles
-    // },
-    // ColorSlider: {
-    //   styles: ColorSliderStyles
-    // },
+    ColorPicker: {
+      styles: ColorPickerStyles
+    },
+    ColorRectangle: {
+      styles: ColorRectangleStyles
+    },
+    ColorSlider: {
+      styles: ColorSliderStyles
+    },
     CommandBar: {
       styles: CommandBarStyles
     },
@@ -73,9 +75,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     ChoiceGroupOption: {
       styles: ChoiceGroupOptionStyles
     },
-    // ColorPickerGridCell: {
-    //   styles: ColorPickerGridCellStyles
-    // },
+    ColorPickerGridCell: {
+      styles: ColorPickerGridCellStyles
+    },
     ComboBox: {
       styles: ComboBoxStyles(theme)
     },
@@ -147,9 +149,6 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     SpinButton: {
       styles: SpinButtonStyles(theme)
-    },
-    SwatchColorPicker: {
-      styles: SwatchColorPickerStyles
     },
     // TeachingBubble: {
     //   styles: TeachingBubbleStyles
