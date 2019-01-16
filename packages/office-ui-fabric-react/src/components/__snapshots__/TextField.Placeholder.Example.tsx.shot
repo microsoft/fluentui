@@ -20,9 +20,6 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
   >
     <div
       className=
@@ -128,9 +125,6 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
   >
     <div
       className=
@@ -235,9 +229,6 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           padding-right: 0px;
           padding-top: 0px;
           position: relative;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
         }
   >
     <div
@@ -350,18 +341,15 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
   >
     <div
       className=
           ms-TextField-wrapper
           {
-            border-color: #a80000;
+            border-bottom-color: #a80000;
           }
           &:focus, &:hover {
-            border-color: #a80000;
+            border-bottom-color: #a80000;
           }
     >
       <div
