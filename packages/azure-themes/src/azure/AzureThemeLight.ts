@@ -85,7 +85,7 @@ export const AzureThemeLight: ITheme = createTheme({
     neutralQuaternaryAlt: LightSemanticColors.item.select, // expand button on list controls
     neutralSecondary: LightSemanticColors.text.label, // persona
     neutralTertiaryAlt: LightSemanticColors.controlOutlines.rest, //document card
-    white: LightSemanticColors.background, // shimmer elements
+    white: LightSemanticColors.background // shimmer elements
   },
   semanticColors: lightExtendedSemanticColors
 });

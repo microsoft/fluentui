@@ -3,21 +3,21 @@ import { borderNone } from '../Constants';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
   const { theme } = props;
-  const { semanticColors } = theme
+  const { semanticColors } = theme;
 
   return {
     compositeLink: {
-      border: borderNone,
+      border: borderNone
     },
     link: {
       border: borderNone,
       color: semanticColors.bodyText,
       selectors: {
         '&:hover': {
-          border: borderNone,
+          border: borderNone
         },
         '&:active': {
-          border: borderNone,
+          border: borderNone
         }
       }
     }
