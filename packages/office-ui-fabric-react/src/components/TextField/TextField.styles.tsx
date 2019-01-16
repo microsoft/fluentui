@@ -187,20 +187,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       borderless && {
         borderColor: 'transparent',
-        selectors: {
-          ':hover': {
-            borderColor: 'transparent'
-          }
-        }
+        border: 'none'
       },
-      borderless &&
-        focused && {
-          selectors: {
-            ':hover': {
-              borderColor: 'transparent'
-            }
-          }
-        },
       !focused &&
         !disabled && {
           selectors: {
@@ -332,19 +320,21 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           backgroundColor: 'transparent',
           color: semanticColors.disabledText
         },
-      focused && {
-        selectors: {
-          [HighContrastSelector]: {
-            paddingLeft: 11,
-            paddingRight: 11
-          }
-        }
-      },
       focused &&
-        multiline && {
+        !borderless && {
           selectors: {
             [HighContrastSelector]: {
-              paddingTop: 4 // take into consideration the 2px increased border-width
+              paddingLeft: 11,
+              paddingRight: 11
+            }
+          }
+        },
+      focused &&
+        multiline &&
+        !borderless && {
+          selectors: {
+            [HighContrastSelector]: {
+              paddingTop: 4 // take into consideration the 2px increased border-width (not when borderless).
             }
           }
         },
