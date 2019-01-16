@@ -31,6 +31,7 @@ import { RatingStyles } from './styles/Rating.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -153,9 +154,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     SpinButton: {
       styles: SpinButtonStyles(theme)
     },
-    // TeachingBubble: {
-    //   styles: TeachingBubbleStyles
-    // },
+    TeachingBubble: {
+      styles: TeachingBubbleStyles
+    },
     TextField: {
       styles: TextFieldStyles
     },
