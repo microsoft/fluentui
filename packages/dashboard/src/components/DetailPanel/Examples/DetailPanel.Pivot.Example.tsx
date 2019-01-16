@@ -6,16 +6,20 @@ import {
   IDetailPanelErrorResult,
   IDetailPanelActionBarProps,
   IDetailPanelActionResult,
-  LoadingTheme
+  LoadingTheme,
+  IDetailPanelPivotBodyProps,
+  IDetailPanelPivotBodyItem,
+  IDetailInfoTileProps,
+  IQuickAction
 } from '../DetailPanel.types';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 
-interface IDetailPanelL2ContentExampleStates {
+interface IDetailPanelL2PivotExampleStates {
   show: boolean;
   currentL2Id?: string;
 }
 
-export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetailPanelL2ContentExampleStates> {
+export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPanelL2PivotExampleStates> {
   constructor(props: {}) {
     super(props);
     this.state = { show: false, currentL2Id: undefined };
@@ -25,7 +29,26 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
     const { show, currentL2Id } = this.state;
     if (show) {
       const header: IDetailPanelHeaderProps = {
-        title: ' I am the main header'
+        title: 'Contoso.com',
+        personaHeader: true,
+        quickActions: [
+          {
+            icon: 'AADLogo',
+            actionName: 'AADLogo',
+            onClick: () => { alert('AADLogo'); }
+          } as IQuickAction,
+          {
+            icon: 'ATPLogo',
+            actionName: 'ATPLogo',
+            onClick: () => { alert('ATPLogo'); }
+          } as IQuickAction,
+          {
+            icon: 'CalendarSettingsMirrored',
+            actionName: 'CalendarSettingsMirrored',
+            onClick: () => { alert('CalendarSettingsMirrored'); }
+          } as IQuickAction,
+        ],
+        status: 'Default'
       };
 
       return (
@@ -59,40 +82,51 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
   }
 
   private getMainContent() {
-    return (
-      <div>
-        <div>Main content</div>
-        <ul>
-          <li>
-            <Link
-              onClick={() => {
-                this.setState({ currentL2Id: 'cat' });
-              }}
-            >
-              CAT
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => {
-                this.setState({ currentL2Id: 'dog' });
-              }}
-            >
-              DOG
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => {
-                this.setState({ currentL2Id: 'bird' });
-              }}
-            >
-              Bird
-            </Link>
-          </li>
-        </ul>
-      </div>
-    );
+    return {
+      items: [
+        {
+          headerText: 'Details',
+          content: [
+            {
+              title: 'Name',
+              message: 'Contoso.com',
+              actionText: 'Rename domain',
+              onAction: () => { alert('Name'); }
+            } as IDetailInfoTileProps,
+            {
+              title: 'Health',
+              message: 'Status = Healthy​',
+              actionText: 'Detail',
+              onAction: () => { alert('Health'); }
+            } as IDetailInfoTileProps,
+            {
+              title: 'Purpose',
+              message: 'Exchange, SharePoint',
+              actionText: 'Change Purpose',
+              onAction: () => { alert('Change Purpose'); }
+            } as IDetailInfoTileProps,
+            {
+              title: 'Privacy',
+              message: 'Privacy Enabled',
+              actionText: 'Privacy',
+              onAction: () => { alert('Privacy'); }
+            } as IDetailInfoTileProps,
+            {
+              title: 'Name',
+              message: 'Contoso.com',
+              actionText: 'Rename domain',
+              onAction: () => { alert('Rename domain'); }
+            } as IDetailInfoTileProps,
+            {
+              title: 'Expiration',
+              message: new Date().toLocaleDateString(),
+              actionText: 'Detail',
+              onAction: () => { alert('Expiration'); }
+            } as IDetailInfoTileProps
+          ]
+        } as IDetailPanelPivotBodyItem
+      ]
+    } as IDetailPanelPivotBodyProps
   }
 
   private _onGetL2Header(l2Id: string) {

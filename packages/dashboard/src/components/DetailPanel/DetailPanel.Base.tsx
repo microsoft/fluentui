@@ -11,6 +11,8 @@ import {
 import { Loading } from './Body/Loading';
 import { BaseContainer } from './BaseContainer';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { _isReactComponent } from './Utils';
+import { DetailPanelPivotBody } from './Body/DetailPanelPivotBody';
 
 interface IMainBodyStates {
   pageReady: boolean;
@@ -36,7 +38,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       messageBanner: undefined,
       loadingElement: undefined,
       inlineLoading: undefined,
-      contentElement: props.mainContent,
+      contentElement: this._getMainContent(),
       actionBar: props.mainActionBar,
       currentL2Id: undefined
     };
@@ -93,7 +95,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       const { onGetL2Content, mainContent } = this.props;
       if (snapshot.nextL2Id && onGetL2Content) {
         // Set loading animation
-        this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad, snapshot.nextL2Id);
+        this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad);
         Promise.resolve(onGetL2Content(snapshot.nextL2Id))
           .then((element: JSX.Element) => {
             this.setState({
@@ -122,7 +124,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
           });
       } else {
         this.setState({
-          contentElement: mainContent,
+          contentElement: this._getMainContent(),
           currentL2Id: undefined,
           messageBanner: undefined
         });
@@ -144,6 +146,20 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     } else {
       this.setState({ loadingElement: undefined, pageReady: true });
     }
+  }
+
+  private _getMainContent = () => {
+    const { mainContent, onGetLoadingAnimation } = this.props;
+    if (mainContent) {
+
+      if (_isReactComponent(mainContent)) {
+        return mainContent;
+      }
+
+      return <DetailPanelPivotBody {...mainContent} onGetLoadingAnimation={onGetLoadingAnimation} />
+    }
+
+    return undefined;
   }
 
   private _getCurrentHeader = (titleTextOnly?: boolean) => {
@@ -220,9 +236,10 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     return loadingElement;
   };
 
-  private _setLoadingAnimation = (loadingTheme?: LoadingTheme, themeId?: string | number, message?: string, forceInline?: boolean) => {
+  private _setLoadingAnimation = (loadingTheme?: LoadingTheme, message?: string, forceInline?: boolean) => {
     if (loadingTheme) {
-      const element = this._getPageLoadingAnimation(loadingTheme, themeId, message, forceInline);
+      const { currentL2Id } = this.props;
+      const element = this._getPageLoadingAnimation(loadingTheme, currentL2Id, message, forceInline);
       this.setState({ loadingElement: element, inlineLoading: !!forceInline });
     } else {
       this.setState({ loadingElement: undefined, inlineLoading: undefined });

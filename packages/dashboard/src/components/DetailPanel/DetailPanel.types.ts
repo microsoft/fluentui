@@ -8,7 +8,8 @@ export enum LoadingTheme {
     OnPageLoad,
     OnL2ContentLoad,
     OnPrimaryButtonClick,
-    OnSecondaryButtonClick
+    OnSecondaryButtonClick,
+    OnPivotItemLoad
 }
 
 export enum LoadingType {
@@ -116,7 +117,7 @@ export interface IDetailPanelBaseProps {
      * spinner or shimmer
      * if the return vaule is @type {null} or @type {undefined}, a default load animation will be applied
      */
-    onGetLoadingAnimation?: (loadingTheme: LoadingTheme, l2Id?: string | number) => JSX.Element;
+    onGetLoadingAnimation?: (loadingTheme: LoadingTheme, themeId?: string | number) => JSX.Element | null;
 
     /**
      * Main content header props
@@ -125,8 +126,10 @@ export interface IDetailPanelBaseProps {
 
     /**
      * Content to display in the main area
+     * @returns {JSX.Element} for general render
+     * @returns {IDetailPanelPivotBodyProps} for Pivot detail panel 
      */
-    mainContent: JSX.Element;
+    mainContent: JSX.Element | IDetailPanelPivotBodyProps;
 
     /**
      * Main action bar of the detail panel
@@ -213,24 +216,24 @@ export interface IDetailPanelBaseCommonAction {
     /**
      * Set loading animation on detail panel
      */
-    onSetLoadingAnimation: (loadingTheme?: LoadingTheme, message?: string, forceInline?: boolean) => void;
+    onSetLoadingAnimation?: (loadingTheme?: LoadingTheme, message?: string, forceInline?: boolean) => void;
 
     /**
      * Set the message banner display on detail panel
      */
-    onSetMessageBanner: (messageBanner?: IDetailPanelMessageBannerProps) => void;
+    onSetMessageBanner?: (messageBanner?: IDetailPanelMessageBannerProps) => void;
 
     /**
      * Set the action bar props
      */
-    onSetActionBar: (actionBar: IDetailPanelActionBarProps) => void;
+    onSetActionBar?: (actionBar: IDetailPanelActionBarProps) => void;
 
     /**
      * Call back on getting the customized loading animation to override the default
      * spinner or shimmer
      * if the return vaule is @type {null} or @type {undefined}, a default load animation will be applied
      */
-    onGetLoadingAnimation?: (loadingTheme: LoadingTheme, l2Id?: string | number) => JSX.Element;
+    onGetLoadingAnimation?: (loadingTheme: LoadingTheme, themeId?: string | number) => JSX.Element | null;
 }
 
 export interface IDetailPanelErrorResult {

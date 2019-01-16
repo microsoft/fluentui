@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IDetailPanelHeaderProps, IQuickAction } from '../DetailPanel.types';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Persona } from 'office-ui-fabric-react/lib/Persona';
+import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 
 const header: React.SFC<IDetailPanelHeaderProps> = (props: IDetailPanelHeaderProps) => {
   const _onRenderAction = (): JSX.Element | null => {
@@ -37,7 +37,7 @@ const header: React.SFC<IDetailPanelHeaderProps> = (props: IDetailPanelHeaderPro
     const { title, personaHeader } = props;
 
     if (personaHeader) {
-      return <Persona primaryText={title} onRenderSecondaryText={_onRenderAction} onRenderTertiaryText={_onRenderStatus} />;
+      return <Persona size={PersonaSize.size100} primaryText={title} onRenderSecondaryText={_onRenderAction} onRenderTertiaryText={_onRenderStatus} />;
     }
 
     return <div>{title}</div>;

@@ -18,14 +18,13 @@ const detailInfoTile: React.SFC<IDetailInfoTileProps> = (props: IDetailInfoTileP
     <div className={css.item}>
       <div className={css.title}>{title}</div>
       {message && <div className={css.message}>{message}</div>}
-      {actionText &&
-        onAction && (
-          <div className={css.action}>
-            <Link humanFriendlyName={`DetailInfoTitle_${title}`} onClick={_onTileClick}>
-              {actionText}
-            </Link>
-          </div>
-        )}
+      {actionText && onAction && (
+        <div className={css.action}>
+          <Link humanFriendlyName={`DetailInfoTitle_${title}`} onClick={_onTileClick}>
+            {actionText}
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

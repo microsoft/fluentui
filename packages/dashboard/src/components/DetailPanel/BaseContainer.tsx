@@ -83,7 +83,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
     }
 
     return null;
-  }
+  };
 
   const _renderElement = () => {
     const { loadingElement, inlineLoading } = props;
