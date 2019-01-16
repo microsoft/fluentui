@@ -2,7 +2,6 @@ import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableCompon
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-// TODO: why isn't token/styles type swap resulting in any type errors?
 export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
 export type IStackSlot = ISlotProp<IStackProps>;

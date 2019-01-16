@@ -89,7 +89,6 @@ export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentTy
  * Component used by foundation to tie elements together.
  * @see createComponent for generic type documentation.
  */
-// TODO: any way to rename 'view' looking forward to React Hooks components? or just leave as view?
 export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
   /**
    * Display name to identify component in React hierarchy.
