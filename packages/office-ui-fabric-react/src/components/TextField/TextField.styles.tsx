@@ -108,24 +108,18 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         borderBottomColor: semanticColors.inputBorder,
         width: '100%'
       },
-      hasErrorMessage && {
-        borderBottomColor: semanticColors.errorText,
-        selectors: {
-          '&:focus, &:hover': {
-            borderBottomColor: semanticColors.errorText
-          }
-        }
-      },
       hasErrorMessage &&
         underlined &&
         !disabled && {
           borderBottomColor: semanticColors.errorText,
           selectors: {
-            ':focus': {
-              borderBottomColor: semanticColors.errorText
-            },
             ':hover': {
-              borderBottomColor: semanticColors.errorText
+              borderBottomColor: semanticColors.errorText,
+              selectors: {
+                [HighContrastSelector]: {
+                  borderBottomColor: 'Highlight'
+                }
+              }
             }
           }
         },
@@ -149,9 +143,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         },
       underlined &&
-        focused &&
-        !hasErrorMessage && {
-          borderBottomColor: semanticColors.inputFocusBorderAlt,
+        focused && {
+          borderBottomColor: !hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText,
           selectors: {
             [HighContrastSelector]: {
               borderBottomWidth: 2,
@@ -187,7 +180,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         display: 'flex'
       },
       borderless && {
-        borderColor: 'transparent',
         border: 'none'
       },
       !focused &&
@@ -249,6 +241,13 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               position: 'absolute',
               top: -5,
               right: -10
+            },
+            [HighContrastSelector]: {
+              selectors: {
+                ':after': {
+                  right: -14 // moving the * 4 pixel to right to alleviate border clipping in HC mode.
+                }
+              }
             }
           }
         }
