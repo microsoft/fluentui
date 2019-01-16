@@ -3,20 +3,8 @@ import { Shimmer, ShimmerElementType as ElemType } from 'office-ui-fabric-react/
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import * as React from 'react';
 
-import { LoadingType } from '../DetailPanel.types';
+import { LoadingType, IDetailPanelLoadingProps } from '../DetailPanel.types';
 import { detailPanelLoadingStyles } from '../DetailPanel.styles';
-
-interface IDetailPanelLoadingProps {
-  /**
-   * Loading animation type
-   */
-  loadingType?: LoadingType;
-
-  /**
-   * Message to display under load spiner(only)
-   */
-  message?: string;
-}
 
 const loading: React.SFC<IDetailPanelLoadingProps> = (props: IDetailPanelLoadingProps): JSX.Element | null => {
   const css = detailPanelLoadingStyles;

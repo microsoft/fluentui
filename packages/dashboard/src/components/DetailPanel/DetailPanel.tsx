@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { IDetailPanelProps } from './DetailPanel.types';
-import { MainBody } from './Body/MainBody';
+import { DetailPanelBase } from './DetailPanel.Base';
 
 const detailPanel: React.SFC<IDetailPanelProps> = (props: IDetailPanelProps) => {
-  const _renderElement = () => {
-    return <MainBody {...props} />;
-  };
+    const _renderElement = () => {
+        return <DetailPanelBase {...props} />;
+    };
 
-  return _renderElement();
+    return _renderElement();
 };
 
 export { detailPanel as DetailPanel };

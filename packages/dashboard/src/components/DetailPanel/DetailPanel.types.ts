@@ -27,18 +27,64 @@ export enum ConfirmationStatus {
 }
 
 export interface IQuickAction {
+    /**
+     * Hide the quick action
+     */
     hide?: boolean;
+
+    /**
+     * Fabric icon name
+     */
     icon: string;
+
+    /**
+     * Name of the action
+     */
     actionName: string;
+
+    /**
+     * Callback on click
+     */
     onClick: () => void;
 }
 
 export interface IDetailPanelHeaderProps {
+    /**
+     * Title of the header
+     */
     title: string;
+
+    /**
+     * Set weather its a Persona type header
+     */
     personaHeader?: boolean;
+
+    /**
+     * Show status indicator
+     */
     statusIndicator?: boolean;
+
+    /**
+     * Quick action configuration
+     */
     quickActions?: IQuickAction[];
+
+    /**
+     * Status string
+     */
     status?: string;
+}
+
+export interface IDetailPanelLoadingProps {
+    /**
+     * Loading animation type
+     */
+    loadingType?: LoadingType;
+
+    /**
+     * Message to display under load spiner(only)
+     */
+    message?: string;
 }
 
 export interface IDetailPanelMessageBannerProps {

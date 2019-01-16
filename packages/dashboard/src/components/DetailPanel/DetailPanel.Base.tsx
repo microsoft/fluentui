@@ -7,9 +7,9 @@ import {
     IMainBodyProps,
     IDetailPanelHeaderProps,
     IDetailPanelErrorResult
-} from '../DetailPanel.types';
-import { Loading } from './Loading';
-import { BodyContainer } from './BodyContainer';
+} from './DetailPanel.types';
+import { Loading } from './Body/Loading';
+import { BaseContainer } from './BaseContainer';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 interface IMainBodyStates {
@@ -28,7 +28,7 @@ interface IMainBodySnapshot {
 
 type MainBodyProps = IMainBodyProps;
 
-class MainBody extends React.PureComponent<MainBodyProps, IMainBodyStates> {
+class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates> {
     constructor(props: MainBodyProps) {
         super(props);
         this.state = {
@@ -68,7 +68,7 @@ class MainBody extends React.PureComponent<MainBodyProps, IMainBodyStates> {
         }
 
         return (
-            <BodyContainer
+            <BaseContainer
                 onBack={currentL2Id ? this._onBackAction : undefined}
                 onDismiss={this._onDismissAction}
                 onSetLoadingAnimation={this._setLoadingAnimation}
@@ -243,7 +243,7 @@ class MainBody extends React.PureComponent<MainBodyProps, IMainBodyStates> {
         } else {
             this.setState({ actionBar: undefined });
         }
-    }
+    };
 
     private _onBackAction = () => {
         const { onL2BackClick } = this.props;
@@ -263,4 +263,4 @@ class MainBody extends React.PureComponent<MainBodyProps, IMainBodyStates> {
     };
 }
 
-export { MainBody };
+export { DetailPanelBase };
