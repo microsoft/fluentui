@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Jan 2019 13:38:44 GMT and should not be manually modified.
+
+## 6.50.6
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Update Foundation typings to require Tokens.
+- Icon: removing aria-hidden attribute.
 
 ## 6.50.5
 Tue, 15 Jan 2019 13:36:45 GMT

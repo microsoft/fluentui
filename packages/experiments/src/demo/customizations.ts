@@ -6,7 +6,7 @@ const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Default', customizations: DefaultCustomizations },
   { title: 'Teams', customizations: TeamsCustomizations },
   { title: 'Fluent', customizations: FluentCustomizations },
-  { title: 'Word', customizations: WordCustomizations },
+  { title: 'Word', customizations: WordCustomizations }
 ];
 
 export const AppCustomizations: IAppCustomizations = {

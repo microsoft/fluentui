@@ -25,6 +25,11 @@ export interface ICardDropDownOption {
    * Function for click
    */
   onClick: VoidFunction;
+
+  /**
+   * Id of the drop down item
+   */
+  id?: string;
 }
 
 export interface ICardFrameProps {
