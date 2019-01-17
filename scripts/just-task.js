@@ -39,12 +39,9 @@ task(
       condition('jest', () => !argv().min && !argv().prdeploy),
       series(
         'ts',
+        'build-codepen-examples',
         condition('lint-imports', () => !argv().min && !argv().prdeploy),
-        parallel(
-          condition('webpack', () => !argv().min),
-          condition('verify-api-extractor', () => !argv().min && !argv().prdeploy),
-          'build-codepen-examples'
-        )
+        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
       )
     )
   )
