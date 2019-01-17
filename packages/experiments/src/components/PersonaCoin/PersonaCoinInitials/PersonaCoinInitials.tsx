@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react';
-import { Text } from '../../Text';
+import { Text } from '../../Text/Text';
 import { IPersonaCoinProps } from '../PersonaCoin.types';
 import { getInitials, getRTL } from '../../../Utilities';
 
