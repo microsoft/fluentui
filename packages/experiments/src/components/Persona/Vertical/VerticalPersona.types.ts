@@ -21,8 +21,6 @@ export interface IVerticalPersonaProps
   text: string;
 }
 
-export interface IVerticalPersonaTokens {}
-
 export interface IVerticalPersonaStyles {
   root?: IStyle;
   primaryText?: IStyle;
