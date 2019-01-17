@@ -87,6 +87,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
 
+  public refs: {
+    [key: string]: React.ReactInstance;
+  };
+
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
   private _pageRefs: { [pageKey: string]: React.RefObject<HTMLDivElement> };
