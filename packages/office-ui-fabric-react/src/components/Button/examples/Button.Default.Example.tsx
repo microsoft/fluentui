@@ -3,6 +3,8 @@ import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
 import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { IStyleFunctionOrObject, IStyleFunction } from '../../../Utilities';
+import { IButtonStyleProps, IButtonStyles } from '../Button.types';
 
 export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
   public render(): JSX.Element {
@@ -10,6 +12,16 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
 
     const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
     const classNames = getClassNames(getStyles, {});
+
+    const style: IStyleFunction<IButtonStyleProps, IButtonStyles> = props => {
+      return {
+        root: {
+          color: 'red'
+        }
+      };
+    };
+    console.log('STYLE:');
+    console.log(style);
 
     return (
       <div className={css(classNames.twoup)}>
@@ -20,7 +32,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             allowDisabledFocus={true}
             disabled={disabled}
             checked={checked}
-            text="Button"
+            text="Button 1"
             onClick={this._alertClicked}
           />
         </div>
@@ -30,9 +42,20 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             data-automation-id="test"
             disabled={disabled}
             checked={checked}
-            text="Button"
+            text="Button 2"
             onClick={this._alertClicked}
             allowDisabledFocus={true}
+          />
+        </div>
+        <div>
+          <Label>Test</Label>
+          <DefaultButton
+            data-automation-id="test"
+            disabled={disabled}
+            checked={checked}
+            text="Button 3"
+            onClick={this._alertClicked}
+            styles={style}
           />
         </div>
       </div>

@@ -3,7 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
+import { IRefObject, IRenderFunction, KeyCodes, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
@@ -74,7 +74,7 @@ export interface IButtonProps
   /**
    * Custom styling for individual elements within the button DOM.
    */
-  styles?: IButtonStyles;
+  styles?: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>;
 
   /**
    * Theme provided by HOC.
@@ -288,6 +288,18 @@ export interface IButtonProps
    * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
+}
+
+export interface IButtonStyleProps {
+  /**
+   * Theme provided by High-Order Component.
+   */
+  theme?: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
 }
 
 export enum ElementType {

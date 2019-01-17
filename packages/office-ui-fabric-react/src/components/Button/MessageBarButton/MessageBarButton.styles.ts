@@ -1,10 +1,15 @@
-import { IButtonStyles } from '../Button.types';
+import { IButtonStyleProps, IButtonStyles } from '../Button.types';
 import { ITheme, concatStyleSets } from '../../../Styling';
-import { memoizeFunction } from '../../../Utilities';
+import { memoizeFunction, IStyleFunctionOrObject } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 
 export const getStyles = memoizeFunction(
-  (theme: ITheme, customStyles?: IButtonStyles, focusInset?: string, focusColor?: string): IButtonStyles => {
+  (
+    theme: ITheme,
+    customStyles?: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>,
+    focusInset?: string,
+    focusColor?: string
+  ): IButtonStyles => {
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
     const messageBarButtonStyles: IButtonStyles = {
       root: {
