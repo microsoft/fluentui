@@ -531,7 +531,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
     if (section.items && section.items.length > 0) {
       return (
-        <li role="presentation" key={section.key}>
+        <li role="presentation" key={`section-${index}`}>
           <div role="group">
             <ul className={this._classNames.list}>
               {section.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
