@@ -3,14 +3,7 @@ import { concatStyleSets, IStyleSet, ITheme } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
 import { assign } from './utilities';
 
-import {
-  IComponent,
-  ICustomizationProps,
-  IStatelessComponent,
-  IStyleableComponentProps,
-  IStylesFunctionOrObject,
-  IToken
-} from './IComponent';
+import { IComponent, ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken } from './IComponent';
 import { IDefaultSlotProps } from './ISlots';
 
 /**
@@ -27,18 +20,22 @@ import { IDefaultSlotProps } from './ISlots';
  * State component is optional. If state is not provided, created component is essentially a functional stateless component.
  *
  * TComponentProps: A styleable props interface for the created component.
+ * TTokens: The type for tokens props.
+ * TStyleSet: The type for styles properties.
  * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
  * component is not provided, TComponentProps is the same as TViewProps.
- * TStyleSet: The type for styles properties.
- * TTokens: The type for tokens props.
  * TStatics: Static type for statics applied to created component object.
  *
  * @param {IComponent} component
  * @param {IComponentProviders} providers
  */
-export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
-  component: IComponent<TComponentProps, TViewProps, TTokens, TStyleSet, TStatics>
-): React.StatelessComponent<TComponentProps> & TStatics {
+export function createComponent<
+  TComponentProps,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps = TComponentProps,
+  TStatics = {}
+>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics {
   const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
       // TODO: createComponent is also affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
@@ -81,7 +78,7 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
               _defaultStyles: styles
             };
 
-            return component.view(viewComponentProps);
+            return <component.view {...viewComponentProps} />;
           };
           return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
         }}
@@ -95,17 +92,6 @@ export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet 
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.StatelessComponent<TComponentProps> & TStatics;
-}
-
-/**
- * A wrapper function around createComponent to confine generics and component properties for stateless components.
- *
- * @see {@link createComponent} for more information.
- */
-export function createStatelessComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
-  component: IStatelessComponent<TComponentProps, TTokens, TStyleSet, TStatics>
-): React.StatelessComponent<TComponentProps> & TStatics {
-  return createComponent(component as IComponent<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>);
 }
 
 /**
@@ -124,6 +110,9 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
   );
 }
 
+/**
+ * Resolve all tokens functions with props flatten results along with all tokens objects.
+ */
 function _resolveTokens<TViewProps, TTokens>(
   props: TViewProps,
   theme: ITheme,

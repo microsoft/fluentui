@@ -5,9 +5,9 @@ import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 
 export type ICollapsibleSectionComponent = IComponent<
   ICollapsibleSectionProps,
-  ICollapsibleSectionViewProps,
+  ICollapsibleSectionTokens,
   ICollapsibleSectionStyles,
-  ICollapsibleSectionTokens
+  ICollapsibleSectionViewProps
 >;
 
 export interface ICollapsibleSectionSlots {

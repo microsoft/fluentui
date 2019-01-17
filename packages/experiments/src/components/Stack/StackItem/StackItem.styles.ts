@@ -28,9 +28,9 @@ export const styles: IStackItemComponent['styles'] = (props, theme) => {
         flexShrink: 0
       },
       shrink &&
-      !preventShrink && {
-        flexShrink: 1
-      },
+        !preventShrink && {
+          flexShrink: 1
+        },
       align && {
         alignSelf: alignMap[align] || align
       },

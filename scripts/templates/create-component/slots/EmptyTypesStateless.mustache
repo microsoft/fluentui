@@ -1,9 +1,8 @@
-import { IComponentStyles, IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
 import { ITextSlot } from '../../Text';
 import { IBaseProps } from '../../Utilities';
 
-export type I{{componentName}}Component =
-  IStatelessComponent< I{{componentName}}Props, I{{componentName}}Tokens, I{{componentName}}Styles>;
+export type I{{componentName}}Component = IComponent< I{{componentName}}Props, I{{componentName}}Tokens, I{{componentName}}Styles>;
 
 // Optional interface to use for componentRef. This should be limited in scope with the most common scenario being for focusing elements.
 export interface I{{componentName}} { }

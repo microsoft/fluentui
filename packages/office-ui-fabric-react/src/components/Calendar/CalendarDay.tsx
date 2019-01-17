@@ -31,7 +31,7 @@ export interface IDayInfo {
   isToday: boolean;
   isSelected: boolean;
   isInBounds: boolean;
-  onSelected: () => void;
+  onSelected: (ev: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface ICalendarDay {
@@ -267,6 +267,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     return (
                       <td
                         key={day.key}
+                        onClick={day.isInBounds ? day.onSelected : undefined}
                         className={css(
                           styles.dayWrapper,
                           'ms-DatePicker-day',
@@ -309,13 +310,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                       >
                         <button
                           key={day.key + 'button'}
+                          onClick={day.isInBounds ? day.onSelected : undefined}
                           className={css(styles.day, 'ms-DatePicker-day-button', {
                             ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday
                           })}
                           role={'button'}
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
-                          onClick={day.isInBounds ? day.onSelected : undefined}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
@@ -491,7 +492,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   private _onDayKeyDown = (originalDate: Date, weekIndex: number, dayIndex: number): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
-        this._onSelectDate(originalDate);
+        this._onSelectDate(originalDate, ev);
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }
@@ -647,7 +648,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _onSelectDate = (selectedDate: Date): void => {
+  private _onSelectDate = (selectedDate: Date, ev: React.SyntheticEvent<HTMLElement>): void => {
     const {
       onSelectDate,
       dateRangeType,
@@ -658,6 +659,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       maxDate,
       workWeekDays
     } = this.props;
+
+    if (ev) {
+      ev.stopPropagation();
+    }
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
     if (dateRangeType !== DateRangeType.Day) {

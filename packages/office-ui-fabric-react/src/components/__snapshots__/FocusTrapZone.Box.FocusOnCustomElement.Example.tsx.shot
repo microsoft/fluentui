@@ -136,9 +136,6 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               padding-top: 0px;
               position: relative;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              border-width: 2px;
-            }
       >
         <div
           className=
@@ -463,8 +460,8 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                   }
                   && {
                     margin-bottom: 0;
-                    margin-left: 10px;
-                    margin-right: 10px;
+                    margin-left: 8px;
+                    margin-right: 8px;
                     margin-top: 0;
                     padding-bottom: 0;
                     padding-left: 0;
