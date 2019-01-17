@@ -7,7 +7,7 @@ Some real-world applications of the component include copying, uploading, or mov
 
 ## Use cases
 
-### Updated actions being executed
+### Quick actions
 Small operations like editing text, or deletion that are short enough that they do not require a status during progress.
 
 #### Examples
