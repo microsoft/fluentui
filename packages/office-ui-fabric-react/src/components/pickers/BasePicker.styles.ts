@@ -53,7 +53,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
     input: [
       classNames.input,
       {
-        height: 34,
+        height: 30,
         border: 'none',
         flexGrow: 1,
         outline: 'none',

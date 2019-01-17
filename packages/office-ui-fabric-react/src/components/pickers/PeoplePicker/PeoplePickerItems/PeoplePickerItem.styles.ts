@@ -9,7 +9,7 @@ const GlobalClassNames = {
   isInvalid: 'is-invalid'
 };
 
-const REMOVE_BUTTON_SIZE = 28;
+const REMOVE_BUTTON_SIZE = 24;
 
 export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles {
   const { className, theme, selected, invalid } = props;
