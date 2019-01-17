@@ -1,9 +1,9 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
-import { IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IHTMLDivSlot, IStyleableComponentProps } from '../../../Foundation';
 import { ITextSlot } from '../../../Text';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
-export type IVerticalPersonaComponent = IStatelessComponent<IVerticalPersonaProps, IVerticalPersonaStyles, IVerticalPersonaTokens>;
+export type IVerticalPersonaComponent = IComponent<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles>;
 
 export interface IVerticalPersonaSlots {
   root?: IHTMLDivSlot;
@@ -16,10 +16,12 @@ export interface IVerticalPersonaSlots {
 // If you don't want these props to be included in your component, just remove this extension.
 export interface IVerticalPersonaProps
   extends IVerticalPersonaSlots,
-    IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaStyles, IVerticalPersonaTokens> {
+    IStyleableComponentProps<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles> {
   vertical: true;
   text: string;
 }
+
+export interface IVerticalPersonaTokens {}
 
 export interface IVerticalPersonaStyles {
   root?: IStyle;

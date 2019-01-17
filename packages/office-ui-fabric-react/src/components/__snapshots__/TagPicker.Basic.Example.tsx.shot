@@ -104,7 +104,6 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
@@ -147,6 +146,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
     className=
         ms-BasePicker
 
+    onBlur={[Function]}
     onKeyDown={[Function]}
   >
     <div
@@ -241,6 +241,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
     className=
         ms-BasePicker
 
+    onBlur={[Function]}
     onKeyDown={[Function]}
   >
     <div

@@ -70,7 +70,6 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         onClick={[Function]}
       >
         <i
-          aria-hidden={true}
           className=
               ms-SearchBox-icon
               {

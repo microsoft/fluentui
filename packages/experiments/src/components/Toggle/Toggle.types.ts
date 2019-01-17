@@ -5,7 +5,7 @@ import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ILabelSlot } from '../../utilities/factoryComponents.types';
 
-export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles, IToggleTokens>;
+export type IToggleComponent = IComponent<IToggleProps, IToggleTokens, IToggleStyles, IToggleViewProps>;
 
 export interface IToggleSlots {
   /**
@@ -48,12 +48,9 @@ export interface IToggle {
   focus: () => void;
 }
 
-/**
- * Toggle component props.
- */
 export interface IToggleProps
   extends IToggleSlots,
-    IStyleableComponentProps<IToggleViewProps, IToggleStyles, IToggleTokens>,
+    IStyleableComponentProps<IToggleViewProps, IToggleTokens, IToggleStyles>,
     IBaseProps<IToggle> {
   /**
    * Render the root element as another type.
@@ -106,9 +103,6 @@ export type IToggleViewProps = IToggleProps & {
   toggleButtonRef?: React.RefObject<HTMLButtonElement>;
 };
 
-/**
- * Styles for the Toggle component.
- */
 export interface IToggleTokens {
   pillBackground?: string;
   pillHoveredBackground?: string;

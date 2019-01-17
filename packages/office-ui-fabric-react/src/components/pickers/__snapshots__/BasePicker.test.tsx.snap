@@ -3,6 +3,7 @@
 exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
 <div
   className="ms-BasePicker"
+  onBlur={[Function]}
   onKeyDown={[Function]}
 >
   <div
@@ -63,6 +64,7 @@ exports[`Pickers BasePicker renders BasePicker correctly 1`] = `
 exports[`Pickers BasePicker renders BasePicker with inputProps supply classnames correctly 1`] = `
 <div
   className="ms-BasePicker"
+  onBlur={[Function]}
   onKeyDown={[Function]}
 >
   <div
@@ -127,6 +129,7 @@ exports[`Pickers TagPicker renders TagPicker correctly 1`] = `
   className=
       ms-BasePicker
 
+  onBlur={[Function]}
   onKeyDown={[Function]}
 >
   <div

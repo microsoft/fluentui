@@ -895,7 +895,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Dropdown-caretDown
                 {
@@ -1034,7 +1033,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {

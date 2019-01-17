@@ -3,7 +3,12 @@ import { IComponent, IComponentStyles, IHTMLDivSlot, IStyleableComponentProps } 
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 
-export type ICollapsibleSectionComponent = IComponent<ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionStyles>;
+export type ICollapsibleSectionComponent = IComponent<
+  ICollapsibleSectionProps,
+  ICollapsibleSectionTokens,
+  ICollapsibleSectionStyles,
+  ICollapsibleSectionViewProps
+>;
 
 export interface ICollapsibleSectionSlots {
   root?: IHTMLDivSlot;
@@ -15,7 +20,7 @@ export interface ICollapsibleSection {}
 
 export interface ICollapsibleSectionProps
   extends ICollapsibleSectionSlots,
-    IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles>,
+    IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles, ICollapsibleSectionTokens>,
     IBaseProps<ICollapsibleSection> {
   /**
    * Default and initial collapsed state if collapsed prop is not provided.
@@ -55,5 +60,7 @@ export type ICollapsibleSectionViewProps = Pick<ICollapsibleSectionProps, 'inden
      */
     onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
   };
+
+export interface ICollapsibleSectionTokens {}
 
 export type ICollapsibleSectionStyles = IComponentStyles<ICollapsibleSectionSlots>;

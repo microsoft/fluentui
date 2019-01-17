@@ -1,15 +1,10 @@
 import { VerticalPersonaView } from './VerticalPersona.view';
-import { VerticalPersonaStyles, VerticalPersonaTokens } from './VerticalPersona.styles';
-import { IVerticalPersonaProps, IVerticalPersonaStyles, IVerticalPersonaTokens } from './VerticalPersona.types';
-import { createStatelessComponent } from '../../../Foundation';
+import { VerticalPersonaStyles } from './VerticalPersona.styles';
+import { IVerticalPersonaProps } from './VerticalPersona.types';
+import { createComponent } from '../../../Foundation';
 
-export const VerticalPersona: React.StatelessComponent<IVerticalPersonaProps> = createStatelessComponent<
-  IVerticalPersonaProps,
-  IVerticalPersonaStyles,
-  IVerticalPersonaTokens
->({
+export const VerticalPersona: React.StatelessComponent<IVerticalPersonaProps> = createComponent({
   displayName: 'VerticalPersona',
   view: VerticalPersonaView,
-  styles: VerticalPersonaStyles,
-  tokens: VerticalPersonaTokens
+  styles: VerticalPersonaStyles
 });

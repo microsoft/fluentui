@@ -8,43 +8,69 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 //        export const styles: IStackComponent['styles'] = props => {
 //        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
 
+/**
+ * Helper type defining style sections, one for each component slot.
+ */
+export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };
+
+/**
+ * Function declaration for component styles functions.
+ */
 export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TViewProps,
   theme: ITheme,
   tokens: TTokens
 ) => TStyleSet;
 
+/**
+ * Composite type for component styles functions and objects.
+ */
 export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
   | IStylesFunction<TViewProps, TTokens, TStyleSet>
   | TStyleSet;
 
-export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | false | null | undefined;
-
-export interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {}
-
+/**
+ * Tokens can be defined as an object, function, or an array of objects and functions.
+ */
 export type IToken<TViewProps, TTokens> = ITokenBase<TViewProps, TTokens> | ITokenBaseArray<TViewProps, TTokens>;
 
+/**
+ * Function declaration for component token functions.
+ */
 export type ITokenFunction<TViewProps, TTokens> = (props: TViewProps, theme: ITheme) => IToken<TViewProps, TTokens>;
 
+/**
+ * Composite type for component token functions and objects.
+ */
 export type ITokenFunctionOrObject<TViewProps, TTokens> = ITokenFunction<TViewProps, TTokens> | TTokens;
+
+/**
+ * Composite base type that includes all possible resolutions of token functions in an array.
+ */
+export type ITokenBase<TViewProps, TTokens> = ITokenFunctionOrObject<TViewProps, TTokens> | false | null | undefined;
+
+/**
+ * Composite token base array type allowing for token objects, functions, and function resolutions.
+ */
+export interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {}
 
 /**
  * Optional props for styleable components. If these props are present, they will automatically be
  * used by Foundation when applying theming and styling.
  */
-export interface IStyleableComponentProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}> {
+export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
   className?: string;
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   theme?: ITheme;
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
-export type ICustomizationProps<TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens> = IStyleableComponentProps<
+export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = IStyleableComponentProps<
   TViewProps,
-  TStyleSet,
-  TTokens
+  TTokens,
+  TStyleSet
 > &
-  Required<Pick<IStyleableComponentProps<TViewProps, TStyleSet, TTokens>, 'theme'>>;
+  Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
 
 /**
  * Enforce props contract on state components, including the view prop and its shape.
@@ -63,7 +89,7 @@ export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentTy
  * Component used by foundation to tie elements together.
  * @see createComponent for generic type documentation.
  */
-export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> {
+export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
   /**
    * Display name to identify component in React hierarchy.
    */
@@ -77,9 +103,9 @@ export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extend
    */
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   /**
-   * React view stateless component.
+   * React view component.
    */
-  view: React.StatelessComponent<TViewProps>;
+  view: React.ComponentType<TViewProps>;
   /**
    * Optional state component that processes TComponentProps into TViewProps.
    */
@@ -93,25 +119,3 @@ export interface IComponentOptions<TComponentProps, TViewProps, TStyleSet extend
    */
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
-
-/**
- * Variant of IComponentOptions for stateful components with appropriate typing and required properties.
- */
-export type IComponent<
-  TComponentProps,
-  TViewProps,
-  TStyleSet extends IStyleSet<TStyleSet>,
-  TTokens = {},
-  TStatics = {}
-> = IComponentOptions<TComponentProps, TViewProps, TStyleSet, TTokens, TStatics> &
-  Required<Pick<IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>, 'state'>>;
-
-/**
- * Variant of IComponentOptions for stateless components with appropriate typing and required properties.
- */
-export type IStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}> = Omit<
-  IComponentOptions<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>,
-  'state'
->;
-
-export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };

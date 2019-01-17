@@ -332,6 +332,8 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
   // (undocumented)
+  protected onBlur: (ev: React.FocusEvent<HTMLElement | Autofill>) => void;
+  // (undocumented)
   protected onChange(items?: T[]): void;
   // (undocumented)
   protected onEmptyInputFocus(): void;
@@ -2830,6 +2832,7 @@ interface IColumn {
   isFiltered?: boolean;
   isGrouped?: boolean;
   isIconOnly?: boolean;
+  isMenuOpen?: boolean;
   isMultiline?: boolean;
   isPadded?: boolean;
   isResizable?: boolean;
@@ -11014,6 +11017,7 @@ interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   componentRef?: IRefObject<IToggle>;
   defaultChecked?: boolean;
   disabled?: boolean;
+  inlineLabel?: boolean;
   keytipProps?: IKeytipProps;
   label?: string;
   // @deprecated (undocumented)
@@ -11040,6 +11044,8 @@ interface IToggleStyleProps {
   checked?: boolean;
   className?: string;
   disabled?: boolean;
+  inlineLabel?: boolean;
+  onOffMissing?: boolean;
   theme: ITheme;
 }
 
