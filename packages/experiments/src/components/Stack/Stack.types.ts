@@ -1,8 +1,8 @@
-import { IComponentStyles, IHTMLDivSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles, IStackTokens>;
+export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
 export type IStackSlot = ISlotProp<IStackProps>;
 

@@ -224,7 +224,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         };
 
     return (
-      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown}>
+      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
@@ -501,25 +501,29 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (this.props.inputProps && this.props.inputProps.onBlur) {
       this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
     }
+  };
 
-    // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
-    // Do nothing if the blur is coming from something
-    // inside the comboBox root or the comboBox menu since
-    // it we are not really bluring from the whole comboBox
-    let relatedTarget: EventTarget | null = ev.relatedTarget;
+  protected onBlur = (ev: React.FocusEvent<HTMLElement | Autofill>): void => {
+    if (this.state.isFocused) {
+      // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+      // Do nothing if the blur is coming from something
+      // inside the comboBox root or the comboBox menu since
+      // it we are not really bluring from the whole comboBox
+      let relatedTarget: EventTarget | null = ev.relatedTarget;
 
-    if (ev.relatedTarget === null) {
-      // In IE11, due to lack of support, event.relatedTarget is always
-      // null making every onBlur call to be "outside" of the ComboBox
-      // even when it's not. Using document.activeElement is another way
-      // for us to be able to get what the relatedTarget without relying
-      // on the event
-      relatedTarget = document.activeElement;
-    }
-    if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
-      this.setState({ isFocused: false });
-      if (this.props.onBlur) {
-        this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+      if (ev.relatedTarget === null) {
+        // In IE11, due to lack of support, event.relatedTarget is always
+        // null making every onBlur call to be "outside" of the ComboBox
+        // even when it's not. Using document.activeElement is another way
+        // for us to be able to get what the relatedTarget without relying
+        // on the event
+        relatedTarget = document.activeElement;
+      }
+      if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
+        this.setState({ isFocused: false });
+        if (this.props.onBlur) {
+          this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+        }
       }
     }
   };
@@ -885,7 +889,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         };
 
     return (
-      <div ref={this.root}>
+      <div ref={this.root} onBlur={this.onBlur}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <div className={classNames.text}>
