@@ -279,7 +279,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           // Force drop shadow even under medium breakpoint
           boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)'
         },
-        contentInner: { padding: '0 0 40px' }
+        contentInner: { padding: '0 0 20px' }
       }
     }
   };
