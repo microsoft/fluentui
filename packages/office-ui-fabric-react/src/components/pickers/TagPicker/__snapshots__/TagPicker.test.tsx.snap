@@ -5,6 +5,7 @@ exports[`TagPicker renders correctly 1`] = `
   className=
       ms-BasePicker
 
+  onBlur={[Function]}
   onKeyDown={[Function]}
 >
   <div
