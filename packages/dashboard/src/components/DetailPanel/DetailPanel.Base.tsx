@@ -241,15 +241,17 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
 
           break;
 
-        case LoadingTheme.OnPivotItemLoad: {
-          loadingElement = <Loading loadingType={LoadingType.Content} message={message} />;
-        }
+        case LoadingTheme.OnPivotItemLoad:
+          {
+            loadingElement = <Loading loadingType={LoadingType.Content} message={message} />;
+          }
 
           break;
 
-        case LoadingTheme.OnRefresh: {
-          loadingElement = <Loading loadingType={LoadingType.Inline} message={message} />;
-        }
+        case LoadingTheme.OnRefresh:
+          {
+            loadingElement = <Loading loadingType={LoadingType.Inline} message={message} />;
+          }
 
           break;
 
@@ -314,16 +316,18 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     if (onRefresh) {
       this._setMessageBanner();
       this._setLoadingAnimation(LoadingTheme.OnRefresh, undefined, true);
-      Promise.resolve(onRefresh()).then(() => {
-        this._setLoadingAnimation();
-      }).catch((err: IDetailPanelErrorResult) => {
-        if (err) {
-          this._setMessageBanner(err.messageBannerSetting)
-        }
-        this._setLoadingAnimation();
-      })
+      Promise.resolve(onRefresh())
+        .then(() => {
+          this._setLoadingAnimation();
+        })
+        .catch((err: IDetailPanelErrorResult) => {
+          if (err) {
+            this._setMessageBanner(err.messageBannerSetting);
+          }
+          this._setLoadingAnimation();
+        });
     }
-  }
+  };
 }
 
 export { DetailPanelBase };

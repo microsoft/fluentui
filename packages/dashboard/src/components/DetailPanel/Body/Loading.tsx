@@ -21,8 +21,7 @@ const loading: React.SFC<IDetailPanelLoadingProps> = (props: IDetailPanelLoading
         </Overlay>
       );
     } else {
-
-      return (<div className={css.spinnerContainer}>{spinner}</div>);
+      return <div className={css.spinnerContainer}>{spinner}</div>;
     }
   };
 

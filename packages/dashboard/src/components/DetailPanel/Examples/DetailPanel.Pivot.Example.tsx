@@ -67,14 +67,14 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
               setTimeout(() => {
                 resolve();
               }, 1000);
-            })
+            });
           }}
           onRefresh={() => {
             return new Promise((resolve: () => void) => {
               setTimeout(() => {
                 resolve();
               }, 10000);
-            })
+            });
           }}
           mainHeader={header}
           mainContent={this.getMainContent()}
@@ -170,7 +170,14 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
             },
             secondaryButtonText: 'Secondary Detail',
             onSecondaryAction: () => {
-              return Promise.reject({ messageBannerSetting: { message: 'test message', onDismissAction: () => { alert('dismissed') } } });
+              return Promise.reject({
+                messageBannerSetting: {
+                  message: 'test message',
+                  onDismissAction: () => {
+                    alert('dismissed');
+                  }
+                }
+              });
             },
             linkText: 'Link to Microsoft',
             linkHref: 'https://www.microsoft.com'

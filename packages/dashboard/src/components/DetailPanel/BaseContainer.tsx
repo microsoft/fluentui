@@ -21,14 +21,10 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
     return (
       <div className={css.navBar}>
         <div className={css.navLeft}>
-          {(onBack && !_shouldHideOnLoading()) && (
-            <IconButton iconProps={{ iconName: 'Back' }} onClick={onBack} />
-          )}
+          {onBack && !_shouldHideOnLoading() && <IconButton iconProps={{ iconName: 'Back' }} onClick={onBack} />}
         </div>
         <div className={css.navRight}>
-          {(onRefresh && !_shouldHideOnLoading()) && (
-            <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} />
-          )}
+          {onRefresh && !_shouldHideOnLoading() && <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} />}
           <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} />
         </div>
       </div>

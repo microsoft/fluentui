@@ -100,7 +100,7 @@ const getDetailPanelBaseStyles = (): IDetailPanelBaseStyles => {
       }
     },
     footer: {
-      display: "flex",
+      display: 'flex',
       alignItems: 'center',
       selectors: {
         '.ms-Button': {

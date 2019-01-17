@@ -122,7 +122,6 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
   };
 
   private _renderTitles = (tiles: IDetailInfoTileProps[]) => {
-
     const css = detailPanelPivotItemStyles;
     return (
       <div className={css.tilesContainer}>

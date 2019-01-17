@@ -74,11 +74,7 @@ const confirmationResult: React.SFC<IDetailPanelConfirmationResultProps> = (prop
                     {_.links.map((__: IDetailPanelConfirmationLinkItem, ii: number) => {
                       return (
                         <li key={`${i}_${ii}`}>
-                          <Link
-                            target={__.linkHref}
-                            href={__.linkHref}
-                            onClick={__.linkAction}
-                          >
+                          <Link target={__.linkHref} href={__.linkHref} onClick={__.linkAction}>
                             {__.linkText}
                           </Link>
                         </li>

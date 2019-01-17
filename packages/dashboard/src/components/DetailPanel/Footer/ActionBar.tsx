@@ -78,9 +78,7 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
           </PrimaryButton>
         )}
         {secondaryButtonText && onSecondaryAction && (
-          <DefaultButton
-            onClick={_wrapLoadingAnimation(onSecondaryAction, false, onSecondaryActionMessage, secondaryActionInlineSpinner)}
-          >
+          <DefaultButton onClick={_wrapLoadingAnimation(onSecondaryAction, false, onSecondaryActionMessage, secondaryActionInlineSpinner)}>
             {secondaryButtonText}
           </DefaultButton>
         )}

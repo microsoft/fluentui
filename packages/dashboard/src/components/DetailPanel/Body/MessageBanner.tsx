@@ -36,7 +36,7 @@ class MessageBanner extends React.PureComponent<IDetailPanelMessageBannerProps, 
     }
 
     this.setState({ show: false });
-  }
+  };
 }
 
 export { MessageBanner };

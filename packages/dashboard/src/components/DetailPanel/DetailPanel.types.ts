@@ -481,4 +481,4 @@ export interface IDetailPanelConfirmationResultProps {
   actionBar?: IDetailPanelActionBarProps;
 }
 
-export interface IDetailPanelProps extends IDetailPanelBaseProps { }
+export interface IDetailPanelProps extends IDetailPanelBaseProps {}
