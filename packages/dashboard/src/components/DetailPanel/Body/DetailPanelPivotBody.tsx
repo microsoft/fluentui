@@ -24,6 +24,7 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
             return (
               <PivotItem key={`${i}_${_.itemKey}`} {..._}>
                 <DetailPanelPivotItem
+                  itemKey={_.itemKey}
                   onContentLoad={_.onContentLoad}
                   content={_.content}
                   actionBar={_.actionBar}

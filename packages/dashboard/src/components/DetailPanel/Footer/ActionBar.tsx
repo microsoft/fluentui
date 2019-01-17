@@ -71,31 +71,25 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
       onLinkAction
     } = props;
     return (
-      <div>
-        <div>
-          {primaryButtonText && onPrimaryAction && (
-            <PrimaryButton onClick={_wrapLoadingAnimation(onPrimaryAction, true, onPrimaryActionMessage, primaryActionInlineSpinner)}>
-              {primaryButtonText}
-            </PrimaryButton>
-          )}
-        </div>
-        <div>
-          {secondaryButtonText && onSecondaryAction && (
-            <DefaultButton
-              onClick={_wrapLoadingAnimation(onSecondaryAction, false, onSecondaryActionMessage, secondaryActionInlineSpinner)}
-            >
-              {secondaryButtonText}
-            </DefaultButton>
-          )}
-        </div>
-        <div>
-          {linkText && (
-            <Link href={linkHref} target={'_blank'} onClick={onLinkAction}>
-              {linkText}
-            </Link>
-          )}
-        </div>
-      </div>
+      <>
+        {primaryButtonText && onPrimaryAction && (
+          <PrimaryButton onClick={_wrapLoadingAnimation(onPrimaryAction, true, onPrimaryActionMessage, primaryActionInlineSpinner)}>
+            {primaryButtonText}
+          </PrimaryButton>
+        )}
+        {secondaryButtonText && onSecondaryAction && (
+          <DefaultButton
+            onClick={_wrapLoadingAnimation(onSecondaryAction, false, onSecondaryActionMessage, secondaryActionInlineSpinner)}
+          >
+            {secondaryButtonText}
+          </DefaultButton>
+        )}
+        {linkText && (
+          <Link href={linkHref} target={'_blank'} onClick={onLinkAction}>
+            {linkText}
+          </Link>
+        )}
+      </>
     );
   };
 

@@ -10,6 +10,7 @@ import { _isReactComponent } from '../Utils';
 import { DetailInfoTile } from './DetailTile';
 import { MessageBanner } from './MessageBanner';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { detailPanelPivotItemStyles } from '../DetailPanel.styles';
 
 interface IDetailPanelPivotItemStates {
   contentElement?: JSX.Element;
@@ -19,6 +20,7 @@ interface IDetailPanelPivotItemStates {
 type DetailPanelPivotItemProps = IDetailPanelPivotItemProps & IDetailPanelBaseCommonAction;
 
 class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps, IDetailPanelPivotItemStates> {
+  private _isMounted = false;
   constructor(props: DetailPanelPivotItemProps) {
     super(props);
     this.state = {
@@ -28,11 +30,14 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
   }
 
   public render() {
-    return <div>{this._renderContent()}</div>;
+    const css = detailPanelPivotItemStyles;
+    return <div className={css.generalContainer}>{this._renderContent()}</div>;
   }
 
   public componentDidMount() {
     const { onContentLoad, onGetLoadingElement, itemKey, actionBar, onSetActionBar } = this.props;
+
+    this._isMounted = true;
 
     if (onContentLoad) {
       if (onSetActionBar) {
@@ -44,34 +49,38 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
 
       Promise.resolve(onContentLoad())
         .then((_: JSX.Element | IDetailInfoTileProps[]) => {
-          this.setState({
-            loadingElement: undefined,
-            contentElement: this._renderElement(_)
-          });
+          if (this._isMounted) {
+            this.setState({
+              loadingElement: undefined,
+              contentElement: this._renderElement(_)
+            });
 
-          if (onSetActionBar) {
-            onSetActionBar(actionBar);
+            if (onSetActionBar) {
+              onSetActionBar(actionBar);
+            }
           }
         })
         .catch((err: IDetailPanelErrorResult) => {
           // Set error message
-          if (err && err.messageBannerSetting) {
-            const messageBanner = (
-              <MessageBanner
-                message={err.messageBannerSetting.message}
-                messageType={
-                  err.messageBannerSetting.messageType === undefined ? MessageBarType.error : err.messageBannerSetting.messageType
-                }
-              />
-            );
+          if (this._isMounted) {
+            if (err && err.messageBannerSetting) {
+              const messageBanner = (
+                <MessageBanner
+                  message={err.messageBannerSetting.message}
+                  messageType={
+                    err.messageBannerSetting.messageType === undefined ? MessageBarType.error : err.messageBannerSetting.messageType
+                  }
+                />
+              );
+              this.setState({
+                contentElement: messageBanner
+              });
+            }
+
             this.setState({
-              contentElement: messageBanner
+              loadingElement: undefined
             });
           }
-
-          this.setState({
-            loadingElement: undefined
-          });
         });
     } else {
       if (onSetActionBar) {
@@ -80,7 +89,11 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
     }
   }
 
-  public _renderContent = () => {
+  public componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  private _renderContent = () => {
     const { content } = this.props;
     if (content) {
       return this._renderElement(content);
@@ -109,8 +122,10 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
   };
 
   private _renderTitles = (tiles: IDetailInfoTileProps[]) => {
+
+    const css = detailPanelPivotItemStyles;
     return (
-      <div>
+      <div className={css.tilesContainer}>
         {tiles.map((_: IDetailInfoTileProps, i: number) => (
           <DetailInfoTile key={`${i}_${_.title}`} {..._} />
         ))}

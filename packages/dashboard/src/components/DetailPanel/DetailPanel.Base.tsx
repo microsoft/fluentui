@@ -67,6 +67,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
 
   public render(): JSX.Element | null {
     const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar, confirmation } = this.state;
+    const { onRefresh } = this.props;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
@@ -79,6 +80,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
         <BaseContainer
           onDismiss={this._onDismissAction}
           onSetLoadingAnimation={this._setLoadingAnimation}
+          onSetMessageBanner={this._setMessageBanner}
           mainContent={<ConfirmationResult {...confirmation} />}
           actionBar={confirmation.actionBar}
           inlineLoading={inlineLoading}
@@ -91,6 +93,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       <BaseContainer
         onBack={currentL2Id ? this._onBackAction : undefined}
         onDismiss={this._onDismissAction}
+        onRefresh={onRefresh ? this._onRefreshAction : undefined}
         onSetLoadingAnimation={this._setLoadingAnimation}
         onSetMessageBanner={this._setMessageBanner}
         onSetConfirmationResult={this._setConfirmationResult}
@@ -240,8 +243,15 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
 
         case LoadingTheme.OnPivotItemLoad: {
           loadingElement = <Loading loadingType={LoadingType.Content} message={message} />;
-          break;
         }
+
+          break;
+
+        case LoadingTheme.OnRefresh: {
+          loadingElement = <Loading loadingType={LoadingType.Inline} message={message} />;
+        }
+
+          break;
 
         default: {
           loadingElement = <Loading loadingType={LoadingType.None} message={message} />;
@@ -298,6 +308,22 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
       onDetailPanelDimiss();
     }
   };
+
+  private _onRefreshAction = () => {
+    const { onRefresh } = this.props;
+    if (onRefresh) {
+      this._setMessageBanner();
+      this._setLoadingAnimation(LoadingTheme.OnRefresh, undefined, true);
+      Promise.resolve(onRefresh()).then(() => {
+        this._setLoadingAnimation();
+      }).catch((err: IDetailPanelErrorResult) => {
+        if (err) {
+          this._setMessageBanner(err.messageBannerSetting)
+        }
+        this._setLoadingAnimation();
+      })
+    }
+  }
 }
 
 export { DetailPanelBase };

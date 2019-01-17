@@ -1,5 +1,5 @@
 import { IStyle } from '@uifabric/experiments/lib/Styling';
-import { FontSizes, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const PrimaryTextColor = '#323130';
@@ -7,13 +7,18 @@ const SecondaryTextColor = '#605E5C';
 const HeaderTextColor = '#000';
 
 interface IDetailPanelBaseStyles {
+  navBar: IStyle;
+  navLeft: IStyle;
+  navRight: IStyle;
   header: IStyle;
   messageBar: IStyle;
   content: IStyle;
+  footer: IStyle;
 }
 
 interface IDetailPanelLoadingStyles {
   pageShimmer: IStyle;
+  spinnerContainer: IStyle;
   spinner: IStyle;
   overlay: IStyle;
   shimmerGroup: IStyle;
@@ -24,11 +29,7 @@ interface IDetailPanelHederStyles {
   textMode: IStyle;
 }
 
-interface IDetailPanelContentStyles {
-  content: IStyle;
-}
-
-interface IDetailContainerDetailStyles {
+interface IDetailPanelPivotItemStyles {
   generalContainer: IStyle;
   tilesContainer: IStyle;
 }
@@ -54,13 +55,58 @@ interface IDetailPanelConfirmationStyles {
 
 const getDetailPanelBaseStyles = (): IDetailPanelBaseStyles => {
   return {
+    navBar: {
+      height: 40,
+      position: 'relative',
+      selectors: {
+        i: {
+          fontSize: FontSizes.small,
+          margin: 0,
+          color: '#323130'
+        },
+        button: {
+          padding: 0,
+          height: 40,
+          width: 40
+        },
+        'button:hover': {
+          backgroundColor: DefaultPalette.neutralLight
+        },
+        'button:active': {
+          backgroundColor: '#979797'
+        }
+      }
+    },
+    navLeft: {
+      float: 'left'
+    },
+    navRight: {
+      float: 'right'
+    },
     header: {
-      marginBottom: 48,
+      margin: '14px 32px 32px 32px',
       color: HeaderTextColor
     },
-    messageBar: {},
+    messageBar: {
+      margin: '0px 0px 32px 0px'
+    },
     content: {
-      color: PrimaryTextColor
+      marginTop: 16,
+      color: PrimaryTextColor,
+      selectors: {
+        '.ms-Pivot': {
+          marginLeft: -8
+        }
+      }
+    },
+    footer: {
+      display: "flex",
+      alignItems: 'center',
+      selectors: {
+        '.ms-Button': {
+          marginRight: 16
+        }
+      }
     }
   };
 };
@@ -77,11 +123,16 @@ const getDetailPanelLoadingStyles = (): IDetailPanelLoadingStyles => {
     shimmerGroup: {
       marginTop: 24
     },
+    spinnerContainer: {
+      position: 'absolute',
+      height: 'calc(100% - 160px)',
+      width: 'calc(100% - 64px)'
+    },
     spinner: {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      height: 'calc(100% - 60px)'
+      height: '100%'
     },
     overlay: {
       zIndex: 99999
@@ -119,19 +170,7 @@ const getDetailPanelHeaderStyles = (): IDetailPanelHederStyles => {
   };
 };
 
-const getDetailPanelContentStyles = (): IDetailPanelContentStyles => {
-  return {
-    content: {
-      selectors: {
-        '.ms-Pivot': {
-          marginLeft: -8
-        }
-      }
-    }
-  };
-};
-
-const getDetailContainerDetailStyles = (): IDetailContainerDetailStyles => {
+const getDetailPanelPivotItemStyles = (): IDetailPanelPivotItemStyles => {
   return {
     tilesContainer: {
       display: 'flex',
@@ -241,12 +280,10 @@ export const detailPanelBaseStyles = classNamesFunction<{}, IDetailPanelBaseStyl
 
 export const detailPanelLoadingStyles = classNamesFunction<{}, IDetailPanelLoadingStyles>()(getDetailPanelLoadingStyles);
 
-export const detailContainerDetailStyles = classNamesFunction<{}, IDetailContainerDetailStyles>()(getDetailContainerDetailStyles);
+export const detailPanelPivotItemStyles = classNamesFunction<{}, IDetailPanelPivotItemStyles>()(getDetailPanelPivotItemStyles);
 
 export const detailTileClassNames = classNamesFunction<{}, IDetailTileStyles>()(getDetailTileStyles);
 
 export const detailPanelHeaderStyles = classNamesFunction<{}, IDetailPanelHederStyles>()(getDetailPanelHeaderStyles);
-
-export const detailPanelContentStyles = classNamesFunction<{}, IDetailPanelContentStyles>()(getDetailPanelContentStyles);
 
 export const detailPanelConfirmationStyles = classNamesFunction<{}, IDetailPanelConfirmationStyles>()(getDetailPanelConfirmationStyles);

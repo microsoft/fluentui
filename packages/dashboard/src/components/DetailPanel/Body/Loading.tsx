@@ -20,8 +20,10 @@ const loading: React.SFC<IDetailPanelLoadingProps> = (props: IDetailPanelLoading
           {spinner}
         </Overlay>
       );
+    } else {
+
+      return (<div className={css.spinnerContainer}>{spinner}</div>);
     }
-    return spinner;
   };
 
   const _renderShimmer = (title: boolean = true, count: number = 3) => {

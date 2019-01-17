@@ -62,6 +62,20 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
 
       return (
         <DetailPanel
+          onPageLoad={() => {
+            return new Promise((resolve: () => void) => {
+              setTimeout(() => {
+                resolve();
+              }, 1000);
+            })
+          }}
+          onRefresh={() => {
+            return new Promise((resolve: () => void) => {
+              setTimeout(() => {
+                resolve();
+              }, 10000);
+            })
+          }}
           mainHeader={header}
           mainContent={this.getMainContent()}
           onDetailPanelDimiss={() => {
@@ -153,7 +167,13 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
             primaryButtonText: 'Primary Detail',
             onPrimaryAction: () => {
               alert('Primary detail');
-            }
+            },
+            secondaryButtonText: 'Secondary Detail',
+            onSecondaryAction: () => {
+              return Promise.reject({ messageBannerSetting: { message: 'test message', onDismissAction: () => { alert('dismissed') } } });
+            },
+            linkText: 'Link to Microsoft',
+            linkHref: 'https://www.microsoft.com'
           } as IDetailPanelActionBarProps
         } as IDetailPanelPivotBodyItem,
         {
@@ -182,6 +202,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
         } as IDetailPanelPivotBodyItem,
         {
           headerText: 'Delayed JSX',
+          itemKey: 'delayjsx',
           onContentLoad: () => {
             return new Promise((resolve: (value: JSX.Element) => void) => {
               setTimeout(() => {
@@ -345,6 +366,12 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
     if (loadingTheme === LoadingTheme.OnL2ContentLoad) {
       if (themeId === 'cat') {
         return <div>I am a cat loading theme</div>;
+      }
+    }
+
+    if (loadingTheme === LoadingTheme.OnPivotItemLoad) {
+      if (themeId === 'delayjsx') {
+        return <div>I am a custom loading theme</div>;
       }
     }
 

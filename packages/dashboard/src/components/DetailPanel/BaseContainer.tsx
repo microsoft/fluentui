@@ -5,26 +5,30 @@ import { MessageBanner } from './Body/MessageBanner';
 import { ActionBar } from './Footer/ActionBar';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Header } from './Header';
-import { _isReactComponent } from './Utils';
+import { detailPanelBaseStyles } from './DetailPanel.styles';
 
 type BodyContainerType = IBaseContainerProps & IDetailPanelBaseCommonAction;
 
 const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) => {
+  const css = detailPanelBaseStyles;
   const _shouldHideOnLoading = () => {
     const { loadingElement, inlineLoading } = props;
     return loadingElement && !inlineLoading;
   };
 
   const _renderNav = () => {
-    const { onBack, onDismiss } = props;
+    const { onBack, onDismiss, onRefresh } = props;
     return (
-      <div>
-        {onBack && (
-          <div>
+      <div className={css.navBar}>
+        <div className={css.navLeft}>
+          {(onBack && !_shouldHideOnLoading()) && (
             <IconButton iconProps={{ iconName: 'Back' }} onClick={onBack} />
-          </div>
-        )}
-        <div>
+          )}
+        </div>
+        <div className={css.navRight}>
+          {(onRefresh && !_shouldHideOnLoading()) && (
+            <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} />
+          )}
           <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} />
         </div>
       </div>
@@ -38,7 +42,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
     const { header } = props;
     if (header) {
       return (
-        <div>
+        <div className={css.header}>
           <Header {...header} />
         </div>
       );
@@ -50,7 +54,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
     const { messageBanner } = props;
     if (messageBanner) {
       return (
-        <div>
+        <div className={css.messageBar}>
           <MessageBanner {...messageBanner} />
         </div>
       );
@@ -67,13 +71,15 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
 
     if (actionBar) {
       return (
-        <ActionBar
-          {...actionBar}
-          onSetLoadingAnimation={onSetLoadingAnimation}
-          onSetMessageBanner={onSetMessageBanner}
-          onSetActionBar={onSetActionBar}
-          onSetConfirmationResult={onSetConfirmationResult}
-        />
+        <div className={css.footer}>
+          <ActionBar
+            {...actionBar}
+            onSetLoadingAnimation={onSetLoadingAnimation}
+            onSetMessageBanner={onSetMessageBanner}
+            onSetActionBar={onSetActionBar}
+            onSetConfirmationResult={onSetConfirmationResult}
+          />
+        </div>
       );
     }
     return null;
@@ -81,12 +87,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
 
   const _renderBody = () => {
     const { mainContent } = props;
-
-    if (_isReactComponent(mainContent)) {
-      return mainContent;
-    }
-
-    return null;
+    return <div className={css.content}>{mainContent}</div>;
   };
 
   const _renderElement = () => {

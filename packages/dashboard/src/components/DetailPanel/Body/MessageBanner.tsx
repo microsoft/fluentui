@@ -29,7 +29,7 @@ class MessageBanner extends React.PureComponent<IDetailPanelMessageBannerProps, 
     return null;
   }
 
-  private _onDismissMessage() {
+  private _onDismissMessage = () => {
     const { onDismissAction } = this.props;
     if (onDismissAction) {
       onDismissAction();

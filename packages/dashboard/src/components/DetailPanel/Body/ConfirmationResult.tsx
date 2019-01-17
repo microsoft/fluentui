@@ -75,7 +75,6 @@ const confirmationResult: React.SFC<IDetailPanelConfirmationResultProps> = (prop
                       return (
                         <li key={`${i}_${ii}`}>
                           <Link
-                            humanFriendlyName={`detailpanel_confirmation_link_${i}_${ii}`}
                             target={__.linkHref}
                             href={__.linkHref}
                             onClick={__.linkAction}

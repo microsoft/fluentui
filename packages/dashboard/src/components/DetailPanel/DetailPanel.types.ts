@@ -6,6 +6,7 @@ export type FunctionCallback<T> = () => FlatOrPromise<T>;
 export enum LoadingTheme {
   General,
   OnPageLoad,
+  OnRefresh,
   OnL2ContentLoad,
   OnPrimaryButtonClick,
   OnSecondaryButtonClick,
@@ -113,6 +114,12 @@ export interface IDetailPanelBaseProps {
   onPageLoad?: FunctionCallback<void>;
 
   /**
+   * Callback on detail panel page refresh the content
+   * Reject with @type {IDetailPanelErrorResult} to set the error state message bar
+   */
+  onRefresh?: FunctionCallback<void>;
+
+  /**
    * Call back on getting the customized loading animation to override the default
    * spinner or shimmer
    * if the return vaule is @type {null} or @type {undefined}, a default load animation will be applied
@@ -208,9 +215,12 @@ export interface IBaseContainerProps {
    * On back action click
    */
   onBack?: () => void;
-}
 
-export interface IBodyContainerBaseProps {}
+  /**
+   * On refresh click
+   */
+  onRefresh?: () => void;
+}
 
 export interface IDetailPanelBaseCommonAction {
   /**
@@ -389,30 +399,86 @@ export interface IDetailPanelPivotBodyProps {
 }
 
 export interface IDetailPanelConfirmationStatusText {
+  /**
+   * Status showing on the confirmation page
+   */
   status: ConfirmationStatus;
+
+  /**
+   * Title of confirmation page
+   */
   title: string;
+
+  /**
+   * Items of detail
+   */
   items?: string[];
 }
 
 export interface IDetailPanelConfirmationLinkItem {
+  /**
+   * Link text
+   */
   linkText: string;
+
+  /**
+   * Link action
+   */
   linkAction?: () => void;
+
+  /**
+   * Link href
+   */
   linkHref?: string;
+
+  /**
+   * Link target
+   */
   linkTarget?: '_self' | '_blank' | '_parent' | '_top';
 }
 
 export interface IDetailPanelConfirmationLinks {
+  /**
+   * Title of the link group
+   */
   title: string;
+
+  /**
+   * Link details
+   */
   links: IDetailPanelConfirmationLinkItem[];
 }
 
 export interface IDetailPanelConfirmationResultProps {
+  /**
+   * Overall status of the page
+   */
   overallStatus?: ConfirmationStatus;
+
+  /**
+   * Header text
+   */
   headerText: string;
+
+  /**
+   * Description text
+   */
   descriptionText?: string | JSX.Element;
+
+  /**
+   * Status items
+   */
   statusItems?: () => IDetailPanelConfirmationStatusText[];
+
+  /**
+   * Link list
+   */
   linkList?: () => IDetailPanelConfirmationLinks[];
+
+  /**
+   * action bar setting
+   */
   actionBar?: IDetailPanelActionBarProps;
 }
 
-export interface IDetailPanelProps extends IDetailPanelBaseProps {}
+export interface IDetailPanelProps extends IDetailPanelBaseProps { }
