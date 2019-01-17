@@ -18,9 +18,6 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
   >
     <div
       className=
