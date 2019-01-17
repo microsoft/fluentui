@@ -1,4 +1,6 @@
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { PanelType } from 'office-ui-fabric-react/lib/Panel';
 
 export type FlatOrPromise<T> = T | Promise<T>;
 export type FunctionCallback<T> = () => FlatOrPromise<T>;
@@ -108,6 +110,11 @@ export interface IDetailPanelMessageBannerProps {
 
 export interface IDetailPanelBaseProps {
   /**
+   * Additional setting on the fabric panel
+   */
+  panelSetting?: IBaseContainerExtendProps;
+
+  /**
    * Callback on detail panel page load before render the header and content
    * Reject with @type {IDetailPanelErrorResult} to set the error state message bar
    */
@@ -175,7 +182,44 @@ export interface IDetailPanelBaseProps {
   onDetailPanelDimiss?: () => void;
 }
 
-export interface IBaseContainerProps {
+export interface IBaseContainerExtendProps {
+  /**
+   * Custom style
+   */
+  customStyle?: IStyle;
+
+  /**
+   * Type of @type {PanelType}
+   */
+  type?: PanelType;
+
+  /**
+   * Custom wideth of the flyout
+   */
+  customWidth?: string;
+
+  /**
+   * Is the flyout open
+   */
+  isOpen?: boolean;
+
+  /**
+   * Is the flyout blocking
+   */
+  isBlocking?: boolean;
+
+  /**
+   * Support light dismiss
+   */
+  isLightDismiss?: boolean;
+
+  /**
+   * On light dimiss callback
+   */
+  onLightDismiss?: () => void;
+}
+
+export interface IBaseContainerProps extends IBaseContainerExtendProps {
   /**
    * Main content header props
    */
@@ -481,4 +525,5 @@ export interface IDetailPanelConfirmationResultProps {
   actionBar?: IDetailPanelActionBarProps;
 }
 
-export interface IDetailPanelProps extends IDetailPanelBaseProps {}
+export interface IDetailPanelProps extends IDetailPanelBaseProps {
+}

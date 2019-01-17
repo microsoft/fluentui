@@ -67,7 +67,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
 
   public render(): JSX.Element | null {
     const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar, confirmation } = this.state;
-    const { onRefresh } = this.props;
+    const { onRefresh, panelSetting } = this.props;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
@@ -78,6 +78,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     if (confirmation) {
       return (
         <BaseContainer
+          {...panelSetting}
           onDismiss={this._onDismissAction}
           onSetLoadingAnimation={this._setLoadingAnimation}
           onSetMessageBanner={this._setMessageBanner}
@@ -91,6 +92,7 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
 
     return (
       <BaseContainer
+        {...panelSetting}
         onBack={currentL2Id ? this._onBackAction : undefined}
         onDismiss={this._onDismissAction}
         onRefresh={onRefresh ? this._onRefreshAction : undefined}

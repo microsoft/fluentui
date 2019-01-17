@@ -6,6 +6,7 @@ import { ActionBar } from './Footer/ActionBar';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Header } from './Header';
 import { detailPanelBaseStyles } from './DetailPanel.styles';
+import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 type BodyContainerType = IBaseContainerProps & IDetailPanelBaseCommonAction;
 
@@ -87,18 +88,35 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
   };
 
   const _renderElement = () => {
-    const { loadingElement, inlineLoading } = props;
+    const {
+      loadingElement,
+      inlineLoading,
+      isOpen,
+      type,
+      customWidth,
+      isBlocking,
+      isLightDismiss,
+      onLightDismiss,
+      customStyle
+    } = props;
 
+    const animation = isOpen ? AnimationClassNames.slideLeftIn400 : AnimationClassNames.slideRightOut400;
+    const customClassName = mergeStyles(animation, customStyle);
     return (
       <Panel
-        isOpen={true}
-        type={PanelType.medium}
+        className={customClassName}
+        isOpen={isOpen}
+        type={type}
+        customWidth={customWidth}
+        isBlocking={isBlocking}
+        isLightDismiss={isLightDismiss}
+        onLightDismissClick={onLightDismiss}
         onRenderNavigation={_renderNav}
         onRenderHeader={_renderHeader}
         isFooterAtBottom={true}
         onRenderFooterContent={_renderFooter}
       >
-        {loadingElement}
+        <div className={css.content}>{loadingElement}</div>
         {(!loadingElement || (loadingElement && inlineLoading)) && (
           <>
             {_renderMessageBanner()}
@@ -111,5 +129,12 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
 
   return _renderElement();
 };
+
+baseContainer.defaultProps = {
+  isOpen: true,
+  type: PanelType.medium,
+  isBlocking: true,
+  isLightDismiss: false
+}
 
 export { baseContainer as BaseContainer };
