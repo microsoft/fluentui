@@ -1,6 +1,20 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 14 Jan 2019 13:39:22 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+
+## 0.43.4
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- add is's for card actions
+
+## 0.43.3
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Icon: removing aria-hidden attribute.
 
 ## 0.43.2
 Mon, 14 Jan 2019 13:39:22 GMT

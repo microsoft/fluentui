@@ -2,6 +2,67 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.50.7",
+      "tag": "@uifabric/experiments_v6.50.7",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added azure themes to demo page",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4a06a2807bee39c26e58c114f0343e6ba930aace"
+          },
+          {
+            "comment": "Foundation API improvements.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1eee5ab652c4d47d0d33594b16f9f57f0ba368e1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.1 <7.0.0` to `>=6.11.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.6",
+      "tag": "@uifabric/experiments_v6.50.6",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Foundation typings to require Tokens.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "34319d03cd433df8110b4028fddb3041c108cfcd"
+          },
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prettier changes from a master merge with conflicts.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "eeddb4f7f7a2595229eb75cf3af10410da1ca26a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.5",
       "tag": "@uifabric/experiments_v6.50.5",
       "date": "Tue, 15 Jan 2019 13:36:45 GMT",

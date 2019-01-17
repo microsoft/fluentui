@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "vamshidharenumula@gmail.com"
+}

@@ -1,4 +1,17 @@
 {
   "name": "@uifabric/azure-themes",
-  "entries": []
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@uifabric/azure-themes_v0.1.0",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
 }

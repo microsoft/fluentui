@@ -382,6 +382,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   }
             >
               <span
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header6-key-name "
                 className=
@@ -963,6 +964,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_0-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-column_key_0-name "
                 className=
@@ -1118,6 +1120,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_1-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-column_key_1-name "
                 className=
@@ -1273,6 +1276,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_2-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-column_key_2-name "
                 className=
@@ -1428,6 +1432,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_3-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-column_key_3-name "
                 className=
@@ -1583,6 +1588,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_4-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-column_key_4-name "
                 className=
@@ -2130,6 +2136,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   }
             >
               <span
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header12-key-name "
                 className=
@@ -2711,6 +2718,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header9-key-name "
                 className=
@@ -2899,6 +2907,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header9-name-name "
                 className=
@@ -3087,6 +3096,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header9-value-name "
                 className=
@@ -3668,6 +3678,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_0-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-column_key_0-name "
                 className=
@@ -3826,6 +3837,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_1-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-column_key_1-name "
                 className=
@@ -3984,6 +3996,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_2-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-column_key_2-name "
                 className=
@@ -4142,6 +4155,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_3-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-column_key_3-name "
                 className=
@@ -4300,6 +4314,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_4-tooltip"
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-column_key_4-name "
                 className=
@@ -4710,6 +4725,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   }
             >
               <span
+                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header15-key-name "
                 className=

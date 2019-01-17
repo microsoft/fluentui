@@ -1,7 +1,7 @@
 import { IStyle } from '../../Styling';
-import { IHTMLDivSlot, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
 
-export type IAccordionComponent = IStatelessComponent<IAccordionProps, IAccordionTokens, IAccordionStyles>;
+export type IAccordionComponent = IComponent<IAccordionProps, IAccordionTokens, IAccordionStyles>;
 
 export interface IAccordionSlots {
   root?: IHTMLDivSlot;

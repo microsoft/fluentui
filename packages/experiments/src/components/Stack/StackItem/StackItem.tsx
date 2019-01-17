@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, createStatelessComponent, getSlots } from '../../../Foundation';
-import { IStackItemComponent, IStackItemProps, IStackItemSlots, IStackItemStyles, IStackItemTokens } from './StackItem.types';
+import { withSlots, createComponent, getSlots } from '../../../Foundation';
+import { IStackItemComponent, IStackItemProps, IStackItemSlots } from './StackItem.types';
 import { styles } from './StackItem.styles';
 
 const view: IStackItemComponent['view'] = props => {
@@ -18,11 +18,7 @@ const view: IStackItemComponent['view'] = props => {
   return <Slots.root>{first}</Slots.root>;
 };
 
-export const StackItem: React.StatelessComponent<IStackItemProps> = createStatelessComponent<
-  IStackItemProps,
-  IStackItemTokens,
-  IStackItemStyles
->({
+export const StackItem: React.StatelessComponent<IStackItemProps> = createComponent({
   displayName: 'StackItem',
   styles,
   view

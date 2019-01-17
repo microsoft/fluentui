@@ -1,9 +1,9 @@
 import { ImageLoadState } from 'office-ui-fabric-react';
-import { IComponentStyles, IHTMLDivSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLDivSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
 
-export type IPersonaCoinComponent = IStatelessComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles>;
+export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles>;
 
 export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps> | string;
 

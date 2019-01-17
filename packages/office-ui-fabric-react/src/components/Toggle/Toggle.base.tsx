@@ -61,7 +61,8 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       offAriaLabel,
       offText,
       onText,
-      styles
+      styles,
+      inlineLabel
     } = this.props;
     const { checked } = this.state;
     const stateText = checked ? onText : offText;
@@ -71,7 +72,9 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       theme: theme!,
       className,
       disabled,
-      checked
+      checked,
+      inlineLabel,
+      onOffMissing: !onText && !offText
     });
 
     return (

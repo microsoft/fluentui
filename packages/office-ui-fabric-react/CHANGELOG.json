@@ -2,6 +2,73 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.127.0",
+      "tag": "office-ui-fabric-react_v6.127.0",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: add isMenuOpen property on IColumn interface and add aria-expanded to the DetailsList column header.",
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "800de544e2c63aada0e171f77b4dc0c95d9c810a"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Pickers: Fix it so that pickers now correctly lose focus",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "891229dc1738519c3c36067bdb6998886d558a9b"
+          },
+          {
+            "comment": "When clicking on existing oufr calendar component, there's a 1px space between days in the day picker where the click has no effect. Fixing",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "1de46953ecc8320e6fbb341ab0608fb62b09228b"
+          },
+          {
+            "comment": "ChoiceGroup: Sets the first enabled option to focusable, even with an invalid defaultSelectedKey",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "04eaf1756ccdb6a187c61f18d474444e1e52ffe4"
+          },
+          {
+            "comment": "TextField: fixes High Contrast mode styles when focusing.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f13a0f705b05e53350b629c5df4918106ed75c13"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.126.0",
+      "tag": "office-ui-fabric-react_v6.126.0",
+      "date": "Wed, 16 Jan 2019 13:38:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: setting the aria-modal to true to prevent loosing focus when using Narrator in scan mode.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "8cc141ca05aea6f784add7aa41f640d8e7839531"
+          },
+          {
+            "comment": "Icons: Remove aria-hidden to fix narrator focus bug",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          },
+          {
+            "comment": "DetailsList: Remove redundant columns iteration, array allocation, and setState call in DetailsRowFields",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "0e82edffd1ec8e8e0114988d26192935f7e16575"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Toggle: adds ability to render with the label inline (left side and right in RTL).",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "eeddb4f7f7a2595229eb75cf3af10410da1ca26a"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.125.0",
       "tag": "office-ui-fabric-react_v6.125.0",
       "date": "Tue, 15 Jan 2019 13:36:46 GMT",
