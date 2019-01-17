@@ -13,9 +13,9 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
           menuProps={{
             items: [
               {
-                key: 'section',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
+                  key: 'section1',
                   topDivider: true,
                   bottomDivider: true,
                   title: 'Actions',
@@ -32,9 +32,9 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                 }
               },
               {
-                key: 'section',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
+                  key: 'section2',
                   title: 'Social',
                   items: [
                     {
@@ -53,9 +53,9 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                 }
               },
               {
-                key: 'section',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
+                  key: 'section3',
                   title: 'Navigation',
                   items: [
                     {
