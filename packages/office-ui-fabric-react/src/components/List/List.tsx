@@ -405,16 +405,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const pageStyle = this._getPageStyle(page);
 
     const { onRenderPage = this._onRenderPage } = this.props;
-    const pageRef = React.createRef<HTMLDivElement>();
 
-    this._pageRefs[page.key] = pageRef;
+    this._pageRefs[page.key] = this._pageRefs[page.key] || React.createRef();
 
     const pageElement = onRenderPage(
       {
         page: page,
         className: css('ms-List-page'),
         key: page.key,
-        ref: pageRef,
+        ref: this._pageRefs[page.key],
         style: pageStyle,
         role: 'presentation'
       },
