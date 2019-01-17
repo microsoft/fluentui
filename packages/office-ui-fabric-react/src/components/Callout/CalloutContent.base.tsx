@@ -240,7 +240,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   protected _dismissOnResize(ev: Event) {
     const { preventDismissOnResize } = this.props;
     if (!preventDismissOnResize) {
-      this._dismissOnLostFocus(ev);
+      this.dismiss(ev);
     }
   }
 
