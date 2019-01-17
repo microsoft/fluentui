@@ -301,7 +301,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.dos && this.props.donts) {
       dosAndDonts.push(
-        <div className="ComponentPage-doSections" key="do-sections">
+        <div className="ComponentPage-doSections" key="do-sections" id={!this.props.bestPractices ? 'BestPractices' : undefined}>
           <div className="ComponentPage-doSection">
             <div className="ComponentPage-doSectionHeader">
               <h3>Do</h3>
