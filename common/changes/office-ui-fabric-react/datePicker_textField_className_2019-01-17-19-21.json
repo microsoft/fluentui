@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "added className attribute to TextField of DatePicker",
+      "comment": "DatePicker: adds missing className attribute to the `TextField` of the control.",
       "type": "patch"
     }
   ],
