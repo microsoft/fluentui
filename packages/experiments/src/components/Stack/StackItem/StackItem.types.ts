@@ -1,6 +1,6 @@
-import { IComponentStyles, IHTMLSpanSlot, IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLSpanSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
 
-export type IStackItemComponent = IStatelessComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
+export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
 export interface IStackItemSlots {
   root?: IHTMLSpanSlot;

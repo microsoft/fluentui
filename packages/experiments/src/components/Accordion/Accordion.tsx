@@ -1,9 +1,9 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, getSlots } from '../../Foundation';
-import { createStatelessComponent } from '../../Foundation';
+import { createComponent } from '../../Foundation';
 import { CollapsibleSection, ICollapsibleSectionProps } from '../../CollapsibleSection';
-import { IAccordionComponent, IAccordionProps, IAccordionSlots, IAccordionStyles, IAccordionTokens } from './Accordion.types';
+import { IAccordionComponent, IAccordionProps, IAccordionSlots } from './Accordion.types';
 import { styles } from './Accordion.styles';
 
 const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps>).type;
@@ -40,11 +40,10 @@ const AccordionStatics = {
   Item: CollapsibleSection,
   defaultProps: {}
 };
-type IAccordionStatics = typeof AccordionStatics;
 
 export const Accordion: React.StatelessComponent<IAccordionProps> & {
   Item: React.StatelessComponent<ICollapsibleSectionProps>;
-} = createStatelessComponent<IAccordionProps, IAccordionStyles, IAccordionTokens, IAccordionStatics>({
+} = createComponent({
   displayName: 'Accordion',
   styles,
   view,

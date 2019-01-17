@@ -1,9 +1,9 @@
 import { IRefObject } from '../../Utilities';
-import { IComponentStyles, IHTMLButtonSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLButtonSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { ITextSlot } from '../../Text';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 
-export type ICollapsibleSectionTitleComponent = IStatelessComponent<
+export type ICollapsibleSectionTitleComponent = IComponent<
   ICollapsibleSectionTitleProps,
   ICollapsibleSectionTitleTokens,
   ICollapsibleSectionTitleStyles

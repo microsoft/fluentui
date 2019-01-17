@@ -3,12 +3,12 @@ import { Text, Stack, IStackProps } from '@uifabric/experiments';
 import { IFontStyles } from '@uifabric/experiments/lib/Styling';
 import {
   withSlots,
-  createStatelessComponent,
+  createComponent,
   getSlots,
+  IComponent,
   IComponentStyles,
   ISlotProp,
-  IStyleableComponentProps,
-  IStatelessComponent
+  IStyleableComponentProps
 } from '@uifabric/experiments/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
@@ -48,7 +48,7 @@ interface ITableProps extends ITableSlots, IStyleableComponentProps<ITableProps,
   title: string;
 }
 
-type ITableComponent = IStatelessComponent<ITableProps, {}, ITableStyles>;
+type ITableComponent = IComponent<ITableProps, {}, ITableStyles>;
 
 const TableView: ITableComponent['view'] = props => {
   const Slots = getSlots<ITableProps, ITableSlots>(props, {
@@ -76,7 +76,7 @@ const TableView: ITableComponent['view'] = props => {
   );
 };
 
-const Table = createStatelessComponent<ITableProps, {}, ITableStyles>({
+const Table: React.StatelessComponent<ITableProps> = createComponent({
   view: TableView,
   displayName: 'Table',
   styles: {

@@ -1,7 +1,7 @@
-import { IComponentStyles, IHTMLSpanSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSpanSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
-export type ITextComponent = IStatelessComponent<ITextProps, ITextTokens, ITextStyles>;
+export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
 
 export type ITextSlot = ISlotProp<ITextProps, 'children'>;
 
