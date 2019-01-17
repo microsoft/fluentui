@@ -1,6 +1,6 @@
-import * as React from 'react';
+/** @jsx withSlots */
 import { PersonaCoin } from '../../PersonaCoin/PersonaCoin';
-import { getSlots } from '../../../Foundation';
+import { getSlots, withSlots } from '../../../Foundation';
 import { IVerticalPersonaComponent, IVerticalPersonaProps, IVerticalPersonaSlots } from './VerticalPersona.types';
 import { PersonaText } from '../PersonaText/PersonaText';
 

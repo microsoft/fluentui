@@ -158,8 +158,12 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
       // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
       //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
       //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
-      const slot: ISlot<keyof TSlots> = componentProps => {
-        // TODO: detect withSlots usage here or elsewhere (via existence of type property?) and warn if withSlots is not used
+      const slot: ISlot<keyof TSlots> = (componentProps, ...args: any[]) => {
+        if (args.length > 0) {
+          // If React.createElement is being incorrectly used with slots, there will be additional arguments.
+          // We can detect these additional arguments and error on their presence.
+          throw new Error('Any module using getSlots must use withSlots. Please see withSlots javadoc for more info.');
+        }
         return renderSlot(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
