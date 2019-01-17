@@ -67,6 +67,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
     return (
       <CommandBar
         overflowButtonProps={{
+          ariaLabel: 'More commands',
           menuProps: {
             items: [], // Items must be passed for typesafety, but commandBar will determine items rendered in overflow
             isBeakVisible: true,
