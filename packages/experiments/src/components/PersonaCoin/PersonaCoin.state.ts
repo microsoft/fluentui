@@ -2,7 +2,7 @@ import { ImageLoadState } from 'office-ui-fabric-react';
 import { IPersonaCoinProps, IPersonaCoinViewProps } from './PersonaCoin.types';
 import { BaseState } from '../../utilities/BaseState';
 
-type IPersonaCoinState = Pick<IPersonaCoinViewProps, 'isPictureLoaded' | 'onPhotoLoadingStateChange'>;
+export type IPersonaCoinState = Pick<IPersonaCoinViewProps, 'isPictureLoaded' | 'onPhotoLoadingStateChange'>;
 
 export class PersonaCoinState extends BaseState<IPersonaCoinProps, IPersonaCoinViewProps, IPersonaCoinState> {
   constructor(props: PersonaCoinState['props']) {

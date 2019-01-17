@@ -3,7 +3,7 @@ import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableCompon
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
 
-export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinViewProps, IPersonaCoinTokens, IPersonaCoinStyles>;
+export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles, IPersonaCoinViewProps>;
 
 export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps> | string;
 

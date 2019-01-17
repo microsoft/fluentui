@@ -4,7 +4,7 @@ import { Text } from '../../Text';
 import { IPersonaCoinProps } from '../PersonaCoin.types';
 import { getInitials, getRTL } from '../../../Utilities';
 
-interface IPersonaCoinInitialsProps {
+export interface IPersonaCoinInitialsProps {
   initials: IPersonaCoinProps['initials'];
   text: IPersonaCoinProps['text'];
   allowPhoneInitials: IPersonaCoinProps['allowPhoneInitials'];

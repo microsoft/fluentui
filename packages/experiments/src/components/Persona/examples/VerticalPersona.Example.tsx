@@ -53,7 +53,6 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
                 secondaryText="Principal Program manager"
                 tokens={{
                   verticalPersonaWidth: 200,
-                  textMaxHeight: 70,
                   fontFamily: 'cursive',
                   textPaddingLeftAndRight: 10,
                   primaryTextPaddingTop: '20px',
