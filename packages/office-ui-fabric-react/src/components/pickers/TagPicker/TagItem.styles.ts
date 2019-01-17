@@ -53,6 +53,13 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           }
         }
       },
+      disabled && {
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'GrayText'
+          }
+        }
+      },
       selected &&
         !disabled && [
           classNames.isSelected,
@@ -70,6 +77,13 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         whiteSpace: 'nowrap',
         minWidth: 30,
         margin: '0 8px'
+      },
+      disabled && {
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText'
+          }
+        }
       }
     ],
     close: [

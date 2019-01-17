@@ -45,7 +45,14 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       !disabled && {
         color: palette.white,
         borderBottom: `2px dotted ${palette.white}`
+      },
+    disabled && {
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
       }
+    }
   ];
 
   const personaCoinInitialsStyles: IStyle = [
@@ -72,9 +79,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           ':hover': {
             background: !selected && !disabled ? palette.neutralLight : ''
           },
-          [HighContrastSelector]: {
-            border: '1px solid WindowText'
-          }
+          [HighContrastSelector]: [{ border: '1px solid WindowText' }, disabled && { borderColor: 'GrayText' }]
         }
       },
       selected &&

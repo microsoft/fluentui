@@ -1,4 +1,4 @@
-import { getGlobalClassNames, hiddenContentStyle } from '../../Styling';
+import { getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
 import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 
 const GlobalClassNames = {
@@ -54,7 +54,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
       disabled && {
         borderColor: 'transparent',
         selectors: {
-          '&:after': {
+          ':after': {
             content: '""',
             position: 'absolute',
             top: 0,
@@ -62,6 +62,14 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
             bottom: 0,
             left: 0,
             background: disabledOverlayColor
+          },
+          [HighContrastSelector]: {
+            borderColor: 'GrayText',
+            selectors: {
+              ':after': {
+                background: 'none'
+              }
+            }
           }
         }
       }
