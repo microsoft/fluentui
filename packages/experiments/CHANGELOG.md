@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 16 Jan 2019 13:38:44 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+
+## 6.50.7
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- Added azure themes to demo page
+- Foundation API improvements.
 
 ## 6.50.6
 Wed, 16 Jan 2019 13:38:44 GMT

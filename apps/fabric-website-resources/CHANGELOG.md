@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+
+## 6.9.9
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- Added azure themes to demo page
 
 ## 6.9.8
 Thu, 25 Oct 2018 12:30:05 GMT

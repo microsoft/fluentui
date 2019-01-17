@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 16 Jan 2019 13:38:44 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+
+## 6.11.2
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- ComponentPage: add id to dos and donts section to fix linking on site
 
 ## 6.11.1
 Wed, 16 Jan 2019 13:38:44 GMT
