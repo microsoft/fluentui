@@ -4,7 +4,7 @@ export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props
   return {
     verticalPersonaWidth: 122,
     font: theme.fonts.large,
-    textPaddingLeftAndRight: 8,
+    horizontalTextPadding: 8,
     primaryTextPaddingTop: '8px',
     primaryTextFontSize: '14px',
     primaryTextFontWeight: 600,
@@ -22,7 +22,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       alignItems: 'center',
       justifyContent: 'flex-start',
       width: `${tokens.verticalPersonaWidth}px`,
-      padding: `0 ${tokens.textPaddingLeftAndRight}px`,
+      padding: `0 ${tokens.horizontalTextPadding}px`,
       boxSizing: 'border-box'
     },
     primaryText: {

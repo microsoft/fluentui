@@ -54,7 +54,7 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
                 tokens={{
                   verticalPersonaWidth: 200,
                   fontFamily: 'cursive',
-                  textPaddingLeftAndRight: 10,
+                  horizontalTextPadding: 10,
                   primaryTextPaddingTop: '20px',
                   primaryTextFontSize: '22px',
                   primaryTextFontWeight: 800,
