@@ -155,6 +155,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       <Layer {...layerProps}>
         <Popup
           role="dialog"
+          aria-modal="true"
           ariaLabelledBy={header ? headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}

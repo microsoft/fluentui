@@ -2,10 +2,11 @@
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const newComponentName = argv.name;
+const slots = argv.slots;
 const stateless = argv.stateless;
 const fs = require('fs');
 
-// Template Sequence
+// Template Sequences
 const statefulSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest', 'Types', 'Component', 'State', 'StateTest'];
 const statelessSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest', 'TypesStateless', 'ComponentStateless'];
 
@@ -13,7 +14,8 @@ const statelessSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest',
 const rootComponentFolderPath = './packages/experiments/src/';
 const componentFolderPath = rootComponentFolderPath + 'components/' + newComponentName + '/';
 const componentPathNamePrefix = rootComponentFolderPath + 'components/' + newComponentName + '/' + newComponentName;
-const templateFolderPath = './scripts/templates/create-component';
+
+let templateFolderPath = './scripts/templates/create-component';
 
 const outputFiles = {
   Component: componentPathNamePrefix + '.ts',
@@ -31,7 +33,7 @@ const outputFiles = {
 
 // Error strings
 const errorCreatingComponentDir = 'Error creating component directory';
-const errorComponentName = 'Please pass in the component name using --name ExcitingNewComponentName (without appending Component)';
+const errorComponentName = 'Please pass in the component name using --name';
 
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
@@ -95,6 +97,11 @@ function writeFileCallback(error, createFileError, cb) {
 function makeComponent(error) {
   if (!handleError(error, errorCreatingComponentDir)) {
     return;
+  }
+
+  // TODO: obsolete existing templates and promote "slots" templates upon slots promotion
+  if (slots) {
+    templateFolderPath += '/slots';
   }
 
   if (stateless) {

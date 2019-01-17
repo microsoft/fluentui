@@ -30,16 +30,14 @@ import { IDefaultSlotProps } from './ISlots';
  * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
  * component is not provided, TComponentProps is the same as TViewProps.
  * TStyleSet: The type for styles properties.
- * TProcessedStyleSet: The type provided by mergeStyleSets provider after processing TStyleSet and provided to views.
- * TTheme: The type for theme properties as well as the getTheme provider.
- * TScheme: The type for identifying schemes.
+ * TTokens: The type for tokens props.
  * TStatics: Static type for statics applied to created component object.
  *
  * @param {IComponent} component
  * @param {IComponentProviders} providers
  */
-export function createComponent<TComponentProps, TViewProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}>(
-  component: IComponent<TComponentProps, TViewProps, TStyleSet, TTokens, TStatics>
+export function createComponent<TComponentProps, TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
+  component: IComponent<TComponentProps, TViewProps, TTokens, TStyleSet, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
   const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
@@ -54,19 +52,19 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
           //          all the way from Customizations with something like { { K in fields }: object}? hmm
           //        if not, how does existing "theme!" styles code work without risk of failing (assuming it doesn't fail)?
           // For now cast return value as if theme is always available.
-          const settings: ICustomizationProps<TViewProps, TStyleSet, TTokens> = _getCustomizations(
+          const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
             component.displayName,
             context,
             component.fields
           );
 
-          const renderView = (viewProps?: TViewProps & IStyleableComponentProps<TViewProps, TStyleSet, TTokens>) => {
+          const renderView = (viewProps?: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>) => {
             // The approach here is to allow state components to provide only the props they care about, automatically
             //    merging user props and state props together. This ensures all props are passed properly to view,
             //    including children and styles.
             // TODO: for full 'fields' support, 'rest' props from customizations need to pass onto view.
             //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
-            const mergedProps: TViewProps & IStyleableComponentProps<TViewProps, TStyleSet, TTokens> = viewProps
+            const mergedProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> = viewProps
               ? {
                   ...(componentProps as any),
                   ...(viewProps as any)
@@ -104,10 +102,10 @@ export function createComponent<TComponentProps, TViewProps, TStyleSet extends I
  *
  * @see {@link createComponent} for more information.
  */
-export function createStatelessComponent<TComponentProps, TStyleSet extends IStyleSet<TStyleSet>, TTokens = {}, TStatics = {}>(
-  component: IStatelessComponent<TComponentProps, TStyleSet, TTokens, TStatics>
+export function createStatelessComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TStatics = {}>(
+  component: IStatelessComponent<TComponentProps, TTokens, TStyleSet, TStatics>
 ): React.StatelessComponent<TComponentProps> & TStatics {
-  return createComponent(component as IComponent<TComponentProps, TComponentProps, TStyleSet, TTokens, TStatics>);
+  return createComponent(component as IComponent<TComponentProps, TComponentProps, TTokens, TStyleSet, TStatics>);
 }
 
 /**
@@ -159,7 +157,7 @@ function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TSt
   displayName: string,
   context: ICustomizerContext,
   fields?: string[]
-): ICustomizationProps<TViewProps, TStyleSet, TTokens> {
+): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
   // TOOD: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps

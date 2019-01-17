@@ -164,7 +164,8 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
           mixedProps[name],
-          mixedProps._defaultStyles[name]
+          // _defaultStyles should always be present, but a check for existence is added to make view tests easier to use.
+          mixedProps._defaultStyles && mixedProps._defaultStyles[name]
         );
       };
       slot.isSlot = true;

@@ -141,7 +141,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                   }
             >
               <i
-                aria-hidden={true}
                 className=
 
                     {
