@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/azure-themes",
+      "comment": "Theme color picker, rating, card and various bug fixes",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/azure-themes",
+  "email": "rkessler@microsoft.com"
+}
