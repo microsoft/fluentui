@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 16 Jan 2019 13:38:45 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+
+## 6.127.0
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Minor changes
+
+- DetailsList: add isMenuOpen property on IColumn interface and add aria-expanded to the DetailsList column header.
+
+### Patches
+
+- Pickers: Fix it so that pickers now correctly lose focus
+- When clicking on existing oufr calendar component, there's a 1px space between days in the day picker where the click has no effect. Fixing
+- ChoiceGroup: Sets the first enabled option to focusable, even with an invalid defaultSelectedKey
+- TextField: fixes High Contrast mode styles when focusing.
 
 ## 6.126.0
 Wed, 16 Jan 2019 13:38:45 GMT

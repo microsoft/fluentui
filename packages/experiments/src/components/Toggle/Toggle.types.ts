@@ -5,7 +5,7 @@ import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ILabelSlot } from '../../utilities/factoryComponents.types';
 
-export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleTokens, IToggleStyles>;
+export type IToggleComponent = IComponent<IToggleProps, IToggleTokens, IToggleStyles, IToggleViewProps>;
 
 export interface IToggleSlots {
   /**

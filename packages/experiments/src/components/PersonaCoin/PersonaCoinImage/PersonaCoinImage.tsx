@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Image, ImageFit } from 'office-ui-fabric-react';
-import { createStatelessComponent } from '../../../Foundation';
+import { createComponent } from '../../../Foundation';
 import { IPersonaCoinImageProps } from './PersonaCoinImage.types';
-import { IPersonaCoinComponent, IPersonaCoinStyles, IPersonaCoinTokens } from '../PersonaCoin.types';
+import { IPersonaCoinComponent } from '../PersonaCoin.types';
 import { DEFAULT_PERSONA_COIN_SIZE } from '../PersonaCoin.styles';
 
 const personaCoinImageStyles: IPersonaCoinComponent['styles'] = {
@@ -41,11 +41,7 @@ const PersonaCoinImageView = (props: IPersonaCoinImageProps): JSX.Element | null
   );
 };
 
-export const PersonaCoinImage: React.StatelessComponent<IPersonaCoinImageProps> = createStatelessComponent<
-  IPersonaCoinImageProps,
-  IPersonaCoinTokens,
-  IPersonaCoinStyles
->({
+export const PersonaCoinImage: React.StatelessComponent<IPersonaCoinImageProps> = createComponent({
   displayName: 'PersonaCoinImage',
   view: PersonaCoinImageView,
   styles: personaCoinImageStyles

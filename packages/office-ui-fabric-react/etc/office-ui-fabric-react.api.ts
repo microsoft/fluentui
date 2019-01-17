@@ -332,6 +332,8 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
   // (undocumented)
+  protected onBlur: (ev: React.FocusEvent<HTMLElement | Autofill>) => void;
+  // (undocumented)
   protected onChange(items?: T[]): void;
   // (undocumented)
   protected onEmptyInputFocus(): void;

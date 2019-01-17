@@ -9,7 +9,6 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
         ms-TextField
         ms-TextField--underlined
         {
-          border: 0px solid #a6a6a6;
           box-shadow: none;
           box-sizing: border-box;
           margin-bottom: 0px;
@@ -22,25 +21,22 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
-        &:hover {
-          border-color: #333333;
-        }
   >
     <div
       className=
           ms-TextField-wrapper
           {
-            border-bottom-color: inherit;
+            border-bottom-color: #a6a6a6;
             border-bottom-style: solid;
             border-bottom-width: 1px;
             display: flex;
             width: 100%;
           }
+          &:hover {
+            border-bottom-color: #333333;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
+            border-bottom-color: Highlight;
           }
     >
       <label
@@ -79,8 +75,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
             {
               align-items: stretch;
               background: #ffffff;
-              border-width: 0px;
-              border: 1px solid #a6a6a6;
+              border: none;
               box-shadow: none;
               box-sizing: border-box;
               display: flex;
@@ -163,7 +158,6 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
         is-disabled
         ms-TextField--underlined
         {
-          border: 0px solid #a6a6a6;
           box-shadow: none;
           box-sizing: border-box;
           margin-bottom: 0px;
@@ -175,9 +169,6 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           padding-right: 0px;
           padding-top: 0px;
           position: relative;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
         }
   >
     <div
@@ -229,8 +220,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
               background-color: transparent;
               background: #ffffff;
               border-color: #f4f4f4;
-              border-width: 0px;
-              border: 1px solid #a6a6a6;
+              border: none;
               box-shadow: none;
               box-sizing: border-box;
               display: flex;
@@ -312,7 +302,6 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
         is-required
         ms-TextField--underlined
         {
-          border: 0px solid #a6a6a6;
           box-shadow: none;
           box-sizing: border-box;
           margin-bottom: 0px;
@@ -325,25 +314,22 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
-        &:hover {
-          border-color: #333333;
-        }
   >
     <div
       className=
           ms-TextField-wrapper
           {
-            border-bottom-color: inherit;
+            border-bottom-color: #a6a6a6;
             border-bottom-style: solid;
             border-bottom-width: 1px;
             display: flex;
             width: 100%;
           }
+          &:hover {
+            border-bottom-color: #333333;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
+            border-bottom-color: Highlight;
           }
     >
       <label
@@ -388,8 +374,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
             {
               align-items: stretch;
               background: #ffffff;
-              border-width: 0px;
-              border: 1px solid #a6a6a6;
+              border: none;
               box-shadow: none;
               box-sizing: border-box;
               display: flex;
@@ -472,7 +457,6 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
         ms-TextField
         ms-TextField--underlined
         {
-          border: 0px solid #a6a6a6;
           box-shadow: none;
           box-sizing: border-box;
           margin-bottom: 0px;
@@ -485,36 +469,22 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
-        &:hover {
-          border-color: #333333;
-        }
   >
     <div
       className=
           ms-TextField-wrapper
           {
-            border-bottom-color: inherit;
+            border-bottom-color: #a80000;
             border-bottom-style: solid;
             border-bottom-width: 1px;
-            border-bottom: 1px solid #a80000;
-            border-color: #a80000;
             display: flex;
             width: 100%;
           }
-          &:focus, &:hover {
-            border-color: #a80000;
-          }
-          &:focus {
-            border-bottom: 1px solid #a80000;
-          }
           &:hover {
-            border-bottom: 1px solid #a80000;
+            border-bottom-color: #a80000;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
+            border-bottom-color: Highlight;
           }
     >
       <label
@@ -554,8 +524,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
               align-items: stretch;
               background: #ffffff;
               border-color: #a80000;
-              border-width: 0px;
-              border: 1px solid #a6a6a6;
+              border: none;
               box-shadow: none;
               box-sizing: border-box;
               display: flex;
