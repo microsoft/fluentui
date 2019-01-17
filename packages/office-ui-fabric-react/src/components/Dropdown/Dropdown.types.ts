@@ -232,7 +232,7 @@ export interface IDropdownStyles {
   /** Refers to the callout that hosts Dropdown options in larger viewports. */
   callout: IStyle;
 
-  /** SubComponent styles. */
+  /** Subcomponent styles. */
   subComponentStyles: IDropdownSubComponentStyles;
 }
 
