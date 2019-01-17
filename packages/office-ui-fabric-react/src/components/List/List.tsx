@@ -87,12 +87,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-  };
-
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
+  private _pageRefs: { [key: string]: HTMLDivElement | null } = {};
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -409,7 +406,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         page: page,
         className: css('ms-List-page'),
         key: page.key,
-        ref: page.key,
+        ref: el => (this._pageRefs[page.key] = el),
         style: pageStyle,
         role: 'presentation'
       },
@@ -663,7 +660,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    */
   private _measurePage(page: IPage): boolean {
     let hasChangedHeight = false;
-    const pageElement = this.refs[page.key] as HTMLElement;
+    const pageElement = this._pageRefs[page.key];
     const cachedHeight = this._cachedPageHeights[page.startIndex];
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
