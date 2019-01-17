@@ -32,7 +32,8 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       fontWeight: tokens.primaryTextFontWeight,
       color: theme.palette.neutralPrimary,
       textAlign: 'center',
-      whiteSpace: 'initial'
+      whiteSpace: 'initial',
+      wordBreak: 'break-word'
     },
     secondaryText: {
       paddingTop: tokens.secondaryTextPaddingTop,
@@ -41,7 +42,8 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       lineHeight: '1.42',
       textAlign: 'center',
       whiteSpace: 'initial',
-      color: theme.palette.neutralSecondary
+      color: theme.palette.neutralSecondary,
+      wordBreak: 'break-word'
     }
   };
 };

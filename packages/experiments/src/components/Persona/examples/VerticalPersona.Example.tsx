@@ -25,7 +25,7 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
               <Persona vertical text="王力" secondaryText="Principal Program manager" />
               <Persona
                 vertical
-                text="Kevin is a man with a many names of which one is Jameson"
+                text="Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr."
                 coin={{ imageUrl: PersonaTestImages.personMale }}
               />
               <Persona
