@@ -101,9 +101,9 @@ export interface IPersonaCoinProps
   initialsColor?: string;
 }
 
-export type IPersonaCoinViewProps = IPersonaCoinProps & {
+export interface IPersonaCoinViewProps extends IPersonaCoinProps {
   isPictureLoaded?: boolean;
-};
+}
 
 export interface IPersonaCoinTokens {}
 
