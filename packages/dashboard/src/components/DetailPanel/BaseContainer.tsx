@@ -88,17 +88,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
   };
 
   const _renderElement = () => {
-    const {
-      loadingElement,
-      inlineLoading,
-      isOpen,
-      type,
-      customWidth,
-      isBlocking,
-      isLightDismiss,
-      onLightDismiss,
-      customStyle
-    } = props;
+    const { loadingElement, inlineLoading, isOpen, type, customWidth, isBlocking, isLightDismiss, onLightDismiss, customStyle } = props;
 
     const animation = isOpen ? AnimationClassNames.slideLeftIn400 : AnimationClassNames.slideRightOut400;
     const customClassName = mergeStyles(animation, customStyle);
@@ -135,6 +125,6 @@ baseContainer.defaultProps = {
   type: PanelType.medium,
   isBlocking: true,
   isLightDismiss: false
-}
+};
 
 export { baseContainer as BaseContainer };
