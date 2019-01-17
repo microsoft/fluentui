@@ -39,4 +39,4 @@ class MessageBanner extends React.PureComponent<IDetailPanelMessageBannerProps, 
   };
 }
 
-export { MessageBanner };
+export { MessageBanner, IDetailPanelMessageBannerStates };

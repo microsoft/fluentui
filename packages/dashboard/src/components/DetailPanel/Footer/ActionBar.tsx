@@ -94,4 +94,4 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
   return _renderElement();
 };
 
-export { actionBar as ActionBar };
+export { actionBar as ActionBar, DetailPanelActionBarProps };

@@ -29,12 +29,12 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const css = detailPanelPivotItemStyles;
     return <div className={css.generalContainer}>{this._renderContent()}</div>;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const { onContentLoad, onGetLoadingElement, itemKey, actionBar, onSetActionBar } = this.props;
 
     this._isMounted = true;
@@ -89,7 +89,7 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
     }
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     this._isMounted = false;
   }
 
@@ -133,4 +133,4 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
   };
 }
 
-export { DetailPanelPivotItem };
+export { DetailPanelPivotItem, DetailPanelPivotItemProps, IDetailPanelPivotItemStates };

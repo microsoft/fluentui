@@ -41,4 +41,4 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
   return _renderElement();
 };
 
-export { detailPanelPivotBody as DetailPanelPivotBody };
+export { detailPanelPivotBody as DetailPanelPivotBody, DetailPanelPivotBodyProps };

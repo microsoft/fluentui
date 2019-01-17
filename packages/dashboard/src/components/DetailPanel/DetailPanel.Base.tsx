@@ -31,10 +31,8 @@ interface IMainBodySnapshot {
   nextL2Id?: string | number;
 }
 
-type MainBodyProps = IDetailPanelBaseProps;
-
-class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates> {
-  constructor(props: MainBodyProps) {
+class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBodyStates> {
+  constructor(props: IDetailPanelBaseProps) {
     super(props);
     this.state = {
       pageReady: false,
@@ -48,7 +46,10 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
     };
   }
 
-  public getSnapshotBeforeUpdate(prevProps: Readonly<MainBodyProps>, _prevStates: Readonly<IMainBodyStates>): IMainBodySnapshot | null {
+  public getSnapshotBeforeUpdate(
+    prevProps: Readonly<IDetailPanelBaseProps>,
+    _prevStates: Readonly<IMainBodyStates>
+  ): IMainBodySnapshot | null {
     let snapshotUpdated = false;
     const snapshot = {} as IMainBodySnapshot;
 
@@ -110,10 +111,10 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
   }
 
   public componentDidUpdate(
-    _prevProps: Readonly<MainBodyProps>,
+    _prevProps: Readonly<IDetailPanelBaseProps>,
     _prevStates: Readonly<IMainBodyStates>,
     snapshot: IMainBodySnapshot | null
-  ) {
+  ): void {
     if (snapshot) {
       const { onGetL2Content, onGetL2ActionBar, mainActionBar } = this.props;
       if (snapshot.nextL2Id && onGetL2Content) {
@@ -332,4 +333,4 @@ class DetailPanelBase extends React.PureComponent<MainBodyProps, IMainBodyStates
   };
 }
 
-export { DetailPanelBase };
+export { DetailPanelBase, IMainBodyStates, IMainBodySnapshot };

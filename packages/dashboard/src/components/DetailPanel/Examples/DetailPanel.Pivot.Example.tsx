@@ -1,3 +1,4 @@
+/* tslint:disable */
 import * as React from 'react';
 import { DetailPanel } from '../DetailPanel';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -17,7 +18,7 @@ import {
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
-interface IDetailPanelL2PivotExampleStates {
+export interface IDetailPanelL2PivotExampleStates {
   show: boolean;
   currentL2Id?: string;
 }
@@ -28,7 +29,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
     this.state = { show: false, currentL2Id: undefined };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { show, currentL2Id } = this.state;
     if (show) {
       const header: IDetailPanelHeaderProps = {
@@ -385,3 +386,4 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
     return null;
   };
 }
+/* tslint:enable */

@@ -1,3 +1,4 @@
+/* tslint:disable */
 import * as React from 'react';
 import { DetailPanel } from '../DetailPanel';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -10,7 +11,7 @@ import {
 } from '../DetailPanel.types';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 
-interface IDetailPanelL2ContentExampleStates {
+export interface IDetailPanelL2ContentExampleStates {
   show: boolean;
   currentL2Id?: string;
 }
@@ -21,7 +22,7 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
     this.state = { show: false, currentL2Id: undefined };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { show, currentL2Id } = this.state;
     if (show) {
       const header: IDetailPanelHeaderProps = {
@@ -162,3 +163,4 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
     return null;
   };
 }
+/* tslint:enable */

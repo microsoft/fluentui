@@ -4,7 +4,7 @@ import { IDetailPanelBaseCommonAction, IBaseContainerProps } from './DetailPanel
 import { MessageBanner } from './Body/MessageBanner';
 import { ActionBar } from './Footer/ActionBar';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Header } from './Header';
+import { Header } from './Header/index';
 import { detailPanelBaseStyles } from './DetailPanel.styles';
 import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -127,4 +127,4 @@ baseContainer.defaultProps = {
   isLightDismiss: false
 };
 
-export { baseContainer as BaseContainer };
+export { baseContainer as BaseContainer, BodyContainerType };
