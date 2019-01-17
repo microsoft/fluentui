@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Dec 2018 12:25:50 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Jan 2019 00:06:43 GMT and should not be manually modified.
+
+## 5.135.0
+Thu, 17 Jan 2019 00:06:43 GMT
+
+### Minor changes
+
+- Cherry pick commit 5d4bfd9: DocumentCard: add optional aria role property to allow override the default aria role.
 
 ## 5.134.0
 Tue, 18 Dec 2018 12:25:50 GMT
