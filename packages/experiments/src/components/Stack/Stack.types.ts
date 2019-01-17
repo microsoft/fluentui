@@ -4,6 +4,12 @@ export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-ar
 
 export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
+// These types are redundant with IStackComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens'], Function>>;
+export type IStackStylesReturnType = ReturnType<Extract<IStackComponent['styles'], Function>>;
+
 export type IStackSlot = ISlotProp<IStackProps>;
 
 export interface IStackSlots {

@@ -7,6 +7,12 @@ import { ILabelSlot } from '../../utilities/factoryComponents.types';
 
 export type IToggleComponent = IComponent<IToggleProps, IToggleTokens, IToggleStyles, IToggleViewProps>;
 
+// These types are redundant with IToggleComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IToggleTokenReturnType = ReturnType<Extract<IToggleComponent['tokens'], Function>>;
+export type IToggleStylesReturnType = ReturnType<Extract<IToggleComponent['styles'], Function>>;
+
 export interface IToggleSlots {
   /**
    * Root element.
