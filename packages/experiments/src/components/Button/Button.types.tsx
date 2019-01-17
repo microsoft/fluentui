@@ -1,18 +1,17 @@
-import { IComponent, IStyleableComponentProps } from '../../Foundation';
-import { IStyle } from '../../Styling';
-import { IFontWeight, IRefObject } from 'office-ui-fabric-react';
-import { IContextualMenuSlot, IHTMLButtonSlot, IHorizontalStackSlot, IIconSlot, ITextSlot } from '../../utilities/factoryComponents.types';
+import { IComponent, IComponentStyles, IHTMLButtonSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IFontWeight } from 'office-ui-fabric-react';
+import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
+import { IStackSlot } from '../../Stack';
+import { ITextSlot } from '../../Text';
+import { IBaseProps } from '../../Utilities';
 
-export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
+export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles, IButtonTokens>;
 
-// States should only be javascript evaluated states. (Not css states.)
-export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
-
-export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
+export type IButtonSlot = ISlotProp<IButtonProps>;
 
 export interface IButtonSlots {
   root?: IHTMLButtonSlot;
-  stack?: IHorizontalStackSlot;
+  stack?: IStackSlot;
   content?: ITextSlot;
   icon?: IIconSlot;
   menu?: IContextualMenuSlot;
@@ -21,9 +20,10 @@ export interface IButtonSlots {
 
 export interface IButton {}
 
-export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IButtonProps, IButtonStyles> {
-  componentRef?: IRefObject<IButton>;
-  className?: string;
+export interface IButtonProps
+  extends IButtonSlots,
+    IStyleableComponentProps<IButtonProps, IButtonStyles, IButtonTokens>,
+    IBaseProps<IButton> {
   href?: string;
 
   primary?: boolean;
@@ -32,13 +32,10 @@ export interface IButtonProps extends IButtonSlots, IStyleableComponentProps<IBu
   expanded?: boolean;
   defaultExpanded?: boolean;
 
-  variant?: IButtonVariants;
-
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-  styleVariables?: IButtonStyleVariables;
 }
 
-export interface IButtonStyleVariablesTypes {
+export interface IButtonTokens {
   backgroundColor?: string;
   backgroundColorHovered?: string;
   backgroundColorPressed?: string;
@@ -66,9 +63,7 @@ export interface IButtonStyleVariablesTypes {
   minHeight?: number | string;
 }
 
-export type IButtonStyleVariables = { [PVariant in IButtonVariants]?: { [PState in IButtonStates]?: IButtonStyleVariablesTypes } };
-
-export type IButtonStyles = { [key in keyof IButtonSlots]: IStyle };
+export type IButtonStyles = IComponentStyles<IButtonSlots>;
 
 export type IButtonViewProps = IButtonProps & {
   onMenuDismiss: () => void;
