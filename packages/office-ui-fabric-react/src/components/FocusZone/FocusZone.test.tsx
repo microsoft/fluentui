@@ -152,10 +152,10 @@ describe('FocusZone', () => {
     // Render component.
     safeMount(
       <FocusZone>
-        <button id="foo" onFocus={() => button1ReceivedFocus = true} />
-        <button id="bar" onFocus={() => button2ReceivedFocus = true} />
+        <button id="foo" onFocus={() => (button1ReceivedFocus = true)} />
+        <button id="bar" onFocus={() => (button2ReceivedFocus = true)} />
       </FocusZone>,
-      (wrapper) => {
+      wrapper => {
         // Set focus to first button.
         wrapper.find('#foo').simulate('click');
 
@@ -171,11 +171,11 @@ describe('FocusZone', () => {
     );
   });
 
-  it('can restore focus to the previous item when end item removed', () => { });
-  it('can move focus to container when last item removed', () => { });
-  it('can move focus from container to first item when added', () => { });
-  it('removes focusability when moving from focused container', () => { })
-  it('does not move focus when items added without container focus', () => { });
+  it('can restore focus to the previous item when end item removed', () => {});
+  it('can move focus to container when last item removed', () => {});
+  it('can move focus from container to first item when added', () => {});
+  it('removes focusability when moving from focused container', () => {});
+  it('does not move focus when items added without container focus', () => {});
 
   it('can ignore arrowing if default is prevented', () => {
     const component = ReactTestUtils.renderIntoDocument(
@@ -1521,57 +1521,57 @@ describe('FocusZone', () => {
 
   it(`focus should leave input box when arrow keys are pressed when tabbing is supported but
     shouldInputLoseFocusOnArrowKey callback method return true`, () => {
-      const tabDownListener = jest.fn();
-      const component = ReactTestUtils.renderIntoDocument(
-        <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
-          <FocusZone
-            {...{
-              handleTabKey: FocusZoneTabbableElements.all,
-              isCircularNavigation: false,
-              shouldInputLoseFocusOnArrowKey: element => {
-                return true;
-              }
-            }}
-          >
-            <input type="text" className="a" />
-            <button className="b">b</button>
-          </FocusZone>
-        </div>
-      );
+    const tabDownListener = jest.fn();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
+        <FocusZone
+          {...{
+            handleTabKey: FocusZoneTabbableElements.all,
+            isCircularNavigation: false,
+            shouldInputLoseFocusOnArrowKey: element => {
+              return true;
+            }
+          }}
+        >
+          <input type="text" className="a" />
+          <button className="b">b</button>
+        </FocusZone>
+      </div>
+    );
 
-      const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
 
-      const inputA = focusZone.querySelector('.a') as HTMLElement;
-      const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const inputA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
 
-      setupElement(inputA, {
-        clientRect: {
-          top: 0,
-          bottom: 20,
-          left: 20,
-          right: 40
-        }
-      });
-
-      setupElement(buttonB, {
-        clientRect: {
-          top: 0,
-          bottom: 20,
-          left: 20,
-          right: 40
-        }
-      });
-
-      // InputA should be focused.
-      inputA.focus();
-      expect(lastFocusedElement).toBe(inputA);
-
-      // Pressing arrow down, input should loose the focus and the button should get the focus
-      ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
-      expect(lastFocusedElement).toBe(buttonB);
-      expect(inputA.tabIndex).toBe(-1);
-      expect(buttonB.tabIndex).toBe(0);
+    setupElement(inputA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
     });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // InputA should be focused.
+    inputA.focus();
+    expect(lastFocusedElement).toBe(inputA);
+
+    // Pressing arrow down, input should loose the focus and the button should get the focus
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonB);
+    expect(inputA.tabIndex).toBe(-1);
+    expect(buttonB.tabIndex).toBe(0);
+  });
 
   it('should call onKeyDown handler even within another FocusZone', () => {
     const keyDownHandler = jest.fn();
