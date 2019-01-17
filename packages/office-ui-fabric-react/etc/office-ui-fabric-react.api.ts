@@ -7636,6 +7636,7 @@ interface IDropdownStyles {
 // @public (undocumented)
 interface IDropdownSubComponentStyles {
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;
+  panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
