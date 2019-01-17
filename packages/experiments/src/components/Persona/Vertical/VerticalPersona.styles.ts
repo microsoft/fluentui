@@ -3,9 +3,7 @@ import { IVerticalPersonaComponent } from './VerticalPersona.types';
 export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props, theme) => {
   return {
     verticalPersonaWidth: 122,
-    // TODO: Use font from theme?
-    fontFamily: 'SegoeUI',
-    textMaxHeight: 35,
+    font: theme.fonts.large,
     textPaddingLeftAndRight: 8,
     primaryTextPaddingTop: '8px',
     primaryTextFontSize: '14px',
@@ -29,7 +27,6 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
     },
     primaryText: {
       paddingTop: tokens.primaryTextPaddingTop,
-      maxHeight: tokens.textMaxHeight,
       fontFamily: tokens.fontFamily,
       fontSize: tokens.primaryTextFontSize,
       fontWeight: tokens.primaryTextFontWeight,
@@ -39,7 +36,6 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
     },
     secondaryText: {
       paddingTop: tokens.secondaryTextPaddingTop,
-      maxHeight: tokens.textMaxHeight,
       fontFamily: tokens.fontFamily,
       fontSize: tokens.secondaryTextFontSize,
       lineHeight: '1.42',

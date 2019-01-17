@@ -31,7 +31,6 @@ export interface IVerticalPersonaStyles {
 export interface IVerticalPersonaTokens {
   verticalPersonaWidth?: number;
   fontFamily?: string;
-  textMaxHeight?: number;
   textPaddingLeftAndRight?: number;
   primaryTextPaddingTop?: string;
   primaryTextFontSize?: string;
