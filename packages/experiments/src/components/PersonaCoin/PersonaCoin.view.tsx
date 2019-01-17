@@ -5,7 +5,7 @@ import { IPersonaCoinComponent, IPersonaCoinProps, IPersonaCoinSlots } from './P
 import { PersonaCoinImage } from './PersonaCoinImage/PersonaCoinImage';
 import { DEFAULT_PERSONA_COIN_SIZE } from './PersonaCoin.styles';
 import { hideInitialsWhenImageIsLoaded } from './propHelpers';
-import CoinAlternativeForSmallestSize from './CoinAlternativeForSmallestSize/CoinAlternativeForSmallestSize';
+import PersonaCoinSize10 from './PersonaCoinSize10/PersonaCoinSize10';
 import { PersonaCoinInitials } from './PersonaCoinInitials/PersonaCoinInitials';
 
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
@@ -16,7 +16,7 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
     image: PersonaCoinImage,
     initials: PersonaCoinInitials,
     presence: PersonaPresence,
-    coinAlternativeForSmallestSize: CoinAlternativeForSmallestSize
+    personaCoinSize10: PersonaCoinSize10
   });
 
   if (coinSize === 10) {
@@ -24,7 +24,7 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
       // TODO: why do we need to pass size twice?
       return <Slots.presence coinSize={coinSize} size={coinSize} />;
     }
-    return <Slots.coinAlternativeForSmallestSize />;
+    return <Slots.personaCoinSize10 />;
   }
 
   const initials = hideInitialsWhenImageIsLoaded(props) ? null : (

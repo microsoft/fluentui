@@ -1,4 +1,4 @@
-import { ImageLoadState, IRefObject } from 'office-ui-fabric-react';
+import { ImageLoadState, IBaseProps } from 'office-ui-fabric-react';
 import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
@@ -7,7 +7,7 @@ export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTo
 
 export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps> | string;
 
-export type IPersonaCoinForSmallestSizeSlot = ISlotProp<{}>;
+export type IPersonaCoinSize10 = ISlotProp<{}>;
 
 export interface IPersonaCoinSlots {
   /**
@@ -32,7 +32,7 @@ export interface IPersonaCoinSlots {
   /**
    * Slot for the alternative coin for the smallest persona size
    */
-  coinAlternativeForSmallestSize?: IPersonaCoinForSmallestSizeSlot;
+  personaCoinSize10?: IPersonaCoinSize10;
 }
 
 export type PersonaCoinSize = 10 | 16 | 24 | 28 | 32 | 40 | 48 | 56 | 72 | 100;
@@ -41,7 +41,8 @@ export type PersonaCoinSize = 10 | 16 | 24 | 28 | 32 | 40 | 48 | 56 | 72 | 100;
 //    If you don't want these props to be included in your component, just remove this extension.
 export interface IPersonaCoinProps
   extends IPersonaCoinSlots,
-    IStyleableComponentProps<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles> {
+    IStyleableComponentProps<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles>,
+    IBaseProps<IPersonaCoinComponent> {
   /**
    * Whether initials are calculated for phone numbers and number sequences.
    * Example: Set property to true to get initials for project names consisting of numbers only.
@@ -98,16 +99,11 @@ export interface IPersonaCoinProps
    * @defaultvalue 'white'
    */
   initialsColor?: string;
-
-  /**
-   * Optional callback used to set a ref to the component
-   */
-  componentRef?: IRefObject<IPersonaCoinViewProps>;
 }
 
-export interface IPersonaCoinViewProps extends IPersonaCoinProps {
+export type IPersonaCoinViewProps = IPersonaCoinProps & {
   isPictureLoaded?: boolean;
-}
+};
 
 export interface IPersonaCoinTokens {}
 
