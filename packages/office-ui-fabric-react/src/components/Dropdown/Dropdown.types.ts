@@ -6,7 +6,7 @@ import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { ILabelStyleProps } from '../../Label';
 import { RectangleEdge } from '../../utilities/positioning';
-import { IPanelStyleProps, IPanelStyles } from '../Panel/Panel.types';
+import { IPanelStyleProps } from '../Panel/Panel.types';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -238,7 +238,8 @@ export interface IDropdownStyles {
 
 export interface IDropdownSubComponentStyles {
   /** Refers to the panel that hosts the Dropdown options in small viewports. */
-  panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
+  panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
+  // #5690: replace any with ILabelStyles in TS 2.9
 
   /** Refers to the primary label for the Dropdown. */
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;
