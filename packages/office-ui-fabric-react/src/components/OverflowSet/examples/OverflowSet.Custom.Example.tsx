@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 
@@ -126,12 +126,12 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
     if (item.onRender) {
       return item.onRender(item);
     }
-    return <DefaultButton iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
+    return <CommandBarButton iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
   }
 
   private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
     return (
-      <DefaultButton className={css(styles.overflowButton)} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />
+      <CommandBarButton className={css(styles.overflowButton)} menuIconProps={{ iconName: 'More' }} menuProps={{ items: overflowItems! }} />
     );
   }
 }
