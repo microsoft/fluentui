@@ -79,12 +79,12 @@ export const AzureThemeLight: ITheme = createTheme({
     themePrimary: LightSemanticColors.controlOutlines.accent,
     neutralPrimary: LightSemanticColors.text.body,
     neutralDark: LightSemanticColors.text.body,
-    neutralLight: CommonSemanticColors.dividers.lineSeparator, //shimmer and document card
+    neutralLight: CommonSemanticColors.dividers.lineSeparator, // shimmer and document card
     neutralLighter: CommonSemanticColors.backgrounds.section, // shimmer elements
     neutralLighterAlt: LightSemanticColors.item.hover, // nav highlight
     neutralQuaternaryAlt: LightSemanticColors.item.select, // expand button on list controls
     neutralSecondary: LightSemanticColors.text.label, // persona
-    neutralTertiaryAlt: LightSemanticColors.controlOutlines.rest, //document card
+    neutralTertiaryAlt: LightSemanticColors.controlOutlines.rest, // document card
     white: LightSemanticColors.background // shimmer elements
   },
   semanticColors: lightExtendedSemanticColors

@@ -40,7 +40,7 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
     },
     closeButton: {
       color: semanticColors.bodyText,
-      margin: '1px',
+      margin: 1,
       selectors: {
         '&:hover': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
