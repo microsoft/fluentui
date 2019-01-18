@@ -1,4 +1,4 @@
-import { IVerticalPersonaComponent } from './VerticalPersona.types';
+import { IVerticalPersonaComponent, IVerticalPersonaStylesReturnType } from './VerticalPersona.types';
 
 export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props, theme) => {
   return {
@@ -14,7 +14,7 @@ export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props
   };
 };
 
-export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props, theme, tokens) => {
+export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props, theme, tokens): IVerticalPersonaStylesReturnType => {
   return {
     root: {
       display: 'flex',

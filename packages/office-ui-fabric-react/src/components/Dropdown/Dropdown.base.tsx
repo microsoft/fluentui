@@ -28,7 +28,7 @@ import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { KeytipData } from '../../KeytipData';
-import { Panel } from '../../Panel';
+import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -422,15 +422,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
+    const panelStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
+      : undefined;
+
     return isSmall ? (
-      <Panel
-        className={this._classNames.panel}
-        isOpen={true}
-        isLightDismiss={true}
-        onDismissed={this._onDismiss}
-        hasCloseButton={false}
-        {...panelProps}
-      >
+      <Panel isOpen={true} isLightDismiss={true} onDismissed={this._onDismiss} hasCloseButton={false} styles={panelStyles} {...panelProps}>
         {this._renderFocusableList(props)}
       </Panel>
     ) : (
@@ -527,11 +524,11 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const id = this._id;
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
-    // select the right classname based on the combination of selected/disabled
+    // select the right className based on the combination of selected/disabled
     const itemClassName =
-      isItemSelected && item.disabled === true // preciate: both selected and disabled
+      isItemSelected && item.disabled === true // predicate: both selected and disabled
         ? this._classNames.dropdownItemSelectedAndDisabled
-        : isItemSelected // preciate: selected only
+        : isItemSelected // predicate: selected only
         ? this._classNames.dropdownItemSelected
         : item.disabled === true // predicate: disabled only
         ? this._classNames.dropdownItemDisabled

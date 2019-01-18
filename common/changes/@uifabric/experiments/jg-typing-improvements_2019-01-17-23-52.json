@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Foundation API improvements.",
+      "comment": "Add helper return types to mitigate TS function return type widening.",
       "type": "patch"
     }
   ],

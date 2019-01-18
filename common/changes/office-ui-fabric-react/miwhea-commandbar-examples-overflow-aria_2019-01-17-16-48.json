@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: Sets the first enabled option to focusable, even with an invalid defaultSelectedKey",
+      "comment": "CommandBar: Add ARIA labels to the overflow buttons in examples",
       "type": "patch"
     }
   ],

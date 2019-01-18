@@ -216,7 +216,9 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
         };
         newLayout.lg!.push(itemLayout);
       });
-      if (newLayout !== this.state.layout) {
+
+      // for object comparision using JSON stringify
+      if (JSON.stringify(newLayout) !== JSON.stringify(this.state.layout)) {
         if (this.props.onLayoutChange) {
           this.props.onLayoutChange(newLayout);
         }

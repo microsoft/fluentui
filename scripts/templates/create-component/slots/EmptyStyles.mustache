@@ -1,4 +1,8 @@
-import { I{{componentName}}Component } from './{{componentName}}.types';
+import {
+  I{{componentName}}Component,
+  I{{componentName}}StylesReturnType,
+  I{{componentName}}TokenReturnType
+} from './{{componentName}}.types';
 import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
@@ -14,12 +18,12 @@ const warningTokens: I{{componentName}}Component['tokens'] = {
   textColor: 'red'
 };
 
-export const {{componentName}}Tokens: I{{componentName}}Component['tokens'] = (props, theme) => [
+export const {{componentName}}Tokens: I{{componentName}}Component['tokens'] = (props, theme): I{{componentName}}TokenReturnType => [
   baseTokens,
   props.warning && warningTokens
 ];
 
-export const {{componentName}}Styles: I{{componentName}}Component['styles'] = (props, theme, tokens) => {
+export const {{componentName}}Styles: I{{componentName}}Component['styles'] = (props, theme, tokens): I{{componentName}}StylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {

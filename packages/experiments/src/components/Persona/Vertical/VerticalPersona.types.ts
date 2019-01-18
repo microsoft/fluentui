@@ -5,6 +5,12 @@ import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
 export type IVerticalPersonaComponent = IComponent<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles>;
 
+// These types are redundant with IVerticalPersonaComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IVerticalPersonaTokenReturnType = ReturnType<Extract<IVerticalPersonaComponent['tokens'], Function>>;
+export type IVerticalPersonaStylesReturnType = ReturnType<Extract<IVerticalPersonaComponent['styles'], Function>>;
+
 export interface IVerticalPersonaSlots {
   root?: IHTMLDivSlot;
   primaryText?: ITextSlot;
