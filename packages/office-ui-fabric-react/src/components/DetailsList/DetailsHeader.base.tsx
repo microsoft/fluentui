@@ -69,15 +69,12 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   public static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState {
     const columnReorderProps: IColumnReorderHeaderProps | undefined =
       newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
+    const { groupNestingDepth } = newProps;
 
-    const newState: IDetailsHeaderState = { columnReorderProps };
+    const newState: IDetailsHeaderState = { columnReorderProps, groupNestingDepth };
 
     if (newProps.isAllCollapsed !== undefined) {
       newState.isAllCollapsed = newProps.isAllCollapsed;
-    }
-
-    if (newProps.groupNestingDepth !== prevState.groupNestingDepth) {
-      newState.groupNestingDepth = newProps.groupNestingDepth;
     }
 
     return newState;
