@@ -1,10 +1,10 @@
 import { IPersonaProps } from 'office-ui-fabric-react';
-import { IPersonaCoinComponent } from './PersonaCoin.types';
+import { IPersonaCoinComponent, IPersonaCoinStylesReturnType } from './PersonaCoin.types';
 import { initialsColorPropToColorCode } from 'office-ui-fabric-react/lib/components/Persona/PersonaInitialsColor';
 
 export const DEFAULT_PERSONA_COIN_SIZE = 48;
 
-export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (props, theme, tokens) => {
+export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (props, theme, tokens): IPersonaCoinStylesReturnType => {
   const personaProps: IPersonaProps = {
     text: props.text,
     initialsColor: props.initialsColor

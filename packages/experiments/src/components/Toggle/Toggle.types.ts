@@ -97,7 +97,7 @@ export interface IToggleProps
   keytipProps?: IKeytipProps;
 }
 
-export type IToggleViewProps = IToggleProps & {
+export interface IToggleViewProps extends IToggleProps {
   /**
    * Toggle input callback triggered by mouse and keyboard input.
    */
@@ -107,7 +107,7 @@ export type IToggleViewProps = IToggleProps & {
    * Reference to the toggle button.
    */
   toggleButtonRef?: React.RefObject<HTMLButtonElement>;
-};
+}
 
 export interface IToggleTokens {
   pillBackground?: string;
