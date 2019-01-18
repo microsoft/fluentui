@@ -1,6 +1,6 @@
 import { ITagItemStyleProps, ITagItemStyles } from 'office-ui-fabric-react/lib/Pickers';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
-import { FontSizes } from '../AzureType';
+import { transparent } from '../Constants';
 
 export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles> => {
   const { theme, selected } = props;
@@ -11,6 +11,7 @@ export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
+      verticalAlign: 'middle',
       backgroundColor: semanticColors.listItemBackgroundChecked,
       selectors: {
         ':hover': {
@@ -24,11 +25,20 @@ export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles
       }
     ],
     close: {
-      fontSize: FontSizes.size12,
       color: semanticColors.bodyText,
+      verticalAlign: 'middle',
+      backgroundColor: 'transparent',
       selectors: {
-        ':hover': {
+        '&.is-disabled': {
+          backgroundColor: transparent
+        },
+        ':active': {
+          backgroundColor: semanticColors.listHeaderBackgroundPressed,
           color: extendedSemanticColors.controlOutlineHovered
+        },
+        ':hover': {
+          backgroundColor: semanticColors.listItemBackgroundCheckedHovered,
+          color: semanticColors.bodyText
         }
       }
     }
