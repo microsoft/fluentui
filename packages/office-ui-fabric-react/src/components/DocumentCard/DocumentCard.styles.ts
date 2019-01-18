@@ -3,7 +3,7 @@ import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.typ
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
 import { DocumentCardTitleGlobalClassNames as titleClassNames } from './DocumentCardTitle.styles';
-import { GlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
+import { DocumentCardLocationGlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCard',
