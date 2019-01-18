@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { SubwayMapBasicExample } from './examples/index';
+import { SubwayMapBasicExample, SubwayMapSubStepsExample } from './examples/index';
 
 const SubwayMapExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayMap/examples/SubwayMap.Basic.Example.tsx') as string;
+const SubwayMapSubStepsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayMap/examples/SubwayMap.SubSteps.Example.tsx') as string;
 
 export class SubwayMapPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -14,6 +15,9 @@ export class SubwayMapPage extends React.Component<IComponentDemoPageProps, {}> 
           <div>
             <ExampleCard title="Basic Subway Map Card" code={SubwayMapExampleCode}>
               <SubwayMapBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Subway Map Card with Sub steps" code={SubwayMapSubStepsExampleCode}>
+              <SubwayMapSubStepsExample />
             </ExampleCard>
           </div>
         }

@@ -13,7 +13,13 @@ export enum SubwayMapStepState {
   Skipped = 6,
   Error = 7,
   CompletedWizard = 8,
-  ErrorInSubstep = 9
+
+  NotStartedSubStep = 9,
+  CurrentSubStep = 10,
+  CompletedSubStep = 11,
+  UnsavedSubStep = 12,
+  SkippedSubStep = 13,
+  ErrorSubstep = 14
 }
 
 export interface ISubwayMapStepContent {
@@ -41,6 +47,11 @@ export interface ISubwayMap {
 }
 
 export interface ISubwayMapStep {
+  /**
+   * Unique ID for the given step
+   */
+  key?: string;
+
   /**
    * Label for the step.
    */
@@ -120,6 +131,11 @@ export interface ISubwayMapStyles {
   subwayMapStepConnector: IStyle;
 
   /**
+   * Styles for subway substep connector
+   */
+  subwayMapSubStepConnector: IStyle;
+
+  /**
    * Styles for subway map step
    */
   subwayMapStep: IStyle;
@@ -185,9 +201,34 @@ export interface ISubwayMapStyles {
   stepWizardComplete: IStyle;
 
   /**
+   * Styles for substep not started icon
+   */
+  subStepNotStarted: IStyle;
+
+  /**
+   * Styles for substep current icon
+   */
+  subStepCurrent: IStyle;
+
+  /**
+   * Styles for substep completed icon
+   */
+  subStepCompleted: IStyle;
+
+  /**
+   * Styles for substep unsaved icon
+   */
+  subStepUnsaved: IStyle;
+
+  /**
+   * Styles for substep skipped icon
+   */
+  subStepSkipped: IStyle;
+
+  /**
    * Styles for error in substep icon
    */
-  stepErrorInSubstep: IStyle;
+  subStepError: IStyle;
 }
 
 /**

@@ -56,6 +56,12 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       marginLeft: '7px',
       border: '1px solid blue'
     },
+    subwayMapSubStepConnector: {
+      width: '0px',
+      height: '24px',
+      marginLeft: '7px',
+      border: '1px solid blue'
+    },
     subwayMapStep: {
       width: stepIconSize,
       height: stepIconSize
@@ -117,7 +123,33 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       width: stepIconSize,
       height: stepIconSize
     },
-    stepErrorInSubstep: {
+    subStepNotStarted: {
+      color: '#EDEBE9',
+      width: subStepIconSize,
+      height: subStepIconSize
+    },
+    subStepCurrent: {
+      color: '#C0DEF6',
+      width: subStepIconSize,
+      height: subStepIconSize
+    },
+    subStepCompleted: {
+      color: '#0078D4',
+      width: subStepIconSize,
+      height: subStepIconSize
+    },
+    subStepUnsaved: {
+      color: '#0078D4',
+      fill: '#C0DEF6',
+      width: subStepIconSize,
+      height: subStepIconSize
+    },
+    subStepSkipped: {
+      color: '#0078D4',
+      width: subStepIconSize,
+      height: subStepIconSize
+    },
+    subStepError: {
       color: '#A80000',
       width: subStepIconSize,
       height: subStepIconSize
