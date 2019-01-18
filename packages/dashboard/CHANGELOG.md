@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jan 2019 13:38:05 GMT and should not be manually modified.
+
+## 0.43.5
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx
 
 ## 0.43.4
 Thu, 17 Jan 2019 13:34:42 GMT
