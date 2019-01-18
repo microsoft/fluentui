@@ -1,7 +1,7 @@
 import { getGlobalClassNames, FontSizes } from '../../Styling';
 import { IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';
 
-export const GlobalClassNames = {
+export const DocumentCardLocationGlobalClassNames = {
   root: 'ms-DocumentCardLocation'
 };
 
@@ -9,7 +9,7 @@ export const getStyles = (props: IDocumentCardLocationStyleProps): IDocumentCard
   const { theme, className } = props;
   const { palette } = theme;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(DocumentCardLocationGlobalClassNames, theme);
 
   return {
     root: [

@@ -1,4 +1,5 @@
-import { getGlobalClassNames, getFocusStyle, HighContrastSelector, FontSizes } from '../../../Styling';
+import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
+import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
 const GlobalClassNames = {
@@ -11,7 +12,7 @@ const GlobalClassNames = {
 const TAG_HEIGHT = 26;
 
 export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
-  const { className, theme, selected } = props;
+  const { className, theme, selected, disabled } = props;
 
   const { palette } = theme;
 
@@ -32,17 +33,40 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         display: 'flex',
         flexWrap: 'nowrap',
         maxWidth: 300,
-        background: !selected ? palette.neutralLighter : palette.neutralQuaternary,
+        background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
         selectors: {
-          ':hover': {
-            background: !selected ? palette.neutralLight : palette.neutralQuaternaryAlt
-          },
+          ':hover': [
+            !disabled &&
+              !selected && {
+                background: palette.neutralLight,
+                selectors: {
+                  '.ms-TagItem-close': {
+                    color: palette.neutralPrimary
+                  }
+                }
+              },
+            disabled && { background: palette.neutralLighter },
+            selected && !disabled && { background: palette.themePrimary }
+          ],
           [HighContrastSelector]: {
             border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`
           }
         }
       },
-      selected && [classNames.isSelected],
+      disabled && {
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'GrayText'
+          }
+        }
+      },
+      selected &&
+        !disabled && [
+          classNames.isSelected,
+          {
+            color: palette.white
+          }
+        ],
       className
     ],
     text: [
@@ -53,20 +77,47 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         whiteSpace: 'nowrap',
         minWidth: 30,
         margin: '0 8px'
+      },
+      disabled && {
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText'
+          }
+        }
       }
     ],
     close: [
       classNames.close,
       {
-        cursor: 'pointer',
         color: palette.neutralSecondary,
-        fontSize: FontSizes.small,
-        display: 'inline-block',
-        textAlign: 'center',
-        verticalAlign: 'top',
         width: 30,
         height: '100%',
-        flexShrink: 0
+        flex: '0 0 auto',
+        selectors: {
+          ':hover': {
+            background: palette.neutralQuaternaryAlt,
+            color: palette.neutralPrimary
+          }
+        }
+      },
+      selected && {
+        color: palette.white,
+        selectors: {
+          ':hover': {
+            color: palette.white,
+            background: palette.themeDark
+          },
+          [HighContrastSelector]: {
+            color: 'HighlightText'
+          }
+        }
+      },
+      disabled && {
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: palette.neutralSecondary
+          }
+        }
       }
     ]
   };

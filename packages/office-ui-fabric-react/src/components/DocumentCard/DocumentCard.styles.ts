@@ -1,9 +1,9 @@
 import { getGlobalClassNames, FontSizes } from '../../Styling';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
-import { GlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
-import { GlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
-import { GlobalClassNames as titleClassNames } from './DocumentCardTitle.styles';
-import { GlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
+import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
+import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
+import { DocumentCardTitleGlobalClassNames as titleClassNames } from './DocumentCardTitle.styles';
+import { DocumentCardLocationGlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCard',
