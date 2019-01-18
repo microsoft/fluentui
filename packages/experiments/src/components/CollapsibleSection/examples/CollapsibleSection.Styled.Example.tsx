@@ -6,10 +6,12 @@ import {
   CollapsibleSection,
   CollapsibleSectionStateless,
   ICollapsibleSectionComponent,
-  ICollapsibleSectionTitleComponent
+  ICollapsibleSectionStylesReturnType,
+  ICollapsibleSectionTitleComponent,
+  ICollapsibleSectionTitleStylesReturnType
 } from '@uifabric/experiments/lib/CollapsibleSection';
 
-const getPropStyles: ICollapsibleSectionComponent['styles'] = (props, theme) => ({
+const getPropStyles: ICollapsibleSectionComponent['styles'] = (props, theme): ICollapsibleSectionStylesReturnType => ({
   root: [
     {
       background: theme.semanticColors.inputBackground
@@ -23,7 +25,7 @@ const getPropStyles: ICollapsibleSectionComponent['styles'] = (props, theme) => 
   ]
 });
 
-const getCustomizerStyles: ICollapsibleSectionComponent['styles'] = (props, theme) => ({
+const getCustomizerStyles: ICollapsibleSectionComponent['styles'] = (props, theme): ICollapsibleSectionStylesReturnType => ({
   body: [
     {
       color: theme.semanticColors.link
@@ -31,11 +33,11 @@ const getCustomizerStyles: ICollapsibleSectionComponent['styles'] = (props, them
   ]
 });
 
-const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme) => ({
+const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => ({
   text: [theme.fonts.large]
 });
 
-const getCustomizerTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme) => ({
+const getCustomizerTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => ({
   chevron: { color: theme.semanticColors.link },
   text: { color: theme.semanticColors.link }
 });

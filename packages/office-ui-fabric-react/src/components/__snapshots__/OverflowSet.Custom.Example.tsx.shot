@@ -164,7 +164,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       aria-owns={null}
       className=
           ms-Button
-          ms-Button--default
+          ms-Button--commandBar
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -178,12 +178,11 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
-            min-width: 80px;
+            min-width: 40px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding-left: 4px;
+            padding-right: 4px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -207,28 +206,30 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
-            bottom: -2px;
-            left: -2px;
+            bottom: 4px;
+            left: 4px;
             outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
+            right: 4px;
+            top: 4px;
           }
           &:active > * {
             left: 0px;
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border: none;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #dadada;
+            color: #000000;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -256,6 +257,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #106ebe;
                 display: inline-block;
                 flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
@@ -288,7 +290,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             className=
                 ms-Button-label
                 {
-                  font-weight: 600;
+                  font-weight: normal;
                   line-height: 100%;
                   margin-bottom: 0;
                   margin-left: 4px;
@@ -306,6 +308,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #666666;
                 display: inline-block;
                 flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
@@ -341,7 +344,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
     <button
       className=
           ms-Button
-          ms-Button--default
+          ms-Button--commandBar
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -355,12 +358,11 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
-            min-width: 80px;
+            min-width: 40px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding-left: 4px;
+            padding-right: 4px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -384,28 +386,30 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
-            bottom: -2px;
-            left: -2px;
+            bottom: 4px;
+            left: 4px;
             outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
+            right: 4px;
+            top: 4px;
           }
           &:active > * {
             left: 0px;
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border: none;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #dadada;
+            color: #000000;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -433,6 +437,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #106ebe;
                 display: inline-block;
                 flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
@@ -465,7 +470,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             className=
                 ms-Button-label
                 {
-                  font-weight: 600;
+                  font-weight: normal;
                   line-height: 100%;
                   margin-bottom: 0;
                   margin-left: 4px;
@@ -491,7 +496,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
     <button
       className=
           ms-Button
-          ms-Button--default
+          ms-Button--commandBar
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -505,12 +510,11 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
-            min-width: 80px;
+            min-width: 40px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding-left: 4px;
+            padding-right: 4px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -534,28 +538,30 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
-            bottom: -2px;
-            left: -2px;
+            bottom: 4px;
+            left: 4px;
             outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
+            right: 4px;
+            top: 4px;
           }
           &:active > * {
             left: 0px;
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border: none;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #dadada;
+            color: #000000;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -583,6 +589,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #106ebe;
                 display: inline-block;
                 flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
@@ -615,7 +622,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             className=
                 ms-Button-label
                 {
-                  font-weight: 600;
+                  font-weight: normal;
                   line-height: 100%;
                   margin-bottom: 0;
                   margin-left: 4px;
@@ -644,7 +651,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
       aria-owns={null}
       className=
           ms-Button
-          ms-Button--default
+          ms-Button--commandBar
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -658,12 +665,11 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
-            min-width: 80px;
+            min-width: 40px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
+            padding-left: 4px;
+            padding-right: 4px;
             padding-top: 0;
             position: relative;
             text-align: center;
@@ -687,28 +693,30 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
             border: none;
-            bottom: -2px;
-            left: -2px;
+            bottom: 4px;
+            left: 4px;
             outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
+            right: 4px;
+            top: 4px;
           }
           &:active > * {
             left: 0px;
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border: none;
+          }
           &:hover {
             background-color: #eaeaea;
             color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #dadada;
+            color: #000000;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -736,6 +744,7 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                color: #666666;
                 display: inline-block;
                 flex-shrink: 0;
                 font-family: "FabricMDL2Icons";

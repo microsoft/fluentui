@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jan 2019 13:38:06 GMT and should not be manually modified.
+
+## 6.128.0
+Fri, 18 Jan 2019 13:38:06 GMT
+
+### Minor changes
+
+- Exposes a preventDismissOnResize prop in the Callout component
+- Dropdown: refactor styles of Panel to `subComponentStyles` pattern.
+
+### Patches
+
+- ContextualMenu: fixes issue #7686 when items of type `section` are given the same key and later are rendered as list items causing a React warning. Change the example having this issue.
+- CommandBar: Add ARIA labels to the overflow buttons in examples
+- Facepile: Add ARIA role to the list of people
+- PeoplePicker: Reduce height to match other inputs
+- Update two examples to use CommandBarButton
 
 ## 6.127.0
 Thu, 17 Jan 2019 13:34:42 GMT

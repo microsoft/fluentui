@@ -1,4 +1,4 @@
-import { IToggleComponent } from './Toggle.types';
+import { IToggleComponent, IToggleStylesReturnType, IToggleTokenReturnType } from './Toggle.types';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
@@ -10,7 +10,7 @@ const GlobalClassNames = {
   text: 'ms-Toggle-stateText'
 };
 
-const toggleEnabledTokens: IToggleComponent['tokens'] = (props, theme) => {
+const toggleEnabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
   const { semanticColors } = theme;
   return {
     pillBackground: semanticColors.bodyBackground,
@@ -23,7 +23,7 @@ const toggleEnabledTokens: IToggleComponent['tokens'] = (props, theme) => {
   };
 };
 
-const toggleDisabledTokens: IToggleComponent['tokens'] = (props, theme) => {
+const toggleDisabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
   const { semanticColors } = theme;
   return {
     pillBackground: semanticColors.bodyBackground,
@@ -41,7 +41,7 @@ const toggleCheckedVariables: IToggleComponent['tokens'] = {
   pillJustifyContent: 'flex-end'
 };
 
-const toggleCheckedEnabledTokens: IToggleComponent['tokens'] = (props, theme) => {
+const toggleCheckedEnabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
   const { semanticColors } = theme;
   return {
     pillBackground: semanticColors.inputBackgroundChecked,
@@ -57,7 +57,7 @@ const toggleCheckedEnabledTokens: IToggleComponent['tokens'] = (props, theme) =>
   };
 };
 
-const toggleCheckedDisabledTokens: IToggleComponent['tokens'] = (props, theme) => {
+const toggleCheckedDisabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
   const { semanticColors } = theme;
   return {
     pillBackground: semanticColors.disabledBodySubtext,
@@ -65,13 +65,13 @@ const toggleCheckedDisabledTokens: IToggleComponent['tokens'] = (props, theme) =
   };
 };
 
-export const ToggleTokens: IToggleComponent['tokens'] = props => [
+export const ToggleTokens: IToggleComponent['tokens'] = (props): IToggleTokenReturnType => [
   props.checked && toggleCheckedVariables,
   props.disabled && [toggleDisabledTokens, props.checked && toggleCheckedDisabledTokens],
   !props.disabled && [toggleEnabledTokens, props.checked && toggleCheckedEnabledTokens]
 ];
 
-export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens) => {
+export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): IToggleStylesReturnType => {
   const { className, disabled, checked } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
