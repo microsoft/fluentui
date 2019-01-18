@@ -24,6 +24,13 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
         }
       }
     },
+    input: {
+      selectors: {
+        '::placeholder': {
+          fontStyle: 'italic'
+        }
+      }
+    },
     rootDisabled: {
       selectors: {
         '.ms-Button': {
