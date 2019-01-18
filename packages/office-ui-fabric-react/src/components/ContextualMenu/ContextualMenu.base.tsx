@@ -234,9 +234,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._classNames = getMenuClassNames
       ? getMenuClassNames(theme!, className)
       : getClassNames(styles, {
-          theme: theme!,
-          className: className
-        });
+        theme: theme!,
+        className: className
+      });
 
     const hasIcons = itemsHaveIcons(items);
 
@@ -508,38 +508,38 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   private _renderSectionItem(
-    item: IContextualMenuItem,
+    sectionItem: IContextualMenuItem,
     menuClassNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
   ) {
-    const section = item.sectionProps;
-    if (!section) {
+    const sectionProps = sectionItem.sectionProps;
+    if (!sectionProps) {
       return;
     }
 
     let headerItem;
-    if (section.title) {
+    if (sectionProps.title) {
       const headerContextualMenuItem: IContextualMenuItem = {
-        key: `section-${section.title}-title`,
+        key: `section-${sectionProps.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        text: section.title
+        text: sectionProps.title
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }
 
-    if (section.items && section.items.length > 0) {
+    if (sectionProps.items && sectionProps.items.length > 0) {
       return (
-        <li role="presentation" key={section.key}>
+        <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div role="group">
             <ul className={this._classNames.list}>
-              {section.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
-              {headerItem && this._renderListItem(headerItem, item.key || index, menuClassNames, item.title)}
-              {section.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, section.items.length, hasCheckmarks, hasIcons)
+              {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
+              {headerItem && this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
+              {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
+                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, sectionProps.items.length, hasCheckmarks, hasIcons)
               )}
-              {section.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
+              {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
           </div>
         </li>
