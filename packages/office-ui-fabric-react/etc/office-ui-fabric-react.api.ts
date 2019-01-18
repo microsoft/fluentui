@@ -2297,6 +2297,7 @@ interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   onPositioned?: (positions?: ICalloutPositionedInfo) => void;
   onScroll?: () => void;
   preventDismissOnLostFocus?: boolean;
+  preventDismissOnResize?: boolean;
   preventDismissOnScroll?: boolean;
   role?: string;
   setInitialFocus?: boolean;

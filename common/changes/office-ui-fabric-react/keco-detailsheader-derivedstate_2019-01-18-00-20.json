@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: Add ARIA labels to the overflow buttons in examples",
+      "comment": "DetailsHeader: Refactor deprecated componentWillReceiveProps to getDerivedStateFromProps",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "miwhea@microsoft.com"
+  "email": "keco@microsoft.com"
 }

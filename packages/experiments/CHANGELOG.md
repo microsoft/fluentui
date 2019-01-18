@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jan 2019 13:38:05 GMT and should not be manually modified.
+
+## 6.51.0
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Minor changes
+
+- Introduce tokens for vertical variant of Persona
+
+### Patches
+
+- Add helper return types to mitigate TS function return type widening.
 
 ## 6.50.7
 Thu, 17 Jan 2019 13:34:42 GMT

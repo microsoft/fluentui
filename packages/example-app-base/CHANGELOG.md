@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jan 2019 13:38:05 GMT and should not be manually modified.
+
+## 6.11.3
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fix bug where customizations apply to theme and scheme dropdowns.
 
 ## 6.11.2
 Thu, 17 Jan 2019 13:34:42 GMT

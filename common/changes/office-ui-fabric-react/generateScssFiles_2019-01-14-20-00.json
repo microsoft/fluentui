@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: refactor styles of Panel to `subComponentStyles` pattern.",
+      "comment": "Theming: add scss files generated from defaults",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-vibr@microsoft.com"
+  "email": "natalie.ethell@microsoft.com"
 }

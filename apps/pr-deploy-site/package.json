@@ -12,9 +12,9 @@
     "test-bundles": ">=6.0.0",
     "todo-app": ">=6.0.0",
     "@uifabric/charting": "^0.28.5",
-    "@uifabric/dashboard": "0.43.4",
+    "@uifabric/dashboard": "0.43.5",
     "@uifabric/date-time": "0.2.1",
-    "@uifabric/experiments": ">=6.50.7 <7.0.0",
+    "@uifabric/experiments": ">=6.51.0 <7.0.0",
     "@uifabric/foundation-scenarios": ">=0.1.0"
   }
 }

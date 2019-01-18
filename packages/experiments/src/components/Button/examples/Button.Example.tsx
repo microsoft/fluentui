@@ -16,6 +16,7 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
+// tslint:disable:jsx-no-lambda
 export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
@@ -38,7 +39,8 @@ export class ButtonExample extends React.Component<{}, {}> {
               <ButtonStack>
                 <Button icon="Upload" content="Button with string icon" />
                 <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
-                <Button icon={<Icon iconName="Download" />} content="Button with custom icon" />
+                <Button icon={() => <Icon iconName="Download" />} content="Button with icon render function" />
+                <Button icon={<Icon iconName="Download" />} content="Button with icon JSX" />
               </ButtonStack>
               <ButtonStack>
                 <Button>

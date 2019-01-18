@@ -7,7 +7,8 @@ import {
   CollapsibleSection,
   CollapsibleSectionTitle,
   ICollapsibleSectionTitleComponent,
-  ICollapsibleSectionTitleStyles
+  ICollapsibleSectionTitleStyles,
+  ICollapsibleSectionTitleStylesReturnType
 } from '@uifabric/experiments';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
@@ -45,7 +46,7 @@ const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
   }
 };
 
-const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme) => {
+const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => {
   return {
     root: [
       {

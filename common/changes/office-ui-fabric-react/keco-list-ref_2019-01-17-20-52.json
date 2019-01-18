@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Facepile: Add ARIA role to the list of people",
+      "comment": "List: Remove usage of string refs used for List pages",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "miwhea@microsoft.com"
+  "email": "keco@microsoft.com"
 }

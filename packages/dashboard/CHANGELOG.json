@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.43.5",
+      "tag": "@uifabric/dashboard_v0.43.5",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx",
+            "author": "VamshidharReddyEnumula <vamshidharenumula@gmail.com>",
+            "commit": "4c1197ee90b6b91237b57adc041f4e2b08bbaa81"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.2 <7.0.0` to `>=6.11.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.7 <7.0.0` to `>=6.51.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.43.4",
       "tag": "@uifabric/dashboard_v0.43.4",
       "date": "Thu, 17 Jan 2019 13:34:42 GMT",
