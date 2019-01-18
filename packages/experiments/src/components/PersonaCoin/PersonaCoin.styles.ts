@@ -15,7 +15,7 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (props, theme,
   return {
     root: {
       position: 'relative',
-      backgroundColor: props.isPictureLoaded ? 'transparent' : coinColor,
+      backgroundColor: props.isPictureLoaded ? undefined : coinColor,
       color: initialsColor,
       width: size,
       height: size,
