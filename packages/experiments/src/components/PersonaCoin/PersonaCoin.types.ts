@@ -6,6 +6,13 @@ import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
 
 export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles, IPersonaCoinViewProps>;
 
+// These types are redundant with IPersonaCoinComponent but are needed until TS function
+// return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IPersonaCoinTokenReturnType = ReturnType<Extract<IPersonaCoinComponent['tokens'], Function>>;
+export type IPersonaCoinStylesReturnType = ReturnType<Extract<IPersonaCoinComponent['styles'], Function>>;
+
 export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps> | string;
 
 export interface IPersonaCoinSlots {

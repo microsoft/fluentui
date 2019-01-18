@@ -1,9 +1,10 @@
-import { IVerticalPersonaComponent, IVerticalPersonaStylesReturnType } from './VerticalPersona.types';
+import { IVerticalPersonaComponent, IVerticalPersonaStylesReturnType, IVerticalPersonaTokenReturnType } from './VerticalPersona.types';
 
-export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props, theme) => {
+export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props, theme): IVerticalPersonaTokenReturnType => {
   return {
     verticalPersonaWidth: 122,
-    font: theme.fonts.large,
+    // TODO: typing exposed this error, ask Mark what it should be?
+    // font: theme.fonts.large,
     horizontalTextPadding: 8,
     primaryTextPaddingTop: '8px',
     primaryTextFontSize: '14px',

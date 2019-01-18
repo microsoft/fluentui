@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Toggle } from '../index';
-import { IToggleComponent } from '../Toggle.types';
+import { IToggleComponent, IToggleTokenReturnType } from '../Toggle.types';
 
-const toggleTokens: IToggleComponent['tokens'] = props => {
+const toggleTokens: IToggleComponent['tokens'] = (props): IToggleTokenReturnType => {
   return {
     ...(props.checked ? { textColor: 'green' } : { textColor: 'red' }),
     ...(props.disabled

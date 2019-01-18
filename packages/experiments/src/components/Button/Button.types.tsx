@@ -41,6 +41,11 @@ export interface IButtonProps
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
+export interface IButtonViewProps extends IButtonProps {
+  onMenuDismiss: () => void;
+  menuTarget: HTMLElement | undefined;
+}
+
 export interface IButtonTokens {
   backgroundColor?: string;
   backgroundColorHovered?: string;
@@ -70,8 +75,3 @@ export interface IButtonTokens {
 }
 
 export type IButtonStyles = IComponentStyles<IButtonSlots>;
-
-export type IButtonViewProps = IButtonProps & {
-  onMenuDismiss: () => void;
-  menuTarget: HTMLElement | undefined;
-};
