@@ -48,6 +48,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     selectAllVisibility: SelectAllVisibility.visible,
     collapseAllVisibility: CollapseAllVisibility.visible
   };
+
   private _classNames: IClassNames<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
   private _rootComponent = React.createRef<IFocusZone>();
@@ -64,6 +65,24 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     sourceIndex: number;
     targetIndex: number;
   };
+
+  public static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState {
+    const columnReorderProps: IColumnReorderHeaderProps | undefined =
+      newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
+
+    const newState: IDetailsHeaderState = { columnReorderProps };
+
+    if (newProps.isAllCollapsed !== undefined) {
+      newState.isAllCollapsed = newProps.isAllCollapsed;
+    }
+
+    if (newProps.groupNestingDepth !== prevState.groupNestingDepth) {
+      newState.groupNestingDepth = newProps.groupNestingDepth;
+    }
+
+    return newState;
+  }
+
   constructor(props: IDetailsHeaderBaseProps) {
     super(props);
     const columnReorderProps: IColumnReorderHeaderProps | undefined =
@@ -133,28 +152,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
           targetIndex: Number.MIN_SAFE_INTEGER
         };
       }
-    }
-  }
-
-  public componentWillReceiveProps(newProps: IDetailsHeaderBaseProps): void {
-    const columnReorderProps: IColumnReorderHeaderProps | undefined =
-      newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
-
-    const { groupNestingDepth } = this.state;
-
-    if (newProps.groupNestingDepth !== groupNestingDepth) {
-      this.setState({
-        columnReorderProps,
-        groupNestingDepth: newProps.groupNestingDepth
-      });
-    } else {
-      this.setState({ columnReorderProps });
-    }
-
-    if (newProps.isAllCollapsed !== undefined) {
-      this.setState({
-        isAllCollapsed: newProps.isAllCollapsed
-      });
     }
   }
 
