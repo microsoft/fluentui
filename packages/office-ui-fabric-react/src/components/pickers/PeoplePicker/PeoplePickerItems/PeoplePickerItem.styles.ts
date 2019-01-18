@@ -1,5 +1,5 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector, IStyle } from '../../../../Styling';
-import { GlobalClassNames as iconButtonClassNames } from '../../../Button/BaseButton.classNames';
+import { ButtonGlobalClassNames } from '../../../Button/BaseButton.classNames';
 import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
 const GlobalClassNames = {
@@ -153,7 +153,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       ],
       disabled && {
         selectors: {
-          [`.${iconButtonClassNames.msButtonIcon}`]: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: semanticColors.buttonText
           }
         }
