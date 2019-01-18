@@ -2,12 +2,11 @@ import { ImageLoadState, IBaseProps } from 'office-ui-fabric-react';
 import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
+import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
 
 export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles, IPersonaCoinViewProps>;
 
 export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps> | string;
-
-export type IPersonaCoinSize10 = ISlotProp<{}>;
 
 export interface IPersonaCoinSlots {
   /**
@@ -32,7 +31,7 @@ export interface IPersonaCoinSlots {
   /**
    * Slot for the alternative coin for the smallest persona size
    */
-  personaCoinSize10?: IPersonaCoinSize10;
+  personaCoinSize10?: IPersonaCoinSize10Slot;
 }
 
 export type PersonaCoinSize = 10 | 16 | 24 | 28 | 32 | 40 | 48 | 56 | 72 | 100;
