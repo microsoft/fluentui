@@ -8,6 +8,7 @@ import {
   getScreenSelector
 } from '../../Styling';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
+import { IsFocusVisibleClassName } from '../../Utilities';
 
 const SingleLineTextStyle: IRawStyle = {
   whiteSpace: 'nowrap',
@@ -153,11 +154,13 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
             {
               maxWidth: itemMaxWidthSmall
             }
-          ]
+          ],
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            outline: `none`
+          }
         }
       }
     ],
-
     item: [
       'ms-Breadcrumb-item',
       theme.fonts.xLarge,
