@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Breadcrumb: issue #7701 - fixes the  double focus rectangle caused by both Link and Breadcrumb.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "khoawin92@gmail.com"
+}
