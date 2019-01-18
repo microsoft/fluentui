@@ -1,63 +1,49 @@
-import { merge } from 'office-ui-fabric-react/lib/Utilities';
-import { isSingleLineText } from '../../../utilities/textHelpers';
-import { IVerticalPersonaComponent, IVerticalPersonaStyleVariableTypes, IVerticalPersonaStylesReturnType } from './VerticalPersona.types';
+import { IVerticalPersonaComponent, IVerticalPersonaStylesReturnType } from './VerticalPersona.types';
 
-export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props, theme): IVerticalPersonaStylesReturnType => {
-  const baseVariables: IVerticalPersonaStyleVariableTypes = {
+export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props, theme) => {
+  return {
     verticalPersonaWidth: 122,
-    text: {
-      height: 35,
-      fontFamily: 'SegoeUI',
-      textPaddingLeftAndRight: 8
-    },
-    primaryText: {
-      paddingTop: '8px',
-      fontSize: '14px',
-      fontWeight: 600
-    },
-    secondaryText: {
-      paddingTop: '6px',
-      fontSize: '12px'
-    }
+    font: theme.fonts.large,
+    horizontalTextPadding: 8,
+    primaryTextPaddingTop: '8px',
+    primaryTextFontSize: '14px',
+    primaryTextFontWeight: 600,
+    secondaryTextPaddingTop: '6px',
+    secondaryTextFontSize: '12px',
+    secondaryTextFontWeight: 300
   };
+};
 
-  const variables = props.styleVariables ? merge(baseVariables, props.styleVariables) : baseVariables;
-
-  const textStyle = `normal normal ${variables.primaryText.fontWeight} 14px ${variables.text.fontFamily}`;
-  const textPaddingInPixels = variables.text.textPaddingLeftAndRight * 2;
-  const numberOfPixelsAvailableWidthToDisplayText = variables.verticalPersonaWidth - textPaddingInPixels;
-  const isPrimaryTextSingleLine = isSingleLineText(numberOfPixelsAvailableWidthToDisplayText, props.text, textStyle);
-
+export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props, theme, tokens): IVerticalPersonaStylesReturnType => {
   return {
     root: {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      width: `${variables.verticalPersonaWidth}px`,
-      padding: `0 ${variables.text.textPaddingLeftAndRight}px`,
+      width: `${tokens.verticalPersonaWidth}px`,
+      padding: `0 ${tokens.horizontalTextPadding}px`,
       boxSizing: 'border-box'
     },
     primaryText: {
-      paddingTop: variables.primaryText.paddingTop,
-      height: variables.text.height,
-      fontFamily: variables.text.fontFamily,
-      fontSize: variables.primaryText.fontSize,
-      fontWeight: variables.primaryText.fontWeight,
-      lineHeight: isPrimaryTextSingleLine ? variables.text.height : variables.text.height / 2,
+      paddingTop: tokens.primaryTextPaddingTop,
+      fontFamily: tokens.fontFamily,
+      fontSize: tokens.primaryTextFontSize,
+      fontWeight: tokens.primaryTextFontWeight,
       color: theme.palette.neutralPrimary,
       textAlign: 'center',
-      whiteSpace: 'initial'
+      whiteSpace: 'initial',
+      wordBreak: 'break-word'
     },
     secondaryText: {
-      paddingTop: variables.secondaryText.paddingTop,
-      height: variables.text.height,
-      fontFamily: variables.text.fontFamily,
-      fontSize: variables.secondaryText.fontSize,
+      paddingTop: tokens.secondaryTextPaddingTop,
+      fontFamily: tokens.fontFamily,
+      fontSize: tokens.secondaryTextFontSize,
       lineHeight: '1.42',
       textAlign: 'center',
       whiteSpace: 'initial',
-      color: theme.palette.neutralSecondary
+      color: theme.palette.neutralSecondary,
+      wordBreak: 'break-word'
     }
   };
 };

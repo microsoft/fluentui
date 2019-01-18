@@ -4,7 +4,7 @@ import { initialsColorPropToColorCode } from 'office-ui-fabric-react/lib/compone
 
 export const DEFAULT_PERSONA_COIN_SIZE = 48;
 
-export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = props => {
+export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (props, theme, tokens) => {
   const personaProps: IPersonaProps = {
     text: props.text,
     initialsColor: props.initialsColor
@@ -15,7 +15,7 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = props => {
   return {
     root: {
       position: 'relative',
-      backgroundColor: coinColor,
+      backgroundColor: props.isPictureLoaded ? undefined : coinColor,
       color: initialsColor,
       width: size,
       height: size,
