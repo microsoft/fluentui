@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Fix it so that pickers now correctly lose focus",
+      "comment": "CommandBar: Add ARIA labels to the overflow buttons in examples",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

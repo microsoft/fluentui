@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: Sets the first enabled option to focusable, even with an invalid defaultSelectedKey",
+      "comment": "Update two examples to use CommandBarButton",
       "type": "patch"
     }
   ],

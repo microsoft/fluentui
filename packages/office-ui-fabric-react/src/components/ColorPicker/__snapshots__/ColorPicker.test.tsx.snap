@@ -266,9 +266,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
                     padding-right: 2px;
                   }
@@ -395,9 +392,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     padding-top: 0px;
                     position: relative;
                     width: 100%;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
                   }
                   &.ms-TextField {
                     padding-right: 2px;
@@ -526,9 +520,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
                     padding-right: 2px;
                   }
@@ -656,9 +647,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
                     padding-right: 2px;
                   }
@@ -785,9 +773,6 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     padding-top: 0px;
                     position: relative;
                     width: 100%;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
                   }
                   &.ms-TextField {
                     padding-right: 2px;

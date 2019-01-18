@@ -44,7 +44,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
       aria-labelledby={'selectedItemPersona-' + itemId}
     >
       <div className={classNames.itemContent} id={'selectedItemPersona-' + itemId}>
-        <Persona size={PersonaSize.size28} styles={personaStyles} coinProps={{ styles: personaCoinStyles }} {...item} />
+        <Persona size={PersonaSize.size24} styles={personaStyles} coinProps={{ styles: personaCoinStyles }} {...item} />
       </div>
       <IconButton
         onClick={onRemoveItem}

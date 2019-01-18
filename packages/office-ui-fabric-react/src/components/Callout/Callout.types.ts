@@ -86,6 +86,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   preventDismissOnScroll?: boolean;
 
   /**
+   * If true then the callout will not dismiss on resize
+   * @defaultvalue false
+   */
+  preventDismissOnResize?: boolean;
+
+  /**
    * If true then the callout will not dismiss when it loses focus
    * @defaultvalue false
    */
