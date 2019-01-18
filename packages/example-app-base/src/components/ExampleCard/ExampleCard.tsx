@@ -156,9 +156,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               <div className="ExampleCard-code">{isCodeVisible && <Highlight>{code}</Highlight>}</div>
 
               {activeCustomizations ? (
-                <ThemeProvider scheme={_schemes[schemeIndex]}>
-                  <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
-                </ThemeProvider>
+                <Customizer {...activeCustomizations}>
+                  <ThemeProvider scheme={_schemes[schemeIndex]}>
+                    <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
+                  </ThemeProvider>
+                </Customizer>
               ) : (
                 exampleCardContent
               )}
@@ -167,7 +169,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
             </div>
           );
 
-          return activeCustomizations ? <Customizer {...activeCustomizations}>{exampleCard}</Customizer> : exampleCard;
+          return exampleCard;
         }}
       </AppCustomizationsContext.Consumer>
     );

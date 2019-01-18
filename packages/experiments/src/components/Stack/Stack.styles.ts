@@ -1,4 +1,4 @@
-import { IStackComponent, IStackStyles, IStackProps } from './Stack.types';
+import { IStackComponent, IStackStyles, IStackProps, IStackStylesReturnType } from './Stack.types';
 import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
 
@@ -12,7 +12,7 @@ const GlobalClassNames = {
   inner: 'ms-Stack-inner'
 };
 
-export const styles: IStackComponent['styles'] = (props, theme) => {
+export const styles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => {
   const {
     horizontalFill,
     verticalFill,

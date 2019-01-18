@@ -1,4 +1,4 @@
-import { ICollapsibleSectionComponent } from './CollapsibleSection.types';
+import { ICollapsibleSectionComponent, ICollapsibleSectionStylesReturnType } from './CollapsibleSection.types';
 import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
@@ -6,7 +6,7 @@ const GlobalClassNames = {
   body: 'ms-CollapsibleSection-body'
 };
 
-export const collapsibleSectionStyles: ICollapsibleSectionComponent['styles'] = (props, theme) => {
+export const collapsibleSectionStyles: ICollapsibleSectionComponent['styles'] = (props, theme): ICollapsibleSectionStylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
