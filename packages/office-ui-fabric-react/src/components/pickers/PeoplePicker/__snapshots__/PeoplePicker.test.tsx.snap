@@ -69,7 +69,7 @@ exports[`PeoplePicker renders correctly 1`] = `
                 align-self: flex-end;
                 border: none;
                 flex-grow: 1;
-                height: 34px;
+                height: 30px;
                 outline: none;
                 padding-bottom: 0;
                 padding-left: 6px;
@@ -209,7 +209,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               <div
                 className=
                     ms-Persona
-                    ms-Persona--size28
+                    ms-Persona--size24
                     ms-Persona--online
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -222,12 +222,12 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 28px;
+                      height: 24px;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
                       margin-top: 0px;
-                      min-width: 28px;
+                      min-width: 24px;
                       padding-bottom: 0px;
                       padding-left: 0px;
                       padding-right: 0px;
@@ -240,12 +240,12 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     &:hover $primaryText {
                       color: #212121;
                     }
-                size={7}
+                size={10}
               >
                 <div
                   className=
                       ms-Persona-coin
-                      ms-Persona--size28
+                      ms-Persona--size24
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
@@ -253,17 +253,17 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                       }
-                  size={7}
+                  size={10}
                 >
                   <div
                     className=
                         ms-Persona-imageArea
                         {
                           flex: 0 0 auto;
-                          height: 28px;
+                          height: 24px;
                           position: relative;
                           text-align: center;
-                          width: 28px;
+                          width: 24px;
                         }
                   >
                     <div
@@ -278,19 +278,19 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                             font-size: 14px;
                             font-weight: 400;
-                            height: 28px;
+                            height: 24px;
                             left: 0px;
                             margin-right: 10px;
                             overflow: hidden;
                             perspective: 1px;
                             position: absolute;
                             top: 0px;
-                            width: 28px;
+                            width: 24px;
                           }
                       style={
                         Object {
-                          "height": 28,
-                          "width": 28,
+                          "height": 24,
+                          "width": 24,
                         }
                       }
                     >
@@ -483,12 +483,12 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     color: #333333;
                     cursor: pointer;
                     display: inline-block;
-                    flex-basis: 28;
+                    flex-basis: 24;
                     flex: 0 0 auto;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 28px;
+                    height: 24px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 4px;
@@ -499,7 +499,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 28px;
+                    width: 24px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -604,7 +604,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                 align-self: flex-end;
                 border: none;
                 flex-grow: 1;
-                height: 34px;
+                height: 30px;
                 outline: none;
                 padding-bottom: 0;
                 padding-left: 6px;

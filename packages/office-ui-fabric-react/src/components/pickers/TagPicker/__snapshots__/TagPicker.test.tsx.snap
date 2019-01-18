@@ -69,7 +69,7 @@ exports[`TagPicker renders correctly 1`] = `
                 align-self: flex-end;
                 border: none;
                 flex-grow: 1;
-                height: 34px;
+                height: 30px;
                 outline: none;
                 padding-bottom: 0;
                 padding-left: 6px;
