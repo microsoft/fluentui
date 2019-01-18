@@ -19,6 +19,7 @@ import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { MessageBarStyles } from './styles/MessageBar.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { OverlayStyles } from './styles/Overlay.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
@@ -121,6 +122,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     Modal: {
       styles: ModalStyles
+    },
+    Overlay: {
+      styles: OverlayStyles
     },
     Pivot: {
       styles: PivotStyles
