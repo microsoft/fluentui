@@ -28,6 +28,16 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
+   * Function to call when the mouse starts hovering over the card.
+   */
+  onMouseEnter?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+
+  /**
+   * Function to call when the mouse stops hovering over the card.
+   */
+  onMouseLeave?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
+
+  /**
    * A URL to navigate to when the card is clicked. If a function has also been provided,
    * it will be used instead of the URL.
    */
@@ -68,6 +78,11 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
    * Optional override class name
    */
   className?: string;
+
+  /**
+   * Optional aria label override
+   */
+  ariaLabel?: string;
 }
 
 export enum DocumentCardType {

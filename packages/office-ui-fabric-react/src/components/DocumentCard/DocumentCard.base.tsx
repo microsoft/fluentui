@@ -22,7 +22,19 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
   }
 
   public render(): JSX.Element {
-    const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
+    const {
+      onClick,
+      onClickHref,
+      children,
+      type,
+      accentColor,
+      styles,
+      theme,
+      className,
+      ariaLabel,
+      onMouseEnter,
+      onMouseLeave
+    } = this.props;
     const actionable = onClick || onClickHref ? true : false;
 
     this._classNames = getClassNames(styles!, {
@@ -53,7 +65,10 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
         className={this._classNames.root}
         onKeyDown={actionable ? this._onKeyDown : undefined}
         onClick={actionable ? this._onClick : undefined}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         style={style}
+        aria-label={ariaLabel}
       >
         {children}
       </div>
