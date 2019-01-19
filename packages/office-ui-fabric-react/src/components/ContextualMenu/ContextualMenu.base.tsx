@@ -602,9 +602,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const { itemProps } = item;
-
+    const divHtmlProperties = itemProps && getNativeProps(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} style={item.style} {...getNativeProps(item, divProperties)}>
+      <div className={this._classNames.header} style={item.style} {...divHtmlProperties}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
