@@ -157,6 +157,10 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       this._subscriptionObject.dispose();
       delete this._subscriptionObject;
     }
+
+    if (this._dragDropHelper) {
+      this._dragDropHelper.dispose();
+    }
   }
 
   public render(): JSX.Element {
@@ -179,6 +183,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
     if (!this._dragDropHelper && columnReorderProps) {
+      // TODO Do not assign local fields during render.
+      // This behavior needs to be moved to the appropriate React lifecycle methods.
       this._dragDropHelper = new DragDropHelper({
         selection: {
           getSelection: () => {
