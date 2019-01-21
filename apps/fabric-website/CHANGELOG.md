@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+
+## 6.8.4
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Strengthen typing of styles function.
 
 ## 6.8.3
 Tue, 15 Jan 2019 13:36:45 GMT

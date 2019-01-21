@@ -2,6 +2,25 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "version": "0.1.1",
+      "tag": "@uifabric/azure-themes_v0.1.1",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Theme color picker, rating, card and various bug fixes",
+            "author": "chieftn <rick.kessler@outlook.com>",
+            "commit": "5f231856701a7217cfd785a69b593593aa9a7210"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@uifabric/azure-themes_v0.1.0",
       "date": "Thu, 17 Jan 2019 13:34:42 GMT",
