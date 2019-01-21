@@ -17,7 +17,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
     className="ms-DocumentCardTitle"
     title=""
   >
-
+    
   </div>
   <div
     className="ms-DocumentCardActivity"
@@ -106,12 +106,12 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
       <span
         className="ms-DocumentCardActivity-name"
       >
-
+        
       </span>
       <span
         className="ms-DocumentCardActivity-activity"
       >
-
+        
       </span>
     </div>
   </div>
