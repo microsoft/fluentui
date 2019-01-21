@@ -23,7 +23,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
 
   public render(): JSX.Element {
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
-    const nativeProps = getNativeProps(this.props, divProperties, ['onClick']);
+    const nativeProps = getNativeProps(this.props, divProperties, ['onClick', 'type']);
     const actionable = onClick || onClickHref ? true : false;
 
     this._classNames = getClassNames(styles!, {
