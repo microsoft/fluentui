@@ -7474,17 +7474,14 @@ interface IDocumentCardPreviewStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
+interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLElement> {
   // @deprecated
   accentColor?: string;
-  ariaLabel?: string;
   children?: React.ReactNode;
   className?: string;
   componentRef?: IRefObject<IDocumentCard>;
   onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   onClickHref?: string;
-  onMouseEnter?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
-  onMouseLeave?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
   role?: string;
   styles?: IStyleFunctionOrObject<IDocumentCardStyleProps, IDocumentCardStyles>;
   theme?: ITheme;
