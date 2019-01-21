@@ -167,27 +167,29 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {background
           ? this._onRenderBackground({
-              background: background,
-              hideBackground
-            })
+            background: background,
+            hideBackground
+          })
           : null}
         {foreground
           ? this._onRenderForeground({
-              foreground: foreground,
-              hideForeground
-            })
+            foreground: foreground,
+            hideForeground
+          })
           : null}
         {itemName || itemActivity
           ? this._onRenderNameplate({
-              name: itemName,
-              activity: itemActivity
-            })
+            name: itemName,
+            activity: itemActivity
+          })
           : null}
       </>
     );
 
-    const link = href ? (
-      <a
+    const LinkAs = href ? 'a' : 'button';
+
+    const link = (
+      <LinkAs
         href={href}
         onClick={onClick}
         ref={this.props.linkRef}
@@ -195,16 +197,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         className={css('ms-Tile-link', TileStyles.link)}
       >
         {content}
-      </a>
-    ) : (
-      <button
-        onClick={onClick}
-        ref={this.props.linkRef}
-        data-selection-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
-        className={css('ms-Tile-link', TileStyles.link)}
-      >
-        {content}
-      </button>
+      </LinkAs>
     );
 
     return (
@@ -241,8 +234,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected
-            })
+            isSelected: isSelected
+          })
           : null}
       </div>
     );
