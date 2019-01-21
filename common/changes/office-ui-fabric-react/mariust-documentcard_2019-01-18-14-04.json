@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added onMouseLeave, onMouseEnter and ariaLabel properties to the DocumentCard",
+      "comment": "DocumentCard: added native properties to the root element",
       "type": "patch"
     }
   ],
