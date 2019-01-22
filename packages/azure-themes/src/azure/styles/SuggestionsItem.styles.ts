@@ -1,14 +1,12 @@
-import { ISuggestionItemProps, ISuggestionsItemStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
+import { ISuggestionItemProps, ISuggestionsItemStyles, ITagPickerProps } from 'office-ui-fabric-react/lib/Pickers';
 import { FontSizes } from '../AzureType';
 
-export const SuggestionItemStyles = (props: ISuggestionItemProps<any>): Partial<ISuggestionsItemStyles> => {
+export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps>): Partial<ISuggestionsItemStyles> => {
   const { theme } = props;
   if (!theme) {
     return {};
   }
   const { semanticColors } = theme;
-  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
       fontSize: FontSizes.size12,
