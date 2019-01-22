@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsHeader: Refactor deprecated componentWillReceiveProps to getDerivedStateFromProps",
+      "comment": "ContextualMenu: Fixes a layout bug with split menu items in IE11",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

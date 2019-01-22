@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 Jan 2019 13:38:06 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Jan 2019 13:34:38 GMT and should not be manually modified.
+
+## 6.129.1
+Tue, 22 Jan 2019 13:34:38 GMT
+
+### Patches
+
+- DocumentCard: added native properties to the root element
+
+## 6.129.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- Theming: add scss files generated from defaults
+- Pickers: adjusts disabled styles for TagPicker and PeoplePicker to align them to the toolkit specs. Disable remove button on PeoplePicker selected items when picker disabled.
+
+### Patches
+
+- DetailsHeader: Refactor deprecated componentWillReceiveProps to getDerivedStateFromProps
+- List: Remove usage of string refs used for List pages
+- Breadcrumb: issue #7701 - fixes the  double focus rectangle caused by both Link and Breadcrumb.
+- moving functuion _isHeightOrWidthDifferent to file scope
 
 ## 6.128.0
 Fri, 18 Jan 2019 13:38:06 GMT

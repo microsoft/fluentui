@@ -2,6 +2,40 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.44.0",
+      "tag": "@uifabric/dashboard_v0.44.0",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove extra hidden elements in gridList when gridList is empty",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "ae308bb5173a06e9c537b48bfcb07deaac7aa378"
+          },
+          {
+            "comment": "add focus border for thumbnailList ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "1b24b5993ab5e921b389080aefdc9ad900b1a50e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add common Detail-Panel component",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "9ba881bf7f306d2af4665b5402069edc4e3a8d46"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.43.5",
       "tag": "@uifabric/dashboard_v0.43.5",
       "date": "Fri, 18 Jan 2019 13:38:05 GMT",

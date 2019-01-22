@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.51.1",
+      "tag": "@uifabric/experiments_v6.51.1",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add typing helpers missed in #7711.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2e3bdf997b10aad7afb88e462dc929a799085292"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.0 <1.0.0` to `>=0.1.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.51.0",
       "tag": "@uifabric/experiments_v6.51.0",
       "date": "Fri, 18 Jan 2019 13:38:05 GMT",
