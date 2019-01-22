@@ -14,9 +14,6 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   public render(): JSX.Element {
     const { primary = false, styles, theme } = this.props;
 
-    console.log(this.props.text);
-    console.log(styles);
-
     return (
       <BaseButton
         {...this.props}

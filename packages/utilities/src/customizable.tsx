@@ -41,10 +41,25 @@ export function customizable(
               const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
               // tslint:disable-next-line:no-any
-              const componentProps = this.props as any;
+              let componentProps = this.props as any;
+
+              // If defaultProps.styles is a function, evaluate it before calling concatStyleSets
+              if (defaultProps.styles && typeof defaultProps.styles === 'function') {
+                defaultProps.styles = defaultProps.styles(componentProps);
+              }
 
               if (concatStyles) {
-                const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+                let mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+
+                // If mergedStyles is an empty object and componentProps.styles is a function, evaluate the function
+                // and call concatStyleSets again.
+                if (Object.getOwnPropertyNames(mergedStyles).length === 0) {
+                  if (typeof componentProps.styles === 'function') {
+                    componentProps.styles = componentProps.styles(componentProps);
+                  }
+                  mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+                }
+
                 return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
               }
 

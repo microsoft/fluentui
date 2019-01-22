@@ -300,6 +300,12 @@ export interface IButtonStyleProps {
    * Accept custom classNames
    */
   className?: string;
+
+  /**
+   * Changes the visual presentation of the button to be emphasized (if defined)
+   * @defaultvalue false
+   */
+  primary?: boolean;
 }
 
 export enum ElementType {

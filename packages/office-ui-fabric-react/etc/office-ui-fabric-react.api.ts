@@ -2106,6 +2106,7 @@ interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLB
 // @public (undocumented)
 interface IButtonStyleProps {
   className?: string;
+  primary?: boolean;
   theme?: ITheme;
 }
 

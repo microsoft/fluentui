@@ -60,7 +60,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
-    console.log(props);
 
     this._warnConditionallyRequiredProps(['menuProps', 'onClick'], 'split', this.props.split!);
 
