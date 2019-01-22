@@ -7474,7 +7474,7 @@ interface IDocumentCardPreviewStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLElement> {
+interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLDivElement> {
   // @deprecated
   accentColor?: string;
   children?: React.ReactNode;

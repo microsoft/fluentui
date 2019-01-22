@@ -9,7 +9,7 @@ export interface IDocumentCard {
   focus: () => void;
 }
 
-export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLElement> {
+export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IDocumentCard interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
