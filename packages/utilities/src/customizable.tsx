@@ -50,7 +50,6 @@ export function customizable(
 
               if (concatStyles) {
                 const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
-
                 return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
               }
 
