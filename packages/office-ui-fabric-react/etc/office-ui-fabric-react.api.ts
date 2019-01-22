@@ -2096,20 +2096,13 @@ interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLB
   secondaryText?: string;
   split?: boolean;
   splitButtonAriaLabel?: string;
-  styles?: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>;
+  styles?: IButtonStyles;
   text?: string;
   theme?: ITheme;
   toggle?: boolean;
   // @deprecated
   toggled?: boolean;
   uniqueId?: string | number;
-}
-
-// @public (undocumented)
-interface IButtonStyleProps {
-  className?: string;
-  primary?: boolean;
-  theme?: ITheme;
 }
 
 // @public (undocumented)

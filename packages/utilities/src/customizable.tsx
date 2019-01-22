@@ -51,15 +51,6 @@ export function customizable(
               if (concatStyles) {
                 let mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
 
-                // If mergedStyles is an empty object and componentProps.styles is a function, evaluate the function
-                // and call concatStyleSets again.
-                if (Object.getOwnPropertyNames(mergedStyles).length === 0) {
-                  if (typeof componentProps.styles === 'function') {
-                    componentProps.styles = componentProps.styles(componentProps);
-                  }
-                  mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
-                }
-
                 return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
               }
 

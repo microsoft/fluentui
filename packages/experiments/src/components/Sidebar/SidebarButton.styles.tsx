@@ -2,18 +2,14 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { IButtonStyleProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { concatStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { sidebarFonts } from './Sidebar.styles';
 import { SidebarStylingConstants } from './Sidebar.types';
 
 export const getSidebarButtonStyles = memoizeFunction(
-  (
-    theme: ITheme,
-    sidebarButtonStyles?: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>,
-    customStyles?: IButtonStyles
-  ): IButtonStyles => {
+  (theme: ITheme, sidebarButtonStyles?: IButtonStyles, customStyles?: IButtonStyles): IButtonStyles => {
     const buttonStyles: IButtonStyles = {
       root: {
         width: '100%',

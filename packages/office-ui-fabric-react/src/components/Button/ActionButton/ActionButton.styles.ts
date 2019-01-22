@@ -1,13 +1,13 @@
-import { IButtonStyleProps, IButtonStyles } from '../Button.types';
+import { IButtonStyles } from '../Button.types';
 import { ITheme, concatStyleSets, HighContrastSelector } from '../../../Styling';
-import { memoizeFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction(
-  (theme: ITheme, customStyles?: IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>): IButtonStyles => {
+  (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
     const actionButtonStyles: IButtonStyles = {
       root: {
