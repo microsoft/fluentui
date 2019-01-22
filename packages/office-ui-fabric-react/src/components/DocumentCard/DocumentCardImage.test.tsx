@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { ImageFit } from '../Image';
+import { ImageFit } from '../Image/Image.types';
 import { DocumentCardImage } from './DocumentCardImage';
 import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
