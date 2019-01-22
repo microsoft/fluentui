@@ -35,15 +35,22 @@ const classNames = mergeStyleSets({
 const ITEMS_PER_GROUP = 20;
 const GROUP_COUNT = 20;
 
-const _items: IExampleItem[] = createListItems(500);
-const _groups: IGroup[] = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
+export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}> {
+  private _items: IExampleItem[];
+  private _groups: IGroup[];
 
-export class DetailsListCustomGroupHeadersExample extends React.Component {
+  constructor(props: {}) {
+    super(props);
+
+    this._items = createListItems(500);
+    this._groups = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
+  }
+
   public render(): JSX.Element {
     return (
       <DetailsList
-        items={_items}
-        groups={_groups}
+        items={this._items}
+        groups={this._groups}
         groupProps={{
           onRenderHeader: this._onRenderGroupHeader,
           onRenderFooter: this._onRenderGroupFooter

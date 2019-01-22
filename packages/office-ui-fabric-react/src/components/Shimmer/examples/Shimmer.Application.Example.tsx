@@ -49,10 +49,6 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
     };
   }
 
-  public componentWillUnmount(): void {
-    this._async.dispose();
-  }
-
   public render(): JSX.Element {
     const { items, columns, isDataLoaded } = this.state;
 
@@ -143,14 +139,16 @@ function _buildColumns(): IColumn[] {
   const _item = createListItems(1);
   const columns: IColumn[] = buildColumns(_item);
 
-  columns.forEach((column: IColumn) => {
+  for (const column of columns) {
     if (column.key === 'thumbnail') {
       column.name = 'FileType';
       column.minWidth = 16;
       column.maxWidth = 16;
       column.isIconOnly = true;
       column.iconName = 'Page';
+      break;
     }
-  });
+  }
+
   return columns;
 }
