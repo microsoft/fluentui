@@ -175,13 +175,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, ISubwayMapState>
         if (currSubSteps !== undefined && currSubSteps.length > 0) {
           // Add the connectiong line
           if (prevSubStepId !== undefined) {
-            stepElements.push(
-              <div
-                className={classNames.subwayMapSubStepConnector}
-                key={'connector' + '-' + currSubStepId}
-                onClick={() => this._handleClickSubStep(currStepId, currSubStepId)}
-              />
-            );
+            stepElements.push(<div className={classNames.subwayMapSubStepConnector} key={'connector' + '-' + currSubStepId} />);
           }
 
           iconProps = this._getIconPropsSubStep(currStepId, currSubStepId);
@@ -189,7 +183,11 @@ export class SubwayMap extends React.Component<ISubwayMapProps, ISubwayMapState>
 
           if (currSubStep !== undefined) {
             stepElements.push(
-              <div key={currSubStepId} className={css(classNames.subwayMapStepDiv)}>
+              <div
+                key={currSubStepId}
+                className={css(classNames.subwayMapStepDiv)}
+                onClick={() => this._handleClickSubStep(currStepId, currSubStepId)}
+              >
                 <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayMapSubStep)} />
                 <span className={currSubStep.key === this.state.currentSubStepId ? classNames.boldStep : undefined}>
                   {currSubStep.label}
@@ -478,7 +476,6 @@ export class SubwayMap extends React.Component<ISubwayMapProps, ISubwayMapState>
       if (newStatesData !== undefined) {
         if (currentStepData !== undefined) {
           currentStepData.state = SubwayMapStepState.ViewedNotCompleted;
-          // newStatesData[this.state.currentStepIndex].state = SubwayMapStepState.ViewedNotCompleted;
 
           if (currentStep!.contentArea.formComplete) {
             currentStepData.state = SubwayMapStepState.Completed;
@@ -533,7 +530,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, ISubwayMapState>
     }
 
     /**
-     * We have clickedStepIdx and clickedSubStepIdx
+     * We have clickedStepId and clickedSubStepId
      * If we are still on current main step:
      *    1. Udpate the state of previous step to Completed/Error/Unsaved/Skipped
      *    2. Update the state of clicked step - Current
@@ -550,23 +547,24 @@ export class SubwayMap extends React.Component<ISubwayMapProps, ISubwayMapState>
         if (currStep.subSteps !== undefined) {
           currSubStep = this._getSubStep(this.state.currentStepId, this.state.currentSubStepId);
 
-          if (newStepsData !== undefined) {
+          if (newStepsData !== undefined && currSubStep !== undefined) {
             const currStepDataIdx = newStepsData.findIndex(obj => obj.key === this.state.currentStepId);
             const currSubStepsData = newStepsData[currStepDataIdx].subStepStateData;
 
-            const currSubStepDataIdx = currSubStepsData!.findIndex(obj => obj.key === this.state.currentSubStepId);
-
             if (currSubStepsData !== undefined) {
-              if (currSubStep!.contentArea.formComplete) {
-                // newStepsData[currStepDataIdx].subStepStateData[currSubStepDataIdx].state = SubwayMapStepState.CompletedSubStep;
+              const currSubStepDataIdx = currSubStepsData.findIndex(obj => obj.key === this.state.currentSubStepId);
+
+              currSubStepsData[currSubStepDataIdx].state = SubwayMapStepState.UnsavedSubStep;
+
+              if (currSubStep.contentArea.formComplete) {
                 currSubStepsData[currSubStepDataIdx].state = SubwayMapStepState.CompletedSubStep;
               }
 
-              if (currSubStep!.contentArea.formError) {
+              if (currSubStep.contentArea.formError) {
                 currSubStepsData[currSubStepDataIdx].state = SubwayMapStepState.ErrorSubstep;
               }
 
-              const clickedSubStepIdx = newStepsData.findIndex(obj => obj.key === clickedSubStepId);
+              const clickedSubStepIdx = currSubStepsData.findIndex(obj => obj.key === clickedSubStepId);
               if (clickedSubStepIdx > -1) {
                 currSubStepsData[clickedSubStepIdx].state = SubwayMapStepState.CurrentSubStep;
               }
