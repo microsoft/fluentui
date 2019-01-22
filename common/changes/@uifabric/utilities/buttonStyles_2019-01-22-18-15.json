@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Updating 'customizer.tsx' to evaluate style functions.",
+      "comment": "Updating 'customizable.tsx' to evaluate style functions.",
       "type": "patch"
     }
   ],
