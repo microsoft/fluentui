@@ -10,8 +10,6 @@ import {
   ISearchBoxProps
 } from 'office-ui-fabric-react';
 
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-
 export interface ICompositeListFarItemOptions {
   /**
    * To override 'selectedItems' menu bar item props
@@ -76,9 +74,9 @@ export interface ICompositeListProps {
   isCompactMode?: boolean;
 
   /**
-   * Custom style for command bar wrapper
+   * By default, commandBar and list view header position is sticky. with this setting, user can override it.
    */
-  customCommandBarWrapperStyle?: IStyle;
+  overrideStickyPosition?: boolean;
 
   /**
    * Callback when compact mode is changed

@@ -1,6 +1,5 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ICommandBarStyles } from 'office-ui-fabric-react/lib/CommandBar';
-import { IDetailsListStyles } from 'office-ui-fabric-react/lib/DetailsList';
 import { ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
 
 import { DefaultFontStyles, DefaultPalette, IStyle } from 'office-ui-fabric-react/lib/Styling';
@@ -14,13 +13,36 @@ export const getCommandBarStyle = (): ICommandBarStyles => {
   };
 };
 
-export const getCommandBarWrapperStyle = (): IStyle => {
+export const getCommandBarWrapperStyle = (overrideStickyPosition: boolean): IStyle => {
   return {
     displayName: 'CommandBarWrapper',
-    position: 'sticky',
+    position: overrideStickyPosition ? 'unset' : 'sticky',
     top: 0,
     left: 0,
-    zIndex: 1
+    zIndex: 1,
+    selectors: {
+      '&::before': {
+        backgroundColor: DefaultPalette.white,
+        position: 'absolute',
+        left: '-48px',
+        top: '0px',
+        content: '""',
+        height: '40px',
+        width: '48px'
+      },
+      '&::after': {
+        backgroundColor: DefaultPalette.white,
+        position: 'absolute',
+        right: '-48px',
+        top: '0px',
+        content: '""',
+        height: '40px',
+        width: '48px'
+      },
+      '@supports (-ms-ime-align: auto)': {
+        left: '48px'
+      }
+    }
   };
 };
 
@@ -89,22 +111,17 @@ export const getCommandBarSelectionCountItemStyles = (): Partial<IButtonStyles> 
   };
 };
 
-export const getDetailsListStyles = (): Partial<IDetailsListStyles> => {
-  return {
-    headerWrapper: {
-      position: 'sticky',
-      top: '23px',
-      zIndex: 10,
-      paddingTop: '16px'
-    }
-  };
-};
-
-export const getDetailsListStyle = (): IStyle => {
+export const getDetailsListStyle = (overrideStickyPosition: boolean): IStyle => {
   return {
     selectors: {
       '.ms-DetailsList--Compact& .ms-DetailsRow': {
         borderBottom: '1px solid #f4f4f4'
+      },
+      '& .ms-DetailsList-headerWrapper': {
+        position: overrideStickyPosition ? 'unset' : 'sticky',
+        top: '23px',
+        zIndex: 10,
+        paddingTop: '16px'
       }
     }
   };

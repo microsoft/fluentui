@@ -3,7 +3,7 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { ICommandBarProps } from 'office-ui-fabric-react/lib/CommandBar';
 import { IDetailsListProps, IDetailsRowProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 import { CompositeList, ICompositeListColumn } from '../CompositeList';
@@ -145,7 +145,30 @@ export const commandBarWrapperExampleClassStyle = (): IStyle => {
     position: 'unset',
     top: 0,
     left: 0,
-    zIndex: 1
+    zIndex: 1,
+    selectors: {
+      '&::before': {
+        backgroundColor: DefaultPalette.white,
+        position: 'absolute',
+        left: '-48px',
+        top: '0px',
+        content: '""',
+        height: '40px',
+        width: '48px'
+      },
+      '&::after': {
+        backgroundColor: DefaultPalette.white,
+        position: 'absolute',
+        right: '-48px',
+        top: '0px',
+        content: '""',
+        height: '40px',
+        width: '48px'
+      },
+      '@supports (-ms-ime-align: auto)': {
+        left: '48px'
+      }
+    }
   };
 };
 
@@ -171,13 +194,7 @@ export class CompositeListExample extends React.PureComponent<{}, { items: Dummy
     const commandBarProps: ICommandBarProps = {
       items: commandBarItems
     };
-    return (
-      <CompositeList
-        detailsListProps={detailsListProps}
-        commandBarProps={commandBarProps}
-        customCommandBarWrapperStyle={commandBarWrapperExampleClassStyle()}
-      />
-    );
+    return <CompositeList detailsListProps={detailsListProps} commandBarProps={commandBarProps} overrideStickyPosition={true} />;
   }
 
   public componentDidMount(): void {

@@ -22,8 +22,7 @@ import {
   getCommandBarSelectionCountItemStyles,
   getCommandBarStyle,
   getCommandBarWrapperStyle,
-  getDetailsListStyle,
-  getDetailsListStyles
+  getDetailsListStyle
 } from './CompositeList.styles';
 
 import { ICompositeListFarItemOptions, ICompositeListProps } from './CompositeList.types';
@@ -86,10 +85,7 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
     });
 
     const mergedCommandBarStyle = mergeStyleSets(getCommandBarStyle(), this.props.commandBarProps.styles);
-    const mergedDetailsListStyle = mergeStyleSets(getDetailsListStyles(), this.props.detailsListProps.styles);
-    const commandBarWrapperStyle = this.props.customCommandBarWrapperStyle
-      ? this.props.customCommandBarWrapperStyle
-      : getCommandBarWrapperStyle();
+    const commandBarWrapperStyle = getCommandBarWrapperStyle(!!this.props.overrideStickyPosition);
 
     return (
       <>
@@ -105,9 +101,9 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
           onShouldVirtualize={this.defaultOnShouldVirtualize}
           useReducedRowRenderer={useReducedRowRenderer}
           onRenderRow={this.defaultOnRenderRow}
-          className={mergeStyles(getDetailsListStyle())}
+          className={mergeStyles(getDetailsListStyle(!!this.props.overrideStickyPosition))}
           {...this.props.detailsListProps}
-          styles={mergedDetailsListStyle}
+          styles={this.props.detailsListProps.styles}
           selection={this.selection}
           compact={this.isCompactMode}
           columns={wrappedColumns}
