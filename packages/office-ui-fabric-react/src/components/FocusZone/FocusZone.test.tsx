@@ -1,16 +1,18 @@
 import * as React from 'react';
-
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { setRTL, KeyCodes } from '../../Utilities';
 import { safeMount } from '@uifabric/test-utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
+import { getChildren, focusFirstChild } from '../../../../utilities/lib';
+import { expectMissing } from 'office-ui-fabric-react/lib/common/testUtilities';
 
 // tslint:disable:typedef
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
+
   function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
   }
@@ -145,37 +147,81 @@ describe('FocusZone', () => {
     expect(lastFocusedElement).toBe(buttonC);
   });
 
-  it('can restore focus to the following item when item removed', () => {
-    let button1ReceivedFocus = false;
-    let button2ReceivedFocus = false;
-
+  it('can restore focus to the following item when item removed', done => {
     // Render component.
-    safeMount(
-      <FocusZone>
-        <button id="foo" onFocus={() => (button1ReceivedFocus = true)} />
-        <button id="bar" onFocus={() => (button2ReceivedFocus = true)} />
-      </FocusZone>,
-      wrapper => {
-        // Set focus to first button.
-        wrapper.find('#foo').simulate('click');
+    const node = document.createElement('div');
 
-        // Assert that focus was moved to first button.
-        expect(button1ReceivedFocus).toEqual(true);
-
-        // Re-render with only the second button.
-        wrapper.setProps({ children: <button id="bar" /> });
-
-        // Assert the second button has focus.
-        expect(button2ReceivedFocus).toEqual(true);
-      }
+    ReactDOM.render(
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusZone>
+          <button key="a" id="a">button a</button>
+          <button key="b" id="b">button b</button>
+        </FocusZone>
+      </div>,
+      node
     );
+
+    // Populate with items.
+    zoneWrapper.setState({ items });
+
+    const buttonA = node.querySelector('#a') as HTMLElement;
+    const buttonB = node.querySelector('#b') as HTMLElement;
+
+    // Set focus to first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+
+    expect(lastFocusedElement).toBe(buttonA);
+    lastFocusedElement = undefined;
+
+    // Simulate bluring 
+    ReactTestUtils.Simulate.blur(node, { target: null, relatedTarget: })
+    console.log(node.innerHTML);
+    setTimeout(done, 4000);
+    // Assert the second button Qhas focus.
+    //  expect(lastFocusedElement).toBe(buttonB);
   });
 
-  it('can restore focus to the previous item when end item removed', () => {});
-  it('can move focus to container when last item removed', () => {});
-  it('can move focus from container to first item when added', () => {});
-  it('removes focusability when moving from focused container', () => {});
-  it('does not move focus when items added without container focus', () => {});
+  // it('can restore focus to the previous item when end item removed', () => {
+  //   // Render component.
+  //   const node = document.createElement('div');
+
+  //   ReactDOM.render(
+  //     <div {...{ onFocusCapture: _onFocus }}>
+  //       <FocusZone id="fz">
+  //         <button key="a" id="a">button a</button>
+  //         <button key="b" id="b">button b</button>
+  //         <button key="c" id="c">button b</button>
+  //       </FocusZone>
+  //     </div>,
+  //     node
+  //   );
+
+  //   const buttonB = node.querySelector('#b') as HTMLElement;
+  //   const buttonC = node.querySelector('#c') as HTMLElement;
+
+  //   // Set focus to first button.
+  //   ReactTestUtils.Simulate.focus(buttonC);
+  //   expect(lastFocusedElement).toBe(buttonC);
+
+  //   // Re-render with only the second button.
+  //   ReactDOM.render(
+  //     <div {...{ onFocusCapture: _onFocus }}>
+  //       <FocusZone id="fz">
+  //         <button key="a" id="a">button a</button>
+  //         <button key="b" id="b">button b</button>
+  //       </FocusZone>
+  //     </div>,
+  //     node
+  //   );
+
+  //   // Assert the second button has focus.
+  //   expect(lastFocusedElement).toBe(buttonB);
+  // });
+
+  // it('can move focus to container when last item removed', () => { });
+  // it('can move focus from container to first item when added', () => { });
+  // it('removes focusability when moving from focused container', () => { });
+  // it('does not move focus when items added without container focus', () => { });
 
   it('can ignore arrowing if default is prevented', () => {
     const component = ReactTestUtils.renderIntoDocument(

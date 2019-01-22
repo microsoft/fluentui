@@ -79,10 +79,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   public componentDidMount(): void {
     _allInstances[this._id] = this;
-    if (this._root.current) {
-      const windowElement = this._root.current.ownerDocument.defaultView;
+    const { current } = this._root;
 
-      let parentElement = getParent(this._root.current, ALLOW_VIRTUAL_ELEMENTS);
+    if (current) {
+      const windowElement = current.ownerDocument!.defaultView;
+
+      let parentElement = getParent(current, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== document.body && parentElement.nodeType === 1) {
         if (isElementFocusZone(parentElement)) {
@@ -94,6 +96,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (!this._isInnerZone) {
         this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        this._events.on(current, 'blur', this._onBlurCapture, true);
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -231,6 +234,79 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       ev.stopPropagation();
     }
   };
+
+  /**
+   * Callback hooked to the root element. When we receive a blur, we want
+   * to detect if the blur is due to an element being removed from the Zone.
+   * This is done by evaluating if the destination (in ev.relatedTarget) is
+   * null. If so, we need to move the focus to either the next element, or
+   * possibly, the previous element if there is no "next".
+   *
+   * In the case there are no more focusable elements in the zone, we "park"
+   * focus on the root temporarily. If the user tabs elsewhere, we remove
+   * focusablilty from the root. After a zone re-render, if focus is still
+   * "parked", we try to move focus back to the first focusable child.
+   */
+  private _onBlurCapture(ev: FocusEvent) {
+    const { current: root } = this._root;
+    const { target: from } = ev;
+    const isFocusDisappearing = ev.relatedTarget === null;
+
+    if (isFocusDisappearing) {
+      // The element may be removed; we need remember its index path and asynchronously
+      // re-evaluate if the item was removed. Blurs can also happen if the user just
+      // clicks the location bar, so we need to disambiguate.
+      const indexPath = this._getIndexPath(from as HTMLElement);
+
+      this._async.setTimeout(() => {
+        if (!elementContains(root, from as HTMLElement)) {
+          const nextFocusedElement = this._getElementByIndexPath(indexPath);
+
+          if (nextFocusedElement) {
+            // Try to move focus to the next one.
+            this._setActiveElement(nextFocusedElement, true);
+            nextFocusedElement.focus();
+          }
+        }
+      }, 0);
+    }
+  }
+
+  private _getElementByIndexPath(path: number[]): HTMLElement | undefined {
+    let element = this._root.current as HTMLElement;
+
+    for (const index of path) {
+      const nextChild = element.children[Math.min(index, element.children.length - 1)] as HTMLElement;
+
+      if (!nextChild) {
+        break;
+      }
+      element = nextChild;
+    }
+
+    element =
+      getNextElement(this._root.current as HTMLElement, element, true) || getPreviousElement(this._root.current as HTMLElement, element)!;
+
+    return element as HTMLElement;
+  }
+
+  private _getIndexPath(toElement: HTMLElement): number[] {
+    const path: number[] = [];
+    const { current: root } = this._root;
+
+    while (toElement !== root) {
+      const parent = getParent(toElement);
+
+      if (parent === null) {
+        return [];
+      }
+
+      path.unshift(Array.prototype.indexOf.call(parent.children, toElement));
+      toElement = parent;
+    }
+
+    return path;
+  }
 
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
