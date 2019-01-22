@@ -2598,7 +2598,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
   >
     <div
       className=
-          ms-DocumentCardImage
+
           {
             background-color: #f8f8f8;
             border-bottom: 1px solid #eaeaea;
@@ -2652,7 +2652,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       </div>
       <div
         className=
-            ms-DocumentCardImage-centeredIconContainer
+
             {
               align-items: center;
               display: flex;
@@ -2666,13 +2666,14 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       >
         <i
           className=
-              ms-DocumentCardImage-centeredIcon
+
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 color: #813a7c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-9";
+                font-size: 42px;
                 font-style: normal;
                 font-weight: normal;
                 height: 42px;
@@ -2681,11 +2682,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
           data-icon-name="OneNoteLogo"
           role="presentation"
-          style={
-            Object {
-              "fontSize": "42px",
-            }
-          }
         >
           
         </i>
@@ -2973,6 +2969,270 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
         >
           Modified March 13, 2018
+        </span>
+      </div>
+    </div>
+  </div>
+  <p />
+  <div
+    className=
+        ms-DocumentCard
+        ms-DocumentCard--actionable
+        {
+          -webkit-font-smoothing: antialiased;
+          background-color: #ffffff;
+          border: 1px solid #eaeaea;
+          box-sizing: border-box;
+          max-width: 320px;
+          min-width: 206px;
+          position: relative;
+          user-select: none;
+        }
+        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
+          padding-top: 4px;
+        }
+        &:hover {
+          border-color: #c8c8c8;
+          cursor: pointer;
+        }
+        &:hover:after {
+          border: 1px solid #c8c8c8;
+          bottom: 0px;
+          content: " ";
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="link"
+    tabIndex={0}
+  >
+    <div
+      className=
+
+          {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #eaeaea;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+          }
+    >
+      <div
+        className=
+
+            {
+              align-items: center;
+              display: flex;
+              height: 100%;
+              justify-content: center;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+      >
+        <i
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #813a7c;
+                display: inline-block;
+                font-family: "FabricMDL2Icons-9";
+                font-size: 120px;
+                font-style: normal;
+                font-weight: normal;
+                height: 120px;
+                speak: none;
+                width: 120px;
+              }
+          data-icon-name="OneNoteLogo"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+    </div>
+    <div
+      className=
+          ms-DocumentCardDetails
+          {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            overflow: hidden;
+          }
+    >
+      <div
+        className=
+            ms-DocumentCardTitle
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 17px;
+              font-weight: 300;
+              height: 38px;
+              line-height: 21px;
+              overflow: hidden;
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              word-wrap: break-word;
+            }
+        title="How to make good design without an image"
+      >
+        How to make good design without an image
+      </div>
+    </div>
+    <div
+      className=
+          ms-DocumentCardActivity
+          {
+            padding-bottom: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 8px;
+            position: relative;
+          }
+    >
+      <div
+        className=
+            ms-DocumentCardActivity-avatars
+            {
+              height: 32px;
+              margin-left: -2px;
+            }
+      >
+        <div
+          className=
+              ms-DocumentCardActivity-avatar
+              {
+                display: inline-block;
+                height: 32px;
+                position: relative;
+                text-align: center;
+                vertical-align: top;
+                width: 32px;
+              }
+              &:after {
+                border-radius: 50%;
+                border: 2px solid #ffffff;
+                bottom: -1px;
+                content: " ";
+                left: -1px;
+                position: absolute;
+                right: -1px;
+                top: -1px;
+              }
+        >
+          <div
+            className=
+                ms-Persona-coin
+                ms-Persona--size32
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            role="presentation"
+            size={11}
+          >
+            <div
+              className=
+                  ms-Persona-imageArea
+                  {
+                    flex: 0 0 auto;
+                    height: 32px;
+                    position: relative;
+                    text-align: center;
+                    width: 32px;
+                  }
+            >
+              <div
+                aria-hidden="true"
+                className=
+                    ms-Persona-initials
+                    {
+                      background-color: #00ABA9;
+                      border-radius: 50%;
+                      color: #ffffff;
+                      font-size: 14px;
+                      font-weight: 400;
+                      height: 32px;
+                      line-height: 32px;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      -ms-high-contrast-adjust: none;
+                      background-color: Window !important;
+                      border: 1px solid WindowText;
+                      box-sizing: border-box;
+                      color: WindowText;
+                    }
+              >
+                <span>
+                  JH
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-DocumentCardActivity-details
+            {
+              height: 32px;
+              left: 56px;
+              position: absolute;
+              top: 8px;
+              width: calc(100% - 72px);
+            }
+      >
+        <span
+          className=
+              ms-DocumentCardActivity-name
+              {
+                color: #333333;
+                display: block;
+                font-size: 12px;
+                font-weight: 600;
+                height: 15px;
+                line-height: 15px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+        >
+          Roko Kolar
+        </span>
+        <span
+          className=
+              ms-DocumentCardActivity-activity
+              {
+                color: #666666;
+                display: block;
+                font-size: 12px;
+                height: 15px;
+                line-height: 15px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+        >
+          Modified January 1, 2019
         </span>
       </div>
     </div>

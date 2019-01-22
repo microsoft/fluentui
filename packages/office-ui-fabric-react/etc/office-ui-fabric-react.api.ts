@@ -7378,13 +7378,7 @@ interface IDocumentCardImageProps extends IBaseProps<{}> {
 }
 
 // @public (undocumented)
-interface IDocumentCardImageStyleProps {
-  centeredIconSize: string | number;
-  className?: string;
-  cornerIconSize: string | number;
-  height?: number;
-  theme: ITheme;
-  width?: number;
+interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {
 }
 
 // @public (undocumented)

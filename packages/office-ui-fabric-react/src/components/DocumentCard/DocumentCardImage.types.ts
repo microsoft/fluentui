@@ -53,37 +53,7 @@ export interface IDocumentCardImageProps extends IBaseProps<{}> {
   imageFit?: ImageFit;
 }
 
-export interface IDocumentCardImageStyleProps {
-  /**
-   * Accept theme prop.
-   */
-  theme: ITheme;
-
-  /**
-   * The size of the corner icon if rendered
-   */
-  cornerIconSize: string | number;
-
-  /**
-   * The size of the centered icon if rendered
-   */
-  centeredIconSize: string | number;
-
-  /**
-   * Optional override class name
-   */
-  className?: string;
-
-  /**
-   * Optional height override
-   */
-  height?: number;
-
-  /**
-   * Optional width override
-   */
-  width?: number;
-}
+export interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {}
 
 export interface IDocumentCardImageStyles {
   root: IStyle;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon } from '../../Icon';
 import { Image } from '../../Image';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, css } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IDocumentCardImageProps, IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
 
 export interface IDocumentCardImageState {
@@ -11,12 +11,8 @@ export interface IDocumentCardImageState {
 
 const getClassNames = classNamesFunction<IDocumentCardImageStyleProps, IDocumentCardImageStyles>();
 
-const defaultCenteredIconSize = '42px';
-const cornerIconSize = '32px';
-
 export class DocumentCardImageBase extends BaseComponent<IDocumentCardImageProps, IDocumentCardImageState> {
   private _classNames: IProcessedStyleSet<IDocumentCardImageStyles>;
-  private _centeredIconSize: string | number;
 
   constructor(props: IDocumentCardImageProps) {
     super(props);
@@ -24,17 +20,9 @@ export class DocumentCardImageBase extends BaseComponent<IDocumentCardImageProps
   }
 
   public render(): JSX.Element {
-    const { styles, theme, className, width, height, imageFit, imageSrc, iconProps } = this.props;
+    const { styles, width, height, imageFit, imageSrc } = this.props;
 
-    this._centeredIconSize = (iconProps && iconProps.style && iconProps.style.fontSize) || defaultCenteredIconSize;
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      className,
-      height,
-      width,
-      cornerIconSize,
-      centeredIconSize: this._centeredIconSize
-    });
+    this._classNames = getClassNames(styles!, this.props);
 
     return (
       <div className={this._classNames.root}>
@@ -52,16 +40,15 @@ export class DocumentCardImageBase extends BaseComponent<IDocumentCardImageProps
 
   private _renderCenterIcon(): JSX.Element {
     const { iconProps } = this.props;
-
     return (
-      <div className={css(this._classNames.centeredIconWrapper)}>
-        <Icon style={{ fontSize: this._centeredIconSize }} className={css(this._classNames.centeredIcon)} {...iconProps} />
+      <div className={this._classNames.centeredIconWrapper}>
+        <Icon className={this._classNames.centeredIcon} {...iconProps} />
       </div>
     );
   }
 
   private _renderCornerIcon(): JSX.Element {
     const { iconProps } = this.props;
-    return <Icon style={{ fontSize: cornerIconSize }} className={css(this._classNames.cornerIcon)} {...iconProps} />;
+    return <Icon className={this._classNames.cornerIcon} {...iconProps} />;
   }
 }

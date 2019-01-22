@@ -1,23 +1,14 @@
-import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
 
-export const GlobalClassNames = {
-  root: 'ms-DocumentCardImage',
-  icon: 'ms-DocumentCardImage-icon',
-  centeredIcon: 'ms-DocumentCardImage-centeredIcon',
-  centeredIconContainer: 'ms-DocumentCardImage-centeredIconContainer',
-  cornerIcon: 'ms-DocumentCardImage-cornerIcon'
-};
+const centeredIconSize = '42px';
+const cornerIconSize = '32px';
 
 export const getStyles = (props: IDocumentCardImageStyleProps): IDocumentCardImageStyles => {
-  const { theme, className, height, width, cornerIconSize, centeredIconSize } = props;
-  const { palette } = theme;
-
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const { theme, className, height, width } = props;
+  const { palette } = theme!;
 
   return {
     root: [
-      classNames.root,
       {
         borderBottom: `1px solid ${palette.neutralLight}`,
         position: 'relative',
@@ -29,14 +20,13 @@ export const getStyles = (props: IDocumentCardImageStyleProps): IDocumentCardIma
       className
     ],
     centeredIcon: [
-      classNames.centeredIcon,
       {
         height: centeredIconSize,
-        width: centeredIconSize
+        width: centeredIconSize,
+        fontSize: centeredIconSize
       }
     ],
     centeredIconWrapper: [
-      classNames.centeredIconContainer,
       {
         display: 'flex',
         alignItems: 'center',
@@ -49,12 +39,12 @@ export const getStyles = (props: IDocumentCardImageStyleProps): IDocumentCardIma
       }
     ],
     cornerIcon: [
-      classNames.cornerIcon,
       {
         left: '10px',
         bottom: '10px',
         height: cornerIconSize,
         width: cornerIconSize,
+        fontSize: cornerIconSize,
         position: 'absolute',
         overflow: 'visible'
       }
