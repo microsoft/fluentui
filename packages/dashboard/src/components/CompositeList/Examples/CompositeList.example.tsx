@@ -194,7 +194,7 @@ export class CompositeListExample extends React.PureComponent<{}, { items: Dummy
     const commandBarProps: ICommandBarProps = {
       items: commandBarItems
     };
-    return <CompositeList detailsListProps={detailsListProps} commandBarProps={commandBarProps} overrideStickyPosition={true} />;
+    return <CompositeList detailsListProps={detailsListProps} commandBarProps={commandBarProps} />;
   }
 
   public componentDidMount(): void {

@@ -85,7 +85,7 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
     });
 
     const mergedCommandBarStyle = mergeStyleSets(getCommandBarStyle(), this.props.commandBarProps.styles);
-    const commandBarWrapperStyle = getCommandBarWrapperStyle(!!this.props.overrideStickyPosition);
+    const commandBarWrapperStyle = getCommandBarWrapperStyle();
 
     return (
       <>
@@ -101,7 +101,7 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
           onShouldVirtualize={this.defaultOnShouldVirtualize}
           useReducedRowRenderer={useReducedRowRenderer}
           onRenderRow={this.defaultOnRenderRow}
-          className={mergeStyles(getDetailsListStyle(!!this.props.overrideStickyPosition))}
+          className={mergeStyles(getDetailsListStyle())}
           {...this.props.detailsListProps}
           styles={this.props.detailsListProps.styles}
           selection={this.selection}

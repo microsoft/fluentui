@@ -1,8 +1,10 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
-import { DefaultPalette, getFocusStyle, getTheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, FontSizes, getFocusStyle, getTheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 const theme = getTheme();
+const listRowActionButtonWidth = 36;
+const listRowActionButtonMargin = -10;
 
 export const getListRowFocusStyles = (): IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles> => {
   return {
@@ -17,7 +19,7 @@ export const getfocusStyle = (): IStyle => {
 export const getListActionColumnStyle = (isCompactMode: boolean): IStyle => {
   return {
     display: 'flex',
-    fontSize: isCompactMode ? '12px' : '14px',
+    fontSize: isCompactMode ? FontSizes.small : FontSizes.medium,
     color: DefaultPalette.neutralDark,
     textOverflow: 'ellipsis',
     maxWidth: '100%',
@@ -27,7 +29,7 @@ export const getListActionColumnStyle = (isCompactMode: boolean): IStyle => {
 
 export const getListActionFieldStyle = (isCompactMode: boolean): IStyle => {
   return {
-    fontSize: isCompactMode ? '12px' : '14px',
+    fontSize: isCompactMode ? FontSizes.small : FontSizes.medium,
     color: DefaultPalette.neutralPrimary,
     display: 'inline-block',
     whiteSpace: 'nowrap',
@@ -45,8 +47,8 @@ export const getListRowActionButtonContainerStyle = (): IStyle => {
   return {
     display: 'flex',
     flexShrink: 0,
-    marginTop: '-10px',
-    marginBottom: '-10px',
+    marginTop: listRowActionButtonMargin,
+    marginBottom: listRowActionButtonMargin,
     whiteSpace: 'nowrap',
     selectors: {
       '.ms-Button-menuIcon': {
@@ -65,17 +67,17 @@ export const getListRowActionButtonStyle = (): IStyle => {
     opacity: 0,
     selectors: {
       ':hover': {
-        width: '36px',
+        width: listRowActionButtonWidth,
         color: DefaultPalette.neutralPrimary,
         opacity: 1
       },
       ':focus': {
-        width: '36px',
+        width: listRowActionButtonWidth,
         color: DefaultPalette.neutralPrimary,
         opacity: 1
       },
       '.ms-DetailsRow.is-selected &': {
-        width: '36px',
+        width: listRowActionButtonWidth,
         color: DefaultPalette.neutralPrimary,
         opacity: 1
       }

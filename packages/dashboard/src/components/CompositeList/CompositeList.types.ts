@@ -74,11 +74,6 @@ export interface ICompositeListProps {
   isCompactMode?: boolean;
 
   /**
-   * By default, commandBar and list view header position is sticky. with this setting, user can override it.
-   */
-  overrideStickyPosition?: boolean;
-
-  /**
    * Callback when compact mode is changed
    */
   onCompactModeChanged?: (newValue: boolean) => void;
