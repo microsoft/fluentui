@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.129.1",
+      "tag": "office-ui-fabric-react_v6.129.1",
+      "date": "Tue, 22 Jan 2019 13:34:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DocumentCard: added native properties to the root element",
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b4f39e7fa4349859fb6ab8ff9e2842f01bfa933c"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.129.0",
       "tag": "office-ui-fabric-react_v6.129.0",
       "date": "Mon, 21 Jan 2019 13:36:01 GMT",

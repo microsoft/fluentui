@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Jan 2019 13:34:38 GMT and should not be manually modified.
+
+## 6.129.1
+Tue, 22 Jan 2019 13:34:38 GMT
+
+### Patches
+
+- DocumentCard: added native properties to the root element
 
 ## 6.129.0
 Mon, 21 Jan 2019 13:36:01 GMT
