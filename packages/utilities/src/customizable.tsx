@@ -45,11 +45,11 @@ export function customizable(
 
               // If defaultProps.styles is a function, evaluate it before calling concatStyleSets
               if (defaultProps.styles && typeof defaultProps.styles === 'function') {
-                defaultProps.styles = defaultProps.styles(componentProps);
+                defaultProps.styles = defaultProps.styles({ ...defaultProps, ...componentProps });
               }
 
               if (concatStyles) {
-                let mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+                const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
 
                 return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
               }
