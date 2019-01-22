@@ -5,7 +5,6 @@ import StackItem from './StackItem/StackItem';
 import { IStackItemProps } from './StackItem/StackItem.types';
 import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import { styles } from './Stack.styles';
-import { mergeStyles } from '../../Styling';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
@@ -20,28 +19,14 @@ const view: IStackComponent['view'] = props => {
         return null;
       }
 
-      const defaultItemProps: IStackItemProps = {
-        shrink: shrinkItems,
-        className: child.props ? child.props.className : undefined
-      };
-
       if (child.type === StackItemType) {
-        // If child is a StackItem, we need to pass down the className of ITS first child to the StackItem for mergeStylesSet to work
-        // TODO: how will this be affected by mergeStyleSets being removed from createComponent?
-        const children = child.props ? child.props.children : undefined;
-        const stackItemFirstChildren = React.Children.toArray(children) as React.ReactElement<{ className?: string }>[];
-        const stackItemFirstChild = stackItemFirstChildren && stackItemFirstChildren[0];
-
-        // pass down both the className on the StackItem as well as the className on its first child
-        let mergedClassName = defaultItemProps.className;
-        if (stackItemFirstChild && stackItemFirstChild.props && stackItemFirstChild.props.className) {
-          mergedClassName = mergeStyles(mergedClassName, stackItemFirstChild.props.className);
-        }
+        const defaultItemProps: IStackItemProps = {
+          shrink: shrinkItems
+        };
 
         return React.cloneElement(child, {
           ...defaultItemProps,
-          ...child.props,
-          className: mergedClassName
+          ...child.props
         });
       }
 
