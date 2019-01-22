@@ -41,7 +41,7 @@ export function customizable(
               const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
               // tslint:disable-next-line:no-any
-              let componentProps = this.props as any;
+              const componentProps = this.props as any;
 
               // If defaultProps.styles is a function, evaluate it before calling concatStyleSets
               if (defaultProps.styles && typeof defaultProps.styles === 'function') {
@@ -50,7 +50,6 @@ export function customizable(
 
               if (concatStyles) {
                 const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
-
                 return <ComposedComponent {...defaultProps} {...componentProps} styles={mergedStyles} />;
               }
 
