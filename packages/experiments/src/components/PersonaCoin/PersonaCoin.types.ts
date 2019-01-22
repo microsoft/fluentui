@@ -1,9 +1,17 @@
-import { ImageLoadState } from 'office-ui-fabric-react';
-import { IComponentStyles, IHTMLDivSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { ImageLoadState, IBaseProps } from 'office-ui-fabric-react';
+import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
+import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
 
-export type IPersonaCoinComponent = IStatelessComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles>;
+export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles, IPersonaCoinViewProps>;
+
+// These types are redundant with IPersonaCoinComponent but are needed until TS function
+// return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IPersonaCoinTokenReturnType = ReturnType<Extract<IPersonaCoinComponent['tokens'], Function>>;
+export type IPersonaCoinStylesReturnType = ReturnType<Extract<IPersonaCoinComponent['styles'], Function>>;
 
 export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps> | string;
 
@@ -27,6 +35,10 @@ export interface IPersonaCoinSlots {
    * Slot for the presence element
    */
   presence?: IPersonaPresenceSlot;
+  /**
+   * Slot for the alternative coin for the smallest persona size
+   */
+  personaCoinSize10?: IPersonaCoinSize10Slot;
 }
 
 export type PersonaCoinSize = 10 | 16 | 24 | 28 | 32 | 40 | 48 | 56 | 72 | 100;
@@ -35,7 +47,8 @@ export type PersonaCoinSize = 10 | 16 | 24 | 28 | 32 | 40 | 48 | 56 | 72 | 100;
 //    If you don't want these props to be included in your component, just remove this extension.
 export interface IPersonaCoinProps
   extends IPersonaCoinSlots,
-    IStyleableComponentProps<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles> {
+    IStyleableComponentProps<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles>,
+    IBaseProps<IPersonaCoinComponent> {
   /**
    * Whether initials are calculated for phone numbers and number sequences.
    * Example: Set property to true to get initials for project names consisting of numbers only.
@@ -92,6 +105,10 @@ export interface IPersonaCoinProps
    * @defaultvalue 'white'
    */
   initialsColor?: string;
+}
+
+export interface IPersonaCoinViewProps extends IPersonaCoinProps {
+  isPictureLoaded?: boolean;
 }
 
 export interface IPersonaCoinTokens {}

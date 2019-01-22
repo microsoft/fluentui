@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: Sets the first enabled option to focusable, even with an invalid defaultSelectedKey",
+      "comment": "ContextualMenu: Fixes a layout bug with split menu items in IE11",
       "type": "patch"
     }
   ],

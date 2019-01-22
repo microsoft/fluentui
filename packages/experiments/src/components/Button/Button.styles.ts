@@ -1,4 +1,4 @@
-import { IButtonComponent } from './Button.types';
+import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
 import { getFocusStyle, getGlobalClassNames } from '../../Styling';
 
 const baseTokens: IButtonComponent['tokens'] = {
@@ -22,7 +22,7 @@ const circularTokens: IButtonComponent['tokens'] = {
   contentPadding: ''
 };
 
-const enabledTokens: IButtonComponent['tokens'] = (props, theme) => {
+const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackground,
@@ -43,7 +43,7 @@ const enabledTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
-const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
+const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: theme.semanticColors.buttonBackgroundDisabled,
@@ -64,7 +64,7 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
-const expandedTokens: IButtonComponent['tokens'] = (props, theme) => {
+const expandedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundPressed,
@@ -77,7 +77,7 @@ const expandedTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
-const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme) => {
+const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
@@ -96,7 +96,7 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
-const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme) => {
+const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackgroundPressed,
@@ -109,7 +109,7 @@ const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
-export const ButtonTokens: IButtonComponent['tokens'] = (props, theme) => [
+export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   !props.disabled && enabledTokens,
   props.expanded && expandedTokens,
@@ -119,7 +119,7 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme) => [
   props.disabled && disabledTokens
 ];
 
-export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) => {
+export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { className } = props;
 
   const globalClassNames = getGlobalClassNames(
@@ -197,21 +197,22 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens) =
     ],
     content: {
       overflow: 'visible'
-    },
-    splitContainer: {
-      height: '100%',
-      position: 'relative',
-      width: '36px'
-    },
-    divider: {
-      background: tokens.color,
-      bottom: 6,
-      display: 'inline-block',
-      left: 0,
-      opacity: 0.7,
-      position: 'absolute',
-      top: 6,
-      width: 1
     }
+    // TODO: test with split button approach.
+    // splitContainer: {
+    //   height: '100%',
+    //   position: 'relative',
+    //   width: '36px'
+    // },
+    // divider: {
+    //   background: tokens.color,
+    //   bottom: 6,
+    //   display: 'inline-block',
+    //   left: 0,
+    //   opacity: 0.7,
+    //   position: 'absolute',
+    //   top: 6,
+    //   width: 1
+    // }
   };
 };

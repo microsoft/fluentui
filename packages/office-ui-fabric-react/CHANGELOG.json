@@ -2,6 +2,143 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.129.1",
+      "tag": "office-ui-fabric-react_v6.129.1",
+      "date": "Tue, 22 Jan 2019 13:34:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DocumentCard: added native properties to the root element",
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b4f39e7fa4349859fb6ab8ff9e2842f01bfa933c"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.129.0",
+      "tag": "office-ui-fabric-react_v6.129.0",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Theming: add scss files generated from defaults",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b52887ae8e6a1ca4bf0733e2a4caa95e207b0589"
+          },
+          {
+            "comment": "Pickers: adjusts disabled styles for TagPicker and PeoplePicker to align them to the toolkit specs. Disable remove button on PeoplePicker selected items when picker disabled.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "6c7fe77c71e032206268645644a606c107fe05c1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsHeader: Refactor deprecated componentWillReceiveProps to getDerivedStateFromProps",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "58d65e8a7cc8f53b9faeec2d9a2c75862ad0f788"
+          },
+          {
+            "comment": "List: Remove usage of string refs used for List pages",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "63c384456aa06ddabcb53471aca1def281cc0f8d"
+          },
+          {
+            "comment": "Breadcrumb: issue #7701 - fixes the  double focus rectangle caused by both Link and Breadcrumb.",
+            "author": "Khoa Huynh <35128180+khuynh92@users.noreply.github.com>",
+            "commit": "169f7313e3fe21af9f5e8bc1cde5760985196940"
+          },
+          {
+            "comment": "moving functuion _isHeightOrWidthDifferent to file scope",
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "19fb1bff737cc46190ba7a107bfd26d37284469c"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.128.0",
+      "tag": "office-ui-fabric-react_v6.128.0",
+      "date": "Fri, 18 Jan 2019 13:38:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: fixes issue #7686 when items of type `section` are given the same key and later are rendered as list items causing a React warning. Change the example having this issue.",
+            "author": "Dan Marshall <danmar@microsoft.com>",
+            "commit": "9e82e7d8e8aee4a543bbcc3c180dc126822388d2"
+          },
+          {
+            "comment": "CommandBar: Add ARIA labels to the overflow buttons in examples",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "d7e4f99884741e738176ad86dbaf9ad7abdbf031"
+          },
+          {
+            "comment": "Facepile: Add ARIA role to the list of people",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "e3864b4f0f15c8cc366c2770bed6dd8becc92efc"
+          },
+          {
+            "comment": "PeoplePicker: Reduce height to match other inputs",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "e5399bbf2e7d9ab3abf3a1368f77fa2b6fa8823e"
+          },
+          {
+            "comment": "Update two examples to use CommandBarButton",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "55a1455c10f510902c08fc0ab0f5af162838815f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Exposes a preventDismissOnResize prop in the Callout component",
+            "author": "kisiebel <40902158+kisiebel@users.noreply.github.com>",
+            "commit": "bfc8ca5b7c17a54530ae51b46d57fb9546e6e861"
+          },
+          {
+            "comment": "Dropdown: refactor styles of Panel to `subComponentStyles` pattern.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "87281ed5e02ffbb1ff7f602162460c948391d4c8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.127.0",
+      "tag": "office-ui-fabric-react_v6.127.0",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: add isMenuOpen property on IColumn interface and add aria-expanded to the DetailsList column header.",
+            "author": "Amy Hackett <ahackett@microsoft.com>",
+            "commit": "800de544e2c63aada0e171f77b4dc0c95d9c810a"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Pickers: Fix it so that pickers now correctly lose focus",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "891229dc1738519c3c36067bdb6998886d558a9b"
+          },
+          {
+            "comment": "When clicking on existing oufr calendar component, there's a 1px space between days in the day picker where the click has no effect. Fixing",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "1de46953ecc8320e6fbb341ab0608fb62b09228b"
+          },
+          {
+            "comment": "ChoiceGroup: Sets the first enabled option to focusable, even with an invalid defaultSelectedKey",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "04eaf1756ccdb6a187c61f18d474444e1e52ffe4"
+          },
+          {
+            "comment": "TextField: fixes High Contrast mode styles when focusing.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "f13a0f705b05e53350b629c5df4918106ed75c13"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.126.0",
       "tag": "office-ui-fabric-react_v6.126.0",
       "date": "Wed, 16 Jan 2019 13:38:45 GMT",

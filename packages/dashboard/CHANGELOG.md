@@ -1,6 +1,32 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 16 Jan 2019 13:38:44 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+
+## 0.44.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- Add common Detail-Panel component
+
+### Patches
+
+- Remove extra hidden elements in gridList when gridList is empty
+- add focus border for thumbnailList 
+
+## 0.43.5
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx
+
+## 0.43.4
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- add is's for card actions
 
 ## 0.43.3
 Wed, 16 Jan 2019 13:38:44 GMT

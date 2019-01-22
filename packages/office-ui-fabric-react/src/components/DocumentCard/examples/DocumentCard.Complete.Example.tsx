@@ -4,6 +4,7 @@ import {
   DocumentCardActions,
   DocumentCardActivity,
   DocumentCardDetails,
+  DocumentCardImage,
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle,
@@ -228,6 +229,43 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
           </DocumentCardDetails>
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref="http://bing.com">
+          <DocumentCardImage
+            height={100}
+            imageFit={ImageFit.cover}
+            iconProps={{ iconName: 'OneNoteLogo', styles: { root: { color: '#813a7c' } } }}
+            imageSrc={TestImages.documentPreviewTwo}
+          />
+          <DocumentCardDetails>
+            <DocumentCardTitle title="How to make good design" shouldTruncate={true} />
+          </DocumentCardDetails>
+          <DocumentCardActivity
+            activity="Modified March 13, 2018"
+            people={[
+              { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+              { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' }
+            ]}
+          />
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref="http://bing.com">
+          <DocumentCardImage
+            height={150}
+            imageFit={ImageFit.cover}
+            iconProps={{
+              iconName: 'OneNoteLogo',
+              styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } }
+            }}
+          />
+          <DocumentCardDetails>
+            <DocumentCardTitle title="How to make good design without an image" shouldTruncate={true} />
+          </DocumentCardDetails>
+          <DocumentCardActivity
+            activity="Modified January 1, 2019"
+            people={[{ name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' }]}
+          />
         </DocumentCard>
       </div>
     );

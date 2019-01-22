@@ -96,7 +96,6 @@ class ScrollablePaneDetailsListStory extends React.Component<
   {},
   {
     items: {}[];
-    selectionDetails: string;
   }
   > {
   private _scrollablePane = React.createRef<IScrollablePane>();
@@ -123,18 +122,12 @@ class ScrollablePaneDetailsListStory extends React.Component<
 
     this._items = items;
 
-    this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
-    });
-
-    this.state = {
-      items: items,
-      selectionDetails: this._getSelectionDetails()
-    };
+    this._selection = new Selection();
+    this.state = { items: items };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails } = this.state;
+    const { items } = this.state;
 
     return (
       <div
@@ -169,19 +162,6 @@ class ScrollablePaneDetailsListStory extends React.Component<
         </Fabric>
       </div>
     );
-  }
-
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
-
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
   }
 }
 

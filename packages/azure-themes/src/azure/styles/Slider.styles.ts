@@ -2,13 +2,14 @@ import { ISliderStyleProps, ISliderStyles } from 'office-ui-fabric-react/lib/Sli
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
+const SLIDER_BOX_DIMENSION: number = 8;
+const SLIDER_DIAMETER: number = 16;
+const SLIDER_OFFSET: number = 2;
+const SLIDER_BORDER_RADIUS: number = 0;
+
 export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> => {
   const { disabled, theme, vertical } = props;
   const semanticColors = theme.semanticColors as IExtendedSemanticColors;
-  const sliderBoxDimension: string = '8px';
-  const sliderDiameter: string = '16px';
-  const sliderOffset: string = '2px';
-  const sliderLineBorderRadius: string = '0px';
 
   return {
     activeSection: [
@@ -20,12 +21,6 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
       }
     ],
     inactiveSection: [
-      vertical && {
-        width: sliderBoxDimension
-      },
-      !vertical && {
-        width: sliderBoxDimension
-      },
       !disabled && {
         background: semanticColors.controlOutlineDisabled
       },
@@ -34,43 +29,19 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
       }
     ],
     slideBox: [
-      !vertical && {
-        selectors: {
-          '.ms-Slider-active': {
-            height: sliderBoxDimension,
-            borderRadius: sliderLineBorderRadius
-          },
-          '.ms-Slider-inactive': {
-            height: sliderBoxDimension,
-            borderRadius: sliderLineBorderRadius
-          }
-        }
-      },
-      vertical && {
-        selectors: {
-          '.ms-Slider-active': {
-            width: sliderBoxDimension,
-            borderRadius: sliderLineBorderRadius
-          },
-          '.ms-Slider-inactive': {
-            width: sliderBoxDimension,
-            borderRadius: sliderLineBorderRadius
-          }
-        }
-      },
       !disabled && {
         selectors: {
           '.ms-Slider-thumb': [
             {
               borderColor: semanticColors.controlAccent,
-              height: sliderDiameter,
-              width: sliderDiameter
+              height: SLIDER_DIAMETER,
+              width: SLIDER_DIAMETER
             },
             vertical && {
-              marginLeft: sliderOffset
+              marginLeft: SLIDER_OFFSET
             },
             !vertical && {
-              marginTop: sliderOffset
+              marginTop: SLIDER_OFFSET
             }
           ]
         }
@@ -80,16 +51,42 @@ export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> =
           '.ms-Slider-thumb': [
             {
               borderColor: semanticColors.disabledBodyText,
-              height: sliderDiameter,
-              width: sliderDiameter
+              height: SLIDER_DIAMETER,
+              width: SLIDER_DIAMETER
             },
             vertical && {
-              marginLeft: sliderOffset
+              marginLeft: SLIDER_OFFSET
             },
             !vertical && {
-              marginTop: sliderOffset
+              marginTop: SLIDER_OFFSET
             }
           ]
+        }
+      }
+    ],
+    line: [
+      !vertical && {
+        selectors: {
+          '.ms-Slider-active': {
+            height: SLIDER_BOX_DIMENSION,
+            borderRadius: SLIDER_BORDER_RADIUS
+          },
+          '.ms-Slider-inactive': {
+            height: SLIDER_BOX_DIMENSION,
+            borderRadius: SLIDER_BORDER_RADIUS
+          }
+        }
+      },
+      vertical && {
+        selectors: {
+          '.ms-Slider-active': {
+            width: SLIDER_BOX_DIMENSION,
+            borderRadius: SLIDER_BORDER_RADIUS
+          },
+          '.ms-Slider-inactive': {
+            width: SLIDER_BOX_DIMENSION,
+            borderRadius: SLIDER_BORDER_RADIUS
+          }
         }
       }
     ],

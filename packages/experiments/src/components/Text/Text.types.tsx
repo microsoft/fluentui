@@ -1,7 +1,13 @@
-import { IComponentStyles, IHTMLSpanSlot, ISlotProp, IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSpanSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
-export type ITextComponent = IStatelessComponent<ITextProps, ITextTokens, ITextStyles>;
+export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
+
+// These types are redundant with ITextComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type ITextTokenReturnType = ReturnType<Extract<ITextComponent['tokens'], Function>>;
+export type ITextStylesReturnType = ReturnType<Extract<ITextComponent['styles'], Function>>;
 
 export type ITextSlot = ISlotProp<ITextProps, 'children'>;
 

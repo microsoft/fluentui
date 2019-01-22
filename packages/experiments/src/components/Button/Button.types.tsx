@@ -5,7 +5,13 @@ import { IStackSlot } from '../../Stack';
 import { ITextSlot } from '../../Text';
 import { IBaseProps } from '../../Utilities';
 
-export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonTokens, IButtonStyles>;
+export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps>;
+
+// These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IButtonTokenReturnType = ReturnType<Extract<IButtonComponent['tokens'], Function>>;
+export type IButtonStylesReturnType = ReturnType<Extract<IButtonComponent['styles'], Function>>;
 
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
@@ -33,6 +39,11 @@ export interface IButtonProps
   defaultExpanded?: boolean;
 
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+}
+
+export interface IButtonViewProps extends IButtonProps {
+  onMenuDismiss: () => void;
+  menuTarget: HTMLElement | undefined;
 }
 
 export interface IButtonTokens {
@@ -64,8 +75,3 @@ export interface IButtonTokens {
 }
 
 export type IButtonStyles = IComponentStyles<IButtonSlots>;
-
-export type IButtonViewProps = IButtonProps & {
-  onMenuDismiss: () => void;
-  menuTarget: HTMLElement | undefined;
-};

@@ -2,6 +2,91 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.51.1",
+      "tag": "@uifabric/experiments_v6.51.1",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add typing helpers missed in #7711.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2e3bdf997b10aad7afb88e462dc929a799085292"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.0 <1.0.0` to `>=0.1.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.51.0",
+      "tag": "@uifabric/experiments_v6.51.0",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add helper return types to mitigate TS function return type widening.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6913e7757d8a500e483845f787be0fb5e4543c0d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Introduce tokens for vertical variant of Persona",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "25f0bf7f3e368a2519e7ef2c66aee82c8431900b"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Stack: Updating 'types' comments to meet standard.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "5be6c187ed66b19966cb93415f909710b0a52539"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.2 <7.0.0` to `>=6.11.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.7",
+      "tag": "@uifabric/experiments_v6.50.7",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added azure themes to demo page",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4a06a2807bee39c26e58c114f0343e6ba930aace"
+          },
+          {
+            "comment": "Foundation API improvements.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1eee5ab652c4d47d0d33594b16f9f57f0ba368e1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.1 <7.0.0` to `>=6.11.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.6",
       "tag": "@uifabric/experiments_v6.50.6",
       "date": "Wed, 16 Jan 2019 13:38:44 GMT",

@@ -35,7 +35,11 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
         },
         '.ms-Dialog-button:hover': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: semanticColors.controlOutlineHovered
+          color: semanticColors.bodyText
+        },
+        '.ms-Dialog-button:active': {
+          backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
+          color: semanticColors.bodyText
         }
       }
     },

@@ -10,6 +10,8 @@ export * from './DocumentCardLocation';
 export * from './DocumentCardLocation.types';
 export * from './DocumentCardPreview';
 export * from './DocumentCardPreview.types';
+export * from './DocumentCardImage';
+export * from './DocumentCardImage.types';
 export * from './DocumentCardTitle';
 export * from './DocumentCardTitle.types';
 export * from './DocumentCardLogo';
