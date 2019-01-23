@@ -24,6 +24,7 @@
   "disabledTasks": [
     "copy",
     "sass",
+    "build-codepen-examples",
     "karma"
   ],
   "devDependencies": {

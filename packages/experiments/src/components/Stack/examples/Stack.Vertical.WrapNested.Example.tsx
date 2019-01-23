@@ -119,9 +119,9 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
           The one exception to this case being Microsoft Edge that handles it correctly (though this might go soon with the switch to
           Chromium).
         </span>
+        <span>There are ways in which we could have gone around this issue.</span>
         <span>
-          There are ways in which we could have gone around this issue. However, we have chosen to adhere to the flex-box spec so that we
-          have the correct implementation if support comes down the line.
+          However, we have chosen to adhere to the flex-box spec so that we have the correct implementation if support comes down the line.
         </span>
       </Stack>
     );

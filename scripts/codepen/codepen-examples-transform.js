@@ -1,94 +1,79 @@
-/*
-This Transform modifies Fabric website code examples into a format that will allow them to be rendered on Codepen, as part of the "Export to Codepen" feature.
-There are two types of supported example templates:
-1)
-[imports]
-[variable export named declaration with example code inside]
-and
-2)
-[imports]
-[class export named declaration with example code inside. Having multiple methods and keeping track of state is supported]
-Currently, examples which are scattered across multiple files are NOT supported.
-*/
+// @ts-check
+
 const babylon = require('babylon');
+/** @type {*} */
 const recast = require('recast');
 const prettier = require('prettier');
+const jscodeshift = require('jscodeshift');
+const path = require('path');
+const fse = require('fs-extra');
 
-function parseRaw(code) {
-  const parse = source =>
-    babylon.parse(source, {
-      sourceType: 'module',
-      plugins: ['jsx', 'typescript', 'classProperties', 'objectRestSpread']
-    });
-  return recast.parse(code, { parser: { parse } }).program.body;
-}
+const exampleData = fse.readFileSync(path.resolve(__dirname, '../../packages/office-ui-fabric-react/src/utilities/exampleData.ts'));
 
-function transform(file, api) {
-  const parse = source =>
-    babylon.parse(source, {
-      sourceType: 'module',
-      plugins: ['jsx', 'typescript', 'classProperties', 'objectRestSpread']
-    });
+const api = { jscodeshift: jscodeshift.withParser('babylon'), stats: {} };
 
-  const j = api.jscodeshift;
-  let source = j(recast.parse(file.source, { parser: { parse } }));
-
-  //remove css imports
-  source = source
-    .find(j.ImportDeclaration, node => node.source.value.endsWith('.scss'))
-    .remove()
-    .toSource();
-  source = j(recast.parse(source, { parser: { parse } }));
-
-  //remove scss imports
-  source = source
-    .find(j.ImportDeclaration, node => node.source.value.endsWith('.css'))
-    .remove()
-    .toSource();
-  source = j(recast.parse(source, { parser: { parse } }));
-
-  // attach all imported components to the window
-  let attachedWindowString = 'let {';
-
-  let imports = source.find(j.ImportDeclaration);
-
-  let identifiers = [];
-  imports.forEach(p => {
-    p.node.specifiers.forEach(spec => {
-      const identifier = spec.local.loc.identifierName;
-      if (identifier.toLowerCase() != 'react') {
-        identifiers.push(identifier);
-      }
-    });
+/** @type {(source: string) => any} */
+const parse = source =>
+  babylon.parse(source, {
+    sourceType: 'module',
+    plugins: ['jsx', 'typescript', 'classProperties', 'objectRestSpread']
   });
 
-  for (var i = 0; i < identifiers.length; i++) {
-    attachedWindowString += identifiers[i] + ',';
+/**
+ * This Transform modifies Fabric website code examples into a format that will allow them to be
+ * rendered on Codepen, as part of the "Export to Codepen" feature.
+ * There are two types of supported example templates:
+ *
+ *     [imports]
+ *     [variable export named declaration with example code inside]
+ *
+ * and
+ *
+ *     [imports]
+ *     [class export named declaration with example code inside]
+ *
+ * Currently, examples which are scattered across multiple files are NOT supported.
+ *
+ * @param {string} file - Example file contents to transform
+ * @returns {string} The transformed file
+ */
+function transform(file) {
+  let sourceStr = file;
+  // If the exampleData file was imported, append the file contents
+  if (sourceStr.indexOf('/utilities/exampleData') !== -1) {
+    sourceStr += `\n${exampleData}\n`;
   }
-  attachedWindowString += 'Fabric} = window.Fabric;';
 
-  let parsedAttachedWindowString = parseRaw(attachedWindowString);
+  const j = api.jscodeshift;
+  let source = j(recast.parse(sourceStr, { parser: { parse } }));
 
-  source = source
-    .find(j.ImportDeclaration, node => node.source.value.toLowerCase() == 'react')
-    .remove()
-    .insertBefore(parsedAttachedWindowString)
-    .toSource();
-  source = j(recast.parse(source, { parser: { parse } }));
+  // Make a list of imported identifiers, and remove all imports
+  let identifiers = [];
+  source.find(j.ImportDeclaration).forEach(path => {
+    const importPath = path.node.source.value;
+    // Ignore identifiers from the React import (which will be a global) and from exampleData
+    // (since that whole file is appended to the example if needed)
+    if (importPath !== 'react' && !/(exampleData|\.scss|\.css)$/.test(importPath)) {
+      path.node.specifiers.forEach(spec => {
+        identifiers.push(spec.local.loc.identifierName);
+      });
+    }
 
-  // remove the rest of the import declarations
-  source = source
-    .find(j.ImportDeclaration)
-    .remove()
-    .toSource();
-  source = j(recast.parse(source, { parser: { parse } }));
+    // Remove the import
+    path.prune();
+  });
 
   let exampleName;
   // remove exports and replace with variable or class declarations, whichever the original example used
   source
-    .find(j.ExportNamedDeclaration, node => node.declaration.type == 'VariableDeclaration')
+    .find(
+      j.ExportNamedDeclaration,
+      node => node.declaration.type == 'VariableDeclaration' || node.declaration.type === 'FunctionDeclaration'
+    )
     .replaceWith(p => {
-      exampleName = p.node.declaration.declarations[0].id.name;
+      if (p.node.declaration.type === 'VariableDeclaration') {
+        exampleName = p.node.declaration.declarations[0].id.name;
+      }
       return p.node.declaration;
     });
 
@@ -102,11 +87,21 @@ function transform(file, api) {
         exampleName = p.node.declaration.id.name;
       }
       return p.node.declaration;
-    })
-    .toSource();
+    });
 
-  // add React Render footer
-  const sourceWithFooter = source.toSource() + '\n' + 'ReactDOM.render(<' + exampleName + '/>, document.getElementById("content"));';
+  // Build the list of imports from window.Fabric
+  let attachedWindowString = 'let {';
+  if (identifiers.length > 0) {
+    attachedWindowString += identifiers.join(',') + ',';
+  }
+  attachedWindowString += 'Fabric} = window.Fabric;\n';
+
+  // add imports and React render footer
+  const sourceWithFooter = [
+    attachedWindowString,
+    source.toSource(),
+    `ReactDOM.render(<${exampleName}/>, document.getElementById("content"));`
+  ].join('\n');
 
   return prettier.format(sourceWithFooter, {
     parser: 'typescript',
