@@ -1483,6 +1483,31 @@ class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState
   toggleCollapseAll(allCollapsed: boolean): void;
 }
 
+// @public (undocumented)
+class GroupFooterBase extends BaseComponent<IGroupFooterProps, {}> {
+  // (undocumented)
+  render(): JSX.Element | null;
+}
+
+// @public (undocumented)
+class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHeaderState> {
+  constructor(props: IGroupHeaderProps);
+  // (undocumented)
+  componentWillReceiveProps(newProps: any): void;
+  // (undocumented)
+  static defaultProps: IGroupHeaderProps;
+  // (undocumented)
+  render(): JSX.Element | null;
+}
+
+// @public (undocumented)
+class GroupShowAllBase extends BaseComponent<IGroupShowAllProps, {}> {
+  // (undocumented)
+  static defaultProps: IGroupShowAllProps;
+  // (undocumented)
+  render(): JSX.Element | null;
+}
+
 // @public
 export function hasHorizontalOverflow(element: HTMLElement): boolean;
 
@@ -6788,9 +6813,9 @@ interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProp
 // @public (undocumented)
 interface IDetailsGroupRenderProps extends IGroupRenderProps {
   // (undocumented)
-  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IGroupFooterProps & IDetailsGroupDividerProps>;
   // (undocumented)
-  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IGroupHeaderProps & IDetailsGroupDividerProps>;
 }
 
 // WARNING: The type "DetailsHeaderBase" needs to be exported by the package (e.g. added to index.ts)
@@ -8077,7 +8102,7 @@ interface IGroupDividerProps {
   isSelected?: boolean;
   loadingText?: string;
   onGroupHeaderClick?: (group: IGroup) => void;
-  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
+  onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
   onToggleCollapse?: (group: IGroup) => void;
   onToggleSelectGroup?: (group: IGroup) => void;
   onToggleSummarize?: (group: IGroup) => void;
@@ -8141,18 +8166,94 @@ interface IGroupedListStyles {
 }
 
 // @public (undocumented)
+interface IGroupFooterProps extends IGroupDividerProps {
+  className?: string;
+  styles?: IStyleFunctionOrObject<IGroupFooterStyleProps, IGroupFooterStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IGroupFooterStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IGroupHeaderProps extends IGroupDividerProps {
+  className?: string;
+  groupedListId?: string;
+  styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IGroupHeaderState {
+  // (undocumented)
+  isCollapsed: boolean;
+  // (undocumented)
+  isLoadingVisible: boolean;
+}
+
+// @public (undocumented)
+interface IGroupHeaderStyles {
+  // (undocumented)
+  check: IStyle;
+  // (undocumented)
+  dropIcon: IStyle;
+  // (undocumented)
+  expand: IStyle;
+  // (undocumented)
+  expandIsCollapsed: IStyle;
+  // (undocumented)
+  groupHeaderContainer: IStyle;
+  // (undocumented)
+  headerCount: IStyle;
+  // (undocumented)
+  root: IStyle;
+  // (undocumented)
+  title: IStyle;
+}
+
+// @public (undocumented)
 interface IGroupRenderProps {
   collapseAllVisibility?: CollapseAllVisibility;
-  footerProps?: IGroupDividerProps;
+  footerProps?: IGroupFooterProps;
   getGroupItemLimit?: (group: IGroup) => number;
-  headerProps?: IGroupDividerProps;
+  headerProps?: IGroupHeaderProps;
   isAllGroupsCollapsed?: boolean;
-  onRenderFooter?: IRenderFunction<IGroupDividerProps>;
-  onRenderHeader?: IRenderFunction<IGroupDividerProps>;
-  onRenderShowAll?: IRenderFunction<IGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IGroupFooterProps>;
+  onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
+  onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
-  showAllProps?: IGroupDividerProps;
+  showAllProps?: IGroupShowAllProps;
   showEmptyGroups?: boolean;
+}
+
+// @public (undocumented)
+interface IGroupShowAllProps extends IGroupDividerProps {
+  showAllLinkText?: string;
+  styles?: IStyleFunctionOrObject<IGroupShowAllStyleProps, IGroupShowAllStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IGroupShowAllStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IGroupSpacerProps {
+  count: number;
+  indentWidth?: number;
+  styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IGroupSpacerStyles {
+  // (undocumented)
+  root: IStyle;
 }
 
 // @public (undocumented)
@@ -12770,6 +12871,15 @@ module ZIndexes {
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
 // WARNING: Unsupported export: GroupedList
+// WARNING: Unsupported export: GroupHeader
+// WARNING: Unsupported export: IGroupHeaderStyleProps
+// WARNING: Unsupported export: GroupFooter
+// WARNING: Unsupported export: IGroupFooterStyleProps
+// WARNING: Unsupported export: GroupShowAll
+// WARNING: Unsupported export: IGroupShowAllStyleProps
+// WARNING: Unsupported export: SPACER_WIDTH
+// WARNING: Unsupported export: GroupSpacer
+// WARNING: Unsupported export: IGroupSpacerStyleProps
 // WARNING: Unsupported export: HoverCard
 // WARNING: Unsupported export: ExpandingCard
 // WARNING: Unsupported export: PlainCard

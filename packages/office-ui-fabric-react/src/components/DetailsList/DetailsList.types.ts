@@ -3,7 +3,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
-import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
+import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupFooterProps, IGroupHeaderProps } from '../GroupedList/index';
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
 import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
@@ -636,8 +636,8 @@ export interface IDetailsListStyles {
 }
 
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
-  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
-  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IGroupFooterProps & IDetailsGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IGroupHeaderProps & IDetailsGroupDividerProps>;
 }
 
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
