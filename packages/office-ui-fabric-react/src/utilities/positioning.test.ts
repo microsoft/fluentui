@@ -202,7 +202,7 @@ describe('Callout Positioning', () => {
 
     // Cover positioning should target the alignment edge and the target edge.
     // In this case, that's left (alignment) and top (target)
-    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, true);
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, undefined, true);
     expect(finalizedPosition.elementPosition.left).toBeDefined();
     expect(finalizedPosition.elementPosition.top).toBeDefined();
     expect(finalizedPosition.elementPosition.bottom).toBeUndefined();
