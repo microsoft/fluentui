@@ -24,7 +24,9 @@ import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
+import { IGroupedList, GroupedList, IGroupRenderProps } from '../../GroupedList';
+import { IGroupHeaderProps } from '../GroupedList/GroupHeader.types';
+import { IGroupFooterProps } from '../GroupedList/GroupFooter.types';
 import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
@@ -988,7 +990,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     } = this.props;
     const groupNestingDepth = this._getGroupNestingDepth();
     const onRenderFooter = onRenderDetailsGroupFooter
-      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+      ? (props: IGroupFooterProps, defaultRender?: IRenderFunction<IGroupFooterProps>) => {
           return onRenderDetailsGroupFooter(
             {
               ...props,
@@ -1007,7 +1009,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       : undefined;
 
     const onRenderHeader = onRenderDetailsGroupHeader
-      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
+      ? (props: IGroupHeaderProps, defaultRender?: IRenderFunction<IGroupHeaderProps>) => {
           return onRenderDetailsGroupHeader(
             {
               ...props,
