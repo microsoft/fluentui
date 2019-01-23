@@ -7,7 +7,8 @@ import {
   IDetailPanelErrorResult,
   IDetailPanelActionBarProps,
   IDetailPanelActionResult,
-  LoadingTheme
+  LoadingTheme,
+  IActionButton
 } from '../DetailPanel.types';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 
@@ -137,17 +138,22 @@ export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetail
 
   private _onGetL2ActionBar = (l2Id: string) => {
     let actionBar: IDetailPanelActionBarProps = {
-      primaryButtonText: `Primary ${l2Id}`,
-      onPrimaryAction: () => {
-        alert(l2Id);
-      }
+      primaryButton: {
+        buttonText: `Primary ${l2Id}`,
+        onAction: () => {
+          alert(l2Id);
+        }
+      } as IActionButton
     };
 
     if (l2Id === 'cat') {
-      actionBar.onPrimaryAction = this._onDelaySubmit(true);
-      actionBar.secondaryButtonText = 'Cat 2nd';
-      actionBar.onSecondaryAction = this._onDelaySubmit(false);
-      actionBar.secondaryActionInlineSpinner = true;
+      actionBar.primaryButton!.onAction = this._onDelaySubmit(true);
+
+      actionBar.secondaryButton = {
+        buttonText: 'Cat 2nd',
+        onAction: this._onDelaySubmit(false),
+        inlineSpinner: true
+      } as IActionButton;
     }
 
     return actionBar;
