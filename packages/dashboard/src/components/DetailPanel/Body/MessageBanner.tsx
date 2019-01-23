@@ -1,14 +1,17 @@
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import * as React from 'react';
 
-import { IDetailPanelMessageBannerProps } from '../DetailPanel.types';
+import { IDetailPanelMessageBannerProps, IDetailPanelAnalytics } from '../DetailPanel.types';
+import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
 interface IDetailPanelMessageBannerStates {
   show: boolean;
 }
 
-class MessageBanner extends React.PureComponent<IDetailPanelMessageBannerProps, IDetailPanelMessageBannerStates> {
-  constructor(props: IDetailPanelMessageBannerProps) {
+type DetailPanelMessageBannerProps = IDetailPanelMessageBannerProps & IDetailPanelAnalytics;
+
+class MessageBannerC extends React.PureComponent<DetailPanelMessageBannerProps, IDetailPanelMessageBannerStates> {
+  constructor(props: DetailPanelMessageBannerProps) {
     super(props);
     this.state = { show: true };
   }
@@ -30,13 +33,18 @@ class MessageBanner extends React.PureComponent<IDetailPanelMessageBannerProps, 
   }
 
   private _onDismissMessage = () => {
-    const { onDismissAction } = this.props;
+    const { onDismissAction, analyticsHandler } = this.props;
     if (onDismissAction) {
+      if (analyticsHandler) {
+        analyticsHandler('messageCloseButton', 'click', this.props);
+      }
       onDismissAction();
     }
 
     this.setState({ show: false });
   };
 }
+
+const MessageBanner = withAnalyticsHandler<DetailPanelMessageBannerProps>(MessageBannerC);
 
 export { MessageBanner, IDetailPanelMessageBannerStates };

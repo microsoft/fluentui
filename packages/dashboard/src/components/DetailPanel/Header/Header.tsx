@@ -1,11 +1,24 @@
 import * as React from 'react';
-import { IDetailPanelHeaderProps, IQuickAction } from '../DetailPanel.types';
+import { IDetailPanelHeaderProps, IQuickAction, IDetailPanelAnalytics } from '../DetailPanel.types';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { detailPanelHeaderStyles } from '../DetailPanel.styles';
+import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
-const header: React.SFC<IDetailPanelHeaderProps> = (props: IDetailPanelHeaderProps) => {
+type DetailPanelHeaderProps = IDetailPanelHeaderProps & IDetailPanelAnalytics;
+
+const header: React.SFC<DetailPanelHeaderProps> = (props: DetailPanelHeaderProps) => {
   const css = detailPanelHeaderStyles;
+
+  const _onQuickActionClick = (quickAction: IQuickAction) => () => {
+    const { analyticsHandler } = props;
+    if (analyticsHandler) {
+      analyticsHandler('quickaction', 'click', quickAction);
+    }
+
+    quickAction.onClick();
+  };
+
   const _onRenderAction = (): JSX.Element | null => {
     const { quickActions } = props;
     if (quickActions) {
@@ -15,7 +28,7 @@ const header: React.SFC<IDetailPanelHeaderProps> = (props: IDetailPanelHeaderPro
             .filter((_: IQuickAction) => !!!_.hide)
             .map((_: IQuickAction, i: number) => (
               <span key={`${i}_${_.actionName}`}>
-                <IconButton iconProps={{ iconName: _.icon }} onClick={_.onClick} title={_.actionName} />
+                <IconButton iconProps={{ iconName: _.icon }} onClick={_onQuickActionClick(_)} title={_.actionName} />
               </span>
             ))}
         </div>
@@ -57,4 +70,5 @@ const header: React.SFC<IDetailPanelHeaderProps> = (props: IDetailPanelHeaderPro
   return _renderElement();
 };
 
-export { header as Header };
+const Header = withAnalyticsHandler<DetailPanelHeaderProps>(header);
+export { Header, DetailPanelHeaderProps };
