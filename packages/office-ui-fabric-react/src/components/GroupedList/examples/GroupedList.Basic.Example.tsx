@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
@@ -8,39 +6,30 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
-import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
 const groupCount = 3;
 const groupDepth = 3;
+
+let _items: any[];
+let _groups: IGroup[];
 
 export interface IGroupedListExampleState {
   isCompactMode?: boolean;
 }
 
 export class GroupedListBasicExample extends React.Component<{}, IGroupedListExampleState> {
-  private _items: IExampleItem[];
-  private _columns: IColumn[];
-  private _groups: IGroup[];
   private _selection: Selection;
 
   constructor(props: {}) {
     super(props);
 
-    this._items = createListItems(Math.pow(groupCount, groupDepth + 1));
-    this._columns = Object.keys(this._items[0])
-      .slice(0, 3)
-      .map(
-        (key: string): IColumn => ({
-          key: key,
-          name: key,
-          fieldName: key,
-          minWidth: 300
-        })
-      );
-    this._groups = createGroups(groupCount, groupDepth, 0, groupCount);
+    _items = _items || createListItems(Math.pow(groupCount, groupDepth + 1));
+    _groups = _groups || createGroups(groupCount, groupDepth, 0, groupCount);
 
+    this._onRenderCell = this._onRenderCell.bind(this);
     this._selection = new Selection();
-    this._selection.setItems(this._items);
+    this._selection.setItems(_items);
 
     this.state = {
       isCompactMode: false
@@ -53,21 +42,20 @@ export class GroupedListBasicExample extends React.Component<{}, IGroupedListExa
     return (
       <div>
         <Toggle
-          label="Enable compact mode"
+          label="Enable Compact Mode"
           checked={isCompactMode}
           onChange={this._onChangeCompactMode}
           onText="Compact"
           offText="Normal"
-          styles={{ root: { marginBottom: '20px' } }}
         />
         <FocusZone>
           <SelectionZone selection={this._selection} selectionMode={SelectionMode.multiple}>
             <GroupedList
-              items={this._items}
+              items={_items}
               onRenderCell={this._onRenderCell}
               selection={this._selection}
               selectionMode={SelectionMode.multiple}
-              groups={this._groups}
+              groups={_groups}
               compact={isCompactMode}
             />
           </SelectionZone>
@@ -76,19 +64,31 @@ export class GroupedListBasicExample extends React.Component<{}, IGroupedListExa
     );
   }
 
-  private _onRenderCell = (nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element => {
+  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+    const { _selection: selection } = this;
     return (
       <DetailsRow
-        columns={this._columns}
+        columns={Object.keys(item)
+          .slice(0, 3)
+          .map(
+            (value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300
+              };
+            }
+          )}
         groupNestingDepth={nestingDepth}
         item={item}
         itemIndex={itemIndex}
-        selection={this._selection}
+        selection={selection}
         selectionMode={SelectionMode.multiple}
         compact={this.state.isCompactMode}
       />
     );
-  };
+  }
 
   private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isCompactMode: checked });

@@ -1,36 +1,22 @@
-// @codepen
-
 import * as React from 'react';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import './HoverCard.Example.scss';
 import { KeyCodes } from '@uifabric/utilities';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
-const classNames = mergeStyleSets({
-  compactCard: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%'
-  },
-  expandedCard: {
-    padding: '16px 24px'
-  },
-  item: {
-    selectors: {
-      '&:hover': {
-        textDecoration: 'underline',
-        cursor: 'pointer'
-      }
-    }
-  }
-});
+let _items: any[];
+
+export interface IHoverCardExampleState {
+  items?: any[];
+  columns?: IColumn[];
+}
 
 interface IHoverCardFieldProps {
-  content: string;
+  componentRef?: any;
+  content: HTMLDivElement;
   expandingCardProps: IExpandingCardProps;
 }
 
@@ -38,7 +24,7 @@ interface IHoverCardFieldState {
   contentRendered?: HTMLDivElement;
 }
 
-class HoverCardField extends React.Component<IHoverCardFieldProps, IHoverCardFieldState> {
+class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardFieldState> {
   constructor(props: IHoverCardFieldProps) {
     super(props);
 
@@ -73,13 +59,23 @@ class HoverCardField extends React.Component<IHoverCardFieldProps, IHoverCardFie
   }
 }
 
-export class HoverCardTargetExample extends React.Component<{}, {}> {
-  private _items: IExampleItem[] = createListItems(10);
-  private _columns: IColumn[] = this._buildColumns();
+export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleState> {
+  constructor(props: {}) {
+    super(props);
+
+    _items = _items || createListItems(10);
+
+    this.state = {
+      items: _items,
+      columns: _buildColumns()
+    };
+  }
 
   public render() {
+    const { items, columns } = this.state;
+
     return (
-      <Fabric>
+      <div>
         <p>
           Hover over the <i>key</i> cell of a row item to see the card or use the keyboard to navigate to it.
         </p>
@@ -89,16 +85,16 @@ export class HoverCardTargetExample extends React.Component<{}, {}> {
         </p>
         <DetailsList
           setKey="hoverSet"
-          items={this._items}
-          columns={this._columns}
+          items={items!}
+          columns={columns}
           onRenderItemColumn={this._onRenderItemColumn}
-          ariaLabel="Hover card DetailsList test"
+          ariaLabel={'Hover card DetailsList test'}
         />
-      </Fabric>
+      </div>
     );
   }
 
-  private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
+  private _onRenderItemColumn = (item: any, index: number, column: IColumn): JSX.Element => {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
@@ -109,18 +105,18 @@ export class HoverCardTargetExample extends React.Component<{}, {}> {
 
     if (column.key === 'key') {
       return (
-        <div className={classNames.item}>
+        <div className="HoverCard-item">
           <HoverCardField content={item.key} expandingCardProps={expandingCardProps} />
         </div>
       );
     }
 
-    return item[column.key as keyof IExampleItem];
+    return item[column.key];
   };
 
-  private _onRenderCompactCard = (item: IExampleItem): JSX.Element => {
+  private _onRenderCompactCard = (item: any): JSX.Element => {
     return (
-      <div className={classNames.compactCard}>
+      <div className="hoverCardExample-compactCard">
         <a target="_blank" href={`http://wikipedia.org/wiki/${item.location}`}>
           {item.location}
         </a>
@@ -128,16 +124,17 @@ export class HoverCardTargetExample extends React.Component<{}, {}> {
     );
   };
 
-  private _onRenderExpandedCard = (item: IExampleItem): JSX.Element => {
+  private _onRenderExpandedCard = (item: any): JSX.Element => {
+    const { items, columns } = this.state;
     return (
-      <div className={classNames.expandedCard}>
+      <div className="hoverCardExample-expandedCard">
         {item.description}
-        <DetailsList setKey="expandedCardSet" items={this._items} columns={this._columns} />
+        <DetailsList setKey="expandedCardSet" items={items!} columns={columns} />
       </div>
     );
   };
+}
 
-  private _buildColumns() {
-    return buildColumns(this._items).filter(column => column.name === 'location' || column.name === 'key');
-  }
+function _buildColumns() {
+  return buildColumns(_items).filter(column => column.name === 'location' || column.name === 'key');
 }

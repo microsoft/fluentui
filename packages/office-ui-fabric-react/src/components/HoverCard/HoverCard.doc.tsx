@@ -10,10 +10,6 @@ const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 const HoverCardTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
 const HoverCardPlainCardExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.PlainCard.Example.tsx') as string;
 
-const HoverCardBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/HoverCard/HoverCard.Basic.Example.Codepen.txt') as string;
-const HoverCardTargetExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/HoverCard/HoverCard.Target.Example.Codepen.txt') as string;
-const HoverCardPlainCardExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/HoverCard/HoverCard.PlainCard.Example.Codepen.txt') as string;
-
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
   componentName: 'HoverCard',
@@ -21,21 +17,18 @@ export const HoverCardPageProps: IDocPageProps = {
   componentStatus: HoverCardStatus,
   examples: [
     {
-      title: 'Expanding HoverCard wrapping an element',
+      title: 'Example 1: Expanding HoverCard wrapping an element',
       code: HoverCardBasicExampleCode,
-      codepenJS: HoverCardBasicExampleCodepen,
       view: <HoverCardBasicExample />
     },
     {
-      title: 'Expanding HoverCard using Target, DirectionalHint and custom HotKey',
+      title: 'Example 2: Expanding HoverCard using Target, DirectionalHint and custom HotKey',
       code: HoverCardTargetExampleCode,
-      codepenJS: HoverCardTargetExampleCodepen,
       view: <HoverCardTargetExample />
     },
     {
-      title: 'Plain HoverCard wrapping an element',
+      title: 'Example 3: Plain HoverCard wrapping an element',
       code: HoverCardPlainCardExampleCode,
-      codepenJS: HoverCardPlainCardExampleCodepen,
       view: <HoverCardPlainCardExample />
     }
   ],
