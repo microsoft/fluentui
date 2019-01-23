@@ -586,8 +586,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     // set the state with the result.
     this._events.on(document, 'mousemove', (e: MouseEvent) => {
       if (this.state.isCollapsed) {
-        const mouseY = e.pageY;
-        const mouseX = e.pageX;
+        const mouseY = e.clientY;
+        const mouseX = e.clientX;
         this._setTargetElementRect();
         const isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
 
