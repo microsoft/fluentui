@@ -292,8 +292,8 @@ export interface IGroupDividerProps {
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
 
-  /** Override which allows the caller to provider a custom title. */
-  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
+  /** Override which allows the caller to provider a custom renderer for the GroupHeader title. */
+  onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
 
   /** Props for expand/collapse button */
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
