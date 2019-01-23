@@ -18,7 +18,8 @@ export interface IGroupHeaderState {
 
 export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHeaderState> {
   public static defaultProps: IGroupDividerProps = {
-    expandButtonProps: { 'aria-label': 'expand collapse group' }
+    expandButtonProps: { 'aria-label': 'expand collapse group' },
+    selectionCheckProps: { 'aria-label': 'select unselect group' }
   };
 
   private _classNames: IClassNames<IGroupHeaderStyles>;
@@ -58,6 +59,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       onRenderTitle = this._onRenderTitle,
       isCollapsedGroupSelectVisible = true,
       expandButtonProps,
+      selectionCheckProps,
       theme,
       styles,
       className,
@@ -101,6 +103,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
               aria-checked={!!currentlySelected}
               data-selection-toggle={true}
               onClick={this._onToggleSelectGroupClick}
+              {...selectionCheckProps}
             >
               <Check checked={currentlySelected} />
             </button>

@@ -295,6 +295,9 @@ export interface IGroupDividerProps {
   /** Props for expand/collapse button */
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
+  /** Props for selection check button */
+  selectionCheckProps?: React.HTMLAttributes<HTMLButtonElement>;
+
   /** Stores parent group's children. */
   groups?: IGroup[];
 }

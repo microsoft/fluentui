@@ -8082,6 +8082,7 @@ interface IGroupDividerProps {
   onToggleSelectGroup?: (group: IGroup) => void;
   onToggleSummarize?: (group: IGroup) => void;
   selected?: boolean;
+  selectionCheckProps?: React.HTMLAttributes<HTMLButtonElement>;
   selectionMode?: SelectionMode;
   showAllLinkText?: string;
   viewport?: IViewport;
