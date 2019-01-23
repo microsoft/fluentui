@@ -47,6 +47,10 @@ export namespace BaseColors {
   export const GRAY_808080_070 = 'rgba(128, 128, 128, .70)';
   export const BLUE_55B3FF_010 = 'rgba(85, 179, 255, .10)';
   export const BLUE_55B3FF_020 = 'rgba(85, 179, 255, .20)';
+
+  // Overlay Overrides
+  export const OVERLAY_LIGHT = 'rgba(255,255,255,.5)';
+  export const OVERLAY_DARK = 'rgba(0,0,0,.5)';
 }
 
 export namespace CommonSemanticColors {
