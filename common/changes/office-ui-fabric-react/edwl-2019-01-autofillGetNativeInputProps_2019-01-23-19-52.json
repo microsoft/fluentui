@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Combobox: Add getNativeProps to component to fix tabIndex not being inherited",
+      "comment": "Combobox: Pass taxIndex to Autofill component",
       "type": "patch"
     }
   ],

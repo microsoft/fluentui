@@ -5,7 +5,6 @@ import {
   css,
   customizable,
   divProperties,
-  inputProperties,
   findElementRecursive,
   findIndex,
   focusAsync,
@@ -325,13 +324,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       theme,
       title,
       keytipProps,
-      placeholder
+      placeholder,
+      tabIndex
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     const divProps = getNativeProps(this.props, divProperties, ['onChange', 'value']);
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
 
@@ -364,7 +363,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               className={this._classNames.root}
             >
               <Autofill
-                {...inputProps}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
                 data-is-interactable={!disabled}
                 componentRef={this._autofill}
@@ -396,6 +394,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 title={title}
                 preventValueSelection={!focused}
                 placeholder={placeholder}
+                tabIndex={tabIndex}
               />
               <IconButton
                 className={'ms-ComboBox-CaretDown-button'}
