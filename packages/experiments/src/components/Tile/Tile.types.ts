@@ -130,5 +130,5 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * @type {() => void}
    * @memberof ITileProps
    */
-  linkRef?: (element: HTMLAnchorElement) => void;
+  linkRef?: (element: HTMLAnchorElement | HTMLButtonElement | null) => void;
 }

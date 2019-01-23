@@ -17,9 +17,6 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
         padding-top: 0px;
         position: relative;
       }
-      @media screen and (-ms-high-contrast: active){& {
-        border-width: 2px;
-      }
 >
   <div
     className=
@@ -130,7 +127,6 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
         value=""
       />
       <i
-        aria-hidden={true}
         className=
             test-iconClass
             {

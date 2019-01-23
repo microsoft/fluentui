@@ -169,7 +169,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
                 forceFocusInsideTrap={forceFocusInsideTrap}
                 firstFocusableSelector={firstFocusableSelector}
               >
-                <div ref={this._allowScrollOnModal} className={classNames.scrollableContent}>
+                <div ref={this._allowScrollOnModal} className={classNames.scrollableContent} data-is-scrollable={true}>
                   {this.props.children}
                 </div>
               </FocusTrapZone>

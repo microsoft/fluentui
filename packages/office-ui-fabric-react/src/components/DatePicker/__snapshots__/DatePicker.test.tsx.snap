@@ -25,7 +25,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
   <div
     aria-expanded={false}
     aria-haspopup="true"
-    aria-owns="DatePicker-Callout1"
     role="combobox"
   >
     <div
@@ -44,8 +43,11 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             padding-top: 0px;
             position: relative;
           }
-          @media screen and (-ms-high-contrast: active){& {
-            border-width: 2px;
+          & input[readonly] {
+            cursor: pointer;
+          }
+          & input::-ms-clear {
+            display: none;
           }
     >
       <div
@@ -135,7 +137,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             value=""
           />
           <i
-            aria-hidden={true}
             className=
                 ms-DatePicker-event--without-label
                 msDatePickerDisabled

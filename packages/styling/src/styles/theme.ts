@@ -1,5 +1,5 @@
 import { Customizations, merge } from '@uifabric/utilities';
-import { IPalette, ISemanticColors, ITheme, IPartialTheme, ISemanticTextColors } from '../interfaces/index';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
@@ -74,7 +74,7 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   _theme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
-  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
+  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._loadFonts(_theme) });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
 
@@ -87,6 +87,23 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   });
 
   return _theme;
+}
+
+/**
+ * Loads font variables into a JSON object.
+ * @param theme - The theme object
+ */
+function _loadFonts(theme: ITheme): { [name: string]: string } {
+  const lines = {};
+
+  for (const fontName of Object.keys(theme.fonts)) {
+    const font = theme.fonts[fontName];
+    for (const propName of Object.keys(font)) {
+      const name = 'ms-font-' + fontName + '-' + propName;
+      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+    }
+  }
+  return lines;
 }
 
 /**
@@ -107,11 +124,24 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
+  let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
+
+  if (theme.defaultFontStyle) {
+    for (const fontStyle of Object.keys(defaultFontStyles)) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
+    }
+  }
+
+  if (theme.fonts) {
+    for (const fontStyle of Object.keys(theme.fonts)) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
+    }
+  }
+
   return {
     palette: newPalette,
     fonts: {
-      ...DefaultFontStyles,
-      ...theme.fonts
+      ...defaultFontStyles
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,

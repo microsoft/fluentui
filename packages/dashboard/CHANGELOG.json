@@ -2,6 +2,301 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.44.0",
+      "tag": "@uifabric/dashboard_v0.44.0",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove extra hidden elements in gridList when gridList is empty",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "ae308bb5173a06e9c537b48bfcb07deaac7aa378"
+          },
+          {
+            "comment": "add focus border for thumbnailList ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "1b24b5993ab5e921b389080aefdc9ad900b1a50e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add common Detail-Panel component",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "9ba881bf7f306d2af4665b5402069edc4e3a8d46"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.5",
+      "tag": "@uifabric/dashboard_v0.43.5",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx",
+            "author": "VamshidharReddyEnumula <vamshidharenumula@gmail.com>",
+            "commit": "4c1197ee90b6b91237b57adc041f4e2b08bbaa81"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.2 <7.0.0` to `>=6.11.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.7 <7.0.0` to `>=6.51.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.4",
+      "tag": "@uifabric/dashboard_v0.43.4",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add is's for card actions",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "048ade0ca70b7bdfc5011603dd951508fab341f7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.1 <7.0.0` to `>=6.11.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.6 <7.0.0` to `>=6.50.7 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.3",
+      "tag": "@uifabric/dashboard_v0.43.3",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.5 <7.0.0` to `>=6.50.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.2",
+      "tag": "@uifabric/dashboard_v0.43.2",
+      "date": "Mon, 14 Jan 2019 13:39:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Empty card state for addCardPanel",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "c7818d841cb506a22cb1aec633ba80e1680113c9"
+          },
+          {
+            "comment": "Revert horizontal compaction and fix left nav external links to open based on target attr",
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "f7e5a036aa72e564c069408c8f270867834af72f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.10.0 <7.0.0` to `>=6.11.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.1 <7.0.0` to `>=6.124.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.1",
+      "tag": "@uifabric/dashboard_v0.43.1",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "\"update grid list cursor to pointer\"",
+            "author": "VamshidharReddyEnumula <vamshidharenumula@gmail.com>",
+            "commit": "ae34a0747c39859af296a4d2082b9e944d83a5b1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.3 <7.0.0` to `>=6.50.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.0 <7.0.0` to `>=6.124.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.0",
+      "tag": "@uifabric/dashboard_v0.43.0",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "920e5a4ea25203d58baa89441ab0da9a7c099a49"
+          },
+          {
+            "comment": "Adding support for JSX.Element to DGLWithAddCardPanel. Still maintaining support for RTL/LTR and accessibility.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "920e5a4ea25203d58baa89441ab0da9a7c099a49"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.4` to `^0.28.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.2 <7.0.0` to `>=6.50.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.42.2",
+      "tag": "@uifabric/dashboard_v0.42.2",
+      "date": "Fri, 04 Jan 2019 13:36:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add support of accessibility for the card component",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "61e2d71584c6a8572dd21cd2c999b1cef3579a95"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.0 <7.0.0` to `>=6.50.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.42.1",
+      "tag": "@uifabric/dashboard_v0.42.1",
+      "date": "Thu, 03 Jan 2019 13:33:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding focus for action bar overflow button",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "089711a6898f117e6cf0de3363ff60f3e304ae34"
+          },
+          {
+            "comment": "Add tooltip for navbar expended button",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "7937c6b99ffa75b52f7b563eca1c38a56204b504"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.118.2 <7.0.0` to `>=6.119.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.42.0",
+      "tag": "@uifabric/dashboard_v0.42.0",
+      "date": "Fri, 28 Dec 2018 13:35:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "56e3a21c8bda6012ba9ebc175b630b4923a46547"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.117.2 <7.0.0` to `>=6.118.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.41.1",
+      "tag": "@uifabric/dashboard_v0.41.1",
+      "date": "Fri, 21 Dec 2018 13:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor RTL improvement and bug fix in setup banner",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "390d08667838cd74178de60c1b6eb405adddded0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.117.0 <7.0.0` to `>=6.117.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.41.0",
+      "tag": "@uifabric/dashboard_v0.41.0",
+      "date": "Thu, 20 Dec 2018 13:39:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improved low resolution support and added shimmer to setup banner",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "6efe965edb93f6e94a73319b8df17f07862e4727"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.116.2 <7.0.0` to `>=6.117.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.40.0",
       "tag": "@uifabric/dashboard_v0.40.0",
       "date": "Mon, 17 Dec 2018 13:36:58 GMT",

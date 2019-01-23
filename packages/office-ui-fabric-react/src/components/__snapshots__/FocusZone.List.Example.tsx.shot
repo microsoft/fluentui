@@ -164,7 +164,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -234,7 +234,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -264,7 +263,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -850,7 +848,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -920,7 +918,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -950,7 +947,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -1536,7 +1532,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -1606,7 +1602,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -1636,7 +1631,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -2222,7 +2216,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -2292,7 +2286,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -2322,7 +2315,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -2908,7 +2900,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -2978,7 +2970,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -3008,7 +2999,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -3594,7 +3584,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -3664,7 +3654,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -3694,7 +3683,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -4280,7 +4268,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -4350,7 +4338,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -4380,7 +4367,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -4966,7 +4952,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -5036,7 +5022,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -5066,7 +5051,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -5652,7 +5636,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -5722,7 +5706,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -5752,7 +5735,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -6338,7 +6320,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 40px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -6408,7 +6390,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -6438,7 +6419,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {

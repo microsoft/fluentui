@@ -1,6 +1,237 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Dec 2018 13:39:07 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Jan 2019 13:34:38 GMT and should not be manually modified.
+
+## 6.129.1
+Tue, 22 Jan 2019 13:34:38 GMT
+
+### Patches
+
+- DocumentCard: added native properties to the root element
+
+## 6.129.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- Theming: add scss files generated from defaults
+- Pickers: adjusts disabled styles for TagPicker and PeoplePicker to align them to the toolkit specs. Disable remove button on PeoplePicker selected items when picker disabled.
+
+### Patches
+
+- DetailsHeader: Refactor deprecated componentWillReceiveProps to getDerivedStateFromProps
+- List: Remove usage of string refs used for List pages
+- Breadcrumb: issue #7701 - fixes the  double focus rectangle caused by both Link and Breadcrumb.
+- moving functuion _isHeightOrWidthDifferent to file scope
+
+## 6.128.0
+Fri, 18 Jan 2019 13:38:06 GMT
+
+### Minor changes
+
+- Exposes a preventDismissOnResize prop in the Callout component
+- Dropdown: refactor styles of Panel to `subComponentStyles` pattern.
+
+### Patches
+
+- ContextualMenu: fixes issue #7686 when items of type `section` are given the same key and later are rendered as list items causing a React warning. Change the example having this issue.
+- CommandBar: Add ARIA labels to the overflow buttons in examples
+- Facepile: Add ARIA role to the list of people
+- PeoplePicker: Reduce height to match other inputs
+- Update two examples to use CommandBarButton
+
+## 6.127.0
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Minor changes
+
+- DetailsList: add isMenuOpen property on IColumn interface and add aria-expanded to the DetailsList column header.
+
+### Patches
+
+- Pickers: Fix it so that pickers now correctly lose focus
+- When clicking on existing oufr calendar component, there's a 1px space between days in the day picker where the click has no effect. Fixing
+- ChoiceGroup: Sets the first enabled option to focusable, even with an invalid defaultSelectedKey
+- TextField: fixes High Contrast mode styles when focusing.
+
+## 6.126.0
+Wed, 16 Jan 2019 13:38:45 GMT
+
+### Minor changes
+
+- Toggle: adds ability to render with the label inline (left side and right in RTL).
+
+### Patches
+
+- Panel: setting the aria-modal to true to prevent loosing focus when using Narrator in scan mode.
+- Icons: Remove aria-hidden to fix narrator focus bug
+- DetailsList: Remove redundant columns iteration, array allocation, and setState call in DetailsRowFields
+
+## 6.125.0
+Tue, 15 Jan 2019 13:36:46 GMT
+
+### Minor changes
+
+- theming: add loadFonts function and register font variables
+- Icon: Pass theme to styles functions.
+- ChoiceGroup: adds a getter method to IChoiceGroup to allow grabbing the current checked option through the componentRef.
+
+### Patches
+
+- Add type for example list items
+- Convert DocumentCard to MergeStyles
+- DocumentCard: changed href in basic example to bing.com
+- Copy over hasDynamicChildren and hasMenu for persisted keytips
+- Removing some of the deprecated components flagged when turning the tslint deprecation flag to true in the office-ui-fabric-react package.
+- PeoplePicker: adjust height of the picker suggestion item to follow the toolkit redline.
+- Fix issue with Facepile not using maxDisplayablePersonas prop if its value is 0
+
+## 6.124.2
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Patches
+
+- DatePicker: only set aria-owns when callout is rendered [#6931]
+- Fix DatePicker firing two onSelectDate events when allowTextInput is true
+- Date is no longer selected when click on 'Today'. That behavior is still allowed passing a boolean argument
+- Relaxed type restrictions on possible values for 'autoComplete' attribute on TextField component.
+- ActionButton: Fix focus outline getting clipped when the action button sits within a container with `overflow:'hidden'`.
+- DatePicker: Temporarily disable failing DatePicker test which uses document.querySelector
+- Horizontal scrollbar not available for a grouped details list (all groups collapsed) when header is sticky
+
+## 6.124.1
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Ensure coachmark layers under header
+- Changed colors to make message bar more visible.
+- DetailsList: Ensure the headerClassName prop is processed properly when mergeStyles is used
+- CombBox: revert change to aria label
+- ContextualMenu: fix hovering on items in IE
+- Modal, Dialog: Update styling to work with changes to allowScrollOnElement (change overflowY from auto to hidden)
+- DetailsList: Add test for existence of headerClassName if provided
+
+## 6.124.0
+Thu, 10 Jan 2019 13:34:59 GMT
+
+### Minor changes
+
+- Pickers: converting to CSS-in-JS suggestions part of the pickers. Move some interfaces and create styled versions of each subcomponent base. Fix imports and more cleanup.
+
+## 6.123.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
+
+### Patches
+
+- Fix issues of marquee selection for IE
+- Pickers: Fix so controlled pickers will only focus when it has focus
+
+## 6.122.0
+Wed, 09 Jan 2019 13:35:35 GMT
+
+### Minor changes
+
+- Checkbox: Refactored to use an <input type="checkbox"> instead of "button", fixing several longstanding bugs along the way.
+- ChoiceGroup: Removed role='application' from root-div
+
+### Patches
+
+- Fixed: the commandbar will no longer flicker when resized
+- CommandBar: minor perf improvement in computing cache key
+- Fix the typing of ExpandingCard/PlainCard component props.
+- FocusTrapZone - Make forceFocusInsideTrap prop changes modify focus
+
+## 6.121.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Allow disabling specific dates on the calendar in addition to the max and min dates.
+
+### Patches
+
+- CalendarYear: convert from componentWillReceiveProps to getDerivedStateFromProps
+
+## 6.120.0
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Minor changes
+
+- Add FocusTrapCallout component
+- Exposes the tabIndex of the TextField in the DatePicker
+- Slider: Allows a custom value format function to be passed which formats the value label
+- DocumentCard: add optional aria role property to allow override the default aria role.
+
+### Patches
+
+- ChoiceGroup: exposing focus() method in IChoiceGroup and makes sure it is implemented.
+- Fix outline for Modals and Dialogs in High Contrast mode
+- SearchBox: fix handling of null value
+
+## 6.119.0
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Minor changes
+
+- TooltipHost: add show method
+
+### Patches
+
+- Fix calendar accessibility edge bug preventing row and column info from being populated correctly
+
+## 6.118.2
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Patches
+
+- update pivot component to use semantic slots from design redlines
+
+## 6.118.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Pickers: Fix issue where suggestions wouldn't dismiss for controlled pickers
+- Fix Nav selected item's pseudo element
+
+## 6.118.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- ComboBox will prioritize ariaLabel property over label for accessibility. Aria labels for Dropdown and ComboBox options do not default to item text.
+
+### Patches
+
+- FocusZone: Respect the onKeydown handler even it is inside inner focus zone.
+- checking if sticky content offsetHeight is in sync with nonStickyContent offsetHeight
+
+## 6.117.2
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Patches
+
+- Adding option to prevent focus on Coachmark mount
+
+## 6.117.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- ContextualMenu: fix opening submenus with hrefs
+
+## 6.117.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- GroupedList: add compact mode and styles cleanup across GroupedList and DetailsList. Change expand button icon. Consolidate style values in between mentioned components.
+- Pickers: convert PeoplePicker items to CSS-in-JS. Expose some components to the surface API and rename them to solve ambiguity issues. Fix some imports in ExtendedPicker and FloatingPicker caused by my API changes.
 
 ## 6.116.2
 Wed, 19 Dec 2018 13:39:07 GMT

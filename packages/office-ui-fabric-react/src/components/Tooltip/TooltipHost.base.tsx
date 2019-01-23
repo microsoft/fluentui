@@ -6,7 +6,6 @@ import {
   getId,
   assign,
   hasOverflow,
-  createRef,
   portalContainsElement,
   classNamesFunction
 } from '../../Utilities';
@@ -28,7 +27,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
   private static _currentVisibleTooltip: ITooltipHost | undefined;
 
   // The wrapping div that gets the hover events
-  private _tooltipHost = createRef<HTMLDivElement>();
+  private _tooltipHost = React.createRef<HTMLDivElement>();
   private _classNames: { [key in keyof ITooltipHostStyles]: string };
 
   // The ID of the setTimeout that will eventually close the tooltip if the
@@ -110,6 +109,10 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
       TooltipHostBase._currentVisibleTooltip = undefined;
     }
   }
+
+  public show = (): void => {
+    this._toggleTooltip(true);
+  };
 
   public dismiss = (): void => {
     this._hideTooltip();

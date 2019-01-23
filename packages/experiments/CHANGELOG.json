@@ -2,6 +2,273 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.51.1",
+      "tag": "@uifabric/experiments_v6.51.1",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add typing helpers missed in #7711.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2e3bdf997b10aad7afb88e462dc929a799085292"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.0 <1.0.0` to `>=0.1.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.51.0",
+      "tag": "@uifabric/experiments_v6.51.0",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add helper return types to mitigate TS function return type widening.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6913e7757d8a500e483845f787be0fb5e4543c0d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Introduce tokens for vertical variant of Persona",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "25f0bf7f3e368a2519e7ef2c66aee82c8431900b"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Stack: Updating 'types' comments to meet standard.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "5be6c187ed66b19966cb93415f909710b0a52539"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.2 <7.0.0` to `>=6.11.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.7",
+      "tag": "@uifabric/experiments_v6.50.7",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added azure themes to demo page",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4a06a2807bee39c26e58c114f0343e6ba930aace"
+          },
+          {
+            "comment": "Foundation API improvements.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1eee5ab652c4d47d0d33594b16f9f57f0ba368e1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.1 <7.0.0` to `>=6.11.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.6",
+      "tag": "@uifabric/experiments_v6.50.6",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Foundation typings to require Tokens.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "34319d03cd433df8110b4028fddb3041c108cfcd"
+          },
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prettier changes from a master merge with conflicts.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "eeddb4f7f7a2595229eb75cf3af10410da1ca26a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.5",
+      "tag": "@uifabric/experiments_v6.50.5",
+      "date": "Tue, 15 Jan 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Convert all compoenents to use Slots. Add experimental Tokens feature.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1a3f5371a2f69c564c27094d602745a5d747253d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `>=0.1.3 <1.0.0` to `>=0.1.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.40.0 <7.0.0` to `>=6.41.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.2 <7.0.0` to `>=6.125.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.6 <7.0.0` to `>=6.0.7 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.4",
+      "tag": "@uifabric/experiments_v6.50.4",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Made message bar visible in High Contrast",
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "a62ab7fe6f395d2b9cde89de915e7f4976942056"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.0 <7.0.0` to `>=6.124.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.3",
+      "tag": "@uifabric/experiments_v6.50.3",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Adding documentation for the Overview, Do's and Dont's sections of the component page.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "9ae54921bc0b1cfb55001f53824acd813fadb49a"
+          },
+          {
+            "comment": "VirtualizedList: fix componentDidUpdate usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "698ab96e08f44a568b8a4e53aa247674b264133a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.4` to `^0.28.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.0 <1.0.0` to `>=0.13.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.2",
+      "tag": "@uifabric/experiments_v6.50.2",
+      "date": "Mon, 07 Jan 2019 13:34:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "772ed841dfc27654f76e2f2ce8ef30e776ab064c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.119.0 <7.0.0` to `>=6.120.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.1",
+      "tag": "@uifabric/experiments_v6.50.1",
+      "date": "Fri, 04 Jan 2019 13:36:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Adding vertical stack wrapping test to vr-tests.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ba51a82e52f5c31c03af7e233ba76beaa33a5af"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.50.0",
+      "tag": "@uifabric/experiments_v6.50.0",
+      "date": "Tue, 01 Jan 2019 13:36:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds PersonaCoin and VerticalPersona",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "7f1ea319689b3e93fd18e7a6595f0f2310768de0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.118.1 <7.0.0` to `>=6.118.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.49.1",
+      "tag": "@uifabric/experiments_v6.49.1",
+      "date": "Mon, 31 Dec 2018 13:37:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Implementing wrapping of vertical stacks and adding examples for it, fixing bugs in wrapping of horizontal stacks.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "410922aad2271f96e3c01dd600028128ffa38eaa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.118.0 <7.0.0` to `>=6.118.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.0",
       "tag": "@uifabric/experiments_v6.49.0",
       "date": "Tue, 18 Dec 2018 22:17:52 GMT",

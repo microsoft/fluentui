@@ -29,6 +29,8 @@ import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+// For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
+import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -45,7 +47,6 @@ export interface IDetailsListState {
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
 const CHECKBOX_WIDTH = 40;
-const GROUP_EXPAND_WIDTH = 36;
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
@@ -61,7 +62,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    enableShimmer: false
+    enableShimmer: false,
+    compact: false
   };
 
   // References
@@ -160,6 +162,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public componentWillUnmount(): void {
     if (this._dragDropHelper) {
+      // TODO If the DragDropHelper was passed via props, this will dispose it, which is incorrect behavior.
       this._dragDropHelper.dispose();
     }
   }
@@ -355,6 +358,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}
         getGroupHeight={getGroupHeight}
+        compact={compact}
       />
     ) : (
       <List

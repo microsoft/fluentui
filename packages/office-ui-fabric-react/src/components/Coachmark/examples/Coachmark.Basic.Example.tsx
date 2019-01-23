@@ -99,7 +99,8 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
           <Coachmark
             target={this._targetButton.current}
             positioningContainerProps={{
-              directionalHint: this.state.coachmarkPosition
+              directionalHint: this.state.coachmarkPosition,
+              doNotLayer: true
             }}
             ariaAlertText="A Coachmark has appeared"
             ariaDescribedBy={'coachmark-desc1'}

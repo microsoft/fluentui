@@ -16,9 +16,18 @@
 # docs/  docs@example.com
 
 #### Core build stuff
-scripts/ @dzearing
-package.json @cliffkoh
-*/package.json @cliffkoh
+scripts/ @dzearing @kenotron @ecraig12345
+package.json @kenotron @ecraig12345
+*/package.json @dzearing
+webpack.config.js @kenotron @ecraig12345
+webpack.serve.config.js @kenotron @ecraig12345
+jest.config.js @kenotron @ecraig12345
+tsconfig.json @kenotron @ecraig12345
+rush.json @kenotron @ecraig12345
+LICENSE @kenotron @ecraig12345
+.travis.yml @kenotron @ecraig12345
+.appveyor.yml @kenotron @ecraig12345
+.npmrc @kenotron @ecraig12345
 
 #### Apps
 # component-demo/
@@ -28,8 +37,8 @@ fabric-website/ @jordandrako
 # todo-app/
 
 #### Packages
-packages/charting/ @Raghurk
-packages/dashboard/ @Raghurk
+packages/charting/ @Raghurk @veeray @chankev
+packages/dashboard/ @Raghurk @veeray @chankev
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers

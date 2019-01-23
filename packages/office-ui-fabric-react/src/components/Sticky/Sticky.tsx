@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { BaseComponent, createRef } from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 
@@ -27,11 +27,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public distanceFromTop: number;
 
-  private _root = createRef<HTMLDivElement>();
-  private _stickyContentTop = createRef<HTMLDivElement>();
-  private _stickyContentBottom = createRef<HTMLDivElement>();
-  private _nonStickyContent = createRef<HTMLDivElement>();
-  private _placeHolder = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _stickyContentTop = React.createRef<HTMLDivElement>();
+  private _stickyContentBottom = React.createRef<HTMLDivElement>();
+  private _nonStickyContent = React.createRef<HTMLDivElement>();
+  private _placeHolder = React.createRef<HTMLDivElement>();
 
   constructor(props: IStickyProps) {
     super(props);
@@ -125,11 +125,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
-      (this._nonStickyContent &&
-        this._nonStickyContent.current &&
-        this._placeHolder &&
-        this._placeHolder.current &&
-        this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight)) as boolean;
+      _isHeightOrWidthDifferent(this._nonStickyContent, this._placeHolder) ||
+      _isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentTop) ||
+      _isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentBottom)) as boolean;
   }
 
   public render(): JSX.Element {
@@ -200,20 +198,31 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _getStickyPlaceholderHeight(isSticky: boolean): React.CSSProperties {
-    const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
-
+    let height = 0,
+      width = 0;
+    if (this.nonStickyContent) {
+      height = this.nonStickyContent.offsetHeight;
+      width = this.nonStickyContent.scrollWidth;
+    }
     return {
       visibility: isSticky ? 'hidden' : 'visible',
-      height: isSticky ? 0 : height
+      height: isSticky ? 0 : height,
+      width: isSticky ? 0 : width
     };
   }
 
   private _getNonStickyPlaceholderHeight(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
     if (isStickyTop || isStickyBottom) {
-      const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
+      let height = 0,
+        width = 0;
+      if (this.nonStickyContent) {
+        height = this.nonStickyContent.offsetHeight;
+        width = this.nonStickyContent.scrollWidth;
+      }
       return {
-        height: height
+        height: height,
+        width: width
       };
     } else {
       return {};
@@ -301,4 +310,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
     return window.getComputedStyle(curr).getPropertyValue('background-color');
   }
+}
+
+function _isHeightOrWidthDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
+  return (a &&
+    b &&
+    a.current &&
+    b.current &&
+    (a.current.offsetHeight !== b.current.offsetHeight || a.current.scrollWidth !== b.current.scrollWidth)) as boolean;
 }

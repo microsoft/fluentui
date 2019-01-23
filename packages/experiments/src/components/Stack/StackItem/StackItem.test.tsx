@@ -61,10 +61,12 @@ describe('Stack Item', () => {
       </Stack>
     );
 
-    const child = wrapper.find('span').at(0);
+    const stackItem = wrapper.find('span').at(0);
+    const stackItemClass = stackItem.props().className;
+    const child = wrapper.find('span').at(1);
     const childClass = child.props().className;
 
-    expect(childClass).toContain(stackItemClassName);
+    expect(stackItemClass).toContain(stackItemClassName);
     expect(childClass).toContain(childClassName);
   });
 });

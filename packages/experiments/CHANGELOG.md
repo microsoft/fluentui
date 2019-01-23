@@ -1,6 +1,90 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 18 Dec 2018 22:17:52 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+
+## 6.51.1
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Add typing helpers missed in #7711.
+
+## 6.51.0
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Minor changes
+
+- Introduce tokens for vertical variant of Persona
+
+### Patches
+
+- Add helper return types to mitigate TS function return type widening.
+
+## 6.50.7
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- Added azure themes to demo page
+- Foundation API improvements.
+
+## 6.50.6
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Update Foundation typings to require Tokens.
+- Icon: removing aria-hidden attribute.
+
+## 6.50.5
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Convert all compoenents to use Slots. Add experimental Tokens feature.
+
+## 6.50.4
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Made message bar visible in High Contrast
+
+## 6.50.3
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Stack: Adding documentation for the Overview, Do's and Dont's sections of the component page.
+- VirtualizedList: fix componentDidUpdate usage
+
+## 6.50.2
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Patches
+
+- Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.
+
+## 6.50.1
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Stack: Adding vertical stack wrapping test to vr-tests.
+
+## 6.50.0
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Minor changes
+
+- Adds PersonaCoin and VerticalPersona
+
+## 6.49.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Stack: Implementing wrapping of vertical stacks and adding examples for it, fixing bugs in wrapping of horizontal stacks.
 
 ## 6.49.0
 Tue, 18 Dec 2018 22:17:52 GMT

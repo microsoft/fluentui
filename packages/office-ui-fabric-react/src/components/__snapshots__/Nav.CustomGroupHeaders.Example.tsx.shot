@@ -90,7 +90,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -184,7 +184,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -258,7 +257,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -352,7 +351,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon

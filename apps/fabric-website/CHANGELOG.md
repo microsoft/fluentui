@@ -1,6 +1,29 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+
+## 6.8.4
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Strengthen typing of styles function.
+
+## 6.8.3
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Add shimmered DetailsList to website
+- Documentation: Updating README to mention buildfast as an advanced build alternative.
+- Updates for new CollapsibleSection API.
+
+## 6.8.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Remove string refs from IconGrid
 
 ## 6.8.1
 Fri, 30 Nov 2018 13:37:17 GMT

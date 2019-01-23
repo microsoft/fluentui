@@ -52,6 +52,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   public static defaultProps = {
     preventDismissOnLostFocus: false,
     preventDismissOnScroll: false,
+    preventDismissOnResize: false,
     isBeakVisible: true,
     beakWidth: 16,
     gapSpace: 0,
@@ -236,6 +237,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
+  protected _dismissOnResize(ev: Event) {
+    const { preventDismissOnResize } = this.props;
+    if (!preventDismissOnResize) {
+      this.dismiss(ev);
+    }
+  }
+
   protected _dismissOnLostFocus(ev: Event) {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
@@ -278,7 +286,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     // the target changing focus quickly prior to rendering the callout.
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-      this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'resize', this._dismissOnResize, true);
       this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
@@ -287,7 +295,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-    this._events.off(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.off(this._targetWindow, 'resize', this._dismissOnResize, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;

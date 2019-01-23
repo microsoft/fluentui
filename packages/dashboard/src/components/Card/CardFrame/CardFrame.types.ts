@@ -25,6 +25,11 @@ export interface ICardDropDownOption {
    * Function for click
    */
   onClick: VoidFunction;
+
+  /**
+   * Id of the drop down item
+   */
+  id?: string;
 }
 
 export interface ICardFrameProps {
@@ -62,6 +67,16 @@ export interface ICardFrameProps {
    * Color property for the seperator
    */
   seperatorColor?: string;
+
+  /**
+   * Defines the title for the benefit of tooltip
+   */
+  cardFrameMenuTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  cardFrameMenuAriaLabel?: string;
 
   /**
    * Hyperlink URL for title

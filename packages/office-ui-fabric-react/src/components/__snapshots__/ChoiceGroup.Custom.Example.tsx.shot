@@ -6,7 +6,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
     className=
 
 
-    role="application"
   >
     <div
       aria-labelledby="ChoiceGroup0-label"
@@ -332,7 +331,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                         }
                   >
                     <i
-                      aria-hidden={true}
                       className=
                           ms-Dropdown-caretDown
                           {

@@ -131,6 +131,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       navigationIcons,
       minDate,
       maxDate,
+      restrictedDates,
       className,
       showCloseButton,
       allFocusable,
@@ -195,6 +196,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     showSixWeeksByDefault={this.props.showSixWeeksByDefault}
                     minDate={minDate}
                     maxDate={maxDate}
+                    restrictedDates={restrictedDates}
                     workWeekDays={this.props.workWeekDays}
                     componentRef={this._dayPicker}
                     showCloseButton={showCloseButton}

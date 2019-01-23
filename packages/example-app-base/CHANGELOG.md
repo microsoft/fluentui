@@ -1,6 +1,34 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Jan 2019 13:38:05 GMT and should not be manually modified.
+
+## 6.11.3
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fix bug where customizations apply to theme and scheme dropdowns.
+
+## 6.11.2
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- ComponentPage: add id to dos and donts section to fix linking on site
+
+## 6.11.1
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Icon: removing aria-hidden attribute.
+
+## 6.11.0
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Minor changes
+
+- **New:** MarkdownTable components for use in PageMarkdown.\n**EditSection:** Allow content to be more flexible in order to render.\n**PageMarkdown:** Override table elements with new MarkdownTable components, add global classNames, add static displayName.
 
 ## 6.10.0
 Fri, 14 Dec 2018 13:35:30 GMT

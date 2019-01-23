@@ -1,9 +1,18 @@
-import { IStyle } from '../../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLSpanSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
 
-export type IStackItemComponent = IStatelessComponent<IStackItemProps, IStackItemStyles>;
+export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
-export interface IStackItemProps extends IStyleableComponentProps<IStackItemProps, IStackItemStyles> {
+export interface IStackItemSlots {
+  root?: IHTMLSpanSlot;
+}
+
+// These types are redundant with IStackItemComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['tokens'], Function>>;
+export type IStackItemStylesReturnType = ReturnType<Extract<IStackItemComponent['styles'], Function>>;
+
+export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
   /**
    * How to render the StackItem.
    */
@@ -51,9 +60,6 @@ export interface IStackItemProps extends IStyleableComponentProps<IStackItemProp
   fillVertical?: boolean;
 }
 
-export interface IStackItemStyles {
-  /**
-   * Style set for the root element.
-   */
-  root: IStyle;
-}
+export interface IStackItemTokens {}
+
+export type IStackItemStyles = IComponentStyles<IStackItemSlots>;

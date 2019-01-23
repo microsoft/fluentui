@@ -15,7 +15,7 @@ export interface ITag {
 }
 
 /** TagPicker component props */
-export interface ITagPickerProps extends IBasePickerProps<ITag> { }
+export interface ITagPickerProps extends IBasePickerProps<ITag> {}
 
 /** TagItem component props */
 export interface ITagItemProps extends IPickerItemProps<ITag> {
@@ -36,7 +36,7 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
 }
 
 /** The props needed to construct TagItem styles. */
-export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> & Pick<ITagItemProps, 'className' | 'selected'> & {};
+export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> & Pick<ITagItemProps, 'className' | 'selected' | 'disabled'> & {};
 
 /** Represents the stylable areas of the TagItem. */
 export interface ITagItemStyles {
