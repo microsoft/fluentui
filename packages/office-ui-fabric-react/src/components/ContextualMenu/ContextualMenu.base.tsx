@@ -392,7 +392,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): JSX.Element => {
     let indexCorrection = 0;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
           const menuItem = this._renderMenuItem(
             item,
