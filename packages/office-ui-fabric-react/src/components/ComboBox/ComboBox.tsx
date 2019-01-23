@@ -5,6 +5,7 @@ import {
   css,
   customizable,
   divProperties,
+  inputProperties,
   findElementRecursive,
   findIndex,
   focusAsync,
@@ -330,6 +331,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._currentVisibleValue = this._getVisibleValue();
 
     const divProps = getNativeProps(this.props, divProperties, ['onChange', 'value']);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
+      'defaultValue',
+      'onChange',
+      'onChanged'
+    ]);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
 
@@ -362,6 +368,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               className={this._classNames.root}
             >
               <Autofill
+                {...inputProps}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
                 data-is-interactable={!disabled}
                 componentRef={this._autofill}
