@@ -2,6 +2,40 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.45.0",
+      "tag": "@uifabric/dashboard_v0.45.0",
+      "date": "Wed, 23 Jan 2019 22:53:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: add with analytics handler",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a88d86c14e3dc7780a4977ee197390caad8c2c2e"
+          },
+          {
+            "comment": "Update README.md to fix title and link to Card component",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "641d41a0f6d08f91ee1854002e7e8afc0907d7a4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add composite list common control component",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "c6f10824a1dcc15778b774d6658993f737acf570"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.1 <7.0.0` to `>=6.51.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.44.0",
       "tag": "@uifabric/dashboard_v0.44.0",
       "date": "Mon, 21 Jan 2019 13:36:01 GMT",
