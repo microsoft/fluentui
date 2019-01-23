@@ -63,6 +63,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                   ms-Persona-image
                   {
                     overflow: hidden;
+                    position: relative;
                   }
               style={
                 Object {
@@ -82,9 +83,9 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     {
                       display: block;
                       height: auto;
-                      left: 50%;
+                      left: 50% /* @noflip */;
                       opacity: 0;
-                      position: relative;
+                      position: absolute;
                       top: 50%;
                       transform: translate(-50%,-50%);
                       width: 100%;
