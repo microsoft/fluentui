@@ -97,7 +97,6 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
 
     this._items = [];
 
-    // Populate with items for demos.
     for (let i = 0; i < 200; i++) {
       this._items.push({
         key: i,
