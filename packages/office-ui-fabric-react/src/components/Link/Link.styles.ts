@@ -22,6 +22,21 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         fontSize: 'inherit',
         fontWeight: 'inherit',
         selectors: {
+          ':blocklink': {
+            display: 'inline-block',
+            lineHeight: '0',
+            position: 'relative'
+          },
+          ':blocklink::after': {
+            position: 'absolute',
+            content: '',
+            left: '0',
+            top: '0',
+            bottom: '0',
+            right: '0',
+            boxShadow: '0 0 0 1px white inset',
+            border: '1px solid black'
+          },
           [`.${IsFocusVisibleClassName} &:focus`]: {
             // Can't use getFocusStyle because it doesn't support wrapping links
             // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
@@ -84,19 +99,6 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           },
           '&:focus': {
             color: semanticColors.link
-          },
-          '&:focus::after': {
-            content: '" "',
-            position: 'absolute',
-            left: '0',
-            top: '0',
-            right: '0',
-            bottom: '0',
-            boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.8) inset'
-          },
-          '&image': {
-            display: 'inline-block',
-            lineHeight: '0'
           }
         }
       },

@@ -14,6 +14,9 @@ export class LinkBasicExample extends React.Component<any, any> {
         <Link disabled={true} href="http://dev.office.com/fabric/components/link">
           disabled link
         </Link>
+        <Link className="blocklink" href="http://dev.office.com/fabric/components/link">
+          <img src="http://fillmurray.com/200/200" />
+        </Link>
         .
       </div>
     );
