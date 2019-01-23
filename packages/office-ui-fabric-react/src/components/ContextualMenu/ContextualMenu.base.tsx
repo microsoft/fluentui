@@ -604,7 +604,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const { itemProps } = item;
     const divHtmlProperties = itemProps && getNativeProps(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} style={item.style} {...divHtmlProperties}>
+      <div className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
