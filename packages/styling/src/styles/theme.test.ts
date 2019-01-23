@@ -1,4 +1,4 @@
-import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme } from './theme';
+import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme, createTheme } from './theme';
 import { IPartialTheme } from '../interfaces/index';
 import { IRawStyle } from '@uifabric/merge-styles';
 import { DefaultFontStyles } from './DefaultFontStyles';
@@ -94,6 +94,33 @@ describe('loadTheme', () => {
 
       expect(newTheme.fonts.small.fontSize).toEqual('20px');
       expect(defaultFontStyles.small.fontSize).toEqual(DefaultFontStyles.small.fontSize);
+    });
+    it('applies depComments to theme', () => {
+      // create theme with flag set should set the flag correctly
+      const themeFromCreate = createTheme({}, true);
+      expect(themeFromCreate.deprecatedCommentTags).toBeTruthy();
+
+      // calling get with no parameters should return the updated theme, without recreation
+      const themeFromGet = getTheme();
+      expect(themeFromGet.deprecatedCommentTags).toBeTruthy();
+      expect(themeFromGet).toBe(themeFromCreate);
+
+      // putting in true explicitly should still work and should not recreate the theme
+      const themeFromGetWithTrue = getTheme(true);
+      expect(themeFromGetWithTrue.deprecatedCommentTags).toBeTruthy();
+      expect(themeFromGetWithTrue).toBe(themeFromCreate);
+
+      // resetting to false should work
+      const themeOnReset = createTheme({}, false);
+      expect(themeOnReset.deprecatedCommentTags).toBeFalsy();
+      const themeOnResetFromGet = getTheme();
+
+      // same with an unspecified get
+      expect(themeOnResetFromGet.deprecatedCommentTags).toBeFalsy();
+      expect(themeOnResetFromGet).toBe(themeOnReset);
+
+      // should be a new object
+      expect(themeOnResetFromGet !== themeFromGet).toBeTruthy();
     });
   });
 });

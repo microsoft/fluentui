@@ -1,0 +1,1 @@
+export { createThemeRegistry } from './themeRegistry';

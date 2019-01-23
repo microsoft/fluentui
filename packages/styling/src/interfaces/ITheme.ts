@@ -38,6 +38,15 @@ export interface IScheme {
   spacing: ISpacing;
 
   effects: IEffects;
+
+  /**
+   * @internal
+   * This setting is analagous to the depComments flag on the createTheme / getTheme APIs and
+   * should eventually fully replace those tags.  This will cause a deprecated tag to be appended
+   * to color values for fields which have been deprecated.  In almost all cases this should not
+   * be used.
+   */
+  deprecatedCommentTags?: boolean;
 }
 
 export interface ITheme extends IScheme {
@@ -64,5 +73,6 @@ export type IPartialTheme = {
   disableGlobalClassNames?: boolean;
   spacing?: Partial<ISpacing>;
   effects?: Partial<IEffects>;
+  deprecatedCommentTags?: boolean;
   schemes?: { [P in ISchemeNames]?: IScheme };
 };

@@ -4,7 +4,6 @@
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
-
   /**
    * (Required) This specifies the version of the Rush engine to be used in this repo.
    * Rush's "version selector" feature ensures that the globally installed tool will
@@ -17,7 +16,6 @@
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
   "rushVersion": "5.5.4",
-
   /**
    * The next field selects which package manager should be installed and determines its version.
    * Rush installs its own local copy of the package manager to ensure that your build process
@@ -27,10 +25,8 @@
    * for details about these alternatives.
    */
   "pnpmVersion": "2.19.2",
-
   // "npmVersion": "5.4.0",
   // "yarnVersion": "1.9.4",
-
   /**
    * Options that are only used when the PNPM package manager is selected
    */
@@ -47,7 +43,6 @@
      */
     "strictPeerDependencies": true
   },
-
   "repository": {
     /**
      * This setting is sometimes needed when using "rush change" with multiple Git remotes.
@@ -56,7 +51,6 @@
      */
     "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
   },
-
   /**
    * Event hooks are customized script actions that Rush executes when specific events occur
    */
@@ -67,23 +61,19 @@
     "preRushInstall": [
       // "common/scripts/pre-rush-install.js"
     ],
-
     /**
      * The list of shell commands to run after the Rush installation finishes
      */
     "postRushInstall": [],
-
     /**
      * The list of shell commands to run before the Rush build command starts
      */
     "preRushBuild": [],
-
     /**
      * The list of shell commands to run after the Rush build command finishes
      */
     "postRushBuild": []
   },
-
   /**
    * Older releases of the NodeJS engine may be missing features required by your system.
    * Other releases may have bugs.  In particular, the "latest" version will not be a
@@ -93,7 +83,6 @@
    * for your repo.
    */
   "nodeSupportedVersionRange": ">=8.9.0 <9.0.0 || >=10.9.0 <11.0.0",
-
   /**
    * If you would like the version specifiers for your dependencies to be consistent, then
    * uncomment this line. This is effectively similar to running "rush check" before any
@@ -106,7 +95,6 @@
    * section of the common-versions.json.
    */
   "ensureConsistentVersions": true,
-
   /**
    * Large monorepos can become intimidating for newcomers if project folder paths don't follow
    * a consistent and recognizable pattern.  When the system allows nested folder trees,
@@ -132,7 +120,6 @@
    */
   // "projectFolderMinDepth": 2,
   // "projectFolderMaxDepth": 2,
-
   /**
    * This feature helps you to review and approve new packages before they are introduced
    * to your monorepo.  For example, you may be concerned about licensing, code quality,
@@ -168,7 +155,6 @@
   //    */
   //   // "ignoredNpmScopes": [ "@types" ]
   // },
-
   /**
    * If you use Git as your version control system, this section has some additional
    * optional features you can use.
@@ -196,7 +182,6 @@
      */
     // "sampleEmail": "mrexample@users.noreply.github.com"
   },
-
   /**
    * Installation variants allow you to maintain a parallel set of configuration files that can be
    * used to build the entire monorepo with an alternate set of dependencies.  For example, suppose
@@ -227,7 +212,6 @@
     //   "description": "Build this repo using the previous release of the SDK"
     // }
   ],
-
   /**
    * Rush can collect anonymous telemetry about everyday developer activity such as
    * success/failure of installs, builds, and other operations.  You can use this to identify
@@ -237,12 +221,10 @@
    * in the "eventHooks" section.
    */
   // "telemetryEnabled": false,
-
   /**
    * Allows creation of hotfix changes. This feature is experimental so it is disabled by default.
    */
   // "hotfixChangeEnabled": false,
-
   /**
    * (Required) This is the inventory of projects to be managed by Rush.
    *
@@ -273,14 +255,12 @@
        * NOTE: "versionPolicyName" and "shouldPublish" are alternatives; you cannot specify them both.
        */
       // "shouldPublish": true,
-
       // /**
       //   * An optional category for usage in the "browser-approved-packages.json"
       //   * and "nonbrowser-approved-packages.json" files.  The value must be one of the
       //   * strings from the "reviewCategories" defined above.
       //   */
       // "reviewCategory": "production",
-
       // /**
       //   * A list of local projects that appear as devDependencies for this project, but cannot be
       //   * locally linked because it would create a cyclic dependency; instead, the last published
@@ -289,7 +269,6 @@
       // "cyclicDependencyProjects": [
       //   // "my-toolchain"
       // ],
-
       // /**
       //   * If true, then this project will be ignored by the "rush check" command.
       //   * The default value is false.
@@ -343,6 +322,11 @@
     {
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
+      "versionPolicyName": "lockedMajor"
+    },
+    {
+      "packageName": "@uifabric/theming-core",
+      "projectFolder": "packages/theming-core",
       "versionPolicyName": "lockedMajor"
     },
     {

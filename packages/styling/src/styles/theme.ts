@@ -5,29 +5,36 @@ import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { DefaultEffects } from './DefaultEffects';
+import { createThemeRegistry } from '@uifabric/theming-core';
 
-let _theme: ITheme = createTheme({
+const _platformTheme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
+  spacing: DefaultSpacing,
+  effects: DefaultEffects,
   isInverted: false,
-  disableGlobalClassNames: false
-});
+  disableGlobalClassNames: false,
+  deprecatedCommentTags: false
+};
+
+const _registry = createThemeRegistry<ITheme, IPartialTheme>(_platformTheme, _resolveTheme);
+_registry.registerTheme({});
+
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
   let win = typeof window !== 'undefined' ? window : undefined;
-
   // tslint:disable:no-string-literal no-any
   if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
-    _theme = createTheme((win as any)['FabricConfig'].theme);
+    createTheme((win as any)['FabricConfig'].theme);
   }
   // tslint:enable:no-string-literal no-any
 
   // Set the default theme.
-  Customizations.applySettings({ [ThemeSettingName]: _theme });
+  Customizations.applySettings({ [ThemeSettingName]: getTheme() });
 }
 
 /**
@@ -35,10 +42,8 @@ if (!Customizations.getSettings([ThemeSettingName]).theme) {
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function getTheme(depComments: boolean = false): ITheme {
-  if (depComments === true) {
-    _theme = createTheme({}, depComments);
-  }
-  return _theme;
+  _updateDepComments(depComments, true);
+  return _registry.getTheme();
 }
 
 /**
@@ -71,22 +76,22 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
-  _theme = createTheme(theme, depComments);
+  const newTheme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
-  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._loadFonts(_theme) });
+  legacyLoadTheme({ ...newTheme.palette, ...newTheme.semanticColors, ..._loadFonts(newTheme) });
 
-  Customizations.applySettings({ [ThemeSettingName]: _theme });
+  Customizations.applySettings({ [ThemeSettingName]: newTheme });
 
   _onThemeChangeCallbacks.forEach((callback: (theme: ITheme) => void) => {
     try {
-      callback(_theme);
+      callback(newTheme);
     } catch (e) {
       // don't let a bad callback break everything else
     }
   });
 
-  return _theme;
+  return newTheme;
 }
 
 /**
@@ -112,7 +117,25 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
-  let newPalette = { ...DefaultPalette, ...theme.palette };
+  _updateDepComments(depComments);
+  _registry.registerTheme(theme);
+  return _registry.getTheme();
+}
+
+/**
+ * Take a partial theme definition and apply the settings on top of the current theme to create a new fully resolved theme.
+ * @param theme - partial theme definition with settings to apply to the base theme.  These should override elements of
+ * the parent theme as appropriate.
+ * @param parent - parent theme.  If there is only one level of theming this will be the platform default theme.  Settings should
+ * be applied on top of this theme.
+ */
+function _resolveTheme(theme: IPartialTheme | undefined, parent: ITheme): ITheme {
+  if (!theme) {
+    theme = {};
+  }
+
+  const depComments = (typeof theme.deprecatedCommentTags !== undefined && theme.deprecatedCommentTags) || !!parent.deprecatedCommentTags;
+  let newPalette = { ...parent.palette, ...theme.palette };
 
   if (!theme.palette || !theme.palette.accent) {
     newPalette.accent = newPalette.themePrimary;
@@ -124,7 +147,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
+  let defaultFontStyles: IFontStyles = { ...parent.fonts };
 
   if (theme.defaultFontStyle) {
     for (const fontStyle of Object.keys(defaultFontStyles)) {
@@ -147,14 +170,22 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
     spacing: {
-      ...DefaultSpacing,
+      ...parent.spacing,
       ...theme.spacing
     },
     effects: {
-      ...DefaultEffects,
+      ...parent.effects,
       ...theme.effects
-    }
+    },
+    deprecatedCommentTags: depComments
   };
+}
+
+function _updateDepComments(depComments: boolean, onlyIfSpecified?: boolean): void {
+  if (depComments !== !!_platformTheme.deprecatedCommentTags && (!onlyIfSpecified || depComments)) {
+    _platformTheme.deprecatedCommentTags = depComments;
+    _registry.updatePlatformDefaults(_platformTheme);
+  }
 }
 
 /**
