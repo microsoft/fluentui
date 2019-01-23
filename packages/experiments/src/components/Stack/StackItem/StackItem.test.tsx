@@ -48,4 +48,25 @@ describe('Stack Item', () => {
 
     expect(createEmptyStackItem).not.toThrow();
   });
+
+  it('includes the classNames on both a StackItem and its child', () => {
+    const stackItemClassName = 'stackItemClass';
+    const childClassName = 'childClass';
+
+    const wrapper = mount(
+      <Stack>
+        <Stack.Item className={stackItemClassName}>
+          <span className={childClassName} />
+        </Stack.Item>
+      </Stack>
+    );
+
+    const stackItem = wrapper.find('span').at(0);
+    const stackItemClass = stackItem.props().className;
+    const child = wrapper.find('span').at(1);
+    const childClass = child.props().className;
+
+    expect(stackItemClass).toContain(stackItemClassName);
+    expect(childClass).toContain(childClassName);
+  });
 });
