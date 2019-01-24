@@ -18,8 +18,8 @@ export class DetailPanelPage extends React.PureComponent<{}, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="DashboardCard"
-        componentName="DashboardCardExample"
+        title="Detail Panel"
+        componentName="DetailPanelExample"
         exampleCards={
           <div>
             <ExampleCard title="basic detail panel" code={DetailPanelBasicExampleCode}>

@@ -1,8 +1,18 @@
+// @codepen
+
 import * as React from 'react';
-
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-import * as ShimmerExampleStyles from './Shimmer.Example.scss';
+const wrapperClass = mergeStyles({
+  padding: 2,
+  selectors: {
+    '& > *': {
+      margin: '10px 0'
+    }
+  }
+});
 
 export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -11,12 +21,12 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
+      <Fabric className={wrapperClass}>
         Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
         <Shimmer customElementsGroup={this._getCustomElementsExampleOne()} width={350} />
         <Shimmer customElementsGroup={this._getCustomElementsExampleTwo()} width={550} />
         <Shimmer customElementsGroup={this._getCustomElementsExampleThree()} width={'90%'} />
-      </div>
+      </Fabric>
     );
   }
 

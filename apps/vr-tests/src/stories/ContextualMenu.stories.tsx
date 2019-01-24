@@ -3,7 +3,12 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem, DefaultButton } from 'office-ui-fabric-react';
+import {
+  ContextualMenu,
+  ContextualMenuItemType,
+  IContextualMenuItem,
+  DefaultButton
+} from 'office-ui-fabric-react';
 
 const items: IContextualMenuItem[] = [
   {
@@ -41,18 +46,14 @@ const items: IContextualMenuItem[] = [
 const itemsWithIcons: IContextualMenuItem[] = [
   {
     key: 'newItem',
-    iconProps: {
-      iconName: 'Add'
-    },
+    iconProps: { iconName: 'Add' },
     text: 'New'
   },
   {
     key: 'upload',
     iconProps: {
       iconName: 'Upload',
-      style: {
-        color: 'salmon'
-      }
+      style: { color: 'salmon' }
     },
     text: 'Upload',
     title: 'Upload a file'
@@ -63,23 +64,17 @@ const itemsWithIcons: IContextualMenuItem[] = [
   },
   {
     key: 'share',
-    iconProps: {
-      iconName: 'Share'
-    },
+    iconProps: { iconName: 'Share' },
     text: 'Share'
   },
   {
     key: 'print',
-    iconProps: {
-      iconName: 'Print'
-    },
+    iconProps: { iconName: 'Print' },
     text: 'Print'
   },
   {
     key: 'music',
-    iconProps: {
-      iconName: 'MusicInCollectionFill'
-    },
+    iconProps: { iconName: 'MusicInCollectionFill' },
     text: 'Music'
   }
 ];
@@ -87,33 +82,25 @@ const itemsWithIcons: IContextualMenuItem[] = [
 const itemsWithSecondaryText: IContextualMenuItem[] = [
   {
     key: 'Later Today',
-    iconProps: {
-      iconName: 'Clock'
-    },
+    iconProps: { iconName: 'Clock' },
     text: 'Later Today',
     secondaryText: '7:00 PM'
   },
   {
     key: 'Tomorrow',
-    iconProps: {
-      iconName: 'Coffeescript'
-    },
+    iconProps: { iconName: 'Coffeescript' },
     text: 'Tomorrow',
     secondaryText: 'Thu. 8:00 AM'
   },
   {
     key: 'This Weekend',
-    iconProps: {
-      iconName: 'Vacation'
-    },
+    iconProps: { iconName: 'Vacation' },
     text: 'This Weekend',
     secondaryText: 'Sat. 10:00 AM'
   },
   {
     key: 'Next Week',
-    iconProps: {
-      iconName: 'Suitcase'
-    },
+    iconProps: { iconName: 'Suitcase' },
     text: 'Next Week',
     secondaryText: 'Mon. 8:00 AM'
   }
@@ -314,10 +301,14 @@ storiesOf('ContextualMenu', module)
   ))
   .addStory('Root', () => <ContextualMenu items={items} />)
   .addStory('With icons', () => <ContextualMenu items={itemsWithIcons} />)
-  .addStory('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, { rtl: true })
+  .addStory('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, {
+    rtl: true
+  })
   .addStory('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />, { rtl: true })
   .addStory('With headers', () => <ContextualMenu items={itemsWithHeaders} />)
-  .addStory('With split button submenu', () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />)
+  .addStory('With split button submenu', () => (
+    <ContextualMenu items={itemsWithSplitButtonSubmenu} />
+  ))
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -335,5 +326,9 @@ storiesOf('ContextualMenu', module)
     </Screener>
   ))
   .addStory('With submenus with hrefs', () => (
-    <DefaultButton id="button" text="Click for ContextualMenu" menuProps={{ items: itemsWithSubmenuHrefs }} />
+    <DefaultButton
+      id="button"
+      text="Click for ContextualMenu"
+      menuProps={{ items: itemsWithSubmenuHrefs }}
+    />
   ));

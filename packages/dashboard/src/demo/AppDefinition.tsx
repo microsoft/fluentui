@@ -56,6 +56,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'DetailPanel',
           name: 'DetailPanel',
           url: '#/examples/detailpanel'
+        },
+        {
+          component: require<any>('../components/CompositeList/CompositeListPage').CompositeListPage,
+          key: 'CompositeList',
+          name: 'CompositeList',
+          url: '#/examples/compositelist'
         }
       ]
     }

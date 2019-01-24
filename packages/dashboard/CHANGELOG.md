@@ -1,6 +1,18 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Jan 2019 22:53:12 GMT and should not be manually modified.
+
+## 0.45.0
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Minor changes
+
+- add composite list common control component
+
+### Patches
+
+- DetailPanel: add with analytics handler
+- Update README.md to fix title and link to Card component
 
 ## 0.44.0
 Mon, 21 Jan 2019 13:36:01 GMT

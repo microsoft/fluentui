@@ -1,16 +1,22 @@
 import * as React from 'react';
-import { IDetailInfoTileProps } from '../DetailPanel.types';
+import { IDetailInfoTileProps, IDetailPanelAnalytics } from '../DetailPanel.types';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { detailTileClassNames } from '../DetailPanel.styles';
+import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
-const detailInfoTile: React.SFC<IDetailInfoTileProps> = (props: IDetailInfoTileProps) => {
+type DetailInfoTileProps = IDetailInfoTileProps & IDetailPanelAnalytics;
+const detailInfoTile: React.SFC<DetailInfoTileProps> = (props: DetailInfoTileProps) => {
   const { title, message, actionText, onAction, tileId } = props;
 
   const css = detailTileClassNames;
 
   const _onTileClick = (_event: React.MouseEvent<HTMLElement>) => {
-    if (props.onAction) {
-      props.onAction(tileId);
+    const { analyticsHandler } = props;
+    if (onAction) {
+      if (analyticsHandler) {
+        analyticsHandler('detailTileLink', 'click', props);
+      }
+      onAction(tileId);
     }
   };
 
@@ -27,4 +33,5 @@ const detailInfoTile: React.SFC<IDetailInfoTileProps> = (props: IDetailInfoTileP
   );
 };
 
-export { detailInfoTile as DetailInfoTile };
+const DetailInfoTile = withAnalyticsHandler<DetailInfoTileProps>(detailInfoTile);
+export { DetailInfoTile, DetailInfoTileProps };

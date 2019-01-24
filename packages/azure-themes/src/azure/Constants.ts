@@ -8,6 +8,7 @@ export const fontFamily =
   'Segoe UI, "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue",sans-serif';
 export const fontWeightBold = '700';
 export const inputControlHeight = '25px';
+export const inputControlHeightInner = '20px';
 export const textAlignCenter = 'center';
 export const transparent = 'transparent';
 export const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);

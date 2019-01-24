@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: adds missing className attribute to the `TextField` of the control.",
+      "comment": "Combobox: Pass taxIndex to Autofill component",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phtucker@microsoft.com"
+  "email": "edwl@microsoft.com"
 }

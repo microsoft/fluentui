@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dispose DragDropHelper in DetailsHeader to prevent memory leaks",
+      "comment": "Specify prop \"type\" to be \"button\" for links which are of type button",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "dahanlon@microsoft.com"
 }

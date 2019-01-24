@@ -27,6 +27,18 @@ describe('Link', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Set type=button property when link is a button', () => {
+    const component = mount(
+      <Link>
+        I'm link as a button
+      </Link>
+    );
+
+    expect(Object.keys(component.find('button').props())).toContain('type');
+    expect(component.find('button').props().type).toBe('button');
+  });
+
   it('renders disabled Link with no href as a button correctly', () => {
     const component = renderer.create(<Link disabled={true}>I'm a link as a button</Link>);
     const tree = component.toJSON();

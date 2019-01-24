@@ -16,13 +16,6 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
   private _columnWidth: number;
   private _rowHeight: number;
 
-  constructor(props: IListGridExampleProps) {
-    super(props);
-
-    this._getItemCountForPage = this._getItemCountForPage.bind(this);
-    this._getPageHeight = this._getPageHeight.bind(this);
-  }
-
   public render(): JSX.Element {
     return (
       <FocusZone>
@@ -38,7 +31,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
     );
   }
 
-  private _getItemCountForPage(itemIndex: number, surfaceRect: IRectangle): number {
+  private _getItemCountForPage = (itemIndex: number, surfaceRect: IRectangle): number => {
     if (itemIndex === 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
@@ -46,11 +39,11 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
     }
 
     return this._columnCount * ROWS_PER_PAGE;
-  }
+  };
 
-  private _getPageHeight(itemIndex: number, surfaceRect: IRectangle): number {
+  private _getPageHeight = (): number => {
     return this._rowHeight * ROWS_PER_PAGE;
-  }
+  };
 
   private _onRenderCell = (item: any, index: number | undefined): JSX.Element => {
     return (
