@@ -608,8 +608,10 @@ enum CollapseAllVisibility {
 }
 
 // @public (undocumented)
-class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> {
+class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState>, implements IColorPicker {
   constructor(props: IColorPickerProps);
+  // (undocumented)
+  readonly color: IColor;
   // (undocumented)
   componentWillReceiveProps(newProps: IColorPickerProps): void;
   // (undocumented)
@@ -2665,6 +2667,7 @@ interface IColorCellProps {
 
 // @public (undocumented)
 interface IColorPicker {
+  color: IColor;
 }
 
 // @public (undocumented)
@@ -2730,8 +2733,6 @@ interface IColorPickerProps extends IBaseProps<IColorPicker> {
 interface IColorPickerState {
   // (undocumented)
   color: IColor;
-  // (undocumented)
-  isOpen: boolean;
 }
 
 // @public (undocumented)
