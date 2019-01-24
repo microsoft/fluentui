@@ -1,11 +1,11 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { List } from 'office-ui-fabric-react';
 
-// tslint:disable-next-line:max-line-length
+// tslint:disable:max-line-length
 const items = [
   {
     thumbnail: '//placehold.it/233x233',
@@ -47,7 +47,8 @@ const items = [
     thumbnail: '//placehold.it/158x158',
     key: 'item-3 magna Ut nisi dolor',
     name: 'nostrud in reprehenderit eu anim',
-    description: 'nisi eu et in exercitation ut consectetur veniam, ut sunt ut commodo ad laboris sit culpa aliquip',
+    description:
+      'nisi eu et in exercitation ut consectetur veniam, ut sunt ut commodo ad laboris sit culpa aliquip',
     color: 'green',
     shape: 'circle',
     location: 'Seattle',
@@ -128,9 +129,18 @@ const items = [
   }
 ];
 
-const onRenderCell = item => <div>{item.name}</div>;
+const onRenderCell = (item: any) => <div>{item.name}</div>;
 
 storiesOf('List', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
   .addStory('Root', () => <List items={items} onRenderCell={onRenderCell} />, { rtl: true });

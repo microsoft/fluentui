@@ -30,7 +30,7 @@
     "postcss-loader": "^2.0.9",
     "raw-loader": "^0.5.1",
     "screener-runner": "^0.10.15",
-    "screener-storybook": "^0.16.0",
+    "screener-storybook": "^0.16.8",
     "storybook-readme": "^3.3.0",
     "style-loader": "^0.21.0"
   },

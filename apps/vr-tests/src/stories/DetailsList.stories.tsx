@@ -1,13 +1,15 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { DetailsList, DetailsListLayoutMode, IColumn, CheckboxVisibility } from 'office-ui-fabric-react';
+import {
+  DetailsList,
+  DetailsListLayoutMode,
+  IColumn,
+  CheckboxVisibility
+} from 'office-ui-fabric-react';
 
-const url = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/';
-
-// tslint:disable:max-line-length
 const items = [
   {
     name: 'Adaute.pub',
@@ -167,12 +169,16 @@ storiesOf('DetailsList', module)
       isHeaderVisible={true}
     />
   ))
-  .addStory('Checkbox Visible Always', () => (
-    <DetailsList
-      items={items}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      checkboxVisibility={CheckboxVisibility.always}
-      isHeaderVisible={true}
-    />
-  ), { rtl: true });
+  .addStory(
+    'Checkbox Visible Always',
+    () => (
+      <DetailsList
+        items={items}
+        columns={columns}
+        layoutMode={DetailsListLayoutMode.justified}
+        checkboxVisibility={CheckboxVisibility.always}
+        isHeaderVisible={true}
+      />
+    ),
+    { rtl: true }
+  );

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Link, ILinkProps } from 'office-ui-fabric-react';
+import { Link } from 'office-ui-fabric-react';
 
 storiesOf('Link', module)
   .addDecorator(FabricDecorator)
@@ -41,7 +41,9 @@ storiesOf('Link', module)
   ))
   .addStory('No Href', () => (
     <div className=".ms-Fabric--isFocusVisible">
-      <Link styles={{ root: { fontSize: '14px' } }}>I'm rendered as a button because I have no href</Link>
+      <Link styles={{ root: { fontSize: '14px' } }}>
+        I'm rendered as a button because I have no href
+      </Link>
     </div>
   ))
   .addStory('No Href Disabled', () => (
