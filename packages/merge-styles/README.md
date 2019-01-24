@@ -296,12 +296,16 @@ mergeStyleSets({
     { background: 'lightgreen' }
   ],
 
-  thumb: {
-    selectors: {
-      `.${classNames.root}:hover &`: {
-        background: 'green'
+  child: [
+    classNames.child,
+    {
+      selectors: {
+        `.${classNames.root}:hover &`: {
+          background: 'green'
+        }
       }
     }
+  ]
 });
 ```
 
