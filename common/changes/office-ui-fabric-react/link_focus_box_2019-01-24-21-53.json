@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixing wrapping links' clipping problem with boxshadow styling.",
+      "comment": "Fixing wrapping links' focus rect clipping problem with boxshadow styling.",
       "type": "patch"
     }
   ],
