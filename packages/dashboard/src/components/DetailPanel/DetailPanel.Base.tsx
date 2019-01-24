@@ -30,6 +30,7 @@ interface IMainBodyStates {
 
 interface IMainBodySnapshot {
   nextL2Id?: string | number;
+  nextMainContent?: JSX.Element;
 }
 
 class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBodyStates> {
@@ -57,6 +58,9 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
     if (this.props.currentL2Id !== prevProps.currentL2Id) {
       // L2Id is changed
       snapshot.nextL2Id = this.props.currentL2Id;
+      snapshotUpdated = true;
+    } else if (!shallowCompare(this.props.mainContent, prevProps.mainContent)) {
+      snapshot.nextMainContent = this._getMainContent();
       snapshotUpdated = true;
     }
 
@@ -149,19 +153,14 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
             // stop loading animation
             this._setLoadingAnimation();
           });
+      } else if (snapshot.nextMainContent) {
+        this.setState({ contentElement: snapshot.nextMainContent });
       } else {
         this.setState({
           contentElement: this._getMainContent(),
           currentL2Id: undefined,
           messageBanner: undefined,
           actionBar: mainActionBar
-        });
-      }
-    } else {
-      // update main content
-      if (!shallowCompare(this.props.mainContent, _prevProps.mainContent)) {
-        this.setState({
-          contentElement: this._getMainContent()
         });
       }
     }
