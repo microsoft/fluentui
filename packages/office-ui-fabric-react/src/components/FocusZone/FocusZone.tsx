@@ -246,11 +246,19 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * focus on the root temporarily. If the user tabs elsewhere, we remove
    * focusablilty from the root. After a zone re-render, if focus is still
    * "parked", we try to move focus back to the first focusable child.
+   *
+   * Note: Attempting to move this to a React event, rather than using a
+   * native event, broke the implementation.
    */
   private _onBlurCapture(ev: FocusEvent) {
     const { current: root } = this._root;
     const { target: from } = ev;
-    const isFocusDisappearing = ev.relatedTarget === null;
+    const isFocusDisappearing = ev.relatedTarget === null || ev.relatedTarget === document;
+
+    // If we are tabbing from parked state, reset parked.
+    if (from === root) {
+      this._setParkedFocus(false);
+    }
 
     if (isFocusDisappearing) {
       // The element may be removed; we need remember its index path and asynchronously
@@ -266,9 +274,28 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
             // Try to move focus to the next one.
             this._setActiveElement(nextFocusedElement, true);
             nextFocusedElement.focus();
+          } else {
+            // There are no more elements. Park focus on the container.
+            this._setParkedFocus(true);
           }
         }
       }, 0);
+    }
+  }
+
+  private _setParkedFocus(isParked: boolean): void {
+    const { current: root } = this._root;
+    if (root) {
+      if (isParked) {
+        if (!this.props.allowFocusRoot) {
+          root.setAttribute('tabindex', '-1');
+        }
+        root.focus();
+      } else {
+        if (!this.props.allowFocusRoot) {
+          root.removeAttribute('tabindex');
+        }
+      }
     }
   }
 
@@ -284,8 +311,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       element = nextChild;
     }
 
-    element =
-      getNextElement(this._root.current as HTMLElement, element, true) || getPreviousElement(this._root.current as HTMLElement, element)!;
+    element = isElementTabbable(element)
+      ? element
+      : getNextElement(this._root.current as HTMLElement, element, true) || getPreviousElement(this._root.current as HTMLElement, element)!;
 
     return element as HTMLElement;
   }

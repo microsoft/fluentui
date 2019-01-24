@@ -2,11 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { setRTL, KeyCodes } from '../../Utilities';
-import { safeMount } from '@uifabric/test-utilities';
+import { mount } from 'enzyme';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
 import { getChildren, focusFirstChild } from '../../../../utilities/lib';
 import { expectMissing } from 'office-ui-fabric-react/lib/common/testUtilities';
+import { ButtonAnchorExample } from 'office-ui-fabric-react/lib/components/Button/examples/Button.Anchor.Example';
 
 // tslint:disable:typedef
 
@@ -148,78 +149,131 @@ describe('FocusZone', () => {
   });
 
   it('can restore focus to the following item when item removed', done => {
-    // Render component.
-    const node = document.createElement('div');
+    const host = document.createElement('div');
 
+    // Render component.
     ReactDOM.render(
-      <div {...{ onFocusCapture: _onFocus }}>
-        <FocusZone>
-          <button key="a" id="a">button a</button>
-          <button key="b" id="b">button b</button>
-        </FocusZone>
-      </div>,
-      node
+      <FocusZone>
+        <button key="a" id="a">
+          button a
+        </button>
+        <button key="b" id="b">
+          button b
+        </button>
+        <button key="c" id="c">
+          button c
+        </button>
+      </FocusZone>,
+      host
     );
 
-    // Populate with items.
-    zoneWrapper.setState({ items });
+    const buttonB = host.querySelector('#b') as HTMLElement;
 
-    const buttonA = node.querySelector('#a') as HTMLElement;
-    const buttonB = node.querySelector('#b') as HTMLElement;
+    buttonB.focus();
 
-    // Set focus to first button.
-    ReactTestUtils.Simulate.focus(buttonA);
+    // Simulate a blur to body.
+    buttonB.blur();
 
-    expect(lastFocusedElement).toBe(buttonA);
-    lastFocusedElement = undefined;
+    // Render component without button A.
+    ReactDOM.render(
+      <FocusZone>
+        <button key="a" id="a">
+          button a
+        </button>
+        <button key="c" id="c">
+          button c
+        </button>
+      </FocusZone>,
+      host
+    );
 
-    // Simulate bluring 
-    ReactTestUtils.Simulate.blur(node, { target: null, relatedTarget: })
-    console.log(node.innerHTML);
-    setTimeout(done, 4000);
-    // Assert the second button Qhas focus.
-    //  expect(lastFocusedElement).toBe(buttonB);
+    // Async evaluate that focus has been moved to b.
+    setTimeout(() => {
+      expect(document.activeElement).toBe(host.querySelector('#c'));
+      done();
+    }, 20);
   });
 
-  // it('can restore focus to the previous item when end item removed', () => {
-  //   // Render component.
-  //   const node = document.createElement('div');
+  it('can restore focus to the previous item when end item removed', done => {
+    const host = document.createElement('div');
 
-  //   ReactDOM.render(
-  //     <div {...{ onFocusCapture: _onFocus }}>
-  //       <FocusZone id="fz">
-  //         <button key="a" id="a">button a</button>
-  //         <button key="b" id="b">button b</button>
-  //         <button key="c" id="c">button b</button>
-  //       </FocusZone>
-  //     </div>,
-  //     node
-  //   );
+    // Render component.
+    ReactDOM.render(
+      <FocusZone>
+        <button key="a" id="a">
+          button a
+        </button>
+        <button key="b" id="b">
+          button b
+        </button>
+        <button key="c" id="c">
+          button c
+        </button>
+      </FocusZone>,
+      host
+    );
 
-  //   const buttonB = node.querySelector('#b') as HTMLElement;
-  //   const buttonC = node.querySelector('#c') as HTMLElement;
+    const buttonC = host.querySelector('#c') as HTMLElement;
 
-  //   // Set focus to first button.
-  //   ReactTestUtils.Simulate.focus(buttonC);
-  //   expect(lastFocusedElement).toBe(buttonC);
+    buttonC.focus();
 
-  //   // Re-render with only the second button.
-  //   ReactDOM.render(
-  //     <div {...{ onFocusCapture: _onFocus }}>
-  //       <FocusZone id="fz">
-  //         <button key="a" id="a">button a</button>
-  //         <button key="b" id="b">button b</button>
-  //       </FocusZone>
-  //     </div>,
-  //     node
-  //   );
+    // Simulate a blur to body.
+    buttonC.blur();
 
-  //   // Assert the second button has focus.
-  //   expect(lastFocusedElement).toBe(buttonB);
-  // });
+    // Render component without button A.
+    ReactDOM.render(
+      <FocusZone>
+        <button key="a" id="a">
+          button a
+        </button>
+        <button key="b" id="b">
+          button b
+        </button>
+      </FocusZone>,
+      host
+    );
 
-  // it('can move focus to container when last item removed', () => { });
-  // it('can move focus from container to first item when added', () => { });
+    // Async evaluate that focus has been moved to b.
+    setTimeout(() => {
+      expect(document.activeElement).toBe(host.querySelector('#b'));
+      done();
+    }, 20);
+  });
+
+  it('can move focus to container when last item removed', done => {
+    const host = document.createElement('div');
+
+    // Render component.
+    ReactDOM.render(
+      <FocusZone>
+        <button key="a" id="a">
+          button a
+        </button>
+      </FocusZone>,
+      host
+    );
+
+    const buttonA = host.querySelector('#a') as HTMLElement;
+
+    buttonA.focus();
+
+    // Simulate a blur to body.
+    buttonA.blur();
+
+    // Render component without button A.
+    ReactDOM.render(<FocusZone />, host);
+
+    // Async evaluate that focus has been moved to b.
+    setTimeout(() => {
+      expect(document.activeElement).toBe(host.firstChild);
+      done();
+    }, 20);
+  });
+
+  it('can move focus from container to first item when added', (done) => {
+
+  });
+  
   // it('removes focusability when moving from focused container', () => { });
   // it('does not move focus when items added without container focus', () => { });
 
