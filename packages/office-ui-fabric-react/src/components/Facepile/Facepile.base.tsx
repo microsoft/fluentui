@@ -41,8 +41,8 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const { _classNames } = this;
 
     // Add a check to make sure maxDisplayalePersonas is defined to cover the edge case of it being 0.
-    const numPersonasToShow: number = typeof maxDisplayablePersonas === 'number' ?
-      Math.min(personas.length, maxDisplayablePersonas ) : personas.length;
+    const numPersonasToShow: number =
+      typeof maxDisplayablePersonas === 'number' ? Math.min(personas.length, maxDisplayablePersonas) : personas.length;
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -58,7 +58,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
-          <ul className={_classNames.members}>
+          <ul className={_classNames.members} role="listbox">
             {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
           </ul>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}

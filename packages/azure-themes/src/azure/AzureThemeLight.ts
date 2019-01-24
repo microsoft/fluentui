@@ -30,8 +30,8 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   inputBorder: CommonSemanticColors.textControlOutline.rest,
   inputBorderHovered: CommonSemanticColors.textControlOutline.hover,
   inputPlaceholderText: LightSemanticColors.text.placeholder,
-  link: LightSemanticColors.controlOutlines.accent,
-  linkHovered: LightSemanticColors.controlOutlines.accent,
+  link: LightSemanticColors.text.hyperlink,
+  linkHovered: LightSemanticColors.text.hyperlink,
   listBackground: LightSemanticColors.background,
   listHeaderBackgroundPressed: LightSemanticColors.item.hover,
   listItemBackgroundChecked: LightSemanticColors.item.select,
@@ -77,10 +77,14 @@ export const AzureThemeLight: ITheme = createTheme({
   },
   palette: {
     themePrimary: LightSemanticColors.controlOutlines.accent,
+    neutralPrimary: LightSemanticColors.text.body,
     neutralDark: LightSemanticColors.text.body,
-    neutralLight: CommonSemanticColors.backgrounds.section, // shimmer elements
+    neutralLight: CommonSemanticColors.dividers.lineSeparator, // shimmer and document card
     neutralLighter: CommonSemanticColors.backgrounds.section, // shimmer elements
+    neutralLighterAlt: LightSemanticColors.item.hover, // nav highlight
     neutralQuaternaryAlt: LightSemanticColors.item.select, // expand button on list controls
+    neutralSecondary: LightSemanticColors.text.label, // persona
+    neutralTertiaryAlt: LightSemanticColors.controlOutlines.rest, // document card
     white: LightSemanticColors.background // shimmer elements
   },
   semanticColors: lightExtendedSemanticColors

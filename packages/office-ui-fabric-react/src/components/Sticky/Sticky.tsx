@@ -115,13 +115,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
-    function isHeightOrWidthDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
-      return (a &&
-        b &&
-        a.current &&
-        b.current &&
-        (a.current.offsetHeight !== b.current.offsetHeight || a.current.scrollWidth !== b.current.scrollWidth)) as boolean;
-    }
     if (!this.context.scrollablePane) {
       return true;
     }
@@ -132,9 +125,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
-      isHeightOrWidthDifferent(this._nonStickyContent, this._placeHolder) ||
-      isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentTop) ||
-      isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentBottom)) as boolean;
+      _isHeightOrWidthDifferent(this._nonStickyContent, this._placeHolder) ||
+      _isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentTop) ||
+      _isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentBottom)) as boolean;
   }
 
   public render(): JSX.Element {
@@ -317,4 +310,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
     return window.getComputedStyle(curr).getPropertyValue('background-color');
   }
+}
+
+function _isHeightOrWidthDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
+  return (a &&
+    b &&
+    a.current &&
+    b.current &&
+    (a.current.offsetHeight !== b.current.offsetHeight || a.current.scrollWidth !== b.current.scrollWidth)) as boolean;
 }

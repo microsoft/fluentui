@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/fabric-website-resources_v6.10.0",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "config: add _themeVariables.scss and _legacyThemePalette.scss to pre-copy",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b52887ae8e6a1ca4bf0733e2a4caa95e207b0589"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.0 <1.0.0` to `>=0.1.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.9",
       "tag": "@uifabric/fabric-website-resources_v6.9.9",
       "date": "Thu, 17 Jan 2019 13:34:42 GMT",

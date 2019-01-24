@@ -23,8 +23,8 @@ function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefine
 }
 
 function expandSelector(newSelector: string, currentSelector: string): string {
-  if (newSelector.indexOf(':global(') === 0) {
-    return newSelector.replace(/:global\(|\)$/g, '');
+  if (newSelector.indexOf(':global(') >= 0) {
+    return newSelector.replace(/:global\((.+?)\)/g, '$1');
   } else if (newSelector.indexOf(':') === 0) {
     return currentSelector + newSelector;
   } else if (newSelector.indexOf('&') < 0) {

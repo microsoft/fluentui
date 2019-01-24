@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+
+## 6.10.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- config: add _themeVariables.scss and _legacyThemePalette.scss to pre-copy
 
 ## 6.9.9
 Thu, 17 Jan 2019 13:34:42 GMT

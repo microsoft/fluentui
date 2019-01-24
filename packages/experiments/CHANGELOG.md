@@ -1,6 +1,34 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 17 Jan 2019 13:34:42 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Jan 2019 22:53:12 GMT and should not be manually modified.
+
+## 6.51.2
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Patches
+
+- Stack: Removing unneeded children logic used to calculate classnames.
+- Use button element for Tile when there is no href
+- Bundle improvement for Tile click fix
+- Use CSS object-fit in the Image component in capable browsers
+
+## 6.51.1
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Add typing helpers missed in #7711.
+
+## 6.51.0
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Minor changes
+
+- Introduce tokens for vertical variant of Persona
+
+### Patches
+
+- Add helper return types to mitigate TS function return type widening.
 
 ## 6.50.7
 Thu, 17 Jan 2019 13:34:42 GMT

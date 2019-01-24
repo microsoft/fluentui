@@ -212,6 +212,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           theme,
           className,
           isFocused,
+          disabled,
           inputClassName: inputProps && inputProps.className
         })
       : {

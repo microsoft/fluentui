@@ -15,11 +15,15 @@ export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
       }
     },
     closeButton: {
-      color: semanticColors.controlOutline,
+      color: semanticColors.bodyText,
       selectors: {
         '&:hover': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: semanticColors.controlOutlineHovered
+          color: semanticColors.bodyText
+        },
+        '&:active': {
+          backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
+          color: semanticColors.bodyText
         }
       }
     },

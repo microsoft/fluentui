@@ -2,6 +2,104 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.51.2",
+      "tag": "@uifabric/experiments_v6.51.2",
+      "date": "Wed, 23 Jan 2019 22:53:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Removing unneeded children logic used to calculate classnames.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "5492bcf5201331106aa4ae712d245a879d261fe7"
+          },
+          {
+            "comment": "Use button element for Tile when there is no href",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "86006b9b0a6521ef5631227bd5cf39f121c18aba"
+          },
+          {
+            "comment": "Bundle improvement for Tile click fix",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "56dc51feb8b0e25000ce37efc6db25a662ada1df"
+          },
+          {
+            "comment": "Use CSS object-fit in the Image component in capable browsers",
+            "author": "Mathieu 'p01' Henri <mathieu@p01.org>",
+            "commit": "dffc46f4917a381eb75cccc81b5eb89c5c3c9af7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.1 <1.0.0` to `>=0.1.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.0 <7.0.0` to `>=6.15.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.51.1",
+      "tag": "@uifabric/experiments_v6.51.1",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add typing helpers missed in #7711.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2e3bdf997b10aad7afb88e462dc929a799085292"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.0 <1.0.0` to `>=0.1.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.51.0",
+      "tag": "@uifabric/experiments_v6.51.0",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add helper return types to mitigate TS function return type widening.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6913e7757d8a500e483845f787be0fb5e4543c0d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Introduce tokens for vertical variant of Persona",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "25f0bf7f3e368a2519e7ef2c66aee82c8431900b"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Stack: Updating 'types' comments to meet standard.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "5be6c187ed66b19966cb93415f909710b0a52539"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.2 <7.0.0` to `>=6.11.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.7",
       "tag": "@uifabric/experiments_v6.50.7",
       "date": "Thu, 17 Jan 2019 13:34:42 GMT",

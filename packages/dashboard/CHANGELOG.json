@@ -2,6 +2,99 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.45.0",
+      "tag": "@uifabric/dashboard_v0.45.0",
+      "date": "Wed, 23 Jan 2019 22:53:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: add with analytics handler",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a88d86c14e3dc7780a4977ee197390caad8c2c2e"
+          },
+          {
+            "comment": "Update README.md to fix title and link to Card component",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "641d41a0f6d08f91ee1854002e7e8afc0907d7a4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add composite list common control component",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "c6f10824a1dcc15778b774d6658993f737acf570"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.1 <7.0.0` to `>=6.51.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.44.0",
+      "tag": "@uifabric/dashboard_v0.44.0",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove extra hidden elements in gridList when gridList is empty",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "ae308bb5173a06e9c537b48bfcb07deaac7aa378"
+          },
+          {
+            "comment": "add focus border for thumbnailList ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "1b24b5993ab5e921b389080aefdc9ad900b1a50e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add common Detail-Panel component",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "9ba881bf7f306d2af4665b5402069edc4e3a8d46"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.5",
+      "tag": "@uifabric/dashboard_v0.43.5",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx",
+            "author": "VamshidharReddyEnumula <vamshidharenumula@gmail.com>",
+            "commit": "4c1197ee90b6b91237b57adc041f4e2b08bbaa81"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.2 <7.0.0` to `>=6.11.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.7 <7.0.0` to `>=6.51.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.43.4",
       "tag": "@uifabric/dashboard_v0.43.4",
       "date": "Thu, 17 Jan 2019 13:34:42 GMT",

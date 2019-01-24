@@ -16,8 +16,8 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   return {
     circle: [
       {
-        paddingTop: '1px',
-        paddingLeft: '1px',
+        paddingTop: 1,
+        paddingLeft: 1,
         color: semanticColors.listBackground,
         backgroundColor: semanticColors.listBackground,
         borderColor: semanticColors.controlOutline,
@@ -42,20 +42,22 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
 
   return {
     root: {
-      borderTop: 'none'
+      borderTop: StyleConstants.borderNone
     },
     headerWrapper: {
       selectors: {
         '.ms-DetailsHeader': {
           borderColor: semanticColors.variantBorder,
           textTransform: 'uppercase',
-          borderTop: 'none',
+          borderTop: StyleConstants.borderNone,
           selectors: {
             '.ms-DetailsHeader-cellTitle': {
               backgroundColor: semanticColors.listBackground,
               borderRightWidth: StyleConstants.borderWidth,
               borderRightStyle: StyleConstants.borderSolid,
-              borderRightColor: semanticColors.listBackground
+              borderRightColor: semanticColors.listBackground,
+              fontSize: FontSizes.size10,
+              fontWeight: 700
             },
             ':hover .ms-DetailsHeader-cellTitle': {
               borderRightWidth: StyleConstants.borderWidth,

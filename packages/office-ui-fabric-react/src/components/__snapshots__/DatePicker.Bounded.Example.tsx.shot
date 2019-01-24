@@ -52,6 +52,12 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
               padding-top: 0px;
               position: relative;
             }
+            & input[readonly] {
+              cursor: pointer;
+            }
+            & input::-ms-clear {
+              display: none;
+            }
       >
         <div
           className=
