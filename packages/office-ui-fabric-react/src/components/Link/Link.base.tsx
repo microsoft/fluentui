@@ -76,10 +76,10 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           target,
           href,
+          tabIndex: disabled ? -1 : 0,
           ...restProps
         };
       }
-
       // Remove the target and href props for non anchor elements
       return { ...restProps, disabled };
     }

@@ -20,14 +20,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         color: semanticColors.link,
         outline: 'none',
         fontSize: 'inherit',
-        fontWeight: 'inherit',
-        selectors: {
-          [`.${IsFocusVisibleClassName} &:focus`]: {
-            // Can't use getFocusStyle because it doesn't support wrapping links
-            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
-            outline: `1px solid ${theme.palette.neutralSecondary}`
-          }
-        }
+        fontWeight: 'inherit'
       },
       isButton && {
         background: 'none',
@@ -82,7 +75,10 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
               }
             }
           },
-          '&:focus': {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            // Can't use getFocusStyle because it doesn't support wrapping links
+            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
+            outline: `1px solid ${theme.palette.neutralSecondary}`,
             color: semanticColors.link
           }
         }
