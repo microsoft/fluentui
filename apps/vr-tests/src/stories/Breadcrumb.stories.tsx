@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps, Keys } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Breadcrumb } from 'office-ui-fabric-react';
@@ -9,7 +9,7 @@ storiesOf('Breadcrumb', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
-      steps={new Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript("document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')")
         .executeScript("document.getElementsByClassName('ms-Breadcrumb-overflowButton')[0].focus()")
