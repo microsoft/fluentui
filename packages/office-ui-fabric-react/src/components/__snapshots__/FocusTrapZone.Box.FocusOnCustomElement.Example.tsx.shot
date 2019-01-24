@@ -282,7 +282,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               user-select: text;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              outline: 1px solid #666666;
+              box-shadow: 0 0 0 1px black inset;
             }
             @media screen and (-ms-high-contrast: white-on-black){& {
               color: #FFFF00;

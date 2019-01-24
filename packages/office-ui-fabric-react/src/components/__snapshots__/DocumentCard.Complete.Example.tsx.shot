@@ -138,7 +138,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px black inset;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -210,7 +210,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px black inset;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -282,7 +282,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px black inset;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
