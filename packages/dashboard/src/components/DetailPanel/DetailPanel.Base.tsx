@@ -15,6 +15,7 @@ import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { _isReactComponent } from './Utils';
 import { DetailPanelPivotBody } from './Body/DetailPanelPivotBody';
 import { ConfirmationResult } from './Body/ConfirmationResult';
+import { shallowCompare } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IMainBodyStates {
   pageReady: boolean;
@@ -154,6 +155,13 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
           currentL2Id: undefined,
           messageBanner: undefined,
           actionBar: mainActionBar
+        });
+      }
+    } else {
+      // update main content
+      if (!shallowCompare(this.props.mainContent, _prevProps.mainContent)) {
+        this.setState({
+          contentElement: this._getMainContent()
         });
       }
     }
