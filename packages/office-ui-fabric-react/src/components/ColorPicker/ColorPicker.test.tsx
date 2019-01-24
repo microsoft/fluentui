@@ -40,7 +40,7 @@ describe('ColorPicker', () => {
   });
 
   it('calls onColorChange', () => {
-    let color = '#FFFFFFs';
+    let color = '#FFFFFF';
     let newColorObject: IColor | undefined;
     const onColorChanged = (str: string, colorObject: IColor): void => {
       color = str;
