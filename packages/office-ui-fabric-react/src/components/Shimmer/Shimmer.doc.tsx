@@ -15,10 +15,8 @@ const ShimmerStylingExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 
 const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
-// TODO: uncomment codepen example once exampleData support is checked in
-
 const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
-// const ShimmerApplicationExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Application.Example.Codepen.txt') as string;
+const ShimmerApplicationExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Application.Example.Codepen.txt') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
@@ -43,7 +41,7 @@ export const ShimmerPageProps: IDocPageProps = {
     {
       title: 'Shimmered DetailsList simulating loading data asynchronously',
       code: ShimmerApplicationExampleCode,
-      // codepenJS: ShimmerApplicationExampleCodepen,
+      codepenJS: ShimmerApplicationExampleCodepen,
       view: <ShimmerApplicationExample />
     },
     {

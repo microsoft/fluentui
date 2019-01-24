@@ -5,15 +5,25 @@ import {
   LoadingTheme,
   IDetailPanelErrorResult,
   IDetailPanelActionBarProps,
-  IDetailPanelActionResult
+  IDetailPanelActionResult,
+  IDetailPanelAnalytics
 } from '../DetailPanel.types';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
-type DetailPanelActionBarProps = IDetailPanelActionBarProps & IDetailPanelBaseCommonAction;
+type DetailPanelActionBarProps = IDetailPanelActionBarProps & IDetailPanelBaseCommonAction & IDetailPanelAnalytics;
 
 const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActionBarProps) => {
+  const _onClickAnalyticsHandler = (onCallBack: () => void, componentType: string, componentProps: {}) => () => {
+    const { analyticsHandler } = props;
+    if (analyticsHandler) {
+      analyticsHandler(componentType, 'click', componentProps);
+    }
+    onCallBack();
+  };
+
   const _wrapLoadingAnimation = (
     onCallBack: FunctionCallback<IDetailPanelActionResult | void>,
     primary: boolean,
@@ -57,34 +67,38 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
   };
 
   const _renderElement = () => {
-    const {
-      primaryButtonText,
-      onPrimaryAction,
-      primaryActionInlineSpinner,
-      onPrimaryActionMessage,
-      secondaryButtonText,
-      onSecondaryAction,
-      secondaryActionInlineSpinner,
-      onSecondaryActionMessage,
-      linkHref,
-      linkText,
-      onLinkAction
-    } = props;
+    const { primaryButton, secondaryButton, linkButton } = props;
     return (
       <>
-        {primaryButtonText && onPrimaryAction && (
-          <PrimaryButton onClick={_wrapLoadingAnimation(onPrimaryAction, true, onPrimaryActionMessage, primaryActionInlineSpinner)}>
-            {primaryButtonText}
+        {primaryButton && primaryButton.buttonText && primaryButton.onAction && (
+          <PrimaryButton
+            onClick={_onClickAnalyticsHandler(
+              _wrapLoadingAnimation(primaryButton.onAction, true, primaryButton.onActionMessage, primaryButton.inlineSpinner),
+              'primaryButton',
+              primaryButton
+            )}
+          >
+            {primaryButton.buttonText}
           </PrimaryButton>
         )}
-        {secondaryButtonText && onSecondaryAction && (
-          <DefaultButton onClick={_wrapLoadingAnimation(onSecondaryAction, false, onSecondaryActionMessage, secondaryActionInlineSpinner)}>
-            {secondaryButtonText}
+        {secondaryButton && secondaryButton.buttonText && secondaryButton.onAction && (
+          <DefaultButton
+            onClick={_onClickAnalyticsHandler(
+              _wrapLoadingAnimation(secondaryButton.onAction, false, secondaryButton.onActionMessage, secondaryButton.inlineSpinner),
+              'secondaryButton',
+              secondaryButton
+            )}
+          >
+            {secondaryButton.buttonText}
           </DefaultButton>
         )}
-        {linkText && (
-          <Link href={linkHref} target={'_blank'} onClick={onLinkAction}>
-            {linkText}
+        {linkButton && linkButton.linkText && (
+          <Link
+            href={linkButton.linkHref}
+            target={linkButton.linkTarget ? linkButton.linkTarget : '_blank'}
+            onClick={linkButton.linkAction}
+          >
+            {linkButton.linkText}
           </Link>
         )}
       </>
@@ -94,4 +108,6 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
   return _renderElement();
 };
 
-export { actionBar as ActionBar, DetailPanelActionBarProps };
+const ActionBar = withAnalyticsHandler<DetailPanelActionBarProps>(actionBar);
+
+export { ActionBar, DetailPanelActionBarProps };

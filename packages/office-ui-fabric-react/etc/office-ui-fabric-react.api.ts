@@ -7361,6 +7361,39 @@ interface IDocumentCardDetailsStyles {
 }
 
 // @public (undocumented)
+interface IDocumentCardImage {
+}
+
+// @public (undocumented)
+interface IDocumentCardImageProps extends IBaseProps<{}> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardImage>;
+  height?: number;
+  iconProps?: IIconProps;
+  imageFit?: ImageFit;
+  imageSrc?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardImageStyleProps, IDocumentCardImageStyles>;
+  theme?: ITheme;
+  width?: number;
+}
+
+// @public (undocumented)
+interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {
+}
+
+// @public (undocumented)
+interface IDocumentCardImageStyles {
+  // (undocumented)
+  centeredIcon: IStyle;
+  // (undocumented)
+  centeredIconWrapper: IStyle;
+  // (undocumented)
+  cornerIcon: IStyle;
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
 interface IDocumentCardLocation {
 }
 
@@ -7474,7 +7507,7 @@ interface IDocumentCardPreviewStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
+interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLDivElement> {
   // @deprecated
   accentColor?: string;
   children?: React.ReactNode;
@@ -12721,6 +12754,7 @@ module ZIndexes {
 // WARNING: Unsupported export: DocumentCardDetails
 // WARNING: Unsupported export: DocumentCardLocation
 // WARNING: Unsupported export: DocumentCardPreview
+// WARNING: Unsupported export: DocumentCardImage
 // WARNING: Unsupported export: DocumentCardTitle
 // WARNING: Unsupported export: DocumentCardLogo
 // WARNING: Unsupported export: DocumentCardStatus

@@ -13,7 +13,8 @@ import {
   IDetailInfoTileProps,
   IQuickAction,
   IDetailPanelConfirmationResultProps,
-  ConfirmationStatus
+  ConfirmationStatus,
+  IActionButton
 } from '../DetailPanel.types';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -79,6 +80,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           }}
           mainHeader={header}
           mainContent={this.getMainContent()}
+          // mainActionBar={this._onGetL2ActionBar('')}
           onDetailPanelDimiss={() => {
             this.setState({ show: false, currentL2Id: undefined });
           }}
@@ -90,6 +92,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           onGetL2Content={this._onGetL2Content}
           onGetL2ActionBar={this._onGetL2ActionBar}
           onGetLoadingAnimation={this._onGetLoadingAnimation}
+          analyticsHandler={this._analyticsLogger}
         />
       );
     } else {
@@ -104,6 +107,12 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
       );
     }
   }
+
+  private _analyticsLogger = (componentType: string, actionType: string, props: {}, payload: {}) => {
+    console.log(`%c${componentType} ---- ${actionType}`, 'background: #222; color: #bada55');
+    console.log(props);
+    console.log(payload);
+  };
 
   private getTiles() {
     return [
@@ -165,23 +174,29 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           headerText: 'Details',
           content: this.getTiles(),
           actionBar: {
-            primaryButtonText: 'Primary Detail',
-            onPrimaryAction: () => {
-              alert('Primary detail');
-            },
-            secondaryButtonText: 'Secondary Detail',
-            onSecondaryAction: () => {
-              return Promise.reject({
-                messageBannerSetting: {
-                  message: 'test message',
-                  onDismissAction: () => {
-                    alert('dismissed');
+            primaryButton: {
+              buttonText: 'Primary detail',
+              onAction: () => {
+                alert('primary detail');
+              }
+            } as IActionButton,
+            secondaryButton: {
+              buttonText: 'Secondary Detail',
+              onAction: () => {
+                return Promise.reject({
+                  messageBannerSetting: {
+                    message: 'test message',
+                    onDismissAction: () => {
+                      alert('dismissed');
+                    }
                   }
-                }
-              });
+                });
+              }
             },
-            linkText: 'Link to Microsoft',
-            linkHref: 'https://www.microsoft.com'
+            linkButton: {
+              linkText: 'Link to Microsoft',
+              linkHref: 'https://www.microsoft.com'
+            }
           } as IDetailPanelActionBarProps
         } as IDetailPanelPivotBodyItem,
         {
@@ -345,26 +360,44 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
 
   private _onGetL2ActionBar = (l2Id: string) => {
     let actionBar: IDetailPanelActionBarProps = {
-      primaryButtonText: `Primary ${l2Id}`,
-      onPrimaryAction: () => {
-        alert(l2Id);
+      primaryButton: {
+        buttonText: `Primary ${l2Id}`,
+        onAction: () => {
+          alert(l2Id);
+        }
       }
     };
 
     if (l2Id === 'cat') {
-      actionBar.onPrimaryAction = this._onDelaySubmit(false);
-      actionBar.secondaryButtonText = 'Cat 2nd';
-      actionBar.onPrimaryActionMessage = 'Cat is meowing';
-      actionBar.onSecondaryAction = this._onDelaySubmit(false, true);
-      actionBar.secondaryActionInlineSpinner = true;
+      const pAction = {
+        buttonText: 'Cat primary',
+        onAction: this._onDelaySubmit(false),
+        onPrimaryActionMessage: 'Cat is meowing'
+      } as IActionButton;
+
+      const sAction = {
+        buttonText: 'Cat secondary',
+        onAction: this._onDelaySubmit(false, true),
+        inlineSpinner: true
+      } as IActionButton;
+      actionBar.primaryButton = pAction;
+      actionBar.secondaryButton = sAction;
     }
 
     if (l2Id === 'dog') {
-      actionBar.onPrimaryAction = this._onDelaySubmit(true);
-      actionBar.secondaryButtonText = 'Dog 2nd';
-      actionBar.onPrimaryActionMessage = 'Dog is barking';
-      actionBar.onSecondaryAction = this._onDelaySubmit(false, true);
-      actionBar.secondaryActionInlineSpinner = true;
+      const pAction = {
+        buttonText: 'Dog primary',
+        onAction: this._onDelaySubmit(true),
+        onPrimaryActionMessage: 'Dog is barking'
+      } as IActionButton;
+
+      const sAction = {
+        buttonText: 'Dog secondary',
+        onAction: this._onDelaySubmit(false, true),
+        inlineSpinner: true
+      } as IActionButton;
+      actionBar.primaryButton = pAction;
+      actionBar.secondaryButton = sAction;
     }
 
     return actionBar;

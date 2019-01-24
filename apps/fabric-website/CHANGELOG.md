@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Jan 2019 22:53:13 GMT and should not be manually modified.
+
+## 6.8.5
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- DetailsList examples: Fix copy paste error causing infinite loop
 
 ## 6.8.4
 Mon, 21 Jan 2019 13:36:01 GMT

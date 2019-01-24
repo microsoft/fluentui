@@ -2,6 +2,46 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.51.2",
+      "tag": "@uifabric/experiments_v6.51.2",
+      "date": "Wed, 23 Jan 2019 22:53:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Removing unneeded children logic used to calculate classnames.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "5492bcf5201331106aa4ae712d245a879d261fe7"
+          },
+          {
+            "comment": "Use button element for Tile when there is no href",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "86006b9b0a6521ef5631227bd5cf39f121c18aba"
+          },
+          {
+            "comment": "Bundle improvement for Tile click fix",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "56dc51feb8b0e25000ce37efc6db25a662ada1df"
+          },
+          {
+            "comment": "Use CSS object-fit in the Image component in capable browsers",
+            "author": "Mathieu 'p01' Henri <mathieu@p01.org>",
+            "commit": "dffc46f4917a381eb75cccc81b5eb89c5c3c9af7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.1 <1.0.0` to `>=0.1.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.0 <7.0.0` to `>=6.15.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.51.1",
       "tag": "@uifabric/experiments_v6.51.1",
       "date": "Mon, 21 Jan 2019 13:36:01 GMT",

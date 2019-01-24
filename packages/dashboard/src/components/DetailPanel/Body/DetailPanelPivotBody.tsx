@@ -1,14 +1,25 @@
 import * as React from 'react';
-import { IDetailPanelBaseCommonAction, IDetailPanelPivotBodyProps, IDetailPanelPivotBodyItem } from '../DetailPanel.types';
+import {
+  IDetailPanelBaseCommonAction,
+  IDetailPanelPivotBodyProps,
+  IDetailPanelPivotBodyItem,
+  IDetailPanelAnalytics
+} from '../DetailPanel.types';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { DetailPanelPivotItem } from './DetailPanelPivotItem';
+import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
-type DetailPanelPivotBodyProps = IDetailPanelPivotBodyProps & IDetailPanelBaseCommonAction;
+type DetailPanelPivotBodyProps = IDetailPanelPivotBodyProps & IDetailPanelBaseCommonAction & IDetailPanelAnalytics;
 
 const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: DetailPanelPivotBodyProps) => {
   const _onPivotItemClick = (item?: PivotItem) => {
     if (item) {
-      const { onPivotLinkClick } = props;
+      const { onPivotLinkClick, analyticsHandler } = props;
+
+      if (analyticsHandler) {
+        analyticsHandler(`pivotTab`, 'click', props, { key: item.props.itemKey });
+      }
+
       if (onPivotLinkClick) {
         onPivotLinkClick(item.props.itemKey!);
       }
@@ -41,4 +52,6 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
   return _renderElement();
 };
 
-export { detailPanelPivotBody as DetailPanelPivotBody, DetailPanelPivotBodyProps };
+const DetailPanelPivotBody = withAnalyticsHandler<DetailPanelPivotBodyProps>(detailPanelPivotBody);
+
+export { DetailPanelPivotBody, DetailPanelPivotBodyProps };

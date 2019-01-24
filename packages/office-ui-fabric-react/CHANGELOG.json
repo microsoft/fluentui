@@ -2,6 +2,86 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.129.2",
+      "tag": "office-ui-fabric-react_v6.129.2",
+      "date": "Wed, 23 Jan 2019 22:53:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update DetailsList examples to have codepens",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0da8971fa86ca62e9967529288a77d78faea20d6"
+          },
+          {
+            "comment": "DatePicker: adds missing className attribute to the `TextField` of the control.",
+            "author": "phtucker <46788634+phtucker@users.noreply.github.com>",
+            "commit": "5c92e245b4078b01e1532dc3b88d8b257460d17d"
+          },
+          {
+            "comment": "Dispose DragDropHelper in DetailsHeader to prevent memory leaks",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "de693617dde18b01a1717d3d02261e367661540a"
+          },
+          {
+            "comment": "Coachmark: Fix component to open contents on mouseover",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "99a24d9cc1039a16e0b2e7589af5023145e1532d"
+          },
+          {
+            "comment": "Update GroupedList and HoverCard examples to have codepens",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "9da1b2d24a988e081993e81061b9c8c74fef4167"
+          },
+          {
+            "comment": "Added a simpler DocumentCardImage component for use in the DocumentCard component",
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "3075d73763e2b694b25b820f877939a05010063f"
+          },
+          {
+            "comment": "ContextualMenu: Fixes a layout bug with split menu items in IE11",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "2dedb5d23d4cd536df33b30b9b4b6bada137d253"
+          },
+          {
+            "comment": "ContextualMenu: Add menu role for accessibility",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "cd4f8570f67102d166e147e9c5539020615c7e32"
+          },
+          {
+            "comment": "Use CSS object-fit in the Image component in capable browsers",
+            "author": "Mathieu 'p01' Henri <mathieu@p01.org>",
+            "commit": "dffc46f4917a381eb75cccc81b5eb89c5c3c9af7"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix master snapshots due to merge of #7734.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "72ec5786aa1772eecc8499cfc6ac45085bb6c100"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.0 <7.0.0` to `>=6.15.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.129.1",
+      "tag": "office-ui-fabric-react_v6.129.1",
+      "date": "Tue, 22 Jan 2019 13:34:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DocumentCard: added native properties to the root element",
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "b4f39e7fa4349859fb6ab8ff9e2842f01bfa933c"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.129.0",
       "tag": "office-ui-fabric-react_v6.129.0",
       "date": "Mon, 21 Jan 2019 13:36:01 GMT",

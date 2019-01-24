@@ -312,61 +312,46 @@ export interface IDetailPanelActionResult {
   confirmationPage?: IDetailPanelConfirmationResultProps;
 }
 
+export interface IActionButton {
+  /**
+   * Button text
+   */
+  buttonText?: string;
+
+  /**
+   * Call back on button click
+   */
+  onAction?: FunctionCallback<IDetailPanelActionResult | void>;
+
+  /**
+   * Use inline spinner on click submitting
+   */
+  inlineSpinner?: boolean;
+
+  /**
+   * Message showing on submitting
+   */
+  onActionMessage?: string;
+}
+
 export interface IDetailPanelActionBarProps {
   /**
-   * Primary button text
+   * Primary button props
+   * @type {IActionButton}
    */
-  primaryButtonText?: string;
+  primaryButton?: IActionButton;
 
   /**
-   * Secondary button text
+   * Secondary button props
+   * @type {IActionButton}
    */
-  secondaryButtonText?: string;
+  secondaryButton?: IActionButton;
 
   /**
-   * Link href for the link button
+   * Link props
+   * @type {IDetailPanelLinkItem}
    */
-  linkHref?: string;
-
-  /**
-   * Text for the link button
-   */
-  linkText?: string;
-
-  /**
-   * Call back on secondary button click
-   */
-  onSecondaryAction?: () => FlatOrPromise<IDetailPanelActionResult | void>;
-
-  /**
-   * Call back on primary button click
-   */
-  onPrimaryAction?: () => FlatOrPromise<IDetailPanelActionResult | void>;
-
-  /**
-   * Call back on link button click
-   */
-  onLinkAction?: () => void;
-
-  /**
-   * Use inline spinner on primary click submitting
-   */
-  primaryActionInlineSpinner?: boolean;
-
-  /**
-   * Use inline spinner on secondary click submitting
-   */
-  secondaryActionInlineSpinner?: boolean;
-
-  /**
-   * Message showing on primary submitting
-   */
-  onPrimaryActionMessage?: string;
-
-  /**
-   * Message showing on secondary submitting
-   */
-  onSecondaryActionMessage?: string;
+  linkButton?: IDetailPanelLinkItem;
 }
 
 export interface IDetailInfoTileProps {
@@ -459,7 +444,7 @@ export interface IDetailPanelConfirmationStatusText {
   items?: string[];
 }
 
-export interface IDetailPanelConfirmationLinkItem {
+export interface IDetailPanelLinkItem {
   /**
    * Link text
    */
@@ -490,7 +475,7 @@ export interface IDetailPanelConfirmationLinks {
   /**
    * Link details
    */
-  links: IDetailPanelConfirmationLinkItem[];
+  links: IDetailPanelLinkItem[];
 }
 
 export interface IDetailPanelConfirmationResultProps {
@@ -525,4 +510,8 @@ export interface IDetailPanelConfirmationResultProps {
   actionBar?: IDetailPanelActionBarProps;
 }
 
-export interface IDetailPanelProps extends IDetailPanelBaseProps {}
+export interface IDetailPanelAnalytics {
+  analyticsHandler?: (componentType: string, actionType: string, props: {}, payload?: {}) => void;
+}
+
+export interface IDetailPanelProps extends IDetailPanelBaseProps, IDetailPanelAnalytics {}

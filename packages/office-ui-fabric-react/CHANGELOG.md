@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Jan 2019 22:53:13 GMT and should not be manually modified.
+
+## 6.129.2
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- Update DetailsList examples to have codepens
+- DatePicker: adds missing className attribute to the `TextField` of the control.
+- Dispose DragDropHelper in DetailsHeader to prevent memory leaks
+- Coachmark: Fix component to open contents on mouseover
+- Update GroupedList and HoverCard examples to have codepens
+- Added a simpler DocumentCardImage component for use in the DocumentCard component
+- ContextualMenu: Fixes a layout bug with split menu items in IE11
+- ContextualMenu: Add menu role for accessibility
+- Use CSS object-fit in the Image component in capable browsers
+
+## 6.129.1
+Tue, 22 Jan 2019 13:34:38 GMT
+
+### Patches
+
+- DocumentCard: added native properties to the root element
 
 ## 6.129.0
 Mon, 21 Jan 2019 13:36:01 GMT

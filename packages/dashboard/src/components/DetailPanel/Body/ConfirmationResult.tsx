@@ -5,7 +5,7 @@ import {
   ConfirmationStatus,
   IDetailPanelConfirmationStatusText,
   IDetailPanelConfirmationLinks,
-  IDetailPanelConfirmationLinkItem
+  IDetailPanelLinkItem
 } from '../DetailPanel.types';
 import { detailPanelConfirmationStyles } from '../DetailPanel.styles';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -71,7 +71,7 @@ const confirmationResult: React.SFC<IDetailPanelConfirmationResultProps> = (prop
                 <div className={css.linkListTitle}>{_.title}</div>
                 {_.links && (
                   <ul className={css.linkListItems}>
-                    {_.links.map((__: IDetailPanelConfirmationLinkItem, ii: number) => {
+                    {_.links.map((__: IDetailPanelLinkItem, ii: number) => {
                       return (
                         <li key={`${i}_${ii}`}>
                           <Link target={__.linkHref} href={__.linkHref} onClick={__.linkAction}>
