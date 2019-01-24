@@ -29,7 +29,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         {(keytipAttributes: any): JSX.Element => (
           <RootType
             {...keytipAttributes}
-            {...this._removeInvalidPropsForRootType(RootType, this.props)}
+            {...this._adjustPropsForRootType(RootType, this.props)}
             className={classNames.root}
             onClick={this._onClick}
             ref={this._link}
@@ -60,7 +60,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     }
   };
 
-  private _removeInvalidPropsForRootType(
+  private _adjustPropsForRootType(
     RootType: string | React.ComponentClass | React.StatelessComponent,
     props: ILinkProps & { getStyles?: any }
   ): Partial<ILinkProps> {
@@ -80,7 +80,16 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         };
       }
 
-      // Remove the target and href props for non anchor elements
+      // Add the type='button' prop for button elements
+      if (RootType === 'button') {
+        return {
+          type: 'button',
+          disabled,
+          ...restProps
+        };
+      }
+
+      // Remove the target and href props for all other non anchor elements
       return { ...restProps, disabled };
     }
 

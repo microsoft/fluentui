@@ -303,6 +303,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               color: #0078d4;
             }
         onClick={[Function]}
+        type="button"
       >
         Hyperlink inside FocusTrapZone
       </button>
