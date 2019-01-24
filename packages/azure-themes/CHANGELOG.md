@@ -1,6 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 23 Jan 2019 22:53:12 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Jan 2019 13:36:17 GMT and should not be manually modified.
+
+## 0.1.3
+Thu, 24 Jan 2019 13:36:17 GMT
+
+### Patches
+
+- Dropdown / ComboBox input size tweaks, IconButton background changed to transparent
 
 ## 0.1.2
 Wed, 23 Jan 2019 22:53:12 GMT
