@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/azure-themes",
+      "comment": "Minor color adjustments to dialog window close button.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/azure-themes",
+  "email": "rykelly@microsoft.com"
+}
