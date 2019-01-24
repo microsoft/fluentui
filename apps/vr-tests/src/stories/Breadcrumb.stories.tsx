@@ -49,7 +49,6 @@ storiesOf('Breadcrumb', module)
           { text: 'This is link 5', key: 'l5', href: '#/examples/breadcrumb', isCurrentItem: true }
         ]}
         maxDisplayedItems={3}
-        ariaLabel={'Website breadcrumb'}
       />
     ),
     { rtl: true }
@@ -67,7 +66,6 @@ storiesOf('Breadcrumb', module)
           { text: 'This is folder 5', key: 'l5', onClick: () => {}, isCurrentItem: true }
         ]}
         maxDisplayedItems={3}
-        ariaLabel={'Website breadcrumb'}
       />
     ),
     { rtl: true }
