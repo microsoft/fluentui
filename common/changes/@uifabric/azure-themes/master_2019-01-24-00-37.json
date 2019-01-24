@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/azure-themes",
+      "comment": "Dropdown / ComboBox input size tweaks, IconButton background changed to transparent",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/azure-themes",
+  "email": "rykelly@microsoft.com"
+}
