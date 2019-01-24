@@ -1,7 +1,7 @@
-import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Layout, Layouts } from 'react-grid-layout-fabric';
 import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApiRefObject, ItemCallback } from 'react-grid-layout';
+import { DragApiRefObject, ItemCallback } from 'react-grid-layout-fabric';
 import { ICard, CardSize } from '../Card/Card.types';
 
 export interface IDashboardGridLayoutStyles {
