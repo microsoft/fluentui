@@ -116,6 +116,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Philippe Lampros
         </button>
@@ -185,6 +186,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           @Anđela Debeljak
         </button>
@@ -322,6 +324,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Lisha Refai
         </button>
@@ -468,6 +471,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Julian Arvidsson
         </button>
@@ -526,6 +530,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           PresentationTitle.pptx
         </button>
@@ -584,6 +589,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Destination Folder
         </button>

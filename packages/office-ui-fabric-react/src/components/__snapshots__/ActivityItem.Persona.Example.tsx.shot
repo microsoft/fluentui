@@ -191,6 +191,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Jack Howden
         </button>
@@ -480,6 +481,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Javiera Márquez
         </button>
@@ -538,6 +540,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Amelia Povalіy
         </button>
@@ -596,6 +599,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           SpreadsheetTitle.xlsx
         </button>
@@ -938,6 +942,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Robert Larsson
         </button>
@@ -996,6 +1001,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           2 others
         </button>
@@ -1394,6 +1400,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Jin Cheng
         </button>
@@ -1452,6 +1459,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           5 others
         </button>
