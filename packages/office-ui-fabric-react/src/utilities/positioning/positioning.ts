@@ -445,11 +445,12 @@ function _finalizeElementPosition(
   let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
 
   // if the element is closer to one side of the bounds than the other, flip the return edge to ensure it grows inwards
-  if (bounds) {
-    const flankingEdges = _getFlankingEdges(targetEdge);
-    const posDiff = _getRelativeEdgeDifference(elementRectangle, bounds, flankingEdges.positiveEdge);
-    const negDiff = _getRelativeEdgeDifference(elementRectangle, bounds, flankingEdges.negativeEdge);
-    returnEdge = Math.abs(posDiff) >= Math.abs(negDiff) ? flankingEdges.negativeEdge : flankingEdges.positiveEdge;
+  if (
+    bounds &&
+    Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge)) >
+      Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
+  ) {
+    returnEdge = returnEdge * -1;
   }
 
   returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
