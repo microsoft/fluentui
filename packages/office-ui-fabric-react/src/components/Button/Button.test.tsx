@@ -1,7 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
@@ -12,7 +10,7 @@ import { ActionButton } from './ActionButton/ActionButton';
 import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
-// import { IconButton } from "src";
+import { renderIntoDocument } from '../../common/testUtilities';
 
 const alertClicked = (): void => {
   /*noop*/
@@ -79,12 +77,6 @@ describe('Button', () => {
   });
 
   describe('DefaultButton', () => {
-    function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-      const component = ReactTestUtils.renderIntoDocument(element);
-      const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-      return renderedDOM as HTMLElement;
-    }
-
     it('can render without an onClick.', () => {
       const button = ReactTestUtils.renderIntoDocument<any>(<DefaultButton>Hello</DefaultButton>);
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;

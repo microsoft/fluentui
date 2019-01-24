@@ -6,6 +6,7 @@ import { mount } from 'enzyme';
 
 import { resetIds } from '../../Utilities';
 import { TextField } from './TextField';
+import { mockEvent } from '../../common/testUtilities';
 
 describe('TextField deprecated', () => {
   beforeAll(() => {
@@ -22,13 +23,6 @@ describe('TextField deprecated', () => {
   beforeEach(() => {
     resetIds();
   });
-
-  function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
-    const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: ReactTestUtils.SyntheticEventData = { target };
-
-    return event;
-  }
 
   it('renders with deprecated props affecting styling', () => {
     const component = renderer.create(<TextField addonString={'test addonString'} iconClass={'test-iconClass'} />);

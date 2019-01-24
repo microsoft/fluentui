@@ -1,6 +1,5 @@
 import { Promise } from 'es6-promise';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
@@ -10,6 +9,7 @@ import { resetIds } from '../../Utilities';
 import { TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
 import { ITextFieldStyles, ITextField } from './TextField.types';
+import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
 
 describe('TextField', () => {
   const textFieldRef = React.createRef<TextFieldBase>();
@@ -22,12 +22,6 @@ describe('TextField', () => {
     jest.useRealTimers();
   });
 
-  function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-    const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    return renderedDOM as HTMLElement;
-  }
-
   /**
    * Mounts the element attached to a child of document.body. This is primarily for tests involving
    * event handlers (which don't work right unless the element is attached).
@@ -36,13 +30,6 @@ describe('TextField', () => {
     const parent = document.createElement('div');
     document.body.appendChild(parent);
     return mount(element, { attachTo: parent });
-  }
-
-  function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
-    const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: ReactTestUtils.SyntheticEventData = { target };
-
-    return event;
   }
 
   function delay(millisecond: number): Promise<void> {

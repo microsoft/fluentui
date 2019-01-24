@@ -889,13 +889,146 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
   <div
     style={
       Object {
-        "backgroundColor": "#ffffff",
-        "border": "1px solid #c8c6c4",
-        "height": 100,
-        "margin": 16,
-        "width": 100,
+        "display": "flex",
+        "flexDirection": "column",
       }
     }
-  />
+  >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "border": "1px solid #c8c6c4",
+          "height": 100,
+          "margin": 16,
+          "width": 100,
+        }
+      }
+    />
+    <div
+      className=
+          ms-Toggle
+          is-enabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
+          }
+    >
+      <label
+        className=
+            ms-Label
+            ms-Toggle-label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        htmlFor="Toggle10"
+      >
+        Hide alpha slider
+      </label>
+      <div
+        className=
+            ms-Toggle-innerContainer
+            {
+              display: inline-flex;
+              position: relative;
+            }
+      >
+        <button
+          aria-checked={false}
+          checked={false}
+          className=
+              ms-Toggle-background
+              {
+                align-items: center;
+                background: #ffffff;
+                border-color: #666666;
+                border-radius: 1em;
+                border-style: solid;
+                border-width: 1px;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: flex;
+                font-size: 20px;
+                height: 1em;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: .2em;
+                padding-right: .2em;
+                padding-top: 0;
+                position: relative;
+                transition: all 0.1s ease;
+                width: 2.2em;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -2px;
+                content: "";
+                left: -2px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -2px;
+                top: -2px;
+                z-index: 1;
+              }
+              &:hover {
+                border-color: #333333;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+              }
+          data-is-focusable={true}
+          id="Toggle10"
+          onChange={[Function]}
+          onClick={[Function]}
+          role="switch"
+          type="button"
+        >
+          <div
+            className=
+                ms-Toggle-thumb
+                {
+                  background-color: #333333;
+                  border-color: transparent;
+                  border-radius: .5em;
+                  border-style: solid;
+                  border-width: .28em;
+                  box-sizing: border-box;
+                  height: .5em;
+                  transition: all 0.1s ease;
+                  width: .5em;
+                }
+          />
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 `;
