@@ -75,6 +75,7 @@ exports[`Panel renders Panel correctly 1`] = `
       }
     >
       <div
+        aria-hidden={false}
         className=
             ms-Panel
             is-open

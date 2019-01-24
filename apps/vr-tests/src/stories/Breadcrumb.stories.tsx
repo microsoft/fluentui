@@ -11,12 +11,16 @@ storiesOf('Breadcrumb', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')")
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')"
+        )
         .executeScript("document.getElementsByClassName('ms-Breadcrumb-overflowButton')[0].focus()")
         .snapshot('overflowButtonFocus', { cropTo: '.testWrapper' })
         .executeScript("document.getElementsByClassName('ms-Breadcrumb-itemLink')[0].focus()")
         .snapshot('itemLinkFocus', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')")
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')"
+        )
         .hover('.ms-Breadcrumb-overflowButton')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Breadcrumb-overflowButton') // opening the dropdown

@@ -4,6 +4,18 @@ import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
+  return {
+    subComponentStyles: {
+      callout: {
+        root: {
+          boxShadow: Depths.depth16
+        }
+      }
+    }
+  };
+};
+
+export const TeachingBubbleContentStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
   const { hasCondensedHeadline, hasSmallHeadline, theme } = props;
   const { palette } = theme;
 
@@ -29,13 +41,6 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       selectors: {
         '&:hover': {
           color: palette.black
-        }
-      }
-    },
-    subComponentStyles: {
-      callout: {
-        root: {
-          boxShadow: Depths.depth16
         }
       }
     }

@@ -192,6 +192,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
         }
       >
         <div
+          aria-hidden={false}
           className=
               ms-Panel
               ms-Panel--hasCloseButton

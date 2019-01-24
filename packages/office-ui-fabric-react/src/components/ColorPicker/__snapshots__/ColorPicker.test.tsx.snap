@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorPicker renders ColorPicker correctly 1`] = `
+exports[`ColorPicker renders correctly 1`] = `
 <div
   className=
       ms-ColorPicker
@@ -37,7 +37,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       onMouseDown={[Function]}
       style={
         Object {
-          "backgroundColor": "#ff0000",
+          "backgroundColor": "#0080ff",
           "minHeight": 220,
           "minWidth": 220,
         }
@@ -82,9 +82,9 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
         style={
           Object {
-            "backgroundColor": "#FFFFFF",
-            "left": "0%",
-            "top": "0%",
+            "backgroundColor": "#abcdef",
+            "left": "28%",
+            "top": "6%",
           }
         }
       />
@@ -136,7 +136,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
         style={
           Object {
-            "left": "0%",
+            "left": "58.4958217270195%",
           }
         }
       />
@@ -172,7 +172,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
         style={
           Object {
-            "background": "linear-gradient(to right, transparent 0, #ffffff 100%)",
+            "background": "linear-gradient(to right, transparent 0, #abcdef 100%)",
           }
         }
       />
@@ -360,7 +360,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="ffffff"
+                    value="abcdef"
                   />
                 </div>
               </div>
@@ -487,7 +487,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="255"
+                    value="171"
                   />
                 </div>
               </div>
@@ -614,7 +614,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="255"
+                    value="205"
                   />
                 </div>
               </div>
@@ -741,7 +741,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="255"
+                    value="239"
                   />
                 </div>
               </div>
