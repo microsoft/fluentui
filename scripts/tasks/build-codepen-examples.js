@@ -28,7 +28,7 @@ module.exports = function() {
   // Get the files inside each folder which match the example filename pattern
   /** @type {string[]} */
   const files = [].concat(
-    folders.map(folder => {
+    ...folders.map(folder => {
       return glob.sync(path.resolve(folder, 'src/components/**/examples/*Example*.tsx'));
     })
   );
