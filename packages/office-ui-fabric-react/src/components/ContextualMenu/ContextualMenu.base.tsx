@@ -10,6 +10,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+import { divProperties, getNativeProps } from '../../Utilities';
 
 import {
   assign,
@@ -601,9 +602,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const { itemProps } = item;
-
+    const divHtmlProperties = itemProps && getNativeProps(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} style={item.style}>
+      <div className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
