@@ -33,6 +33,9 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       selectors: {
         '::placeholder': {
           fontStyle: 'italic'
+        },
+        '::-ms-input-placeholder': {
+          fontStyle: 'italic'
         }
       }
     },
