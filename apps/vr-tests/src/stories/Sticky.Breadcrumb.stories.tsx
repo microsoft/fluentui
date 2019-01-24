@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import {
@@ -15,7 +15,7 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, IScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
@@ -91,23 +91,16 @@ interface IItem {
   test6: string;
 }
 
-export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
-  {},
-  {
-    items: {}[];
-  }
-  > {
-  private _scrollablePane = React.createRef<IScrollablePane>();
+export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {}> {
   private _selection: Selection;
+  private _items: IItem[];
 
   constructor(props: {}) {
     super(props);
 
-    const items: IItem[] = [];
-
-    // Populate with items for demos.
+    this._items = [];
     for (let i = 0; i < 100; i++) {
-      items.push({
+      this._items.push({
         key: i,
         test1: i === 0 ? lorem(7) : lorem(2),
         test2: lorem(2),
@@ -118,13 +111,10 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
       });
     }
 
-    this.state = {
-      items: items
-    };
+    this._selection = new Selection();
   }
 
   public render(): JSX.Element {
-    const { items } = this.state;
     const breadcrumbStyle = {
       root: [
         {
@@ -143,7 +133,10 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
         }}
       >
         <Fabric>
-          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '900px', border: '1px solid #edebe9' }}>
+          <ScrollablePane
+            scrollbarVisibility={ScrollbarVisibility.auto}
+            style={{ maxWidth: '900px', border: '1px solid #edebe9' }}
+          >
             <Sticky
               stickyPosition={StickyPositionType.Header}
               stickyBackgroundColor={getTheme().palette.white}
@@ -161,7 +154,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
             </Sticky>
             <MarqueeSelection selection={this._selection}>
               <DetailsList
-                items={items}
+                items={this._items}
                 columns={_columns}
                 setKey="set"
                 layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -172,7 +165,6 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
                 selectionPreservedOnEmptyClick={true}
                 ariaLabelForSelectionColumn="Toggle selection"
                 ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-                // tslint:disable-next-line:jsx-no-lambda
                 onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
               />
             </MarqueeSelection>
@@ -183,20 +175,25 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<
   }
 }
 
-function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
+function onRenderDetailsHeader(
+  props: IDetailsHeaderProps,
+  defaultRender?: IRenderFunction<IDetailsHeaderProps>
+): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
         ...props,
-        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost {...tooltipHostProps} />
+        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
+          <TooltipHost {...tooltipHostProps} />
+        )
       })}
     </Sticky>
   );
 }
 
-function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} >
+    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div style={{ display: 'inline-block' }}>
         <DetailsRow
           columns={props.columns}
@@ -219,24 +216,30 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
   );
 }
 
+const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0]";
+const cropTo = { cropTo: '.testWrapper' };
+
 storiesOf('Sticky breadcrumb and sticky details list header', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 5")
-        .snapshot('scroll down by a small amount so that the first row is still visible and the header becomes sticky', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
-        .snapshot('scroll down to the bottom', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
-        .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = 40")
-        .snapshot('scroll right', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
-        .snapshot('scroll down when horizontal scroll is non-zero', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
-        .snapshot('scroll back to the top when horizontal scroll is non-zero', { cropTo: '.testWrapper' })
+        .snapshot('default', cropTo)
+        .executeScript(`${getElement}.scrollTop = 5`)
+        .snapshot(
+          'scroll down by a small amount so that the first row is still visible and the header becomes sticky',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollTop = 99999`)
+        .snapshot('scroll down to the bottom', cropTo)
+        .executeScript(`${getElement}.scrollTop = 0`)
+        .snapshot('scroll up to the top', cropTo)
+        .executeScript(`${getElement}.scrollLeft = 40`)
+        .snapshot('scroll right', cropTo)
+        .executeScript(`${getElement}.scrollTop = 99999`)
+        .snapshot('scroll down when horizontal scroll is non-zero', cropTo)
+        .executeScript(`${getElement}.scrollTop = 0`)
+        .snapshot('scroll back to the top when horizontal scroll is non-zero', cropTo)
         .end()}
     >
       {story()}

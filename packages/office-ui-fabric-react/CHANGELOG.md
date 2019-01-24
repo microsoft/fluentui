@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 23 Jan 2019 22:53:13 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Jan 2019 13:36:17 GMT and should not be manually modified.
+
+## 6.129.3
+Thu, 24 Jan 2019 13:36:17 GMT
+
+### Patches
+
+- Add lang tag to the section header by getting the native props
+- Prevent the Tooltip's content from scrolling
 
 ## 6.129.2
 Wed, 23 Jan 2019 22:53:13 GMT

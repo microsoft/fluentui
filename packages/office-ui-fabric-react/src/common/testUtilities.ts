@@ -40,3 +40,8 @@ export function renderIntoDocument(element: React.ReactElement<any>): HTMLElemen
   const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
   return renderedDOM as HTMLElement;
 }
+
+export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
+  const target: EventTarget = { value: targetValue } as HTMLInputElement;
+  return { target };
+}

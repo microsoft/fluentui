@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.129.3",
+      "tag": "office-ui-fabric-react_v6.129.3",
+      "date": "Thu, 24 Jan 2019 13:36:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add lang tag to the section header by getting the native props",
+            "author": "Matt <makopch-ms@users.noreply.github.com>",
+            "commit": "656cb5a413e3f76deb8378d5cf9bf8328879a520"
+          },
+          {
+            "comment": "Prevent the Tooltip's content from scrolling",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "1515e9923c4181b316ad4af265b815f23968398e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.129.2",
       "tag": "office-ui-fabric-react_v6.129.2",
       "date": "Wed, 23 Jan 2019 22:53:13 GMT",

@@ -1,9 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -12,12 +11,11 @@ import {
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
-  DetailsRow,
-  IGroup
+  DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, IScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
@@ -94,25 +92,18 @@ interface IItem {
   test5: string;
   test6: string;
 }
-let _groups: IGroup[];
-class ScrollablePaneDetailsListStory extends React.Component<
-  {},
-  {
-    items: {}[];
-  }
-  > {
-  private _scrollablePane = React.createRef<IScrollablePane>();
+const _groups = createGroups(100, 0, 0, 1, 0, '', true);
+
+class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
   private _selection: Selection;
   private readonly _items: IItem[];
 
   constructor(props: {}) {
     super(props);
 
-    const items: IItem[] = [];
-    _groups = createGroups(100, 0, 0, 1, 0, '', true);
-    // Populate with items for demos.
+    this._items = [];
     for (let i = 0; i < 100; i++) {
-      items.push({
+      this._items.push({
         key: i,
         test1: i === 0 ? lorem(7) : lorem(2),
         test2: lorem(2),
@@ -123,16 +114,10 @@ class ScrollablePaneDetailsListStory extends React.Component<
       });
     }
 
-    this._items = items;
-
-    this.state = {
-      items: items
-    };
+    this._selection = new Selection();
   }
 
   public render(): JSX.Element {
-    const { items } = this.state;
-
     return (
       <div
         style={{
@@ -143,14 +128,20 @@ class ScrollablePaneDetailsListStory extends React.Component<
         }}
       >
         <Fabric>
-          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '800px', border: '1px solid #edebe9' }}>
+          <ScrollablePane
+            scrollbarVisibility={ScrollbarVisibility.auto}
+            style={{ maxWidth: '800px', border: '1px solid #edebe9' }}
+          >
             {/* providing backgroundColor as no parent element for the test has this property defined */}
-            <Sticky stickyPosition={StickyPositionType.Header} stickyBackgroundColor={getTheme().palette.white}>
+            <Sticky
+              stickyPosition={StickyPositionType.Header}
+              stickyBackgroundColor={getTheme().palette.white}
+            >
               <h1 style={{ margin: '0px' }}>Item List</h1>
             </Sticky>
             <MarqueeSelection selection={this._selection}>
               <DetailsList
-                items={items}
+                items={this._items}
                 groups={_groups}
                 columns={_columns}
                 setKey="set"
@@ -169,18 +160,23 @@ class ScrollablePaneDetailsListStory extends React.Component<
   }
 }
 
-function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
+function onRenderDetailsHeader(
+  props: IDetailsHeaderProps,
+  defaultRender?: IRenderFunction<IDetailsHeaderProps>
+): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
         ...props,
-        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost {...tooltipHostProps} />
+        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
+          <TooltipHost {...tooltipHostProps} />
+        )
       })}
     </Sticky>
   );
 }
 
-function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div style={{ display: 'inline-block' }}>
@@ -205,35 +201,38 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
   );
 }
 
-function hasText(item: IItem, text: string): boolean {
-  return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;
-}
+const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0]";
+const cropTo = { cropTo: '.testWrapper' };
 
 storiesOf('ScrollablePane Grouped Details List', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
-        .snapshot('default: scrollbars should be visible', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 100")
-        .snapshot('Scrollbars visibility when header is sticky', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
-        .snapshot('Scrollbars visibility after scrolling down to the bottom', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
-        .snapshot('Scrollbars visibility after scrolling up to the top', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = 100")
-        .snapshot('Scrollbars visibilty after scrolling left', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 100")
-        .snapshot('Scrollbars visibility when header is sticky and scrollLeft is non-zero', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
-        .snapshot('Scrollbars visibility after scrolling down to the bottom with non-zero scrollLeft', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
-        .snapshot('Scrollbars visibility after scrolling up to the top with non-zero scrollLeft', { cropTo: '.testWrapper' })
+        .snapshot('default: scrollbars should be visible', cropTo)
+        .executeScript(`${getElement}.scrollTop = 100`)
+        .snapshot('Scrollbars visibility when header is sticky', cropTo)
+        .executeScript(`${getElement}.scrollTop = 99999`)
+        .snapshot('Scrollbars visibility after scrolling down to the bottom', cropTo)
+        .executeScript(`${getElement}.scrollTop = 0`)
+        .snapshot('Scrollbars visibility after scrolling up to the top', cropTo)
+        .executeScript(`${getElement}.scrollLeft = 100`)
+        .snapshot('Scrollbars visibilty after scrolling left', cropTo)
+        .executeScript(`${getElement}.scrollTop = 100`)
+        .snapshot('Scrollbars visibility when header is sticky and scrollLeft is non-zero', cropTo)
+        .executeScript(`${getElement}.scrollTop = 99999`)
+        .snapshot(
+          'Scrollbars visibility after scrolling down to the bottom with non-zero scrollLeft',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollTop = 0`)
+        .snapshot(
+          'Scrollbars visibility after scrolling up to the top with non-zero scrollLeft',
+          cropTo
+        )
         .end()}
     >
       {story()}
     </Screener>
   ))
-  .addStory('ScrollablePane scrollbars visibility', () => (
-    <ScrollablePaneDetailsListStory />
-  ));
+  .addStory('ScrollablePane scrollbars visibility', () => <ScrollablePaneDetailsListStory />);

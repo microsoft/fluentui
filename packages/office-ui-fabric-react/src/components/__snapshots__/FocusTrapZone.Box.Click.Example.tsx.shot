@@ -305,6 +305,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               color: #0078d4;
             }
         onClick={[Function]}
+        type="button"
       >
         Hyperlink inside FocusTrapZone
       </button>
