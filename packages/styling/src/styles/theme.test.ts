@@ -1,5 +1,4 @@
-import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme, createTheme } from './theme';
-import { IPartialTheme } from '../interfaces/index';
+import { registerOnThemeChangeCallback, removeOnThemeChangeCallback, loadTheme, getTheme } from './theme';
 import { IRawStyle } from '@uifabric/merge-styles';
 import { DefaultFontStyles } from './DefaultFontStyles';
 
@@ -97,7 +96,7 @@ describe('loadTheme', () => {
     });
     it('applies depComments to theme', () => {
       // create theme with flag set should set the flag correctly
-      const themeFromCreate = createTheme({}, true);
+      const themeFromCreate = loadTheme({}, true);
       expect(themeFromCreate.deprecatedCommentTags).toBeTruthy();
 
       // calling get with no parameters should return the updated theme, without recreation
@@ -111,7 +110,7 @@ describe('loadTheme', () => {
       expect(themeFromGetWithTrue).toBe(themeFromCreate);
 
       // resetting to false should work
-      const themeOnReset = createTheme({}, false);
+      const themeOnReset = loadTheme({}, false);
       expect(themeOnReset.deprecatedCommentTags).toBeFalsy();
       const themeOnResetFromGet = getTheme();
 

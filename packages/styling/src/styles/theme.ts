@@ -76,7 +76,9 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
-  const newTheme = createTheme(theme, depComments);
+  _updateDepComments(depComments);
+  _registry.registerTheme(theme);
+  const newTheme = _registry.getTheme();
 
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ...newTheme.palette, ...newTheme.semanticColors, ..._loadFonts(newTheme) });
@@ -118,8 +120,7 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
  */
 export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   _updateDepComments(depComments);
-  _registry.registerTheme(theme);
-  return _registry.getTheme();
+  return _resolveTheme(theme, getTheme());
 }
 
 /**
