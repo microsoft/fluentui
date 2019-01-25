@@ -2,18 +2,7 @@
  * Functions used by Stack components to simplify style-related computations
  */
 
-import { Alignment } from './Stack.types';
 import { ITheme } from '../../Styling';
-
-const verticalAlignmentMap: { [key: string]: string } = {
-  top: 'start',
-  bottom: 'end'
-};
-
-// Converts the alignment expected by a VerticalStack to an alignment expected by a Stack.
-export const getVerticalAlignment = (alignment: string | undefined): Alignment => {
-  return (verticalAlignmentMap[alignment!] || alignment) as Alignment;
-};
 
 // Helper function that converts a themed spacing key (if given) to the corresponding themed spacing value.
 const _getThemedSpacing = (space: string, theme: ITheme): string => {

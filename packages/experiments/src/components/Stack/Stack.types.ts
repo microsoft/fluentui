@@ -59,7 +59,7 @@ export interface IStackProps
   /**
    * Defines how to align Stack child elements vertically (along the y-axis).
    */
-  verticalAlign?: 'top' | 'bottom' | Alignment;
+  verticalAlign?: Alignment;
 
   /**
    * Defines whether the Stack should take up 100% of the width of its parent.

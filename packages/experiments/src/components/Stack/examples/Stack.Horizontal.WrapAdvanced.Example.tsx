@@ -6,7 +6,7 @@ import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
-export type VerticalAlignment = 'top' | 'center' | 'bottom';
+export type VerticalAlignment = 'start' | 'center' | 'end';
 export type Overflow = 'visible' | 'auto' | 'hidden';
 
 export interface IExampleState {
@@ -24,7 +24,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
       stackWidth: 100,
       containerHeight: 150,
       horizontalAlignment: 'start',
-      verticalAlignment: 'top',
+      verticalAlignment: 'start',
       overflow: 'visible'
     };
   }
@@ -96,7 +96,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
               selectedKey={verticalAlignment}
               placeholder="Select Vertical Alignment"
               label="Vertical alignment:"
-              options={[{ key: 'top', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'bottom', text: 'Bottom' }]}
+              options={[{ key: 'start', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'end', text: 'Bottom' }]}
               onChange={this._onVerticalAlignChange}
             />
           </Stack.Item>
