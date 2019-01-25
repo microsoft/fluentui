@@ -1,4 +1,4 @@
-import { keyframes, PulsingBeaconAnimationStyles, ITheme, getTheme } from '../../Styling';
+import { keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
 import { ICoachmarkStyleProps, ICoachmarkStyles } from './Coachmark.types';
 
 export const COACHMARK_WIDTH = 32;
