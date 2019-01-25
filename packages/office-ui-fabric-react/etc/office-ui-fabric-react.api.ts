@@ -1483,31 +1483,6 @@ class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState
   toggleCollapseAll(allCollapsed: boolean): void;
 }
 
-// @public (undocumented)
-class GroupFooterBase extends BaseComponent<IGroupFooterProps, {}> {
-  // (undocumented)
-  render(): JSX.Element | null;
-}
-
-// @public (undocumented)
-class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHeaderState> {
-  constructor(props: IGroupHeaderProps);
-  // (undocumented)
-  componentWillReceiveProps(newProps: any): void;
-  // (undocumented)
-  static defaultProps: IGroupHeaderProps;
-  // (undocumented)
-  render(): JSX.Element | null;
-}
-
-// @public (undocumented)
-class GroupShowAllBase extends BaseComponent<IGroupShowAllProps, {}> {
-  // (undocumented)
-  static defaultProps: IGroupShowAllProps;
-  // (undocumented)
-  render(): JSX.Element | null;
-}
-
 // @public
 export function hasHorizontalOverflow(element: HTMLElement): boolean;
 
@@ -8187,14 +8162,6 @@ interface IGroupHeaderProps extends IGroupDividerProps {
 }
 
 // @public (undocumented)
-interface IGroupHeaderState {
-  // (undocumented)
-  isCollapsed: boolean;
-  // (undocumented)
-  isLoadingVisible: boolean;
-}
-
-// @public (undocumented)
 interface IGroupHeaderStyles {
   // (undocumented)
   check: IStyle;
@@ -12870,13 +12837,13 @@ module ZIndexes {
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
+// WARNING: Unsupported export: IGroupHeaderStyleProps
+// WARNING: Unsupported export: IGroupFooterStyleProps
+// WARNING: Unsupported export: IGroupShowAllStyleProps
 // WARNING: Unsupported export: GroupedList
 // WARNING: Unsupported export: GroupHeader
-// WARNING: Unsupported export: IGroupHeaderStyleProps
 // WARNING: Unsupported export: GroupFooter
-// WARNING: Unsupported export: IGroupFooterStyleProps
 // WARNING: Unsupported export: GroupShowAll
-// WARNING: Unsupported export: IGroupShowAllStyleProps
 // WARNING: Unsupported export: SPACER_WIDTH
 // WARNING: Unsupported export: GroupSpacer
 // WARNING: Unsupported export: IGroupSpacerStyleProps
