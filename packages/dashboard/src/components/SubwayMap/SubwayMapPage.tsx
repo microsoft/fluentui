@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import { SubwayMapBasicExample, SubwayMapWizardCompleteExample, SubwayMapBasicDifferentStatesExample, SubwayMapDisabledStepsExample, SubwayMapSubStepsExample } from './examples/index';
+import {
+  SubwayMapBasicExample,
+  SubwayMapWizardCompleteExample,
+  SubwayMapBasicDifferentStatesExample,
+  SubwayMapDisabledStepsExample,
+  SubwayMapSubStepsExample
+} from './examples/index';
 
 const SubwayMapExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayMap/examples/SubwayMap.Basic.Example.tsx') as string;
 const SubwayMapDisabledStepsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayMap/examples/SubwayMap.DisabledSteps.Example.tsx') as string;

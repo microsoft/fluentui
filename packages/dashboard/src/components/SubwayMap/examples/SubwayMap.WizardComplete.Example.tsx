@@ -36,7 +36,7 @@ export class SubwayMapWizardCompleteExample extends React.Component<any, any> {
 
     return (
       <div>
-        <SubwayMap steps={steps} wizardComplete={true}/>
+        <SubwayMap steps={steps} wizardComplete={true} />
       </div>
     );
   }

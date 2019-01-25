@@ -79,7 +79,10 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
         stepElements.push(
           <div
             key={stepToRender.key}
-            className={css(classNames.subwayMapStepDiv, !stepToRender.isCurrentStep && stepToRender.isDisabledStep ? classNames.disableStep : undefined)}
+            className={css(
+              classNames.subwayMapStepDiv,
+              !stepToRender.isCurrentStep && stepToRender.isDisabledStep ? classNames.disableStep : undefined
+            )}
             onClick={() => stepToRender.onClickStep(stepToRender, undefined)}
           >
             <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayMapStepIcon)} />
@@ -149,7 +152,10 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
           stepElements.push(
             <div
               key={subStepToRender.key}
-              className={css(classNames.subwayMapStepDiv, !subStepToRender.isCurrentStep && subStepToRender.isDisabledStep ? classNames.disableStep : undefined)}
+              className={css(
+                classNames.subwayMapStepDiv,
+                !subStepToRender.isCurrentStep && subStepToRender.isDisabledStep ? classNames.disableStep : undefined
+              )}
               onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}
             >
               <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayMapSubStepIcon)} />
