@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/theming-core",
+      "comment": "Add theming-core package with theme registry component",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/theming-core",
+  "email": "jasonmo@microsoft.com"
+}
