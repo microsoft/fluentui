@@ -24,9 +24,7 @@ import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList, IGroupRenderProps } from '../../GroupedList';
-import { IGroupHeaderProps } from '../GroupedList/GroupHeader.types';
-import { IGroupFooterProps } from '../GroupedList/GroupFooter.types';
+import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
 import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';

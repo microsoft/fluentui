@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, IGroup, IDetailsGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
@@ -61,7 +61,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
     );
   }
 
-  private _onRenderGroupHeader = (props: IDetailsGroupDividerProps): JSX.Element => {
+  private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
     return (
       <div className={classNames.headerAndFooter}>
         <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
@@ -77,7 +77,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
     );
   };
 
-  private _onRenderGroupFooter = (props: IDetailsGroupDividerProps): JSX.Element => {
+  private _onRenderGroupFooter = (props: IGroupDividerProps): JSX.Element => {
     return (
       <div className={classNames.headerAndFooter}>
         <em>{`Custom footer for ${props.group!.name}`}</em>
@@ -85,13 +85,13 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
     );
   };
 
-  private _onToggleSelectGroup(props: IDetailsGroupDividerProps): () => void {
+  private _onToggleSelectGroup(props: IGroupDividerProps): () => void {
     return () => {
       props.onToggleSelectGroup!(props.group!);
     };
   }
 
-  private _onToggleCollapse(props: IDetailsGroupDividerProps): () => void {
+  private _onToggleCollapse(props: IGroupDividerProps): () => void {
     return () => {
       props!.onToggleCollapse!(props!.group!);
     };
