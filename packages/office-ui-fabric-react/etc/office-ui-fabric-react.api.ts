@@ -12840,12 +12840,11 @@ module ZIndexes {
 // WARNING: Unsupported export: IGroupHeaderStyleProps
 // WARNING: Unsupported export: IGroupFooterStyleProps
 // WARNING: Unsupported export: IGroupShowAllStyleProps
+// WARNING: Unsupported export: GroupSpacer
 // WARNING: Unsupported export: GroupedList
 // WARNING: Unsupported export: GroupHeader
 // WARNING: Unsupported export: GroupFooter
 // WARNING: Unsupported export: GroupShowAll
-// WARNING: Unsupported export: SPACER_WIDTH
-// WARNING: Unsupported export: GroupSpacer
 // WARNING: Unsupported export: IGroupSpacerStyleProps
 // WARNING: Unsupported export: HoverCard
 // WARNING: Unsupported export: ExpandingCard

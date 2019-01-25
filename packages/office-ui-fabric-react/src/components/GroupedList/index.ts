@@ -7,5 +7,5 @@ export * from './GroupFooter';
 export { IGroupFooterStyleProps, IGroupFooterStyles } from './GroupFooter.types';
 export * from './GroupShowAll';
 export { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
-export * from './GroupSpacer';
+export { GroupSpacer } from './GroupSpacer';
 export * from './GroupSpacer.types';
