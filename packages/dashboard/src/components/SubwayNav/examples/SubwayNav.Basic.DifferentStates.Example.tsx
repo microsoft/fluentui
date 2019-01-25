@@ -12,6 +12,7 @@ export class SubwayNavBasicDifferentStatesExample extends React.Component<any, a
       label: 'Step 0',
       isCurrentStep: true,
       formError: true,
+      formViewed: true,
       onClickStep: this._handleClickStep
     };
     const data1: ISubwayNavStep = {
@@ -39,12 +40,20 @@ export class SubwayNavBasicDifferentStatesExample extends React.Component<any, a
       formViewed: true,
       onClickStep: this._handleClickStep
     };
+    const data5: ISubwayNavStep = {
+      key: generateRandomId(),
+      label: 'Step 5',
+      formComplete: false,
+      formSaved: false,
+      onClickStep: this._handleClickStep
+    };
 
     steps.push(data0);
     steps.push(data1);
     steps.push(data2);
     steps.push(data3);
     steps.push(data4);
+    steps.push(data5);
 
     return (
       <div>

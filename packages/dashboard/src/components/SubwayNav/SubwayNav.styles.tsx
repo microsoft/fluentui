@@ -1,12 +1,11 @@
 import { ISubwayNavStyles, ISubwayNavStyleProps } from './SubwayNav.types';
-import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const regularFontSize = 14;
 const regularLineHeight = 20;
 const fontWeight = 300;
 const stepIconSize = '16px';
 const subStepIconSize = '8px';
-const commonFontFamily = DefaultFontStyles.medium.fontFamily;
+const commonFontFamily = 'Segoe UI';
 const subwayNavBaseColor = '#333333';
 
 export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyles => {
@@ -17,6 +16,7 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
       {
         width: '221px',
         height: '470px',
+        overflow: 'auto',
         background: 'white',
         border: '1px solid blue'
       },
@@ -24,7 +24,8 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
     ],
     subwayNavContentContainer: {
       marginLeft: '48px',
-      marginTop: '48px'
+      marginTop: '48px',
+      marginBottom: '48px'
     },
     subwayNavContent: {
       fontSize: regularFontSize,
@@ -46,9 +47,6 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
           cursor: 'pointer'
         }
       }
-    },
-    subwayNavStepLabel: {
-      marginLeft: '12px'
     },
     subwayNavStepConnector: {
       width: '0px',
@@ -89,10 +87,18 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
       marginLeft: '4px'
     },
     stepLabel: {
-      marginLeft: '12px'
+      marginLeft: '12px',
+      /*width: '180px',*/
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
     },
     subStepLabel: {
-      marginLeft: '16px'
+      marginLeft: '16px',
+      // width: '160px',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis'
     },
     boldStep: {
       fontWeight: 'bold'

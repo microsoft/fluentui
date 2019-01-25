@@ -98,11 +98,6 @@ export interface ISubwayNavStyles {
   subwayNavStepDiv: IStyle;
 
   /**
-   * Styles for subway step label
-   */
-  subwayNavStepLabel: IStyle;
-
-  /**
    * Styles for subway step connector
    */
   subwayNavStepConnector: IStyle;

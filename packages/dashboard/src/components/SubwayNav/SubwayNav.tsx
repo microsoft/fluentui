@@ -180,7 +180,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
         return classNames.stepConnectorWizardComplete;
       }
 
-      if (step.formViewed) {
+      if (step.isCurrentStep || step.formComplete || step.formViewed || step.formError || step.formSaved || step.formSkipped) {
         return classNames.stepConnectorCompleted;
       }
     }
@@ -224,7 +224,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
         return { iconName: 'LocationCircle', iconClassName: classNames.stepSkipped };
       }
 
-      if (step.formSaved !== undefined && step.formSaved) {
+      if (step.formSaved !== undefined && !step.formSaved) {
         return { iconName: 'LocationCircle', iconClassName: classNames.stepUnsaved };
       }
     }

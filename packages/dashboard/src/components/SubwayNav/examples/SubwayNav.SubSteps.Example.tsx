@@ -11,6 +11,7 @@ export class SubwayNavSubStepsExample extends React.Component<any, any> {
     const substep0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Sub Step 0',
+      isCurrentStep: true,
       formComplete: true,
       onClickStep: this._handleClickStep
     };
