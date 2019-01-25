@@ -26,8 +26,9 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
 
   const commonItemStyles = {
     minHeight: ITEM_HEIGHT,
-    lineHeight: '19px',
-    padding: '0 8px'
+    padding: '0 8px',
+    display: 'flex',
+    alignItems: 'center'
   };
 
   const itemSelectors = (isSelected: boolean = false) => {
