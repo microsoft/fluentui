@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix the regression in DocumentCard role by commit 5b8befe. It should always use props.role if it is defined. ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "yimwu@microsoft.com"
+}
