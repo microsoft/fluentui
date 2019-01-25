@@ -1,5 +1,5 @@
 import { IStackComponent, IStackStyles, IStackProps, IStackStylesReturnType } from './Stack.types';
-import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
+import { parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
 
 const nameMap: { [key: string]: string } = {
@@ -31,8 +31,6 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const vertAlign = getVerticalAlignment(verticalAlign);
 
   let horiGap: IStackProps['gap'];
   let vertGap: IStackProps['gap'];
@@ -75,8 +73,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         className,
         {
@@ -114,8 +112,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         horizontal && {
           flexDirection: 'row',
@@ -179,8 +177,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
       },
-      vertAlign && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+      verticalAlign && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
       },
       className
     ]
