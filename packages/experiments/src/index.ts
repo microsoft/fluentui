@@ -16,6 +16,7 @@ export * from './StaticList';
 export * from './Text';
 export * from './Tile';
 export * from './TilesList';
+export * from './Toggle';
 export * from './VirtualizedList';
 
 import './version';
