@@ -1,19 +1,29 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
-import { ITextField, TextField } from '../../TextField';
+import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker } from './ColorPicker.types';
+import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
-import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH, updateSV } from '../../utilities/color/colors';
+import {
+  MAX_COLOR_HUE,
+  IColor,
+  IRGB,
+  getColorFromString,
+  getColorFromRGBA,
+  updateA,
+  updateH,
+  updateSV
+} from '../../utilities/color/colors';
 
 export interface IColorPickerState {
-  isOpen: boolean;
   color: IColor;
 }
 
 const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerStyles>();
 
-export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> {
+const rgbaComponents: Array<keyof IRGB> = ['r', 'g', 'b', 'a'];
+
+export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
   public static defaultProps = {
     hexLabel: 'Hex',
     redLabel: 'Red',
@@ -22,18 +32,32 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     alphaLabel: 'Alpha'
   };
 
-  private _hexText = React.createRef<ITextField>();
-  private _rText = React.createRef<ITextField>();
-  private _gText = React.createRef<ITextField>();
-  private _bText = React.createRef<ITextField>();
-  private _aText = React.createRef<ITextField>();
+  private _rgbaChangeHandlers: {
+    [K in keyof IRGB]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void
+  };
+  private _rgbaLabels: { [K in keyof IRGB]?: string };
 
   constructor(props: IColorPickerProps) {
     super(props);
 
     this.state = {
-      color: getColorFromString(props.color)
-    } as IColorPickerState;
+      color: getColorFromString(props.color)!
+    };
+
+    this._rgbaChangeHandlers = {} as any;
+    for (const component of rgbaComponents) {
+      this._rgbaChangeHandlers[component] = this._onRGBAChanged.bind(this, component);
+    }
+    this._rgbaLabels = {
+      r: props.redLabel,
+      g: props.greenLabel,
+      b: props.blueLabel,
+      a: props.alphaLabel
+    };
+  }
+
+  public get color(): IColor {
+    return this.state.color;
   }
 
   public componentWillReceiveProps(newProps: IColorPickerProps): void {
@@ -43,7 +67,8 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles } = this.props;
+    const props = this.props;
+    const { theme, className, styles } = props;
     const { color } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -56,7 +81,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
         <div className={classNames.panel}>
           <ColorRectangle color={color} onSVChanged={this._onSVChanged} />
           <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
-          {!this.props.alphaSliderHidden && (
+          {!props.alphaSliderHidden && (
             <ColorSlider
               className="is-alpha"
               isAlpha
@@ -70,11 +95,11 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
           <table className={classNames.table} cellPadding="0" cellSpacing="0">
             <thead>
               <tr className={classNames.tableHeader}>
-                <td className={classNames.tableHexCell}>{this.props.hexLabel}</td>
-                <td>{this.props.redLabel}</td>
-                <td>{this.props.greenLabel}</td>
-                <td>{this.props.blueLabel}</td>
-                {!this.props.alphaSliderHidden && <td>{this.props.alphaLabel}</td>}
+                <td className={classNames.tableHexCell}>{props.hexLabel}</td>
+                <td>{props.redLabel}</td>
+                <td>{props.greenLabel}</td>
+                <td>{props.blueLabel}</td>
+                {!props.alphaSliderHidden && <td>{props.alphaLabel}</td>}
               </tr>
             </thead>
             <tbody>
@@ -82,55 +107,33 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                 <td>
                   <TextField
                     className={classNames.input}
-                    value={color.hex}
-                    componentRef={this._hexText}
-                    onBlur={this._onHexChanged}
+                    value={color.hex || ''}
+                    onChange={this._onHexChanged}
                     spellCheck={false}
-                    ariaLabel={this.props.hexLabel}
+                    ariaLabel={props.hexLabel}
                   />
                 </td>
-                <td style={{ width: '18%' }}>
-                  <TextField
-                    className={classNames.input}
-                    onBlur={this._onRGBAChanged}
-                    value={String(color.r)}
-                    componentRef={this._rText}
-                    spellCheck={false}
-                    ariaLabel={this.props.redLabel}
-                  />
-                </td>
-                <td style={{ width: '18%' }}>
-                  <TextField
-                    className={classNames.input}
-                    onBlur={this._onRGBAChanged}
-                    value={String(color.g)}
-                    componentRef={this._gText}
-                    spellCheck={false}
-                    ariaLabel={this.props.greenLabel}
-                  />
-                </td>
-                <td style={{ width: '18%' }}>
-                  <TextField
-                    className={classNames.input}
-                    onBlur={this._onRGBAChanged}
-                    value={String(color.b)}
-                    componentRef={this._bText}
-                    spellCheck={false}
-                    ariaLabel={this.props.blueLabel}
-                  />
-                </td>
-                {!this.props.alphaSliderHidden && (
-                  <td style={{ width: '18%' }}>
-                    <TextField
-                      className={classNames.input}
-                      onBlur={this._onRGBAChanged}
-                      value={String(color.a ? color.a.toPrecision(3) : color.a)}
-                      componentRef={this._aText}
-                      spellCheck={false}
-                      ariaLabel={this.props.alphaLabel}
-                    />
-                  </td>
-                )}
+                {...rgbaComponents.map((comp: keyof IRGB) => {
+                  const isAlpha = comp === 'a';
+                  let value = String(color[comp] || 0);
+                  if (isAlpha) {
+                    if (props.alphaSliderHidden) {
+                      return null;
+                    }
+                    value = typeof color.a === 'number' ? String(color.a.toPrecision(3)) : '';
+                  }
+                  return (
+                    <td key={comp} style={{ width: '18%' }}>
+                      <TextField
+                        className={classNames.input}
+                        onChange={this._rgbaChangeHandlers[comp]}
+                        value={value}
+                        spellCheck={false}
+                        ariaLabel={this._rgbaLabels[comp]}
+                      />
+                    </td>
+                  );
+                })}
               </tr>
             </tbody>
           </table>
@@ -151,26 +154,28 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     this._updateColor(updateA(this.state.color, a));
   };
 
-  private _onHexChanged = (): void => {
-    if (this._hexText.current) {
-      this._updateColor(getColorFromString('#' + this._hexText.current.value));
+  private _onHexChanged = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void => {
+    if (newValue && newValue !== this.state.color.hex) {
+      this._updateColor(getColorFromString('#' + newValue));
     }
   };
 
-  private _onRGBAChanged = (): void => {
-    if (!this._rText.current || !this._gText.current || !this._bText.current || !this._aText.current) {
+  private _onRGBAChanged(component: keyof IRGB, event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string): void {
+    const color = this.state.color;
+    if (String(color[component]) === newValue) {
       return;
     }
 
     this._updateColor(
       getColorFromRGBA({
-        r: Number(this._rText.current.value),
-        g: Number(this._gText.current.value),
-        b: Number(this._bText.current.value),
-        a: Number(this._aText.current.value || 100)
+        r: color.r,
+        g: color.g,
+        b: color.b,
+        a: color.a || 100,
+        [component]: Number(newValue)
       })
     );
-  };
+  }
 
   private _updateColor(newColor?: IColor): void {
     if (!newColor) {
@@ -184,7 +189,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
       this.setState(
         {
           color: newColor
-        } as IColorPickerState,
+        },
         () => {
           if (hasColorStringChanged && onColorChanged) {
             onColorChanged(newColor.str, newColor);

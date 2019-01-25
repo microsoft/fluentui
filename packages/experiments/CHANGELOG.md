@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 23 Jan 2019 22:53:12 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+
+## 6.52.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- Stack: Adding 'reversed' prop, updating styles, and adding examples, snapshot tests and vr-tests.
+
+### Patches
+
+- Minor fixes to Toggle and CollapsibleSection.
 
 ## 6.51.2
 Wed, 23 Jan 2019 22:53:12 GMT

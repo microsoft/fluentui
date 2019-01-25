@@ -1,19 +1,28 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Checkbox, Persona, PersonaSize } from 'office-ui-fabric-react';
 
 storiesOf('Checkbox', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
   .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
   .addStory('Unchecked disabled', () => <Checkbox label="Unchecked disabled checkbox" disabled />)
-  .addStory('Checked disabled', () => <Checkbox label="Checked disabled checkbox" checked disabled />)
+  .addStory('Checked disabled', () => (
+    <Checkbox label="Checked disabled checkbox" checked disabled />
+  ))
   .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { rtl: true })
   .addStory('Multi-line Checkbox', () => (
     <Checkbox
@@ -26,9 +35,8 @@ storiesOf('Checkbox', module)
   .addStory('Custom render Checkbox', () => (
     <Checkbox
       label="Persona Checkbox"
-      // tslint:disable-next-line:jsx-no-lambda
       onRenderLabel={props => {
-        return <Persona text={props.label} size={PersonaSize.size32} />;
+        return <Persona text={props!.label} size={PersonaSize.size32} />;
       }}
     />
   ));

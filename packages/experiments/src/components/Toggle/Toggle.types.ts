@@ -15,39 +15,34 @@ export type IToggleStylesReturnType = ReturnType<Extract<IToggleComponent['style
 
 export interface IToggleSlots {
   /**
-   * Root element.
+   * Defines root slot.
    */
   root?: IHTMLDivSlot;
 
   /**
-   * A label for the toggle.
+   * Defines label slot displayed above pill.
    */
   label?: ILabelSlot;
 
   /**
-   * Container for the toggle pill and the text next to it.
+   * Defines container slot for the toggle pill and the text next to it.
    */
   container?: IHTMLDivSlot;
 
   /**
-   * Pill, rendered as a button.
+   * Defines pill slot, rendered as a button by default.
    */
   pill?: IHTMLButtonSlot;
 
   /**
-   * Thumb inside of the pill.
+   * Defines thumb slot inside of the pill.
    */
   thumb?: IHTMLDivSlot;
 
   /**
-   * Text to display when toggle is ON.
+   * Defines text slot displayed alongside pill. Overrides onText and offText.
    */
-  onText?: ILabelSlot;
-
-  /**
-   * Text to display when toggle is OFF.
-   */
-  offText?: ILabelSlot;
+  text?: ILabelSlot;
 }
 
 export interface IToggle {
@@ -95,6 +90,16 @@ export interface IToggleProps
    * Optional keytip for this toggle
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Text to display when toggle is ON.
+   */
+  onText?: string;
+
+  /**
+   * Text to display when toggle is OFF.
+   */
+  offText?: string;
 }
 
 export interface IToggleViewProps extends IToggleProps {

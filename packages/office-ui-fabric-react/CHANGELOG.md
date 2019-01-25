@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 24 Jan 2019 13:36:17 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+
+## 6.129.4
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- Specify prop "type" to be "button" for links which are of type button
+- Fix ColorPicker when alpha slider is hidden
+- Add documentation and tests for color utilities
+- Combobox: Pass taxIndex to Autofill component
+- Panel: Add aria-hidden attribute to prevent narrator from reading when transitioning to a closed state
+- Added screener tests to Breadcrumb component to prevent regression
+- position anchor currently by default uses either the given alignment edge or uses the positive flanking edge, without regard to whether the positive or negative edge has more room. This change uses the bounds to determine which side has more room and flips the anchor around, to solve issues with dynamically resizing callouts not having enough room to grow if they default to a top-anchor
+- Fix the regression in DocumentCard role by commit 5b8befe. It should always use props.role if it is defined. 
 
 ## 6.129.3
 Thu, 24 Jan 2019 13:36:17 GMT

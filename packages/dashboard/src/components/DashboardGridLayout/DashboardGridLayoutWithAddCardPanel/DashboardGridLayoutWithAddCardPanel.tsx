@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createDragApiRef, Layout } from 'react-grid-layout';
+import { createDragApiRef, Layout } from 'react-grid-layout-fabric';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IDashboardGridLayoutWithAddCardPanelProps,

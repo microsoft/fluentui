@@ -1,22 +1,20 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Layer } from 'office-ui-fabric-react';
 
 storiesOf('Layer', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator(story =>
+    // prettier-ignore
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-Layer' })
-        .end()
-      }
+        .end()}
     >
       {story()}
     </Screener>
-  ))
-  .addStory('Root', () => (
-    <Layer>Layer content</Layer>
-  ), { rtl: true });
+  )
+  .addStory('Root', () => <Layer>Layer content</Layer>, { rtl: true });

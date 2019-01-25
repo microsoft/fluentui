@@ -76,6 +76,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
           }
       onClick={[Function]}
+      type="button"
     >
       Link 1
     </button>
@@ -140,6 +141,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
           }
       onClick={[Function]}
+      type="button"
     >
       Link 2
     </button>
@@ -204,6 +206,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
           }
       onClick={[Function]}
+      type="button"
     >
       Link 3
     </button>
