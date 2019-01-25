@@ -988,7 +988,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     } = this.props;
     const groupNestingDepth = this._getGroupNestingDepth();
     const onRenderFooter = onRenderDetailsGroupFooter
-      ? (props: IGroupFooterProps, defaultRender?: IRenderFunction<IGroupFooterProps>) => {
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           return onRenderDetailsGroupFooter(
             {
               ...props,
@@ -1007,7 +1007,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       : undefined;
 
     const onRenderHeader = onRenderDetailsGroupHeader
-      ? (props: IGroupHeaderProps, defaultRender?: IRenderFunction<IGroupHeaderProps>) => {
+      ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           return onRenderDetailsGroupHeader(
             {
               ...props,
