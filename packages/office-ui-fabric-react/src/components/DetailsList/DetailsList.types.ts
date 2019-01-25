@@ -636,8 +636,8 @@ export interface IDetailsListStyles {
 }
 
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
-  onRenderFooter?: IRenderFunction<IGroupFooterProps & IDetailsGroupDividerProps>;
-  onRenderHeader?: IRenderFunction<IGroupHeaderProps & IDetailsGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
