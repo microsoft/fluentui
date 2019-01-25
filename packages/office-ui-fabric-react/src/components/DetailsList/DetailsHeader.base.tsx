@@ -218,12 +218,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
     const classNames = this._classNames;
 
-    const checkStyles = getCheckStyles({ theme: theme! });
-
-    const checkClassNames = getCheckClassNames(checkStyles, {
-      theme: theme!
-    });
-
     const rowCheckClassNames = getRowCheckClassNames(getDetailsRowCheckStyles, {
       theme: theme!,
       canSelect: true,
@@ -255,7 +249,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
                 aria-colindex={1}
                 role={'columnheader'}
-                aria-hidden={isCheckboxHidden ? true : undefined}
               >
                 {onRenderColumnHeaderTooltip(
                   {
@@ -280,7 +273,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                     ) : (
                       <div
                         id={`${this._id}-selection`}
-                        className={css(rowCheckClassNames.root, rowCheckClassNames.check, checkClassNames.checkHost)}
+                        className={css(rowCheckClassNames.root, rowCheckClassNames.check)}
                         aria-label={ariaLabelForSelectionColumn}
                       />
                     )
