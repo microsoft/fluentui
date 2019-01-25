@@ -5,15 +5,35 @@ import { mount } from 'enzyme';
 import { SubwayMap } from './SubwayMap';
 import { SubwayMapStepState } from './SubwayMap.types';
 
+  /**
+   * generate Random id
+   */
+  function generateRandomId(): string {
+    return (
+      Math.random()
+        .toString(36)
+        .substring(2) + new Date().getTime().toString(36)
+    );
+  }
+
+  function clickedStep(stepId: string, subStepId: string | undefined) {
+    console.log('step clicked = ' + stepId);
+    if (subStepId !== undefined) {
+      console.log('sub step clicked - ' + subStepId);
+    }
+  }
+
 // Populate mock data for testing
-function mockData(count: number, state: SubwayMapStepState): any {
+function mockData(count: number, formComplete: boolean): any {
   const data = [];
   let _data = {};
 
   for (let i = 0; i < count; i++) {
     _data = {
+      key: generateRandomId(),
       label: 'Step ' + i,
-      content: { content: <div>Step {i} Under construction</div>, mandatoryFieldComplete: false }
+      onClickStep: () => clickedStep
+      // content: { content: <div>Step {i} Under construction</div>, mandatoryFieldComplete: false }
     };
 
     data.push(_data);
@@ -35,7 +55,7 @@ describe('SubwayMap', () => {
   });
 
   it('can complete rendering', done => {
-    const wrapper = mount(<SubwayMap steps={mockData(10, SubwayMapStepState.NotStarted)} />);
-    wrapper.setProps({ items: mockData(10, SubwayMapStepState.Completed), onPagesUpdated: (pages: any) => done() });
+    const wrapper = mount(<SubwayMap steps={mockData(10, false)} />);
+    wrapper.setProps({ items: mockData(10, true), onPagesUpdated: (pages: any) => done() });
   });
 });

@@ -1,8 +1,8 @@
 import { ISubwayMapStyles, ISubwayMapStyleProps } from './SubwayMap.types';
 import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const regularFontSize = 12;
-const regularLineHeight = 18;
+const regularFontSize = 14;
+const regularLineHeight = 20;
 const fontWeight = 300;
 const stepIconSize = '16px';
 const subStepIconSize = '8px';
@@ -60,15 +60,39 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       width: '0px',
       height: '24px',
       marginLeft: '7px',
-      border: '1px solid blue'
     },
-    subwayMapStep: {
+    stepConnectorNotStarted: {
+      border: '1px solid #EBEBEB'
+    },
+    stepConnectorCompleted: {
+      border: '1px solid #0078D4'
+    },
+    stepConnectorWizardComplete: {
+      border: '1px solid #6BB700'
+    },
+    subwayMapStepIcon: {
       width: stepIconSize,
-      height: stepIconSize
+      height: stepIconSize,
+      fontSize: stepIconSize,
+      fontStyle: 'normal',
+      lineHeight: 'normal',
+      fontWeight: 'normal',
+      marginLeft: '0px'
     },
-    subwayMapSubStep: {
+    subwayMapSubStepIcon: {
       width: subStepIconSize,
-      height: subStepIconSize
+      height: subStepIconSize,
+      fontSize: subStepIconSize,
+      fontStyle: 'normal',
+      lineHeight: 'normal',
+      fontWeight: 'normal',
+      marginLeft: '4px',
+    },
+    stepLabel: {
+      marginLeft: '12px'
+    },
+    subStepLabel: {
+      marginLeft: '16px'
     },
     boldStep: {
       fontWeight: 'bold'
@@ -77,82 +101,51 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       pointerEvents: 'none'
     },
     stepNotStarted: {
-      color: '#EDEBE9',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#EDEBE9'
     },
     stepCurrent: {
-      color: '#C0DEF6',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#C0DEF6'
     },
     stepCompleted: {
-      color: '#0078D4',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#0078D4'
     },
     stepViewedNotCompleted: {
-      color: '#0078D4',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#0078D4'
     },
     stepWithSubSteps: {
-      color: '#0078D4',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#0078D4'
     },
     stepUnsaved: {
       color: '#0078D4',
-      fill: '#C0DEF6',
-      width: stepIconSize,
-      height: stepIconSize
+      fill: '#C0DEF6'
     },
     stepSkipped: {
-      color: '#0078D4',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#0078D4'
     },
     stepError: {
-      color: '#A80000',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#A80000'
     },
-    // Not working
     stepWizardComplete: {
-      color: '#6BB700',
-      width: stepIconSize,
-      height: stepIconSize
+      color: '#6BB700'
     },
     subStepNotStarted: {
-      color: '#EDEBE9',
-      width: subStepIconSize,
-      height: subStepIconSize
+      color: '#EDEBE9'
     },
     subStepCurrent: {
-      color: '#C0DEF6',
-      width: subStepIconSize,
-      height: subStepIconSize
+      color: '#C0DEF6'
     },
     subStepCompleted: {
-      color: '#0078D4',
-      width: subStepIconSize,
-      height: subStepIconSize
+      color: '#0078D4'
     },
     subStepUnsaved: {
       color: '#0078D4',
-      fill: '#C0DEF6',
-      width: subStepIconSize,
-      height: subStepIconSize
+      fill: '#C0DEF6'
     },
     subStepSkipped: {
-      color: '#0078D4',
-      width: subStepIconSize,
-      height: subStepIconSize
+      color: '#0078D4'
     },
     subStepError: {
-      color: '#A80000',
-      width: subStepIconSize,
-      height: subStepIconSize
+      color: '#A80000'
     }
   };
 };

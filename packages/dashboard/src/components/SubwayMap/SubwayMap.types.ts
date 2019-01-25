@@ -22,73 +22,69 @@ export enum SubwayMapStepState {
   ErrorSubstep = 14
 }
 
-export interface ISubwayMapStepContent {
+export interface ISubwayMapStep {
   /**
-   * Content associated with the step
+   * Unique ID for the given step
    */
-  content: JSX.Element;
+  key: string;
 
   /**
-   * Flag to indicate if the form status is complete so that "Next" button is enabled
+   * Label for the step.
+   */
+  label: string;
+
+  /**
+   * Flag to indicate if step is viewed
+   */
+  formViewed?: boolean;
+
+  /**
+   * Flag to indicate if current step
+   */
+  isCurrentStep?: boolean;
+   
+  /**
+   * Flag to indicate if the form status is complete
    */
   formComplete?: boolean;
+
+  /**
+   * Flag to indicate if the form status is skipped
+   */
+  formSkipped?: boolean;
+
+  /**
+   * Flag to indicate if the form data is saved
+   */
+  formSaved?: boolean;
 
   /**
    * Flag to indicate if the form has errors
    */
   formError?: boolean;
-}
-
-export interface ISubwayMap {
-  /**
-   * Force the component to update.
-   */
-  forceUpdate: () => void;
-}
-
-export interface ISubwayMapStep {
-  /**
-   * Unique ID for the given step
-   */
-  key?: string;
 
   /**
-   * Label for the step.
+   * Flag to indicate if the form status is complete so that "Next" button is enabled
    */
-  label?: string;
+  skippedStep?: boolean;
 
-  /**
-   * Content area to be shown in the content area of the wizard
+    /**
+   * Handler to be executed on click of a step
    */
-  contentArea: ISubwayMapStepContent;
-
-  /**
-   * link to go to the step
-   */
-  link?: string;
+  onClickStep: (step: ISubwayMapStep, subStep: ISubwayMapStep | undefined) => void;
 
   /**
    * Sub steps in the step
    */
   subSteps?: ISubwayMapStep[];
-
-  /**
-   * Handler to be executed on click of a step
-   */
-  // handleSubwayMapStepClick: () => void;
 }
 
 export interface ISubwayMapProps {
   /** Steps to render. */
   steps?: ISubwayMapStep[];
 
-  /** Allow skip step. */
-  allowSkipStep?: boolean;
-
-  /**
-   * Optional: Theme (provided through customization)
-   */
-  // theme?: ITheme;
+  /** Wizard complete flag */
+  wizardIsComplete?: boolean;
 
   /**
    * Optional classname to append to root list.
@@ -136,14 +132,39 @@ export interface ISubwayMapStyles {
   subwayMapSubStepConnector: IStyle;
 
   /**
+   * Styles for subway substep connector not started
+   */
+  stepConnectorNotStarted: IStyle;
+
+  /**
+   * Styles for subway substep connector completed
+   */
+  stepConnectorCompleted: IStyle;
+
+  /**
+   * Styles for subway substep connector wizard complete
+   */
+  stepConnectorWizardComplete: IStyle;
+
+  /**
    * Styles for subway map step
    */
-  subwayMapStep: IStyle;
+  subwayMapStepIcon: IStyle;
 
   /**
    * Styles for subway map sub step
    */
-  subwayMapSubStep: IStyle;
+  subwayMapSubStepIcon: IStyle;
+
+    /**
+   * Styles for subway step label
+   */
+  stepLabel: IStyle;
+
+    /**
+   * Styles for subway substep label
+   */
+  subStepLabel: IStyle;
 
   /**
    * Styles for subway map step
@@ -236,12 +257,7 @@ export interface ISubwayMapStyles {
  */
 export interface ISubwayMapStyleProps {
   /**
-   * Theme (provided through customization.)
-   */
-  // theme: ITheme;
-
-  /**
-   * Additional CSS class(es) to apply to the StackedBarChart.
+   * Additional CSS class to apply to the SubwayMap.
    */
   className?: string;
 }

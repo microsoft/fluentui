@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { generateRandomId } from './SubwayMap.Util'
 import { SubwayMap } from '../SubwayMap';
 import { ISubwayMapStep } from '../SubwayMap.types';
 
@@ -7,24 +8,30 @@ export class SubwayMapBasicExample extends React.Component<any, any> {
     let steps: ISubwayMapStep[] = [];
 
     const data0: ISubwayMapStep = {
-      key: this._generateRandomId(),
+      key: generateRandomId(),
       label: 'Step 0',
-      contentArea: { content: <div>Step 0 Under construction</div>, formComplete: false, formError: true }
+      isCurrentStep: true,
+      formComplete: false,
+      formError: true,
+      onClickStep: this._handleClickStep
     };
     const data1: ISubwayMapStep = {
-      key: this._generateRandomId(),
+      key: generateRandomId(),
       label: 'Step 1',
-      contentArea: { content: <div>Step 1 Under construction</div>, formComplete: true }
+      formComplete: true,
+      onClickStep: this._handleClickStep
     };
     const data2: ISubwayMapStep = {
-      key: this._generateRandomId(),
+      key: generateRandomId(),
       label: 'Step 2',
-      contentArea: { content: <div>Step 2 Under construction</div>, formComplete: false, formError: true }
+      formError: true,
+      onClickStep: this._handleClickStep
     };
     const data3: ISubwayMapStep = {
-      key: this._generateRandomId(),
+      key: generateRandomId(),
       label: 'Step 3',
-      contentArea: { content: <div>Step 3 Under construction</div>, formComplete: false }
+      formComplete: false,
+      onClickStep: this._handleClickStep
     };
 
     steps.push(data0);
@@ -34,19 +41,19 @@ export class SubwayMapBasicExample extends React.Component<any, any> {
 
     return (
       <div>
-        <SubwayMap steps={steps} allowSkipStep={false} />
+        <SubwayMap steps={steps} />
       </div>
     );
   }
 
-  /**
-   * generate Random id
-   */
-  private _generateRandomId(): string {
-    return (
-      Math.random()
-        .toString(36)
-        .substring(2) + new Date().getTime().toString(36)
-    );
+  private _handleClickStep(step: ISubwayMapStep, subStep: ISubwayMapStep | undefined): void {  
+    let alertStr = "Clicked " + step.label;
+    step.isCurrentStep = true;
+    if (subStep !== undefined) {
+      subStep.isCurrentStep = true;
+      alertStr += " and " + subStep.label;
+    }
+
+    alert(alertStr);    
   }
 }
