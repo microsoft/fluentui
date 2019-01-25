@@ -69,7 +69,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
               maxHeight: '106px',
               maxWidth: '144px'
             },
-            [`.${previewClassNames.previewFileTypeIcon}`]: {
+            [`.${previewClassNames.icon}`]: {
               maxHeight: '32px',
               maxWidth: '32px'
             },
