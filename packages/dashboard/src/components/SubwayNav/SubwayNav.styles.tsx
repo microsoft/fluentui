@@ -1,4 +1,4 @@
-import { ISubwayMapStyles, ISubwayMapStyleProps } from './SubwayMap.types';
+import { ISubwayNavStyles, ISubwayNavStyleProps } from './SubwayNav.types';
 import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const regularFontSize = 14;
@@ -7,13 +7,13 @@ const fontWeight = 300;
 const stepIconSize = '16px';
 const subStepIconSize = '8px';
 const commonFontFamily = DefaultFontStyles.medium.fontFamily;
-const subwayMapBaseColor = '#333333';
+const subwayNavBaseColor = '#333333';
 
-export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyles => {
+export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyles => {
   const { className } = props;
 
   return {
-    subwayMapContainer: [
+    subwayNavContainer: [
       {
         width: '221px',
         height: '470px',
@@ -22,16 +22,16 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       },
       className
     ],
-    subwayMapContentContainer: {
+    subwayNavContentContainer: {
       marginLeft: '48px',
       marginTop: '48px'
     },
-    subwayMapContent: {
+    subwayNavContent: {
       fontSize: regularFontSize,
       lineHeight: regularLineHeight,
       fontWeight: fontWeight,
       fontFamily: commonFontFamily,
-      color: subwayMapBaseColor,
+      color: subwayNavBaseColor,
       display: 'flex',
       justifyContent: 'flex-start',
       flexWrap: 'wrap',
@@ -39,7 +39,7 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       overflow: 'hidden',
       wordWrap: 'break-word'
     },
-    subwayMapStepDiv: {
+    subwayNavStepDiv: {
       width: '100%',
       selectors: {
         ':hover': {
@@ -47,16 +47,16 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
         }
       }
     },
-    subwayMapStepLabel: {
+    subwayNavStepLabel: {
       marginLeft: '12px'
     },
-    subwayMapStepConnector: {
+    subwayNavStepConnector: {
       width: '0px',
       height: '36px',
       marginLeft: '7px',
       border: '1px solid blue'
     },
-    subwayMapSubStepConnector: {
+    subwayNavSubStepConnector: {
       width: '0px',
       height: '24px',
       marginLeft: '7px'
@@ -70,7 +70,7 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
     stepConnectorWizardComplete: {
       border: '1px solid #6BB700'
     },
-    subwayMapStepIcon: {
+    subwayNavStepIcon: {
       width: stepIconSize,
       height: stepIconSize,
       fontSize: stepIconSize,
@@ -79,7 +79,7 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       fontWeight: 'normal',
       marginLeft: '0px'
     },
-    subwayMapSubStepIcon: {
+    subwayNavSubStepIcon: {
       width: subStepIconSize,
       height: subStepIconSize,
       fontSize: subStepIconSize,

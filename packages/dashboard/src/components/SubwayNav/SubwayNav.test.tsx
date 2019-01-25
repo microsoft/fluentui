@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { SubwayMap } from './SubwayMap';
-import { ISubwayMapStep } from '@uifabric/dashboard/lib/components/SubwayMap/SubwayMap.types';
+import { SubwayNav } from './SubwayNav';
+import { ISubwayNavStep } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 
 /**
  * generate Random id
@@ -16,7 +16,7 @@ function generateRandomId(): string {
   );
 }
 
-function clickedStep(step: ISubwayMapStep, subStep: ISubwayMapStep | undefined) {
+function clickedStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined) {
   console.log('step clicked = ' + step.label);
   if (subStep !== undefined) {
     console.log('sub step clicked - ' + subStep.label);
@@ -41,20 +41,20 @@ function mockData(count: number, formComplete: boolean): any {
   return data;
 }
 
-describe('SubwayMap', () => {
-  it('renders SubwayMap correctly', () => {
-    SubwayMap.prototype.componentDidMount = jest.fn();
+describe('SubwayNav', () => {
+  it('renders SubwayNav correctly', () => {
+    SubwayNav.prototype.componentDidMount = jest.fn();
 
     const component = renderer.create(
       // tslint:disable-next-line:jsx-no-lambda
-      <SubwayMap steps={[]} />
+      <SubwayNav steps={[]} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('can complete rendering', done => {
-    const wrapper = mount(<SubwayMap steps={mockData(10, false)} />);
+    const wrapper = mount(<SubwayNav steps={mockData(10, false)} />);
     wrapper.setProps({ items: mockData(10, true), onPagesUpdated: (pages: any) => done() });
   });
 });

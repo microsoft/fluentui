@@ -1,8 +1,8 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
-export interface ISubwayMapProps {
+export interface ISubwayNavProps {
   /** Steps to render. */
-  steps: ISubwayMapStep[];
+  steps: ISubwayNavStep[];
 
   /** Wizard complete flag */
   wizardComplete?: boolean;
@@ -11,7 +11,7 @@ export interface ISubwayMapProps {
   className?: string;
 }
 
-export interface ISubwayMapStep {
+export interface ISubwayNavStep {
   /**
    * Unique ID for the given step
    */
@@ -65,52 +65,52 @@ export interface ISubwayMapStep {
   /**
    * Handler to be executed on click of a step
    */
-  onClickStep: (step: ISubwayMapStep, subStep: ISubwayMapStep | undefined) => void;
+  onClickStep: (step: ISubwayNavStep, subStep: ISubwayNavStep | undefined) => void;
 
   /**
    * Sub steps in the step
    */
-  subSteps?: ISubwayMapStep[];
+  subSteps?: ISubwayNavStep[];
 }
 
 /**
- * Styles for the Subway map component
+ * Styles for the Subway Nav component
  */
-export interface ISubwayMapStyles {
+export interface ISubwayNavStyles {
   /**
-   * Styles for the Subway map container
+   * Styles for the Subway Nav container
    */
-  subwayMapContainer: IStyle;
+  subwayNavContainer: IStyle;
 
   /**
-   * Styles for map content container
+   * Styles for Nav content container
    */
-  subwayMapContentContainer: IStyle;
+  subwayNavContentContainer: IStyle;
 
   /**
-   * Styles for map content
+   * Styles for Nav content
    */
-  subwayMapContent: IStyle;
+  subwayNavContent: IStyle;
 
   /**
-   * Styles for subway map step div
+   * Styles for subway Nav step div
    */
-  subwayMapStepDiv: IStyle;
+  subwayNavStepDiv: IStyle;
 
   /**
    * Styles for subway step label
    */
-  subwayMapStepLabel: IStyle;
+  subwayNavStepLabel: IStyle;
 
   /**
    * Styles for subway step connector
    */
-  subwayMapStepConnector: IStyle;
+  subwayNavStepConnector: IStyle;
 
   /**
    * Styles for subway substep connector
    */
-  subwayMapSubStepConnector: IStyle;
+  subwayNavSubStepConnector: IStyle;
 
   /**
    * Styles for subway substep connector not started
@@ -128,14 +128,14 @@ export interface ISubwayMapStyles {
   stepConnectorWizardComplete: IStyle;
 
   /**
-   * Styles for subway map step
+   * Styles for subway Nav step
    */
-  subwayMapStepIcon: IStyle;
+  subwayNavStepIcon: IStyle;
 
   /**
-   * Styles for subway map sub step
+   * Styles for subway Nav sub step
    */
-  subwayMapSubStepIcon: IStyle;
+  subwayNavSubStepIcon: IStyle;
 
   /**
    * Styles for subway step label
@@ -148,7 +148,7 @@ export interface ISubwayMapStyles {
   subStepLabel: IStyle;
 
   /**
-   * Styles for subway map step
+   * Styles for subway Nav step
    */
   boldStep: IStyle;
 
@@ -236,9 +236,9 @@ export interface ISubwayMapStyles {
 /**
  * Props for style customizations
  */
-export interface ISubwayMapStyleProps {
+export interface ISubwayNavStyleProps {
   /**
-   * Additional CSS class to apply to the SubwayMap.
+   * Additional CSS class to apply to the SubwayNav.
    */
   className?: string;
 }

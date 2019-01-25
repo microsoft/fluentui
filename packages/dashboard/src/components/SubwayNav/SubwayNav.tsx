@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
-import { ISubwayMapProps, ISubwayMapStep, ISubwayMapStyles } from './SubwayMap.types';
+import { ISubwayNavProps, ISubwayNavStep, ISubwayNavStyles } from './SubwayNav.types';
 import { Icon } from 'office-ui-fabric-react';
-import { getSubwayMapStyles } from './SubwayMap.styles';
+import { getSubwayNavStyles } from './SubwayNav.styles';
 
 export interface IIconProps {
   iconName: string;
@@ -11,19 +11,19 @@ export interface IIconProps {
   iconClassName: string;
 }
 
-const getClassNames = classNamesFunction<ISubwayMapProps, ISubwayMapStyles>();
-const classNames = getClassNames(getSubwayMapStyles!);
+const getClassNames = classNamesFunction<ISubwayNavProps, ISubwayNavStyles>();
+const classNames = getClassNames(getSubwayNavStyles!);
 
 /**
  * Component for Subway control
  */
-export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
-  constructor(props: ISubwayMapProps) {
+export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
+  constructor(props: ISubwayNavProps) {
     super(props);
   }
 
   /**
-   * Render the Subway map control
+   * Render the Subway Nav control
    */
   public render(): JSX.Element {
     const { steps /*theme, */ } = this.props;
@@ -37,9 +37,9 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
       }
 
       return (
-        <div className={css(this.props.className, classNames.subwayMapContainer)}>
-          <div className={classNames.subwayMapContentContainer}>
-            <div className={classNames.subwayMapContent}>{stepElements}</div>
+        <div className={css(this.props.className, classNames.subwayNavContainer)}>
+          <div className={classNames.subwayNavContentContainer}>
+            <div className={classNames.subwayNavContent}>{stepElements}</div>
           </div>
         </div>
       );
@@ -50,11 +50,11 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
   }
 
   /**
-   * Render step of the subway map control
+   * Render step of the subway Nav control
    * @param stepToRender
    * @param prevStep
    */
-  private _renderStep(stepToRender: ISubwayMapStep, prevStep: ISubwayMapStep | undefined): JSX.Element[] {
+  private _renderStep(stepToRender: ISubwayNavStep, prevStep: ISubwayNavStep | undefined): JSX.Element[] {
     let stepElements: JSX.Element[] = [];
 
     if (stepToRender === undefined) {
@@ -69,7 +69,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
       if (prevStep !== undefined) {
         const connectorClass = this._getStepConnectorClassName(stepToRender);
         stepElements.push(
-          <div className={css(classNames.subwayMapStepConnector, connectorClass)} key={'connector' + '-' + stepToRender.key} />
+          <div className={css(classNames.subwayNavStepConnector, connectorClass)} key={'connector' + '-' + stepToRender.key} />
         );
       }
 
@@ -80,12 +80,12 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
           <div
             key={stepToRender.key}
             className={css(
-              classNames.subwayMapStepDiv,
+              classNames.subwayNavStepDiv,
               !stepToRender.isCurrentStep && stepToRender.isDisabledStep ? classNames.disableStep : undefined
             )}
             onClick={() => stepToRender.onClickStep(stepToRender, undefined)}
           >
-            <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayMapStepIcon)} />
+            <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavStepIcon)} />
             <span className={css(classNames.stepLabel, stepToRender.isCurrentStep ? classNames.boldStep : undefined)}>
               {stepToRender!.label}
             </span>
@@ -98,16 +98,16 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
 
           stepElements.push(
             <div
-              className={css(classNames.subwayMapStepConnector, classNames.stepConnectorCompleted)}
+              className={css(classNames.subwayNavStepConnector, classNames.stepConnectorCompleted)}
               key={'connector-sub' + '-' + stepToRender.key}
             />
           );
 
           let subSteps = stepToRender.subSteps;
-          let prevStep: ISubwayMapStep | undefined = undefined;
+          let prevStep: ISubwayNavStep | undefined = undefined;
 
           if (subSteps !== undefined) {
-            subSteps.forEach((subStep: ISubwayMapStep, index: number) => {
+            subSteps.forEach((subStep: ISubwayNavStep, index: number) => {
               subStepElements = subStepElements.concat(this._renderSubStep(stepToRender, subStep, index > 0 ? prevStep : undefined));
               prevStep = subStep;
             });
@@ -122,15 +122,15 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
   }
 
   /**
-   * Render substeps of current step in subway map control
+   * Render substeps of current step in subway Nav control
    * @param parentStep
    * @param subStepToRender
    * @param prevSubStep
    */
   private _renderSubStep(
-    parentStep: ISubwayMapStep | undefined,
-    subStepToRender: ISubwayMapStep | undefined,
-    prevSubStep: ISubwayMapStep | undefined
+    parentStep: ISubwayNavStep | undefined,
+    subStepToRender: ISubwayNavStep | undefined,
+    prevSubStep: ISubwayNavStep | undefined
   ): JSX.Element[] {
     const stepElements: JSX.Element[] = [];
     const { steps } = this.props;
@@ -143,7 +143,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
           if (prevSubStep !== undefined) {
             const connectorClass = this._getStepConnectorClassName(subStepToRender);
             stepElements.push(
-              <div className={css(classNames.subwayMapSubStepConnector, connectorClass)} key={'connector' + '-' + subStepToRender.key} />
+              <div className={css(classNames.subwayNavSubStepConnector, connectorClass)} key={'connector' + '-' + subStepToRender.key} />
             );
           }
 
@@ -153,12 +153,12 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
             <div
               key={subStepToRender.key}
               className={css(
-                classNames.subwayMapStepDiv,
+                classNames.subwayNavStepDiv,
                 !subStepToRender.isCurrentStep && subStepToRender.isDisabledStep ? classNames.disableStep : undefined
               )}
               onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}
             >
-              <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayMapSubStepIcon)} />
+              <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavSubStepIcon)} />
               <span className={css(classNames.subStepLabel, subStepToRender.isCurrentStep ? classNames.boldStep : undefined)}>
                 {subStepToRender.label}
               </span>
@@ -174,7 +174,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
    * Get the step connector class name
    * @param step
    */
-  private _getStepConnectorClassName(step: ISubwayMapStep | undefined): string {
+  private _getStepConnectorClassName(step: ISubwayNavStep | undefined): string {
     if (step !== undefined) {
       if (this.props.wizardComplete) {
         return classNames.stepConnectorWizardComplete;
@@ -192,7 +192,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
    * Get the icon props for the given step
    * @param step
    */
-  private _getIconPropsStep(step: ISubwayMapStep | undefined): IIconProps {
+  private _getIconPropsStep(step: ISubwayNavStep | undefined): IIconProps {
     let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.stepNotStarted };
 
     if (step !== undefined) {
@@ -236,7 +236,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
    * Get the icon props for the given sub step
    * @param subStep
    */
-  private _getIconPropsSubStep(subStep: ISubwayMapStep | undefined): IIconProps {
+  private _getIconPropsSubStep(subStep: ISubwayNavStep | undefined): IIconProps {
     let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.subStepNotStarted };
 
     if (subStep !== undefined) {
@@ -267,7 +267,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
   /**
    *  Check if given step has sub steps
    */
-  private _hasSubSteps(step: ISubwayMapStep | undefined): boolean {
+  private _hasSubSteps(step: ISubwayNavStep | undefined): boolean {
     let hasSubSteps = false;
 
     if (step !== undefined) {

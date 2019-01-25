@@ -1,38 +1,38 @@
 import * as React from 'react';
-import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayMap/examples/SubwayMap.Util';
-import { SubwayMap } from '@uifabric/dashboard/lib/components/SubwayMap/SubwayMap';
-import { ISubwayMapStep } from '@uifabric/dashboard/lib/components/SubwayMap/SubwayMap.types';
+import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayNav/examples/SubwayNav.Util';
+import { SubwayNav } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav';
+import { ISubwayNavStep } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 
-export class SubwayMapBasicDifferentStatesExample extends React.Component<any, any> {
+export class SubwayNavBasicDifferentStatesExample extends React.Component<any, any> {
   public render(): JSX.Element {
-    let steps: ISubwayMapStep[] = [];
+    let steps: ISubwayNavStep[] = [];
 
-    const data0: ISubwayMapStep = {
+    const data0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 0',
       isCurrentStep: true,
       formError: true,
       onClickStep: this._handleClickStep
     };
-    const data1: ISubwayMapStep = {
+    const data1: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 1',
       formError: true,
       onClickStep: this._handleClickStep
     };
-    const data2: ISubwayMapStep = {
+    const data2: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 2',
       formComplete: true,
       onClickStep: this._handleClickStep
     };
-    const data3: ISubwayMapStep = {
+    const data3: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 3',
       formSkipped: true,
       onClickStep: this._handleClickStep
     };
-    const data4: ISubwayMapStep = {
+    const data4: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 4',
       formComplete: false,
@@ -48,12 +48,12 @@ export class SubwayMapBasicDifferentStatesExample extends React.Component<any, a
 
     return (
       <div>
-        <SubwayMap steps={steps} />
+        <SubwayNav steps={steps} />
       </div>
     );
   }
 
-  private _handleClickStep(step: ISubwayMapStep, subStep: ISubwayMapStep | undefined): void {
+  private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
     let alertStr = 'Clicked ' + step.label;
     step.isCurrentStep = true;
     if (subStep !== undefined) {

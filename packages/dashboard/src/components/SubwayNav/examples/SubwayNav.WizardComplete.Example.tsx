@@ -1,29 +1,29 @@
 import * as React from 'react';
-import { generateRandomId } from './SubwayMap.Util';
-import { SubwayMap } from '../SubwayMap';
-import { ISubwayMapStep } from '../SubwayMap.types';
+import { generateRandomId } from './SubwayNav.Util';
+import { SubwayNav } from '../SubwayNav';
+import { ISubwayNavStep } from '../SubwayNav.types';
 
-export class SubwayMapBasicExample extends React.Component<any, any> {
+export class SubwayNavWizardCompleteExample extends React.Component<any, any> {
   public render(): JSX.Element {
-    let steps: ISubwayMapStep[] = [];
+    let steps: ISubwayNavStep[] = [];
 
-    const data0: ISubwayMapStep = {
+    const data0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 0',
       isCurrentStep: true,
       onClickStep: this._handleClickStep
     };
-    const data1: ISubwayMapStep = {
+    const data1: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 1',
       onClickStep: this._handleClickStep
     };
-    const data2: ISubwayMapStep = {
+    const data2: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 2',
       onClickStep: this._handleClickStep
     };
-    const data3: ISubwayMapStep = {
+    const data3: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 3',
       onClickStep: this._handleClickStep
@@ -36,12 +36,12 @@ export class SubwayMapBasicExample extends React.Component<any, any> {
 
     return (
       <div>
-        <SubwayMap steps={steps} />
+        <SubwayNav steps={steps} wizardComplete={true} />
       </div>
     );
   }
 
-  private _handleClickStep(step: ISubwayMapStep, subStep: ISubwayMapStep | undefined): void {
+  private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
     let alertStr = 'Clicked ' + step.label;
     step.isCurrentStep = true;
     if (subStep !== undefined) {
