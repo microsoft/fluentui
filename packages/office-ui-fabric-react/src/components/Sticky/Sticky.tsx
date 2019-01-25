@@ -121,18 +121,30 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     const { isStickyTop, isStickyBottom } = this.state;
 
+    const nonStickyContent =
+      this._nonStickyContent && this._nonStickyContent.current
+        ? {
+            offsetHeight: this._nonStickyContent.current.offsetHeight,
+            scrollWidth: this._nonStickyContent.current.scrollWidth
+          }
+        : undefined;
+    const placeHolder =
+      this._placeHolder && this._placeHolder.current
+        ? {
+            offsetHeight: this._placeHolder.current.offsetHeight,
+            scrollWidth: this._placeHolder.current.scrollWidth
+          }
+        : undefined;
+
     return (isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
-      (this._nonStickyContent &&
-        this._nonStickyContent.current &&
-        ((this._placeHolder &&
-          this._placeHolder.current &&
-          (this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight ||
-            this._nonStickyContent.current.scrollWidth !== this._placeHolder.current.scrollWidth)) ||
-          (this.stickyContentTop && this._nonStickyContent.current.offsetHeight !== this.stickyContentTop.offsetHeight) ||
-          (this.stickyContentBottom && this._nonStickyContent.current.offsetHeight !== this.stickyContentBottom.offsetHeight)))) as boolean;
+      (nonStickyContent &&
+        ((placeHolder &&
+          (nonStickyContent.offsetHeight !== placeHolder.offsetHeight || nonStickyContent.scrollWidth !== placeHolder.scrollWidth)) ||
+          (this.stickyContentTop && nonStickyContent.offsetHeight !== this.stickyContentTop.offsetHeight) ||
+          (this.stickyContentBottom && nonStickyContent.offsetHeight !== this.stickyContentBottom.offsetHeight)))) as boolean;
   }
 
   public render(): JSX.Element {
