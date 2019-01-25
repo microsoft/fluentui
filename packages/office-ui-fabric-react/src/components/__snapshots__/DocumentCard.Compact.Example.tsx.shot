@@ -42,7 +42,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           max-height: 106px;
           max-width: 144px;
         }
-        & .ms-DocumentCardPreview-previewFileTypeIcon {
+        & .ms-DocumentCardPreview-icon {
           max-height: 32px;
           max-width: 32px;
         }
@@ -583,7 +583,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           max-height: 106px;
           max-width: 144px;
         }
-        & .ms-DocumentCardPreview-previewFileTypeIcon {
+        & .ms-DocumentCardPreview-icon {
           max-height: 32px;
           max-width: 32px;
         }
@@ -652,7 +652,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         <div
           className=
               ms-Image
-              ms-DocumentCardPreview-previewFileTypeIcon
+              ms-DocumentCardPreview-icon
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -936,7 +936,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           max-height: 106px;
           max-width: 144px;
         }
-        & .ms-DocumentCardPreview-previewFileTypeIcon {
+        & .ms-DocumentCardPreview-icon {
           max-height: 32px;
           max-width: 32px;
         }
@@ -1247,7 +1247,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           max-height: 106px;
           max-width: 144px;
         }
-        & .ms-DocumentCardPreview-previewFileTypeIcon {
+        & .ms-DocumentCardPreview-icon {
           max-height: 32px;
           max-width: 32px;
         }

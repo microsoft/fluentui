@@ -7505,7 +7505,7 @@ interface IDocumentCardPreviewStyles {
   // (undocumented)
   fileListOverflowText: IStyle;
   // (undocumented)
-  previewFileTypeIcon: IStyle;
+  icon: IStyle;
   // (undocumented)
   previewIcon: IStyle;
   // (undocumented)
