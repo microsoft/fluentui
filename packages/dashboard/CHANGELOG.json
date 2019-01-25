@@ -2,6 +2,35 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.46.0",
+      "tag": "@uifabric/dashboard_v0.46.0",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailPanel mainContent lifecycle event",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "b06b43d49869b9e93358ac4ab10b2701b8bf2390"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "updated dashboard package to use a fork of react-grid-layout",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "bc116f5ee23d2dd19a21fe52dda28b10e7de0cb1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.2 <7.0.0` to `>=6.52.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.3 <7.0.0` to `>=6.129.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.45.0",
       "tag": "@uifabric/dashboard_v0.45.0",
       "date": "Wed, 23 Jan 2019 22:53:12 GMT",

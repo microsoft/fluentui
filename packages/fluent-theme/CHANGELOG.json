@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.13.3",
+      "tag": "@uifabric/fluent-theme_v0.13.3",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "6aea41c720e996979f9687f70d1b4df1ea43cf9d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.3 <7.0.0` to `>=6.129.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.2",
       "tag": "@uifabric/fluent-theme_v0.13.2",
       "date": "Thu, 10 Jan 2019 04:58:48 GMT",

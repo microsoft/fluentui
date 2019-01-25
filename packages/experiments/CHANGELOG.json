@@ -2,6 +2,38 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.52.0",
+      "tag": "@uifabric/experiments_v6.52.0",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor fixes to Toggle and CollapsibleSection.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "153db53d127c2bc99719018fbc4ef43e87ed8c4d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Adding 'reversed' prop, updating styles, and adding examples, snapshot tests and vr-tests.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "558a1fa1e3d7d1b2582e70e9394491c37ad38064"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.2 <1.0.0` to `>=0.13.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.0 <7.0.0` to `>=6.28.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.3 <7.0.0` to `>=6.129.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.51.2",
       "tag": "@uifabric/experiments_v6.51.2",
       "date": "Wed, 23 Jan 2019 22:53:12 GMT",
