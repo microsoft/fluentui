@@ -2574,6 +2574,7 @@ interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   beakHeight?: number;
   // @deprecated
   beakWidth?: number;
+  className?: string;
   // @deprecated
   collapsed?: boolean;
   color?: string;
@@ -2596,6 +2597,7 @@ interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   target: HTMLElement | string | null;
   // @deprecated
   teachingBubbleRef?: ITeachingBubble;
+  theme?: ITheme;
   // @deprecated
   width?: number;
 }
@@ -2622,6 +2624,7 @@ interface ICoachmarkState {
 interface ICoachmarkStyleProps {
   beaconColorOne?: string;
   beaconColorTwo?: string;
+  className?: string;
   // @deprecated
   collapsed?: boolean;
   // (undocumented)
@@ -2634,6 +2637,7 @@ interface ICoachmarkStyleProps {
   isCollapsed: boolean;
   isMeasured: boolean;
   isMeasuring: boolean;
+  theme?: ITheme;
   transformOrigin?: string;
   width?: string;
 }
