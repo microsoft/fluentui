@@ -15,6 +15,10 @@ import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
+import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
+import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import { getStyles as getCheckStyles } from '../Check/Check.styles';
+import { getStyles as getDetailsRowCheckStyles } from './DetailsRowCheck.styles';
 import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
@@ -29,6 +33,9 @@ const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.butt
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 
 const NO_COLUMNS: IColumn[] = [];
+
+const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
+const getRowCheckClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
 export interface IDetailsHeader {
   focus: () => boolean;
@@ -210,6 +217,22 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     });
 
     const classNames = this._classNames;
+
+    const checkStyles = getCheckStyles({ theme: theme! });
+
+    const checkClassNames = getCheckClassNames(checkStyles, {
+      theme: theme!
+    });
+
+    const rowCheckClassNames = getRowCheckClassNames(getDetailsRowCheckStyles, {
+      theme: theme!,
+      canSelect: true,
+      selected: false,
+      anySelected: false,
+      className: classNames.check,
+      isHeader: true
+    });
+
     const isRTL = getRTL();
     return (
       <FocusZone
@@ -240,19 +263,25 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                     id: `${this._id}-checkTooltip`,
                     setAriaDescribedBy: false,
                     content: ariaLabelForSelectAllCheckbox,
-                    children: (
+                    children: !isCheckboxHidden ? (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
                         aria-describedby={
                           ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? `${this._id}-checkTooltip` : undefined
                         }
-                        data-is-focusable={!isCheckboxHidden}
+                        data-is-focusable={true}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
-                        canSelect={!isCheckboxHidden}
+                        canSelect={true}
                         className={classNames.check}
+                      />
+                    ) : (
+                      <div
+                        id={`${this._id}-selection`}
+                        className={css(rowCheckClassNames.root, rowCheckClassNames.check, checkClassNames.checkHost)}
+                        aria-label={ariaLabelForSelectionColumn}
                       />
                     )
                   },
