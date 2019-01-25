@@ -6813,9 +6813,9 @@ interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProp
 // @public (undocumented)
 interface IDetailsGroupRenderProps extends IGroupRenderProps {
   // (undocumented)
-  onRenderFooter?: IRenderFunction<IGroupFooterProps & IDetailsGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   // (undocumented)
-  onRenderHeader?: IRenderFunction<IGroupHeaderProps & IDetailsGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
 // WARNING: The type "DetailsHeaderBase" needs to be exported by the package (e.g. added to index.ts)
