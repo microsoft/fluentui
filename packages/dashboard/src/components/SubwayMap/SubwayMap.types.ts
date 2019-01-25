@@ -1,25 +1,14 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
-/**
- * Possible states of a given step
- */
-export enum SubwayMapStepState {
-  NotStarted = 0,
-  Current = 1,
-  Completed = 2,
-  ViewedNotCompleted = 3,
-  StepWithSubSteps = 4,
-  Unsaved = 5,
-  Skipped = 6,
-  Error = 7,
-  CompletedWizard = 8,
+export interface ISubwayMapProps {
+  /** Steps to render. */
+  steps: ISubwayMapStep[];
 
-  NotStartedSubStep = 9,
-  CurrentSubStep = 10,
-  CompletedSubStep = 11,
-  UnsavedSubStep = 12,
-  SkippedSubStep = 13,
-  ErrorSubstep = 14
+  /** Wizard complete flag */
+  wizardComplete?: boolean;
+
+  /** Optional classname to append to root list. */
+  className?: string;
 }
 
 export interface ISubwayMapStep {
@@ -42,7 +31,7 @@ export interface ISubwayMapStep {
    * Flag to indicate if current step
    */
   isCurrentStep?: boolean;
-   
+
   /**
    * Flag to indicate if the form status is complete
    */
@@ -68,7 +57,12 @@ export interface ISubwayMapStep {
    */
   skippedStep?: boolean;
 
-    /**
+  /**
+   * Flag to indicate if step is disabled
+   */
+  isDisabledStep?: boolean;
+
+  /**
    * Handler to be executed on click of a step
    */
   onClickStep: (step: ISubwayMapStep, subStep: ISubwayMapStep | undefined) => void;
@@ -77,19 +71,6 @@ export interface ISubwayMapStep {
    * Sub steps in the step
    */
   subSteps?: ISubwayMapStep[];
-}
-
-export interface ISubwayMapProps {
-  /** Steps to render. */
-  steps?: ISubwayMapStep[];
-
-  /** Wizard complete flag */
-  wizardIsComplete?: boolean;
-
-  /**
-   * Optional classname to append to root list.
-   */
-  className?: string;
 }
 
 /**
@@ -156,12 +137,12 @@ export interface ISubwayMapStyles {
    */
   subwayMapSubStepIcon: IStyle;
 
-    /**
+  /**
    * Styles for subway step label
    */
   stepLabel: IStyle;
 
-    /**
+  /**
    * Styles for subway substep label
    */
   subStepLabel: IStyle;

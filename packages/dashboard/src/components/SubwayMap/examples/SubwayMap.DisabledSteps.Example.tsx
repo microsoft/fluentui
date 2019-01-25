@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { generateRandomId } from './SubwayMap.Util';
-import { SubwayMap } from '../SubwayMap';
-import { ISubwayMapStep } from '../SubwayMap.types';
+import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayMap/examples/SubwayMap.Util';
+import { SubwayMap } from '@uifabric/dashboard/lib/components/SubwayMap/SubwayMap';
+import { ISubwayMapStep } from '@uifabric/dashboard/lib/components/SubwayMap/SubwayMap.types';
 
-export class SubwayMapSubStepsExample extends React.Component<any, any> {
+export class SubwayMapDisabledStepsExample extends React.Component<any, any> {
   public render(): JSX.Element {
     let steps: ISubwayMapStep[] = [];
     let subSteps: ISubwayMapStep[] = [];
@@ -11,17 +11,19 @@ export class SubwayMapSubStepsExample extends React.Component<any, any> {
     const substep0: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Sub Step 0',
-      formComplete: true,
+      isCurrentStep: true,
       onClickStep: this._handleClickStep
     };
     const substep1: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Sub Step 1',
+      isDisabledStep: true,
       onClickStep: this._handleClickStep
     };
     const substep2: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Sub Step 2',
+      isDisabledStep: true,
       onClickStep: this._handleClickStep
     };
 
@@ -32,28 +34,26 @@ export class SubwayMapSubStepsExample extends React.Component<any, any> {
     const data0: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Step 0',
-      formComplete: false,
-      formError: true,
-      onClickStep: this._handleClickStep
-    };
-    const data1: ISubwayMapStep = {
-      key: generateRandomId(),
-      label: 'Step 1',
-      formComplete: true,
       isCurrentStep: true,
       onClickStep: this._handleClickStep,
       subSteps: subSteps
     };
+    const data1: ISubwayMapStep = {
+      key: generateRandomId(),
+      label: 'Step 1',
+      isDisabledStep: true,
+      onClickStep: this._handleClickStep
+    };
     const data2: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Step 2',
-      formError: true,
+      isDisabledStep: true,
       onClickStep: this._handleClickStep
     };
     const data3: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Step 3',
-      formComplete: false,
+      isDisabledStep: true,
       onClickStep: this._handleClickStep
     };
 
@@ -74,7 +74,7 @@ export class SubwayMapSubStepsExample extends React.Component<any, any> {
     step.isCurrentStep = true;
     if (subStep !== undefined) {
       subStep.isCurrentStep = true;
-      alertStr += ' and : ' + subStep.label;
+      alertStr += ' and ' + subStep.label;
     }
 
     console.log(alertStr);

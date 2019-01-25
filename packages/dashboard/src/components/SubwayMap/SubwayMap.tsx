@@ -17,7 +17,7 @@ const classNames = getClassNames(getSubwayMapStyles!);
 /**
  * Component for Subway control
  */
-export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
+export class SubwayMap extends React.Component<ISubwayMapProps, {}> {
   constructor(props: ISubwayMapProps) {
     super(props);
   }
@@ -50,38 +50,27 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
   }
 
   /**
-   * 
+   * Render step of the subway map control
+   * @param stepToRender
+   * @param prevStep
    */
-  private _hasSubSteps(step: ISubwayMapStep | undefined): boolean {
-    let hasSubSteps = false;
-
-    if (step !== undefined) {
-      hasSubSteps = step.subSteps !== undefined && step.subSteps.length > 0 ? true : false;
-    }
-
-    return hasSubSteps;
-  }
-
-/**
- * Render step of the subway map control
- * @param stepToRender 
- * @param prevStep 
- */
   private _renderStep(stepToRender: ISubwayMapStep, prevStep: ISubwayMapStep | undefined): JSX.Element[] {
     let stepElements: JSX.Element[] = [];
 
     if (stepToRender === undefined) {
       return stepElements;
-    }    
+    }
 
-    const { steps } = this.props;    
+    const { steps } = this.props;
 
     if (steps !== undefined) {
-      const iconProps = this._getIconPropsStep(stepToRender);   
-  
+      const iconProps = this._getIconPropsStep(stepToRender);
+
       if (prevStep !== undefined) {
         const connectorClass = this._getStepConnectorClassName(stepToRender);
-        stepElements.push(<div className={css(classNames.subwayMapStepConnector, connectorClass)} key={'connector' + '-' + stepToRender.key} />);
+        stepElements.push(
+          <div className={css(classNames.subwayMapStepConnector, connectorClass)} key={'connector' + '-' + stepToRender.key} />
+        );
       }
 
       if (stepToRender !== undefined) {
@@ -90,13 +79,13 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
         stepElements.push(
           <div
             key={stepToRender.key}
-            className={css(
-              classNames.subwayMapStepDiv
-            )}
+            className={css(classNames.subwayMapStepDiv, !stepToRender.isCurrentStep && stepToRender.isDisabledStep ? classNames.disableStep : undefined)}
             onClick={() => stepToRender.onClickStep(stepToRender, undefined)}
           >
             <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayMapStepIcon)} />
-            <span className={css(classNames.stepLabel, stepToRender.isCurrentStep ? classNames.boldStep : undefined)}>{stepToRender!.label}</span>
+            <span className={css(classNames.stepLabel, stepToRender.isCurrentStep ? classNames.boldStep : undefined)}>
+              {stepToRender!.label}
+            </span>
           </div>
         );
 
@@ -104,7 +93,12 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
         if (renderSubStep && stepToRender!.subSteps) {
           let subStepElements: JSX.Element[] = [];
 
-          stepElements.push(<div className={css(classNames.subwayMapStepConnector, classNames.stepConnectorCompleted)} key={'connector-sub' + '-' + stepToRender.key} />);
+          stepElements.push(
+            <div
+              className={css(classNames.subwayMapStepConnector, classNames.stepConnectorCompleted)}
+              key={'connector-sub' + '-' + stepToRender.key}
+            />
+          );
 
           let subSteps = stepToRender.subSteps;
           let prevStep: ISubwayMapStep | undefined = undefined;
@@ -124,12 +118,12 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
     return stepElements;
   }
 
-/**
- * Render substeps of current step in subway map control
- * @param parentStep 
- * @param subStepToRender 
- * @param prevSubStep 
- */
+  /**
+   * Render substeps of current step in subway map control
+   * @param parentStep
+   * @param subStepToRender
+   * @param prevSubStep
+   */
   private _renderSubStep(
     parentStep: ISubwayMapStep | undefined,
     subStepToRender: ISubwayMapStep | undefined,
@@ -145,7 +139,9 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
           // Add the connectiong line
           if (prevSubStep !== undefined) {
             const connectorClass = this._getStepConnectorClassName(subStepToRender);
-            stepElements.push(<div className={css(classNames.subwayMapSubStepConnector, connectorClass)} key={'connector' + '-' + subStepToRender.key} />);
+            stepElements.push(
+              <div className={css(classNames.subwayMapSubStepConnector, connectorClass)} key={'connector' + '-' + subStepToRender.key} />
+            );
           }
 
           iconProps = this._getIconPropsSubStep(subStepToRender);
@@ -153,7 +149,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
           stepElements.push(
             <div
               key={subStepToRender.key}
-              className={css(classNames.subwayMapStepDiv)}
+              className={css(classNames.subwayMapStepDiv, !subStepToRender.isCurrentStep && subStepToRender.isDisabledStep ? classNames.disableStep : undefined)}
               onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}
             >
               <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayMapSubStepIcon)} />
@@ -168,13 +164,13 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
     return stepElements;
   }
 
-/**
- * Get the step connector class name 
- * @param step 
- */
+  /**
+   * Get the step connector class name
+   * @param step
+   */
   private _getStepConnectorClassName(step: ISubwayMapStep | undefined): string {
     if (step !== undefined) {
-      if (this.props.wizardIsComplete) {
+      if (this.props.wizardComplete) {
         return classNames.stepConnectorWizardComplete;
       }
 
@@ -186,18 +182,18 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
     return classNames.stepConnectorNotStarted;
   }
 
-/**
- * Get the icon props for the given step
- * @param step 
- */
+  /**
+   * Get the icon props for the given step
+   * @param step
+   */
   private _getIconPropsStep(step: ISubwayMapStep | undefined): IIconProps {
     let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.stepNotStarted };
 
     if (step !== undefined) {
-      if (this.props.wizardIsComplete) {
+      if (this.props.wizardComplete) {
         return { iconName: 'CompletedSolid', iconClassName: classNames.stepWizardComplete };
       }
-      
+
       if (step.isCurrentStep) {
         return { iconName: 'FullCircleMask', iconClassName: classNames.stepCurrent };
       }
@@ -214,7 +210,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
         return { iconName: 'AlertSolid', iconClassName: classNames.stepError };
       }
 
-      if (step.formViewed && !step.formComplete){
+      if (step.formViewed && !step.formComplete) {
         return { iconName: 'FullCircleMask', iconClassName: classNames.stepViewedNotCompleted };
       }
 
@@ -222,7 +218,7 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
         return { iconName: 'LocationCircle', iconClassName: classNames.stepSkipped };
       }
 
-      if (!step.formSaved) {
+      if (step.formSaved !== undefined && step.formSaved) {
         return { iconName: 'LocationCircle', iconClassName: classNames.stepUnsaved };
       }
     }
@@ -230,10 +226,10 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
     return defaultProps;
   }
 
-/**
- * Get the icon props for the given sub step
- * @param subStep 
- */
+  /**
+   * Get the icon props for the given sub step
+   * @param subStep
+   */
   private _getIconPropsSubStep(subStep: ISubwayMapStep | undefined): IIconProps {
     let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.subStepNotStarted };
 
@@ -254,11 +250,24 @@ export class SubwayMap extends React.Component<ISubwayMapProps, {}>  {
         return { iconName: 'LocationCircle', iconClassName: classNames.subStepSkipped };
       }
 
-      if (!subStep.formSaved) {
+      if (subStep.formSaved !== undefined && !subStep.formSaved) {
         return { iconName: 'LocationCircle', iconClassName: classNames.subStepUnsaved };
       }
     }
 
     return defaultProps;
+  }
+
+  /**
+   *  Check if given step has sub steps
+   */
+  private _hasSubSteps(step: ISubwayMapStep | undefined): boolean {
+    let hasSubSteps = false;
+
+    if (step !== undefined) {
+      hasSubSteps = step.subSteps !== undefined && step.subSteps.length > 0 ? true : false;
+    }
+
+    return hasSubSteps;
   }
 }

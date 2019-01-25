@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { generateRandomId } from './SubwayMap.Util'
+import { generateRandomId } from './SubwayMap.Util';
 import { SubwayMap } from '../SubwayMap';
 import { ISubwayMapStep } from '../SubwayMap.types';
 
@@ -11,26 +11,21 @@ export class SubwayMapBasicExample extends React.Component<any, any> {
       key: generateRandomId(),
       label: 'Step 0',
       isCurrentStep: true,
-      formComplete: false,
-      formError: true,
       onClickStep: this._handleClickStep
     };
     const data1: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Step 1',
-      formComplete: true,
       onClickStep: this._handleClickStep
     };
     const data2: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Step 2',
-      formError: true,
       onClickStep: this._handleClickStep
     };
     const data3: ISubwayMapStep = {
       key: generateRandomId(),
       label: 'Step 3',
-      formComplete: false,
       onClickStep: this._handleClickStep
     };
 
@@ -46,14 +41,14 @@ export class SubwayMapBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _handleClickStep(step: ISubwayMapStep, subStep: ISubwayMapStep | undefined): void {  
-    let alertStr = "Clicked " + step.label;
+  private _handleClickStep(step: ISubwayMapStep, subStep: ISubwayMapStep | undefined): void {
+    let alertStr = 'Clicked ' + step.label;
     step.isCurrentStep = true;
     if (subStep !== undefined) {
       subStep.isCurrentStep = true;
-      alertStr += " and " + subStep.label;
+      alertStr += ' and ' + subStep.label;
     }
 
-    alert(alertStr);    
+    console.log(alertStr);
   }
 }

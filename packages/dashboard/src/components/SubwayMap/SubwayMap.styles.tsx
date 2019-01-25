@@ -59,7 +59,7 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
     subwayMapSubStepConnector: {
       width: '0px',
       height: '24px',
-      marginLeft: '7px',
+      marginLeft: '7px'
     },
     stepConnectorNotStarted: {
       border: '1px solid #EBEBEB'
@@ -86,7 +86,7 @@ export const getSubwayMapStyles = (props: ISubwayMapStyleProps): ISubwayMapStyle
       fontStyle: 'normal',
       lineHeight: 'normal',
       fontWeight: 'normal',
-      marginLeft: '4px',
+      marginLeft: '4px'
     },
     stepLabel: {
       marginLeft: '12px'
