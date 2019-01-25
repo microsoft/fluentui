@@ -109,7 +109,7 @@ storiesOf('Stack', module)
   ))
   .addStory('Vertical Stack - Bottom-aligned', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Vertical Stack - Space around', () => (
@@ -286,7 +286,7 @@ storiesOf('Stack', module)
   ))
   .addStory('Horizontal Stack - Bottom-aligned', () => (
     <Fabric>
-      <Stack horizontal {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+      <Stack horizontal {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory(
