@@ -40,7 +40,8 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
 
   /**
    * Defines whether the StackItem should be prevented from shrinking.
-   * This can be used to prevent a StackItem from shrinking when it is inside of a Stack that has shrinkItems set to true.
+   * This can be used to prevent a StackItem from shrinking when it is inside of a Stack that has shrinking items.
+   * @defaultvalue false
    */
   preventShrink?: boolean;
 
@@ -51,6 +52,7 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
 
   /**
    * Defines whether the StackItem should take up 100% of the height of its parent.
+   * @defaultvalue true
    */
   verticalFill?: boolean;
 }
