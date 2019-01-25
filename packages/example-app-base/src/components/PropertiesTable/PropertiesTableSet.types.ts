@@ -20,4 +20,38 @@ export interface IPropertiesTableSetProps {
    * A set of pre-resolved source code.
    */
   sources?: string[];
+
+  // tslint:disable-next-line:no-any
+  jsonDocs?: IPageJson;
+}
+
+export interface ITokenJson {
+  text: string;
+  hyperlinkedPage?: string;
+}
+
+export interface ITableRowJson {
+  name: string;
+  typeTokens: ITokenJson[];
+  descriptionHtml: string;
+  deprecated: boolean;
+  deprecatedMessage?: string;
+}
+
+export interface IEnumTableRowJson {
+  name: string;
+  descriptionHtml: string;
+  value: string;
+}
+
+export interface ITableJson {
+  kind: 'interface' | 'enum' | 'class';
+  name: string;
+  extendsTokens: ITokenJson[];
+  descriptionHtml: string;
+  members: ITableRowJson[] | IEnumTableRowJson[];
+}
+
+export interface IPageJson {
+  tables: ITableJson[];
 }

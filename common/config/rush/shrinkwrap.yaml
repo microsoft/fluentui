@@ -2,6 +2,8 @@ dependencies:
   '@microsoft/api-extractor': 7.0.13
   '@microsoft/load-themed-styles': 1.8.39
   '@microsoft/loader-load-themed-styles': 1.7.107
+  '@microsoft/node-core-library': 3.9.0
+  '@microsoft/tsdoc': 0.12.4
   '@rush-temp/azure-themes': 'file:projects/azure-themes.tgz'
   '@rush-temp/build': 'file:projects/build.tgz'
   '@rush-temp/charting': 'file:projects/charting.tgz'
@@ -19,6 +21,7 @@ dependencies:
   '@rush-temp/jest-serializer-merge-styles': 'file:projects/jest-serializer-merge-styles.tgz'
   '@rush-temp/merge-styles': 'file:projects/merge-styles.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:projects/office-ui-fabric-react.tgz'
+  '@rush-temp/page-json-generator': 'file:projects/page-json-generator.tgz'
   '@rush-temp/pr-deploy-site': 'file:projects/pr-deploy-site.tgz'
   '@rush-temp/prettier-rules': 'file:projects/prettier-rules.tgz'
   '@rush-temp/server-rendered-app': 'file:projects/server-rendered-app.tgz'
@@ -15177,6 +15180,18 @@ packages:
       integrity: sha512-r9yTqJgG0dxV6+Q0kXccNcN2xZW80+pUhjz0A7Qnb99bxYXWBcZjgCYwldTuymHmTAQHyQs7bkppDoJARX0f0g==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
+  'file:projects/page-json-generator.tgz':
+    dependencies:
+      '@microsoft/api-extractor': 7.0.13
+      '@microsoft/node-core-library': 3.9.0
+      '@microsoft/tsdoc': 0.12.4
+      '@types/node': 8.10.39
+    dev: false
+    name: '@rush-temp/page-json-generator'
+    resolution:
+      integrity: sha512-kK3XTqDXyL/bR869cSO6V5eeKcT2K8bmFc7q7O58y15Vzu3fC1VFPTreVhT9pOtqwSntu3QV6x7KFs/Ug/3zTg==
+      tarball: 'file:projects/page-json-generator.tgz'
+    version: 0.0.0
   'file:projects/pr-deploy-site.tgz':
     dev: false
     name: '@rush-temp/pr-deploy-site'
@@ -15428,6 +15443,8 @@ specifiers:
   '@microsoft/api-extractor': ^7.0.11
   '@microsoft/load-themed-styles': ^1.7.13
   '@microsoft/loader-load-themed-styles': ^1.6.0
+  '@microsoft/node-core-library': ~3.9.0
+  '@microsoft/tsdoc': ^0.12.4
   '@rush-temp/azure-themes': 'file:./projects/azure-themes.tgz'
   '@rush-temp/build': 'file:./projects/build.tgz'
   '@rush-temp/charting': 'file:./projects/charting.tgz'
@@ -15445,6 +15462,7 @@ specifiers:
   '@rush-temp/jest-serializer-merge-styles': 'file:./projects/jest-serializer-merge-styles.tgz'
   '@rush-temp/merge-styles': 'file:./projects/merge-styles.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:./projects/office-ui-fabric-react.tgz'
+  '@rush-temp/page-json-generator': 'file:./projects/page-json-generator.tgz'
   '@rush-temp/pr-deploy-site': 'file:./projects/pr-deploy-site.tgz'
   '@rush-temp/prettier-rules': 'file:./projects/prettier-rules.tgz'
   '@rush-temp/server-rendered-app': 'file:./projects/server-rendered-app.tgz'
