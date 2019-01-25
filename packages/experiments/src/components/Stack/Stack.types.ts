@@ -45,8 +45,8 @@ export interface IStackProps
   horizontal?: boolean;
 
   /**
-   * Defines whether to render Stack child elements in the opposite direction (bottom-to-top if it's a Vertical Stack and
-   * right-to-left if it's a Horizontal Stack).
+   * Defines whether to render Stack child elements in the opposite direction (bottom-to-top if it's a vertical Stack and
+   * right-to-left if it's a horizontal Stack).
    * @defaultvalue false
    */
   reversed?: boolean;
