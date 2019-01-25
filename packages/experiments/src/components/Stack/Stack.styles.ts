@@ -14,7 +14,6 @@ const GlobalClassNames = {
 
 export const styles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => {
   const {
-    horizontalFill,
     verticalFill,
     maxWidth,
     maxHeight,
@@ -27,7 +26,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
     padding,
     horizontalAlign,
     verticalAlign,
-    shrinkItems,
+    preventShrink,
     className
   } = props;
 
@@ -57,7 +56,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
   const commonSelectors = {
     // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
-      flexShrink: shrinkItems ? 1 : 0
+      flexShrink: preventShrink ? 0 : 1
     }
   };
 
@@ -151,8 +150,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         display: 'flex',
         flexDirection: horizontal ? (reversed ? 'row-reverse' : 'row') : reversed ? 'column-reverse' : 'column',
         flexWrap: 'nowrap',
-        width: horizontalFill && !wrap ? '100%' : 'auto',
-        height: verticalFill && !wrap ? '100%' : 'auto',
+        width: 'auto',
+        height: verticalFill ? '100%' : 'auto',
         maxWidth,
         maxHeight,
         padding: parsePadding(padding, theme),

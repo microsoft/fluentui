@@ -14,7 +14,7 @@ export interface IExampleState {
   numItems: number;
   showBoxShadow: boolean;
   preventOverflow: boolean;
-  shrinkItems: boolean;
+  preventShrink: boolean;
   wrap: boolean;
   stackHeight: number;
   autoHeight: boolean;
@@ -36,7 +36,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       numItems: 5,
       showBoxShadow: false,
       preventOverflow: false,
-      shrinkItems: false,
+      preventShrink: true,
       wrap: false,
       stackHeight: 200,
       autoHeight: true,
@@ -57,7 +57,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       numItems,
       showBoxShadow,
       preventOverflow,
-      shrinkItems,
+      preventShrink,
       wrap,
       stackHeight,
       autoHeight,
@@ -230,7 +230,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         </Stack>
 
         <Stack
-          shrinkItems={shrinkItems}
+          preventShrink={preventShrink}
           wrap={wrap}
           gap={gap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
@@ -275,7 +275,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
   };
 
   private _onShrinkItemsChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ shrinkItems: isChecked });
+    this.setState({ preventShrink: !isChecked });
   };
 
   private _onWrapChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
