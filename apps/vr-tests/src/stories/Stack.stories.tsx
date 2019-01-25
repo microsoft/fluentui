@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
 import { Stack } from '@uifabric/experiments/lib/Stack';
@@ -72,12 +72,31 @@ const defaultProps = {
 
 storiesOf('Stack', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(story => <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      {story()}
+    </Screener>
+  )
   .addStory(
     'Vertical Stack - Default',
     () => (
       <Fabric>
         <Stack {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Vertical Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack reversed {...defaultProps} />
       </Fabric>
     ),
     { rtl: true }
@@ -222,6 +241,15 @@ storiesOf('Stack', module)
     () => (
       <Fabric>
         <Stack horizontal {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Horizontal Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack horizontal reversed {...defaultProps} />
       </Fabric>
     ),
     { rtl: true }

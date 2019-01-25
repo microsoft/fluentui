@@ -16,8 +16,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
     container: 'div',
     pill: 'button',
     thumb: 'div',
-    offText: Label,
-    onText: Label
+    text: Label
   });
 
   return (
@@ -45,8 +44,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
             </Slots.pill>
           )}
         </KeytipData>
-        {checked && <Slots.onText />}
-        {!checked && <Slots.offText />}
+        <Slots.text />
       </Slots.container>
     </Slots.root>
   );

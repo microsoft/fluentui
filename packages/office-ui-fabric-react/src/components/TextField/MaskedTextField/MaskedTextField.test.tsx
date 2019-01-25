@@ -1,19 +1,12 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { KeyCodes } from '../../../Utilities';
+import { mockEvent } from '../../../common/testUtilities';
 
 import { MaskedTextField } from './MaskedTextField';
 
 describe('MaskedTextField', () => {
-  function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
-    const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: ReactTestUtils.SyntheticEventData = { target };
-
-    return event;
-  }
-
   it('renders TextField correctly', () => {
     const component = renderer.create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
     const tree = component.toJSON();

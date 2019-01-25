@@ -160,7 +160,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
         >
-          <div {...nativeProps} ref={this._panel} className={_classNames.root}>
+          <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}

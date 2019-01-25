@@ -5,6 +5,9 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, Prop
 import { VerticalStackBasicExample } from './examples/Stack.Vertical.Basic.Example';
 const VerticalStackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.Basic.Example.tsx') as string;
 
+import { VerticalStackReversedExample } from './examples/Stack.Vertical.Reversed.Example';
+const VerticalStackReversedExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.Reversed.Example.tsx') as string;
+
 import { VerticalStackSpacingExample } from './examples/Stack.Vertical.Spacing.Example';
 const VerticalStackSpacingExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Vertical.Spacing.Example.tsx') as string;
 
@@ -35,6 +38,9 @@ const VerticalStackConfigureExampleCode = require('!raw-loader!@uifabric/experim
 // Horizontal Stack Examples
 import { HorizontalStackBasicExample } from './examples/Stack.Horizontal.Basic.Example';
 const HorizontalStackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Horizontal.Basic.Example.tsx') as string;
+
+import { HorizontalStackReversedExample } from './examples/Stack.Horizontal.Reversed.Example';
+const HorizontalStackReversedExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Horizontal.Reversed.Example.tsx') as string;
 
 import { HorizontalStackSpacingExample } from './examples/Stack.Horizontal.Spacing.Example';
 const HorizontalStackSpacingExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Stack/examples/Stack.Horizontal.Spacing.Example.tsx') as string;
@@ -74,6 +80,9 @@ export class StackPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Basic Vertical Stack" code={VerticalStackBasicExampleCode}>
               <VerticalStackBasicExample />
             </ExampleCard>
+            <ExampleCard title="Reversed Basic Vertical Stack" code={VerticalStackReversedExampleCode}>
+              <VerticalStackReversedExample />
+            </ExampleCard>
             <ExampleCard title="Vertical Stack - Gap and Padding Sizes" code={VerticalStackSpacingExampleCode}>
               <VerticalStackSpacingExample />
             </ExampleCard>
@@ -103,6 +112,9 @@ export class StackPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Basic Horizontal Stack" code={HorizontalStackBasicExampleCode}>
               <HorizontalStackBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Reversed Basic Horizontal Stack" code={HorizontalStackReversedExampleCode}>
+              <HorizontalStackReversedExample />
             </ExampleCard>
             <ExampleCard title="Horizontal Stack - Gap and Padding Sizes" code={HorizontalStackSpacingExampleCode}>
               <HorizontalStackSpacingExample />

@@ -1,88 +1,79 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
+import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
 import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
 import { IColor, getColorFromString } from '../../utilities/color/colors';
+import { mockEvent } from '../../common/testUtilities';
 
 describe('ColorPicker', () => {
-  it('renders ColorPicker correctly', () => {
-    const component = renderer.create(<ColorPicker color="#FFFFFF" />);
+  let wrapper: ReactWrapper<IColorPickerProps, IColorPickerState, ColorPickerBase> | undefined;
+  const colorPickerRef = React.createRef<IColorPicker>();
+
+  afterEach(() => {
+    if (wrapper) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
+  });
+
+  it('renders correctly', () => {
+    const component = renderer.create(<ColorPicker color="#abcdef" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Props are correctly parsed', () => {
-    let colorPickerComponent: any;
-    const setRef = (ref: IColorPicker): void => {
-      colorPickerComponent = ref;
-    };
+  it('correctly parses props', () => {
+    wrapper = mount(<ColorPicker color="#abcdef" componentRef={colorPickerRef} />);
 
-    mount(<ColorPicker color="#FFFFFF" componentRef={setRef} />);
-
-    expect(colorPickerComponent.state.color.hex).toEqual('ffffff');
+    expect(colorPickerRef.current!.color.hex).toEqual('abcdef');
   });
 
-  it('Reacts to props change', () => {
-    let colorPickerComponent: any;
-    const setRef = (ref: IColorPicker): void => {
-      colorPickerComponent = ref;
-    };
+  it('reacts to props change', () => {
+    wrapper = mount(<ColorPicker color="#abcdef" componentRef={colorPickerRef} />);
 
-    mount(<ColorPicker color="#FFFFFF" componentRef={setRef} />);
-
-    const component = colorPickerComponent;
-    colorPickerComponent.componentWillReceiveProps({ color: '#AEAEAE' });
-    expect(component.state.color.hex).toEqual('aeaeae');
+    wrapper.setProps({ color: '#AEAEAE' });
+    expect(colorPickerRef.current!.color.hex).toEqual('aeaeae');
   });
 
-  it('onColorChange is called', () => {
+  it('calls onColorChange', () => {
     let color = '#FFFFFF';
-    let newColorObject;
+    let newColorObject: IColor | undefined;
     const onColorChanged = (str: string, colorObject: IColor): void => {
       color = str;
       newColorObject = colorObject;
     };
 
-    let colorPickerComponent: any;
-    const setRef = (ref: IColorPicker): void => {
-      colorPickerComponent = ref;
-    };
-
-    mount(<ColorPicker color={color} componentRef={setRef} onColorChanged={onColorChanged} />);
+    wrapper = mount(<ColorPicker color={color} componentRef={colorPickerRef} onColorChanged={onColorChanged} />);
 
     const newColor = '#AEAEAE';
-    const component = colorPickerComponent;
-    colorPickerComponent.componentWillReceiveProps({ color: newColor });
+    wrapper.setProps({ color: newColor });
 
-    expect(component.state.color.hex).toEqual('aeaeae');
+    expect(colorPickerRef.current!.color.hex).toEqual('aeaeae');
     expect(color).toEqual(newColor);
     expect(newColorObject).toEqual(getColorFromString(newColor));
   });
 
-  it('Hides alpha control slider', () => {
-    const wrapper = mount(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />);
+  it('hides alpha control slider', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />);
 
     const alphaSlider = wrapper.find('.is-alpha');
-    const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
-    const tableInputs = wrapper.find('.ms-ColorPicker-table > tbody> tr > td');
+    const tableHeaders = wrapper.find('thead td');
+    const inputs = wrapper.find('.ms-TextField');
 
     // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
-    const expectedTableComponents = 4;
-
     expect(alphaSlider.exists()).toBe(false);
-    expect(tableHeaders).toHaveLength(expectedTableComponents);
-    expect(tableInputs).toHaveLength(expectedTableComponents);
+    expect(tableHeaders).toHaveLength(4);
+    expect(inputs).toHaveLength(4);
   });
 
-  it('Renders default RGBA/Hex strings', () => {
-    const wrapper = mount(<ColorPicker color="#FFFFFF" />);
+  it('renders default RGBA/Hex strings', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" />);
 
-    const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
+    const tableHeaders = wrapper.find('thead td');
     const textHeaders = [
       ColorPickerBase.defaultProps.hexLabel,
       ColorPickerBase.defaultProps.redLabel,
@@ -96,10 +87,10 @@ describe('ColorPicker', () => {
     });
   });
 
-  it('Renders custom RGBA/Hex strings', () => {
+  it('renders custom RGBA/Hex strings', () => {
     const textHeaders = ['Custom Hex', 'Custom Red', 'Custom Green', 'Custom Blue', 'Custom Alpha'];
 
-    const wrapper = mount(
+    wrapper = mount(
       <ColorPicker
         color="#FFFFFF"
         hexLabel={textHeaders[0]}
@@ -110,46 +101,84 @@ describe('ColorPicker', () => {
       />
     );
 
-    const tableHeaders = wrapper.find('.ms-ColorPicker-table > thead > tr > td');
+    const tableHeaders = wrapper.find('thead td');
     tableHeaders.forEach((node, index) => {
       expect(node.text()).toEqual(textHeaders[index]);
     });
   });
 
-  it('Keeps color value when tabbing between Hex and RGBA text inputs', () => {
-    const colorStringValue = 'ffffff';
-    let colorChangeCalled = false;
-    const onColorChanged = (newColor: string): void => {
-      colorChangeCalled = newColor !== colorStringValue;
-    };
-
-    let colorPickerComponent: any;
-    const setRef = (ref: IColorPicker): void => {
-      colorPickerComponent = ref;
-    };
-
+  it('keeps color value when tabbing between Hex and RGBA text inputs', () => {
+    const colorStringValue = 'abcdef';
+    const colorChangeSpy = jest.fn();
     const inputClassName = 'input-tab-test';
-    const wrapper = mount<IColorPickerProps, IColorPickerState>(
+    wrapper = mount(
       <ColorPicker
         color={`#${colorStringValue}`}
-        onColorChanged={onColorChanged}
-        componentRef={setRef}
+        onColorChanged={colorChangeSpy}
+        componentRef={colorPickerRef}
         styles={{ input: inputClassName }}
       />
     );
 
-    expect(colorPickerComponent.state.color.hex).toEqual(colorStringValue);
-    expect(colorChangeCalled).toBeFalsy();
+    expect(colorPickerRef.current!.color.hex).toEqual(colorStringValue);
+    expect(colorChangeSpy).toHaveBeenCalledTimes(0);
 
     // Tab between text inputs checking state after each time.
     const allInputs = wrapper.find(`.${inputClassName} input`);
     expect(allInputs.length).toBe(5);
 
     allInputs.forEach(input => {
+      input.simulate('focus');
       input.simulate('blur');
 
-      expect(colorPickerComponent.state.color.hex).toEqual(colorStringValue);
-      expect(colorChangeCalled).toBeFalsy();
+      expect(colorPickerRef.current!.color.hex).toEqual(colorStringValue);
+      expect(colorChangeSpy).toHaveBeenCalledTimes(0);
     });
+  });
+
+  it('allows updating text fields', () => {
+    let updatedColor: string | undefined;
+    const onChange = jest.fn((color: string) => (updatedColor = color));
+
+    wrapper = mount(<ColorPicker onColorChanged={onChange} color="#000000" />);
+
+    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input');
+    const redInput = inputs[1];
+    ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
+    ReactTestUtils.Simulate.blur(redInput);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(updatedColor).toBe('#ff0000');
+
+    const hexInput = inputs[0];
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('00ff00'));
+    ReactTestUtils.Simulate.blur(hexInput);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(updatedColor).toBe('#00ff00');
+
+    const alphaInput = inputs[4];
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('50'));
+    ReactTestUtils.Simulate.blur(alphaInput);
+    expect(onChange).toHaveBeenCalledTimes(3);
+    expect(updatedColor).toBe('rgba(0, 255, 0, 0.5)');
+  });
+
+  it('allows updating text fields when alpha slider is hidden', () => {
+    let updatedColor: string | undefined;
+    const onChange = jest.fn((color: string) => (updatedColor = color));
+
+    wrapper = mount(<ColorPicker onColorChanged={onChange} color="#000000" alphaSliderHidden />);
+
+    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input');
+    const redInput = inputs[1];
+    ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
+    ReactTestUtils.Simulate.blur(redInput);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(updatedColor).toBe('#ff0000');
+
+    const hexInput = inputs[0];
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('00ff00'));
+    ReactTestUtils.Simulate.blur(hexInput);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(updatedColor).toBe('#00ff00');
   });
 });

@@ -37,9 +37,31 @@ describe('Stack', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders reversed vertical Stack correctly', () => {
+    const component = renderer.create(
+      <Stack reversed>
+        <div>Item 1</div>
+        <div>Item 2</div>
+      </Stack>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders default horizontal Stack correctly', () => {
     const component = renderer.create(
       <Stack horizontal>
+        <div>Item 1</div>
+        <div>Item 2</div>
+      </Stack>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders reversed horizontal Stack correctly', () => {
+    const component = renderer.create(
+      <Stack horizontal reversed>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>

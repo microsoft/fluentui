@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Layout, Layouts } from 'react-grid-layout-fabric';
 import {
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,

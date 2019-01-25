@@ -13,7 +13,7 @@ import {
   IThumbnailItemProps,
   Priority
 } from '@uifabric/dashboard';
-import { Layout, Layouts } from 'react-grid-layout';
+import { Layout, Layouts } from 'react-grid-layout-fabric';
 import { ILegendDataItem } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 

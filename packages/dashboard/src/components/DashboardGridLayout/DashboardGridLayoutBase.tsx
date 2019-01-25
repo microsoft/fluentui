@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breakpoints, Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout-fabric';
 import {
   IDashboardGridLayoutProps,
   IDashboardGridLayoutStyles,
@@ -11,7 +11,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { CardSizeToWidthHeight, updateLayoutsFromLayout } from '../../utilities/DashboardGridLayoutUtils';
 
 // These require the style-loader and css-loader rules from webpack
-require('react-grid-layout/css/styles.css');
+require('react-grid-layout-fabric/css/styles.css');
 require('react-resizable/css/styles.css');
 require('./DashboardGridLayout.css');
 

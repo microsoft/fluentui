@@ -22,12 +22,13 @@ import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 export interface IDetailPanelL2PivotExampleStates {
   show: boolean;
   currentL2Id?: string;
+  currentPivot?: string;
 }
 
 export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPanelL2PivotExampleStates> {
   constructor(props: {}) {
     super(props);
-    this.state = { show: false, currentL2Id: undefined };
+    this.state = { show: false, currentL2Id: undefined, currentPivot: undefined };
   }
 
   public render(): JSX.Element {
@@ -80,7 +81,6 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           }}
           mainHeader={header}
           mainContent={this.getMainContent()}
-          // mainActionBar={this._onGetL2ActionBar('')}
           onDetailPanelDimiss={() => {
             this.setState({ show: false, currentL2Id: undefined });
           }}
@@ -172,6 +172,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
       items: [
         {
           headerText: 'Details',
+          itemKey: 'details',
           content: this.getTiles(),
           actionBar: {
             primaryButton: {
@@ -201,6 +202,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
         } as IDetailPanelPivotBodyItem,
         {
           headerText: 'JSX',
+          itemKey: 'jsx',
           content: (
             <div>
               <ColorPicker color={'#000000'} />
@@ -209,6 +211,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
         } as IDetailPanelPivotBodyItem,
         {
           headerText: 'Delayed Details',
+          itemKey: 'delayeddetails',
           onContentLoad: () => {
             return new Promise((resolve: (value: IDetailInfoTileProps[]) => void) => {
               setTimeout(() => {
@@ -240,6 +243,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
         } as IDetailPanelPivotBodyItem,
         {
           headerText: 'Load error',
+          itemKey: 'loaderror',
           onContentLoad: () => {
             return new Promise((_resolve: (value: JSX.Element) => void, reject: (reason: IDetailPanelErrorResult) => void) => {
               setTimeout(() => {
@@ -254,7 +258,11 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
             });
           }
         } as IDetailPanelPivotBodyItem
-      ]
+      ],
+      onPivotLinkClick: (key: string) => {
+        this.setState({ currentPivot: key });
+      },
+      selectedPivotKey: this.state.currentPivot
     } as IDetailPanelPivotBodyProps;
   }
 

@@ -1,6 +1,6 @@
 import { CardSize } from '@uifabric/dashboard';
 import { IDashboardCardLayout, DashboardGridBreakpointLayouts } from '../components/DashboardGridLayout/DashboardGridLayout.types';
-import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Layout, Layouts } from 'react-grid-layout-fabric';
 
 /**
  * The is the default CardSizeToWidthHeight. In case this prop is not provided in the control

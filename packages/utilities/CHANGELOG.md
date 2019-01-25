@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 11 Jan 2019 05:00:46 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+
+## 6.28.1
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- Updating 'customizable.tsx' to evaluate style functions.
 
 ## 6.28.0
 Fri, 11 Jan 2019 05:00:46 GMT

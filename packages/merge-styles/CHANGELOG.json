@@ -2,6 +2,25 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.15.1",
+      "tag": "@uifabric/merge-styles_v6.15.1",
+      "date": "Wed, 23 Jan 2019 22:53:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow :global to be used in more scenarios than just \":global(selector)\"",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "034ac9dad6f8687da78fb358db9da0c43d976fbc"
+          },
+          {
+            "comment": "Use CSS object-fit in the Image component in capable browsers",
+            "author": "Mathieu 'p01' Henri <mathieu@p01.org>",
+            "commit": "dffc46f4917a381eb75cccc81b5eb89c5c3c9af7"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.15.0",
       "tag": "@uifabric/merge-styles_v6.15.0",
       "date": "Thu, 15 Nov 2018 13:36:22 GMT",

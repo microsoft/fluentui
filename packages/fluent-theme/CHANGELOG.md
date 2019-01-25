@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+
+## 0.13.3
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.
 
 ## 0.13.2
 Thu, 10 Jan 2019 04:58:48 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.28.1",
+      "tag": "@uifabric/utilities_v6.28.1",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating 'customizable.tsx' to evaluate style functions.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4585011f2001a2d276525fb64f81ecabfe2316b4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.0",
       "tag": "@uifabric/utilities_v6.28.0",
       "date": "Fri, 11 Jan 2019 05:00:46 GMT",
