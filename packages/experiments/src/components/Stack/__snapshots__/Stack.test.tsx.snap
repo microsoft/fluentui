@@ -646,6 +646,70 @@ exports[`Stack renders horizontal Stack with vertical and horizontal fill correc
 </div>
 `;
 
+exports[`Stack renders reversed horizontal Stack correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:not(:last-child) {
+        margin-left: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
+>
+  <div>
+    Item 1
+  </div>
+  <div>
+    Item 2
+  </div>
+</div>
+`;
+
+exports[`Stack renders reversed vertical Stack correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & > *:not(:last-child) {
+        margin-top: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 0;
+      }
+>
+  <div>
+    Item 1
+  </div>
+  <div>
+    Item 2
+  </div>
+</div>
+`;
+
 exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
 <div
   className=

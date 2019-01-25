@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.",
+      "comment": "Dropdown: fixes a misalignment of some items in the dropdown. ",
       "type": "patch"
     }
   ],

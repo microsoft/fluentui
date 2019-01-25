@@ -29,11 +29,7 @@ describe('Link', () => {
   });
 
   it('Set type=button property when link is a button', () => {
-    const component = mount(
-      <Link>
-        I'm link as a button
-      </Link>
-    );
+    const component = mount(<Link>I'm link as a button</Link>);
 
     expect(Object.keys(component.find('button').props())).toContain('type');
     expect(component.find('button').props().type).toBe('button');

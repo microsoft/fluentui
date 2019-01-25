@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix ColorPicker when alpha slider is hidden",
+      "comment": "DocumentCard: Renames 'previewFileTypeIcon' to 'icon' to fix a regression",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }
