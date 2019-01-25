@@ -21,7 +21,9 @@
     "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "disabledTasks": [
-    "build-codepen-examples"
+    "build-codepen-examples",
+    "verify-api-extractor",
+    "update-api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
