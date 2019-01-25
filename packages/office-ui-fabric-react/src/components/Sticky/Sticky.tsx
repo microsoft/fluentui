@@ -125,9 +125,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
-      _isHeightOrWidthDifferent(this._nonStickyContent, this._placeHolder) ||
-      _isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentTop) ||
-      _isHeightOrWidthDifferent(this._nonStickyContent, this._stickyContentBottom)) as boolean;
+      (this._nonStickyContent &&
+        this._nonStickyContent.current &&
+        ((this._placeHolder &&
+          this._placeHolder.current &&
+          (this._nonStickyContent.current.offsetHeight !== this._placeHolder.current.offsetHeight ||
+            this._nonStickyContent.current.scrollWidth !== this._placeHolder.current.scrollWidth)) ||
+          (this.stickyContentTop && this._nonStickyContent.current.offsetHeight !== this.stickyContentTop.offsetHeight) ||
+          (this.stickyContentBottom && this._nonStickyContent.current.offsetHeight !== this.stickyContentBottom.offsetHeight)))) as boolean;
   }
 
   public render(): JSX.Element {
@@ -150,7 +155,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
-        <div style={this._getNonStickyPlaceholderHeight()} ref={this._placeHolder}>
+        <div style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
           <div
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
@@ -198,20 +203,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _getStickyPlaceholderHeight(isSticky: boolean): React.CSSProperties {
-    let height = 0,
-      width = 0;
-    if (this.nonStickyContent) {
-      height = this.nonStickyContent.offsetHeight;
-      width = this.nonStickyContent.scrollWidth;
-    }
+    const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
     return {
       visibility: isSticky ? 'hidden' : 'visible',
-      height: isSticky ? 0 : height,
-      width: isSticky ? 0 : width
+      height: isSticky ? 0 : height
     };
   }
 
-  private _getNonStickyPlaceholderHeight(): React.CSSProperties {
+  private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
     if (isStickyTop || isStickyBottom) {
       let height = 0,
