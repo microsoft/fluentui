@@ -818,6 +818,30 @@ export const AppState: IAppState = {
                 )
             }
           ]
+        },
+        {
+          title: 'References',
+          url: '#/components/references',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: [
+            {
+              title: 'IScheme',
+              url: '#/references/ischeme',
+              isFilterable: true,
+              component: () => <LoadingComponent title="IScheme" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Styling/ISchemeComponentPage').ISchemeComponentPage))
+            },
+            {
+              title: 'ITheme',
+              url: '#/references/itheme',
+              isFilterable: true,
+              component: () => <LoadingComponent title="ITheme" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Styling/IThemeComponentPage').IThemeComponentPage))
+            }
+          ]
         }
       ]
     },

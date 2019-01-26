@@ -4,14 +4,14 @@ import { generateJson } from './index';
 // Generate JSON for office-ui-fabric-react
 generateJson({
   apiJsonPath: 'C:\\Users\\naethell\\office-ui-fabric-react\\packages\\office-ui-fabric-react\\dist\\office-ui-fabric-react.api.json',
-  pageJsonFolderPath: path.join(__dirname, '../temp/pages'),
+  pageJsonFolderPath: path.join(__dirname, '../../../common/pages'),
   pageNames: ['Button', 'Breadcrumb', 'ChoiceGroup']
 });
 
 // Generate JSON for styling
 // generateJson({
 //   apiJsonPath: 'C:\\Users\\naethell\\office-ui-fabric-react\\packages\\styling\\dist\\styling.api.json',
-//   pageJsonFolderPath: path.join(__dirname, '../temp/stylingPages'),
+//   pageJsonFolderPath: path.join(__dirname, '../../../common/pages'),
 //   pageNames: ['ITheme', 'IScheme', 'IStyle']
 // });
 

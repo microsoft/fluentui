@@ -1,0 +1,476 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IBreadcrumb",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "focus"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Sets focus to the first breadcrumb link.\n",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IBreadcrumbItem",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "href",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Url to navigate to when this breadcrumb is clicked.\n",
+          "deprecated": false
+        },
+        {
+          "name": "isCurrentItem",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If this breadcrumb item is the item the user is currently on, if set to true, aria-current=\"page\" will be applied to this breadcrumb link\n",
+          "deprecated": false
+        },
+        {
+          "name": "key",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Arbitrary unique string associated with the breadcrumb\n",
+          "deprecated": false
+        },
+        {
+          "name": "onClick",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IBreadcrumbItem"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback issued when the breadcrumb is selected.\n",
+          "deprecated": false
+        },
+        {
+          "name": "text",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text to display to the user for the breadcrumb\n",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IBreadcrumbProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "BreadcrumbBase"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Aria label to place on the navigation landmark for breadcrumb\n",
+          "deprecated": false
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional root classname for the root breadcrumb element.\n",
+          "deprecated": false
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IBreadcrumb"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false
+        },
+        {
+          "name": "dividerAs",
+          "typeTokens": [
+            {
+              "text": "IComponentAs"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDividerAsProps"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Render a custom divider in place of the default chevron `>`\n",
+          "deprecated": false
+        },
+        {
+          "name": "items",
+          "typeTokens": [
+            {
+              "text": "IBreadcrumbItem"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Collection of breadcrumbs to render\n",
+          "deprecated": false
+        },
+        {
+          "name": "maxDisplayedItems",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The maximum number of breadcrumbs to display before coalescing. If not specified, all breadcrumbs will be rendered.\n",
+          "deprecated": false
+        },
+        {
+          "name": "onReduceData",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "data"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IBreadCrumbData"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "IBreadCrumbData"
+            },
+            {
+              "text": " | undefined"
+            }
+          ],
+          "descriptionHtml": "Method to call when reducing the length of the breadcrumb. Return undefined to never reduce breadcrumb length\n",
+          "deprecated": false
+        },
+        {
+          "name": "onRenderItem",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IBreadcrumbItem"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Method to call when trying to render an item.\n",
+          "deprecated": false
+        },
+        {
+          "name": "overflowAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional name to use for aria label on overflow button.\n",
+          "deprecated": false
+        },
+        {
+          "name": "overflowIndex",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Optional index where overflow items will be collapsed. Defaults to 0.\n",
+          "deprecated": false
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IBreadcrumbStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IBreadcrumbStyles"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IBreadcrumbStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IBreadcrumbStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "chevron",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "item",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "itemLink",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "list",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "listItem",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "overflow",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "overflowButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDividerAsProps",
+      "extendsTokens": [
+        {
+          "text": "IIconProps"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "item",
+          "typeTokens": [
+            {
+              "text": "IBreadcrumbItem"
+            }
+          ],
+          "descriptionHtml": "Optional breadcrumb item corresponds to left of the divider to be passed for custom rendering. For overflowed items, it will be last item in the list\n",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

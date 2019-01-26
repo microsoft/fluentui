@@ -432,8 +432,8 @@
     },
     {
       "packageName": "@uifabric/page-json-generator",
-      "projectFolder": "packages/page-json-generator",
-      "shouldPublish": false
+      "projectFolder": "packages/page-json-generator"
+      // "shouldPublish": false
     }
   ]
 }

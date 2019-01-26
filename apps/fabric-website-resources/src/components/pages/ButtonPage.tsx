@@ -60,6 +60,7 @@ export class ButtonPage extends React.Component<IButtonDemoPageProps, IButtonDem
 
     return (
       <DemoPage
+        jsonDocs={require('../../../../../common/pages/Button.page.json')}
         {...{
           ...ButtonPageProps({ areButtonsDisabled, areButtonsChecked }),
           ...this.props,

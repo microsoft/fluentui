@@ -13,6 +13,9 @@ import { IRawStyle } from '@uifabric/merge-styles';
  */
 export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
+/**
+ * {@docCategory ITheme}
+ */
 export interface IScheme {
   palette: IPalette;
   fonts: IFontStyles;
@@ -40,6 +43,9 @@ export interface IScheme {
   effects: IEffects;
 }
 
+/**
+ * {@docCategory ITheme}
+ */
 export interface ITheme extends IScheme {
   /**
    * @internal
@@ -50,6 +56,9 @@ export interface ITheme extends IScheme {
   schemes?: { [P in ISchemeNames]?: IScheme };
 }
 
+/**
+ * {@docCategory ITheme}
+ */
 export type IPartialTheme = {
   palette?: Partial<IPalette>;
   fonts?: Partial<IFontStyles>;

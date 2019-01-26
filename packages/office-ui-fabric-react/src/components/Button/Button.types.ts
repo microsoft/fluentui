@@ -9,6 +9,9 @@ import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButton {
   /**
    * Sets focus to the button.
@@ -31,6 +34,9 @@ export interface IButton {
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonProps
   extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
   /**
@@ -290,6 +296,9 @@ export interface IButtonProps
   description?: IStyle;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export enum ElementType {
   /** <button> element. */
   button = 0,
@@ -297,6 +306,9 @@ export enum ElementType {
   anchor = 1
 }
 
+/**
+ * {@docCategory Button}
+ */
 export enum ButtonType {
   normal = 0,
   primary = 1,
@@ -307,6 +319,9 @@ export enum ButtonType {
   default = 6
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonStyles {
   /**
    * Style for the root element in the default enabled, non-toggled state.
