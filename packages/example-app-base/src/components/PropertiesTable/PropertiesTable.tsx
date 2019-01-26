@@ -10,12 +10,17 @@ import {
   IColumn,
   IGroup
 } from 'office-ui-fabric-react/lib/DetailsList';
-// import { CollapsibleSection } from '@uifabric/experiments';
+import {
+  CollapsibleSection,
+  ICollapsibleSectionTitleComponent,
+  ICollapsibleSectionTitleStylesReturnType,
+  ICollapsibleSectionTitleProps
+} from '@uifabric/experiments';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import './PropertiesTable.scss';
 import { IInterfaceProperty, IEnumProperty, InterfacePropertyType, ILinkToken } from '../../utilities/parser/index';
-import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { FontClassNames, ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPropertiesTableProps {
   title?: string;
@@ -31,6 +36,13 @@ export interface IPropertiesTableState {
   properties: IInterfaceProperty[] | IEnumProperty[];
   isEnum: boolean;
 }
+
+const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (
+  props: ICollapsibleSectionTitleProps,
+  theme: ITheme
+): ICollapsibleSectionTitleStylesReturnType => ({
+  text: [theme.fonts.large]
+});
 
 const renderCell = (text: string) => {
   // When the text is passed to this function, it has had newline characters removed,
@@ -238,18 +250,18 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
 
     return (
       <div className="PropertiesTable">
-        {this._renderTitle()}
-        {/* <CollapsibleSection key={1} defaultCollapsed={true} title={title} styles={{ root: { fontSize: '21px' } }}> */}
-        {this._renderDescription()}
-        {this._renderExtends()}
-        <DetailsList
-          selectionMode={SelectionMode.none}
-          layoutMode={DetailsListLayoutMode.justified}
-          items={properties}
-          columns={isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
-          onRenderRow={this._onRenderRow}
-        />
-        {/* </CollapsibleSection> */}
+        {/* {this._renderTitle()} */}
+        <CollapsibleSection key={1} defaultCollapsed={true} title={this._renderTitle()}>
+          {this._renderDescription()}
+          {this._renderExtends()}
+          <DetailsList
+            selectionMode={SelectionMode.none}
+            layoutMode={DetailsListLayoutMode.justified}
+            items={properties}
+            columns={isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
+            onRenderRow={this._onRenderRow}
+          />
+        </CollapsibleSection>
       </div>
     );
   }

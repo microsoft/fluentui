@@ -283,7 +283,11 @@
     {
       "packageName": "@uifabric/experiments",
       "projectFolder": "packages/experiments",
-      "versionPolicyName": "lockedMajor"
+      "versionPolicyName": "lockedMajor",
+      "cyclicDependencyProjects": [
+        "@uifabric/example-app-base",
+        "@uifabric/charting"
+      ]
     },
     {
       "packageName": "@uifabric/foundation",
@@ -293,7 +297,11 @@
     {
       "packageName": "@uifabric/charting",
       "projectFolder": "packages/charting",
-      "versionPolicyName": "lockedMajor"
+      "versionPolicyName": "lockedMajor",
+      "cyclicDependencyProjects": [
+        "@uifabric/experiments",
+        "@uifabric/example-app-base"
+      ]
     },
     {
       "packageName": "@uifabric/dashboard",
@@ -322,7 +330,11 @@
     {
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
-      "versionPolicyName": "lockedMajor"
+      "versionPolicyName": "lockedMajor",
+      "cyclicDependencyProjects": [
+        "@uifabric/experiments",
+        "@uifabric/charting"
+      ]
     },
     {
       "packageName": "@uifabric/styling",

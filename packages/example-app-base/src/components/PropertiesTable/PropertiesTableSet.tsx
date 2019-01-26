@@ -53,7 +53,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
                 renderAsEnum={item.propertyType === PropertyType.enum}
               />
             ) : (
-              <div />
+              <div key={'table-' + index} />
             )
           )}
           {/* </CollapsibleSection> */}
