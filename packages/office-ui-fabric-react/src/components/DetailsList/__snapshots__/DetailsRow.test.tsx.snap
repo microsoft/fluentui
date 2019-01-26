@@ -382,7 +382,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-key-name "
                 className=
@@ -515,7 +514,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-name-name "
                 className=
@@ -648,7 +646,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header0-value-name "
                 className=
@@ -1193,7 +1190,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header9-key-name "
                 className=
@@ -1326,7 +1322,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header9-name-name "
                 className=
@@ -1459,7 +1454,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header9-value-name "
                 className=
@@ -2536,7 +2530,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-key-name "
                 className=
@@ -2669,7 +2662,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-name-name "
                 className=
@@ -2802,7 +2794,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header3-value-name "
                 className=
@@ -3347,7 +3338,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header6-key-name "
                 className=
@@ -3480,7 +3470,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header6-name-name "
                 className=
@@ -3613,7 +3602,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
                 aria-labelledby="header6-value-name "
                 className=
