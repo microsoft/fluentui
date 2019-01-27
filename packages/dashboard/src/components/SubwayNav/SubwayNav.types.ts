@@ -22,45 +22,11 @@ export interface ISubwayNavStep {
    */
   label: string;
 
-  /**
-   * Flag to indicate if step is viewed
-   */
-  formViewed?: boolean;
+  /* State of the step */
+  state?: SubwayNavStepState;
 
-  /**
-   * Flag to indicate if current step
-   */
-  isCurrentStep?: boolean;
-
-  /**
-   * Flag to indicate if the form status is complete
-   */
-  formComplete?: boolean;
-
-  /**
-   * Flag to indicate if the form status is skipped
-   */
-  formSkipped?: boolean;
-
-  /**
-   * Flag to indicate if the form data is saved
-   */
-  formSaved?: boolean;
-
-  /**
-   * Flag to indicate if the form has errors
-   */
-  formError?: boolean;
-
-  /**
-   * Flag to indicate if the form status is complete so that "Next" button is enabled
-   */
-  skippedStep?: boolean;
-
-  /**
-   * Flag to indicate if step is disabled
-   */
-  isDisabledStep?: boolean;
+  /** Flag to indicate if step is disabled */
+  disabled?: boolean;
 
   /**
    * Handler to be executed on click of a step
@@ -71,6 +37,20 @@ export interface ISubwayNavStep {
    * Sub steps in the step
    */
   subSteps?: ISubwayNavStep[];
+}
+
+/**
+ * Possible states of a given step
+ */
+export enum SubwayNavStepState {
+  NotStarted = 0,
+  Current = 1,
+  Completed = 2,
+  ViewedNotCompleted = 3,
+  StepWithSubSteps = 4,
+  Unsaved = 5,
+  Skipped = 6,
+  Error = 7
 }
 
 /**

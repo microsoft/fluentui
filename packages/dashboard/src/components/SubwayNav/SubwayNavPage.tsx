@@ -52,7 +52,8 @@ export class SubwayNavPage extends React.Component<IComponentDemoPageProps, {}> 
         dos={
           <div>
             <ul>
-              <li>Use Subway Nav control with PanelWizard, FullPageWizard or TenantSetupWizard.</li>
+              <li>Use Subway Nav control with Panel, Full Page or Tenant Setup Wizards.</li>
+              <li>For each subway nav step, it is recommended to use small consise label.</li>
             </ul>
           </div>
         }

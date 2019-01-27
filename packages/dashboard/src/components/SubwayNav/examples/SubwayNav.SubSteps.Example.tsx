@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { generateRandomId } from './SubwayNav.Util';
 import { SubwayNav } from '../SubwayNav';
-import { ISubwayNavStep } from '../SubwayNav.types';
+import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav.types';
 
 export class SubwayNavSubStepsExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -11,18 +11,19 @@ export class SubwayNavSubStepsExample extends React.Component<any, any> {
     const substep0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Sub Step 0',
-      isCurrentStep: true,
-      formComplete: true,
+      state: SubwayNavStepState.Current,
       onClickStep: this._handleClickStep
     };
     const substep1: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Sub Step 1',
+      state: SubwayNavStepState.NotStarted,
       onClickStep: this._handleClickStep
     };
     const substep2: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Sub Step 2',
+      state: SubwayNavStepState.NotStarted,
       onClickStep: this._handleClickStep
     };
 
@@ -33,28 +34,26 @@ export class SubwayNavSubStepsExample extends React.Component<any, any> {
     const data0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 0',
-      formComplete: false,
-      formError: true,
+      state: SubwayNavStepState.Error,
       onClickStep: this._handleClickStep
     };
     const data1: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 1',
-      formComplete: true,
-      isCurrentStep: true,
+      state: SubwayNavStepState.Current,
       onClickStep: this._handleClickStep,
       subSteps: subSteps
     };
     const data2: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 2',
-      formError: true,
+      state: SubwayNavStepState.Error,
       onClickStep: this._handleClickStep
     };
     const data3: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 3',
-      formComplete: false,
+      state: SubwayNavStepState.Completed,
       onClickStep: this._handleClickStep
     };
 
@@ -72,9 +71,7 @@ export class SubwayNavSubStepsExample extends React.Component<any, any> {
 
   private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
     let alertStr = 'Clicked ' + step.label;
-    step.isCurrentStep = true;
     if (subStep !== undefined) {
-      subStep.isCurrentStep = true;
       alertStr += ' and : ' + subStep.label;
     }
 

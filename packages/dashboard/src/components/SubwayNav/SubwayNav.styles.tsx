@@ -88,14 +88,14 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
     },
     stepLabel: {
       marginLeft: '12px',
-      /*width: '180px',*/
+      width: '180px',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
+      textOverflow: 'ellipsis'
     },
     subStepLabel: {
       marginLeft: '16px',
-      // width: '160px',
+      width: '160px',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis'

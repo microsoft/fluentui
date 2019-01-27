@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { generateRandomId } from './SubwayNav.Util';
 import { SubwayNav } from '../SubwayNav';
-import { ISubwayNavStep } from '../SubwayNav.types';
+import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav.types';
 
 export class SubwayNavBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -9,23 +9,26 @@ export class SubwayNavBasicExample extends React.Component<any, any> {
 
     const data0: ISubwayNavStep = {
       key: generateRandomId(),
-      label: 'Step 0',
-      isCurrentStep: true,
+      label: 'Step 0 with a long label that needs to perform a text overflow with ellipsis in the end.',
+      state: SubwayNavStepState.Current,
       onClickStep: this._handleClickStep
     };
     const data1: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 1',
+      state: SubwayNavStepState.NotStarted,
       onClickStep: this._handleClickStep
     };
     const data2: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 2',
+      state: SubwayNavStepState.NotStarted,
       onClickStep: this._handleClickStep
     };
     const data3: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 3',
+      state: SubwayNavStepState.NotStarted,
       onClickStep: this._handleClickStep
     };
 
@@ -43,9 +46,7 @@ export class SubwayNavBasicExample extends React.Component<any, any> {
 
   private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
     let alertStr = 'Clicked ' + step.label;
-    step.isCurrentStep = true;
     if (subStep !== undefined) {
-      subStep.isCurrentStep = true;
       alertStr += ' and ' + subStep.label;
     }
 

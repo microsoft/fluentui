@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
-import { ISubwayNavProps, ISubwayNavStep, ISubwayNavStyles } from './SubwayNav.types';
+import { ISubwayNavProps, ISubwayNavStep, ISubwayNavStyles, SubwayNavStepState } from './SubwayNav.types';
 import { Icon } from 'office-ui-fabric-react';
 import { getSubwayNavStyles } from './SubwayNav.styles';
 
@@ -74,19 +74,19 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
       }
 
       if (stepToRender !== undefined) {
-        const renderSubStep = stepToRender.isCurrentStep && this._hasSubSteps(stepToRender);
+        const renderSubStep = stepToRender.state === SubwayNavStepState.Current && this._hasSubSteps(stepToRender);
 
         stepElements.push(
           <div
             key={stepToRender.key}
             className={css(
               classNames.subwayNavStepDiv,
-              !stepToRender.isCurrentStep && stepToRender.isDisabledStep ? classNames.disableStep : undefined
+              stepToRender.state !== SubwayNavStepState.Current && stepToRender.disabled ? classNames.disableStep : undefined
             )}
             onClick={() => stepToRender.onClickStep(stepToRender, undefined)}
           >
             <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavStepIcon)} />
-            <span className={css(classNames.stepLabel, stepToRender.isCurrentStep ? classNames.boldStep : undefined)}>
+            <span className={css(classNames.stepLabel, stepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}>
               {stepToRender!.label}
             </span>
           </div>
@@ -154,12 +154,12 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
               key={subStepToRender.key}
               className={css(
                 classNames.subwayNavStepDiv,
-                !subStepToRender.isCurrentStep && subStepToRender.isDisabledStep ? classNames.disableStep : undefined
+                subStepToRender.state !== SubwayNavStepState.Current && subStepToRender.disabled ? classNames.disableStep : undefined
               )}
               onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}
             >
               <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavSubStepIcon)} />
-              <span className={css(classNames.subStepLabel, subStepToRender.isCurrentStep ? classNames.boldStep : undefined)}>
+              <span className={css(classNames.subStepLabel, subStepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}>
                 {subStepToRender.label}
               </span>
             </div>
@@ -180,12 +180,12 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
         return classNames.stepConnectorWizardComplete;
       }
 
-      if (step.isCurrentStep || step.formComplete || step.formViewed || step.formError || step.formSaved || step.formSkipped) {
-        return classNames.stepConnectorCompleted;
+      if (step.state === SubwayNavStepState.NotStarted) {
+        return classNames.stepConnectorNotStarted;
       }
     }
 
-    return classNames.stepConnectorNotStarted;
+    return classNames.stepConnectorCompleted;
   }
 
   /**
@@ -200,32 +200,34 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
         return { iconName: 'CompletedSolid', iconClassName: classNames.stepWizardComplete };
       }
 
-      if (step.isCurrentStep) {
-        return { iconName: 'FullCircleMask', iconClassName: classNames.stepCurrent };
-      }
-
-      if (step.formComplete) {
-        return { iconName: 'CompletedSolid', iconClassName: classNames.stepCompleted };
-      }
-
       if (step.subSteps !== undefined && step.subSteps.length > 0) {
         return { iconName: 'FullCircleMask', iconClassName: classNames.stepWithSubSteps };
       }
 
-      if (step.formError) {
-        return { iconName: 'AlertSolid', iconClassName: classNames.stepError };
-      }
+      switch (step.state) {
+        case SubwayNavStepState.Current:
+          return { iconName: 'FullCircleMask', iconClassName: classNames.stepCurrent };
 
-      if (step.formViewed && !step.formComplete) {
-        return { iconName: 'FullCircleMask', iconClassName: classNames.stepViewedNotCompleted };
-      }
+        case SubwayNavStepState.NotStarted:
+          return { iconName: 'LocationCircle', iconClassName: classNames.stepNotStarted };
 
-      if (step.formSkipped) {
-        return { iconName: 'LocationCircle', iconClassName: classNames.stepSkipped };
-      }
+        case SubwayNavStepState.Completed:
+          return { iconName: 'CompletedSolid', iconClassName: classNames.stepCompleted };
+    
+        case SubwayNavStepState.StepWithSubSteps:
+          return { iconName: 'FullCircleMask', iconClassName: classNames.stepWithSubSteps };
 
-      if (step.formSaved !== undefined && !step.formSaved) {
-        return { iconName: 'LocationCircle', iconClassName: classNames.stepUnsaved };
+        case SubwayNavStepState.Error:
+          return { iconName: 'AlertSolid', iconClassName: classNames.stepError };
+
+        case SubwayNavStepState.ViewedNotCompleted:
+          return { iconName: 'FullCircleMask', iconClassName: classNames.stepViewedNotCompleted };
+
+        case SubwayNavStepState.Skipped:
+          return { iconName: 'LocationCircle', iconClassName: classNames.stepSkipped };
+
+        case SubwayNavStepState.Unsaved:
+          return { iconName: 'LocationCircle', iconClassName: classNames.stepUnsaved };
       }
     }
 
@@ -240,24 +242,32 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
     let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.subStepNotStarted };
 
     if (subStep !== undefined) {
-      if (subStep.isCurrentStep) {
-        return { iconName: 'FullCircleMask', iconClassName: classNames.subStepCurrent };
+      if (this.props.wizardComplete) {
+        return { iconName: 'CompletedSolid', iconClassName: classNames.subStepCompleted };
       }
 
-      if (subStep.formError) {
-        return { iconName: 'FullCircleMask', iconClassName: classNames.subStepError };
-      }
+      switch (subStep.state) {
+        case SubwayNavStepState.Current:
+          return { iconName: 'FullCircleMask', iconClassName: classNames.subStepCurrent };
 
-      if (subStep.formComplete) {
-        return { iconName: 'FullCircleMask', iconClassName: classNames.subStepCompleted };
-      }
+        case SubwayNavStepState.NotStarted:
+          return { iconName: 'LocationCircle', iconClassName: classNames.subStepNotStarted };
 
-      if (subStep.formSkipped) {
-        return { iconName: 'LocationCircle', iconClassName: classNames.subStepSkipped };
-      }
+        case SubwayNavStepState.Error:
+          return { iconName: 'AlertSolid', iconClassName: classNames.subStepError };
 
-      if (subStep.formSaved !== undefined && !subStep.formSaved) {
-        return { iconName: 'LocationCircle', iconClassName: classNames.subStepUnsaved };
+        case SubwayNavStepState.Completed:
+          return { iconName: 'CompletedSolid', iconClassName: classNames.subStepCompleted };
+      
+        case SubwayNavStepState.StepWithSubSteps:
+          return { iconName: 'FullCircleMask', iconClassName: classNames.stepWithSubSteps };
+
+        case SubwayNavStepState.Skipped:
+          return { iconName: 'LocationCircle', iconClassName: classNames.subStepSkipped };
+
+        case SubwayNavStepState.Unsaved:
+        case SubwayNavStepState.ViewedNotCompleted:
+          return { iconName: 'LocationCircle', iconClassName: classNames.subStepUnsaved };
       }
     }
 
