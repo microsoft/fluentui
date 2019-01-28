@@ -4,8 +4,14 @@ import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Ut
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
+/**
+ * @docCategory Callout
+ */
 export interface ICallout {}
 
+/**
+ * @docCategory Callout
+ */
 export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICallout interface. Use this instead of ref for accessing
@@ -228,6 +234,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
 }
 
+/**
+ * @docCategory Callout
+ */
 export interface ICalloutContentStyleProps {
   /**
    * Theme to apply to the calloutContent.
@@ -271,6 +280,9 @@ export interface ICalloutContentStyleProps {
   calloutMaxWidth?: number;
 }
 
+/**
+ * @docCategory Callout
+ */
 export interface ICalloutContentStyles {
   /**
    * Style for wrapper of Callout component.

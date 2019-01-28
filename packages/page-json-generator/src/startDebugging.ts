@@ -3,9 +3,10 @@ import { generateJson } from './index';
 
 // Generate JSON for office-ui-fabric-react
 generateJson({
-  apiJsonPath: 'C:\\Users\\naethell\\office-ui-fabric-react\\packages\\office-ui-fabric-react\\dist\\office-ui-fabric-react.api.json',
+  apiJsonPath:
+    'C:\\Users\\naethell\\Documents\\office-ui-fabric-react\\packages\\office-ui-fabric-react\\dist\\office-ui-fabric-react.api.json',
   pageJsonFolderPath: path.join(__dirname, '../../../common/pages'),
-  pageNames: ['Button', 'Breadcrumb', 'ChoiceGroup']
+  pageNames: ['Button', 'Breadcrumb', 'Calendar', 'Callout', 'Checkbox', 'ChoiceGroup', 'ComboBox']
 });
 
 // Generate JSON for styling

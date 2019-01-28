@@ -7,6 +7,9 @@ import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBox {
   /**
    * If there is a menu open this will dismiss the menu
@@ -22,6 +25,9 @@ export interface IComboBox {
   focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxOption extends ISelectableOption {
   /**
    * Specific styles for each comboBox option. If you intend to give
@@ -38,6 +44,9 @@ export interface IComboBoxOption extends ISelectableOption {
   useAriaLabelAsText?: boolean;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   /**
    * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
@@ -207,6 +216,9 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   value?: string;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxStyles {
   /**
    * Style for the container which has the ComboBox and the label
@@ -305,6 +317,9 @@ export interface IComboBoxStyles {
   divider: IStyle;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxOptionStyles extends IButtonStyles {
   /**
    * Styles for the text inside the comboBox option.

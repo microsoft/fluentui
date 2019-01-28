@@ -3,5 +3,5 @@ import { CalendarPageProps } from 'office-ui-fabric-react/lib/components/Calenda
 import { DemoPage } from '../DemoPage';
 
 export const CalendarPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage {...{ ...CalendarPageProps, ...props }} />
+  <DemoPage jsonDocs={require('../../../../../common/pages/Calendar.page.json')} {...{ ...CalendarPageProps, ...props }} />
 );

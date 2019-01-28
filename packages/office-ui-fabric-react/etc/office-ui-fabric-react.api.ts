@@ -1904,12 +1904,12 @@ interface IButtonStyles {
     textContainer?: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ICalendar {
     focus: () => void;
 }
 
-// @public (undocumented)
+// @public
 interface ICalendarFormatDateCallbacks {
     formatDay: (date: Date) => string;
     formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
@@ -1917,14 +1917,14 @@ interface ICalendarFormatDateCallbacks {
     formatYear: (date: Date) => string;
 }
 
-// @public (undocumented)
+// @public
 interface ICalendarIconStrings {
     closeIcon?: string;
     leftNavigation?: string;
     rightNavigation?: string;
 }
 
-// @public (undocumented)
+// @public
 interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
     allFocusable?: boolean;
     autoNavigateOnSelection?: boolean;
@@ -1968,7 +1968,7 @@ interface ICalendarState {
     selectedDate?: Date;
 }
 
-// @public (undocumented)
+// @public
 interface ICalendarStrings {
     closeButtonAriaLabel?: string;
     days: string[];
@@ -1983,11 +1983,11 @@ interface ICalendarStrings {
     weekNumberFormatString?: string;
 }
 
-// @public (undocumented)
+// @public
 interface ICallout {
 }
 
-// @public (undocumented)
+// @public
 interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
@@ -1999,7 +1999,7 @@ interface ICalloutContentStyleProps {
     theme: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface ICalloutContentStyles {
     beak: IStyle;
     beakCurtain: IStyle;
@@ -2008,7 +2008,7 @@ interface ICalloutContentStyles {
     root: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     alignTargetEdge?: boolean;
     ariaDescribedBy?: string;

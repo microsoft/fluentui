@@ -1,13 +1,26 @@
 import * as React from 'react';
 import { IProperty, PropertyType, IInterfaceProperty, IEnumProperty } from '../../utilities/parser/index';
-// import { CollapsibleSection } from '@uifabric/experiments';
+import {
+  CollapsibleSection,
+  ICollapsibleSectionTitleComponent,
+  ICollapsibleSectionTitleStylesReturnType,
+  ICollapsibleSectionTitleProps
+} from '@uifabric/experiments';
 import { PropertiesTable } from './PropertiesTable';
 import { IPropertiesTableSetProps, IEnumTableRowJson, ITableRowJson } from './PropertiesTableSet.types';
 import { InterfacePropertyType } from '../../utilities/parser/index';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPropertiesTableSetState {
   properties: Array<IProperty>;
 }
+
+const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (
+  props: ICollapsibleSectionTitleProps,
+  theme: ITheme
+): ICollapsibleSectionTitleStylesReturnType => ({
+  text: [theme.fonts.large]
+});
 
 export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps, IPropertiesTableSetState> {
   constructor(props: IPropertiesTableSetProps) {
@@ -40,23 +53,23 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
     if (this.state.properties.length >= 1) {
       return (
         <div>
-          {/* <CollapsibleSection key={1} defaultCollapsed={true} title={'See More'} styles={{ root: { fontSize: '21px' } }}> */}
-          {this.state.properties.map((item: IProperty, index: number) =>
-            index !== 0 ? (
-              <PropertiesTable
-                key={item.propertyName}
-                name={item.propertyName}
-                title={item.title}
-                description={item.description}
-                extendsTokens={item.extendsTokens}
-                properties={item.property}
-                renderAsEnum={item.propertyType === PropertyType.enum}
-              />
-            ) : (
-              <div key={'table-' + index} />
-            )
-          )}
-          {/* </CollapsibleSection> */}
+          <CollapsibleSection key={1} defaultCollapsed={true} title={{ text: 'See More', styles: getPropTitleStyles }}>
+            {this.state.properties.map((item: IProperty, index: number) =>
+              index !== 0 ? (
+                <PropertiesTable
+                  key={item.propertyName}
+                  name={item.propertyName}
+                  title={item.title}
+                  description={item.description}
+                  extendsTokens={item.extendsTokens}
+                  properties={item.property}
+                  renderAsEnum={item.propertyType === PropertyType.enum}
+                />
+              ) : (
+                <div key={'table-' + index} />
+              )
+            )}
+          </CollapsibleSection>
         </div>
       );
     }
@@ -74,6 +87,10 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
 
   private _generatePropertyArray(): Array<IProperty> {
     let results: Array<IProperty> = [];
+    let iComponentProps: Array<IProperty> = [];
+    let preResults: Array<IProperty> = [];
+    const pattern: RegExp = /(I.*?Props)/;
+
     const { jsonDocs } = this.props;
 
     if (jsonDocs) {
@@ -93,7 +110,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
             }
 
             // the enum
-            results.push({
+            preResults.push({
               propertyName: jsonDocs.tables[j].name,
               description: jsonDocs.tables[j].descriptionHtml,
               title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
@@ -118,19 +135,35 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
             }
 
             // the interface
-            results.push({
-              propertyName: jsonDocs.tables[j].name,
-              description: jsonDocs.tables[j].descriptionHtml,
-              extendsTokens: jsonDocs.tables[j].extendsTokens,
-              title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
-              propertyType: PropertyType.interface,
-              property: interfaceMembers
-            });
+            if (pattern.test(jsonDocs.tables[j].name)) {
+              iComponentProps.push({
+                propertyName: jsonDocs.tables[j].name,
+                description: jsonDocs.tables[j].descriptionHtml,
+                extendsTokens: jsonDocs.tables[j].extendsTokens,
+                title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
+                propertyType: PropertyType.interface,
+                property: interfaceMembers
+              });
+            } else {
+              preResults.push({
+                propertyName: jsonDocs.tables[j].name,
+                description: jsonDocs.tables[j].descriptionHtml,
+                extendsTokens: jsonDocs.tables[j].extendsTokens,
+                title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
+                propertyType: PropertyType.interface,
+                property: interfaceMembers
+              });
+            }
 
             break;
           }
         }
       }
+    }
+
+    results = iComponentProps;
+    for (let result of preResults) {
+      results.push(result);
     }
 
     return results;
