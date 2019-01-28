@@ -127,7 +127,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
       } as IDetailInfoTileProps,
       {
         title: 'Health',
-        message: 'Status = Healthy​',
+        message: <div style={{ color: 'green' }}>Status = Healthy​</div>,
         actionText: 'Detail',
         onAction: () => {
           this.setState({ currentL2Id: 'dog' });
