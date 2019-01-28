@@ -121,30 +121,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     const { isStickyTop, isStickyBottom } = this.state;
 
-    const nonStickyContent =
-      this._nonStickyContent && this._nonStickyContent.current
-        ? {
-            offsetHeight: this._nonStickyContent.current.offsetHeight,
-            scrollWidth: this._nonStickyContent.current.scrollWidth
-          }
-        : undefined;
-    const placeHolder =
-      this._placeHolder && this._placeHolder.current
-        ? {
-            offsetHeight: this._placeHolder.current.offsetHeight,
-            scrollWidth: this._placeHolder.current.scrollWidth
-          }
-        : undefined;
-
     return (isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
-      (nonStickyContent &&
-        ((placeHolder &&
-          (nonStickyContent.offsetHeight !== placeHolder.offsetHeight || nonStickyContent.scrollWidth !== placeHolder.scrollWidth)) ||
-          (this.stickyContentTop && nonStickyContent.offsetHeight !== this.stickyContentTop.offsetHeight) ||
-          (this.stickyContentBottom && nonStickyContent.offsetHeight !== this.stickyContentBottom.offsetHeight)))) as boolean;
+      _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentTop) ||
+      _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentBottom) ||
+      _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder) ||
+      _isScrollWidthDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
   }
 
   public render(): JSX.Element {
@@ -321,4 +305,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
     return window.getComputedStyle(curr).getPropertyValue('background-color');
   }
+}
+
+function _isOffsetHeightDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
+  return (a && b && a.current && b.current && a.current.offsetHeight !== b.current.offsetHeight) as boolean;
+}
+
+function _isScrollWidthDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
+  return (a && b && a.current && b.current && a.current.scrollWidth !== b.current.scrollWidth) as boolean;
 }
