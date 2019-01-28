@@ -10,7 +10,7 @@ import { getNativeProps, htmlElementProperties } from '../../Utilities';
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
 const view: IStackComponent['view'] = props => {
-  const { as: RootType = 'div', shrinkItems, wrap, ...rest } = props;
+  const { as: RootType = 'div', preventShrink, wrap, ...rest } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -21,7 +21,7 @@ const view: IStackComponent['view'] = props => {
 
       if (child.type === StackItemType) {
         const defaultItemProps: IStackItemProps = {
-          shrink: shrinkItems
+          shrink: !preventShrink
         };
 
         return React.cloneElement(child, {

@@ -65,7 +65,7 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
 
     let icon;
     if (previewImage.iconSrc) {
-      icon = <Image className={this._classNames.previewFileTypeIcon} src={previewImage.iconSrc} role="presentation" alt="" />;
+      icon = <Image className={this._classNames.icon} src={previewImage.iconSrc} role="presentation" alt="" />;
     }
 
     return (

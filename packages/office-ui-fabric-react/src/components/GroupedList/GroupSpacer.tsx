@@ -11,10 +11,11 @@ export const GroupSpacer = styled<IGroupSpacerProps, IGroupSpacerStyleProps, IGr
   (props: IGroupSpacerProps) => {
     const { count, styles, theme, indentWidth = SPACER_WIDTH } = props;
     const classNames = getClassNames(styles, {
-      theme: theme!
+      theme: theme!,
+      width: count * indentWidth
     });
 
-    return count > 0 ? <span className={classNames.root} style={{ width: count * indentWidth }} /> : null;
+    return count > 0 ? <span className={classNames.root} /> : null;
   },
   getStyles,
   undefined,

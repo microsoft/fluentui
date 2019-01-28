@@ -1,6 +1,27 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+
+## 0.1.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Minor color adjustments to dialog window close button.
+
+## 0.1.3
+Thu, 24 Jan 2019 13:36:17 GMT
+
+### Patches
+
+- Dropdown / ComboBox input size tweaks, IconButton background changed to transparent
+
+## 0.1.2
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Patches
+
+- TagPicker styles, Overlay alpha adjustment, misc. bug fixes and style/color adjustments
 
 ## 0.1.1
 Mon, 21 Jan 2019 13:36:01 GMT

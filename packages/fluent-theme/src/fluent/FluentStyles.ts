@@ -25,7 +25,7 @@ import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
-import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
+import { TeachingBubbleStyles, TeachingBubbleContentStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
@@ -137,6 +137,9 @@ export const FluentStyles: any = {
   },
   TeachingBubble: {
     styles: TeachingBubbleStyles
+  },
+  TeachingBubbleContent: {
+    styles: TeachingBubbleContentStyles
   },
   TextField: {
     styles: TextFieldStyles

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Update README.md to fix title and link to Card component",
+      "comment": " Add cardId for dashboardGridLayout onLayoutChange",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "edwl@microsoft.com"
+  "email": "v-ragor@microsoft.com"
 }

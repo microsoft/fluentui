@@ -71,6 +71,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _setHeightOffsetTimer: number;
   private _hasListeners = false;
   private _maxHeight: number | undefined;
+  private _blockResetHeight: boolean;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -109,7 +110,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
-    if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
+    if ((newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) && !this._blockResetHeight) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
@@ -127,6 +128,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         positions: undefined
       });
     }
+
+    this._blockResetHeight = false;
   }
 
   public componentDidMount(): void {
@@ -392,6 +395,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         this._async.requestAnimationFrame(() => {
           if (this._target) {
             this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
+            this._blockResetHeight = true;
             this.forceUpdate();
           }
         });

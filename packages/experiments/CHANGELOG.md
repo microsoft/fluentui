@@ -1,6 +1,35 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+
+## 6.53.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Stack: Updating API based on feedback from review.
+- Stack: Removing 'top' and 'bottom' from accepted values for 'verticalAlign' prop and updating examples and tests using them.
+
+## 6.52.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- Stack: Adding 'reversed' prop, updating styles, and adding examples, snapshot tests and vr-tests.
+
+### Patches
+
+- Minor fixes to Toggle and CollapsibleSection.
+
+## 6.51.2
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Patches
+
+- Stack: Removing unneeded children logic used to calculate classnames.
+- Use button element for Tile when there is no href
+- Bundle improvement for Tile click fix
+- Use CSS object-fit in the Image component in capable browsers
 
 ## 6.51.1
 Mon, 21 Jan 2019 13:36:01 GMT

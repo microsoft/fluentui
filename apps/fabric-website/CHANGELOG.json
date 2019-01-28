@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.8.5",
+      "tag": "@uifabric/fabric-website_v6.8.5",
+      "date": "Wed, 23 Jan 2019 22:53:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList examples: Fix copy paste error causing infinite loop",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "e1e88b61e84310ae40ca9b158796a2ed7c690b9f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.1 <7.0.0` to `>=6.51.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.4",
       "tag": "@uifabric/fabric-website_v6.8.4",
       "date": "Mon, 21 Jan 2019 13:36:01 GMT",

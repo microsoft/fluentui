@@ -98,7 +98,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
-                  aria-expanded={column.columnActionsMode === ColumnActionsMode.hasDropdown && column.isMenuOpen}
+                  aria-expanded={
+                    column.columnActionsMode === ColumnActionsMode.hasDropdown ? (column.isMenuOpen ? true : false) : undefined
+                  }
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
                     {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}

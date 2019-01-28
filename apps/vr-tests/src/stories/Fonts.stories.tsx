@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { createFontStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -25,19 +25,32 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
   </div>
 );
 
+function getStyle(lang: string) {
+  return createFontStyles(lang).medium as React.CSSProperties;
+}
+
 storiesOf('Fonts', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
-  .addStory('Arabic', () => <RepresentativeText style={createFontStyles('ar').medium as React.CSSProperties} />)
-  .addStory('Chinese (Simplified)', () => <RepresentativeText style={createFontStyles('zh-Hans').medium as React.CSSProperties} />)
-  .addStory('Chinese (Traditional)', () => <RepresentativeText style={createFontStyles('zh-Hant').medium as React.CSSProperties} />)
-  .addStory('Cyrillic', () => <RepresentativeText style={createFontStyles('bg').medium as React.CSSProperties} />)
-  .addStory('East European', () => <RepresentativeText style={createFontStyles('cs').medium as React.CSSProperties} />)
-  .addStory('Greek', () => <RepresentativeText style={createFontStyles('el').medium as React.CSSProperties} />)
-  .addStory('Hebrew', () => <RepresentativeText style={createFontStyles('he').medium as React.CSSProperties} />)
-  .addStory('Hindi', () => <RepresentativeText style={createFontStyles('hi').medium as React.CSSProperties} />)
-  .addStory('Japanese', () => <RepresentativeText style={createFontStyles('ja').medium as React.CSSProperties} />)
-  .addStory('Korean', () => <RepresentativeText style={createFontStyles('ko').medium as React.CSSProperties} />)
-  .addStory('Thai', () => <RepresentativeText style={createFontStyles('th').medium as React.CSSProperties} />)
-  .addStory('Vietnamese', () => <RepresentativeText style={createFontStyles('vi').medium as React.CSSProperties} />)
-  .addStory('West European', () => <RepresentativeText style={createFontStyles('en').medium as React.CSSProperties} />);
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
+  .addStory('Arabic', () => <RepresentativeText style={getStyle('ar')} />)
+  .addStory('Chinese (Simplified)', () => <RepresentativeText style={getStyle('zh-Hans')} />)
+  .addStory('Chinese (Traditional)', () => <RepresentativeText style={getStyle('zh-Hant')} />)
+  .addStory('Cyrillic', () => <RepresentativeText style={getStyle('bg')} />)
+  .addStory('East European', () => <RepresentativeText style={getStyle('cs')} />)
+  .addStory('Greek', () => <RepresentativeText style={getStyle('el')} />)
+  .addStory('Hebrew', () => <RepresentativeText style={getStyle('he')} />)
+  .addStory('Hindi', () => <RepresentativeText style={getStyle('hi')} />)
+  .addStory('Japanese', () => <RepresentativeText style={getStyle('ja')} />)
+  .addStory('Korean', () => <RepresentativeText style={getStyle('ko')} />)
+  .addStory('Thai', () => <RepresentativeText style={getStyle('th')} />)
+  .addStory('Vietnamese', () => <RepresentativeText style={getStyle('vi')} />)
+  .addStory('West European', () => <RepresentativeText style={getStyle('en')} />);

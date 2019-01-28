@@ -20,7 +20,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
 import { ICoachmark, ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
-import { COACHMARK_HEIGHT, COACHMARK_WIDTH, getStyles } from './Coachmark.styles';
+import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
@@ -186,7 +186,10 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       ariaLabelledBy,
       ariaLabelledByText,
       ariaAlertText,
-      delayBeforeCoachmarkAnimation
+      delayBeforeCoachmarkAnimation,
+      styles,
+      theme,
+      className
     } = this.props;
 
     const {
@@ -203,17 +206,19 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       isMeasured
     } = this.state;
 
-    const classNames = getClassNames(getStyles, {
-      isCollapsed: isCollapsed,
-      isBeaconAnimating: isBeaconAnimating,
-      isMeasuring: isMeasuring,
+    const classNames = getClassNames(styles, {
+      theme,
+      className,
+      isCollapsed,
+      isBeaconAnimating,
+      isMeasuring,
+      color,
+      transformOrigin,
+      isMeasured,
       entityHostHeight: `${entityInnerHostRect.height}px`,
       entityHostWidth: `${entityInnerHostRect.width}px`,
       width: `${COACHMARK_WIDTH}px`,
       height: `${COACHMARK_HEIGHT}px`,
-      color: color,
-      transformOrigin: transformOrigin,
-      isMeasured: isMeasured,
       delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`
     });
 

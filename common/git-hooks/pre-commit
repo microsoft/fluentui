@@ -3,6 +3,8 @@
 # exit with non-zero status after issuing an appropriate message if
 # it wants to stop the commit.
 
+PATH=$PATH:/usr/local/bin:/usr/local/sbin
+
 echo --------------------------------------------
 echo Starting Git hook: pre-commit
 
