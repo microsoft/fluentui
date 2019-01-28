@@ -15,7 +15,11 @@ exports[`Link renders Link correctly 1`] = `
         text-decoration: none;
       }
       .ms-Fabric--isFocusVisible &:focus {
-        box-shadow: 0 0 0 1px black inset;
+        box-shadow: 0 0 0 1px #000000 inset;
+        outline: 1px solid #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -66,16 +70,17 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         user-select: text;
       }
       .ms-Fabric--isFocusVisible &:focus {
-        box-shadow: 0 0 0 1px black inset;
+        box-shadow: 0 0 0 1px #000000 inset;
+        outline: 1px solid #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
       }
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
-      }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -108,7 +113,11 @@ exports[`Link renders Link with a custom class name 1`] = `
         text-decoration: none;
       }
       .ms-Fabric--isFocusVisible &:focus {
-        box-shadow: 0 0 0 1px black inset;
+        box-shadow: 0 0 0 1px #000000 inset;
+        outline: 1px solid #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -158,16 +167,17 @@ exports[`Link renders Link with no href as a button 1`] = `
         user-select: text;
       }
       .ms-Fabric--isFocusVisible &:focus {
-        box-shadow: 0 0 0 1px black inset;
+        box-shadow: 0 0 0 1px #000000 inset;
+        outline: 1px solid #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
       }
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
-      }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -203,7 +213,11 @@ exports[`Link renders disabled Link correctly 1`] = `
         text-decoration: none;
       }
       .ms-Fabric--isFocusVisible &:focus {
-        box-shadow: 0 0 0 1px black inset;
+        box-shadow: 0 0 0 1px #000000 inset;
+        outline: 1px solid #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       &:link, &:visited {
         pointer-events: none;
@@ -249,16 +263,17 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         user-select: text;
       }
       .ms-Fabric--isFocusVisible &:focus {
-        box-shadow: 0 0 0 1px black inset;
+        box-shadow: 0 0 0 1px #000000 inset;
+        outline: 1px solid #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
       }
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
-      }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
       }
       &:link, &:visited {
         pointer-events: none;
@@ -305,16 +320,17 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         user-select: text;
       }
       .ms-Fabric--isFocusVisible &:focus {
-        box-shadow: 0 0 0 1px black inset;
+        box-shadow: 0 0 0 1px #000000 inset;
+        outline: 1px solid #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
       }
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
-      }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;

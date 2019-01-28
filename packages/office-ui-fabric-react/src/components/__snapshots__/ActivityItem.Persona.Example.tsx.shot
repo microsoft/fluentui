@@ -170,16 +170,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -460,16 +461,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -519,16 +521,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -578,16 +581,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -921,16 +925,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -980,16 +985,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1379,16 +1385,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1438,16 +1445,17 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px black inset;
+                box-shadow: 0 0 0 1px #000000 inset;
+                outline: 1px solid #ffffff;
+              }
+              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
