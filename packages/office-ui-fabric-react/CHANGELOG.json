@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.130.0",
+      "tag": "office-ui-fabric-react_v6.130.0",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Set aria-expanded attribute only if necessary",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "34e43a2ce61a786effd2df7a680b24a00ebad36d"
+          },
+          {
+            "comment": "DocumentCard: Renames 'previewFileTypeIcon' to 'icon' to fix a regression",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "29f7007cbf79d47a9c9373a6b2ecf0d0e36f9841"
+          },
+          {
+            "comment": "Fix callouts appearing partially off screen",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "a331a5884b61da8464c102fe7dc28691f3ee4c18"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4835ddcba03c8204aae13f87c197e667b5dcaa3e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.129.4",
       "tag": "office-ui-fabric-react_v6.129.4",
       "date": "Fri, 25 Jan 2019 13:38:07 GMT",

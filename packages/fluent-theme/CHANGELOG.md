@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+
+## 0.13.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Dropdown: fixes a misalignment of some items in the dropdown. 
 
 ## 0.13.3
 Fri, 25 Jan 2019 13:38:07 GMT

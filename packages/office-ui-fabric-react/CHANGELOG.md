@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+
+## 6.130.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
+
+### Patches
+
+- DetailsList: Set aria-expanded attribute only if necessary
+- DocumentCard: Renames 'previewFileTypeIcon' to 'icon' to fix a regression
+- Fix callouts appearing partially off screen
 
 ## 6.129.4
 Fri, 25 Jan 2019 13:38:07 GMT
