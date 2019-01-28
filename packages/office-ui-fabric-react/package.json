@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "6.129.4",
+  "version": "6.130.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

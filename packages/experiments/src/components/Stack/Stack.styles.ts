@@ -1,5 +1,5 @@
 import { IStackComponent, IStackStyles, IStackProps, IStackStylesReturnType } from './Stack.types';
-import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
+import { parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
 
 const nameMap: { [key: string]: string } = {
@@ -14,7 +14,6 @@ const GlobalClassNames = {
 
 export const styles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => {
   const {
-    horizontalFill,
     verticalFill,
     maxWidth,
     maxHeight,
@@ -27,13 +26,11 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
     padding,
     horizontalAlign,
     verticalAlign,
-    shrinkItems,
+    preventShrink,
     className
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const vertAlign = getVerticalAlignment(verticalAlign);
 
   let horiGap: IStackProps['gap'];
   let vertGap: IStackProps['gap'];
@@ -57,7 +54,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
   const commonSelectors = {
     // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
-      flexShrink: shrinkItems ? 1 : 0
+      flexShrink: preventShrink ? 0 : 1
     }
   };
 
@@ -76,8 +73,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         className,
         {
@@ -115,8 +112,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         horizontal && {
           flexDirection: reversed ? 'row-reverse' : 'row',
@@ -151,8 +148,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         display: 'flex',
         flexDirection: horizontal ? (reversed ? 'row-reverse' : 'row') : reversed ? 'column-reverse' : 'column',
         flexWrap: 'nowrap',
-        width: horizontalFill && !wrap ? '100%' : 'auto',
-        height: verticalFill && !wrap ? '100%' : 'auto',
+        width: 'auto',
+        height: verticalFill ? '100%' : 'auto',
         maxWidth,
         maxHeight,
         padding: parsePadding(padding, theme),
@@ -182,8 +179,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
       },
-      vertAlign && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+      verticalAlign && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
       },
       className
     ]

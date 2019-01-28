@@ -1,24 +1,7 @@
-import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
+import { parseGap, parsePadding } from './StackUtils';
 import { loadTheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 describe('StackUtils', () => {
-  describe('getVerticalAlignment', () => {
-    it('returns start when given top', () => {
-      expect(getVerticalAlignment('top')).toEqual('start');
-    });
-
-    it('returns end when given bottom', () => {
-      expect(getVerticalAlignment('bottom')).toEqual('end');
-    });
-
-    it('returns its argument when given a value other than left and right', () => {
-      const args = ['center', 'space-around', 'space-between', 'space-evenly'];
-      args.forEach((arg: string) => {
-        expect(getVerticalAlignment(arg)).toEqual(arg);
-      });
-    });
-  });
-
   describe('parseGap', () => {
     loadTheme({
       spacing: {

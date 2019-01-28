@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.13.4",
+      "tag": "@uifabric/fluent-theme_v0.13.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fixes a misalignment of some items in the dropdown. ",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "69a8cfcb14d8d61500179c8dfe870abd2371dbfd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.3",
       "tag": "@uifabric/fluent-theme_v0.13.3",
       "date": "Fri, 25 Jan 2019 13:38:07 GMT",

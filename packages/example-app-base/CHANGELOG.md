@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 18 Jan 2019 13:38:05 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+
+## 6.11.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Use fabric dev build in export to codepen
 
 ## 6.11.3
 Fri, 18 Jan 2019 13:38:05 GMT

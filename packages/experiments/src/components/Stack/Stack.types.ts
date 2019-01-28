@@ -59,22 +59,20 @@ export interface IStackProps
   /**
    * Defines how to align Stack child elements vertically (along the y-axis).
    */
-  verticalAlign?: 'top' | 'bottom' | Alignment;
-
-  /**
-   * Defines whether the Stack should take up 100% of the width of its parent.
-   */
-  horizontalFill?: boolean;
+  verticalAlign?: Alignment;
 
   /**
    * Defines whether the Stack should take up 100% of the height of its parent.
+   * This property is required to be set to true when using the `grow` flag on children elements.
+   * @defaultvalue false
    */
   verticalFill?: boolean;
 
   /**
-   * Defines whether Stack child elements should shrink to fit the available space.
+   * Defines whether Stack children elements should not shrink to fit the available space.
+   * @defaultvalue false
    */
-  shrinkItems?: boolean;
+  preventShrink?: boolean;
 
   /**
    * Defines how much to grow the Stack in proportion to its siblings.

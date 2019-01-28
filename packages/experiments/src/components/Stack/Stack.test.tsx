@@ -92,9 +92,9 @@ describe('Stack', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders vertical Stack with vertical and horizontal fill correctly', () => {
+  it('renders vertical Stack with vertical fill correctly', () => {
     const component = renderer.create(
-      <Stack horizontalFill verticalFill>
+      <Stack verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>
@@ -103,9 +103,9 @@ describe('Stack', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders horizontal Stack with vertical and horizontal fill correctly', () => {
+  it('renders horizontal Stack with vertical fill correctly', () => {
     const component = renderer.create(
-      <Stack horizontal horizontalFill verticalFill>
+      <Stack horizontal verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
       </Stack>
@@ -190,7 +190,7 @@ describe('Stack', () => {
 
   it('renders vertical Stack with shrinking StackItems correctly', () => {
     const component = renderer.create(
-      <Stack shrinkItems>
+      <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>
@@ -201,7 +201,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with shrinking StackItems correctly', () => {
     const component = renderer.create(
-      <Stack horizontal shrinkItems>
+      <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>
@@ -212,7 +212,7 @@ describe('Stack', () => {
 
   it('renders vertical Stack with shrinking StackItems correctly', () => {
     const component = renderer.create(
-      <Stack shrinkItems>
+      <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item preventShrink>Item 2</Stack.Item>
       </Stack>
@@ -223,7 +223,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with shrinking StackItems correctly', () => {
     const component = renderer.create(
-      <Stack horizontal shrinkItems>
+      <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item preventShrink>Item 2</Stack.Item>
       </Stack>

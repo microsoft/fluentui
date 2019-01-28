@@ -2,6 +2,39 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.53.0",
+      "tag": "@uifabric/experiments_v6.53.0",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Updating API based on feedback from review.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "c4cf7fd3ccf06e7c8eeb503f3bd75a83b2ee3a62"
+          },
+          {
+            "comment": "Stack: Removing 'top' and 'bottom' from accepted values for 'verticalAlign' prop and updating examples and tests using them.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "34f668a2cb9ed371025d699f34364a9dc91a8a8e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.3 <1.0.0` to `>=0.1.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.3 <1.0.0` to `>=0.13.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.3 <7.0.0` to `>=6.11.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.52.0",
       "tag": "@uifabric/experiments_v6.52.0",
       "date": "Fri, 25 Jan 2019 13:38:07 GMT",

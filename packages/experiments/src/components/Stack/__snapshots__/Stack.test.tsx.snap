@@ -20,7 +20,7 @@ exports[`Stack accepts custom className on child items 1`] = `
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <span
@@ -30,7 +30,7 @@ exports[`Stack accepts custom className on child items 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background: red;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -72,7 +72,7 @@ exports[`Stack renders default horizontal Stack correctly 1`] = `
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -104,7 +104,7 @@ exports[`Stack renders default vertical Stack correctly 1`] = `
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -136,7 +136,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <span
@@ -146,7 +146,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: auto;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -163,7 +163,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: stretch;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -180,7 +180,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: baseline;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -197,7 +197,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: flex-start;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -214,7 +214,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: center;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -231,7 +231,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: flex-end;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -264,7 +264,7 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <span
@@ -273,7 +273,7 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -289,7 +289,7 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -322,7 +322,7 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
         margin-left: 10px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <span
@@ -331,7 +331,7 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -347,7 +347,7 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -380,7 +380,7 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div
@@ -404,7 +404,7 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
           margin-left: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     Item 1
@@ -430,7 +430,7 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
           margin-left: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     Item 2
@@ -456,7 +456,7 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
           margin-left: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     Item 3
@@ -602,7 +602,7 @@ exports[`Stack renders horizontal Stack with vertical and horizontal alignment c
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -614,7 +614,7 @@ exports[`Stack renders horizontal Stack with vertical and horizontal alignment c
 </div>
 `;
 
-exports[`Stack renders horizontal Stack with vertical and horizontal fill correctly 1`] = `
+exports[`Stack renders horizontal Stack with vertical fill correctly 1`] = `
 <div
   className=
       ms-Stack
@@ -624,7 +624,7 @@ exports[`Stack renders horizontal Stack with vertical and horizontal fill correc
         flex-direction: row;
         flex-wrap: nowrap;
         height: 100%;
-        width: 100%;
+        width: auto;
       }
       & > * {
         text-overflow: ellipsis;
@@ -634,7 +634,7 @@ exports[`Stack renders horizontal Stack with vertical and horizontal fill correc
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -666,7 +666,7 @@ exports[`Stack renders reversed horizontal Stack correctly 1`] = `
         margin-left: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -698,7 +698,7 @@ exports[`Stack renders reversed vertical Stack correctly 1`] = `
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -730,7 +730,7 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <span
@@ -739,7 +739,7 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -755,7 +755,7 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -788,7 +788,7 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
         margin-top: 10px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <span
@@ -797,7 +797,7 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -813,7 +813,7 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -846,7 +846,7 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div
@@ -870,7 +870,7 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
           margin-top: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     Item 1
@@ -896,7 +896,7 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
           margin-top: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     Item 2
@@ -922,7 +922,7 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
           margin-top: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     Item 3
@@ -950,7 +950,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <span
@@ -960,7 +960,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: auto;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -977,7 +977,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: stretch;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -994,7 +994,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: baseline;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -1011,7 +1011,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: flex-start;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -1028,7 +1028,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: center;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -1045,7 +1045,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-self: flex-end;
-          flex-shrink: 0;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -1196,7 +1196,7 @@ exports[`Stack renders vertical Stack with vertical and horizontal alignment cor
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -1208,7 +1208,7 @@ exports[`Stack renders vertical Stack with vertical and horizontal alignment cor
 </div>
 `;
 
-exports[`Stack renders vertical Stack with vertical and horizontal fill correctly 1`] = `
+exports[`Stack renders vertical Stack with vertical fill correctly 1`] = `
 <div
   className=
       ms-Stack
@@ -1218,7 +1218,7 @@ exports[`Stack renders vertical Stack with vertical and horizontal fill correctl
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;
-        width: 100%;
+        width: auto;
       }
       & > * {
         text-overflow: ellipsis;
@@ -1228,7 +1228,7 @@ exports[`Stack renders vertical Stack with vertical and horizontal fill correctl
         margin-top: 0px;
       }
       & > *:not(.ms-StackItem) {
-        flex-shrink: 0;
+        flex-shrink: 1;
       }
 >
   <div>
@@ -1279,7 +1279,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           white-space: nowrap;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     <span
@@ -1288,7 +1288,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            flex-shrink: 0;
+            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -1304,7 +1304,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            flex-shrink: 0;
+            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -1320,7 +1320,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            flex-shrink: 0;
+            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
