@@ -39,37 +39,37 @@ export interface IStackProps
   as?: string | React.ReactType<IStackProps>;
 
   /**
-   * Defines whether to render Stack child elements horizontally.
+   * Defines whether to render Stack children horizontally.
    * @defaultvalue false
    */
   horizontal?: boolean;
 
   /**
-   * Defines whether to render Stack child elements in the opposite direction (bottom-to-top if it's a vertical Stack and
+   * Defines whether to render Stack children in the opposite direction (bottom-to-top if it's a vertical Stack and
    * right-to-left if it's a horizontal Stack).
    * @defaultvalue false
    */
   reversed?: boolean;
 
   /**
-   * Defines how to align Stack child elements horizontally (along the x-axis).
+   * Defines how to align Stack children horizontally (along the x-axis).
    */
   horizontalAlign?: Alignment;
 
   /**
-   * Defines how to align Stack child elements vertically (along the y-axis).
+   * Defines how to align Stack children vertically (along the y-axis).
    */
   verticalAlign?: Alignment;
 
   /**
    * Defines whether the Stack should take up 100% of the height of its parent.
-   * This property is required to be set to true when using the `grow` flag on children elements.
+   * This property is required to be set to true when using the `grow` flag on children.
    * @defaultvalue false
    */
   verticalFill?: boolean;
 
   /**
-   * Defines whether Stack children elements should not shrink to fit the available space.
+   * Defines whether Stack children should not shrink to fit the available space.
    * @defaultvalue false
    */
   preventShrink?: boolean;
@@ -80,7 +80,7 @@ export interface IStackProps
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
 
   /**
-   * Defines the spacing between Stack children elements.
+   * Defines the spacing between Stack children.
    * The property is specified as a value for 'horizontal gap', followed optionally by a value for 'vertical gap'.
    * If 'vertical gap' is omitted, it's set to the same value as 'horizontal gap'.
    */
