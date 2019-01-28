@@ -2,12 +2,8 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { setRTL, KeyCodes } from '../../Utilities';
-import { mount } from 'enzyme';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
-import { getChildren, focusFirstChild } from '../../../../utilities/lib';
-import { expectMissing } from 'office-ui-fabric-react/lib/common/testUtilities';
-import { ButtonAnchorExample } from 'office-ui-fabric-react/lib/components/Button/examples/Button.Anchor.Example';
 
 // tslint:disable:typedef
 
@@ -240,42 +236,87 @@ describe('FocusZone', () => {
     }, 20);
   });
 
-  it('can move focus to container when last item removed', done => {
-    const host = document.createElement('div');
+  describe('parking and unparking', () => {
+    let host: HTMLElement;
+    let buttonA: HTMLElement;
 
-    // Render component.
-    ReactDOM.render(
-      <FocusZone>
-        <button key="a" id="a">
-          button a
-        </button>
-      </FocusZone>,
-      host
-    );
+    beforeEach(done => {
+      host = document.createElement('div');
 
-    const buttonA = host.querySelector('#a') as HTMLElement;
+      // Render component.
+      ReactDOM.render(
+        <div>
+          <button key="z" id="z" />
+          <FocusZone id="fz">
+            <button key="a" id="a">
+              button a
+            </button>
+          </FocusZone>
+        </div>,
+        host
+      );
+      buttonA = host.querySelector('#a') as HTMLElement;
+      buttonA.focus();
+      buttonA.blur();
 
-    buttonA.focus();
+      // Render component without button A.
+      ReactDOM.render(
+        <div>
+          <button key="z" id="z" />
+          <FocusZone id="fz" />
+        </div>,
+        host
+      );
 
-    // Simulate a blur to body.
-    buttonA.blur();
+      // Async evaluate that focus has been moved to b.
+      setTimeout(done, 20);
+    });
 
-    // Render component without button A.
-    ReactDOM.render(<FocusZone />, host);
+    it('can move focus to container when last item removed', () => {
+      expect(document.activeElement).toBe(host.querySelector('#fz'));
+    });
 
-    // Async evaluate that focus has been moved to b.
-    setTimeout(() => {
-      expect(document.activeElement).toBe(host.firstChild);
-      done();
-    }, 20);
+    it('can move focus from container to first item when added', () => {
+      ReactDOM.render(
+        <div>
+          <button key="z" id="z" />
+          <FocusZone id="fz">
+            <button key="a" id="a" data-is-visible="true">
+              button a
+            </button>
+          </FocusZone>
+        </div>,
+        host
+      );
+      expect(document.activeElement).toBe(host.querySelector('#a'));
+    });
+
+    it('removes focusability when moving from focused container', () => {
+      expect(host.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
+      (host.querySelector('#z') as HTMLElement).focus();
+      expect(host.querySelector('#fz')!.getAttribute('tabindex')).toBeNull();
+    });
+
+    it('does not move focus when items added without container focus', () => {
+      expect(host.querySelector('#fz')!.getAttribute('tabindex')).toEqual('-1');
+      (host.querySelector('#z') as HTMLElement).focus();
+
+      ReactDOM.render(
+        <div>
+          <button key="z" id="z" />
+          <FocusZone id="fz">
+            <button key="a" id="a" data-is-visible="true">
+              button a
+            </button>
+          </FocusZone>
+        </div>,
+        host
+      );
+      expect(document.activeElement).toBe(host.querySelector('#z'));
+    });
   });
 
-  it('can move focus from container to first item when added', (done) => {
-
-  });
-  
-  // it('removes focusability when moving from focused container', () => { });
-  // it('does not move focus when items added without container focus', () => { });
+  //
 
   it('can ignore arrowing if default is prevented', () => {
     const component = ReactTestUtils.renderIntoDocument(

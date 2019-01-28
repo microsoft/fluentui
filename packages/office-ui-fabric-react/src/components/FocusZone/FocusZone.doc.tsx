@@ -5,7 +5,6 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 import { FocusZoneTabbableExample } from './examples/FocusZone.Tabbable.Example';
-import { FocusZoneRemovalExample } from './examples/FocusZone.Removal.Example';
 
 const FocusZonePhotosExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
 const FocusZoneListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
@@ -18,31 +17,27 @@ export const FocusZonePageProps: IDocPageProps = {
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/FocusZone',
   examples: [
     {
-      title: 'Removal',
-      view: <FocusZoneRemovalExample />
+      title: 'Non-uniform photos within bidirectional FocusZone',
+      code: FocusZonePhotosExampleCode,
+      view: <FocusZonePhotosExample />
+    },
+    {
+      title: 'Nesting FocusZones in list rows',
+      code: FocusZoneListExampleCode,
+      view: <FocusZoneListExample />
+    },
+    {
+      title: 'Disabled FocusZone',
+      code: FocusZoneDisabledExampleCode,
+      view: <FocusZoneDisabledExample />
+    },
+    {
+      title: 'Tabbable FocusZone',
+      code: FocusZoneTabbableCode,
+      view: <FocusZoneTabbableExample />
     }
-    // {
-    //   title: 'Non-uniform photos within bidirectional FocusZone',
-    //   code: FocusZonePhotosExampleCode,
-    //   view: <FocusZonePhotosExample />
-    // },
-    // {
-    //   title: 'Nesting FocusZones in list rows',
-    //   code: FocusZoneListExampleCode,
-    //   view: <FocusZoneListExample />
-    // },
-    // {
-    //   title: 'Disabled FocusZone',
-    //   code: FocusZoneDisabledExampleCode,
-    //   view: <FocusZoneDisabledExample />
-    // },
-    // {
-    //   title: 'Tabbable FocusZone',
-    //   code: FocusZoneTabbableCode,
-    //   view: <FocusZoneTabbableExample />
-    // }
   ],
-  //  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/docs/FocusZoneOverview.md'),
   bestPractices: '',
   dos: '',

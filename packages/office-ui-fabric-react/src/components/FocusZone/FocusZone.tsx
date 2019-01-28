@@ -109,6 +109,20 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
+  public componentDidUpdate(): void {
+    const { current: root } = this._root;
+    const doc = getDocument();
+
+    if (doc && doc.activeElement === root) {
+      const nextFocusedElement = getNextElement(root, root.firstElementChild as HTMLElement, true);
+
+      if (nextFocusedElement) {
+        this._setParkedFocus(false);
+        nextFocusedElement.focus();
+      }
+    }
+  }
+
   public componentWillUnmount() {
     delete _allInstances[this._id];
   }
