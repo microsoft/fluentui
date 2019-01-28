@@ -46,7 +46,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
           showValue={true}
           onChange={this._onWidthChange}
         />
-        <Stack horizontal gap={5} shrinkItems padding={10} className={styles.root}>
+        <Stack horizontal gap={5} padding={10} className={styles.root}>
           <Stack.Item grow className={styles.item}>
             I shrink
           </Stack.Item>

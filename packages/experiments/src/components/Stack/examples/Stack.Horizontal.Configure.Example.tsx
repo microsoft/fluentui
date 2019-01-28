@@ -16,7 +16,7 @@ export interface IExampleState {
   preventOverflow: boolean;
   wrap: boolean;
   wrapperWidth: number;
-  shrink: boolean;
+  preventShrink: boolean;
   gap: number;
   verticalGap: number;
   paddingLeft: number;
@@ -38,7 +38,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       preventOverflow: false,
       wrap: false,
       wrapperWidth: 100,
-      shrink: false,
+      preventShrink: true,
       gap: 0,
       verticalGap: 0,
       paddingLeft: 0,
@@ -59,7 +59,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       preventOverflow,
       wrap,
       wrapperWidth,
-      shrink,
+      preventShrink,
       gap,
       verticalGap,
       paddingLeft,
@@ -251,7 +251,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
         <Stack
           horizontal
           wrap={wrap}
-          shrinkItems={shrink}
+          preventShrink={preventShrink}
           gap={gap}
           verticalGap={verticalGap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
@@ -301,7 +301,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _onShrinkChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ shrink: isChecked });
+    this.setState({ preventShrink: !isChecked });
   };
 
   private _onWrapperWidthChange = (value: number): void => {
