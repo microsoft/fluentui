@@ -252,8 +252,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           horizontal
           wrap={wrap}
           preventShrink={preventShrink}
-          gap={gap}
-          verticalGap={verticalGap}
+          gap={gap + ' ' + verticalGap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           horizontalAlign={horizontalAlignment}
           verticalAlign={verticalAlignment}

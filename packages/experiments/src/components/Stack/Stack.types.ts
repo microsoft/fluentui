@@ -80,14 +80,11 @@ export interface IStackProps
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
 
   /**
-   * Defines the horizontal spacing between Stack child elements.
+   * Defines the spacing between Stack children elements.
+   * The property is specified as a value for 'horizontal gap', followed optionally by a value for 'vertical gap'.
+   * If 'vertical gap' is omitted, it's set to the same value as 'horizontal gap'.
    */
   gap?: number | string;
-
-  /**
-   * Defines the vertical spacing between Stack child elements.
-   */
-  verticalGap?: number | string;
 
   /**
    * Defines the maximum width that the Stack can take.

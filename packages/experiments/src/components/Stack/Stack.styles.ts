@@ -1,4 +1,4 @@
-import { IStackComponent, IStackStyles, IStackProps, IStackStylesReturnType } from './Stack.types';
+import { IStackComponent, IStackStyles, IStackStylesReturnType } from './Stack.types';
 import { parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
 
@@ -20,7 +20,6 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
     horizontal,
     reversed,
     gap,
-    verticalGap,
     grow,
     wrap,
     padding,
@@ -32,14 +31,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  let horiGap: IStackProps['gap'];
-  let vertGap: IStackProps['gap'];
-
-  horiGap = gap;
-  vertGap = verticalGap !== undefined ? verticalGap : gap;
-
-  const hGap = parseGap(horiGap, theme);
-  const vGap = parseGap(vertGap, theme);
+  const { hGap, vGap } = parseGap(gap, theme);
 
   const horizontalMargin = `${-0.5 * hGap.value}${hGap.unit}`;
   const verticalMargin = `${-0.5 * vGap.value}${vGap.unit}`;
