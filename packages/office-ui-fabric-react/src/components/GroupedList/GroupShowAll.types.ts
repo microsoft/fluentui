@@ -1,4 +1,4 @@
-import { ITheme, IStyle } from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IGroupDividerProps } from './GroupedList.types';
 import { IStyleFunctionOrObject } from '../../Utilities';
 

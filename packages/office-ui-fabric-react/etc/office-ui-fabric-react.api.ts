@@ -8061,6 +8061,7 @@ interface IGroup {
 
 // @public (undocumented)
 interface IGroupDividerProps {
+  className?: string;
   compact?: boolean;
   // (undocumented)
   componentRef?: IRefObject<{}>;
@@ -8084,6 +8085,7 @@ interface IGroupDividerProps {
   selected?: boolean;
   selectionMode?: SelectionMode;
   showAllLinkText?: string;
+  theme?: ITheme;
   viewport?: IViewport;
 }
 
@@ -8142,9 +8144,7 @@ interface IGroupedListStyles {
 
 // @public (undocumented)
 interface IGroupFooterProps extends IGroupDividerProps {
-  className?: string;
   styles?: IStyleFunctionOrObject<IGroupFooterStyleProps, IGroupFooterStyles>;
-  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -8155,10 +8155,8 @@ interface IGroupFooterStyles {
 
 // @public (undocumented)
 interface IGroupHeaderProps extends IGroupDividerProps {
-  className?: string;
   groupedListId?: string;
   styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
-  theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -8200,7 +8198,6 @@ interface IGroupRenderProps {
 interface IGroupShowAllProps extends IGroupDividerProps {
   showAllLinkText?: string;
   styles?: IStyleFunctionOrObject<IGroupShowAllStyleProps, IGroupShowAllStyles>;
-  theme?: ITheme;
 }
 
 // @public (undocumented)
