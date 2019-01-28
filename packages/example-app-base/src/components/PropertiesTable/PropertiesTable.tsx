@@ -245,11 +245,11 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     const { properties, isEnum } = this.state;
 
     return (
-      <div className="PropertiesTable" id={name}>
-        {/* <CollapsibleSection key={1} defaultCollapsed={true} title={{ text: title, style: getPropTitleStyles }}> */}
-        {this._renderTitle()}
-        {this._renderDescription()}
-        {this._renderExtends()}
+      <div className="PropertiesTable">
+        {/* <CollapsibleSection key={1} defaultCollapsed={true} title={{ text: title, styles: getPropTitleStyles }}> */}
+        <div className="PropertiesTable-title">{this._renderTitle()}</div>
+        <div className="PropertiesTable-title">{this._renderDescription()}</div>
+        <div className="PropertiesTable-title">{this._renderExtends()}</div>
         <DetailsList
           selectionMode={SelectionMode.none}
           layoutMode={DetailsListLayoutMode.justified}
