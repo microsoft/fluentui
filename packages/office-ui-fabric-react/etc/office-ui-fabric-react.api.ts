@@ -1247,6 +1247,8 @@ class FocusZone extends BaseComponent<IFocusZoneProps, {}>, implements IFocusZon
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
+  componentDidUpdate(): void;
+  // (undocumented)
   componentWillUnmount(): void;
   // (undocumented)
   static defaultProps: IFocusZoneProps;
