@@ -300,6 +300,12 @@ export interface IGroupDividerProps {
 
   /** Stores parent group's children. */
   groups?: IGroup[];
+
+  /** Custom className */
+  className?: string;
+
+  /** Theme provided by the Higher Order Component */
+  theme?: ITheme;
 }
 
 export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &
