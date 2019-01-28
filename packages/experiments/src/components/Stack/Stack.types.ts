@@ -23,7 +23,7 @@ export interface IStackSlots {
   root?: IHTMLDivSlot;
 
   /**
-   * Defines a slot that is place inside the root slot in order to achieve wrapping. Only used when the wrap
+   * Defines a slot that is placed inside the root slot in order to achieve wrapping. Only used when the wrap
    * property is set to true.
    */
   inner?: IHTMLDivSlot;
