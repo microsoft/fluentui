@@ -1,0 +1,18 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ITheme",
+      "extendsTokens": [
+        {
+          "text": "IScheme"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": []
+    }
+  ]
+}

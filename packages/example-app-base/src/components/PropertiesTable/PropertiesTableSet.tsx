@@ -50,7 +50,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
   }
 
   public renderEach(): JSX.Element | undefined {
-    if (this.state.properties.length >= 1) {
+    if (this.state.properties.length > 1) {
       return (
         <div>
           <CollapsibleSection key={1} defaultCollapsed={true} title={{ text: 'See More', styles: getPropTitleStyles }}>

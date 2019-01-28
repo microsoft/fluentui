@@ -172,7 +172,7 @@ function _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Elem
           {'Extends '}
           {linkTokens.map((token: ILinkToken, index: number) => {
             if (token.hyperlinkedPage) {
-              const href = '#/examples/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
+              const href = '#/components/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
               return (
                 <Link href={href} key={token.text + index}>
                   {token.text}
@@ -191,7 +191,7 @@ function _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Elem
         <span>
           {linkTokens.map((token: ILinkToken, index: number) => {
             if (token.hyperlinkedPage) {
-              const href = '#/examples/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
+              const href = '#/components/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
               return (
                 <Link href={href} key={token.text + index}>
                   {token.text}

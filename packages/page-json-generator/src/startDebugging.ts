@@ -6,7 +6,7 @@ generateJson({
   apiJsonPath:
     'C:\\Users\\naethell\\Documents\\office-ui-fabric-react\\packages\\office-ui-fabric-react\\dist\\office-ui-fabric-react.api.json',
   pageJsonFolderPath: path.join(__dirname, '../../../common/pages'),
-  pageNames: ['Button', 'Breadcrumb', 'Calendar', 'Callout', 'Checkbox', 'ChoiceGroup', 'ComboBox']
+  pageNames: ['Button', 'Breadcrumb', 'Calendar', 'Callout', 'Checkbox', 'ChoiceGroup', 'ComboBox', 'Icon']
 });
 
 // Generate JSON for styling

@@ -1,0 +1,257 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IIconProps",
+      "extendsTokens": [
+        {
+          "text": "IBaseProps"
+        },
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The aria label of the button for the benefit of screen readers.\n",
+          "deprecated": false
+        },
+        {
+          "name": "iconName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon\n",
+          "deprecated": false
+        },
+        {
+          "name": "iconType",
+          "typeTokens": [
+            {
+              "text": "IconType"
+            }
+          ],
+          "descriptionHtml": "The type of icon to render (image or icon font).\n",
+          "deprecated": false
+        },
+        {
+          "name": "imageErrorAs",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "StatelessComponent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IImageProps"
+            },
+            {
+              "text": "> | "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ComponentClass"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IImageProps"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "If rendering an image icon, this function callback will be invoked in the event loading the image errors.\n",
+          "deprecated": false
+        },
+        {
+          "name": "imageProps",
+          "typeTokens": [
+            {
+              "text": "IImageProps"
+            }
+          ],
+          "descriptionHtml": "If rendering an image icon, these props will be passed to the Image component.\n",
+          "deprecated": false
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IIconStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IIconStyles"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Gets the styles for an Icon.\n",
+          "deprecated": false
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IIconStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "iconClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "isImage",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "isPlaceholder",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "Partial"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IIconStyles"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IIconStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "imageContainer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Deprecated. Use `root`.\n\n",
+          "deprecated": true
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}
