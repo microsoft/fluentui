@@ -162,6 +162,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
         if (this._root!.current!) {
           this._root!.current!.classList!.remove(classNames.borderAfterDropping);
           this._root!.current!.classList!.remove(classNames.noBorderAfterDropping);
+          this._root!.current!.classList!.add(classNames.transparentBorder);
         }
       }, TRANSITION_DURATION_DROP + CLASSNAME_ADD_INTERVAL);
     }

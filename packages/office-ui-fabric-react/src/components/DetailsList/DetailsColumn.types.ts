@@ -52,4 +52,5 @@ export interface IDetailsColumnStyles {
   noBorderAfterDropping: IStyle;
   borderWhileDragging: IStyle;
   noBorderWhileDragging: IStyle;
+  transparentBorder: IStyle;
 }

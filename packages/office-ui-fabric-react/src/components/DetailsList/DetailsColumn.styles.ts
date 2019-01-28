@@ -199,8 +199,12 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrag}ms ease` }],
 
-    borderAfterDropping: [borderWhileDragging, { left: -1, lineHeight: 31 }],
+    borderAfterDropping: [borderWhileDragging],
 
-    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrop}ms ease` }]
+    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrop}ms ease` }],
+
+    transparentBorder: {
+      border: '1px solid transparent'
+    }
   };
 };
