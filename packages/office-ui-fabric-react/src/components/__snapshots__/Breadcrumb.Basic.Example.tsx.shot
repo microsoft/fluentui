@@ -142,7 +142,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -305,7 +305,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -468,7 +468,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -631,7 +631,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -794,7 +794,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -958,7 +958,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -1189,7 +1189,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -1344,7 +1344,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -1499,7 +1499,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -1654,7 +1654,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -1809,7 +1809,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -1965,7 +1965,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -2362,7 +2362,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -2507,7 +2507,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -2653,7 +2653,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #000000 inset;
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {

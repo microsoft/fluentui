@@ -159,7 +159,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #000000 inset;
+                    box-shadow: 0 0 0 1px #666666 inset;
                     outline: 1px solid #ffffff;
                   }
                   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -235,7 +235,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #000000 inset;
+                    box-shadow: 0 0 0 1px #666666 inset;
                     outline: 1px solid #ffffff;
                   }
                   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
@@ -311,7 +311,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #000000 inset;
+                    box-shadow: 0 0 0 1px #666666 inset;
                     outline: 1px solid #ffffff;
                   }
                   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
