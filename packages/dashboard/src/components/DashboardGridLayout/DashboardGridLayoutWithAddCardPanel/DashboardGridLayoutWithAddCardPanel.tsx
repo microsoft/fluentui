@@ -189,7 +189,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
           layout: newLayout,
           cardNodes
         });
-        if (JSON.stringify(newLayout) !== JSON.stringify(this.state.layout)) {
+        if (Object.is(newLayout, this.state.layout)) {
           if (this.props.onLayoutChange) {
             this.props.onLayoutChange(newLayout, cardSelected[0].id);
           }
@@ -222,8 +222,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
         newLayout.lg!.push(itemLayout);
       });
 
-      // for object comparision using JSON stringify
-      if (JSON.stringify(newLayout) !== JSON.stringify(this.state.layout)) {
+      // for object comparision using Object.id method
+      if (Object.is(newLayout, this.state.layout)) {
         if (this.props.onLayoutChange) {
           this.props.onLayoutChange(newLayout);
         }
