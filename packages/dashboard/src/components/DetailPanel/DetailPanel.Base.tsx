@@ -15,6 +15,7 @@ import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { _isReactComponent } from './Utils';
 import { DetailPanelPivotBody } from './Body/DetailPanelPivotBody';
 import { ConfirmationResult } from './Body/ConfirmationResult';
+import { shallowCompare } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IMainBodyStates {
   pageReady: boolean;
@@ -29,6 +30,7 @@ interface IMainBodyStates {
 
 interface IMainBodySnapshot {
   nextL2Id?: string | number;
+  nextMainContent?: JSX.Element;
 }
 
 class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBodyStates> {
@@ -56,6 +58,9 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
     if (this.props.currentL2Id !== prevProps.currentL2Id) {
       // L2Id is changed
       snapshot.nextL2Id = this.props.currentL2Id;
+      snapshotUpdated = true;
+    } else if (!shallowCompare(this.props.mainContent, prevProps.mainContent)) {
+      snapshot.nextMainContent = this._getMainContent();
       snapshotUpdated = true;
     }
 
@@ -148,6 +153,8 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
             // stop loading animation
             this._setLoadingAnimation();
           });
+      } else if (snapshot.nextMainContent) {
+        this.setState({ contentElement: snapshot.nextMainContent });
       } else {
         this.setState({
           contentElement: this._getMainContent(),

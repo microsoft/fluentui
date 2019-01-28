@@ -1,6 +1,17 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 23 Jan 2019 22:53:12 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+
+## 0.46.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- updated dashboard package to use a fork of react-grid-layout
+
+### Patches
+
+- Fix DetailPanel mainContent lifecycle event
 
 ## 0.45.0
 Wed, 23 Jan 2019 22:53:12 GMT

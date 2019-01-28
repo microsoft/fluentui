@@ -19,11 +19,11 @@ export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
       selectors: {
         '&:hover': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: semanticColors.bodyText
+          color: BaseColors.WHITE
         },
         '&:active': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: semanticColors.bodyText
+          color: BaseColors.WHITE
         }
       }
     },

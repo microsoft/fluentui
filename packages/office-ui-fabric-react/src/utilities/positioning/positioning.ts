@@ -424,6 +424,7 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
  * @param {Rectangle} elementRectangle
  * @param {HTMLElement} hostElement
  * @param {RectangleEdge} targetEdge
+ * @param {RectangleEdge} bounds
  * @param {RectangleEdge} [alignmentEdge]
  * @param {boolean} coverTarget
  * @returns {IPartialIRectangle}
@@ -432,6 +433,7 @@ function _finalizeElementPosition(
   elementRectangle: Rectangle,
   hostElement: HTMLElement,
   targetEdge: RectangleEdge,
+  bounds?: Rectangle,
   alignmentEdge?: RectangleEdge,
   coverTarget?: boolean
 ): IPartialIRectangle {
@@ -440,7 +442,16 @@ function _finalizeElementPosition(
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   const elementEdgeString = RectangleEdge[elementEdge];
-  const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
+  let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
+
+  // if the element is closer to one side of the bounds than the other, flip the return edge to ensure it grows inwards
+  if (
+    bounds &&
+    Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge)) >
+      Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
+  ) {
+    returnEdge = returnEdge * -1;
+  }
 
   returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
@@ -671,14 +682,11 @@ function _getMaxHeightFromTargetRectangle(
 
 function _positionElementRelative(
   props: IPositionProps,
-  hostElement: HTMLElement,
   elementToPosition: HTMLElement,
+  boundingRect: Rectangle,
   previousPositions?: IPositionedData
 ): IElementPositionInfo {
   const gap: number = props.gapSpace ? props.gapSpace : 0;
-  const boundingRect: Rectangle = props.bounds
-    ? _getRectangleFromIRect(props.bounds)
-    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
   const positionData: IPositionDirectionalHintData = _getAlignmentData(
     _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
@@ -699,11 +707,17 @@ function _positionElementRelative(
   return { ...positionedElement, targetRectangle: targetRect };
 }
 
-function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement, coverTarget?: boolean): IPositionedData {
+function _finalizePositionData(
+  positionedElement: IElementPosition,
+  hostElement: HTMLElement,
+  bounds?: Rectangle,
+  coverTarget?: boolean
+): IPositionedData {
   const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
     positionedElement.elementRectangle,
     hostElement,
     positionedElement.targetEdge,
+    bounds,
     positionedElement.alignmentEdge,
     coverTarget
   );
@@ -720,8 +734,11 @@ function _positionElement(
   elementToPosition: HTMLElement,
   previousPositions?: IPositionedData
 ): IPositionedData {
-  const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition, previousPositions);
-  return _finalizePositionData(positionedElement, hostElement, props.coverTarget);
+  const boundingRect: Rectangle = props.bounds
+    ? _getRectangleFromIRect(props.bounds)
+    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+  const positionedElement: IElementPosition = _positionElementRelative(props, elementToPosition, boundingRect, previousPositions);
+  return _finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget);
 }
 
 function _positionCallout(
@@ -734,11 +751,14 @@ function _positionCallout(
   const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
-  const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout, previousPositions);
+  const boundingRect: Rectangle = props.bounds
+    ? _getRectangleFromIRect(props.bounds)
+    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+  const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, callout, boundingRect, previousPositions);
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
   const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned);
   return {
-    ..._finalizePositionData(positionedElement, hostElement, props.coverTarget),
+    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget),
     beakPosition: finalizedBeakPosition
   };
 }

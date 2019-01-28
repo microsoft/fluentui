@@ -92,6 +92,15 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
+  .addStory(
+    'Vertical Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack reversed {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory('Vertical Stack - Padding', () => (
     <Fabric>
       <Stack {...defaultProps} padding={10} />
@@ -232,6 +241,15 @@ storiesOf('Stack', module)
     () => (
       <Fabric>
         <Stack horizontal {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Horizontal Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack horizontal reversed {...defaultProps} />
       </Fabric>
     ),
     { rtl: true }

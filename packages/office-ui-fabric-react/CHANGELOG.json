@@ -2,6 +2,60 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.129.4",
+      "tag": "office-ui-fabric-react_v6.129.4",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Specify prop \"type\" to be \"button\" for links which are of type button",
+            "author": "Dan Hanlon <daniel-hanlon@hotmail.com>",
+            "commit": "93df4f2a00ccc9d9d4eef460fd484c7fdefe1638"
+          },
+          {
+            "comment": "Fix ColorPicker when alpha slider is hidden",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "d10ae0450b357c3aea307dae399edc7d18da13e7"
+          },
+          {
+            "comment": "Add documentation and tests for color utilities",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "f2698d231eddf6a67e90e43a28af03277374b07a"
+          },
+          {
+            "comment": "Combobox: Pass taxIndex to Autofill component",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f26648588eeb2535e7b64bec53d082ef4d00a82f"
+          },
+          {
+            "comment": "Panel: Add aria-hidden attribute to prevent narrator from reading when transitioning to a closed state",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "826ff688f7130f43434ee5c8d4466b427f49bfcb"
+          },
+          {
+            "comment": "Added screener tests to Breadcrumb component to prevent regression",
+            "author": "Khoa Huynh <35128180+khuynh92@users.noreply.github.com>",
+            "commit": "03392ffa713d645d205c88a36be8618f494bc8d9"
+          },
+          {
+            "comment": "position anchor currently by default uses either the given alignment edge or uses the positive flanking edge, without regard to whether the positive or negative edge has more room. This change uses the bounds to determine which side has more room and flips the anchor around, to solve issues with dynamically resizing callouts not having enough room to grow if they default to a top-anchor",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "65734dd173ab0b2ac1d5693dfcb119230c977032"
+          },
+          {
+            "comment": "Fix the regression in DocumentCard role by commit 5b8befe. It should always use props.role if it is defined. ",
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "454f0cda8a6c13984ec41ab2b1908b5248cd2b9b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.0 <7.0.0` to `>=6.28.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.129.3",
       "tag": "office-ui-fabric-react_v6.129.3",
       "date": "Thu, 24 Jan 2019 13:36:17 GMT",

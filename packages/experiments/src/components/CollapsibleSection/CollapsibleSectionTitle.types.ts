@@ -26,20 +26,13 @@ export interface ICollapsibleSectionTitleSlots {
 
 export interface ICollapsibleSectionTitleProps
   extends ICollapsibleSectionTitleSlots,
-    IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleTokens, ICollapsibleSectionTitleStyles> {
+    IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleTokens, ICollapsibleSectionTitleStyles>,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {
   focusElementRef?: IRefObject<HTMLButtonElement>;
   /**
    * Collapsed state of body associated with this component.
    */
   collapsed?: boolean;
-  /**
-   * Toggle input callback triggered by mouse and keyboard input.
-   */
-  onClick?: (ev: React.MouseEvent<Element>) => void;
-  /**
-   * Key down callback for input on title.
-   */
-  onKeyDown?: (ev: React.KeyboardEvent<Element>) => void;
   /**
    * Disable chevron appearance.
    */
