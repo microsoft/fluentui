@@ -9,6 +9,14 @@ import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
+  let host: HTMLElement;
+
+  afterEach(() => {
+    if (host) {
+      ReactDOM.unmountComponentAtNode(host);
+      (host as any) = undefined;
+    }
+  });
 
   function _onFocus(ev: any): void {
     lastFocusedElement = ev.target;
@@ -145,7 +153,7 @@ describe('FocusZone', () => {
   });
 
   it('can restore focus to the following item when item removed', done => {
-    const host = document.createElement('div');
+    host = document.createElement('div');
 
     // Render component.
     ReactDOM.render(
@@ -191,7 +199,7 @@ describe('FocusZone', () => {
   });
 
   it('can restore focus to the previous item when end item removed', done => {
-    const host = document.createElement('div');
+    host = document.createElement('div');
 
     // Render component.
     ReactDOM.render(
@@ -237,7 +245,6 @@ describe('FocusZone', () => {
   });
 
   describe('parking and unparking', () => {
-    let host: HTMLElement;
     let buttonA: HTMLElement;
 
     beforeEach(done => {
