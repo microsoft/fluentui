@@ -96,7 +96,7 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
       <Panel
         className={customClassName}
         isOpen={isOpen}
-        type={type}
+        type={customClassName ? PanelType.custom : type}
         customWidth={customWidth}
         isBlocking={isBlocking}
         isLightDismiss={isLightDismiss}
