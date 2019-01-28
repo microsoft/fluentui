@@ -46,7 +46,6 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
 
   // styles to be applied to all direct children regardless of wrap or direction
   const childStyles = {
-    whiteSpace: 'nowrap',
     textOverflow: 'ellipsis'
   };
 

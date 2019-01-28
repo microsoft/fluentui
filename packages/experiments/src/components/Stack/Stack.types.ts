@@ -63,7 +63,8 @@ export interface IStackProps
 
   /**
    * Defines whether the Stack should take up 100% of the height of its parent.
-   * This property is required to be set to true when using the `grow` flag on children elements.
+   * This property is required to be set to true when using the `grow` flag on children elements in vertical oriented Stacks.
+   * Stacks are rendered as block elements and grow horizontally to the container already.
    * @defaultvalue false
    */
   verticalFill?: boolean;
