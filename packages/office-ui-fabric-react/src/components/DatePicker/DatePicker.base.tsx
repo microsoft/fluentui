@@ -191,6 +191,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         >
           <TextField
             id={this._id + '-label'}
+            className={classNames.textField}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}

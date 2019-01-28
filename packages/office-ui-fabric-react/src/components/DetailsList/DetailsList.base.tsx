@@ -162,6 +162,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public componentWillUnmount(): void {
     if (this._dragDropHelper) {
+      // TODO If the DragDropHelper was passed via props, this will dispose it, which is incorrect behavior.
       this._dragDropHelper.dispose();
     }
   }

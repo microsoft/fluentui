@@ -5,6 +5,8 @@ import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { CheckStyles, DetailsRowStyles, DetailsListStyles } from './styles/DetailsList.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOptions.styles';
+import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
+import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CommandBarStyles } from './styles/CommandBar.styles';
 import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
@@ -19,13 +21,22 @@ import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { MessageBarStyles } from './styles/MessageBar.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { OverlayStyles } from './styles/Overlay.styles';
+import { NavStyles } from './styles/Nav.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
+import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { ProgressIndicatorStyles } from './styles/ProgressIndicator.styles';
+import { RatingStyles } from './styles/Rating.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { SuggestionItemStyles } from './styles/SuggestionsItem.styles';
+import { SuggestionsStyles } from './styles/Suggestions.styles';
+import { TagItemStyles } from './styles/TagItem.styles';
+import { TagPickerStyles } from './styles/TagPicker.styles';
+import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -43,15 +54,15 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     CalloutContent: {
       styles: CalloutContentStyles
     },
-    // ColorPicker: {
-    //   styles: ColorPickerStyles
-    // },
-    // ColorRectangle: {
-    //   styles: ColorRectangleStyles
-    // },
-    // ColorSlider: {
-    //   styles: ColorSliderStyles
-    // },
+    ColorPicker: {
+      styles: ColorPickerStyles
+    },
+    ColorRectangle: {
+      styles: ColorRectangleStyles
+    },
+    ColorSlider: {
+      styles: ColorSliderStyles
+    },
     CommandBar: {
       styles: CommandBarStyles
     },
@@ -70,9 +81,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     ChoiceGroupOption: {
       styles: ChoiceGroupOptionStyles
     },
-    // ColorPickerGridCell: {
-    //   styles: ColorPickerGridCellStyles
-    // },
+    ColorPickerGridCell: {
+      styles: ColorPickerGridCellStyles
+    },
     ComboBox: {
       styles: ComboBoxStyles(theme)
     },
@@ -100,9 +111,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     Dropdown: {
       styles: DropdownStyles
     },
-    // ExpandingCard: {
-    //   styles: ExpandingCardStyles
-    // },
+    ExpandingCard: {
+      styles: ExpandingCardStyles
+    },
     IconButton: {
       styles: IconButtonStyles(theme)
     },
@@ -118,12 +129,18 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     Modal: {
       styles: ModalStyles
     },
+    Overlay: {
+      styles: OverlayStyles
+    },
+    Nav: {
+      styles: NavStyles
+    },
     Pivot: {
       styles: PivotStyles
     },
-    // PlainCard: {
-    //   styles: PlainCardStyles
-    // },
+    PlainCard: {
+      styles: PlainCardStyles
+    },
     Panel: {
       styles: PanelStyles
     },
@@ -133,9 +150,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     ProgressIndicator: {
       styles: ProgressIndicatorStyles
     },
-    // Rating: {
-    //   styles: RatingStyles
-    // },
+    Rating: {
+      styles: RatingStyles
+    },
     Slider: {
       styles: SliderStyles
     },
@@ -145,9 +162,21 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     SpinButton: {
       styles: SpinButtonStyles(theme)
     },
-    // TeachingBubble: {
-    //   styles: TeachingBubbleStyles
-    // },
+    TagPicker: {
+      styles: TagPickerStyles
+    },
+    TagItem: {
+      styles: TagItemStyles
+    },
+    SuggestionItem: {
+      styles: SuggestionItemStyles
+    },
+    Suggestions: {
+      styles: SuggestionsStyles
+    },
+    TeachingBubble: {
+      styles: TeachingBubbleStyles
+    },
     TextField: {
       styles: TextFieldStyles
     },

@@ -578,6 +578,9 @@ class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState
 }
 
 // @public
+export function clamp(value: number, max: number, min?: number): number;
+
+// @public
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
@@ -608,8 +611,10 @@ enum CollapseAllVisibility {
 }
 
 // @public (undocumented)
-class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> {
+class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState>, implements IColorPicker {
   constructor(props: IColorPickerProps);
+  // (undocumented)
+  readonly color: IColor;
   // (undocumented)
   componentWillReceiveProps(newProps: IColorPickerProps): void;
   // (undocumented)
@@ -754,6 +759,12 @@ enum ContextualMenuItemType {
 }
 
 // @public
+export function correctHSV(color: IHSV): IHSV;
+
+// @public
+export function correctRGB(color: IRGB): IRGB;
+
+// @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
 
 // @public (undocumented)
@@ -776,7 +787,7 @@ export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme
 // @public
 export function css(...args: ICssInput[]): string;
 
-// @public (undocumented)
+// @public
 export function cssColor(color: string): IRGB | undefined;
 
 // @public (undocumented)
@@ -1323,15 +1334,13 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boo
 // @public
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
 
-// @public (undocumented)
-export function getColorFromRGBA(rgba: {
-    r: number;
-    g: number;
-    b: number;
-    a: number;
-}): IColor;
+// @public
+export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
 
-// @public (undocumented)
+// @public
+export function getColorFromRGBA(rgba: IRGB): IColor;
+
+// @public
 export function getColorFromString(inputColor: string): IColor | undefined;
 
 // @public (undocumented)
@@ -1355,7 +1364,7 @@ export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLE
 // @public
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
 
-// @public (undocumented)
+// @public
 export function getFullColorString(color: IColor): string;
 
 // @public
@@ -1525,23 +1534,19 @@ enum HoverCardType {
   plain = "PlainCard"
 }
 
-// @public (undocumented)
+// @public
 export function hsl2hsv(h: number, s: number, l: number): IHSV;
 
-// @public (undocumented)
+// @public
 export function hsl2rgb(h: number, s: number, l: number): IRGB;
 
-// @public (undocumented)
+// @public
 export function hsv2hex(h: number, s: number, v: number): string;
 
-// @public (undocumented)
-export function hsv2hsl(h: number, s: number, v: number): {
-    h: number;
-    s: number;
-    l: number;
-};
+// @public
+export function hsv2hsl(h: number, s: number, v: number): IHSL;
 
-// @public (undocumented)
+// @public
 export function hsv2rgb(h: number, s: number, v: number): IRGB;
 
 // @public (undocumented)
@@ -2297,6 +2302,7 @@ interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   onPositioned?: (positions?: ICalloutPositionedInfo) => void;
   onScroll?: () => void;
   preventDismissOnLostFocus?: boolean;
+  preventDismissOnResize?: boolean;
   preventDismissOnScroll?: boolean;
   role?: string;
   setInitialFocus?: boolean;
@@ -2568,6 +2574,7 @@ interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   beakHeight?: number;
   // @deprecated
   beakWidth?: number;
+  className?: string;
   // @deprecated
   collapsed?: boolean;
   color?: string;
@@ -2590,6 +2597,7 @@ interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   target: HTMLElement | string | null;
   // @deprecated
   teachingBubbleRef?: ITeachingBubble;
+  theme?: ITheme;
   // @deprecated
   width?: number;
 }
@@ -2616,6 +2624,7 @@ interface ICoachmarkState {
 interface ICoachmarkStyleProps {
   beaconColorOne?: string;
   beaconColorTwo?: string;
+  className?: string;
   // @deprecated
   collapsed?: boolean;
   // (undocumented)
@@ -2628,6 +2637,7 @@ interface ICoachmarkStyleProps {
   isCollapsed: boolean;
   isMeasured: boolean;
   isMeasuring: boolean;
+  theme?: ITheme;
   transformOrigin?: string;
   width?: string;
 }
@@ -2648,9 +2658,7 @@ interface ICoachmarkStyles {
 
 // @public (undocumented)
 interface IColor extends IRGB, IHSV {
-  // (undocumented)
   hex: string;
-  // (undocumented)
   str: string;
 }
 
@@ -2664,6 +2672,7 @@ interface IColorCellProps {
 
 // @public (undocumented)
 interface IColorPicker {
+  color: IColor;
 }
 
 // @public (undocumented)
@@ -2729,8 +2738,6 @@ interface IColorPickerProps extends IBaseProps<IColorPicker> {
 interface IColorPickerState {
   // (undocumented)
   color: IColor;
-  // (undocumented)
-  isOpen: boolean;
 }
 
 // @public (undocumented)
@@ -7360,6 +7367,39 @@ interface IDocumentCardDetailsStyles {
 }
 
 // @public (undocumented)
+interface IDocumentCardImage {
+}
+
+// @public (undocumented)
+interface IDocumentCardImageProps extends IBaseProps<{}> {
+  className?: string;
+  componentRef?: IRefObject<IDocumentCardImage>;
+  height?: number;
+  iconProps?: IIconProps;
+  imageFit?: ImageFit;
+  imageSrc?: string;
+  styles?: IStyleFunctionOrObject<IDocumentCardImageStyleProps, IDocumentCardImageStyles>;
+  theme?: ITheme;
+  width?: number;
+}
+
+// @public (undocumented)
+interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {
+}
+
+// @public (undocumented)
+interface IDocumentCardImageStyles {
+  // (undocumented)
+  centeredIcon: IStyle;
+  // (undocumented)
+  centeredIconWrapper: IStyle;
+  // (undocumented)
+  cornerIcon: IStyle;
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
 interface IDocumentCardLocation {
 }
 
@@ -7465,7 +7505,7 @@ interface IDocumentCardPreviewStyles {
   // (undocumented)
   fileListOverflowText: IStyle;
   // (undocumented)
-  previewFileTypeIcon: IStyle;
+  icon: IStyle;
   // (undocumented)
   previewIcon: IStyle;
   // (undocumented)
@@ -7473,7 +7513,7 @@ interface IDocumentCardPreviewStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardProps extends IBaseProps<IDocumentCard> {
+interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttributes<HTMLDivElement> {
   // @deprecated
   accentColor?: string;
   children?: React.ReactNode;
@@ -8173,21 +8213,15 @@ interface IHoverCardStyles {
 
 // @public (undocumented)
 interface IHSL {
-  // (undocumented)
   h: number;
-  // (undocumented)
   l: number;
-  // (undocumented)
   s: number;
 }
 
 // @public (undocumented)
 interface IHSV {
-  // (undocumented)
   h: number;
-  // (undocumented)
   s: number;
-  // (undocumented)
   v: number;
 }
 
@@ -9717,15 +9751,11 @@ interface IResizeGroupStyles {
   root: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface IRGB {
-  // (undocumented)
   a?: number;
-  // (undocumented)
   b: number;
-  // (undocumented)
   g: number;
-  // (undocumented)
   r: number;
 }
 
@@ -11801,10 +11831,10 @@ class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 export function rgb2hex(r: number, g: number, b: number): string;
 
-// @public (undocumented)
+// @public
 export function rgb2hsv(r: number, g: number, b: number): IHSV;
 
 // @public (undocumented)
@@ -12604,13 +12634,16 @@ export function unhoistMethods(source: any, methodNames: string[]): void;
 // @public
 export function unregisterIcons(iconNames: string[]): void;
 
-// @public (undocumented)
+// @public
 export function updateA(color: IColor, a: number): IColor;
 
-// @public (undocumented)
+// @public
 export function updateH(color: IColor, h: number): IColor;
 
-// @public (undocumented)
+// @public
+export function updateRGB(color: IColor, component: keyof IRGB, value: number): IColor;
+
+// @public
 export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
@@ -12696,7 +12729,9 @@ module ZIndexes {
 // WARNING: Unsupported export: MAX_COLOR_SATURATION
 // WARNING: Unsupported export: MAX_COLOR_HUE
 // WARNING: Unsupported export: MAX_COLOR_VALUE
+// WARNING: Unsupported export: MAX_COLOR_RGB
 // WARNING: Unsupported export: MAX_COLOR_RGBA
+// WARNING: Unsupported export: MAX_COLOR_ALPHA
 // WARNING: Unsupported export: ColorPicker
 // WARNING: Unsupported export: CommandBar
 // WARNING: Unsupported export: ContextualMenu
@@ -12720,6 +12755,7 @@ module ZIndexes {
 // WARNING: Unsupported export: DocumentCardDetails
 // WARNING: Unsupported export: DocumentCardLocation
 // WARNING: Unsupported export: DocumentCardPreview
+// WARNING: Unsupported export: DocumentCardImage
 // WARNING: Unsupported export: DocumentCardTitle
 // WARNING: Unsupported export: DocumentCardLogo
 // WARNING: Unsupported export: DocumentCardStatus

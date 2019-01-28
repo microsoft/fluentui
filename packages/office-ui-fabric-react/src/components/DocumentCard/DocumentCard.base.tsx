@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
+import { BaseComponent, classNamesFunction, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
 import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
@@ -23,6 +23,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
 
   public render(): JSX.Element {
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
+    const nativeProps = getNativeProps(this.props, divProperties, ['className', 'onClick', 'type', 'role']);
     const actionable = onClick || onClickHref ? true : false;
 
     this._classNames = getClassNames(styles!, {
@@ -41,7 +42,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
     }
 
     // if this element is actionable it should have an aria role
-    const role = this.props.role || actionable ? (onClick ? 'button' : 'link') : undefined;
+    const role = this.props.role || (actionable ? (onClick ? 'button' : 'link') : undefined);
     const tabIndex = actionable ? 0 : undefined;
 
     return (
@@ -54,6 +55,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
         onKeyDown={actionable ? this._onKeyDown : undefined}
         onClick={actionable ? this._onClick : undefined}
         style={style}
+        {...nativeProps}
       >
         {children}
       </div>

@@ -299,7 +299,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        outline: 1px solid #666666;
+                        outline: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
@@ -361,6 +361,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=
@@ -460,7 +461,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        outline: 1px solid #666666;
+                        outline: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
@@ -522,6 +523,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=
@@ -622,7 +624,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        outline: 1px solid #666666;
+                        outline: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
@@ -684,6 +686,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=

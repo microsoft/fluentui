@@ -2,201 +2,50 @@ import { IStyle } from 'office-ui-fabric-react';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
+const generateBaseStyle = (backgroundColor: string, textColor: string): IStyle => {
+  return {
+    backgroundColor: backgroundColor,
+    color: textColor,
+    selectors: {
+      '.ms-Button-icon': {
+        color: textColor,
+        selectors: {
+          '&:hover': {
+            backgroundColor: backgroundColor
+          },
+          '&:active': {
+            backgroundColor: backgroundColor
+          }
+        }
+      }
+    }
+  };
+};
+
 const IconButtonStyles = (props: IMessageBarStyleProps): IStyle => {
   const { theme, messageBarType } = props;
   const semanticColors = theme.semanticColors as IExtendedSemanticColors;
 
   return [
-    (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) && {
-      backgroundColor: semanticColors.statusErrorBackground,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusErrorText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusErrorBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusErrorBackground
-            }
-          }
-        }
-      }
-    },
+    (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) &&
+      generateBaseStyle(semanticColors.statusErrorBackground, semanticColors.statusErrorText),
 
-    messageBarType === MessageBarType.info && {
-      backgroundColor: semanticColors.statusInformationBackground,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusInformationText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusInformationBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusInformationBackground
-            }
-          }
-        }
-      }
-    },
+    messageBarType === MessageBarType.info &&
+      generateBaseStyle(semanticColors.statusInformationBackground, semanticColors.statusInformationText),
 
-    messageBarType === MessageBarType.success && {
-      backgroundColor: semanticColors.statusSuccessBackground,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusSuccessText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusSuccessBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusSuccessBackground
-            }
-          }
-        }
-      }
-    },
+    messageBarType === MessageBarType.success &&
+      generateBaseStyle(semanticColors.statusSuccessBackground, semanticColors.statusSuccessText),
 
-    (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) && {
-      backgroundColor: semanticColors.statusWarningBackground,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusWarningText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusWarningBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusWarningBackground
-            }
-          }
-        }
-      }
-    },
+    (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) &&
+      generateBaseStyle(semanticColors.statusWarningBackground, semanticColors.statusWarningText),
 
-    !messageBarType && {
-      backgroundColor: semanticColors.bodyBackground,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.bodyText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.buttonBackgroundHovered
-            },
-            '&:active': {
-              backgroundColor: semanticColors.buttonBackgroundHovered
-            }
-          }
-        }
-      }
-    }
-  ];
-};
-
-const RootStyles = (props: IMessageBarStyleProps): IStyle => {
-  const { theme, messageBarType } = props;
-  const semanticColors = theme.semanticColors as IExtendedSemanticColors;
-
-  return [
-    (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) && {
-      backgroundColor: semanticColors.statusErrorBackground,
-      color: semanticColors.statusErrorText,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusErrorText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusErrorBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusErrorBackground
-            }
-          }
-        }
-      }
-    },
-
-    messageBarType === MessageBarType.info && {
-      backgroundColor: semanticColors.statusInformationBackground,
-      color: semanticColors.statusInformationText,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusInformationText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusInformationBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusInformationBackground
-            }
-          }
-        }
-      }
-    },
-
-    messageBarType === MessageBarType.success && {
-      backgroundColor: semanticColors.statusSuccessBackground,
-      color: semanticColors.statusSuccessText,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusSuccessText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusSuccessBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusSuccessBackground
-            }
-          }
-        }
-      }
-    },
-
-    (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) && {
-      backgroundColor: semanticColors.statusWarningBackground,
-      color: semanticColors.statusWarningText,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.statusWarningText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.statusWarningBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.statusWarningBackground
-            }
-          }
-        }
-      }
-    },
-
-    !messageBarType && {
-      backgroundColor: semanticColors.bodyBackground,
-      border: `2px solid ${semanticColors.bodyDivider}`,
-      color: semanticColors.bodyText,
-      selectors: {
-        '.ms-Button-icon': {
-          color: semanticColors.bodyText,
-          selectors: {
-            '&:hover': {
-              backgroundColor: semanticColors.bodyBackground
-            },
-            '&:active': {
-              backgroundColor: semanticColors.bodyBackground
-            }
-          }
-        }
-      }
-    }
+    !messageBarType && generateBaseStyle(semanticColors.bodyBackground, semanticColors.bodyText)
   ];
 };
 
 export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessageBarStyles> => {
   const { theme, messageBarType } = props;
   const semanticColors = theme.semanticColors as IExtendedSemanticColors;
-
-  const rootStyles = RootStyles(props);
   const iconButtonStyles = IconButtonStyles(props);
 
   return {
@@ -261,6 +110,32 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
         color: semanticColors.bodyText
       }
     ],
-    root: rootStyles
+    root: [
+      (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) &&
+        generateBaseStyle(semanticColors.statusErrorBackground, semanticColors.statusErrorText),
+
+      messageBarType === MessageBarType.info &&
+        generateBaseStyle(semanticColors.statusInformationBackground, semanticColors.statusInformationText),
+
+      messageBarType === MessageBarType.success &&
+        generateBaseStyle(semanticColors.statusSuccessBackground, semanticColors.statusSuccessText),
+
+      (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) &&
+        generateBaseStyle(semanticColors.statusWarningBackground, semanticColors.statusWarningText),
+
+      !messageBarType && {
+        backgroundColor: semanticColors.bodyBackground,
+        color: semanticColors.bodyText,
+        border: `2px solid ${semanticColors.bodyDivider}`,
+        selectors: {
+          '&:hover': {
+            backgroundColor: semanticColors.bodyBackground
+          },
+          '&:active': {
+            backgroundColor: semanticColors.bodyBackground
+          }
+        }
+      }
+    ]
   };
 };

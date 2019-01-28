@@ -1,18 +1,17 @@
 import { getGlobalClassNames, FontSizes } from '../../Styling';
 import { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';
 
-export const GlobalClassNames = {
+export const DocumentCardPreviewGlobalClassNames = {
   root: 'ms-DocumentCardPreview',
   icon: 'ms-DocumentCardPreview-icon',
-  iconContainer: 'ms-DocumentCardPreview-iconContainer',
-  previewFileTypeIcon: 'ms-DocumentCardPreview-previewFileTypeIcon'
+  iconContainer: 'ms-DocumentCardPreview-iconContainer'
 };
 
 export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardPreviewStyles => {
   const { theme, className, isFileList } = props;
   const { palette } = theme;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(DocumentCardPreviewGlobalClassNames, theme);
 
   return {
     root: [
@@ -34,8 +33,8 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         height: '100%'
       }
     ],
-    previewFileTypeIcon: [
-      classNames.previewFileTypeIcon,
+    icon: [
+      classNames.icon,
       {
         left: '10px',
         bottom: '10px',

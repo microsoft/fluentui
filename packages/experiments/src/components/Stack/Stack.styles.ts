@@ -1,5 +1,5 @@
-import { IStackComponent, IStackStyles, IStackProps } from './Stack.types';
-import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
+import { IStackComponent, IStackStyles, IStackProps, IStackStylesReturnType } from './Stack.types';
+import { parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
 
 const nameMap: { [key: string]: string } = {
@@ -12,13 +12,14 @@ const GlobalClassNames = {
   inner: 'ms-Stack-inner'
 };
 
-export const styles: IStackComponent['styles'] = (props, theme) => {
+export const styles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => {
   const {
     horizontalFill,
     verticalFill,
     maxWidth,
     maxHeight,
     horizontal,
+    reversed,
     gap,
     verticalGap,
     grow,
@@ -31,8 +32,6 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
-  const vertAlign = getVerticalAlignment(verticalAlign);
 
   let horiGap: IStackProps['gap'];
   let vertGap: IStackProps['gap'];
@@ -75,8 +74,8 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         className,
         {
@@ -114,11 +113,11 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         horizontal && {
-          flexDirection: 'row',
+          flexDirection: reversed ? 'row-reverse' : 'row',
 
           // avoid unnecessary calc() calls if vertical gap is 0
           height: vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`,
@@ -130,7 +129,7 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
           }
         },
         !horizontal && {
-          flexDirection: 'column',
+          flexDirection: reversed ? 'column-reverse' : 'column',
           height: `calc(100% + ${vGap.value}${vGap.unit})`,
 
           selectors: {
@@ -148,7 +147,7 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
       classNames.root,
       {
         display: 'flex',
-        flexDirection: horizontal ? 'row' : 'column',
+        flexDirection: horizontal ? (reversed ? 'row-reverse' : 'row') : reversed ? 'column-reverse' : 'column',
         flexWrap: 'nowrap',
         width: horizontalFill && !wrap ? '100%' : 'auto',
         height: verticalFill && !wrap ? '100%' : 'auto',
@@ -160,8 +159,9 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
         selectors: {
           '> *': childStyles,
 
-          // apply gap margin to every direct child except the first direct child
-          '> *:not(:first-child)': [
+          // apply gap margin to every direct child except the first direct child if the direction is not reversed,
+          // and the last direct one if it is
+          [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: [
             horizontal && {
               marginLeft: `${hGap.value}${hGap.unit}`
             },
@@ -169,6 +169,7 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
               marginTop: `${vGap.value}${vGap.unit}`
             }
           ],
+
           ...commonSelectors
         }
       },
@@ -179,8 +180,8 @@ export const styles: IStackComponent['styles'] = (props, theme) => {
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
       },
-      vertAlign && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+      verticalAlign && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
       },
       className
     ]

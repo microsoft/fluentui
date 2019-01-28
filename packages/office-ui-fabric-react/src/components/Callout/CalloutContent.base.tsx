@@ -52,6 +52,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   public static defaultProps = {
     preventDismissOnLostFocus: false,
     preventDismissOnScroll: false,
+    preventDismissOnResize: false,
     isBeakVisible: true,
     beakWidth: 16,
     gapSpace: 0,
@@ -70,6 +71,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _setHeightOffsetTimer: number;
   private _hasListeners = false;
   private _maxHeight: number | undefined;
+  private _blockResetHeight: boolean;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -108,7 +110,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
-    if (newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) {
+    if ((newTarget !== oldTarget || typeof newTarget === 'string' || newTarget instanceof String) && !this._blockResetHeight) {
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
     }
@@ -126,6 +128,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         positions: undefined
       });
     }
+
+    this._blockResetHeight = false;
   }
 
   public componentDidMount(): void {
@@ -236,6 +240,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
+  protected _dismissOnResize(ev: Event) {
+    const { preventDismissOnResize } = this.props;
+    if (!preventDismissOnResize) {
+      this.dismiss(ev);
+    }
+  }
+
   protected _dismissOnLostFocus(ev: Event) {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
@@ -278,7 +289,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     // the target changing focus quickly prior to rendering the callout.
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-      this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'resize', this._dismissOnResize, true);
       this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
       this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
       this._hasListeners = true;
@@ -287,7 +298,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   private _removeListeners() {
     this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-    this._events.off(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.off(this._targetWindow, 'resize', this._dismissOnResize, true);
     this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
     this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
     this._hasListeners = false;
@@ -384,6 +395,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         this._async.requestAnimationFrame(() => {
           if (this._target) {
             this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
+            this._blockResetHeight = true;
             this.forceUpdate();
           }
         });

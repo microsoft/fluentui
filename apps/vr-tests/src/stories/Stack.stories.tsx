@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
 import { Stack } from '@uifabric/experiments/lib/Stack';
@@ -72,12 +72,31 @@ const defaultProps = {
 
 storiesOf('Stack', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(story => <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()
+      }
+    >
+      {story()}
+    </Screener>
+  )
   .addStory(
     'Vertical Stack - Default',
     () => (
       <Fabric>
         <Stack {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Vertical Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack reversed {...defaultProps} />
       </Fabric>
     ),
     { rtl: true }
@@ -99,7 +118,7 @@ storiesOf('Stack', module)
   ))
   .addStory('Vertical Stack - Bottom-aligned', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Vertical Stack - Space around', () => (
@@ -226,6 +245,15 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
+  .addStory(
+    'Horizontal Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack horizontal reversed {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory('Horizontal Stack - Padding', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} padding={10} />
@@ -276,7 +304,7 @@ storiesOf('Stack', module)
   ))
   .addStory('Horizontal Stack - Bottom-aligned', () => (
     <Fabric>
-      <Stack horizontal {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+      <Stack horizontal {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory(

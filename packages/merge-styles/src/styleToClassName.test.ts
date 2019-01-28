@@ -182,6 +182,28 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('button{background:red;}');
   });
 
+  it('can register global selectors for a parent', () => {
+    const className = styleToClassName({
+      selectors: {
+        '& :global(button)': { background: 'red' }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.css-0 button{background:red;}');
+  });
+
+  it('can register global selectors hover parent for a selector', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(.ms-button):hover &': { background: 'red' }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.ms-button:hover .css-0{background:red;}');
+  });
+
   it('can expand an array of rules', () => {
     styleToClassName([{ background: 'red' }, { background: 'white' }]);
     expect(_stylesheet.getRules()).toEqual('.css-0{background:white;}');

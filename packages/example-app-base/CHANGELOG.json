@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.11.3",
+      "tag": "@uifabric/example-app-base_v6.11.3",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where customizations apply to theme and scheme dropdowns.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6913e7757d8a500e483845f787be0fb5e4543c0d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.2",
       "tag": "@uifabric/example-app-base_v6.11.2",
       "date": "Thu, 17 Jan 2019 13:34:42 GMT",
