@@ -284,6 +284,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         display: 'flex',
         flexDirection: 'column',
+        flexGrow: 1,
         maxHeight: '100%',
         overflowY: 'hidden',
         selectors: {

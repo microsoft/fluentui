@@ -1,7 +1,7 @@
 // @codepen
 
 import * as React from 'react';
-import { GroupedList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/components/GroupedList/index';
+import { GroupedList, IGroup, IGroupHeaderProps, IGroupFooterProps } from 'office-ui-fabric-react/lib/GroupedList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { getTheme, mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
@@ -57,7 +57,7 @@ export class GroupedListCustomExample extends React.Component {
     );
   }
 
-  private _onRenderHeader(props: IGroupDividerProps): JSX.Element {
+  private _onRenderHeader(props: IGroupHeaderProps): JSX.Element {
     const toggleCollapse = (): void => {
       props.onToggleCollapse!(props.group!);
     };
@@ -70,7 +70,7 @@ export class GroupedListCustomExample extends React.Component {
     );
   }
 
-  private _onRenderFooter(props: IGroupDividerProps): JSX.Element {
+  private _onRenderFooter(props: IGroupFooterProps): JSX.Element {
     return <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div>;
   }
 }
