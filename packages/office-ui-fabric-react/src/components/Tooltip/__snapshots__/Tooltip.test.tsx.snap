@@ -116,6 +116,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
               "overflowY": undefined,
             }
           }
+          tabIndex={-1}
         >
           <div
             role="tooltip"
