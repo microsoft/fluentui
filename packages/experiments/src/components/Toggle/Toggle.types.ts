@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLGenericSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
@@ -17,7 +17,7 @@ export interface IToggleSlots {
   /**
    * Defines root slot.
    */
-  root?: IHTMLGenericSlot;
+  root?: IHTMLSlot;
 
   /**
    * Defines label slot displayed above pill.
@@ -27,7 +27,7 @@ export interface IToggleSlots {
   /**
    * Defines container slot for the toggle pill and the text next to it.
    */
-  container?: IHTMLGenericSlot;
+  container?: IHTMLSlot;
 
   /**
    * Defines pill slot, rendered as a button by default.
@@ -37,7 +37,7 @@ export interface IToggleSlots {
   /**
    * Defines thumb slot inside of the pill.
    */
-  thumb?: IHTMLGenericSlot;
+  thumb?: IHTMLSlot;
 
   /**
    * Defines text slot displayed alongside pill. Overrides onText and offText.

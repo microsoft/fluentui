@@ -1,9 +1,11 @@
 import { ISlotProp } from './ISlots';
 
 /**
- * Generic slot definition allowing common HTML attributes. Applicable for most intrinsic slots.
+ * Generic slot definition allowing common HTML attributes. Applicable for most intrinsic slots. Please note certain
+ * elements such as buttons and inputs should make use of IHTMLElementSlot to provide access to specialized attributes
+ * of those elements.
  */
-export type IHTMLGenericSlot = ISlotProp<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, React.ReactNode>;
+export type IHTMLSlot = ISlotProp<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, React.ReactNode>;
 
 /**
  * Optional HTML element typing to confine or expand HTML attribute usage for an intrinsic slot.

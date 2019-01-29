@@ -1,4 +1,4 @@
-import { IComponentStyles, IHTMLGenericSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
 export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
@@ -12,7 +12,7 @@ export type ITextStylesReturnType = ReturnType<Extract<ITextComponent['styles'],
 export type ITextSlot = ISlotProp<ITextProps, React.ReactNode>;
 
 export interface ITextSlots {
-  root?: IHTMLGenericSlot;
+  root?: IHTMLSlot;
 }
 
 // Inputs to the component

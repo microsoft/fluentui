@@ -1,5 +1,5 @@
 import { ImageLoadState, IBaseProps } from 'office-ui-fabric-react';
-import { IComponentStyles, IHTMLGenericSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
 import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
@@ -19,7 +19,7 @@ export interface IPersonaCoinSlots {
   /**
    * Slot for the root element.
    */
-  root?: IHTMLGenericSlot;
+  root?: IHTMLSlot;
 
   /**
    * Slot for the image element

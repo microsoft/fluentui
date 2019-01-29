@@ -35,8 +35,6 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
           key={1}
           defaultCollapsed={true}
           title={{
-            // TODO: why can't TS infer typing here while it can for Button.Styles.Example?
-            // TODO: this is related to shorthand prop and works fine when it's 'children' or 'never'
             styles: (props, theme) => ({
               text: [
                 theme.fonts.large,
@@ -57,26 +55,22 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
               )
           }}
           body={render =>
-            render(
-              (ComponentType, props) => (
-                <AsyncData
-                  data="done"
-                  render={data => (
-                    <div style={{ border: '1px solid black' }}>
-                      <ComponentType {...props}>
-                        {/* TODO: children should be passed to div by spreading props, but they don't render */}
-                        {/* {!data && <Spinner styles={{ root: { alignItems: 'flex-start' } }} />} */}
-                        {data ? <Label>{props.children}</Label> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />}
-                      </ComponentType>
-                    </div>
-                  )}
-                />
-              ),
-              // TODO: make sure undefineds here don't overwrite props.
-              'Data loaded'
-            )
+            render((ComponentType, props) => (
+              <AsyncData
+                data="done"
+                render={data => (
+                  <div style={{ border: '1px solid black' }}>
+                    <ComponentType {...props}>
+                      {data ? <Label>{props.children}</Label> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />}
+                    </ComponentType>
+                  </div>
+                )}
+              />
+            ))
           }
-        />
+        >
+          Data loaded
+        </CollapsibleSection>
         <CollapsibleSection
           key={1}
           defaultCollapsed={true}
@@ -108,15 +102,12 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
                   render={data => (
                     <div style={{ border: '1px solid black' }}>
                       <ComponentType {...props}>
-                        {/* TODO: children should be passed to div by spreading props, but they don't render */}
-                        {/* {!data && <Spinner styles={{ root: { alignItems: 'flex-start' } }} />} */}
                         {data ? <Label>{props.children}</Label> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />}
                       </ComponentType>
                     </div>
                   )}
                 />
               ),
-              // TODO: make sure undefineds here don't overwrite props.
               { children: 'Data loaded' }
             )
           }

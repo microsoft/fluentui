@@ -7,7 +7,7 @@ import {
   getSlots,
   IComponent,
   IComponentStyles,
-  IHTMLGenericSlot,
+  IHTMLSlot,
   IStyleableComponentProps
 } from '@uifabric/experiments/lib/Foundation';
 
@@ -33,8 +33,8 @@ const Variants: ISetting<keyof IFontStyles>[] = [
 
 interface ITableSlots {
   root?: IStackSlot;
-  table?: IHTMLGenericSlot;
-  header?: IHTMLGenericSlot;
+  table?: IHTMLSlot;
+  header?: IHTMLSlot;
 }
 
 type ITableStyles = IComponentStyles<ITableSlots>;
