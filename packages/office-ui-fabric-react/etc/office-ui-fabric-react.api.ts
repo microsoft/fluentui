@@ -8067,6 +8067,7 @@ interface IGroup {
 
 // @public (undocumented)
 interface IGroupDividerProps {
+  className?: string;
   compact?: boolean;
   // (undocumented)
   componentRef?: IRefObject<{}>;
@@ -8083,13 +8084,14 @@ interface IGroupDividerProps {
   isSelected?: boolean;
   loadingText?: string;
   onGroupHeaderClick?: (group: IGroup) => void;
-  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
+  onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
   onToggleCollapse?: (group: IGroup) => void;
   onToggleSelectGroup?: (group: IGroup) => void;
   onToggleSummarize?: (group: IGroup) => void;
   selected?: boolean;
   selectionMode?: SelectionMode;
   showAllLinkText?: string;
+  theme?: ITheme;
   viewport?: IViewport;
 }
 
@@ -8147,18 +8149,81 @@ interface IGroupedListStyles {
 }
 
 // @public (undocumented)
+interface IGroupFooterProps extends IGroupDividerProps {
+  styles?: IStyleFunctionOrObject<IGroupFooterStyleProps, IGroupFooterStyles>;
+}
+
+// @public (undocumented)
+interface IGroupFooterStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IGroupHeaderProps extends IGroupDividerProps {
+  groupedListId?: string;
+  styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+}
+
+// @public (undocumented)
+interface IGroupHeaderStyles {
+  // (undocumented)
+  check: IStyle;
+  // (undocumented)
+  dropIcon: IStyle;
+  // (undocumented)
+  expand: IStyle;
+  // (undocumented)
+  expandIsCollapsed: IStyle;
+  // (undocumented)
+  groupHeaderContainer: IStyle;
+  // (undocumented)
+  headerCount: IStyle;
+  // (undocumented)
+  root: IStyle;
+  // (undocumented)
+  title: IStyle;
+}
+
+// @public (undocumented)
 interface IGroupRenderProps {
   collapseAllVisibility?: CollapseAllVisibility;
-  footerProps?: IGroupDividerProps;
+  footerProps?: IGroupFooterProps;
   getGroupItemLimit?: (group: IGroup) => number;
-  headerProps?: IGroupDividerProps;
+  headerProps?: IGroupHeaderProps;
   isAllGroupsCollapsed?: boolean;
-  onRenderFooter?: IRenderFunction<IGroupDividerProps>;
-  onRenderHeader?: IRenderFunction<IGroupDividerProps>;
-  onRenderShowAll?: IRenderFunction<IGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IGroupFooterProps>;
+  onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
+  onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
-  showAllProps?: IGroupDividerProps;
+  showAllProps?: IGroupShowAllProps;
   showEmptyGroups?: boolean;
+}
+
+// @public (undocumented)
+interface IGroupShowAllProps extends IGroupDividerProps {
+  showAllLinkText?: string;
+  styles?: IStyleFunctionOrObject<IGroupShowAllStyleProps, IGroupShowAllStyles>;
+}
+
+// @public (undocumented)
+interface IGroupShowAllStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IGroupSpacerProps {
+  count: number;
+  indentWidth?: number;
+  styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IGroupSpacerStyles {
+  // (undocumented)
+  root: IStyle;
 }
 
 // @public (undocumented)
@@ -12770,7 +12835,15 @@ module ZIndexes {
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
+// WARNING: Unsupported export: IGroupHeaderStyleProps
+// WARNING: Unsupported export: IGroupFooterStyleProps
+// WARNING: Unsupported export: IGroupShowAllStyleProps
+// WARNING: Unsupported export: GroupSpacer
 // WARNING: Unsupported export: GroupedList
+// WARNING: Unsupported export: GroupHeader
+// WARNING: Unsupported export: GroupFooter
+// WARNING: Unsupported export: GroupShowAll
+// WARNING: Unsupported export: IGroupSpacerStyleProps
 // WARNING: Unsupported export: HoverCard
 // WARNING: Unsupported export: ExpandingCard
 // WARNING: Unsupported export: PlainCard

@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.11.4",
+      "tag": "@uifabric/example-app-base_v6.11.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use fabric dev build in export to codepen",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "cb4c10bf66aa74f02ce1b19adf3274846337ef85"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.3",
       "tag": "@uifabric/example-app-base_v6.11.3",
       "date": "Fri, 18 Jan 2019 13:38:05 GMT",
