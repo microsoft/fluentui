@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TeachingBubble: remove onkeydown handler since it is already handled by Popup",
+      "comment": "TeachingBubble: do not pass in onDismiss to TeachingBubbleContent",
       "type": "patch"
     }
   ],
