@@ -204,6 +204,72 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.ms-button:hover .css-0{background:red;}');
   });
 
+  it('can register multiple selectors within a global wrapper', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(.class1, .class2, .class3)': { top: 140 }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.class1, .class2, .class3{top:140px;}');
+  });
+
+  it('can register multiple selectors wrapped within a global wrappers', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(.class1), :global(.class2), :global(.class3)': { top: 140 }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.class1, .class2, .class3{top:140px;}');
+  });
+
+  it('can process a ":global(.class3, button)" selector', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(.class3, button)': { top: 140 }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.class3, button{top:140px;}');
+  });
+
+  it('can process a ":global(.class3 button)" selector', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(.class3 button)': { top: 140 }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.class3 button{top:140px;}');
+  });
+
+  it('can process a "button:focus, :global(.class1, .class2, .class3)" selector', () => {
+    const className = styleToClassName({
+      selectors: {
+        'button:focus, :global(.class1, .class2, .class3)': { top: 140 }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.css-0 button:focus, .class1, .class2, .class3{top:140px;}');
+  });
+
+  it('can process a complex multiple global selector', () => {
+    const className = styleToClassName({
+      selectors: {
+        ':global(.css20, .css50, #myId) button:hover :global(.class1, .class2, .class3)': { top: 140 }
+      }
+    });
+
+    expect(className).toEqual('css-0');
+    expect(_stylesheet.getRules()).toEqual('.css20, .css50, #myId button:hover .class1, .class2, .class3{top:140px;}');
+  });
+
   it('can expand an array of rules', () => {
     styleToClassName([{ background: 'red' }, { background: 'white' }]);
     expect(_stylesheet.getRules()).toEqual('.css-0{background:white;}');
