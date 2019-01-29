@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
