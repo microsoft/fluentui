@@ -57,9 +57,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
   const borderWhileDragging: IStyle = [
     {
-      outline: `1px solid ${palette.themePrimary}`,
-      display: 'inline-block',
-      overflow: 'hidden'
+      outline: `1px solid ${palette.themePrimary}`
     }
   ];
 
