@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -24,6 +24,18 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     super(props);
 
     this.state = {};
+  }
+
+  public componentDidMount(): void {
+    if (this.props.onDismiss) {
+      document.addEventListener('keydown', this._onKeyDown, false);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    if (this.props.onDismiss) {
+      document.removeEventListener('keydown', this._onKeyDown);
+    }
   }
 
   public focus(): void {
@@ -139,4 +151,12 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       </div>
     );
   }
+
+  private _onKeyDown = (e: any): void => {
+    if (this.props.onDismiss) {
+      if (e.which === KeyCodes.escape) {
+        this.props.onDismiss();
+      }
+    }
+  };
 }

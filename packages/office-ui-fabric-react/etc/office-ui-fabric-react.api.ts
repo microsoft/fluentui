@@ -12572,6 +12572,10 @@ class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBu
 class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
   constructor(props: ITeachingBubbleProps);
   // (undocumented)
+  componentDidMount(): void;
+  // (undocumented)
+  componentWillUnmount(): void;
+  // (undocumented)
   static defaultProps: {
     hasCondensedHeadline: boolean;
     imageProps: {
