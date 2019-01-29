@@ -11,11 +11,13 @@ export interface ISlotCreator<TProps> {
 /**
  * Slottable version of React.ComponentType.
  */
+// TODO: stateless component only?
 export type ISlottableComponentType<TProps> = React.ComponentType<TProps> & ISlotCreator<TProps>;
 
 /**
  * Slottable version of React.ReactType.
  */
+// TODO: stateless component only?
 export type ISlottableReactType<TProps> = React.ReactType<TProps> & ISlotCreator<TProps>;
 
 /**
@@ -53,7 +55,7 @@ export type ISlot<TProps> = ((componentProps: IPropsWithChildren<TProps> | undef
  */
 export type ISlotFactory<TProps> = (
   componentProps: TProps & IProcessedSlotProps,
-  userProps: (ISlotProp<TProps> & IProcessedSlotProps) | undefined,
+  userProps: ISlotPropRenderFunction<TProps> | (ISlotPropValue<TProps> & IProcessedSlotProps) | undefined,
   defaultStyles: IStyle
 ) => JSX.Element;
 
@@ -71,21 +73,42 @@ export interface IDefaultSlotProps<TSlots> {
 }
 
 /**
- * Helper interface components can use for defining Slot properties. This interface defines the following slot properties:
+ * Slot type used for defining Slot props. This interface defines the following slot properties:
+ *    1. ISlotPropValue.
+ *    2. ISlotRender function.
+ */
+export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = never> =
+  | ISlotPropValue<TProps, TShorthandProp>
+  | ISlotPropRenderFunction<TProps, TShorthandProp>;
+
+/**
+ * Slot type used for defining Slot props. This interface defines the following slot properties:
  *    1. Component props object (defined by TProps.)
  *    2. ISlotRender function.
- *    3. JSX Elements.
- *    4. Optional shorthand prop, defined by TShorthandProp.
+ *    3. Optional shorthand prop, defined by TShorthandProp.
  * The conditional type check looks up prop type in TProps if TShorthandProp is a key of TProps, otherwise it treats
  * TShorthandProp as React children. If TShorthandProp is excluded, there is no default prop and no children are allowed.
  */
-export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = never> =
+export type ISlotPropValue<TProps, TShorthandProp extends keyof TProps | 'children' = never> =
   | TProps
-  | JSX.Element
-  | ISlotRenderFunction<TProps>
   | (TShorthandProp extends keyof TProps ? TProps[TShorthandProp] : React.ReactNode);
 
 /**
  * Render function interface used by Slot props.
  */
-export type ISlotRenderFunction<TProps> = (props: TProps, componentType: React.ReactType<TProps>) => JSX.Element;
+export type ISlotPropRenderFunction<TProps, TShorthandProp extends keyof TProps | 'children' = never> = (
+  render: ISlotRenderer<TProps, TShorthandProp>
+) => JSX.Element;
+
+/**
+ * Render function interface used by Slot props.
+ */
+export type ISlotRenderer<TProps, TShorthandProp extends keyof TProps | 'children'> = (
+  renderContent: ISlotRender<TProps>,
+  props?: ISlotPropValue<TProps, TShorthandProp>
+) => JSX.Element;
+
+/**
+ * Content rendering provided by component.
+ */
+export type ISlotRender<TProps> = (componentType: React.ReactType<TProps>, props: TProps) => JSX.Element;

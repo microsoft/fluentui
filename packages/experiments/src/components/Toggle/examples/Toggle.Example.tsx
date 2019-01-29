@@ -6,6 +6,31 @@ export interface IToggleExampleState {
   checked: boolean;
 }
 
+// TODO: just consider removing these examples if CollapsibleSections's are similar
+// Mock async data container component
+interface IAsyncDataProps {
+  render: (data?: string) => JSX.Element;
+  data?: string;
+}
+
+class AsyncData extends React.Component<IAsyncDataProps, { loading: boolean }> {
+  constructor(props: IAsyncDataProps) {
+    super(props);
+    this.state = { loading: true };
+  }
+
+  public componentDidMount() {
+    setTimeout(() => this.setState({ loading: false }), 3000);
+  }
+
+  public render() {
+    const { loading } = this.state;
+    const { render, data } = this.props;
+
+    return render(loading ? undefined : data);
+  }
+}
+
 // tslint:disable:jsx-no-lambda
 export class ToggleExample extends React.Component<{}, IToggleExampleState> {
   constructor(props: {}) {
@@ -28,9 +53,32 @@ export class ToggleExample extends React.Component<{}, IToggleExampleState> {
           defaultChecked={true}
           label="Custom On/Off render functions"
           onChange={this._onCustomRenderChange}
-          text={props => {
-            return <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>;
+          text={render => render((TextType, props) => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>)}
+        />
+        <Toggle
+          defaultChecked={true}
+          label="Custom On/Off render functions"
+          onChange={this._onCustomRenderChange}
+          text={render => {
+            return render((ComponentType, props) => <Label {...props} />, 'shorthand value');
           }}
+        />
+        <Toggle
+          defaultChecked={true}
+          label="Custom On/Off render functions"
+          onChange={this._onCustomRenderChange}
+          text={render => render((ComponentType, props) => <Label {...props} />, 'shorthand value')}
+        />
+        <Toggle
+          defaultChecked={true}
+          label="Custom On/Off render functions"
+          onChange={this._onCustomRenderChange}
+          text={render => (
+            <AsyncData
+              data="done"
+              render={data => render((ComponentType, props) => (data ? <ComponentType {...props} /> : <Spinner {...props} />), data)}
+            />
+          )}
         />
       </div>
     );
