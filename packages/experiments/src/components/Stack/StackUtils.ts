@@ -36,14 +36,14 @@ const _getValueUnitGap = (gap: string): { value: number; unit: string } => {
 export const parseGap = (
   gap: IStackProps['gap'],
   theme: ITheme
-): { vGap: { value: number; unit: string }; hGap: { value: number; unit: string } } => {
+): { rowGap: { value: number; unit: string }; columnGap: { value: number; unit: string } } => {
   if (gap === undefined || gap === '') {
     return {
-      vGap: {
+      rowGap: {
         value: 0,
         unit: 'px'
       },
-      hGap: {
+      columnGap: {
         value: 0,
         unit: 'px'
       }
@@ -52,11 +52,11 @@ export const parseGap = (
 
   if (typeof gap === 'number') {
     return {
-      vGap: {
+      rowGap: {
         value: gap,
         unit: 'px'
       },
-      hGap: {
+      columnGap: {
         value: gap,
         unit: 'px'
       }
@@ -68,11 +68,11 @@ export const parseGap = (
   // If the array has more than two values, then return 0px.
   if (splitGap.length > 2) {
     return {
-      vGap: {
+      rowGap: {
         value: 0,
         unit: 'px'
       },
-      hGap: {
+      columnGap: {
         value: 0,
         unit: 'px'
       }
@@ -82,8 +82,8 @@ export const parseGap = (
   // If the array has two values, then parse each one.
   if (splitGap.length === 2) {
     return {
-      vGap: _getValueUnitGap(_getThemedSpacing(splitGap[0], theme)),
-      hGap: _getValueUnitGap(_getThemedSpacing(splitGap[1], theme))
+      rowGap: _getValueUnitGap(_getThemedSpacing(splitGap[0], theme)),
+      columnGap: _getValueUnitGap(_getThemedSpacing(splitGap[1], theme))
     };
   }
 
@@ -91,8 +91,8 @@ export const parseGap = (
   const calculatedGap = _getValueUnitGap(_getThemedSpacing(gap, theme));
 
   return {
-    vGap: calculatedGap,
-    hGap: calculatedGap
+    rowGap: calculatedGap,
+    columnGap: calculatedGap
   };
 };
 
