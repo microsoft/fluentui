@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } from './GroupedList.types';
 import { IGroupHeaderProps } from './GroupHeader.types';
+import { IGroupFooterProps } from './GroupFooter.types';
+import { IGroupShowAllProps } from './GroupShowAll.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
@@ -40,7 +42,7 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
   eventsToRegister?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Information to pass in to the group footer. */
-  footerProps?: IGroupDividerProps;
+  footerProps?: IGroupFooterProps;
 
   /** Grouping item limit. */
   getGroupItemLimit?: (group: IGroup) => number;
@@ -58,7 +60,7 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
   groupProps?: IGroupRenderProps;
 
   /** Information to pass in to the group header. */
-  headerProps?: IGroupDividerProps;
+  headerProps?: IGroupHeaderProps;
 
   /** List of items to render. */
   items: any[];
@@ -76,19 +78,19 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
   selectionMode?: SelectionMode;
 
   /** Information to pass in to the group Show All footer. */
-  showAllProps?: IGroupDividerProps;
+  showAllProps?: IGroupShowAllProps;
 
   /** Optional Viewport, provided by the parent component. */
   viewport?: IViewport;
 
   /** Override for rendering the group header. */
-  onRenderGroupHeader?: IRenderFunction<IGroupDividerProps>;
+  onRenderGroupHeader?: IRenderFunction<IGroupHeaderProps>;
 
   /** Override for rendering the group Show All link. */
-  onRenderGroupShowAll?: IRenderFunction<IGroupDividerProps>;
+  onRenderGroupShowAll?: IRenderFunction<IGroupShowAllProps>;
 
   /** Override for rendering the group footer. */
-  onRenderGroupFooter?: IRenderFunction<IGroupDividerProps>;
+  onRenderGroupFooter?: IRenderFunction<IGroupFooterProps>;
 
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
@@ -203,9 +205,9 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       groupedListId: this._id
     };
 
-    const groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps, ariaControlsProps);
-    const groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
-    const groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
+    const groupHeaderProps: IGroupHeaderProps = assign({}, headerProps, dividerProps, ariaControlsProps);
+    const groupShowAllProps: IGroupShowAllProps = assign({}, showAllProps, dividerProps);
+    const groupFooterProps: IGroupFooterProps = assign({}, footerProps, dividerProps);
 
     return (
       <div
@@ -264,15 +266,15 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
+  private _onRenderGroupHeader = (props: IGroupHeaderProps): JSX.Element => {
     return <GroupHeader {...props} />;
   };
 
-  private _onRenderGroupShowAll = (props: IGroupDividerProps): JSX.Element => {
+  private _onRenderGroupShowAll = (props: IGroupShowAllProps): JSX.Element => {
     return <GroupShowAll {...props} />;
   };
 
-  private _onRenderGroupFooter = (props: IGroupDividerProps): JSX.Element => {
+  private _onRenderGroupFooter = (props: IGroupFooterProps): JSX.Element => {
     return <GroupFooter {...props} />;
   };
 

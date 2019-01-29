@@ -5208,12 +5208,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 32,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -5406,12 +5402,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 32,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -5846,12 +5838,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 32,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -6044,12 +6032,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 32,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -6242,12 +6226,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 32,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=

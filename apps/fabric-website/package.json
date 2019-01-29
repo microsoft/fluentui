@@ -45,13 +45,13 @@
   "dependencies": {
     "@uifabric/fabric-website-resources": ">=6.10.0 <7.0.0",
     "@uifabric/example-app-base": ">=6.11.4 <7.0.0",
-    "@uifabric/experiments": ">=6.53.0 <7.0.0",
+    "@uifabric/experiments": ">=6.53.1 <7.0.0",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/icons": ">=6.3.0 <7.0.0",
     "@uifabric/set-version": ">=1.1.3 <2.0.0",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": ">=6.130.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.131.0 <7.0.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

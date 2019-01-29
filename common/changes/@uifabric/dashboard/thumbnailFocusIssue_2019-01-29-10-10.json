@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": " Add cardId for dashboardGridLayout onLayoutChange",
+      "comment": "Fix edge browser thumbnail list focus items alignment issue",
       "type": "patch"
     }
   ],

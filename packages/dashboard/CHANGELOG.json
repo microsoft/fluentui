@@ -2,6 +2,28 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.46.1",
+      "tag": "@uifabric/dashboard_v0.46.1",
+      "date": "Tue, 29 Jan 2019 13:35:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Add cardId for dashboardGridLayout onLayoutChange",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "0923a1d1b538ba0a1a365ecd0a17265a17a51be4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.53.0 <7.0.0` to `>=6.53.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.130.0 <7.0.0` to `>=6.131.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.46.0",
       "tag": "@uifabric/dashboard_v0.46.0",
       "date": "Fri, 25 Jan 2019 13:38:07 GMT",

@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.53.1",
+      "tag": "@uifabric/experiments_v6.53.1",
+      "date": "Tue, 29 Jan 2019 13:35:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Removing 'whiteSpace: noWrap' from children styles and improving API comments.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "227994161c74662209bc0d2e3c0875ce20856246"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.130.0 <7.0.0` to `>=6.131.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.53.0",
       "tag": "@uifabric/experiments_v6.53.0",
       "date": "Mon, 28 Jan 2019 13:35:27 GMT",

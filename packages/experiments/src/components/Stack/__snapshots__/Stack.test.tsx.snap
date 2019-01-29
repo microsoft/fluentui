@@ -14,7 +14,6 @@ exports[`Stack accepts custom className on child items 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -66,7 +65,6 @@ exports[`Stack renders default horizontal Stack correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -98,7 +96,6 @@ exports[`Stack renders default vertical Stack correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -130,7 +127,6 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -258,7 +254,6 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -316,7 +311,6 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 10px;
@@ -374,7 +368,6 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -398,7 +391,6 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-          white-space: nowrap;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -424,7 +416,6 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-          white-space: nowrap;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -450,7 +441,6 @@ exports[`Stack renders horizontal Stack with grow correctly 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-          white-space: nowrap;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -478,7 +468,6 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 1`] 
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -536,7 +525,6 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 2`] 
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -596,7 +584,6 @@ exports[`Stack renders horizontal Stack with vertical and horizontal alignment c
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -628,7 +615,6 @@ exports[`Stack renders horizontal Stack with vertical fill correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-left: 0px;
@@ -660,7 +646,6 @@ exports[`Stack renders reversed horizontal Stack correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:last-child) {
         margin-left: 0px;
@@ -692,7 +677,6 @@ exports[`Stack renders reversed vertical Stack correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:last-child) {
         margin-top: 0px;
@@ -724,7 +708,6 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -782,7 +765,6 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 10px;
@@ -840,7 +822,6 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -864,7 +845,6 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-          white-space: nowrap;
         }
         & > *:not(:first-child) {
           margin-top: 0px;
@@ -890,7 +870,6 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-          white-space: nowrap;
         }
         & > *:not(:first-child) {
           margin-top: 0px;
@@ -916,7 +895,6 @@ exports[`Stack renders vertical Stack with grow correctly 1`] = `
         }
         & > * {
           text-overflow: ellipsis;
-          white-space: nowrap;
         }
         & > *:not(:first-child) {
           margin-top: 0px;
@@ -944,7 +922,6 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -1072,7 +1049,6 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 1`] = 
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -1130,7 +1106,6 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 2`] = 
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -1190,7 +1165,6 @@ exports[`Stack renders vertical Stack with vertical and horizontal alignment cor
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -1222,7 +1196,6 @@ exports[`Stack renders vertical Stack with vertical fill correctly 1`] = `
       }
       & > * {
         text-overflow: ellipsis;
-        white-space: nowrap;
       }
       & > *:not(:first-child) {
         margin-top: 0px;
@@ -1276,7 +1249,6 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           margin-top: 0px;
           max-width: 100%;
           text-overflow: ellipsis;
-          white-space: nowrap;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
