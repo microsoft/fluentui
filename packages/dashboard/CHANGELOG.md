@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jan 2019 13:35:55 GMT and should not be manually modified.
+
+## 0.46.1
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Patches
+
+-  Add cardId for dashboardGridLayout onLayoutChange
 
 ## 0.46.0
 Fri, 25 Jan 2019 13:38:07 GMT

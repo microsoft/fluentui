@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.131.0",
+      "tag": "office-ui-fabric-react_v6.131.0",
+      "date": "Tue, 29 Jan 2019 13:35:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "width is not required for sticky placeholder as it won't affect horizontal scrolling. For a detailsGroupedList, if horizontal scrollbar is present when detailsHeader is in non-sticky state, it should be there even when detailsHeader becomes sticky. ",
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "469d91ca6ce9630d74622277ee40cc846fb7facd"
+          },
+          {
+            "comment": "Panel: add flex-grow: 1 to contentInner",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "a217623f4685dbe8cd1f81f7eee08eea15b7c4bf"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "GroupedList: changes types of the renderers to allow customizing the `subComponents` through the `Customizer`. Export the missing interfaces to the top level index file of the GroupedList.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "db9b430f666b61fd094506e080250b6894103dee"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.130.0",
       "tag": "office-ui-fabric-react_v6.130.0",
       "date": "Mon, 28 Jan 2019 13:35:27 GMT",

@@ -26,7 +26,7 @@
     "@types/webpack-env": "1.13.0",
     "@uifabric/fabric-website-resources": ">=6.10.0 <7.0.0",
     "mocha": "^3.3.0",
-    "office-ui-fabric-react": ">=6.130.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.131.0 <7.0.0",
     "raw-loader": "^0.5.1",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
