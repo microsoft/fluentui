@@ -26,18 +26,6 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     this.state = {};
   }
 
-  public componentDidMount(): void {
-    if (this.props.onDismiss) {
-      document.addEventListener('keydown', this._onKeyDown, false);
-    }
-  }
-
-  public componentWillUnmount(): void {
-    if (this.props.onDismiss) {
-      document.removeEventListener('keydown', this._onKeyDown);
-    }
-  }
-
   public focus(): void {
     if (this.rootElement.current) {
       this.rootElement.current.focus();
@@ -151,12 +139,4 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       </div>
     );
   }
-
-  private _onKeyDown = (e: any): void => {
-    if (this.props.onDismiss) {
-      if (e.which === KeyCodes.escape) {
-        this.props.onDismiss();
-      }
-    }
-  };
 }
