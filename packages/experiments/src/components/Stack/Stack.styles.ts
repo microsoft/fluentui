@@ -31,7 +31,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { hGap, vGap } = parseGap(gap, theme);
+  const { vGap, hGap } = parseGap(gap, theme);
 
   const horizontalMargin = `${-0.5 * hGap.value}${hGap.unit}`;
   const verticalMargin = `${-0.5 * vGap.value}${vGap.unit}`;

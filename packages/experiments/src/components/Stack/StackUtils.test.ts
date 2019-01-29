@@ -11,58 +11,58 @@ describe('StackUtils', () => {
     const theme = getTheme();
 
     it('returns a default value when given undefined', () => {
-      expect(parseGap(undefined, theme)).toEqual({ hGap: { value: 0, unit: 'px' }, vGap: { value: 0, unit: 'px' } });
+      expect(parseGap(undefined, theme)).toEqual({ vGap: { value: 0, unit: 'px' }, hGap: { value: 0, unit: 'px' } });
     });
 
     it('returns a default value when given an empty string', () => {
-      expect(parseGap('', theme)).toEqual({ hGap: { value: 0, unit: 'px' }, vGap: { value: 0, unit: 'px' } });
+      expect(parseGap('', theme)).toEqual({ vGap: { value: 0, unit: 'px' }, hGap: { value: 0, unit: 'px' } });
     });
 
     it('returns a value with px when given a number', () => {
-      expect(parseGap(10, theme)).toEqual({ hGap: { value: 10, unit: 'px' }, vGap: { value: 10, unit: 'px' } });
+      expect(parseGap(10, theme)).toEqual({ vGap: { value: 10, unit: 'px' }, hGap: { value: 10, unit: 'px' } });
     });
 
     it('can parse a string with px', () => {
-      expect(parseGap('32px', theme)).toEqual({ hGap: { value: 32, unit: 'px' }, vGap: { value: 32, unit: 'px' } });
+      expect(parseGap('32px', theme)).toEqual({ vGap: { value: 32, unit: 'px' }, hGap: { value: 32, unit: 'px' } });
     });
 
     it('can parse a string with a float', () => {
-      expect(parseGap('20.5px', theme)).toEqual({ hGap: { value: 20.5, unit: 'px' }, vGap: { value: 20.5, unit: 'px' } });
+      expect(parseGap('20.5px', theme)).toEqual({ vGap: { value: 20.5, unit: 'px' }, hGap: { value: 20.5, unit: 'px' } });
     });
 
     it('can parse a string with em', () => {
-      expect(parseGap('5em', theme)).toEqual({ hGap: { value: 5, unit: 'em' }, vGap: { value: 5, unit: 'em' } });
+      expect(parseGap('5em', theme)).toEqual({ vGap: { value: 5, unit: 'em' }, hGap: { value: 5, unit: 'em' } });
     });
 
     it('can parse a string with percentage', () => {
-      expect(parseGap('100%', theme)).toEqual({ hGap: { value: 100, unit: '%' }, vGap: { value: 100, unit: '%' } });
+      expect(parseGap('100%', theme)).toEqual({ vGap: { value: 100, unit: '%' }, hGap: { value: 100, unit: '%' } });
     });
 
     it('can parse a string with no numerical part', () => {
-      expect(parseGap('px', theme)).toEqual({ hGap: { value: 0, unit: 'px' }, vGap: { value: 0, unit: 'px' } });
+      expect(parseGap('px', theme)).toEqual({ vGap: { value: 0, unit: 'px' }, hGap: { value: 0, unit: 'px' } });
     });
 
     it('defaults to px with given a string with no units', () => {
-      expect(parseGap('16', theme)).toEqual({ hGap: { value: 16, unit: 'px' }, vGap: { value: 16, unit: 'px' } });
+      expect(parseGap('16', theme)).toEqual({ vGap: { value: 16, unit: 'px' }, hGap: { value: 16, unit: 'px' } });
     });
 
     it('parses the value from the theme when given a spacing key', () => {
-      expect(parseGap('m', theme)).toEqual({ hGap: { value: 16, unit: 'em' }, vGap: { value: 16, unit: 'em' } });
+      expect(parseGap('m', theme)).toEqual({ vGap: { value: 16, unit: 'em' }, hGap: { value: 16, unit: 'em' } });
     });
 
     it('can parse a string with both horizontal and vertical gap', () => {
-      expect(parseGap('30px 10px', theme)).toEqual({ hGap: { value: 30, unit: 'px' }, vGap: { value: 10, unit: 'px' } });
+      expect(parseGap('30px 10px', theme)).toEqual({ vGap: { value: 30, unit: 'px' }, hGap: { value: 10, unit: 'px' } });
     });
 
     it('can parse a string with horizontal and vertical gap with different units', () => {
-      expect(parseGap('50px 15%', theme)).toEqual({ hGap: { value: 50, unit: 'px' }, vGap: { value: 15, unit: '%' } });
+      expect(parseGap('50px 15%', theme)).toEqual({ vGap: { value: 50, unit: 'px' }, hGap: { value: 15, unit: '%' } });
     });
     it('defaults to px with a string with horizontal and vertical gap with no units', () => {
-      expect(parseGap('50 30', theme)).toEqual({ hGap: { value: 50, unit: 'px' }, vGap: { value: 30, unit: 'px' } });
+      expect(parseGap('50 30', theme)).toEqual({ vGap: { value: 50, unit: 'px' }, hGap: { value: 30, unit: 'px' } });
     });
 
     it('can parse a string with horizontal and vertical gap with one of them getting value from the theme when given a spacing key', () => {
-      expect(parseGap('50px m', theme)).toEqual({ hGap: { value: 50, unit: 'px' }, vGap: { value: 16, unit: 'em' } });
+      expect(parseGap('50px m', theme)).toEqual({ vGap: { value: 50, unit: 'px' }, hGap: { value: 16, unit: 'em' } });
     });
   });
 
