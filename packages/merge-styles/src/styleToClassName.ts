@@ -30,13 +30,13 @@ type ReplacementInfo = [number, number, string];
  * Finds comma separated selectors in a :global() e.g. ":global(.class1, .class2, .class3)"
  * and wraps them each in their own global ":global(.class1), :global(.class2), :global(.class3)"
  *
- * @param selector The selector to process
+ * @param selectorWithGlobals The selector to process
  * @returns The updated selector
  */
-function expandCommaSeparatedGlobals(selector: string): string {
+function expandCommaSeparatedGlobals(selectorWithGlobals: string): string {
   // We the selector does not have a :global() we can shortcut
-  if (!globalSelectorRegExp.test(selector)) {
-    return selector;
+  if (!globalSelectorRegExp.test(selectorWithGlobals)) {
+    return selectorWithGlobals;
   }
 
   const replacementInfo: ReplacementInfo[] = [];
@@ -44,7 +44,7 @@ function expandCommaSeparatedGlobals(selector: string): string {
   const findGlobal = /\:global\((.+?)\)/g;
   let match = null;
   // Create a result list for global selectors so we can replace them.
-  while ((match = findGlobal.exec(selector))) {
+  while ((match = findGlobal.exec(selectorWithGlobals))) {
     // Only if the found selector is a comma separated list we'll process it.
     if (match[1].indexOf(',') > -1) {
       replacementInfo.push([
@@ -60,13 +60,12 @@ function expandCommaSeparatedGlobals(selector: string): string {
   }
 
   // Replace the found selectors with their wrapped variants in reverse order
-  return replacementInfo.reverse().reduce((newSelector: string, [matchIndex, matchEndIndex, replacement]: ReplacementInfo) => {
-    const prefix = newSelector.slice(0, matchIndex);
-    const suffix = newSelector.slice(matchEndIndex);
-    const updatedSelector = prefix + replacement + suffix;
+  return replacementInfo.reverse().reduce((selector: string, [matchIndex, matchEndIndex, replacement]: ReplacementInfo) => {
+    const prefix = selector.slice(0, matchIndex);
+    const suffix = selector.slice(matchEndIndex);
 
-    return updatedSelector;
-  }, selector);
+    return prefix + replacement + suffix;
+  }, selectorWithGlobals);
 }
 
 function expandSelector(newSelector: string, currentSelector: string): string {
