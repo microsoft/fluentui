@@ -57,15 +57,15 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
   const borderWhileDragging: IStyle = [
     {
-      borderStyle: 'solid',
-      borderWidth: 1,
-      borderColor: palette.themePrimary
+      outline: `1px solid ${palette.themePrimary}`,
+      display: 'inline-block',
+      overflow: 'hidden'
     }
   ];
 
   const borderAfterDragOrDrop: IStyle = [
     {
-      borderColor: 'transparent'
+      outlineColor: 'transparent'
     }
   ];
 
@@ -197,14 +197,10 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     borderWhileDragging: borderWhileDragging,
 
-    noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrag}ms ease` }],
+    noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `outline ${transitionDurationDrag}ms ease` }],
 
     borderAfterDropping: [borderWhileDragging],
 
-    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `border-color  ${transitionDurationDrop}ms ease` }],
-
-    transparentBorder: {
-      border: '1px solid transparent'
-    }
+    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `outline  ${transitionDurationDrop}ms ease` }]
   };
 };
