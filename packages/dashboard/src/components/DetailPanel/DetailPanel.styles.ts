@@ -1,5 +1,4 @@
-import { IStyle } from '@uifabric/experiments/lib/Styling';
-import { FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const PrimaryTextColor = '#323130';

@@ -45,6 +45,13 @@ export interface IStackProps
   horizontal?: boolean;
 
   /**
+   * Defines whether to render Stack child elements in the opposite direction (bottom-to-top if it's a vertical Stack and
+   * right-to-left if it's a horizontal Stack).
+   * @defaultvalue false
+   */
+  reversed?: boolean;
+
+  /**
    * Defines how to align Stack child elements horizontally (along the x-axis).
    */
   horizontalAlign?: Alignment;
@@ -52,22 +59,21 @@ export interface IStackProps
   /**
    * Defines how to align Stack child elements vertically (along the y-axis).
    */
-  verticalAlign?: 'top' | 'bottom' | Alignment;
-
-  /**
-   * Defines whether the Stack should take up 100% of the width of its parent.
-   */
-  horizontalFill?: boolean;
+  verticalAlign?: Alignment;
 
   /**
    * Defines whether the Stack should take up 100% of the height of its parent.
+   * This property is required to be set to true when using the `grow` flag on children elements in vertical oriented Stacks.
+   * Stacks are rendered as block elements and grow horizontally to the container already.
+   * @defaultvalue false
    */
   verticalFill?: boolean;
 
   /**
-   * Defines whether Stack child elements should shrink to fit the available space.
+   * Defines whether Stack children elements should not shrink to fit the available space.
+   * @defaultvalue false
    */
-  shrinkItems?: boolean;
+  preventShrink?: boolean;
 
   /**
    * Defines how much to grow the Stack in proportion to its siblings.

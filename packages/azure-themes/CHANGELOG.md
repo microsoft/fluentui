@@ -1,6 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 24 Jan 2019 13:36:17 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+
+## 0.1.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Minor color adjustments to dialog window close button.
 
 ## 0.1.3
 Thu, 24 Jan 2019 13:36:17 GMT

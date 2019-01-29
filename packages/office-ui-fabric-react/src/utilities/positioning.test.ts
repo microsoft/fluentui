@@ -188,10 +188,11 @@ describe('Callout Positioning', () => {
       }
     };
     const pos: IElementPosition = {
-      elementRectangle: new Rectangle(0, 100, 0, 100),
+      elementRectangle: new Rectangle(400, 500, 400, 500),
       targetEdge: RectangleEdge.top,
       alignmentEdge: RectangleEdge.left
     };
+    const bounds = new Rectangle(0, 500, 0, 500);
 
     // Normal positioning should target the alignment edge and the opposite of the target edge.
     // In this case, that's left (alignment) and bottom (opposite of target)
@@ -202,9 +203,17 @@ describe('Callout Positioning', () => {
 
     // Cover positioning should target the alignment edge and the target edge.
     // In this case, that's left (alignment) and top (target)
-    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, true);
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, undefined, true);
     expect(finalizedPosition.elementPosition.left).toBeDefined();
     expect(finalizedPosition.elementPosition.top).toBeDefined();
     expect(finalizedPosition.elementPosition.bottom).toBeUndefined();
+
+    // With bounds introduced, if the elementRectangle is closer to one edge of bounds than another,
+    // should align to edge closes to bounds
+    // In this case, that's bottom (opposite of target) and right (closer to edge of bounds)
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, bounds);
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.left).toBeUndefined();
   });
 });

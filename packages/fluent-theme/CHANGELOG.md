@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+
+## 0.13.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Dropdown: fixes a misalignment of some items in the dropdown. 
+
+## 0.13.3
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.
 
 ## 0.13.2
 Thu, 10 Jan 2019 04:58:48 GMT

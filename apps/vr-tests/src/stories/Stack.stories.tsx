@@ -92,6 +92,15 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
+  .addStory(
+    'Vertical Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack reversed {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory('Vertical Stack - Padding', () => (
     <Fabric>
       <Stack {...defaultProps} padding={10} />
@@ -109,7 +118,7 @@ storiesOf('Stack', module)
   ))
   .addStory('Vertical Stack - Bottom-aligned', () => (
     <Fabric>
-      <Stack {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+      <Stack {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory('Vertical Stack - Space around', () => (
@@ -181,7 +190,7 @@ storiesOf('Stack', module)
     </Stack>
   ))
   .addStory('Vertical Stack - Shrinking items', () => (
-    <Stack {...defaultProps} gap={10} shrinkItems className={styles.fixedHeight}>
+    <Stack {...defaultProps} gap={10} className={styles.fixedHeight}>
       <Stack.Item className={styles.verticalShrinkItem}>1</Stack.Item>
       <Stack.Item preventShrink className={styles.verticalShrinkItem}>
         2 (does not shrink)
@@ -236,6 +245,15 @@ storiesOf('Stack', module)
     ),
     { rtl: true }
   )
+  .addStory(
+    'Horizontal Stack - Reversed',
+    () => (
+      <Fabric>
+        <Stack horizontal reversed {...defaultProps} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
   .addStory('Horizontal Stack - Padding', () => (
     <Fabric>
       <Stack horizontal {...defaultProps} padding={10} />
@@ -286,7 +304,7 @@ storiesOf('Stack', module)
   ))
   .addStory('Horizontal Stack - Bottom-aligned', () => (
     <Fabric>
-      <Stack horizontal {...defaultProps} verticalAlign="bottom" className={styles.fixedHeight} />
+      <Stack horizontal {...defaultProps} verticalAlign="end" className={styles.fixedHeight} />
     </Fabric>
   ))
   .addStory(
@@ -329,7 +347,7 @@ storiesOf('Stack', module)
     </Stack>
   ))
   .addStory('Horizontal Stack - Shrinking items', () => (
-    <Stack horizontal {...defaultProps} gap={10} shrinkItems>
+    <Stack horizontal {...defaultProps} gap={10}>
       <Stack.Item className={styles.horizontalShrinkItem}>1</Stack.Item>
       <Stack.Item preventShrink className={styles.horizontalShrinkItem}>
         2 (does not shrink)

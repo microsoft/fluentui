@@ -7,14 +7,14 @@ import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
-export type VerticalAlignment = 'top' | 'center' | 'bottom' | 'space-around' | 'space-between' | 'space-evenly';
+export type VerticalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type HorizontalAlignment = 'start' | 'center' | 'end';
 
 export interface IExampleState {
   numItems: number;
   showBoxShadow: boolean;
   preventOverflow: boolean;
-  shrinkItems: boolean;
+  preventShrink: boolean;
   wrap: boolean;
   stackHeight: number;
   autoHeight: boolean;
@@ -36,7 +36,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       numItems: 5,
       showBoxShadow: false,
       preventOverflow: false,
-      shrinkItems: false,
+      preventShrink: true,
       wrap: false,
       stackHeight: 200,
       autoHeight: true,
@@ -45,7 +45,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       paddingRight: 0,
       paddingTop: 0,
       paddingBottom: 0,
-      verticalAlignment: 'top',
+      verticalAlignment: 'start',
       horizontalAlignment: 'start',
       hideEmptyChildren: false,
       emptyChildren: []
@@ -57,7 +57,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       numItems,
       showBoxShadow,
       preventOverflow,
-      shrinkItems,
+      preventShrink,
       wrap,
       stackHeight,
       autoHeight,
@@ -148,16 +148,16 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <Stack horizontal gap={20} verticalAlign="bottom">
+              <Stack horizontal gap={20} verticalAlign="end">
                 <Stack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
                     placeholder="Select Vertical Alignment"
                     label="Vertical alignment:"
                     options={[
-                      { key: 'top', text: 'Top' },
+                      { key: 'start', text: 'Top' },
                       { key: 'center', text: 'Center' },
-                      { key: 'bottom', text: 'Bottom' },
+                      { key: 'end', text: 'Bottom' },
                       { key: 'space-around', text: 'Space around' },
                       { key: 'space-between', text: 'Space between' },
                       { key: 'space-evenly', text: 'Space evenly' }
@@ -230,7 +230,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         </Stack>
 
         <Stack
-          shrinkItems={shrinkItems}
+          preventShrink={preventShrink}
           wrap={wrap}
           gap={gap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
@@ -275,7 +275,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
   };
 
   private _onShrinkItemsChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ shrinkItems: isChecked });
+    this.setState({ preventShrink: !isChecked });
   };
 
   private _onWrapChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {

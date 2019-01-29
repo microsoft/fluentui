@@ -2,6 +2,25 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "version": "0.1.4",
+      "tag": "@uifabric/azure-themes_v0.1.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor color adjustments to dialog window close button.",
+            "author": "Ryan K <ryan.k@outlook.com>",
+            "commit": "e44445597c55c3ec265222887bec7f14c77b7e87"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.3",
       "tag": "@uifabric/azure-themes_v0.1.3",
       "date": "Thu, 24 Jan 2019 13:36:17 GMT",
