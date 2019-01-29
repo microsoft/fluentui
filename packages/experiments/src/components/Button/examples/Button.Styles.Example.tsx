@@ -21,7 +21,7 @@ const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal gap={buttonGap}>
+  <Stack horizontal preventShrink gap={buttonGap}>
     {props.children}
   </Stack>
 );

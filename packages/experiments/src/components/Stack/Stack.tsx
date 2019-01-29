@@ -25,8 +25,8 @@ const view: IStackComponent['view'] = props => {
         };
 
         return React.cloneElement(child, {
-          ...defaultItemProps,
-          ...child.props
+          ...child.props,
+          ...defaultItemProps
         });
       }
 

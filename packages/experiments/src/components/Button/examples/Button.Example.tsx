@@ -11,7 +11,7 @@ const headingGap = 16;
 const buttonGap = 12;
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal gap={buttonGap}>
+  <Stack horizontal preventShrink gap={buttonGap}>
     {props.children}
   </Stack>
 );
