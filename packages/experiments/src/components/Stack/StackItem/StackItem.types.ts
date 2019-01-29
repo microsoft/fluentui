@@ -1,9 +1,9 @@
-import { IComponentStyles, IHTMLSpanSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLGenericSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
 
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
 export interface IStackItemSlots {
-  root?: IHTMLSpanSlot;
+  root?: IHTMLGenericSlot;
 }
 
 // These types are redundant with IStackItemComponent but are needed until TS function return widening issue is resolved:

@@ -1,4 +1,4 @@
-import { IComponentStyles, IHTMLDivSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLGenericSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
@@ -20,13 +20,13 @@ export interface IStackSlots {
   /**
    * Defines root slot of the component.
    */
-  root?: IHTMLDivSlot;
+  root?: IHTMLGenericSlot;
 
   /**
    * Defines a slot that is place inside the root slot in order to achieve wrapping. Only used when the wrap
    * property is set to true.
    */
-  inner?: IHTMLDivSlot;
+  inner?: IHTMLGenericSlot;
 }
 
 export interface IStackProps

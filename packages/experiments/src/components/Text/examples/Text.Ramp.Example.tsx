@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { Text, Stack, IStackProps } from '@uifabric/experiments';
+import { Text, Stack, IStackSlot } from '@uifabric/experiments';
 import { IFontStyles } from '@uifabric/experiments/lib/Styling';
 import {
   withSlots,
@@ -7,7 +7,7 @@ import {
   getSlots,
   IComponent,
   IComponentStyles,
-  ISlotProp,
+  IHTMLGenericSlot,
   IStyleableComponentProps
 } from '@uifabric/experiments/lib/Foundation';
 
@@ -31,13 +31,10 @@ const Variants: ISetting<keyof IFontStyles>[] = [
   { name: 'mega', usage: 'usage here.' }
 ];
 
-type IHTMLSlot = ISlotProp<React.HTMLAttributes<any>>;
-type IStackSlot = ISlotProp<IStackProps>;
-
 interface ITableSlots {
   root?: IStackSlot;
-  table?: IHTMLSlot;
-  header?: IHTMLSlot;
+  table?: IHTMLGenericSlot;
+  header?: IHTMLGenericSlot;
 }
 
 type ITableStyles = IComponentStyles<ITableSlots>;

@@ -70,7 +70,7 @@ export function withSlots<P>(
  * @param options Factory options, including defaultProp value for shorthand prop mapping.
  * @returns ISlotFactory function used for rendering slots.
  */
-export function createFactory<TProps, TShorthandProp extends keyof TProps | 'children'>(
+export function createFactory<TProps>(
   ComponentType: React.ComponentType<TProps>,
   options: IFactoryOptions<TProps> = { defaultProp: 'children' }
 ): ISlotFactory<TProps> {
@@ -82,7 +82,7 @@ export function createFactory<TProps, TShorthandProp extends keyof TProps | 'chi
 
     // If we're rendering a function, let the user resolve how to render given the original component and final args.
     if (typeof userProps === 'function') {
-      const render: ISlotRenderer<TProps, TShorthandProp> = (slotRenderFunction, renderProps) => {
+      const render: ISlotRenderer<TProps> = (slotRenderFunction, renderProps) => {
         // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
         // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
         let finalRenderProps = _translateShorthand(options.defaultProp, renderProps) as TProps;
@@ -94,7 +94,9 @@ export function createFactory<TProps, TShorthandProp extends keyof TProps | 'chi
     }
 
     userProps = _translateShorthand(options.defaultProp, userProps);
-    const finalProps = _constructFinalProps(defaultStyles, componentProps, userProps);
+    // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
+    // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
+    const finalProps = _constructFinalProps(defaultStyles, componentProps, userProps) as TProps;
 
     return <ComponentType {...finalProps} />;
   };

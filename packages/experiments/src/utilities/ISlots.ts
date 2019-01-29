@@ -77,35 +77,35 @@ export interface IDefaultSlotProps<TSlots> {
  *    1. ISlotPropValue.
  *    2. ISlotRender function.
  */
-export type ISlotProp<TProps, TShorthandProp extends keyof TProps | 'children' = never> =
-  | ISlotPropValue<TProps, TShorthandProp>
-  | ISlotPropRenderFunction<TProps, TShorthandProp>;
+export type ISlotProp<TProps, TShorthandPropType = never> =
+  | ISlotPropValue<TProps, TShorthandPropType>
+  | ISlotPropRenderFunction<TProps, TShorthandPropType>;
 
 /**
  * Slot type used for defining Slot props. This interface defines the following slot properties:
  *    1. Component props object (defined by TProps.)
  *    2. ISlotRender function.
- *    3. Optional shorthand prop, defined by TShorthandProp.
- * The conditional type check looks up prop type in TProps if TShorthandProp is a key of TProps, otherwise it treats
- * TShorthandProp as React children. If TShorthandProp is excluded, there is no default prop and no children are allowed.
+ *    3. Optional shorthand prop type, defined by TShorthandPropType.
+ * The conditional type check automatically applies 'children' prop to TProps if TShorthandPropType is ReactNode.
  */
-export type ISlotPropValue<TProps, TShorthandProp extends keyof TProps | 'children' = never> =
+export type ISlotPropValue<TProps, TShorthandPropType = never> =
+  | TShorthandPropType
   | TProps
-  | (TShorthandProp extends keyof TProps ? TProps[TShorthandProp] : React.ReactNode);
+  | (TShorthandPropType extends React.ReactNode ? IPropsWithChildren<TProps> : never);
 
 /**
  * Render function interface used by Slot props.
  */
-export type ISlotPropRenderFunction<TProps, TShorthandProp extends keyof TProps | 'children' = never> = (
-  render: ISlotRenderer<TProps, TShorthandProp>
+export type ISlotPropRenderFunction<TProps, TShorthandPropType = never> = (
+  render: ISlotRenderer<TProps, TShorthandPropType>
 ) => JSX.Element;
 
 /**
  * Render function interface used by Slot props.
  */
-export type ISlotRenderer<TProps, TShorthandProp extends keyof TProps | 'children'> = (
+export type ISlotRenderer<TProps, TShorthandPropType = never> = (
   renderContent: ISlotRender<TProps>,
-  props?: ISlotPropValue<TProps, TShorthandProp>
+  props?: ISlotPropValue<TProps, TShorthandPropType>
 ) => JSX.Element;
 
 /**
