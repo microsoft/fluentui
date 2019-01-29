@@ -15,9 +15,7 @@ import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
-import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
-import { getStyles as getCheckStyles } from '../Check/Check.styles';
 import { getStyles as getDetailsRowCheckStyles } from './DetailsRowCheck.styles';
 import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
@@ -34,7 +32,6 @@ const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.butt
 
 const NO_COLUMNS: IColumn[] = [];
 
-const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 const getRowCheckClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
 export interface IDetailsHeader {
