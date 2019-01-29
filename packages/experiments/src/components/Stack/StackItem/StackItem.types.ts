@@ -14,12 +14,12 @@ export type IStackItemStylesReturnType = ReturnType<Extract<IStackItemComponent[
 
 export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
   /**
-   * How to render the StackItem.
+   * Defines how to render the StackItem.
    */
   as?: string | React.ReactType<IStackItemProps>;
 
   /**
-   * CSS class name used to style the StackItem.
+   * Defines a CSS class name used to style the StackItem.
    */
   className?: string;
 
@@ -29,35 +29,32 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
   children?: (React.ReactElement<IStackItemProps> | string)[] | React.ReactElement<IStackItemProps> | string;
 
   /**
-   * How much to grow the StackItem in proportion to its siblings.
+   * Defines how much to grow the StackItem in proportion to its siblings.
    */
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
 
   /**
-   * Whether the StackItem should shrink to fit the available space.
+   * Defines at what ratio should the StackItem shrink to fit the available space.
    */
-  shrink?: boolean;
+  shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
 
   /**
-   * Whether the StackItem should be prevented from shrinking.
-   * This can be used to prevent a StackItem from shrinking when it is inside of a Stack that has shrinkItems set to true.
+   * Defines whether the StackItem should be prevented from shrinking.
+   * This can be used to prevent a StackItem from shrinking when it is inside of a Stack that has shrinking items.
+   * @defaultvalue false
    */
   preventShrink?: boolean;
 
   /**
-   * How to align the StackItem along the x-axis (for vertical Stacks) or the y-axis (for horizontal Stacks).
+   * Defines how to align the StackItem along the x-axis (for vertical Stacks) or the y-axis (for horizontal Stacks).
    */
   align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
 
   /**
-   * Whether the StackItem should take up 100% of the width of its parent.
+   * Defines whether the StackItem should take up 100% of the height of its parent.
+   * @defaultvalue true
    */
-  fillHorizontal?: boolean;
-
-  /**
-   * Whether the StackItem should take up 100% of the height of its parent.
-   */
-  fillVertical?: boolean;
+  verticalFill?: boolean;
 }
 
 export interface IStackItemTokens {}

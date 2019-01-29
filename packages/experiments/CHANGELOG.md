@@ -1,6 +1,21 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Jan 2019 13:35:55 GMT and should not be manually modified.
+
+## 6.53.1
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Patches
+
+- Stack: Removing 'whiteSpace: noWrap' from children styles and improving API comments.
+
+## 6.53.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Stack: Updating API based on feedback from review.
+- Stack: Removing 'top' and 'bottom' from accepted values for 'verticalAlign' prop and updating examples and tests using them.
 
 ## 6.52.0
 Fri, 25 Jan 2019 13:38:07 GMT

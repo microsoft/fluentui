@@ -19,7 +19,9 @@ export interface IGroupSpacerProps {
   indentWidth?: number;
 }
 
-export type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>>;
+export type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>> & {
+  width?: number;
+};
 
 export interface IGroupSpacerStyles {
   root: IStyle;

@@ -28,7 +28,7 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
         <Stack horizontal gap={30} horizontalAlign="space-between">
           <Stack grow>
             <span>Top-aligned</span>
-            <Stack verticalAlign="top" className={styles.root}>
+            <Stack verticalAlign="start" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -46,7 +46,7 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
 
           <Stack grow>
             <span>Bottom-aligned</span>
-            <Stack verticalAlign="bottom" className={styles.root}>
+            <Stack verticalAlign="end" className={styles.root}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
