@@ -4,6 +4,7 @@ import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
+import { ITextFieldProps } from '../TextField/TextField.types';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -39,6 +40,11 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
    * Pass calendar props to calendar component
    */
   calendarProps?: ICalendarProps;
+
+  /**
+   * Pass textField props to textField component
+   */
+  textFieldProps?: ITextFieldProps;
 
   /**
    * Custom Calendar to be used for date picking
