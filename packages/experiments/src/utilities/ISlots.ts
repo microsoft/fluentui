@@ -11,13 +11,11 @@ export interface ISlotCreator<TProps> {
 /**
  * Slottable version of React.ComponentType.
  */
-// TODO: stateless component only?
 export type ISlottableComponentType<TProps> = React.ComponentType<TProps> & ISlotCreator<TProps>;
 
 /**
  * Slottable version of React.ReactType.
  */
-// TODO: stateless component only?
 export type ISlottableReactType<TProps> = React.ReactType<TProps> & ISlotCreator<TProps>;
 
 /**

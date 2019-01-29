@@ -128,8 +128,7 @@ function _resolveTokens<TViewProps, TTokens>(
         currentTokens = _resolveTokens(props, theme, ...currentTokens);
       }
 
-      // TODO: remove this! test in IE11
-      Object.assign(tokens, ...(currentTokens as any));
+      assign(tokens, ...(currentTokens as any));
     }
   }
 

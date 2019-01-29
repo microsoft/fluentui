@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
+import { assign } from './utilities';
 import {
   ISlottableReactType,
   IFactoryOptions,
@@ -173,8 +174,7 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles:
 
   for (const props of allProps) {
     classNames.push(props && props.className);
-    // TODO: remove this! test in IE11
-    Object.assign(finalProps, ...(props as any));
+    assign(finalProps, ...(props as any));
   }
 
   finalProps.className = mergeStyles(defaultStyles, classNames);
