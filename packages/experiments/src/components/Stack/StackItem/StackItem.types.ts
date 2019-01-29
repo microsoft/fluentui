@@ -3,6 +3,9 @@ import { IComponentStyles, IHTMLSpanSlot, IComponent, IStyleableComponentProps }
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
 export interface IStackItemSlots {
+  /**
+   * Defines the root slot of the component.
+   */
   root?: IHTMLSpanSlot;
 }
 
