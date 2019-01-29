@@ -22,6 +22,11 @@ export interface ICompoundButtonStackStyles {
 
 export interface ICompoundAction {
   /**
+   * The id of the compound action.
+   */
+  id?: string;
+
+  /**
    * Defines the title of the button
    */
   title: string;
