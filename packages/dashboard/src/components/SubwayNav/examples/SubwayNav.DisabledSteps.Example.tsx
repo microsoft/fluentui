@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayNav/examples/SubwayNav.Util';
 import { SubwayNav } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav';
-import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
+import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNavStep.types';
 
 export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -12,6 +12,7 @@ export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
       key: generateRandomId(),
       label: 'Sub Step 0',
       state: SubwayNavStepState.Current,
+      isSubStep: true,
       onClickStep: this._handleClickStep
     };
     const substep1: ISubwayNavStep = {
@@ -19,6 +20,7 @@ export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
       label: 'Sub Step 1',
       state: SubwayNavStepState.NotStarted,
       disabled: true,
+      isSubStep: true,
       onClickStep: this._handleClickStep
     };
     const substep2: ISubwayNavStep = {
@@ -26,6 +28,7 @@ export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
       label: 'Sub Step 2',
       state: SubwayNavStepState.NotStarted,
       disabled: true,
+      isSubStep: true,
       onClickStep: this._handleClickStep
     };
 

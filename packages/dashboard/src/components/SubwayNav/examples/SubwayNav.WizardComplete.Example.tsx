@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { generateRandomId } from './SubwayNav.Util';
 import { SubwayNav } from '../SubwayNav';
-import { ISubwayNavStep } from '../SubwayNav.types';
+import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNavStep.types';
 
 export class SubwayNavWizardCompleteExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -10,22 +10,25 @@ export class SubwayNavWizardCompleteExample extends React.Component<any, any> {
     const data0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 0',
-      isCurrentStep: true,
+      state: SubwayNavStepState.WizardComplete,
       onClickStep: this._handleClickStep
     };
     const data1: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 1',
+      state: SubwayNavStepState.WizardComplete,
       onClickStep: this._handleClickStep
     };
     const data2: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 2',
+      state: SubwayNavStepState.WizardComplete,
       onClickStep: this._handleClickStep
     };
     const data3: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 3',
+      state: SubwayNavStepState.WizardComplete,
       onClickStep: this._handleClickStep
     };
 
@@ -43,9 +46,7 @@ export class SubwayNavWizardCompleteExample extends React.Component<any, any> {
 
   private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
     let alertStr = 'Clicked ' + step.label;
-    step.isCurrentStep = true;
     if (subStep !== undefined) {
-      subStep.isCurrentStep = true;
       alertStr += ' and ' + subStep.label;
     }
 

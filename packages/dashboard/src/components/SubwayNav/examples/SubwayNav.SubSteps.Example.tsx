@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { generateRandomId } from './SubwayNav.Util';
 import { SubwayNav } from '../SubwayNav';
-import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav.types';
+import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNavStep.types';
 
 export class SubwayNavSubStepsExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -12,18 +12,21 @@ export class SubwayNavSubStepsExample extends React.Component<any, any> {
       key: generateRandomId(),
       label: 'Sub Step 0',
       state: SubwayNavStepState.Current,
+      isSubStep: true,
       onClickStep: this._handleClickStep
     };
     const substep1: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Sub Step 1',
       state: SubwayNavStepState.NotStarted,
+      isSubStep: true,
       onClickStep: this._handleClickStep
     };
     const substep2: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Sub Step 2',
       state: SubwayNavStepState.NotStarted,
+      isSubStep: true,
       onClickStep: this._handleClickStep
     };
 
