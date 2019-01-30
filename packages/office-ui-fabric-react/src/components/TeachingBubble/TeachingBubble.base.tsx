@@ -58,7 +58,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
 
   public render(): JSX.Element {
     const { onDismiss, ...rest } = this.props;
-    const { calloutProps: setCalloutProps, targetElement, isWide, styles, theme } = this.props;
+    const { calloutProps: setCalloutProps, targetElement, isWide, styles, theme } = rest;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
     const stylesProps: ITeachingBubbleStyleProps = {
       theme: theme!,
