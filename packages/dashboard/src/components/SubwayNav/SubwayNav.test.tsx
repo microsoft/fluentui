@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { SubwayNav } from './SubwayNav';
-import { ISubwayNavStep } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNavStep.types';
+import { ISubwayNavStep } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 
 /**
  * generate Random id

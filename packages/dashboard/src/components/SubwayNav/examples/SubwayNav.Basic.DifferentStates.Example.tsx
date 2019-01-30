@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayNav/examples/SubwayNav.Util';
 import { SubwayNav } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav';
-import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNavStep.types';
+import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 
 export class SubwayNavBasicDifferentStatesExample extends React.Component<any, any> {
   public render(): JSX.Element {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { generateRandomId } from './SubwayNav.Util';
 import { SubwayNav } from '../SubwayNav';
-import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNavStep.types';
+import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav.types';
 
 export class SubwayNavSubStepsExample extends React.Component<any, any> {
   public render(): JSX.Element {
