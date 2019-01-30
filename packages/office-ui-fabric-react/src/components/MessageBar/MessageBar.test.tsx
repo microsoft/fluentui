@@ -16,6 +16,20 @@ describe('MessageBar', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('mixes in native props to the component root', () => {
+    const wrapper = mount(
+      <MessageBar aria-live={'polite'} isMultiline={false}>
+        Message
+      </MessageBar>
+    );
+
+    const componentRoot = wrapper.find('.ms-MessageBar-singleline');
+    expect(componentRoot.prop('aria-live')).toEqual('polite');
+
+    const innerText = wrapper.find('.ms-MessageBar-innerText');
+    expect(innerText.prop('aria-live')).toEqual('polite');
+  });
+
   it('can reflect props changes', () => {
     const wrapper = mount(<MessageBar messageBarType={MessageBarType.success} />);
 
