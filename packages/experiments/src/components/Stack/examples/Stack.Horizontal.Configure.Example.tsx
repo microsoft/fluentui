@@ -17,8 +17,8 @@ export interface IExampleState {
   wrap: boolean;
   wrapperWidth: number;
   preventShrink: boolean;
-  gap: number;
-  verticalGap: number;
+  columnGap: number;
+  rowGap: number;
   paddingLeft: number;
   paddingRight: number;
   paddingTop: number;
@@ -39,8 +39,8 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       wrap: false,
       wrapperWidth: 100,
       preventShrink: true,
-      gap: 0,
-      verticalGap: 0,
+      columnGap: 0,
+      rowGap: 0,
       paddingLeft: 0,
       paddingRight: 0,
       paddingTop: 0,
@@ -60,8 +60,8 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       wrap,
       wrapperWidth,
       preventShrink,
-      gap,
-      verticalGap,
+      columnGap,
+      rowGap,
       paddingLeft,
       paddingRight,
       paddingTop,
@@ -252,8 +252,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           horizontal
           wrap={wrap}
           preventShrink={preventShrink}
-          gap={gap}
-          verticalGap={verticalGap}
+          gap={rowGap + ' ' + columnGap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           horizontalAlign={horizontalAlignment}
           verticalAlign={verticalAlignment}
@@ -309,11 +308,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _onGapChange = (value: number): void => {
-    this.setState({ gap: value });
+    this.setState({ columnGap: value });
   };
 
   private _onVerticalGapChange = (value: number): void => {
-    this.setState({ verticalGap: value });
+    this.setState({ rowGap: value });
   };
 
   private _onPaddingLeftChange = (value: number): void => {
