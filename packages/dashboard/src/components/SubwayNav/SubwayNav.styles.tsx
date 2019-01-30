@@ -16,7 +16,7 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
         height: '470px',
         overflow: 'auto',
         background: 'white',
-        border: '1px solid blue',
+        border: '1px solid blue'
       },
       className
     ],
@@ -57,6 +57,6 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
     },
     stepConnectorWizardComplete: {
       border: '1px solid #6BB700'
-    },
+    }
   };
 };

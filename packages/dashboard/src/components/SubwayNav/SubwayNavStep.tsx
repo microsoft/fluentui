@@ -26,7 +26,6 @@ export class SubwayNavStep extends React.Component<ISubwayNavStepProps, {}> {
    * Render the Subway Nav step
    */
   public render(): JSX.Element {
-
     const { step } = this.props;
 
     if (step !== undefined) {
@@ -34,12 +33,11 @@ export class SubwayNavStep extends React.Component<ISubwayNavStepProps, {}> {
 
       if (step.isSubStep) {
         iconProps = this._getIconPropsSubStep(step);
-      }
-      else {
+      } else {
         iconProps = this._getIconPropsStep(step);
       }
 
-      return(
+      return (
         <div
           key={step.key}
           className={css(
@@ -48,16 +46,16 @@ export class SubwayNavStep extends React.Component<ISubwayNavStepProps, {}> {
           )}
           onClick={() => step.onClickStep(step, undefined)}
         >
-          <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, step.isSubStep ? classNames.subwayNavSubStepIcon : classNames.subwayNavStepIcon)} />
-          <span
-            className={css(classNames.stepLabel, step.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}
-          >
+          <Icon
+            iconName={iconProps.iconName}
+            className={css(iconProps.iconClassName, step.isSubStep ? classNames.subwayNavSubStepIcon : classNames.subwayNavStepIcon)}
+          />
+          <span className={css(classNames.stepLabel, step.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}>
             {step!.label}
           </span>
         </div>
       );
-    }
-    else {
+    } else {
       // Empty element
       return <React.Fragment />;
     }
@@ -71,9 +69,7 @@ export class SubwayNavStep extends React.Component<ISubwayNavStepProps, {}> {
     let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.stepNotStarted };
 
     if (step !== undefined) {
-      if (step.state != SubwayNavStepState.WizardComplete && 
-          step.subSteps !== undefined && 
-          step.subSteps.length > 0) {
+      if (step.state != SubwayNavStepState.WizardComplete && step.subSteps !== undefined && step.subSteps.length > 0) {
         return { iconName: 'FullCircleMask', iconClassName: classNames.stepWithSubSteps };
       }
 

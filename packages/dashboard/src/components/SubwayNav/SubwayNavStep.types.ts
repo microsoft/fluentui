@@ -41,7 +41,7 @@ export interface ISubwayNavStep {
 
 export interface ISubwayNavStepProps {
   /** Prop for subway nav step */
-  step: ISubwayNavStep,
+  step: ISubwayNavStep;
 }
 
 /**

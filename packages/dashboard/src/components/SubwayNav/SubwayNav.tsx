@@ -69,9 +69,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
       if (stepToRender !== undefined) {
         const renderSubStep = stepToRender.state === SubwayNavStepState.Current && this._hasSubSteps(stepToRender);
 
-        stepElements.push(
-          <SubwayNavStep key={'navStep' + '-' + stepToRender.key} step={stepToRender} />
-        );
+        stepElements.push(<SubwayNavStep key={'navStep' + '-' + stepToRender.key} step={stepToRender} />);
 
         /** Render substeps if current step has substeps */
         if (renderSubStep && stepToRender!.subSteps) {
@@ -127,9 +125,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
             );
           }
 
-          stepElements.push(
-            <SubwayNavStep key={'navStep' + '-' + subStepToRender.key} step={subStepToRender} />
-          );
+          stepElements.push(<SubwayNavStep key={'navStep' + '-' + subStepToRender.key} step={subStepToRender} />);
         }
       } // parentStep !== undefined
     } // steps !== undefined
