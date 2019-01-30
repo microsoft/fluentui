@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "yes",
+      "comment": "If ScrollablePane content-container has a horizontal overflow only when a sticky component is in non-sticky state, when this component becomes sticky, it is no more inside content-container in the DOM, so the horizontal scrollbar won't be available. Note: In this case, sticky component will still have horizontal overflow but there would be no horizontal scrollbar",
       "type": "patch"
     }
   ],
