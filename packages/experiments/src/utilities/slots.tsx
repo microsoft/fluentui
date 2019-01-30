@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
+import { assign } from './utilities';
 import {
   ISlottableReactType,
   IFactoryOptions,
@@ -9,8 +10,10 @@ import {
   ISlotDefinition,
   ISlotFactory,
   ISlotProps,
-  ISlotRenderFunction,
-  IDefaultSlotProps
+  ISlotPropValue,
+  ISlotRenderer,
+  IDefaultSlotProps,
+  IProcessedSlotProps
 } from './ISlots';
 
 // TODO: Is getting only div props for 'root' slots is pretty limiting? Or is it exactly as it needs to be?
@@ -73,39 +76,28 @@ export function createFactory<TProps>(
   options: IFactoryOptions<TProps> = { defaultProp: 'children' }
 ): ISlotFactory<TProps> {
   const result: ISlotFactory<TProps> = (componentProps, userProps, defaultStyles) => {
-    const propType = typeof userProps;
-
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
       return userProps;
     }
 
-    switch (propType) {
-      case 'string':
-      case 'number':
-      case 'boolean':
-        userProps = {
-          [options.defaultProp]: userProps as any
-        } as TProps;
-        break;
-    }
-
-    // Construct the final props for the component by merging component props, user props, and the
-    // generated class name.
-    const finalClassName = mergeStyles(defaultStyles, componentProps && componentProps.className, userProps && userProps.className);
-
-    // TODO: what if componentProps has styles prop? Here it is completely overridden by userProps without merging.
-    const finalProps = {
-      ...(componentProps as any),
-      ...(typeof userProps === 'object' && (userProps as any)),
-      className: finalClassName
-    };
-
-    // If we're rendering a function, let the user resolve how to render given the original component
-    // and final args.
+    // If we're rendering a function, let the user resolve how to render given the original component and final args.
     if (typeof userProps === 'function') {
-      return (userProps as ISlotRenderFunction<TProps>)(finalProps, ComponentType);
+      const render: ISlotRenderer<TProps> = (slotRenderFunction, renderProps) => {
+        // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
+        // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
+        let finalRenderProps = _translateShorthand(options.defaultProp, renderProps) as TProps;
+        finalRenderProps = _constructFinalProps(defaultStyles, componentProps, finalRenderProps);
+
+        return slotRenderFunction(ComponentType, finalRenderProps);
+      };
+      return userProps(render);
     }
+
+    userProps = _translateShorthand(options.defaultProp, userProps);
+    // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
+    // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
+    const finalProps = _constructFinalProps(defaultStyles, componentProps, userProps) as TProps;
 
     return <ComponentType {...finalProps} />;
   };
@@ -117,26 +109,6 @@ export function createFactory<TProps>(
  * Default factory for components without explicit factories.
  */
 const defaultFactory = memoizeFunction(type => createFactory(type));
-
-/**
- * Render a slot given component and user props. Uses component factory if available, otherwise falls back
- * to default factory.
- * @param ComponentType Factory component type.
- * @param componentProps The properties passed into slot from within the component.
- * @param userProps The user properties passed in from outside of the component.
- */
-function renderSlot<TComponent extends ISlottableReactType<TProps>, TProps, TSlots>(
-  ComponentType: TComponent,
-  componentProps: TProps,
-  userProps: TProps,
-  defaultStyles: IStyle
-): JSX.Element {
-  if (ComponentType.create !== undefined) {
-    return ComponentType.create(componentProps, userProps, defaultStyles);
-  } else {
-    return defaultFactory(ComponentType)(componentProps, userProps, defaultStyles);
-  }
-}
 
 /**
  * This function generates slots that can be used in JSX given a definition of slots and their corresponding types.
@@ -164,7 +136,7 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
           // We can detect these additional arguments and error on their presence.
           throw new Error('Any module using getSlots must use withSlots. Please see withSlots javadoc for more info.');
         }
-        return renderSlot(
+        return _renderSlot(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
@@ -179,4 +151,53 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
   }
 
   return result;
+}
+
+/**
+ * Helper function that constructs a props object when given shorthand props.
+ */
+function _translateShorthand<TProps>(defaultProp: string, props: ISlotPropValue<TProps>): TProps {
+  if (typeof props === 'string' || typeof props === 'number' || typeof props === 'boolean') {
+    props = {
+      [defaultProp]: props as any
+    } as TProps;
+  }
+  return props;
+}
+
+/**
+ * Helper function that constructs final styles and props given a series of props ordered by increasing priority.
+ */
+function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles: IStyle, ...allProps: (TProps | undefined)[]): TProps {
+  const finalProps: TProps = {} as any;
+  const classNames: (string | undefined)[] = [];
+
+  for (const props of allProps) {
+    classNames.push(props && props.className);
+    assign(finalProps, ...(props as any));
+  }
+
+  finalProps.className = mergeStyles(defaultStyles, classNames);
+
+  return finalProps;
+}
+
+/**
+ * Render a slot given component and user props. Uses component factory if available, otherwise falls back
+ * to default factory.
+ * @param ComponentType Factory component type.
+ * @param componentProps The properties passed into slot from within the component.
+ * @param userProps The user properties passed in from outside of the component.
+ */
+function _renderSlot<TComponent extends ISlottableReactType<TProps>, TProps, TSlots>(
+  ComponentType: TComponent,
+  componentProps: TProps,
+  userProps: TProps,
+  defaultStyles: IStyle
+): JSX.Element {
+  if (ComponentType.create !== undefined) {
+    return ComponentType.create(componentProps, userProps, defaultStyles);
+  } else {
+    return defaultFactory(ComponentType)(componentProps, userProps, defaultStyles);
+  }
 }
