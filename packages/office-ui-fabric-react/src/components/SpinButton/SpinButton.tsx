@@ -99,10 +99,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
     }
 
-    this.setState({
-      value: value,
-      precision: newProps.precision || this.state.precision
-    });
+    if (newProps.value != undefined) {
+      this.setState({
+        value: value,
+        precision: newProps.precision || this.state.precision
+      });
+    }
   }
 
   public render(): JSX.Element {
