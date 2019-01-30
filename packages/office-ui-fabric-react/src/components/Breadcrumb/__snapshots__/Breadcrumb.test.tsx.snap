@@ -37,7 +37,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
         <div
           className="ms-FocusZone"
           data-focuszone-id="FocusZone1"
-          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -404,7 +403,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
         <div
           className="ms-FocusZone"
           data-focuszone-id="FocusZone6"
-          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -784,7 +782,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
         <div
           className="ms-FocusZone"
           data-focuszone-id="FocusZone12"
-          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1073,7 +1070,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
         <div
           className="ms-FocusZone"
           data-focuszone-id="FocusZone17"
-          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1453,7 +1449,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
         <div
           className="ms-FocusZone"
           data-focuszone-id="FocusZone23"
-          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1751,7 +1746,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
         <div
           className="ms-FocusZone"
           data-focuszone-id="FocusZone28"
-          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1967,7 +1961,6 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
         <div
           className="ms-FocusZone"
           data-focuszone-id="FocusZone0"
-          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}

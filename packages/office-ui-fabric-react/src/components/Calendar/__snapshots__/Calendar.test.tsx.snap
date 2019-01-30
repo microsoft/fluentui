@@ -103,7 +103,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             <div
               className="ms-FocusZone"
               data-focuszone-id="FocusZone3"
-              onBlur={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1084,7 +1083,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             <div
               className="ms-FocusZone"
               data-focuszone-id="FocusZone4"
-              onBlur={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

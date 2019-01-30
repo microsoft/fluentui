@@ -35,7 +35,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           }
       data-focuszone-id="FocusZone2"
       data-is-focusable={true}
-      onBlur={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}

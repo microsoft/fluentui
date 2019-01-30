@@ -4,7 +4,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
 <div
   className="ms-FocusZone"
   data-focuszone-id="FocusZone0"
-  onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

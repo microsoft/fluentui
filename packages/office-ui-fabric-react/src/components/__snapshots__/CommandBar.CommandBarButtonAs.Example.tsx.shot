@@ -38,7 +38,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               padding-top: 0;
             }
         data-focuszone-id="FocusZone0"
-        onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1360,7 +1359,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               padding-top: 0;
             }
         data-focuszone-id="FocusZone0"
-        onBlur={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}

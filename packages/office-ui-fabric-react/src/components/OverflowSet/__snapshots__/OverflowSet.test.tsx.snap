@@ -11,7 +11,6 @@ exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
         position: relative;
       }
   data-focuszone-id="FocusZone0"
-  onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -31,7 +30,6 @@ exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
         position: relative;
       }
   data-focuszone-id="FocusZone1"
-  onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -52,7 +50,6 @@ exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 
         position: relative;
       }
   data-focuszone-id="FocusZone2"
-  onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

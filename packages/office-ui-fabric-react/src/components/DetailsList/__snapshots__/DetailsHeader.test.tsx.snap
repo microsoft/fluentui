@@ -33,7 +33,6 @@ exports[`DetailsHeader can render 1`] = `
       }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone1"
-  onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -903,7 +902,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone5"
-  onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
