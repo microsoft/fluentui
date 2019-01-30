@@ -180,7 +180,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     const calloutId = getId('DatePicker-Callout');
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
-    const customIconClassName = textFieldProps && textFieldProps.iconProps && textFieldProps && textFieldProps.iconProps.className;
+    const customIconClassName = textFieldProps && textFieldProps.iconProps && textFieldProps.iconProps.className;
 
     return (
       <div {...nativeProps} className={classNames.root}>
