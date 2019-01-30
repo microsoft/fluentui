@@ -57,6 +57,7 @@ exports[`Callout renders Callout correctly 1`] = `
           "overflowY": undefined,
         }
       }
+      tabIndex={-1}
     >
       Content
     </div>

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 29 Jan 2019 13:35:55 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+
+## 0.46.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix detail panel custom width issue, fix detail panel tiles css issue, add jsx.element support to detail panel tile message
+- Fix edge browser thumbnail list focus items alignment issue
 
 ## 0.46.1
 Tue, 29 Jan 2019 13:35:55 GMT

@@ -128,7 +128,7 @@ function _resolveTokens<TViewProps, TTokens>(
         currentTokens = _resolveTokens(props, theme, ...currentTokens);
       }
 
-      Object.assign(tokens, ...(currentTokens as any));
+      assign(tokens, ...(currentTokens as any));
     }
   }
 

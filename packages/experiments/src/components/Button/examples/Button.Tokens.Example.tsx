@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Button, IButtonProps, Stack } from '@uifabric/experiments';
-import { ContextualMenu, createTheme, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
+import { createTheme, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
+const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const sectionGap = 32;
 
@@ -50,7 +50,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
         <ButtonSet circular />
         <ButtonSet circular icon="share" />
         <ButtonSet
-          icon={(iconProps, IconType) => <IconType {...iconProps} iconName="upload" />}
+          icon={render => render((IconType, iconProps) => <IconType {...iconProps} iconName="upload" />)}
           content="Menu button with icon"
           menu={buttonMenu}
         />

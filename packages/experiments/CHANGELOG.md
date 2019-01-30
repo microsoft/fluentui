@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 29 Jan 2019 13:35:55 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+
+## 6.53.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Change slot render function signature for increased flexibility.
+- Stack: Fixing IE11 wrapping bug reproed in 'Horizontal Stack - Wrapping - Nested' example.
 
 ## 6.53.1
 Tue, 29 Jan 2019 13:35:55 GMT

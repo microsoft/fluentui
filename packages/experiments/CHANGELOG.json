@@ -2,6 +2,30 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.53.2",
+      "tag": "@uifabric/experiments_v6.53.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change slot render function signature for increased flexibility.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "c04c493bda35cea3f41469ff49a45ad7b9b55a95"
+          },
+          {
+            "comment": "Stack: Fixing IE11 wrapping bug reproed in 'Horizontal Stack - Wrapping - Nested' example.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "9cf3518cc0f49352746dbe0b4317e5d6a6b95d37"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.1 <7.0.0` to `>=6.15.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.53.1",
       "tag": "@uifabric/experiments_v6.53.1",
       "date": "Tue, 29 Jan 2019 13:35:55 GMT",

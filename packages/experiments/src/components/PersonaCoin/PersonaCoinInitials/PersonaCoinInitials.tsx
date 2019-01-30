@@ -11,7 +11,7 @@ export interface IPersonaCoinInitialsProps {
   className: string;
 }
 
-export const PersonaCoinInitials: React.ComponentType<IPersonaCoinInitialsProps> = props => {
+export const PersonaCoinInitials: React.StatelessComponent<IPersonaCoinInitialsProps> = props => {
   const initials = (typeof props.initials === 'string' && props.initials) || getInitials(props.text, getRTL(), props.allowPhoneInitials);
 
   if (initials) {
