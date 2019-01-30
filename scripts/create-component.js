@@ -2,7 +2,6 @@
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const newComponentName = argv.name;
-const slots = argv.slots;
 const stateless = argv.stateless;
 const fs = require('fs');
 
@@ -97,11 +96,6 @@ function writeFileCallback(error, createFileError, cb) {
 function makeComponent(error) {
   if (!handleError(error, errorCreatingComponentDir)) {
     return;
-  }
-
-  // TODO: obsolete existing templates and promote "slots" templates upon slots promotion
-  if (slots) {
-    templateFolderPath += '/slots';
   }
 
   if (stateless) {
