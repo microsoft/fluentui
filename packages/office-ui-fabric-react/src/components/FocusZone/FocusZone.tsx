@@ -248,6 +248,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
+    const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
+    let newActiveElement: HTMLElement | undefined;
 
     if (onFocusNotification) {
       onFocusNotification();
@@ -255,23 +257,30 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     this._focusedElement = ev.target;
 
-    if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
-      this._activeElement = ev.target as HTMLElement;
-      this._setFocusAlignment(this._activeElement);
+    if (isImmediateDescendant) {
+      newActiveElement = ev.target as HTMLElement;
     } else {
       let parentElement = ev.target as HTMLElement;
 
       while (parentElement && parentElement !== this._root.current) {
         if (isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
-          this._activeElement = parentElement;
+          newActiveElement = parentElement;
           break;
         }
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
       }
     }
 
-    if (onActiveElementChanged) {
-      onActiveElementChanged(this._activeElement as HTMLElement, ev);
+    if (newActiveElement && newActiveElement !== this._activeElement) {
+      this._activeElement = newActiveElement;
+
+      if (isImmediateDescendant) {
+        this._setFocusAlignment(this._activeElement);
+      }
+
+      if (onActiveElementChanged) {
+        onActiveElementChanged(this._activeElement as HTMLElement, ev);
+      }
     }
 
     if (doNotAllowFocusEventToPropagate) {
