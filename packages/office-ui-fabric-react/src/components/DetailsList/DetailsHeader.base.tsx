@@ -272,15 +272,24 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                         id={`${this._id}-selection`}
                         className={css(rowCheckClassNames.root, rowCheckClassNames.check)}
                         aria-label={ariaLabelForSelectionColumn}
+                        aria-describedby={
+                          ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip ? `${this._id}-checkTooltip` : undefined
+                        }
                       />
                     )
                   },
                   this._onRenderColumnHeaderTooltip
                 )}
               </div>,
-              !isCheckboxHidden && ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? (
+              !this.props.onRenderColumnHeaderTooltip ? (
+                ariaLabelForSelectAllCheckbox && !isCheckboxHidden ? (
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                    {ariaLabelForSelectAllCheckbox}
+                  </label>
+                ) : null
+              ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
                 <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
-                  {ariaLabelForSelectAllCheckbox}
+                  {ariaLabelForSelectionColumn}
                 </label>
               ) : null
             ]
