@@ -52,9 +52,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;
 
-  /** The focused element within the FocusZone */
-  private _focusedElement: HTMLElement | undefined;
-
   private _lastIndexPath: number[] | undefined;
 
   /** The child element with tabindex=0. */
@@ -117,29 +114,19 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   public componentDidUpdate(): void {
     const { current: root } = this._root;
-    const doc = getDocument();
+    const doc = getDocument(root);
+    if (doc && this._lastIndexPath && (doc.activeElement === doc.body || doc.activeElement === root)) {
+      // The element has been removed after the render, attempt to restore focus.
+      const elementToFocus = this._getElementByIndexPath(this._lastIndexPath);
 
-    if (doc) {
-      if (doc.activeElement === root && !this.props.allowFocusRoot) {
-        const nextFocusedElement = getNextElement(root, root.firstElementChild as HTMLElement, true);
-
-        if (nextFocusedElement) {
-          this._setParkedFocus(false);
-          nextFocusedElement.focus();
-        }
-      } else if (
-        this._focusedElement &&
-        this._lastIndexPath &&
-        root !== this._focusedElement &&
-        !elementContains(root, this._focusedElement)
-      ) {
-        // element has been removed after the render! restore focus.
-        const elementToFocus = this._getElementByIndexPath(this._lastIndexPath);
-
-        if (elementToFocus) {
-          this._setActiveElement(elementToFocus, true);
-          elementToFocus.focus();
-        }
+      if (elementToFocus) {
+        this._setActiveElement(elementToFocus, true);
+        elementToFocus.focus();
+        this._setParkedFocus(false);
+      } else {
+        // We had a focus path to restore, but now that path is unresolvable. Park focus
+        // on the container until we can try again.
+        this._setParkedFocus(true);
       }
     }
   }
@@ -156,9 +143,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     // When we're rendering, if we are currently focused, track the index path
     // so that we can restore focus after render if needed.
-    if (this._focusedElement) {
-      this._lastIndexPath = this._getIndexPath(this._focusedElement);
-    }
+    this._evaluateFocusBeforeRender();
 
     return (
       <Tag
@@ -177,7 +162,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         aria-describedby={ariaDescribedBy}
         onKeyDown={this._onKeyDown}
         onFocus={this._onFocus}
-        onBlur={this._onBlur}
         onMouseDownCapture={this._onMouseDown}
       >
         {this.props.children}
@@ -246,6 +230,22 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
+  private _evaluateFocusBeforeRender(): void {
+    const { current: root } = this._root;
+    const doc = getDocument(root);
+
+    if (doc) {
+      const focusedElement = doc.activeElement as HTMLElement;
+
+      // Only update the index path if we are not parked on the root.
+      if (focusedElement !== root) {
+        const shouldRestoreFocus = elementContains(root, focusedElement);
+
+        this._lastIndexPath = shouldRestoreFocus ? this._getIndexPath(doc.activeElement as HTMLElement) : undefined;
+      }
+    }
+  }
+
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
@@ -254,8 +254,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (onFocusNotification) {
       onFocusNotification();
     }
-
-    this._focusedElement = ev.target;
 
     if (isImmediateDescendant) {
       newActiveElement = ev.target as HTMLElement;
@@ -286,10 +284,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (doNotAllowFocusEventToPropagate) {
       ev.stopPropagation();
     }
-  };
-
-  private _onBlur = () => {
-    this._focusedElement = undefined;
   };
 
   private _setParkedFocus(isParked: boolean): void {
