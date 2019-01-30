@@ -2,6 +2,30 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.46.2",
+      "tag": "@uifabric/dashboard_v0.46.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix detail panel custom width issue, fix detail panel tiles css issue, add jsx.element support to detail panel tile message",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "c76f02eed90b0c39812451d5a7f947f3bb902628"
+          },
+          {
+            "comment": "Fix edge browser thumbnail list focus items alignment issue",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "b2d063b1b258ab2f0686fdb0d92d2a492eceaaea"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.53.1 <7.0.0` to `>=6.53.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.46.1",
       "tag": "@uifabric/dashboard_v0.46.1",
       "date": "Tue, 29 Jan 2019 13:35:55 GMT",
