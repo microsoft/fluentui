@@ -32,6 +32,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentBottom = React.createRef<HTMLDivElement>();
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
+  /* This stores the value of nonStickyContent scrollWidth when the component is non-sticky.
+   * If ScrollablePane content-container has a horizontal overflow only because of this component when it is in non-sticky state,
+   * when the component becomes sticky, the horizontal scrollbar won't be available.
+   * Note: In this case, sticky component will still have horizontal overflow but there would be no scrollbar */
+  private _nonStickyPlaceHolderScrollWidth: number = 0;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -150,7 +155,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
-        <div style={this._getNonStickyPlaceholderHeight()} ref={this._placeHolder}>
+        <div className={'nonStickyPlaceHolder'} style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
           <div
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
@@ -205,12 +210,16 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     };
   }
 
-  private _getNonStickyPlaceholderHeight(): React.CSSProperties {
+  private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
+    const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
     if (isStickyTop || isStickyBottom) {
-      const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
       return {
-        height: height
+        height: height,
+        width: this._nonStickyPlaceHolderScrollWidth
+        /* placeHolder width should be equal to nonStickyContent.scrollWidth
+         * when the component is non-sticky, i.e.,
+         * inside ms-ScrollablePane--contentContainer */
       };
     } else {
       return {};
@@ -234,6 +243,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
           this.distanceFromTop - container.scrollTop >= this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
 
+      if (this.nonStickyContent && !(this.state.isStickyTop || this.state.isStickyBottom)) {
+        this._nonStickyPlaceHolderScrollWidth = this.nonStickyContent.scrollWidth;
+      }
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom

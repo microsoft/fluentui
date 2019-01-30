@@ -202,7 +202,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       <div {...getNativeProps(this.props, divProperties)} ref={this._root} className={classNames.root}>
         <div ref={this._contentContainer} className={classNames.contentContainer} data-is-scrollable={true}>
           {this.props.children}
-          {<div className={'placeHolderForHorizontalScrollBar'} style={this._getPlaceHolderWidth()} />}
         </div>
         <div ref={this._stickyAboveRef} className={classNames.stickyAbove} style={this._getStickyContainerStyle(stickyTopHeight, true)} />
         <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
@@ -311,20 +310,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       sticky.syncScroll(this.contentContainer);
     }
   };
-
-  private _getPlaceHolderWidth(): React.CSSProperties {
-    let width = 0;
-    if (this.contentContainer) {
-      width = this.contentContainer.scrollWidth;
-      if (this._stickies) {
-        this._stickies.forEach(sticky => {
-          const currWidth = sticky.nonStickyContent!.scrollWidth;
-          width = width < currWidth ? currWidth : width;
-        });
-      }
-    }
-    return { width: width, height: '1px' };
-  }
 
   private _checkStickyStatus(sticky: Sticky): void {
     if (this.stickyAbove && this.stickyBelow && this.contentContainer && sticky.nonStickyContent) {
