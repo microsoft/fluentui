@@ -201,8 +201,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return (
       <div {...getNativeProps(this.props, divProperties)} ref={this._root} className={classNames.root}>
         <div ref={this._contentContainer} className={classNames.contentContainer} data-is-scrollable={true}>
-          {<div className={'placeHolderForHorizontalScrollBar'} style={this._getPlaceHolderWidth()} />}
           {this.props.children}
+          {<div className={'placeHolderForHorizontalScrollBar'} style={this._getPlaceHolderWidth()} />}
         </div>
         <div ref={this._stickyAboveRef} className={classNames.stickyAbove} style={this._getStickyContainerStyle(stickyTopHeight, true)} />
         <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
@@ -323,7 +323,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         });
       }
     }
-    return { width: width };
+    return { width: width, height: '1px' };
   }
 
   private _checkStickyStatus(sticky: Sticky): void {
