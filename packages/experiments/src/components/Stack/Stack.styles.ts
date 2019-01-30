@@ -80,6 +80,9 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
           // not allowed to be overridden by className
           // since this is necessary in order to prevent collapsing margins
           display: 'flex'
+        },
+        horizontal && {
+          height: verticalFill ? '100%' : 'auto'
         }
       ],
 
