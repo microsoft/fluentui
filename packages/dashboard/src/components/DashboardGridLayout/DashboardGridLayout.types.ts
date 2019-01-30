@@ -3,7 +3,7 @@ import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { ICard, CardSize } from '../Card/Card.types';
 
-export { DragApiRefObject, Layout };
+export { DragApiRefObject, Layout as RGLLayout };
 
 export interface IDashboardGridLayoutStyles {
   root: IStyle;
