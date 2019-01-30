@@ -51,6 +51,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _id: string;
   /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;
+
+  /** The focused element within the FocusZone */
+  private _focusedElement: HTMLElement | undefined;
+
+  private _lastIndexPath: number[] | undefined;
+
   /** The child element with tabindex=0. */
   private _defaultFocusElement: HTMLElement | null;
   private _focusAlignment: IPoint;
@@ -97,7 +103,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (!this._isInnerZone) {
         this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
-        this._events.on(current, 'blur', this._onBlurCapture, true);
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -114,12 +119,22 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     const { current: root } = this._root;
     const doc = getDocument();
 
-    if (doc && doc.activeElement === root && !this.props.allowFocusRoot) {
-      const nextFocusedElement = getNextElement(root, root.firstElementChild as HTMLElement, true);
+    if (doc) {
+      if (doc.activeElement === root && !this.props.allowFocusRoot) {
+        const nextFocusedElement = getNextElement(root, root.firstElementChild as HTMLElement, true);
 
-      if (nextFocusedElement) {
-        this._setParkedFocus(false);
-        nextFocusedElement.focus();
+        if (nextFocusedElement) {
+          this._setParkedFocus(false);
+          nextFocusedElement.focus();
+        }
+      } else if (this._focusedElement && this._lastIndexPath && !elementContains(this._root.current, this._focusedElement)) {
+        // element has been removed after the render! restore focus.
+        const elementToFocus = this._getElementByIndexPath(this._lastIndexPath);
+
+        if (elementToFocus) {
+          this._setActiveElement(elementToFocus, true);
+          elementToFocus.focus();
+        }
       }
     }
   }
@@ -133,6 +148,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
     const Tag = this.props.elementType || 'div';
+
+    // When we're rendering, if we are currently focused, track the index path
+    // so that we can restore focus after render if needed.
+    if (this._focusedElement) {
+      this._lastIndexPath = this._getIndexPath(this._focusedElement);
+    }
 
     return (
       <Tag
@@ -151,6 +172,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         aria-describedby={ariaDescribedBy}
         onKeyDown={this._onKeyDown}
         onFocus={this._onFocus}
+        onBlur={this._onBlur}
         onMouseDownCapture={this._onMouseDown}
       >
         {this.props.children}
@@ -226,6 +248,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       onFocusNotification();
     }
 
+    this._focusedElement = ev.target;
+
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
       this._activeElement = ev.target as HTMLElement;
       this._setFocusAlignment(this._activeElement);
@@ -250,52 +274,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   };
 
-  /**
-   * Callback hooked to the root element. When we receive a blur, we want
-   * to detect if the blur is due to an element being removed from the Zone.
-   * This is done by evaluating if the destination (in ev.relatedTarget) is
-   * null. If so, we need to move the focus to either the next element, or
-   * possibly, the previous element if there is no "next".
-   *
-   * In the case there are no more focusable elements in the zone, we "park"
-   * focus on the root temporarily. If the user tabs elsewhere, we remove
-   * focusablilty from the root. After a zone re-render, if focus is still
-   * "parked", we try to move focus back to the first focusable child.
-   *
-   * Note: Attempting to move this to a React event, rather than using a
-   * native event, broke the implementation.
-   */
-  private _onBlurCapture(ev: FocusEvent) {
-    const { current: root } = this._root;
-    const { target: from } = ev;
-    const isFocusDisappearing = ev.relatedTarget === null || ev.relatedTarget === document;
-
-    // If we are tabbing from parked state, reset parked.
-    if (from === root) {
-      this._setParkedFocus(false);
-    }
-
-    if (isFocusDisappearing) {
-      // The element may be removed; we need remember its index path and asynchronously
-      // re-evaluate if the item was removed. Blurs can also happen if the user just
-      // clicks the location bar, so we need to disambiguate.
-      const indexPath = this._getIndexPath(from as HTMLElement);
-
-      this._async.setTimeout(() => {
-        if (!elementContains(root, from as HTMLElement)) {
-          const nextFocusedElement = this._getElementByIndexPath(indexPath);
-
-          if (nextFocusedElement) {
-            // Try to move focus to the next one.
-            this._setActiveElement(nextFocusedElement, true);
-            nextFocusedElement.focus();
-          } else {
-            // There are no more elements. Park focus on the container.
-            this._setParkedFocus(true);
-          }
-        }
-      }, 0);
-    }
+  private _onBlur() {
+    this._focusedElement = undefined;
   }
 
   private _setParkedFocus(isParked: boolean): void {

@@ -11,6 +11,7 @@ exports[`TagPicker renders correctly 1`] = `
   <div
     className="ms-FocusZone"
     data-focuszone-id="FocusZone1"
+    onBlur={[Function]}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

@@ -35,6 +35,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 position: relative;
               }
           data-focuszone-id="FocusZone0"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}

@@ -10,6 +10,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
     <div
       className="ms-FocusZone"
       data-focuszone-id="FocusZone0"
+      onBlur={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}

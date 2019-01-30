@@ -79,6 +79,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone1"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}

@@ -79,6 +79,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone1"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -890,6 +891,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone10"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1686,6 +1688,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   data-item-index={0}
   data-selection-index={0}
   draggable={false}
+  onBlur={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -2233,6 +2236,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone4"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3044,6 +3048,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone7"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}

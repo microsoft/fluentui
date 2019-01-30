@@ -79,6 +79,7 @@ exports[`DetailsList renders List correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone7"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -660,6 +661,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone1"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1833,6 +1835,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone13"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -2415,6 +2418,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone10"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3374,6 +3378,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone4"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -4561,6 +4566,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone16"
+          onBlur={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -4976,6 +4982,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   height: 42px;
                                 }
                             data-focuszone-id="FocusZone19"
+                            onBlur={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
@@ -5204,6 +5211,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-item-index={0}
                                   data-selection-index={0}
                                   draggable={false}
+                                  onBlur={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -5402,6 +5410,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-item-index={1}
                                   data-selection-index={1}
                                   draggable={false}
+                                  onBlur={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -5614,6 +5623,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   height: 42px;
                                 }
                             data-focuszone-id="FocusZone21"
+                            onBlur={[Function]}
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
@@ -5842,6 +5852,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-item-index={2}
                                   data-selection-index={2}
                                   draggable={false}
+                                  onBlur={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -6040,6 +6051,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-item-index={3}
                                   data-selection-index={3}
                                   draggable={false}
+                                  onBlur={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
@@ -6238,6 +6250,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   data-item-index={4}
                                   data-selection-index={4}
                                   draggable={false}
+                                  onBlur={[Function]}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
