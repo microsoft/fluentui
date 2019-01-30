@@ -106,7 +106,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
 
     return (
       <Stack gap={10}>
-        <Stack horizontal>
+        <Stack horizontal preventShrink>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -118,14 +118,14 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
                 showValue={true}
                 onChange={this._onNumItemsChange}
               />
-              <Stack horizontal>
+              <Stack horizontal preventShrink>
                 <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} />
               </Stack>
             </Stack>
           </Stack.Item>
           <Stack.Item grow>
-            <Stack horizontal gap={20}>
+            <Stack horizontal preventShrink gap={20}>
               <Stack>
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={{ root: { marginBottom: 10 } }} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
@@ -145,7 +145,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20}>
+        <Stack horizontal preventShrink gap={20}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -214,7 +214,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20} verticalAlign="end">
+        <Stack horizontal preventShrink gap={20} verticalAlign="end">
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}

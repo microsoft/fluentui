@@ -21,7 +21,7 @@ const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal gap={buttonGap}>
+  <Stack horizontal preventShrink gap={buttonGap}>
     {props.children}
   </Stack>
 );
