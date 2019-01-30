@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "sikrishn@microsoft.com"
+}
