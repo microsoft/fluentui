@@ -127,7 +127,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           this._setParkedFocus(false);
           nextFocusedElement.focus();
         }
-      } else if (this._focusedElement && this._lastIndexPath && !elementContains(this._root.current, this._focusedElement)) {
+      } else if (
+        this._focusedElement &&
+        this._lastIndexPath &&
+        root !== this._focusedElement &&
+        !elementContains(root, this._focusedElement)
+      ) {
         // element has been removed after the render! restore focus.
         const elementToFocus = this._getElementByIndexPath(this._lastIndexPath);
 
@@ -274,9 +279,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   };
 
-  private _onBlur() {
+  private _onBlur = () => {
     this._focusedElement = undefined;
-  }
+  };
 
   private _setParkedFocus(isParked: boolean): void {
     const { current: root } = this._root;
