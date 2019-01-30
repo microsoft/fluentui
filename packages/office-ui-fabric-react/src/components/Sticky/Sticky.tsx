@@ -155,7 +155,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
-        <div className={'nonStickyPlaceHolder'} style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
+        <div style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
           <div
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
