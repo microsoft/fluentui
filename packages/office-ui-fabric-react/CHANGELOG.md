@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 29 Jan 2019 13:35:55 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 13:36:14 GMT and should not be manually modified.
+
+## 6.131.1
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Patches
+
+- scrollTop value may be in decimal. Taking floor of scrollTop to calculate isStickyBottom for a sticky component
+- TeachingBubble: do not pass in onDismiss to TeachingBubbleContent
+- Support ESC after clicking in Popup
 
 ## 6.131.0
 Tue, 29 Jan 2019 13:35:55 GMT

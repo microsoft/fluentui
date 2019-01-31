@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 13:36:13 GMT and should not be manually modified.
+
+## 6.54.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.
+
+### Patches
+
+-  Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.
 
 ## 6.53.2
 Wed, 30 Jan 2019 13:36:21 GMT

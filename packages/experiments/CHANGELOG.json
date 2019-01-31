@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.54.0",
+      "tag": "@uifabric/experiments_v6.54.0",
+      "date": "Thu, 31 Jan 2019 13:36:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "73c0e178e3a920d46987ca781cedf7abcbd2c729"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "b24aa4dfbf9c6c739a9c5e34b15220485a58b470"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.0 <7.0.0` to `>=6.131.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.53.2",
       "tag": "@uifabric/experiments_v6.53.2",
       "date": "Wed, 30 Jan 2019 13:36:21 GMT",

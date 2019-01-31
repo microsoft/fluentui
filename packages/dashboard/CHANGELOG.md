@@ -1,6 +1,17 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 13:36:13 GMT and should not be manually modified.
+
+## 0.47.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- add  optional  id props to  IThumbnailListProps, IGridListProps, ICompoundAction and  optional cardId to ICardProps
+
+### Patches
+
+- Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event
 
 ## 0.46.2
 Wed, 30 Jan 2019 13:36:21 GMT
