@@ -6,14 +6,14 @@ import { I{{componentName}}Component, I{{componentName}}Props, I{{componentName}
 
 export const {{componentName}}View: I{{componentName}}Component['view'] = props => {
 
-  const Slots = getSlots< I{{componentName}}Props, I{{componentName}}Slots>(props, {
+  const Slots = getSlots<I{{componentName}}Props, I{{componentName}}Slots>(props, {
     root: 'div',
     text: Text
   });
 
   return (
-    < Slots.root>
-      < Slots.text />
+    <Slots.root>
+      <Slots.text />
       <span>Status: {props.status}</span>
     </ Slots.root>
   );

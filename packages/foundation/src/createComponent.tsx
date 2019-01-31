@@ -19,15 +19,14 @@ import { IDefaultSlotProps } from './ISlots';
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
  * State component is optional. If state is not provided, created component is essentially a functional stateless component.
  *
- * TComponentProps: A styleable props interface for the created component.
- * TTokens: The type for tokens props.
- * TStyleSet: The type for styles properties.
- * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
+ * * TComponentProps: A styleable props interface for the created component.
+ * * TTokens: The type for tokens props.
+ * * TStyleSet: The type for styles properties.
+ * * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
  * component is not provided, TComponentProps is the same as TViewProps.
- * TStatics: Static type for statics applied to created component object.
+ * * TStatics: Static type for statics applied to created component object.
  *
- * @param {IComponent} component
- * @param {IComponentProviders} providers
+ * @param {IComponent} component Component options. See IComponent for more detail.
  */
 export function createComponent<
   TComponentProps,
