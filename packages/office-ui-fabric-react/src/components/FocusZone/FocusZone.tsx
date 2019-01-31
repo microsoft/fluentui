@@ -70,7 +70,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _defaultFocusElement: HTMLElement | null;
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
-  private _parkedTabIndex: string | null;
+  private _parkedTabIndex: string | null | undefined;
 
   /** Used to allow us to move to next focusable element even when we're focusing on a input element when pressing tab */
   private _processingTabKey: boolean;
@@ -317,9 +317,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         root.focus();
       } else {
         if (!this.props.allowFocusRoot) {
-          if (this._parkedTabIndex !== null) {
+          if (this._parkedTabIndex) {
             root.setAttribute('tabindex', this._parkedTabIndex);
-            this._parkedTabIndex = null;
+            this._parkedTabIndex = undefined;
           } else {
             root.removeAttribute('tabindex');
           }
