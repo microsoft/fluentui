@@ -10,7 +10,7 @@ import { SlotsContentExample } from './examples/Slots.Content.Example';
 import { SlotsStyledExample } from './examples/Slots.Styled.Example';
 
 const SlotsExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Example.tsx') as string;
-const SlotsAsyncExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Example.tsx') as string;
+const SlotsAsyncExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Async.Example.tsx') as string;
 const SlotsRootExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Root.Example.tsx') as string;
 const SlotsStackExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Stack.Example.tsx') as string;
 const SlotsIconExampleCode = require('!raw-loader!@uifabric/experiments/src/slots/examples/Slots.Icon.Example.tsx') as string;
