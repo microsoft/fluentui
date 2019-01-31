@@ -8,6 +8,8 @@ import {
   htmlElementProperties,
   elementContains,
   getDocument,
+  getElementIndexPath,
+  getFocusableByIndexPath,
   getId,
   getNextElement,
   getNativeProps,
@@ -82,8 +84,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public componentDidMount(): void {
-    _allInstances[this._id] = this;
     const { current } = this._root;
+
+    _allInstances[this._id] = this;
 
     if (current) {
       const windowElement = current.ownerDocument!.defaultView;
@@ -115,9 +118,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   public componentDidUpdate(): void {
     const { current: root } = this._root;
     const doc = getDocument(root);
+
     if (doc && this._lastIndexPath && (doc.activeElement === doc.body || doc.activeElement === root)) {
       // The element has been removed after the render, attempt to restore focus.
-      const elementToFocus = this._getElementByIndexPath(this._lastIndexPath);
+      const elementToFocus = getFocusableByIndexPath(root as HTMLElement, this._lastIndexPath);
 
       if (elementToFocus) {
         this._setActiveElement(elementToFocus, true);
@@ -141,8 +145,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     const Tag = this.props.elementType || 'div';
 
-    // When we're rendering, if we are currently focused, track the index path
-    // so that we can restore focus after render if needed.
+    // Note, right before rendering/reconciling proceeds, we need to record if focus
+    // was in the zone before the update. This helper will track this and, if focus
+    // was actually in the zone, what the index path to the element is at this time.
+    // Then, later in componentDidUpdate, we can evaluate if we need to restore it in
+    // the case the element was removed.
     this._evaluateFocusBeforeRender();
 
     return (
@@ -241,7 +248,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (focusedElement !== root) {
         const shouldRestoreFocus = elementContains(root, focusedElement);
 
-        this._lastIndexPath = shouldRestoreFocus ? this._getIndexPath(doc.activeElement as HTMLElement) : undefined;
+        this._lastIndexPath = shouldRestoreFocus ? getElementIndexPath(root as HTMLElement, doc.activeElement as HTMLElement) : undefined;
       }
     }
   }
@@ -305,43 +312,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         }
       }
     }
-  }
-
-  private _getElementByIndexPath(path: number[]): HTMLElement | undefined {
-    let element = this._root.current as HTMLElement;
-
-    for (const index of path) {
-      const nextChild = element.children[Math.min(index, element.children.length - 1)] as HTMLElement;
-
-      if (!nextChild) {
-        break;
-      }
-      element = nextChild;
-    }
-
-    element = isElementTabbable(element)
-      ? element
-      : getNextElement(this._root.current as HTMLElement, element, true) || getPreviousElement(this._root.current as HTMLElement, element)!;
-
-    return element as HTMLElement;
-  }
-
-  private _getIndexPath(toElement: HTMLElement): number[] {
-    const path: number[] = [];
-    const { current: root } = this._root;
-
-    while (toElement !== root) {
-      const parent = getParent(toElement);
-
-      if (parent === null) {
-        return [];
-      }
-
-      path.unshift(Array.prototype.indexOf.call(parent.children, toElement));
-      toElement = parent;
-    }
-
-    return path;
   }
 
   /**

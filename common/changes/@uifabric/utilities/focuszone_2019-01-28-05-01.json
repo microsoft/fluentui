@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
+      "comment": "Adding helper functions to get and restore focus elements based on index paths.",
       "packageName": "@uifabric/utilities",
-      "type": "none"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/utilities",
