@@ -304,8 +304,15 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   };
 
+  /**
+   * When focus is in the zone at render time but then all focusable elements are removed,
+   * we "park" focus temporarily on the root. Once we update with focusable children, we restore
+   * focus to the closest path from previous. If the user tabs away from the parked container,
+   * we restore focusability to the pre-parked state.
+   */
   private _setParkedFocus(isParked: boolean): void {
     const { current: root } = this._root;
+
     if (root && this._isParked !== isParked) {
       this._isParked = isParked;
 
