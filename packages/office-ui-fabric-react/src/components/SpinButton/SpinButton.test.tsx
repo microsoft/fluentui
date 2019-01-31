@@ -3,14 +3,29 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { SpinButton } from './SpinButton';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
 
 describe('SpinButton', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders SpinButton correctly', () => {
     const component = renderer.create(<SpinButton label="label" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders SpinButton correctly and value should change accordingly even when no props are defined', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" />);
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    ReactTestUtils.Simulate.keyDown(inputDOM, {
+      which: KeyCodes.up
+    });
+    expect(inputDOM.value).toEqual('1');
   });
 
   it('renders SpinButton correctly with values that the user passes in', () => {

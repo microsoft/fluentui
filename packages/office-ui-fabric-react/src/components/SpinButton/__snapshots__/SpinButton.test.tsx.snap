@@ -447,8 +447,8 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             pointer-events: none;
             word-wrap: break-word;
           }
-      htmlFor="input9"
-      id="Label8"
+      htmlFor="input1"
+      id="Label0"
     >
       label
     </label>
@@ -476,7 +476,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
   >
     <input
       aria-disabled={false}
-      aria-labelledby="Label8"
+      aria-labelledby="Label0"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -519,7 +519,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             color: HighlightText;
           }
       data-lpignore={true}
-      id="input9"
+      id="input1"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
