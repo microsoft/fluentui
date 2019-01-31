@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+
+## 6.11.5
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Changes to support Slots Foundation.
 
 ## 6.11.4
 Mon, 28 Jan 2019 13:35:27 GMT

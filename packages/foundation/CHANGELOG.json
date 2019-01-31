@@ -2,6 +2,25 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.7.0",
+      "tag": "@uifabric/foundation_v0.7.0",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Promote Slots and Tokens implementation of Foundation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "15fdd1982b01e3e5e9a4d7b9f10d7f1d40a45372"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.1 <7.0.0` to `>=6.29.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.0",
       "tag": "@uifabric/foundation_v0.6.0",
       "date": "Fri, 14 Dec 2018 13:35:30 GMT",

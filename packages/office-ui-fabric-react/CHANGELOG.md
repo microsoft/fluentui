@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 31 Jan 2019 13:36:14 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+
+## 6.132.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- FocusZone: focus can now be recovered if focus was resting within the zone but the element was removed.
 
 ## 6.131.1
 Thu, 31 Jan 2019 13:36:13 GMT
