@@ -86,7 +86,9 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
             onClick={() => stepToRender.onClickStep(stepToRender, undefined)}
           >
             <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavStepIcon)} />
-            <span className={css(classNames.stepLabel, stepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}>
+            <span
+              className={css(classNames.stepLabel, stepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}
+            >
               {stepToRender!.label}
             </span>
           </div>
@@ -159,7 +161,12 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
               onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}
             >
               <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavSubStepIcon)} />
-              <span className={css(classNames.subStepLabel, subStepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}>
+              <span
+                className={css(
+                  classNames.subStepLabel,
+                  subStepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined
+                )}
+              >
                 {subStepToRender.label}
               </span>
             </div>
@@ -213,7 +220,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
 
         case SubwayNavStepState.Completed:
           return { iconName: 'CompletedSolid', iconClassName: classNames.stepCompleted };
-    
+
         case SubwayNavStepState.StepWithSubSteps:
           return { iconName: 'FullCircleMask', iconClassName: classNames.stepWithSubSteps };
 
@@ -258,7 +265,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
 
         case SubwayNavStepState.Completed:
           return { iconName: 'CompletedSolid', iconClassName: classNames.subStepCompleted };
-      
+
         case SubwayNavStepState.StepWithSubSteps:
           return { iconName: 'FullCircleMask', iconClassName: classNames.stepWithSubSteps };
 

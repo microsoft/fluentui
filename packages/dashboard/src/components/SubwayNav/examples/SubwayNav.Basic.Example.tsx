@@ -8,7 +8,6 @@ export interface ISubwayNavBasicExampleState {
   steps: ISubwayNavStep[];
 }
 
-
 export class SubwayNavBasicExample extends React.Component<any, ISubwayNavBasicExampleState> {
   private steps: ISubwayNavStep[] = [];
 
@@ -69,18 +68,23 @@ export class SubwayNavBasicExample extends React.Component<any, ISubwayNavBasicE
     let newSteps = this.state.steps;
     let currStep = this.state.currStep;
 
-    newSteps.map((stepObj) => {
-      if (stepObj.key === step.key) {
-        stepObj.state = SubwayNavStepState.Current;
-        currStep = stepObj;
-      }
+    let foundClickedStep: boolean = false;
 
+    newSteps.map(stepObj => {
       if (stepObj.key === this.state.currStep.key) {
         stepObj.state = SubwayNavStepState.Completed;
+      }      
+      else if (stepObj.key === step.key) {
+        stepObj.state = SubwayNavStepState.Current;
+        currStep = stepObj;
+        foundClickedStep = true;
+      }
+      else if (!foundClickedStep && stepObj.state === SubwayNavStepState.NotStarted) {
+        stepObj.state = SubwayNavStepState.Skipped;
       }
     });
 
-    this.setState({ steps: newSteps, currStep: currStep  });
+    this.setState({ steps: newSteps, currStep: currStep });
     /*this.steps.forEach(function(obj) {
       stepIdx++;
       if (obj.key === step.key) {
