@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 13:36:14 GMT and should not be manually modified.
+
+## 6.131.1
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Patches
+
+- scrollTop value may be in decimal. Taking floor of scrollTop to calculate isStickyBottom for a sticky component
+- TeachingBubble: do not pass in onDismiss to TeachingBubbleContent
+- Support ESC after clicking in Popup
+
+## 6.131.0
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Minor changes
+
+- GroupedList: changes types of the renderers to allow customizing the `subComponents` through the `Customizer`. Export the missing interfaces to the top level index file of the GroupedList.
+
+### Patches
+
+- width is not required for sticky placeholder as it won't affect horizontal scrolling. For a detailsGroupedList, if horizontal scrollbar is present when detailsHeader is in non-sticky state, it should be there even when detailsHeader becomes sticky. 
+- Panel: add flex-grow: 1 to contentInner
+
+## 6.130.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
+
+### Patches
+
+- DetailsList: Set aria-expanded attribute only if necessary
+- DocumentCard: Renames 'previewFileTypeIcon' to 'icon' to fix a regression
+- Fix callouts appearing partially off screen
 
 ## 6.129.4
 Fri, 25 Jan 2019 13:38:07 GMT

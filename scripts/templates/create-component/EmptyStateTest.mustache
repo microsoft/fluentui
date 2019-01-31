@@ -7,11 +7,11 @@ const testView = () => {
 };
 
 // States do not generate rendered output so unit tests test that state initializes and reacts
-//  to inputs and events as expected.
+// to inputs and events as expected.
 describe('{{componentName}}State', () => {
   it('initializes default state correctly', () => {
 
-    const test{{componentName}}State = mount(< {{componentName}}State renderView={testView} />);
+    const test{{componentName}}State = mount(<{{componentName}}State renderView={testView} />);
 
     expect(test{{componentName}}State.state('text')).toBe('Default Text');
     expect(test{{componentName}}State.state('status')).toBe('State Text');
@@ -19,7 +19,7 @@ describe('{{componentName}}State', () => {
 
   it('uses props to initialize state correctly', () => {
     const defaultText = 'Prop Default Text';
-    const test{{componentName}}State = mount(< {{componentName}}State defaultText={defaultText} renderView={testView} />);
+    const test{{componentName}}State = mount(<{{componentName}}State defaultText={defaultText} renderView={testView} />);
 
     expect(test{{componentName}}State.state('text')).toBe(defaultText);
   });

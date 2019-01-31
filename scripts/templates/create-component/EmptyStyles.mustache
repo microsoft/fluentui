@@ -1,20 +1,45 @@
-import { I{{componentName}}Component } from './{{componentName}}.types';
+import {
+  I{{componentName}}Component,
+  I{{componentName}}StylesReturnType,
+  I{{componentName}}TokenReturnType
+} from './{{componentName}}.types';
 import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-{{componentName}}'
+  root: 'ms-{{componentName}}',
+  text: 'ms-{{componentName}}-text',
 };
 
-export const {{componentName}}Styles: I{{componentName}}Component['styles'] = props => {
-  const { theme } = props;
+const baseTokens: I{{componentName}}Component['tokens'] = {
+  textColor: 'blue'
+};
 
+const warningTokens: I{{componentName}}Component['tokens'] = {
+  textColor: 'red'
+};
+
+export const {{componentName}}Tokens: I{{componentName}}Component['tokens'] = (props, theme): I{{componentName}}TokenReturnType => [
+  baseTokens,
+  props.warning && warningTokens
+];
+
+export const {{componentName}}Styles: I{{componentName}}Component['styles'] = (props, theme, tokens): I{{componentName}}StylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
       classNames.root,
       {
-        color: props.theme.semanticColors.bodyText
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        margin: 8,
+        padding: 8
+      }
+    ],
+    text: [
+      classNames.text,
+      {
+        color: tokens.textColor
       }
     ]
   };

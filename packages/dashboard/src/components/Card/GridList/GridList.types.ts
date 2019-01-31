@@ -109,6 +109,11 @@ export interface IGridRow {
  */
 export interface IGridListProps {
   /**
+   * Grid List optional ID Props
+   */
+  id?: string;
+
+  /**
    * Array of row items
    */
   gridRows: IGridRow[];

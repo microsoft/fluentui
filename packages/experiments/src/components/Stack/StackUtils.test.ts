@@ -11,43 +11,58 @@ describe('StackUtils', () => {
     const theme = getTheme();
 
     it('returns a default value when given undefined', () => {
-      expect(parseGap(undefined, theme)).toEqual({ value: 0, unit: 'px' });
+      expect(parseGap(undefined, theme)).toEqual({ rowGap: { value: 0, unit: 'px' }, columnGap: { value: 0, unit: 'px' } });
     });
 
-    it('returns a default value when given am empty string', () => {
-      expect(parseGap('', theme)).toEqual({ value: 0, unit: 'px' });
+    it('returns a default value when given an empty string', () => {
+      expect(parseGap('', theme)).toEqual({ rowGap: { value: 0, unit: 'px' }, columnGap: { value: 0, unit: 'px' } });
     });
 
     it('returns a value with px when given a number', () => {
-      expect(parseGap(10, theme)).toEqual({ value: 10, unit: 'px' });
+      expect(parseGap(10, theme)).toEqual({ rowGap: { value: 10, unit: 'px' }, columnGap: { value: 10, unit: 'px' } });
     });
 
     it('can parse a string with px', () => {
-      expect(parseGap('32px', theme)).toEqual({ value: 32, unit: 'px' });
+      expect(parseGap('32px', theme)).toEqual({ rowGap: { value: 32, unit: 'px' }, columnGap: { value: 32, unit: 'px' } });
     });
 
     it('can parse a string with a float', () => {
-      expect(parseGap('20.5px', theme)).toEqual({ value: 20.5, unit: 'px' });
+      expect(parseGap('20.5px', theme)).toEqual({ rowGap: { value: 20.5, unit: 'px' }, columnGap: { value: 20.5, unit: 'px' } });
     });
 
     it('can parse a string with em', () => {
-      expect(parseGap('5em', theme)).toEqual({ value: 5, unit: 'em' });
+      expect(parseGap('5em', theme)).toEqual({ rowGap: { value: 5, unit: 'em' }, columnGap: { value: 5, unit: 'em' } });
     });
 
     it('can parse a string with percentage', () => {
-      expect(parseGap('100%', theme)).toEqual({ value: 100, unit: '%' });
+      expect(parseGap('100%', theme)).toEqual({ rowGap: { value: 100, unit: '%' }, columnGap: { value: 100, unit: '%' } });
     });
 
     it('can parse a string with no numerical part', () => {
-      expect(parseGap('px', theme)).toEqual({ value: 0, unit: 'px' });
+      expect(parseGap('px', theme)).toEqual({ rowGap: { value: 0, unit: 'px' }, columnGap: { value: 0, unit: 'px' } });
     });
 
     it('defaults to px with given a string with no units', () => {
-      expect(parseGap('16', theme)).toEqual({ value: 16, unit: 'px' });
+      expect(parseGap('16', theme)).toEqual({ rowGap: { value: 16, unit: 'px' }, columnGap: { value: 16, unit: 'px' } });
     });
 
     it('parses the value from the theme when given a spacing key', () => {
-      expect(parseGap('m', theme)).toEqual({ value: 16, unit: 'em' });
+      expect(parseGap('m', theme)).toEqual({ rowGap: { value: 16, unit: 'em' }, columnGap: { value: 16, unit: 'em' } });
+    });
+
+    it('can parse a string with both horizontal and vertical gap', () => {
+      expect(parseGap('30px 10px', theme)).toEqual({ rowGap: { value: 30, unit: 'px' }, columnGap: { value: 10, unit: 'px' } });
+    });
+
+    it('can parse a string with horizontal and vertical gap with different units', () => {
+      expect(parseGap('50px 15%', theme)).toEqual({ rowGap: { value: 50, unit: 'px' }, columnGap: { value: 15, unit: '%' } });
+    });
+    it('defaults to px with a string with horizontal and vertical gap with no units', () => {
+      expect(parseGap('50 30', theme)).toEqual({ rowGap: { value: 50, unit: 'px' }, columnGap: { value: 30, unit: 'px' } });
+    });
+
+    it('can parse a string with horizontal and vertical gap with one of them getting value from the theme when given a spacing key', () => {
+      expect(parseGap('50px m', theme)).toEqual({ rowGap: { value: 50, unit: 'px' }, columnGap: { value: 16, unit: 'em' } });
     });
   });
 

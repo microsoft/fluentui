@@ -124,6 +124,11 @@ export interface ICardFrameContent {
 
 export interface ICardProps {
   /**
+   * Optional Card Id props
+   */
+  cardId?: string;
+
+  /**
    * Card frame content, that contains the card title and array of card frame drop down options
    */
   cardFrameContent: ICardFrameContent;
