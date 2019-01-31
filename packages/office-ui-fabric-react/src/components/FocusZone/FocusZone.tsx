@@ -51,10 +51,20 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   private _root = React.createRef<HTMLElement>();
   private _id: string;
+
   /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;
 
+  /**
+   * The index path to the last focused child element.
+   */
   private _lastIndexPath: number[] | undefined;
+
+  /**
+   * Flag to define when we've intentionally parked focus on the root element to temporarily
+   * hold focus until items appear within the zone.
+   */
+  private _isParked: boolean;
 
   /** The child element with tabindex=0. */
   private _defaultFocusElement: HTMLElement | null;
@@ -84,14 +94,14 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public componentDidMount(): void {
-    const { current } = this._root;
+    const { current: root } = this._root;
 
     _allInstances[this._id] = this;
 
-    if (current) {
-      const windowElement = current.ownerDocument!.defaultView;
+    if (root) {
+      const windowElement = root.ownerDocument!.defaultView;
 
-      let parentElement = getParent(current, ALLOW_VIRTUAL_ELEMENTS);
+      let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== document.body && parentElement.nodeType === 1) {
         if (isElementFocusZone(parentElement)) {
@@ -103,6 +113,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (!this._isInnerZone) {
         this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        this._events.on(root, 'blur', this._onBlur, true);
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -295,7 +306,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   private _setParkedFocus(isParked: boolean): void {
     const { current: root } = this._root;
-    if (root) {
+    if (root && this._isParked !== isParked) {
+      this._isParked = isParked;
+
       if (isParked) {
         if (!this.props.allowFocusRoot) {
           this._parkedTabIndex = root.getAttribute('tabindex');
@@ -306,12 +319,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         if (!this.props.allowFocusRoot) {
           if (this._parkedTabIndex !== null) {
             root.setAttribute('tabindex', this._parkedTabIndex);
+            this._parkedTabIndex = null;
           } else {
             root.removeAttribute('tabindex');
           }
         }
       }
     }
+  }
+
+  private _onBlur() {
+    this._setParkedFocus(false);
   }
 
   /**
