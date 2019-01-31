@@ -10,7 +10,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
-  const { theme, className, isHeader, selected, anySelected, canSelect, compact, isVisible } = props;
+  const { theme, className, isHeader, selected, anySelected, compact, isVisible } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;
 
@@ -22,7 +22,6 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
     root: [classNames.root, className],
 
     check: [
-      !canSelect && [classNames.isDisabled, { visibility: 'hidden' }],
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
       theme.fonts.small,

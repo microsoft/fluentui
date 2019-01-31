@@ -16,7 +16,6 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
-import { getStyles as getDetailsRowCheckStyles } from './DetailsRowCheck.styles';
 import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
@@ -215,15 +214,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
     const classNames = this._classNames;
 
-    const rowCheckClassNames = getRowCheckClassNames(getDetailsRowCheckStyles, {
-      theme: theme!,
-      canSelect: true,
-      selected: false,
-      anySelected: false,
-      className: classNames.check,
-      isHeader: true
-    });
-
     const isRTL = getRTL();
     return (
       <FocusZone
@@ -253,28 +243,25 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                     id: `${this._id}-checkTooltip`,
                     setAriaDescribedBy: false,
                     content: ariaLabelForSelectAllCheckbox,
-                    children: !isCheckboxHidden ? (
+                    children: (
                       <DetailsRowCheck
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
                         aria-describedby={
-                          ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? `${this._id}-checkTooltip` : undefined
+                          !isCheckboxHidden
+                            ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
+                              ? `${this._id}-checkTooltip`
+                              : undefined
+                            : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
+                            ? `${this._id}-checkTooltip`
+                            : undefined
                         }
-                        data-is-focusable={true}
+                        data-is-focusable={!isCheckboxHidden ? true : undefined}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
-                        canSelect={true}
+                        canSelect={!isCheckboxHidden ? true : false}
                         className={classNames.check}
-                      />
-                    ) : (
-                      <div
-                        id={`${this._id}-selection`}
-                        className={css(rowCheckClassNames.root, rowCheckClassNames.check)}
-                        aria-label={ariaLabelForSelectionColumn}
-                        aria-describedby={
-                          ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip ? `${this._id}-checkTooltip` : undefined
-                        }
                       />
                     )
                   },
@@ -286,11 +273,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                   <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
                     {ariaLabelForSelectAllCheckbox}
                   </label>
+                ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                    {ariaLabelForSelectionColumn}
+                  </label>
                 ) : null
-              ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
-                <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
-                  {ariaLabelForSelectionColumn}
-                </label>
               ) : null
             ]
           : null}
