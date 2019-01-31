@@ -58,7 +58,7 @@ export const getThumbnailItemStyles = (): IThumbnailItemStyles => {
           marginLeft: '52px',
           maxHeight: '52px',
           overflow: 'hidden',
-          width: '100%',
+          width: 'calc(100% - 52px)',
           selectors: {
             ':focus': {
               border: 'solid black 0.5px'

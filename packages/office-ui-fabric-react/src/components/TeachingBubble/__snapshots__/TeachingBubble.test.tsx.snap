@@ -68,6 +68,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           "overflowY": "hidden",
         }
       }
+      tabIndex={-1}
     >
       <div>
         <div

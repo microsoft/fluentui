@@ -1,5 +1,5 @@
 import { IRefObject } from '../../Utilities';
-import { IComponent, IComponentStyles, IHTMLButtonSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { ITextSlot } from '../../Text';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 
@@ -16,10 +16,10 @@ export type ICollapsibleSectionTitleComponent = IComponent<
 export type ICollapsibleSectionTitleTokenReturnType = ReturnType<Extract<ICollapsibleSectionTitleComponent['tokens'], Function>>;
 export type ICollapsibleSectionTitleStylesReturnType = ReturnType<Extract<ICollapsibleSectionTitleComponent['styles'], Function>>;
 
-export type ICollapsibleSectionTitleSlot = ISlotProp<ICollapsibleSectionTitleProps, 'text'>;
+export type ICollapsibleSectionTitleSlot = ISlotProp<ICollapsibleSectionTitleProps, string>;
 
 export interface ICollapsibleSectionTitleSlots {
-  root?: IHTMLButtonSlot;
+  root?: IHTMLElementSlot<'button'>;
   chevron?: IIconSlot;
   text?: ITextSlot;
 }

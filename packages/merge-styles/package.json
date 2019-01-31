@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/merge-styles",
-  "version": "6.15.1",
+  "version": "6.15.2",
   "description": "Office UI Fabric style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

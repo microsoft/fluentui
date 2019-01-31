@@ -13,7 +13,7 @@
     "@microsoft/api-extractor": "^6.0.4",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=6.15.1 <7.0.0",
+    "@uifabric/merge-styles": ">=6.15.2 <7.0.0",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",
@@ -68,7 +68,7 @@
   "bundlesize": [
     {
       "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
-      "maxSize": "49.5 kB"
+      "maxSize": "49.6 kB"
     }
   ]
 }

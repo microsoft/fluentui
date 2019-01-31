@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { isElementVisible, isElementTabbable, focusAsync } from './focus';
+import { isElementVisible, isElementTabbable, focusAsync, getElementIndexPath, getFocusableByIndexPath } from './focus';
 
 let _hiddenElement: HTMLElement | undefined;
 let _visibleElement: HTMLElement | undefined;
@@ -166,5 +166,90 @@ describe('focusAsync', () => {
     focusAsync(fakeComponent);
     jest.runAllTimers();
     expect(calledFocus).toEqual(true);
+  });
+});
+
+describe('getFocusableByIndexPath', () => {
+  it('can recover a path', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+    <div>
+      <div></div>
+      <div></div>
+      <div>
+        <div></div>
+        <button id='child' data-is-visible='true' />
+      </div>
+    </div>
+  `;
+
+    const child = parent.querySelector('#child') as HTMLElement;
+
+    expect(getFocusableByIndexPath(parent, [0, 2, 1])).toEqual(child);
+  });
+
+  it('ignores hidden elements', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+    <div>
+      <div></div>
+      <div></div>
+      <div>
+        <div></div>
+        <button id='child' data-is-visible='false' />
+      </div>
+    </div>
+  `;
+
+    const child = parent.querySelector('#child') as HTMLElement;
+
+    expect(getFocusableByIndexPath(parent, [0, 2, 1])).toEqual(null);
+  });
+
+  it('can fallback to a previous element', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+    <div>
+      <button id='child' data-is-visible='true'>
+        <div>
+          <div/>
+        </div>
+      </button>
+    </div>
+  `;
+
+    const child = parent.querySelector('#child') as HTMLElement;
+
+    expect(getFocusableByIndexPath(parent, [0, 0, 0, 0, 0, 0])).toEqual(child);
+  });
+});
+
+describe('getElementIndexPath', () => {
+  it('can get a path', () => {
+    const parent = document.createElement('div');
+
+    parent.innerHTML = `
+      <div>
+        <div></div>
+        <div></div>
+        <div>
+          <div></div>
+          <div id='child'></div>
+        </div>
+      </div>
+    `;
+
+    const child = parent.querySelector('#child') as HTMLElement;
+
+    expect(getElementIndexPath(parent, child)).toEqual([0, 2, 1]);
+  });
+
+  it('can handle the same element', () => {
+    const parent = document.createElement('div');
+
+    expect(getElementIndexPath(parent, parent)).toEqual([]);
   });
 });

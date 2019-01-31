@@ -2,6 +2,168 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.54.1",
+      "tag": "@uifabric/experiments_v6.54.1",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove Slots/Tokens Foundation implementation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "15fdd1982b01e3e5e9a4d7b9f10d7f1d40a45372"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.6.0 <1.0.0` to `>=0.7.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.1 <7.0.0` to `>=6.29.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.1 <7.0.0` to `>=6.132.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.4 <7.0.0` to `>=6.11.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.54.0",
+      "tag": "@uifabric/experiments_v6.54.0",
+      "date": "Thu, 31 Jan 2019 13:36:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "73c0e178e3a920d46987ca781cedf7abcbd2c729"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "b24aa4dfbf9c6c739a9c5e34b15220485a58b470"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.0 <7.0.0` to `>=6.131.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.53.2",
+      "tag": "@uifabric/experiments_v6.53.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change slot render function signature for increased flexibility.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "c04c493bda35cea3f41469ff49a45ad7b9b55a95"
+          },
+          {
+            "comment": "Stack: Fixing IE11 wrapping bug reproed in 'Horizontal Stack - Wrapping - Nested' example.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "9cf3518cc0f49352746dbe0b4317e5d6a6b95d37"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.1 <7.0.0` to `>=6.15.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.53.1",
+      "tag": "@uifabric/experiments_v6.53.1",
+      "date": "Tue, 29 Jan 2019 13:35:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Removing 'whiteSpace: noWrap' from children styles and improving API comments.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "227994161c74662209bc0d2e3c0875ce20856246"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.130.0 <7.0.0` to `>=6.131.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.53.0",
+      "tag": "@uifabric/experiments_v6.53.0",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Updating API based on feedback from review.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "c4cf7fd3ccf06e7c8eeb503f3bd75a83b2ee3a62"
+          },
+          {
+            "comment": "Stack: Removing 'top' and 'bottom' from accepted values for 'verticalAlign' prop and updating examples and tests using them.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "34f668a2cb9ed371025d699f34364a9dc91a8a8e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.3 <1.0.0` to `>=0.1.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.3 <1.0.0` to `>=0.13.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.3 <7.0.0` to `>=6.11.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.52.0",
+      "tag": "@uifabric/experiments_v6.52.0",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor fixes to Toggle and CollapsibleSection.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "153db53d127c2bc99719018fbc4ef43e87ed8c4d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Adding 'reversed' prop, updating styles, and adding examples, snapshot tests and vr-tests.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "558a1fa1e3d7d1b2582e70e9394491c37ad38064"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.2 <1.0.0` to `>=0.13.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.0 <7.0.0` to `>=6.28.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.3 <7.0.0` to `>=6.129.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.51.2",
       "tag": "@uifabric/experiments_v6.51.2",
       "date": "Wed, 23 Jan 2019 22:53:12 GMT",

@@ -20,7 +20,7 @@ export class CodepenComponent extends React.Component<ICodepenProps> {
 
     // boilerplate for codepen API
     const htmlContent =
-      '<script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.min.js"></script>\n<div id=\'content\'></div>';
+      '<script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.js"></script>\n<div id=\'content\'></div>';
 
     const headContent =
       '<script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>\n<script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>';

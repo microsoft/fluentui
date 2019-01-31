@@ -7,6 +7,9 @@ import { ISelection, SelectionMode } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
+import { IGroupHeaderProps } from './GroupHeader.types';
+import { IGroupShowAllProps } from './GroupShowAll.types';
+import { IGroupFooterProps } from './GroupFooter.types';
 
 export enum CollapseAllVisibility {
   hidden = 0,
@@ -193,28 +196,28 @@ export interface IGroupRenderProps {
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
 
   /** Information to pass in to the group header. */
-  headerProps?: IGroupDividerProps;
+  headerProps?: IGroupHeaderProps;
 
   /** Information to pass in to the group Show all footer. */
-  showAllProps?: IGroupDividerProps;
+  showAllProps?: IGroupShowAllProps;
 
   /** Information to pass in to the group footer. */
-  footerProps?: IGroupDividerProps;
+  footerProps?: IGroupFooterProps;
 
   /**
    * Override which allows the caller to provide a custom header.
    */
-  onRenderHeader?: IRenderFunction<IGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
 
   /**
    * Override which allows the caller to provide a custom Show All link.
    */
-  onRenderShowAll?: IRenderFunction<IGroupDividerProps>;
+  onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
 
   /**
    * Override which allows the caller to provide a custom footer.
    */
-  onRenderFooter?: IRenderFunction<IGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IGroupFooterProps>;
 
   /**
    * Flag to indicate whether to ignore the collapsing icon on header.
@@ -289,14 +292,20 @@ export interface IGroupDividerProps {
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
 
-  /** Override which allows the caller to provider a custom title. */
-  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
+  /** Override which allows the caller to provider a custom renderer for the GroupHeader title. */
+  onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
 
   /** Props for expand/collapse button */
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
   /** Stores parent group's children. */
   groups?: IGroup[];
+
+  /** Custom className */
+  className?: string;
+
+  /** Theme provided by the Higher Order Component */
+  theme?: ITheme;
 }
 
 export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &

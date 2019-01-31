@@ -56,6 +56,11 @@ export interface IThumbnailItemProps {
 
 export interface IThumbnailListProps {
   /**
+   * Thumbnail List optional ID Props
+   */
+  id?: string;
+
+  /**
    * List of thumbnails
    */
 
