@@ -15,7 +15,6 @@ import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
-import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
@@ -30,8 +29,6 @@ const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.butt
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 
 const NO_COLUMNS: IColumn[] = [];
-
-const getRowCheckClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
 export interface IDetailsHeader {
   focus: () => boolean;
