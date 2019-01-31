@@ -40,15 +40,12 @@ describe('MessageBar', () => {
         expect(dismissElement.exists()).toBe(false);
       });
 
-      it('mixes in native props to the component root', () => {
+      it('mixes in native props to the inner text element', () => {
         const wrapper = mount(
           <MessageBar aria-live={'polite'} isMultiline={false}>
             Message
           </MessageBar>
         );
-
-        const componentRoot = wrapper.find('.ms-MessageBar-singleline');
-        expect(componentRoot.prop('aria-live')).toEqual('polite');
 
         const innerText = wrapper.find('.ms-MessageBar-innerText');
         expect(innerText.prop('aria-live')).toEqual('polite');
@@ -68,15 +65,12 @@ describe('MessageBar', () => {
         expect(dismissElement.exists()).toBe(false);
       });
 
-      it('mixes in native props to the component root', () => {
+      it('mixes in native props to the inner text element', () => {
         const wrapper = mount(
           <MessageBar aria-live={'polite'} isMultiline={true}>
             Message
           </MessageBar>
         );
-
-        const componentRoot = wrapper.find('.ms-MessageBar-multiline');
-        expect(componentRoot.prop('aria-live')).toEqual('polite');
 
         const innerText = wrapper.find('.ms-MessageBar-innerText');
         expect(innerText.prop('aria-live')).toEqual('polite');
