@@ -11,14 +11,13 @@ exports[`Link renders Link correctly 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
         font-weight: inherit;
-        outline: none;
         text-decoration: none;
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid #ffffff;
+        outline: 1px solid WindowText;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+      @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
@@ -59,7 +58,6 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
@@ -71,9 +69,9 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid #ffffff;
+        outline: 1px solid WindowText;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+      @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -109,14 +107,13 @@ exports[`Link renders Link with a custom class name 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
         font-weight: inherit;
-        outline: none;
         text-decoration: none;
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid #ffffff;
+        outline: 1px solid WindowText;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+      @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
@@ -156,7 +153,6 @@ exports[`Link renders Link with no href as a button 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
@@ -168,9 +164,9 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid #ffffff;
+        outline: 1px solid WindowText;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+      @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -209,14 +205,13 @@ exports[`Link renders disabled Link correctly 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
         font-weight: inherit;
-        outline: none;
         text-decoration: none;
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid #ffffff;
+        outline: 1px solid WindowText;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+      @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
       &:link, &:visited {
@@ -252,7 +247,6 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
@@ -264,9 +258,9 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid #ffffff;
+        outline: 1px solid WindowText;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+      @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -309,7 +303,6 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
@@ -321,9 +314,9 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid #ffffff;
+        outline: 1px solid WindowText;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+      @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {

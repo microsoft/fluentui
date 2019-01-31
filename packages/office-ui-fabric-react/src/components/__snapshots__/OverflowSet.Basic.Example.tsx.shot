@@ -44,7 +44,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            outline: none;
             overflow: inherit;
             padding-bottom: 0px;
             padding-left: 0px;
@@ -56,9 +55,9 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #666666 inset;
-            outline: 1px solid #ffffff;
+            outline: 1px solid WindowText;
           }
-          @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+          @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
@@ -110,7 +109,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            outline: none;
             overflow: inherit;
             padding-bottom: 0px;
             padding-left: 0px;
@@ -122,9 +120,9 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #666666 inset;
-            outline: 1px solid #ffffff;
+            outline: 1px solid WindowText;
           }
-          @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+          @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
@@ -176,7 +174,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
-            outline: none;
             overflow: inherit;
             padding-bottom: 0px;
             padding-left: 0px;
@@ -188,9 +185,9 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #666666 inset;
-            outline: 1px solid #ffffff;
+            outline: 1px solid WindowText;
           }
-          @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+          @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {

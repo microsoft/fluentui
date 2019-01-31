@@ -134,14 +134,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
-                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #666666 inset;
-                    outline: 1px solid #ffffff;
+                    outline: 1px solid WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                  @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
@@ -210,14 +209,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
-                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #666666 inset;
-                    outline: 1px solid #ffffff;
+                    outline: 1px solid WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                  @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
@@ -286,14 +284,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
-                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #666666 inset;
-                    outline: 1px solid #ffffff;
+                    outline: 1px solid WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                  @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
