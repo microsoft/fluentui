@@ -1,15 +1,15 @@
 import { IOverlayStyleProps, IOverlayStyles } from 'office-ui-fabric-react/lib/Overlay';
-import { BaseColors } from '../AzureColors';
+import { CommonSemanticColors } from '../AzureColors';
 
 export const OverlayStyles = (props: IOverlayStyleProps): Partial<IOverlayStyles> => {
   const { isDark } = props;
   return {
     root: [
       {
-        backgroundColor: BaseColors.OVERLAY_LIGHT
+        backgroundColor: CommonSemanticColors.overlay.light
       },
       isDark && {
-        backgroundColor: BaseColors.OVERLAY_DARK
+        backgroundColor: CommonSemanticColors.overlay.dark
       }
     ]
   };

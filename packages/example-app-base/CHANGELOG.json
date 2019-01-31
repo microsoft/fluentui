@@ -2,6 +2,28 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.11.5",
+      "tag": "@uifabric/example-app-base_v6.11.5",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changes to support Slots Foundation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "15fdd1982b01e3e5e9a4d7b9f10d7f1d40a45372"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.6.0 <1.0.0` to `>=0.7.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.1 <7.0.0` to `>=6.132.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.4",
       "tag": "@uifabric/example-app-base_v6.11.4",
       "date": "Mon, 28 Jan 2019 13:35:27 GMT",

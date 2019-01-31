@@ -12,7 +12,7 @@
   "bundlesize": [
     {
       "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
-      "maxSize": "49.5 kB"
+      "maxSize": "49.6 kB"
     }
   ],
   "devDependencies": {

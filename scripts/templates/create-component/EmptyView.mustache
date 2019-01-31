@@ -1,12 +1,20 @@
-import * as React from 'react';
+/** @jsx withSlots */
+import { withSlots, getSlots } from '../../Foundation';
+import { Text } from '../../Text';
 
-import { I{{componentName}}Component } from './{{componentName}}.types';
+import { I{{componentName}}Component, I{{componentName}}Props, I{{componentName}}Slots } from './{{componentName}}.types';
 
 export const {{componentName}}View: I{{componentName}}Component['view'] = props => {
-  return(
-    <div className={props.classNames.root}>
-      <div>Text: {props.text}</div>
-      <div>Status: {props.status}</div>
-    </div>
+
+  const Slots = getSlots<I{{componentName}}Props, I{{componentName}}Slots>(props, {
+    root: 'div',
+    text: Text
+  });
+
+  return (
+    <Slots.root>
+      <Slots.text />
+      <span>Status: {props.status}</span>
+    </Slots.root>
   );
 };

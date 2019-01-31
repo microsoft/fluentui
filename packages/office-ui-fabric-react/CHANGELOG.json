@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.132.0",
+      "tag": "office-ui-fabric-react_v6.132.0",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: focus can now be recovered if focus was resting within the zone but the element was removed.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "468af6a86a680e882009c7bc33e0956877d3fa26"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.1 <7.0.0` to `>=6.29.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.131.1",
       "tag": "office-ui-fabric-react_v6.131.1",
       "date": "Thu, 31 Jan 2019 13:36:13 GMT",

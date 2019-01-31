@@ -1247,6 +1247,8 @@ class FocusZone extends BaseComponent<IFocusZoneProps, {}>, implements IFocusZon
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
+  componentDidUpdate(): void;
+  // (undocumented)
   componentWillUnmount(): void;
   // (undocumented)
   static defaultProps: IFocusZoneProps;
@@ -1353,6 +1355,9 @@ export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
 
 // @public
+export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
+
+// @public
 export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
 
 // @public
@@ -1360,6 +1365,9 @@ export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTML
 
 // @public
 export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+
+// @public
+export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
 
 // @public
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
