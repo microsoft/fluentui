@@ -386,7 +386,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
       element.tagName === 'TEXTAREA' ||
       isFocusableAttribute === 'true' ||
       isTabIndexSet ||
-      (element.getAttribute && element.getAttribute('role') === 'button'));
+      (element.getAttribute && element.getAttribute('role') === 'button' && isTabIndexSet));
 
   return checkTabIndex ? tabIndex !== -1 && result : result;
 }
