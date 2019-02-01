@@ -32,11 +32,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentBottom = React.createRef<HTMLDivElement>();
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
-  /* This stores the value of nonStickyContent scrollWidth when the component is non-sticky.
+  /* This stores the value of nonStickyContent width when the component is non-sticky.
    * If ScrollablePane content-container has a horizontal overflow only because of this component when it is in non-sticky state,
    * when the component becomes sticky, the horizontal scrollbar won't be available.
    * Note: In this case, sticky component will still have horizontal overflow but there would be no scrollbar */
-  private _nonStickyPlaceHolderScrollWidth: number = 0;
+  private _nonStickyPlaceHolderWidth: number = 0;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -216,8 +216,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (isStickyTop || isStickyBottom) {
       return {
         height: height,
-        width: this._nonStickyPlaceHolderScrollWidth
-        /* placeHolder width should be equal to nonStickyContent.scrollWidth
+        width: this._nonStickyPlaceHolderWidth
+        /* placeHolder width should be equal to nonStickyContent.Width
          * when the component is non-sticky, i.e.,
          * inside ms-ScrollablePane--contentContainer */
       };
@@ -244,7 +244,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       }
       // calculating nonStickyPlaceHolderWidth when currState is non-sticky & next state is sticky
       if (this.nonStickyContent && !(this.state.isStickyTop || this.state.isStickyBottom) && (isStickyBottom || isStickyTop)) {
-        this._nonStickyPlaceHolderScrollWidth = this.nonStickyContent.scrollWidth;
+        const windowComputedWidth = window.getComputedStyle(this.nonStickyContent).width;
+        this._nonStickyPlaceHolderWidth = windowComputedWidth && windowComputedWidth.length > 0 ? parseFloat(windowComputedWidth) : 0;
       }
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,

@@ -21,62 +21,17 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
-const stickyListTitleClass = mergeStyles({
-  paddingTop: '100px'
-});
 
-const _columns: IColumn[] = [
-  {
-    key: 'column1',
-    name: 'Test 1',
-    fieldName: 'test1',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
+const classNames = mergeStyleSets({
+  stickyListTitle: {
+    paddingTop: '100px'
   },
-  {
-    key: 'column2',
-    name: 'Test 2',
-    fieldName: 'test2',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
-  },
-  {
-    key: 'column3',
-    name: 'Test 3',
-    fieldName: 'test3',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
-  },
-  {
-    key: 'column4',
-    name: 'Test 4',
-    fieldName: 'test4',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
-  },
-  {
-    key: 'column5',
-    name: 'Test 5',
-    fieldName: 'test5',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
-  },
-  {
-    key: 'column6',
-    name: 'Test 6',
-    fieldName: 'test6',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
+  detailsListContent: {
+    padding: '0 32px'
   }
-];
+});
 
 interface IItem {
   key: number;
@@ -91,6 +46,7 @@ interface IItem {
 class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
   private _selection: Selection;
   private readonly _items: IItem[];
+  private _columns: IColumn[];
 
   constructor(props: {}) {
     super(props);
@@ -109,6 +65,18 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
       });
     }
 
+    this._columns = [];
+    for (let i = 1; i < 7; i++) {
+      this._columns.push({
+        key: 'column' + i,
+        name: 'Test ' + i,
+        fieldName: 'test' + i,
+        minWidth: 100,
+        maxWidth: 200,
+        isResizable: true
+      });
+    }
+
     this._selection = new Selection();
   }
 
@@ -119,26 +87,27 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
           height: '80vh',
           position: 'relative',
           maxHeight: 'inherit',
-          width: '500px'
+          width: '800px'
         }}
       >
         <Fabric>
           <ScrollablePane
             scrollbarVisibility={ScrollbarVisibility.auto}
-            style={{ maxWidth: '500px', border: '1px solid #edebe9' }}
+            style={{ maxWidth: '800px', border: '1px solid #edebe9' }}
           >
             {/* providing backgroundColor as no parent element for the test has this property defined */}
             <Sticky
               stickyPosition={StickyPositionType.Header}
               stickyBackgroundColor={getTheme().palette.white}
-              stickyClassName={stickyListTitleClass}
+              stickyClassName={classNames.stickyListTitle}
             >
               <h1 style={{ margin: '0px' }}>Item List</h1>
             </Sticky>
             <MarqueeSelection selection={this._selection}>
               <DetailsList
+                className={classNames.detailsListContent}
                 items={this._items}
-                columns={_columns}
+                columns={this._columns}
                 setKey="set"
                 layoutMode={DetailsListLayoutMode.fixedColumns}
                 constrainMode={ConstrainMode.unconstrained}
@@ -160,7 +129,7 @@ function onRenderDetailsHeader(
   defaultRender?: IRenderFunction<IDetailsHeaderProps>
 ): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
+    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
       {defaultRender!({
         ...props,
         onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
@@ -173,10 +142,10 @@ function onRenderDetailsHeader(
 
 function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
+    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
       <div style={{ display: 'inline-block' }}>
         <DetailsRow
-          columns={props.columns}
+          {...props}
           item={{
             key: 'footer',
             test1: 'Total 1',
@@ -187,9 +156,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
             test6: 'Total 6'
           }}
           itemIndex={-1}
-          selection={props.selection}
           selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
-          viewport={props.viewport}
         />
       </div>
     </Sticky>
@@ -213,9 +180,20 @@ storiesOf('ScrollablePane Details List', module)
         )
         .snapshot('scroll down to the bottom', { cropTo: '.testWrapper' })
         .executeScript(
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollWidth"
+        )
+        .snapshot('scroll horizontally till the last column of detailsList when header & footer are sticky', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = 0"
+        )
+        .executeScript(
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0"
         )
         .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollLeft = document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollWidth"
+        )
+        .snapshot('scroll horizontally till the last column of detailsList when only footer is sticky', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
