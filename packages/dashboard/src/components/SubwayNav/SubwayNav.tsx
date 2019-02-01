@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { classNamesFunction, css } from 'office-ui-fabric-react/lib/Utilities';
 import { ISubwayNavProps, ISubwayNavStep, ISubwayNavStyles, SubwayNavStepState } from './SubwayNav.types';
-import { Icon } from 'office-ui-fabric-react';
+import { Icon, Link } from 'office-ui-fabric-react';
 import { getSubwayNavStyles } from './SubwayNav.styles';
 
 export interface IIconProps {
@@ -83,14 +83,15 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
               classNames.subwayNavStepDiv,
               stepToRender.state !== SubwayNavStepState.Current && stepToRender.disabled ? classNames.disableStep : undefined
             )}
-            onClick={() => stepToRender.onClickStep(stepToRender, undefined)}
           >
             <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavStepIcon)} />
-            <span
-              className={css(classNames.stepLabel, stepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}
-            >
-              {stepToRender!.label}
-            </span>
+            <Link onClick={() => stepToRender.onClickStep(stepToRender, undefined)}>
+              <span
+                className={css(classNames.stepLabel, stepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}
+              >
+                {stepToRender!.label}
+              </span>
+            </Link>
           </div>
         );
 
@@ -158,17 +159,18 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
                 classNames.subwayNavStepDiv,
                 subStepToRender.state !== SubwayNavStepState.Current && subStepToRender.disabled ? classNames.disableStep : undefined
               )}
-              onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}
             >
               <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavSubStepIcon)} />
-              <span
-                className={css(
-                  classNames.subStepLabel,
-                  subStepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined
-                )}
-              >
-                {subStepToRender.label}
-              </span>
+              <Link onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}>
+                <span
+                  className={css(
+                    classNames.subStepLabel,
+                    subStepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined
+                  )}
+                >
+                  {subStepToRender.label}
+                </span>
+              </Link>
             </div>
           );
         }

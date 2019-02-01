@@ -73,13 +73,11 @@ export class SubwayNavBasicExample extends React.Component<any, ISubwayNavBasicE
     newSteps.map(stepObj => {
       if (stepObj.key === this.state.currStep.key) {
         stepObj.state = SubwayNavStepState.Completed;
-      }      
-      else if (stepObj.key === step.key) {
+      } else if (stepObj.key === step.key) {
         stepObj.state = SubwayNavStepState.Current;
         currStep = stepObj;
         foundClickedStep = true;
-      }
-      else if (!foundClickedStep && stepObj.state === SubwayNavStepState.NotStarted) {
+      } else if (!foundClickedStep && stepObj.state === SubwayNavStepState.NotStarted) {
         stepObj.state = SubwayNavStepState.Skipped;
       }
     });

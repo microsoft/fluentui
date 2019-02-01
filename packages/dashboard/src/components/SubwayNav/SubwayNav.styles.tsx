@@ -15,10 +15,9 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
     subwayNavContainer: [
       {
         width: '221px',
-        height: '470px',
+        height: '601px',
         overflow: 'auto',
-        background: 'white',
-        border: '1px solid blue'
+        background: 'white'
       },
       className
     ],
@@ -41,12 +40,7 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
       wordWrap: 'break-word'
     },
     subwayNavStepDiv: {
-      width: '100%',
-      selectors: {
-        ':hover': {
-          cursor: 'pointer'
-        }
-      }
+      width: '100%'
     },
     subwayNavStepConnector: {
       width: '0px',
@@ -91,14 +85,16 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
       width: '180px',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis'
+      textOverflow: 'ellipsis',
+      color: subwayNavBaseColor
     },
     subStepLabel: {
       marginLeft: '16px',
       width: '160px',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis'
+      textOverflow: 'ellipsis',
+      color: subwayNavBaseColor
     },
     boldStep: {
       fontWeight: 'bold'

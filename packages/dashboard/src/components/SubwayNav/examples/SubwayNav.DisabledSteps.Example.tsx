@@ -81,12 +81,48 @@ export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
       onClickStep: this._handleClickStep
     };
 
+    const data6: ISubwayNavStep = {
+      key: generateRandomId(),
+      label: 'Step 6',
+      state: SubwayNavStepState.NotStarted,
+      disabled: true,
+      onClickStep: this._handleClickStep
+    };
+
+    const data7: ISubwayNavStep = {
+      key: generateRandomId(),
+      label: 'Step 7',
+      state: SubwayNavStepState.NotStarted,
+      disabled: true,
+      onClickStep: this._handleClickStep
+    };
+
+    const data8: ISubwayNavStep = {
+      key: generateRandomId(),
+      label: 'Step 8',
+      state: SubwayNavStepState.NotStarted,
+      disabled: true,
+      onClickStep: this._handleClickStep
+    };
+
+    const data9: ISubwayNavStep = {
+      key: generateRandomId(),
+      label: 'Step 9',
+      state: SubwayNavStepState.NotStarted,
+      disabled: true,
+      onClickStep: this._handleClickStep
+    };
+
     steps.push(data0);
     steps.push(data1);
     steps.push(data2);
     steps.push(data3);
     steps.push(data4);
     steps.push(data5);
+    steps.push(data6);
+    steps.push(data7);
+    steps.push(data8);
+    steps.push(data9);
 
     return (
       <div>
