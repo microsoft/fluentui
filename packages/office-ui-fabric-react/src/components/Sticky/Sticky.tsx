@@ -37,6 +37,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
    * when the component becomes sticky, the horizontal scrollbar won't be available.
    * Note: In this case, sticky component will still have horizontal overflow but there would be no scrollbar */
   private _nonStickyPlaceHolderScrollWidth: number = 0;
+  private _renderedPlaceHolderWidth: number = 0;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -123,13 +124,14 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!this.context.scrollablePane) {
       return true;
     }
-
+    console.log(`shouldUpfet:${this.props.stickyClassName}, ${this._renderedPlaceHolderWidth}, ${this._nonStickyPlaceHolderScrollWidth}`);
     const { isStickyTop, isStickyBottom } = this.state;
 
     return (isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
+      this._renderedPlaceHolderWidth !== this._nonStickyPlaceHolderScrollWidth ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentTop) ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentBottom) ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
@@ -142,7 +144,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!this.context.scrollablePane) {
       return <div>{this.props.children}</div>;
     }
-
+    this._renderedPlaceHolderWidth = this._nonStickyPlaceHolderScrollWidth;
     return (
       <div ref={this._root}>
         {this.canStickyTop && (
@@ -213,6 +215,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
     const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
+    console.log(`nonSticky:${this._nonStickyPlaceHolderScrollWidth}`);
     if (isStickyTop || isStickyBottom) {
       return {
         height: height,
@@ -245,21 +248,20 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       }
 
       if (this.nonStickyContent) {
-        const isCurrentStateSticky = this.state.isStickyBottom || this.state.isStickyTop;
-        const isNextStateSticky = isStickyBottom || isStickyTop;
         const nonStickyContentScrollWidth = this.nonStickyContent.scrollWidth;
-        if (this._nonStickyPlaceHolderScrollWidth === 0) {
-          // initially set it to nonStickyContentScrollWidth to get rid of 0
-          this._nonStickyPlaceHolderScrollWidth = nonStickyContentScrollWidth;
-        } else if (!isCurrentStateSticky && isNextStateSticky) {
-          // calculating nonStickyPlaceHolder scrollWidth when current state is non-sticky & next state is sticky
-          this._nonStickyPlaceHolderScrollWidth = Math.min(nonStickyContentScrollWidth, this._nonStickyPlaceHolderScrollWidth);
-        } else if (isCurrentStateSticky && !isNextStateSticky) {
-          // calculating nonStickyPlaceHolder scrollWidth when current state is sticky & next state is non-sticky
-          this._nonStickyPlaceHolderScrollWidth = Math.min(nonStickyContentScrollWidth, this._nonStickyPlaceHolderScrollWidth);
-        }
+        // 1. initially set it to nonStickyContentScrollWidth to 0
+        // 2. calculating nonStickyPlaceHolder scrollWidth when current state is non-sticky & next state is sticky
+        // 3. calculating nonStickyPlaceHolder scrollWidth when current state is sticky & next state is non-sticky
+        // 4. For stickyPositionType.Footer achieving next state as non-sticky could never be possible so calculating in sticky state
+        // 5. To sum up, _nonStickyPlaceHolderScrollWidth =
+        //      Min(nonStickyContent.scrollWidth in non-sticky state nonStickyContent.scrollWidth in sticky state)
+        this._nonStickyPlaceHolderScrollWidth = this._nonStickyPlaceHolderScrollWidth
+          ? Math.min(nonStickyContentScrollWidth, this._nonStickyPlaceHolderScrollWidth)
+          : nonStickyContentScrollWidth;
       }
-
+      console.log(
+        `classNAme:${this.props.stickyClassName}, ${this._nonStickyPlaceHolderScrollWidth}, ${this.nonStickyContent.scrollWidth}`
+      );
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom
