@@ -9,6 +9,11 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 //        Existing issue: https://github.com/Microsoft/TypeScript/issues/241
 
 /**
+ * Helper interface for accessing user props children.
+ */
+export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
+
+/**
  * Helper type defining style sections, one for each component slot.
  */
 export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };
@@ -76,7 +81,7 @@ export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet
  * Enforce props contract on state components, including the view prop and its shape.
  */
 export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
-  renderView: React.StatelessComponent<TViewProps>;
+  renderView: IViewRenderer<TViewProps>;
 };
 
 /**
@@ -84,6 +89,16 @@ export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps 
  * prop that the StateComponent should make use of in its render output (and should be its only render output.)
  */
 export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
+
+/**
+ * Defines a view component.
+ */
+export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => JSX.Element | null;
+
+/**
+ * Handles rendering view component.
+ */
+export type IViewRenderer<TViewProps> = (props?: TViewProps) => JSX.Element | null;
 
 /**
  * Component used by foundation to tie elements together.
@@ -105,7 +120,7 @@ export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSe
   /**
    * React view component.
    */
-  view: React.ComponentType<TViewProps>;
+  view: IViewComponent<TViewProps>;
   /**
    * Optional state component that processes TComponentProps into TViewProps.
    */
@@ -118,4 +133,18 @@ export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSe
    * Tokens prop to pass into component.
    */
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
+  /**
+   * Default prop for which to map primitive values.
+   */
+  factoryOptions?: IFactoryOptions<TComponentProps>;
+}
+
+/**
+ * Factory options for creating component.
+ */
+export interface IFactoryOptions<TProps> {
+  /**
+   * Default prop for which to map primitive values.
+   */
+  defaultProp?: keyof TProps | 'children';
 }
