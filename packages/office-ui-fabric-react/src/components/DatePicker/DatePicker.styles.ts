@@ -11,7 +11,7 @@ const GlobalClassNames = {
 
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
   const { className, theme, disabled, label, isDatePickerShown } = props;
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const DatePickerEvent: IStyle = {
@@ -53,7 +53,10 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
           pointerEvents: 'initial',
           cursor: 'pointer'
         }
-      ]
+      ],
+      disabled && {
+        color: semanticColors.disabledText
+      }
     ]
   };
 };
