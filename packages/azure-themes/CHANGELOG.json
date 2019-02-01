@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "version": "0.1.5",
+      "tag": "@uifabric/azure-themes_v0.1.5",
+      "date": "Fri, 01 Feb 2019 13:37:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "azure-themes: update shimmer colors, add documentCard.styles",
+            "author": "chieftn <rick.kessler@outlook.com>",
+            "commit": "752b47cf91c11f4cd93f450e0e4aa3e18914c57e"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.4",
       "tag": "@uifabric/azure-themes_v0.1.4",
       "date": "Mon, 28 Jan 2019 13:35:27 GMT",

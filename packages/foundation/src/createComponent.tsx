@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { concatStyleSets, IStyleSet, ITheme } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
+import { createFactory } from './slots';
 import { assign } from './utilities';
 
-import { IComponent, ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken } from './IComponent';
-import { IDefaultSlotProps } from './ISlots';
+import { IComponent, ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, IViewRenderer } from './IComponent';
+import { IDefaultSlotProps, ISlotCreator } from './ISlots';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -35,6 +36,9 @@ export function createComponent<
   TViewProps = TComponentProps,
   TStatics = {}
 >(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics {
+  const { factoryOptions = {} } = component;
+  const { defaultProp } = factoryOptions;
+
   const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
       // TODO: createComponent is also affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
@@ -54,7 +58,7 @@ export function createComponent<
             component.fields
           );
 
-          const renderView = (viewProps?: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>) => {
+          const renderView: IViewRenderer<TViewProps> = viewProps => {
             // The approach here is to allow state components to provide only the props they care about, automatically
             //    merging user props and state props together. This ensures all props are passed properly to view,
             //    including children and styles.
@@ -77,7 +81,7 @@ export function createComponent<
               _defaultStyles: styles
             };
 
-            return <component.view {...viewComponentProps} />;
+            return component.view(viewComponentProps);
           };
           return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
         }}
@@ -86,6 +90,13 @@ export function createComponent<
   };
 
   result.displayName = component.displayName;
+
+  // If a shorthand prop is defined, create a factory for the component.
+  // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
+  //       Need to weigh creating default factories on component creation vs. memozing them on use in slots.tsx.
+  if (defaultProp) {
+    (result as ISlotCreator<TComponentProps>).create = createFactory(result, { defaultProp });
+  }
 
   assign(result, component.statics);
 
