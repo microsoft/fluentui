@@ -36,7 +36,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
    * If ScrollablePane content-container has a horizontal overflow only because of this component when it is in non-sticky state,
    * when the component becomes sticky, the horizontal scrollbar won't be available.
    * Note: In this case, sticky component will still have horizontal overflow but there would be no scrollbar */
-  private _nonStickyPlaceHolderScrollWidth: number = -1;
+  private _nonStickyPlaceHolderScrollWidth: number = 0;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -248,8 +248,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         const isCurrentStateSticky = this.state.isStickyBottom || this.state.isStickyTop;
         const isNextStateSticky = isStickyBottom || isStickyTop;
         const nonStickyContentScrollWidth = this.nonStickyContent.scrollWidth;
-        if (this._nonStickyPlaceHolderScrollWidth === -1) {
-          // initially set it to nonStickyContentScrollWidth to get rid of -1
+        if (this._nonStickyPlaceHolderScrollWidth === 0) {
+          // initially set it to nonStickyContentScrollWidth to get rid of 0
           this._nonStickyPlaceHolderScrollWidth = nonStickyContentScrollWidth;
         } else if (!isCurrentStateSticky && isNextStateSticky) {
           // calculating nonStickyPlaceHolder scrollWidth when current state is non-sticky & next state is sticky
