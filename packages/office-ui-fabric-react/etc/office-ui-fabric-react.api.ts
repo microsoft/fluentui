@@ -10477,7 +10477,6 @@ interface ISpinButtonProps {
 interface ISpinButtonState {
   isFocused: boolean;
   keyboardSpinDirection: KeyboardSpinDirection;
-  precision: number;
   value: string;
 }
 
