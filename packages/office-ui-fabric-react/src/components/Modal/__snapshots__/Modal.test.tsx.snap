@@ -66,6 +66,7 @@ exports[`Modal renders Modal correctly 1`] = `
       role="dialog"
       style={
         Object {
+          "outline": "none",
           "overflowY": undefined,
         }
       }
