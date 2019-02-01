@@ -92,6 +92,8 @@ export function createComponent<
   result.displayName = component.displayName;
 
   // If a shorthand prop is defined, create a factory for the component.
+  // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
+  //       Need to weigh creating default factories on component creation vs. memozing them on use in slots.tsx.
   if (defaultProp) {
     (result as ISlotCreator<TComponentProps>).create = createFactory(result, { defaultProp });
   }
