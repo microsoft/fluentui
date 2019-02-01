@@ -32,11 +32,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentBottom = React.createRef<HTMLDivElement>();
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
-  /* This stores the value of nonStickyContent width when the component is non-sticky.
+  /* This stores the minimum value of nonStickyContent scrollWidth when the component is non-sticky v/s. sticky state.
    * If ScrollablePane content-container has a horizontal overflow only because of this component when it is in non-sticky state,
    * when the component becomes sticky, the horizontal scrollbar won't be available.
    * Note: In this case, sticky component will still have horizontal overflow but there would be no scrollbar */
-  private _nonStickyPlaceHolderWidth: number = 0;
+  private _nonStickyPlaceHolderScrollWidth: number = 0;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -216,10 +216,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (isStickyTop || isStickyBottom) {
       return {
         height: height,
-        width: this._nonStickyPlaceHolderWidth
-        /* placeHolder width should be equal to nonStickyContent.Width
-         * when the component is non-sticky, i.e.,
-         * inside ms-ScrollablePane--contentContainer */
+        width: this._nonStickyPlaceHolderScrollWidth
+        /* placeHolder width should be equal to
+         * Min(nonStickyContent.scrollWidth when the component is in non-sticky state,
+         * nonStickyContent.scrollWidth when the component is in sticky state)
+         */
       };
     } else {
       return {};
@@ -242,11 +243,21 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyBottom =
           this.distanceFromTop - container.scrollTop >= this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
-      // calculating nonStickyPlaceHolderWidth when current state is non-sticky & next state is sticky
-      if (this.nonStickyContent && !(this.state.isStickyTop || this.state.isStickyBottom) && (isStickyBottom || isStickyTop)) {
-        const windowComputedWidth = window.getComputedStyle(this.nonStickyContent).width;
-        this._nonStickyPlaceHolderWidth = windowComputedWidth && windowComputedWidth.length > 0 ? parseFloat(windowComputedWidth) : 0;
+
+      if (this.nonStickyContent) {
+        const isCurrentStateSticky = this.state.isStickyBottom || this.state.isStickyTop;
+        const isNextStateSticky = isStickyBottom || isStickyTop;
+        const nonStickyContentScrollWidth = this.nonStickyContent.scrollWidth;
+
+        if (!isCurrentStateSticky && isNextStateSticky) {
+          // calculating nonStickyPlaceHolder scrollWidth when current state is non-sticky & next state is sticky
+          this._nonStickyPlaceHolderScrollWidth = Math.min(nonStickyContentScrollWidth, this._nonStickyPlaceHolderScrollWidth);
+        } else if (isCurrentStateSticky && !isNextStateSticky) {
+          // calculating nonStickyPlaceHolder scrollWidth when current state is sticky & next state is non-sticky
+          this._nonStickyPlaceHolderScrollWidth = Math.min(nonStickyContentScrollWidth, this._nonStickyPlaceHolderScrollWidth);
+        }
       }
+
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom

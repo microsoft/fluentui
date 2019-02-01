@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "If ScrollablePane content-container has a horizontal overflow only when a sticky component is in non-sticky state, when this component becomes sticky, it is no more inside content-container in the DOM, so the horizontal scrollbar won't be available. Note: In this case, sticky component will still have horizontal overflow but there would be no horizontal scrollbar. Keeping a non-sticky placeholder of width equal to scrollWidth of nonStickyContent may lead to horizontal over scroll for content-container, when the component is in sticky state. Thus, non-sticky placeholder width should be kept equal to the numeric value of window.getComputedStyles(nonStickyContent).width computed when component is in non-sticky state.",
+      "comment": "If ScrollablePane content-container has a horizontal overflow only when a sticky component is in non-sticky state, when this component becomes sticky, it is no more inside content-container in the DOM, so the horizontal scrollbar won't be available. Note: In this case, sticky component will still have horizontal overflow but there would be no horizontal scrollbar. Keeping a non-sticky placeHolder width equal to Min(nonStickyContent.scrollWidth when the component is non-sticky state, nonStickyContent.scrollWidth when the component is in sticky state) for best experience.",
       "type": "patch"
     }
   ],
