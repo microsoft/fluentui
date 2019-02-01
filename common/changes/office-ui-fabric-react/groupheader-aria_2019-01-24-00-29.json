@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Exposes props of selection check button in group header",
+      "comment": "GroupHeader: exposes props of selection check button.",
       "type": "minor"
     }
   ],
