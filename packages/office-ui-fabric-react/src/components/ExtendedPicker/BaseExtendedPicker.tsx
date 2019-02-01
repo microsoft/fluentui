@@ -150,7 +150,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected renderFloatingPicker(): JSX.Element {
-    const FloatingPicker = this.props.onRenderFloatingPicker;
+    const FloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>> = this.props.onRenderFloatingPicker;
     return (
       <FloatingPicker
         componentRef={this.floatingPicker}
@@ -164,7 +164,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   }
 
   protected renderSelectedItemsList(): JSX.Element {
-    const SelectedItems = this.props.onRenderSelectedItems;
+    const SelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>> = this.props.onRenderSelectedItems;
     return (
       <SelectedItems
         componentRef={this.selectedItemsList}
