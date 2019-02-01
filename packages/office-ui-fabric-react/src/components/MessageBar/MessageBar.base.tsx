@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
@@ -133,7 +133,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderInnerText(): JSX.Element {
-    const nativeProps = getNativeProps(this.props, divProperties);
+    const nativeProps = getNativeProps(this.props, htmlElementProperties);
 
     return (
       <div className={this._classNames.text} id={this.state.labelId}>
