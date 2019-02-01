@@ -43,9 +43,6 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
           strings={DayPickerStrings}
           placeholder="Select a date..."
           ariaLabel="Select a date"
-          // tslint:disable:jsx-no-lambda
-          onAfterMenuDismiss={() => console.log('onAfterMenuDismiss called')}
-          // tslint:enable:jsx-no-lambda
           disabled={true}
         />
 
