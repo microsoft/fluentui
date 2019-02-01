@@ -162,7 +162,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       showCloseButton,
       calendarProps,
       calloutProps,
-      textFieldProps,
+      textField: textFieldProps,
       underlined,
       allFocusable,
       calendarAs: CalendarType = Calendar,

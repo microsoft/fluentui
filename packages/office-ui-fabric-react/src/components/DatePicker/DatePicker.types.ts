@@ -44,7 +44,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   /**
    * Pass textField props to textField component
    */
-  textFieldProps?: ITextFieldProps;
+  textField?: ITextFieldProps;
 
   /**
    * Custom Calendar to be used for date picking
