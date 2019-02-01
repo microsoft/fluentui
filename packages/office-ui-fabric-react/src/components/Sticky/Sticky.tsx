@@ -242,7 +242,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyBottom =
           this.distanceFromTop - container.scrollTop >= this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
-      // calculating nonStickyPlaceHolderWidth when currState is non-sticky & next state is sticky
+      // calculating nonStickyPlaceHolderWidth when current state is non-sticky & next state is sticky
       if (this.nonStickyContent && !(this.state.isStickyTop || this.state.isStickyBottom) && (isStickyBottom || isStickyTop)) {
         const windowComputedWidth = window.getComputedStyle(this.nonStickyContent).width;
         this._nonStickyPlaceHolderWidth = windowComputedWidth && windowComputedWidth.length > 0 ? parseFloat(windowComputedWidth) : 0;
