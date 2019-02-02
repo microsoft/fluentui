@@ -3,10 +3,9 @@ import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayNav/e
 import { SubwayNav } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav';
 import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 
-export class SubwayNavBasicDifferentStatesExample extends React.Component<any, any> {
+export class SubwayNavBasicDifferentStatesExample extends React.Component<{}, {}> {
+  private steps: ISubwayNavStep[] = [];
   public render(): JSX.Element {
-    let steps: ISubwayNavStep[] = [];
-
     const data0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 0',
@@ -47,16 +46,16 @@ export class SubwayNavBasicDifferentStatesExample extends React.Component<any, a
       onClickStep: this._handleClickStep
     };
 
-    steps.push(data0);
-    steps.push(data1);
-    steps.push(data2);
-    steps.push(data3);
-    steps.push(data4);
-    steps.push(data5);
+    this.steps.push(data0);
+    this.steps.push(data1);
+    this.steps.push(data2);
+    this.steps.push(data3);
+    this.steps.push(data4);
+    this.steps.push(data5);
 
     return (
       <div>
-        <SubwayNav steps={steps} />
+        <SubwayNav steps={this.steps} />
       </div>
     );
   }

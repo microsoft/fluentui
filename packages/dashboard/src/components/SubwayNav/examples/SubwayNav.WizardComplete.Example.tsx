@@ -3,10 +3,10 @@ import { generateRandomId } from './SubwayNav.Util';
 import { SubwayNav } from '../SubwayNav';
 import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav.types';
 
-export class SubwayNavWizardCompleteExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    let steps: ISubwayNavStep[] = [];
+export class SubwayNavWizardCompleteExample extends React.Component<{}, {}> {
+  private steps: ISubwayNavStep[] = [];
 
+  public render(): JSX.Element {
     const data0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 0',
@@ -32,14 +32,14 @@ export class SubwayNavWizardCompleteExample extends React.Component<any, any> {
       onClickStep: this._handleClickStep
     };
 
-    steps.push(data0);
-    steps.push(data1);
-    steps.push(data2);
-    steps.push(data3);
+    this.steps.push(data0);
+    this.steps.push(data1);
+    this.steps.push(data2);
+    this.steps.push(data3);
 
     return (
       <div>
-        <SubwayNav steps={steps} wizardComplete={true} />
+        <SubwayNav steps={this.steps} wizardComplete={true} />
       </div>
     );
   }

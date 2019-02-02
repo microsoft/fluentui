@@ -3,11 +3,11 @@ import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayNav/e
 import { SubwayNav } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav';
 import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 
-export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    let steps: ISubwayNavStep[] = [];
-    let subSteps: ISubwayNavStep[] = [];
+export class SubwayNavDisabledStepsExample extends React.Component<{}, {}> {
+  private steps: ISubwayNavStep[] = [];
+  private subSteps: ISubwayNavStep[] = [];
 
+  public render(): JSX.Element {
     const substep0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Sub Step 0',
@@ -32,16 +32,16 @@ export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
       onClickStep: this._handleClickStep
     };
 
-    subSteps.push(substep0);
-    subSteps.push(substep1);
-    subSteps.push(substep2);
+    this.subSteps.push(substep0);
+    this.subSteps.push(substep1);
+    this.subSteps.push(substep2);
 
     const data0: ISubwayNavStep = {
       key: generateRandomId(),
       label: 'Step 0',
       state: SubwayNavStepState.Current,
       onClickStep: this._handleClickStep,
-      subSteps: subSteps
+      subSteps: this.subSteps
     };
     const data1: ISubwayNavStep = {
       key: generateRandomId(),
@@ -113,20 +113,20 @@ export class SubwayNavDisabledStepsExample extends React.Component<any, any> {
       onClickStep: this._handleClickStep
     };
 
-    steps.push(data0);
-    steps.push(data1);
-    steps.push(data2);
-    steps.push(data3);
-    steps.push(data4);
-    steps.push(data5);
-    steps.push(data6);
-    steps.push(data7);
-    steps.push(data8);
-    steps.push(data9);
+    this.steps.push(data0);
+    this.steps.push(data1);
+    this.steps.push(data2);
+    this.steps.push(data3);
+    this.steps.push(data4);
+    this.steps.push(data5);
+    this.steps.push(data6);
+    this.steps.push(data7);
+    this.steps.push(data8);
+    this.steps.push(data9);
 
     return (
       <div>
-        <SubwayNav steps={steps} />
+        <SubwayNav steps={this.steps} />
       </div>
     );
   }

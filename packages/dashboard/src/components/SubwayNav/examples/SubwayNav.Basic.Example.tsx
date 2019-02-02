@@ -8,10 +8,10 @@ export interface ISubwayNavBasicExampleState {
   steps: ISubwayNavStep[];
 }
 
-export class SubwayNavBasicExample extends React.Component<any, ISubwayNavBasicExampleState> {
+export class SubwayNavBasicExample extends React.Component<{}, ISubwayNavBasicExampleState> {
   private steps: ISubwayNavStep[] = [];
 
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
 
     this._handleClickStep = this._handleClickStep.bind(this);
@@ -47,7 +47,7 @@ export class SubwayNavBasicExample extends React.Component<any, ISubwayNavBasicE
     this.steps.push(data3);
   }
 
-  componentDidMount() {
+  public componentDidMount(): void {
     this.setState({
       steps: this.steps,
       currStep: this.steps[0]
@@ -65,12 +65,24 @@ export class SubwayNavBasicExample extends React.Component<any, ISubwayNavBasicE
   private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
     let alertStr = 'Clicked ' + step.label;
 
-    let newSteps = this.state.steps;
+    if (subStep !== undefined) {
+      alertStr += ' and ' + subStep.label;
+    }
+
+    console.log(alertStr);
+
+    if (step.key === this.state.currStep.key) {
+      return;
+    }
+
+    let newSteps: ISubwayNavStep[] = [];
+    newSteps = this.state.steps;
+
     let currStep = this.state.currStep;
 
     let foundClickedStep: boolean = false;
 
-    newSteps.map(stepObj => {
+    newSteps.map((stepObj: ISubwayNavStep) => {
       if (stepObj.key === this.state.currStep.key) {
         stepObj.state = SubwayNavStepState.Completed;
       } else if (stepObj.key === step.key) {
@@ -83,28 +95,5 @@ export class SubwayNavBasicExample extends React.Component<any, ISubwayNavBasicE
     });
 
     this.setState({ steps: newSteps, currStep: currStep });
-    /*this.steps.forEach(function(obj) {
-      stepIdx++;
-      if (obj.key === step.key) {
-        step.state = SubwayNavStepState.Current;
-
-        if (step.subSteps !== undefined && step.subSteps.length > 0) {
-          step.subSteps.forEach(function(subObj) {
-            subStepIdx++;
-            if (subObj.key === subStep!.key) {
-              subStep!.state = SubwayNavStepState.Current;
-              return;
-            }
-          });
-        }
-        return;
-      }
-    });*/
-
-    if (subStep !== undefined) {
-      alertStr += ' and ' + subStep.label;
-    }
-
-    console.log(alertStr);
   }
 }

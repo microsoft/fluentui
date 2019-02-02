@@ -9,16 +9,16 @@ export interface ISubwayNavSubStepsExampleState {
   steps: ISubwayNavStep[];
 }
 
-export class SubwayNavSubStepsExample extends React.Component<any, ISubwayNavSubStepsExampleState> {
+export class SubwayNavSubStepsExample extends React.Component<{}, ISubwayNavSubStepsExampleState> {
   private steps: ISubwayNavStep[] = [];
+  private subSteps: ISubwayNavStep[] = [];
 
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
 
     this._handleClickStep = this._handleClickStep.bind(this);
 
     this.steps = [];
-    let subSteps: ISubwayNavStep[] = [];
 
     const substep0: ISubwayNavStep = {
       key: generateRandomId(),
@@ -42,9 +42,9 @@ export class SubwayNavSubStepsExample extends React.Component<any, ISubwayNavSub
       onClickStep: this._handleClickStep
     };
 
-    subSteps.push(substep0);
-    subSteps.push(substep1);
-    subSteps.push(substep2);
+    this.subSteps.push(substep0);
+    this.subSteps.push(substep1);
+    this.subSteps.push(substep2);
 
     const data0: ISubwayNavStep = {
       key: generateRandomId(),
@@ -57,7 +57,7 @@ export class SubwayNavSubStepsExample extends React.Component<any, ISubwayNavSub
       label: 'Step 1',
       state: SubwayNavStepState.NotStarted,
       onClickStep: this._handleClickStep,
-      subSteps: subSteps
+      subSteps: this.subSteps
     };
     const data2: ISubwayNavStep = {
       key: generateRandomId(),
@@ -78,9 +78,9 @@ export class SubwayNavSubStepsExample extends React.Component<any, ISubwayNavSub
     this.steps.push(data3);
   }
 
-  componentDidMount() {
+  public componentDidMount(): void {
     let currSubStep: ISubwayNavStep | undefined = undefined;
-    let currStep = this.steps[0];
+    const currStep = this.steps[0];
     if (currStep.subSteps && currStep.subSteps.length > 0) {
       currSubStep = currStep.subSteps[0];
     }
@@ -118,15 +118,17 @@ export class SubwayNavSubStepsExample extends React.Component<any, ISubwayNavSub
       return;
     }
 
-    let newSteps = this.state.steps;
+    let newSteps: ISubwayNavStep[] = [];
+    newSteps = this.state.steps;
+
     let currSubStep = this.state.currSubStep;
 
     let foundClickedSubStep: boolean = false;
 
-    newSteps.map(stepObj => {
+    newSteps.map((stepObj: ISubwayNavStep) => {
       if (stepObj.key === clickedStep.key) {
         if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
-          stepObj.subSteps.map(subStepObj => {
+          stepObj.subSteps.map((subStepObj: ISubwayNavStep) => {
             if (subStepObj.key === this.state!.currSubStep!.key) {
               subStepObj.state = SubwayNavStepState.Completed;
             } else if (subStepObj.key === clickedSubStep!.key) {
@@ -147,20 +149,22 @@ export class SubwayNavSubStepsExample extends React.Component<any, ISubwayNavSub
   }
 
   private _handleParentClickStep(step: ISubwayNavStep): void {
-    let alertStr = 'Clicked ' + step.label;
+    const alertStr = 'Clicked ' + step.label;
 
     if (this.state.currStep.key === step.key) {
       // Clicked same current step
       return;
     }
 
-    let newSteps = this.state.steps;
+    let newSteps: ISubwayNavStep[] = [];
+    newSteps = this.state.steps;
+
     let currStep = this.state.currStep;
     let currSubStep = this.state.currSubStep;
 
     let foundClickedStep: boolean = false;
 
-    newSteps.map(stepObj => {
+    newSteps.map((stepObj: ISubwayNavStep) => {
       if (stepObj.key === this.state.currStep.key) {
         stepObj.state = SubwayNavStepState.Completed;
       } else if (stepObj.key === step.key) {

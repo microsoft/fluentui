@@ -30,23 +30,18 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
     let stepElements: JSX.Element[] = [];
     let renderedSteps: JSX.Element[] = [];
 
-    if (steps) {
-      for (let stepIndex = 0; stepIndex < steps.length; stepIndex++) {
-        renderedSteps = this._renderStep(steps[stepIndex], stepIndex === 0 ? undefined : steps[stepIndex - 1]);
-        stepElements = stepElements.concat(renderedSteps);
-      }
+    steps.map((step: ISubwayNavStep, index: number) => {
+      renderedSteps = this._renderStep(step, index === 0 ? undefined : steps[index]);
+      stepElements = stepElements.concat(renderedSteps);
+    });
 
-      return (
-        <div className={css(this.props.className, classNames.subwayNavContainer)}>
-          <div className={classNames.subwayNavContentContainer}>
-            <div className={classNames.subwayNavContent}>{stepElements}</div>
-          </div>
+    return (
+      <div className={css(this.props.className, classNames.subwayNavContainer)}>
+        <div className={classNames.subwayNavContentContainer}>
+          <div className={classNames.subwayNavContent}>{stepElements}</div>
         </div>
-      );
-    } else {
-      // Empty element
-      return <React.Fragment />;
-    }
+      </div>
+    );
   }
 
   /**
@@ -57,69 +52,60 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
   private _renderStep(stepToRender: ISubwayNavStep, prevStep: ISubwayNavStep | undefined): JSX.Element[] {
     let stepElements: JSX.Element[] = [];
 
-    if (stepToRender === undefined) {
-      return stepElements;
+    const iconProps = this._getIconPropsStep(stepToRender);
+
+    if (prevStep !== undefined) {
+      const connectorClass = this._getStepConnectorClassName(stepToRender);
+      stepElements.push(
+        <div className={css(classNames.subwayNavStepConnector, connectorClass)} key={'connector' + '-' + stepToRender.key} />
+      );
     }
 
-    const { steps } = this.props;
+    const renderSubStep = stepToRender.state === SubwayNavStepState.Current && this._hasSubSteps(stepToRender);
 
-    if (steps !== undefined) {
-      const iconProps = this._getIconPropsStep(stepToRender);
+    stepElements.push(
+      <div
+        key={stepToRender.key}
+        className={css(
+          classNames.subwayNavStepDiv,
+          stepToRender.state !== SubwayNavStepState.Current && stepToRender.disabled ? classNames.disableStep : undefined
+        )}
+      >
+        <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavStepIcon)} />
+        <Link
+          // tslint:disable-next-line jsx-no-lambda
+          onClick={() => {
+            stepToRender.onClickStep(stepToRender, undefined);
+          }}
+        >
+          <span className={css(classNames.stepLabel, stepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}>
+            {stepToRender!.label}
+          </span>
+        </Link>
+      </div>
+    );
 
-      if (prevStep !== undefined) {
-        const connectorClass = this._getStepConnectorClassName(stepToRender);
-        stepElements.push(
-          <div className={css(classNames.subwayNavStepConnector, connectorClass)} key={'connector' + '-' + stepToRender.key} />
-        );
+    /** Render substeps if current step has substeps */
+    if (renderSubStep && stepToRender!.subSteps) {
+      let subStepElements: JSX.Element[] = [];
+
+      stepElements.push(
+        <div
+          className={css(classNames.subwayNavStepConnector, classNames.stepConnectorCompleted)}
+          key={'connector-sub' + '-' + stepToRender.key}
+        />
+      );
+
+      const subSteps = stepToRender.subSteps;
+
+      if (subSteps !== undefined) {
+        subSteps.forEach((subStep: ISubwayNavStep, index: number) => {
+          subStepElements = subStepElements.concat(this._renderSubStep(stepToRender, subStep, index > 0 ? subSteps[index] : undefined));
+        });
+
+        stepElements = stepElements.concat(subStepElements);
       }
-
-      if (stepToRender !== undefined) {
-        const renderSubStep = stepToRender.state === SubwayNavStepState.Current && this._hasSubSteps(stepToRender);
-
-        stepElements.push(
-          <div
-            key={stepToRender.key}
-            className={css(
-              classNames.subwayNavStepDiv,
-              stepToRender.state !== SubwayNavStepState.Current && stepToRender.disabled ? classNames.disableStep : undefined
-            )}
-          >
-            <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavStepIcon)} />
-            <Link onClick={() => stepToRender.onClickStep(stepToRender, undefined)}>
-              <span
-                className={css(classNames.stepLabel, stepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}
-              >
-                {stepToRender!.label}
-              </span>
-            </Link>
-          </div>
-        );
-
-        /** Render substeps if current step has substeps */
-        if (renderSubStep && stepToRender!.subSteps) {
-          let subStepElements: JSX.Element[] = [];
-
-          stepElements.push(
-            <div
-              className={css(classNames.subwayNavStepConnector, classNames.stepConnectorCompleted)}
-              key={'connector-sub' + '-' + stepToRender.key}
-            />
-          );
-
-          let subSteps = stepToRender.subSteps;
-          let prevStep: ISubwayNavStep | undefined = undefined;
-
-          if (subSteps !== undefined) {
-            subSteps.forEach((subStep: ISubwayNavStep, index: number) => {
-              subStepElements = subStepElements.concat(this._renderSubStep(stepToRender, subStep, index > 0 ? prevStep : undefined));
-              prevStep = subStep;
-            });
-
-            stepElements = stepElements.concat(subStepElements);
-          }
-        }
-      } // if stepToRender
-    } // if steps !== undefined
+    }
 
     return stepElements;
   }
@@ -161,7 +147,12 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
               )}
             >
               <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavSubStepIcon)} />
-              <Link onClick={() => subStepToRender.onClickStep(parentStep, subStepToRender)}>
+              <Link
+                // tslint:disable-next-line jsx-no-lambda
+                onClick={() => {
+                  subStepToRender.onClickStep(parentStep, subStepToRender);
+                }}
+              >
                 <span
                   className={css(
                     classNames.subStepLabel,
@@ -202,7 +193,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
    * @param step
    */
   private _getIconPropsStep(step: ISubwayNavStep | undefined): IIconProps {
-    let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.stepNotStarted };
+    const defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.stepNotStarted };
 
     if (step !== undefined) {
       if (this.props.wizardComplete) {
@@ -248,7 +239,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
    * @param subStep
    */
   private _getIconPropsSubStep(subStep: ISubwayNavStep | undefined): IIconProps {
-    let defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.subStepNotStarted };
+    const defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.subStepNotStarted };
 
     if (subStep !== undefined) {
       if (this.props.wizardComplete) {

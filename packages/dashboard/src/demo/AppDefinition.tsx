@@ -64,10 +64,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/compositelist'
         },
         {
-          component: require<any>('../components/SubwayMap/SubwayMapPage').SubwayMapPage,
-          key: 'SubwayMap',
-          name: 'SubwayMap',
-          url: '#/examples/subwaymap'
+          component: require<any>('../components/SubwayNav/SubwayNavPage').SubwayNavPage,
+          key: 'SubwayNav',
+          name: 'SubwayNav',
+          url: '#/examples/subwaynav'
         }
       ]
     }
