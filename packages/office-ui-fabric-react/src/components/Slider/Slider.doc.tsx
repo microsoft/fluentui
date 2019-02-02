@@ -4,7 +4,7 @@ import { SliderBasicExample } from './examples/Slider.Basic.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { SliderStatus } from './Slider.checklist';
 
-const SliderBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Slider/examples/Slider.Basic.Example.tsx') as string;
+const SliderBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Slider/examples/Slider.Basic.Example.tsx') as string;
 
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
@@ -18,11 +18,11 @@ export const SliderPageProps: IDocPageProps = {
       view: <SliderBasicExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/Slider.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Slider/Slider.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Slider/docs/SliderOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Slider/docs/SliderDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Slider/docs/SliderDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

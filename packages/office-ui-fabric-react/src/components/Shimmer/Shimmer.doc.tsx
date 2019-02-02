@@ -7,15 +7,15 @@ import { ShimmerStylingExample } from './examples/Shimmer.Styling.Example';
 import { ShimmerStatus } from './Shimmer.checklist';
 import { IDocPageProps } from '../../common/DocPage.types';
 
-const ShimmerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
+const ShimmerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
 
-const ShimmerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx') as string;
+const ShimmerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx') as string;
 
-const ShimmerStylingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
+const ShimmerStylingExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
 
-const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
+const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
-const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 const ShimmerApplicationExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Application.Example.Codepen.txt') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
@@ -51,10 +51,10 @@ export const ShimmerPageProps: IDocPageProps = {
     }
   ],
 
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerOverview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/Shimmer.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/docs/ShimmerOverview.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/docs/ShimmerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/docs/ShimmerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   componentStatus: ShimmerStatus

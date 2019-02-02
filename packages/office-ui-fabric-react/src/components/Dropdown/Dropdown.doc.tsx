@@ -7,11 +7,11 @@ import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
 import { DropdownRequiredExample } from './examples/Dropdown.Required.Example';
 import { DropdownStatus } from './Dropdown.checklist';
 
-const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
+const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 const DropdownBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Dropdown/Dropdown.Basic.Example.Codepen.txt') as string;
-const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
-const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
-const DropdownRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
+const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
+const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
+const DropdownRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
 
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
@@ -42,13 +42,13 @@ export const DropdownPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/Dropdown.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selectableOption/SelectableDroppableText.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/docs/DropdownOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/docs/DropdownDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/docs/DropdownDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

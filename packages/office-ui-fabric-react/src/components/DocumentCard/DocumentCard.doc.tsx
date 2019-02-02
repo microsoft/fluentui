@@ -6,9 +6,9 @@ import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Ex
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
 import { DocumentCardStatus } from './DocumentCard.checklist';
 
-const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
-const DocumentCardCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
+const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardCompactExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
 
 export const DocumentCardPageProps: IDocPageProps = {
   title: 'DocumentCard',
@@ -58,11 +58,11 @@ export const DocumentCardPageProps: IDocPageProps = {
       )
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/DocumentCard/DocumentCard.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DocumentCard/docs/DocumentCardOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DocumentCard/docs/DocumentCardDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DocumentCard/docs/DocumentCardDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

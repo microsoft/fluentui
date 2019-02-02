@@ -4,7 +4,7 @@ import { ModalBasicExample } from './examples/Modal.Basic.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { ModalStatus } from './Modal.checklist';
 
-const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
+const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Modal/examples/Modal.Basic.Example.tsx') as string;
 const ModalBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Modal/Modal.Basic.Example.Codepen.txt') as string;
 
 export const ModalPageProps: IDocPageProps = {
@@ -20,11 +20,11 @@ export const ModalPageProps: IDocPageProps = {
       codepenJS: ModalBasicExampleCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Modal/Modal.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Modal/docs/ModalOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Modal/docs/ModalDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Modal/docs/ModalDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

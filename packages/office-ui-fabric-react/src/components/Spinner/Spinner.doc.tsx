@@ -4,7 +4,7 @@ import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { SpinnerStatus } from './Spinner.checklist';
 
-const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
+const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
 const SpinnerBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Spinner/Spinner.Basic.Example.Codepen.txt') as string;
 
 export const SpinnerPageProps: IDocPageProps = {
@@ -20,11 +20,11 @@ export const SpinnerPageProps: IDocPageProps = {
       codepenJS: SpinnerBasicExampleCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/Spinner.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/docs/SpinnerOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/docs/SpinnerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/docs/SpinnerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

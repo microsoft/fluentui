@@ -6,9 +6,9 @@ import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { CalendarStatus } from './Calendar.checklist';
 import { addMonths, addYears, addWeeks, addDays } from '../../utilities/dateMath/DateMath';
 
-const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
+const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarButtonExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Calendar/Calendar.Button.Example.Codepen.txt') as string;
-const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
+const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 const CalendarInlineExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Calendar/Calendar.Inline.Example.Codepen.txt') as string;
 
 const today = new Date(Date.now());
@@ -237,11 +237,11 @@ export const CalendarPageProps: IDocPageProps = {
       )
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/Calendar.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/docs/CalendarOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/docs/CalendarDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/docs/CalendarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

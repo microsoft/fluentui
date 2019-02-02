@@ -3,7 +3,7 @@ import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example'
 import { IDocPageProps } from '../../../common/DocPage.types';
 import { PeoplePickerStatus } from './PeoplePicker.checklist';
 
-const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
+const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
 export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',
@@ -18,13 +18,13 @@ export const PeoplePickerPageProps: IDocPageProps = {
       view: <PeoplePickerTypesExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/BasePicker.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

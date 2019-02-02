@@ -5,9 +5,9 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { VerticalDividerCustomExample } from './examples/VerticalDivider.Custom.Example';
 import { DividerStatus } from './Divider.checklist';
 
-const VerticalDividerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/VerticalDivider.Basic.Example.tsx') as string;
+const VerticalDividerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Divider/examples/VerticalDivider.Basic.Example.tsx') as string;
 
-const VerticalDividerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Divider/examples/VerticalDivider.Custom.Example.tsx') as string;
+const VerticalDividerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Divider/examples/VerticalDivider.Custom.Example.tsx') as string;
 
 export const DividerPageProps: IDocPageProps = {
   title: 'Divider',
@@ -26,11 +26,11 @@ export const DividerPageProps: IDocPageProps = {
       view: <VerticalDividerCustomExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerOverview.md'),
-  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/VerticalDivider.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerOverview.md'),
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerBestPractices.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

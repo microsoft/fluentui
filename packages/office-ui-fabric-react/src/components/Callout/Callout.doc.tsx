@@ -10,11 +10,11 @@ import { CalloutDirectionalExample } from './examples/Callout.Directional.Exampl
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
 import { CalloutStatus } from './Callout.checklist';
 
-const CalloutBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Basic.Example.tsx') as string;
-const CalloutNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Nested.Example.tsx') as string;
-const CalloutFocusTrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.FocusTrap.Example.tsx') as string;
-const CalloutDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Directional.Example.tsx') as string;
-const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Cover.Example.tsx') as string;
+const CalloutBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Callout/examples/Callout.Basic.Example.tsx') as string;
+const CalloutNestedExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Callout/examples/Callout.Nested.Example.tsx') as string;
+const CalloutFocusTrapExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Callout/examples/Callout.FocusTrap.Example.tsx') as string;
+const CalloutDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Callout/examples/Callout.Directional.Example.tsx') as string;
+const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Callout/examples/Callout.Cover.Example.tsx') as string;
 
 const cmdBarParamsTextAndIcons: any = { items: items, farItems: null };
 
@@ -50,11 +50,11 @@ export const CalloutPageProps: IDocPageProps = {
       view: <CalloutCoverExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Callout/Callout.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Callout/docs/CalloutOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Callout/docs/CalloutDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Callout/docs/CalloutDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };
