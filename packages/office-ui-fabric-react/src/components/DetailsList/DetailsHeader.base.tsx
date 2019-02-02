@@ -257,7 +257,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
-                        canSelect={!isCheckboxHidden ? true : false}
+                        canSelect={!isCheckboxHidden}
                         className={classNames.check}
                       />
                     )
