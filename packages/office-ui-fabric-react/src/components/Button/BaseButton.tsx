@@ -102,7 +102,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       getClassNames
     } = this.props;
 
-    const { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
     const isPrimaryButtonDisabled = disabled || primaryDisabled;
 
@@ -115,7 +114,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          this._isMenuExpanded(),
           this.props.split,
           !!allowDisabledFocus
         )
@@ -128,7 +127,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          this._isMenuExpanded(),
           this.props.split
         );
 
@@ -357,6 +356,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // before the refactor that introduced this function. _onRenderTextContents does not require props.text to be undefined in order
     // for props.children to be used as a fallback. Purely a code maintainability/reuse issue, but logged as Issue #4979
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
+  }
+
+  private _isMenuExpanded(): boolean {
+    const { menuProps } = this.state;
+    return !!menuProps && !menuProps.hidden;
   }
 
   private _onRenderChildren = (): JSX.Element | null => {
