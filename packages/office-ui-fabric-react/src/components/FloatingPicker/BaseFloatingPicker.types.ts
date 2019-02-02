@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISuggestionModel } from '../../Pickers';
 import { IPersonaProps } from '../../Persona';
-import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
+import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
 
@@ -85,9 +85,9 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    */
   className?: string;
   /**
-   * The properties that will get passed to the Suggestions component.
+   * The properties that will get passed to the SuggestionsControl component.
    */
-  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T>;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
@@ -143,18 +143,11 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   suggestionItems?: T[];
 }
 
-export interface IBaseFloatingPickerSuggestionProps {
-  /**
-   * Whether or not the first selectable item in the suggestions list should be selected
-   */
-  shouldSelectFirstItem?: () => boolean;
-
-  /**
-   * The header items props
-   */
-  headerItemsProps?: ISuggestionsHeaderFooterProps[];
-  /**
-   * The footer items props
-   */
-  footerItemsProps?: ISuggestionsHeaderFooterProps[];
-}
+// tslint:disable:no-any This type wasn't properly parameterized and so was using
+// an implicit any to refer to entries in ISuggestionsControlProps.
+// In order to maintain backwards compatibility, add a parameter with default type any.
+export type IBaseFloatingPickerSuggestionProps<T> = Pick<
+  ISuggestionsControlProps<T>,
+  'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
+>;
+// tslint:enable:no-any
