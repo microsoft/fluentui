@@ -232,7 +232,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
       return null;
     }
     return (
-      <div id="actionBar" className={className}>
+      <div className={className}>
         <ActionBar
           actions={actions}
           actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
