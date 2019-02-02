@@ -75,6 +75,7 @@ export interface IMultiCountStyleProps {
   currentText?: string;
   href?: string;
   hideIcon?: boolean;
+  onClicked?: VoidFunction;
 }
 
 export interface IMultiCountRow {

@@ -28,7 +28,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       bodyTextFontSize,
       bodyTextColor,
       customMessage,
-      href
+      href,
+      onClicked
     } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
@@ -37,7 +38,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       annotationTextColor,
       bodyTextFontSize,
       bodyTextColor,
-      customMessage
+      customMessage,
+      onClicked
     );
     return <div>{data}</div>;
   }
@@ -49,7 +51,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
     annotationTextColor?: string,
     bodyTextFontSize?: string,
     bodyTextColor?: string,
-    customMessage?: string
+    customMessage?: string,
+    onClicked?: VoidFunction
   ): JSX.Element[] {
     const formattedRows: JSX.Element[] = [];
     const units = ['', 'k', 'm', 'b'];
@@ -84,6 +87,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           hoveredText: this.state.hoveredText,
           currentText: row.data + row.bodyText + row.annotaionText,
           href: href,
+          onClicked: onClicked,
           hideIcon: row.hideIcon
         })
       );
@@ -100,7 +104,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           onCardHide={this._hoverStateUpdate.bind(this, hoverKey, false)}
           onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
         >
-          <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, href)}>
+          <div key={index} className={classNames.root} onClick={onClicked ? onClicked : this._redirectToUrl.bind(this, href)}>
             <div className={classNames.data}>{formattedData + units[indexForUnits]}</div>
             <div className={classNames.bodyText}>{row.bodyText}</div>
             {!row.hideIcon && (
