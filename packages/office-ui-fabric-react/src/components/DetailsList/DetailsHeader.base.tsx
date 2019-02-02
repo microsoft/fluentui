@@ -253,7 +253,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                             ? `${this._id}-checkTooltip`
                             : undefined
                         }
-                        data-is-focusable={!isCheckboxHidden ? true : undefined}
+                        data-is-focusable={!isCheckboxHidden || undefined}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
