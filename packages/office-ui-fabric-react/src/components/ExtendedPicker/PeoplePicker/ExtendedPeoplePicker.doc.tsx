@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExtendedPeoplePickerTypesExample } from '../examples/ExtendedPeoplePicker.Basic.Example';
+import { ExtendedPeoplePickerBasicExample } from '../examples/ExtendedPeoplePicker.Basic.Example';
 
 import { IDocPageProps } from '../../../common/DocPage.types';
 
@@ -13,7 +13,7 @@ export const ExtendedPeoplePickerPageProps: IDocPageProps = {
     {
       title: 'Extended People Picker',
       code: ExtendedPeoplePickerBasicExampleCode,
-      view: <ExtendedPeoplePickerTypesExample />
+      view: <ExtendedPeoplePickerBasicExample />
     }
   ],
   propertiesTablesSources: [
