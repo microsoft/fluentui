@@ -8,6 +8,8 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField, ITextField } from '../../TextField';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import { FocusTrapZone } from '../../FocusTrapZone';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { ITextFieldStyleProps, ITextFieldStyles } from '../TextField';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
@@ -180,6 +182,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     const calloutId = getId('DatePicker-Callout');
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
 
+    const textFieldStyles = classNames.subComponentStyles
+      ? (classNames.subComponentStyles.textField as IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>)
+      : undefined;
+
     return (
       <div {...nativeProps} className={classNames.root}>
         <div
@@ -192,6 +198,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
           <TextField
             id={this._id + '-label'}
             className={classNames.textField}
+            styles={textFieldStyles}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}

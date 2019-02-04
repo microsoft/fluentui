@@ -2,8 +2,9 @@ import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
+import { IRefObject, IBaseProps, IStyleFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
+import { ITextFieldStyleProps } from '../TextField';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
@@ -312,7 +313,15 @@ export interface IDatePickerStyleProps {
 
   // Insert DatePicker style props below
   disabled?: boolean;
+
+  /**
+   * Whether to show a label
+   */
   label?: boolean;
+
+  /**
+   * Whether the date picker is shown
+   */
   isDatePickerShown?: boolean;
 }
 
@@ -324,4 +333,14 @@ export interface IDatePickerStyles {
   textField: IStyle;
   callout: IStyle;
   icon: IStyle;
+
+  /**
+   * SubComponent styles.
+   */
+  subComponentStyles: IDatePickerSubComponentStyles;
+}
+
+export interface IDatePickerSubComponentStyles {
+  /** Refers to the textField that hosts the DatePicker options */
+  textField: IStyleFunctionOrObject<ITextFieldStyleProps, any>;
 }

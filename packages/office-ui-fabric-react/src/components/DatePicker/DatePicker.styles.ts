@@ -54,6 +54,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
           cursor: 'pointer'
         }
       ]
-    ]
+    ],
+    subComponentStyles: { textField: {} }
   };
 };
