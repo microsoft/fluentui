@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.133.0",
+      "tag": "office-ui-fabric-react_v6.133.0",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clarify extended picker dont documentation",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "ae0d74602eda1b67250bb9c0cd4c5244c2c54472"
+          },
+          {
+            "comment": "Update ThemesOverview.md documentation",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "75b23ecfe7772e613a86e8b520dc0da2a1bd65c8"
+          },
+          {
+            "comment": "Remove some unneeded casts + 'any's in ExtendedPeoplePicker",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "79b0b51adfef2da8b0e7c215b5d94c62ab553692"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "GroupHeader: exposes props of selection check button.",
+            "author": "Karan <karanbir@uw.edu>",
+            "commit": "357a04fad6544c2bb7d0f516839a7e1f6fea72bc"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.132.0",
       "tag": "office-ui-fabric-react_v6.132.0",
       "date": "Thu, 31 Jan 2019 20:10:48 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 31 Jan 2019 13:36:13 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+
+## 0.47.1
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- DetailPanel: fix content load error on L2 content mode
 
 ## 0.47.0
 Thu, 31 Jan 2019 13:36:13 GMT

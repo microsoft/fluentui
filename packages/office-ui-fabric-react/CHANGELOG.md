@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+
+## 6.133.0
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Minor changes
+
+- GroupHeader: exposes props of selection check button.
+
+### Patches
+
+- Clarify extended picker dont documentation
+- Update ThemesOverview.md documentation
+- Remove some unneeded casts + 'any's in ExtendedPeoplePicker
 
 ## 6.132.0
 Thu, 31 Jan 2019 20:10:48 GMT

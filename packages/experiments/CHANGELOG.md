@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+
+## 6.54.2
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- CollapsibleSectionTitle: Use new factoryOptions prop. Name factory wrappers.
 
 ## 6.54.1
 Thu, 31 Jan 2019 20:10:48 GMT

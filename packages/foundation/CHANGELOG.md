@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+
+## 0.7.1
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- Optimize React hierarchy by naming Unknowns and removing view layers.
 
 ## 0.7.0
 Thu, 31 Jan 2019 20:10:48 GMT
