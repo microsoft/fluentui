@@ -155,6 +155,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
+                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
@@ -230,6 +231,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
+                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
@@ -305,6 +307,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: inherit;
                     font-weight: inherit;
+                    outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {

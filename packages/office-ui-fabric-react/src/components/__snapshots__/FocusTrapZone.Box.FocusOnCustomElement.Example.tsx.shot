@@ -271,6 +271,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
+              outline: none;
               overflow: inherit;
               padding-bottom: 0px;
               padding-left: 0px;
