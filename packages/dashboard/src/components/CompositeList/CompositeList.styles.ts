@@ -98,7 +98,7 @@ export const getDetailsListStyle = (showCommandBar: boolean): IStyle => {
         position: 'sticky',
         top: showCommandBar ? '23px' : '0px',
         zIndex: 10,
-        paddingTop: showCommandBar ? '16px' : null
+        paddingTop: showCommandBar ? '16px' : '0px'
       }
     }
   };
