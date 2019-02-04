@@ -17,7 +17,7 @@ describe('SpinButton', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders SpinButton correctly and value should change accordingly even when no props are defined', () => {
+  it('SpinButton allows value updates when no props are defined', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" />);
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
