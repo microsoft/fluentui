@@ -1,27 +1,50 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
+import { ITextSlot } from '../../Text';
+import { IBaseProps } from '../../Utilities';
 
-export type I{{componentName}}Component = IStatelessComponent< I{{componentName}}Props, I{{componentName}}Styles>;
+export type I{{componentName}}Component = IComponent<I{{componentName}}Props, I{{componentName}}Tokens, I{{componentName}}Styles>;
 
-// Extending IStyleableComponentProps will automatically add stylable props for you, such as styles and theme.
-//    If you don't want these props to be included in your component, just remove this extension.
-export interface I{{componentName}}Props extends IStyleableComponentProps< I{{componentName}}Props, I{{componentName}}Styles> {
+// These types are redundant with I{{componentName}}Component but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety for tokens and styles functions.
+export type I{{componentName}}TokenReturnType = ReturnType<Extract<I{{componentName}}Component['tokens'], Function>>;
+export type I{{componentName}}StylesReturnType = ReturnType<Extract<I{{componentName}}Component['styles'], Function>>;
+
+// Optional interface to use for componentRef. This should be limited in scope with the most common scenario being for focusing elements.
+export interface I{{componentName}} { }
+
+export interface I{{componentName}}Slots {
   // All props for your component are to be defined here.
   /**
-   * Component sample prop. If provided, component is controlled.
-   * @default defaultText
+   * Root element.
    */
-  text: string;
+  root?: IHTMLSlot;
+
+  /**
+   * Component sample prop. If provided, component is controlled.
+   * @defaultValue defaultText
+   */
+  text?: ITextSlot;
+}
+
+// Extending IStyleableComponentProps will automatically add styleable props for you, such as styles and theme.
+// If you don't want these props to be included in your component, just remove this extension.
+export interface I{{componentName}}Props extends
+  I{{componentName}}Slots,
+  IStyleableComponentProps<I{{componentName}}Props, I{{componentName}}Tokens, I{{componentName}}Styles>,
+  IBaseProps<I{{componentName}}> {
+  // All props for your component are to be defined here.
   /**
    * Component sample prop.
    */
   status?: string;
+  warning?: boolean;
 }
 
-export interface I{{componentName}}Styles {
-  /**
-   * Styling for the root element.
-   */
-  root: IStyle;
-  // Add other styles elements for your component here.
+export interface I{{componentName}}Tokens {
+  // Define tokens for your component here. Tokens are styling 'knobs' that your component will automatically
+  // apply to styling sections in the styles file.
+  textColor?: string;
 }
+
+export type I{{componentName}}Styles = IComponentStyles<I{{componentName}}Slots>;

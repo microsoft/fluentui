@@ -88,6 +88,13 @@ export interface INavProps {
   onEditLeftNavClickedCallback?(): void;
 }
 
+export interface INavTogglerProps extends INavProps {
+  /**
+   * (Optional) callback for the consumer of NavToggler to know about the "Show more" / "Show less" event.
+   */
+  onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>, showMore?: boolean): void;
+}
+
 export interface INavState extends INavState {
   /**
    * Used to toggle the nav component between expanded and collapsed state.

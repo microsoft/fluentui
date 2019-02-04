@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+
+## 6.29.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- Adding helper functions to get and restore focus elements based on index paths.
 
 ## 6.28.1
 Fri, 25 Jan 2019 13:38:07 GMT

@@ -1,6 +1,35 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 29 Jan 2019 13:35:55 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+
+## 6.133.0
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Minor changes
+
+- GroupHeader: exposes props of selection check button.
+
+### Patches
+
+- Clarify extended picker dont documentation
+- Update ThemesOverview.md documentation
+- Remove some unneeded casts + 'any's in ExtendedPeoplePicker
+
+## 6.132.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- FocusZone: focus can now be recovered if focus was resting within the zone but the element was removed.
+
+## 6.131.1
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Patches
+
+- scrollTop value may be in decimal. Taking floor of scrollTop to calculate isStickyBottom for a sticky component
+- TeachingBubble: do not pass in onDismiss to TeachingBubbleContent
+- Support ESC after clicking in Popup
 
 ## 6.131.0
 Tue, 29 Jan 2019 13:35:55 GMT

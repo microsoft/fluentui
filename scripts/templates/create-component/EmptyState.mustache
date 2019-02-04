@@ -4,7 +4,7 @@ import { BaseState } from '../../utilities/BaseState';
 // Internal state will most likely include a subset of your ViewProps. This template just equates them to start with.
 export type I{{componentName}}State = I{{componentName}}ViewProps;
 
-export class {{componentName}}State extends BaseState< I{{componentName}}Props, I{{componentName}}ViewProps, I{{componentName}}State > {
+export class {{componentName}}State extends BaseState<I{{componentName}}Props, I{{componentName}}ViewProps, I{{componentName}}State > {
   constructor(props: {{componentName}}State['props']) {
     super(props, {
       // Mark controlledProps to ensure that they get priority when provided as a component prop.

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Fix edge browser thumbnail list focus items alignment issue",
+      "comment": "Add id's for actions and onclick handler for multicount",
       "type": "patch"
     }
   ],

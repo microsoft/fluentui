@@ -1220,7 +1220,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
       {
         display: flex;
         flex-wrap: wrap;
-        height: 100%;
+        height: auto;
         overflow: visible;
         width: auto;
       }

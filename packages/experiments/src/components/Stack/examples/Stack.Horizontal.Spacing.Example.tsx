@@ -35,7 +35,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
 
     return (
       <Stack gap={10}>
-        <Stack horizontal horizontalAlign="space-between">
+        <Stack horizontal preventShrink horizontalAlign="space-between">
           <Stack>
             <span>Numerical spacing</span>
             <Stack horizontal className={styles.root} gap={10} padding={10}>
@@ -54,7 +54,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
         </Stack>
 
-        <Stack horizontal horizontalAlign="space-between">
+        <Stack horizontal preventShrink horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (extra small)</span>
             <Stack horizontal className={styles.root} gap="s2" padding="s2">

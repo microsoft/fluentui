@@ -1,6 +1,32 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 29 Jan 2019 13:35:55 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+
+## 0.47.1
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- DetailPanel: fix content load error on L2 content mode
+
+## 0.47.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- add  optional  id props to  IThumbnailListProps, IGridListProps, ICompoundAction and  optional cardId to ICardProps
+
+### Patches
+
+- Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event
+
+## 0.46.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix detail panel custom width issue, fix detail panel tiles css issue, add jsx.element support to detail panel tile message
+- Fix edge browser thumbnail list focus items alignment issue
 
 ## 0.46.1
 Tue, 29 Jan 2019 13:35:55 GMT
