@@ -8784,6 +8784,7 @@ interface IMessageBar {
 // @public (undocumented)
 interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   actions?: JSX.Element;
+  // @deprecated
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IMessageBar>;
