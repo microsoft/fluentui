@@ -117,56 +117,47 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
    * @param prevSubStep
    */
   private _renderSubStep(
-    parentStep: ISubwayNavStep | undefined,
-    subStepToRender: ISubwayNavStep | undefined,
+    parentStep: ISubwayNavStep,
+    subStepToRender: ISubwayNavStep,
     prevSubStep: ISubwayNavStep | undefined
   ): JSX.Element[] {
     const stepElements: JSX.Element[] = [];
-    const { steps } = this.props;
     let iconProps;
 
-    if (steps !== undefined) {
-      if (parentStep !== undefined) {
-        if (subStepToRender !== undefined) {
-          // Add the connectiong line
-          if (prevSubStep !== undefined) {
-            const connectorClass = this._getStepConnectorClassName(subStepToRender);
-            stepElements.push(
-              <div className={css(classNames.subwayNavSubStepConnector, connectorClass)} key={'connector' + '-' + subStepToRender.key} />
-            );
-          }
+    // Add the connecting line
+    if (prevSubStep !== undefined) {
+      const connectorClass = this._getStepConnectorClassName(subStepToRender);
+      stepElements.push(
+        <div className={css(classNames.subwayNavSubStepConnector, connectorClass)} key={'connector' + '-' + subStepToRender.key} />
+      );
+    }
 
-          iconProps = this._getIconPropsSubStep(subStepToRender);
+    iconProps = this._getIconPropsSubStep(subStepToRender);
 
-          stepElements.push(
-            <div
-              key={subStepToRender.key}
-              className={css(
-                classNames.subwayNavStepDiv,
-                subStepToRender.state !== SubwayNavStepState.Current && subStepToRender.disabled ? classNames.disableStep : undefined
-              )}
-            >
-              <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavSubStepIcon)} />
-              <Link
-                // tslint:disable-next-line jsx-no-lambda
-                onClick={() => {
-                  subStepToRender.onClickStep(parentStep, subStepToRender);
-                }}
-              >
-                <span
-                  className={css(
-                    classNames.subStepLabel,
-                    subStepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined
-                  )}
-                >
-                  {subStepToRender.label}
-                </span>
-              </Link>
-            </div>
-          );
-        }
-      } // parentStep !== undefined
-    } // steps !== undefined
+    stepElements.push(
+      <div
+        key={subStepToRender.key}
+        className={css(
+          classNames.subwayNavStepDiv,
+          subStepToRender.state !== SubwayNavStepState.Current && subStepToRender.disabled ? classNames.disableStep : undefined
+        )}
+      >
+        <Icon iconName={iconProps.iconName} className={css(iconProps.iconClassName, classNames.subwayNavSubStepIcon)} />
+        <Link
+          // tslint:disable-next-line jsx-no-lambda
+          onClick={() => {
+            subStepToRender.onClickStep(parentStep, subStepToRender);
+          }}
+        >
+          <span
+            className={css(classNames.subStepLabel, subStepToRender.state === SubwayNavStepState.Current ? classNames.boldStep : undefined)}
+          >
+            {subStepToRender.label}
+          </span>
+        </Link>
+      </div>
+    );
+
     return stepElements;
   }
 

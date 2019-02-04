@@ -1,4 +1,5 @@
 import { ISubwayNavStyles, ISubwayNavStyleProps } from './SubwayNav.types';
+import { DefaultPalette } from 'office-ui-fabric-react';
 
 const regularFontSize = 14;
 const regularLineHeight = 20;
@@ -17,7 +18,7 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
         width: '221px',
         height: '601px',
         overflow: 'auto',
-        background: 'white'
+        background: DefaultPalette.white
       },
       className
     ],
