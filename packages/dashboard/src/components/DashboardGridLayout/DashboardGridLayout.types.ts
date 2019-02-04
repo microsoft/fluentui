@@ -90,6 +90,16 @@ export interface IDashboardGridLayoutProps {
   cols?: { [P in Breakpoints]: number };
 
   /**
+   * role of the  card for the benefit of screen readers
+   */
+  role?: string;
+
+  /**
+   * The aria labelledby of the card for the benefit of screen readers.
+   */
+  DGLAriaLabelledby?: string;
+
+  /**
    * Margin between items [x, y] in px.
    */
   margin?: [number, number];

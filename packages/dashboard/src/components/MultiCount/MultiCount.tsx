@@ -104,7 +104,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           onCardHide={this._hoverStateUpdate.bind(this, hoverKey, false)}
           onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
         >
-          <div key={index} className={classNames.root} onClick={onClicked ? onClicked : this._redirectToUrl.bind(this, href)}>
+          <div key={index} className={classNames.root} onClick={this._redirectToUrl.bind(this, href)}>
             <div className={classNames.data}>{formattedData + units[indexForUnits]}</div>
             <div className={classNames.bodyText}>{row.bodyText}</div>
             {!row.hideIcon && (
@@ -136,6 +136,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
+    this.props.onClicked && this.props.onClicked();
   }
 
   // tslint:disable-next-line:no-any

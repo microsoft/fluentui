@@ -49,7 +49,7 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
     const classNames = getClassNames(getStyles!, {});
 
     return (
-      <div dir="ltr">
+      <div dir="ltr" role={this.props.role ? this.props.role : 'region'} aria-labelledby={this.props.DGLAriaLabelledby}>
         <ResponsiveReactGridLayout
           isDraggable={this.props.isDraggable || true}
           breakpoints={this.props.breakpoints}
