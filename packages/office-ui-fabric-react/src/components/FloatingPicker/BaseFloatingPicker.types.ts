@@ -143,11 +143,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   suggestionItems?: T[];
 }
 
-// tslint:disable:no-any This type wasn't properly parameterized and so was using
-// an implicit any to refer to entries in ISuggestionsControlProps.
-// In order to maintain backwards compatibility, add a parameter with default type any.
 export type IBaseFloatingPickerSuggestionProps<T> = Pick<
   ISuggestionsControlProps<T>,
   'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
 >;
-// tslint:enable:no-any
