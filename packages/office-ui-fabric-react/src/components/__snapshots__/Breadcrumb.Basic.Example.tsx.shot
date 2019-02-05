@@ -148,8 +148,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -163,6 +162,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -312,8 +314,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -327,6 +328,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -476,8 +480,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -491,6 +494,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -640,8 +646,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -655,6 +660,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -804,8 +812,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -819,6 +826,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -969,8 +979,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -984,6 +993,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1201,8 +1213,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -1216,6 +1227,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1357,8 +1371,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -1372,6 +1385,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1513,8 +1529,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -1528,6 +1543,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1669,8 +1687,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -1684,6 +1701,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1825,8 +1845,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -1840,6 +1859,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1982,8 +2004,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -1997,6 +2018,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2380,8 +2404,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       &:active, &:hover, &:active:hover {
@@ -2389,6 +2412,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2526,8 +2552,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       &:active, &:hover, &:active:hover {
@@ -2535,6 +2560,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2673,8 +2701,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:focus {
-                        color: #212121;
+                      @media screen and (-ms-high-contrast: active) &:focus{& {
                         outline: 1px solid WindowText;
                       }
                       &:active, &:hover, &:active:hover {
@@ -2682,6 +2709,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #212121;
                       }
                       &::-moz-focus-inner {
                         border: 0;

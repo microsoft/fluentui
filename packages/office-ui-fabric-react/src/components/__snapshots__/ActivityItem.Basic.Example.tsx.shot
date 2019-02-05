@@ -100,8 +100,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:focus {
-                color: #0078d4;
+              @media screen and (-ms-high-contrast: active) &:focus{& {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -115,6 +114,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
               }
           onClick={[Function]}
           type="button"
@@ -171,8 +173,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:focus {
-                color: #0078d4;
+              @media screen and (-ms-high-contrast: active) &:focus{& {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -186,6 +187,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
               }
           onClick={[Function]}
           type="button"
@@ -310,8 +314,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:focus {
-                color: #0078d4;
+              @media screen and (-ms-high-contrast: active) &:focus{& {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -325,6 +328,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
               }
           onClick={[Function]}
           type="button"
@@ -458,8 +464,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:focus {
-                color: #0078d4;
+              @media screen and (-ms-high-contrast: active) &:focus{& {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -473,6 +478,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
               }
           onClick={[Function]}
           type="button"
@@ -518,8 +526,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:focus {
-                color: #0078d4;
+              @media screen and (-ms-high-contrast: active) &:focus{& {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -533,6 +540,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
               }
           onClick={[Function]}
           type="button"
@@ -578,8 +588,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               @media screen and (-ms-high-contrast: active){& {
                 border-bottom: none;
               }
-              &:focus {
-                color: #0078d4;
+              @media screen and (-ms-high-contrast: active) &:focus{& {
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
@@ -593,6 +602,9 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
               }
               @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
+              }
+              &:focus {
+                color: #0078d4;
               }
           onClick={[Function]}
           type="button"

@@ -143,8 +143,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:focus {
-                    color: #0078d4;
+                  @media screen and (-ms-high-contrast: active) &:focus{& {
                     outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
@@ -152,6 +151,9 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
                   }
               href="http://bing.com"
               onClick={[Function]}
@@ -219,8 +221,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:focus {
-                    color: #0078d4;
+                  @media screen and (-ms-high-contrast: active) &:focus{& {
                     outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
@@ -228,6 +229,9 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
                   }
               href="http://bing.com"
               onClick={[Function]}
@@ -295,8 +299,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:focus {
-                    color: #0078d4;
+                  @media screen and (-ms-high-contrast: active) &:focus{& {
                     outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
@@ -304,6 +307,9 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
+                  }
+                  &:focus {
+                    color: #0078d4;
                   }
               href="http://bing.com"
               onClick={[Function]}

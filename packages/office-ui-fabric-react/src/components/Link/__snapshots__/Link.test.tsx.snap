@@ -20,8 +20,7 @@ exports[`Link renders Link correctly 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:focus {
-        color: #0078d4;
+      @media screen and (-ms-high-contrast: active) &:focus{& {
         outline: 1px solid WindowText;
       }
       &:active, &:hover, &:active:hover {
@@ -29,6 +28,9 @@ exports[`Link renders Link correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
         text-decoration: underline;
+      }
+      &:focus {
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
@@ -75,8 +77,7 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:focus {
-        color: #0078d4;
+      @media screen and (-ms-high-contrast: active) &:focus{& {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -90,6 +91,9 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
         text-decoration: underline;
+      }
+      &:focus {
+        color: #0078d4;
       }
   onClick={[Function]}
 >
@@ -118,8 +122,7 @@ exports[`Link renders Link with a custom class name 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:focus {
-        color: #0078d4;
+      @media screen and (-ms-high-contrast: active) &:focus{& {
         outline: 1px solid WindowText;
       }
       &:active, &:hover, &:active:hover {
@@ -127,6 +130,9 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
         text-decoration: underline;
+      }
+      &:focus {
+        color: #0078d4;
       }
   href="#"
   onClick={[Function]}
@@ -172,8 +178,7 @@ exports[`Link renders Link with no href as a button 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:focus {
-        color: #0078d4;
+      @media screen and (-ms-high-contrast: active) &:focus{& {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -187,6 +192,9 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
         text-decoration: underline;
+      }
+      &:focus {
+        color: #0078d4;
       }
   onClick={[Function]}
   type="button"
@@ -218,7 +226,7 @@ exports[`Link renders disabled Link correctly 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:focus {
+      @media screen and (-ms-high-contrast: active) &:focus{& {
         outline: 1px solid WindowText;
       }
       &:link, &:visited {
@@ -270,7 +278,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:focus {
+      @media screen and (-ms-high-contrast: active) &:focus{& {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -329,8 +337,7 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
       }
-      &:focus {
-        color: #0078d4;
+      @media screen and (-ms-high-contrast: active) &:focus{& {
         outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
@@ -344,6 +351,9 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       }
       @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
         text-decoration: underline;
+      }
+      &:focus {
+        color: #0078d4;
       }
   onClick={[Function]}
 >
