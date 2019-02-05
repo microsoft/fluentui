@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "GroupedList: adds fluent changes to GroupHeader and GroupSpacer and adjusts DetailsHeader styles to conform new fluent redlines.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "v-vibr@microsoft.com"
+}

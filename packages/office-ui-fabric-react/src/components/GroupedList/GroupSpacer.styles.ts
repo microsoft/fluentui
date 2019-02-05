@@ -8,10 +8,10 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IGroupSpacerStyleProps): IGroupSpacerStyles => {
-  const { theme, width } = props;
+  const { theme, width, count } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    root: [classNames.root, theme.fonts.medium, { display: 'inline-block', width: width }]
+    root: [classNames.root, theme.fonts.medium, { display: 'inline-block', width: width! * count }]
   };
 };

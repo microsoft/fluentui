@@ -1,5 +1,5 @@
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
-import { CheckStyles, DetailsRowStyles } from './styles/DetailsList.styles';
+import { CheckStyles, DetailsRowStyles, DetailsRowCheckStyles, DetailsHeaderStyles } from './styles/DetailsList.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
@@ -15,6 +15,7 @@ import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles'
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
 import { FacepileStyles } from './styles/Facepile.styles';
+import { GroupHeaderStyles, GroupSpacerStyles } from './styles/GroupedList.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
@@ -87,6 +88,12 @@ export const FluentStyles: any = {
   DetailsRow: {
     styles: DetailsRowStyles
   },
+  DetailsHeader: {
+    styles: DetailsHeaderStyles
+  },
+  DetailsRowCheck: {
+    styles: DetailsRowCheckStyles
+  },
   DialogContent: {
     styles: DialogContentStyles
   },
@@ -101,6 +108,12 @@ export const FluentStyles: any = {
   },
   Facepile: {
     styles: FacepileStyles
+  },
+  GroupHeader: {
+    styles: GroupHeaderStyles
+  },
+  GroupSpacer: {
+    styles: GroupSpacerStyles
   },
   IconButton: {
     styles: IconButtonStyles

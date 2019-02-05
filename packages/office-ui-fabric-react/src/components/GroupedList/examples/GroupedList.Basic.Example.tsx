@@ -86,6 +86,7 @@ export class GroupedListBasicExample extends React.Component<{}, IGroupedListExa
         selection={this._selection}
         selectionMode={SelectionMode.multiple}
         compact={this.state.isCompactMode}
+        styles={{ root: { width: '100%' } }} // expand the row all the way so it matches to the GroupHeader
       />
     );
   };

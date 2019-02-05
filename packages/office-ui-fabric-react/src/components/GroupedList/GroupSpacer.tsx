@@ -12,7 +12,8 @@ export const GroupSpacer = styled<IGroupSpacerProps, IGroupSpacerStyleProps, IGr
     const { count, styles, theme, indentWidth = SPACER_WIDTH } = props;
     const classNames = getClassNames(styles, {
       theme: theme!,
-      width: count * indentWidth
+      width: indentWidth,
+      count
     });
 
     return count > 0 ? <span className={classNames.root} /> : null;
