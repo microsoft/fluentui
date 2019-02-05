@@ -100,7 +100,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       });
     }
 
-    this._precision = newProps.precision === undefined ? Math.max(calculatePrecision(newProps.step!), 0) : newProps.precision;
+    this._precision = this._calculatePrecision(newProps, true);
   }
 
   public render(): JSX.Element {
@@ -272,6 +272,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       return this.props.onValidate(value, event);
     } else {
       return this._defaultOnValidate(value);
+    }
+  };
+
+  private _calculatePrecision = (value: ISpinButtonProps, forCWRP: boolean) => {
+    if (forCWRP) {
+      return value.precision === undefined && !isNaN(Number(value.precision))
+        ? Math.max(calculatePrecision(value.step!), 0)
+        : value.precision;
+    } else {
+      return value.precision || Math.max(calculatePrecision(value.step!), 0) || isNaN(Number(value.precision));
     }
   };
 
