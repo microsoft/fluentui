@@ -10520,7 +10520,7 @@ interface ISpinButtonProps {
   // (undocumented)
   ariaValueText?: string;
   className?: string;
-  componentRef?: (component?: ISpinButton | null) => void;
+  componentRef?: IRefObject<ISpinButton>;
   decrementButtonAriaLabel?: string;
   decrementButtonIcon?: IIconProps;
   defaultValue?: string;
