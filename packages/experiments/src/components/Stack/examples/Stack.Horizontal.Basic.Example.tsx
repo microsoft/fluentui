@@ -20,21 +20,21 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
     return (
       <Stack gap={5}>
         <span>Default horizontal stack</span>
-        <Stack horizontal className={styles.root}>
+        <Stack horizontal preventShrink className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Horizontal gap between items</span>
-        <Stack horizontal gap={10} padding={10} className={styles.root}>
+        <Stack horizontal preventShrink gap={10} padding={10} className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack horizontal gap={5} padding={10} className={styles.root} styles={{ root: { height: 100 } }}>
+        <Stack horizontal preventShrink gap={5} padding={10} className={styles.root} styles={{ root: { height: 100 } }}>
           <Stack.Item align="auto" className={styles.item}>
             <span>Auto-aligned item</span>
           </Stack.Item>
@@ -56,7 +56,7 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Clickable stack</span>
-        <Stack horizontal onClick={this._onClick} padding={10} className={styles.root}>
+        <Stack horizontal preventShrink onClick={this._onClick} padding={10} className={styles.root}>
           <span>Click inside this box</span>
         </Stack>
       </Stack>

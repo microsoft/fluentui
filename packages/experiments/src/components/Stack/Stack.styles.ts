@@ -1,4 +1,4 @@
-import { IStackComponent, IStackStyles, IStackProps, IStackStylesReturnType } from './Stack.types';
+import { IStackComponent, IStackStyles, IStackStylesReturnType } from './Stack.types';
 import { parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
 
@@ -20,7 +20,6 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
     horizontal,
     reversed,
     gap,
-    verticalGap,
     grow,
     wrap,
     padding,
@@ -32,17 +31,10 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  let horiGap: IStackProps['gap'];
-  let vertGap: IStackProps['gap'];
+  const { rowGap, columnGap } = parseGap(gap, theme);
 
-  horiGap = gap;
-  vertGap = verticalGap !== undefined ? verticalGap : gap;
-
-  const hGap = parseGap(horiGap, theme);
-  const vGap = parseGap(vertGap, theme);
-
-  const horizontalMargin = `${-0.5 * hGap.value}${hGap.unit}`;
-  const verticalMargin = `${-0.5 * vGap.value}${vGap.unit}`;
+  const horizontalMargin = `${-0.5 * columnGap.value}${columnGap.unit}`;
+  const verticalMargin = `${-0.5 * rowGap.value}${rowGap.unit}`;
 
   // styles to be applied to all direct children regardless of wrap or direction
   const childStyles = {
@@ -80,6 +72,9 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
           // not allowed to be overridden by className
           // since this is necessary in order to prevent collapsing margins
           display: 'flex'
+        },
+        horizontal && {
+          height: verticalFill ? '100%' : 'auto'
         }
       ],
 
@@ -96,12 +91,12 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
           boxSizing: 'border-box',
           padding: parsePadding(padding, theme),
           // avoid unnecessary calc() calls if horizontal gap is 0
-          width: hGap.value === 0 ? '100%' : `calc(100% + ${hGap.value}${hGap.unit})`,
+          width: columnGap.value === 0 ? '100%' : `calc(100% + ${columnGap.value}${columnGap.unit})`,
           maxWidth: '100vw',
 
           selectors: {
             '> *': {
-              margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
+              margin: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
 
               ...childStyles
             },
@@ -118,21 +113,21 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
           flexDirection: reversed ? 'row-reverse' : 'row',
 
           // avoid unnecessary calc() calls if vertical gap is 0
-          height: vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`,
+          height: rowGap.value === 0 ? '100%' : `calc(100% + ${rowGap.value}${rowGap.unit})`,
 
           selectors: {
             '> *': {
-              maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`
+              maxWidth: columnGap.value === 0 ? '100%' : `calc(100% - ${columnGap.value}${columnGap.unit})`
             }
           }
         },
         !horizontal && {
           flexDirection: reversed ? 'column-reverse' : 'column',
-          height: `calc(100% + ${vGap.value}${vGap.unit})`,
+          height: `calc(100% + ${rowGap.value}${rowGap.unit})`,
 
           selectors: {
             '> *': {
-              maxHeight: vGap.value === 0 ? '100%' : `calc(100% - ${vGap.value}${vGap.unit})`
+              maxHeight: rowGap.value === 0 ? '100%' : `calc(100% - ${rowGap.value}${rowGap.unit})`
             }
           }
         }
@@ -161,10 +156,10 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
           // and the last direct one if it is
           [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: [
             horizontal && {
-              marginLeft: `${hGap.value}${hGap.unit}`
+              marginLeft: `${columnGap.value}${columnGap.unit}`
             },
             !horizontal && {
-              marginTop: `${vGap.value}${vGap.unit}`
+              marginTop: `${rowGap.value}${rowGap.unit}`
             }
           ],
 

@@ -204,7 +204,7 @@ storiesOf('Stack', module)
     'Vertical Stack - Wrap',
     () => (
       <Fabric>
-        <Stack {...defaultProps} verticalGap={10} wrap className={styles.fixedHeight}>
+        <Stack {...defaultProps} gap={'10 0'} wrap className={styles.fixedHeight}>
           <span className={styles.boxItem}>1</span>
           <span className={styles.boxItem}>2</span>
           <span className={styles.boxItem}>3</span>
@@ -400,7 +400,7 @@ storiesOf('Stack', module)
   )
   .addStory('Horizontal Stack - Wrap with specified vertical gap', () => (
     <Fabric>
-      <Stack horizontal {...defaultProps} wrap gap={10} verticalGap={40}>
+      <Stack horizontal {...defaultProps} wrap gap={'40 10'}>
         <span className={styles.boxItem}>1</span>
         <span className={styles.boxItem}>2</span>
         <span className={styles.boxItem}>3</span>

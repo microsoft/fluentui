@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Button } from '../index';
+import { Button, IButtonProps } from '../index';
 import { Stack, Text } from '@uifabric/experiments';
-import { ContextualMenu, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
+import { Icon, CommandBar } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
+const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal gap={buttonGap}>
+  <Stack horizontal preventShrink gap={buttonGap}>
     {props.children}
   </Stack>
 );
@@ -40,7 +40,6 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button icon="Upload" content="Button with string icon" />
                 <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
                 <Button icon={() => <Icon iconName="Download" />} content="Button with icon render function" />
-                <Button icon={<Icon iconName="Download" />} content="Button with icon JSX" />
               </ButtonStack>
               <ButtonStack>
                 <Button>

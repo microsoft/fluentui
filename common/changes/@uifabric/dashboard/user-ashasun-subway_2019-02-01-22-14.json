@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Fix edge browser thumbnail list focus items alignment issue",
+      "comment": "Adding SubwayNav control in Dashboard",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "v-ragor@microsoft.com"
+  "email": "ashasun@microsoft.com"
 }

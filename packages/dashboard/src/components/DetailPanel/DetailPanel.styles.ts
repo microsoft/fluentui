@@ -186,23 +186,23 @@ const getDetailTileStyles = (): IDetailTileStyles => {
   return {
     item: {
       width: 240,
-      padding: '24px 24px 24px 0px'
+      padding: '20px 24px 20px 0px'
     },
     title: {
-      fontSize: FontSizes.medium,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       lineHeight: 20,
       paddingBottom: 2
     },
     message: {
-      fontSize: FontSizes.medium,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       lineHeight: 20,
       color: 'rgba(0, 0, 0, 0.6)',
       paddingBottom: 2
     },
     action: {
-      fontSize: FontSizes.medium,
+      fontSize: FontSizes.small,
       lineHeight: 20,
       selectors: {
         '.ms-Link': {

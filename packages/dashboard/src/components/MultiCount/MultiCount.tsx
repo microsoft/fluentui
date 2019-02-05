@@ -28,7 +28,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       bodyTextFontSize,
       bodyTextColor,
       customMessage,
-      href
+      href,
+      onClicked
     } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
@@ -37,7 +38,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       annotationTextColor,
       bodyTextFontSize,
       bodyTextColor,
-      customMessage
+      customMessage,
+      onClicked
     );
     return <div>{data}</div>;
   }
@@ -49,7 +51,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
     annotationTextColor?: string,
     bodyTextFontSize?: string,
     bodyTextColor?: string,
-    customMessage?: string
+    customMessage?: string,
+    onClicked?: VoidFunction
   ): JSX.Element[] {
     const formattedRows: JSX.Element[] = [];
     const units = ['', 'k', 'm', 'b'];
@@ -84,6 +87,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           hoveredText: this.state.hoveredText,
           currentText: row.data + row.bodyText + row.annotaionText,
           href: href,
+          onClicked: onClicked,
           hideIcon: row.hideIcon
         })
       );
@@ -132,6 +136,7 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
+    this.props.onClicked && this.props.onClicked();
   }
 
   // tslint:disable-next-line:no-any

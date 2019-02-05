@@ -187,9 +187,11 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
         role="dialog"
         style={
           Object {
+            "outline": "none",
             "overflowY": undefined,
           }
         }
+        tabIndex={-1}
       >
         <div
           aria-hidden={false}

@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.15.2",
+      "tag": "@uifabric/merge-styles_v6.15.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where multiple selectors in :global() would not be processed correctly",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "91e8cf63bf2e057f609905f66363ac6ab5b5880e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.15.1",
       "tag": "@uifabric/merge-styles_v6.15.1",
       "date": "Wed, 23 Jan 2019 22:53:13 GMT",
