@@ -57,11 +57,11 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #666666 inset;
           }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
-          }
-          @media screen and (-ms-high-contrast: active) &:focus{& {
-            outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
             color: #FFFF00;
@@ -125,11 +125,11 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #666666 inset;
           }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
-          }
-          @media screen and (-ms-high-contrast: active) &:focus{& {
-            outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
             color: #FFFF00;
@@ -193,11 +193,11 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #666666 inset;
           }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
-          }
-          @media screen and (-ms-high-contrast: active) &:focus{& {
-            outline: 1px solid WindowText;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
             color: #FFFF00;
