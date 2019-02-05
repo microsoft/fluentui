@@ -42,7 +42,8 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   calendarProps?: ICalendarProps;
 
   /**
-   * Pass textField props to textField component
+   * Pass textField props to textField component.
+   * Prop name is "textField" for compatiblity with upcoming slots work.
    */
   textField?: ITextFieldProps;
 

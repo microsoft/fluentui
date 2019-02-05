@@ -1,11 +1,9 @@
 {
-  "changes": [
-    {
-      "packageName": "office-ui-fabric-react",
-      "comment": "Add textFieldProps to IDatePickerProps",
-      "type": "minor"
-    }
-  ],
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "Add textField to IDatePickerProps",
+    "type": "minor"
+  }],
   "packageName": "office-ui-fabric-react",
   "email": "evlevy@microsoft.com"
 }
