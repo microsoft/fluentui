@@ -164,7 +164,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                  &:focus {
+                    color: #0078d4;
                     outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
@@ -172,9 +173,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
-                  }
-                  &:focus {
-                    color: #0078d4;
                   }
               href="http://bing.com"
               onClick={[Function]}
@@ -242,7 +240,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                  &:focus {
+                    color: #0078d4;
                     outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
@@ -250,9 +249,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
-                  }
-                  &:focus {
-                    color: #0078d4;
                   }
               href="http://bing.com"
               onClick={[Function]}
@@ -320,7 +316,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                  &:focus {
+                    color: #0078d4;
                     outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
@@ -328,9 +325,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
-                  }
-                  &:focus {
-                    color: #0078d4;
                   }
               href="http://bing.com"
               onClick={[Function]}

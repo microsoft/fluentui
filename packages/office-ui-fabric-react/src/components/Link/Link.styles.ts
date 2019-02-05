@@ -31,11 +31,10 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           },
           '@media screen and (-ms-high-contrast: active)': {
             // For IE high contrast mode
-            borderBottom: 'none'
-          },
-          '@media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus': {
-            // In high contrast mode, when in focus, override outline: none.
-            outline: '1px solid WindowText'
+            borderBottom: 'none',
+            selectors: {
+              '&:focus': { outline: '1px solid WindowText' }
+            }
           }
         }
       },
