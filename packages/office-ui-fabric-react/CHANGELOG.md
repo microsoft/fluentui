@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Feb 2019 13:35:00 GMT and should not be manually modified.
+
+## 6.134.0
+Tue, 05 Feb 2019 13:35:00 GMT
+
+### Minor changes
+
+- MessageBar: mix in native props
+- Use React.ComponentType in ExtendedPeoplePicker for render props
+
+### Patches
+
+- DetailsList: render a simple column header for checkboxes in single selection mode
+- Fixing the implementation of the hidden prop wrt to focus, bounds and unnecessary mounts
+- Nav: Fixed an issue where nav link text overflow was not properly left aligned.
+- Remove popup outline
 
 ## 6.133.0
 Mon, 04 Feb 2019 13:36:12 GMT

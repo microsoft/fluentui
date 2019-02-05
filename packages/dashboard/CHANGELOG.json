@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.47.2",
+      "tag": "@uifabric/dashboard_v0.47.2",
+      "date": "Tue, 05 Feb 2019 13:35:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add id's for actions and onclick handler for multicount",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "f132e7dd52c66ef4d3a498e15d050b895a508bff"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.133.0 <7.0.0` to `>=6.134.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.47.1",
       "tag": "@uifabric/dashboard_v0.47.1",
       "date": "Mon, 04 Feb 2019 13:36:12 GMT",

@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.134.0",
+      "tag": "office-ui-fabric-react_v6.134.0",
+      "date": "Tue, 05 Feb 2019 13:35:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: render a simple column header for checkboxes in single selection mode",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "74cfba9e9ef68a07b8fde987c7579831d916934f"
+          },
+          {
+            "comment": "Fixing the implementation of the hidden prop wrt to focus, bounds and unnecessary mounts",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "3d453f2c4010772c861541112b9475c8c4e214d1"
+          },
+          {
+            "comment": "Nav: Fixed an issue where nav link text overflow was not properly left aligned.",
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "dc372f0a2342d00d307e7ace5a6768fe5fa9ee93"
+          },
+          {
+            "comment": "Remove popup outline",
+            "author": "Jeff Hellesen <jhellesen@gmail.com>",
+            "commit": "7ab8c237fe749bc02e96517bb135cbfa4e5eab15"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "MessageBar: mix in native props",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "1192a320b0e1c8204d29d36af83e4bcb35a6920d"
+          },
+          {
+            "comment": "Use React.ComponentType in ExtendedPeoplePicker for render props",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "900176501c2744491375d31ed46deec0e99e9abb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.133.0",
       "tag": "office-ui-fabric-react_v6.133.0",
       "date": "Mon, 04 Feb 2019 13:36:12 GMT",
