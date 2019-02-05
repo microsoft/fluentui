@@ -75,7 +75,7 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
 
     const farItems =
       this.props.onGetFarItems !== undefined ? this.props.onGetFarItems(this.defaultFarItemsFactory) : this.defaultFarItemsFactory({});
-    const showCommandBar = farItems !== undefined && farItems.length > 0;
+    const showCommandBar = this.props.hideCommandBar === undefined || !this.props.hideCommandBar;
 
     const wrappedCommandBarItems = this.props.commandBarProps.items.map((item: ICommandBarItemProps) => {
       const mergedButtonStyles = mergeStyleSets(getCommandBarItemStyle(), item.buttonStyles);
