@@ -36,7 +36,7 @@ export class NavBasicExample extends React.Component<any, any> {
                 { name: 'Documents', url: 'http://example.com', key: 'key3', isExpanded: true },
                 { name: 'Pages', url: 'http://msn.com', key: 'key4' },
                 { name: 'Notebook', url: 'http://msn.com', key: 'key5' },
-                { name: 'Long Name Test for ellipse', url: 'http://msn.com', key: 'key6' },
+                { name: 'Communication and Media', url: 'http://msn.com', key: 'key6' },
                 {
                   name: 'News',
                   url: 'http://cnn.com',

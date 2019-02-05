@@ -214,6 +214,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
@@ -381,6 +382,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
