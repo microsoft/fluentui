@@ -1827,7 +1827,7 @@ interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   onSuggestionsShown?: () => void;
   onValidateInput?: (input: string) => boolean;
   onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
-  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T>;
   resolveDelay?: number;
   searchingText?: ((props: {
           input: string;
@@ -1846,13 +1846,6 @@ interface IBaseFloatingPickerState {
   queryString: string;
   // (undocumented)
   suggestionsVisible?: boolean;
-}
-
-// @public (undocumented)
-interface IBaseFloatingPickerSuggestionProps {
-  footerItemsProps?: ISuggestionsHeaderFooterProps[];
-  headerItemsProps?: ISuggestionsHeaderFooterProps[];
-  shouldSelectFirstItem?: () => boolean;
 }
 
 // @public
@@ -12840,6 +12833,7 @@ module ZIndexes {
 // WARNING: Unsupported export: groupTwo
 // WARNING: Unsupported export: Fabric
 // WARNING: Unsupported export: Facepile
+// WARNING: Unsupported export: IBaseFloatingPickerSuggestionProps
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
