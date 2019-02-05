@@ -15,7 +15,7 @@ const getClassNames = classNamesFunction<ISubwayNavProps, ISubwayNavStyles>();
 const classNames = getClassNames(getSubwayNavStyles!);
 
 /**
- * Component for Subway control
+ * Component for Subway Nav control
  */
 export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
   constructor(props: ISubwayNavProps) {
@@ -85,7 +85,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
       </div>
     );
 
-    /** Render substeps if current step has substeps */
+    // Render substeps if current step has substeps
     if (renderSubStep && stepToRender!.subSteps) {
       let subStepElements: JSX.Element[] = [];
 
