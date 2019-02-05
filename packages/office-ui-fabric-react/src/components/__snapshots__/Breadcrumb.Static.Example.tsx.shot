@@ -305,6 +305,9 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                        outline: 1px solid WindowText;
+                      }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
@@ -467,6 +470,9 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                        outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
@@ -631,6 +637,9 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                        outline: 1px solid WindowText;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;

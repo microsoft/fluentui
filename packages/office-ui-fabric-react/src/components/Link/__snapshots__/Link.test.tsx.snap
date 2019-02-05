@@ -16,10 +16,12 @@ exports[`Link renders Link correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+        outline: 1px solid WindowText;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -71,10 +73,12 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -114,10 +118,12 @@ exports[`Link renders Link with a custom class name 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+        outline: 1px solid WindowText;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -168,10 +174,12 @@ exports[`Link renders Link with no href as a button 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -214,10 +222,12 @@ exports[`Link renders disabled Link correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+        outline: 1px solid WindowText;
       }
       &:link, &:visited {
         pointer-events: none;
@@ -264,10 +274,12 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -321,10 +333,12 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       }
       .ms-Fabric--isFocusVisible &:focus {
         box-shadow: 0 0 0 1px #666666 inset;
-        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-bottom: none;
+      }
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+        outline: 1px solid WindowText;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;

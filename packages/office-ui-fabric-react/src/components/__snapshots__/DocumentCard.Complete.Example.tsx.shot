@@ -139,10 +139,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #666666 inset;
-                    outline: 1px solid WindowText;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                    outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -215,10 +217,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #666666 inset;
-                    outline: 1px solid WindowText;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                    outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -291,10 +295,12 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #666666 inset;
-                    outline: 1px solid WindowText;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus{& {
+                    outline: 1px solid WindowText;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
