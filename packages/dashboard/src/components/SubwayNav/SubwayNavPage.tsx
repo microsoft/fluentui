@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
-import {
-  SubwayNavBasicExample,
-  SubwayNavWizardCompleteExample,
-  SubwayNavBasicDifferentStatesExample,
-  SubwayNavDisabledStepsExample,
-  SubwayNavSubStepsExample
-} from './examples';
+import { SubwayNavBasicExample } from './examples/SubwayNav.Basic.Example';
+import { SubwayNavWizardCompleteExample } from './examples/SubwayNav.WizardComplete.Example';
+import { SubwayNavBasicDifferentStatesExample } from './examples/SubwayNav.Basic.DifferentStates.Example';
+import { SubwayNavDisabledStepsExample } from './examples/SubwayNav.DisabledSteps.Example';
+import { SubwayNavSubStepsExample } from './examples/SubwayNav.SubSteps.Example';
 
 const SubwayNavExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayNav/examples/SubwayNav.Basic.Example.tsx') as string;
 const SubwayNavDisabledStepsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayNav/examples/SubwayNav.DisabledSteps.Example.tsx') as string;
@@ -42,7 +40,6 @@ export class SubwayNavPage extends React.Component<IComponentDemoPageProps, {}> 
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/SubwayNav/SubwayNav.types.ts')]} />
         }
-        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>The Subway Nav control allows you to visualize the steps required for a given wizard.</p>
