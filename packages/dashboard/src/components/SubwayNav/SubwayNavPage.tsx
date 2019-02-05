@@ -6,7 +6,7 @@ import {
   SubwayNavBasicDifferentStatesExample,
   SubwayNavDisabledStepsExample,
   SubwayNavSubStepsExample
-} from '@uifabric/dashboard/lib/components/SubwayNav/examples';
+} from './examples';
 
 const SubwayNavExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayNav/examples/SubwayNav.Basic.Example.tsx') as string;
 const SubwayNavDisabledStepsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/SubwayNav/examples/SubwayNav.DisabledSteps.Example.tsx') as string;
