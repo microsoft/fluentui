@@ -230,7 +230,7 @@ describe('DetailsColumn', () => {
     const columnHeader = component.find(DetailsColumn);
     const columnHeaderTitle = columnHeader.find('.ms-DetailsHeader-cellTitle');
 
-    expect(columnHeaderTitle.getDOMNode().getAttribute('aria-expanded')).toBe('false');
+    expect(columnHeaderTitle.getDOMNode().getAttribute('aria-expanded')).toBe(null);
   });
 
   it('Examine aria-expanded value when columnActionMode is hasDropDown with isMenuOpen property set', () => {

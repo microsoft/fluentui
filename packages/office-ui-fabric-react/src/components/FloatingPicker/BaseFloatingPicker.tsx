@@ -26,8 +26,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> = SuggestionsControl as new (
     props: ISuggestionsControlProps<T>
   ) => SuggestionsControl<T>;
-  // tslint:disable-next-line:no-any
-  protected currentPromise: PromiseLike<any>;
+  protected currentPromise: PromiseLike<T[]>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);

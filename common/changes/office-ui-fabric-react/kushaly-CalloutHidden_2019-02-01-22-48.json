@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Combobox: Pass taxIndex to Autofill component",
+      "comment": "Fixing the implementation of the hidden prop wrt to focus, bounds and unnecessary mounts",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "edwl@microsoft.com"
+  "email": "kushaly@microsoft.com"
 }

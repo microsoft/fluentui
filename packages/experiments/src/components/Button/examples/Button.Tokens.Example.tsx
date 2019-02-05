@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Button, IButtonProps, Stack } from '@uifabric/experiments';
-import { ContextualMenu, createTheme, IContextualMenuProps, Spinner } from 'office-ui-fabric-react';
+import { createTheme, Spinner } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
+const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const sectionGap = 32;
 
@@ -22,7 +22,7 @@ const testTheme = createTheme({
 export class ButtonTokensExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const ButtonSet = (props: IButtonProps) => (
-      <Stack horizontal verticalAlign="center" gap={8}>
+      <Stack horizontal preventShrink verticalAlign="center" gap={8}>
         <Button {...props} />
         <Button {...props} primary />
         <Button {...props} disabled />
@@ -50,11 +50,11 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
         <ButtonSet circular />
         <ButtonSet circular icon="share" />
         <ButtonSet
-          icon={(iconProps, IconType) => <IconType {...iconProps} iconName="upload" />}
+          icon={render => render((IconType, iconProps) => <IconType {...iconProps} iconName="upload" />)}
           content="Menu button with icon"
           menu={buttonMenu}
         />
-        <Stack horizontal verticalAlign="center" gap={8}>
+        <Stack horizontal preventShrink verticalAlign="center" gap={8}>
           <Button
             primary
             icon="PeopleAdd"

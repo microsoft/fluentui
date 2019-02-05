@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { withSlots, createFactory, getSlots } from './slots';
-import { IProcessedSlotProps, ISlot, ISlotProp, ISlotRenderFunction, ISlotDefinition } from './ISlots';
+import { IProcessedSlotProps, ISlot, ISlotProp, ISlotPropRenderFunction, ISlotDefinition } from './ISlots';
 
 describe('withSlots', () => {
   let reactCalls: number;
@@ -56,6 +56,7 @@ describe('withSlots', () => {
 describe('createFactory', () => {
   const componentProps = { component: 'componentValue', id: 'componentIdValue', children: ['Component Child 1', 'Component Child 2'] };
   const userProps = { user: 'userValue', id: 'userIdValue', children: ['User Child 1', 'User Child 2'] };
+  const renderProps = { render: 'renderValue', id: 'renderIdValue', children: ['Render Child 1', 'Render Child 2'] };
   const userPropString = 'userPropString';
   const defaultProp = 'shorthand-prop';
   const emptyClassName = { className: '' };
@@ -124,12 +125,13 @@ describe('createFactory', () => {
   });
 
   it(`passes props and type arguments to userProp function`, done => {
-    const userPropsFunction: ISlotRenderFunction<typeof userProps> = (props, type) => {
-      expect(props).toEqual({ ...componentProps, ...emptyClassName });
-      expect(type).toEqual(TestComponent);
-      done();
-      return <div {...props} />;
-    };
+    const userPropsFunction: ISlotPropRenderFunction<typeof userProps | typeof renderProps> = render =>
+      render((type, props) => {
+        expect(props).toEqual({ ...componentProps, ...renderProps, ...emptyClassName });
+        expect(type).toEqual(TestComponent);
+        done();
+        return <div {...props} />;
+      }, renderProps);
 
     createFactory(TestComponent, factoryOptions)(componentProps, userPropsFunction, undefined);
   });

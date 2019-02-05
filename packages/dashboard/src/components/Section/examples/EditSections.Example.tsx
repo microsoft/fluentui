@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout, Layouts } from 'react-grid-layout';
+import { Layout, Layouts } from 'react-grid-layout-fabric';
 import { EditSections } from '../EditSections';
 import { CardSize, DashboardGridBreakpointLayouts, ISection, IDashboardCardLayout, CardSizeToWidthHeight } from '@uifabric/dashboard';
 

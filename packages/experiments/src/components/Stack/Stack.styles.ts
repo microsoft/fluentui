@@ -1,5 +1,5 @@
-import { IStackComponent, IStackStyles, IStackProps, IStackStylesReturnType } from './Stack.types';
-import { getVerticalAlignment, parseGap, parsePadding } from './StackUtils';
+import { IStackComponent, IStackStyles, IStackStylesReturnType } from './Stack.types';
+import { parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
 
 const nameMap: { [key: string]: string } = {
@@ -14,41 +14,30 @@ const GlobalClassNames = {
 
 export const styles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => {
   const {
-    horizontalFill,
     verticalFill,
     maxWidth,
     maxHeight,
     horizontal,
+    reversed,
     gap,
-    verticalGap,
     grow,
     wrap,
     padding,
     horizontalAlign,
     verticalAlign,
-    shrinkItems,
+    preventShrink,
     className
   } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const vertAlign = getVerticalAlignment(verticalAlign);
+  const { rowGap, columnGap } = parseGap(gap, theme);
 
-  let horiGap: IStackProps['gap'];
-  let vertGap: IStackProps['gap'];
-
-  horiGap = gap;
-  vertGap = verticalGap !== undefined ? verticalGap : gap;
-
-  const hGap = parseGap(horiGap, theme);
-  const vGap = parseGap(vertGap, theme);
-
-  const horizontalMargin = `${-0.5 * hGap.value}${hGap.unit}`;
-  const verticalMargin = `${-0.5 * vGap.value}${vGap.unit}`;
+  const horizontalMargin = `${-0.5 * columnGap.value}${columnGap.unit}`;
+  const verticalMargin = `${-0.5 * rowGap.value}${rowGap.unit}`;
 
   // styles to be applied to all direct children regardless of wrap or direction
   const childStyles = {
-    whiteSpace: 'nowrap',
     textOverflow: 'ellipsis'
   };
 
@@ -56,7 +45,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
   const commonSelectors = {
     // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
-      flexShrink: shrinkItems ? 1 : 0
+      flexShrink: preventShrink ? 0 : 1
     }
   };
 
@@ -75,14 +64,17 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         className,
         {
           // not allowed to be overridden by className
           // since this is necessary in order to prevent collapsing margins
           display: 'flex'
+        },
+        horizontal && {
+          height: verticalFill ? '100%' : 'auto'
         }
       ],
 
@@ -99,12 +91,12 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
           boxSizing: 'border-box',
           padding: parsePadding(padding, theme),
           // avoid unnecessary calc() calls if horizontal gap is 0
-          width: hGap.value === 0 ? '100%' : `calc(100% + ${hGap.value}${hGap.unit})`,
+          width: columnGap.value === 0 ? '100%' : `calc(100% + ${columnGap.value}${columnGap.unit})`,
           maxWidth: '100vw',
 
           selectors: {
             '> *': {
-              margin: `${0.5 * vGap.value}${vGap.unit} ${0.5 * hGap.value}${hGap.unit}`,
+              margin: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
 
               ...childStyles
             },
@@ -114,28 +106,28 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         horizontalAlign && {
           [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
         },
-        vertAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+        verticalAlign && {
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
         },
         horizontal && {
-          flexDirection: 'row',
+          flexDirection: reversed ? 'row-reverse' : 'row',
 
           // avoid unnecessary calc() calls if vertical gap is 0
-          height: vGap.value === 0 ? '100%' : `calc(100% + ${vGap.value}${vGap.unit})`,
+          height: rowGap.value === 0 ? '100%' : `calc(100% + ${rowGap.value}${rowGap.unit})`,
 
           selectors: {
             '> *': {
-              maxWidth: hGap.value === 0 ? '100%' : `calc(100% - ${hGap.value}${hGap.unit})`
+              maxWidth: columnGap.value === 0 ? '100%' : `calc(100% - ${columnGap.value}${columnGap.unit})`
             }
           }
         },
         !horizontal && {
-          flexDirection: 'column',
-          height: `calc(100% + ${vGap.value}${vGap.unit})`,
+          flexDirection: reversed ? 'column-reverse' : 'column',
+          height: `calc(100% + ${rowGap.value}${rowGap.unit})`,
 
           selectors: {
             '> *': {
-              maxHeight: vGap.value === 0 ? '100%' : `calc(100% - ${vGap.value}${vGap.unit})`
+              maxHeight: rowGap.value === 0 ? '100%' : `calc(100% - ${rowGap.value}${rowGap.unit})`
             }
           }
         }
@@ -148,10 +140,10 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
       classNames.root,
       {
         display: 'flex',
-        flexDirection: horizontal ? 'row' : 'column',
+        flexDirection: horizontal ? (reversed ? 'row-reverse' : 'row') : reversed ? 'column-reverse' : 'column',
         flexWrap: 'nowrap',
-        width: horizontalFill && !wrap ? '100%' : 'auto',
-        height: verticalFill && !wrap ? '100%' : 'auto',
+        width: 'auto',
+        height: verticalFill ? '100%' : 'auto',
         maxWidth,
         maxHeight,
         padding: parsePadding(padding, theme),
@@ -160,15 +152,17 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
         selectors: {
           '> *': childStyles,
 
-          // apply gap margin to every direct child except the first direct child
-          '> *:not(:first-child)': [
+          // apply gap margin to every direct child except the first direct child if the direction is not reversed,
+          // and the last direct one if it is
+          [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: [
             horizontal && {
-              marginLeft: `${hGap.value}${hGap.unit}`
+              marginLeft: `${columnGap.value}${columnGap.unit}`
             },
             !horizontal && {
-              marginTop: `${vGap.value}${vGap.unit}`
+              marginTop: `${rowGap.value}${rowGap.unit}`
             }
           ],
+
           ...commonSelectors
         }
       },
@@ -179,8 +173,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
       horizontalAlign && {
         [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
       },
-      vertAlign && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[vertAlign] || vertAlign
+      verticalAlign && {
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
       },
       className
     ]

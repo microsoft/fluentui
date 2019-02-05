@@ -63,4 +63,8 @@ export interface IAzureSemanticColors {
     hover: string;
     select: string;
   };
+  shimmer: {
+    primary: string;
+    secondary: string;
+  };
 }

@@ -11,7 +11,6 @@ import {
   TrendingSignal,
   SomeoneCheckedOutSignal,
   NewSignal,
-  LiveEditSignal,
   MentionSignal,
   CommentsSignal,
   UnseenReplySignal,

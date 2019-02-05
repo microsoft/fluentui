@@ -1,9 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -16,14 +15,17 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, IScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import './ScrollablePane.DetailsList.Story.scss';
+import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+const stickyListTitleClass = mergeStyles({
+  paddingTop: '100px'
+});
 
 const _columns: IColumn[] = [
   {
@@ -32,8 +34,7 @@ const _columns: IColumn[] = [
     fieldName: 'test1',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for name'
+    isResizable: true
   },
   {
     key: 'column2',
@@ -41,8 +42,7 @@ const _columns: IColumn[] = [
     fieldName: 'test2',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+    isResizable: true
   },
   {
     key: 'column3',
@@ -50,8 +50,7 @@ const _columns: IColumn[] = [
     fieldName: 'test3',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+    isResizable: true
   },
   {
     key: 'column4',
@@ -59,8 +58,7 @@ const _columns: IColumn[] = [
     fieldName: 'test4',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+    isResizable: true
   },
   {
     key: 'column5',
@@ -68,8 +66,7 @@ const _columns: IColumn[] = [
     fieldName: 'test5',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+    isResizable: true
   },
   {
     key: 'column6',
@@ -77,8 +74,7 @@ const _columns: IColumn[] = [
     fieldName: 'test6',
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+    isResizable: true
   }
 ];
 
@@ -92,24 +88,17 @@ interface IItem {
   test6: string;
 }
 
-class ScrollablePaneDetailsListStory extends React.Component<
-  {},
-  {
-    items: {}[];
-  }
-  > {
-  private _scrollablePane = React.createRef<IScrollablePane>();
+class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
   private _selection: Selection;
   private readonly _items: IItem[];
 
   constructor(props: {}) {
     super(props);
 
-    const items: IItem[] = [];
+    this._items = [];
 
-    // Populate with items for demos.
     for (let i = 0; i < 200; i++) {
-      items.push({
+      this._items.push({
         key: i,
         test1: i === 0 ? lorem(7) : lorem(2),
         test2: lorem(2),
@@ -120,15 +109,10 @@ class ScrollablePaneDetailsListStory extends React.Component<
       });
     }
 
-    this._items = items;
-
     this._selection = new Selection();
-    this.state = { items: items };
   }
 
   public render(): JSX.Element {
-    const { items } = this.state;
-
     return (
       <div
         style={{
@@ -139,15 +123,21 @@ class ScrollablePaneDetailsListStory extends React.Component<
         }}
       >
         <Fabric>
-          <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto} style={{ maxWidth: '500px', border: '1px solid #edebe9' }}>
+          <ScrollablePane
+            scrollbarVisibility={ScrollbarVisibility.auto}
+            style={{ maxWidth: '500px', border: '1px solid #edebe9' }}
+          >
             {/* providing backgroundColor as no parent element for the test has this property defined */}
-            <Sticky stickyPosition={StickyPositionType.Header} stickyBackgroundColor={getTheme().palette.white}
-              stickyClassName={'stickyListTitle'}>
+            <Sticky
+              stickyPosition={StickyPositionType.Header}
+              stickyBackgroundColor={getTheme().palette.white}
+              stickyClassName={stickyListTitleClass}
+            >
               <h1 style={{ margin: '0px' }}>Item List</h1>
             </Sticky>
             <MarqueeSelection selection={this._selection}>
               <DetailsList
-                items={items}
+                items={this._items}
                 columns={_columns}
                 setKey="set"
                 layoutMode={DetailsListLayoutMode.fixedColumns}
@@ -165,18 +155,23 @@ class ScrollablePaneDetailsListStory extends React.Component<
   }
 }
 
-function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
+function onRenderDetailsHeader(
+  props: IDetailsHeaderProps,
+  defaultRender?: IRenderFunction<IDetailsHeaderProps>
+): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
         ...props,
-        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost {...tooltipHostProps} />
+        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
+          <TooltipHost {...tooltipHostProps} />
+        )
       })}
     </Sticky>
   );
 }
 
-function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
+function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div style={{ display: 'inline-block' }}>
@@ -201,21 +196,25 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
   );
 }
 
-function hasText(item: IItem, text: string): boolean {
-  return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;
-}
-
 storiesOf('ScrollablePane Details List', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 2")
-        .snapshot('scroll down by a small amount so that the first row is still visible', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999")
+        .executeScript(
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 2"
+        )
+        .snapshot('scroll down by a small amount so that the first row is still visible', {
+          cropTo: '.testWrapper'
+        })
+        .executeScript(
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 99999"
+        )
         .snapshot('scroll down to the bottom', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0")
+        .executeScript(
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0"
+        )
         .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
         .end()}
     >

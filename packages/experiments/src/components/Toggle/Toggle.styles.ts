@@ -200,7 +200,6 @@ export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): 
         }
       }
     ],
-    offText: textStyles,
-    onText: textStyles
+    text: textStyles
   };
 };
