@@ -198,9 +198,9 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
-  protected renderSelectedItemsList(): JSX.Element;
+  protected renderFloatingPicker(): JSX.Element;
   // (undocumented)
-  protected renderSuggestions(): JSX.Element;
+  protected renderSelectedItemsList(): JSX.Element;
   // (undocumented)
   protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
@@ -229,7 +229,7 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   // (undocumented)
   componentWillUnmount(): void;
   // (undocumented)
-  protected currentPromise: PromiseLike<any>;
+  protected currentPromise: PromiseLike<T[]>;
   // (undocumented)
   readonly currentSelectedSuggestionIndex: number;
   // (undocumented)
@@ -1247,6 +1247,8 @@ class FocusZone extends BaseComponent<IFocusZoneProps, {}>, implements IFocusZon
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
+  componentDidUpdate(): void;
+  // (undocumented)
   componentWillUnmount(): void;
   // (undocumented)
   static defaultProps: IFocusZoneProps;
@@ -1353,6 +1355,9 @@ export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
 
 // @public
+export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
+
+// @public
 export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
 
 // @public
@@ -1360,6 +1365,9 @@ export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTML
 
 // @public
 export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+
+// @public
+export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
 
 // @public
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
@@ -1774,8 +1782,8 @@ interface IBaseExtendedPickerProps<T> {
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
   onItemsRemoved?: (removedItems: T[]) => void;
   onPaste?: (pastedText: string) => T[];
-  onRenderFloatingPicker: (props: IBaseFloatingPickerProps<T>) => JSX.Element;
-  onRenderSelectedItems: (props: IBaseSelectedItemsListProps<T>) => JSX.Element;
+  onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
+  onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
   selectedItems?: T[];
   selectedItemsListProps: IBaseSelectedItemsListProps<T>;
   suggestionItems?: T[];
@@ -8067,9 +8075,11 @@ interface IGroup {
 
 // @public (undocumented)
 interface IGroupDividerProps {
+  className?: string;
   compact?: boolean;
   // (undocumented)
   componentRef?: IRefObject<{}>;
+  // @deprecated
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
   footerText?: string;
   group?: IGroup;
@@ -8083,13 +8093,14 @@ interface IGroupDividerProps {
   isSelected?: boolean;
   loadingText?: string;
   onGroupHeaderClick?: (group: IGroup) => void;
-  onRenderTitle?: IRenderFunction<IGroupDividerProps>;
+  onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
   onToggleCollapse?: (group: IGroup) => void;
   onToggleSelectGroup?: (group: IGroup) => void;
   onToggleSummarize?: (group: IGroup) => void;
   selected?: boolean;
   selectionMode?: SelectionMode;
   showAllLinkText?: string;
+  theme?: ITheme;
   viewport?: IViewport;
 }
 
@@ -8147,18 +8158,83 @@ interface IGroupedListStyles {
 }
 
 // @public (undocumented)
+interface IGroupFooterProps extends IGroupDividerProps {
+  styles?: IStyleFunctionOrObject<IGroupFooterStyleProps, IGroupFooterStyles>;
+}
+
+// @public (undocumented)
+interface IGroupFooterStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IGroupHeaderProps extends IGroupDividerProps {
+  expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  groupedListId?: string;
+  selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+  styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
+}
+
+// @public (undocumented)
+interface IGroupHeaderStyles {
+  // (undocumented)
+  check: IStyle;
+  // (undocumented)
+  dropIcon: IStyle;
+  // (undocumented)
+  expand: IStyle;
+  // (undocumented)
+  expandIsCollapsed: IStyle;
+  // (undocumented)
+  groupHeaderContainer: IStyle;
+  // (undocumented)
+  headerCount: IStyle;
+  // (undocumented)
+  root: IStyle;
+  // (undocumented)
+  title: IStyle;
+}
+
+// @public (undocumented)
 interface IGroupRenderProps {
   collapseAllVisibility?: CollapseAllVisibility;
-  footerProps?: IGroupDividerProps;
+  footerProps?: IGroupFooterProps;
   getGroupItemLimit?: (group: IGroup) => number;
-  headerProps?: IGroupDividerProps;
+  headerProps?: IGroupHeaderProps;
   isAllGroupsCollapsed?: boolean;
-  onRenderFooter?: IRenderFunction<IGroupDividerProps>;
-  onRenderHeader?: IRenderFunction<IGroupDividerProps>;
-  onRenderShowAll?: IRenderFunction<IGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IGroupFooterProps>;
+  onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
+  onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
-  showAllProps?: IGroupDividerProps;
+  showAllProps?: IGroupShowAllProps;
   showEmptyGroups?: boolean;
+}
+
+// @public (undocumented)
+interface IGroupShowAllProps extends IGroupDividerProps {
+  showAllLinkText?: string;
+  styles?: IStyleFunctionOrObject<IGroupShowAllStyleProps, IGroupShowAllStyles>;
+}
+
+// @public (undocumented)
+interface IGroupShowAllStyles {
+  // (undocumented)
+  root: IStyle;
+}
+
+// @public (undocumented)
+interface IGroupSpacerProps {
+  count: number;
+  indentWidth?: number;
+  styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+  theme?: ITheme;
+}
+
+// @public (undocumented)
+interface IGroupSpacerStyles {
+  // (undocumented)
+  root: IStyle;
 }
 
 // @public (undocumented)
@@ -8708,6 +8784,7 @@ interface IMessageBar {
 // @public (undocumented)
 interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   actions?: JSX.Element;
+  // @deprecated
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IMessageBar>;
@@ -9981,7 +10058,7 @@ interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExtendedPers
   // (undocumented)
   onExpandGroup?: (item: IExtendedPersonaProps) => void;
   // (undocumented)
-  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IPersonaProps>) => JSX.Element;
+  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
   // (undocumented)
   removeMenuItemText?: string;
 }
@@ -12769,7 +12846,15 @@ module ZIndexes {
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
+// WARNING: Unsupported export: IGroupHeaderStyleProps
+// WARNING: Unsupported export: IGroupFooterStyleProps
+// WARNING: Unsupported export: IGroupShowAllStyleProps
+// WARNING: Unsupported export: GroupSpacer
 // WARNING: Unsupported export: GroupedList
+// WARNING: Unsupported export: GroupHeader
+// WARNING: Unsupported export: GroupFooter
+// WARNING: Unsupported export: GroupShowAll
+// WARNING: Unsupported export: IGroupSpacerStyleProps
 // WARNING: Unsupported export: HoverCard
 // WARNING: Unsupported export: ExpandingCard
 // WARNING: Unsupported export: PlainCard

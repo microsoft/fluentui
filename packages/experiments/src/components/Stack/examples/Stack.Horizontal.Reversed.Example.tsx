@@ -20,21 +20,21 @@ export class HorizontalStackReversedExample extends React.Component<{}, {}> {
     return (
       <Stack gap={5}>
         <span>Default horizontal stack</span>
-        <Stack horizontal reversed className={styles.root}>
+        <Stack horizontal reversed preventShrink className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Horizontal gap between items</span>
-        <Stack horizontal reversed gap={10} padding={10} className={styles.root}>
+        <Stack horizontal reversed preventShrink gap={10} padding={10} className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack horizontal reversed gap={5} padding={10} className={styles.root} styles={{ root: { height: 100 } }}>
+        <Stack horizontal reversed preventShrink gap={5} padding={10} className={styles.root} styles={{ root: { height: 100 } }}>
           <Stack.Item align="auto" className={styles.item}>
             <span>Auto-aligned item</span>
           </Stack.Item>

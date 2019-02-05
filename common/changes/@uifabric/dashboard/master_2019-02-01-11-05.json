@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": " Add cardId for dashboardGridLayout onLayoutChange",
+      "comment": "Add id's for actions and onclick handler for multicount",
       "type": "patch"
     }
   ],

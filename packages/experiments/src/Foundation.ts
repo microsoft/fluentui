@@ -1,7 +1,1 @@
-export * from './utilities/createComponent';
-export * from './utilities/IComponent';
-export * from './utilities/IHTMLSlots';
-export * from './utilities/ISlots';
-export * from './utilities/slots';
-
-export { ThemeProvider } from '@uifabric/foundation';
+export * from '@uifabric/foundation';

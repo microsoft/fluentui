@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 import { Nav } from './Nav';
-import { ICustomNavLinkGroup, INavProps, INavState, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
+import { ICustomNavLinkGroup, INavTogglerProps, INavState, INavStyleProps, INavStyles, NavGroupType } from './Nav.types';
 import { SlimNav } from './SlimNav';
 import { getStyles } from './Nav.styles';
 import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -10,8 +10,8 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
-class NavTogglerComponent extends React.Component<INavProps, INavState> {
-  constructor(props: INavProps) {
+class NavTogglerComponent extends React.Component<INavTogglerProps, INavState> {
+  constructor(props: INavTogglerProps) {
     super(props);
 
     this.state = {
@@ -129,6 +129,11 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
     ev.stopPropagation();
 
     this.setState((prevState: INavState) => {
+      // let the consumer know about the "show more" or "show less" event
+      if (this.props.onShowMoreLinkClicked) {
+        this.props.onShowMoreLinkClicked(ev, !prevState.showMore);
+      }
+
       return {
         showMore: !prevState.showMore
       };
@@ -136,5 +141,5 @@ class NavTogglerComponent extends React.Component<INavProps, INavState> {
   }
 }
 
-export const NavToggler = styled<INavProps, INavStyleProps, INavStyles>(NavTogglerComponent, getStyles);
+export const NavToggler = styled<INavTogglerProps, INavStyleProps, INavStyles>(NavTogglerComponent, getStyles);
 /* tslint:enable */

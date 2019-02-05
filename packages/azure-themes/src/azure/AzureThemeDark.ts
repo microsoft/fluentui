@@ -80,12 +80,11 @@ export const AzureThemeDark: ITheme = createTheme({
     themePrimary: DarkSemanticColors.controlOutlines.accent,
     neutralPrimary: DarkSemanticColors.text.body,
     neutralDark: DarkSemanticColors.text.body,
-    neutralLight: CommonSemanticColors.dividers.lineSeparator, // shimmer and document card
-    neutralLighter: DarkSemanticColors.item.hover, // shimmer elements
+    neutralLighter: DarkSemanticColors.shimmer.secondary, // shimmer elements
+    neutralLight: DarkSemanticColors.shimmer.primary, // shimmer elements
     neutralLighterAlt: DarkSemanticColors.item.hover, // nav highlight
     neutralQuaternaryAlt: DarkSemanticColors.item.select, // expand button on list controls
     neutralSecondary: DarkSemanticColors.text.label, // persona,
-    neutralTertiaryAlt: DarkSemanticColors.controlOutlines.rest, // document card
     white: DarkSemanticColors.background // shimmer elements
   },
   semanticColors: darkExtendedSemanticColors
