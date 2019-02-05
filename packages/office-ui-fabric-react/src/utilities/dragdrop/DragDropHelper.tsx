@@ -1,16 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { EventGroup } from '../../Utilities';
-import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext } from './interfaces';
+import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext, IDragDropHelperParams } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
+import { AutoScroll } from '../../Utilities';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
-
-export interface IDragDropHelperParams {
-  selection: ISelection;
-  minimumPixelsForDrag?: number;
-}
 
 export class DragDropHelper implements IDragDropHelper {
   private _dragEnterCounts: { [key: string]: number };
@@ -32,6 +28,7 @@ export class DragDropHelper implements IDragDropHelper {
   };
   private _events: EventGroup;
   private _lastId: number;
+  private _autoScroll?: AutoScroll | null;
 
   constructor(params: IDragDropHelperParams) {
     this._selection = params.selection;
@@ -43,6 +40,7 @@ export class DragDropHelper implements IDragDropHelper {
     // clear drag data when mouse up, use capture event to ensure it will be run
     this._events.on(document.body, 'mouseup', this._onMouseUp.bind(this), true);
     this._events.on(document, 'mouseup', this._onDocumentMouseUp.bind(this), true);
+    this._autoScroll = null;
   }
 
   public dispose(): void {
@@ -110,6 +108,10 @@ export class DragDropHelper implements IDragDropHelper {
       if (isDroppable) {
         // If the target is droppable, wire up global event listeners to track drop-related events.
         onDragLeave = (event: DragEvent) => {
+          if (this._dragEnterCounts[key] === 1 && this._autoScroll) {
+            this._autoScroll.dispose();
+            this._autoScroll = null;
+          }
           if (!(event as IDragDropEvent).isHandled) {
             (event as IDragDropEvent).isHandled = true;
             this._dragEnterCounts[key]--;
@@ -120,6 +122,9 @@ export class DragDropHelper implements IDragDropHelper {
         };
 
         onDragEnter = (event: DragEvent) => {
+          if (this._dragEnterCounts[key] === 0 && !this._autoScroll) {
+            this._autoScroll = new AutoScroll(root);
+          }
           event.preventDefault(); // needed for IE
           if (!(event as IDragDropEvent).isHandled) {
             (event as IDragDropEvent).isHandled = true;
@@ -136,6 +141,10 @@ export class DragDropHelper implements IDragDropHelper {
         };
 
         onDrop = (event: DragEvent) => {
+          if (this._dragEnterCounts[key] === 1 && this._autoScroll) {
+            this._autoScroll.dispose();
+            this._autoScroll = null;
+          }
           this._dragEnterCounts[key] = 0;
           updateDropState(false /* isDropping */, event);
 

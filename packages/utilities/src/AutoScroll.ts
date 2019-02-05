@@ -7,6 +7,7 @@ declare function setTimeout(cb: Function, delay: number): number;
 
 const SCROLL_ITERATION_DELAY = 16;
 const SCROLL_GUTTER_HEIGHT = 100;
+const SCROLL_GUTTER_WIDTH = 100;
 const MAX_SCROLL_VELOCITY = 15;
 
 /**
@@ -21,14 +22,16 @@ export class AutoScroll {
   private _events: EventGroup;
   private _scrollableParent: HTMLElement | null;
   private _scrollRect: IRectangle | undefined;
-  private _scrollVelocity: number;
-  private _timeoutId: number;
+  private _VerticalScrollVelocity: number;
+  private _verticalScrollTimeoutId: number;
+  private _horizontalScrollVelocity: number;
+  private _horizontalScrollTimeoutId: number;
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);
     this._scrollableParent = findScrollableParent(element);
-
-    this._incrementScroll = this._incrementScroll.bind(this);
+    this._incrementVerticalScroll = this._incrementVerticalScroll.bind(this);
+    this._incrementHorizontalScroll = this._incrementHorizontalScroll.bind(this);
     this._scrollRect = getRect(this._scrollableParent);
 
     // tslint:disable-next-line:no-any
@@ -39,25 +42,29 @@ export class AutoScroll {
     if (this._scrollableParent) {
       this._events.on(window, 'mousemove', this._onMouseMove, true);
       this._events.on(window, 'touchmove', this._onTouchMove, true);
+      this._events.on(window, 'dragover', this._onMouseMove, true);
     }
   }
 
   public dispose(): void {
     this._events.dispose();
-    this._stopScroll();
+    this._stopVerticalScroll();
+    this._stopHorizontalScroll();
   }
 
   private _onMouseMove(ev: MouseEvent): void {
-    this._computeScrollVelocity(ev.clientY);
+    this._computeVerticalScrollVelocity(ev.clientY);
+    this._computeHorizontalScrollVelocity(ev.clientX);
   }
 
   private _onTouchMove(ev: TouchEvent): void {
     if (ev.touches.length > 0) {
-      this._computeScrollVelocity(ev.touches[0].clientY);
+      this._computeVerticalScrollVelocity(ev.touches[0].clientY);
+      this._computeHorizontalScrollVelocity(ev.touches[0].clientX);
     }
   }
 
-  private _computeScrollVelocity(clientY: number): void {
+  private _computeVerticalScrollVelocity(clientY: number): void {
     if (!this._scrollRect) {
       return;
     }
@@ -66,41 +73,94 @@ export class AutoScroll {
     let scrollClientBottom = scrollRectTop + this._scrollRect.height - SCROLL_GUTTER_HEIGHT;
 
     if (clientY < scrollRectTop + SCROLL_GUTTER_HEIGHT) {
-      this._scrollVelocity = Math.max(
+      this._VerticalScrollVelocity = Math.max(
         -MAX_SCROLL_VELOCITY,
         -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT)
       );
     } else if (clientY > scrollClientBottom) {
-      this._scrollVelocity = Math.min(MAX_SCROLL_VELOCITY, MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT));
+      this._VerticalScrollVelocity = Math.min(
+        MAX_SCROLL_VELOCITY,
+        MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT)
+      );
     } else {
-      this._scrollVelocity = 0;
+      this._VerticalScrollVelocity = 0;
     }
 
-    if (this._scrollVelocity) {
-      this._startScroll();
+    if (this._VerticalScrollVelocity) {
+      this._startVerticalScroll();
     } else {
-      this._stopScroll();
+      this._stopVerticalScroll();
     }
   }
 
-  private _startScroll(): void {
-    if (!this._timeoutId) {
-      this._incrementScroll();
+  private _computeHorizontalScrollVelocity(clientX: number): void {
+    if (!this._scrollRect) {
+      return;
+    }
+
+    let scrollRectLeft = this._scrollRect.left;
+    let scrollClientRight = scrollRectLeft + this._scrollRect.width - SCROLL_GUTTER_WIDTH;
+
+    if (clientX < scrollRectLeft + SCROLL_GUTTER_WIDTH) {
+      this._horizontalScrollVelocity = Math.max(
+        -MAX_SCROLL_VELOCITY,
+        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_WIDTH - (clientX - scrollRectLeft)) / SCROLL_GUTTER_WIDTH)
+      );
+    } else if (clientX > scrollClientRight) {
+      this._horizontalScrollVelocity = Math.min(
+        MAX_SCROLL_VELOCITY,
+        MAX_SCROLL_VELOCITY * ((clientX - scrollClientRight) / SCROLL_GUTTER_WIDTH)
+      );
+    } else {
+      this._horizontalScrollVelocity = 0;
+    }
+
+    if (this._horizontalScrollVelocity) {
+      this._startHorizontalScroll();
+    } else {
+      this._stopHorizontalScroll();
     }
   }
 
-  private _incrementScroll(): void {
+  private _startVerticalScroll(): void {
+    if (!this._verticalScrollTimeoutId) {
+      this._incrementVerticalScroll();
+    }
+  }
+
+  private _startHorizontalScroll(): void {
+    if (!this._horizontalScrollTimeoutId) {
+      this._incrementHorizontalScroll();
+    }
+  }
+
+  private _incrementVerticalScroll(): void {
     if (this._scrollableParent) {
-      this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
+      this._scrollableParent.scrollTop += Math.round(this._VerticalScrollVelocity);
     }
 
-    this._timeoutId = setTimeout(this._incrementScroll, SCROLL_ITERATION_DELAY);
+    this._verticalScrollTimeoutId = setTimeout(this._incrementVerticalScroll, SCROLL_ITERATION_DELAY);
   }
 
-  private _stopScroll(): void {
-    if (this._timeoutId) {
-      clearTimeout(this._timeoutId);
-      delete this._timeoutId;
+  private _incrementHorizontalScroll(): void {
+    if (this._scrollableParent) {
+      this._scrollableParent.scrollLeft += Math.round(this._horizontalScrollVelocity);
+    }
+
+    this._horizontalScrollTimeoutId = setTimeout(this._incrementHorizontalScroll, SCROLL_ITERATION_DELAY);
+  }
+
+  private _stopVerticalScroll(): void {
+    if (this._verticalScrollTimeoutId) {
+      clearTimeout(this._verticalScrollTimeoutId);
+      delete this._verticalScrollTimeoutId;
+    }
+  }
+
+  private _stopHorizontalScroll(): void {
+    if (this._horizontalScrollTimeoutId) {
+      clearTimeout(this._horizontalScrollTimeoutId);
+      delete this._horizontalScrollTimeoutId;
     }
   }
 }

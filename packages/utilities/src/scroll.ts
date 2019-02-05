@@ -146,8 +146,9 @@ export function getScrollbarWidth(): number {
 }
 
 /**
- * Traverses up the DOM for the element with the data-is-scrollable=true attribute, or returns
- * document.body.
+ * Traverses up the DOM for the element with the data-is-scrollable=true attribute and parallelly
+ * also looks if the overflow property of en element allows the element to scroll (while excluding
+ * the elements with absolute, static and fixed positioning) , or finally returns document.body.
  *
  * @public
  */
@@ -156,25 +157,22 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
 
   // First do a quick scan for the scrollable attribute.
   while (el && el !== document.body) {
+    let style = getComputedStyle(el);
+    if (style.position === 'fixed') {
+      return document.body;
+    }
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) === 'true') {
       return el;
-    }
-    el = el.parentElement;
-  }
-
-  // If we haven't found it, the use the slower method: compute styles to evaluate if overflow is set.
-  el = startingElement;
-
-  while (el && el !== document.body) {
-    if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) !== 'false') {
-      const computedStyles = getComputedStyle(el);
-      let overflowY = computedStyles ? computedStyles.getPropertyValue('overflow-y') : '';
-
-      if (overflowY && (overflowY === 'scroll' || overflowY === 'auto')) {
+    } else {
+      const overflowRegex = /(auto|scroll)/;
+      if (style.position === 'absolute' || style.position === 'static') {
+        el = el.parentElement;
+        continue;
+      }
+      if (overflowRegex.test((style.overflow || '') + (style.overflowY || '') + (style.overflowX || ''))) {
         return el;
       }
     }
-
     el = el.parentElement;
   }
 

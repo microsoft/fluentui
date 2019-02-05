@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { EventGroup } from '../../Utilities';
+import { ISelection } from '../../utilities/selection/interfaces';
 
 export interface IDragDropHelper {
   subscribe: (
@@ -52,4 +53,9 @@ export interface IDragDropOptions {
 
 export interface IDragDropEvent {
   isHandled?: boolean;
+}
+
+export interface IDragDropHelperParams {
+  selection: ISelection;
+  minimumPixelsForDrag?: number;
 }

@@ -90,6 +90,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             items={items}
             columns={columns}
             selection={this._selection}
+            layoutMode={0}
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
