@@ -6748,9 +6748,7 @@ interface IDatePickerStyleProps {
   className?: string;
   // (undocumented)
   disabled?: boolean;
-  // (undocumented)
   isDatePickerShown?: boolean;
-  // (undocumented)
   label?: boolean;
   theme: ITheme;
 }
@@ -6762,8 +6760,14 @@ interface IDatePickerStyles {
   // (undocumented)
   icon: IStyle;
   root: IStyle;
+  subComponentStyles: IDatePickerSubComponentStyles;
   // (undocumented)
   textField: IStyle;
+}
+
+// @public (undocumented)
+interface IDatePickerSubComponentStyles {
+  textField: IStyleFunctionOrObject<ITextFieldStyleProps, any>;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
