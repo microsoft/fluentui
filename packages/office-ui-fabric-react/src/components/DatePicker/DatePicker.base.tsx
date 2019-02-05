@@ -5,11 +5,10 @@ import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { TextField, ITextField } from '../../TextField';
+import { TextField, ITextField, ITextFieldStyleProps, ITextFieldStyles } from '../../TextField';
 import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ITextFieldStyleProps, ITextFieldStyles } from '../TextField';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 

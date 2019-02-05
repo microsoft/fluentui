@@ -4,7 +4,7 @@ import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IBaseProps, IStyleFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
-import { ITextFieldStyleProps } from '../TextField';
+import { ITextFieldStyleProps } from '../../TextField';
 
 export interface IDatePicker {
   /** Sets focus to the text field */
