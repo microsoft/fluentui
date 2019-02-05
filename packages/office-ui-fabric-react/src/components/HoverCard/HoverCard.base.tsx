@@ -118,7 +118,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
       targetElement: this._getTargetElement(),
       onEnter: this._cardOpen,
-      onLeave: this._executeCardDismiss
+      onLeave: this._cardMouseOut
     };
 
     const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
@@ -197,6 +197,16 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
       this._executeCardDismiss();
     }
+  };
+
+  private _cardMouseOut = (ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
+    // If this is a hover event and the component is sticky,
+    // do not dismiss.
+    if (this.props.sticky && ev.nativeEvent instanceof MouseEvent && ev.type === 'mouseleave') {
+      return;
+    }
+
+    this._executeCardDismiss();
   };
 
   private _executeCardDismiss = (): void => {
