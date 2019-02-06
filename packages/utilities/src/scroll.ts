@@ -147,7 +147,7 @@ export function getScrollbarWidth(): number {
 
 /**
  * Traverses up the DOM for the element with the data-is-scrollable=true attribute and parallelly
- * also looks if the overflow property of en element allows the element to scroll (while excluding
+ * checks if the overflow property of an element allows the element to scroll (while excluding
  * the elements with absolute, static and fixed positioning) , or finally returns document.body.
  *
  * @public
