@@ -22,7 +22,7 @@ export class AutoScroll {
   private _events: EventGroup;
   private _scrollableParent: HTMLElement | null;
   private _scrollRect: IRectangle | undefined;
-  private _VerticalScrollVelocity: number;
+  private _verticalScrollVelocity: number;
   private _verticalScrollTimeoutId: number;
   private _horizontalScrollVelocity: number;
   private _horizontalScrollTimeoutId: number;
@@ -73,20 +73,20 @@ export class AutoScroll {
     let scrollClientBottom = scrollRectTop + this._scrollRect.height - SCROLL_GUTTER_HEIGHT;
 
     if (clientY < scrollRectTop + SCROLL_GUTTER_HEIGHT) {
-      this._VerticalScrollVelocity = Math.max(
+      this._verticalScrollVelocity = Math.max(
         -MAX_SCROLL_VELOCITY,
         -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT)
       );
     } else if (clientY > scrollClientBottom) {
-      this._VerticalScrollVelocity = Math.min(
+      this._verticalScrollVelocity = Math.min(
         MAX_SCROLL_VELOCITY,
         MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT)
       );
     } else {
-      this._VerticalScrollVelocity = 0;
+      this._verticalScrollVelocity = 0;
     }
 
-    if (this._VerticalScrollVelocity) {
+    if (this._verticalScrollVelocity) {
       this._startVerticalScroll();
     } else {
       this._stopVerticalScroll();
@@ -136,7 +136,7 @@ export class AutoScroll {
 
   private _incrementVerticalScroll(): void {
     if (this._scrollableParent) {
-      this._scrollableParent.scrollTop += Math.round(this._VerticalScrollVelocity);
+      this._scrollableParent.scrollTop += Math.round(this._verticalScrollVelocity);
     }
 
     this._verticalScrollTimeoutId = setTimeout(this._incrementVerticalScroll, SCROLL_ITERATION_DELAY);
