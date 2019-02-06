@@ -21,12 +21,9 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
       <Stack gap={5}>
         <span>Default vertical stack</span>
         <Stack className={styles.root}>
-          <Stack.Item />
-          <Stack.Item>
-            <span>Item One</span>
-            <span>Item Two</span>
-            <span>Item Three</span>
-          </Stack.Item>
+          <span>Item One</span>
+          <span>Item Two</span>
+          <span>Item Three</span>
         </Stack>
 
         <span>Vertical gap between items</span>
