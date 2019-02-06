@@ -31,6 +31,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background: Highlight;
@@ -165,6 +171,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -292,6 +304,12 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -423,6 +441,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -550,6 +574,12 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -681,6 +711,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -808,6 +844,12 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -939,6 +981,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -1066,6 +1114,12 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -1197,6 +1251,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -1324,6 +1384,12 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -1455,6 +1521,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -1582,6 +1654,12 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -1713,6 +1791,12 @@ exports[`Suggestions renders a list properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -1840,6 +1924,12 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -2001,6 +2091,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
             @media screen and (-ms-high-contrast: active){& {
               -ms-high-contrast-adjust: none;
               background: Highlight;
@@ -2135,6 +2231,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -2262,6 +2364,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -2393,6 +2501,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -2520,6 +2634,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -2651,6 +2771,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -2778,6 +2904,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -2909,6 +3041,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -3036,6 +3174,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -3167,6 +3311,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -3294,6 +3444,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -3425,6 +3581,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -3552,6 +3714,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -3683,6 +3851,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -3810,6 +3984,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -3974,6 +4154,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -4101,6 +4287,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -4232,6 +4424,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -4359,6 +4557,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -4490,6 +4694,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -4617,6 +4827,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -4748,6 +4964,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -4875,6 +5097,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -5006,6 +5234,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #c8c8c8;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
             @media screen and (-ms-high-contrast: active){& {
@@ -5142,6 +5376,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -5269,6 +5509,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -5400,6 +5646,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -5527,6 +5779,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
@@ -5658,6 +5916,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             &:hover .ms-Suggestions-closeButton {
               display: block;
             }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
+              display: block;
+            }
       >
         <button
           className=
@@ -5785,6 +6049,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
+              display: block;
+            }
+            &:focus-within .ms-Suggestions-closeButton {
+              display: block;
+            }
+            & .ms-Suggestions-itemButton:focus + .ms-Suggestions-itemButton, & .ms-Suggestions-itemButton:focus {
               display: block;
             }
       >
