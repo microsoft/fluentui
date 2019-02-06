@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Update Pivot to remove `componentWillReceiveProps`, derive selected PivotItem from props or fallback to state.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com"
+}
