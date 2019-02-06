@@ -3,7 +3,7 @@ import { ExtendedPeoplePickerTypesExample } from '../examples/ExtendedPeoplePick
 
 import { IDocPageProps } from '../../../common/DocPage.types';
 
-const ExtendedPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx') as string;
+const ExtendedPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/examples/ExtendedPeoplePicker.Basic.Example.tsx') as string;
 export const ExtendedPeoplePickerPageProps: IDocPageProps = {
   title: 'ExtendedPeoplePicker',
   componentName: 'ExtendedPeoplePicker',
@@ -17,14 +17,14 @@ export const ExtendedPeoplePickerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/BaseExtendedPicker.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/BaseExtendedPicker.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/docs/ExtendedPeoplePickerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/docs/ExtendedPeoplePickerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/docs/ExtendedPeoplePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/docs/ExtendedPeoplePickerDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerBestPractices.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

@@ -13,16 +13,16 @@ import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
 import { PivotStatus } from './Pivot.checklist';
 
-const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
-const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
-const PivotLargeExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.Large.Example.tsx') as string;
-const PivotTabsExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.Tabs.Example.tsx') as string;
-const PivotTabsLargesExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.TabsLarge.Example.tsx') as string;
-const PivotFabricExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.Fabric.Example.tsx') as string;
-const PivotOnChangeExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.OnChange.Example.tsx') as string;
-const PivotIconCountExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.IconCount.Example.tsx') as string;
-const PivotOverrideExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.Override.Example.tsx') as string;
-const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Pivot/examples/Pivot.Separate.Example.tsx') as string;
+const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
+const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
+const PivotLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Large.Example.tsx') as string;
+const PivotTabsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Tabs.Example.tsx') as string;
+const PivotTabsLargesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.TabsLarge.Example.tsx') as string;
+const PivotFabricExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Fabric.Example.tsx') as string;
+const PivotOnChangeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.OnChange.Example.tsx') as string;
+const PivotIconCountExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.IconCount.Example.tsx') as string;
+const PivotOverrideExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Override.Example.tsx') as string;
+const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Separate.Example.tsx') as string;
 
 export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
@@ -82,13 +82,13 @@ export const PivotPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/Pivot/Pivot.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/Pivot/PivotItem.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Pivot/docs/PivotOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Pivot/docs/PivotDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Pivot/docs/PivotDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: 'PivotItem'

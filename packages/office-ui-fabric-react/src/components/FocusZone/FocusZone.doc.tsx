@@ -6,10 +6,10 @@ import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 import { FocusZoneTabbableExample } from './examples/FocusZone.Tabbable.Example';
 
-const FocusZonePhotosExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
-const FocusZoneListExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
-const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
-const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
+const FocusZonePhotosExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
+const FocusZoneListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
+const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
+const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
 
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
@@ -37,8 +37,8 @@ export const FocusZonePageProps: IDocPageProps = {
       view: <FocusZoneTabbableExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/FocusZone/FocusZone.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/FocusZone/docs/FocusZoneOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/docs/FocusZoneOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

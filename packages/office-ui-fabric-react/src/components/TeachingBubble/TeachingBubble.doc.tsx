@@ -8,11 +8,11 @@ import { TeachingBubbleWideIllustrationExample } from './examples/TeachingBubble
 import { TeachingBubbleSmallHeadlineExample } from './examples/TeachingBubble.SmallHeadline.Example';
 import { TeachingBubbleStatus } from './TeachingBubble.checklist';
 
-const TeachingBubbleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
-const TeachingBubbleCondensedExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
-const TeachingBubbleIllustrationExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
-const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.WideIllustration.Example.tsx') as string;
-const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/examples/TeachingBubble.SmallHeadline.Example.tsx') as string;
+const TeachingBubbleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleCondensedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
+const TeachingBubbleIllustrationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleWideIllustrationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.WideIllustration.Example.tsx') as string;
+const TeachingBubbleSmallHeadlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.SmallHeadline.Example.tsx') as string;
 
 export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',
@@ -47,10 +47,10 @@ export const TeachingBubblePageProps: IDocPageProps = {
       view: <TeachingBubbleSmallHeadlineExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/TeachingBubble.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/docs/TeachingBubbleDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/TeachingBubble/docs/TeachingBubbleDonts.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

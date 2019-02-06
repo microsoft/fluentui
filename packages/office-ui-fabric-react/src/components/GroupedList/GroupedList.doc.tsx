@@ -5,8 +5,8 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
 import { GroupedListStatus } from './GroupedList.checklist';
 
-const GroupedListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
-const GroupedListCustomExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
+const GroupedListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
+const GroupedListCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
 
 const GroupedListBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/GroupedList/GroupedList.Basic.Example.Codepen.txt') as string;
 const GroupedListCustomExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/GroupedList/GroupedList.Custom.Example.Codepen.txt') as string;
@@ -31,8 +31,8 @@ export const GroupedListPageProps: IDocPageProps = {
       view: <GroupedListCustomExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/GroupedList/GroupedList.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/GroupedList/docs/GroupedListOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/GroupedList.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

@@ -5,9 +5,9 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { RatingButtonControlledExample } from './examples/Rating.ButtonControlled.Example';
 import { RatingStatus } from './Rating.checklist';
 
-const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Rating/examples/Rating.Basic.Example.tsx') as string;
+const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 const RatingBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Rating/Rating.Basic.Example.Codepen.txt') as string;
-const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
+const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
 export const RatingPageProps: IDocPageProps = {
   title: 'Rating',
@@ -27,11 +27,11 @@ export const RatingPageProps: IDocPageProps = {
       view: <RatingButtonControlledExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Rating/Rating.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Rating/docs/RatingOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Rating/docs/RatingDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Rating/docs/RatingDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

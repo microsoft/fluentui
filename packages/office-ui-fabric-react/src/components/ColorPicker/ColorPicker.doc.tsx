@@ -4,7 +4,7 @@ import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { ColorPickerStatus } from './ColorPicker.checklist';
 
-const ColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/ColorPicker/examples/ColorPicker.Basic.Example.tsx') as string;
+const ColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/examples/ColorPicker.Basic.Example.tsx') as string;
 export const ColorPickerPageProps: IDocPageProps = {
   title: 'ColorPicker',
   componentName: 'ColorPicker',
@@ -19,11 +19,11 @@ export const ColorPickerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/ColorPicker/ColorPicker.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/ColorPicker/ColorRectangle/ColorRectangle.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/ColorPicker/ColorSlider/ColorSlider.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorPicker.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorRectangle/ColorRectangle.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorSlider/ColorSlider.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ColorPicker/docs/ColorPickerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

@@ -8,11 +8,11 @@ import { CommandBarButtonAsExample } from './examples/CommandBar.ButtonAs.Exampl
 import { IndividualCommandBarButtonAsExampleWrapper } from './examples/CommandBar.CommandBarButtonAs.Example';
 import { farItems, items, overflowItems } from './examples/data';
 
-const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
+const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 
-const CommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/CommandBar/examples/CommandBar.ButtonAs.Example.tsx') as string;
+const CommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.ButtonAs.Example.tsx') as string;
 
-const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/CommandBar/examples/CommandBar.CommandBarButtonAs.Example.tsx') as string;
+const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.CommandBarButtonAs.Example.tsx') as string;
 
 const cmdBarParamsTextAndIcons: ICommandBarProps = {
   items,
@@ -43,13 +43,13 @@ export const CommandBarPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/CommandBar/CommandBar.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
+    require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/CommandBar/docs/CommandBarOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/CommandBar/docs/CommandBarDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/CommandBar/docs/CommandBarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

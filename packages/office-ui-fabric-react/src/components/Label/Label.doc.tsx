@@ -4,7 +4,7 @@ import { LabelBasicExample } from './examples/Label.Basic.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { LabelStatus } from './Label.checklist';
 
-const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/Label/examples/Label.Basic.Example.tsx') as string;
+const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Label/examples/Label.Basic.Example.tsx') as string;
 
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',
@@ -19,11 +19,11 @@ export const LabelPageProps: IDocPageProps = {
       codepenJS: require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Label/Label.Basic.Example.Codepen.txt') as string
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/Label/Label.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Label/docs/LabelOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Label/docs/LabelDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Label/docs/LabelDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

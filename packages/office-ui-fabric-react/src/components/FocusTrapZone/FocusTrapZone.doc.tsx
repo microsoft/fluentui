@@ -2,19 +2,19 @@ import * as React from 'react';
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-const FocusTrapZoneBoxExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/examples/FocusTrapZone.Box.Example.tsx') as string;
+const FocusTrapZoneBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Example.tsx') as string;
 
 import FocusTrapZoneBoxExampleWithFocusableItem from './examples/FocusTrapZone.Box.FocusOnCustomElement.Example';
-const FocusTrapZoneBoxExampleWithFocusableItemCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/examples/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
+const FocusTrapZoneBoxExampleWithFocusableItemCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
 
 import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
-const FocusTrapZoneBoxClickExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/examples/FocusTrapZone.Box.Click.Example.tsx') as string;
+const FocusTrapZoneBoxClickExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Box.Click.Example.tsx') as string;
 
 import FocusTrapZoneNestedExample from './examples/FocusTrapZone.Nested.Example';
-const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
+const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 
 import FocusTrapZoneDialogInPanelExample from './examples/FocusTrapZone.DialogInPanel.Example';
-const FocusTrapZoneDialogInPanelExampleCode = require('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/examples/FocusTrapZone.DialogInPanel.Example.tsx') as string;
+const FocusTrapZoneDialogInPanelExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.DialogInPanel.Example.tsx') as string;
 
 export const FocusTrapZonePageProps: IDocPageProps = {
   title: 'FocusTrapZone',
@@ -48,8 +48,8 @@ export const FocusTrapZonePageProps: IDocPageProps = {
       view: <FocusTrapZoneDialogInPanelExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/FocusTrapZone.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',
