@@ -56,10 +56,10 @@ export const DatePickerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DatePicker/docs/DatePickerOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DatePicker/docs/DatePickerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DatePicker/docs/DatePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

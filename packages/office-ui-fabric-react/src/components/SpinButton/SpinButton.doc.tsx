@@ -63,10 +63,10 @@ export const SpinButtonPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SpinButton/docs/SpinButtonOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SpinButton/docs/SpinButtonDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SpinButton/docs/SpinButtonDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

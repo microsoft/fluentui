@@ -70,10 +70,10 @@ export const DetailsListPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DetailsList/docs/DetailsListOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DetailsList/docs/DetailsListDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/DetailsList/docs/DetailsListDonts.md'),
   isHeaderVisible: true
 };
 

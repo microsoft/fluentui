@@ -42,10 +42,10 @@ export const KeytipsPageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/Keytip.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/KeytipLayer/KeytipLayer.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Keytip/docs/KeytipOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Keytip/docs/KeytipDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Keytip/docs/KeytipDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

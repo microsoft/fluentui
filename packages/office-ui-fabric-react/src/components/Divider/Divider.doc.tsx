@@ -27,10 +27,10 @@ export const DividerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerOverview.md'),
-  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerOverview.md'),
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerBestPractices.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Divider/docs/DividerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

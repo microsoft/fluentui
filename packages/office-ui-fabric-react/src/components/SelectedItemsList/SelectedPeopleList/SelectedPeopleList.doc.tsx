@@ -21,8 +21,8 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
   ],
   overview: '',
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/docs/SelectedPeopleListDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SelectedItemsList/docs/SelectedPeopleListDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SelectedItemsList/docs/SelectedPeopleListDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

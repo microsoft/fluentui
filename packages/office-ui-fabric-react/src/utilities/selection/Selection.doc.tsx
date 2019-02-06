@@ -15,6 +15,6 @@ export const SelectionPageProps: IDocPageProps = {
       view: <SelectionBasicExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selection/docs/SelectionOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/utilities/selection/docs/SelectionOverview.md'),
   isHeaderVisible: true
 };

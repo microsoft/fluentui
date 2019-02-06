@@ -19,12 +19,12 @@ export const PeoplePickerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

@@ -54,10 +54,10 @@ export const ChoiceGroupPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ChoiceGroup/docs/ChoiceGroupOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ChoiceGroup/docs/ChoiceGroupDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ChoiceGroup/docs/ChoiceGroupDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

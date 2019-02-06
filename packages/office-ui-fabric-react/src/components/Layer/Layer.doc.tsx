@@ -40,10 +40,10 @@ export const LayerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Layer/docs/LayerOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Layer/docs/LayerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Layer/docs/LayerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

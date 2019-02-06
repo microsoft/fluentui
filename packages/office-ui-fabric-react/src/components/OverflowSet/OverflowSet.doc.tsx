@@ -34,7 +34,7 @@ export const OverflowSetPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/OverflowSet.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/OverflowSet/docs/OverflowSetOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

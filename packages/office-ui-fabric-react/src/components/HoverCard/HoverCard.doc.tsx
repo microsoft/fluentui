@@ -45,10 +45,10 @@ export const HoverCardPageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/PlainCard/PlainCard.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/HoverCard/docs/HoverCardOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/HoverCard/docs/HoverCardDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/HoverCard/docs/HoverCardDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

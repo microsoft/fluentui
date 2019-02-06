@@ -49,7 +49,7 @@ export const FocusTrapZonePageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

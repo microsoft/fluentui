@@ -28,10 +28,10 @@ export const ResizeGroupPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ResizeGroup/docs/ResizeGroupOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ResizeGroup/docs/ResizeGroupDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ResizeGroup/docs/ResizeGroupDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

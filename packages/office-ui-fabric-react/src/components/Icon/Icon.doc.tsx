@@ -42,10 +42,10 @@ export const IconPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Icon/docs/IconOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Icon/docs/IconDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Icon/docs/IconDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

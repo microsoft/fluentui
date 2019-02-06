@@ -67,10 +67,10 @@ export const DialogPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dialog/docs/DialogOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dialog/docs/DialogDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dialog/docs/DialogDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

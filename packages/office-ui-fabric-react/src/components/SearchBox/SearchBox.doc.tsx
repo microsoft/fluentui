@@ -49,10 +49,10 @@ export const SearchBoxPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/SearchBox.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md'),
-  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SearchBox/docs/SearchBoxOverview.md'),
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SearchBox/docs/SearchBoxBestPractices.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SearchBox/docs/SearchBoxDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/SearchBox/docs/SearchBoxDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };
