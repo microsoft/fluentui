@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.135.0",
+      "tag": "office-ui-fabric-react_v6.135.0",
+      "date": "Wed, 06 Feb 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusTrapZone: Fixed FocusTrapZone to use the relatedTarget instead of document.activeElement to find what is losing focus",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "ebe8be0456df5d38a01a5ee15f14643b229316f0"
+          },
+          {
+            "comment": "Fixing wrapping links' focus rect clipping problem with boxshadow styling.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "79997dce092bf1a444754ab6e58a9f1a437a2842"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Nav: add semantic colors styling to link",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "d864af11e819e4a54d6b1b57e3ee00118a8f06a4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.134.0",
       "tag": "office-ui-fabric-react_v6.134.0",
       "date": "Tue, 05 Feb 2019 13:35:00 GMT",

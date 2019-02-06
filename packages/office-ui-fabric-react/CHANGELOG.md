@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Feb 2019 13:35:00 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Feb 2019 13:38:07 GMT and should not be manually modified.
+
+## 6.135.0
+Wed, 06 Feb 2019 13:38:07 GMT
+
+### Minor changes
+
+- Nav: add semantic colors styling to link
+
+### Patches
+
+- FocusTrapZone: Fixed FocusTrapZone to use the relatedTarget instead of document.activeElement to find what is losing focus
+- Fixing wrapping links' focus rect clipping problem with boxshadow styling.
 
 ## 6.134.0
 Tue, 05 Feb 2019 13:35:00 GMT
