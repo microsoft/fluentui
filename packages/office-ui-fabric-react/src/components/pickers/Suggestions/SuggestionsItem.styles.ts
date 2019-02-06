@@ -28,12 +28,20 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
           '&:hover': {
             background: palette.neutralLighter
           },
-          '&:hover .ms-Suggestions-closeButton': {
+          [`&:hover .${classNames.closeButton}`]: {
             display: 'block'
           },
-          // Make the close button visible if its preceeding peer (the item)
-          // is focused. Needed for keyboard accessibility.
-          [`& ${classNames.itemButton}:focus + .ms-Suggestions-closeButton`]: {
+          // Declare as a separate selector so browsers without :focus-within
+          // support don't invalidate the selector.
+          [`&:focus-within .${classNames.closeButton}`]: {
+            display: 'block'
+          },
+          // Required for IE + Edge keyboard accesibility.
+          // This selector pair doesn't work for Chrome or Firefox.
+          //
+          // Presumably they calculate the new display status of .closeButton
+          // before focus moves to it.
+          [`.${classNames.itemButton}:focus + .${classNames.itemButton}, .${classNames.itemButton}:focus`]: {
             display: 'block'
           }
         }

@@ -11,19 +11,31 @@
   width: 100%;
   position: relative;
 
-  &:hover {
+  // Declare as a mixin with 2 uses so browsers without :focus-within
+  // support don't invalidate the selector.
+  @mixin hovered-or-focused() {
     background: $ms-color-neutralLighter;
 
     .closeButton {
       display: block;
     }
   }
+  &:hover {
+    @include hovered-or-focused();
+  }
+  &:focus-within {
+    @include hovered-or-focused();
+  }
 
-  // Force the close button to appear on focus of the itemButton
-  // so it is accessible to keyboard-only users
-  .itemButton:focus + .closeButton {
+  // Required for IE + Edge keyboard accesibility.
+  // This selector pair doesn't work for Chrome or Firefox.
+  //
+  // Presumably they calculate the new display status of .closeButton
+  // before focus moves to it.
+  .itemButton:focus + .closeButton, .closeButton:focus {
     display: block;
   }
+
 
   &.suggestionsItemIsSuggested {
     background: $ms-color-neutralLight;
