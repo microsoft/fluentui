@@ -30,6 +30,11 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
           },
           '&:hover .ms-Suggestions-closeButton': {
             display: 'block'
+          },
+          // Make the close button visible if its preceeding peer (the item)
+          // is focused. Needed for keyboard accessibility.
+          [`& ${classNames.closeButton}:focus + .ms-Suggestions-closeButton`]: {
+            display: 'block'
           }
         }
       },
@@ -58,6 +63,9 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         padding: 0,
         border: 'none',
         height: '100%',
+        // Force the item button to be collapsable so it can always shrink
+        // to accomodate the close button as a peer in its flex container.
+        minWidth: 0,
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText'
