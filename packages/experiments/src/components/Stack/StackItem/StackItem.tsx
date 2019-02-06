@@ -5,17 +5,18 @@ import { IStackItemComponent, IStackItemProps, IStackItemSlots } from './StackIt
 import { styles } from './StackItem.styles';
 
 const view: IStackItemComponent['view'] = props => {
-  const childNodes: React.ReactElement<{}>[] = React.Children.toArray(props.children) as React.ReactElement<{}>[];
+  const { children } = props;
+  const childNodes: React.ReactElement<{}>[] = React.Children.toArray(children) as React.ReactElement<{}>[];
   const first = childNodes[0];
   if (!first) {
     return null;
   }
 
   const Slots = getSlots<IStackItemProps, IStackItemSlots>(props, {
-    root: 'span'
+    root: 'div'
   });
 
-  return <Slots.root>{first}</Slots.root>;
+  return <Slots.root>{children}</Slots.root>;
 };
 
 export const StackItem: React.StatelessComponent<IStackItemProps> = createComponent({
