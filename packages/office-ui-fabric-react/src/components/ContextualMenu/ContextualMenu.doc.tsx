@@ -16,8 +16,10 @@ import { ContextualMenuWithScrollBarExample } from './examples/ContextualMenu.Sc
 import { ContextualMenuWithCustomMenuItemExample } from './examples/ContextualMenu.CustomMenuItem.Example';
 import { ContextualMenuWithCustomMenuListExample } from './examples/ContextualMenu.CustomMenuList.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
+import { ContextualMenuPersistedExample } from './examples/ContextualMenu.Persisted.Example';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuPersistedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Persisted.Example.tsx') as string;
 const ContextualMenuBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ContextualMenu/ContextualMenu.Basic.Example.Codepen.txt') as string;
 const ContextualMenuIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.Example.tsx') as string;
 const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
@@ -44,6 +46,11 @@ export const ContextualMenuPageProps: IDocPageProps = {
       code: ContextualMenuBasicExampleCode,
       view: <ContextualMenuBasicExample />,
       codepenJS: ContextualMenuBasicExampleCodepen
+    },
+    {
+      title: 'ContextualMenu which is persisted in the DOM',
+      code: ContextualMenuPersistedExampleCode,
+      view: <ContextualMenuPersistedExample />
     },
     {
       title: 'ContextualMenu with icons',

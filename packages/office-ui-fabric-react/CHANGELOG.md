@@ -1,6 +1,46 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Feb 2019 13:38:07 GMT and should not be manually modified.
+
+## 6.135.0
+Wed, 06 Feb 2019 13:38:07 GMT
+
+### Minor changes
+
+- Nav: add semantic colors styling to link
+
+### Patches
+
+- FocusTrapZone: Fixed FocusTrapZone to use the relatedTarget instead of document.activeElement to find what is losing focus
+- Fixing wrapping links' focus rect clipping problem with boxshadow styling.
+
+## 6.134.0
+Tue, 05 Feb 2019 13:35:00 GMT
+
+### Minor changes
+
+- MessageBar: mix in native props
+- Use React.ComponentType in ExtendedPeoplePicker for render props
+
+### Patches
+
+- DetailsList: render a simple column header for checkboxes in single selection mode
+- Fixing the implementation of the hidden prop wrt to focus, bounds and unnecessary mounts
+- Nav: Fixed an issue where nav link text overflow was not properly left aligned.
+- Remove popup outline
+
+## 6.133.0
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Minor changes
+
+- GroupHeader: exposes props of selection check button.
+
+### Patches
+
+- Clarify extended picker dont documentation
+- Update ThemesOverview.md documentation
+- Remove some unneeded casts + 'any's in ExtendedPeoplePicker
 
 ## 6.132.0
 Thu, 31 Jan 2019 20:10:48 GMT

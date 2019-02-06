@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
-import { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
+import { IDetailsHeader, IDropHintDetails, SelectAllVisibility } from './DetailsHeader.types';
 import { DetailsListLayoutMode, IColumn, ColumnActionsMode } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
@@ -241,6 +241,19 @@ describe('DetailsHeader', () => {
         selection={_selection}
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={_columns}
+      />
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('can render a hidden select all checkbox in single selection mode', () => {
+    const component = renderer.create(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.single}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        selectAllVisibility={SelectAllVisibility.hidden}
         columns={_columns}
       />
     );
