@@ -26,6 +26,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.Current,
       wizardContent: {
         content: this._getContentForStep('Step 0'),
+        contentState: SubwayNavStepState.Current,
         processContentAction: this._getMainActionForStep('Step 0')
       }
     };
@@ -38,6 +39,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.NotStarted,
       wizardContent: {
         content: this._getContentForStep('Step 1'),
+        contentState: SubwayNavStepState.NotStarted,
         processContentAction: this._getMainActionForStep('Step 1')
       }
     };
@@ -50,6 +52,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.NotStarted,
       wizardContent: {
         content: this._getContentForStep('Step 2'),
+        contentState: SubwayNavStepState.NotStarted,
         processContentAction: this._getMainActionForStep('Step 2')
       }
     };
@@ -62,6 +65,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.NotStarted,
       wizardContent: {
         content: this._getContentForStep('Step 3'),
+        contentState: SubwayNavStepState.NotStarted,
         processContentAction: this._getMainActionForStep('Step 3')
       }
     };
@@ -104,6 +108,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       title: stepStr + ' Next',
       action: (): WizardStepActionResult => {
         console.log(stepStr + ' Next clicked');
+        this._goToNextStep();
         return WizardStepActionResult.Completed;
       }
     };
@@ -131,6 +136,106 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
     };
 
     return action;
+  }
+
+  private _goToNextStep(): void {
+    if (this.state.currSubStep !== undefined) {
+      this._goToNextSubStep();
+    }
+
+    const currIndex = this.state.steps.findIndex((stepObj: IWizardStepProps) => {
+      return stepObj.key === this.state.currStep.key;
+    });
+
+    if (this.state.steps.length - 1 === currIndex) {
+      // Last step reached.
+      return;
+    }
+
+    let { currStep } = this.state;
+
+    let foundNextStep: boolean = false;
+    let foundCurrStep: boolean = false;
+
+    let newSteps: IWizardStepProps[] = [];
+    newSteps = this.state.steps;
+
+    newSteps.map((stepObj: IWizardStepProps) => {
+      if (!foundNextStep) {
+        if (foundCurrStep) {
+          stepObj.state = SubwayNavStepState.Current;
+          currStep = stepObj;
+          foundNextStep = true;
+        } else if (stepObj.key === currStep.key) {
+          stepObj.state = SubwayNavStepState.Completed; /// Only test (get from wizard content state)
+          foundCurrStep = true;
+        }
+      }
+    });
+
+    this.setState({
+      steps: newSteps,
+      currStep: currStep
+    });
+  }
+
+  private _goToNextSubStep(): void {
+    let { currSubStep, currStep } = this.state;
+
+    if (currSubStep === undefined) {
+      return;
+    }
+
+    let foundNextStep: boolean = false;
+    let foundCurrStep: boolean = false;
+
+    let newSteps: IWizardStepProps[] = [];
+    newSteps = this.state.steps;
+
+    const currIndex = newSteps.findIndex((stepObj: IWizardStepProps) => {
+      return stepObj.key === this.state.currStep.key;
+    });
+
+    if (newSteps[currIndex].subSteps !== undefined) {
+      newSteps[currIndex].subSteps!.map((subStepObj: IWizardStepProps) => {
+        if (!foundNextStep) {
+          if (foundCurrStep) {
+            subStepObj.state = SubwayNavStepState.Current;
+            currSubStep = subStepObj;
+            foundNextStep = true;
+          } else if (subStepObj.key === currSubStep!.key) {
+            subStepObj.state = SubwayNavStepState.Completed; /// Only test (get from wizard content state)
+            foundCurrStep = true;
+          }
+        }
+      });
+
+      if (foundCurrStep && !foundNextStep) {
+        // last substep reached.  So go to next main step
+        if (newSteps.length - 1 === currIndex) {
+          // Last step reached, cannot go next
+          return;
+        }
+
+        foundNextStep = true;
+        newSteps[currIndex].state = SubwayNavStepState.Completed;
+        newSteps[currIndex + 1]!.state = SubwayNavStepState.Current;
+        currStep = newSteps[currIndex + 1];
+
+        if (newSteps[currIndex + 1]!.subSteps !== undefined && newSteps[currIndex + 1]!.subSteps!.length > 0) {
+          newSteps[currIndex + 1]!.subSteps![0].state = SubwayNavStepState.Current;
+          currSubStep = newSteps[currIndex + 1]!.subSteps![0];
+        }
+      }
+    }
+
+    if (foundNextStep) {
+      this.setState({
+        steps: newSteps,
+        currStep: currStep,
+        currSubStep: currSubStep
+      });
+    }
   }
 
   private _goToStep(parentStepToGo: ISubwayNavStep | undefined, subStepToGo: ISubwayNavStep | undefined): void {

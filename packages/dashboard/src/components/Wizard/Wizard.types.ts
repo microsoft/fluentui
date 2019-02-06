@@ -30,6 +30,8 @@ export interface IWizardContentProps {
 
   content: JSX.Element;
 
+  contentState: SubwayNavStepState;
+
   processContentAction: IWizardStepAction;
 }
 
@@ -47,9 +49,10 @@ export interface IWizardTitleProps {
 
 // Possible result of a given step action
 export enum WizardStepActionResult {
-  Completed = 0,
-  Saved = 1,
-  Error = 2
+  NotStarted = 0,
+  Completed = 1,
+  Saved = 2,
+  Error = 3
 }
 
 // Styles for the wizard component
