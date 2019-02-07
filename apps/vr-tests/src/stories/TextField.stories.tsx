@@ -119,14 +119,7 @@ storiesOf('TextField', module)
   )
   .addStory(
     'Icon with Value',
-    () => (
-      <TextField
-        styles={{ icon: { color: '#333333' } }}
-        label="Icon"
-        iconProps={{ iconName: 'Calendar' }}
-        value="Lorem ipsum"
-      />
-    ),
+    () => <TextField label="Icon" iconProps={{ iconName: 'Calendar' }} value="Lorem ipsum" />,
     {
       rtl: true
     }
@@ -134,11 +127,47 @@ storiesOf('TextField', module)
   .addStory(
     'Icon with Value and Disabled',
     () => (
+      <TextField label="Icon" iconProps={{ iconName: 'Calendar' }} value="Lorem ipsum" disabled />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Prefix with Prefix Style-Override',
+    () => (
       <TextField
-        styles={{ icon: { color: '#333333' } }}
-        label="Icon"
-        iconProps={{ iconName: 'Calendar' }}
-        value="Lorem ipsum"
+        label="Prefix"
+        prefix="https://"
+        styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Prefix with Value and Prefix Style-Override',
+    () => (
+      <TextField
+        label="Prefix"
+        prefix="https://"
+        value="example.com"
+        styles={{ prefix: { color: '#e22609', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Prefix with Value, Disabled, and Prefix Style-Override',
+    () => (
+      <TextField
+        label="Prefix"
+        prefix="https://"
+        value="example.com"
+        styles={{ prefix: { color: '#e22609', fontFamily: 'Segoe UI', fontSize: '14px' } }}
         disabled
       />
     ),
@@ -147,68 +176,23 @@ storiesOf('TextField', module)
     }
   )
   .addStory(
-    'Prefix',
-    () => (
-      <TextField
-        label="Prefix"
-        prefix="https://"
-        styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
-      />
-    ),
+    'Prefix with Value, Disabled',
+    () => <TextField label="Prefix" prefix="https://" value="example.com" disabled />,
     {
       rtl: true
     }
   )
+  .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
+    rtl: true
+  })
   .addStory(
-    'Prefix with Value',
-    () => (
-      <TextField
-        label="Prefix"
-        prefix="https://"
-        value="example.com"
-        styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
-      />
-    ),
-    {
-      rtl: true
-    }
-  )
-  .addStory(
-    'Prefix with Value and Disabled',
-    () => (
-      <TextField
-        label="Prefix"
-        prefix="https://"
-        value="example.com"
-        styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
-        disabled
-      />
-    ),
-    {
-      rtl: true
-    }
-  )
-  .addStory(
-    'Suffix',
-    () => (
-      <TextField
-        label="Suffix"
-        suffix=".com"
-        styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
-      />
-    ),
-    {
-      rtl: true
-    }
-  )
-  .addStory(
-    'Suffix with Value',
+    'Suffix with Value and Style-Override',
     () => (
       <TextField
         label="Suffix"
         suffix=".com"
         value="example"
-        styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+        styles={{ suffix: { color: '#e22609', fontFamily: 'Segoe UI', fontSize: '14px' } }}
       />
     ),
     {
@@ -217,15 +201,7 @@ storiesOf('TextField', module)
   )
   .addStory(
     'Suffix with Value and Disabled',
-    () => (
-      <TextField
-        label="Suffix"
-        suffix=".com"
-        value="example"
-        styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
-        disabled
-      />
-    ),
+    () => <TextField label="Suffix" suffix=".com" value="example" disabled />,
     {
       rtl: true
     }
