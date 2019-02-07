@@ -380,8 +380,20 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         alignItems: 'center'
       }
     ],
-    prefix: [classNames.prefix, fieldPrefixSuffix],
-    suffix: [classNames.suffix, fieldPrefixSuffix],
+    prefix: [
+      classNames.prefix,
+      fieldPrefixSuffix,
+      disabled && {
+        color: semanticColors.disabledText
+      }
+    ],
+    suffix: [
+      classNames.suffix,
+      fieldPrefixSuffix,
+      disabled && {
+        color: semanticColors.disabledText
+      }
+    ],
     subComponentStyles: {
       label: getLabelStyles(props)
     }
