@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IRefObject, IRenderFunction, KeyCodes, IStyleFunctionOrObject } from '../../../Utilities';
-import { IPersonaProps } from '../../Persona/Persona.types';
 import { IStyle, ITheme } from '../../../Styling';
 import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
 
@@ -154,7 +153,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * Function to fire when one of the optional remove buttons on a suggestion is clicked.
    */
-  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: T, index?: number) => void;
 
   /**
    * Indicates if the text in resultsFooter or resultsFooterFull should be shown at the end of the suggestion list.
