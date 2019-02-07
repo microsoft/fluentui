@@ -411,13 +411,13 @@ export class SimpleSuggestionsExample extends React.Component<{}, { colors: Colo
   }
 }
 
-storiesOf('Sticky breadcrumb and sticky details list header', module)
+storiesOf('Suggestions', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testRoot' })
-        .executeScript('hover("#color-C0FFEE")')
+        .hover('#color-C0FFEE')
         .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
         .end()}
     >
