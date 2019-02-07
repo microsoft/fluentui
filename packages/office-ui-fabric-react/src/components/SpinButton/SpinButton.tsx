@@ -276,8 +276,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   };
 
   private _calculatePrecision = (props: ISpinButtonProps) => {
-    const { precision = Math.max(calculatePrecision(props.step!), 0) } = props;
-    return precision;
+    if (props.step) {
+      const { precision = Math.max(calculatePrecision(props.step!), 0) } = props;
+      return precision;
+    } else {
+      throw new Error('Step is undefined.');
+    }
   };
 
   /**
