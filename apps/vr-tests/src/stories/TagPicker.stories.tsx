@@ -55,6 +55,19 @@ storiesOf('TagPicker', module)
       itemLimit={2}
     />
   ))
+  .addStory('Multiline', () => (
+    <TagPicker
+      onResolveSuggestions={getList}
+      onEmptyInputFocus={getList}
+      getTextFromItem={getTextFromItem}
+      pickerSuggestionsProps={{
+        suggestionsHeaderText: 'Suggested Tags',
+        noResultsFoundText: 'No Color Tags Found'
+      }}
+      defaultSelectedItems={testTags}
+      itemLimit={testTags.length}
+    />
+  ))
   .addStory(
     'Selected',
     () => (
