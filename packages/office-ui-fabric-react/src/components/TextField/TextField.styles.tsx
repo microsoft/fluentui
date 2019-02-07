@@ -359,6 +359,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         fontSize: 16,
         lineHeight: 18
       },
+      disabled && {
+        color: semanticColors.disabledText
+      },
       iconClass
     ],
     description: [
