@@ -105,7 +105,7 @@ export interface IButtonProps
   defaultExpanded?: boolean;
 
   /**
-   * Defines whether the Button is in an expanded state (i.e. a contextual menu is open).
+   * Defines whether the Button is in an expanded state.
    * @defaultvalue defaultExpanded
    */
   expanded?: boolean;
