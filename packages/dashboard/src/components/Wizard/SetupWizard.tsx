@@ -4,7 +4,7 @@ import { ISetupWizardProps, ISetupWizardStyles } from './SetupWizard.types';
 import { getSetupWizardStyles } from './SetupWizard.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IWizardStepProps } from './Wizard.types';
-import { WizardActionBar } from './WizardActionBar';
+import { SetupWizardActionBar } from './SetupWizardActionBar';
 import { Wizard } from './Wizard';
 
 /** Component for Setup Wizard */
@@ -23,10 +23,10 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
     return (
       <div className={classNames.wizardContainer}>
         {titleSection}
-        <Wizard steps={this.props.wizardSteps} />
+        <Wizard steps={this.props.steps} />
         <div className={classNames.actionBarSection}>
-          <WizardActionBar
-            processContentAction={stepContentToShow!.wizardContent!.processContentAction}
+          <SetupWizardActionBar
+            mainAction={stepContentToShow!.wizardContent!.mainAction}
             backClickAction={this.props.backClickAction}
             exitWizardAction={this.props.exitWizardAction}
           />
@@ -37,9 +37,9 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
 
   // Get content to show
   private _getStepContentToShow(): IWizardStepProps | undefined {
-    const { wizardSteps } = this.props;
+    const { steps } = this.props;
 
-    let stepToShow: IWizardStepProps | undefined = wizardSteps.find((wizStep: IWizardStepProps) => {
+    let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
       return wizStep.state === SubwayNavStepState.Current;
     });
 

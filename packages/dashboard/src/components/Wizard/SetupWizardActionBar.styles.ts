@@ -1,6 +1,6 @@
-import { IWizardActionBarStyles } from './WizardActionBar.types';
+import { ISetupWizardActionBarStyles } from './SetupWizardActionBar.types';
 
-export const getStyles = (): IWizardActionBarStyles => {
+export const getStyles = (): ISetupWizardActionBarStyles => {
   return {
     root: {
       whiteSpace: 'nowrap',

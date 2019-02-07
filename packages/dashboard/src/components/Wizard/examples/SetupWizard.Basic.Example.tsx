@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SetupWizard } from '../SetupWizard';
 import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
-import { IWizardStepProps, IWizardStepAction, WizardStepActionResult } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
+import { IWizardStepProps, IWizardStepAction } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 import { IAction } from '../../Card/ActionBar/ActionBar.types';
 
 export interface ISetupWizardExampleState {
@@ -26,8 +26,8 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.Current,
       wizardContent: {
         content: this._getContentForStep('Step 0'),
-        contentState: SubwayNavStepState.Current,
-        processContentAction: this._getMainActionForStep('Step 0')
+        // contentState: SubwayNavStepState.Current,
+        mainAction: this._getMainActionForStep('Step 0')
       }
     };
 
@@ -39,8 +39,8 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.NotStarted,
       wizardContent: {
         content: this._getContentForStep('Step 1'),
-        contentState: SubwayNavStepState.NotStarted,
-        processContentAction: this._getMainActionForStep('Step 1')
+        // contentState: SubwayNavStepState.NotStarted,
+        mainAction: this._getMainActionForStep('Step 1')
       }
     };
 
@@ -52,8 +52,8 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.NotStarted,
       wizardContent: {
         content: this._getContentForStep('Step 2'),
-        contentState: SubwayNavStepState.NotStarted,
-        processContentAction: this._getMainActionForStep('Step 2')
+        // contentState: SubwayNavStepState.NotStarted,
+        mainAction: this._getMainActionForStep('Step 2')
       }
     };
 
@@ -65,8 +65,8 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
       state: SubwayNavStepState.NotStarted,
       wizardContent: {
         content: this._getContentForStep('Step 3'),
-        contentState: SubwayNavStepState.NotStarted,
-        processContentAction: this._getMainActionForStep('Step 3')
+        // contentState: SubwayNavStepState.NotStarted,
+        mainAction: this._getMainActionForStep('Step 3')
       }
     };
 
@@ -97,7 +97,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
           wizardTitle={{ title: 'Sample wizard with 4 steps' }}
           exitWizardAction={this._getExitWizardAction()}
           backClickAction={this._getBackClickAction()}
-          wizardSteps={this.steps}
+          steps={this.steps}
         />
       </div>
     );
@@ -106,10 +106,11 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardExa
   private _getMainActionForStep(stepStr: string): IWizardStepAction {
     const action: IWizardStepAction = {
       title: stepStr + ' Next',
-      action: (): WizardStepActionResult => {
+      action: (): void => {
         console.log(stepStr + ' Next clicked');
         this._goToNextStep();
-        return WizardStepActionResult.Completed;
+        // return WizardContentState.Completed;
+        return;
       }
     };
 

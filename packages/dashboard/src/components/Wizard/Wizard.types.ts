@@ -4,9 +4,6 @@ import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav/SubwayNav.types
 export interface IWizardProps {
   // List of steps in the wizard
   steps: IWizardStepProps[];
-
-  // Optional classname to append to root list.
-  className?: string;
 }
 
 export interface IWizardStepProps {
@@ -30,9 +27,9 @@ export interface IWizardContentProps {
 
   content: JSX.Element;
 
-  contentState: SubwayNavStepState;
+  mainAction: IWizardStepAction;
 
-  processContentAction: IWizardStepAction;
+  //// contentState?: WizardContentState;
 }
 
 export interface IWizardStepAction {
@@ -40,15 +37,18 @@ export interface IWizardStepAction {
   title: string;
 
   // Defines the function that is executed on clicking this action
-  action: () => WizardStepActionResult;
+  action: () => void;
+
+  // Action is disabled or not
+  disabled?: boolean;
 }
 
 export interface IWizardTitleProps {
   title: string;
 }
 
-// Possible result of a given step action
-export enum WizardStepActionResult {
+// Possible states of content (or reuse SubwayNavStepState??)
+export enum WizardContentState {
   NotStarted = 0,
   Completed = 1,
   Saved = 2,
