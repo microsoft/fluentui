@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 06 Feb 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Feb 2019 13:32:39 GMT and should not be manually modified.
+
+## 6.135.1
+Thu, 07 Feb 2019 13:32:39 GMT
+
+### Patches
+
+- DetailsList: Fixes the column header shifting upwards by 1px after drag and drop action.
 
 ## 6.135.0
 Wed, 06 Feb 2019 13:38:07 GMT
