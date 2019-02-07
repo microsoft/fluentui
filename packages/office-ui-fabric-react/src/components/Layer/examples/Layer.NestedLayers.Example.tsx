@@ -1,11 +1,7 @@
-import * as React from 'react';
-
-/* tslint:disable:no-string-literal */
-
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
 export interface ILayerNestedLayersExampleState {
   hideDialog: boolean;
@@ -13,14 +9,10 @@ export interface ILayerNestedLayersExampleState {
 }
 
 export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLayersExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      hideDialog: true,
-      showPanel: false
-    };
-  }
+  public state = {
+    hideDialog: true,
+    showPanel: false
+  };
 
   public render() {
     return (
@@ -50,7 +42,6 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
               containerClassName: 'ms-dialogMainOverride'
             }}
           >
-            {null /** You can also include null values as the result of conditionals */}
             <DialogFooter>
               <PrimaryButton onClick={this._closeDialog} text="OK" />
               <DefaultButton onClick={this._closeDialog} text="Cancel" />

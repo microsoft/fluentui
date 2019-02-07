@@ -1,21 +1,17 @@
-import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelLargeFixedExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      showPanel: false
-    };
-  }
+interface IState {
+  showPanel: boolean;
+}
 
-  public render(): JSX.Element {
+export class PanelLargeFixedExample extends React.Component<{}, IState> {
+  public state = {
+    showPanel: false
+  };
+
+  public render() {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
@@ -26,11 +22,11 @@ export class PanelLargeFixedExample extends React.Component<
     );
   }
 
-  private _showPanel = (): void => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = (): void => {
+  private _closePanel = () => {
     this.setState({ showPanel: false });
   };
 }

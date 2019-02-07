@@ -1,22 +1,20 @@
-import * as React from 'react';
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelLightDismissCustomExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-    hideDialog: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
+interface IState {
+  showPanel: boolean;
+  hideDialog: boolean;
+}
 
-    this.state = { showPanel: false, hideDialog: true };
-  }
+export class PanelLightDismissCustomExample extends React.Component<{}, IState> {
+  public state = {
+    showPanel: false,
+    hideDialog: true
+  };
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <DefaultButton text="Open panel" onClick={this._showPanel} />
@@ -24,7 +22,7 @@ export class PanelLightDismissCustomExample extends React.Component<
           isOpen={this.state.showPanel}
           isLightDismiss={true}
           headerText="Light Dismiss Panel"
-          onDismiss={this._hidePanel}
+          onDismiss={this._closePanel}
           onLightDismissClick={this._showDialog}
         >
           <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
@@ -43,7 +41,6 @@ export class PanelLightDismissCustomExample extends React.Component<
             containerClassName: 'ms-dialogMainOverride'
           }}
         >
-          {null /** You can also include null values as the result of conditionals */}
           <DialogFooter>
             <PrimaryButton onClick={this._closeDialogAndHidePanel} text="Yes" />
             <DefaultButton onClick={this._closeDialog} text="No" />
@@ -53,24 +50,24 @@ export class PanelLightDismissCustomExample extends React.Component<
     );
   }
 
-  private _showPanel = (): void => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
   };
 
-  private _hidePanel = (): void => {
+  private _closePanel = () => {
     this.setState({ showPanel: false });
   };
 
-  private _showDialog = (): void => {
+  private _showDialog = () => {
     this.setState({ hideDialog: false });
   };
 
-  private _closeDialog = (): void => {
+  private _closeDialog = () => {
     this.setState({ hideDialog: true });
   };
 
-  private _closeDialogAndHidePanel = (): void => {
-    this._hidePanel();
+  private _closeDialogAndHidePanel = () => {
+    this._closePanel();
     this._closeDialog();
   };
 }

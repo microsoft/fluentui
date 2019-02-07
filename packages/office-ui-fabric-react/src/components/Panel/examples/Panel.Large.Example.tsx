@@ -7,8 +7,7 @@ interface IState {
 }
 
 export class PanelLargeExample extends React.Component<{}, IState> {
-  // tslint:disable-next-line:member-access
-  state = {
+  public state = {
     showPanel: false
   };
 

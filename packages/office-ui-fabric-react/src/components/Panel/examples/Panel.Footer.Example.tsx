@@ -1,19 +1,17 @@
-import * as React from 'react';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelFooterExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = { showPanel: false };
-  }
+interface IState {
+  showPanel: boolean;
+}
 
-  public render(): JSX.Element {
+export class PanelFooterExample extends React.Component<{}, IState> {
+  public state = {
+    showPanel: false
+  };
+
+  public render() {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />
