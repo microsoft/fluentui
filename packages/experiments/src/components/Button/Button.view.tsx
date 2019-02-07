@@ -83,16 +83,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
   );
 };
 
-// TODO: test with split button approach.
-//        should split button be another component?
-//        can Button's slots be manipulated to create an HOC split button?
-// {split && (
-// <Slot as='span' userProps={splitContainer}>
-//   <Slot as={Divider} userProps={divider} />
-//   <Slot as={Icon} userProps={menuChevron} />
-// </Slot>
-// )}
-
 function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
   return !!props.href ? 'a' : 'button';
 }
