@@ -1,2 +1,2 @@
-export * from './Wizard';
-export * from './Wizard.types';
+export * from './SetupWizard';
+export * from './SetupWizard.types';

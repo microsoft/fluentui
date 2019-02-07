@@ -5,13 +5,8 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
 import { SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav';
 
-export interface IWizardState {
-  currStep: IWizardStepProps;
-  currSubStep: IWizardStepProps | undefined;
-}
-
 /** Component for Wizard */
-export class Wizard extends React.Component<IWizardProps, IWizardState> {
+export class Wizard extends React.Component<IWizardProps, {}> {
   constructor(props: IWizardProps) {
     super(props);
   }
