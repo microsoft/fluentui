@@ -77,6 +77,43 @@ const expandedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   };
 };
 
+const splitTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    contentPadding: '8px 8px 8px 16px',
+    splitContentPadding: '8px 16px 8px 0px',
+
+    splitBackgroundColor: semanticColors.buttonBackground,
+    splitBackgroundColorHovered: semanticColors.buttonBackgroundHovered,
+    splitBackgroundColorPressed: semanticColors.buttonBackgroundPressed,
+
+    splitColor: semanticColors.buttonText,
+    splitColorHovered: semanticColors.buttonTextHovered,
+    splitColorPressed: semanticColors.buttonTextPressed
+  };
+};
+
+const splitExpandedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.buttonBackground,
+    backgroundColorHovered: semanticColors.buttonBackgroundHovered,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+
+    splitBackgroundColor: semanticColors.buttonBackgroundPressed,
+    splitBackgroundColorHovered: semanticColors.buttonBackgroundPressed,
+    splitBackgroundColorPressed: semanticColors.buttonBackgroundPressed,
+
+    color: semanticColors.buttonText,
+    colorHovered: semanticColors.buttonTextHovered,
+    colorPressed: semanticColors.buttonTextPressed,
+
+    splitColor: semanticColors.buttonTextPressed,
+    splitColorHovered: semanticColors.buttonTextPressed,
+    splitColorPressed: semanticColors.buttonTextPressed
+  };
+};
+
 const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
@@ -115,6 +152,8 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
   props.expanded && expandedTokens,
   props.primary && primaryEnabledTokens,
   props.primary && props.expanded && primaryExpandedTokens,
+  props.split && splitTokens,
+  props.split && props.expanded && splitExpandedTokens,
   props.circular && circularTokens,
   props.disabled && disabledTokens
 ];
@@ -197,22 +236,67 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
     ],
     content: {
       overflow: 'visible'
+    },
+
+    // Split button slots styling
+    splitRoot: {
+      backgroundColor: tokens.backgroundColor
+    },
+    splitDivider: {
+      borderRight: '1px solid #c8c8c8',
+      margin: '8px 0',
+      width: 1
+    },
+    splitMenuButton: [
+      getFocusStyle(theme),
+      theme.fonts.medium,
+      {
+        backgroundColor: tokens.splitBackgroundColor,
+        borderColor: tokens.borderColor,
+        borderRadius: tokens.borderRadius,
+        borderStyle: 'solid',
+        borderWidth: tokens.borderWidth,
+        boxSizing: 'border-box',
+        color: tokens.splitColor,
+        cursor: 'default',
+        display: 'inline-block',
+        fontSize: tokens.textSize,
+        fontWeight: tokens.textWeight,
+        height: tokens.height,
+        justifyContent: 'center',
+        margin: 0,
+        minHeight: tokens.minHeight,
+        overflow: 'hidden',
+        padding: 0,
+        textDecoration: 'none',
+        textAlign: 'center',
+        userSelect: 'none',
+        verticalAlign: 'baseline',
+
+        selectors: {
+          ':hover': {
+            backgroundColor: tokens.splitBackgroundColorHovered,
+            color: tokens.splitColorHovered,
+            borderColor: tokens.borderColorHovered
+          },
+          ':hover:active': {
+            backgroundColor: tokens.splitBackgroundColorPressed,
+            color: tokens.splitColorPressed,
+            borderColor: tokens.borderColorPressed
+          },
+          [`:hover .${globalClassNames.icon}`]: {
+            color: tokens.iconColorHovered
+          },
+          [`:hover:active .${globalClassNames.icon}`]: {
+            color: tokens.iconColorPressed
+          }
+        }
+      },
+      className
+    ],
+    splitStack: {
+      padding: tokens.splitContentPadding,
+      height: '100%'
     }
-    // TODO: test with split button approach.
-    // splitContainer: {
-    //   height: '100%',
-    //   position: 'relative',
-    //   width: '36px'
-    // },
-    // divider: {
-    //   background: tokens.color,
-    //   bottom: 6,
-    //   display: 'inline-block',
-    //   left: 0,
-    //   opacity: 0.7,
-    //   position: 'absolute',
-    //   top: 6,
-    //   width: 1
-    // }
   };
 };

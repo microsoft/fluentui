@@ -22,6 +22,11 @@ export interface IButtonSlots {
   icon?: IIconSlot;
   menu?: IContextualMenuSlot;
   menuIcon?: IIconSlot;
+
+  splitRoot?: IStackSlot;
+  splitMenuButton?: IHTMLElementSlot<'button'>;
+  splitStack?: IStackSlot;
+  splitDivider?: IHTMLElementSlot<'span'>;
 }
 
 export interface IButton {}
@@ -37,6 +42,7 @@ export interface IButtonProps
   disabled?: boolean;
   expanded?: boolean;
   defaultExpanded?: boolean;
+  split?: boolean;
 
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
@@ -44,6 +50,8 @@ export interface IButtonProps
 export interface IButtonViewProps extends IButtonProps {
   onMenuDismiss: () => void;
   menuTarget: HTMLElement | undefined;
+
+  onSplitClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface IButtonTokens {
@@ -72,6 +80,14 @@ export interface IButtonTokens {
   lineHeight?: number | string;
   minWidth?: number | string;
   minHeight?: number | string;
+
+  splitContentPadding?: number | string;
+  splitBackgroundColor?: string;
+  splitBackgroundColorHovered?: string;
+  splitBackgroundColorPressed?: string;
+  splitColor?: string;
+  splitColorHovered?: string;
+  splitColorPressed?: string;
 }
 
 export type IButtonStyles = IComponentStyles<IButtonSlots>;

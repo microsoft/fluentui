@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { ContextualMenu } from 'office-ui-fabric-react';
+import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
 import { Stack } from '../../Stack';
 import { Text } from '../../Text';
@@ -9,7 +9,7 @@ import { Icon } from '../../utilities/factoryComponents';
 import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
+  const { menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, split, onSplitClick, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties) };
@@ -20,8 +20,46 @@ export const ButtonView: IButtonComponent['view'] = props => {
     icon: Icon,
     content: Text,
     menu: ContextualMenu,
-    menuIcon: Icon
+    menuIcon: Icon,
+
+    splitRoot: Stack,
+    splitMenuButton: 'button',
+    splitStack: Stack,
+    splitDivider: 'span'
   });
+
+  if (split) {
+    return (
+      <Slots.splitRoot horizontal>
+        <Slots.root
+          type="button" // stack doesn't take in native button props
+          role="button"
+          onClick={onSplitClick}
+          aria-disabled={disabled}
+        >
+          <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
+            <Slots.icon />
+            <Slots.content />
+            {children}
+          </Slots.stack>
+        </Slots.root>
+
+        <Slots.splitMenuButton type="button" role="button" {...buttonProps} aria-disabled={disabled}>
+          <Slots.splitStack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
+            <Stack.Item>
+              <Slots.splitDivider />
+            </Stack.Item>
+            <Stack.Item>
+              <Slots.menuIcon iconName="ChevronDown" />
+            </Stack.Item>
+          </Slots.splitStack>
+          {expanded && (
+            <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} directionalHint={DirectionalHint.bottomRightEdge} />
+          )}
+        </Slots.splitMenuButton>
+      </Slots.splitRoot>
+    );
+  }
 
   return (
     <Slots.root

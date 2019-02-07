@@ -29,6 +29,11 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button disabled content="Disabled default button" />
                 <Button primary content="Primary button" />
                 <Button disabled primary content="Primary disabled button" />
+                <Button tokens={{ borderRadius: '10px' }} />
+              </ButtonStack>
+              <ButtonStack>
+                <Button split icon="Add" content="Default split button" menu={buttonMenu} />
+                <Button split primary icon="Add" content="Primary split button" menu={buttonMenu} />
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" circular />
