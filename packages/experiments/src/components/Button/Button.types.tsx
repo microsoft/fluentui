@@ -172,7 +172,7 @@ export interface IButtonTokens {
   minWidth?: number | string;
   minHeight?: number | string;
 
-  // The following slots are specific to Split Button and aren't used if the split property is not present.
+  // The following tokens are specific to Split Button and aren't used if the split property is not present.
   splitContentPadding?: number | string;
   splitBackgroundColor?: string;
   splitBackgroundColorHovered?: string;
