@@ -41,14 +41,14 @@ export const ButtonView: IButtonComponent['view'] = props => {
             <Slots.icon />
             <Slots.content />
             {children}
+            <Stack.Item>
+              <Slots.splitDivider />
+            </Stack.Item>
           </Slots.stack>
         </Slots.root>
 
         <Slots.splitMenuButton type="button" role="button" {...buttonProps} aria-disabled={disabled}>
           <Slots.splitStack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
-            <Stack.Item>
-              <Slots.splitDivider />
-            </Stack.Item>
             <Stack.Item>
               <Slots.menuIcon iconName="ChevronDown" />
             </Stack.Item>

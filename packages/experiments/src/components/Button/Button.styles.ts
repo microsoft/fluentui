@@ -51,8 +51,9 @@ const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRe
   };
 };
 
-const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+const firstActionDisabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
+
   return {
     backgroundColor: theme.semanticColors.buttonBackgroundDisabled,
     backgroundColorHovered: semanticColors.buttonBackgroundDisabled,
@@ -62,9 +63,38 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     iconColorHovered: semanticColors.buttonTextDisabled,
     iconColorPressed: semanticColors.buttonTextDisabled,
 
+    color: semanticColors.buttonTextDisabled,
     colorHovered: semanticColors.buttonTextDisabled,
     colorPressed: semanticColors.buttonTextDisabled,
+
+    borderColor: semanticColors.buttonBorderDisabled,
+    borderColorHovered: semanticColors.buttonBorderDisabled,
+    borderColorPressed: semanticColors.buttonBorderDisabled
+  };
+};
+
+const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: theme.semanticColors.buttonBackgroundDisabled,
+    backgroundColorHovered: semanticColors.buttonBackgroundDisabled,
+    backgroundColorPressed: semanticColors.buttonBackgroundDisabled,
+
+    splitBackgroundColor: semanticColors.buttonBackgroundDisabled,
+    splitBackgroundColorHovered: semanticColors.buttonBackgroundDisabled,
+    splitBackgroundColorPressed: semanticColors.buttonBackgroundDisabled,
+
+    iconColor: semanticColors.buttonTextDisabled,
+    iconColorHovered: semanticColors.buttonTextDisabled,
+    iconColorPressed: semanticColors.buttonTextDisabled,
+
     color: semanticColors.buttonTextDisabled,
+    colorHovered: semanticColors.buttonTextDisabled,
+    colorPressed: semanticColors.buttonTextDisabled,
+
+    splitColor: semanticColors.buttonTextDisabled,
+    splitColorHovered: semanticColors.buttonTextDisabled,
+    splitColorPressed: semanticColors.buttonTextDisabled,
 
     borderColor: semanticColors.buttonBorderDisabled,
     borderColorHovered: semanticColors.buttonBorderDisabled,
@@ -87,8 +117,8 @@ const expandedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
 
 const splitTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   return {
-    contentPadding: '8px 8px 8px 16px',
-    splitContentPadding: '8px 16px 8px 0px'
+    contentPadding: '8px 0px 8px 16px',
+    splitContentPadding: '8px 16px 8px 8px'
   };
 };
 
@@ -184,6 +214,7 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
   props.primary && props.expanded && primaryExpandedTokens,
   props.split && props.primary && props.expanded && splitPrimaryExpandedTokens,
   props.circular && circularTokens,
+  props.split && props.firstActionDisabled && firstActionDisabledTokens,
   props.disabled && disabledTokens
 ];
 

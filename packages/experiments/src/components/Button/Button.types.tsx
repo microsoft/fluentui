@@ -44,6 +44,8 @@ export interface IButtonProps
   defaultExpanded?: boolean;
   split?: boolean;
 
+  firstActionDisabled?: boolean;
+
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
