@@ -10,7 +10,8 @@ const GlobalClassNames = {
   innerField: 'ms-ChoiceField-innerField',
   imageWrapper: 'ms-ChoiceField-imageWrapper',
   iconWrapper: 'ms-ChoiceField-iconWrapper',
-  labelWrapper: 'ms-ChoiceField-labelWrapper'
+  labelWrapper: 'ms-ChoiceField-labelWrapper',
+  checked: 'is-checked'
 };
 
 const labelWrapperLineHeight = 15;
@@ -257,6 +258,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     ],
     field: [
       classNames.field,
+      checked && classNames.checked,
       {
         display: 'inline-block',
         cursor: 'pointer',
