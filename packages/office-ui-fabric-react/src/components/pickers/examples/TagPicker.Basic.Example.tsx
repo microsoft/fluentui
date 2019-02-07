@@ -57,7 +57,8 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
             suggestionsHeaderText: 'Suggested Tags',
             noResultsFoundText: 'No Color Tags Found'
           }}
-          itemLimit={2}
+          defaultSelectedItems={_testTags}
+          itemLimit={_testTags.length + 10}
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),

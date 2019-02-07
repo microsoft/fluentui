@@ -32,29 +32,30 @@ exports[`BasePicker renders correctly 1`] = `
         <span
           id="selected-items-id__0"
           role="list"
-        />
-        <input
-          aria-autocomplete="both"
-          aria-controls=" "
-          aria-describedby="selected-items-id__0"
-          aria-expanded={false}
-          aria-haspopup="true"
-          autoCapitalize="off"
-          autoComplete="off"
-          className="ms-BasePicker-input"
-          data-lpignore={true}
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onFocus={[Function]}
-          onInput={[Function]}
-          onKeyDown={[Function]}
-          role="combobox"
-          spellCheck={false}
-          value=""
-        />
+        >
+          <input
+            aria-autocomplete="both"
+            aria-controls=" "
+            aria-describedby="selected-items-id__0"
+            aria-expanded={false}
+            aria-haspopup="true"
+            autoCapitalize="off"
+            autoComplete="off"
+            className="ms-BasePicker-input"
+            data-lpignore={true}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onCompositionEnd={[Function]}
+            onCompositionStart={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+            role="combobox"
+            spellCheck={false}
+            value=""
+          />
+        </span>
       </div>
     </div>
   </div>
@@ -93,31 +94,32 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
         <span
           id="selected-items-id__0"
           role="list"
-        />
-        <input
-          aria-autocomplete="both"
-          aria-controls=" "
-          aria-describedby="selected-items-id__0"
-          aria-expanded={false}
-          aria-haspopup="true"
-          autoCapitalize="off"
-          autoComplete="off"
-          className="ms-BasePicker-input testclass "
-          data-lpignore={true}
-          id="pckSelectedUser"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onClick={[Function]}
-          onCompositionEnd={[Function]}
-          onCompositionStart={[Function]}
-          onFocus={[Function]}
-          onInput={[Function]}
-          onKeyDown={[Function]}
-          placeholder="Bitte einen Benutzer angeben..."
-          role="combobox"
-          spellCheck={false}
-          value=""
-        />
+        >
+          <input
+            aria-autocomplete="both"
+            aria-controls=" "
+            aria-describedby="selected-items-id__0"
+            aria-expanded={false}
+            aria-haspopup="true"
+            autoCapitalize="off"
+            autoComplete="off"
+            className="ms-BasePicker-input testclass "
+            data-lpignore={true}
+            id="pckSelectedUser"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onCompositionEnd={[Function]}
+            onCompositionStart={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+            placeholder="Bitte einen Benutzer angeben..."
+            role="combobox"
+            spellCheck={false}
+            value=""
+          />
+        </span>
       </div>
     </div>
   </div>

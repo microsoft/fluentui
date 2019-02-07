@@ -235,31 +235,31 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             <div className={classNames.text}>
               <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
                 {this.renderItems()}
+                {this.canAddItems() && (
+                  <Autofill
+                    spellCheck={false}
+                    {...inputProps as any}
+                    className={classNames.input}
+                    componentRef={this.input}
+                    onFocus={this.onInputFocus}
+                    onBlur={this.onInputBlur}
+                    onInputValueChange={this.onInputChange}
+                    suggestedDisplayValue={suggestedDisplayValue}
+                    aria-activedescendant={this.getActiveDescendant()}
+                    aria-expanded={!!this.state.suggestionsVisible}
+                    aria-haspopup="true"
+                    aria-describedby={this._ariaMap.selectedItems}
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    role={'combobox'}
+                    disabled={disabled}
+                    aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
+                    aria-owns={suggestionsAvailable || undefined}
+                    aria-autocomplete={'both'}
+                    onInputChange={this.props.onInputChange}
+                  />
+                )}
               </span>
-              {this.canAddItems() && (
-                <Autofill
-                  spellCheck={false}
-                  {...inputProps as any}
-                  className={classNames.input}
-                  componentRef={this.input}
-                  onFocus={this.onInputFocus}
-                  onBlur={this.onInputBlur}
-                  onInputValueChange={this.onInputChange}
-                  suggestedDisplayValue={suggestedDisplayValue}
-                  aria-activedescendant={this.getActiveDescendant()}
-                  aria-expanded={!!this.state.suggestionsVisible}
-                  aria-haspopup="true"
-                  aria-describedby={this._ariaMap.selectedItems}
-                  autoCapitalize="off"
-                  autoComplete="off"
-                  role={'combobox'}
-                  disabled={disabled}
-                  aria-controls={`${suggestionsAvailable} ${selectedSuggestionAlertId}` || undefined}
-                  aria-owns={suggestionsAvailable || undefined}
-                  aria-autocomplete={'both'}
-                  onInputChange={this.props.onInputChange}
-                />
-              )}
             </div>
           </SelectionZone>
         </FocusZone>
