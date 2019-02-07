@@ -65,7 +65,7 @@ storiesOf('TagPicker', module)
         noResultsFoundText: 'No Color Tags Found'
       }}
       defaultSelectedItems={testTags}
-      itemLimit={testTags.length}
+      itemLimit={testTags.length + 5}
     />
   ))
   .addStory(
