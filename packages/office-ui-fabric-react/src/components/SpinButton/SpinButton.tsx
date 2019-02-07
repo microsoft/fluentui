@@ -33,9 +33,13 @@ export interface ISpinButtonState {
   keyboardSpinDirection: KeyboardSpinDirection;
 }
 
+export type DefaultProps = Required<
+  Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
+>;
+
 @customizable('SpinButton', ['theme', 'styles'], true)
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-  public static defaultProps: ISpinButtonProps = {
+  public static defaultProps: DefaultProps = {
     step: 1,
     min: 0,
     max: 100,
@@ -69,7 +73,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
-    this._precision = this._calculatePrecision(props);
+    const propsForPrecision = this.props as ISpinButtonProps & DefaultProps;
+    this._precision = this._calculatePrecision(propsForPrecision);
 
     this.state = {
       isFocused: false,
@@ -99,8 +104,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
         value: value
       });
     }
-
-    this._precision = this._calculatePrecision(newProps);
+    const propsForPrecision = newProps as ISpinButtonProps & DefaultProps;
+    this._precision = this._calculatePrecision(propsForPrecision);
   }
 
   public render(): JSX.Element {
@@ -127,7 +132,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       ariaValueText,
       keytipProps,
       className
-    } = this.props;
+    } = this.props as ISpinButtonProps & DefaultProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
@@ -275,13 +280,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
   };
 
-  private _calculatePrecision = (props: ISpinButtonProps) => {
-    if (props.step) {
-      const { precision = Math.max(calculatePrecision(props.step!), 0) } = props;
-      return precision;
-    } else {
-      throw new Error('Step is undefined.');
-    }
+  private _calculatePrecision = (props: ISpinButtonProps & DefaultProps) => {
+    const { precision = Math.max(calculatePrecision(props.step), 0) } = props;
+    return precision;
   };
 
   /**
@@ -307,7 +308,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnIncrement = (value: string): string | void => {
-    let newValue: number = Math.min(Number(value) + Number(this.props.step)!, this.props.max!);
+    const props = this.props as ISpinButtonProps & DefaultProps;
+    let newValue: number = Math.min(Number(value) + Number(this.props.step)!, props.max);
     newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };
@@ -324,7 +326,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnDecrement = (value: string): string | void => {
-    let newValue: number = Math.max(Number(value) - Number(this.props.step)!, this.props.min!);
+    const props = this.props as ISpinButtonProps & DefaultProps;
+    let newValue: number = Math.max(Number(value) - Number(this.props.step)!, props.min);
     newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };

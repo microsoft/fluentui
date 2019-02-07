@@ -12233,7 +12233,7 @@ class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState>, impl
   constructor(props: ISpinButtonProps);
   componentWillReceiveProps(newProps: ISpinButtonProps): void;
   // (undocumented)
-  static defaultProps: ISpinButtonProps;
+  static defaultProps: DefaultProps;
   // (undocumented)
   focus(): void;
   // (undocumented)
@@ -12924,6 +12924,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ShimmeredDetailsList
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
+// WARNING: Unsupported export: DefaultProps
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: AnimationClassNames
