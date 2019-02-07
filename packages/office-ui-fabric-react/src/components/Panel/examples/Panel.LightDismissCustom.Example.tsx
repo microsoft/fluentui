@@ -3,7 +3,7 @@ import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dia
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
 
-interface IState {
+export interface IState {
   showPanel: boolean;
   hideDialog: boolean;
 }

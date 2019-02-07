@@ -9,7 +9,7 @@ import * as React from 'react';
 import './Layer.Example.scss';
 const exampleStyles: any = exampleStylesImport;
 
-interface IState {
+export interface IState {
   time: string;
 }
 
@@ -44,7 +44,7 @@ export class LayerContentExample extends BaseComponent<{}, IState> {
   }
 }
 
-interface ILayerBasicExampleState {
+export interface ILayerBasicExampleState {
   showLayer: boolean;
 }
 

@@ -4,7 +4,7 @@ import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
 
-interface IState {
+export interface IState {
   showPanel: boolean;
 }
 
