@@ -10,7 +10,7 @@ export class PanelHandleDismissTargetExample extends React.Component<{}, IState>
     showPanel: false
   };
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
