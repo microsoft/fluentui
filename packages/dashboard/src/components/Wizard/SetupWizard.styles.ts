@@ -22,7 +22,7 @@ export const getSetupWizardStyles = (): ISetupWizardStyles => {
       wordWrap: 'break-word'
     },
     titleSection: {
-      border: '1px solid blue',
+      border: '1px solid #E1DFDD',
       height: '75px',
       width: '100%'
     },
@@ -30,7 +30,7 @@ export const getSetupWizardStyles = (): ISetupWizardStyles => {
       margin: '30px'
     },
     actionBarSection: {
-      border: '1px solid blue',
+      border: '1px solid #E1DFDD',
       height: '75px',
       width: '100%'
     }

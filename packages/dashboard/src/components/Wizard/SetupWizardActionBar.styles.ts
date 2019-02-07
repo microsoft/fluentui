@@ -15,6 +15,12 @@ export const getStyles = (): ISetupWizardActionBarStyles => {
     backAction: {
       fontSize: '14px',
       lineHeight: '20px',
+      marginLeft: '30px',
+      width: '221px'
+    },
+    mainAction: {
+      fontSize: '28px',
+      lineHeight: '36px',
       marginLeft: '30px'
     },
     exitAction: {
@@ -22,11 +28,6 @@ export const getStyles = (): ISetupWizardActionBarStyles => {
       fontSize: '14px',
       lineHeight: '20px',
       marginRight: '30px'
-    },
-    mainAction: {
-      fontSize: '28px',
-      lineHeight: '36px',
-      marginLeft: '400px'
     }
   };
 };

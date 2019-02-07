@@ -8,13 +8,11 @@ export const getWizardStyles = (): IWizardStyles => {
     subwayNavSection: {
       height: '100%',
       width: '221px',
-      float: 'left',
-      border: '1px solid blue'
+      float: 'left'
     },
     contentSection: {
       height: '100%',
-      float: 'right',
-      border: '1px solid blue'
+      float: 'right'
     },
     content: {
       width: '100%',
