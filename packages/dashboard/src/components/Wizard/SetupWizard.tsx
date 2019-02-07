@@ -23,7 +23,7 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
     return (
       <div className={classNames.wizardContainer}>
         {titleSection}
-        <Wizard wizardSteps={this.props.wizardSteps} />
+        <Wizard steps={this.props.wizardSteps} />
         <div className={classNames.actionBarSection}>
           <WizardActionBar
             processContentAction={stepContentToShow!.wizardContent!.processContentAction}

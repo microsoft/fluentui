@@ -3,7 +3,7 @@ import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav/SubwayNav.types
 
 export interface IWizardProps {
   // List of steps in the wizard
-  wizardSteps: IWizardStepProps[];
+  steps: IWizardStepProps[];
 
   // Optional classname to append to root list.
   className?: string;

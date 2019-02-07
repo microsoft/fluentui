@@ -5,16 +5,21 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
 import { SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav';
 
+export interface IWizardState {
+  currStep: IWizardStepProps;
+  currSubStep: IWizardStepProps | undefined;
+}
+
 /** Component for Wizard */
-export class Wizard extends React.Component<IWizardProps, {}> {
+export class Wizard extends React.Component<IWizardProps, IWizardState> {
   constructor(props: IWizardProps) {
     super(props);
   }
 
   public render(): JSX.Element {
-    const { wizardSteps } = this.props;
+    const { steps } = this.props;
 
-    const navSteps = wizardSteps.map((step: IWizardStepProps) => {
+    const navSteps = steps.map((step: IWizardStepProps) => {
       const navStep = {
         key: step.key,
         label: step.label,
@@ -64,9 +69,9 @@ export class Wizard extends React.Component<IWizardProps, {}> {
 
   // Get content to show
   private _getStepContentToShow(): IWizardStepProps | undefined {
-    const { wizardSteps } = this.props;
+    const { steps } = this.props;
 
-    let stepToShow: IWizardStepProps | undefined = wizardSteps.find((wizStep: IWizardStepProps) => {
+    let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
       return wizStep.state === SubwayNavStepState.Current;
     });
 
