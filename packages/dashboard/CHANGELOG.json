@@ -2,6 +2,127 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.47.3",
+      "tag": "@uifabric/dashboard_v0.47.3",
+      "date": "Wed, 06 Feb 2019 13:38:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding SubwayNav control in Dashboard",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "30929a19bd471440af88dd355fca7894d32dc5a7"
+          },
+          {
+            "comment": "Hide command bar from composite list if no commands exist",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "4ed6fa95dd1f89f1aafc9ea34b69283d214db4c8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.5` to `^0.28.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.134.0 <7.0.0` to `>=6.135.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.2",
+      "tag": "@uifabric/dashboard_v0.47.2",
+      "date": "Tue, 05 Feb 2019 13:35:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add id's for actions and onclick handler for multicount",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "f132e7dd52c66ef4d3a498e15d050b895a508bff"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.133.0 <7.0.0` to `>=6.134.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.1",
+      "tag": "@uifabric/dashboard_v0.47.1",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: fix content load error on L2 content mode",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a45ba1baed77be42d801bc4dc32e3a638f975fd9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.1 <7.0.0` to `>=6.54.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.132.0 <7.0.0` to `>=6.133.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.0",
+      "tag": "@uifabric/dashboard_v0.47.0",
+      "date": "Thu, 31 Jan 2019 13:36:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event",
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "c61b089015c9fece7ccb436e49e457b840a9505c"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add  optional  id props to  IThumbnailListProps, IGridListProps, ICompoundAction and  optional cardId to ICardProps",
+            "author": "dkishmareishvili <dkishmareishvili@gmail.com>",
+            "commit": "4807977d27c753ed3a3badf69d28222d14804b8b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.53.2 <7.0.0` to `>=6.54.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.0 <7.0.0` to `>=6.131.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.46.2",
+      "tag": "@uifabric/dashboard_v0.46.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix detail panel custom width issue, fix detail panel tiles css issue, add jsx.element support to detail panel tile message",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "c76f02eed90b0c39812451d5a7f947f3bb902628"
+          },
+          {
+            "comment": "Fix edge browser thumbnail list focus items alignment issue",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "b2d063b1b258ab2f0686fdb0d92d2a492eceaaea"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.53.1 <7.0.0` to `>=6.53.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.46.1",
       "tag": "@uifabric/dashboard_v0.46.1",
       "date": "Tue, 29 Jan 2019 13:35:55 GMT",

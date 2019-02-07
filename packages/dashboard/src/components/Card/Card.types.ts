@@ -124,6 +124,11 @@ export interface ICardFrameContent {
 
 export interface ICardProps {
   /**
+   * Optional Card Id props
+   */
+  cardId?: string;
+
+  /**
    * Card frame content, that contains the card title and array of card frame drop down options
    */
   cardFrameContent: ICardFrameContent;
@@ -159,6 +164,11 @@ export interface ICardProps {
    * role of the  card for the benefit of screen readers
    */
   role?: string;
+
+  /**
+   * The aria labelledby of the card for the benefit of screen readers.
+   */
+  cardAriaLabelledby?: string;
 
   /**
    * The content area content details array.

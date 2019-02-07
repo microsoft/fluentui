@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 23 Jan 2019 22:53:13 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+
+## 6.15.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix bug where multiple selectors in :global() would not be processed correctly
 
 ## 6.15.1
 Wed, 23 Jan 2019 22:53:13 GMT

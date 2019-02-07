@@ -8,7 +8,7 @@ const headingGap = 16;
 const personaCoinGap = 12;
 
 const PersonaCoinStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal gap={personaCoinGap}>
+  <Stack horizontal preventShrink gap={personaCoinGap}>
     {props.children}
   </Stack>
 );

@@ -92,7 +92,6 @@ describe('FocusTrapZone', () => {
   beforeEach(() => {
     lastFocusedElement = undefined;
   });
-
   describe('Tab and shift-tab wrap at extreme ends of the FTZ', () => {
     it('can tab across FocusZones with different button structures', async () => {
       expect.assertions(3);

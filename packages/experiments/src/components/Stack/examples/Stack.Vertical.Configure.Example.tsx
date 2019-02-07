@@ -232,7 +232,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         <Stack
           preventShrink={preventShrink}
           wrap={wrap}
-          gap={gap}
+          gap={gap + ' ' + 0}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           verticalAlign={verticalAlignment}
           horizontalAlign={horizontalAlignment}

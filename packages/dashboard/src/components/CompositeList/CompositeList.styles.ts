@@ -88,7 +88,7 @@ export const getCommandBarSelectionCountItemStyles = (): Partial<IButtonStyles> 
   };
 };
 
-export const getDetailsListStyle = (): IStyle => {
+export const getDetailsListStyle = (showCommandBar: boolean): IStyle => {
   return {
     selectors: {
       '.ms-DetailsList--Compact& .ms-DetailsRow': {
@@ -96,9 +96,9 @@ export const getDetailsListStyle = (): IStyle => {
       },
       '& .ms-DetailsList-headerWrapper': {
         position: 'sticky',
-        top: '23px',
+        top: showCommandBar ? '23px' : '0px',
         zIndex: 10,
-        paddingTop: '16px'
+        paddingTop: showCommandBar ? '16px' : '0px'
       }
     }
   };

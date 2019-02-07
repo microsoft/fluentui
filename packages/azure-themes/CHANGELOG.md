@@ -1,6 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 28 Jan 2019 13:35:27 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Feb 2019 13:37:18 GMT and should not be manually modified.
+
+## 0.1.5
+Fri, 01 Feb 2019 13:37:18 GMT
+
+### Patches
+
+- azure-themes: update shimmer colors, add documentCard.styles
 
 ## 0.1.4
 Mon, 28 Jan 2019 13:35:27 GMT

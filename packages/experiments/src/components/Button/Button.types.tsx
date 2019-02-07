@@ -1,4 +1,4 @@
-import { IComponent, IComponentStyles, IHTMLButtonSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight } from 'office-ui-fabric-react';
 import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
 import { IStackSlot } from '../../Stack';
@@ -16,7 +16,7 @@ export type IButtonStylesReturnType = ReturnType<Extract<IButtonComponent['style
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
 export interface IButtonSlots {
-  root?: IHTMLButtonSlot;
+  root?: IHTMLElementSlot<'button'>;
   stack?: IStackSlot;
   content?: ITextSlot;
   icon?: IIconSlot;

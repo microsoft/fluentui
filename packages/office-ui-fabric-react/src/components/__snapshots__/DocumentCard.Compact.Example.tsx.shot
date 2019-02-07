@@ -159,7 +159,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px #666666 inset;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -231,7 +237,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px #666666 inset;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -303,7 +315,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px #666666 inset;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;

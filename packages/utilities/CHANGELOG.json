@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.29.0",
+      "tag": "@uifabric/utilities_v6.29.0",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding helper functions to get and restore focus elements based on index paths.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "468af6a86a680e882009c7bc33e0956877d3fa26"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.1",
       "tag": "@uifabric/utilities_v6.28.1",
       "date": "Fri, 25 Jan 2019 13:38:07 GMT",

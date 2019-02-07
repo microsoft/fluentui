@@ -8,6 +8,8 @@ import {
   htmlElementProperties,
   elementContains,
   getDocument,
+  getElementIndexPath,
+  getFocusableByIndexPath,
   getId,
   getNextElement,
   getNativeProps,
@@ -49,12 +51,26 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   private _root = React.createRef<HTMLElement>();
   private _id: string;
+
   /** The most recently focused child element. */
   private _activeElement: HTMLElement | null;
+
+  /**
+   * The index path to the last focused child element.
+   */
+  private _lastIndexPath: number[] | undefined;
+
+  /**
+   * Flag to define when we've intentionally parked focus on the root element to temporarily
+   * hold focus until items appear within the zone.
+   */
+  private _isParked: boolean;
+
   /** The child element with tabindex=0. */
   private _defaultFocusElement: HTMLElement | null;
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
+  private _parkedTabIndex: string | null | undefined;
 
   /** Used to allow us to move to next focusable element even when we're focusing on a input element when pressing tab */
   private _processingTabKey: boolean;
@@ -78,11 +94,14 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public componentDidMount(): void {
-    _allInstances[this._id] = this;
-    if (this._root.current) {
-      const windowElement = this._root.current.ownerDocument.defaultView;
+    const { current: root } = this._root;
 
-      let parentElement = getParent(this._root.current, ALLOW_VIRTUAL_ELEMENTS);
+    _allInstances[this._id] = this;
+
+    if (root) {
+      const windowElement = root.ownerDocument!.defaultView;
+
+      let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
       while (parentElement && parentElement !== document.body && parentElement.nodeType === 1) {
         if (isElementFocusZone(parentElement)) {
@@ -94,6 +113,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
       if (!this._isInnerZone) {
         this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+        this._events.on(root, 'blur', this._onBlur, true);
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -102,6 +122,26 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (this.props.defaultActiveElement) {
         this._activeElement = getDocument()!.querySelector(this.props.defaultActiveElement) as HTMLElement;
         this.focus();
+      }
+    }
+  }
+
+  public componentDidUpdate(): void {
+    const { current: root } = this._root;
+    const doc = getDocument(root);
+
+    if (doc && this._lastIndexPath && (doc.activeElement === doc.body || doc.activeElement === root)) {
+      // The element has been removed after the render, attempt to restore focus.
+      const elementToFocus = getFocusableByIndexPath(root as HTMLElement, this._lastIndexPath);
+
+      if (elementToFocus) {
+        this._setActiveElement(elementToFocus, true);
+        elementToFocus.focus();
+        this._setParkedFocus(false);
+      } else {
+        // We had a focus path to restore, but now that path is unresolvable. Park focus
+        // on the container until we can try again.
+        this._setParkedFocus(true);
       }
     }
   }
@@ -115,6 +155,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
     const Tag = this.props.elementType || 'div';
+
+    // Note, right before rendering/reconciling proceeds, we need to record if focus
+    // was in the zone before the update. This helper will track this and, if focus
+    // was actually in the zone, what the index path to the element is at this time.
+    // Then, later in componentDidUpdate, we can evaluate if we need to restore it in
+    // the case the element was removed.
+    this._evaluateFocusBeforeRender();
 
     return (
       <Tag
@@ -201,36 +248,96 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     return false;
   }
 
+  private _evaluateFocusBeforeRender(): void {
+    const { current: root } = this._root;
+    const doc = getDocument(root);
+
+    if (doc) {
+      const focusedElement = doc.activeElement as HTMLElement;
+
+      // Only update the index path if we are not parked on the root.
+      if (focusedElement !== root) {
+        const shouldRestoreFocus = elementContains(root, focusedElement);
+
+        this._lastIndexPath = shouldRestoreFocus ? getElementIndexPath(root as HTMLElement, doc.activeElement as HTMLElement) : undefined;
+      }
+    }
+  }
+
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
     const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
+    const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
+    let newActiveElement: HTMLElement | undefined;
 
     if (onFocusNotification) {
       onFocusNotification();
     }
 
-    if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
-      this._activeElement = ev.target as HTMLElement;
-      this._setFocusAlignment(this._activeElement);
+    if (isImmediateDescendant) {
+      newActiveElement = ev.target as HTMLElement;
     } else {
       let parentElement = ev.target as HTMLElement;
 
       while (parentElement && parentElement !== this._root.current) {
         if (isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
-          this._activeElement = parentElement;
+          newActiveElement = parentElement;
           break;
         }
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
       }
     }
 
-    if (onActiveElementChanged) {
-      onActiveElementChanged(this._activeElement as HTMLElement, ev);
+    if (newActiveElement && newActiveElement !== this._activeElement) {
+      this._activeElement = newActiveElement;
+
+      if (isImmediateDescendant) {
+        this._setFocusAlignment(this._activeElement);
+      }
+
+      if (onActiveElementChanged) {
+        onActiveElementChanged(this._activeElement as HTMLElement, ev);
+      }
     }
 
     if (doNotAllowFocusEventToPropagate) {
       ev.stopPropagation();
     }
   };
+
+  /**
+   * When focus is in the zone at render time but then all focusable elements are removed,
+   * we "park" focus temporarily on the root. Once we update with focusable children, we restore
+   * focus to the closest path from previous. If the user tabs away from the parked container,
+   * we restore focusability to the pre-parked state.
+   */
+  private _setParkedFocus(isParked: boolean): void {
+    const { current: root } = this._root;
+
+    if (root && this._isParked !== isParked) {
+      this._isParked = isParked;
+
+      if (isParked) {
+        if (!this.props.allowFocusRoot) {
+          this._parkedTabIndex = root.getAttribute('tabindex');
+          root.setAttribute('tabindex', '-1');
+        }
+        root.focus();
+      } else {
+        if (!this.props.allowFocusRoot) {
+          if (this._parkedTabIndex) {
+            root.setAttribute('tabindex', this._parkedTabIndex);
+            this._parkedTabIndex = undefined;
+          } else {
+            root.removeAttribute('tabindex');
+          }
+        }
+      }
+    }
+  }
+
+  private _onBlur() {
+    this._setParkedFocus(false);
+  }
 
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
