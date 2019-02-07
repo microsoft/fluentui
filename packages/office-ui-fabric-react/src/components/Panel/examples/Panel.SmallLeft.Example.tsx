@@ -18,7 +18,7 @@ export class PanelSmallLeftExample extends React.Component<{}, IState> {
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedNear}
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           headerText="Panel - Small, left-aligned, fixed"
         >
           <span>Content goes here.</span>
@@ -31,7 +31,7 @@ export class PanelSmallLeftExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

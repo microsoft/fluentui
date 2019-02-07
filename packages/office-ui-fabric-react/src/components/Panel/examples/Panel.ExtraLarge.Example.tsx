@@ -17,7 +17,7 @@ export class PanelExtraLargeExample extends React.Component<{}, IState> {
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
         <Panel
           isOpen={this.state.showPanel}
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           type={PanelType.extraLarge}
           headerText="Extra Large Panel"
           closeButtonAriaLabel="Close"
@@ -32,7 +32,7 @@ export class PanelExtraLargeExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = (): void => {
+  private _hidePanel = (): void => {
     this.setState({ showPanel: false });
   };
 }

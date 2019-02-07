@@ -17,7 +17,7 @@ export class PanelCustomExample extends React.Component<{}, IState> {
         <DefaultButton text="Open Panel" secondaryText="Opens the Sample Panel" onClick={this._showPanel} />
         <Panel
           isOpen={this.state.showPanel}
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           type={PanelType.custom}
           customWidth="888px"
           headerText="Custom Panel with custom 888px width"
@@ -32,7 +32,7 @@ export class PanelCustomExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

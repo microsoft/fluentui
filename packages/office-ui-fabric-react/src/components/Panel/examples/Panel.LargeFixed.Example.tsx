@@ -15,7 +15,7 @@ export class PanelLargeFixedExample extends React.Component<{}, IState> {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
-        <Panel isOpen={this.state.showPanel} onDismiss={this._closePanel} type={PanelType.largeFixed} headerText="Large Panel">
+        <Panel isOpen={this.state.showPanel} onDismiss={this._hidePanel} type={PanelType.largeFixed} headerText="Large Panel">
           <span>Content goes here.</span>
         </Panel>
       </div>
@@ -26,7 +26,7 @@ export class PanelLargeFixedExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

@@ -18,7 +18,7 @@ export class PanelNonModalExample extends React.Component<{}, IState> {
         <Panel
           isBlocking={false}
           isOpen={this.state.showPanel}
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           type={PanelType.medium}
           headerText="Non-Modal Panel"
           closeButtonAriaLabel="Close"
@@ -33,7 +33,7 @@ export class PanelNonModalExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = (): void => {
+  private _hidePanel = (): void => {
     this.setState({ showPanel: false });
   };
 }

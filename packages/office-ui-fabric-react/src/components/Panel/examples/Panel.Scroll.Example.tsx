@@ -18,7 +18,7 @@ export class PanelScrollExample extends React.Component<{}, IState> {
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           isFooterAtBottom={true}
           headerText="Panel with scrolling content"
           closeButtonAriaLabel="Close"
@@ -66,7 +66,7 @@ export class PanelScrollExample extends React.Component<{}, IState> {
   private _onRenderFooterContent = (): JSX.Element => {
     return (
       <div>
-        <PrimaryButton onClick={this._closePanel} style={{ marginRight: '8px' }}>
+        <PrimaryButton onClick={this._hidePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
         <DefaultButton onClick={this._showPanel}>Cancel</DefaultButton>
@@ -78,7 +78,7 @@ export class PanelScrollExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

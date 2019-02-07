@@ -20,7 +20,7 @@ export class PanelSmallRightExample extends React.Component<{}, IState> {
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           headerText="Panel - Small, right-aligned, fixed, with footer"
           closeButtonAriaLabel="Close"
           onRenderFooterContent={this._onRenderFooterContent}
@@ -59,7 +59,7 @@ export class PanelSmallRightExample extends React.Component<{}, IState> {
   private _onRenderFooterContent = () => {
     return (
       <div>
-        <PrimaryButton onClick={this._closePanel} style={{ marginRight: '8px' }}>
+        <PrimaryButton onClick={this._hidePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
         <DefaultButton onClick={this._showPanel}>Cancel</DefaultButton>
@@ -71,7 +71,7 @@ export class PanelSmallRightExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

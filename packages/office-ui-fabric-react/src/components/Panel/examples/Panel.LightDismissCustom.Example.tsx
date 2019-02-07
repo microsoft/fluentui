@@ -22,7 +22,7 @@ export class PanelLightDismissCustomExample extends React.Component<{}, IState> 
           isOpen={this.state.showPanel}
           isLightDismiss={true}
           headerText="Light Dismiss Panel"
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           onLightDismissClick={this._showDialog}
         >
           <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
@@ -54,7 +54,7 @@ export class PanelLightDismissCustomExample extends React.Component<{}, IState> 
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 
@@ -67,7 +67,7 @@ export class PanelLightDismissCustomExample extends React.Component<{}, IState> 
   };
 
   private _closeDialogAndHidePanel = () => {
-    this._closePanel();
+    this._hidePanel();
     this._closeDialog();
   };
 }

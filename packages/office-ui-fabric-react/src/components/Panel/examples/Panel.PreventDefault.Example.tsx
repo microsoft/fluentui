@@ -19,7 +19,7 @@ export class PanelPreventDefaultExample extends React.Component<{}, IPanelPreven
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
-        <Panel isOpen={this.state.showPanel} type={PanelType.smallFixedNear} onDismiss={this._closePanel} headerText="Panel">
+        <Panel isOpen={this.state.showPanel} type={PanelType.smallFixedNear} onDismiss={this._hidePanel} headerText="Panel">
           <div>Hitting escape inside the text area will not close the Panel</div>
           <textarea onKeyDown={this._onKeyDown} />
 
@@ -40,7 +40,7 @@ export class PanelPreventDefaultExample extends React.Component<{}, IPanelPreven
     this.setState({ allowEsc: !this.state.allowEsc });
   };
 
-  private _closePanel = (ev?: React.KeyboardEvent<HTMLElement>) => {
+  private _hidePanel = (ev?: React.KeyboardEvent<HTMLElement>) => {
     if (ev && ev.keyCode === KeyCodes.escape && !this.state.allowEsc) {
       ev.preventDefault();
       return;

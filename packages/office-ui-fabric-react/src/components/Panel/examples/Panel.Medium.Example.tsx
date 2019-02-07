@@ -15,7 +15,7 @@ export class PanelMediumExample extends React.Component<{}, IState> {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
-        <Panel isOpen={this.state.showPanel} onDismiss={this._closePanel} type={PanelType.medium} headerText="Medium Panel">
+        <Panel isOpen={this.state.showPanel} onDismiss={this._hidePanel} type={PanelType.medium} headerText="Medium Panel">
           <span>Content goes here.</span>
         </Panel>
       </div>
@@ -26,7 +26,7 @@ export class PanelMediumExample extends React.Component<{}, IState> {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = (): void => {
+  private _hidePanel = (): void => {
     this.setState({ showPanel: false });
   };
 }

@@ -32,7 +32,7 @@ export class PanelHandleDismissTargetExample extends React.Component<{}, IState>
   private _onRenderFooterContent = () => {
     return (
       <div>
-        <DefaultButton onClick={this._closePanel}>Dismiss</DefaultButton>
+        <DefaultButton onClick={this._hidePanel}>Dismiss</DefaultButton>
       </div>
     );
   };
@@ -41,7 +41,7 @@ export class PanelHandleDismissTargetExample extends React.Component<{}, IState>
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 
