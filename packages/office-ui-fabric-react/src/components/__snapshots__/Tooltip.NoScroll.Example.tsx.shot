@@ -13,6 +13,8 @@ exports[`Component Examples renders Tooltip.NoScroll.Example.tsx correctly 1`] =
   onMouseLeave={[Function]}
 >
   <button
+    aria-describedby="text-tooltip0"
+    aria-labelledby="id__1"
     className=
         ms-Button
         ms-Button--default

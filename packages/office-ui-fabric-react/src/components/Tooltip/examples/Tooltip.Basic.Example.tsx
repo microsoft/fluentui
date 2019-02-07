@@ -8,8 +8,8 @@ export class TooltipBasicExample extends BaseComponent<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <TooltipHost content="This is the tooltip" id="myID" calloutProps={{ gapSpace: 0 }}>
-          <DefaultButton aria-describedby="myID">Hover Over Me</DefaultButton>
+        <TooltipHost content="This is the tooltip" id="myID-base" calloutProps={{ gapSpace: 0 }}>
+          <DefaultButton aria-labelledby="myID-base">Hover Over Me</DefaultButton>
         </TooltipHost>
       </div>
     );
