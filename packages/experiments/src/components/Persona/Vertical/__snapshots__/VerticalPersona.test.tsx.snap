@@ -69,7 +69,9 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
           text-align: center;
           webkit-font-smoothing: antialiased;
           white-space: initial;
+          width: 100%;
           word-break: break-word;
+          word-wrap: break-word;
         }
   >
     James Bond
@@ -91,7 +93,9 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
           text-align: center;
           webkit-font-smoothing: antialiased;
           white-space: initial;
+          width: 100%;
           word-break: break-word;
+          word-wrap: break-word;
         }
   >
     Super secret agent
@@ -168,7 +172,9 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
           text-align: center;
           webkit-font-smoothing: antialiased;
           white-space: initial;
+          width: 100%;
           word-break: break-word;
+          word-wrap: break-word;
         }
   >
     James Bond
@@ -245,7 +251,9 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
           text-align: center;
           webkit-font-smoothing: antialiased;
           white-space: initial;
+          width: 100%;
           word-break: break-word;
+          word-wrap: break-word;
         }
   >
     James Bond
@@ -267,7 +275,9 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
           text-align: center;
           webkit-font-smoothing: antialiased;
           white-space: initial;
+          width: 100%;
           word-break: break-word;
+          word-wrap: break-word;
         }
   >
     Super secret agent
