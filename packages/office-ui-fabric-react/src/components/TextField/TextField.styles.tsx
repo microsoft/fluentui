@@ -310,16 +310,20 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       disabled && {
         backgroundColor: 'transparent',
-        borderColor: 'transparent'
+        borderColor: 'transparent',
+        color: semanticColors.disabledText,
+        selectors: {
+          '::placeholder': {
+            color: semanticColors.disabledText
+          },
+          ':-ms-input-placeholder': {
+            color: semanticColors.disabledText
+          }
+        }
       },
       underlined && {
         textAlign: 'left'
       },
-      underlined &&
-        disabled && {
-          backgroundColor: 'transparent',
-          color: semanticColors.disabledText
-        },
       focused &&
         !borderless && {
           selectors: {

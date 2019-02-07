@@ -280,11 +280,11 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                color: #a6a6a6;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                color: #a6a6a6;
                 opacity: 1;
               }
           disabled={true}

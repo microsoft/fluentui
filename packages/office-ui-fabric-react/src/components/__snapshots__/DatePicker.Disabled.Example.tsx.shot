@@ -101,7 +101,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #a6a6a6;
                     font-size: 14px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -123,11 +123,11 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     display: none;
                   }
                   &::placeholder {
-                    color: #666666;
+                    color: #a6a6a6;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #666666;
+                    color: #a6a6a6;
                     opacity: 1;
                   }
               disabled={true}
@@ -303,7 +303,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #a6a6a6;
                     font-size: 14px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -325,11 +325,11 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     display: none;
                   }
                   &::placeholder {
-                    color: #666666;
+                    color: #a6a6a6;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #666666;
+                    color: #a6a6a6;
                     opacity: 1;
                   }
               disabled={true}
