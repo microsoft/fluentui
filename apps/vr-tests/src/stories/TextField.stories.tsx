@@ -22,21 +22,95 @@ storiesOf('TextField', module)
     </Screener>
   ))
   .addStory('Root', () => <TextField label="Standard" />)
-  .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, { rtl: true })
-  .addStory('Disabled', () => <TextField label="Disabled" disabled />)
-  .addStory('Required', () => <TextField label="Required" required />)
-  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, { rtl: true })
-  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, { rtl: true })
-  .addStory('Multiline nonresizable', () => <TextField label="Multiline" multiline rows={4} resizable={false} />)
-  .addStory('Underlined', () => <TextField label="Underlined" underlined />)
-  .addStory('Borderless', () => <TextField label="Borderless" borderless placeholder="Placeholder text" />)
-  .addStory('Icon', () => <TextField styles={{ icon: { color: '#333333' } }} label="Icon" iconProps={{ iconName: 'Calendar' }} />, {
+  .addStory('Root with Value', () => <TextField label="Standard" value="Lorem ipsum" />)
+  .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {
     rtl: true
   })
+  .addStory('Disabled', () => <TextField label="Disabled" disabled />)
+  .addStory('Disabled with Value', () => (
+    <TextField label="Disabled" value="Lorem ipsum" disabled />
+  ))
+  .addStory('Required', () => <TextField label="Required" required />)
+  .addStory('Required with Value', () => (
+    <TextField label="Required" value="Lorem ipsum" required />
+  ))
+  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, { rtl: true })
+  .addStory(
+    'Error with Value',
+    () => <TextField label="Error" value="Lorem ipsum" errorMessage="Error message" />,
+    { rtl: true }
+  )
+  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, { rtl: true })
+  .addStory(
+    'Multiline with Value',
+    () => <TextField label="Multiline" value={'Lorem\nipsum'} multiline rows={4} />,
+    { rtl: true }
+  )
+  .addStory('Multiline nonresizable', () => (
+    <TextField label="Multiline" multiline rows={4} resizable={false} />
+  ))
+  .addStory('Multiline nonresizable with Value', () => (
+    <TextField label="Multiline" value={'Lorem\nipsum'} multiline rows={4} resizable={false} />
+  ))
+  .addStory('Underlined', () => <TextField label="Underlined" underlined />)
+  .addStory('Underlined with Value', () => (
+    <TextField label="Underlined" value="Lorem ipsum" underlined />
+  ))
+  .addStory('Borderless', () => (
+    <TextField label="Borderless" borderless placeholder="Placeholder text" />
+  ))
+  .addStory('Borderless with Value', () => (
+    <TextField label="Borderless" value="Lorem ipsum" borderless placeholder="Placeholder text" />
+  ))
+  .addStory(
+    'Icon',
+    () => (
+      <TextField
+        styles={{ icon: { color: '#333333' } }}
+        label="Icon"
+        iconProps={{ iconName: 'Calendar' }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Icon with Value',
+    () => (
+      <TextField
+        styles={{ icon: { color: '#333333' } }}
+        label="Icon"
+        iconProps={{ iconName: 'Calendar' }}
+        value="Lorem ipsum"
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
   .addStory(
     'Prefix',
     () => (
-      <TextField label="Prefix" prefix="https://" styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }} />
+      <TextField
+        label="Prefix"
+        prefix="https://"
+        styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Prefix with Value',
+    () => (
+      <TextField
+        label="Prefix"
+        prefix="https://"
+        value="example.com"
+        styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
     ),
     {
       rtl: true
@@ -44,7 +118,27 @@ storiesOf('TextField', module)
   )
   .addStory(
     'Suffix',
-    () => <TextField label="Suffix" suffix=".com" styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }} />,
+    () => (
+      <TextField
+        label="Suffix"
+        suffix=".com"
+        styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Suffix with Value',
+    () => (
+      <TextField
+        label="Suffix"
+        suffix=".com"
+        value="example"
+        styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
     {
       rtl: true
     }
