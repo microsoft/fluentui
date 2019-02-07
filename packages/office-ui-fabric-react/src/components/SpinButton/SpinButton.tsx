@@ -69,7 +69,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
-    this._precision = props.precision || Math.max(calculatePrecision(props.step!), 0);
+    this._precision = this._calculatePrecision(props);
 
     this.state = {
       isFocused: false,
@@ -100,7 +100,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       });
     }
 
-    this._precision = this._calculatePrecision(newProps, true);
+    this._precision = this._calculatePrecision(newProps);
   }
 
   public render(): JSX.Element {
@@ -275,14 +275,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
   };
 
-  private _calculatePrecision = (value: ISpinButtonProps, forCWRP: boolean) => {
-    if (forCWRP) {
-      return value.precision === undefined && !isNaN(Number(value.precision))
-        ? Math.max(calculatePrecision(value.step!), 0)
-        : value.precision;
-    } else {
-      return value.precision || Math.max(calculatePrecision(value.step!), 0) || isNaN(Number(value.precision));
-    }
+  private _calculatePrecision = (props: ISpinButtonProps) => {
+    const { precision = Math.max(calculatePrecision(props.step!), 0) } = props;
+    return precision;
   };
 
   /**
