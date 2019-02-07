@@ -2,9 +2,9 @@ import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
 import { assign } from './utilities';
+import { IFactoryOptions } from './IComponent';
 import {
   ISlottableReactType,
-  IFactoryOptions,
   ISlot,
   ISlots,
   ISlotDefinition,
@@ -42,6 +42,8 @@ export function withSlots<P>(
 ): React.ReactElement<P> | JSX.Element | null {
   const slotType = type as ISlot<P>;
   if (slotType.isSlot) {
+    // TODO: There is something weird going on here with children embedded in props vs. rest args.
+    // Comment out these lines to see. Make sure this function is doing the right things.
     const numChildren = React.Children.count(children);
     if (numChildren === 0) {
       return slotType(props);
@@ -61,6 +63,8 @@ export function withSlots<P>(
     //        Children had to be spread to avoid breaking KeytipData in Toggle.view:
     //        react-dom.development.js:18931 Uncaught TypeError: children is not a function
     //        Without spread, function child is a child array of one element
+    // TODO: is there a reason this can't be:
+    // return React.createElement.apply(this, arguments);
     return React.createElement(type, props, ...children);
   }
 }
@@ -73,8 +77,10 @@ export function withSlots<P>(
  */
 export function createFactory<TProps>(
   ComponentType: React.ComponentType<TProps>,
-  options: IFactoryOptions<TProps> = { defaultProp: 'children' }
+  options: IFactoryOptions<TProps> = {}
 ): ISlotFactory<TProps> {
+  const { defaultProp = 'children' } = options;
+
   const result: ISlotFactory<TProps> = (componentProps, userProps, defaultStyles) => {
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
@@ -86,7 +92,7 @@ export function createFactory<TProps>(
       const render: ISlotRenderer<TProps> = (slotRenderFunction, renderProps) => {
         // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
         // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
-        let finalRenderProps = _translateShorthand(options.defaultProp, renderProps) as TProps;
+        let finalRenderProps = _translateShorthand(defaultProp, renderProps) as TProps;
         finalRenderProps = _constructFinalProps(defaultStyles, componentProps, finalRenderProps);
 
         return slotRenderFunction(ComponentType, finalRenderProps);
@@ -94,7 +100,7 @@ export function createFactory<TProps>(
       return userProps(render);
     }
 
-    userProps = _translateShorthand(options.defaultProp, userProps);
+    userProps = _translateShorthand(defaultProp, userProps);
     // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
     // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
     const finalProps = _constructFinalProps(defaultStyles, componentProps, userProps) as TProps;

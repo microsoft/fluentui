@@ -75,6 +75,7 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
 
     const farItems =
       this.props.onGetFarItems !== undefined ? this.props.onGetFarItems(this.defaultFarItemsFactory) : this.defaultFarItemsFactory({});
+    const showCommandBar = this.props.hideCommandBar === undefined || !this.props.hideCommandBar;
 
     const wrappedCommandBarItems = this.props.commandBarProps.items.map((item: ICommandBarItemProps) => {
       const mergedButtonStyles = mergeStyleSets(getCommandBarItemStyle(), item.buttonStyles);
@@ -90,7 +91,9 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
     return (
       <>
         <div ref={this.commandBarRef} className={mergeStyles(commandBarWrapperStyle)}>
-          <CommandBar farItems={farItems} {...this.props.commandBarProps} styles={mergedCommandBarStyle} items={wrappedCommandBarItems} />
+          {showCommandBar && (
+            <CommandBar farItems={farItems} {...this.props.commandBarProps} styles={mergedCommandBarStyle} items={wrappedCommandBarItems} />
+          )}
         </div>
         <ShimmeredDetailsList
           shimmerLines={20}
@@ -101,7 +104,7 @@ export class CompositeList extends React.PureComponent<ICompositeListProps, ICom
           onShouldVirtualize={this.defaultOnShouldVirtualize}
           useReducedRowRenderer={useReducedRowRenderer}
           onRenderRow={this.defaultOnRenderRow}
-          className={mergeStyles(getDetailsListStyle())}
+          className={mergeStyles(getDetailsListStyle(showCommandBar))}
           {...this.props.detailsListProps}
           styles={this.props.detailsListProps.styles}
           selection={this.selection}

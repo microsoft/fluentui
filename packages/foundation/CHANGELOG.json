@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.7.1",
+      "tag": "@uifabric/foundation_v0.7.1",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Optimize React hierarchy by naming Unknowns and removing view layers.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7b2858f9f648cefff97df078011f306a7aed9f53"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.0",
       "tag": "@uifabric/foundation_v0.7.0",
       "date": "Thu, 31 Jan 2019 20:10:48 GMT",

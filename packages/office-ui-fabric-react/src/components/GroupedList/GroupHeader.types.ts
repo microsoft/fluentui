@@ -12,6 +12,12 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
    * GroupedList id for aria-controls
    */
   groupedListId?: string;
+
+  /** Native props for the GroupHeader expand and collapse button */
+  expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /** Native props for the GroupHeader select all button */
+  selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }
 
 export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> &

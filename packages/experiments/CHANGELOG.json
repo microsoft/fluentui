@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.54.2",
+      "tag": "@uifabric/experiments_v6.54.2",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CollapsibleSectionTitle: Use new factoryOptions prop. Name factory wrappers.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7b2858f9f648cefff97df078011f306a7aed9f53"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.0 <1.0.0` to `>=0.7.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.132.0 <7.0.0` to `>=6.133.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.54.1",
       "tag": "@uifabric/experiments_v6.54.1",
       "date": "Thu, 31 Jan 2019 20:10:48 GMT",
