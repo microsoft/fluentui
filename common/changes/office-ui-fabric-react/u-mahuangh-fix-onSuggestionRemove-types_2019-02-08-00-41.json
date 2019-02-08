@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Re-type onItemRemove in Suggestions to support the suggestions Generic type",
+      "comment": "Pickers: Re-type onItemRemove in Suggestions to support the suggestions Generic type",
       "type": "minor"
     }
   ],
