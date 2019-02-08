@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Feb 2019 13:32:39 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+
+## 6.136.0
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Minor changes
+
+- Add textField to IDatePickerProps
 
 ## 6.135.1
 Thu, 07 Feb 2019 13:32:39 GMT

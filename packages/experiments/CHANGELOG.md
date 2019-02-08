@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+
+## 6.54.3
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fixed the VerticalPersona not wrapping text properly in IE
 
 ## 6.54.2
 Mon, 04 Feb 2019 13:36:12 GMT
