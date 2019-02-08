@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Picker Suggestions: adding a little overflow-x on title line so close button can be shown even if width is more than 180px by consumers",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com"
+}
