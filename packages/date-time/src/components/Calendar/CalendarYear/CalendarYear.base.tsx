@@ -336,6 +336,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           onKeyDown={this._onHeaderKeyDown}
           aria-label={ariaLabel}
           role="button"
+          type="button"
         >
           {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
         </button>
