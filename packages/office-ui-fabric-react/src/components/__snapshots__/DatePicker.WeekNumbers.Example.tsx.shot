@@ -354,6 +354,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         className=
             ms-Dropdown-caretDownWrapper
             {
+              cursor: pointer;
               height: 32px;
               line-height: 30px;
               position: absolute;
