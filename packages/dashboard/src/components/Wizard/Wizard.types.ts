@@ -4,6 +4,8 @@ import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav/SubwayNav.types
 export interface IWizardProps {
   // List of steps in the wizard
   steps: IWizardStepProps[];
+
+  wizardComplete?: boolean;
 }
 
 export interface IWizardStepProps {
@@ -14,6 +16,8 @@ export interface IWizardStepProps {
   state?: SubwayNavStepState;
 
   disabled?: boolean;
+
+  isSubStep?: boolean;
 
   onClickStep: (step: ISubwayNavStep, subStep: ISubwayNavStep | undefined) => void;
 

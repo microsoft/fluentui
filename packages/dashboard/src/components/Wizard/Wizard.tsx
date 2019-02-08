@@ -21,6 +21,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
         state: step.state,
         disabled: step.disabled,
         onClickStep: step.onClickStep,
+        isSubStep: step.isSubStep,
         wizardContent: step.wizardContent,
         subSteps: step.subSteps
       };
@@ -48,7 +49,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
       return (
         <div className={classNames.wizardContentNavContainer}>
           <div className={classNames.subwayNavSection}>
-            <SubwayNav steps={navSteps} />
+            <SubwayNav steps={navSteps} wizardComplete={this.props.wizardComplete} />
           </div>
           <div className={classNames.contentSection}>
             <div>{wizardStepProps.wizardContent.contentTitle}</div>
