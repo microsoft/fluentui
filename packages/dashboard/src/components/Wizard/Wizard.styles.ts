@@ -3,19 +3,14 @@ import { IWizardStyles } from './Wizard.types';
 export const getWizardStyles = (): IWizardStyles => {
   return {
     wizardContentNavContainer: {
-      height: '601px'
+      display: 'flex',
+      flexDirection: 'row'
     },
     subwayNavSection: {
-      height: '100%',
-      width: '221px',
-      float: 'left'
+      width: '221px'
     },
-    contentSection: {
-      height: '100%',
-      float: 'right'
-    },
+    contentSection: {},
     content: {
-      width: '100%',
       margin: '20px'
     }
   };

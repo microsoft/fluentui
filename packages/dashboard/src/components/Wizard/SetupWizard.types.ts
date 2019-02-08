@@ -21,6 +21,4 @@ export interface ISetupWizardStyles {
   titleSection: IStyle;
 
   title: IStyle;
-
-  actionBarSection: IStyle;
 }

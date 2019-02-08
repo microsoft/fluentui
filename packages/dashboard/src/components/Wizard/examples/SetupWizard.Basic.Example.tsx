@@ -3,7 +3,7 @@ import { SetupWizard } from '../SetupWizard';
 import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 import { IWizardStepProps, IWizardStepAction } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 import { IAction } from '../../Card/ActionBar/ActionBar.types';
-import { ISetupWizardState } from './SetupWizard.Util';
+import { ISetupWizardState, goToStep } from './SetupWizard.Util';
 
 export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardState> {
   private steps: IWizardStepProps[] = [];
@@ -169,7 +169,10 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
     });
 
     if (foundNextStep) {
-      this._goToStep(currStep, undefined);
+      const newState = goToStep(this.state, currStep, undefined);
+      if (newState !== undefined) {
+        this.setState(newState);
+      }
     }
   }
 
@@ -219,104 +222,10 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
     }
 
     if (foundNextStep) {
-      this._goToStep(currStep, currSubStep);
-    }
-  }
-
-  // Go to a given parent step -> substep
-  private _goToStep(parentStepToGo: ISubwayNavStep | undefined, subStepToGo: ISubwayNavStep | undefined): void {
-    if (parentStepToGo === undefined) {
-      // do nothing
-      return;
-    }
-
-    if (parentStepToGo.key === this.state.currStep.key) {
-      // Already in current step, go to Sub Step
-      if (subStepToGo !== undefined) {
-        this._goToSubStep(parentStepToGo, subStepToGo);
+      const newState = goToStep(this.state, currStep, currSubStep);
+      if (newState !== undefined) {
+        this.setState(newState);
       }
-    } else {
-      let newSteps: IWizardStepProps[] = [];
-      newSteps = this.state.steps;
-
-      let currStep = this.state.currStep;
-      let currSubStep = this.state.currSubStep;
-
-      let foundStepToGo: boolean = false;
-
-      newSteps.map((stepObj: IWizardStepProps) => {
-        if (stepObj.key === this.state.currStep.key) {
-          stepObj.state = SubwayNavStepState.Completed; /// Only for testing (get state from wizard content state?)
-
-          if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
-            stepObj.subSteps.forEach((obj: IWizardStepProps) => {
-              obj.state = SubwayNavStepState.Completed; /// Only for testing (get state from wizard content state?)
-            });
-
-            // Since current step is completed, reset current sub step
-            currSubStep = undefined;
-          }
-        } else if (stepObj.key === parentStepToGo.key) {
-          stepObj.state = SubwayNavStepState.Current;
-          currStep = stepObj;
-
-          if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
-            stepObj.subSteps[0].state = SubwayNavStepState.Current;
-            currSubStep = stepObj.subSteps[0];
-          }
-          foundStepToGo = true;
-        } else if (!foundStepToGo && stepObj.state === SubwayNavStepState.NotStarted) {
-          stepObj.state = SubwayNavStepState.Skipped;
-        }
-      });
-
-      if (foundStepToGo) {
-        this.setState({ steps: newSteps, currStep: currStep, currSubStep: currSubStep });
-      }
-    }
-  }
-
-  private _goToSubStep(parentStepToGo: ISubwayNavStep, subStepToGo: ISubwayNavStep): void {
-    if (
-      this.state.currStep.key === parentStepToGo.key &&
-      this.state.currSubStep !== undefined &&
-      this.state.currSubStep.key === subStepToGo.key
-    ) {
-      // Already in the step
-      return;
-    }
-
-    let newSteps: IWizardStepProps[];
-    let foundClickedSubStep: boolean = false;
-    let currSubStep: IWizardStepProps | undefined = this.state.currSubStep;
-    let currStep: IWizardStepProps = this.state.currStep;
-
-    newSteps = this.state.steps;
-    newSteps.map((stepObj: IWizardStepProps) => {
-      if (stepObj.key === parentStepToGo.key) {
-        // Found the parent step
-        if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
-          stepObj.subSteps.map((subStepObj: IWizardStepProps) => {
-            if (subStepObj.key === this.state!.currSubStep!.key) {
-              subStepObj.state = SubwayNavStepState.Completed; //// Only for testing (Update from wizard content state?)
-            } else if (subStepObj.key === subStepToGo.key) {
-              stepObj.state = SubwayNavStepState.Current;
-              subStepObj.state = SubwayNavStepState.Current;
-
-              // Update curr substep
-              currStep = stepObj;
-              currSubStep = subStepObj;
-              foundClickedSubStep = true;
-            } else if (!foundClickedSubStep && subStepObj.state === SubwayNavStepState.NotStarted) {
-              subStepObj.state = SubwayNavStepState.Skipped;
-            }
-          });
-        }
-      }
-    });
-
-    if (foundClickedSubStep) {
-      this.setState({ steps: newSteps, currStep: currStep, currSubStep: currSubStep });
     }
   }
 
@@ -337,7 +246,10 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
       alertStr += ' and ' + subStep.label;
     }
 
-    this._goToStep(step, subStep);
+    const newState = goToStep(this.state, step, subStep);
+    if (newState !== undefined) {
+      this.setState(newState);
+    }
 
     console.log(alertStr);
   }

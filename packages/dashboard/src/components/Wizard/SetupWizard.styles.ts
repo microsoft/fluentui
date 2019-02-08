@@ -15,24 +15,14 @@ export const getSetupWizardStyles = (): ISetupWizardStyles => {
       fontFamily: commonFontFamily,
       color: subwayNavBaseColor,
       display: 'flex',
-      justifyContent: 'flex-start',
-      flexWrap: 'wrap',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      wordWrap: 'break-word'
+      flexDirection: 'column'
     },
     titleSection: {
       border: '1px solid #E1DFDD',
-      height: '75px',
-      width: '100%'
+      height: '75px'
     },
     title: {
       margin: '30px'
-    },
-    actionBarSection: {
-      border: '1px solid #E1DFDD',
-      height: '75px',
-      width: '100%'
     }
   };
 };

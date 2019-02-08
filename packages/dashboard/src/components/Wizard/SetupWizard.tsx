@@ -24,13 +24,11 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
       <div className={classNames.wizardContainer}>
         {titleSection}
         <Wizard steps={this.props.steps} />
-        <div className={classNames.actionBarSection}>
-          <SetupWizardActionBar
-            mainAction={stepContentToShow!.wizardContent!.mainAction}
-            backClickAction={this.props.backClickAction}
-            exitWizardAction={this.props.exitWizardAction}
-          />
-        </div>
+        <SetupWizardActionBar
+          mainAction={stepContentToShow!.wizardContent!.mainAction}
+          backClickAction={this.props.backClickAction}
+          exitWizardAction={this.props.exitWizardAction}
+        />
       </div>
     );
   }

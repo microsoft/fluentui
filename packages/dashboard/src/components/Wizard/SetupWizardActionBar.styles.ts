@@ -5,28 +5,27 @@ export const getStyles = (): ISetupWizardActionBarStyles => {
     root: {
       whiteSpace: 'nowrap',
       width: '100%',
-      height: '32px'
+      display: 'flex',
+      flexDirection: 'row',
+      border: '1px solid #E1DFDD',
+      height: '75px',
+      alignItems: 'center'
     },
     actionLink: {
-      color: '#605E5C',
-      marginTop: '20px',
-      marginBottom: '20px'
+      color: '#605E5C'
     },
     backAction: {
       fontSize: '14px',
-      lineHeight: '20px',
       marginLeft: '30px',
       width: '221px'
     },
     mainAction: {
       fontSize: '28px',
-      lineHeight: '36px',
-      marginLeft: '30px'
+      marginLeft: '30px',
+      flexGrow: '1'
     },
     exitAction: {
-      float: 'right',
       fontSize: '14px',
-      lineHeight: '20px',
       marginRight: '30px'
     }
   };
