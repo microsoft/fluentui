@@ -159,6 +159,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       {
         border: `1px solid ${semanticColors.inputBorder}`,
         background: semanticColors.bodyBackground,
+        cursor: 'text',
         height: 32,
         display: 'flex',
         flexDirection: 'row',
@@ -201,7 +202,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       disabled && {
         backgroundColor: semanticColors.disabledBackground,
-        borderColor: semanticColors.disabledBackground
+        borderColor: semanticColors.disabledBackground,
+        cursor: 'default'
       },
       underlined && {
         flex: '1 1 0px',

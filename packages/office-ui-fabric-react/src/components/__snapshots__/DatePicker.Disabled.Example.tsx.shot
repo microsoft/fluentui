@@ -49,7 +49,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               position: relative;
             }
             & input[readonly] {
-              cursor: pointer;
+              cursor: default;
             }
             & input::-ms-clear {
               display: none;
@@ -71,6 +71,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   border: 1px solid #a6a6a6;
                   box-shadow: none;
                   box-sizing: border-box;
+                  cursor: default;
                   display: flex;
                   flex-direction: row;
                   height: 32px;
@@ -151,6 +152,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     color: #a6a6a6;
+                    cursor: default;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 16px;
@@ -219,7 +221,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               position: relative;
             }
             & input[readonly] {
-              cursor: pointer;
+              cursor: default;
             }
             & input::-ms-clear {
               display: none;
@@ -273,6 +275,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   border: 1px solid #a6a6a6;
                   box-shadow: none;
                   box-sizing: border-box;
+                  cursor: default;
                   display: flex;
                   flex-direction: row;
                   height: 32px;
@@ -354,6 +357,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     -webkit-font-smoothing: antialiased;
                     bottom: 5px;
                     color: #a6a6a6;
+                    cursor: default;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 16px;

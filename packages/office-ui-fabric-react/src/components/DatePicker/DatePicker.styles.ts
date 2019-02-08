@@ -40,6 +40,13 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
             }
           }
         }
+      },
+      disabled && {
+        selectors: {
+          '& input[readonly]': {
+            cursor: 'default'
+          }
+        }
       }
     ],
     callout: [classNames.callout],
@@ -55,7 +62,8 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         }
       ],
       disabled && {
-        color: semanticColors.disabledText
+        color: semanticColors.disabledText,
+        cursor: 'default'
       }
     ]
   };
