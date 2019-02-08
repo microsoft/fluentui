@@ -12925,6 +12925,7 @@ module ZIndexes {
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
 // WARNING: Unsupported export: DefaultProps
+// WARNING: Unsupported export: ISpinButtonInternalProps
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: AnimationClassNames

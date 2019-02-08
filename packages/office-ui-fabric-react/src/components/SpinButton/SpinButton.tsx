@@ -37,6 +37,9 @@ export type DefaultProps = Required<
   Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
 >;
 
+/** Internal only props */
+export type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
+
 @customizable('SpinButton', ['theme', 'styles'], true)
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: DefaultProps = {
@@ -73,8 +76,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
-    const propsForPrecision = this.props as ISpinButtonProps & DefaultProps;
-    this._precision = this._calculatePrecision(propsForPrecision);
+    this._precision = this._calculatePrecision(this.props as ISpinButtonInternalProps);
 
     this.state = {
       isFocused: false,
@@ -104,8 +106,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
         value: value
       });
     }
-    const propsForPrecision = newProps as ISpinButtonProps & DefaultProps;
-    this._precision = this._calculatePrecision(propsForPrecision);
+    this._precision = this._calculatePrecision(newProps as ISpinButtonProps & DefaultProps);
   }
 
   public render(): JSX.Element {
@@ -132,7 +133,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       ariaValueText,
       keytipProps,
       className
-    } = this.props as ISpinButtonProps & DefaultProps;
+    } = this.props as ISpinButtonInternalProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
@@ -308,8 +309,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnIncrement = (value: string): string | void => {
-    const props = this.props as ISpinButtonProps & DefaultProps;
-    let newValue: number = Math.min(Number(value) + Number(this.props.step)!, props.max);
+    const { max, step } = this.props as ISpinButtonInternalProps;
+    let newValue: number = Math.min(Number(value) + Number(step), max);
     newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };
@@ -326,8 +327,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnDecrement = (value: string): string | void => {
-    const props = this.props as ISpinButtonProps & DefaultProps;
-    let newValue: number = Math.max(Number(value) - Number(this.props.step)!, props.min);
+    const { min, step } = this.props as ISpinButtonInternalProps;
+    let newValue: number = Math.max(Number(value) - Number(step), min);
     newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };
