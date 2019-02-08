@@ -1827,7 +1827,7 @@ interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   onSuggestionsShown?: () => void;
   onValidateInput?: (input: string) => boolean;
   onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
-  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T>;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T | any>;
   resolveDelay?: number;
   searchingText?: ((props: {
           input: string;
