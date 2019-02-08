@@ -3,7 +3,7 @@ import { IWizardStepProps, IWizardProps, IWizardStyles } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
-import { SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav';
+import { SubwayNavStepState } from '../SubwayNav/SubwayNav.types';
 
 /** Component for Wizard */
 export class Wizard extends React.Component<IWizardProps, {}> {
