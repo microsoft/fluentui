@@ -85,9 +85,11 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    */
   className?: string;
   /**
-   * The properties that will get passed to the SuggestionsControl component.
+   * The properties that will get passed to the Suggestions component.
+   *
+   * TODO (adjective-object) remove the '| any' before the next major version
    */
-  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T>;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T | any>;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
@@ -143,7 +145,12 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   suggestionItems?: T[];
 }
 
-export type IBaseFloatingPickerSuggestionProps<T> = Pick<
+/**
+ * Props which are passed on to the inner Suggestions component
+ *
+ * TODO (adjective-object) remove the ' = any' before the next major version cut.
+ */
+export type IBaseFloatingPickerSuggestionProps<T = any> = Pick<
   ISuggestionsControlProps<T>,
   'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
 >;
