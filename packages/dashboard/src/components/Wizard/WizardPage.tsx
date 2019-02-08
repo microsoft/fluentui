@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { SetupWizardBasicExample } from './examples/SetupWizard.Basic.Example';
+import { SetupWizardSubStepsExample } from './examples/SetupWizard.SubSteps.Example';
 
 const SetupWizardBasicExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Wizard/examples/SetupWizard.Basic.Example.tsx') as string;
+const SetupWizardSubStepsExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Wizard/examples/SetupWizard.SubSteps.Example.tsx') as string;
 
 export class WizardPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -14,6 +16,9 @@ export class WizardPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ExampleCard title="Basic Setup Wizard" code={SetupWizardBasicExampleCode}>
               <SetupWizardBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Setup Wizard with SubSteps" code={SetupWizardSubStepsExampleCode}>
+              <SetupWizardSubStepsExample />
             </ExampleCard>
           </div>
         }

@@ -5,8 +5,9 @@ import { IWizardStepProps, IWizardStepAction } from '@uifabric/dashboard/lib/com
 import { IAction } from '../../Card/ActionBar/ActionBar.types';
 import { ISetupWizardState } from './SetupWizard.Util';
 
-export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardState> {
+export class SetupWizardSubStepsExample extends React.Component<{}, ISetupWizardState> {
   private steps: IWizardStepProps[] = [];
+  private subSteps: IWizardStepProps[] = [];
 
   constructor(props: {}) {
     super(props);
@@ -14,6 +15,49 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
     this._handleClickStep = this._handleClickStep.bind(this);
 
     let newKey = this._generateRandomId();
+    const substep0: IWizardStepProps = {
+      key: newKey,
+      label: 'Step 1, Sub step 0',
+      onClickStep: this._handleClickStep,
+      state: SubwayNavStepState.NotStarted,
+      wizardContent: {
+        content: this._getContentForStep('Step 1, Sub step 0'),
+        // contentState: SubwayNavStepState.Current,
+        mainAction: this._getMainActionForStep('Step 1, Sub step 0')
+      }
+    };
+
+    newKey = this._generateRandomId();
+    const substep1: IWizardStepProps = {
+      key: newKey,
+      label: 'Step 1, Sub step 1',
+      onClickStep: this._handleClickStep,
+      state: SubwayNavStepState.NotStarted,
+      wizardContent: {
+        content: this._getContentForStep('Step 1, Sub step 1'),
+        // contentState: SubwayNavStepState.Current,
+        mainAction: this._getMainActionForStep('Step 1, Sub step 1')
+      }
+    };
+
+    newKey = this._generateRandomId();
+    const substep2: IWizardStepProps = {
+      key: newKey,
+      label: 'Step 1, Sub step 2',
+      onClickStep: this._handleClickStep,
+      state: SubwayNavStepState.NotStarted,
+      wizardContent: {
+        content: this._getContentForStep('Step 1, Sub step 2'),
+        // contentState: SubwayNavStepState.Current,
+        mainAction: this._getMainActionForStep('Step 1, Sub step 2')
+      }
+    };
+
+    this.subSteps.push(substep0);
+    this.subSteps.push(substep1);
+    this.subSteps.push(substep2);
+
+    newKey = this._generateRandomId();
     const data0: IWizardStepProps = {
       key: newKey,
       label: 'Step 0',
@@ -36,7 +80,8 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
         content: this._getContentForStep('Step 1'),
         // contentState: SubwayNavStepState.NotStarted,
         mainAction: this._getMainActionForStep('Step 1')
-      }
+      },
+      subSteps: this.subSteps
     };
 
     newKey = this._generateRandomId();
