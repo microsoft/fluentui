@@ -10776,7 +10776,7 @@ interface ISuggestionsProps<T> extends React.Props<any> {
   onRenderNoResultFound?: IRenderFunction<void>;
   onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
-  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
   refocusSuggestions?: (keyCode: KeyCodes) => void;
   removeSuggestionAriaLabel?: string;
   resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
