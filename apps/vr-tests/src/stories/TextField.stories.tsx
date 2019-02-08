@@ -182,7 +182,20 @@ storiesOf('TextField', module)
       rtl: true
     }
   )
-  .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
+  .addStory(
+    'Suffix',
+    () => (
+      <TextField
+        label="Suffix"
+        suffix=".com"
+        styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
+      />
+    ),
+    {
+      rtl: true
+    }
+  )
+  .addStory('Suffix without Style-Override', () => <TextField label="Suffix" suffix=".com" />, {
     rtl: true
   })
   .addStory(
