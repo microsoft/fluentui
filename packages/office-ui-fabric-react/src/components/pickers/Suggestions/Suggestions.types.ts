@@ -154,7 +154,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * Function to fire when one of the optional remove buttons on a suggestion is clicked.
    *
-   * TODO (adjective-object) clean up
+   * TODO (adjective-object) remove IPersonaprops before the next major version bump
    */
   onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
 
