@@ -52,6 +52,23 @@ const panelSize = {
   }
 };
 
+const panelWidth = {
+  full: '100%',
+  auto: 'auto',
+  xs: 272,
+  sm: 340,
+  md: 643,
+  lg: 940
+};
+
+const panelMargin = {
+  auto: 'auto',
+  none: 0,
+  md: 48,
+  lg: 428,
+  xl: 176
+};
+
 const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
@@ -119,20 +136,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         right: 0,
         bottom: 0
       },
-      !isOpen &&
-        !isAnimating &&
-        isHiddenOnDismiss && {
-          visibility: 'hidden'
-        },
       isCustomPanel && classNames.custom,
       className
     ],
     overlay: [
       {
-        pointerEvents: 'none',
-        opacity: 1,
+        pointerEvents: 'auto',
         cursor: 'pointer',
-        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
         selectors: {
           '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
             // For IE high contrast mode
@@ -140,12 +150,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
           }
         }
       },
-      isOpen && {
-        cursor: 'pointer',
-        pointerEvents: 'auto'
-      },
-      isOpen && isAnimating && AnimationClassNames.fadeIn200,
-      !isOpen && isAnimating && AnimationClassNames.fadeOut200
+      isOpen && isAnimating && AnimationClassNames.fadeIn100,
+      !isOpen && isAnimating && AnimationClassNames.fadeOut100
     ],
     hiddenPanel: [
       !isOpen &&
@@ -159,8 +165,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         backgroundColor: palette.white,
         position: 'absolute',
-        right: 0,
-        width: '100%',
+        right: panelMargin.none,
+        width: panelWidth.full,
         bottom: 0,
         top: 0,
         overflowX: 'hidden',
@@ -171,70 +177,66 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             borderLeft: `1px solid ${palette.neutralLight}`,
             borderRight: `1px solid ${palette.neutralLight}`,
             pointerEvents: 'auto',
-            width: panelSize.width.sm,
+            width: panelWidth.sm,
             boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)',
-            left: 'auto'
+            left: panelMargin.auto
           },
           '$root &': [
             isOpen && {
               pointerEvents: 'auto'
             },
             type === PanelType.smallFluid && {
-              width: '100%'
+              width: panelWidth.full
             },
             type === PanelType.smallFixedNear && {
-              right: 'auto',
-              left: 0,
-              width: panelSize.width.xs,
+              right: panelMargin.auto,
+              left: panelMargin.none,
+              width: panelWidth.xs,
               boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)'
             },
             type === PanelType.smallFixedFar && {
-              width: panelSize.width.xs,
+              width: panelWidth.xs,
               selectors: {
                 ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
-                  width: panelSize.width.sm
+                  width: panelWidth.sm
                 }
               }
             },
             type === PanelType.medium && {
               selectors: {
                 ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-                  left: panelSize.margin.md,
-                  width: 'auto'
-                },
-                ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
-                  left: 'auto',
-                  width: panelSize.width.md
+                  left: panelMargin.auto,
+                  width: panelWidth.md
                 }
               }
             },
             (type === PanelType.large || type === PanelType.largeFixed) && {
               selectors: {
                 ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-                  left: panelSize.margin.md,
-                  width: 'auto'
+                  left: panelMargin.md,
+                  width: panelWidth.auto
                 },
                 ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-                  left: panelSize.margin.lg
+                  left: panelMargin.lg
                 }
               }
             },
             type === PanelType.largeFixed && {
               selectors: {
                 ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-                  left: 'auto',
-                  width: panelSize.width.lg
+                  left: panelMargin.auto,
+                  width: panelWidth.lg
                 }
               }
             },
             type === PanelType.extraLarge && {
               selectors: {
                 ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-                  left: panelSize.margin.md,
-                  width: 'auto'
+                  left: panelMargin.md,
+                  width: panelWidth.auto
                 },
                 ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-                  left: panelSize.margin.xl
+                  left: panelMargin.xl
                 }
               }
             },

@@ -133,11 +133,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       focusTrapZoneClassName: focusTrapZoneProps ? focusTrapZoneProps.className : undefined,
       hasCloseButton,
       headerClassName,
-      isAnimating: this.state.isAnimating,
+      isAnimating,
       isFooterAtBottom,
       isFooterSticky,
       isOnRightSide,
-      isOpen: this.state.isOpen,
+      isOpen,
       isHiddenOnDismiss,
       type
     });
