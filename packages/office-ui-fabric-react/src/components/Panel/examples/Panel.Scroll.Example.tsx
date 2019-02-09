@@ -69,7 +69,7 @@ export class PanelScrollExample extends React.Component<{}, IState> {
         <PrimaryButton onClick={this._hidePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
-        <DefaultButton onClick={this._showPanel}>Cancel</DefaultButton>
+        <DefaultButton onClick={this._hidePanel}>Cancel</DefaultButton>
       </div>
     );
   };
