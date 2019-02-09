@@ -6,6 +6,8 @@ export interface IWizardProps {
   steps: IWizardStepProps[];
 
   wizardComplete?: boolean;
+
+  allowSkipAhead?: boolean;
 }
 
 export interface IWizardStepProps {
@@ -13,7 +15,7 @@ export interface IWizardStepProps {
 
   label: string;
 
-  state?: SubwayNavStepState;
+  state: SubwayNavStepState;
 
   disabled?: boolean;
 
@@ -32,8 +34,6 @@ export interface IWizardContentProps {
   content: JSX.Element;
 
   mainAction: IWizardStepAction;
-
-  //// contentState?: WizardContentState;
 }
 
 export interface IWizardStepAction {

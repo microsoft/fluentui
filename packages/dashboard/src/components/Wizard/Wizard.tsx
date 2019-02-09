@@ -3,7 +3,7 @@ import { IWizardStepProps, IWizardProps, IWizardStyles } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
-import { SubwayNavStepState } from '../SubwayNav/SubwayNav.types';
+import { SubwayNavStepState, ISubwayNavStep } from '../SubwayNav/SubwayNav.types';
 
 /** Component for Wizard */
 export class Wizard extends React.Component<IWizardProps, {}> {
@@ -14,17 +14,27 @@ export class Wizard extends React.Component<IWizardProps, {}> {
   public render(): JSX.Element {
     const { steps } = this.props;
 
-    const navSteps = steps.map((step: IWizardStepProps) => {
-      const navStep = {
+    const navSteps = steps.map((step: IWizardStepProps, index: number) => {
+      const navStep: ISubwayNavStep = {
         key: step.key,
         label: step.label,
         state: step.state,
         disabled: step.disabled,
         onClickStep: step.onClickStep,
         isSubStep: step.isSubStep,
-        wizardContent: step.wizardContent,
         subSteps: step.subSteps
       };
+
+      if (
+        index > 0 &&
+        this.props.allowSkipAhead !== undefined &&
+        this.props.allowSkipAhead === false &&
+        navStep.state === SubwayNavStepState.NotStarted
+      ) {
+        // If allowSkipAhead is not allowed, then disable all steps that are "NotStarted"
+        // Except for first step, it cannot be disabled.
+        navStep.disabled = true;
+      }
       return navStep;
     });
 
@@ -70,6 +80,11 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
       return wizStep.state === SubwayNavStepState.Current;
     });
+
+    if (stepToShow === undefined && steps.length > 0) {
+      // If no steps is set as "Current", just return the first step
+      stepToShow = steps[0];
+    }
 
     if (stepToShow !== undefined && stepToShow.subSteps !== undefined && stepToShow.subSteps.length > 0) {
       stepToShow = stepToShow.subSteps.find((wizSubStep: IWizardStepProps) => {

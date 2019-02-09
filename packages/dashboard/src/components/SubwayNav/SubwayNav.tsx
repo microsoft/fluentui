@@ -167,7 +167,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
    */
   private _getStepConnectorClassName(step: ISubwayNavStep | undefined): string {
     if (step !== undefined) {
-      if (this.props.wizardComplete) {
+      if (this.props.wizardComplete || step.state === SubwayNavStepState.WizardComplete) {
         return classNames.stepConnectorWizardComplete;
       }
 
@@ -187,7 +187,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
     const defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.stepNotStarted };
 
     if (step !== undefined) {
-      if (this.props.wizardComplete) {
+      if (this.props.wizardComplete || step.state === SubwayNavStepState.WizardComplete) {
         return { iconName: 'CompletedSolid', iconClassName: classNames.stepWizardComplete };
       }
 
@@ -233,7 +233,7 @@ export class SubwayNav extends React.Component<ISubwayNavProps, {}> {
     const defaultProps = { iconName: 'LocationCircle', iconClassName: classNames.subStepNotStarted };
 
     if (subStep !== undefined) {
-      if (this.props.wizardComplete) {
+      if (this.props.wizardComplete || subStep.state === SubwayNavStepState.WizardComplete) {
         return { iconName: 'CompletedSolid', iconClassName: classNames.subStepCompleted };
       }
 
