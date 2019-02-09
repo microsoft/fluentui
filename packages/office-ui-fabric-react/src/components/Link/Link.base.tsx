@@ -75,7 +75,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       if (RootType === 'a') {
         return {
           target,
-          href,
+          href: disabled ? undefined : href,
           ...restProps
         };
       }
