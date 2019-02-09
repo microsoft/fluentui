@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pickers: Re-type onItemRemove in Suggestions to support the suggestions Generic type",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "mhuan13@gmail.com"
+}
