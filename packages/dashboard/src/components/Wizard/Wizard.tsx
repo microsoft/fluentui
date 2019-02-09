@@ -11,7 +11,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     super(props);
   }
 
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     const { steps } = this.props;
 
     const navSteps = steps.map((step: IWizardStepProps, index: number) => {
@@ -25,12 +25,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
         subSteps: step.subSteps
       };
 
-      if (
-        index > 0 &&
-        this.props.allowSkipAhead !== undefined &&
-        this.props.allowSkipAhead === false &&
-        navStep.state === SubwayNavStepState.NotStarted
-      ) {
+      if (index > 0 && this.props.allowSkipAhead === false && navStep.state === SubwayNavStepState.NotStarted) {
         // If allowSkipAhead is not allowed, then disable all steps that are "NotStarted"
         // Except for first step, it cannot be disabled.
         navStep.disabled = true;
@@ -67,31 +62,40 @@ export class Wizard extends React.Component<IWizardProps, {}> {
           </div>
         </div>
       );
-    } else {
-      // Empty element
-      return <React.Fragment />;
     }
+
+    return null;
   }
 
   // Get content to show
   private _getStepContentToShow(): IWizardStepProps | undefined {
     const { steps } = this.props;
 
-    let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
-      return wizStep.state === SubwayNavStepState.Current;
-    });
-
-    if (stepToShow === undefined && steps.length > 0) {
-      // If no steps is set as "Current", just return the first step
-      stepToShow = steps[0];
-    }
-
-    if (stepToShow !== undefined && stepToShow.subSteps !== undefined && stepToShow.subSteps.length > 0) {
-      stepToShow = stepToShow.subSteps.find((wizSubStep: IWizardStepProps) => {
-        return wizSubStep.state === SubwayNavStepState.Current;
+    if (steps.length > 0) {
+      let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
+        return wizStep.state === SubwayNavStepState.Current;
       });
+
+      if (stepToShow === undefined) {
+        // If no steps is set as "Current", just return the first step
+        stepToShow = steps[0];
+      }
+
+      if (stepToShow.subSteps !== undefined && stepToShow.subSteps.length > 0) {
+        const subStepToShow = stepToShow.subSteps.find((wizSubStep: IWizardStepProps) => {
+          return wizSubStep.state === SubwayNavStepState.Current;
+        });
+
+        if (subStepToShow !== undefined) {
+          stepToShow = subStepToShow;
+        } else {
+          stepToShow = stepToShow.subSteps[0];
+        }
+      }
+
+      return stepToShow;
     }
 
-    return stepToShow;
+    return;
   }
 }

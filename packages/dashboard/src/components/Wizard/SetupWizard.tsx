@@ -51,7 +51,7 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
   }
 
   // Get wizard title section
-  private _getWizardTitleSection(): JSX.Element {
+  private _getWizardTitleSection(): React.ReactNode {
     const getClassNames = classNamesFunction<ISetupWizardProps, ISetupWizardStyles>();
     const classNames = getClassNames(getSetupWizardStyles!);
 
@@ -62,7 +62,5 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
         </div>
       );
     }
-
-    return <React.Fragment />;
   }
 }
