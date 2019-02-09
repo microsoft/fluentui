@@ -363,7 +363,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 align-items: center;
-                border: none;
+                border: 1px solid green;
                 box-sizing: border-box;
                 color: #333333;
                 display: flex;
