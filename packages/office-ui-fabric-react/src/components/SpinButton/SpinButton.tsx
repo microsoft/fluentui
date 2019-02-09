@@ -38,7 +38,7 @@ export type DefaultProps = Required<
 >;
 
 /** Internal only props */
-export type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
+type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 
 @customizable('SpinButton', ['theme', 'styles'], true)
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
