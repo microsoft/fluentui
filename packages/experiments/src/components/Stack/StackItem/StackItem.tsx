@@ -6,9 +6,7 @@ import { styles } from './StackItem.styles';
 
 const view: IStackItemComponent['view'] = props => {
   const { children } = props;
-  const childNodes: React.ReactElement<{}>[] = React.Children.toArray(children) as React.ReactElement<{}>[];
-  const first = childNodes[0];
-  if (!first) {
+  if (React.Children.count(children) < 1) {
     return null;
   }
 
