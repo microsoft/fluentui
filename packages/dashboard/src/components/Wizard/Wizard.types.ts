@@ -23,7 +23,7 @@ export interface IWizardStepProps {
 
   onClickStep: (step: ISubwayNavStep, subStep: ISubwayNavStep | undefined) => void;
 
-  wizardContent: IWizardContentProps;
+  wizardContent?: IWizardContentProps;
 
   subSteps?: IWizardStepProps[];
 }

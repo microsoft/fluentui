@@ -11,8 +11,12 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     super(props);
   }
 
-  public render(): JSX.Element | null {
+  public render(): React.ReactNode {
     const { steps } = this.props;
+
+    if (steps.length === 0) {
+      throw new Error('Wizard must have atleast one step.');
+    }
 
     const navSteps = steps.map((step: IWizardStepProps, index: number) => {
       const navStep: ISubwayNavStep = {
@@ -38,64 +42,60 @@ export class Wizard extends React.Component<IWizardProps, {}> {
 
     const stepContentToShow = this._getStepContentToShow();
 
-    if (stepContentToShow !== undefined) {
-      const wizardStepProps: IWizardStepProps = {
-        key: stepContentToShow.key,
-        label: stepContentToShow.label,
-        state: stepContentToShow.state,
-        disabled: stepContentToShow.disabled,
-        onClickStep: () => {
-          stepContentToShow!.onClickStep;
-        },
-        wizardContent: stepContentToShow.wizardContent,
-        subSteps: stepContentToShow.subSteps
-      };
+    const wizardStepProps: IWizardStepProps = {
+      key: stepContentToShow.key,
+      label: stepContentToShow.label,
+      state: stepContentToShow.state,
+      disabled: stepContentToShow.disabled,
+      onClickStep: () => {
+        stepContentToShow!.onClickStep;
+      },
+      wizardContent: stepContentToShow.wizardContent,
+      subSteps: stepContentToShow.subSteps
+    };
 
-      return (
-        <div className={classNames.wizardContentNavContainer}>
-          <div className={classNames.subwayNavSection}>
-            <SubwayNav steps={navSteps} wizardComplete={this.props.wizardComplete} />
-          </div>
-          <div className={classNames.contentSection}>
-            <div>{wizardStepProps.wizardContent.contentTitle}</div>
-            <div className={classNames.content}>{wizardStepProps.wizardContent.content}</div>
-          </div>
-        </div>
-      );
+    if (stepContentToShow.wizardContent === undefined) {
+      throw new Error('Content missing in the step - ' + stepContentToShow.key);
     }
 
-    return null;
+    return (
+      <div className={classNames.wizardContentNavContainer}>
+        <div className={classNames.subwayNavSection}>
+          <SubwayNav steps={navSteps} wizardComplete={this.props.wizardComplete} />
+        </div>
+        <div className={classNames.contentSection}>
+          <div>{wizardStepProps.wizardContent!.contentTitle}</div>
+          <div className={classNames.content}>{wizardStepProps.wizardContent!.content}</div>
+        </div>
+      </div>
+    );
   }
 
   // Get content to show
-  private _getStepContentToShow(): IWizardStepProps | undefined {
+  private _getStepContentToShow(): IWizardStepProps {
     const { steps } = this.props;
 
-    if (steps.length > 0) {
-      let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
-        return wizStep.state === SubwayNavStepState.Current;
-      });
+    let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
+      return wizStep.state === SubwayNavStepState.Current;
+    });
 
-      if (stepToShow === undefined) {
-        // If no steps is set as "Current", just return the first step
-        stepToShow = steps[0];
-      }
-
-      if (stepToShow.subSteps !== undefined && stepToShow.subSteps.length > 0) {
-        const subStepToShow = stepToShow.subSteps.find((wizSubStep: IWizardStepProps) => {
-          return wizSubStep.state === SubwayNavStepState.Current;
-        });
-
-        if (subStepToShow !== undefined) {
-          stepToShow = subStepToShow;
-        } else {
-          stepToShow = stepToShow.subSteps[0];
-        }
-      }
-
-      return stepToShow;
+    if (stepToShow === undefined) {
+      // If no steps is set as "Current", just return the first step
+      stepToShow = steps[0];
     }
 
-    return;
+    if (stepToShow.subSteps !== undefined && stepToShow.subSteps.length > 0) {
+      const subStepToShow = stepToShow.subSteps.find((wizSubStep: IWizardStepProps) => {
+        return wizSubStep.state === SubwayNavStepState.Current;
+      });
+
+      if (subStepToShow !== undefined) {
+        stepToShow = subStepToShow;
+      } else {
+        stepToShow = stepToShow.subSteps[0];
+      }
+    }
+
+    return stepToShow;
   }
 }

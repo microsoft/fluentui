@@ -76,11 +76,11 @@ export class SetupWizardSubStepsExample extends React.Component<{}, ISetupWizard
       label: 'Step 1',
       onClickStep: this._handleClickStep,
       state: SubwayNavStepState.NotStarted,
-      wizardContent: {
+      /*wizardContent: {
         content: this._getContentForStep('Step 1'),
         // contentState: SubwayNavStepState.NotStarted,
         mainAction: this._getMainActionForStep('Step 1')
-      },
+      },*/
       subSteps: this.subSteps
     };
 
