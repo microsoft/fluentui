@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Clicking on 'prefix' or 'suffix' of TextField now results in input field receiving focus.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "patrik@themediaexchange.nl"
+}

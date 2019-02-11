@@ -49,3 +49,35 @@ storiesOf('TextField', module)
       rtl: true
     }
   );
+
+storiesOf('TextField', module)
+  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .click('.ms-TextField-suffix')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Click Suffix', () => <TextField label="Suffix" suffix=".com" value="example" />);
+
+storiesOf('TextField', module)
+  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(story => (
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .click('.ms-TextField-prefix')
+        .snapshot('click', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Click Prefix', () => (
+    <TextField label="Prefix" prefix="https://" value="example.com" />
+  ));

@@ -232,15 +232,21 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
           {onRenderLabel(this.props, this._onRenderLabel)}
           <div className={this._classNames.fieldGroup}>
             {(addonString !== undefined || this.props.onRenderAddon) && (
-              <div className={this._classNames.prefix}>{onRenderAddon(this.props, this._onRenderAddon)}</div>
+              <label htmlFor={this._id} className={this._classNames.prefix}>
+                {onRenderAddon(this.props, this._onRenderAddon)}
+              </label>
             )}
             {(prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={this._classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
+              <label htmlFor={this._id} className={this._classNames.prefix}>
+                {onRenderPrefix(this.props, this._onRenderPrefix)}
+              </label>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
             {(iconClass || iconProps) && <Icon className={this._classNames.icon} {...iconProps} />}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={this._classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
+              <label htmlFor={this._id} className={this._classNames.suffix}>
+                {onRenderSuffix(this.props, this._onRenderSuffix)}
+              </label>
             )}
           </div>
         </div>
