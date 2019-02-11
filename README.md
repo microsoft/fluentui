@@ -40,14 +40,14 @@ Integrating components into your project depends heavily on your setup. The reco
 Within an npm project, you should install the package and save it as a dependency:
 
 ```
-npm install --save office-ui-fabric-react
+npm i office-ui-fabric-react
 ```
 
-This will add the fabric-react project as a dependency in your package.json file, and will drop the project under node_modules/office-ui-fabric-react.
+This will add the fabric-react project as a dependency in your `package.json` file, and will drop the project under `node_modules/office-ui-fabric-react`.
 
 The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method:
 
-```js
+```javascript
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -77,9 +77,9 @@ setRTL(true);
 
 ## Server-side rendering
 
-If you need to render Fabric components on the server side in a node environment, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
+If you need to render Fabric components on the server side in a Node environment, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
 
-```ts
+```typescript
 import { configureLoadStyles } from '@microsoft/load-themed-styles';
 
 // Store registered styles in a variable used later for injection.
@@ -139,7 +139,7 @@ responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 You'll also want to mock out requiring `.scss` files.
 In Jest:
 
-```js
+```javascript
   moduleNameMapper: {
     // jest-style-mock.js should just contain module.exports = {};
     '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
@@ -165,7 +165,7 @@ To view the documentation including examples, contracts, component status, and t
 3.  `npm install`
 4.  `npm start`
 
-This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
+This will start a demo page from the `office-ui-fabric-react` package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 To build and run tests for all packages in the repo, you can run `npm run build` from the root.
 
@@ -180,10 +180,10 @@ For testing see our [testing documentation](https://github.com/OfficeDev/office-
 The repo contains many packages, each which may have dependencies on each other. You can use the rush tool to build projects in the correct order, if you have it globally installed.
 
 ```bash
-npm install -g @microsoft/rush
+npm i -g @microsoft/rush
 ```
 
-To use rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build.) If you don't have rush globally installed, you can also use `npm run buildfast` to achieve this, since this command abstracts `rush build`.
+To use rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build.) If you don't have `rush` globally installed, you can also use `npm run buildfast` to achieve this, since this command abstracts `rush build`.
 
 You can also build up to a specific project using the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, you can run:
 
