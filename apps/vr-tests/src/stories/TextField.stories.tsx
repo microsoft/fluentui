@@ -195,9 +195,6 @@ storiesOf('TextField', module)
       rtl: true
     }
   )
-  .addStory('Suffix without Style-Override', () => <TextField label="Suffix" suffix=".com" />, {
-    rtl: true
-  })
   .addStory(
     'Suffix with Value and Style-Override',
     () => (
