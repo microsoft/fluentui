@@ -164,9 +164,14 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onOuterClick?: () => void;
 
   /**
-   * Optional custom renderer navigation region. Replaces current close button.
+   * Optional custom renderer navigation region. Replaces the region that contains the close button.
    */
   onRenderNavigation?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for content in the navigation region. Replaces current close button.
+   */
+  onRenderNavigationContent?: IRenderFunction<IPanelProps>;
 
   /**
    * Optional custom renderer for header region. Replaces current title
