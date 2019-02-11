@@ -5,17 +5,16 @@ import { ICardItemComponent, ICardItemProps, ICardItemSlots } from './CardItem.t
 import { styles } from './CardItem.styles';
 
 const view: ICardItemComponent['view'] = props => {
-  const childNodes: React.ReactElement<{}>[] = React.Children.toArray(props.children) as React.ReactElement<{}>[];
-  const first = childNodes[0];
-  if (!first) {
+  const { children } = props;
+  if (React.Children.count(children) < 1) {
     return null;
   }
 
   const Slots = getSlots<ICardItemProps, ICardItemSlots>(props, {
-    root: 'span'
+    root: 'div'
   });
 
-  return <Slots.root>{first}</Slots.root>;
+  return <Slots.root>{children}</Slots.root>;
 };
 
 export const CardItem: React.StatelessComponent<ICardItemProps> = createComponent({

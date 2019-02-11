@@ -6,8 +6,7 @@ import { ICardItemProps } from './CardItem/CardItem.types';
 import { createComponent } from '../../Foundation';
 
 const CardStatics = {
-  Item: CardItem,
-  defaultProps: {}
+  Item: CardItem
 };
 
 export const Card: React.StatelessComponent<ICardProps> & {
