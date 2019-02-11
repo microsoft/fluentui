@@ -22,7 +22,14 @@ export class RatingButtonControlledExample extends React.Component<
 
     return (
       <div className="ms-RatingButtonControlledExample">
-        <Rating rating={this.state.rating} max={5} readOnly={true} allowZeroStars={true} />
+        <Rating
+          rating={this.state.rating}
+          max={5}
+          readOnly={true}
+          allowZeroStars={true}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          ariaLabelFormat={'{0} of {1} stars selected'}
+        />
         <PrimaryButton
           text={'Click to change rating to ' + (maxrating - this.state.rating)}
           onClick={e => {
@@ -35,5 +42,9 @@ export class RatingButtonControlledExample extends React.Component<
         />
       </div>
     );
+  }
+
+  private _getRatingComponentAriaLabel(rating: number, maxRating: number): string {
+    return `Rating value is ${rating} of ${maxRating}`;
   }
 }

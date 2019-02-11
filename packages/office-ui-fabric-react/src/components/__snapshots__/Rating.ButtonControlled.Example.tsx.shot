@@ -5,7 +5,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
   className="ms-RatingButtonControlledExample"
 >
   <div
-    aria-label=""
+    aria-label="Rating value is 0 of 5"
     className=
         ms-Rating-star
         ms-RatingStar-root
@@ -113,7 +113,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-1"
         >
-          
+          1 of 5 stars selected
         </span>
         <div
           className=
@@ -250,7 +250,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-2"
         >
-          
+          2 of 5 stars selected
         </span>
         <div
           className=
@@ -387,7 +387,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-3"
         >
-          
+          3 of 5 stars selected
         </span>
         <div
           className=
@@ -524,7 +524,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-4"
         >
-          
+          4 of 5 stars selected
         </span>
         <div
           className=
@@ -661,7 +661,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-5"
         >
-          
+          5 of 5 stars selected
         </span>
         <div
           className=
