@@ -19,11 +19,6 @@ export interface ICardItemProps extends ICardItemSlots, IStyleableComponentProps
   as?: string | React.ReactType<ICardItemProps>;
 
   /**
-   * @internal Internal use only - gives the Card component a handle on the children of its Card.Items
-   */
-  children?: (React.ReactElement<ICardItemProps> | string)[] | React.ReactElement<ICardItemProps> | string;
-
-  /**
    * Defines if the default padding applies to this CardItem or not.
    * @defaultvalue false
    */
