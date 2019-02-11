@@ -131,6 +131,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           style={
             Object {
               "maxHeight": 718,
+              "outline": "none",
               "overflowY": "hidden",
             }
           }
@@ -293,6 +294,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           style={
             Object {
               "maxHeight": 718,
+              "outline": "none",
               "overflowY": undefined,
             }
           }

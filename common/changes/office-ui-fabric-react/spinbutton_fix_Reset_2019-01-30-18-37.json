@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Support ESC after clicking in Popup",
+      "comment": "SpinButton: Only update value in state if newProps.value is defined",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jehell@microsoft.com"
+  "email": "aneeshak@microsoft.com"
 }

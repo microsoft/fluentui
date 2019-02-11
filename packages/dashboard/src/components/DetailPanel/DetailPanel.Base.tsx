@@ -59,7 +59,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
       // L2Id is changed
       snapshot.nextL2Id = this.props.currentL2Id;
       snapshotUpdated = true;
-    } else if (!shallowCompare(this.props.mainContent, prevProps.mainContent)) {
+    } else if (!this.props.currentL2Id && !shallowCompare(this.props.mainContent, prevProps.mainContent)) {
       snapshot.nextMainContent = this._getMainContent();
       snapshotUpdated = true;
     }

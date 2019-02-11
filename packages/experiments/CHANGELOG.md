@@ -1,6 +1,38 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+
+## 6.54.3
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fixed the VerticalPersona not wrapping text properly in IE
+
+## 6.54.2
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- CollapsibleSectionTitle: Use new factoryOptions prop. Name factory wrappers.
+
+## 6.54.1
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Remove Slots/Tokens Foundation implementation.
+
+## 6.54.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.
+
+### Patches
+
+-  Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.
 
 ## 6.53.2
 Wed, 30 Jan 2019 13:36:21 GMT

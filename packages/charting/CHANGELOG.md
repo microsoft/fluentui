@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Feb 2019 13:38:06 GMT and should not be manually modified.
+
+## 0.28.6
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- office ui fabric charting package, legend related changes 
 
 ## 0.28.5
 Tue, 08 Jan 2019 13:34:49 GMT

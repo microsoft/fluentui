@@ -1,5 +1,5 @@
 import { IStyle } from '@uifabric/styling';
-import { IComponentStyles } from './IComponent';
+import { IComponentStyles, IPropsWithChildren } from './IComponent';
 
 /**
  * Signature of components that have component factories.
@@ -24,19 +24,6 @@ export type ISlottableReactType<TProps> = React.ReactType<TProps> & ISlotCreator
 export interface IProcessedSlotProps {
   className?: string;
 }
-
-/**
- * Factory options for creating component.
- */
-export interface IFactoryOptions<TProps> {
-  /** Default prop for which to map primitive values. */
-  defaultProp: keyof TProps | 'children';
-}
-
-/**
- * Helper interface for accessing user props children.
- */
-export type IPropsWithChildren<TProps> = TProps & { children?: React.ReactNode };
 
 /**
  * An interface for defining slots. Each key in TSlot must point to an ISlottableType.

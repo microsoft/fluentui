@@ -57,6 +57,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       onRenderTitle = this._onRenderTitle,
       isCollapsedGroupSelectVisible = true,
       expandButtonProps,
+      selectAllButtonProps,
       theme,
       styles,
       className,
@@ -100,6 +101,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
               aria-checked={!!currentlySelected}
               data-selection-toggle={true}
               onClick={this._onToggleSelectGroupClick}
+              {...selectAllButtonProps}
             >
               <Check checked={currentlySelected} />
             </button>

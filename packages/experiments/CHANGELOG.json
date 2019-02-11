@@ -2,6 +2,101 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.54.3",
+      "tag": "@uifabric/experiments_v6.54.3",
+      "date": "Fri, 08 Feb 2019 13:37:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed the VerticalPersona not wrapping text properly in IE",
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "23a63a68ee8028ff469072aef5f6c2bf32b5a27d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.135.1 <7.0.0` to `>=6.136.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.54.2",
+      "tag": "@uifabric/experiments_v6.54.2",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CollapsibleSectionTitle: Use new factoryOptions prop. Name factory wrappers.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7b2858f9f648cefff97df078011f306a7aed9f53"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.0 <1.0.0` to `>=0.7.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.132.0 <7.0.0` to `>=6.133.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.54.1",
+      "tag": "@uifabric/experiments_v6.54.1",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove Slots/Tokens Foundation implementation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "15fdd1982b01e3e5e9a4d7b9f10d7f1d40a45372"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.6.0 <1.0.0` to `>=0.7.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.1 <7.0.0` to `>=6.29.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.1 <7.0.0` to `>=6.132.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.4 <7.0.0` to `>=6.11.5 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.54.0",
+      "tag": "@uifabric/experiments_v6.54.0",
+      "date": "Thu, 31 Jan 2019 13:36:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "73c0e178e3a920d46987ca781cedf7abcbd2c729"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "b24aa4dfbf9c6c739a9c5e34b15220485a58b470"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.0 <7.0.0` to `>=6.131.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.53.2",
       "tag": "@uifabric/experiments_v6.53.2",
       "date": "Wed, 30 Jan 2019 13:36:21 GMT",

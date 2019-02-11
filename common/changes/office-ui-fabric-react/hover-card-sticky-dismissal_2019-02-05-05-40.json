@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "In HoverCard, do not dismiss the card when the  prop is true and the event prompting the dismissal is the 'mouseleave' event from the card itself. Clicking outside, escape, etc will still dismiss the card.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "sllynn8907@gmail.com"
+}

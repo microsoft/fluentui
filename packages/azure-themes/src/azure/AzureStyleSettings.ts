@@ -15,6 +15,7 @@ import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
+import { DocumentCardStyles } from './styles/DocumentCard.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
@@ -107,6 +108,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     DialogFooter: {
       styles: DialogFooterStyles
+    },
+    DocumentCard: {
+      styles: DocumentCardStyles
     },
     Dropdown: {
       styles: DropdownStyles
