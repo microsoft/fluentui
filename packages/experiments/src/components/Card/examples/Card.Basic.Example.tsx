@@ -26,7 +26,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" coin={{ imageUrl: PersonaTestImages.personMale }} />
           <Card.Item preventPadding>
             <Image
-              src="https://get.pxhere.com/photo/landscape-water-nature-forest-rock-wilderness-mountain-sky-hiking-lake-valley-mountain-range-stone-panorama-summer-reflection-autumn-holiday-italy-alpine-blue-fjord-national-park-mountain-landscape-clouds-great-mountains-alps-vision-outlook-plateau-wide-viewpoint-mood-loch-alm-distant-dolomites-clouded-sky-distant-view-alpine-panorama-tarn-unesco-world-heritage-mountainous-landforms-computer-wallpaper-1401782.jpg"
+              src="https://placehold.it/250x120"
               alt="Example implementation of the property image fit using the center value on an image larger than the frame."
               width="100%"
               height="120px"

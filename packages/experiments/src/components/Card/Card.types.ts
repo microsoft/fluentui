@@ -10,7 +10,6 @@ export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
 export type ICardTokenReturnType = ReturnType<Extract<ICardComponent['tokens'], Function>>;
 export type ICardStylesReturnType = ReturnType<Extract<ICardComponent['styles'], Function>>;
 
-// Optional interface to use for componentRef. This should be limited in scope with the most common scenario being for focusing elements.
 export interface ICard {}
 
 export interface ICardSlots {

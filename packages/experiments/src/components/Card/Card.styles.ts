@@ -6,15 +6,7 @@ const GlobalClassNames = {
   stack: 'ms-Card-stack'
 };
 
-const baseTokens: ICardComponent['tokens'] = {
-  textColor: 'blue'
-};
-
-const warningTokens: ICardComponent['tokens'] = {
-  textColor: 'red'
-};
-
-export const CardTokens: ICardComponent['tokens'] = (props, theme): ICardTokenReturnType => [baseTokens, warningTokens];
+export const CardTokens: ICardComponent['tokens'] = (props, theme): ICardTokenReturnType => [];
 
 export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICardStylesReturnType => {
   const { compact } = props;

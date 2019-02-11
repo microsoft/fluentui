@@ -23,7 +23,7 @@ exports[`CardView renders correctly 1`] = `
           margin-top: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          flex-shrink: 0;
         }
   />
 </div>
