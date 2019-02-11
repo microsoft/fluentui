@@ -2459,6 +2459,7 @@ interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInpu
   onRenderField?: IRenderFunction<IChoiceGroupOption>;
   onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
   selectedImageSrc?: string;
+  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
   text: string;
 }
 
@@ -2471,7 +2472,6 @@ interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   onChange?: OnChangeCallback;
   onFocus?: OnFocusCallback;
   required?: boolean;
-  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
   theme?: ITheme;
 }
 
@@ -2906,6 +2906,7 @@ interface IComboBoxOptionStyles extends IButtonStyles {
 interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   allowFreeform?: boolean;
   autoComplete?: 'on' | 'off';
+  autofill?: IAutofillProps;
   buttonIconProps?: IIconProps;
   caretDownButtonStyles?: Partial<IButtonStyles>;
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
@@ -6708,6 +6709,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   strings?: IDatePickerStrings;
   styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
   tabIndex?: number;
+  textField?: ITextFieldProps;
   theme?: ITheme;
   today?: Date;
   underlined?: boolean;
@@ -9490,7 +9492,7 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     [key: string]: string | number | boolean;
   }
   headerText?: string;
-  itemCount?: number;
+  itemCount?: number | string;
   itemIcon?: string;
   itemKey?: string;
   keytipProps?: IKeytipProps;
@@ -10520,7 +10522,7 @@ interface ISpinButtonProps {
   // (undocumented)
   ariaValueText?: string;
   className?: string;
-  componentRef?: (component?: ISpinButton | null) => void;
+  componentRef?: IRefObject<ISpinButton>;
   decrementButtonAriaLabel?: string;
   decrementButtonIcon?: IIconProps;
   defaultValue?: string;
@@ -10554,7 +10556,6 @@ interface ISpinButtonProps {
 interface ISpinButtonState {
   isFocused: boolean;
   keyboardSpinDirection: KeyboardSpinDirection;
-  precision: number;
   value: string;
 }
 
@@ -10780,7 +10781,7 @@ interface ISuggestionsProps<T> extends React.Props<any> {
   onRenderNoResultFound?: IRenderFunction<void>;
   onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
-  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
   refocusSuggestions?: (keyCode: KeyCodes) => void;
   removeSuggestionAriaLabel?: string;
   resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
@@ -12234,7 +12235,7 @@ class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState>, impl
   constructor(props: ISpinButtonProps);
   componentWillReceiveProps(newProps: ISpinButtonProps): void;
   // (undocumented)
-  static defaultProps: ISpinButtonProps;
+  static defaultProps: DefaultProps;
   // (undocumented)
   focus(): void;
   // (undocumented)
@@ -12925,6 +12926,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ShimmeredDetailsList
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
+// WARNING: Unsupported export: DefaultProps
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: AnimationClassNames

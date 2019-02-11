@@ -1,6 +1,46 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Feb 2019 13:35:00 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Feb 2019 13:40:44 GMT and should not be manually modified.
+
+## 6.137.0
+Mon, 11 Feb 2019 13:40:44 GMT
+
+### Minor changes
+
+- PivotItem: updating itemCount type to include strings
+- Pickers: Re-type onItemRemove in Suggestions to support the suggestions Generic type
+
+### Patches
+
+- In HoverCard, do not dismiss the card when the  prop is true and the event prompting the dismissal is the 'mouseleave' event from the card itself. Clicking outside, escape, etc will still dismiss the card.
+- Removed Href on Links that are disabled. This prevents inadvertent access to disabled links. Also prevents link focus rect bug
+- SpinButton: Only update value in state if newProps.value is defined
+
+## 6.136.0
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Minor changes
+
+- Add textField to IDatePickerProps
+
+## 6.135.1
+Thu, 07 Feb 2019 13:32:39 GMT
+
+### Patches
+
+- DetailsList: Fixes the column header shifting upwards by 1px after drag and drop action.
+
+## 6.135.0
+Wed, 06 Feb 2019 13:38:07 GMT
+
+### Minor changes
+
+- Nav: add semantic colors styling to link
+
+### Patches
+
+- FocusTrapZone: Fixed FocusTrapZone to use the relatedTarget instead of document.activeElement to find what is losing focus
+- Fixing wrapping links' focus rect clipping problem with boxshadow styling.
 
 ## 6.134.0
 Tue, 05 Feb 2019 13:35:00 GMT

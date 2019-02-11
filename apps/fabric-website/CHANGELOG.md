@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 23 Jan 2019 22:53:13 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+
+## 6.8.6
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fix site links to allow for deeplinks to the customizations
 
 ## 6.8.5
 Wed, 23 Jan 2019 22:53:13 GMT
