@@ -122,7 +122,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * The AutofillProps to be passed into the Autofill component inside combobox
    */
-  autofillProps?: IAutofillProps;
+  autofill?: IAutofillProps;
 
   /**
    * Theme provided by HOC.

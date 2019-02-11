@@ -2906,7 +2906,7 @@ interface IComboBoxOptionStyles extends IButtonStyles {
 interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   allowFreeform?: boolean;
   autoComplete?: 'on' | 'off';
-  autofillProps?: IAutofillProps;
+  autofill?: IAutofillProps;
   buttonIconProps?: IIconProps;
   caretDownButtonStyles?: Partial<IButtonStyles>;
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
