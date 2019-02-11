@@ -9,6 +9,12 @@
     "bundlesize": "bundlesize --debug",
     "test": "jest"
   },
+  "bundlesize": [
+    {
+      "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
+      "maxSize": "49.6 kB"
+    }
+  ],
   "devDependencies": {
     "@microsoft/api-extractor": "^6.0.4",
     "@microsoft/load-themed-styles": "^1.7.13",
@@ -19,10 +25,11 @@
     "babylon": "^7.0.0-beta.47",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
-    "command-line-args": "^4.0.7",
     "codecov": "^3.1.0",
+    "command-line-args": "^4.0.7",
     "cpx": "^1.5.0",
     "css-loader": "^0.28.7",
+    "find-free-port": "~2.0.0",
     "fork-ts-checker-webpack-plugin": "^0.4.1",
     "fs-extra": "^7.0.1",
     "github": "^7.0.0",
@@ -38,8 +45,8 @@
     "just-task-preset": "^0.6.5",
     "lint-staged": "^7.0.5",
     "mustache": "^2.3.0",
-    "node-sass": "^4.5.3",
     "ngrok": "^3.0.1",
+    "node-sass": "^4.5.3",
     "open": "^0.0.5",
     "postcss": "^6.0.9",
     "postcss-loader": "^2.0.9",
@@ -47,9 +54,9 @@
     "prettier": "^1.12.1",
     "raf": "^3.4.0",
     "raw-loader": "^0.5.1",
-    "rxjs": "^6.3.3",
     "recast": "~0.15.0",
     "resolve": "^1.7.1",
+    "rxjs": "^6.3.3",
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.21.0",
@@ -64,11 +71,5 @@
     "webpack-dev-server": "3.1.14",
     "webpack-notifier": "^1.6.0",
     "yargs": "^6.5.0"
-  },
-  "bundlesize": [
-    {
-      "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
-      "maxSize": "49.5 kB"
-    }
-  ]
+  }
 }

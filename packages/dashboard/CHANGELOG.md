@@ -1,6 +1,39 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Feb 2019 13:38:06 GMT and should not be manually modified.
+
+## 0.47.3
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- Adding SubwayNav control in Dashboard
+- Hide command bar from composite list if no commands exist
+
+## 0.47.2
+Tue, 05 Feb 2019 13:35:00 GMT
+
+### Patches
+
+- Add id's for actions and onclick handler for multicount
+
+## 0.47.1
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- DetailPanel: fix content load error on L2 content mode
+
+## 0.47.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- add  optional  id props to  IThumbnailListProps, IGridListProps, ICompoundAction and  optional cardId to ICardProps
+
+### Patches
+
+- Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event
 
 ## 0.46.2
 Wed, 30 Jan 2019 13:36:21 GMT

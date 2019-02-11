@@ -48,9 +48,12 @@ export namespace BaseColors {
   export const BLUE_55B3FF_010 = 'rgba(85, 179, 255, .10)';
   export const BLUE_55B3FF_020 = 'rgba(85, 179, 255, .20)';
 
-  // Overlay Overrides
-  export const OVERLAY_LIGHT = 'rgba(255,255,255,.5)';
-  export const OVERLAY_DARK = 'rgba(0,0,0,.5)';
+  // Extended Palette Colors (not in Azure spec)
+  export const GRAY_FFFFFF_050 = 'rgba(255,255,255,.5)'; // overlay light
+  export const GRAY_000000_050 = 'rgba(0,0,0,.5)'; // overlay dark
+  export const GRAY_404040 = '#404040'; // shimmer
+  export const GRAY_F7F7F7 = '#f7f7f7'; // shimmer
+  export const GRAY_DFDFDF = '#dfdfdf'; // shimmer
 }
 
 export namespace CommonSemanticColors {
@@ -77,6 +80,10 @@ export namespace CommonSemanticColors {
   export const controlOutline = {
     rest: BaseColors.GRAY_808080,
     disabled: BaseColors.GRAY_808080_070
+  };
+  export const overlay = {
+    light: BaseColors.GRAY_FFFFFF_050,
+    dark: BaseColors.GRAY_000000_050
   };
 }
 
@@ -144,6 +151,10 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.GRAY_808080_015,
     select: BaseColors.GRAY_808080_025
+  },
+  shimmer: {
+    primary: BaseColors.GRAY_808080,
+    secondary: BaseColors.GRAY_404040
   }
 };
 
@@ -211,5 +222,9 @@ export const LightSemanticColors: IAzureSemanticColors = {
   item: {
     hover: BaseColors.BLUE_55B3FF_010,
     select: BaseColors.BLUE_55B3FF_020
+  },
+  shimmer: {
+    primary: BaseColors.GRAY_F7F7F7,
+    secondary: BaseColors.GRAY_DFDFDF
   }
 };

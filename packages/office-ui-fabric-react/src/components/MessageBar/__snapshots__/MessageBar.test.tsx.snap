@@ -2,7 +2,6 @@
 
 exports[`MessageBar renders MessageBar correctly 1`] = `
 <div
-  aria-live="polite"
   className=
       ms-MessageBar
       ms-MessageBar-multiline

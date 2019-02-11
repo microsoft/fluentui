@@ -150,8 +150,33 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       onRenderPlainCard: this._onRenderCompactCard,
       renderData: renderOverflowData
     };
+
+    // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
+    const onHoverCardHideHandler = () => {
+      if (this.state.selectedState) {
+        const selectedOverflowItem = legends.find((legend: ILegend) => legend.title === this.state.selectedLegend);
+        if (selectedOverflowItem) {
+          this.setState({ selectedLegend: 'none', selectedState: false }, () => {
+            if (selectedOverflowItem.action) {
+              selectedOverflowItem.action();
+            }
+            this.setState({ hoverState: false }, () => {
+              if (selectedOverflowItem.onMouseOutAction) {
+                selectedOverflowItem.onMouseOutAction();
+              }
+            });
+          });
+        }
+      }
+    };
     return (
-      <HoverCard type={HoverCardType.plain} plainCardProps={plainCardProps} instantOpenOnClick={true}>
+      <HoverCard
+        type={HoverCardType.plain}
+        plainCardProps={plainCardProps}
+        sticky={true}
+        instantOpenOnClick={true}
+        onCardHide={onHoverCardHideHandler}
+      >
         <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
       </HoverCard>
     );

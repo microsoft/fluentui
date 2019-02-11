@@ -20,6 +20,7 @@ exports[`DetailsHeader can render 1`] = `
         line-height: 32px;
         min-width: 100%;
         padding-bottom: 1px;
+        padding-top: 1px;
         position: relative;
         user-select: none;
         vertical-align: top;
@@ -868,6 +869,777 @@ exports[`DetailsHeader can render 1`] = `
 </div>
 `;
 
+exports[`DetailsHeader can render a hidden select all checkbox in single selection mode 1`] = `
+<div
+  className=
+      ms-FocusZone
+      ms-DetailsHeader
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background: #ffffff;
+        border-bottom: 1px solid #eaeaea;
+        box-sizing: content-box;
+        cursor: default;
+        display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        height: 32px;
+        line-height: 32px;
+        min-width: 100%;
+        padding-bottom: 1px;
+        padding-top: 1px;
+        position: relative;
+        user-select: none;
+        vertical-align: top;
+        white-space: nowrap;
+      }
+      &:hover $check {
+        opacity: 1;
+      }
+      & ms-TooltipHost $checkTooltip {
+        display: block;
+      }
+      & $cell$cellIsCheck {
+        visibility: hidden;
+      }
+  data-automationid="DetailsHeader"
+  data-focuszone-id="FocusZone3"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+  onMouseMove={[Function]}
+  role="row"
+  style={
+    Object {
+      "minWidth": 0,
+    }
+  }
+>
+  <div
+    aria-colindex={1}
+    aria-labelledby="header2-check"
+    className=
+        ms-DetailsHeader-cell
+        ms-DetailsHeader-cellIsCheck
+        {
+          align-items: center;
+          border: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: inline-flex;
+          height: 32px;
+          line-height: inherit;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          outline: transparent;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: relative;
+          text-align: left;
+          text-overflow: ellipsis;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+    role="columnheader"
+  >
+    <span
+      className=
+
+
+    >
+      <div
+        className=
+            ms-DetailsRow-check
+            ms-DetailsRow-check--isDisabled
+            ms-DetailsRow-check--isHeader
+            {
+              height: 32px;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              opacity: 1;
+            }
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: center;
+              background-color: transparent;
+              background: none;
+              border: none;
+              box-sizing: border-box;
+              cursor: default;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 32px;
+              justify-content: center;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              opacity: 0;
+              outline: transparent;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+              vertical-align: top;
+              width: 40px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:hover {
+              opacity: 1;
+            }
+        id="header2-check"
+      />
+    </span>
+  </div>
+  <div
+    aria-colindex={2}
+    aria-sort="none"
+    className=
+        ms-DetailsHeader-cell
+        is-actionable
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          color: #333333;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          height: 32px;
+          line-height: inherit;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 12px;
+          padding-right: 8px;
+          padding-top: 0;
+          position: relative;
+          text-align: left;
+          text-overflow: ellipsis;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #333333;
+        }
+        &:active {
+          background: #eaeaea;
+        }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
+    data-automationid="ColumnsHeaderColumn"
+    data-is-draggable={false}
+    data-item-key="a"
+    draggable={false}
+    role="columnheader"
+    style={
+      Object {
+        "width": 220,
+      }
+    }
+  >
+    <span
+      className=
+
+          {
+            bottom: 0px;
+            display: block;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+    >
+      <span
+        aria-haspopup={false}
+        aria-labelledby="header2-a-name "
+        className=
+            ms-DetailsHeader-cellTitle
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+        data-is-focusable={true}
+        id="header2-a"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+      >
+        <span
+          className=
+              ms-DetailsHeader-cellName
+              {
+                flex: 0 1 auto;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+          id="header2-a-name"
+        >
+          a
+        </span>
+      </span>
+    </span>
+  </div>
+  <div
+    aria-hidden={true}
+    className=
+        ms-DetailsHeader-cellSizer
+        {
+          background: transparent;
+          bottom: 0px;
+          cursor: ew-resize;
+          display: inline-block;
+          height: inherit;
+          outline: transparent;
+          overflow: hidden;
+          position: relative;
+          top: 0px;
+          width: 16px;
+          z-index: 1;
+        }
+        &::-moz-focus-inner {
+          border: 0px;
+        }
+        &:after {
+          background: #c8c8c8;
+          bottom: 0px;
+          content: "";
+          left: 50%;
+          opacity: 0;
+          position: absolute;
+          top: 0px;
+          width: 1px;
+        }
+        &:focus:after {
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        &:hover:after {
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        &$cellIsResizing:after {
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        {
+          margin-bottom: 0;
+          margin-left: -8px;
+          margin-right: -8px;
+          margin-top: 0;
+        }
+    data-is-focusable={false}
+    data-sizer-index={0}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="button"
+  />
+  <div
+    aria-colindex={3}
+    aria-sort="ascending"
+    className=
+        ms-DetailsHeader-cell
+        is-actionable
+        is-icon-visible
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          color: #333333;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          height: 32px;
+          line-height: inherit;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 12px;
+          padding-right: 8px;
+          padding-top: 0;
+          position: relative;
+          text-align: left;
+          text-overflow: ellipsis;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #333333;
+        }
+        &:active {
+          background: #eaeaea;
+        }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
+    data-automationid="ColumnsHeaderColumn"
+    data-is-draggable={false}
+    data-item-key="b"
+    draggable={false}
+    role="columnheader"
+    style={
+      Object {
+        "width": 220,
+      }
+    }
+  >
+    <span
+      className=
+
+          {
+            bottom: 0px;
+            display: block;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+    >
+      <span
+        aria-haspopup={false}
+        aria-labelledby="header2-b-name "
+        className=
+            ms-DetailsHeader-cellTitle
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+        data-is-focusable={true}
+        id="header2-b"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+      >
+        <span
+          className=
+              ms-DetailsHeader-cellName
+              {
+                flex: 0 1 auto;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+          id="header2-b-name"
+        >
+          b
+        </span>
+        <i
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #666666;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 1;
+                padding-left: 4px;
+                position: relative;
+                speak: none;
+                top: 1px;
+              }
+          data-icon-name="SortUp"
+          role="presentation"
+        >
+          
+        </i>
+      </span>
+    </span>
+  </div>
+  <div
+    aria-hidden={true}
+    className=
+        ms-DetailsHeader-cellSizer
+        {
+          background: transparent;
+          bottom: 0px;
+          cursor: ew-resize;
+          display: inline-block;
+          height: inherit;
+          outline: transparent;
+          overflow: hidden;
+          position: relative;
+          top: 0px;
+          width: 16px;
+          z-index: 1;
+        }
+        &::-moz-focus-inner {
+          border: 0px;
+        }
+        &:after {
+          background: #c8c8c8;
+          bottom: 0px;
+          content: "";
+          left: 50%;
+          opacity: 0;
+          position: absolute;
+          top: 0px;
+          width: 1px;
+        }
+        &:focus:after {
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        &:hover:after {
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        &$cellIsResizing:after {
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        {
+          margin-bottom: 0;
+          margin-left: -8px;
+          margin-right: -8px;
+          margin-top: 0;
+        }
+    data-is-focusable={false}
+    data-sizer-index={1}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="button"
+  />
+  <div
+    aria-colindex={4}
+    aria-sort="none"
+    className=
+        ms-DetailsHeader-cell
+        is-actionable
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-sizing: border-box;
+          color: #333333;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          height: 32px;
+          line-height: inherit;
+          margin-bottom: 0;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 0;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 12px;
+          padding-right: 8px;
+          padding-top: 0;
+          position: relative;
+          text-align: left;
+          text-overflow: ellipsis;
+          vertical-align: top;
+          white-space: nowrap;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        &:hover {
+          background: #f4f4f4;
+          color: #333333;
+        }
+        &:active {
+          background: #eaeaea;
+        }
+        &:hover i[data-icon-name="GripperBarVertical"] {
+          display: block;
+        }
+    data-automationid="ColumnsHeaderColumn"
+    data-is-draggable={false}
+    data-item-key="c"
+    draggable={false}
+    role="columnheader"
+    style={
+      Object {
+        "width": 30,
+      }
+    }
+  >
+    <span
+      className=
+
+          {
+            bottom: 0px;
+            display: block;
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+    >
+      <span
+        aria-expanded={false}
+        aria-haspopup={true}
+        aria-labelledby="header2-c-name "
+        className=
+            ms-DetailsHeader-cellTitle
+            {
+              align-items: stretch;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              outline: transparent;
+              overflow: hidden;
+              padding-bottom: 0;
+              padding-left: 12px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+        data-is-focusable={true}
+        id="header2-c"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+      >
+        <span
+          className=
+              ms-DetailsHeader-cellName
+              {
+                flex: 0 1 auto;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+          id="header2-c-name"
+        >
+          c
+        </span>
+        <i
+          aria-hidden={true}
+          className=
+              ms-DetailsHeader-filterChevron
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #a6a6a6;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                padding-left: 4px;
+                speak: none;
+                vertical-align: middle;
+              }
+          data-icon-name="ChevronDown"
+          role="presentation"
+        >
+          
+        </i>
+      </span>
+    </span>
+  </div>
+  <div
+    aria-hidden={true}
+    className=
+        ms-DetailsHeader-cellSizer
+        {
+          background: transparent;
+          bottom: 0px;
+          cursor: ew-resize;
+          display: inline-block;
+          height: inherit;
+          outline: transparent;
+          overflow: hidden;
+          position: relative;
+          top: 0px;
+          width: 16px;
+          z-index: 1;
+        }
+        &::-moz-focus-inner {
+          border: 0px;
+        }
+        &:after {
+          background: #c8c8c8;
+          bottom: 0px;
+          content: "";
+          left: 50%;
+          opacity: 0;
+          position: absolute;
+          top: 0px;
+          width: 1px;
+        }
+        &:focus:after {
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        &:hover:after {
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        &$cellIsResizing:after {
+          box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+          opacity: 1;
+          transition: opacity 0.3s linear;
+        }
+        {
+          margin-bottom: 0px;
+          margin-left: -16px;
+          margin-right: 0px;
+          margin-top: 0px;
+        }
+    data-is-focusable={false}
+    data-sizer-index={2}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDoubleClick={[Function]}
+    role="button"
+  />
+</div>
+`;
+
 exports[`DetailsHeader renders accessible labels 1`] = `
 <div
   className=
@@ -888,6 +1660,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         line-height: 32px;
         min-width: 100%;
         padding-bottom: 1px;
+        padding-top: 1px;
         position: relative;
         user-select: none;
         vertical-align: top;
@@ -900,7 +1673,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         display: block;
       }
   data-automationid="DetailsHeader"
-  data-focuszone-id="FocusZone5"
+  data-focuszone-id="FocusZone7"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -914,7 +1687,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
 >
   <div
     aria-colindex={1}
-    aria-labelledby="header4-check"
+    aria-labelledby="header6-check"
     className=
         ms-DetailsHeader-cell
         ms-DetailsHeader-cellIsCheck
@@ -1024,7 +1797,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         data-automationid="DetailsRowCheck"
         data-is-focusable={true}
         data-selection-toggle={true}
-        id="header4-check"
+        id="header6-check"
         role="checkbox"
       >
         <div
@@ -1205,7 +1978,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     >
       <span
         aria-haspopup={false}
-        aria-labelledby="header4-a-name "
+        aria-labelledby="header6-a-name "
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1237,7 +2010,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               z-index: 1;
             }
         data-is-focusable={true}
-        id="header4-a"
+        id="header6-a"
         onClick={[Function]}
         onContextMenu={[Function]}
       >
@@ -1249,7 +2022,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
-          id="header4-a-name"
+          id="header6-a-name"
         >
           a
         </span>
@@ -1393,9 +2166,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby="header4-b-tooltip"
+        aria-describedby="header6-b-tooltip"
         aria-haspopup={false}
-        aria-labelledby="header4-b-name "
+        aria-labelledby="header6-b-name "
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1427,7 +2200,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               z-index: 1;
             }
         data-is-focusable={true}
-        id="header4-b"
+        id="header6-b"
         onClick={[Function]}
         onContextMenu={[Function]}
       >
@@ -1439,7 +2212,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
-          id="header4-b-name"
+          id="header6-b-name"
         >
           b
         </span>
@@ -1486,7 +2259,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           position: absolute;
           width: 1px;
         }
-    id="header4-b-tooltip"
+    id="header6-b-tooltip"
   >
     Click to sort.
     Sorted up.
@@ -1628,10 +2401,10 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-describedby="header4-c-tooltip"
+        aria-describedby="header6-c-tooltip"
         aria-expanded={false}
         aria-haspopup={true}
-        aria-labelledby="header4-c-name "
+        aria-labelledby="header6-c-name "
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1663,7 +2436,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               z-index: 1;
             }
         data-is-focusable={true}
-        id="header4-c"
+        id="header6-c"
         onClick={[Function]}
         onContextMenu={[Function]}
       >
@@ -1675,7 +2448,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
-          id="header4-c-name"
+          id="header6-c-name"
         >
           c
         </span>
@@ -1761,7 +2534,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           position: absolute;
           width: 1px;
         }
-    id="header4-c-tooltip"
+    id="header6-c-tooltip"
   >
     Click to sort, filter, or group.
     Filtered.

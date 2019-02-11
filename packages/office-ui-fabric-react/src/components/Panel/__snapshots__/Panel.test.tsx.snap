@@ -70,6 +70,7 @@ exports[`Panel renders Panel correctly 1`] = `
       role="dialog"
       style={
         Object {
+          "outline": "none",
           "overflowY": undefined,
         }
       }

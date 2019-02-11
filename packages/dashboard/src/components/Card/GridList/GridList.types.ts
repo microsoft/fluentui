@@ -102,6 +102,11 @@ export interface IGridRow {
   // Disabling ts-lint for the signature because Details List expects item parameter as any
   // tslint:disable-next-line
   onRowClicked?: (item: any) => void;
+
+  /**
+   * Defines the id for the gridRow action
+   */
+  id?: string;
 }
 
 /**

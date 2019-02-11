@@ -166,6 +166,11 @@ export interface ICardProps {
   role?: string;
 
   /**
+   * The aria labelledby of the card for the benefit of screen readers.
+   */
+  cardAriaLabelledby?: string;
+
+  /**
    * The content area content details array.
    */
   cardContentList?: ICardContentDetails[];
