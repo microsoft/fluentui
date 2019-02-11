@@ -52,7 +52,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
             border-color: Highlight;
           }
     >
-      <div
+      <label
         className=
             ms-TextField-prefix
             {
@@ -67,6 +67,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
               padding-top: 0;
               white-space: nowrap;
             }
+        htmlFor="TextField0"
       >
         <span
           style={
@@ -77,7 +78,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
         >
           test addonString
         </span>
-      </div>
+      </label>
       <input
         aria-invalid={false}
         className=

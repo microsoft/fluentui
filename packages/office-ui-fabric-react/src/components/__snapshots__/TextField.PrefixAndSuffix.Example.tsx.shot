@@ -55,7 +55,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               border-color: Highlight;
             }
       >
-        <div
+        <label
           className=
               ms-TextField-prefix
               {
@@ -70,6 +70,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0;
                 white-space: nowrap;
               }
+          htmlFor="TextField0"
         >
           <span
             style={
@@ -80,7 +81,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           >
             https://
           </span>
-        </div>
+        </label>
         <input
           aria-invalid={false}
           className=
@@ -129,7 +130,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           type="text"
           value=""
         />
-        <div
+        <label
           className=
               ms-TextField-suffix
               {
@@ -144,6 +145,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 0;
                 white-space: nowrap;
               }
+          htmlFor="TextField0"
         >
           <span
             style={
@@ -154,7 +156,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           >
             .com
           </span>
-        </div>
+        </label>
       </div>
     </div>
   </div>
