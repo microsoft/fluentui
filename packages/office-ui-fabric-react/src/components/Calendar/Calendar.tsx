@@ -234,6 +234,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     onKeyDown={this._onGotoTodayKeyDown}
                     tabIndex={0}
                     disabled={!goTodayEnabled}
+                    type="button"
                   >
                     {strings!.goToToday}
                   </button>
