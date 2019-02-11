@@ -25,7 +25,12 @@ export class SetupWizardActionBar extends React.Component<ISetupWizardActionBarP
 
   private _renderActionLink = (action: IWizardStepAction, className: string) => {
     return (
-      <Link onClick={action.action} className={className} disabled={action.disabled !== undefined ? action.disabled : false}>
+      <Link
+        // tslint:disable-next-line jsx-no-lambda
+        onClick={() => action.action(this.props.currentStep)}
+        className={className}
+        disabled={action.disabled !== undefined ? action.disabled : false}
+      >
         {action.title}
       </Link>
     );

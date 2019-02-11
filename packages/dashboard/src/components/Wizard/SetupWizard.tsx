@@ -37,6 +37,7 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
           mainAction={stepContentToShow!.wizardContent!.mainAction}
           backClickAction={this.props.backClickAction}
           exitWizardAction={this.props.exitWizardAction}
+          currentStep={stepContentToShow}
         />
       </div>
     );

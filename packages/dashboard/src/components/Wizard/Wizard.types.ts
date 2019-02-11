@@ -41,7 +41,7 @@ export interface IWizardStepAction {
   title: string;
 
   // Defines the function that is executed on clicking this action
-  action: () => void;
+  action: (currentStep: IWizardStepProps) => void;
 
   // Action is disabled or not
   disabled?: boolean;

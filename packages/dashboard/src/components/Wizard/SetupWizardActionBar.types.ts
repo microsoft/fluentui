@@ -1,5 +1,5 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IWizardStepAction } from './Wizard.types';
+import { IWizardStepAction, IWizardStepProps } from './Wizard.types';
 
 export interface ISetupWizardActionBarStyles {
   root: IStyle;
@@ -19,4 +19,6 @@ export interface ISetupWizardActionBarProps {
   mainAction: IWizardStepAction;
 
   exitWizardAction: IWizardStepAction;
+
+  currentStep: IWizardStepProps;
 }

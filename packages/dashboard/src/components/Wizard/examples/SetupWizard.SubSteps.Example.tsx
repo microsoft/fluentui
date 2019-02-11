@@ -2,7 +2,6 @@ import * as React from 'react';
 import { SetupWizard } from '../SetupWizard';
 import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
 import { IWizardStepProps, IWizardStepAction } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
-import { IAction } from '../../Card/ActionBar/ActionBar.types';
 import { ISetupWizardState, goToStep } from './SetupWizard.Util';
 
 export class SetupWizardSubStepsExample extends React.Component<{}, ISetupWizardState> {
@@ -146,8 +145,8 @@ export class SetupWizardSubStepsExample extends React.Component<{}, ISetupWizard
   private _getMainActionForStep(stepStr: string): IWizardStepAction {
     const action: IWizardStepAction = {
       title: stepStr + ' Next',
-      action: (): void => {
-        console.log(stepStr + ' Next clicked');
+      action: (currentStep: IWizardStepProps): void => {
+        console.log(stepStr + ' Next clicked - currentStep: ' + currentStep.label);
         this._goToNextStep();
         // return WizardContentState.Completed;
         return;
@@ -157,22 +156,22 @@ export class SetupWizardSubStepsExample extends React.Component<{}, ISetupWizard
     return action;
   }
 
-  private _getExitWizardAction(): IAction {
-    const action: IAction = {
+  private _getExitWizardAction(): IWizardStepAction {
+    const action: IWizardStepAction = {
       title: 'Exit Wizard',
-      action: (): void => {
-        console.log('Exit Wizard clicked');
+      action: (currentStep: IWizardStepProps): void => {
+        console.log('Exit Wizard clicked - currentStep: ' + currentStep.label);
       }
     };
 
     return action;
   }
 
-  private _getBackClickAction(): IAction {
-    const action: IAction = {
+  private _getBackClickAction(): IWizardStepAction {
+    const action: IWizardStepAction = {
       title: 'Go Back',
-      action: (): void => {
-        console.log('Go Back clicked');
+      action: (currentStep: IWizardStepProps): void => {
+        console.log('Go Back clicked - currentStep: ' + currentStep.label);
       }
     };
 
