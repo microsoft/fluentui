@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Feb 2019 13:40:44 GMT and should not be manually modified.
+
+## 6.137.0
+Mon, 11 Feb 2019 13:40:44 GMT
+
+### Minor changes
+
+- PivotItem: updating itemCount type to include strings
+- Pickers: Re-type onItemRemove in Suggestions to support the suggestions Generic type
+
+### Patches
+
+- In HoverCard, do not dismiss the card when the  prop is true and the event prompting the dismissal is the 'mouseleave' event from the card itself. Clicking outside, escape, etc will still dismiss the card.
+- Removed Href on Links that are disabled. This prevents inadvertent access to disabled links. Also prevents link focus rect bug
+- SpinButton: Only update value in state if newProps.value is defined
 
 ## 6.136.0
 Fri, 08 Feb 2019 13:37:21 GMT
