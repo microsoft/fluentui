@@ -111,7 +111,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   private _getCustomDivider = (dividerProps: IDividerAsProps): JSX.Element => {
     const tooltipText = dividerProps.item ? dividerProps.item.text : '';
     return (
-      <TooltipHost content={`Show ${tooltipText} contents`} id="myID" calloutProps={{ gapSpace: 0 }}>
+      <TooltipHost content={`Show ${tooltipText} contents`} calloutProps={{ gapSpace: 0 }}>
         <span style={{ cursor: 'pointer' }}>/</span>
       </TooltipHost>
     );
