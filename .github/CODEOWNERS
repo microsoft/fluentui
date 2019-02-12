@@ -73,7 +73,7 @@ Callout/  @joschect
 # Check/
 # Checkbox/
 ChoiceGroup/   @srideshpande
-# ColorPicker/
+ColorPicker/ @ecraig12345
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect

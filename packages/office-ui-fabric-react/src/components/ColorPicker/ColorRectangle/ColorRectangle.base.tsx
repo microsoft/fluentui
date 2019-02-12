@@ -22,6 +22,10 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   constructor(props: IColorRectangleProps) {
     super(props);
 
+    this._warnDeprecations({
+      onSVChanged: 'onChange'
+    });
+
     const { color } = this.props;
 
     this.state = {
@@ -79,7 +83,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   };
 
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { color, onSVChanged } = this.props;
+    const { color, onSVChanged, onChange } = this.props;
 
     if (!this._root.current) {
       return;
@@ -103,19 +107,19 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
       color: newColor
     });
 
+    if (onChange) {
+      onChange(ev, newColor);
+    }
+
     if (onSVChanged) {
       onSVChanged(newColor.s, newColor.v);
     }
+
     ev.preventDefault();
     ev.stopPropagation();
   };
 
   private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.off();
-
-    this.setState({
-      isAdjusting: false,
-      origin: undefined
-    });
   };
 }

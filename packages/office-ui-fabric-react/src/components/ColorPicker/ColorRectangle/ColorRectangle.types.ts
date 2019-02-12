@@ -36,9 +36,15 @@ export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
 
   /**
-   * Callback issued when the color changes.
+   * Callback for when the color changes.
+   * @deprecated Use `onChange`
    */
   onSVChanged?: (s: number, v: number) => void;
+
+  /**
+   * Callback for when the color changes.
+   */
+  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
 }
 
 export interface IColorRectangleStyleProps {
