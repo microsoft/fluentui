@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusZone: fixing issue where onActiveItemChanged was no longer firing.",
+      "comment": "Remove maximum width from Breadcrumb items",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

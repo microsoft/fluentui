@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.138.0",
+      "tag": "office-ui-fabric-react_v6.138.0",
+      "date": "Tue, 12 Feb 2019 13:36:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: adding type=\"button\" in Calendar buttons so they don't submit by default inside forms",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8272c4c861b4d1d44854aa71ec988ead7498d570"
+          },
+          {
+            "comment": "FocusZone: fixing issue where onActiveItemChanged was no longer firing.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5f5e887c168ed1402f011be19f51c40caad117cf"
+          },
+          {
+            "comment": "Fix ID usage in examples",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "eca5d800d3695916ab7c529d047545be6ff78519"
+          },
+          {
+            "comment": "Toggle: pass in native hidden prop to root element",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e4c7adb31dc9749f68d68fe79ba277340d739464"
+          },
+          {
+            "comment": "Tooltip: Updates examples to demonstrate how to tag aria attributes correctly",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "7390c7532247277249b3867c07239a41aa4a3859"
+          },
+          {
+            "comment": "Pickers: fix bug in ExtendedPicker demo and remove unneeded cast in EditingItem",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "7020ac61c62e19e3a7ca3ca601a047f6d288f560"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ComboBox: adds an autofillProps",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "2dfb2e5979961952c78cf5434866a1abc26ab275"
+          },
+          {
+            "comment": "Make ChoiceGroupOptions stylable",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "101f6e4b80ad6a131269ed7f393bedc8909b388e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.137.0",
       "tag": "office-ui-fabric-react_v6.137.0",
       "date": "Mon, 11 Feb 2019 13:40:44 GMT",

@@ -1,6 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 11 Feb 2019 13:40:44 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Feb 2019 13:36:43 GMT and should not be manually modified.
+
+## 6.138.0
+Tue, 12 Feb 2019 13:36:43 GMT
+
+### Minor changes
+
+- ComboBox: adds an autofillProps
+- Make ChoiceGroupOptions stylable
+
+### Patches
+
+- Calendar: adding type="button" in Calendar buttons so they don't submit by default inside forms
+- FocusZone: fixing issue where onActiveItemChanged was no longer firing.
+- Fix ID usage in examples
+- Toggle: pass in native hidden prop to root element
+- Tooltip: Updates examples to demonstrate how to tag aria attributes correctly
+- Pickers: fix bug in ExtendedPicker demo and remove unneeded cast in EditingItem
 
 ## 6.137.0
 Mon, 11 Feb 2019 13:40:44 GMT
