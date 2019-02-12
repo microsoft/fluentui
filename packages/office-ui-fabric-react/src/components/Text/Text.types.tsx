@@ -1,5 +1,5 @@
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '@uifabric/foundation';
-import { IFontStyles } from '@uifabric/styling';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IFontStyles } from '../../Styling';
 
 export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
 
@@ -23,17 +23,7 @@ export interface ITextProps
   /**
    * Optionally render the component as another component type or primitive.
    */
-  as?: string | React.ReactType<ITextProps>;
-
-  /**
-   * Optional class name for Text.
-   */
-  className?: string;
-
-  /**
-   * Inline styling.
-   */
-  style?: React.CSSProperties;
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Optional font type for Text.
@@ -41,15 +31,20 @@ export interface ITextProps
   variant?: keyof IFontStyles;
 
   /**
-   * Whether the text is displayed as an inline element.
-   * Note that inline does not support ellipsis truncation by default.
+   * Whether the text is displayed as a block element.
+   *
+   * Note that in order for ellipsis on overflow to work properly,
+   * `block` and `nowrap` should be set to true.
    */
-  inline?: boolean;
+  block?: boolean;
 
   /**
-   * Whether the text is wrapped.
+   * Whether the text is not wrapped.
+   *
+   * Note that in order for ellipsis on overflow to work properly,
+   * `block` and `nowrap` should be set to true.
    */
-  wrap?: boolean;
+  nowrap?: boolean;
 }
 
 export interface ITextTokens {}

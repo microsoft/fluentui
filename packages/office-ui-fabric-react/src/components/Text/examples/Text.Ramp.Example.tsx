@@ -1,6 +1,7 @@
 /** @jsx withSlots */
-import { Text, Stack, IStackSlot } from '@uifabric/experiments';
-import { IFontStyles } from '@uifabric/experiments/lib/Styling';
+// @codepen
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { IFontStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
   withSlots,
   createComponent,
@@ -9,7 +10,7 @@ import {
   IComponentStyles,
   IHTMLSlot,
   IStyleableComponentProps
-} from '@uifabric/experiments/lib/Foundation';
+} from 'office-ui-fabric-react/lib/Foundation';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
@@ -32,7 +33,7 @@ const Variants: ISetting<keyof IFontStyles>[] = [
 ];
 
 interface ITableSlots {
-  root?: IStackSlot;
+  root?: IHTMLSlot;
   table?: IHTMLSlot;
   header?: IHTMLSlot;
 }
@@ -49,19 +50,21 @@ type ITableComponent = IComponent<ITableProps, {}, ITableStyles>;
 
 const TableView: ITableComponent['view'] = props => {
   const Slots = getSlots<ITableProps, ITableSlots>(props, {
-    root: Stack,
+    root: 'div',
     table: 'table',
     header: 'tr'
   });
 
   return (
-    <Slots.root className={props.className} gap={20}>
-      <Text variant="medium">{props.title}</Text>
+    <Slots.root>
+      <Text variant="medium" nowrap block>
+        {props.title}
+      </Text>
       <Slots.table>
         <thead>
           <Slots.header>
-            {props.headers.map((header: string) => (
-              <Text key={header} as="td">
+            {props.headers.map((header: string, index: number) => (
+              <Text key={header + index} as="td" nowrap block>
                 {header}
               </Text>
             ))}
@@ -78,7 +81,8 @@ const Table: React.StatelessComponent<ITableProps> = createComponent({
   displayName: 'Table',
   styles: {
     table: {
-      borderCollapse: 'collapse'
+      borderCollapse: 'collapse',
+      margin: '10px 0'
     },
     header: {
       borderBottom: '1px solid black'
@@ -92,8 +96,8 @@ interface ITableRowProps {
 
 const TableRow: React.StatelessComponent<ITableRowProps> = (props: ITableRowProps) => (
   <tr>
-    {props.cells.map((cell: string) => (
-      <Text as="td" key={cell}>
+    {props.cells.map((cell: string, index: number) => (
+      <Text as="td" key={cell + index} nowrap block>
         {cell}
       </Text>
     ))}
@@ -101,22 +105,22 @@ const TableRow: React.StatelessComponent<ITableRowProps> = (props: ITableRowProp
 );
 
 export const TextRampExample = () => (
-  <Stack gap={40}>
-    <Text>Default text should render using the "default" variant.</Text>
-
+  <div>
     <Table title="Variants" headers={['Variant', 'Example', 'Usage']}>
-      {Variants.map((setting: ISetting<keyof IFontStyles>) => (
+      {Variants.map((setting: ISetting<keyof IFontStyles>, index: number) => (
         <TableRow
-          key={setting.name}
+          key={setting.name + index}
           cells={[
             setting.name,
-            <Text key={setting.name + 'text'} variant={setting.name}>
+            <Text key={setting.name + 'text' + index} variant={setting.name} nowrap block>
               {TestText}
             </Text>,
-            <Text key={setting.name + 'usage'}>setting.usage</Text>
+            <Text key={setting.name + 'usage' + index} nowrap block>
+              setting.usage
+            </Text>
           ]}
         />
       ))}
     </Table>
-  </Stack>
+  </div>
 );

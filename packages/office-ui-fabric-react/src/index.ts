@@ -70,6 +70,7 @@ export * from './Sticky';
 export * from './Styling';
 export * from './SwatchColorPicker';
 export * from './TeachingBubble';
+export * from './Text';
 export * from './TextField';
 export * from './ThemeGenerator';
 export * from './Toggle';

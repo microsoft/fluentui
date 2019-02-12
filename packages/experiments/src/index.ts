@@ -13,7 +13,6 @@ export * from './Sidebar';
 export * from './Signals';
 export * from './Stack';
 export * from './StaticList';
-export * from './Text';
 export * from './Tile';
 export * from './TilesList';
 export * from './Toggle';

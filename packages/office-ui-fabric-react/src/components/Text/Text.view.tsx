@@ -1,18 +1,18 @@
 /** @jsx withSlots */
-import { withSlots, getSlots } from '@uifabric/foundation';
-import { getNativeProps, divProperties } from '../../Utilities';
+import { withSlots, getSlots } from '../../Foundation';
+import { getNativeProps, htmlElementProperties } from '../../Utilities';
 import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 
-export const TextView: ITextComponent['view'] = (props: ITextProps) => {
+export const TextView: ITextComponent['view'] = props => {
   if (!props.children) {
     return null;
   }
 
-  const { inline, className, as: RootType = 'span', variant, wrap, ...rest } = props;
+  const { block, className, as: RootType = 'span', variant, nowrap, ...rest } = props;
 
   const Slots = getSlots<ITextProps, ITextSlots>(props, {
     root: RootType
   });
 
-  return <Slots.root {...getNativeProps(rest, divProperties)} />;
+  return <Slots.root {...getNativeProps(rest, htmlElementProperties)} />;
 };

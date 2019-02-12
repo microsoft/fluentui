@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { Text } from '../../Text';
+import { Text } from 'office-ui-fabric-react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { getNativeProps, buttonProperties } from 'office-ui-fabric-react/lib/Utilities';
 import { withSlots, getSlots } from '../../Foundation';

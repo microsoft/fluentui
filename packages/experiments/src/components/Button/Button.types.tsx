@@ -2,7 +2,7 @@ import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableCo
 import { IFontWeight } from 'office-ui-fabric-react';
 import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
 import { IStackSlot } from '../../Stack';
-import { ITextSlot } from '../../Text';
+import { ITextSlot } from 'office-ui-fabric-react/lib/Text';
 import { IBaseProps } from '../../Utilities';
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps>;
