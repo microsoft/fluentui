@@ -5,6 +5,7 @@ import {
   DefaultFontStyles,
   getGlobalClassNames,
   ScreenWidthMinMedium,
+  ScreenWidthMinLarge,
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile
@@ -43,7 +44,8 @@ const panelWidth = {
   auto: 'auto',
   xs: 272,
   sm: 340,
-  md: 643,
+  md1: 572,
+  md2: 644,
   lg: 940
 };
 
@@ -53,6 +55,31 @@ const panelMargin = {
   md: 48,
   lg: 428,
   xl: 176
+};
+
+const smallPanelSelectors = {
+  ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
+    width: panelWidth.sm
+  }
+};
+
+const mediumPanelSelectors = {
+  ['@media (min-width: ' + ScreenWidthMinLarge + 'px)']: {
+    width: panelWidth.md1
+  },
+  ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+    width: panelWidth.md2
+  }
+};
+
+const largePanelSelectors = {
+  ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+    left: panelMargin.md,
+    width: panelWidth.auto
+  },
+  ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+    left: panelMargin.lg
+  }
 };
 
 const commandBarHeight = '44px';
@@ -155,51 +182,40 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         maxHeight: '100%',
         bottom: 0,
         top: 0,
+        // (left, right, width) - Properties to be overridden depending on the type of the Panel and the screen breakpoint.
+        left: panelMargin.auto,
         right: panelMargin.none,
         width: panelWidth.full,
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
             maxHeight: windowHeight
-          },
-          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
-            width: panelWidth.sm,
-            left: panelMargin.auto
           }
         }
       },
       type === PanelType.smallFluid && {
-        width: panelWidth.full
+        left: panelMargin.none
       },
       type === PanelType.smallFixedNear && {
-        right: panelMargin.auto,
         left: panelMargin.none,
+        right: panelMargin.auto,
         width: panelWidth.xs
       },
       type === PanelType.smallFixedFar && {
-        width: panelWidth.xs,
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
-            width: panelWidth.sm
-          }
+          ...smallPanelSelectors
         }
       },
       type === PanelType.medium && {
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-            left: panelMargin.auto,
-            width: panelWidth.md
-          }
+          ...smallPanelSelectors,
+          ...mediumPanelSelectors
         }
       },
       (type === PanelType.large || type === PanelType.largeFixed) && {
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-            left: panelMargin.md,
-            width: panelWidth.auto
-          },
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-            left: panelMargin.lg
-          }
+          ...smallPanelSelectors,
+          ...mediumPanelSelectors,
+          ...largePanelSelectors
         }
       },
       type === PanelType.largeFixed && {
