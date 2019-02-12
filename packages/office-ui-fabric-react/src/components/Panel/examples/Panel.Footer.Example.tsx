@@ -14,11 +14,11 @@ export class PanelFooterExample extends React.Component<{}, IState> {
   public render() {
     return (
       <div>
-        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />
+        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
-          onDismiss={this._onClosePanel}
+          onDismiss={this._hidePanel}
           isFooterAtBottom={true}
           headerText="Panel with footer at bottom"
           closeButtonAriaLabel="Close"
@@ -30,22 +30,22 @@ export class PanelFooterExample extends React.Component<{}, IState> {
     );
   }
 
-  private _onClosePanel = () => {
-    this.setState({ showPanel: false });
-  };
-
   private _onRenderFooterContent = (): JSX.Element => {
     return (
       <div>
-        <PrimaryButton onClick={this._onClosePanel} style={{ marginRight: '8px' }}>
+        <PrimaryButton onClick={this._hidePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
-        <DefaultButton onClick={this._onClosePanel}>Cancel</DefaultButton>
+        <DefaultButton onClick={this._hidePanel}>Cancel</DefaultButton>
       </div>
     );
   };
 
-  private _onShowPanel = () => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
+  };
+
+  private _hidePanel = () => {
+    this.setState({ showPanel: false });
   };
 }
