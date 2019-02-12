@@ -1,6 +1,91 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Feb 2019 13:36:43 GMT and should not be manually modified.
+
+## 6.138.0
+Tue, 12 Feb 2019 13:36:43 GMT
+
+### Minor changes
+
+- ComboBox: adds an autofillProps
+- Make ChoiceGroupOptions stylable
+
+### Patches
+
+- Calendar: adding type="button" in Calendar buttons so they don't submit by default inside forms
+- FocusZone: fixing issue where onActiveItemChanged was no longer firing.
+- Fix ID usage in examples
+- Toggle: pass in native hidden prop to root element
+- Tooltip: Updates examples to demonstrate how to tag aria attributes correctly
+- Pickers: fix bug in ExtendedPicker demo and remove unneeded cast in EditingItem
+
+## 6.137.0
+Mon, 11 Feb 2019 13:40:44 GMT
+
+### Minor changes
+
+- PivotItem: updating itemCount type to include strings
+- Pickers: Re-type onItemRemove in Suggestions to support the suggestions Generic type
+
+### Patches
+
+- In HoverCard, do not dismiss the card when the  prop is true and the event prompting the dismissal is the 'mouseleave' event from the card itself. Clicking outside, escape, etc will still dismiss the card.
+- Removed Href on Links that are disabled. This prevents inadvertent access to disabled links. Also prevents link focus rect bug
+- SpinButton: Only update value in state if newProps.value is defined
+
+## 6.136.0
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Minor changes
+
+- Add textField to IDatePickerProps
+
+## 6.135.1
+Thu, 07 Feb 2019 13:32:39 GMT
+
+### Patches
+
+- DetailsList: Fixes the column header shifting upwards by 1px after drag and drop action.
+
+## 6.135.0
+Wed, 06 Feb 2019 13:38:07 GMT
+
+### Minor changes
+
+- Nav: add semantic colors styling to link
+
+### Patches
+
+- FocusTrapZone: Fixed FocusTrapZone to use the relatedTarget instead of document.activeElement to find what is losing focus
+- Fixing wrapping links' focus rect clipping problem with boxshadow styling.
+
+## 6.134.0
+Tue, 05 Feb 2019 13:35:00 GMT
+
+### Minor changes
+
+- MessageBar: mix in native props
+- Use React.ComponentType in ExtendedPeoplePicker for render props
+
+### Patches
+
+- DetailsList: render a simple column header for checkboxes in single selection mode
+- Fixing the implementation of the hidden prop wrt to focus, bounds and unnecessary mounts
+- Nav: Fixed an issue where nav link text overflow was not properly left aligned.
+- Remove popup outline
+
+## 6.133.0
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Minor changes
+
+- GroupHeader: exposes props of selection check button.
+
+### Patches
+
+- Clarify extended picker dont documentation
+- Update ThemesOverview.md documentation
+- Remove some unneeded casts + 'any's in ExtendedPeoplePicker
 
 ## 6.132.0
 Thu, 31 Jan 2019 20:10:48 GMT

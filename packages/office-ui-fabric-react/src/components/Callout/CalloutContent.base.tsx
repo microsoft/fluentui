@@ -65,7 +65,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _hostElement = React.createRef<HTMLDivElement>();
   private _calloutElement = React.createRef<HTMLDivElement>();
   private _targetWindow: Window;
-  private _bounds: IRectangle;
+  private _bounds: IRectangle | undefined;
   private _positionAttempts: number;
   private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
@@ -88,8 +88,8 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   }
 
   public componentDidUpdate() {
-    this._setInitialFocus();
     if (!this.props.hidden) {
+      this._setInitialFocus();
       if (!this._hasListeners) {
         this._addListeners();
       }
@@ -122,11 +122,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       this._setHeightOffsetEveryFrame();
     }
 
-    // if the callout becomes hidden, then remove any positions that were placed on it.
+    // if the callout becomes hidden, then remove any positions, bounds that were placed on it.
     if (newProps.hidden && newProps.hidden !== this.props.hidden) {
       this.setState({
         positions: undefined
       });
+      this._didSetInitialFocus = false;
+      this._bounds = undefined;
     }
 
     this._blockResetHeight = false;
@@ -203,21 +205,19 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         >
           {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
           {beakVisible && <div className={this._classNames.beakCurtain} />}
-          {!this.props.hidden && (
-            <Popup
-              role={role}
-              ariaLabel={ariaLabel}
-              ariaDescribedBy={ariaDescribedBy}
-              ariaLabelledBy={ariaLabelledBy}
-              className={this._classNames.calloutMain}
-              onDismiss={this.dismiss}
-              onScroll={onScroll}
-              shouldRestoreFocus={true}
-              style={overflowStyle}
-            >
-              {children}
-            </Popup>
-          )}
+          <Popup
+            role={role}
+            ariaLabel={ariaLabel}
+            ariaDescribedBy={ariaDescribedBy}
+            ariaLabelledBy={ariaLabelledBy}
+            className={this._classNames.calloutMain}
+            onDismiss={this.dismiss}
+            onScroll={onScroll}
+            shouldRestoreFocus={true}
+            style={overflowStyle}
+          >
+            {children}
+          </Popup>
         </div>
       </div>
     );

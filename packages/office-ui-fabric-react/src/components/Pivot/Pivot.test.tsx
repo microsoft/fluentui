@@ -77,4 +77,15 @@ describe('Pivot', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders Pivot correctly when itemCount is a string', () => {
+    const component = renderer.create(
+      <Pivot>
+        <PivotItem linkText="test" />
+        <PivotItem linkText="Test Link" itemCount="20+" />
+      </Pivot>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

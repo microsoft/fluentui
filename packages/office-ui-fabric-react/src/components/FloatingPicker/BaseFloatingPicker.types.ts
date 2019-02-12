@@ -147,8 +147,6 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
 
 /**
  * Props which are passed on to the inner Suggestions component
- *
- * TODO (adjective-object) remove the ' = any' before the next major version cut.
  */
 export type IBaseFloatingPickerSuggestionProps = Pick<
   ISuggestionsControlProps<any>,

@@ -198,9 +198,9 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
-  protected renderSelectedItemsList(): JSX.Element;
+  protected renderFloatingPicker(): JSX.Element;
   // (undocumented)
-  protected renderSuggestions(): JSX.Element;
+  protected renderSelectedItemsList(): JSX.Element;
   // (undocumented)
   protected root: React.RefObject<HTMLDivElement>;
   // (undocumented)
@@ -229,7 +229,7 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   // (undocumented)
   componentWillUnmount(): void;
   // (undocumented)
-  protected currentPromise: PromiseLike<any>;
+  protected currentPromise: PromiseLike<T[]>;
   // (undocumented)
   readonly currentSelectedSuggestionIndex: number;
   // (undocumented)
@@ -1782,8 +1782,8 @@ interface IBaseExtendedPickerProps<T> {
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
   onItemsRemoved?: (removedItems: T[]) => void;
   onPaste?: (pastedText: string) => T[];
-  onRenderFloatingPicker: (props: IBaseFloatingPickerProps<T>) => JSX.Element;
-  onRenderSelectedItems: (props: IBaseSelectedItemsListProps<T>) => JSX.Element;
+  onRenderFloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>>;
+  onRenderSelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>>;
   selectedItems?: T[];
   selectedItemsListProps: IBaseSelectedItemsListProps<T>;
   suggestionItems?: T[];
@@ -2452,6 +2452,7 @@ interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInpu
   onRenderField?: IRenderFunction<IChoiceGroupOption>;
   onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
   selectedImageSrc?: string;
+  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
   text: string;
 }
 
@@ -2464,7 +2465,6 @@ interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   onChange?: OnChangeCallback;
   onFocus?: OnFocusCallback;
   required?: boolean;
-  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
   theme?: ITheme;
 }
 
@@ -2899,6 +2899,7 @@ interface IComboBoxOptionStyles extends IButtonStyles {
 interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   allowFreeform?: boolean;
   autoComplete?: 'on' | 'off';
+  autofill?: IAutofillProps;
   buttonIconProps?: IIconProps;
   caretDownButtonStyles?: Partial<IButtonStyles>;
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
@@ -6701,6 +6702,7 @@ interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes
   strings?: IDatePickerStrings;
   styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
   tabIndex?: number;
+  textField?: ITextFieldProps;
   theme?: ITheme;
   today?: Date;
   underlined?: boolean;
@@ -8072,6 +8074,7 @@ interface IGroupDividerProps {
   compact?: boolean;
   // (undocumented)
   componentRef?: IRefObject<{}>;
+  // @deprecated
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
   footerText?: string;
   group?: IGroup;
@@ -8162,7 +8165,9 @@ interface IGroupFooterStyles {
 
 // @public (undocumented)
 interface IGroupHeaderProps extends IGroupDividerProps {
+  expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
   groupedListId?: string;
+  selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
   styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
 }
 
@@ -8774,6 +8779,7 @@ interface IMessageBar {
 // @public (undocumented)
 interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   actions?: JSX.Element;
+  // @deprecated
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IMessageBar>;
@@ -9479,7 +9485,7 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     [key: string]: string | number | boolean;
   }
   headerText?: string;
-  itemCount?: number;
+  itemCount?: number | string;
   itemIcon?: string;
   itemKey?: string;
   keytipProps?: IKeytipProps;
@@ -10047,7 +10053,7 @@ interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExtendedPers
   // (undocumented)
   onExpandGroup?: (item: IExtendedPersonaProps) => void;
   // (undocumented)
-  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IPersonaProps>) => JSX.Element;
+  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
   // (undocumented)
   removeMenuItemText?: string;
 }
@@ -10509,7 +10515,7 @@ interface ISpinButtonProps {
   // (undocumented)
   ariaValueText?: string;
   className?: string;
-  componentRef?: (component?: ISpinButton | null) => void;
+  componentRef?: IRefObject<ISpinButton>;
   decrementButtonAriaLabel?: string;
   decrementButtonIcon?: IIconProps;
   defaultValue?: string;
@@ -10543,7 +10549,6 @@ interface ISpinButtonProps {
 interface ISpinButtonState {
   isFocused: boolean;
   keyboardSpinDirection: KeyboardSpinDirection;
-  precision: number;
   value: string;
 }
 
@@ -10769,7 +10774,7 @@ interface ISuggestionsProps<T> extends React.Props<any> {
   onRenderNoResultFound?: IRenderFunction<void>;
   onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
-  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
   refocusSuggestions?: (keyCode: KeyCodes) => void;
   removeSuggestionAriaLabel?: string;
   resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
@@ -12223,7 +12228,7 @@ class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState>, impl
   constructor(props: ISpinButtonProps);
   componentWillReceiveProps(newProps: ISpinButtonProps): void;
   // (undocumented)
-  static defaultProps: ISpinButtonProps;
+  static defaultProps: DefaultProps;
   // (undocumented)
   focus(): void;
   // (undocumented)
@@ -12915,6 +12920,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ShimmeredDetailsList
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
+// WARNING: Unsupported export: DefaultProps
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: AnimationClassNames

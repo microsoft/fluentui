@@ -2,6 +2,96 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.47.4",
+      "tag": "@uifabric/dashboard_v0.47.4",
+      "date": "Tue, 12 Feb 2019 13:36:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Implement Wizard base control and SetupWizard control in dashboard package",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "33d6853cab79a550bfa2f8dd65939cf7237627ac"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.3 <7.0.0` to `>=6.54.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.3",
+      "tag": "@uifabric/dashboard_v0.47.3",
+      "date": "Wed, 06 Feb 2019 13:38:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding SubwayNav control in Dashboard",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "30929a19bd471440af88dd355fca7894d32dc5a7"
+          },
+          {
+            "comment": "Hide command bar from composite list if no commands exist",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "4ed6fa95dd1f89f1aafc9ea34b69283d214db4c8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.5` to `^0.28.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.134.0 <7.0.0` to `>=6.135.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.2",
+      "tag": "@uifabric/dashboard_v0.47.2",
+      "date": "Tue, 05 Feb 2019 13:35:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add id's for actions and onclick handler for multicount",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "f132e7dd52c66ef4d3a498e15d050b895a508bff"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.133.0 <7.0.0` to `>=6.134.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.1",
+      "tag": "@uifabric/dashboard_v0.47.1",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: fix content load error on L2 content mode",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a45ba1baed77be42d801bc4dc32e3a638f975fd9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.1 <7.0.0` to `>=6.54.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.132.0 <7.0.0` to `>=6.133.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.47.0",
       "tag": "@uifabric/dashboard_v0.47.0",
       "date": "Thu, 31 Jan 2019 13:36:13 GMT",

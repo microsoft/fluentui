@@ -62,6 +62,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'CompositeList',
           name: 'CompositeList',
           url: '#/examples/compositelist'
+        },
+        {
+          component: require<any>('../components/SubwayNav/SubwayNavPage').SubwayNavPage,
+          key: 'SubwayNav',
+          name: 'SubwayNav',
+          url: '#/examples/subwaynav'
+        },
+        {
+          component: require<any>('../components/Wizard/WizardPage').WizardPage,
+          key: 'Wizard',
+          name: 'Wizard',
+          url: '#/examples/wizard'
         }
       ]
     }

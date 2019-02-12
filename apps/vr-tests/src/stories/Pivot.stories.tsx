@@ -31,7 +31,7 @@ storiesOf('Pivot', module)
         <PivotItem linkText="My Files" itemCount={42} itemIcon="Emoji2">
           Content
         </PivotItem>
-        <PivotItem itemCount={23} itemIcon="Recent" />
+        <PivotItem itemCount="20+" itemIcon="Recent" />
         <PivotItem itemIcon="Globe" />
         <PivotItem linkText="Shared with me" itemIcon="Ringer" itemCount={1} />
       </Pivot>
