@@ -32,6 +32,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentBottom = React.createRef<HTMLDivElement>();
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
+  private _isFocusActive: boolean;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -40,6 +41,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom: false
     };
     this.distanceFromTop = 0;
+    this._isFocusActive = false;
   }
 
   public get root(): HTMLDivElement | null {
@@ -108,6 +110,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     if (prevState.isStickyTop !== this.state.isStickyTop || prevState.isStickyBottom !== this.state.isStickyBottom) {
+      if (this._isFocusActive) {
+        console.log('active element 115', scrollablePane.getActive());
+        const activeElement = scrollablePane.getActive();
+        if (activeElement) {
+          (activeElement as HTMLElement).focus();
+        }
+      }
       scrollablePane.updateStickyRefHeights();
       // Sync Sticky scroll position with content container on each update
       scrollablePane.syncScrollSticky(this);
@@ -240,6 +249,19 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyBottom =
           this.distanceFromTop - Math.floor(container.scrollTop) >=
           this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
+      }
+
+      if (
+        this.root.contains(document.activeElement) &&
+        (this.state.isStickyTop !== isStickyTop || this.state.isStickyBottom !== isStickyBottom)
+      ) {
+        this._isFocusActive = true;
+        console.log(document.activeElement);
+        if (this.context.scrollablePane && document.activeElement) {
+          this.context.scrollablePane.setActive(document.activeElement);
+        }
+      } else {
+        this._isFocusActive = false;
       }
 
       this.setState({

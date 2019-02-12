@@ -14,6 +14,8 @@ export interface IScrollablePaneContext {
     sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
+    setActive: (activeElement: Element) => void;
+    getActive: () => Element | undefined;
   };
 }
 
@@ -39,6 +41,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _stickies: Set<Sticky>;
   private _mutationObserver: MutationObserver;
   private _notifyThrottled: () => void;
+  private _activeElement: Element | undefined;
 
   constructor(props: IScrollablePaneProps) {
     super(props);
@@ -53,6 +56,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     };
 
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
+    this._activeElement = undefined;
   }
 
   public get root(): HTMLDivElement | null {
@@ -71,6 +75,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return this._contentContainer.current;
   }
 
+  public get activeElement(): Element | undefined {
+    return this._activeElement;
+  }
+
   public getChildContext(): IScrollablePaneContext {
     return {
       scrollablePane: {
@@ -81,7 +89,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         updateStickyRefHeights: this.updateStickyRefHeights,
         sortSticky: this.sortSticky,
         notifySubscribers: this.notifySubscribers,
-        syncScrollSticky: this.syncScrollSticky
+        syncScrollSticky: this.syncScrollSticky,
+        setActive: this.setActive,
+        getActive: this.getActive
       }
     };
   }
@@ -217,6 +227,15 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         sticky.setDistanceFromTop(this.contentContainer as HTMLDivElement);
       });
     }
+  }
+
+  public setActive(activeElement: Element) {
+    this._activeElement = activeElement;
+    console.log('line 232', this._activeElement);
+  }
+
+  public getActive(): Element | undefined {
+    return this._activeElement;
   }
 
   public forceLayoutUpdate() {
