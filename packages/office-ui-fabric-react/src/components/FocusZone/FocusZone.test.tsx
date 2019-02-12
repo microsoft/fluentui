@@ -5,7 +5,7 @@ import { setRTL, KeyCodes } from '../../Utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
 
-// tslint:disable:typedef
+// tslint:disable:typedef jsx-no-lambda
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
