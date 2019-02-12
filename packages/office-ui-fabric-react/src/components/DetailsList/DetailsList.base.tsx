@@ -198,20 +198,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         this._initialFocusedIndex = index;
       }
     }
-
-    // if (prevProps.selection !== this.props.selection) {
-    //   this._selection = this.props.selection || new Selection({ onSelectionChanged: undefined, getKey: this.props.getKey });
-    // }
-
-    // if (prevProps.dragDropEvents !== this.props.dragDropEvents) {
-    //   this._dragDropHelper = this.props.dragDropEvents
-    //     ? new DragDropHelper({
-    //         selection: this._selection,
-    //         minimumPixelsForDrag: this.props.minimumPixelsForDrag
-    //       })
-    //     : undefined;
-    // }
-
+    
     if (this.props.onDidUpdate) {
       this.props.onDidUpdate(this);
     }
