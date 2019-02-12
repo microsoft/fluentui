@@ -51,10 +51,24 @@ export class IconsPage extends React.Component<any, any> {
           <p>You can use Fabric's icons in a few ways, depending on if you're using Fabric React or Fabric Core.</p>
 
           <h3>Fabric Core</h3>
+          <p>
+            Begin by referencing the styles by adding this to the <code>head</code> element:
+          </p>
         </div>
 
         <CodeBlock language="html" isLightTheme={true}>
           {`<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css">`}
+        </CodeBlock>
+
+        <div className={pageStyles.u_maxTextWidth}>
+          <p>
+            Next, set the <code>dir</code> attribute on the body to indicate the reading direction for the page. This will select the
+            appropriate icon for the user's reading direction.
+          </p>
+        </div>
+
+        <CodeBlock language="html" isLightTheme={true}>
+          {`<body dir="ltr">`}
         </CodeBlock>
 
         <div className={pageStyles.u_maxTextWidth}>
