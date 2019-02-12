@@ -40,7 +40,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
     );
   }
 
-  private _updateColor = (ev: React.SyntheticEvent<HTMLElement>, colorObj: IColor): void => {
+  private _updateColor = (ev: React.MouseEvent<HTMLElement>, colorObj: IColor): void => {
     this.setState({ color: colorObj });
   };
 

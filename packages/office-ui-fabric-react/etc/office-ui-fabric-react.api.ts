@@ -2729,7 +2729,7 @@ interface IColorPickerProps extends IBaseProps<IColorPicker> {
   componentRef?: IRefObject<IColorPicker>;
   greenLabel?: string;
   hexLabel?: string;
-  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+  onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
   // @deprecated
   onColorChanged?: (color: string, colorObject: IColor) => void;
   redLabel?: string;
