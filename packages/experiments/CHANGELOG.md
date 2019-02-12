@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Feb 2019 13:36:42 GMT and should not be manually modified.
+
+## 6.54.4
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Stack: Modifying StackItem so that it can render multiple children.
 
 ## 6.54.3
 Fri, 08 Feb 2019 13:37:21 GMT

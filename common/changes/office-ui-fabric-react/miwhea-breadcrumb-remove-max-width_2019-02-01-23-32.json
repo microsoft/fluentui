@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: adds an autofillProps",
-      "type": "minor"
+      "comment": "Remove maximum width from Breadcrumb items",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

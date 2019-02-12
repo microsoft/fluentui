@@ -24,11 +24,6 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
   className?: string;
 
   /**
-   * @internal Internal use only - gives the Stack component a handle on the children of its Stack.Items
-   */
-  children?: (React.ReactElement<IStackItemProps> | string)[] | React.ReactElement<IStackItemProps> | string;
-
-  /**
    * Defines how much to grow the StackItem in proportion to its siblings.
    */
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';

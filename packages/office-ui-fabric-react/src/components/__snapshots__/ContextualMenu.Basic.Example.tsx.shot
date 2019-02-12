@@ -75,7 +75,6 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
           color: #212121;
         }
     data-is-focusable={true}
-    id="ContextualMenuBasicExample"
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}

@@ -24,7 +24,7 @@ export class TooltipCustomExample extends BaseComponent<any, any> {
         id="customID"
         directionalHint={DirectionalHint.bottomCenter}
       >
-        <DefaultButton aria-describedby="customID" text="Hover Over Me" />
+        <DefaultButton aria-labelledby="customID" text="Hover Over Me" />
       </TooltipHost>
     );
   }

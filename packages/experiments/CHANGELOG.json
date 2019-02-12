@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.54.4",
+      "tag": "@uifabric/experiments_v6.54.4",
+      "date": "Tue, 12 Feb 2019 13:36:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Modifying StackItem so that it can render multiple children.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "cbfcd33ac12268c68780bd523b79f7fd9493f854"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.4 <1.0.0` to `>=0.14.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.54.3",
       "tag": "@uifabric/experiments_v6.54.3",
       "date": "Fri, 08 Feb 2019 13:37:21 GMT",

@@ -22,7 +22,7 @@ exports[`Stack accepts custom className on child items 1`] = `
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -38,7 +38,7 @@ exports[`Stack accepts custom className on child items 1`] = `
         }
   >
     Item 1
-  </span>
+  </div>
   <div
     className=
 
@@ -135,7 +135,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -151,8 +151,8 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         }
   >
     Auto
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -168,8 +168,8 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         }
   >
     Stretch
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -185,8 +185,8 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         }
   >
     Baseline
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -202,8 +202,8 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         }
   >
     Start
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -219,8 +219,8 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         }
   >
     Center
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -236,7 +236,7 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
         }
   >
     End
-  </span>
+  </div>
 </div>
 `;
 
@@ -262,7 +262,7 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -277,8 +277,8 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -293,7 +293,7 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -319,7 +319,7 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -334,8 +334,8 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -350,7 +350,7 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -476,7 +476,7 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 1`] 
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -491,8 +491,8 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 1`] 
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -507,7 +507,7 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 1`] 
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -533,7 +533,7 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 2`] 
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -548,8 +548,8 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 2`] 
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -564,7 +564,7 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 2`] 
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -716,7 +716,7 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -731,8 +731,8 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -747,7 +747,7 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -773,7 +773,7 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -788,8 +788,8 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -804,7 +804,7 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -930,7 +930,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -946,8 +946,8 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         }
   >
     Auto
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -963,8 +963,8 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         }
   >
     Stretch
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -980,8 +980,8 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         }
   >
     Baseline
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -997,8 +997,8 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         }
   >
     Start
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -1014,8 +1014,8 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         }
   >
     Center
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -1031,7 +1031,7 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
         }
   >
     End
-  </span>
+  </div>
 </div>
 `;
 
@@ -1057,7 +1057,7 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 1`] = 
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -1072,8 +1072,8 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 1`] = 
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -1088,7 +1088,7 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 1`] = 
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -1114,7 +1114,7 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 2`] = 
         flex-shrink: 1;
       }
 >
-  <span
+  <div
     className=
         ms-StackItem
         {
@@ -1129,8 +1129,8 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 2`] = 
         }
   >
     Item 1
-  </span>
-  <span
+  </div>
+  <div
     className=
         ms-StackItem
         {
@@ -1145,7 +1145,7 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 2`] = 
         }
   >
     Item 2
-  </span>
+  </div>
 </div>
 `;
 
@@ -1254,7 +1254,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           flex-shrink: 1;
         }
   >
-    <span
+    <div
       className=
           ms-StackItem
           {
@@ -1269,8 +1269,8 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           }
     >
       1
-    </span>
-    <span
+    </div>
+    <div
       className=
           ms-StackItem
           {
@@ -1285,8 +1285,8 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           }
     >
       2
-    </span>
-    <span
+    </div>
+    <div
       className=
           ms-StackItem
           {
@@ -1301,7 +1301,7 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
           }
     >
       3
-    </span>
+    </div>
   </div>
 </div>
 `;
