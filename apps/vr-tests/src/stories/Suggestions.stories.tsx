@@ -54,7 +54,9 @@ const ProvinceSuggestionItem = ({ name, id }: Province) => (
       style={{
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
+        // Fix for text alignment in one line overflow contexts in webkit
+        textAlign: 'justify'
       }}
     >
       {name}
