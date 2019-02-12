@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.8.6",
+      "tag": "@uifabric/fabric-website_v6.8.6",
+      "date": "Fri, 08 Feb 2019 13:37:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix site links to allow for deeplinks to the customizations",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a351868eecdb888797848d76144395ce7c3b748f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.2 <7.0.0` to `>=6.54.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.135.1 <7.0.0` to `>=6.136.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.5",
       "tag": "@uifabric/fabric-website_v6.8.5",
       "date": "Wed, 23 Jan 2019 22:53:13 GMT",

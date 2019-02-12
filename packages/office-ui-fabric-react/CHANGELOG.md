@@ -1,6 +1,44 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Feb 2019 13:32:39 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Feb 2019 13:36:43 GMT and should not be manually modified.
+
+## 6.138.0
+Tue, 12 Feb 2019 13:36:43 GMT
+
+### Minor changes
+
+- ComboBox: adds an autofillProps
+- Make ChoiceGroupOptions stylable
+
+### Patches
+
+- Calendar: adding type="button" in Calendar buttons so they don't submit by default inside forms
+- FocusZone: fixing issue where onActiveItemChanged was no longer firing.
+- Fix ID usage in examples
+- Toggle: pass in native hidden prop to root element
+- Tooltip: Updates examples to demonstrate how to tag aria attributes correctly
+- Pickers: fix bug in ExtendedPicker demo and remove unneeded cast in EditingItem
+
+## 6.137.0
+Mon, 11 Feb 2019 13:40:44 GMT
+
+### Minor changes
+
+- PivotItem: updating itemCount type to include strings
+- Pickers: Re-type onItemRemove in Suggestions to support the suggestions Generic type
+
+### Patches
+
+- In HoverCard, do not dismiss the card when the  prop is true and the event prompting the dismissal is the 'mouseleave' event from the card itself. Clicking outside, escape, etc will still dismiss the card.
+- Removed Href on Links that are disabled. This prevents inadvertent access to disabled links. Also prevents link focus rect bug
+- SpinButton: Only update value in state if newProps.value is defined
+
+## 6.136.0
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Minor changes
+
+- Add textField to IDatePickerProps
 
 ## 6.135.1
 Thu, 07 Feb 2019 13:32:39 GMT
