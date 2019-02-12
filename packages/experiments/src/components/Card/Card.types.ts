@@ -28,11 +28,6 @@ export interface ICardSlots {
 //    If you don't want these props to be included in your component, just remove this extension.
 export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard> {
   /**
-   * Defines how to render the Card.
-   */
-  as?: string | React.ReactType<ICardProps>;
-
-  /**
    * Defines whether to render a regular or a compact Card.
    * @defaultvalue false
    */

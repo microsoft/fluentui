@@ -23,7 +23,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
     return (
       <Card>
         <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" coin={{ imageUrl: PersonaTestImages.personMale }} />
-        <Card.Item preventPadding>
+        <Card.Item disableChildPadding>
           <Image
             src="https://placehold.it/250x120"
             alt="Example implementation of the property image fit using the center value on an image larger than the frame."
@@ -38,7 +38,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
           Contoso Denver expansion design marketing hero guidelines
         </Text>
         <Text className={styles.textBold}>Is this recommendation helpful?</Text>
-        <Card.Item preventPadding>
+        <Card.Item disableChildPadding>
           <Stack
             horizontal
             horizontalAlign="space-between"

@@ -6,7 +6,7 @@ const GlobalClassNames = {
 };
 
 export const styles: ICardItemComponent['styles'] = (props, theme): ICardItemStylesReturnType => {
-  const { preventPadding } = props;
+  const { disableChildPadding } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -18,7 +18,7 @@ export const styles: ICardItemComponent['styles'] = (props, theme): ICardItemSty
         width: 'auto',
         height: 'auto'
       },
-      preventPadding && {
+      disableChildPadding && {
         marginLeft: '-12px',
         marginRight: '-13px'
       }

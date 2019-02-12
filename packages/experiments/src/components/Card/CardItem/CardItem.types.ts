@@ -14,15 +14,10 @@ export type ICardItemStylesReturnType = ReturnType<Extract<ICardItemComponent['s
 
 export interface ICardItemProps extends ICardItemSlots, IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles> {
   /**
-   * Defines how to render the CardItem.
-   */
-  as?: string | React.ReactType<ICardItemProps>;
-
-  /**
-   * Defines if the default padding applies to this CardItem or not.
+   * Defines if the default horizontal padding of the Card applies to this CardItem child or not.
    * @defaultvalue false
    */
-  preventPadding?: boolean;
+  disableChildPadding?: boolean;
 }
 
 export interface ICardItemTokens {}
