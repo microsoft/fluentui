@@ -1,5 +1,5 @@
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
-import { IFontStyles } from '../../Styling';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '@uifabric/foundation';
+import { IFontStyles } from '@uifabric/styling';
 
 export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
 
@@ -16,7 +16,10 @@ export interface ITextSlots {
 }
 
 // Inputs to the component
-export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles> {
+export interface ITextProps
+  extends ITextSlots,
+    IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>,
+    React.HTMLAttributes<HTMLElement> {
   /**
    * Optionally render the component as another component type or primitive.
    */

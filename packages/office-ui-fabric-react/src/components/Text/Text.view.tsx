@@ -1,9 +1,9 @@
 /** @jsx withSlots */
-import { withSlots, getSlots } from '../../Foundation';
+import { withSlots, getSlots } from '@uifabric/foundation';
 import { getNativeProps, divProperties } from '../../Utilities';
 import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 
-export const TextView: ITextComponent['view'] = props => {
+export const TextView: ITextComponent['view'] = (props: ITextProps) => {
   if (!props.children) {
     return null;
   }

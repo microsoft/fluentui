@@ -1,6 +1,8 @@
-import { ITextComponent, ITextStyles, ITextStylesReturnType } from './Text.types';
+import { ITextComponent, ITextStyles, ITextStylesReturnType, ITextProps } from './Text.types';
 
-export const TextStyles: ITextComponent['styles'] = (props, theme): ITextStylesReturnType => {
+import { ITheme } from '@uifabric/styling';
+
+export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: ITheme): ITextStylesReturnType => {
   const { as, className, inline, wrap, variant } = props;
   const { fonts } = theme;
   const variantObject = variant && fonts[variant] ? fonts[variant] : fonts.medium;
