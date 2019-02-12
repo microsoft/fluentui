@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Stack: Renaming preventShrink to disableShrink in Stack and to disableChildShrink in StackItem. Removing defaultProps from StackStatics.",
+      "comment": "Stack: Renaming preventShrink to disableShrink in Stack and StackItem. Removing defaultProps from StackStatics.",
       "type": "minor"
     }
   ],
