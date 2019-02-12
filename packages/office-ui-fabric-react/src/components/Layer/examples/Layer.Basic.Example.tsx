@@ -9,11 +9,11 @@ import * as React from 'react';
 import './Layer.Example.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export interface IState {
+export interface ILayerContentExampleState {
   time: string;
 }
 
-export class LayerContentExample extends BaseComponent<{}, IState> {
+export class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
   public static contextTypes = {
     message: PropTypes.string
   };

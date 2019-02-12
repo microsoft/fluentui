@@ -2,11 +2,11 @@ import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button'
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
 
-export interface IState {
+export interface IPanelFooterExampleState {
   showPanel: boolean;
 }
 
-export class PanelFooterExample extends React.Component<{}, IState> {
+export class PanelFooterExample extends React.Component<{}, IPanelFooterExampleState> {
   public state = {
     showPanel: false
   };

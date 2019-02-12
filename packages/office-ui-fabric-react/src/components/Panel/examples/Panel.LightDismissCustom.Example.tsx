@@ -3,12 +3,12 @@ import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dia
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
 
-export interface IState {
+export interface IPanelLightDismissCustomExampleState {
   showPanel: boolean;
   hideDialog: boolean;
 }
 
-export class PanelLightDismissCustomExample extends React.Component<{}, IState> {
+export class PanelLightDismissCustomExample extends React.Component<{}, IPanelLightDismissCustomExampleState> {
   public state = {
     showPanel: false,
     hideDialog: true

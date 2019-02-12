@@ -4,11 +4,11 @@ import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
 
-export interface IState {
+export interface IPanelSmallRightExampleState {
   showPanel: boolean;
 }
 
-export class PanelSmallRightExample extends React.Component<{}, IState> {
+export class PanelSmallRightExample extends React.Component<{}, IPanelSmallRightExampleState> {
   public state = {
     showPanel: false
   };

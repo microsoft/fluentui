@@ -4,12 +4,12 @@ import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import * as React from 'react';
 
-export interface IPanelPreventDefaultExample {
+export interface IPanelPreventDefaultExampleState {
   showPanel: boolean;
   allowEsc: boolean;
 }
 
-export class PanelPreventDefaultExample extends React.Component<{}, IPanelPreventDefaultExample> {
+export class PanelPreventDefaultExample extends React.Component<{}, IPanelPreventDefaultExampleState> {
   public state = {
     showPanel: false,
     allowEsc: true
