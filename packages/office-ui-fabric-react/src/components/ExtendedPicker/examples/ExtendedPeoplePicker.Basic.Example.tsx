@@ -38,7 +38,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
   private _focusZoneProps: IFocusZoneProps;
-  private _suggestionProps: IBaseFloatingPickerSuggestionProps<IPersonaProps>;
+  private _suggestionProps: IBaseFloatingPickerSuggestionProps;
 
   constructor(props: {}) {
     super(props);

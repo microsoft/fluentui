@@ -89,7 +89,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    *
    * TODO (adjective-object) remove the '| any' before the next major version
    */
-  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T | any>;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
@@ -150,7 +150,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
  *
  * TODO (adjective-object) remove the ' = any' before the next major version cut.
  */
-export type IBaseFloatingPickerSuggestionProps<T = any> = Pick<
-  ISuggestionsControlProps<T>,
+export type IBaseFloatingPickerSuggestionProps = Pick<
+  ISuggestionsControlProps<any>,
   'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
 >;

@@ -59,7 +59,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
   };
 
   private _renderFloatingPicker(): JSX.Element {
-    const suggestionProps: IBaseFloatingPickerSuggestionProps<IPersonaProps> = {
+    const suggestionProps: IBaseFloatingPickerSuggestionProps = {
       footerItemsProps: [
         {
           renderItem: () => {
