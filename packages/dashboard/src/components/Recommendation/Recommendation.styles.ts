@@ -102,13 +102,6 @@ export const getRecommendationBannerStyles = (props: IRecommendationStyleProps):
     recommendationCommandRow: {
       alignSelf: 'flex-end'
     },
-    imageIllustrationContainerStyle: {
-      flex: 1,
-      display: 'flex'
-    },
-    imageIllustrationStyle: {
-      flex: 1
-    },
     chartVisualizationContainerStyle: {
       flex: 1,
       justifyContent: 'center',

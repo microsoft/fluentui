@@ -22,6 +22,7 @@ import { CardComponentStyles } from './Recommendation.styles';
 /* Utilities */
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { AutoFontSize } from 'auto-fontsize';
+import { ImageVisualization } from './Visualization/ImageVisualization';
 
 const getClassNames = classNamesFunction<IRecommendationStyleProps, IRecommendationStyles>();
 const maxSupportedAutoFont = 28;
@@ -191,28 +192,15 @@ export class RecommendationBannerBase extends React.Component<IRecommendationPro
   }
 
   private _getVisualizationComponent(): JSX.Element | null {
-    const { recommendationVisualization } = this.props;
+    const { recommendationVisualization, imageVisualizationSrc, imageVisualizationAltText } = this.props;
     switch (recommendationVisualization) {
       case VisualizationType.ImageIllustration:
-        return this._renderImageIllustrationVisualization();
+        return <ImageVisualization imageVisualizationSrc={imageVisualizationSrc} imageAltText={imageVisualizationAltText} />;
       case VisualizationType.MultiStackBarChart:
         return this._renderStackedBarChartVisualization();
       default:
         return null;
     }
-  }
-
-  private _renderImageIllustrationVisualization(): JSX.Element | null {
-    const { imageVisualizationSrc } = this.props;
-    if (imageVisualizationSrc) {
-      return (
-        <div className={this.classNames.imageIllustrationContainerStyle}>
-          <img src={imageVisualizationSrc} className={this.classNames.imageIllustrationStyle} />
-        </div>
-      );
-    }
-
-    return null;
   }
 
   private _renderStackedBarChartVisualization(): JSX.Element | null {

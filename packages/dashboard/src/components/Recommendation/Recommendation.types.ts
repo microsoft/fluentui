@@ -101,6 +101,16 @@ export interface IRecommendationProps {
   imageVisualizationSrc?: string;
 
   /**
+   * If RecommendationVisualization is ImageIllustration,
+   * imageVisalizationAltText represents the altText to be displayed
+   * for the image
+   *
+   * @type {string}
+   * @memberof IRecommendationProps
+   */
+  imageVisualizationAltText?: string;
+
+  /**
    * If RecommendationVisualization is StackedBarChart variation
    * chartVisualizationData is a mandatory property that needs
    * the specific schema of datapoints to construct the chart
@@ -240,16 +250,6 @@ export interface IRecommendationStyles {
    * Style for the Recommendation flex row: visualization
    */
   recommendationRowContainer: IStyle;
-
-  /**
-   * Style for ImageIllustration container
-   */
-  imageIllustrationContainerStyle: IStyle;
-
-  /**
-   * Style for ImageIllustration style
-   */
-  imageIllustrationStyle: IStyle;
 
   /**
    * Style for the ChartVisualization container
