@@ -154,11 +154,11 @@ ReactDOM.render(<MyIconButton />, document.body.firstChild);
           <h3>Fabric Icons tool</h3>
 
           <p>
-            The Fabric Icons tool, <a href="https://aka.ms/uifabric-icons">https://aka.ms/uifabric-icons</a>, lets you search and browse all
-            of Fabric's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are
+            The Fabric Icons tool, <a href="https://aka.ms/uifabric-icons">{'https://aka.ms/uifabric-icons'}</a>, lets you search and browse
+            all of Fabric's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are
             drop-in replacements for the default Fabric Core and Fabric React icon sets. In addition, the Fabric Icons tool is updated with
             new icons several times a month, whereas the default Fabric set is updated only occasionally. You can see detailed docs for the
-            tool at <a href="https://aka.ms/uifabric-icons?help">https://aka.ms/uifabric-icons?help</a>.
+            tool at <a href="https://aka.ms/uifabric-icons?help">{'https://aka.ms/uifabric-icons?help'}</a>.
           </p>
         </div>
 
