@@ -198,7 +198,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         this._initialFocusedIndex = index;
       }
     }
-    
     if (this.props.onDidUpdate) {
       this.props.onDidUpdate(this);
     }
