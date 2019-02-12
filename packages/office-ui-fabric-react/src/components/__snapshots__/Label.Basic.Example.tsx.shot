@@ -116,7 +116,7 @@ exports[`Component Examples renders Label.Basic.Example.tsx correctly 1`] = `
           padding-top: 5px;
           word-wrap: break-word;
         }
-    htmlFor="anInput"
+    htmlFor="anInput0"
   >
     A Label for An Input
   </label>
@@ -211,7 +211,7 @@ exports[`Component Examples renders Label.Basic.Example.tsx correctly 1`] = `
                 color: #666666;
                 opacity: 1;
               }
-          id="anInput"
+          id="anInput0"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
