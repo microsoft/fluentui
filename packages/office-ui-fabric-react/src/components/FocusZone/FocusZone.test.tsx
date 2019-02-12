@@ -230,6 +230,35 @@ describe('FocusZone', () => {
     expect(document.activeElement).toBe(host.querySelector('#b'));
   });
 
+  it('can call onActiveItemChanged when the active item is changed', () => {
+    let called = false;
+    const component = ReactTestUtils.renderIntoDocument(
+      <FocusZone onActiveElementChanged={() => (called = true)}>
+        <button key="a" id="a" data-is-visible="true">
+          button a
+        </button>
+        <button key="b" id="b" data-is-visible="true">
+          button b
+        </button>
+      </FocusZone>
+    );
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!!.firstChild as Element;
+    const buttonA = focusZone.querySelector('#a') as HTMLElement;
+    const buttonB = focusZone.querySelector('#b') as HTMLElement;
+
+    ReactTestUtils.Simulate.mouseDown(focusZone, { target: buttonA });
+    ReactTestUtils.Simulate.focus(focusZone, { target: buttonA });
+
+    expect(called).toEqual(true);
+    called = false;
+
+    ReactTestUtils.Simulate.mouseDown(focusZone, { target: buttonB });
+    ReactTestUtils.Simulate.focus(focusZone, { target: buttonB });
+
+    expect(called).toEqual(true);
+    called = false;
+  });
+
   describe('parking and unparking', () => {
     let buttonA: HTMLElement;
 
