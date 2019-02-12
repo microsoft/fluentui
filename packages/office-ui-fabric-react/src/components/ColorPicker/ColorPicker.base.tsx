@@ -199,7 +199,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   }
 }
 
-function _getColorFromProps(props: IColorPickerProps) {
+function _getColorFromProps(props: IColorPickerProps): IColor | undefined {
   const { color } = props;
   return typeof color === 'string' ? getColorFromString(color) : color;
 }
