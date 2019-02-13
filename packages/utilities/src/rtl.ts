@@ -20,9 +20,8 @@ export function getRTL(): boolean {
       setRTL(_isRTL);
     }
 
-    let doc = getDocument();
-    if (_isRTL === undefined && doc) {
-      _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
+    if (_isRTL === undefined) {
+      _isRTL = getDocumentRTL();
       mergeStylesSetRTL(_isRTL);
     }
   }
@@ -60,4 +59,23 @@ export function getRTLSafeKeyCode(key: number): number {
   }
 
   return key;
+}
+
+/**
+ * Helper utility that gets dir attribute from document elements.
+ * @returns The RTL state of the document (true if in RTL.)
+ */
+export function getDocumentRTL(): boolean {
+  let doc = getDocument();
+  let rtlAttribute;
+
+  if (doc) {
+    rtlAttribute = doc.head.getAttribute('dir');
+    if (!rtlAttribute) {
+      // Fall back to dir attribute on body
+      rtlAttribute = doc.body.getAttribute('dir');
+    }
+  }
+
+  return rtlAttribute === 'rtl';
 }
