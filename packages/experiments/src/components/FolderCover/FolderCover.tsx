@@ -78,21 +78,15 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
     } = this.props;
 
     const assets = ASSETS[size][type];
-    const MetadataIcon = (): JSX.Element | null => {
-      return metadata ? (
-        <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata, isFluent && FolderCoverStyles.isFluent)}>
-          {metadata}
-        </span>
-      ) : null;
-    };
+    const metadataIcon = metadata ? (
+      <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata, isFluent && FolderCoverStyles.isFluent)}>{metadata}</span>
+    ) : null;
 
-    const SignalIcon = (): JSX.Element | null => {
-      return signal ? (
-        <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, isFluent ? SignalStyles.isFluent : SignalStyles.dark)}>
-          {signal}
-        </span>
-      ) : null;
-    };
+    const signalIcon = signal ? (
+      <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, isFluent ? SignalStyles.isFluent : SignalStyles.dark)}>
+        {signal}
+      </span>
+    ) : null;
     return (
       <div
         {...divProps}
@@ -113,13 +107,13 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
         <Icon aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} iconName={assets.front} />
         {isFluent ? (
           <React.Fragment>
-            <MetadataIcon />
-            <SignalIcon />
+            {metadataIcon}
+            {signalIcon}
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <SignalIcon />
-            <MetadataIcon />
+            {signalIcon}
+            {metadataIcon}
           </React.Fragment>
         )}
       </div>
