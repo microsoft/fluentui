@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '../../../Foundation';
 import { ICardItemComponent, ICardItemProps, ICardItemSlots } from './CardItem.types';
-import { styles } from './CardItem.styles';
+import { CardItemStyles as styles } from './CardItem.styles';
 
 const view: ICardItemComponent['view'] = props => {
   const { children } = props;

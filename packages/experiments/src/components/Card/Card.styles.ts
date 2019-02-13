@@ -6,8 +6,6 @@ const GlobalClassNames = {
   stack: 'ms-Card-stack'
 };
 
-export const defaultPadding = 12;
-
 export const CardTokens: ICardComponent['tokens'] = (props, theme): ICardTokenReturnType => [];
 
 export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICardStylesReturnType => {
@@ -23,7 +21,7 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
         borderWidth: '1px',
         borderStyle: 'solid',
         boxShadow: '1px 2px lightgray',
-        padding: defaultPadding,
+        padding: 12,
         height: '350px',
         width: '250px'
       }
