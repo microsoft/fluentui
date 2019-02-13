@@ -8,12 +8,12 @@ import { IImageVisualizationProps, IImageVisualizationStyles } from './ImageVisu
 export const ImageVisualization: React.SFC<IImageVisualizationProps> = (props: IImageVisualizationProps) => {
   const getClassNames = classNamesFunction<{}, IImageVisualizationStyles>();
   const classNames = getClassNames(getImageVisualizationStyles);
-  const { imageVisualizationSrc, imageAltText } = props;
+  const { imageSrc, imageAlt } = props;
 
-  if (imageVisualizationSrc) {
+  if (imageSrc) {
     return (
       <div className={classNames.imageIllustrationContainerStyle}>
-        <img src={imageVisualizationSrc} alt={imageAltText} className={classNames.imageIllustrationStyle} />
+        <img src={imageSrc} alt={imageAlt} className={classNames.imageIllustrationStyle} />
       </div>
     );
   }

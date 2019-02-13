@@ -10,7 +10,7 @@ export interface IImageVisualizationProps {
    * @type {string}
    * @memberof IImageVisualizationProps
    */
-  imageVisualizationSrc?: string;
+  imageSrc?: string;
 
   /**
    * Alt text to be displayed
@@ -18,7 +18,7 @@ export interface IImageVisualizationProps {
    * @type {string}
    * @memberof IImageVisualizationProps
    */
-  imageAltText?: string;
+  imageAlt?: string;
 }
 
 /**

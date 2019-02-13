@@ -2,19 +2,13 @@ import * as React from 'react';
 
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IChartProps, IChartDataPoint, MultiStackedBarChart } from '@uifabric/charting';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { ImageVisualization } from './Visualization/ImageVisualization';
+import { MultiStackedBarChartVisualization } from './Visualization/MultiStackedBarChartVisualization';
 import { CardFrame, ICardDropDownOption } from '../Card/CardFrame/index';
 
 /* Types for props and styles */
-import {
-  IRecommendationBannerChartData,
-  IRecommendationBannerChartDataPoint,
-  IRecommendationProps,
-  IRecommendationStyles,
-  IRecommendationStyleProps,
-  VisualizationType
-} from './Recommendation.types';
+import { IRecommendationProps, IRecommendationStyles, IRecommendationStyleProps, VisualizationType } from './Recommendation.types';
 
 /* Styles for CardComponent and Recommendation Card */
 import { CardComponentStyles } from './Recommendation.styles';
@@ -22,7 +16,6 @@ import { CardComponentStyles } from './Recommendation.styles';
 /* Utilities */
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { AutoFontSize } from 'auto-fontsize';
-import { ImageVisualization } from './Visualization/ImageVisualization';
 
 const getClassNames = classNamesFunction<IRecommendationStyleProps, IRecommendationStyles>();
 const maxSupportedAutoFont = 28;
@@ -192,53 +185,14 @@ export class RecommendationBannerBase extends React.Component<IRecommendationPro
   }
 
   private _getVisualizationComponent(): JSX.Element | null {
-    const { recommendationVisualization, imageVisualizationSrc, imageVisualizationAltText } = this.props;
+    const { recommendationVisualization, imageVisualizationSrc, imageVisualizationAltText, chartVisualizationData } = this.props;
     switch (recommendationVisualization) {
       case VisualizationType.ImageIllustration:
-        return <ImageVisualization imageVisualizationSrc={imageVisualizationSrc} imageAltText={imageVisualizationAltText} />;
+        return <ImageVisualization imageSrc={imageVisualizationSrc} imageAlt={imageVisualizationAltText} />;
       case VisualizationType.MultiStackBarChart:
-        return this._renderStackedBarChartVisualization();
+        return <MultiStackedBarChartVisualization visualizationDatapoints={chartVisualizationData} />;
       default:
         return null;
     }
-  }
-
-  private _renderStackedBarChartVisualization(): JSX.Element | null {
-    const { chartVisualizationData } = this.props;
-    const legendColors = ['#0078D4', '#0B6A0B', '#662D91', '#038387', '#00AE56'];
-    const legendColorLength = legendColors.length;
-    let counter = 0;
-    const chartData: IChartProps[] = [];
-    const hideRatio: boolean[] = [];
-
-    if (chartVisualizationData) {
-      chartVisualizationData.forEach((data: IRecommendationBannerChartData) => {
-        const chartDataPoints: IChartDataPoint[] = data.chartData.map((point: IRecommendationBannerChartDataPoint) => {
-          return {
-            legend: point.datapointText,
-            data: point.datapointValue,
-            color: legendColors[counter++ % legendColorLength]
-          };
-        });
-
-        const chartProp: IChartProps = {
-          chartTitle: data.chartTitle,
-          chartData: chartDataPoints
-        };
-
-        chartData.push(chartProp);
-        hideRatio.push(true);
-      });
-
-      return (
-        <div className={this.classNames.chartVisualizationContainerStyle}>
-          <div className={this.classNames.chartVisualizationStyle}>
-            <MultiStackedBarChart data={chartData} hideRatio={hideRatio} />
-          </div>
-        </div>
-      );
-    }
-
-    return null;
   }
 }

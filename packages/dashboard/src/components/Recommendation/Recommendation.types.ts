@@ -250,14 +250,4 @@ export interface IRecommendationStyles {
    * Style for the Recommendation flex row: visualization
    */
   recommendationRowContainer: IStyle;
-
-  /**
-   * Style for the ChartVisualization container
-   */
-  chartVisualizationContainerStyle: IStyle;
-
-  /**
-   * Style for the Chart Visualization
-   */
-  chartVisualizationStyle: IStyle;
 }
