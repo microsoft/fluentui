@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Include component markdown files in lib.",
+      "comment": "Include component markdown files in npm package.",
       "type": "patch"
     }
   ],
