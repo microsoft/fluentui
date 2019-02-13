@@ -369,7 +369,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     description: [
       classNames.description,
       {
-        color: semanticColors.bodyText,
+        color: semanticColors.bodySubtext,
         fontSize: FontSizes.xSmall
       }
     ],
