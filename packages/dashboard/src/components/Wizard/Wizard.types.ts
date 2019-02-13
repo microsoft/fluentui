@@ -8,10 +8,18 @@ export interface IWizardProps {
   wizardComplete?: boolean;
 
   allowSkipAhead?: boolean;
+
+  stepToShow?: IWizardStepProps;
 }
 
 export interface IWizardStepProps {
   id: string;
+
+  /**
+   * Optional ID for the parent of the step.
+   * to aid in data operations
+   */
+  parentId?: string;
 
   label: string;
 
@@ -21,7 +29,7 @@ export interface IWizardStepProps {
 
   isSubStep?: boolean;
 
-  onClickStep: (step: ISubwayNavNodeProps) => void;
+  onClickStep?: (step: ISubwayNavNodeProps) => void;
 
   wizardContent?: IWizardContentProps;
 
@@ -45,6 +53,10 @@ export interface IWizardStepAction {
 
   // Action is disabled or not
   disabled?: boolean;
+
+  className?: string;
+
+  currentStep?: IWizardStepProps;
 }
 
 export interface IWizardTitleProps {

@@ -20,10 +20,8 @@ export const getSetupWizardStyles = (): ISetupWizardStyles => {
     },
     titleSection: {
       border: '1px solid #E1DFDD',
-      height: '75px'
-    },
-    title: {
-      margin: '30px'
+      height: '75px',
+      padding: '30px'
     }
   };
 };

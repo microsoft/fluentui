@@ -1,5 +1,9 @@
 import { ISetupWizardActionBarStyles } from './SetupWizardActionBar.types';
 
+const actionLinkStyle = {
+  color: '#605E5C'
+};
+
 export const getStyles = (): ISetupWizardActionBarStyles => {
   return {
     root: {
@@ -11,22 +15,28 @@ export const getStyles = (): ISetupWizardActionBarStyles => {
       height: '75px',
       alignItems: 'center'
     },
-    actionLink: {
-      color: '#605E5C'
-    },
-    backAction: {
-      fontSize: '14px',
-      marginLeft: '30px',
-      width: '221px'
-    },
-    mainAction: {
-      fontSize: '28px',
-      marginLeft: '30px',
-      flexGrow: '1'
-    },
-    exitAction: {
-      fontSize: '14px',
-      marginRight: '30px'
-    }
+    backAction: [
+      actionLinkStyle,
+      {
+        fontSize: '14px',
+        marginLeft: '30px',
+        width: '221px'
+      }
+    ],
+    mainAction: [
+      actionLinkStyle,
+      {
+        fontSize: '28px',
+        marginLeft: '30px',
+        flexGrow: '1'
+      }
+    ],
+    exitAction: [
+      actionLinkStyle,
+      {
+        fontSize: '14px',
+        marginRight: '30px'
+      }
+    ]
   };
 };

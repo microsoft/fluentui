@@ -46,11 +46,7 @@ export class SubwayNavBasicExample extends React.Component<{}, ISubwayNavBasicEx
   }
 
   public render(): JSX.Element {
-    return (
-      <div>
-        <SubwayNav steps={this.steps} />
-      </div>
-    );
+    return <SubwayNav steps={this.steps} />;
   }
 
   private _handleClickStep(step: ISubwayNavNodeProps): void {
