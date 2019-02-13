@@ -13,7 +13,7 @@ export const ImageVisualization: React.SFC<IImageVisualizationProps> = (props: I
   if (imageSrc) {
     return (
       <div className={classNames.imageIllustrationContainerStyle}>
-        <img src={imageSrc} alt={imageAlt} className={classNames.imageIllustrationStyle} />
+        <img src={imageSrc} alt={imageAlt} className={classNames.imageIllustrationStyle} aria-hidden={true} />
       </div>
     );
   }
