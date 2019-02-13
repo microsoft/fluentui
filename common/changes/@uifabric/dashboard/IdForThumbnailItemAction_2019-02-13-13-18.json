@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Adding SubwayNav control in Dashboard",
+      "comment": "Add Id for Thumbnail item actions",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/dashboard",
-  "email": "ashasun@microsoft.com"
+  "email": "v-ragor@microsoft.com"
 }

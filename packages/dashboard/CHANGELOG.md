@@ -1,6 +1,21 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 05 Feb 2019 13:35:00 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Feb 2019 13:36:42 GMT and should not be manually modified.
+
+## 0.47.4
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Implement Wizard base control and SetupWizard control in dashboard package
+
+## 0.47.3
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- Adding SubwayNav control in Dashboard
+- Hide command bar from composite list if no commands exist
 
 ## 0.47.2
 Tue, 05 Feb 2019 13:35:00 GMT

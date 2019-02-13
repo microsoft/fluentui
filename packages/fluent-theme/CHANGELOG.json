@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.14.0",
+      "tag": "@uifabric/fluent-theme_v0.14.0",
+      "date": "Tue, 12 Feb 2019 13:36:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: adds minor adjustments to align to new fluent style patterns.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7c7b532230b69757253309e2210ee091f5bd63aa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.4",
       "tag": "@uifabric/fluent-theme_v0.13.4",
       "date": "Mon, 28 Jan 2019 13:35:27 GMT",

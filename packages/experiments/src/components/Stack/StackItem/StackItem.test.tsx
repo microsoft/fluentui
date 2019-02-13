@@ -61,9 +61,9 @@ describe('Stack Item', () => {
       </Stack>
     );
 
-    const stackItem = wrapper.find('span').at(0);
+    const stackItem = wrapper.find('div').at(1);
     const stackItemClass = stackItem.props().className;
-    const child = wrapper.find('span').at(1);
+    const child = wrapper.find('span').at(0);
     const childClass = child.props().className;
 
     expect(stackItemClass).toContain(stackItemClassName);

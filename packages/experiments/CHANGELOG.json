@@ -2,6 +2,73 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.55.0",
+      "tag": "@uifabric/experiments_v6.55.0",
+      "date": "Wed, 13 Feb 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix id usage in examples",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "b62b2099b93f16367b6b49cfb4e4982985ee9531"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Renaming preventShrink to disableShrink in Stack and StackItem. Removing defaultProps from StackStatics.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "32c6210718a1f00c6be9ddd3e7f94359334d78ab"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.0 <7.0.0` to `>=6.138.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.54.4",
+      "tag": "@uifabric/experiments_v6.54.4",
+      "date": "Tue, 12 Feb 2019 13:36:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Modifying StackItem so that it can render multiple children.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "cbfcd33ac12268c68780bd523b79f7fd9493f854"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.13.4 <1.0.0` to `>=0.14.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.54.3",
+      "tag": "@uifabric/experiments_v6.54.3",
+      "date": "Fri, 08 Feb 2019 13:37:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed the VerticalPersona not wrapping text properly in IE",
+            "author": "Marius Tennøe <mariust@outlook.com>",
+            "commit": "23a63a68ee8028ff469072aef5f6c2bf32b5a27d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.135.1 <7.0.0` to `>=6.136.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.54.2",
       "tag": "@uifabric/experiments_v6.54.2",
       "date": "Mon, 04 Feb 2019 13:36:12 GMT",

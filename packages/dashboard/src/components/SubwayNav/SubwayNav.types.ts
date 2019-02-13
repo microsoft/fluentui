@@ -19,7 +19,7 @@ export interface ISubwayNavStep {
   label: string;
 
   /* State of the step */
-  state?: SubwayNavStepState;
+  state: SubwayNavStepState;
 
   /** Flag to indicate if step is disabled */
   disabled?: boolean;

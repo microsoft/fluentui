@@ -173,6 +173,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={leftNavigationIcon} />
               </button>
@@ -191,6 +192,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={rightNavigationIcon} />
               </button>
@@ -201,6 +203,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   onKeyDown={this._onCloseButtonKeyDown}
                   aria-label={strings.closeButtonAriaLabel}
                   role="button"
+                  type="button"
                 >
                   <Icon iconName={closeNavigationIcon} />
                 </button>
@@ -324,6 +327,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
+                          type="button"
                         >
                           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
                         </button>

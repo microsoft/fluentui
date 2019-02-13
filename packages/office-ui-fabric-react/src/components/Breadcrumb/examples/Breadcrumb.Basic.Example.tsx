@@ -18,10 +18,10 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           items={[
             { text: 'Files', key: 'Files', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 1', key: 'f1', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 2', key: 'f2', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 3', key: 'f3', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 2 with a long name', key: 'f2', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 3 long', key: 'f3', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 4', key: 'f4', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 5', key: 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
+            { text: 'This is folder 5 another', key: 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ]}
           ariaLabel={'Breadcrumb with no maxDisplayedItems'}
         />
@@ -111,7 +111,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   private _getCustomDivider = (dividerProps: IDividerAsProps): JSX.Element => {
     const tooltipText = dividerProps.item ? dividerProps.item.text : '';
     return (
-      <TooltipHost content={`Show ${tooltipText} contents`} id="myID" calloutProps={{ gapSpace: 0 }}>
+      <TooltipHost content={`Show ${tooltipText} contents`} calloutProps={{ gapSpace: 0 }}>
         <span style={{ cursor: 'pointer' }}>/</span>
       </TooltipHost>
     );

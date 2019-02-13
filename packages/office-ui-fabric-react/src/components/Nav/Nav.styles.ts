@@ -110,6 +110,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         overflow: 'hidden',
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
+        color: semanticColors.bodyText,
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,

@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/charting",
-      "type": "none"
+      "comment": "Add saparator 2px for data segments",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/charting",
-  "email": "kchau@microsoft.com"
+  "email": "v-ragor@microsoft.com"
 }

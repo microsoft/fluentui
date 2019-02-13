@@ -63,6 +63,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -193,6 +194,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -324,6 +326,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -465,6 +468,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -595,6 +599,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -726,6 +731,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -877,6 +883,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -1008,6 +1015,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -1139,6 +1147,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -1285,6 +1294,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: none;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               flex: 1 1 0px;
@@ -1419,6 +1429,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               border: 1px solid #a6a6a6;
               box-shadow: none;
               box-sizing: border-box;
+              cursor: text;
               display: flex;
               flex-direction: row;
               height: 32px;
@@ -1565,6 +1576,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
                 border: 1px solid #a6a6a6;
                 box-shadow: none;
                 box-sizing: border-box;
+                cursor: text;
                 display: flex;
                 flex-direction: row;
                 height: 32px;
@@ -1819,6 +1831,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
                 border: 1px solid #a6a6a6;
                 box-shadow: none;
                 box-sizing: border-box;
+                cursor: text;
                 display: flex;
                 flex-direction: row;
                 height: 32px;
