@@ -159,6 +159,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       {
         border: `1px solid ${semanticColors.inputBorder}`,
         background: semanticColors.bodyBackground,
+        cursor: 'text',
         height: 32,
         display: 'flex',
         flexDirection: 'row',
@@ -201,7 +202,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       disabled && {
         backgroundColor: semanticColors.disabledBackground,
-        borderColor: semanticColors.disabledBackground
+        borderColor: semanticColors.disabledBackground,
+        cursor: 'default'
       },
       underlined && {
         flex: '1 1 0px',
@@ -310,16 +312,20 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       disabled && {
         backgroundColor: 'transparent',
-        borderColor: 'transparent'
+        borderColor: 'transparent',
+        color: semanticColors.disabledText,
+        selectors: {
+          '::placeholder': {
+            color: semanticColors.disabledText
+          },
+          ':-ms-input-placeholder': {
+            color: semanticColors.disabledText
+          }
+        }
       },
       underlined && {
         textAlign: 'left'
       },
-      underlined &&
-        disabled && {
-          backgroundColor: 'transparent',
-          color: semanticColors.disabledText
-        },
       focused &&
         !borderless && {
           selectors: {
@@ -355,6 +361,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         fontSize: 16,
         lineHeight: 18
       },
+      disabled && {
+        color: semanticColors.disabledText
+      },
       iconClass
     ],
     description: [
@@ -376,8 +385,20 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         alignItems: 'center'
       }
     ],
-    prefix: [classNames.prefix, fieldPrefixSuffix],
-    suffix: [classNames.suffix, fieldPrefixSuffix],
+    prefix: [
+      classNames.prefix,
+      fieldPrefixSuffix,
+      disabled && {
+        color: semanticColors.disabledText
+      }
+    ],
+    suffix: [
+      classNames.suffix,
+      fieldPrefixSuffix,
+      disabled && {
+        color: semanticColors.disabledText
+      }
+    ],
     subComponentStyles: {
       label: getLabelStyles(props)
     }

@@ -183,6 +183,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Dropdown-caretDownWrapper
             {
+              cursor: pointer;
               height: 32px;
               line-height: 30px;
               position: absolute;
@@ -719,6 +720,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Dropdown-caretDownWrapper
             {
+              cursor: pointer;
               height: 32px;
               line-height: 30px;
               position: absolute;
@@ -923,6 +925,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Dropdown-caretDownWrapper
             {
+              cursor: pointer;
               height: 32px;
               line-height: 30px;
               position: absolute;
@@ -1130,6 +1133,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Dropdown-caretDownWrapper
             {
+              cursor: pointer;
               height: 32px;
               line-height: 30px;
               position: absolute;
