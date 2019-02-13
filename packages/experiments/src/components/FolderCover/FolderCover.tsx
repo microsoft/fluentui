@@ -96,8 +96,8 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           </span>
         ) : null}
         <Icon aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} iconName={assets.front} />
-        {signal ? <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark)}>{signal}</span> : null}
         {metadata ? <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span> : null}
+        {signal ? <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark)}>{signal}</span> : null}
       </div>
     );
   }

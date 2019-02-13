@@ -72,14 +72,14 @@
 
 .metadata {
   display: block;
-  @include margin-right(8px);
+  @include margin-left(8px);
   flex: 1 1;
-  @include text-align(right);
+  @include text-align(left);
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   font-weight: $ms-font-weight-regular;
-  color: $ms-color-white;
+  color: $ms-color-yellowDark;
   position: relative;
 
   &,
