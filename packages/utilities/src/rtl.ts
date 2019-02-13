@@ -66,7 +66,7 @@ export function getRTLSafeKeyCode(key: number): number {
  * @returns The RTL state of the document (true if in RTL.)
  */
 export function getDocumentRTL(): boolean {
-  let doc = getDocument();
+  const doc = getDocument();
   let rtlAttribute;
 
   if (doc) {
