@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Feb 2019 13:36:43 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Feb 2019 13:36:46 GMT and should not be manually modified.
+
+## 6.138.1
+Wed, 13 Feb 2019 13:36:46 GMT
+
+### Patches
+
+- MessageBar: exclude className from nativeProps
+- Fix id usage in examples
+- Normalized disabled style for input components (DatePicker, TextField).
+- Remove maximum width from Breadcrumb items
+- Fixing SpinButton A11y Pass Bug 2 where Up/Down buttons aren't discernable.
+- TextField: updates some semantic colors usage.
 
 ## 6.138.0
 Tue, 12 Feb 2019 13:36:43 GMT

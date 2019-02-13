@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Feb 2019 13:36:45 GMT and should not be manually modified.
+
+## 6.8.7
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Patches
+
+- Adds documentation for setting the 'dir' attribute for Fabric Core
 
 ## 6.8.6
 Fri, 08 Feb 2019 13:37:21 GMT
