@@ -38,7 +38,7 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
    * This can be used to prevent a StackItem from shrinking when it is inside of a Stack that has shrinking items.
    * @defaultvalue false
    */
-  preventShrink?: boolean;
+  disableShrink?: boolean;
 
   /**
    * Defines how to align the StackItem along the x-axis (for vertical Stacks) or the y-axis (for horizontal Stacks).

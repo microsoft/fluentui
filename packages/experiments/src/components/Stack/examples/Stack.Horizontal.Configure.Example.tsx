@@ -16,7 +16,7 @@ export interface IExampleState {
   preventOverflow: boolean;
   wrap: boolean;
   wrapperWidth: number;
-  preventShrink: boolean;
+  disableShrink: boolean;
   columnGap: number;
   rowGap: number;
   paddingLeft: number;
@@ -38,7 +38,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       preventOverflow: false,
       wrap: false,
       wrapperWidth: 100,
-      preventShrink: true,
+      disableShrink: true,
       columnGap: 0,
       rowGap: 0,
       paddingLeft: 0,
@@ -59,7 +59,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       preventOverflow,
       wrap,
       wrapperWidth,
-      preventShrink,
+      disableShrink,
       columnGap,
       rowGap,
       paddingLeft,
@@ -106,7 +106,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
 
     return (
       <Stack gap={10}>
-        <Stack horizontal preventShrink>
+        <Stack horizontal disableShrink>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -118,14 +118,14 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
                 showValue={true}
                 onChange={this._onNumItemsChange}
               />
-              <Stack horizontal preventShrink>
+              <Stack horizontal disableShrink>
                 <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} />
               </Stack>
             </Stack>
           </Stack.Item>
           <Stack.Item grow>
-            <Stack horizontal preventShrink gap={20}>
+            <Stack horizontal disableShrink gap={20}>
               <Stack>
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={{ root: { marginBottom: 10 } }} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
@@ -145,7 +145,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal preventShrink gap={20}>
+        <Stack horizontal disableShrink gap={20}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -214,7 +214,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal preventShrink gap={20} verticalAlign="end">
+        <Stack horizontal disableShrink gap={20} verticalAlign="end">
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -251,7 +251,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
         <Stack
           horizontal
           wrap={wrap}
-          preventShrink={preventShrink}
+          disableShrink={disableShrink}
           gap={rowGap + ' ' + columnGap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           horizontalAlign={horizontalAlignment}
@@ -300,7 +300,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _onShrinkChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ preventShrink: !isChecked });
+    this.setState({ disableShrink: !isChecked });
   };
 
   private _onWrapperWidthChange = (value: number): void => {

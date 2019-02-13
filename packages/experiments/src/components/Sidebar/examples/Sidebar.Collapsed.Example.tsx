@@ -14,18 +14,17 @@ export class SidebarCollapsibleExample extends React.Component {
     };
 
     /*
-         * Basic collapsible sidebar example, with position override so that the example fits into the example page.
-         * Here is the wrapper class. By default the sidebar takes all of the left height and is positioned on the left.
-         *
-         *   .sidebar-position-override {
-         *       top: auto !important;
-         *       bottom: auto !important;
-         *       left: auto !important;
-         *   }
-         */
+     * Basic collapsible sidebar example, with position override so that the example fits into the example page.
+     * Here is the wrapper class. By default the sidebar takes all of the left height and is positioned on the left.
+     *
+     *   .sidebar-position-override {
+     *       top: auto !important;
+     *       bottom: auto !important;
+     *       left: auto !important;
+     *   }
+     */
     return (
       <Sidebar
-        id={'sidebar-collapsed'}
         collapsible={true}
         theme={getTheme()}
         collapseButtonAriaLabel={'sitemap'}

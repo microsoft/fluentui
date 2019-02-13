@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.55.0",
+      "tag": "@uifabric/experiments_v6.55.0",
+      "date": "Wed, 13 Feb 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix id usage in examples",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "b62b2099b93f16367b6b49cfb4e4982985ee9531"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Renaming preventShrink to disableShrink in Stack and StackItem. Removing defaultProps from StackStatics.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "32c6210718a1f00c6be9ddd3e7f94359334d78ab"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.0 <7.0.0` to `>=6.138.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.54.4",
       "tag": "@uifabric/experiments_v6.54.4",
       "date": "Tue, 12 Feb 2019 13:36:42 GMT",

@@ -14,7 +14,7 @@
     "@uifabric/charting": "^0.28.6",
     "@uifabric/dashboard": "0.47.4",
     "@uifabric/date-time": "0.2.2",
-    "@uifabric/experiments": ">=6.54.4 <7.0.0",
+    "@uifabric/experiments": ">=6.55.0 <7.0.0",
     "@uifabric/foundation-scenarios": ">=0.1.0"
   }
 }

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove maximum width from Breadcrumb items",
+      "comment": "TeachingBubble: revert PR #7837",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "miwhea@microsoft.com"
+  "email": "naethell@microsoft.com"
 }
