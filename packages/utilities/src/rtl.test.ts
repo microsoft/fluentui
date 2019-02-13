@@ -1,7 +1,8 @@
-import { getRTL, setRTL, __testHooks } from './rtl';
 import { setSSR } from './dom';
 
 describe('rtl', () => {
+  const { getRTL, setRTL } = require('./rtl');
+
   it('can set and get the rtl setting on the server', () => {
     setSSR(true);
 
@@ -16,45 +17,52 @@ describe('rtl', () => {
 });
 
 describe('getRTL', () => {
+  // tslint:disable-next-line:no-any
+  let RTL: any;
+
   beforeEach(() => {
-    __testHooks._clearRTL();
+    // Make use of resetModules and require to reset the internal state of rtl module.
+    // At time of writing we need to do this to force private _isRTL to be undefined so that module
+    // reads dir attributes from the document object.
+    jest.resetModules();
+    RTL = require('./rtl');
     document.documentElement.removeAttribute('dir');
     document.body.removeAttribute('dir');
   });
 
   it('defaults to false with no dir attributes', () => {
-    expect(getRTL()).toBe(false);
+    expect(RTL.getRTL()).toBe(false);
   });
 
   it('reads ltr dir attribute from documentElement', () => {
     document.documentElement.setAttribute('dir', 'ltr');
-    expect(getRTL()).toBe(false);
+    expect(RTL.getRTL()).toBe(false);
   });
 
   it('reads rtl dir attribute from documentElement', () => {
     document.documentElement.setAttribute('dir', 'rtl');
-    expect(getRTL()).toBe(true);
+    expect(RTL.getRTL()).toBe(true);
   });
 
   it('reads rtl dir attribute from body with higher priority than documentElement', () => {
     document.documentElement.setAttribute('dir', 'ltr');
     document.body.setAttribute('dir', 'rtl');
-    expect(getRTL()).toBe(true);
+    expect(RTL.getRTL()).toBe(true);
   });
 
   it('reads ltr dir attribute from body with higher priority than documentElement', () => {
     document.documentElement.setAttribute('dir', 'rtl');
     document.body.setAttribute('dir', 'ltr');
-    expect(getRTL()).toBe(false);
+    expect(RTL.getRTL()).toBe(false);
   });
 
   it('falls back to ltr dir attribute on documentElement', () => {
     document.documentElement.setAttribute('dir', 'ltr');
-    expect(getRTL()).toBe(false);
+    expect(RTL.getRTL()).toBe(false);
   });
 
   it('falls back to rtl dir attribute on documentElement', () => {
     document.documentElement.setAttribute('dir', 'rtl');
-    expect(getRTL()).toBe(true);
+    expect(RTL.getRTL()).toBe(true);
   });
 });

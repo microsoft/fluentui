@@ -61,15 +61,3 @@ export function getRTLSafeKeyCode(key: number): number {
 
   return key;
 }
-
-function _clearRTL(): void {
-  _isRTL = undefined;
-}
-
-/**
- * @internal Unit test interface.
- */
-// tslint:disable-next-line:variable-name
-export const __testHooks = {
-  _clearRTL
-};

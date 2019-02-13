@@ -693,7 +693,6 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 // WARNING: Unsupported export: inputProperties
 // WARNING: Unsupported export: textAreaProperties
 // WARNING: Unsupported export: imageProperties
-// WARNING: Unsupported export: __testHooks
 // WARNING: Unsupported export: DATA_IS_SCROLLABLE_ATTRIBUTE
 // WARNING: Unsupported export: allowScrollOnElement
 // WARNING: Unsupported export: ISettingsMap
