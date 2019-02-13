@@ -23,7 +23,7 @@ export const ColorPickerPageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorRectangle/ColorRectangle.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/ColorSlider/ColorSlider.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ColorPicker/docs/ColorPickerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

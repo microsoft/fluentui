@@ -37,10 +37,10 @@ export const ScrollablePanePageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ScrollablePane/docs/ScrollablePaneDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

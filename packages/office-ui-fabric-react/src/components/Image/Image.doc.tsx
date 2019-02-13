@@ -61,10 +61,10 @@ export const ImagePageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Image/docs/ImageOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Image/docs/ImageDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Image/docs/ImageDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

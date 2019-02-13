@@ -21,12 +21,12 @@ export const FloatingPeoplePickerPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/lib/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerOverview.md'),
+  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/lib/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerBestPractices.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

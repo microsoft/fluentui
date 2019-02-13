@@ -26,7 +26,7 @@ export const PickersPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/docs/PickersOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/docs/PickersOverview.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

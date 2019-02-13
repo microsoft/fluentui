@@ -52,9 +52,9 @@ export const ShimmerPageProps: IDocPageProps = {
   ],
 
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/docs/ShimmerOverview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/docs/ShimmerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Shimmer/docs/ShimmerDonts.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerOverview.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   componentStatus: ShimmerStatus

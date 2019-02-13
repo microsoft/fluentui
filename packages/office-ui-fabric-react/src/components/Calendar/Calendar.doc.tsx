@@ -238,10 +238,10 @@ export const CalendarPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/docs/CalendarOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/docs/CalendarDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/docs/CalendarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

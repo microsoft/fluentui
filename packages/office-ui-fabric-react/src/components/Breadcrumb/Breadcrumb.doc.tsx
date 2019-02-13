@@ -27,10 +27,10 @@ export const BreadcrumbPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/Breadcrumb.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Breadcrumb/docs/BreadcrumbOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Breadcrumb/docs/BreadcrumbDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Breadcrumb/docs/BreadcrumbDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

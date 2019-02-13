@@ -21,10 +21,10 @@ export const MessageBarPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/MessageBar.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/MessageBar/docs/MessageBarOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/MessageBar/docs/MessageBarDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/MessageBar/docs/MessageBarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

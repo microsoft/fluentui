@@ -21,10 +21,10 @@ export const SpinnerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/docs/SpinnerOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/docs/SpinnerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/docs/SpinnerDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

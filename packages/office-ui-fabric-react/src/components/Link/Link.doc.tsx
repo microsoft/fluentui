@@ -21,10 +21,10 @@ export const LinkPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/Link.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Link/docs/LinkOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Link/docs/LinkDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Link/docs/LinkDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Link/docs/LinkDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

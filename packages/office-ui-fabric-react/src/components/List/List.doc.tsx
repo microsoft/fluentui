@@ -44,7 +44,7 @@ export const ListPageProps: IDocPageProps = {
   allowNativeProps: true,
 
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/List/docs/ListOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   componentStatus: ListStatus

@@ -120,10 +120,10 @@ export const TextFieldPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/TextField/docs/TextFieldOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/TextField/docs/TextFieldDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/TextField/docs/TextFieldDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

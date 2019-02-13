@@ -27,10 +27,10 @@ export const CheckboxPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Checkbox/docs/CheckboxOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Checkbox/docs/CheckboxDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Checkbox/docs/CheckboxDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

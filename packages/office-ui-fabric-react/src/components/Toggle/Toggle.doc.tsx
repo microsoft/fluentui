@@ -21,10 +21,10 @@ export const TogglePageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Toggle/docs/ToggleOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Toggle/docs/ToggleDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/lib/components/Toggle/docs/ToggleDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

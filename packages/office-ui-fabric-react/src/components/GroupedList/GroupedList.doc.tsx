@@ -32,7 +32,7 @@ export const GroupedListPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/GroupedList.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/lib/components/GroupedList/docs/GroupedListOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',
