@@ -25,7 +25,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
     padding,
     horizontalAlign,
     verticalAlign,
-    preventShrink,
+    disableShrink,
     className
   } = props;
 
@@ -45,7 +45,7 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
   const commonSelectors = {
     // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
-      flexShrink: preventShrink ? 0 : 1
+      flexShrink: disableShrink ? 0 : 1
     }
   };
 

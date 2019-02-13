@@ -22,7 +22,7 @@ const testTheme = createTheme({
 export class ButtonTokensExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const ButtonSet = (props: IButtonProps) => (
-      <Stack horizontal preventShrink verticalAlign="center" gap={8}>
+      <Stack horizontal disableShrink verticalAlign="center" gap={8}>
         <Button {...props} />
         <Button {...props} primary />
         <Button {...props} disabled />
@@ -54,7 +54,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
           content="Menu button with icon"
           menu={buttonMenu}
         />
-        <Stack horizontal preventShrink verticalAlign="center" gap={8}>
+        <Stack horizontal disableShrink verticalAlign="center" gap={8}>
           <Button
             primary
             icon="PeopleAdd"
