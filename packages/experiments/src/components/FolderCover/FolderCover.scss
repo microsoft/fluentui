@@ -72,15 +72,21 @@
 
 .metadata {
   display: block;
-  @include margin-left(8px);
+  @include margin-right(8px);
   flex: 1 1;
-  @include text-align(left);
+  @include text-align(right);
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   font-weight: $ms-font-weight-regular;
-  color: $ms-color-yellowDark;
+  color: $ms-color-white;
   position: relative;
+
+  &.isFluent{
+    @include margin-left(8px);
+    @include text-align(left);
+    color: $ms-color-yellowDark;
+  }
 
   &,
   &.isSmall {

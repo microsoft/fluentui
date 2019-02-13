@@ -9,6 +9,10 @@
 
   .dark &,
   .dark.selected {
+    color: $ms-color-white;
+  }
+
+  .isFluent & {
     color: $ms-color-yellowDark;
   }
 
