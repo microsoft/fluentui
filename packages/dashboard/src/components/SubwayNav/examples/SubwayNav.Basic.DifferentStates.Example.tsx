@@ -1,58 +1,51 @@
 import * as React from 'react';
 import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayNav/examples/SubwayNav.Util';
 import { SubwayNav } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav';
-import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
+import { ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNode.types';
 
 export class SubwayNavBasicDifferentStatesExample extends React.Component<{}, {}> {
-  private steps: ISubwayNavStep[] = [];
-  public render(): JSX.Element {
-    const data0: ISubwayNavStep = {
-      key: generateRandomId(),
+  private steps: ISubwayNavNodeProps[] = [
+    {
+      id: generateRandomId(),
       label: 'Step 0',
-      state: SubwayNavStepState.Current,
+      state: SubwayNavNodeState.Current,
       /*isCurrentStep: true,
-      formError: true,
-      formViewed: true,*/
+    formError: true,
+    formViewed: true,*/
       onClickStep: this._handleClickStep
-    };
-    const data1: ISubwayNavStep = {
-      key: generateRandomId(),
+    },
+    {
+      id: generateRandomId(),
       label: 'Step 1',
-      state: SubwayNavStepState.Error,
+      state: SubwayNavNodeState.Error,
       onClickStep: this._handleClickStep
-    };
-    const data2: ISubwayNavStep = {
-      key: generateRandomId(),
+    },
+    {
+      id: generateRandomId(),
       label: 'Step 2',
-      state: SubwayNavStepState.Completed,
+      state: SubwayNavNodeState.Completed,
       onClickStep: this._handleClickStep
-    };
-    const data3: ISubwayNavStep = {
-      key: generateRandomId(),
+    },
+    {
+      id: generateRandomId(),
       label: 'Step 3',
-      state: SubwayNavStepState.Skipped,
+      state: SubwayNavNodeState.Skipped,
       onClickStep: this._handleClickStep
-    };
-    const data4: ISubwayNavStep = {
-      key: generateRandomId(),
+    },
+    {
+      id: generateRandomId(),
       label: 'Step 4',
-      state: SubwayNavStepState.ViewedNotCompleted,
+      state: SubwayNavNodeState.ViewedNotCompleted,
       onClickStep: this._handleClickStep
-    };
-    const data5: ISubwayNavStep = {
-      key: generateRandomId(),
+    },
+    {
+      id: generateRandomId(),
       label: 'Step 5',
-      state: SubwayNavStepState.Completed,
+      state: SubwayNavNodeState.Completed,
       onClickStep: this._handleClickStep
-    };
-
-    this.steps.push(data0);
-    this.steps.push(data1);
-    this.steps.push(data2);
-    this.steps.push(data3);
-    this.steps.push(data4);
-    this.steps.push(data5);
-
+    }
+  ];
+  public render(): JSX.Element {
     return (
       <div>
         <SubwayNav steps={this.steps} />
@@ -60,11 +53,8 @@ export class SubwayNavBasicDifferentStatesExample extends React.Component<{}, {}
     );
   }
 
-  private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
+  private _handleClickStep(step: ISubwayNavNodeProps): void {
     let alertStr = 'Clicked ' + step.label;
-    if (subStep !== undefined) {
-      alertStr += ' and ' + subStep.label;
-    }
 
     console.log(alertStr);
   }
