@@ -1,5 +1,6 @@
 import { getGlobalClassNames } from '../../../Styling';
 import { ICardItemComponent, ICardItemStylesReturnType } from './CardItem.types';
+import { defaultPadding } from '../Card.styles';
 
 const GlobalClassNames = {
   root: 'ms-CardItem'
@@ -19,8 +20,8 @@ export const styles: ICardItemComponent['styles'] = (props, theme): ICardItemSty
         height: 'auto'
       },
       disableChildPadding && {
-        marginLeft: '-12px',
-        marginRight: '-13px'
+        marginLeft: -defaultPadding,
+        marginRight: -defaultPadding - 1
       }
     ]
   };
