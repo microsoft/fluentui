@@ -14,6 +14,12 @@ export class SubwayNodeBase extends React.PureComponent<ISubwayNavNodeProps> {
   };
 
   private _classNames: IProcessedStyleSet<ISubwayNavNodeStyles>;
+
+  public constructor(props: ISubwayNavNodeProps) {
+    super(props);
+    this._onClickStep = this._onClickStep.bind(this);
+  }
+
   public render(): JSX.Element {
     const {
       styles,
@@ -57,7 +63,7 @@ export class SubwayNodeBase extends React.PureComponent<ISubwayNavNodeProps> {
   private _onRenderSubSteps(props: ISubwayNavNodeProps, classNames: IProcessedStyleSet<ISubwayNavNodeStyles>): JSX.Element | null {
     return props.subSteps && props.state === SubwayNavNodeState.CurrentWithSubSteps ? (
       <FocusZone elementType="ul" isCircularNavigation={true} className={classNames.subStepContainer} allowFocusRoot>
-        {props.subSteps.map((item, index) => {
+        {props.subSteps.map((item: ISubwayNavNodeProps, index: number) => {
           return <SubwayNode {...item} key={item.id} parentId={props.id} isSubStep={true} index={index + props.index! + 1} />;
         })}
       </FocusZone>

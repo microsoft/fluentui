@@ -8,36 +8,37 @@ export interface ISubwayNavBasicExampleState {
 }
 
 export class SubwayNavBasicExample extends React.Component<{}, ISubwayNavBasicExampleState> {
-  private steps: ISubwayNavNodeProps[] = [
-    {
-      id: generateRandomId(),
-      label: 'Step 0 with a long label that needs to perform a text overflow with ellipsis in the end.',
-      state: SubwayNavNodeState.Current,
-      onClickStep: this._handleClickStep
-    },
-    {
-      id: generateRandomId(),
-      label: 'Step 1',
-      state: SubwayNavNodeState.NotStarted,
-      onClickStep: this._handleClickStep
-    },
-    {
-      id: generateRandomId(),
-      label: 'Step 2',
-      state: SubwayNavNodeState.NotStarted,
-      onClickStep: this._handleClickStep
-    },
-    {
-      id: generateRandomId(),
-      label: 'Step 3',
-      state: SubwayNavNodeState.NotStarted,
-      onClickStep: this._handleClickStep
-    }
-  ];
+  private steps: ISubwayNavNodeProps[];
 
-  constructor(props: {}) {
+  public constructor(props: {}) {
     super(props);
     this._handleClickStep = this._handleClickStep.bind(this);
+    this.steps = [
+      {
+        id: generateRandomId(),
+        label: 'Step 0 with a long label that needs to perform a text overflow with ellipsis in the end.',
+        state: SubwayNavNodeState.Current,
+        onClickStep: this._handleClickStep
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 1',
+        state: SubwayNavNodeState.NotStarted,
+        onClickStep: this._handleClickStep
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 2',
+        state: SubwayNavNodeState.NotStarted,
+        onClickStep: this._handleClickStep
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 3',
+        state: SubwayNavNodeState.NotStarted,
+        onClickStep: this._handleClickStep
+      }
+    ];
 
     this.state = {
       steps: this.steps,
@@ -46,7 +47,7 @@ export class SubwayNavBasicExample extends React.Component<{}, ISubwayNavBasicEx
   }
 
   public render(): JSX.Element {
-    return <SubwayNav steps={this.steps} />;
+    return <SubwayNav steps={this.state.steps} />;
   }
 
   private _handleClickStep(step: ISubwayNavNodeProps): void {
