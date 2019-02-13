@@ -200,18 +200,14 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     React.Children.map(props.children, (child: any, index: number) => {
       if (typeof child === 'object' && child.type === PivotItemType) {
         const pivotItem = child as PivotItem;
-        const pivotItemProps = pivotItem.props;
+        const { linkText, ...pivotItemProps } = pivotItem.props;
         const itemKey = pivotItem.props.itemKey || index.toString();
 
         links.push({
-          headerText: pivotItemProps.headerText || pivotItemProps.linkText,
-          headerButtonProps: pivotItemProps.headerButtonProps,
-          ariaLabel: pivotItemProps.ariaLabel,
-          itemKey: itemKey,
-          itemCount: pivotItemProps.itemCount,
-          itemIcon: pivotItemProps.itemIcon,
-          onRenderItemLink: pivotItemProps.onRenderItemLink,
-          keytipProps: pivotItemProps.keytipProps
+          // Use linkText (deprecated) if headerText is not provided
+          headerText: linkText,
+          ...pivotItemProps,
+          itemKey: itemKey
         });
         this._keyToIndexMapping[itemKey] = index;
         this._keyToTabIds[itemKey] = this._getTabId(itemKey, index);
