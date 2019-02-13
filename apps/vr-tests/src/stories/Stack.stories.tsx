@@ -192,7 +192,7 @@ storiesOf('Stack', module)
   .addStory('Vertical Stack - Shrinking items', () => (
     <Stack {...defaultProps} gap={10} className={styles.fixedHeight}>
       <Stack.Item className={styles.verticalShrinkItem}>1</Stack.Item>
-      <Stack.Item preventShrink className={styles.verticalShrinkItem}>
+      <Stack.Item disableShrink className={styles.verticalShrinkItem}>
         2 (does not shrink)
       </Stack.Item>
       <Stack.Item className={styles.verticalShrinkItem}>3</Stack.Item>
@@ -349,7 +349,7 @@ storiesOf('Stack', module)
   .addStory('Horizontal Stack - Shrinking items', () => (
     <Stack horizontal {...defaultProps} gap={10}>
       <Stack.Item className={styles.horizontalShrinkItem}>1</Stack.Item>
-      <Stack.Item preventShrink className={styles.horizontalShrinkItem}>
+      <Stack.Item disableShrink className={styles.horizontalShrinkItem}>
         2 (does not shrink)
       </Stack.Item>
       <Stack.Item className={styles.horizontalShrinkItem}>3</Stack.Item>

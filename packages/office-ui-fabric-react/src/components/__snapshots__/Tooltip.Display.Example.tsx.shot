@@ -17,7 +17,7 @@ exports[`Component Examples renders Tooltip.Display.Example.tsx correctly 1`] = 
     onMouseLeave={[Function]}
   >
     <button
-      aria-describedby="myID"
+      aria-labelledby="tooltipHost10"
       style={
         Object {
           "fontSize": "2em",
@@ -40,7 +40,7 @@ exports[`Component Examples renders Tooltip.Display.Example.tsx correctly 1`] = 
     onMouseLeave={[Function]}
   >
     <button
-      aria-describedby="myID"
+      aria-labelledby="tooltipHost21"
       style={
         Object {
           "fontSize": "2em",

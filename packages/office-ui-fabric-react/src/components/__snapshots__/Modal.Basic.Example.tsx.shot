@@ -3,8 +3,8 @@
 exports[`Component Examples renders Modal.Basic.Example.tsx correctly 1`] = `
 <div>
   <button
-    aria-describedby="id__1"
-    aria-labelledby="id__0"
+    aria-describedby="id__3"
+    aria-labelledby="id__2"
     className=
         ms-Button
         ms-Button--default
@@ -111,7 +111,7 @@ exports[`Component Examples renders Modal.Basic.Example.tsx correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__0"
+          id="id__2"
         >
           Open Modal
         </div>

@@ -73,7 +73,7 @@ export interface IStackProps
    * Defines whether Stack children should not shrink to fit the available space.
    * @defaultvalue false
    */
-  preventShrink?: boolean;
+  disableShrink?: boolean;
 
   /**
    * Defines how much to grow the Stack in proportion to its siblings.

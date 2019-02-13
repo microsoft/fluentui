@@ -325,6 +325,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           className=
               ms-Dropdown-caretDownWrapper
               {
+                cursor: pointer;
                 height: 32px;
                 line-height: 30px;
                 position: absolute;
