@@ -31,7 +31,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
       <div>
         <h3>Large Default Cover</h3>
         <FolderCoverWithImage
-          isFluent={true}
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -42,7 +42,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Small Default Cover</h3>
         <FolderCoverWithImage
-          isFluent={true}
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -52,7 +52,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Large Media Cover</h3>
         <FolderCoverWithImage
-          isFluent={true}
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -64,7 +64,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Small Media Cover</h3>
         <FolderCoverWithImage
-          isFluent={true}
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -75,7 +75,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Shared Cover</h3>
         <FolderCoverWithImage
-          isFluent={true}
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150

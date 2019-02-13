@@ -20,7 +20,7 @@ setBaseUrl('./dist/');
 // Initialize all icons.
 initializeIcons();
 initializeFileTypeIcons();
-initializeFolderCovers('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/foldericons-fluent');
+initializeFolderCovers();
 
 let rootElement: HTMLElement | null;
 
