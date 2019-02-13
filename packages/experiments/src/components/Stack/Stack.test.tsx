@@ -214,7 +214,7 @@ describe('Stack', () => {
     const component = renderer.create(
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
-        <Stack.Item preventShrink>Item 2</Stack.Item>
+        <Stack.Item disableShrink>Item 2</Stack.Item>
       </Stack>
     );
     const tree = component.toJSON();
@@ -225,7 +225,7 @@ describe('Stack', () => {
     const component = renderer.create(
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
-        <Stack.Item preventShrink>Item 2</Stack.Item>
+        <Stack.Item disableShrink>Item 2</Stack.Item>
       </Stack>
     );
     const tree = component.toJSON();
