@@ -1,5 +1,6 @@
-import { IconNames, DefaultFontStyles, FontWeights, IStyle, keyframes } from 'office-ui-fabric-react';
+import { DefaultFontStyles, FontWeights, IStyle, keyframes } from 'office-ui-fabric-react';
 import {
+  IconNames,
   IconMap,
   ISubwayNavNodeStyles,
   ISubwayNavNodeStyleProps,

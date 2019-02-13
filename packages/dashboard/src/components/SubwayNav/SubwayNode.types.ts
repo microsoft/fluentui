@@ -1,4 +1,4 @@
-import { IStyle, IconNames, IStyleFunctionOrObject, IIconRecord, IProcessedStyleSet } from 'office-ui-fabric-react';
+import { IStyle, IStyleFunctionOrObject, IIconRecord, IProcessedStyleSet } from 'office-ui-fabric-react';
 
 export interface ISubwayNavNodeProps {
   /**
@@ -165,10 +165,16 @@ export interface ISubwayNavNodeStyleProps {
   index: number;
 }
 
+export const IconNames = {
+  FullCircleMask: 'FullCircleMask',
+  CompletedSolid: 'CompletedSolid',
+  AlertSolid: 'AlertSolid'
+};
+
 /**
  * Mapping that contains Icon definitions for each state
  */
-export type IconMap = { [key in SubwayNavNodeState]: IconNames | undefined };
+export type IconMap = { [key in SubwayNavNodeState]: string | undefined };
 
 /**
  * Mapping that contains Icon color definitions for each state

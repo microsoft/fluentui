@@ -22,8 +22,8 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
   let stepIndex = 0;
   let subStepIndex = 0;
   let adjustProgressTrack = false;
-  function getSelectedStep(steps: ISubwayNavNodeProps[], isSubSteps: boolean) {
-    steps.some((step, index, array) => {
+  function getSelectedStep(nodeSteps: ISubwayNavNodeProps[], isSubSteps: boolean): void {
+    nodeSteps.some((step: ISubwayNavNodeProps, index: number, array: ISubwayNavNodeProps[]) => {
       if (step.state === SubwayNavNodeState.Current || step.state === SubwayNavNodeState.CurrentWithSubSteps) {
         isSubSteps ? (subStepIndex = index + 1) : (stepIndex = index);
         if (step.subSteps) {
@@ -47,6 +47,7 @@ export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyle
         margin: 0,
         padding: 0,
         position: 'relative',
+        zIndex: 0,
         selectors: {
           ':before': {
             content: '""',
