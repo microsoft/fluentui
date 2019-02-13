@@ -15,7 +15,7 @@ export const CardView: ICardComponent['view'] = props => {
 
   return (
     <Slots.root {...nativeProps}>
-      <Slots.stack preventShrink verticalFill verticalAlign="space-between">
+      <Slots.stack disableShrink verticalFill verticalAlign="space-between">
         {props.children}
       </Slots.stack>
     </Slots.root>
