@@ -17,7 +17,7 @@ const lineFadeIn = keyframes({
   }
 });
 
-export const getStyles = (props: ISubwayNavStyleProps): ISubwayNavStyles => {
+export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyles => {
   const { steps, wizardComplete } = props;
   let stepIndex = 0;
   let subStepIndex = 0;

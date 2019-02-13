@@ -20,7 +20,7 @@ export const subwayColors = {
   stepGrey: '#EBEBEB'
 };
 
-const fadeIn = keyframes({
+export const fadeIn = keyframes({
   from: {
     opacity: '0.0',
     visibility: 'visible',
@@ -31,7 +31,7 @@ const fadeIn = keyframes({
   }
 });
 
-const itemSpacing = 27;
+export const itemSpacing = 27;
 
 export const getIconMap = (isSubStep: boolean): IconMap => {
   return isSubStep
@@ -111,7 +111,7 @@ export const getIconRingColorMap = (isSubStep: boolean): IconRingColorMap => {
       };
 };
 
-export const getStyles = (props: ISubwayNavNodeStyleProps): ISubwayNavNodeStyles => {
+export const getSubwayNodeStyles = (props: ISubwayNavNodeStyleProps): ISubwayNavNodeStyles => {
   const { disabled, isSubStep, iconRecord, state, hasSubSteps, index } = props;
   const useSelectedStyle: boolean = hasSubSteps || state === SubwayNavNodeState.Current;
 

@@ -1,73 +1,61 @@
 import * as React from 'react';
 import { SetupWizard } from '../SetupWizard';
-import { ISubwayNavStep, SubwayNavStepState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav.types';
+import { ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard';
 import { IWizardStepProps, IWizardStepAction } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 import { ISetupWizardState, goToStep } from './SetupWizard.Util';
 
 export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardState> {
-  private steps: IWizardStepProps[] = [];
+  private steps: IWizardStepProps[] = [
+    {
+      id: this._generateRandomId(),
+      label: 'Step 0',
+      onClickStep: this._handleClickStep,
+      state: SubwayNavNodeState.Current,
+      wizardContent: {
+        content: this._getContentForStep('Step 0'),
+        // contentState: SubwayNavNodeState.Current,
+        mainAction: this._getMainActionForStep('Step 0')
+      }
+    },
+    {
+      id: this._generateRandomId(),
+      label: 'Step 1',
+      onClickStep: this._handleClickStep,
+      state: SubwayNavNodeState.NotStarted,
+      wizardContent: {
+        content: this._getContentForStep('Step 1'),
+        // contentState: SubwayNavNodeState.NotStarted,
+        mainAction: this._getMainActionForStep('Step 1')
+      }
+    },
+    {
+      id: this._generateRandomId(),
+      label: 'Step 2',
+      onClickStep: this._handleClickStep,
+      state: SubwayNavNodeState.NotStarted,
+      wizardContent: {
+        content: this._getContentForStep('Step 2'),
+        // contentState: SubwayNavNodeState.NotStarted,
+        mainAction: this._getMainActionForStep('Step 2')
+      }
+    },
+    {
+      id: this._generateRandomId(),
+      label: 'Step 3',
+      onClickStep: this._handleClickStep,
+      state: SubwayNavNodeState.NotStarted,
+      wizardContent: {
+        content: this._getContentForStep('Step 3'),
+        // contentState: SubwayNavNodeState.NotStarted,
+        mainAction: this._getMainActionForStep('Step 3')
+      }
+    }
+  ];
 
   constructor(props: {}) {
     super(props);
 
     this._handleClickStep = this._handleClickStep.bind(this);
-
-    let newKey = this._generateRandomId();
-    const data0: IWizardStepProps = {
-      key: newKey,
-      label: 'Step 0',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavStepState.Current,
-      wizardContent: {
-        content: this._getContentForStep('Step 0'),
-        // contentState: SubwayNavStepState.Current,
-        mainAction: this._getMainActionForStep('Step 0')
-      }
-    };
-
-    newKey = this._generateRandomId();
-    const data1: IWizardStepProps = {
-      key: newKey,
-      label: 'Step 1',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavStepState.NotStarted,
-      wizardContent: {
-        content: this._getContentForStep('Step 1'),
-        // contentState: SubwayNavStepState.NotStarted,
-        mainAction: this._getMainActionForStep('Step 1')
-      }
-    };
-
-    newKey = this._generateRandomId();
-    const data2: IWizardStepProps = {
-      key: newKey,
-      label: 'Step 2',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavStepState.NotStarted,
-      wizardContent: {
-        content: this._getContentForStep('Step 2'),
-        // contentState: SubwayNavStepState.NotStarted,
-        mainAction: this._getMainActionForStep('Step 2')
-      }
-    };
-
-    newKey = this._generateRandomId();
-    const data3: IWizardStepProps = {
-      key: newKey,
-      label: 'Step 3',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavStepState.NotStarted,
-      wizardContent: {
-        content: this._getContentForStep('Step 3'),
-        // contentState: SubwayNavStepState.NotStarted,
-        mainAction: this._getMainActionForStep('Step 3')
-      }
-    };
-
-    this.steps.push(data0);
-    this.steps.push(data1);
-    this.steps.push(data2);
-    this.steps.push(data3);
   }
 
   public componentDidMount(): void {
@@ -140,7 +128,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
     }
 
     const currIndex = this.state.steps.findIndex((stepObj: IWizardStepProps) => {
-      return stepObj.key === this.state.currStep.key;
+      return stepObj.id === this.state.currStep.id;
     });
 
     if (this.state.steps.length - 1 === currIndex) {
@@ -161,7 +149,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
         if (foundCurrStep) {
           currStep = stepObj;
           foundNextStep = true;
-        } else if (stepObj.key === currStep.key) {
+        } else if (stepObj.id === currStep.id) {
           foundCurrStep = true;
         }
       }
@@ -189,7 +177,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
     newSteps = this.state.steps;
 
     const currIndex = newSteps.findIndex((stepObj: IWizardStepProps) => {
-      return stepObj.key === this.state.currStep.key;
+      return stepObj.id === this.state.currStep.id;
     });
 
     if (newSteps[currIndex].subSteps !== undefined) {
@@ -198,7 +186,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
           if (foundCurrStep) {
             currSubStep = subStepObj;
             foundNextStep = true;
-          } else if (subStepObj.key === currSubStep!.key) {
+          } else if (subStepObj.id === currSubStep!.id) {
             foundCurrStep = true;
           }
         }
@@ -239,18 +227,14 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
     );
   }
 
-  private _handleClickStep(step: ISubwayNavStep, subStep: ISubwayNavStep | undefined): void {
+  private _handleClickStep(step: ISubwayNavNodeProps): void {
     let alertStr = 'Clicked ' + step.label;
-    if (subStep !== undefined) {
-      alertStr += ' and ' + subStep.label;
-    }
+    console.log(alertStr);
 
-    const newState = goToStep(this.state, step, subStep);
+    const newState = goToStep(this.state, step);
     if (newState !== undefined) {
       this.setState(newState);
     }
-
-    console.log(alertStr);
   }
 
   private _getContentForStep(stepStr: string): JSX.Element {

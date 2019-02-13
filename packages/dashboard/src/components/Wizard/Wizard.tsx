@@ -3,7 +3,7 @@ import { IWizardStepProps, IWizardProps, IWizardStyles } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
-import { SubwayNavStepState, ISubwayNavStep } from '../SubwayNav/SubwayNav.types';
+import { ISubwayNavNodeProps, SubwayNavNodeState } from '../SubwayNav';
 
 /** Component for Wizard */
 export class Wizard extends React.Component<IWizardProps, {}> {
@@ -19,8 +19,8 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     }
 
     const navSteps = steps.map((step: IWizardStepProps, index: number) => {
-      const navStep: ISubwayNavStep = {
-        key: step.key,
+      const navStep: ISubwayNavNodeProps = {
+        id: step.id,
         label: step.label,
         state: step.state,
         disabled: step.disabled,
@@ -29,7 +29,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
         subSteps: step.subSteps
       };
 
-      if (index > 0 && this.props.allowSkipAhead === false && navStep.state === SubwayNavStepState.NotStarted) {
+      if (index > 0 && this.props.allowSkipAhead === false && navStep.state === SubwayNavNodeState.NotStarted) {
         // If allowSkipAhead is not allowed, then disable all steps that are "NotStarted"
         // Except for first step, it cannot be disabled.
         navStep.disabled = true;
@@ -43,7 +43,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     const stepContentToShow = this._getStepContentToShow();
 
     const wizardStepProps: IWizardStepProps = {
-      key: stepContentToShow.key,
+      id: stepContentToShow.id,
       label: stepContentToShow.label,
       state: stepContentToShow.state,
       disabled: stepContentToShow.disabled,
@@ -55,7 +55,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     };
 
     if (stepContentToShow.wizardContent === undefined) {
-      throw new Error('Content missing in the step - ' + stepContentToShow.key);
+      throw new Error('Content missing in the step - ' + stepContentToShow.id);
     }
 
     return (
@@ -76,7 +76,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     const { steps } = this.props;
 
     let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
-      return wizStep.state === SubwayNavStepState.Current;
+      return wizStep.state === SubwayNavNodeState.Current;
     });
 
     if (stepToShow === undefined) {
@@ -86,7 +86,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
 
     if (stepToShow.subSteps !== undefined && stepToShow.subSteps.length > 0) {
       const subStepToShow = stepToShow.subSteps.find((wizSubStep: IWizardStepProps) => {
-        return wizSubStep.state === SubwayNavStepState.Current;
+        return wizSubStep.state === SubwayNavNodeState.Current;
       });
 
       if (subStepToShow !== undefined) {

@@ -1,4 +1,4 @@
-import { ISubwayNavStep, SubwayNavStepState } from '../../SubwayNav/SubwayNav.types';
+import { ISubwayNavNodeProps, SubwayNavNodeState } from '../../SubwayNav';
 import { IWizardStepProps } from '../Wizard.types';
 
 export interface ISetupWizardState {
@@ -19,17 +19,13 @@ export function generateRandomId(): string {
 }
 
 // Go to a given parent step -> substep
-export function goToStep(
-  currentState: ISetupWizardState,
-  parentStepToGo: ISubwayNavStep,
-  subStepToGo: ISubwayNavStep | undefined
-): ISetupWizardState | undefined {
+export function goToStep(currentState: ISetupWizardState, parentStepToGo: ISubwayNavNodeProps): ISetupWizardState | undefined {
   if (parentStepToGo === undefined) {
     // do nothing
     return;
   }
 
-  if (parentStepToGo.key === currentState.currStep.key) {
+  if (parentStepToGo.id === currentState.currStep.id) {
     // Already in current step, go to Sub Step
     if (subStepToGo !== undefined) {
       return goToSubStep(currentState, parentStepToGo, subStepToGo);
@@ -44,28 +40,28 @@ export function goToStep(
     let foundStepToGo: boolean = false;
 
     newSteps.map((stepObj: IWizardStepProps) => {
-      if (stepObj.key === currentState.currStep.key) {
-        stepObj.state = SubwayNavStepState.Completed; /// Only for testing (get state from wizard content state?)
+      if (stepObj.id === currentState.currStep.id) {
+        stepObj.state = SubwayNavNodeState.Completed; /// Only for testing (get state from wizard content state?)
 
         if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
           stepObj.subSteps.forEach((obj: IWizardStepProps) => {
-            obj.state = SubwayNavStepState.Completed; /// Only for testing (get state from wizard content state?)
+            obj.state = SubwayNavNodeState.Completed; /// Only for testing (get state from wizard content state?)
           });
 
           // Since current step is completed, reset current sub step
           currSubStep = undefined;
         }
-      } else if (stepObj.key === parentStepToGo.key) {
-        stepObj.state = SubwayNavStepState.Current;
+      } else if (stepObj.id === parentStepToGo.id) {
+        stepObj.state = SubwayNavNodeState.Current;
         currStep = stepObj;
 
         if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
-          stepObj.subSteps[0].state = SubwayNavStepState.Current;
+          stepObj.subSteps[0].state = SubwayNavNodeState.Current;
           currSubStep = stepObj.subSteps[0];
         }
         foundStepToGo = true;
-      } else if (!foundStepToGo && stepObj.state === SubwayNavStepState.NotStarted) {
-        stepObj.state = SubwayNavStepState.Skipped;
+      } else if (!foundStepToGo && stepObj.state === SubwayNavNodeState.NotStarted) {
+        stepObj.state = SubwayNavNodeState.Skipped;
       }
     });
 
@@ -78,13 +74,13 @@ export function goToStep(
 
 export function goToSubStep(
   currentState: ISetupWizardState,
-  parentStepToGo: ISubwayNavStep,
-  subStepToGo: ISubwayNavStep
+  parentStepToGo: ISubwayNavNodeProps,
+  subStepToGo: ISubwayNavNodeProps
 ): ISetupWizardState | undefined {
   if (
-    currentState.currStep.key === parentStepToGo.key &&
+    currentState.currStep.id === parentStepToGo.id &&
     currentState.currSubStep !== undefined &&
-    currentState.currSubStep.key === subStepToGo.key
+    currentState.currSubStep.id === subStepToGo.id
   ) {
     // Already in the step
     return;
@@ -97,22 +93,22 @@ export function goToSubStep(
 
   newSteps = currentState.steps;
   newSteps.map((stepObj: IWizardStepProps) => {
-    if (stepObj.key === parentStepToGo.key) {
+    if (stepObj.id === parentStepToGo.id) {
       // Found the parent step
       if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
         stepObj.subSteps.map((subStepObj: IWizardStepProps) => {
-          if (subStepObj.key === currentState!.currSubStep!.key) {
-            subStepObj.state = SubwayNavStepState.Completed; //// Only for testing (Update from wizard content state?)
-          } else if (subStepObj.key === subStepToGo.key) {
-            stepObj.state = SubwayNavStepState.Current;
-            subStepObj.state = SubwayNavStepState.Current;
+          if (subStepObj.id === currentState!.currSubStep!.id) {
+            subStepObj.state = SubwayNavNodeState.Completed; //// Only for testing (Update from wizard content state?)
+          } else if (subStepObj.id === subStepToGo.id) {
+            stepObj.state = SubwayNavNodeState.Current;
+            subStepObj.state = SubwayNavNodeState.Current;
 
             // Update curr substep
             currStep = stepObj;
             currSubStep = subStepObj;
             foundClickedSubStep = true;
-          } else if (!foundClickedSubStep && subStepObj.state === SubwayNavStepState.NotStarted) {
-            subStepObj.state = SubwayNavStepState.Skipped;
+          } else if (!foundClickedSubStep && subStepObj.state === SubwayNavNodeState.NotStarted) {
+            subStepObj.state = SubwayNavNodeState.Skipped;
           }
         });
       }
@@ -135,7 +131,7 @@ export function goToNextStep(currentState: ISetupWizardState): ISetupWizardState
   }
 
   const currIndex = currentState.steps.findIndex((stepObj: IWizardStepProps) => {
-    return stepObj.key === currentState.currStep.key;
+    return stepObj.id === currentState.currStep.id;
   });
 
   if (currentState.steps.length - 1 === currIndex) {
@@ -156,7 +152,7 @@ export function goToNextStep(currentState: ISetupWizardState): ISetupWizardState
       if (foundCurrStep) {
         currStep = stepObj;
         foundNextStep = true;
-      } else if (stepObj.key === currStep.key) {
+      } else if (stepObj.id === currStep.id) {
         foundCurrStep = true;
       }
     }
@@ -185,7 +181,7 @@ export function goToNextSubStep(currentState: ISetupWizardState): ISetupWizardSt
   newSteps = currentState.steps;
 
   const currIndex = newSteps.findIndex((stepObj: IWizardStepProps) => {
-    return stepObj.key === currentState.currStep.key;
+    return stepObj.id === currentState.currStep.id;
   });
 
   if (newSteps[currIndex].subSteps !== undefined) {
@@ -194,7 +190,7 @@ export function goToNextSubStep(currentState: ISetupWizardState): ISetupWizardSt
         if (foundCurrStep) {
           currSubStep = subStepObj;
           foundNextStep = true;
-        } else if (subStepObj.key === currSubStep!.key) {
+        } else if (subStepObj.id === currSubStep!.id) {
           foundCurrStep = true;
         }
       }

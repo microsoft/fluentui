@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { generateRandomId } from '@uifabric/dashboard/lib/components/SubwayNav/examples/SubwayNav.Util';
-import { SubwayNav } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNav';
-import { ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard/lib/components/SubwayNav/SubwayNode.types';
+import { ISubwayNavNodeProps, SubwayNavNodeState, SubwayNav } from '@uifabric/dashboard';
 
 export class SubwayNavBasicDifferentStatesExample extends React.Component<{}, {}> {
   private steps: ISubwayNavNodeProps[] = [
@@ -9,9 +8,6 @@ export class SubwayNavBasicDifferentStatesExample extends React.Component<{}, {}
       id: generateRandomId(),
       label: 'Step 0',
       state: SubwayNavNodeState.Current,
-      /*isCurrentStep: true,
-    formError: true,
-    formViewed: true,*/
       onClickStep: this._handleClickStep
     },
     {

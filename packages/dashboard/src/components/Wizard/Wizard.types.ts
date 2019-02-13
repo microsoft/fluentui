@@ -1,5 +1,5 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav/SubwayNav.types';
+import { ISubwayNavNodeProps, SubwayNavNodeState } from '../SubwayNav/SubwayNode.types';
 
 export interface IWizardProps {
   // List of steps in the wizard
@@ -11,17 +11,17 @@ export interface IWizardProps {
 }
 
 export interface IWizardStepProps {
-  key: string;
+  id: string;
 
   label: string;
 
-  state: SubwayNavStepState;
+  state: SubwayNavNodeState;
 
   disabled?: boolean;
 
   isSubStep?: boolean;
 
-  onClickStep: (step: ISubwayNavStep, subStep: ISubwayNavStep | undefined) => void;
+  onClickStep: (step: ISubwayNavNodeProps) => void;
 
   wizardContent?: IWizardContentProps;
 

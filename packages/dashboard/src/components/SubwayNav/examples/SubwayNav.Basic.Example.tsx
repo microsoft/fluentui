@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { generateRandomId } from './SubwayNav.Util';
-import { SubwayNav } from '../SubwayNav';
-import { ISubwayNavNodeProps, SubwayNavNodeState } from '../SubwayNode.types';
+import { generateRandomId, setSubwayState } from './SubwayNav.Util';
+import { SubwayNav, ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard';
 
 export interface ISubwayNavBasicExampleState {
-  currStep: ISubwayNavNodeProps;
+  currentStepId: string;
   steps: ISubwayNavNodeProps[];
 }
 
@@ -39,13 +38,11 @@ export class SubwayNavBasicExample extends React.Component<{}, ISubwayNavBasicEx
   constructor(props: {}) {
     super(props);
     this._handleClickStep = this._handleClickStep.bind(this);
-  }
 
-  public componentDidMount(): void {
-    this.setState({
+    this.state = {
       steps: this.steps,
-      currStep: this.steps[0]
-    });
+      currentStepId: this.steps[0].id
+    };
   }
 
   public render(): JSX.Element {
@@ -57,32 +54,6 @@ export class SubwayNavBasicExample extends React.Component<{}, ISubwayNavBasicEx
   }
 
   private _handleClickStep(step: ISubwayNavNodeProps): void {
-    let alertStr = 'Clicked ' + step.label;
-    console.log(alertStr);
-
-    if (step.id === this.state.currStep.id) {
-      return;
-    }
-
-    let newSteps: ISubwayNavNodeProps[] = [];
-    newSteps = this.state.steps;
-
-    let currStep = this.state.currStep;
-
-    let foundClickedStep: boolean = false;
-
-    newSteps.map((stepObj: ISubwayNavNodeProps) => {
-      if (stepObj.id === this.state.currStep.id) {
-        stepObj.state = SubwayNavNodeState.Completed;
-      } else if (stepObj.id === step.id) {
-        stepObj.state = SubwayNavNodeState.Current;
-        currStep = stepObj;
-        foundClickedStep = true;
-      } else if (!foundClickedStep && stepObj.state === SubwayNavNodeState.NotStarted) {
-        stepObj.state = SubwayNavNodeState.Skipped;
-      }
-    });
-
-    this.setState({ steps: newSteps, currStep: currStep });
+    this.setState({ ...setSubwayState(step, this.state.steps, this.state.currentStepId) });
   }
 }

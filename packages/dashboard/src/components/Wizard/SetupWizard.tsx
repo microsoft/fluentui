@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SubwayNavStepState } from '../SubwayNav/SubwayNav.types';
+import { SubwayNavNodeState } from '../SubwayNav';
 import { ISetupWizardProps, ISetupWizardStyles } from './SetupWizard.types';
 import { getSetupWizardStyles } from './SetupWizard.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
@@ -48,7 +48,7 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
     const { steps } = this.props;
 
     let stepToShow: IWizardStepProps | undefined = steps.find((wizStep: IWizardStepProps) => {
-      return wizStep.state === SubwayNavStepState.Current;
+      return wizStep.state === SubwayNavNodeState.Current;
     });
 
     if (stepToShow === undefined) {
@@ -58,7 +58,7 @@ export class SetupWizard extends React.Component<ISetupWizardProps, {}> {
 
     if (stepToShow !== undefined && stepToShow.subSteps !== undefined && stepToShow.subSteps.length > 0) {
       const subStepToShow = stepToShow.subSteps.find((wizSubStep: IWizardStepProps) => {
-        return wizSubStep.state === SubwayNavStepState.Current;
+        return wizSubStep.state === SubwayNavNodeState.Current;
       });
 
       if (subStepToShow !== undefined) {
