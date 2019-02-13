@@ -193,8 +193,8 @@ describe('DetailsList', () => {
     expect(component).toBeDefined();
     (component as IDetailsList).focusIndex(2);
     setTimeout(() => {
-      expect(document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('2');
-      expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
+      expect((document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('2');
+      expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
   });
@@ -248,24 +248,24 @@ describe('DetailsList', () => {
     expect(component).toBeDefined();
     (component as IDetailsList).focusIndex(3);
     setTimeout(() => {
-      expect(document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('3');
-      expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
+      expect((document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('3');
+      expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
 
     // Set element visibility manually as a test workaround
     (component as IDetailsList).focusIndex(4);
     setTimeout(() => {
-      (document.activeElement.children[1] as any).isVisible = true;
-      (document.activeElement.children[1].children[0] as any).isVisible = true;
-      (document.activeElement.children[1].children[0].children[0] as any).isVisible = true;
+      ((document.activeElement as HTMLElement).children[1] as any).isVisible = true;
+      ((document.activeElement as HTMLElement).children[1].children[0] as any).isVisible = true;
+      ((document.activeElement as HTMLElement).children[1].children[0].children[0] as any).isVisible = true;
     }, 0);
 
     jest.runOnlyPendingTimers();
     (component as IDetailsList).focusIndex(4, true);
     setTimeout(() => {
-      expect(document.activeElement.textContent).toEqual('4');
-      expect(document.activeElement.className.split(' ')).toContain('test-column');
+      expect((document.activeElement as HTMLElement).textContent).toEqual('4');
+      expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
     }, 0);
     jest.runOnlyPendingTimers();
   });
@@ -302,8 +302,8 @@ describe('DetailsList', () => {
     // verify that focusedItemIndex is reset to 0 and 0th row is focused
     setTimeout(() => {
       expect(component.state.focusedItemIndex).toEqual(0);
-      expect(document.activeElement.querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('0');
-      expect(document.activeElement.className.split(' ')).toContain('ms-DetailsRow');
+      expect((document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent).toEqual('0');
+      expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
     }, 0);
     jest.runOnlyPendingTimers();
   });
