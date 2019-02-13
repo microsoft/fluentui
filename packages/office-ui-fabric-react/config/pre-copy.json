@@ -15,12 +15,6 @@
     ],
     "dist/css": [
       "office-ui-fabric-core/dist/css/**/*"
-    ],
-    "lib": [
-      "./src/**/docs/*"
-    ],
-    "lib-commonjs": [
-      "./src/**/docs/*"
     ]
   }
 }
