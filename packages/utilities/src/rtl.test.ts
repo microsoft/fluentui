@@ -1,4 +1,4 @@
-import { getDocumentRTL, getRTL, setRTL } from './rtl';
+import { getRTL, setRTL, __testHooks } from './rtl';
 import { setSSR } from './dom';
 
 describe('rtl', () => {
@@ -15,39 +15,46 @@ describe('rtl', () => {
   });
 });
 
-describe('getDocumentRTL', () => {
+describe('getRTL', () => {
   beforeEach(() => {
-    document.head.removeAttribute('dir');
+    __testHooks._clearRTL();
+    document.documentElement.removeAttribute('dir');
     document.body.removeAttribute('dir');
   });
 
   it('defaults to false with no dir attributes', () => {
-    expect(getDocumentRTL()).toBe(false);
+    expect(getRTL()).toBe(false);
   });
 
-  it('reads dir attribute from head', () => {
-    document.head.setAttribute('dir', 'ltr');
-    expect(getDocumentRTL()).toBe(false);
-
-    document.head.setAttribute('dir', 'rtl');
-    expect(getDocumentRTL()).toBe(true);
+  it('reads ltr dir attribute from documentElement', () => {
+    document.documentElement.setAttribute('dir', 'ltr');
+    expect(getRTL()).toBe(false);
   });
 
-  it('reads dir attribute from head with higher priority than body', () => {
-    document.head.setAttribute('dir', 'ltr');
+  it('reads rtl dir attribute from documentElement', () => {
+    document.documentElement.setAttribute('dir', 'rtl');
+    expect(getRTL()).toBe(true);
+  });
+
+  it('reads rtl dir attribute from body with higher priority than documentElement', () => {
+    document.documentElement.setAttribute('dir', 'ltr');
     document.body.setAttribute('dir', 'rtl');
-    expect(getDocumentRTL()).toBe(false);
-
-    document.head.setAttribute('dir', 'rtl');
-    document.body.setAttribute('dir', 'ltr');
-    expect(getDocumentRTL()).toBe(true);
+    expect(getRTL()).toBe(true);
   });
 
-  it('falls back to dir attribute on body', () => {
+  it('reads ltr dir attribute from body with higher priority than documentElement', () => {
+    document.documentElement.setAttribute('dir', 'rtl');
     document.body.setAttribute('dir', 'ltr');
-    expect(getDocumentRTL()).toBe(false);
+    expect(getRTL()).toBe(false);
+  });
 
-    document.body.setAttribute('dir', 'rtl');
-    expect(getDocumentRTL()).toBe(true);
+  it('falls back to ltr dir attribute on documentElement', () => {
+    document.documentElement.setAttribute('dir', 'ltr');
+    expect(getRTL()).toBe(false);
+  });
+
+  it('falls back to rtl dir attribute on documentElement', () => {
+    document.documentElement.setAttribute('dir', 'rtl');
+    expect(getRTL()).toBe(true);
   });
 });

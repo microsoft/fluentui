@@ -1355,9 +1355,6 @@ export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
 
 // @public
-export function getDocumentRTL(): boolean;
-
-// @public
 export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
 
 // @public
@@ -13007,6 +13004,7 @@ module ZIndexes {
 // WARNING: Unsupported export: inputProperties
 // WARNING: Unsupported export: textAreaProperties
 // WARNING: Unsupported export: imageProperties
+// WARNING: Unsupported export: __testHooks
 // WARNING: Unsupported export: DATA_IS_SCROLLABLE_ATTRIBUTE
 // WARNING: Unsupported export: allowScrollOnElement
 // WARNING: Unsupported export: ISettingsMap

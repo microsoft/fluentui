@@ -20,8 +20,9 @@ export function getRTL(): boolean {
       setRTL(_isRTL);
     }
 
-    if (_isRTL === undefined) {
-      _isRTL = getDocumentRTL();
+    let doc = getDocument();
+    if (_isRTL === undefined && doc) {
+      _isRTL = (doc.body.getAttribute('dir') || doc.documentElement.getAttribute('dir')) === 'rtl';
       mergeStylesSetRTL(_isRTL);
     }
   }
@@ -61,21 +62,14 @@ export function getRTLSafeKeyCode(key: number): number {
   return key;
 }
 
-/**
- * Helper utility that gets dir attribute from document elements.
- * @returns The RTL state of the document (true if in RTL.)
- */
-export function getDocumentRTL(): boolean {
-  const doc = getDocument();
-  let rtlAttribute;
-
-  if (doc) {
-    rtlAttribute = doc.head.getAttribute('dir');
-    if (!rtlAttribute) {
-      // Fall back to dir attribute on body
-      rtlAttribute = doc.body.getAttribute('dir');
-    }
-  }
-
-  return rtlAttribute === 'rtl';
+function _clearRTL(): void {
+  _isRTL = undefined;
 }
+
+/**
+ * @internal Unit test interface.
+ */
+// tslint:disable-next-line:variable-name
+export const __testHooks = {
+  _clearRTL
+};
