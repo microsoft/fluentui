@@ -11,22 +11,6 @@ import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
-/*
- *  Usage:
- *
- *   <Pivot>
- *     <PivotItem headerText="Foo">
- *       <Label>Pivot #1</Label>
- *     </PivotItem>
- *     <PivotItem headerText="Bar">
- *       <Label>Pivot #2</Label>
- *     </PivotItem>
- *     <PivotItem headerText="Bas">
- *       <Label>Pivot #3</Label>
- *     </PivotItem>
- *   </Pivot>
- */
-
 export interface IPivotState {
   links: IPivotItemProps[];
   selectedKey: string | undefined;
@@ -34,6 +18,21 @@ export interface IPivotState {
 
 const PivotItemType = (<PivotItem /> as React.ReactElement<IPivotItemProps>).type;
 
+/**
+ *  Usage:
+ *
+ *     <Pivot>
+ *       <PivotItem headerText="Foo">
+ *         <Label>Pivot #1</Label>
+ *       </PivotItem>
+ *       <PivotItem headerText="Bar">
+ *         <Label>Pivot #2</Label>
+ *       </PivotItem>
+ *       <PivotItem headerText="Bas">
+ *         <Label>Pivot #3</Label>
+ *       </PivotItem>
+ *     </Pivot>
+ */
 export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
@@ -43,16 +42,29 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
   constructor(props: IPivotProps) {
     super(props);
+
+    this._warnDeprecations({
+      initialSelectedKey: 'defaultSelectedKey',
+      initialSelectedIndex: 'defaultSelectedIndex'
+    });
+
     this._pivotId = getId('Pivot');
-    const links: IPivotItemProps[] = this._getPivotLinks(this.props);
+    const links: IPivotItemProps[] = this._getPivotLinks(props);
+
+    const {
+      defaultSelectedKey = props.initialSelectedKey,
+      defaultSelectedIndex = props.initialSelectedIndex,
+      selectedKey: selectedKeyFromProps
+    } = props;
+
     let selectedKey: string | undefined;
 
-    if (props.initialSelectedKey) {
-      selectedKey = props.initialSelectedKey;
-    } else if (props.initialSelectedIndex) {
-      selectedKey = links[props.initialSelectedIndex].itemKey!;
-    } else if (props.selectedKey) {
-      selectedKey = props.selectedKey;
+    if (defaultSelectedKey) {
+      selectedKey = defaultSelectedKey;
+    } else if (typeof defaultSelectedIndex === 'number') {
+      selectedKey = links[defaultSelectedIndex].itemKey!;
+    } else if (selectedKeyFromProps) {
+      selectedKey = selectedKeyFromProps;
     } else if (links.length) {
       selectedKey = links[0].itemKey!;
     }
