@@ -3,8 +3,7 @@ import * as React from 'react';
 /* Dependent Components */
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { ImageVisualization } from './Visualization/ImageVisualization';
-import { MultiStackedBarChartVisualization } from './Visualization/MultiStackedBarChartVisualization';
+import { ImageVisualization, MultiStackedBarChartVisualization, StackedBarChartVisualization } from './Visualization';
 import { CardFrame, ICardDropDownOption } from '../Card/CardFrame/index';
 
 /* Types for props and styles */
@@ -191,6 +190,8 @@ export class RecommendationBannerBase extends React.Component<IRecommendationPro
         return <ImageVisualization imageSrc={imageVisualizationSrc} imageAlt={imageVisualizationAltText} />;
       case VisualizationType.MultiStackBarChart:
         return <MultiStackedBarChartVisualization visualizationDatapoints={chartVisualizationData} />;
+      case VisualizationType.StackedBarChart:
+        return <StackedBarChartVisualization visualizationDatapoints={chartVisualizationData} />;
       default:
         return null;
     }

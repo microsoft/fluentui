@@ -3,14 +3,19 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export enum VisualizationType {
   /**
-   * MutliStackBarChart Visualization
+   * MutliStackBarChart Visualization (display more than 2 datapoints as a colored legend)
    */
   MultiStackBarChart = 1,
 
   /**
+   * Simple StackBarChart Visualization (to display a ratio, maximum of two datapoints)
+   */
+  StackedBarChart = 2,
+
+  /**
    * Image illustration visualization
    */
-  ImageIllustration = 2
+  ImageIllustration = 3
 }
 
 /**
@@ -128,6 +133,7 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   recommendationButtonLocalizedName?: string;
+
   /**
    * Optional: Aria description for Recommendation Button
    *
@@ -136,6 +142,7 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   recommendationButtonAriaDescription?: string;
+
   /**
    * Optional: Dismiss Recommendation Menu Item Localized Name
    *
@@ -144,6 +151,7 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   dismissRecommendationLocalizedName?: string;
+
   /**
    * Optional: Dismiss Recommendation Menu Item Aria Label
    *
@@ -152,6 +160,7 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   dismissRecommendationAriaLabel?: string;
+
   /**
    * Optional: Align the data visualization child in center
    *
@@ -160,14 +169,17 @@ export interface IRecommendationProps {
    * @memberof IRecommendationProps
    */
   centerDataVisualization?: boolean;
+
   /**
    * Optional: Theme (provided through customization)
    */
   theme?: ITheme;
+
   /**
    * Optional: Additional css class(es) to apply for RecommendationBanner
    */
   className?: string;
+
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
@@ -182,6 +194,7 @@ export interface ICardComponentCustomizationStyles {
    * Color of the horizontal line that separates the header and layout
    */
   separatorColor: string;
+
   /**
    * Text color for the CardFrame header
    */
@@ -196,6 +209,7 @@ export interface IRecommendationStyleProps {
    * Theme (provided through customization.)
    */
   theme: ITheme;
+
   /**
    * Additional CSS class(es) to apply to the StackedBarChart.
    */
@@ -210,42 +224,52 @@ export interface IRecommendationStyles {
    * Styles for the Recommendation container that acts as the wrapping container inside the layout
    */
   recommendationContainer: IStyle;
+
   /**
    * Styles for the Left half of the Container where Recommendation content is displayed
    */
   recommendationTextContainer: IStyle;
+
   /**
    * Styles for the Right half of the Container where Visualization/Image Illustration content is displayed
    */
   recommendationVisualizationContainer: IStyle;
+
   /**
    * Styles for the Recommendation Description Header
    */
   recommendationHeader: IStyle;
+
   /**
    * Styles for the Recommendation Content
    */
   recommendationContent: IStyle;
+
   /**
    * Style for the Recommendation flex row: header
    */
   recommendationHeaderRow: IStyle;
+
   /**
    * Style for the Recommendation flex row: content
    */
   recommendationContentRow: IStyle;
+
   /**
    * Style for the Recommendation flex row: command
    */
   recommendationCommandRow: IStyle;
+
   /**
    * Style for the Recommendation flex row: text
    */
   recommendationContentRowText: IStyle;
+
   /**
    * Style for the Recommendation flex row: visualization
    */
   recommendationContentRowVisualization: IStyle;
+
   /**
    * Style for the Recommendation flex row: visualization
    */
