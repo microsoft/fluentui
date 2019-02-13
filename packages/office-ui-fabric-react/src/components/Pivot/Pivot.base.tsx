@@ -15,13 +15,13 @@ const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
  *  Usage:
  *
  *   <Pivot>
- *     <PivotItem linkText="Foo">
+ *     <PivotItem headerText="Foo">
  *       <Label>Pivot #1</Label>
  *     </PivotItem>
- *     <PivotItem linkText="Bar">
+ *     <PivotItem headerText="Bar">
  *       <Label>Pivot #2</Label>
  *     </PivotItem>
- *     <PivotItem linkText="Bas">
+ *     <PivotItem headerText="Bas">
  *       <Label>Pivot #3</Label>
  *     </PivotItem>
  *   </Pivot>
