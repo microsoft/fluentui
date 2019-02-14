@@ -1848,13 +1848,6 @@ interface IBaseFloatingPickerState {
   suggestionsVisible?: boolean;
 }
 
-// @public (undocumented)
-interface IBaseFloatingPickerSuggestionProps {
-  footerItemsProps?: ISuggestionsHeaderFooterProps[];
-  headerItemsProps?: ISuggestionsHeaderFooterProps[];
-  shouldSelectFirstItem?: () => boolean;
-}
-
 // @public
 interface IBasePicker<T> {
   focus: () => void;
@@ -12845,6 +12838,7 @@ module ZIndexes {
 // WARNING: Unsupported export: groupTwo
 // WARNING: Unsupported export: Fabric
 // WARNING: Unsupported export: Facepile
+// WARNING: Unsupported export: IBaseFloatingPickerSuggestionProps
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
