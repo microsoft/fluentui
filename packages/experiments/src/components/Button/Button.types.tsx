@@ -48,19 +48,14 @@ export interface IButtonSlots {
 
   // The following slots are specific to Split Button and aren't used if the split property is not present.
   /**
-   * Defines the root container for Split Buttons.
+   * Defines the stack container for the primary action of the Split Button.
    */
-  splitRoot?: IStackSlot;
+  primaryActionContainer?: IStackSlot;
 
   /**
-   * Defines the root slot for the right part of the Split Button that contains the menu chevron.
+   * Defines the span container for the secondary action of the Split Button.
    */
-  splitMenuButton?: IHTMLElementSlot<'button'>;
-
-  /**
-   * Defines the horizontal stack used for specifying inner layour of the right part of the Split Button.
-   */
-  splitStack?: IStackSlot;
+  secondaryActionContainer?: IHTMLElementSlot<'span'>;
 
   /**
    * Defines the divider that separates the left and right parts of a Split Button.
@@ -120,7 +115,7 @@ export interface IButtonProps
    * Split Buttons only - Defines whether the first action of the Split Button is disabled.
    * @defaultvalue false
    */
-  firstActionDisabled?: boolean;
+  primaryActionDisabled?: boolean;
 
   /**
    * Defines an event callback that is triggered when the Button is clicked.
@@ -173,13 +168,18 @@ export interface IButtonTokens {
   minHeight?: number | string;
 
   // The following tokens are specific to Split Button and aren't used if the split property is not present.
-  splitContentPadding?: number | string;
-  splitBackgroundColor?: string;
-  splitBackgroundColorHovered?: string;
-  splitBackgroundColorPressed?: string;
-  splitColor?: string;
-  splitColorHovered?: string;
-  splitColorPressed?: string;
+  primaryActionBackgroundColor?: string;
+  primaryActionBackgroundColorHovered?: string;
+  primaryActionBackgroundColorPressed?: string;
+  secondaryActionBackgroundColor?: string;
+  secondaryActionBackgroundColorHovered?: string;
+  secondaryActionBackgroundColorPressed?: string;
+  primaryActionColor?: string;
+  primaryActionColorHovered?: string;
+  primaryActionColorPressed?: string;
+  secondaryActionColor?: string;
+  secondaryActionColorHovered?: string;
+  secondaryActionColorPressed?: string;
 }
 
 export type IButtonStyles = IComponentStyles<IButtonSlots>;

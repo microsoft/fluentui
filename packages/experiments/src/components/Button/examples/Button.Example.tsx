@@ -37,10 +37,10 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button split disabled primary icon="Add" content="Primary disabled split button" menu={buttonMenu} />
               </ButtonStack>
               <ButtonStack>
-                <Button split firstActionDisabled icon="Add" content="First action disabled split button" menu={buttonMenu} />
+                <Button split primaryActionDisabled icon="Add" content="First action disabled split button" menu={buttonMenu} />
                 <Button
                   split
-                  firstActionDisabled
+                  primaryActionDisabled
                   primary
                   icon="Add"
                   content="First action disabled primary split button"
