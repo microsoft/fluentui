@@ -1,5 +1,6 @@
 import { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
 import { getGlobalClassNames } from '../../Styling';
+import { Depths } from '@uifabric/fluent-theme';
 
 const GlobalClassNames = {
   root: 'ms-Card',
@@ -17,10 +18,7 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
     root: [
       classNames.root,
       {
-        borderColor: 'lightgray',
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        boxShadow: '1px 2px lightgray',
+        boxShadow: Depths.depth16,
         padding: 12,
         height: '350px',
         width: '250px'
