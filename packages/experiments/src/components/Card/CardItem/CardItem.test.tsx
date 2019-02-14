@@ -58,29 +58,21 @@ describe('Card Item', () => {
     const cardStylesFunc = CardStyles as IStylesFunction<ICardProps, ICardTokens, ICardStyles>;
     const cardItemStylesFunc = CardItemStyles as IStylesFunction<ICardItemProps, ICardItemTokens, ICardItemStyles>;
 
-    const cardStyles = cardStylesFunc({}, testTheme, {}).root as any;
-    const cardItemStyles = cardItemStylesFunc({ disableChildPadding: true }, testTheme, {}).root as any;
+    const cardStyles = cardStylesFunc({}, testTheme, {}).root;
+    const cardItemStylesArray = cardItemStylesFunc({ disableChildPadding: true }, testTheme, {}).root;
 
     expect(cardStyles).not.toBeNull();
-    expect(cardItemStyles).not.toBeNull();
+    expect(cardItemStylesArray).not.toBeNull();
 
-    let cardPadding: number = 0;
-    for (const style of cardStyles) {
-      if (style.padding) {
-        cardPadding = style.padding;
-      }
-    }
+    expect(cardStyles).toBeInstanceOf(Array);
+    expect(cardItemStylesArray).toBeInstanceOf(Array);
 
-    let cardItemMarginLeft: number = 0;
-    let cardItemMarginRight: number = 0;
-    for (const style of cardItemStyles) {
-      if (style.marginLeft) {
-        cardItemMarginLeft = style.marginLeft;
-      }
-      if (style.marginRight) {
-        cardItemMarginRight = style.marginRight;
-      }
-    }
+    const cardPadding = (cardStyles as Array<any>).find(style => style.padding).padding;
+
+    const cardItemStyles = (cardItemStylesArray as Array<any>).find(style => style.marginLeft || style.marginRight);
+    const cardItemMarginLeft = cardItemStyles.marginLeft;
+    const cardItemMarginRight = cardItemStyles.marginRight;
+
     expect(cardItemMarginLeft).toBe(-cardPadding);
     expect(cardItemMarginRight).toBe(-cardPadding - 1);
   });
