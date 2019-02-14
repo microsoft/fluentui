@@ -53,6 +53,10 @@
   .hideContent & {
     opacity: 0;
   }
+
+  .isFluent & {
+    top: 12px;
+  }
 }
 
 .frame {

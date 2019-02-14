@@ -95,7 +95,8 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           [`ms-FolderCover--isLarge ${FolderCoverStyles.isLarge}`]: size === 'large',
           [`ms-FolderCover--isDefault ${FolderCoverStyles.isDefault}`]: type === 'default',
           [`ms-FolderCover--isMedia ${FolderCoverStyles.isMedia}`]: type === 'media',
-          [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent
+          [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent,
+          [`ms-FolderCover--isFluent ${FolderCoverStyles.isFluent}`]: isFluent
         })}
       >
         <Icon aria-hidden={true} className={css('ms-FolderCover-back', FolderCoverStyles.back)} iconName={assets.back} />
