@@ -8,7 +8,8 @@ import {
   ScreenWidthMinLarge,
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
-  ScreenWidthMinUhfMobile
+  ScreenWidthMinUhfMobile,
+  IStyle
 } from '../../Styling';
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
@@ -44,7 +45,7 @@ const panelWidth = {
   auto: 'auto',
   xs: 272,
   sm: 340,
-  md1: 572,
+  md1: 592,
   md2: 644,
   lg: 940
 };
@@ -67,13 +68,13 @@ const mediumPanelSelectors = {
   ['@media (min-width: ' + ScreenWidthMinLarge + 'px)']: {
     width: panelWidth.md1
   },
-  ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+  ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
     width: panelWidth.md2
   }
 };
 
 const largePanelSelectors = {
-  ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+  ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
     left: panelMargin.md,
     width: panelWidth.auto
   },
@@ -82,13 +83,71 @@ const largePanelSelectors = {
   }
 };
 
+const largeFixedPanelSelectors = {
+  ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+    left: panelMargin.auto,
+    width: panelWidth.lg
+  }
+};
+
+const extraLargePanelSelectors = {
+  ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+    left: panelMargin.xl
+  }
+};
+
+const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefined => {
+  let selectors;
+
+  switch (type) {
+    case PanelType.smallFixedFar:
+      selectors = {
+        ...smallPanelSelectors
+      };
+      break;
+    case PanelType.medium:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors
+      };
+      break;
+    case PanelType.large:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors,
+        ...largePanelSelectors
+      };
+      break;
+    case PanelType.largeFixed:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors,
+        ...largePanelSelectors,
+        ...largeFixedPanelSelectors
+      };
+      break;
+    case PanelType.extraLarge:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors,
+        ...largePanelSelectors,
+        ...extraLargePanelSelectors
+      };
+      break;
+    default:
+      break;
+  }
+
+  return selectors;
+};
+
 const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
   paddingLeft: '16px',
   paddingRight: '16px',
   selectors: {
-    ['@media screen and (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+    ['@media screen and (min-width: ' + ScreenWidthMinLarge + 'px)']: {
       paddingLeft: '32px',
       paddingRight: '32px'
     },
@@ -189,7 +248,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
             maxHeight: windowHeight
-          }
+          },
+          ...getPanelBreakpoints(type!)
         }
       },
       type === PanelType.smallFluid && {
@@ -199,43 +259,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         left: panelMargin.none,
         right: panelMargin.auto,
         width: panelWidth.xs
-      },
-      type === PanelType.smallFixedFar && {
-        selectors: {
-          ...smallPanelSelectors
-        }
-      },
-      type === PanelType.medium && {
-        selectors: {
-          ...smallPanelSelectors,
-          ...mediumPanelSelectors
-        }
-      },
-      (type === PanelType.large || type === PanelType.largeFixed) && {
-        selectors: {
-          ...smallPanelSelectors,
-          ...mediumPanelSelectors,
-          ...largePanelSelectors
-        }
-      },
-      type === PanelType.largeFixed && {
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-            left: panelMargin.auto,
-            width: panelWidth.lg
-          }
-        }
-      },
-      type === PanelType.extraLarge && {
-        selectors: {
-          ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-            left: panelMargin.md,
-            width: panelWidth.auto
-          },
-          ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-            left: panelMargin.xl
-          }
-        }
       },
       isCustomPanel && {
         maxWidth: '100vw'
