@@ -5,6 +5,26 @@ import { IWizardStepAction } from './Wizard.types';
 import { getStyles } from './SetupWizardActionBar.styles';
 import { Link } from 'office-ui-fabric-react';
 
+class SetupWizardActionLink extends React.PureComponent<IWizardStepAction, {}> {
+  public constructor(props: IWizardStepAction) {
+    super(props);
+    this._handleClick = this._handleClick.bind(this);
+  }
+  public render(): JSX.Element {
+    const { action, currentStep, title, ...linkProps } = this.props;
+
+    return (
+      <Link {...linkProps} onClick={this._handleClick}>
+        {title}
+      </Link>
+    );
+  }
+
+  private _handleClick(): void {
+    this.props.action(this.props.currentStep!);
+  }
+}
+
 const getClassNames = classNamesFunction<ISetupWizardActionBarProps, ISetupWizardActionBarStyles>();
 
 export class SetupWizardActionBar extends React.Component<ISetupWizardActionBarProps, {}> {
@@ -22,23 +42,5 @@ export class SetupWizardActionBar extends React.Component<ISetupWizardActionBarP
         <SetupWizardActionLink {...this.props.exitWizardAction} className={classNames.exitAction} currentStep={this.props.currentStep} />
       </div>
     );
-  }
-}
-
-class SetupWizardActionLink extends React.PureComponent<IWizardStepAction, {}> {
-  public constructor(props: IWizardStepAction) {
-    super(props);
-    this._handleClick = this._handleClick.bind(this);
-  }
-  public render(): JSX.Element {
-    return (
-      <Link {...this.props} onClick={this._handleClick}>
-        {this.props.title}
-      </Link>
-    );
-  }
-
-  private _handleClick(): void {
-    this.props.action(this.props.currentStep!);
   }
 }

@@ -6,53 +6,55 @@ import { ISetupWizardState, generateRandomId, getNextStep } from './SetupWizard.
 import { setSubwayState } from '../../SubwayNav/examples/SubwayNav.Util';
 
 export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardState> {
-  private steps: IWizardStepProps[] = [
-    {
-      id: generateRandomId(),
-      label: 'Step 0',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavNodeState.Current,
-      wizardContent: {
-        content: this._getContentForStep('Step 0'),
-        mainAction: this._getMainActionForStep('Step 0')
-      }
-    },
-    {
-      id: generateRandomId(),
-      label: 'Step 1',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavNodeState.NotStarted,
-      wizardContent: {
-        content: this._getContentForStep('Step 1'),
-        mainAction: this._getMainActionForStep('Step 1')
-      }
-    },
-    {
-      id: generateRandomId(),
-      label: 'Step 2',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavNodeState.NotStarted,
-      wizardContent: {
-        content: this._getContentForStep('Step 2'),
-        mainAction: this._getMainActionForStep('Step 2')
-      }
-    },
-    {
-      id: generateRandomId(),
-      label: 'Step 3',
-      onClickStep: this._handleClickStep,
-      state: SubwayNavNodeState.NotStarted,
-      wizardContent: {
-        content: this._getContentForStep('Step 3'),
-        mainAction: this._getMainActionForStep('Step 3')
-      }
-    }
-  ];
+  private steps: IWizardStepProps[];
 
   constructor(props: {}) {
     super(props);
 
     this._handleClickStep = this._handleClickStep.bind(this);
+
+    this.steps = [
+      {
+        id: generateRandomId(),
+        label: 'Step 0',
+        onClickStep: this._handleClickStep,
+        state: SubwayNavNodeState.Current,
+        wizardContent: {
+          content: this._getContentForStep('Step 0'),
+          mainAction: this._getMainActionForStep('Step 0')
+        }
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 1',
+        onClickStep: this._handleClickStep,
+        state: SubwayNavNodeState.NotStarted,
+        wizardContent: {
+          content: this._getContentForStep('Step 1'),
+          mainAction: this._getMainActionForStep('Step 1')
+        }
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 2',
+        onClickStep: this._handleClickStep,
+        state: SubwayNavNodeState.NotStarted,
+        wizardContent: {
+          content: this._getContentForStep('Step 2'),
+          mainAction: this._getMainActionForStep('Step 2')
+        }
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 3',
+        onClickStep: this._handleClickStep,
+        state: SubwayNavNodeState.NotStarted,
+        wizardContent: {
+          content: this._getContentForStep('Step 3'),
+          mainAction: this._getMainActionForStep('Step 3')
+        }
+      }
+    ];
     this.state = {
       steps: this.steps,
       currentStepId: this.steps[0].id
