@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 13 Feb 2019 13:36:46 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:55 GMT and should not be manually modified.
+
+## 6.139.0
+Thu, 14 Feb 2019 13:34:55 GMT
+
+### Minor changes
+
+- Fix type IBaseFloatingPickerSuggestionProps in ExtendedPeoplePicker, expose showRemoveButtons
+
+### Patches
+
+- TeachingBubble: revert PR #7837
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Fix DetailsList compiler warnings in test by casting document.activeElement to HTMLElement
+- Pivot cleanup
 
 ## 6.138.1
 Wed, 13 Feb 2019 13:36:46 GMT

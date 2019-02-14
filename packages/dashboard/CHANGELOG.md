@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 12 Feb 2019 13:36:42 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+
+## 0.47.5
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add Id for Thumbnail item actions
 
 ## 0.47.4
 Tue, 12 Feb 2019 13:36:42 GMT

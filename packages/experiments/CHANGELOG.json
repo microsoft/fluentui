@@ -2,6 +2,46 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.56.0",
+      "tag": "@uifabric/experiments_v6.56.0",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Adding first prototype for Basic Card component.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "42df10cf90383149d1e7dce8b6d35b36f1f201e7"
+          },
+          {
+            "comment": "Experiments: Removed form control",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "1ea8a1ec4e5c0b7c12a7a74d67826c5cf205d7ee"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fluent folder cover; updated metadata font color; added yellowDark color variable",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7c1a7f9f8d5157f6cd59a568a89019d816c75e9b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.6` to `^0.28.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.55.0",
       "tag": "@uifabric/experiments_v6.55.0",
       "date": "Wed, 13 Feb 2019 13:36:45 GMT",
