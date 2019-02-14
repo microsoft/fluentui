@@ -89,7 +89,7 @@ export function setSubwayState(
 }
 
 function hasCompletedSubSteps(step: ISubwayNavNodeProps | IWizardStepProps): boolean {
-  // if all steps are completed and last is current, count main as completed
+  // if all steps are completed or current, count main as completed
   return !(step.subSteps as Array<ISubwayNavNodeProps | IWizardStepProps>).some(
     (subStep: ISubwayNavNodeProps | IWizardStepProps, index: number) => {
       return !(subStep.state === SubwayNavNodeState.Completed || subStep.state === SubwayNavNodeState.Current);
