@@ -47,12 +47,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
-          component: require<any>('../components/Form/FormPage').FormPage,
-          key: 'Form',
-          name: 'Form',
-          url: '#/examples/form'
-        },
-        {
           component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
           key: 'FileTypeIcon',
           name: 'FileTypeIcon',
