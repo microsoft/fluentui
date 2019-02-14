@@ -22,11 +22,10 @@ export function setSubwayState(
   currentStepId: string
 ): { steps: (ISubwayNavNodeProps | IWizardStepProps)[]; currentStepId: string } {
   let foundCurrentStep = false;
+  let selectedStepId = selectedStep.id;
   // map through the steps and return a new array to re-render
   const newSteps = (steps as Array<ISubwayNavNodeProps | IWizardStepProps>).map((stepObj: ISubwayNavNodeProps | IWizardStepProps) => {
-    if (stepObj.id === currentStepId) {
-      return { ...stepObj, state: SubwayNavNodeState.Completed };
-    } else if (stepObj.id === selectedStep.id || stepObj.id === selectedStep.parentId) {
+    if (stepObj.id === selectedStep.id || stepObj.id === selectedStep.parentId) {
       foundCurrentStep = true;
       // if id or parentId matches we know we have the correct nodes
       // shallow clone step
@@ -39,8 +38,18 @@ export function setSubwayState(
           (subStep: ISubwayNavNodeProps | IWizardStepProps, index: number) => {
             // if we have sub steps, set the first item to current if the substep isn't the originator
             if (subStep.id === selectedStep.id || (index === 0 && stepObj.id === selectedStep.id)) {
+              if (index === 0 && stepObj.id === selectedStep.id) {
+                selectedStepId = subStep.id;
+              }
               foundCurrentSubStep = true;
               return { ...subStep, state: SubwayNavNodeState.Current };
+            } else if (subStep.id === currentStepId) {
+              if (subStep.id === selectedStep.id) {
+                foundCurrentStep = true;
+                return { ...subStep, state: SubwayNavNodeState.Current };
+              } else {
+                return { ...subStep, state: SubwayNavNodeState.Completed };
+              }
             } else if (!foundCurrentSubStep && subStep.state === SubwayNavNodeState.NotStarted) {
               // if a previous sub step was not started
               // and the current hasn't been found, mark as skipped
@@ -54,6 +63,21 @@ export function setSubwayState(
         newStep.state = SubwayNavNodeState.Current;
       }
       return newStep;
+    } else if (stepObj.id === currentStepId) {
+      if (stepObj.id === selectedStep.id) {
+        foundCurrentStep = true;
+        return { ...stepObj, state: SubwayNavNodeState.Current };
+      } else {
+        return { ...stepObj, state: SubwayNavNodeState.Completed };
+      }
+    } else if (stepObj.state === SubwayNavNodeState.CurrentWithSubSteps) {
+      // clean up current sub steps and mark complete
+      const cleanSubSteps = markCurrentSubStepsComplete(stepObj);
+      if (hasCompletedSubSteps(stepObj)) {
+        return { ...stepObj, subSteps: cleanSubSteps, state: SubwayNavNodeState.Completed };
+      } else {
+        return { ...stepObj, subSteps: cleanSubSteps, state: SubwayNavNodeState.Unsaved };
+      }
     } else if (!foundCurrentStep && stepObj.state === SubwayNavNodeState.NotStarted) {
       return { ...stepObj, state: SubwayNavNodeState.Skipped };
     }
@@ -61,5 +85,24 @@ export function setSubwayState(
     return stepObj;
   });
 
-  return { steps: newSteps, currentStepId: selectedStep.id };
+  return { steps: newSteps, currentStepId: selectedStepId };
+}
+
+function hasCompletedSubSteps(step: ISubwayNavNodeProps | IWizardStepProps): boolean {
+  // if all steps are completed and last is current, count main as completed
+  return !(step.subSteps as Array<ISubwayNavNodeProps | IWizardStepProps>).some(
+    (subStep: ISubwayNavNodeProps | IWizardStepProps, index: number) => {
+      return !(subStep.state === SubwayNavNodeState.Completed || subStep.state === SubwayNavNodeState.Current);
+    }
+  );
+}
+
+function markCurrentSubStepsComplete(step: ISubwayNavNodeProps | IWizardStepProps): (ISubwayNavNodeProps | IWizardStepProps)[] {
+  return (step.subSteps as Array<ISubwayNavNodeProps | IWizardStepProps>).map((subStep: ISubwayNavNodeProps | IWizardStepProps) => {
+    if (subStep.state === SubwayNavNodeState.Current) {
+      return { ...subStep, state: SubwayNavNodeState.Completed };
+    } else {
+      return subStep;
+    }
+  });
 }
