@@ -11575,6 +11575,7 @@ class OverlayBase extends BaseComponent<IOverlayProps, {}> {
 // @public (undocumented)
 enum PanelType {
   custom = 7,
+  customNear = 8,
   extraLarge = 6,
   large = 4,
   largeFixed = 5,
