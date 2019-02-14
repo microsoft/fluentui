@@ -122,7 +122,7 @@ export const getSubwayNodeStyles = (props: ISubwayNavNodeStyleProps): ISubwayNav
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      color: disabled ? subwayColors.disableText : subwayColors.text
+      color: subwayColors.text
     },
     isSubStep && {
       transform: 'translateY(-2px)'

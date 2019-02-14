@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { IWizardStepProps, IWizardProps, IWizardStyles } from './Wizard.types';
+import { IWizardProps, IWizardStyles } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
-import { ISubwayNavNodeProps, SubwayNavNodeState } from '../SubwayNav';
 import { getStepContentToShow } from './Wizard.utils';
 
 const getClassNames = classNamesFunction<IWizardProps, IWizardStyles>();
@@ -21,16 +20,6 @@ export class Wizard extends React.Component<IWizardProps, {}> {
       throw new Error('Wizard must have atleast one step.');
     }
 
-    const navSteps = steps.map((step: IWizardStepProps, index: number) => {
-      const { wizardContent, ...stepProps } = step;
-      const navStep: ISubwayNavNodeProps = { ...stepProps };
-
-      // If allowSkipAhead is not allowed, then disable all steps that are "NotStarted"
-      // Except for first step, it cannot be disabled.
-      navStep.disabled = index > 0 && this.props.allowSkipAhead === false && navStep.state === SubwayNavNodeState.NotStarted;
-
-      return navStep;
-    });
     const classNames = getClassNames(getWizardStyles!);
 
     // if the step to render is already passed in, use that
@@ -39,7 +28,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     return (
       <div className={classNames.wizardContentNavContainer}>
         <div className={classNames.subwayNavSection}>
-          <SubwayNav steps={navSteps} wizardComplete={this.props.wizardComplete} />
+          <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
         <div className={classNames.contentSection}>
           <div>{wizardStepProps.wizardContent!.contentTitle}</div>

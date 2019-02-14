@@ -7,8 +7,6 @@ export interface IWizardProps {
 
   wizardComplete?: boolean;
 
-  allowSkipAhead?: boolean;
-
   stepToShow?: IWizardStepProps;
 }
 

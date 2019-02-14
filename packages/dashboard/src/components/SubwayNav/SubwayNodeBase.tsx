@@ -45,7 +45,7 @@ export class SubwayNodeBase extends React.PureComponent<ISubwayNavNodeProps> {
 
     return (
       <li className={this._classNames.root} data-is-focusable={!this.props.disabled}>
-        <div className={this._classNames.flexContainer} onClick={this._onClickStep}>
+        <div className={this._classNames.flexContainer} {...!this.props.disabled && { onClick: this._onClickStep }}>
           {onRenderStepIcon(this.props, this._classNames, iconRecord)}
           <div className={this._classNames.spacer} />
           <div className={this._classNames.label}>{this.props.label}</div>
