@@ -9498,9 +9498,13 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   componentRef?: IRefObject<IPivot>;
+  defaultSelectedIndex?: number;
+  defaultSelectedKey?: string;
   getTabId?: (itemKey: string, index: number) => string;
   headersOnly?: boolean;
+  // @deprecated
   initialSelectedIndex?: number;
+  // @deprecated
   initialSelectedKey?: string;
   linkFormat?: PivotLinkFormat;
   linkSize?: PivotLinkSize;
@@ -9510,14 +9514,12 @@ interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttrib
   theme?: ITheme;
 }
 
-// @public
+// @public (undocumented)
 interface IPivotState {
   // (undocumented)
   links: IPivotItemProps[];
   // (undocumented)
-  selectedKey: string;
-  // (undocumented)
-  selectedTabId: string;
+  selectedKey: string | undefined;
 }
 
 // @public (undocumented)
@@ -11714,7 +11716,7 @@ enum PersonaSize {
   tiny = 0
 }
 
-// @public (undocumented)
+// @public
 class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   constructor(props: IPivotProps);
   // (undocumented)
@@ -11726,6 +11728,7 @@ class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
 // @public (undocumented)
 class PivotItem extends BaseComponent<IPivotItemProps, {}> {
+  constructor(props: IPivotItemProps);
   // (undocumented)
   render(): JSX.Element;
 }

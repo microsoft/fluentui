@@ -49,7 +49,7 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
   private _renderPivotItemList(tasks: ITodoItem[], tabName: string): React.ReactElement<IPivotProps> {
     // @todo #219004 make isInnerZoneKeystroke be rtl safe.
     return (
-      <PivotItem linkText={`${tabName} (${tasks.length})`}>
+      <PivotItem headerText={`${tabName} (${tasks.length})`}>
         <FocusZone direction={FocusZoneDirection.vertical} isInnerZoneKeystroke={this._isInnerZoneKeystroke}>
           <List className={styles.todoList} items={tasks} onRenderCell={this._onRenderTodoItem} />
         </FocusZone>
@@ -62,13 +62,6 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
   };
 
   private _onRenderTodoItem(item: ITodoItem): React.ReactElement<ITodoItemProps> {
-    return (
-      <TodoItem
-        key={item.id}
-        item={item}
-        onToggleComplete={this.props.onToggleComplete}
-        onDeleteItem={this.props.onDeleteItem}
-      />
-    );
+    return <TodoItem key={item.id} item={item} onToggleComplete={this.props.onToggleComplete} onDeleteItem={this.props.onDeleteItem} />;
   }
 }
