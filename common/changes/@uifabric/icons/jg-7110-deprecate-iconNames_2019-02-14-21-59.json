@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/icons",
       "comment": "Deprecate iconNames due to const enum usage.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/icons",
