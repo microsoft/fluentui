@@ -1,8 +1,4 @@
 {
-  "extends": [
-    "@uifabric/tslint-rules"
-  ],
-  "rules": {
-    "deprecation": false
-  }
+  "extends": ["@uifabric/tslint-rules"],
+  "rules": {}
 }
