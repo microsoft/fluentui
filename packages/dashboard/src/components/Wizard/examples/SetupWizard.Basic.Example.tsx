@@ -68,7 +68,7 @@ export class SetupWizardBasicExample extends React.Component<{}, ISetupWizardSta
           wizardTitle={{ title: 'Sample wizard with 4 steps' }}
           exitWizardAction={this._getExitWizardAction()}
           backClickAction={this._getBackClickAction()}
-          steps={this.steps}
+          steps={this.state.steps}
         />
       </div>
     );

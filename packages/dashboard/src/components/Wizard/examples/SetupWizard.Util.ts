@@ -34,10 +34,17 @@ export function getNextStep(
           nextSubStep = step.subSteps![subIndex + 1];
           parentId = step.id;
           return true;
+        } else if (subStep.id === currentStepId && !step.subSteps![subIndex + 1]) {
+          // no more sub steps break out into main steps
+          if (steps[index + 1]) {
+            nextStep = steps[index + 1];
+          }
+          return true;
         }
         return false;
       });
       if (nextSubStep) {
+        nextStep = nextSubStep;
         return true;
       }
     }
