@@ -312,7 +312,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           refocusSuggestions={this.refocusSuggestions}
           removeSuggestionAriaLabel={this.props.removeButtonAriaLabel}
           suggestionsListId={this._ariaMap.suggestionList}
-          {...this.props.pickerSuggestionsProps as any}
+          {...this.props.pickerSuggestionsProps}
         />
       </Callout>
     ) : null;

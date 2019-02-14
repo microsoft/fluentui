@@ -23,6 +23,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/button'
         },
         {
+          component: require<any>('../components/Card/CardPage').CardPage,
+          key: 'Card',
+          name: 'Card',
+          url: '#/examples/card'
+        },
+        {
           component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
           key: 'CollapsibleSection',
           name: 'CollapsibleSection',
@@ -39,12 +45,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'FolderCover',
           name: 'FolderCover',
           url: '#/examples/foldercover'
-        },
-        {
-          component: require<any>('../components/Form/FormPage').FormPage,
-          key: 'Form',
-          name: 'Form',
-          url: '#/examples/form'
         },
         {
           component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,

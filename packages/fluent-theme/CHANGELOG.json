@@ -2,6 +2,63 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.14.0",
+      "tag": "@uifabric/fluent-theme_v0.14.0",
+      "date": "Tue, 12 Feb 2019 13:36:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: adds minor adjustments to align to new fluent style patterns.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7c7b532230b69757253309e2210ee091f5bd63aa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.4",
+      "tag": "@uifabric/fluent-theme_v0.13.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fixes a misalignment of some items in the dropdown. ",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "69a8cfcb14d8d61500179c8dfe870abd2371dbfd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.3",
+      "tag": "@uifabric/fluent-theme_v0.13.3",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "6aea41c720e996979f9687f70d1b4df1ea43cf9d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.3 <7.0.0` to `>=6.129.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.2",
       "tag": "@uifabric/fluent-theme_v0.13.2",
       "date": "Thu, 10 Jan 2019 04:58:48 GMT",

@@ -15,12 +15,14 @@ import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
+import { DocumentCardStyles } from './styles/DocumentCard.styles';
 import { DropdownStyles } from './styles/DropDown.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { MessageBarStyles } from './styles/MessageBar.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { OverlayStyles } from './styles/Overlay.styles';
 import { NavStyles } from './styles/Nav.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PivotStyles } from './styles/Pivot.styles';
@@ -31,6 +33,10 @@ import { RatingStyles } from './styles/Rating.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { SuggestionItemStyles } from './styles/SuggestionsItem.styles';
+import { SuggestionsStyles } from './styles/Suggestions.styles';
+import { TagItemStyles } from './styles/TagItem.styles';
+import { TagPickerStyles } from './styles/TagPicker.styles';
 import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
@@ -103,6 +109,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     DialogFooter: {
       styles: DialogFooterStyles
     },
+    DocumentCard: {
+      styles: DocumentCardStyles
+    },
     Dropdown: {
       styles: DropdownStyles
     },
@@ -123,6 +132,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     Modal: {
       styles: ModalStyles
+    },
+    Overlay: {
+      styles: OverlayStyles
     },
     Nav: {
       styles: NavStyles
@@ -153,6 +165,18 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     SpinButton: {
       styles: SpinButtonStyles(theme)
+    },
+    TagPicker: {
+      styles: TagPickerStyles
+    },
+    TagItem: {
+      styles: TagItemStyles
+    },
+    SuggestionItem: {
+      styles: SuggestionItemStyles
+    },
+    Suggestions: {
+      styles: SuggestionsStyles
     },
     TeachingBubble: {
       styles: TeachingBubbleStyles

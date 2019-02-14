@@ -1,5 +1,4 @@
-import { IStyle } from '@uifabric/experiments/lib/Styling';
-import { FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const PrimaryTextColor = '#323130';
@@ -187,23 +186,23 @@ const getDetailTileStyles = (): IDetailTileStyles => {
   return {
     item: {
       width: 240,
-      padding: '24px 24px 24px 0px'
+      padding: '20px 24px 20px 0px'
     },
     title: {
-      fontSize: FontSizes.medium,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       lineHeight: 20,
       paddingBottom: 2
     },
     message: {
-      fontSize: FontSizes.medium,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       lineHeight: 20,
       color: 'rgba(0, 0, 0, 0.6)',
       paddingBottom: 2
     },
     action: {
-      fontSize: FontSizes.medium,
+      fontSize: FontSizes.small,
       lineHeight: 20,
       selectors: {
         '.ms-Link': {

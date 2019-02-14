@@ -1,6 +1,195 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 22 Jan 2019 13:34:38 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:55 GMT and should not be manually modified.
+
+## 6.139.0
+Thu, 14 Feb 2019 13:34:55 GMT
+
+### Minor changes
+
+- Fix type IBaseFloatingPickerSuggestionProps in ExtendedPeoplePicker, expose showRemoveButtons
+
+### Patches
+
+- TeachingBubble: revert PR #7837
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Fix DetailsList compiler warnings in test by casting document.activeElement to HTMLElement
+- Pivot cleanup
+
+## 6.138.1
+Wed, 13 Feb 2019 13:36:46 GMT
+
+### Patches
+
+- MessageBar: exclude className from nativeProps
+- Fix id usage in examples
+- Normalized disabled style for input components (DatePicker, TextField).
+- Remove maximum width from Breadcrumb items
+- Fixing SpinButton A11y Pass Bug 2 where Up/Down buttons aren't discernable.
+- TextField: updates some semantic colors usage.
+
+## 6.138.0
+Tue, 12 Feb 2019 13:36:43 GMT
+
+### Minor changes
+
+- ComboBox: adds an autofillProps
+- Make ChoiceGroupOptions stylable
+
+### Patches
+
+- Calendar: adding type="button" in Calendar buttons so they don't submit by default inside forms
+- FocusZone: fixing issue where onActiveItemChanged was no longer firing.
+- Fix ID usage in examples
+- Toggle: pass in native hidden prop to root element
+- Tooltip: Updates examples to demonstrate how to tag aria attributes correctly
+- Pickers: fix bug in ExtendedPicker demo and remove unneeded cast in EditingItem
+
+## 6.137.0
+Mon, 11 Feb 2019 13:40:44 GMT
+
+### Minor changes
+
+- PivotItem: updating itemCount type to include strings
+- Pickers: Re-type onItemRemove in Suggestions to support the suggestions Generic type
+
+### Patches
+
+- In HoverCard, do not dismiss the card when the  prop is true and the event prompting the dismissal is the 'mouseleave' event from the card itself. Clicking outside, escape, etc will still dismiss the card.
+- Removed Href on Links that are disabled. This prevents inadvertent access to disabled links. Also prevents link focus rect bug
+- SpinButton: Only update value in state if newProps.value is defined
+
+## 6.136.0
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Minor changes
+
+- Add textField to IDatePickerProps
+
+## 6.135.1
+Thu, 07 Feb 2019 13:32:39 GMT
+
+### Patches
+
+- DetailsList: Fixes the column header shifting upwards by 1px after drag and drop action.
+
+## 6.135.0
+Wed, 06 Feb 2019 13:38:07 GMT
+
+### Minor changes
+
+- Nav: add semantic colors styling to link
+
+### Patches
+
+- FocusTrapZone: Fixed FocusTrapZone to use the relatedTarget instead of document.activeElement to find what is losing focus
+- Fixing wrapping links' focus rect clipping problem with boxshadow styling.
+
+## 6.134.0
+Tue, 05 Feb 2019 13:35:00 GMT
+
+### Minor changes
+
+- MessageBar: mix in native props
+- Use React.ComponentType in ExtendedPeoplePicker for render props
+
+### Patches
+
+- DetailsList: render a simple column header for checkboxes in single selection mode
+- Fixing the implementation of the hidden prop wrt to focus, bounds and unnecessary mounts
+- Nav: Fixed an issue where nav link text overflow was not properly left aligned.
+- Remove popup outline
+
+## 6.133.0
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Minor changes
+
+- GroupHeader: exposes props of selection check button.
+
+### Patches
+
+- Clarify extended picker dont documentation
+- Update ThemesOverview.md documentation
+- Remove some unneeded casts + 'any's in ExtendedPeoplePicker
+
+## 6.132.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- FocusZone: focus can now be recovered if focus was resting within the zone but the element was removed.
+
+## 6.131.1
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Patches
+
+- scrollTop value may be in decimal. Taking floor of scrollTop to calculate isStickyBottom for a sticky component
+- TeachingBubble: do not pass in onDismiss to TeachingBubbleContent
+- Support ESC after clicking in Popup
+
+## 6.131.0
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Minor changes
+
+- GroupedList: changes types of the renderers to allow customizing the `subComponents` through the `Customizer`. Export the missing interfaces to the top level index file of the GroupedList.
+
+### Patches
+
+- width is not required for sticky placeholder as it won't affect horizontal scrolling. For a detailsGroupedList, if horizontal scrollbar is present when detailsHeader is in non-sticky state, it should be there even when detailsHeader becomes sticky. 
+- Panel: add flex-grow: 1 to contentInner
+
+## 6.130.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Coachmark: updates how the the theme is passed to `getStyles` function. Adds 2 new props: `theme` and `className`. Minor cleanup.
+
+### Patches
+
+- DetailsList: Set aria-expanded attribute only if necessary
+- DocumentCard: Renames 'previewFileTypeIcon' to 'icon' to fix a regression
+- Fix callouts appearing partially off screen
+
+## 6.129.4
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- Specify prop "type" to be "button" for links which are of type button
+- Fix ColorPicker when alpha slider is hidden
+- Add documentation and tests for color utilities
+- Combobox: Pass taxIndex to Autofill component
+- Panel: Add aria-hidden attribute to prevent narrator from reading when transitioning to a closed state
+- Added screener tests to Breadcrumb component to prevent regression
+- position anchor currently by default uses either the given alignment edge or uses the positive flanking edge, without regard to whether the positive or negative edge has more room. This change uses the bounds to determine which side has more room and flips the anchor around, to solve issues with dynamically resizing callouts not having enough room to grow if they default to a top-anchor
+- Fix the regression in DocumentCard role by commit 5b8befe. It should always use props.role if it is defined. 
+
+## 6.129.3
+Thu, 24 Jan 2019 13:36:17 GMT
+
+### Patches
+
+- Add lang tag to the section header by getting the native props
+- Prevent the Tooltip's content from scrolling
+
+## 6.129.2
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- Update DetailsList examples to have codepens
+- DatePicker: adds missing className attribute to the `TextField` of the control.
+- Dispose DragDropHelper in DetailsHeader to prevent memory leaks
+- Coachmark: Fix component to open contents on mouseover
+- Update GroupedList and HoverCard examples to have codepens
+- Added a simpler DocumentCardImage component for use in the DocumentCard component
+- ContextualMenu: Fixes a layout bug with split menu items in IE11
+- ContextualMenu: Add menu role for accessibility
+- Use CSS object-fit in the Image component in capable browsers
 
 ## 6.129.1
 Tue, 22 Jan 2019 13:34:38 GMT

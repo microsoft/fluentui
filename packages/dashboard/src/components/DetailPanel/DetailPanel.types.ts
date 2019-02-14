@@ -368,7 +368,7 @@ export interface IDetailInfoTileProps {
   /**
    * Message line of the tile
    */
-  message?: string;
+  message?: string | JSX.Element;
 
   /**
    * Action text of the tile

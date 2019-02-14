@@ -65,9 +65,11 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       style={
         Object {
           "maxHeight": 750,
+          "outline": "none",
           "overflowY": "hidden",
         }
       }
+      tabIndex={-1}
     >
       <div>
         <div

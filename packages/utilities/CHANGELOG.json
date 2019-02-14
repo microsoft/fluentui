@@ -2,6 +2,48 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.29.1",
+      "tag": "@uifabric/utilities_v6.29.1",
+      "date": "Thu, 14 Feb 2019 13:34:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add fallback for reading direction attribute from body element.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ea1c5970709209dab8f7ba2781cdb5e21b92e9f5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.0",
+      "tag": "@uifabric/utilities_v6.29.0",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding helper functions to get and restore focus elements based on index paths.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "468af6a86a680e882009c7bc33e0956877d3fa26"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.28.1",
+      "tag": "@uifabric/utilities_v6.28.1",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating 'customizable.tsx' to evaluate style functions.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4585011f2001a2d276525fb64f81ecabfe2316b4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.0",
       "tag": "@uifabric/utilities_v6.28.0",
       "date": "Fri, 11 Jan 2019 05:00:46 GMT",

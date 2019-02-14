@@ -1,6 +1,112 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+
+## 6.56.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Card: Adding first prototype for Basic Card component.
+- Experiments: Removed form control
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+
+## 6.55.0
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Minor changes
+
+- Stack: Renaming preventShrink to disableShrink in Stack and StackItem. Removing defaultProps from StackStatics.
+
+### Patches
+
+- Fix id usage in examples
+
+## 6.54.4
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Stack: Modifying StackItem so that it can render multiple children.
+
+## 6.54.3
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fixed the VerticalPersona not wrapping text properly in IE
+
+## 6.54.2
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- CollapsibleSectionTitle: Use new factoryOptions prop. Name factory wrappers.
+
+## 6.54.1
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Remove Slots/Tokens Foundation implementation.
+
+## 6.54.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.
+
+### Patches
+
+-  Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.
+
+## 6.53.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Change slot render function signature for increased flexibility.
+- Stack: Fixing IE11 wrapping bug reproed in 'Horizontal Stack - Wrapping - Nested' example.
+
+## 6.53.1
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Patches
+
+- Stack: Removing 'whiteSpace: noWrap' from children styles and improving API comments.
+
+## 6.53.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Stack: Updating API based on feedback from review.
+- Stack: Removing 'top' and 'bottom' from accepted values for 'verticalAlign' prop and updating examples and tests using them.
+
+## 6.52.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- Stack: Adding 'reversed' prop, updating styles, and adding examples, snapshot tests and vr-tests.
+
+### Patches
+
+- Minor fixes to Toggle and CollapsibleSection.
+
+## 6.51.2
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Patches
+
+- Stack: Removing unneeded children logic used to calculate classnames.
+- Use button element for Tile when there is no href
+- Bundle improvement for Tile click fix
+- Use CSS object-fit in the Image component in capable browsers
 
 ## 6.51.1
 Mon, 21 Jan 2019 13:36:01 GMT

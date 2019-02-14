@@ -11,7 +11,8 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
     currentText,
     hoveredText,
     href,
-    hideIcon
+    hideIcon,
+    onClicked
   } = props;
   const bodyTextSize = bodyTextFontSize ? bodyTextFontSize : '28px';
   return {
@@ -22,7 +23,7 @@ export const getStyles = (props: IMultiCountStyleProps): IMultiCountStyles => {
       alignItems: 'baseline',
       overflow: 'hidden',
       opacity: hoveredText === '' ? '' : hoveredText === currentText ? '' : '0.1',
-      cursor: href ? 'pointer' : 'default',
+      cursor: href || onClicked ? 'pointer' : 'default',
       fontSize: bodyTextSize,
       height: '1.3em'
     },

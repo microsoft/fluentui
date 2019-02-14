@@ -9,12 +9,7 @@ import {
   IBaseFloatingPickerProps,
   IBaseFloatingPickerSuggestionProps
 } from 'office-ui-fabric-react/lib/FloatingPicker';
-import {
-  IBaseSelectedItemsListProps,
-  ISelectedPeopleProps,
-  SelectedPeopleList,
-  IExtendedPersonaProps
-} from 'office-ui-fabric-react/lib/SelectedItemsList';
+import { ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
 // Helper imports to generate data for this particular examples. Not exported by any package.
@@ -33,7 +28,7 @@ export interface IPeoplePickerExampleState {
   controlledComponent: boolean;
 }
 
-export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeoplePickerExampleState> {
+export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeoplePickerExampleState> {
   private _picker: ExtendedPeoplePicker;
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
@@ -53,6 +48,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
     };
 
     this._suggestionProps = {
+      showRemoveButtons: true,
       headerItemsProps: [
         {
           renderItem: () => {
@@ -138,7 +134,7 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
       copyMenuItemText: 'Copy name',
       editMenuItemText: 'Edit',
       getEditingItemText: this._getEditingItemText,
-      onRenderFloatingPicker: this._onRenderFloatingPicker,
+      onRenderFloatingPicker: FloatingPeoplePicker,
       floatingPickerProps: this._floatingPickerProps
     };
 
@@ -167,8 +163,8 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
         onItemsRemoved={this.state.controlledComponent ? this._onItemsRemoved : undefined}
         floatingPickerProps={this._floatingPickerProps}
         selectedItemsListProps={this._selectedItemsListProps}
-        onRenderFloatingPicker={this._onRenderFloatingPicker}
-        onRenderSelectedItems={this._onRenderSelectedItems}
+        onRenderFloatingPicker={FloatingPeoplePicker}
+        onRenderSelectedItems={SelectedPeopleList}
         className={'ms-PeoplePicker'}
         key={'normal'}
         inputProps={{
@@ -189,14 +185,6 @@ export class ExtendedPeoplePickerTypesExample extends React.Component<{}, IPeopl
 
   private _renderHeader(): JSX.Element {
     return <div data-is-focusable={true}>TO:</div>;
-  }
-
-  private _onRenderFloatingPicker(props: IBaseFloatingPickerProps<IPersonaProps>): JSX.Element {
-    return <FloatingPeoplePicker {...props} />;
-  }
-
-  private _onRenderSelectedItems(props: IBaseSelectedItemsListProps<IExtendedPersonaProps>): JSX.Element {
-    return <SelectedPeopleList {...props} />;
   }
 
   private _getEditingItemText(item: IExtendedPersonaProps): string {

@@ -8,7 +8,7 @@ import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styli
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
-export type VerticalAlignment = 'top' | 'center' | 'bottom';
+export type VerticalAlignment = 'start' | 'center' | 'end';
 
 export interface IExampleState {
   numItems: number;
@@ -16,9 +16,9 @@ export interface IExampleState {
   preventOverflow: boolean;
   wrap: boolean;
   wrapperWidth: number;
-  shrink: boolean;
-  gap: number;
-  verticalGap: number;
+  disableShrink: boolean;
+  columnGap: number;
+  rowGap: number;
   paddingLeft: number;
   paddingRight: number;
   paddingTop: number;
@@ -38,15 +38,15 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       preventOverflow: false,
       wrap: false,
       wrapperWidth: 100,
-      shrink: false,
-      gap: 0,
-      verticalGap: 0,
+      disableShrink: true,
+      columnGap: 0,
+      rowGap: 0,
       paddingLeft: 0,
       paddingRight: 0,
       paddingTop: 0,
       paddingBottom: 0,
       horizontalAlignment: 'start',
-      verticalAlignment: 'top',
+      verticalAlignment: 'start',
       hideEmptyChildren: false,
       emptyChildren: []
     };
@@ -59,9 +59,9 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       preventOverflow,
       wrap,
       wrapperWidth,
-      shrink,
-      gap,
-      verticalGap,
+      disableShrink,
+      columnGap,
+      rowGap,
       paddingLeft,
       paddingRight,
       paddingTop,
@@ -106,7 +106,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
 
     return (
       <Stack gap={10}>
-        <Stack horizontal>
+        <Stack horizontal disableShrink>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -118,14 +118,14 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
                 showValue={true}
                 onChange={this._onNumItemsChange}
               />
-              <Stack horizontal>
+              <Stack horizontal disableShrink>
                 <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} />
               </Stack>
             </Stack>
           </Stack.Item>
           <Stack.Item grow>
-            <Stack horizontal gap={20}>
+            <Stack horizontal disableShrink gap={20}>
               <Stack>
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={{ root: { marginBottom: 10 } }} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
@@ -145,7 +145,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20}>
+        <Stack horizontal disableShrink gap={20}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -214,7 +214,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20} verticalAlign="bottom">
+        <Stack horizontal disableShrink gap={20} verticalAlign="end">
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -236,7 +236,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
               selectedKey={verticalAlignment}
               placeholder="Select Vertical Alignment"
               label="Vertical alignment:"
-              options={[{ key: 'top', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'bottom', text: 'Bottom' }]}
+              options={[{ key: 'start', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'end', text: 'Bottom' }]}
               onChange={this._onVerticalAlignChange}
             />
           </Stack.Item>
@@ -251,9 +251,8 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
         <Stack
           horizontal
           wrap={wrap}
-          shrinkItems={shrink}
-          gap={gap}
-          verticalGap={verticalGap}
+          disableShrink={disableShrink}
+          gap={rowGap + ' ' + columnGap}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           horizontalAlign={horizontalAlignment}
           verticalAlign={verticalAlignment}
@@ -301,7 +300,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _onShrinkChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState({ shrink: isChecked });
+    this.setState({ disableShrink: !isChecked });
   };
 
   private _onWrapperWidthChange = (value: number): void => {
@@ -309,11 +308,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _onGapChange = (value: number): void => {
-    this.setState({ gap: value });
+    this.setState({ columnGap: value });
   };
 
   private _onVerticalGapChange = (value: number): void => {
-    this.setState({ verticalGap: value });
+    this.setState({ rowGap: value });
   };
 
   private _onPaddingLeftChange = (value: number): void => {

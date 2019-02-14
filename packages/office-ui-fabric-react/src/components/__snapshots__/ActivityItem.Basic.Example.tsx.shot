@@ -95,16 +95,19 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                box-shadow: 0 0 0 1px #666666 inset;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -116,6 +119,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Philippe Lampros
         </button>
@@ -164,16 +168,19 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                box-shadow: 0 0 0 1px #666666 inset;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -185,6 +192,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           @Anđela Debeljak
         </button>
@@ -301,16 +309,19 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                box-shadow: 0 0 0 1px #666666 inset;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -322,6 +333,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Lisha Refai
         </button>
@@ -447,16 +459,19 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                box-shadow: 0 0 0 1px #666666 inset;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -468,6 +483,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Julian Arvidsson
         </button>
@@ -505,16 +521,19 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                box-shadow: 0 0 0 1px #666666 inset;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -526,6 +545,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           PresentationTitle.pptx
         </button>
@@ -563,16 +583,19 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 user-select: text;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                box-shadow: 0 0 0 1px #666666 inset;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -584,6 +607,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Destination Folder
         </button>

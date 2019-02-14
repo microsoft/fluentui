@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+
+## 6.10.1
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Switch PivotItems to use headerText not linkText
 
 ## 6.10.0
 Mon, 21 Jan 2019 13:36:01 GMT

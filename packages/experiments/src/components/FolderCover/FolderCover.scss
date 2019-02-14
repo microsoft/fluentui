@@ -82,6 +82,12 @@
   color: $ms-color-white;
   position: relative;
 
+  &.isFluent{
+    @include margin-left(8px);
+    @include text-align(left);
+    color: $ms-color-yellowDark;
+  }
+
   &,
   &.isSmall {
     font-size: $ms-font-size-s;

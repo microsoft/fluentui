@@ -18,7 +18,6 @@ export class DropdownCustomExample extends React.Component {
         <Dropdown
           placeholder="Select an Option"
           label="Custom example:"
-          id="Customdrop1"
           ariaLabel="Custom dropdown example"
           onRenderPlaceHolder={this._onRenderPlaceHolder}
           onRenderTitle={this._onRenderTitle}

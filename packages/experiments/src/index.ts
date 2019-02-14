@@ -3,7 +3,6 @@ export * from './Chiclet';
 export * from './CollapsibleSection';
 export * from './CommandBar';
 export * from './FolderCover';
-export * from './Form';
 export * from './LayoutGroup';
 export * from './Pagination';
 export * from './Persona';
@@ -16,6 +15,7 @@ export * from './StaticList';
 export * from './Text';
 export * from './Tile';
 export * from './TilesList';
+export * from './Toggle';
 export * from './VirtualizedList';
 
 import './version';

@@ -1,45 +1,39 @@
+// @codepen
+
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { HoverCard, IPlainCardProps, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import './HoverCard.Example.scss';
+import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getColorFromString } from 'office-ui-fabric-react/lib/Color';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-let _items: any[];
-
-export interface IHoverCardExampleState {
-  items?: any[];
-  columns?: IColumn[];
-}
-
-export class HoverCardPlainCardExample extends BaseComponent<{}, IHoverCardExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    _items = _items || createListItems(10);
-
-    this.state = {
-      items: _items,
-      columns: _buildColumns()
-    };
+const itemClass = mergeStyles({
+  selectors: {
+    '&:hover': {
+      textDecoration: 'underline',
+      cursor: 'pointer'
+    }
   }
+});
+
+export class HoverCardPlainCardExample extends React.Component<{}, {}> {
+  private _items: IExampleItem[] = createListItems(10);
+  private _columns: IColumn[] = this._buildColumns();
 
   public render() {
-    const { items, columns } = this.state;
-
     return (
-      <div>
+      <Fabric>
         <p>
           Hover over the <i>color</i> cell of a row item to see the card.
         </p>
-        <DetailsList setKey="hoverSet" items={items!} columns={columns} onRenderItemColumn={this._onRenderItemColumn} />
-      </div>
+        <DetailsList setKey="hoverSet" items={this._items} columns={this._columns} onRenderItemColumn={this._onRenderItemColumn} />
+      </Fabric>
     );
   }
 
-  private _onRenderItemColumn = (item: any, index: number, column: IColumn): JSX.Element => {
+  private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
     const plainCardProps: IPlainCardProps = {
       onRenderPlainCard: this._onRenderPlainCard,
       renderData: item
@@ -47,24 +41,24 @@ export class HoverCardPlainCardExample extends BaseComponent<{}, IHoverCardExamp
 
     if (column.key === 'color') {
       return (
-        <HoverCard id="myID1" plainCardProps={plainCardProps} instantOpenOnClick={true} type={HoverCardType.plain}>
-          <div className="HoverCard-item" style={{ color: item.color }}>
+        <HoverCard plainCardProps={plainCardProps} instantOpenOnClick={true} type={HoverCardType.plain}>
+          <div className={itemClass} style={{ color: item.color }}>
             {item.color}
           </div>
         </HoverCard>
       );
     }
 
-    return item[column.key];
+    return item[column.key as keyof IExampleItem];
   };
 
-  private _onRenderPlainCard = (item: any): JSX.Element => {
+  private _onRenderPlainCard = (item: IExampleItem): JSX.Element => {
     const src = item.thumbnail + `/${getColorFromString(item.color)!.hex}`;
 
     return <Image src={src} width={item.width} height={item.height} imageFit={ImageFit.cover} />;
   };
-}
 
-function _buildColumns() {
-  return buildColumns(_items).filter(column => column.name === 'color' || column.name === 'width' || column.name === 'height');
+  private _buildColumns(): IColumn[] {
+    return buildColumns(this._items).filter(column => column.name === 'color' || column.name === 'width' || column.name === 'height');
+  }
 }

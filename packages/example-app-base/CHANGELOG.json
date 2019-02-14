@@ -2,6 +2,71 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.11.6",
+      "tag": "@uifabric/example-app-base_v6.11.6",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fluent folder cover; updated metadata font color; added yellowDark color variable",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7c1a7f9f8d5157f6cd59a568a89019d816c75e9b"
+          },
+          {
+            "comment": "Switch PivotItems to use headerText not linkText",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "43e45d90f0c5cad56cf1b35c8a41361176a30b40"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.5",
+      "tag": "@uifabric/example-app-base_v6.11.5",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changes to support Slots Foundation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "15fdd1982b01e3e5e9a4d7b9f10d7f1d40a45372"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.6.0 <1.0.0` to `>=0.7.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.1 <7.0.0` to `>=6.132.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.4",
+      "tag": "@uifabric/example-app-base_v6.11.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use fabric dev build in export to codepen",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "cb4c10bf66aa74f02ce1b19adf3274846337ef85"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.3",
       "tag": "@uifabric/example-app-base_v6.11.3",
       "date": "Fri, 18 Jan 2019 13:38:05 GMT",

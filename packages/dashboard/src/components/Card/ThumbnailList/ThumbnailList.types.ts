@@ -52,9 +52,19 @@ export interface IThumbnailItemProps {
    * Callback function to handle click on thumbnail item
    */
   handleThumbnailItemClick?: () => void;
+
+  /**
+   * Thumbnail item optional ID Prop
+   */
+  id?: string;
 }
 
 export interface IThumbnailListProps {
+  /**
+   * Thumbnail List optional ID Props
+   */
+  id?: string;
+
   /**
    * List of thumbnails
    */

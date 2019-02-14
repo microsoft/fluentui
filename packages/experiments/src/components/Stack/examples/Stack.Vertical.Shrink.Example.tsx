@@ -50,14 +50,14 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
           onChange={this._onHeightChange}
         />
         <div className={styles.container}>
-          <Stack shrinkItems gap={5} padding={10} className={styles.root}>
+          <Stack gap={5} padding={10} className={styles.root}>
             <Stack.Item grow className={styles.item}>
               I shrink
             </Stack.Item>
             <Stack.Item grow className={styles.item}>
               I shrink
             </Stack.Item>
-            <Stack.Item grow preventShrink className={styles.item} styles={{ root: { height: 50 } }}>
+            <Stack.Item grow disableShrink className={styles.item} styles={{ root: { height: 50 } }}>
               I don't shrink
             </Stack.Item>
             <Stack.Item grow className={styles.item}>
