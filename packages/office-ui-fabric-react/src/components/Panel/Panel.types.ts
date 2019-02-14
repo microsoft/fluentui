@@ -295,7 +295,12 @@ export enum PanelType {
    * XLarge: 644px width, 32px Left/Right padding
    * XXLarge: 643px width, 40px Left/Right padding
    */
-  custom = 7
+  custom = 7,
+
+  /**
+   * Renders the panel in 'customNear' mode using customWidth, anchored to the near side (left in LTR mode).
+   */
+  customNear = 8
 }
 
 export interface IPanelStyleProps {

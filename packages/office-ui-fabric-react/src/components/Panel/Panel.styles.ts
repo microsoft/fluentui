@@ -35,7 +35,8 @@ const GlobalClassNames = {
   large: 'ms-Panel--lg',
   largeFixed: 'ms-Panel--fixed',
   extraLarge: 'ms-Panel--xl',
-  custom: 'ms-Panel--custom'
+  custom: 'ms-Panel--custom',
+  customNear: 'ms-Panel--customLeft'
 };
 
 const panelSize = {
@@ -102,7 +103,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-  const isCustomPanel = type === PanelType.custom;
+  const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
   const windowHeight = typeof window !== 'undefined' ? window.innerHeight : '100%';
 
   return {
@@ -124,7 +125,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         isHiddenOnDismiss && {
           visibility: 'hidden'
         },
-      isCustomPanel && classNames.custom,
+      isCustomPanel && isOnRightSide && classNames.custom,
+      isCustomPanel && !isOnRightSide && classNames.customNear,
       className
     ],
     overlay: [
@@ -187,6 +189,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
               left: 0,
               width: panelSize.width.xs,
               boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)'
+            },
+            type === PanelType.customNear && {
+              right: 'auto',
+              left: 0
             },
             type === PanelType.smallFixedFar && {
               width: panelSize.width.xs,
