@@ -2,7 +2,10 @@ import { ITheme, IStyle } from '../../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/colors';
 
-export interface IColorRectangle {}
+export interface IColorRectangle {
+  /** Currently selected color. */
+  color: IColor;
+}
 
 export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   /**
@@ -44,7 +47,7 @@ export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   /**
    * Callback for when the color changes.
    */
-  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+  onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
 }
 
 export interface IColorRectangleStyleProps {

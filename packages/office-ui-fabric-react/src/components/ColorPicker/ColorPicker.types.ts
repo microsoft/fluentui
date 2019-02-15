@@ -30,7 +30,7 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
    * Callback for when the user changes the color.
    * (Not called when the color is changed via props.)
    */
-  onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
 
   /**
    * Whether to hide the alpha control slider.

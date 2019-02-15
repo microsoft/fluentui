@@ -135,7 +135,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     return (color[component] as string) || '';
   }
 
-  private _onSVChanged = (ev: React.SyntheticEvent<HTMLElement>, color: IColor): void => {
+  private _onSVChanged = (ev: React.MouseEvent<HTMLElement>, color: IColor): void => {
     this._updateColor(ev, color);
   };
 
