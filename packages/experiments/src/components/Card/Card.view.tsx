@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import { withSlots, getSlots } from '../../Foundation';
-import { Stack } from '../../Stack';
+import { Stack } from 'office-ui-fabric-react';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
 import { ICardComponent, ICardProps, ICardSlots } from './Card.types';

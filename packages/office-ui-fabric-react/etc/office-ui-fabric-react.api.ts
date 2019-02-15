@@ -10617,6 +10617,33 @@ interface ISpinnerStyles {
 export function isRelativeUrl(url: string): boolean;
 
 // @public (undocumented)
+interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React.HTMLAttributes<HTMLElement> {
+  as?: string | React.ReactType<IStackProps>;
+  disableShrink?: boolean;
+  gap?: number | string;
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+  horizontal?: boolean;
+  horizontalAlign?: Alignment;
+  maxHeight?: number | string;
+  maxWidth?: number | string;
+  padding?: number | string;
+  reversed?: boolean;
+  verticalAlign?: Alignment;
+  verticalFill?: boolean;
+  wrap?: boolean;
+}
+
+// @public (undocumented)
+interface IStackSlots {
+  inner?: IHTMLSlot;
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface IStackTokens {
+}
+
+// @public (undocumented)
 interface IStickyContext {
   // (undocumented)
   scrollablePane: PropTypes.Requireable<object>;
@@ -12926,6 +12953,14 @@ module ZIndexes {
 // WARNING: Unsupported export: DefaultProps
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
+// WARNING: Unsupported export: StackItem
+// WARNING: Unsupported export: Stack
+// WARNING: Unsupported export: Alignment
+// WARNING: Unsupported export: IStackComponent
+// WARNING: Unsupported export: IStackTokenReturnType
+// WARNING: Unsupported export: IStackStylesReturnType
+// WARNING: Unsupported export: IStackSlot
+// WARNING: Unsupported export: IStackStyles
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames
 // WARNING: Unsupported export: ColorClassNames
