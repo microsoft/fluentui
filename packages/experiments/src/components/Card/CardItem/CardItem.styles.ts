@@ -1,12 +1,12 @@
 import { getGlobalClassNames } from '../../../Styling';
-import { ICardItemComponent, ICardItemStylesReturnType } from './CardItem.types';
+import { ICardItemComponent, ICardItemStylesReturnType, ICardItemStyles } from './CardItem.types';
 
 const GlobalClassNames = {
   root: 'ms-CardItem'
 };
 
 export const CardItemStyles: ICardItemComponent['styles'] = (props, theme): ICardItemStylesReturnType => {
-  const { disableChildPadding } = props;
+  const { align, disableChildPadding, grow, shrink } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -21,7 +21,18 @@ export const CardItemStyles: ICardItemComponent['styles'] = (props, theme): ICar
       disableChildPadding && {
         marginLeft: -12,
         marginRight: -13
+      },
+      grow && { flexGrow: grow === true ? 1 : grow },
+      !grow &&
+        !shrink && {
+          flexShrink: 0
+        },
+      shrink && {
+        flexShrink: 1
+      },
+      align && {
+        justifySelf: align
       }
     ]
-  };
+  } as ICardItemStyles;
 };

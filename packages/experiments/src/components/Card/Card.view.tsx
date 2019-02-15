@@ -11,11 +11,13 @@ export const CardView: ICardComponent['view'] = props => {
     stack: Stack
   });
 
-  const nativeProps = getNativeProps(props, htmlElementProperties);
+  const { compact, ...rest } = props;
+
+  const nativeProps = getNativeProps(rest, htmlElementProperties);
 
   return (
     <Slots.root {...nativeProps}>
-      <Slots.stack disableShrink verticalFill verticalAlign="space-between">
+      <Slots.stack horizontal={compact} disableShrink verticalFill verticalAlign="space-between">
         {props.children}
       </Slots.stack>
     </Slots.root>

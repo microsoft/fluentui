@@ -32,8 +32,20 @@ export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardPr
    * @defaultvalue false
    */
   compact?: boolean;
+
+  /**
+   * The function to run when the card is clicked.
+   */
+  onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface ICardTokens {}
+export interface ICardTokens {
+  boxShadow?: string;
+  boxShadowHovered?: string;
+  padding?: number | string;
+  width?: number | string;
+  minWidth?: number | string;
+  maxWidth?: number | string;
+}
 
 export type ICardStyles = IComponentStyles<ICardSlots>;

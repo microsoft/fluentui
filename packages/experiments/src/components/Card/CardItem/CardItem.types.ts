@@ -18,6 +18,21 @@ export interface ICardItemProps extends ICardItemSlots, IStyleableComponentProps
    * @defaultvalue false
    */
   disableChildPadding?: boolean;
+
+  /**
+   * Defines how much to grow the StackItem in proportion to its siblings.
+   */
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+
+  /**
+   * Defines at what ratio should the StackItem shrink to fit the available space.
+   */
+  shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
+
+  /**
+   * Defines how to align the StackItem along the x-axis (for vertical Stacks) or the y-axis (for horizontal Stacks).
+   */
+  align?: 'auto' | 'stretch' | 'baseline' | 'flex-start' | 'center' | 'flex-end';
 }
 
 export interface ICardItemTokens {}
