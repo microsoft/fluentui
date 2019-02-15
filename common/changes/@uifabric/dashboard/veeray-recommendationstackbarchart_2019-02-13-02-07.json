@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Add 'StackedBarChart' Visualization support to Recommendation Banner (MIP, Intune Recommendations will use this). Refactor existing visualizations into separate functional components.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "veeray@microsoft.com"
+}
