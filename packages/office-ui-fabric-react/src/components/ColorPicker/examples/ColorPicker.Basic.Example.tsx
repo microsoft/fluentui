@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { ColorPicker, Toggle, getColorFromString, IColor } from 'office-ui-fabric-react/lib/index';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { updateA } from 'office-ui-fabric-react/lib/utilities/color';
+import { updateA } from 'office-ui-fabric-react/lib/utilities/color/index';
 
 const classNames = mergeStyleSets({
   wrapper: {
