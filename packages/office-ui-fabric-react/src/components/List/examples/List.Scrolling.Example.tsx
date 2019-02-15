@@ -49,7 +49,6 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
         <Dropdown
           placeholder="Select an Option"
           label="Scroll To Mode:"
-          id="Scrolldrop1"
           ariaLabel="Scroll To Mode"
           defaultSelectedKey={'auto'}
           options={[

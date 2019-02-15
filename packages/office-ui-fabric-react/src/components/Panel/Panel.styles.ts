@@ -37,7 +37,8 @@ const GlobalClassNames = {
   large: 'ms-Panel--lg',
   largeFixed: 'ms-Panel--fixed',
   extraLarge: 'ms-Panel--xl',
-  custom: 'ms-Panel--custom'
+  custom: 'ms-Panel--custom',
+  customNear: 'ms-Panel--customLeft'
 };
 
 const panelWidth = {
@@ -103,6 +104,9 @@ const extraLargePanelSelectors = {
 const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefined => {
   let selectors;
 
+  // Panel types `smallFluid`, `smallFixedNear`, `custom` and `customNear`
+  // are not checked in here because they render the same in all the breakpoints
+  // and have the checks done separately in the `getStyles` function below.
   switch (type) {
     case PanelType.smallFixedFar:
       selectors = {
@@ -195,7 +199,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-  const isCustomPanel = type === PanelType.custom;
+  const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
   const windowHeight = typeof window !== 'undefined' ? window.innerHeight : '100%';
 
   return {
@@ -212,7 +216,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         right: 0,
         bottom: 0
       },
-      isCustomPanel && classNames.custom,
+      isCustomPanel && isOnRightSide && classNames.custom,
+      isCustomPanel && !isOnRightSide && classNames.customNear,
       className
     ],
     overlay: [
@@ -253,7 +258,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
             maxHeight: windowHeight
           },
-          ...getPanelBreakpoints(type!)
+          ...getPanelBreakpoints(type)
         }
       },
       type === PanelType.smallFluid && {
@@ -264,7 +269,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         right: panelMargin.auto,
         width: panelWidth.xs
       },
-      isCustomPanel && {
+      type === PanelType.customNear && {
+        right: 'auto',
+        left: 0
+      },
+      type === PanelType.custom && {
         maxWidth: '100vw'
       },
       isFooterAtBottom && {

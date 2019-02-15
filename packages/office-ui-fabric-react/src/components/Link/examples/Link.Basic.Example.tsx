@@ -16,7 +16,7 @@ export class LinkBasicExample extends React.Component<any, any> {
         </Link>
         <span>
           {' '}
-          Example of a Link with <Link href="asdf">mixed link content that wraps.</Link>
+          Example of a Link with <Link href="http://dev.office.com/fabric/components/link">mixed link content that wraps.</Link>
         </span>
         <br />
         <br />

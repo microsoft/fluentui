@@ -70,6 +70,9 @@ const requiredProps: { [key: string]: any } = {
     onRenderItem: () => <div key="TestItem" />,
     selectedItems: ['TestItem']
   },
+  StackItem: {
+    children: ['TestItem']
+  },
   Suggestions: {
     suggestions: []
   },

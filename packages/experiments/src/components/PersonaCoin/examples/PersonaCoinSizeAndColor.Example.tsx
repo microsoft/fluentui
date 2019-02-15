@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PersonaCoin } from '../index';
-import { Stack, Text } from '@uifabric/experiments';
+import { Stack } from 'office-ui-fabric-react';
+import { Text } from '@uifabric/experiments';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 
 const sectionGap = 32;
@@ -14,7 +15,7 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
         <Stack gap={headingGap} padding={8}>
           <Stack gap={personaCoinGap}>
             <Text>Sizes</Text>
-            <Stack horizontal preventShrink gap={personaCoinGap}>
+            <Stack horizontal disableShrink gap={personaCoinGap}>
               <PersonaCoin text="Kevin Jameson" size={10} />
               <PersonaCoin text="Kevin Jameson" size={24} />
               <PersonaCoin text="Kevin Jameson" size={28} />
@@ -24,7 +25,7 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
               <PersonaCoin text="Kevin Jameson" size={72} />
               <PersonaCoin text="Kevin Jameson" size={100} />
             </Stack>
-            <Stack horizontal preventShrink gap={personaCoinGap}>
+            <Stack horizontal disableShrink gap={personaCoinGap}>
               <PersonaCoin text="Kevin Jameson" size={10} imageUrl={PersonaTestImages.personMale} />
               <PersonaCoin text="Kevin Jameson" size={24} imageUrl={PersonaTestImages.personMale} presence={1} />
               <PersonaCoin text="Kevin Jameson" size={28} imageUrl={PersonaTestImages.personMale} />
@@ -37,7 +38,7 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
           </Stack>
           <Stack gap={personaCoinGap}>
             <Text>Custom colors</Text>
-            <Stack horizontal preventShrink gap={personaCoinGap}>
+            <Stack horizontal disableShrink gap={personaCoinGap}>
               <PersonaCoin text="Kevin Jameson" coinColor="red" initialsColor="black" />
               <PersonaCoin text="Kevin Jameson" coinColor="beige" initialsColor="black" />
               <PersonaCoin text="Kevin Jameson" coinColor="blue" />

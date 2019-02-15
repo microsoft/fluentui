@@ -40,15 +40,19 @@ describe('MessageBar', () => {
         expect(dismissElement.exists()).toBe(false);
       });
 
-      it('mixes in native props to the inner text element', () => {
+      it('mixes in native props to the inner text element, except className', () => {
         const wrapper = mount(
-          <MessageBar aria-live={'polite'} isMultiline={false}>
+          <MessageBar aria-live={'polite'} isMultiline={false} className={'sampleClassName'}>
             Message
           </MessageBar>
         );
 
         const innerText = wrapper.find('.ms-MessageBar-innerText');
         expect(innerText.prop('aria-live')).toEqual('polite');
+
+        const singleLine = wrapper.find('.ms-MessageBar-singleline');
+        expect(singleLine.prop('className')).toContain('sampleClassName');
+        expect(innerText.prop('className')).not.toContain('sampleClassName');
       });
     });
 

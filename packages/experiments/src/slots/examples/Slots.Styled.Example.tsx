@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, IButtonComponent, Stack } from '@uifabric/experiments';
-import { Customizer } from 'office-ui-fabric-react';
+import { Button, IButtonComponent } from '@uifabric/experiments';
+import { Customizer, Stack } from 'office-ui-fabric-react';
 import { stackProps } from './SlotExampleUtils';
 
 const ButtonTheme = {

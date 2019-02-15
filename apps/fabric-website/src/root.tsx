@@ -16,6 +16,11 @@ import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import { isLocal, hasUHF } from './utilities/location';
 
+import { handleRedirects } from './redirects';
+
+// Handle redirects of deprecated URLs to new
+handleRedirects();
+
 require('es6-promise').polyfill();
 /* tslint:disable:no-unused-variable */
 /* tslint:enable:no-unused-variable */
