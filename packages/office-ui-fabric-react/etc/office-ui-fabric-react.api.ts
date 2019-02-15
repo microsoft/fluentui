@@ -9188,6 +9188,7 @@ interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onRenderFooterContent?: IRenderFunction<IPanelProps>;
   onRenderHeader?: IPanelHeaderRenderer;
   onRenderNavigation?: IRenderFunction<IPanelProps>;
+  onRenderNavigationContent?: IRenderFunction<IPanelProps>;
   styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
   theme?: ITheme;
   type?: PanelType;
