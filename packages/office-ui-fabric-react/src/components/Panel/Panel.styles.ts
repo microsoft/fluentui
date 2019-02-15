@@ -58,40 +58,42 @@ const panelMargin = {
   xl: 176
 };
 
+// Following consts are used below in `getPanelBreakpoints()` function to provide
+// necessary fallbacks for different types of Panel in different breakpoints.
 const smallPanelSelectors = {
-  ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
+  [`@media (min-width: ${ScreenWidthMinMedium}px)`]: {
     width: panelWidth.sm
   }
 };
 
 const mediumPanelSelectors = {
-  ['@media (min-width: ' + ScreenWidthMinLarge + 'px)']: {
+  [`@media (min-width: ${ScreenWidthMinLarge}px)`]: {
     width: panelWidth.md1
   },
-  ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+  [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
     width: panelWidth.md2
   }
 };
 
 const largePanelSelectors = {
-  ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+  [`@media (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
     left: panelMargin.md,
     width: panelWidth.auto
   },
-  ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+  [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
     left: panelMargin.lg
   }
 };
 
 const largeFixedPanelSelectors = {
-  ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+  [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
     left: panelMargin.auto,
     width: panelWidth.lg
   }
 };
 
 const extraLargePanelSelectors = {
-  ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+  [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
     left: panelMargin.xl
   }
 };
@@ -147,11 +149,11 @@ const sharedPaddingStyles = {
   paddingLeft: '16px',
   paddingRight: '16px',
   selectors: {
-    ['@media screen and (min-width: ' + ScreenWidthMinLarge + 'px)']: {
+    [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
       paddingLeft: '32px',
       paddingRight: '32px'
     },
-    ['@media screen and (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+    [`@media screen and (min-width: ${ScreenWidthMinXXLarge}px)`]: {
       paddingLeft: '40px',
       paddingRight: '40px'
     }
@@ -319,7 +321,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         // Ensure that title doesn't shrink if screen is too small
         flexGrow: 0,
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+          [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
             marginTop: '30px'
           }
         }
