@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Feb 2019 13:34:55 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 13:33:06 GMT and should not be manually modified.
+
+## 6.139.1
+Fri, 15 Feb 2019 13:33:06 GMT
+
+### Patches
+
+- Include component markdown files in npm package.
 
 ## 6.139.0
 Thu, 14 Feb 2019 13:34:55 GMT

@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.139.1",
+      "tag": "office-ui-fabric-react_v6.139.1",
+      "date": "Fri, 15 Feb 2019 13:33:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Include component markdown files in npm package.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "79af8c83b984d3dd0a53470dcfbb058fa85f6567"
+          }
+        ],
+        "none": [
+          {
+            "comment": "List: Remove unnecessary null assertion from component, example, and test",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "f6b96b4e32a46315737cb21201ee62858db0ca07"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.139.0",
       "tag": "office-ui-fabric-react_v6.139.0",
       "date": "Thu, 14 Feb 2019 13:34:55 GMT",

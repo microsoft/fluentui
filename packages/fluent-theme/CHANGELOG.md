@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 12 Feb 2019 13:36:43 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 13:33:05 GMT and should not be manually modified.
+
+## 0.14.1
+Fri, 15 Feb 2019 13:33:05 GMT
+
+### Patches
+
+- Remove unnecessary theme colors
 
 ## 0.14.0
 Tue, 12 Feb 2019 13:36:43 GMT
