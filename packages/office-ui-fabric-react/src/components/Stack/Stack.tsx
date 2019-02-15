@@ -9,7 +9,7 @@ import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
-const view: IStackComponent['view'] = (props: IStackProps) => {
+const view: IStackComponent['view'] = props => {
   const { as: RootType = 'div', disableShrink, wrap, ...rest } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(

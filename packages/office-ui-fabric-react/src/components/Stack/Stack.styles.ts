@@ -1,6 +1,6 @@
-import { IStackComponent, IStackStyles, IStackStylesReturnType, IStackProps } from './Stack.types';
+import { IStackComponent, IStackStyles, IStackStylesReturnType } from './Stack.types';
 import { parseGap, parsePadding } from './StackUtils';
-import { getGlobalClassNames, ITheme } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
@@ -12,7 +12,7 @@ const GlobalClassNames = {
   inner: 'ms-Stack-inner'
 };
 
-export const styles: IStackComponent['styles'] = (props: IStackProps, theme: ITheme): IStackStylesReturnType => {
+export const styles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => {
   const {
     verticalFill,
     maxWidth,
