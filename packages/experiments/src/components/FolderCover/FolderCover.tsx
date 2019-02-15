@@ -124,13 +124,19 @@ export interface IFolderCoverLayout {
   contentSize: ISize;
 }
 
-export function getFolderCoverLayout(element: JSX.Element): IFolderCoverLayout {
+export function getFolderCoverLayout(element: JSX.Element, isFluent?: boolean): IFolderCoverLayout {
   const folderCoverProps: IFolderCoverProps = element.props;
 
   const { folderCoverSize = 'large' } = folderCoverProps;
 
+  const contentSize = { ...SIZES[folderCoverSize] };
+
+  if (isFluent) {
+    contentSize.height -= 8;
+  }
+
   return {
-    contentSize: SIZES[folderCoverSize]
+    contentSize
   };
 }
 
