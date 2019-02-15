@@ -10619,7 +10619,7 @@ export function isRelativeUrl(url: string): boolean;
 
 // @public (undocumented)
 interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React.HTMLAttributes<HTMLElement> {
-  as?: string | React.ReactType<IStackProps>;
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
   disableShrink?: boolean;
   gap?: number | string;
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';

@@ -16,7 +16,7 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
   /**
    * Defines how to render the StackItem.
    */
-  as?: string | React.ReactType<IStackItemProps>;
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Defines a CSS class name used to style the StackItem.
