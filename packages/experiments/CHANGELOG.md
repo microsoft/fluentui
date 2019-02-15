@@ -1,6 +1,29 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 12 Feb 2019 13:36:42 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+
+## 6.56.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Card: Adding first prototype for Basic Card component.
+- Experiments: Removed form control
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+
+## 6.55.0
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Minor changes
+
+- Stack: Renaming preventShrink to disableShrink in Stack and StackItem. Removing defaultProps from StackStatics.
+
+### Patches
+
+- Fix id usage in examples
 
 ## 6.54.4
 Tue, 12 Feb 2019 13:36:42 GMT

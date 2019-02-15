@@ -77,7 +77,8 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   multiSelect?: boolean;
 
   /**
-   * Keys that will be initially used to set selected items.
+   * Keys that will be initially used to set selected items. This prop is used for `multiSelect`
+   * scenarios. In other cases, `defaultSelectedKey` should be used.
    */
   defaultSelectedKeys?: string[] | number[];
 

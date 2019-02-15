@@ -12,6 +12,10 @@
     color: $ms-color-white;
   }
 
+  .isFluent & {
+    color: $ms-color-yellowDark;
+  }
+
   &:first-child {
     @include margin-left(0);
   }

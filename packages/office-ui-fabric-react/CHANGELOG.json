@@ -2,6 +2,103 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.139.0",
+      "tag": "office-ui-fabric-react_v6.139.0",
+      "date": "Thu, 14 Feb 2019 13:34:55 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add fallback for reading direction attribute from body element.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ea1c5970709209dab8f7ba2781cdb5e21b92e9f5"
+          },
+          {
+            "comment": "Dropdown: Clarify use of defaultSelectedKeys prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14cd0f75d6fdc356a58b35f176cc554a1f906e3e"
+          },
+          {
+            "comment": "DetailsColumn: Remove unnecessary null assertions",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "5d786a55b178f45e5e91a45a381e00e0b51e4e64"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TeachingBubble: revert PR #7837",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "0bb3fb04e2a9614c1f6f96402e469f44b117e444"
+          },
+          {
+            "comment": "fluent folder cover; updated metadata font color; added yellowDark color variable",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7c1a7f9f8d5157f6cd59a568a89019d816c75e9b"
+          },
+          {
+            "comment": "Fix DetailsList compiler warnings in test by casting document.activeElement to HTMLElement",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "1d42f44f587a47ed7ced3edc743318e406ea551b"
+          },
+          {
+            "comment": "Pivot cleanup",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "43e45d90f0c5cad56cf1b35c8a41361176a30b40"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fix type IBaseFloatingPickerSuggestionProps in ExtendedPeoplePicker, expose showRemoveButtons",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "3551e64e93e56e7df1488041b7695ab75a97ebc5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.138.1",
+      "tag": "office-ui-fabric-react_v6.138.1",
+      "date": "Wed, 13 Feb 2019 13:36:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: exclude className from nativeProps",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a9538157531c8c18f27dff842076bb442648551d"
+          },
+          {
+            "comment": "Fix id usage in examples",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "b62b2099b93f16367b6b49cfb4e4982985ee9531"
+          },
+          {
+            "comment": "Normalized disabled style for input components (DatePicker, TextField).",
+            "author": "Patrik Husfloen <redoz@redoz.com>",
+            "commit": "0c8e4d3aed46a6bbf521bc48509a6f988446760d"
+          },
+          {
+            "comment": "Remove maximum width from Breadcrumb items",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "cb497ef7fac9ada91d560615b83e71cd637bf349"
+          },
+          {
+            "comment": "Fixing SpinButton A11y Pass Bug 2 where Up/Down buttons aren't discernable.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "0ec998d457f217d6f064131b4337bf1c4ecf1d00"
+          },
+          {
+            "comment": "TextField: updates some semantic colors usage.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "1f68af8acaa49cf1e0479baa979a2ce06d374725"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.138.0",
       "tag": "office-ui-fabric-react_v6.138.0",
       "date": "Tue, 12 Feb 2019 13:36:43 GMT",
