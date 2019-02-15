@@ -25,7 +25,7 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
 
     if (this.state.shouldShowFirstPivotItem) {
       pivotArray.push(
-        <PivotItem linkText="Foo" itemKey="Foo" key="Foo">
+        <PivotItem headerText="Foo" itemKey="Foo" key="Foo">
           <Label>Click the button below to show/hide this pivot item.</Label>
           <Label>The selected item will not change when the number of pivot items changes.</Label>
           <Label>If the selected item was removed, the new first item will be selected.</Label>
@@ -34,13 +34,13 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
     }
 
     pivotArray = pivotArray.concat(
-      <PivotItem linkText="Bar" itemKey="Bar" key="Bar">
+      <PivotItem headerText="Bar" itemKey="Bar" key="Bar">
         <Label>Pivot #2</Label>
       </PivotItem>,
-      <PivotItem linkText="Bas" itemKey="Bas" key="Bas">
+      <PivotItem headerText="Bas" itemKey="Bas" key="Bas">
         <Label>Pivot #3</Label>
       </PivotItem>,
-      <PivotItem linkText="Biz" itemKey="Biz" key="Biz">
+      <PivotItem headerText="Biz" itemKey="Biz" key="Biz">
         <Label>Pivot #4</Label>
       </PivotItem>
     );

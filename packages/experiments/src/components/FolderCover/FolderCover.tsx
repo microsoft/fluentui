@@ -73,11 +73,18 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       metadata,
       signal,
       children,
+      isFluent,
       ...divProps
     } = this.props;
 
     const assets = ASSETS[size][type];
+    const metadataIcon = metadata ? <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span> : null;
 
+    const signalIcon = signal ? (
+      <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, isFluent ? SignalStyles.isFluent : SignalStyles.dark)}>
+        {signal}
+      </span>
+    ) : null;
     return (
       <div
         {...divProps}
@@ -86,7 +93,8 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           [`ms-FolderCover--isLarge ${FolderCoverStyles.isLarge}`]: size === 'large',
           [`ms-FolderCover--isDefault ${FolderCoverStyles.isDefault}`]: type === 'default',
           [`ms-FolderCover--isMedia ${FolderCoverStyles.isMedia}`]: type === 'media',
-          [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent
+          [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent,
+          [`ms-FolderCover--isFluent ${FolderCoverStyles.isFluent}`]: isFluent
         })}
       >
         <Icon aria-hidden={true} className={css('ms-FolderCover-back', FolderCoverStyles.back)} iconName={assets.back} />
@@ -96,8 +104,17 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           </span>
         ) : null}
         <Icon aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} iconName={assets.front} />
-        {signal ? <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark)}>{signal}</span> : null}
-        {metadata ? <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span> : null}
+        {isFluent ? (
+          <React.Fragment>
+            {metadataIcon}
+            {signalIcon}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {signalIcon}
+            {metadataIcon}
+          </React.Fragment>
+        )}
       </div>
     );
   }
@@ -112,8 +129,15 @@ export function getFolderCoverLayout(element: JSX.Element): IFolderCoverLayout {
 
   const { folderCoverSize = 'large' } = folderCoverProps;
 
+  const contentSize = { ...SIZES[folderCoverSize] };
+  const { isFluent } = element.props;
+
+  if (isFluent) {
+    contentSize.height -= 8;
+  }
+
   return {
-    contentSize: SIZES[folderCoverSize]
+    contentSize
   };
 }
 

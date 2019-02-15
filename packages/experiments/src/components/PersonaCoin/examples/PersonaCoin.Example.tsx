@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Stack, Text } from '@uifabric/experiments';
+import { Stack } from 'office-ui-fabric-react';
+import { Text } from '@uifabric/experiments';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { PersonaCoin } from '../index';
 
@@ -8,7 +9,7 @@ const headingGap = 16;
 const personaCoinGap = 12;
 
 const PersonaCoinStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal preventShrink gap={personaCoinGap}>
+  <Stack horizontal disableShrink gap={personaCoinGap}>
     {props.children}
   </Stack>
 );

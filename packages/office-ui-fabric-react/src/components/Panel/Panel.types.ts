@@ -164,9 +164,14 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onOuterClick?: () => void;
 
   /**
-   * Optional custom renderer navigation region. Replaces current close button.
+   * Optional custom renderer navigation region. Replaces the region that contains the close button.
    */
   onRenderNavigation?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for content in the navigation region. Replaces current close button.
+   */
+  onRenderNavigationContent?: IRenderFunction<IPanelProps>;
 
   /**
    * Optional custom renderer for header region. Replaces current title
@@ -295,7 +300,12 @@ export enum PanelType {
    * XLarge: 644px width, 32px Left/Right padding
    * XXLarge: 643px width, 40px Left/Right padding
    */
-  custom = 7
+  custom = 7,
+
+  /**
+   * Renders the panel in 'customNear' mode using customWidth, anchored to the near side (left in LTR mode).
+   */
+  customNear = 8
 }
 
 export interface IPanelStyleProps {

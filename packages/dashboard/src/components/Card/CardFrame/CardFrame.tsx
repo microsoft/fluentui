@@ -76,7 +76,7 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
               disabled={href === '#'}
               onClick={this._handleTitleClick}
               title={cardTitle}
-              ariaLabel={cardTitle}
+              aria-label={cardTitle}
             >
               {cardTitle}
             </Link>

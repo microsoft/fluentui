@@ -385,6 +385,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/spinner'
         },
         {
+          component: require<any>('./components/pages/StackPage').StackPage,
+          key: 'Stack',
+          name: 'Stack',
+          url: '#/examples/stack'
+        },
+        {
           component: require<any>('./components/pages/SwatchColorPickerPage').SwatchColorPickerPage,
           key: 'SwatchColorPicker',
           name: 'SwatchColorPicker',

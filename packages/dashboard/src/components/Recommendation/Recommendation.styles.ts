@@ -101,25 +101,6 @@ export const getRecommendationBannerStyles = (props: IRecommendationStyleProps):
     },
     recommendationCommandRow: {
       alignSelf: 'flex-end'
-    },
-    imageIllustrationContainerStyle: {
-      flex: 1,
-      display: 'flex'
-    },
-    imageIllustrationStyle: {
-      flex: 1
-    },
-    chartVisualizationContainerStyle: {
-      flex: 1,
-      justifyContent: 'center',
-      display: 'flex',
-      alignItems: 'center'
-    },
-    chartVisualizationStyle: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%'
     }
   };
 };

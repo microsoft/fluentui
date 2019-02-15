@@ -17,8 +17,7 @@
 
 #### Core build stuff
 scripts/ @dzearing @kenotron @ecraig12345
-package.json @kenotron @ecraig12345
-*/package.json @dzearing
+package.json @kenotron @ecraig12345 @dzearing
 webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345
@@ -28,6 +27,7 @@ LICENSE @kenotron @ecraig12345
 .travis.yml @kenotron @ecraig12345
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
+.npmignore @kenotron @ecraig12345
 
 #### Apps
 # component-demo/
@@ -73,15 +73,15 @@ Callout/  @joschect
 # Check/
 # Checkbox/
 ChoiceGroup/   @srideshpande
-# ColorPicker/
-ComboBox/ @ecraig12345
+ColorPicker/ @ecraig12345
+# ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
 DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
-Dropdown/ @ecraig12345
+# Dropdown/
 # Fabric/
 # FacePile/
 FolderCover/ @ThomasMichon
@@ -117,6 +117,7 @@ Signals/ @ThomasMichon
 # Slider/
 # SpinButton/
 # Spinner/
+Stack/   @khmakoto @kkjeer
 # SwatchColorPicker/
 TeachingBubble/   @micahgodbolt
 # TextField/
@@ -124,6 +125,7 @@ TeachingBubble/   @micahgodbolt
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
+experiments/src/components/Button/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @jasongore
 Tooltip/  @micahgodbolt
 

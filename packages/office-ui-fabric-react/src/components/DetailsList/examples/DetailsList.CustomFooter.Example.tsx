@@ -59,12 +59,12 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
     return (
       <DetailsRow
         {...detailsFooterProps}
-        columns={detailsFooterProps!.columns}
+        columns={detailsFooterProps.columns}
         item={{}}
         itemIndex={-1}
-        groupNestingDepth={detailsFooterProps!.groupNestingDepth}
+        groupNestingDepth={detailsFooterProps.groupNestingDepth}
         selectionMode={SelectionMode.single}
-        selection={detailsFooterProps!.selection}
+        selection={detailsFooterProps.selection}
         onRenderItemColumn={_renderDetailsFooterItemColumn}
         onRenderCheck={_onRenderCheckForFooterRow}
       />

@@ -1,15 +1,138 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <ul>
-      <li><a href="./fabric-website-resources/dist/index.html">Fabric Demo App</a></li>
-      <li><a href="./experiments/dist/index.html">Experiments Demo App</a></li>
-      <li><a href="./charting/dist/index.html">Charting Demo App</a></li>
-      <li><a href="./dashboard/dist/index.html">Dashboard Demo App</a></li>
-      <li><a href="./date-time/dist/index.html">Date Time Demo App</a></li>
-      <li><a href="./foundation-scenarios/dist/index.html">Foundation Scenarios Demo App</a></li>
-      <li><a href="./test-bundles/test-bundles.stats.html">Test Bundles Stats</a></li>
-      <li><a href="./todo-app/index.html">Todo-App Demo App</a></li>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PR Deployed Sites</title>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css" />
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        align-items: center;
+        background-color: #f3f2f1;
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjxzdmcgIHdpZHRoPSI2MDAiICBoZWlnaHQ9IjYwMCIgIHZpZXdCb3g9IjAgMCA2MDAgNjAwIiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMwMCwzMDApIj4gICAgPHBhdGggZD0iTTEyMi42LC0xMTQuOEMxNzAuMywtNzUsMjI4LjEsLTM3LjUsMjM0LjQsNi4yQzI0MC42LDUwLDE5NS4zLDk5LjksMTQ3LjYsMTI5LjZDOTkuOSwxNTkuMyw1MCwxNjguNiw0LjcsMTYzLjlDLTQwLjUsMTU5LjIsLTgxLjEsMTQwLjQsLTExNS43LDExMC43Qy0xNTAuNCw4MS4xLC0xNzkuMiw0MC41LC0xOTMuOCwtMTQuNkMtMjA4LjQsLTY5LjgsLTIwOC45LC0xMzkuNSwtMTc0LjIsLTE3OS40Qy0xMzkuNSwtMjE5LjIsLTY5LjgsLTIyOS4xLC0xNi4xLC0yMTNDMzcuNSwtMTk2LjgsNzUsLTE1NC42LDEyMi42LC0xMTQuOFoiIGZpbGw9IiMzZDk3ZTMiIC8+ICA8L2c+PC9zdmc+);
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: 900px 740px;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .Tiles {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        margin: 0;
+        max-width: 800px;
+        padding: 0;
+      }
+
+      .Tile {
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        margin: 0 12px 12px 0;
+        opacity: 0.96;
+        transition: all 0.15s linear;
+      }
+
+      .Tile:not(.Tile--intro):hover {
+        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+        opacity: 1;
+      }
+
+      .Tile-link {
+        align-items: center;
+        color: #323130;
+        display: flex;
+        flex-direction: column;
+        height: 148px;
+        justify-content: center;
+        padding: 20px;
+        text-decoration: none;
+        width: 148px;
+      }
+
+      .Tile-link i {
+        font-size: 32px;
+        margin-bottom: 12px;
+        color: #605e5c;
+      }
+
+      .Tile--intro {
+        max-width: 468px;
+        padding: 20px;
+        width: 100%;
+      }
+
+      .Tile--intro h1 {
+        font-size: 24px;
+        font-weight: 300;
+        margin: 8px 0;
+        padding: 0;
+      }
+
+      .Tile--intro p {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .Tile--intro a,
+      .Tile--intro a:visited {
+        color: #0078d4;
+      }
+    </style>
+  </head>
+  <body class="ms-Fabric">
+    <ul class="Tiles">
+      <li class="Tile Tile--intro">
+        <h1>Deployed sites for PR <a href="#" class="prLink"></a></h1>
+        <p>
+          Use these test apps to verify that the changes introduced by the pull request work as intended and do not introduce any new
+          issues.
+        </p>
+      </li>
+      <li class="Tile">
+        <a href="./fabric-website-resources/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--FavoriteStar"></i>Fabric React</a>
+      </li>
+      <li class="Tile">
+        <a href="./experiments/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--TestBeaker"></i>Experiments</a>
+      </li>
+      <li class="Tile">
+        <a href="./charting/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--BarChart4"></i>Charting</a>
+      </li>
+      <li class="Tile">
+        <a href="./dashboard/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--ViewDashboard"></i>Dashboard</a>
+      </li>
+      <li class="Tile">
+        <a href="./date-time/dist/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--PrimaryCalendar"></i>Date Time</a>
+      </li>
+      <li class="Tile">
+        <a href="./test-bundles/test-bundles.stats.html" class="Tile-link"><i class="ms-Icon ms-Icon--SpeedHigh"></i>Bundle Analyzer</a>
+      </li>
+      <li class="Tile">
+        <a href="./todo-app/index.html" class="Tile-link"><i class="ms-Icon ms-Icon--CheckMark"></i>Todo Example</a>
+      </li>
     </ul>
+    <script>
+      const pathParts = window.location.href.split('/');
+      const pullRequestIndex = pathParts.indexOf('pull') + 1;
+
+      if (pullRequestIndex) {
+        const link = document.getElementsByClassName('prLink')[0];
+        const number = pathParts[pullRequestIndex];
+        link.innerHTML = `#${number}`;
+        link.href = `https://github.com/OfficeDev/office-ui-fabric-react/pull/${number}`;
+      }
+    </script>
   </body>
 </html>

@@ -94,7 +94,7 @@ storiesOf('TextField', module)
     }
   )
   .addStory(
-    'Prefix',
+    'Prefix with Value, Disabled, and Prefix Style-Override',
     () => (
       <Fabric>
         <TextField
@@ -104,6 +104,13 @@ storiesOf('TextField', module)
         />
       </Fabric>
     ),
+    {
+      rtl: true
+    }
+  )
+  .addStory(
+    'Prefix with Value, Disabled',
+    () => <TextField label="Prefix" prefix="https://" value="example.com" disabled />,
     {
       rtl: true
     }

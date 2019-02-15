@@ -205,6 +205,3 @@ We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to 
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## Issue management and `Stale-bot`
-
-If you are getting `stale[bot]` messages and/or want to understand how we manage issues, please search for 'issue Triage' and/or 'stale[bot]' in the [FAQ](https://github.com/OfficeDev/office-ui-fabric-react/wiki/FAQ).

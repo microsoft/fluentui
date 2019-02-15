@@ -1,6 +1,46 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Feb 2019 13:36:43 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 17:41:17 GMT and should not be manually modified.
+
+## 6.140.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Promoting component to oufr package.
+
+## 6.139.1
+Fri, 15 Feb 2019 13:33:06 GMT
+
+### Patches
+
+- Include component markdown files in npm package.
+
+## 6.139.0
+Thu, 14 Feb 2019 13:34:55 GMT
+
+### Minor changes
+
+- Fix type IBaseFloatingPickerSuggestionProps in ExtendedPeoplePicker, expose showRemoveButtons
+
+### Patches
+
+- TeachingBubble: revert PR #7837
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Fix DetailsList compiler warnings in test by casting document.activeElement to HTMLElement
+- Pivot cleanup
+
+## 6.138.1
+Wed, 13 Feb 2019 13:36:46 GMT
+
+### Patches
+
+- MessageBar: exclude className from nativeProps
+- Fix id usage in examples
+- Normalized disabled style for input components (DatePicker, TextField).
+- Remove maximum width from Breadcrumb items
+- Fixing SpinButton A11y Pass Bug 2 where Up/Down buttons aren't discernable.
+- TextField: updates some semantic colors usage.
 
 ## 6.138.0
 Tue, 12 Feb 2019 13:36:43 GMT
