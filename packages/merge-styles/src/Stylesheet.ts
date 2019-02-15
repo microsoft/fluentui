@@ -257,7 +257,6 @@ export class Stylesheet {
     const styleElement = document.createElement('style');
 
     styleElement.setAttribute('data-merge-styles', 'true');
-    styleElement.type = 'text/css';
 
     if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
       document.head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);

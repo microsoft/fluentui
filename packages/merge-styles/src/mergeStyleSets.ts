@@ -102,11 +102,7 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | 
     return { subComponentStyles: {} };
   }
 
-  let concatenatedStyleSet: IConcatenatedStyleSet<any> | IStyleSet<any> =
-    // we have guarded against falsey values just above.
-    styleSet!;
-
-  concatenatedStyleSet = concatStyleSets(...styleSets);
+  const concatenatedStyleSet = concatStyleSets(...styleSets);
 
   const registrations = [];
 
