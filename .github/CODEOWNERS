@@ -117,6 +117,7 @@ Signals/ @ThomasMichon
 # Slider/
 # SpinButton/
 # Spinner/
+Stack/   @khmakoto @kkjeer
 # SwatchColorPicker/
 TeachingBubble/   @micahgodbolt
 # TextField/
@@ -124,6 +125,7 @@ TeachingBubble/   @micahgodbolt
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
+experiments/src/components/Button/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @jasongore
 Tooltip/  @micahgodbolt
 
