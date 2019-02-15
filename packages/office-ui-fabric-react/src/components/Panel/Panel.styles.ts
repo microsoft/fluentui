@@ -273,7 +273,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         right: 'auto',
         left: 0
       },
-      type === PanelType.custom && {
+      isCustomPanel && {
         maxWidth: '100vw'
       },
       isFooterAtBottom && {
