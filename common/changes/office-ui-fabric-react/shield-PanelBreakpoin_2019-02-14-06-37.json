@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Panel: fixes several screen breakpoint issues and brings more clarity to docs and logic of applying the breakpoints.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
