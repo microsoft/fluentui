@@ -40,7 +40,7 @@ export class SubwayNavWizardCompleteExample extends React.Component<{}, {}> {
   }
 
   private _handleClickStep(step: ISubwayNavNodeProps): void {
-    let alertStr = 'Clicked ' + step.label;
+    const alertStr = 'Clicked ' + step.label;
 
     console.log(alertStr);
   }

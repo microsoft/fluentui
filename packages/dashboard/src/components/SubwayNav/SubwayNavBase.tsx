@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection, KeyCodes, classNamesFunction } from 'office-ui-fabric-react';
 import { ISubwayNavProps, ISubwayNavStyles } from './SubwayNav.types';
-import { SubwayNavNodeState } from './SubwayNode.types';
+import { SubwayNavNodeState, ISubwayNavNodeProps } from './SubwayNode.types';
 import { SubwayNode } from './SubwayNode';
 
 const navInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
@@ -31,7 +31,7 @@ export class SubwayNavBase extends React.PureComponent<ISubwayNavProps> {
 
   private _onRenderSteps = (props: ISubwayNavProps): JSX.Element[] => {
     let _currentIndex = 0;
-    return props.steps.map(step => {
+    return props.steps.map((step: ISubwayNavNodeProps) => {
       const indexToUse = _currentIndex;
       _currentIndex =
         _currentIndex + 1 + (step.subSteps && step.state === SubwayNavNodeState.CurrentWithSubSteps ? step.subSteps.length : 0);

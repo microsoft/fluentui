@@ -1,6 +1,6 @@
 import { IWizardProps, IWizardStepProps } from './Wizard.types';
 import { ISetupWizardProps } from './SetupWizard.types';
-import { SubwayNavNodeState } from '../SubwayNav';
+import { SubwayNavNodeState } from '../SubwayNav/index';
 
 // Get content to show
 export function getStepContentToShow(props: IWizardProps | ISetupWizardProps): IWizardStepProps {
