@@ -28,8 +28,8 @@
     "mocha": "^3.3.0",
     "office-ui-fabric-react": ">=6.140.0 <7.0.0",
     "raw-loader": "^0.5.1",
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0",
     "webpack": "4.7.0"
   },
   "dependencies": {

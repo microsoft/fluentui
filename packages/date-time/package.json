@@ -26,9 +26,9 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
     "@types/jest": "23.0.0",
-    "@types/prop-types": "15.5.3",
-    "@types/react": "16.3.16",
-    "@types/react-dom": "16.0.5",
+    "@types/prop-types": "15.5.9",
+    "@types/react": "16.8.3",
+    "@types/react-dom": "16.8.1",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.0",
     "@uifabric/example-app-base": ">=6.11.6 <7.0.0",
@@ -38,8 +38,8 @@
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {

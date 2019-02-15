@@ -18,8 +18,8 @@
   ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
-    "@types/react": "16.3.16",
-    "@types/react-dom": "16.0.5",
+    "@types/react": "16.8.3",
+    "@types/react-dom": "16.8.1",
     "@types/webpack-env": "1.13.0",
     "express": "^4.16.3",
     "compression": "^1.7.2",
@@ -33,8 +33,8 @@
     "@uifabric/merge-styles": ">=6.15.2 <7.0.0",
     "es6-promise": "^4.1.0",
     "office-ui-fabric-react": ">=6.140.0 <7.0.0",
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0",
     "tslib": "^1.7.1"
   }
 }
