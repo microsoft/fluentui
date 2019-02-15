@@ -87,6 +87,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       required && classNames.required,
       disabled && classNames.disabled,
       focused && classNames.active,
