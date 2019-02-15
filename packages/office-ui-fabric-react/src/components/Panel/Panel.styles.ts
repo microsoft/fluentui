@@ -98,6 +98,8 @@ const extraLargePanelSelectors = {
   }
 };
 
+// Make sure Panels have fallbacks to different breakpoints by reusing same selectors.
+// This is done in the effort to follow design redlines.
 const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefined => {
   let selectors;
 
@@ -189,7 +191,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isOpen,
     isHiddenOnDismiss,
     theme,
-    type
+    type = PanelType.smallFixedFar
   } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
