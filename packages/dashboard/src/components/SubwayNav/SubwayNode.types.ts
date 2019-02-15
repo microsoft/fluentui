@@ -168,7 +168,7 @@ export interface ISubwayNavNodeStyleProps {
 export const IconNames = {
   FullCircleMask: 'FullCircleMask',
   CompletedSolid: 'CompletedSolid',
-  AlertSolid: 'AlertSolid'
+  StatusErrorFull: 'StatusErrorFull'
 };
 
 /**

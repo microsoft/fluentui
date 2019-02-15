@@ -76,7 +76,7 @@ export function setSubwayState(
       if (hasCompletedSubSteps(stepObj)) {
         return { ...stepObj, subSteps: cleanSubSteps, state: SubwayNavNodeState.Completed };
       } else {
-        return { ...stepObj, subSteps: cleanSubSteps, state: SubwayNavNodeState.Unsaved };
+        return { ...stepObj, subSteps: cleanSubSteps, state: SubwayNavNodeState.ViewedNotCompleted };
       }
     } else if (!foundCurrentStep && stepObj.state === SubwayNavNodeState.NotStarted) {
       return { ...stepObj, state: SubwayNavNodeState.Skipped };

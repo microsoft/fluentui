@@ -1,9 +1,10 @@
+import { NeutralColors, SharedColors } from '@uifabric/fluent-theme';
+import { DefaultFontStyles, FontWeights } from 'office-ui-fabric-react';
 import { ISetupWizardActionBarStyles } from './SetupWizardActionBar.types';
 
 const actionLinkStyle = {
-  color: '#605E5C'
+  color: NeutralColors.gray130
 };
-
 export const getStyles = (): ISetupWizardActionBarStyles => {
   return {
     root: {
@@ -11,30 +12,32 @@ export const getStyles = (): ISetupWizardActionBarStyles => {
       width: '100%',
       display: 'flex',
       flexDirection: 'row',
-      border: '1px solid #E1DFDD',
+      border: `1px solid ${NeutralColors.gray40}`,
       height: '75px',
       alignItems: 'center'
     },
     backAction: [
+      DefaultFontStyles.medium,
       actionLinkStyle,
       {
-        fontSize: '14px',
         marginLeft: '30px',
         width: '221px'
       }
     ],
     mainAction: [
+      DefaultFontStyles.xxLarge,
       actionLinkStyle,
       {
-        fontSize: '28px',
+        color: SharedColors.cyanBlue10,
         marginLeft: '30px',
-        flexGrow: '1'
+        flexGrow: '1',
+        fontWeight: FontWeights.bold
       }
     ],
     exitAction: [
+      DefaultFontStyles.medium,
       actionLinkStyle,
       {
-        fontSize: '14px',
         marginRight: '30px'
       }
     ]

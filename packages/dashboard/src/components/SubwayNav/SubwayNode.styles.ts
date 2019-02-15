@@ -1,4 +1,5 @@
 import { DefaultFontStyles, FontWeights, IStyle, keyframes } from 'office-ui-fabric-react';
+import { NeutralColors, SharedColors } from '@uifabric/fluent-theme';
 import {
   IconNames,
   IconMap,
@@ -10,15 +11,14 @@ import {
 } from './SubwayNode.types';
 
 export const subwayColors = {
-  text: '#323130',
-  disableText: '#A19F9D',
-  completedWizard: '#6BB700',
-  completed: '#0078D4',
+  text: NeutralColors.gray160,
+  disableText: NeutralColors.gray90,
+  completedWizard: '#6BB700' /* online color not yet in fluent theme*/,
+  completed: SharedColors.cyanBlue10,
   current: '#C0DEF6',
-  error: '#A80000',
+  error: '#A80000' /*Error Block Icon color not yet in fluent theme */,
   none: 'none',
-  notStarted: '#EDEBE9',
-  stepGrey: '#EBEBEB'
+  notStarted: NeutralColors.gray30
 };
 
 export const fadeIn = keyframes({
@@ -51,7 +51,7 @@ export const getIconMap = (isSubStep: boolean): IconMap => {
         Completed: IconNames.CompletedSolid,
         CurrentWithSubSteps: IconNames.FullCircleMask,
         Current: IconNames.FullCircleMask,
-        Error: IconNames.AlertSolid,
+        Error: IconNames.StatusErrorFull,
         NotStarted: undefined,
         Skipped: undefined,
         Unsaved: IconNames.FullCircleMask,
@@ -113,8 +113,8 @@ export const getIconRingColorMap = (isSubStep: boolean): IconRingColorMap => {
 };
 
 export const getSubwayNodeStyles = (props: ISubwayNavNodeStyleProps): ISubwayNavNodeStyles => {
-  const { disabled, isSubStep, iconRecord, state, hasSubSteps, index } = props;
-  const useSelectedStyle: boolean = hasSubSteps || state === SubwayNavNodeState.Current;
+  const { disabled, isSubStep, iconRecord, state, index } = props;
+  const useSelectedStyle: boolean = state === SubwayNavNodeState.Current || state === SubwayNavNodeState.CurrentWithSubSteps;
 
   const commonLabelStyles: IStyle = [
     {
