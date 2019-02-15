@@ -2725,10 +2725,12 @@ interface IColorPickerProps extends IBaseProps<IColorPicker> {
   alphaSliderHidden?: boolean;
   blueLabel?: string;
   className?: string;
-  color: string;
+  color: IColor | string;
   componentRef?: IRefObject<IColorPicker>;
   greenLabel?: string;
   hexLabel?: string;
+  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+  // @deprecated
   onColorChanged?: (color: string, colorObject: IColor) => void;
   redLabel?: string;
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
@@ -2759,6 +2761,7 @@ interface IColorPickerStyles {
 
 // @public (undocumented)
 interface IColorRectangle {
+  color: IColor;
 }
 
 // @public (undocumented)
@@ -2767,6 +2770,8 @@ interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   color: IColor;
   componentRef?: IRefObject<IColorRectangle>;
   minSize?: number;
+  onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+  // @deprecated
   onSVChanged?: (s: number, v: number) => void;
   styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
   theme?: ITheme;
