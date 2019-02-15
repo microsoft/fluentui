@@ -1678,8 +1678,5 @@ export const enum IconNames {
   SizeLegacy = 'SizeLegacy'
 }
 
-/**
- * @deprecate IconNames is deprecated.
- */
 // tslint:disable-next-line:deprecation
 export type IconNamesInput = keyof typeof IconNames;
