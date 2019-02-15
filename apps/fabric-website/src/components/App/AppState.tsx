@@ -296,6 +296,22 @@ export const AppState: IAppState = {
           ]
         },
         {
+          title: 'Layout',
+          url: '#/components',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: [
+            {
+              title: 'Stack',
+              url: '#/components/stack',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Stack" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/StackComponentPage').StackComponentPage))
+            }
+          ]
+        },
+        {
           title: 'Content',
           url: '#/components',
           className: 'componentsPage',

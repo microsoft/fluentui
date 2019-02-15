@@ -3,9 +3,8 @@ import * as React from 'react';
 import { Card } from '../Card';
 import { Persona } from '../../../Persona';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
-import { Stack } from '../../../Stack';
 import { Text } from '../../../Text';
-import { Icon, Image } from 'office-ui-fabric-react';
+import { Icon, Image, Stack } from 'office-ui-fabric-react';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 export class CardBasicExample extends React.Component<{}, {}> {
