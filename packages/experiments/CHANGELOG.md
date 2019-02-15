@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+
+## 6.57.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Removing component from experiments package.
 
 ## 6.56.0
 Thu, 14 Feb 2019 13:34:54 GMT

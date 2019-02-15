@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 Feb 2019 13:33:06 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 17:41:17 GMT and should not be manually modified.
+
+## 6.140.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Promoting component to oufr package.
 
 ## 6.139.1
 Fri, 15 Feb 2019 13:33:06 GMT
