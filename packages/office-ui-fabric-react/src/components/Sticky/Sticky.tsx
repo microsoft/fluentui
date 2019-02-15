@@ -33,6 +33,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
   private _isFocusActive: boolean;
+  private _activeElement: Element | undefined;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -42,6 +43,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     };
     this.distanceFromTop = 0;
     this._isFocusActive = false;
+    this._activeElement = undefined;
   }
 
   public get root(): HTMLDivElement | null {
@@ -111,8 +113,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
     if (prevState.isStickyTop !== this.state.isStickyTop || prevState.isStickyBottom !== this.state.isStickyBottom) {
       if (this._isFocusActive) {
-        console.log('active element 115', scrollablePane.getActive());
-        const activeElement = scrollablePane.getActive();
+        const activeElement = this._activeElement;
         if (activeElement) {
           (activeElement as HTMLElement).focus();
         }
@@ -252,13 +253,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       }
 
       if (
-        this.root.contains(document.activeElement) &&
+        this.nonStickyContent.contains(document.activeElement) &&
         (this.state.isStickyTop !== isStickyTop || this.state.isStickyBottom !== isStickyBottom)
       ) {
         this._isFocusActive = true;
-        console.log(document.activeElement);
-        if (this.context.scrollablePane && document.activeElement) {
-          this.context.scrollablePane.setActive(document.activeElement);
+        if (document.activeElement) {
+          this._activeElement = document.activeElement;
         }
       } else {
         this._isFocusActive = false;
