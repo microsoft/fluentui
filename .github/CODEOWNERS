@@ -78,7 +78,7 @@ ChoiceGroup/   @srideshpande
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
 DatePicker/   @OfficeDev/uifabric-calendar
-# DetailsList/
+DetailsList/ @KevinTCoughlin
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
 # Dropdown/
@@ -87,14 +87,14 @@ DocumentCard/ @yiminwu @mikewheaton
 FolderCover/ @ThomasMichon
 # FocusTrapZone/
 # FocusZone/
-GroupedList/  @aditima
+GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
 # Label/
 Layer/  @ThomasMichon
 # Link/
-# List/
+List/ @KevinTCoughlin
 # MarqueeSelection/
 # MessageBar/
 # Modal/
@@ -141,7 +141,7 @@ ChoiceGroup/docs/   @srideshpande
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
 DatePicker/docs/   @OfficeDev/uifabric-calendar
-# DetailsList/docs/
+DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu @mikewheaton
 # Dropdown/docs/
@@ -149,14 +149,14 @@ DocumentCard/docs/ @yiminwu @mikewheaton
 # FacePile/docs/
 # FocusTrapZone/docs/
 # FocusZone/docs/
-GroupedList/docs/  @aditima
+GroupedList/docs/  @aditima @KevinTCoughlin
 HoverCard/docs/   @atneik @Jahnp
 # Icon/docs/
 # Image/docs/
 # Label/docs/
 Layer/docs/  @ThomasMichon
 # Link/docs/
-# List/docs/
+List/docs/ @KevinTCoughlin
 # MarqueeSelection/docs/
 # MessageBar/docs/
 # Modal/docs/
