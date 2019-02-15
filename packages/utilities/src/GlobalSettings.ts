@@ -62,7 +62,7 @@ export interface IChangeEventCallback {
 export class GlobalSettings {
   public static getValue<T>(key: string, defaultValue?: T | (() => T)): T {
     if (_globalSettings[key] === undefined) {
-      _globalSettings[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+      _globalSettings[key] = typeof defaultValue === 'function' ? (defaultValue as () => T)() : defaultValue;
     }
 
     return _globalSettings[key];
