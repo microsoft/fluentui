@@ -12,7 +12,7 @@ const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps>
 
   const folderCover = <FolderCover {...folderCoverProps} />;
 
-  const { contentSize } = getFolderCoverLayout(folderCover, folderCoverProps.isFluent);
+  const { contentSize } = getFolderCoverLayout(folderCover);
 
   const imageSize = fitContentToBounds({
     contentSize: originalImageSize,
