@@ -299,7 +299,10 @@ export enum PanelType {
   custom = 7,
 
   /**
-   * Renders the panel in 'customNear' mode using customWidth, anchored to the near side (left in LTR mode).
+   * Renders the Panel in `custom` size using `customWidth`, anchored to the near side (left in LTR mode).
+   * - Has a fixed width provided by the `customWidth` prop
+   * - When screen width reaches the `customWidth` value it will behave like a fluid width Panel
+   * taking up 100% of the viewport width
    */
   customNear = 8
 }
