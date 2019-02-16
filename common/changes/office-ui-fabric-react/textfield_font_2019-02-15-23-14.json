@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Loading font from theme for Textfield.",
+      "comment": "TextField: adds font styles passed from theme to the root element.",
       "type": "patch"
     }
   ],
