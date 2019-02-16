@@ -60,6 +60,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     root: [
       classNames.root,
       className,
+      theme.fonts.medium,
       {
         overflowY: 'auto',
         userSelect: 'none',
@@ -78,6 +79,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         margin: '0 4px',
         overflow: 'hidden',
         verticalAlign: 'middle',
+        textAlign: 'left',
         textOverflow: 'ellipsis'
       }
     ],
@@ -108,6 +110,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         overflow: 'hidden',
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
+        color: semanticColors.bodyText,
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
@@ -126,7 +129,8 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             top: 0,
             right: 0,
             bottom: 0,
-            left: 0
+            left: 0,
+            pointerEvents: 'none'
           }
         }
       },
@@ -198,7 +202,8 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             top: 0,
             right: 0,
             bottom: 0,
-            left: 0
+            left: 0,
+            pointerEvents: 'none'
           }
         }
       }

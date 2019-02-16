@@ -7,8 +7,7 @@ import {
   getParent,
   getDocument,
   getWindow,
-  isElementTabbable,
-  createRef
+  isElementTabbable
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
 
@@ -38,7 +37,7 @@ export interface ISelectionZone {
   ignoreNextFocus: () => void;
 }
 
-export interface ISelectionZoneProps extends React.Props<SelectionZone> {
+export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   componentRef?: () => void;
   selection: ISelection;
   /**
@@ -61,7 +60,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     selectionMode: SelectionMode.multiple
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
@@ -106,7 +105,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   /**
    * In some cases, the consuming scenario requires to set focus on a row without having SelectionZone
-   * react to the event. Note that focus events in IE <= 11 will occur asynchronously after .focus() has
+   * react to the event. Note that focus events in IE \<= 11 will occur asynchronously after .focus() has
    * been called on an element, so we need a flag to store the idea that we will bypass the "next"
    * focus event that occurs. This method does that.
    */

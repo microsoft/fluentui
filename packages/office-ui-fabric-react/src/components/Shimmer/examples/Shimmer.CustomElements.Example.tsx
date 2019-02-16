@@ -1,8 +1,18 @@
+// @codepen
+
 import * as React from 'react';
-
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-import * as ShimmerExampleStyles from './Shimmer.Example.scss';
+const wrapperClass = mergeStyles({
+  padding: 2,
+  selectors: {
+    '& > *': {
+      margin: '10px 0'
+    }
+  }
+});
 
 export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -11,12 +21,12 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
+      <Fabric className={wrapperClass}>
         Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
         <Shimmer customElementsGroup={this._getCustomElementsExampleOne()} width={350} />
         <Shimmer customElementsGroup={this._getCustomElementsExampleTwo()} width={550} />
         <Shimmer customElementsGroup={this._getCustomElementsExampleThree()} width={'90%'} />
-      </div>
+      </Fabric>
     );
   }
 
@@ -27,10 +37,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
         style={{ display: 'flex' }}
       >
         <ShimmerElementsGroup
-          shimmerElements={[
-            { type: ElemType.line, width: 40, height: 40 },
-            { type: ElemType.gap, width: 10, height: 40 }
-          ]}
+          shimmerElements={[{ type: ElemType.line, width: 40, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]}
         />
         <ShimmerElementsGroup
           flexWrap={true}
@@ -50,9 +57,7 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
         // tslint:disable-next-line:jsx-ban-props
         style={{ display: 'flex' }}
       >
-        <ShimmerElementsGroup
-          shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]}
-        />
+        <ShimmerElementsGroup shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]} />
         <ShimmerElementsGroup
           flexWrap={true}
           shimmerElements={[
@@ -73,18 +78,13 @@ export class ShimmerCustomElementsExample extends React.Component<{}, {}> {
       >
         <ShimmerElementsGroup
           width={'90px'}
-          shimmerElements={[
-            { type: ElemType.line, height: 80, width: 80 },
-            { type: ElemType.gap, width: 10, height: 80 }
-          ]}
+          shimmerElements={[{ type: ElemType.line, height: 80, width: 80 }, { type: ElemType.gap, width: 10, height: 80 }]}
         />
         <div
           // tslint:disable-next-line:jsx-ban-props
           style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}
         >
-          <ShimmerElementsGroup
-            shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]}
-          />
+          <ShimmerElementsGroup shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 10, height: 40 }]} />
           <ShimmerElementsGroup
             flexWrap={true}
             width={'calc(100% - 50px)'}

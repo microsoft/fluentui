@@ -3,13 +3,14 @@
 ##### The React-based front-end framework for building experiences for Office and Office 365.
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
+
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
 
 Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 
 ## Who uses UI Fabric?
 
-![image](https://user-images.githubusercontent.com/1110944/41632827-ac599f98-73f0-11e8-9d27-2bfe8ee7adf4.png)
+![image](https://user-images.githubusercontent.com/785361/50458071-45b58d00-0915-11e9-90c0-ad8789c99db5.png)
 
 \+ 45 additional Microsoft sites and products
 
@@ -54,11 +55,16 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.body.firstChild);
 ```
 
+## Version policy
+
+Fabric React adheres to [semantic versioning](http://www.semver.org/). However, we only consider constructs directly importable at the package level or from files at the root (e.g. `office-ui-fabric-react/lib/Utilities` or `office-ui-fabric-react/lib-amd/Styling`) to be part of our API surface. Everything else is considered package-internal and may be subjected to changes, moves, renames, etc.
+
 ## Browser support
 
 Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
 
 ## Right-to-left support
+
 All components can render in LTR or RTL, depending on the `dir` attribute set on the `html` element. (`dir="rtl"` will flip the direction of everything.
 
 You can also import the `setRTL` api to manually set it, if you don't have control over what gets renders for the `html` element. Example:
@@ -104,7 +110,7 @@ console.log(
 );
 ```
 
-Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
+Note: We are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
 ### Browserless Testing
 
@@ -150,25 +156,20 @@ Please take a look at our [contribution guidelines](https://github.com/OfficeDev
 
 ## Building the repo
 
-Before you get started, **make sure you have read the [Git branch setup instrucions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
+Before you get started, **make sure you have read the [Git branch setup instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
 1.  `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-2.  `npm install` _For Windows developers, please read the next section before running this_
-3.  `npm start`
+2.  `cd office-ui-fabric-react`
+3.  `npm install`
+4.  `npm start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 To build and run tests for all packages in the repo, you can run `npm run build` from the root.
 
 To build individual packages within the `packages/*/` folders, you can use `npm run build` in each individually. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
-
-## Note for Windows Developers on npm 6.x
-
-Due to a known bug in #5174, Windows developers who are using npm 6.x should downgrade to use `npm` v5.6.0 for now:
-
-`npm i -g npm@5.6.0`
 
 ## Testing
 
@@ -182,9 +183,9 @@ The repo contains many packages, each which may have dependencies on each other.
 npm install -g @microsoft/rush
 ```
 
-To use rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build.)
+To use rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build.) If you don't have rush globally installed, you can also use `npm run buildfast` to achieve this, since this command abstracts `rush build`.
 
-To can also build up to a specific project using the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, you can run:
+You can also build up to a specific project using the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, you can run:
 
 ```bash
 rush build --to office-ui-fabric-react
@@ -204,6 +205,3 @@ We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to 
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## Issue management and `Stale-bot`
-
-If you are getting `stale[bot]` messages and/or want to understand how we manage issues, please search for 'issue Triage' and/or 'stale[bot]' in the [FAQ](https://github.com/OfficeDev/office-ui-fabric-react/wiki/FAQ).

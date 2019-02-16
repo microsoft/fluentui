@@ -31,11 +31,16 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #a6a6a6;
               cursor: default;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -156,6 +161,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
       >
         <button
           aria-disabled={true}
+          aria-label="Increase value by 1"
           checked={false}
           className=
               ms-Button
@@ -252,7 +258,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -284,6 +289,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         </button>
         <button
           aria-disabled={true}
+          aria-label="Decrease value by 1"
           checked={false}
           className=
               ms-Button
@@ -380,7 +386,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

@@ -2,6 +2,189 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.15.2",
+      "tag": "@uifabric/merge-styles_v6.15.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where multiple selectors in :global() would not be processed correctly",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "91e8cf63bf2e057f609905f66363ac6ab5b5880e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.1",
+      "tag": "@uifabric/merge-styles_v6.15.1",
+      "date": "Wed, 23 Jan 2019 22:53:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow :global to be used in more scenarios than just \":global(selector)\"",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "034ac9dad6f8687da78fb358db9da0c43d976fbc"
+          },
+          {
+            "comment": "Use CSS object-fit in the Image component in capable browsers",
+            "author": "Mathieu 'p01' Henri <mathieu@p01.org>",
+            "commit": "dffc46f4917a381eb75cccc81b5eb89c5c3c9af7"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.0",
+      "tag": "@uifabric/merge-styles_v6.15.0",
+      "date": "Thu, 15 Nov 2018 13:36:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a995de20dcd7b3a8967e6d33ccffd6f12dae0ed5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.0",
+      "tag": "@uifabric/merge-styles_v6.14.0",
+      "date": "Tue, 13 Nov 2018 13:30:53 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "`strokeLinecap` added to IRawStyles.",
+            "author": "brandonthomas <brandonthomas@users.noreply.github.com>",
+            "commit": "4fa50fa0c3f001f57a4b497821799521d05c26bc"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/merge-styles_v6.13.0",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fixes #6975: adds ability for mergestyles to handle commas in selectors",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "31d07a04207a554ac7375c567bbe49942f2f65b1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/merge-styles_v6.11.0",
+      "date": "Fri, 26 Oct 2018 12:32:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add api-extractor.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c691b7b89fcfc5a28c211b29c7ba236887ab8256"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.4",
+      "tag": "@uifabric/merge-styles_v6.10.4",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IRawStyleBase: Replace string type on display property with a more specific type of possible values.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.3",
+      "tag": "@uifabric/merge-styles_v6.10.3",
+      "date": "Mon, 22 Oct 2018 12:29:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added 'stretch' as valid value for justifyContent in IRawStyleBase.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "cd0febc68cef4b143022a72a1465bd345949b0a0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.2",
+      "tag": "@uifabric/merge-styles_v6.10.2",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update api-extractor",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.1",
+      "tag": "@uifabric/merge-styles_v6.10.1",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IStyleSet: Now uses a form that works better in TS 2.8 and does not require TS 3.0 to work. Thanks [Nimelrian](https://github.com/Nimelrian)!",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "11e886ae48f7846de6baf05d09752f6e7c49e16d"
+          },
+          {
+            "comment": "Adding css grid properties to fill out the spec",
+            "author": "Joe Day <joeday@microsoft.com>",
+            "commit": "46db8c850dd258ba70babd2ebd0158e6562d4c67"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/merge-styles_v6.10.0",
+      "date": "Thu, 11 Oct 2018 23:13:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable api-extractor task for merge-styles",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "4c8e1118e9b94d8b6bd7e8dc0e44cf080d39d5ea"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.4",
+      "tag": "@uifabric/merge-styles_v6.9.4",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.3",
       "tag": "@uifabric/merge-styles_v6.9.3",
       "date": "Mon, 01 Oct 2018 12:27:24 GMT",

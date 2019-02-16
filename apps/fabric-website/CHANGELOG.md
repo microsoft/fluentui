@@ -1,6 +1,136 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 02 Oct 2018 12:28:04 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+
+## 6.10.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackComponentPage to AppState.tsx.
+
+## 6.9.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Website: redirects defunct URLs to new
+
+## 6.8.7
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Patches
+
+- Adds documentation for setting the 'dir' attribute for Fabric Core
+
+## 6.8.6
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fix site links to allow for deeplinks to the customizations
+
+## 6.8.5
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- DetailsList examples: Fix copy paste error causing infinite loop
+
+## 6.8.4
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Strengthen typing of styles function.
+
+## 6.8.3
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Add shimmered DetailsList to website
+- Documentation: Updating README to mention buildfast as an advanced build alternative.
+- Updates for new CollapsibleSection API.
+
+## 6.8.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Remove string refs from IconGrid
+
+## 6.8.1
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Patches
+
+- Add missing dependency
+
+## 6.8.0
+Wed, 07 Nov 2018 13:31:00 GMT
+
+### Minor changes
+
+- Add TopNav and mobile left nav to local and non-UHF site. Allow left nav to be accessed by keyboard.
+
+### Patches
+
+- Website: Update iconography implementation documentation
+
+## 6.7.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Update TypeScript instructions in getting started tutorial
+- Fix visual bugs caused by MWF overrides on Fabric site
+
+## 6.7.1
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Patches
+
+- Update website getting started docs
+
+## 6.7.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- Carry over website pipeline improvements to prod-deployed index
+
+## 6.6.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- Nav: fix loosely typed const after changes in display property type of IRawStyleBase.
+
+## 6.6.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Modify theme generator output and add codepen export option.
+
+## 6.6.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Enable website to load bundle scripts from manifest JS file
+
+## 6.5.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Add temporary MessageBar to link to Fluent for Fabric
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.4.6
 Tue, 02 Oct 2018 12:28:04 GMT

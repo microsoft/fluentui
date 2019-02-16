@@ -50,6 +50,30 @@ export const AppDefinition: IAppDefinition = {
           key: 'SetupBanner',
           name: 'SetupBanner',
           url: '#/examples/setupbanner'
+        },
+        {
+          component: require<any>('../components/DetailPanel/DetailPanelPage').DetailPanelPage,
+          key: 'DetailPanel',
+          name: 'DetailPanel',
+          url: '#/examples/detailpanel'
+        },
+        {
+          component: require<any>('../components/CompositeList/CompositeListPage').CompositeListPage,
+          key: 'CompositeList',
+          name: 'CompositeList',
+          url: '#/examples/compositelist'
+        },
+        {
+          component: require<any>('../components/SubwayNav/SubwayNavPage').SubwayNavPage,
+          key: 'SubwayNav',
+          name: 'SubwayNav',
+          url: '#/examples/subwaynav'
+        },
+        {
+          component: require<any>('../components/Wizard/WizardPage').WizardPage,
+          key: 'Wizard',
+          name: 'Wizard',
+          url: '#/examples/wizard'
         }
       ]
     }

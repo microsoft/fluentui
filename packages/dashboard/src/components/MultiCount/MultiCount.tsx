@@ -6,19 +6,17 @@ import { negativeStateChange } from './NegativeStateChange';
 import { noStateChange } from './NoStateChange';
 
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { HoverCard, IExpandingCardProps, ExpandingCardMode } from 'office-ui-fabric-react/lib/HoverCard';
+import { HoverCard, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
 
 export interface IMultiCountState {
   hoveredText: string;
-  hoverCardHeight: number;
 }
 
 export class MultiCount extends React.Component<IMultiCountProps, IMultiCountState> {
   constructor(props: IMultiCountProps) {
     super(props);
     this.state = {
-      hoveredText: '',
-      hoverCardHeight: 0
+      hoveredText: ''
     };
   }
 
@@ -30,7 +28,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       bodyTextFontSize,
       bodyTextColor,
       customMessage,
-      href
+      href,
+      onClicked
     } = this.props;
     const data: JSX.Element[] = this.getGeneratedData(
       multiCountRows,
@@ -39,7 +38,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       annotationTextColor,
       bodyTextFontSize,
       bodyTextColor,
-      customMessage
+      customMessage,
+      onClicked
     );
     return <div>{data}</div>;
   }
@@ -51,7 +51,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
     annotationTextColor?: string,
     bodyTextFontSize?: string,
     bodyTextColor?: string,
-    customMessage?: string
+    customMessage?: string,
+    onClicked?: VoidFunction
   ): JSX.Element[] {
     const formattedRows: JSX.Element[] = [];
     const units = ['', 'k', 'm', 'b'];
@@ -73,8 +74,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
         AnnotationType[row.type] === AnnotationType.neutral
           ? noStateChange
           : AnnotationType[row.type] === AnnotationType.positive
-            ? negativeStateChange
-            : positiveChangeState;
+          ? negativeStateChange
+          : positiveChangeState;
       const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
       const classNames = getClassNames(
         getStyles({
@@ -86,37 +87,20 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
           hoveredText: this.state.hoveredText,
           currentText: row.data + row.bodyText + row.annotaionText,
           href: href,
+          onClicked: onClicked,
           hideIcon: row.hideIcon
         })
       );
-      const expandingCardProps: IExpandingCardProps = {
-        compactCardHeight: this.state.hoverCardHeight,
-        onRenderCompactCard: this._onRenderCompactCard,
-        renderData: [row, customMessage],
-        mode: ExpandingCardMode.compact,
-        styles: {
-          root: {
-            width: 'auto',
-            height: 'auto',
-            margin: 0
-          },
-          compactCard: {
-            width: 'auto',
-            height: 'auto',
-            margin: 0
-          },
-          expandedCard: {
-            width: 0,
-            margin: 0
-          }
-        }
-      };
       const hoverKey = row.data + row.bodyText + row.annotaionText;
+      const plainCardProps = {
+        onRenderPlainCard: this._onRenderCompactCard,
+        renderData: [row, customMessage]
+      };
       formattedRows.push(
         <HoverCard
           key={index}
-          expandingCardProps={expandingCardProps}
-          instantOpenOnClick={true}
+          type={HoverCardType.plain}
+          plainCardProps={plainCardProps}
           onCardHide={this._hoverStateUpdate.bind(this, hoverKey, false)}
           onCardVisible={this._hoverStateUpdate.bind(this, hoverKey, true)}
         >
@@ -140,20 +124,19 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
     if (hoverState) {
       setTimeout(() => {
         this.setState({
-          hoveredText: hoverKey,
-          hoverCardHeight: document.getElementsByClassName('hoverCardRoot')[0].clientHeight
+          hoveredText: hoverKey
         });
       }, 10);
     } else {
       this.setState({
-        hoveredText: '',
-        hoverCardHeight: 0
+        hoveredText: ''
       });
     }
   };
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
+    this.props.onClicked && this.props.onClicked();
   }
 
   // tslint:disable-next-line:no-any
@@ -162,8 +145,8 @@ export class MultiCount extends React.Component<IMultiCountProps, IMultiCountSta
       AnnotationType[data[0].type] === AnnotationType.neutral
         ? noStateChange
         : AnnotationType[data[0].type] === AnnotationType.positive
-          ? negativeStateChange
-          : positiveChangeState;
+        ? negativeStateChange
+        : positiveChangeState;
     const getClassNames = classNamesFunction<IMultiCountProps, IMultiCountStyles>();
     const classNames = getClassNames(
       getStyles({

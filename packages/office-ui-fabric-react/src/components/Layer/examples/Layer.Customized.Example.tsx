@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Customizer } from '@uifabric/utilities';
+import { Customizer, getId } from '@uifabric/utilities';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
@@ -10,21 +10,20 @@ export interface ILayerCustomizedExampleState {
 }
 
 export class LayerCustomizedExample extends React.Component<{}, ILayerCustomizedExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      showPanel: false,
-      trapPanel: false
-    };
-  }
+  public state: ILayerCustomizedExampleState = {
+    showPanel: false,
+    trapPanel: false
+  };
+  // Use getId() to ensure that the ID is unique on the page.
+  // (It's also okay to use a plain string without getId() and manually ensure uniqueness.)
+  private _layerHostId: string = getId('layerHost');
 
   public render(): JSX.Element {
     return (
       <div>
         <p>
-          A <code>Panel</code> is rendered, trapped in a specified container. Use 'Show panel' to show/hide the panel
-          (or click the X to dismiss it). Use 'Trap panel' to release the panel from its bounds.
+          A <code>Panel</code> is rendered, trapped in a specified container. Use 'Show panel' to show/hide the panel (or click the X to
+          dismiss it). Use 'Trap panel' to release the panel from its bounds.
         </p>
         <Checkbox label="Show panel" checked={this.state.showPanel} onChange={this._onShowPanelChange} />
         <Checkbox label="Trap panel" checked={this.state.trapPanel} onChange={this._onTrapPanelChange} />
@@ -33,7 +32,7 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
             this.state.trapPanel
               ? {
                   Layer: {
-                    hostId: 'test'
+                    hostId: this._layerHostId
                   }
                 }
               : {}
@@ -55,7 +54,7 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
           )}
         </Customizer>
         <LayerHost
-          id="test"
+          id={this._layerHostId}
           style={{
             position: 'relative',
             height: '400px',

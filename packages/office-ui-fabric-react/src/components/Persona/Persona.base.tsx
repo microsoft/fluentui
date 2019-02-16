@@ -4,11 +4,11 @@ import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,
-  IPersonaSharedProps,
   IPersonaStyleProps,
   IPersonaStyles,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
+  IPersonaCoinProps
 } from './Persona.types';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
@@ -69,9 +69,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       theme
     } = this.props;
 
-    const personaCoinProps: IPersonaSharedProps = {
+    const personaCoinProps: IPersonaCoinProps = {
       allowPhoneInitials,
-      coinProps,
       showUnknownPersonaCoin,
       coinSize,
       imageAlt,
@@ -86,7 +85,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       presence,
       showInitialsUntilImageLoads,
       size,
-      text: this._getText()
+      text: this._getText(),
+      ...coinProps
     };
 
     const classNames = getClassNames(styles, {
@@ -109,11 +109,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     );
 
     return (
-      <div
-        {...divProps}
-        className={classNames.root}
-        style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
-      >
+      <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
         <PersonaCoin {...personaCoinProps} />
         {(!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails}
       </div>
@@ -153,11 +149,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       ? (): JSX.Element => {
           // default onRender behaviour
           return (
-            <TooltipHost
-              content={text}
-              overflowMode={TooltipOverflowMode.Parent}
-              directionalHint={DirectionalHint.topLeftEdge}
-            >
+            <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} directionalHint={DirectionalHint.topLeftEdge}>
               {text}
             </TooltipHost>
           );

@@ -146,7 +146,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jest.fn();
 
       try {
         ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
@@ -161,13 +161,37 @@ describe('Dropdown', () => {
       }
     });
 
+    it('issues the onChange callback when the selected item is the same if notifyOnReselect is true', () => {
+      const container = document.createElement('div');
+      let dropdownRoot: HTMLElement | undefined;
+
+      document.body.appendChild(container);
+
+      const onChangeSpy = jest.fn();
+
+      try {
+        ReactDOM.render(
+          <Dropdown label="testgroup" defaultSelectedKey="3" onChange={onChangeSpy} options={DEFAULT_OPTIONS} notifyOnReselect={true} />,
+          container
+        );
+        dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+        ReactTestUtils.Simulate.click(dropdownRoot);
+
+        const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
+        ReactTestUtils.Simulate.click(secondItemElement);
+      } finally {
+        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[3], 3);
+      }
+    });
+
     it('issues the onDismiss callback when dismissing options callout', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
 
-      const onDismissSpy = jasmine.createSpy('onDismiss');
+      const onDismissSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -208,7 +232,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangeSpy = jasmine.createSpy('onChange');
+      const onChangeSpy = jest.fn();
 
       try {
         ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
@@ -456,8 +480,8 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
-        ReactTestUtils.Simulate.click(secondItemElement);
+        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item > input[type="checkbox"]')[1] as HTMLElement;
+        ReactTestUtils.Simulate.change(secondItemElement);
       } finally {
         expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('1, 2');
       }
@@ -472,7 +496,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -502,7 +526,7 @@ describe('Dropdown', () => {
 
       document.body.appendChild(container);
 
-      const onChangedSpy = jasmine.createSpy('onChanged');
+      const onChangedSpy = jest.fn();
 
       try {
         ReactDOM.render(
@@ -605,6 +629,59 @@ describe('Dropdown', () => {
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
       expect(dropdownRoot.attributes.getNamedItem('aria-labelledby')).not.toBeNull();
+    });
+  });
+
+  describe('with simulated async loaded options', () => {
+    /** See https://github.com/OfficeDev/office-ui-fabric-react/issues/7315 */
+    class DropdownWithChangingProps extends React.Component<{ multi: boolean }, { options?: IDropdownOption[] }> {
+      public state = {
+        options: undefined
+      };
+
+      public componentDidMount() {
+        this.loadOptions();
+      }
+
+      public render() {
+        return (
+          <div className="docs-DropdownExample">
+            {this.props.multi ? (
+              <Dropdown label="Basic uncontrolled example:" defaultSelectedKeys={['B', 'D']} options={this.state.options!} multiSelect />
+            ) : (
+              <Dropdown label="Basic uncontrolled example:" defaultSelectedKey={'B'} options={this.state.options!} />
+            )}
+          </div>
+        );
+      }
+
+      public loadOptions() {
+        this.setState({
+          options: [
+            { key: 'A', text: 'Option a', title: 'I am option a.' },
+            { key: 'B', text: 'Option b' },
+            { key: 'C', text: 'Option c', disabled: true },
+            { key: 'D', text: 'Option d' },
+            { key: 'E', text: 'Option e' }
+          ]
+        });
+      }
+    }
+
+    it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
+      const container = document.createElement('div');
+      ReactDOM.render(<DropdownWithChangingProps multi={false} />, container);
+      const dropdownOptionText = container.querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+
+      expect(dropdownOptionText.innerHTML).toBe('Option b');
+    });
+
+    it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
+      const container = document.createElement('div');
+      ReactDOM.render(<DropdownWithChangingProps multi={true} />, container);
+      const dropdownOptionText = container.querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
+
+      expect(dropdownOptionText.innerHTML).toBe('Option b, Option d');
     });
   });
 });

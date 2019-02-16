@@ -2,24 +2,26 @@ import * as React from 'react';
 import { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
-export const enum ScrollToMode {
+export const ScrollToMode = {
   /**
    * Does not make any consideration to where in the viewport the item should align to.
    */
-  auto,
+  auto: 0 as 0,
   /**
    * Attempts to scroll the list so the top of the desired item is aligned with the top of the viewport.
    */
-  top,
+  top: 1 as 1,
   /**
    * Attempts to scroll the list so the bottom of the desired item is aligned with the bottom of the viewport.
    */
-  bottom,
+  bottom: 2 as 2,
   /**
    * Attempts to scroll the list so the desired item is in the exact center of the viewport.
    */
-  center
-}
+  center: 3 as 3
+};
+
+export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 
 export interface IList {
   /**
@@ -34,9 +36,9 @@ export interface IList {
    * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
    * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
    *
-   * @param index Index of item to scroll to
-   * @param measureItem Optional callback to measure the height of an individual item
-   * @param scrollToMode Optional defines the behavior of the scrolling alignment. Defaults to auto.
+   * @param index - Index of item to scroll to
+   * @param measureItem - Optional callback to measure the height of an individual item
+   * @param scrollToMode - Optional defines the behavior of the scrolling alignment. Defaults to auto.
    *  Note: The scrollToMode requires the measureItem callback is provided to function.
    */
   scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
@@ -62,11 +64,21 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 
   /**
    * Method to call when trying to render an item.
-   * @param {any} item - The the data associated with the cell that is being rendered.
-   * @param {number} index - The index of the cell being rendered.
-   * @param {boolean} isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
+   * @param item - The the data associated with the cell that is being rendered.
+   * @param index - The index of the cell being rendered.
+   * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
    */
   onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
+
+  /**
+   * Optional callback invoked when List rendering completed.
+   * This can be on initial mount or on re-render due to scrolling.
+   * This method will be called as a result of changes in List pages (added or removed),
+   * and after ALL the changes complete.
+   * To track individual page Add / Remove use onPageAdded / onPageRemoved instead.
+   * @param pages - The current array of pages in the List.
+   */
+  onPagesUpdated?: (pages: IPage[]) => void;
 
   /** Optional callback for monitoring when a page is added. */
   onPageAdded?: (page: IPage) => void;
@@ -108,13 +120,13 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 
   /**
    * In addition to the visible window, how many windowHeights should we render ahead.
-   * @default 2
+   * @defaultvalue 2
    */
   renderedWindowsAhead?: number;
 
   /**
    * In addition to the visible window, how many windowHeights should we render behind.
-   * @default 2
+   * @defaultvalue 2
    */
   renderedWindowsBehind?: number;
 
@@ -127,7 +139,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   /**
    * Boolean value to enable render page caching. This is an experimental performance optimization
    * that is off by default.
-   * @defaultValue false
+   * @defaultvalue false
    */
   usePageCache?: boolean;
 
@@ -164,7 +176,7 @@ export interface IPage {
   isSpacer?: boolean;
 }
 
-export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {
+export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
    */

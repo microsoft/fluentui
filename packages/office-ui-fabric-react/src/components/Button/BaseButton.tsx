@@ -8,7 +8,6 @@ import {
   getId,
   getNativeProps,
   KeyCodes,
-  createRef,
   css,
   mergeAriaAttributeValues,
   portalContainsElement
@@ -50,8 +49,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     split: false
   };
 
-  private _buttonElement = createRef<HTMLElement>();
-  private _splitButtonContainer = createRef<HTMLDivElement>();
+  private _buttonElement = React.createRef<HTMLElement>();
+  private _splitButtonContainer = React.createRef<HTMLDivElement>();
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
@@ -103,7 +102,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       getClassNames
     } = this.props;
 
-    const { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
     const isPrimaryButtonDisabled = disabled || primaryDisabled;
 
@@ -116,7 +114,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          this._isMenuExpanded(),
           this.props.split,
           !!allowDisabledFocus
         )
@@ -129,7 +127,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          this._isMenuExpanded(),
           this.props.split
         );
 
@@ -217,8 +215,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
-    if (this._isSplitButton && this._splitButtonContainer.value && 'onpointerdown' in this._splitButtonContainer.value) {
-      this._events.on(this._splitButtonContainer.value, 'pointerdown', this._onPointerDown, true);
+    if (this._isSplitButton && this._splitButtonContainer.current && 'onpointerdown' in this._splitButtonContainer.current) {
+      this._events.on(this._splitButtonContainer.current, 'pointerdown', this._onPointerDown, true);
     }
   }
 
@@ -360,6 +358,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
   }
 
+  private _isMenuExpanded(): boolean {
+    const { menuProps } = this.state;
+    return !!menuProps && !menuProps.hidden;
+  }
+
   private _onRenderChildren = (): JSX.Element | null => {
     const { children } = this.props;
 
@@ -421,6 +424,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         {...menuProps}
         shouldFocusOnContainer={this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined}
         shouldFocusOnMount={this.state.menuProps ? this.state.menuProps.shouldFocusOnMount : undefined}
+        hidden={this.state.menuProps ? this.state.menuProps.hidden : undefined}
         className={css('ms-BaseButton-menuhost', menuProps.className)}
         target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
         onDismiss={onDismiss}
@@ -667,7 +671,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onTouchStart: () => void = () => {
-    if (this._isSplitButton && this._splitButtonContainer.value && !('onpointerdown' in this._splitButtonContainer.value)) {
+    if (this._isSplitButton && this._splitButtonContainer.current && !('onpointerdown' in this._splitButtonContainer.current)) {
       this._handleTouchAndPointerEvent();
     }
   };
@@ -722,8 +726,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (!ev.defaultPrevented) {
       // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
       // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-      // between a real click event and a keypress event.
-      const shouldFocusOnContainer = ev.nativeEvent.detail !== 0;
+      // between a real click event and a keypress event (detail should be the number of mouse clicks).
+      // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
+      // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
+      // and "" for pressing "Enter" with Narrator on.
+      const shouldFocusOnContainer = ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse';
       this._onToggleMenu(shouldFocusOnContainer);
       ev.preventDefault();
       ev.stopPropagation();

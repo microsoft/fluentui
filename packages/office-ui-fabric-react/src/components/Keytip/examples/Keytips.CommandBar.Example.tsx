@@ -117,9 +117,7 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
             }
           ]}
         />
-        {this.state.showMessageBar && (
-          <MessageBar messageBarType={MessageBarType.success}>Success Uploading</MessageBar>
-        )}
+        {this.state.showMessageBar && <MessageBar messageBarType={MessageBarType.success}>Success Uploading</MessageBar>}
         <Modal isOpen={this.state.showModal} onDismiss={this._hideModal} isBlocking={false}>
           <h3>New Modal</h3>
         </Modal>

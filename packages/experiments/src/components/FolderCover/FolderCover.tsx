@@ -3,6 +3,7 @@ import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCov
 import { ISize, css } from '../../Utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 // tslint:disable-next-line:no-any
 const FolderCoverStyles = FolderCoverStylesModule as any;
@@ -13,15 +14,13 @@ export interface IFolderCoverState {
   // TODO Add animation support for drag/drop events.
 }
 
-const enum FolderCoverLayoutValues {
-  smallWidth = 72,
-  smallHeight = 52,
-  largeWidth = 112,
-  largeHeight = 80,
-  contentPadding = 4
-}
-
-const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets';
+const FolderCoverLayoutValues = {
+  smallWidth: 72 as 72,
+  smallHeight: 52 as 52,
+  largeWidth: 112 as 112,
+  largeHeight: 80 as 80,
+  contentPadding: 4 as 4
+};
 
 const SIZES: { [P in FolderCoverSize]: ISize } = {
   small: {
@@ -44,22 +43,22 @@ const ASSETS: {
 } = {
   small: {
     default: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_frontplate_thumbnail.svg` // Yes, it's mis-named.
+      back: `folderCoverSmallDefaultBack`,
+      front: `folderCoverSmallDefaultFront`
     },
     media: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-small_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons//folder-small_frontplate_nopreview.svg` // Yes, it's mis-named
+      back: `folderCoverSmallMediaBack`,
+      front: `folderCoverSmallMediaFront`
     }
   },
   large: {
     default: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_frontplate_nopreview.svg`
+      back: `folderCoverLargeDefaultBack`,
+      front: `folderCoverLargeDefaultFront`
     },
     media: {
-      back: `${ASSET_CDN_BASE_URL}/foldericons/folder-large_backplate.svg`,
-      front: `${ASSET_CDN_BASE_URL}/foldericons//folder-large_frontplate_thumbnail.svg`
+      back: `folderCoverLargeMediaBack`,
+      front: `folderCoverLargeMediaFront`
     }
   }
 };
@@ -74,11 +73,18 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       metadata,
       signal,
       children,
+      isFluent,
       ...divProps
     } = this.props;
 
     const assets = ASSETS[size][type];
+    const metadataIcon = metadata ? <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span> : null;
 
+    const signalIcon = signal ? (
+      <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, isFluent ? SignalStyles.isFluent : SignalStyles.dark)}>
+        {signal}
+      </span>
+    ) : null;
     return (
       <div
         {...divProps}
@@ -87,22 +93,28 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           [`ms-FolderCover--isLarge ${FolderCoverStyles.isLarge}`]: size === 'large',
           [`ms-FolderCover--isDefault ${FolderCoverStyles.isDefault}`]: type === 'default',
           [`ms-FolderCover--isMedia ${FolderCoverStyles.isMedia}`]: type === 'media',
-          [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent
+          [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent,
+          [`ms-FolderCover--isFluent ${FolderCoverStyles.isFluent}`]: isFluent
         })}
       >
-        <img aria-hidden={true} className={css('ms-FolderCover-back', FolderCoverStyles.back)} src={assets.back} />
+        <Icon aria-hidden={true} className={css('ms-FolderCover-back', FolderCoverStyles.back)} iconName={assets.back} />
         {children ? (
           <span className={css('ms-FolderCover-content', FolderCoverStyles.content)}>
             <span className={css('ms-FolderCover-frame', FolderCoverStyles.frame)}>{children}</span>
           </span>
         ) : null}
-        <img aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} src={assets.front} />
-        {signal ? (
-          <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark)}>{signal}</span>
-        ) : null}
-        {metadata ? (
-          <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span>
-        ) : null}
+        <Icon aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} iconName={assets.front} />
+        {isFluent ? (
+          <React.Fragment>
+            {metadataIcon}
+            {signalIcon}
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {signalIcon}
+            {metadataIcon}
+          </React.Fragment>
+        )}
       </div>
     );
   }
@@ -117,8 +129,15 @@ export function getFolderCoverLayout(element: JSX.Element): IFolderCoverLayout {
 
   const { folderCoverSize = 'large' } = folderCoverProps;
 
+  const contentSize = { ...SIZES[folderCoverSize] };
+  const { isFluent } = element.props;
+
+  if (isFluent) {
+    contentSize.height -= 8;
+  }
+
   return {
-    contentSize: SIZES[folderCoverSize]
+    contentSize
   };
 }
 

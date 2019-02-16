@@ -68,7 +68,7 @@ export interface IScrollablePaneStyles {
    */
   stickyAbove: IStyle;
   /**
-   * Style set for the stickyAbove element.
+   * Style set for the stickyBelow element.
    */
   stickyBelow: IStyle;
   /**
@@ -81,7 +81,9 @@ export interface IScrollablePaneStyles {
   contentContainer: IStyle;
 }
 
-export const enum ScrollbarVisibility {
-  auto = 'auto',
-  always = 'always'
-}
+export const ScrollbarVisibility = {
+  auto: 'auto' as 'auto',
+  always: 'always' as 'always'
+};
+
+export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];

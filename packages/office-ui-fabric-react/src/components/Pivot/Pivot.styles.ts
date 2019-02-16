@@ -25,10 +25,10 @@ const globalClassNames = {
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
   const { rootIsLarge, rootIsTabs, theme } = props;
-  const { palette } = props.theme;
+  const { palette, semanticColors } = props.theme;
   return [
     {
-      color: palette.neutralPrimary,
+      color: semanticColors.actionLink,
       display: 'inline-block',
       fontSize: FontSizes.medium,
       fontWeight: FontWeights.regular,
@@ -60,14 +60,14 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           visibility: 'hidden'
         },
         ':hover': {
-          color: palette.neutralPrimary,
+          color: semanticColors.actionLinkHovered,
           cursor: 'pointer'
         },
         ':focus': {
           outline: 'none'
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
-          outline: `1px solid ${palette.neutralSecondaryAlt}`
+          outline: `1px solid ${semanticColors.focusBorder}`
         }
       }
     },
@@ -100,13 +100,14 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
 
 export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
   const { className, rootIsLarge, rootIsTabs, theme } = props;
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       normalize,
       {
         fontSize: FontSizes.medium,
@@ -150,7 +151,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         selectors: {
           ':before': {
             boxSizing: 'border-box',
-            borderBottom: `2px solid ${palette.themePrimary}`,
+            borderBottom: `2px solid ${semanticColors.inputBackgroundChecked}`,
             selectors: {
               [HighContrastSelector]: {
                 borderBottomColor: 'Highlight'

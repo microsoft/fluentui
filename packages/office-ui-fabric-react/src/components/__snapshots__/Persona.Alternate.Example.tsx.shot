@@ -68,8 +68,13 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               ms-Image
               ms-Persona-image
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 border-radius: 50%;
                 border: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 24px;
                 left: 0px;
                 margin-right: 10px;
@@ -96,8 +101,9 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -143,7 +149,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -169,7 +179,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -192,7 +206,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -215,7 +233,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -290,8 +312,13 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               ms-Image
               ms-Persona-image
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 border-radius: 50%;
                 border: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 28px;
                 left: 0px;
                 margin-right: 10px;
@@ -318,8 +345,9 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -356,7 +384,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               color: #333333;
               font-size: 14px;
               font-weight: 400;
-              height: 16px;
+              height: 18px;
               line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
@@ -365,7 +393,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -391,7 +423,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -414,7 +450,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -437,7 +477,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -513,8 +557,13 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               ms-Image
               ms-Persona-image
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 border-radius: 50%;
                 border: 0px;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 32px;
                 left: 0px;
                 margin-right: 10px;
@@ -541,8 +590,9 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -602,7 +652,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               color: #333333;
               font-size: 14px;
               font-weight: 400;
-              height: 16px;
+              height: 18px;
               line-height: 16px;
               overflow-x: hidden;
               overflow: hidden;
@@ -611,7 +661,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -637,7 +691,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -660,7 +718,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -683,7 +745,11 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}

@@ -1,6 +1,6 @@
 /* tslint:disable:no-string-literal */
 
-import { elementContainsAttribute, elementContains, getDocument, getWindow } from './dom';
+import { elementContains, elementContainsAttribute, getDocument, getParent, getWindow } from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
@@ -50,10 +50,10 @@ export function getLastFocusable(
 /**
  * Gets the first tabbable element.
  * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
- * @param rootElement The parent element to search beneath.
- * @param currentElement The descendant of rootElement to start the search at.  This element is the first one checked,
+ * @param rootElement - The parent element to search beneath.
+ * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues forward.  Typical use passes rootElement.firstChild.
- * @param includeElementsInFocusZones true if traversal should go into FocusZone descendants.
+ * @param includeElementsInFocusZones - true if traversal should go into FocusZone descendants.
  * @public
  */
 export function getFirstTabbable(
@@ -76,10 +76,10 @@ export function getFirstTabbable(
 /**
  * Gets the last tabbable element.
  * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
- * @param rootElement The parent element to search beneath.
- * @param currentElement The descendant of rootElement to start the search at.  This element is the first one checked,
+ * @param rootElement - The parent element to search beneath.
+ * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues in reverse.  Typical use passes rootElement.lastChild.
- * @param includeElementsInFocusZones true if traversal should go into FocusZone descendants.
+ * @param includeElementsInFocusZones - true if traversal should go into FocusZone descendants.
  * @public
  */
 export function getLastTabbable(
@@ -429,10 +429,7 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
  * @param noWrapDataAttribute - the no wrap data attribute to match (either)
  * @returns true if focus should wrap, false otherwise
  */
-export function shouldWrapFocus(
-  element: HTMLElement,
-  noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'
-): boolean {
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
   return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
 }
 
@@ -442,7 +439,7 @@ let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | und
  * Sets focus to an element asynchronously. The focus will be set at the next browser repaint,
  * meaning it won't cause any extra recalculations. If more than one focusAsync is called during one frame,
  * only the latest called focusAsync element will actually be focused
- * @param element The element to focus
+ * @param element - The element to focus
  */
 export function focusAsync(element: HTMLElement | { focus: () => void } | undefined | null): void {
   if (element) {
@@ -466,4 +463,51 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
       });
     }
   }
+}
+
+/**
+ * Finds the closest focusable element via an index path from a parent. See
+ * `getElementIndexPath` for getting an index path from an element to a child.
+ */
+export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined {
+  let element = parent;
+
+  for (const index of path) {
+    const nextChild = element.children[Math.min(index, element.children.length - 1)] as HTMLElement;
+
+    if (!nextChild) {
+      break;
+    }
+    element = nextChild;
+  }
+
+  element =
+    isElementTabbable(element) && isElementVisible(element)
+      ? element
+      : getNextElement(parent, element, true) || getPreviousElement(parent, element)!;
+
+  return element as HTMLElement;
+}
+
+/**
+ * Finds the element index path from a parent element to a child element.
+ *
+ * If you had this node structure: "A has children [B, C] and C has child D",
+ * the index path from A to D would be [1, 0], or `parent.chidren[1].children[0]`.
+ */
+export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[] {
+  const path: number[] = [];
+
+  while (toElement && fromElement && toElement !== fromElement) {
+    const parent = getParent(toElement, true);
+
+    if (parent === null) {
+      return [];
+    }
+
+    path.unshift(Array.prototype.indexOf.call(parent.children, toElement));
+    toElement = parent;
+  }
+
+  return path;
 }

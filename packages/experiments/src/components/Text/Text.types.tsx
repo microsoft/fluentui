@@ -1,21 +1,24 @@
-import { IStyle, IPalette, ISemanticColors } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IFontVariants, IFontFamilies, IFontSizes, IFontWeights } from '../../Styling';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IFontStyles } from '../../Styling';
 
-export type ITextComponent = IStatelessComponent<ITextProps, ITextStyles>;
+export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
 
-// Styles for the component
-export interface ITextStyles {
-  /**
-   * Style for the root element.
-   */
-  root: IStyle;
+// These types are redundant with ITextComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type ITextTokenReturnType = ReturnType<Extract<ITextComponent['tokens'], Function>>;
+export type ITextStylesReturnType = ReturnType<Extract<ITextComponent['styles'], Function>>;
+
+export type ITextSlot = ISlotProp<ITextProps, React.ReactNode>;
+
+export interface ITextSlots {
+  root?: IHTMLSlot;
 }
 
 // Inputs to the component
-export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextStyles> {
+export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles> {
   /**
-   * Optionaly render the component as another component type or primative.
+   * Optionally render the component as another component type or primitive.
    */
   as?: string | React.ReactType<ITextProps>;
 
@@ -32,32 +35,7 @@ export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextSt
   /**
    * Optional font type for Text.
    */
-  variant?: keyof IFontVariants;
-
-  /**
-   * Optional font family for Text.
-   */
-  family?: keyof IFontFamilies;
-
-  /**
-   * Optional font size for Text.
-   */
-  size?: keyof IFontSizes;
-
-  /**
-   * Optional font weight for Text.
-   */
-  weight?: keyof IFontWeights;
-
-  /**
-   * Optional font color for Text.
-   */
-  color?: keyof IPalette | keyof ISemanticColors;
-
-  /**
-   * Optional color for hovered text.
-   */
-  hoverColor?: keyof IPalette | keyof ISemanticColors;
+  variant?: keyof IFontStyles;
 
   /**
    * Whether the text is displayed as an inline element.
@@ -70,3 +48,7 @@ export interface ITextProps extends IStyleableComponentProps<ITextProps, ITextSt
    */
   wrap?: boolean;
 }
+
+export interface ITextTokens {}
+
+export type ITextStyles = IComponentStyles<ITextSlots>;

@@ -40,6 +40,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         backgroundColor: 'transparent',
         position: 'fixed',
@@ -71,7 +72,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         boxSizing: 'border-box',
         position: 'relative',
         textAlign: 'left',
-        outline: '3px solid tranparent',
+        outline: '3px solid transparent',
         maxHeight: '100%',
         overflowY: 'auto'
       },

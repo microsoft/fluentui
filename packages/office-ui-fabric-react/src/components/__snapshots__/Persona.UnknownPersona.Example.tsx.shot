@@ -85,7 +85,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
-            aria-hidden={true}
             className=
 
                 {
@@ -134,7 +133,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -156,7 +159,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -274,7 +281,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
-            aria-hidden={true}
             className=
 
                 {
@@ -323,7 +329,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -345,7 +355,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -368,7 +382,11 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             }
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}

@@ -5,15 +5,11 @@ import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../../Shimmer';
-import {
-  IShimmeredDetailsListProps,
-  IShimmeredDetailsListStyleProps,
-  IShimmeredDetailsListStyles
-} from './ShimmeredDetailsList.types';
+import { IShimmeredDetailsListProps, IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
 import { CheckboxVisibility } from './DetailsList.types';
 
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { DEFAULT_CELL_STYLE_PROPS, getStyles as getRowStyles } from './DetailsRow.styles';
+import { DEFAULT_CELL_STYLE_PROPS, DEFAULT_ROW_HEIGHTS, getStyles as getRowStyles } from './DetailsRow.styles';
 
 const getRowClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -22,10 +18,6 @@ const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimm
 const SHIMMER_INITIAL_ITEMS = 10;
 const DEFAULT_SHIMMER_HEIGHT = 7;
 const SHIMMER_LINE_VS_CELL_WIDTH_RATIO = 0.95;
-
-// This values are matching values from ./DetailsRow.css
-const DEFAULT_ROW_HEIGHT = 42;
-const COMPACT_ROW_HEIGHT = 32;
 
 export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps, {}> {
   private _shimmerItems: null[];
@@ -37,16 +29,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      listProps,
-      styles,
-      theme,
-      shimmerLines,
-      onRenderCustomPlaceholder,
-      enableShimmer,
-      ...detailsListProps
-    } = this.props;
+    const { items, listProps, styles, theme, shimmerLines, onRenderCustomPlaceholder, enableShimmer, ...detailsListProps } = this.props;
 
     // Adds to the optional listProp classname a fading out overlay classname only when shimmer enabled.
     const classNames = getClassNames(styles, {
@@ -90,9 +73,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return (
-      <div
-        className={css(showCheckbox && rowClassNames.shimmerLeftBorder, !compact && rowClassNames.shimmerBottomBorder)}
-      >
+      <div className={css(showCheckbox && rowClassNames.shimmerLeftBorder, !compact && rowClassNames.shimmerBottomBorder)}>
         <Shimmer customElementsGroup={placeholderElements} />
       </div>
     );
@@ -101,7 +82,8 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
   private _renderDefaultShimmerPlaceholder = (rowProps: IDetailsRowProps): React.ReactNode => {
     const { columns, compact, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = rowProps;
     const shimmerElementsRow: JSX.Element[] = [];
-    const gapHeight: number = compact ? COMPACT_ROW_HEIGHT : DEFAULT_ROW_HEIGHT;
+    const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;
+    const gapHeight: number = compact ? compactRowHeight : rowHeight;
 
     columns.map((column, columnIdx) => {
       const shimmerElements: IShimmerElement[] = [];
@@ -143,9 +125,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
           height: gapHeight
         });
       }
-      shimmerElementsRow.push(
-        <ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />
-      );
+      shimmerElementsRow.push(<ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />);
     });
     // When resizing the window from narrow to wider, we need to cover the exposed Shimmer wave until the column resizing logic is done.
     shimmerElementsRow.push(

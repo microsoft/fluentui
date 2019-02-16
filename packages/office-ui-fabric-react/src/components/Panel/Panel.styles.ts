@@ -35,7 +35,8 @@ const GlobalClassNames = {
   large: 'ms-Panel--lg',
   largeFixed: 'ms-Panel--fixed',
   extraLarge: 'ms-Panel--xl',
-  custom: 'ms-Panel--custom'
+  custom: 'ms-Panel--custom',
+  customNear: 'ms-Panel--customLeft'
 };
 
 const panelSize = {
@@ -102,11 +103,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-  const isCustomPanel = type === PanelType.custom;
+  const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
+  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : '100%';
 
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       isOpen && classNames.isOpen,
       hasCloseButton && classNames.hasCloseButton,
       {
@@ -122,7 +125,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         isHiddenOnDismiss && {
           visibility: 'hidden'
         },
-      isCustomPanel && classNames.custom,
+      isCustomPanel && isOnRightSide && classNames.custom,
+      isCustomPanel && !isOnRightSide && classNames.customNear,
       className
     ],
     overlay: [
@@ -130,7 +134,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         pointerEvents: 'none',
         opacity: 1,
         cursor: 'pointer',
-        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
+        selectors: {
+          '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
+            // For IE high contrast mode
+            backgroundColor: 'transparent'
+          }
+        }
       },
       isOpen && {
         cursor: 'pointer',
@@ -164,7 +174,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             borderRight: `1px solid ${palette.neutralLight}`,
             pointerEvents: 'auto',
             width: panelSize.width.sm,
-            boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
+            boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)',
             left: 'auto'
           },
           '$root &': [
@@ -178,7 +188,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
               right: 'auto',
               left: 0,
               width: panelSize.width.xs,
-              boxShadow: '30px 0px 30px -30px rgba(0,0,0,0.2)'
+              boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)'
+            },
+            type === PanelType.customNear && {
+              right: 'auto',
+              left: 0
             },
             type === PanelType.smallFixedFar && {
               width: panelSize.width.xs,
@@ -236,6 +250,24 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
           ]
         }
       },
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        maxHeight: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
+          }
+        }
+      },
+      isFooterAtBottom && {
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
       isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
       !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
@@ -243,29 +275,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       focusTrapZoneClassName
     ],
     commands: [classNames.commands],
-    contentInner: [
-      classNames.contentInner,
-      {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100%',
-        WebkitOverflowScrolling: 'touch',
-        /* Force hw accelleration on scrollable region */
-        transform: 'translateZ(0)'
-      },
-      hasCloseButton && {
-        top: commandBarHeight,
-        minHeight: `calc(100% - ${commandBarHeight})`
-      }
-    ],
-    scrollableContent: [
-      classNames.scrollableContent,
-      {
-        height: '100%',
-        overflowY: 'auto',
-        flexGrow: 1
-      }
-    ],
     navigation: [
       classNames.navigation,
       {
@@ -276,6 +285,29 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       }
     ],
     closeButton: [classNames.closeButton],
+    contentInner: [
+      classNames.contentInner,
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: 1,
+        maxHeight: '100%',
+        overflowY: 'hidden',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
+          }
+        }
+      },
+      isFooterAtBottom && {
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      }
+    ],
     header: [
       classNames.header,
       sharedPaddingStyles,
@@ -300,16 +332,24 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       headerClassName
     ],
+    scrollableContent: [
+      classNames.scrollableContent,
+      {
+        overflowY: 'auto',
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      }
+    ],
     content: [
       classNames.content,
       sharedPaddingStyles,
       {
         marginBottom: 0,
-        paddingBottom: '20px',
-        overflowY: 'auto'
-      },
-      isFooterAtBottom && {
-        flexGrow: 1
+        paddingBottom: 20
       }
     ],
     footer: [

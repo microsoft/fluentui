@@ -1,9 +1,15 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Facepile, PersonaInitialsColor, PersonaSize, OverflowButtonType } from 'office-ui-fabric-react';
+import {
+  Facepile,
+  PersonaInitialsColor,
+  PersonaSize,
+  OverflowButtonType,
+  IFacepileProps
+} from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
 
@@ -41,26 +47,24 @@ const facepilePersonas = [
   }
 ];
 
-let facepileProps = {
+const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
   ariaDescription: 'To move through the items use left and right arrow keys.'
 };
 
 storiesOf('Facepile', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator(story =>
+    // prettier-ignore
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
       {story()}
     </Screener>
-  ))
-  .addStory('Root', () => (
-    <Facepile {...facepileProps} />
-  ), { rtl: true })
+  )
+  .addStory('Root', () => <Facepile {...facepileProps} />, { rtl: true })
   .addStory('Extra extra small', () => (
     <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
   ))
@@ -70,14 +74,37 @@ storiesOf('Facepile', module)
       maxDisplayablePersonas={3}
       overflowButtonType={OverflowButtonType.downArrow}
       overflowButtonProps={{
-        ariaLabel: 'More users',
-      }
-      }
+        ariaLabel: 'More users'
+      }}
     />
   ))
-  .addStory('Add face', () => (
+  .addStory('Add face', () => <Facepile {...facepileProps} showAddButton={true} />)
+  .addStory('Custom button styles', () => (
     <Facepile
       {...facepileProps}
-      showAddButton={true}
+      showAddButton
+      overflowButtonType={OverflowButtonType.descriptive}
+      maxDisplayablePersonas={3}
+      overflowButtonProps={{
+        styles: {
+          root: { background: 'yellow' }
+        }
+      }}
+      addButtonProps={{
+        styles: {
+          root: { boxShadow: '0px 0px 5px 5px gray' }
+        }
+      }}
+      styles={{
+        descriptiveOverflowButton: {
+          background: 'red', // overridden by overflowButtonProps
+          boxShadow: '0px 0px 5px 5px gray', // not overridden
+          marginLeft: 8 // not overridden
+        },
+        addButton: {
+          boxShadow: '0px 0px 5px 5px red', // overridden by addButtonProps
+          marginRight: 8 // not overridden
+        }
+      }}
     />
   ));

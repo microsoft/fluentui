@@ -66,6 +66,20 @@ describe('Slider', () => {
     expect(slider.current!.value).toEqual(12);
   });
 
+  it('should be able to handler zero default value', () => {
+    const slider = React.createRef<ISlider>();
+
+    mount(<Slider label="slider" defaultValue={0} min={-100} max={100} componentRef={slider} />);
+    expect(slider.current!.value).toEqual(0);
+  });
+
+  it('should be able to handler zero value', () => {
+    const slider = React.createRef<ISlider>();
+
+    mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
+    expect(slider.current!.value).toEqual(0);
+  });
+
   it('renders correct aria-valuetext', () => {
     let component = mount(<Slider />);
 
@@ -78,5 +92,13 @@ describe('Slider', () => {
     component = mount(<Slider value={selected} ariaValueText={getTextValue} />);
 
     expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual(values[selected]);
+  });
+
+  it('formats the value when a format function is passed', () => {
+    const value = 10;
+    const valueFormat = (val: any) => `${val}%`;
+    const component = mount(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
+
+    expect(component.find('label.ms-Label.ms-Slider-value').text()).toEqual(valueFormat(value));
   });
 });

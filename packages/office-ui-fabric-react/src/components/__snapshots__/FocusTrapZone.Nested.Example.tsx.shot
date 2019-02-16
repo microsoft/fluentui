@@ -137,10 +137,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             ms-Label
             ms-Toggle-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -204,7 +209,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 z-index: 1;
               }
               &:hover {
-                border-color: #212121;
+                border-color: #333333;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
@@ -223,7 +228,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             className=
                 ms-Toggle-thumb
                 {
-                  background-color: #212121;
+                  background-color: #333333;
                   border-color: transparent;
                   border-radius: .5em;
                   border-style: solid;
@@ -240,10 +245,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               ms-Label
               ms-Toggle-stateText
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -257,8 +267,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               }
               && {
                 margin-bottom: 0;
-                margin-left: 10px;
-                margin-right: 10px;
+                margin-left: 8px;
+                margin-right: 8px;
                 margin-top: 0;
                 padding-bottom: 0;
                 padding-left: 0;
@@ -406,10 +416,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               ms-Label
               ms-Toggle-label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -473,7 +488,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   z-index: 1;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                   border-color: Highlight;
@@ -492,7 +507,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               className=
                   ms-Toggle-thumb
                   {
-                    background-color: #212121;
+                    background-color: #333333;
                     border-color: transparent;
                     border-radius: .5em;
                     border-style: solid;
@@ -509,10 +524,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-stateText
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -526,8 +546,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 }
                 && {
                   margin-bottom: 0;
-                  margin-left: 10px;
-                  margin-right: 10px;
+                  margin-left: 8px;
+                  margin-right: 8px;
                   margin-top: 0;
                   padding-bottom: 0;
                   padding-left: 0;
@@ -675,10 +695,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-label
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -742,7 +767,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     z-index: 1;
                   }
                   &:hover {
-                    border-color: #212121;
+                    border-color: #333333;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                     border-color: Highlight;
@@ -761,7 +786,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 className=
                     ms-Toggle-thumb
                     {
-                      background-color: #212121;
+                      background-color: #333333;
                       border-color: transparent;
                       border-radius: .5em;
                       border-style: solid;
@@ -778,10 +803,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   ms-Label
                   ms-Toggle-stateText
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
                     color: #333333;
                     display: block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
@@ -795,8 +825,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   }
                   && {
                     margin-bottom: 0;
-                    margin-left: 10px;
-                    margin-right: 10px;
+                    margin-left: 8px;
+                    margin-right: 8px;
                     margin-top: 0;
                     padding-bottom: 0;
                     padding-left: 0;
@@ -945,10 +975,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-label
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -1012,7 +1047,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     z-index: 1;
                   }
                   &:hover {
-                    border-color: #212121;
+                    border-color: #333333;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                     border-color: Highlight;
@@ -1031,7 +1066,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 className=
                     ms-Toggle-thumb
                     {
-                      background-color: #212121;
+                      background-color: #333333;
                       border-color: transparent;
                       border-radius: .5em;
                       border-style: solid;
@@ -1048,10 +1083,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   ms-Label
                   ms-Toggle-stateText
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
                     color: #333333;
                     display: block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
@@ -1065,8 +1105,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   }
                   && {
                     margin-bottom: 0;
-                    margin-left: 10px;
-                    margin-right: 10px;
+                    margin-left: 8px;
+                    margin-right: 8px;
                     margin-top: 0;
                     padding-bottom: 0;
                     padding-left: 0;
@@ -1216,10 +1256,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               ms-Label
               ms-Toggle-label
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -1283,7 +1328,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   z-index: 1;
                 }
                 &:hover {
-                  border-color: #212121;
+                  border-color: #333333;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                   border-color: Highlight;
@@ -1302,7 +1347,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               className=
                   ms-Toggle-thumb
                   {
-                    background-color: #212121;
+                    background-color: #333333;
                     border-color: transparent;
                     border-radius: .5em;
                     border-style: solid;
@@ -1319,10 +1364,15 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 ms-Label
                 ms-Toggle-stateText
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -1336,8 +1386,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 }
                 && {
                   margin-bottom: 0;
-                  margin-left: 10px;
-                  margin-right: 10px;
+                  margin-left: 8px;
+                  margin-right: 8px;
                   margin-top: 0;
                   padding-bottom: 0;
                   padding-left: 0;

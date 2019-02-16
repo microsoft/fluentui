@@ -31,7 +31,7 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
   copyMenuItemText?: string;
   editMenuItemText?: string;
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
-  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IPersonaProps>) => JSX.Element;
+  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
 }
 
@@ -76,9 +76,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
-      onExpandItem: this.props.onExpandGroup
-        ? () => (this.props.onExpandGroup as (item: IExtendedPersonaProps) => void)(item)
-        : undefined,
+      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as (item: IExtendedPersonaProps) => void)(item) : undefined,
       menuItems: this._createMenuItems(item)
     };
 

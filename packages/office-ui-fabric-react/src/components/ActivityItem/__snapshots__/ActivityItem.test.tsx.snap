@@ -205,7 +205,6 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         }
   >
     <i
-      aria-hidden={true}
       className=
 
           {
@@ -600,8 +599,13 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-radius: 50%;
                   border: 0px;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 16px;
                   left: 0px;
                   margin-right: 10px;
@@ -628,8 +632,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   is-fadeIn
                   {
                     display: block;
-                    height: auto;
+                    height: 100%;
                     left: 50% /* @noflip */;
+                    object-fit: cover;
                     opacity: 0;
                     position: absolute;
                     top: 50%;
@@ -909,7 +914,6 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         }
   >
     <i
-      aria-hidden={true}
       className=
 
           {
@@ -1099,8 +1103,13 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-radius: 50%;
                   border: 0px;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 16px;
                   left: 0px;
                   margin-right: 10px;
@@ -1127,8 +1136,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   is-fadeIn
                   {
                     display: block;
-                    height: auto;
+                    height: 100%;
                     left: 50% /* @noflip */;
+                    object-fit: cover;
                     opacity: 0;
                     position: absolute;
                     top: 50%;
@@ -1226,8 +1236,13 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                 ms-Image
                 ms-Persona-image
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-radius: 50%;
                   border: 0px;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 16px;
                   left: 0px;
                   margin-right: 10px;
@@ -1254,8 +1269,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   is-fadeIn
                   {
                     display: block;
-                    height: auto;
+                    height: 100%;
                     left: 50% /* @noflip */;
+                    object-fit: cover;
                     opacity: 0;
                     position: absolute;
                     top: 50%;

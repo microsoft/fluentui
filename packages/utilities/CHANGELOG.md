@@ -1,6 +1,106 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 26 Sep 2018 12:27:23 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:55 GMT and should not be manually modified.
+
+## 6.29.1
+Thu, 14 Feb 2019 13:34:55 GMT
+
+### Patches
+
+- Add fallback for reading direction attribute from body element.
+
+## 6.29.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- Adding helper functions to get and restore focus elements based on index paths.
+
+## 6.28.1
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- Updating 'customizable.tsx' to evaluate style functions.
+
+## 6.28.0
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Minor changes
+
+- Scroll: use scrollableParent in _preventOverscrolling, allow EventGroup.on to take event options
+
+## 6.27.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Deprecate utility using legacy context
+- BaseComponent: when updating componentRef, handle case where current or previous props are not given
+
+## 6.27.1
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- BaseComponent: Remove componentWillReceiveProps usage
+
+## 6.27.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+- Styled: now reacts to loadTheme changes even when not wrapped in a Customizer.
+
+## 6.26.0
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Minor changes
+
+- Add osDetector utility
+
+## 6.25.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- Customizer: Add optional context transform prop.
+
+## 6.24.0
+Fri, 26 Oct 2018 12:32:35 GMT
+
+### Minor changes
+
+- Add api-extractor.json
+
+## 6.23.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Update api-extractor.json
+
+## 6.23.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Adding `asAsync` HOC wrapper to abstract async loading for components.
+
+## 6.22.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Add utilities.api.ts, update files to fix api-extractor errors
+
+## 6.21.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.21.1
 Wed, 26 Sep 2018 12:27:23 GMT

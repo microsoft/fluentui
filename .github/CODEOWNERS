@@ -16,7 +16,18 @@
 # docs/  docs@example.com
 
 #### Core build stuff
-scripts/ @dzearing
+scripts/ @dzearing @kenotron @ecraig12345
+package.json @kenotron @ecraig12345 @dzearing
+webpack.config.js @kenotron @ecraig12345
+webpack.serve.config.js @kenotron @ecraig12345
+jest.config.js @kenotron @ecraig12345
+tsconfig.json @kenotron @ecraig12345
+rush.json @kenotron @ecraig12345
+LICENSE @kenotron @ecraig12345
+.travis.yml @kenotron @ecraig12345
+.appveyor.yml @kenotron @ecraig12345
+.npmrc @kenotron @ecraig12345
+.npmignore @kenotron @ecraig12345
 
 #### Apps
 # component-demo/
@@ -26,19 +37,22 @@ fabric-website/ @jordandrako
 # todo-app/
 
 #### Packages
-packages/charting/ @kkjeer
+packages/charting/ @Raghurk @veeray @chankev
+packages/dashboard/ @Raghurk @veeray @chankev
 packages/foundation/ @jagore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 # packages/merge-styles/
-# packages/office-ui-fabric-react-tslint/
+# packages/prettier-rules/
+# packages/tslint-rules/
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
+packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
 
 ### Fabric
 # common/
@@ -47,29 +61,30 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @lorejoh12 @sathi23
-dateValues/   @lorejoh12 @sathi23
+dateMath/     @OfficeDev/uifabric-calendar
+dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
 # ActivityItem/
 # Breadcrumb/
 # Button/
-Calendar/   @lorejoh12 @sathi23
+Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
 # Checkbox/
 ChoiceGroup/   @srideshpande
-# ColorPicker/
+ColorPicker/ @ecraig12345
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
 ContextualMenu/  @joschect
-DatePicker/   @lorejoh12 @sathi23
+DatePicker/   @OfficeDev/uifabric-calendar
 # DetailsList/
 # Dialog/
 DocumentCard/ @yiminwu @mikewheaton
 # Dropdown/
 # Fabric/
 # FacePile/
+FolderCover/ @ThomasMichon
 # FocusTrapZone/
 # FocusZone/
 GroupedList/  @aditima
@@ -86,6 +101,7 @@ Layer/  @ThomasMichon
 # Nav/
 OverflowSet/  @micahgodbolt
 # Overlay/
+Pagination/ @caradong
 # Panel/
 # Persona/
 PersonaCoin/ @mtennoe @jakob101
@@ -97,21 +113,27 @@ pickers/  @joschect
 # Rating/
 ResizeGroup/  @micahgodbolt
 # SearchBox/
+Signals/ @ThomasMichon
 # Slider/
 # SpinButton/
 # Spinner/
+Stack/   @khmakoto @kkjeer
 # SwatchColorPicker/
 TeachingBubble/   @micahgodbolt
 # TextField/
 # Theme/
-Toggle/  @phkuo
+Tile/ @ThomasMichon
+TileList/ @ThomasMichon
+office-ui-fabric-react/src/components/Toggle/  @phkuo
+experiments/src/components/Button/  @khmakoto
+experiments/src/components/Toggle/  @khmakoto @jasongore
 Tooltip/  @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
 # Breadcrumb/docs/
 # Button/docs/
-Calendar/docs/   @lorejoh12 @sathi23
+Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
 # Checkbox/docs/
@@ -120,7 +142,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @lorejoh12 @sathi23
+DatePicker/docs/   @OfficeDev/uifabric-calendar
 # DetailsList/docs/
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu @mikewheaton
@@ -136,7 +158,7 @@ HoverCard/docs/   @atneik @Jahnp
 # Label/docs/
 Layer/docs/  @ThomasMichon
 # Link/docs/
-# List/docs/  
+# List/docs/
 # MarqueeSelection/docs/
 # MessageBar/docs/
 # Modal/docs/
@@ -159,7 +181,5 @@ ResizeGroup/docs/  @micahgodbolt
 TeachingBubble/docs/   @micahgodbolt
 # TextField/docs/
 # Theme/docs/
-Toggle/docs/  @phkuo
+office-ui-fabric-react/src/components/Toggle/docs/  @phkuo
 Tooltip/docs/  @micahgodbolt
-
-

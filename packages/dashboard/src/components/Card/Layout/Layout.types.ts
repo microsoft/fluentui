@@ -24,13 +24,7 @@ export interface ICardContentDetails {
   /**
    * Content for component we want to render
    */
-  content:
-    | IBodyTextProps
-    | IThumbnailListProps
-    | ICompoundButtonStackProps
-    | IGridListProps
-    | IChartProps
-    | IMultiCountProps;
+  content: IBodyTextProps | IThumbnailListProps | ICompoundButtonStackProps | IGridListProps | IChartProps | IMultiCountProps;
 }
 
 export interface ILayoutProps {
@@ -50,9 +44,59 @@ export interface ILayoutProps {
   actions?: IAction[];
 
   /**
+   * Defines the title for the benefit of tooltip
+   */
+  actionBarOverflowButtonTitle?: string;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  actionBarOverflowButtonAriaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  actionBarOverflowButtonAriaDescription?: string;
+
+  /**
    * Defines the current card size
    */
   cardSize: CardSize;
+
+  /**
+   * loading for card animations
+   */
+  loading?: boolean;
+}
+
+/**
+ * Internal interface to check whether if a content area has dataviz
+ */
+export interface IContentAreaHasDataviz {
+  contentArea1HasDataviz: boolean;
+
+  contentArea2HasDataviz: boolean;
+}
+
+/**
+ * internal interface for card layout
+ * The hasDataviz variable denotes whether a particular content area has dataviz in it and is used for appropriate styling
+ */
+
+export interface IContentAreasInfo {
+  contentAreas: JSX.Element[];
+
+  hasDataviz: IContentAreaHasDataviz;
+}
+
+export interface ILayoutStyleProps {
+  header?: ICardHeaderProps;
+
+  cardSize?: CardSize;
+
+  hasDataviz?: IContentAreaHasDataviz;
 }
 
 export interface ILayoutStyles {
@@ -90,4 +134,19 @@ export interface ILayoutStyles {
    * Style set for card footer
    */
   footer: IStyle;
+
+  /**
+   * Style set for animation chartWrapper
+   */
+  chartWrapper: IStyle;
+
+  /**
+   * Style set for shimmer
+   */
+  shimmerWrapper: IStyle;
+
+  /**
+   * Style set for shimmer container
+   */
+  shimmerContainer: IStyle;
 }

@@ -1,6 +1,448 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+
+## 6.57.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Removing component from experiments package.
+
+## 6.56.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Card: Adding first prototype for Basic Card component.
+- Experiments: Removed form control
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+
+## 6.55.0
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Minor changes
+
+- Stack: Renaming preventShrink to disableShrink in Stack and StackItem. Removing defaultProps from StackStatics.
+
+### Patches
+
+- Fix id usage in examples
+
+## 6.54.4
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Stack: Modifying StackItem so that it can render multiple children.
+
+## 6.54.3
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fixed the VerticalPersona not wrapping text properly in IE
+
+## 6.54.2
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- CollapsibleSectionTitle: Use new factoryOptions prop. Name factory wrappers.
+
+## 6.54.1
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Remove Slots/Tokens Foundation implementation.
+
+## 6.54.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- Stack: Making 'gap' prop be able to take two values, one for horizontal gap and one for vertical gap, and removing 'verticalGap' prop.
+
+### Patches
+
+-  Fixing shrinking issues in component examples after shrinkItems was replaced with preventShrink.
+
+## 6.53.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Change slot render function signature for increased flexibility.
+- Stack: Fixing IE11 wrapping bug reproed in 'Horizontal Stack - Wrapping - Nested' example.
+
+## 6.53.1
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Patches
+
+- Stack: Removing 'whiteSpace: noWrap' from children styles and improving API comments.
+
+## 6.53.0
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Minor changes
+
+- Stack: Updating API based on feedback from review.
+- Stack: Removing 'top' and 'bottom' from accepted values for 'verticalAlign' prop and updating examples and tests using them.
+
+## 6.52.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- Stack: Adding 'reversed' prop, updating styles, and adding examples, snapshot tests and vr-tests.
+
+### Patches
+
+- Minor fixes to Toggle and CollapsibleSection.
+
+## 6.51.2
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Patches
+
+- Stack: Removing unneeded children logic used to calculate classnames.
+- Use button element for Tile when there is no href
+- Bundle improvement for Tile click fix
+- Use CSS object-fit in the Image component in capable browsers
+
+## 6.51.1
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Add typing helpers missed in #7711.
+
+## 6.51.0
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Minor changes
+
+- Introduce tokens for vertical variant of Persona
+
+### Patches
+
+- Add helper return types to mitigate TS function return type widening.
+
+## 6.50.7
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- Added azure themes to demo page
+- Foundation API improvements.
+
+## 6.50.6
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Update Foundation typings to require Tokens.
+- Icon: removing aria-hidden attribute.
+
+## 6.50.5
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Convert all compoenents to use Slots. Add experimental Tokens feature.
+
+## 6.50.4
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- Made message bar visible in High Contrast
+
+## 6.50.3
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Stack: Adding documentation for the Overview, Do's and Dont's sections of the component page.
+- VirtualizedList: fix componentDidUpdate usage
+
+## 6.50.2
+Mon, 07 Jan 2019 13:34:37 GMT
+
+### Patches
+
+- Stack: Consolidating vr-tests into single Stack.stories file instead of separate VerticalStack.stories and HorizontalStack.stories files.
+
+## 6.50.1
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Stack: Adding vertical stack wrapping test to vr-tests.
+
+## 6.50.0
+Tue, 01 Jan 2019 13:36:37 GMT
+
+### Minor changes
+
+- Adds PersonaCoin and VerticalPersona
+
+## 6.49.1
+Mon, 31 Dec 2018 13:37:56 GMT
+
+### Patches
+
+- Stack: Implementing wrapping of vertical stacks and adding examples for it, fixing bugs in wrapping of horizontal stacks.
+
+## 6.49.0
+Tue, 18 Dec 2018 22:17:52 GMT
+
+### Minor changes
+
+- Pagination: Add unit tests for control and fix button styles.
+
+## 6.48.2
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Patches
+
+- Form: fix wrong imports from OUFR dependency.
+
+## 6.48.1
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Patches
+
+- Change type usage for consistency. Fix Stack styling bug.
+
+## 6.48.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- remove references to ITypography
+
+### Patches
+
+- Stack: Renaming horizontalAlignment, verticalAlignment, fillHorizontal and fillVertical to horizontalAlign, verticalAlign, horizontalFill and verticalFill respectively.
+
+## 6.47.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Using single Stack component with 'horizontal' prop instead of separate HorizontalStack and VerticalStack components.
+
+### Patches
+
+- Add new Slots feature. Convert Button to use. Add Slots page with examples.
+
+## 6.46.0
+Fri, 07 Dec 2018 13:35:16 GMT
+
+### Minor changes
+
+- Pagination: Exported component from top level export
+
+## 6.45.0
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Minor changes
+
+- DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation
+
+## 6.44.1
+Mon, 03 Dec 2018 13:37:07 GMT
+
+### Patches
+
+- Lifting the resolution of default and user provided style variables to Utilities.
+
+## 6.44.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Pagination: Initial check-in of pagination control into experiments package.
+
+### Patches
+
+- Add missing depenencies
+
+## 6.43.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- Re-export Signals from package root
+- update snapshots from semantic slot value updates
+- Toggle: Refining style variables approach in Toggle and adding examples passing interface and function.
+
+## 6.42.0
+Thu, 22 Nov 2018 13:36:17 GMT
+
+### Minor changes
+
+- Add initializeFolderCovers pathway to override CDN for FolderCover
+
+### Patches
+
+- Stack: remove display: none styling on empty children
+
+## 6.41.1
+Wed, 21 Nov 2018 13:34:56 GMT
+
+### Patches
+
+- Toggle: Reetructured Toggle to use style variables.
+
+## 6.41.0
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Minor changes
+
+- Converting existing Toggle component to use Foundation.
+
+### Patches
+
+- added bookmark signal icons
+
+## 6.40.3
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
+
+## 6.40.2
+Fri, 02 Nov 2018 12:28:55 GMT
+
+*Version update only*
+
+## 6.40.1
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Patches
+
+- Add theme provider helper and replace usage of scheme prop with theme provider.
+
+## 6.40.0
+Mon, 29 Oct 2018 12:31:29 GMT
+
+### Minor changes
+
+- Announced: add initial component prototype and examples
+
+## 6.39.5
+Thu, 25 Oct 2018 12:30:06 GMT
+
+*Version update only*
+
+## 6.39.4
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- fix breaking changes for odsp
+
+## 6.39.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.39.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- Move theme definitions to theme-samples package. Remove Fluent styles page.
+- Use fluent-theme package customizations.
+
+## 6.39.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+- Fluent: Updating fluent styles for ChoiceGroup plus addressing feedback on Breadcrumb, Checkbox and Dropdown.
+
+## 6.39.0
+Wed, 17 Oct 2018 12:29:40 GMT
+
+### Minor changes
+
+- Breadcrumb: fluent updates to breadcrumb styles.
+
+### Patches
+
+- revert PR 6258 for signal icon issues
+
+## 6.38.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Updated Readme
+- Fix FluentStylesPage by wrapping a Customizer around each example
+
+## 6.38.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Fluent: updates the styles of Dropdown and CheckBox to follow fluent specs.
+
+### Patches
+
+- Add customizations for component examples. Remove redundant customizations from Button example.
+
+## 6.37.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating snapshot tests in experiments package
+- Added font theme setting to Button, ChicletCard, CollapsibleSection, Shimmer, ShimmerCircle, ShimmerElementsGroup, ShimmerGap, ShimmerLine, HorizontalStack, Text. Snapshots updated in VerticalStack, Stack.
+- Improve BaseState typing and fix use by experimental components.
+
+## 6.37.0
+Wed, 10 Oct 2018 12:29:05 GMT
+
+### Minor changes
+
+- Separator: change text size and add theming example
+
+## 6.36.1
+Mon, 08 Oct 2018 19:25:44 GMT
+
+### Patches
+
+- Sidebar: added index export
+
+## 6.36.0
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+- Fix a11y violations in Fluent ContextualMenu examples
+- Sidebar: Fixed filename and imports
+
+## 6.35.0
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Minor changes
+
+- Sidebar: Added new component
 
 ## 6.34.2
 Thu, 04 Oct 2018 12:26:48 GMT

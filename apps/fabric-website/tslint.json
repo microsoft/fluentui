@@ -1,20 +1,13 @@
 {
-  "extends": [
-    "office-ui-fabric-react-tslint"
-  ],
+  "extends": ["@uifabric/tslint-rules"],
   "rules": {
     "deprecation": false,
     "no-any": false,
     "no-inferrable-types": false,
-    "typedef": [
-      false
-    ],
-    "max-line-length": [
-      false
-    ],
+    "typedef": [false],
+    "max-line-length": [false],
     "jsx-alignment": false,
     "jsx-ban-props": false,
-    "jsx-no-string-ref": false,
     "jsx-no-bind": false,
     "prefer-const": false
   }

@@ -13,15 +13,17 @@ const SignalStyles: any = SignalStylesModule;
 const CheckStyles: any = CheckStylesModule;
 // tslint:enable:no-any
 
-export const enum TileLayoutValues {
-  nameplatePadding = 12,
-  largeNameplateNameHeight = 15,
-  smallNameplateNameHeight = 12,
-  nameplateMargin = 0,
-  largeNameplateActivityHeight = 20,
-  smallNameplateActivityHeight = 20,
-  foregroundMargin = 16
-}
+export const TileLayoutValues = {
+  nameplatePadding: 12 as 12,
+  largeNameplateNameHeight: 15 as 15,
+  smallNameplateNameHeight: 12 as 12,
+  nameplateMargin: 0 as 0,
+  largeNameplateActivityHeight: 20 as 20,
+  smallNameplateActivityHeight: 20 as 20,
+  foregroundMargin: 16 as 16
+};
+
+export type TileLayoutValues = typeof TileLayoutValues[keyof typeof TileLayoutValues];
 
 export interface ITileState {
   isSelected?: boolean;
@@ -92,8 +94,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const { selection: nextSelection, selectionIndex: nextSelectionIndex = -1 } = nextProps;
 
     if (selection !== nextSelection || selectionIndex !== nextSelectionIndex) {
-      const isSelected =
-        !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
+      const isSelected = !!nextSelection && nextSelectionIndex > -1 && nextSelection.isIndexSelected(nextSelectionIndex);
       const isModal = !!nextSelection && nextSelection.isModal && nextSelection.isModal();
 
       this.setState({
@@ -157,6 +158,48 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const isSelectable = !!selection && selectionIndex > -1;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
+    const content = (
+      <>
+        {ariaLabel ? (
+          <span key="label" id={this._labelId} className={css('ms-Tile-label', TileStylesModule.label)}>
+            {ariaLabel}
+          </span>
+        ) : null}
+        {background
+          ? this._onRenderBackground({
+            background: background,
+            hideBackground
+          })
+          : null}
+        {foreground
+          ? this._onRenderForeground({
+            foreground: foreground,
+            hideForeground
+          })
+          : null}
+        {itemName || itemActivity
+          ? this._onRenderNameplate({
+            name: itemName,
+            activity: itemActivity
+          })
+          : null}
+      </>
+    );
+
+    const LinkAs = href ? 'a' : 'button';
+
+    const link = (
+      <LinkAs
+        href={href}
+        onClick={onClick}
+        ref={this.props.linkRef}
+        data-selection-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
+        className={css('ms-Tile-link', TileStyles.link)}
+      >
+        {content}
+      </LinkAs>
+    );
+
     return (
       <div
         aria-selected={isSelected}
@@ -183,46 +226,16 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         data-disable-click-on-enter={true}
         data-selection-index={selectionIndex > -1 ? selectionIndex : undefined}
       >
-        <a
-          href={href}
-          onClick={onClick}
-          ref={this.props.linkRef}
-          data-selection-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
-          className={css('ms-Tile-link', TileStyles.link)}
-        >
-          {ariaLabel ? (
-            <span id={this._labelId} className={css('ms-Tile-label', TileStylesModule.label)}>
-              {ariaLabel}
-            </span>
-          ) : null}
-          {background
-            ? this._onRenderBackground({
-                background: background,
-                hideBackground
-              })
-            : null}
-          {foreground
-            ? this._onRenderForeground({
-                foreground: foreground,
-                hideForeground
-              })
-            : null}
-          {itemName || itemActivity
-            ? this._onRenderNameplate({
-                name: itemName,
-                activity: itemActivity
-              })
-            : null}
-        </a>
+        {link}
         {descriptionAriaLabel ? (
-          <span id={this._descriptionId} className={css('ms-Tile-description', TileStylesModule.description)}>
+          <span key="description" id={this._descriptionId} className={css('ms-Tile-description', TileStylesModule.description)}>
             {descriptionAriaLabel}
           </span>
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected
-            })
+            isSelected: isSelected
+          })
           : null}
       </div>
     );
@@ -237,6 +250,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }): JSX.Element {
     return (
       <span
+        key="background"
         className={css('ms-Tile-background', TileStyles.background, {
           [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground
         })}
@@ -254,7 +268,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     hideForeground: boolean;
   }): JSX.Element {
     return (
-      <span role="presentation" className={css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate)}>
+      <span key="foreground" role="presentation" className={css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate)}>
         <span role="presentation" className={css('ms-Tile-content', TileStyles.content)}>
           <span
             role="presentation"
@@ -277,7 +291,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     activity: React.ReactNode | React.ReactNode[];
   }): JSX.Element {
     return (
-      <span className={css('ms-Tile-nameplate', TileStyles.nameplate)}>
+      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate)}>
         {name ? (
           <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name)}>
             {name}
@@ -297,6 +311,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     return (
       <span
+        key="check"
         role="checkbox"
         aria-label={toggleSelectionAriaLabel}
         className={css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
@@ -339,13 +354,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
 
   const width = contentSize.width;
 
-  const {
-    nameplatePadding,
-    nameplateMargin,
-    nameplateActivityHeight,
-    nameplateNameHeight,
-    foregroundMargin
-  } = TileLayoutSizes[tileSize];
+  const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight, foregroundMargin } = TileLayoutSizes[tileSize];
 
   let nameplateHeight = 0;
 

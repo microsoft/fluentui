@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  FolderCover,
-  getFolderCoverLayout,
-  renderFolderCoverWithLayout,
-  IFolderCoverProps
-} from '@uifabric/experiments/lib/FolderCover';
+import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout, IFolderCoverProps } from '@uifabric/experiments/lib/FolderCover';
 import { ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import { SharedSignal } from '../../signals/Signals';
 
@@ -12,9 +7,7 @@ interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
 }
 
-const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (
-  props: IFolderCoverWithImageProps
-): JSX.Element => {
+const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
   const folderCover = <FolderCover {...folderCoverProps} />;
@@ -38,6 +31,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
       <div>
         <h3>Large Default Cover</h3>
         <FolderCoverWithImage
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -48,6 +42,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Small Default Cover</h3>
         <FolderCoverWithImage
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -57,6 +52,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Large Media Cover</h3>
         <FolderCoverWithImage
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -68,6 +64,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Small Media Cover</h3>
         <FolderCoverWithImage
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150
@@ -78,6 +75,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
         />
         <h3>Shared Cover</h3>
         <FolderCoverWithImage
+          isFluent={false}
           originalImageSize={{
             width: 200,
             height: 150

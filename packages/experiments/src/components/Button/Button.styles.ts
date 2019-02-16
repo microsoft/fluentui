@@ -1,10 +1,126 @@
-import { IButtonComponent, IButtonStyles, IButtonStyleVariablesTypes, IButtonStates } from './Button.types';
-import { getFocusStyle, getGlobalClassNames, concatStyleSets } from '../../Styling';
-import { merge } from '../../Utilities';
+import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
+import { getFocusStyle, getGlobalClassNames } from '../../Styling';
 
-export const getButtonStyles: IButtonComponent['styles'] = props => {
-  const { theme, disabled, expanded, className, circular, primary, styleVariables } = props;
+const baseTokens: IButtonComponent['tokens'] = {
+  borderRadius: 0,
+  borderWidth: 0,
+  minWidth: 100,
+  minHeight: 32,
+  lineHeight: 1,
+  contentPadding: '8px 16px',
+  textFamily: 'default',
+  textSize: 14,
+  iconSize: 14,
+  iconWeight: 400
+};
+
+const circularTokens: IButtonComponent['tokens'] = {
+  borderRadius: '50%',
+  borderWidth: 1,
+  minWidth: 32,
+  minHeight: 32,
+  contentPadding: ''
+};
+
+const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.buttonBackground,
+    backgroundColorHovered: semanticColors.buttonBackgroundHovered,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+
+    iconColor: semanticColors.buttonText,
+    iconColorHovered: semanticColors.buttonTextHovered,
+    iconColorPressed: semanticColors.buttonTextPressed,
+
+    color: semanticColors.buttonText,
+    colorHovered: semanticColors.buttonTextHovered,
+    colorPressed: semanticColors.buttonTextPressed,
+
+    borderColor: semanticColors.buttonBorder,
+    borderColorHovered: semanticColors.buttonBorder,
+    borderColorPressed: semanticColors.buttonBorder
+  };
+};
+
+const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: theme.semanticColors.buttonBackgroundDisabled,
+    backgroundColorHovered: semanticColors.buttonBackgroundDisabled,
+    backgroundColorPressed: semanticColors.buttonBackgroundDisabled,
+
+    iconColor: semanticColors.buttonTextDisabled,
+    iconColorHovered: semanticColors.buttonTextDisabled,
+    iconColorPressed: semanticColors.buttonTextDisabled,
+
+    colorHovered: semanticColors.buttonTextDisabled,
+    colorPressed: semanticColors.buttonTextDisabled,
+    color: semanticColors.buttonTextDisabled,
+
+    borderColor: semanticColors.buttonBorderDisabled,
+    borderColorHovered: semanticColors.buttonBorderDisabled,
+    borderColorPressed: semanticColors.buttonBorderDisabled
+  };
+};
+
+const expandedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.buttonBackgroundPressed,
+    backgroundColorHovered: semanticColors.buttonBackgroundPressed,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+
+    color: semanticColors.buttonTextPressed,
+    colorHovered: semanticColors.buttonTextPressed,
+    colorPressed: semanticColors.buttonTextPressed
+  };
+};
+
+const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.primaryButtonBackground,
+    backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
+    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
+
+    color: semanticColors.primaryButtonText,
+    colorHovered: semanticColors.primaryButtonTextHovered,
+    colorPressed: semanticColors.primaryButtonTextPressed,
+
+    iconColor: semanticColors.primaryButtonText,
+    iconColorHovered: semanticColors.primaryButtonTextHovered,
+    iconColorPressed: semanticColors.primaryButtonTextPressed,
+
+    borderColor: semanticColors.primaryButtonBorder
+  };
+};
+
+const primaryExpandedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorHovered: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
+
+    color: semanticColors.primaryButtonTextPressed,
+    colorHovered: semanticColors.primaryButtonTextPressed,
+    colorPressed: semanticColors.primaryButtonTextPressed
+  };
+};
+
+export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
+  baseTokens,
+  !props.disabled && enabledTokens,
+  props.expanded && expandedTokens,
+  props.primary && primaryEnabledTokens,
+  props.primary && props.expanded && primaryExpandedTokens,
+  props.circular && circularTokens,
+  props.disabled && disabledTokens
+];
+
+export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
+  const { className } = props;
 
   const globalClassNames = getGlobalClassNames(
     {
@@ -14,219 +130,89 @@ export const getButtonStyles: IButtonComponent['styles'] = props => {
     true
   );
 
-  const buttonVariables = _processVariables(
-    {
-      baseVariant: {
-        baseState: {
-          borderRadius: 0, // root
-          borderWidth: 0, // root
+  return {
+    root: [
+      getFocusStyle(theme),
+      theme.fonts.medium,
+      {
+        backgroundColor: tokens.backgroundColor,
+        borderColor: tokens.borderColor,
+        borderRadius: tokens.borderRadius,
+        borderStyle: 'solid',
+        borderWidth: tokens.borderWidth,
+        boxSizing: 'border-box',
+        color: tokens.color,
+        cursor: 'default',
+        display: 'inline-block',
+        fontSize: tokens.textSize,
+        fontWeight: tokens.textWeight,
+        height: tokens.height,
+        justifyContent: 'center',
+        margin: 0,
+        minWidth: tokens.minWidth,
+        minHeight: tokens.minHeight,
+        overflow: 'hidden',
+        padding: 0,
+        textDecoration: 'none',
+        textAlign: 'center',
+        userSelect: 'none',
+        verticalAlign: 'baseline',
+        width: tokens.width,
 
-          // sizing
-          minWidth: 100,
-          minHeight: 32,
-          lineHeight: 1,
-          contentPadding: '8px 16px', // root
-
-          // subcomponent "text"
-          textFamily: 'default',
-          textSize: 14,
-          // tslint:disable-next-line:no-any
-          textWeight: 700 as any,
-
-          // subcomponent "icon"
-          iconSize: 14,
-          iconWeight: 400
-        },
-
-        enabled: {
-          backgroundColor: semanticColors.buttonBackground,
-          backgroundColorHovered: semanticColors.buttonBackgroundHovered,
-          backgroundColorPressed: semanticColors.buttonBackgroundPressed,
-
-          iconColor: semanticColors.buttonText,
-          iconColorHovered: semanticColors.buttonTextHovered,
-          iconColorPressed: semanticColors.buttonTextPressed,
-
-          color: semanticColors.buttonText,
-          colorHovered: semanticColors.buttonTextHovered,
-          colorPressed: semanticColors.buttonTextPressed,
-
-          borderColor: semanticColors.buttonBorder, // root
-          borderColorHovered: semanticColors.buttonBorder,
-          borderColorPressed: semanticColors.buttonBorder
-        },
-
-        disabled: {
-          backgroundColor: semanticColors.buttonBackgroundDisabled,
-          backgroundColorHovered: semanticColors.buttonBackgroundDisabled,
-          backgroundColorPressed: semanticColors.buttonBackgroundDisabled,
-
-          colorHovered: semanticColors.buttonTextDisabled,
-          colorPressed: semanticColors.buttonTextDisabled,
-          color: semanticColors.buttonTextDisabled,
-
-          borderColor: semanticColors.buttonBorderDisabled,
-          borderColorHovered: semanticColors.buttonBorderDisabled, // root:hover
-          borderColorPressed: semanticColors.buttonBorderDisabled // root:active
-        },
-
-        expanded: {
-          backgroundColor: semanticColors.buttonBackgroundPressed,
-          backgroundColorHovered: semanticColors.buttonBackgroundPressed,
-          backgroundColorPressed: semanticColors.buttonBackgroundPressed,
-
-          color: semanticColors.buttonTextPressed,
-          colorHovered: semanticColors.buttonTextPressed,
-          colorPressed: semanticColors.buttonTextPressed
-        }
-      },
-
-      primary: {
-        enabled: {
-          backgroundColor: semanticColors.primaryButtonBackground,
-          backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
-          backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
-
-          color: semanticColors.primaryButtonText,
-          colorHovered: semanticColors.primaryButtonTextHovered,
-          colorPressed: semanticColors.primaryButtonTextPressed,
-
-          iconColor: semanticColors.primaryButtonText,
-          iconColorHovered: semanticColors.primaryButtonTextHovered,
-          iconColorPressed: semanticColors.primaryButtonTextPressed,
-
-          borderColor: semanticColors.primaryButtonBorder
-        },
-        expanded: {
-          backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-          backgroundColorHovered: semanticColors.primaryButtonBackgroundPressed,
-          backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
-
-          color: semanticColors.primaryButtonTextPressed,
-          colorHovered: semanticColors.primaryButtonTextPressed,
-          colorPressed: semanticColors.primaryButtonTextPressed
-        }
-      },
-
-      circular: {
-        baseState: {
-          width: 32,
-          minWidth: 0,
-          height: 32,
-          borderRadius: '50%',
-          contentPadding: ''
-        }
-      }
-    },
-    styleVariables
-  );
-
-  function getButtonStylesFromState(state: IButtonStyleVariablesTypes): Partial<IButtonStyles> {
-    if (state) {
-      return {
-        root: [
-          {
-            padding: 0,
-            backgroundColor: state.backgroundColor,
-            color: state.color,
-            borderColor: state.borderColor,
-            display: 'inline-block',
-            justifyContent: 'center',
-            boxSizing: 'border-box',
-            borderStyle: 'solid',
-            borderWidth: state.borderWidth,
-            borderRadius: state.borderRadius,
-            userSelect: 'none',
-            textDecoration: 'none',
-            textAlign: 'center',
-            verticalAlign: 'baseline',
-            overflow: 'hidden',
-            lineHeight: '1',
-            width: state.width,
-            height: state.height,
-            minWidth: state.minWidth,
-            minHeight: state.minHeight,
-
-            fontSize: state.textSize,
-            fontFamily: state.textFamily,
-            // tslint:disable-next-line:no-any
-            fontWeight: state.textWeight as any,
-
-            selectors: {
-              ':hover': {
-                backgroundColor: state.backgroundColorHovered,
-                color: state.colorHovered,
-                borderColor: state.borderColorHovered
-              },
-
-              ':hover:active': {
-                backgroundColor: state.backgroundColorPressed,
-                color: state.colorPressed,
-                borderColor: state.borderColorPressed
-              },
-              [`:hover .${globalClassNames.icon}`]: {
-                color: state.iconColorHovered
-              },
-              [`:hover:active .${globalClassNames.icon}`]: {
-                color: state.iconColorPressed
-              }
-            }
-          }
-        ],
-        icon: [
-          {
-            display: 'flex',
-            fontSize: state.iconSize,
-            color: state.iconColor,
-            fill: state.iconColor,
-            // tslint:disable-next-line:no-any
-            fontWeight: state.iconWeight as any
+        selectors: {
+          ':hover': {
+            backgroundColor: tokens.backgroundColorHovered,
+            color: tokens.colorHovered,
+            borderColor: tokens.borderColorHovered
           },
-          globalClassNames.icon
-        ],
-        stack: {
-          padding: state.contentPadding,
-          height: '100%'
-        },
-        text: {
-          overflow: 'visible'
+          ':hover:active': {
+            backgroundColor: tokens.backgroundColorPressed,
+            color: tokens.colorPressed,
+            borderColor: tokens.borderColorPressed
+          },
+          [`:hover .${globalClassNames.icon}`]: {
+            color: tokens.iconColorHovered
+          },
+          [`:hover:active .${globalClassNames.icon}`]: {
+            color: tokens.iconColorPressed
+          }
         }
-      };
+      },
+      className
+    ],
+    stack: {
+      padding: tokens.contentPadding,
+      height: '100%'
+    },
+    icon: [
+      {
+        display: 'flex',
+        fontSize: tokens.iconSize,
+        color: tokens.iconColor,
+        fill: tokens.iconColor,
+        // tslint:disable-next-line:no-any
+        fontWeight: tokens.iconWeight as any
+      },
+      globalClassNames.icon
+    ],
+    content: {
+      overflow: 'visible'
     }
-
-    // no state
-    return {};
-  }
-
-  function getButtonStylesFromVariant(variantVariables: { [PState in IButtonStates]: IButtonStyleVariablesTypes }): Partial<IButtonStyles> {
-    if (variantVariables) {
-      return concatStyleSets(
-        getButtonStylesFromState(variantVariables.baseState),
-        !disabled && getButtonStylesFromState(variantVariables.enabled),
-        !disabled && expanded && getButtonStylesFromState(variantVariables.expanded),
-        disabled && getButtonStylesFromState(variantVariables.disabled)
-      );
-    }
-    return {};
-  }
-
-  // Styles!
-  return concatStyleSets(
-    { root: getFocusStyle(theme) },
-    getButtonStylesFromVariant(buttonVariables.baseVariant),
-    primary && getButtonStylesFromVariant(buttonVariables.primary),
-    circular && getButtonStylesFromVariant(buttonVariables.circular),
-    {
-      root: className
-    }
-  );
+    // TODO: test with split button approach.
+    // splitContainer: {
+    //   height: '100%',
+    //   position: 'relative',
+    //   width: '36px'
+    // },
+    // divider: {
+    //   background: tokens.color,
+    //   bottom: 6,
+    //   display: 'inline-block',
+    //   left: 0,
+    //   opacity: 0.7,
+    //   position: 'absolute',
+    //   top: 6,
+    //   width: 1
+    // }
+  };
 };
-
-type IProcessedVariables<T> = { [P in keyof T]-?: IProcessedVariables<T[P]> };
-
-function _processVariables<T>(partialVariables: T, customVariables?: T): IProcessedVariables<T> {
-  // tslint:disable-next-line:no-any
-  const result = customVariables ? merge({}, partialVariables, customVariables) : partialVariables;
-
-  return result as IProcessedVariables<T>;
-}

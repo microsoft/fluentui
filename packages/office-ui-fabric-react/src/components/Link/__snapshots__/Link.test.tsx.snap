@@ -5,24 +5,23 @@ exports[`Link renders Link correctly 1`] = `
   className=
       ms-Link
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         color: #0078d4;
-        outline: transparent;
-        position: relative;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: inherit;
+        font-weight: inherit;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
+      .ms-Fabric--isFocusVisible &:focus {
+        box-shadow: 0 0 0 1px #666666 inset;
       }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -46,6 +45,8 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       ms-Link
       customClassName
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background-color: transparent;
         background: none;
         border-bottom: 1px solid transparent;
@@ -53,44 +54,37 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         color: #0078d4;
         cursor: pointer;
         display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
+        font-weight: inherit;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
+      .ms-Fabric--isFocusVisible &:focus {
+        box-shadow: 0 0 0 1px #666666 inset;
       }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
       }
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
-      }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -113,24 +107,23 @@ exports[`Link renders Link with a custom class name 1`] = `
       ms-Link
       customClassName
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         color: #0078d4;
-        outline: transparent;
-        position: relative;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: inherit;
+        font-weight: inherit;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
+      .ms-Fabric--isFocusVisible &:focus {
+        box-shadow: 0 0 0 1px #666666 inset;
       }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -153,6 +146,8 @@ exports[`Link renders Link with no href as a button 1`] = `
   className=
       ms-Link
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background-color: transparent;
         background: none;
         border-bottom: 1px solid transparent;
@@ -160,44 +155,37 @@ exports[`Link renders Link with no href as a button 1`] = `
         color: #0078d4;
         cursor: pointer;
         display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
+        font-weight: inherit;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
+      .ms-Fabric--isFocusVisible &:focus {
+        box-shadow: 0 0 0 1px #666666 inset;
       }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
       }
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
-      }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;
@@ -209,6 +197,7 @@ exports[`Link renders Link with no href as a button 1`] = `
         color: #0078d4;
       }
   onClick={[Function]}
+  type="button"
 >
   I'm a link as a button
 </button>
@@ -221,30 +210,28 @@ exports[`Link renders disabled Link correctly 1`] = `
       ms-Link
       is-disabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         color: #a6a6a6;
         cursor: default;
-        outline: transparent;
-        position: relative;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: inherit;
+        font-weight: inherit;
+        outline: none;
         text-decoration: none;
       }
-      &::-moz-focus-inner {
-        border: 0;
+      .ms-Fabric--isFocusVisible &:focus {
+        box-shadow: 0 0 0 1px #666666 inset;
       }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-bottom: none;
       }
       &:link, &:visited {
         pointer-events: none;
       }
-  href="#"
   onClick={[Function]}
 >
   I'm a disabled link
@@ -258,6 +245,8 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       ms-Link
       is-disabled
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background-color: transparent;
         background: none;
         border-bottom: 1px solid transparent;
@@ -265,35 +254,31 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         color: #a6a6a6;
         cursor: default;
         display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
+        font-weight: inherit;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
+      .ms-Fabric--isFocusVisible &:focus {
+        box-shadow: 0 0 0 1px #666666 inset;
       }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
@@ -301,14 +286,12 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
       }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
-      }
       &:link, &:visited {
         pointer-events: none;
       }
   disabled={true}
   onClick={[Function]}
+  type="button"
 >
   I'm a link as a button
 </button>
@@ -321,6 +304,8 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       ms-Link
       customClassName
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background-color: transparent;
         background: none;
         border-bottom: 1px solid transparent;
@@ -328,44 +313,37 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         color: #0078d4;
         cursor: pointer;
         display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: inherit;
+        font-weight: inherit;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        outline: transparent;
+        outline: none;
         overflow: inherit;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
-        position: relative;
         text-align: left;
         text-overflow: inherit;
         user-select: text;
       }
-      &::-moz-focus-inner {
-        border: 0;
+      .ms-Fabric--isFocusVisible &:focus {
+        box-shadow: 0 0 0 1px #666666 inset;
       }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: -1px;
-        content: "";
-        left: -1px;
-        outline: 1px solid #666666;
-        position: absolute;
-        right: -1px;
-        top: -1px;
-        z-index: 1;
+      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+        outline: 1px solid WindowText;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        border-bottom: none;
       }
       @media screen and (-ms-high-contrast: white-on-black){& {
         color: #FFFF00;
       }
       @media screen and (-ms-high-contrast: black-on-white){& {
         color: #00009F;
-      }
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-        border-bottom: none;
       }
       &:active, &:hover, &:active:hover {
         color: #004578;

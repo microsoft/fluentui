@@ -22,8 +22,7 @@ const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',
   componentName: 'SpinButton',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SpinButton',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SpinButton',
   componentStatus: SpinButtonStatus,
   examples: [
     {
@@ -63,9 +62,7 @@ export const SpinButtonPageProps: IDocPageProps = {
       view: <SpinButtonCustomStyledExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),

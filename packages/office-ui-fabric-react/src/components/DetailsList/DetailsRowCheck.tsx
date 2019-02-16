@@ -46,7 +46,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     compact
   });
 
-  return (
+  return canSelect ? (
     <div
       {...buttonProps}
       role="checkbox"
@@ -57,6 +57,8 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     >
       <Check checked={isPressed} />
     </div>
+  ) : (
+    <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
 

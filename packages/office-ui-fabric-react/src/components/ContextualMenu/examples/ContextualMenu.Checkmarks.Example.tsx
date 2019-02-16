@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  IContextualMenuItem,
-  ContextualMenuItemType,
-  DirectionalHint
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem, ContextualMenuItemType, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
@@ -45,7 +41,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
 
     return (
       <DefaultButton
-        id="ContextualMenuButton2"
         text="Click for ContextualMenu"
         menuProps={{
           shouldFocusOnMount: true,

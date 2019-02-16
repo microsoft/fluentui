@@ -1,6 +1,126 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+
+## 6.41.0
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Minor changes
+
+- theming: add loadFonts function and register font variables
+
+### Patches
+
+- fix createTheme so that it cannot mutate DefaultFontStyles
+
+## 6.40.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
+
+## 6.39.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- ITheme: remove ITypography
+
+## 6.38.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Extend theming to incorporate shadows and rounded corners
+
+### Patches
+
+- Add missing API file update
+
+## 6.37.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- semantic slot value updates
+
+## 6.35.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+
+## 6.34.1
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Patches
+
+- Icon: warnings from duplicate registrations are now throttled into a single message.
+
+## 6.34.0
+Wed, 31 Oct 2018 12:32:41 GMT
+
+### Minor changes
+
+- API changes to getSchemedContext for use by theme provider.
+
+## 6.33.0
+Fri, 26 Oct 2018 12:32:35 GMT
+
+### Minor changes
+
+- Add api-extractor.json
+
+## 6.32.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- getIconClassName: Strongly type the use of IStyle constant.
+
+## 6.32.1
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 6.32.0
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Minor changes
+
+- Fix unnecessary `IRGB` export. This interface is only used by internals. Use the `IRGB` interface declaration from office-ui-fabric-react package instead.
+
+## 6.31.0
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Minor changes
+
+- Enable api-extractor task for styling
+
+## 6.30.0
+Tue, 09 Oct 2018 12:26:48 GMT
+
+### Minor changes
+
+- focusBorder changed to neutralSecondary
+
+## 6.29.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 6.29.1
+Fri, 05 Oct 2018 23:29:26 GMT
+
+### Patches
+
+- Fixing getGlobalClassNames to return the correct class names even when the theme object is different.
 
 ## 6.29.0
 Thu, 04 Oct 2018 12:26:48 GMT
