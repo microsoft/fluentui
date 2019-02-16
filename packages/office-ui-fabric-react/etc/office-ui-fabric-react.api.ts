@@ -10618,6 +10618,26 @@ interface ISpinnerStyles {
 export function isRelativeUrl(url: string): boolean;
 
 // @public (undocumented)
+interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+  align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+  className?: string;
+  disableShrink?: boolean;
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+  shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
+  verticalFill?: boolean;
+}
+
+// @public (undocumented)
+interface IStackItemSlots {
+  // (undocumented)
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface IStackItemTokens {
+}
+
+// @public (undocumented)
 interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React.HTMLAttributes<HTMLElement> {
   as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
   disableShrink?: boolean;
@@ -12956,6 +12976,10 @@ module ZIndexes {
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: StackItem
+// WARNING: Unsupported export: IStackItemComponent
+// WARNING: Unsupported export: IStackItemTokenReturnType
+// WARNING: Unsupported export: IStackItemStylesReturnType
+// WARNING: Unsupported export: IStackItemStyles
 // WARNING: Unsupported export: Stack
 // WARNING: Unsupported export: Alignment
 // WARNING: Unsupported export: IStackComponent
