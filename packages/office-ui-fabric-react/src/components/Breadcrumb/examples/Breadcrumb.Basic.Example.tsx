@@ -13,18 +13,6 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Label className={exampleStyles.exampleLabel}>Last item has no itemLink</Label>
-        <Breadcrumb
-          items={[
-            { text: 'Files', key: 'Files', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 1', key: 'f1', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 2 with a long name', key: 'f2', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 3 long', key: 'f3', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 4', key: 'f4', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is folder 5 another', key: 'f5', isCurrentItem: true }
-          ]}
-          ariaLabel={'Breadcrumb with no maxDisplayedItems'}
-        />
         <Label className={exampleStyles.exampleLabel}>With no maxDisplayedItems</Label>
         <Breadcrumb
           items={[
