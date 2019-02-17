@@ -66,7 +66,7 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
   items: any[];
 
   /** Optional list props to pass to list renderer.  */
-  listProps?: any;
+  listProps?: IListProps;
 
   /** Rendering callback to render the group items. */
   onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
