@@ -25,31 +25,34 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
     }
   };
 
+  const itemStyle = {
+    lineHeight: 36,
+    fontSize: FontSizes.size18,
+    outline: 'none',
+    fontWeight: FontWeights.regular,
+    color: palette.neutralSecondary,
+    selectors: {
+      '&:last-child': {
+        fontWeight: FontWeights.semibold,
+        color: palette.neutralPrimary
+      },
+      '.ms-Fabric--isFocusVisible &:focus': {
+        // Necessary due to changes of Link component not using getFocusStyle.
+        outline: 'none'
+      },
+      // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
+      [MediumScreenSelector]: { fontSize: FontSizes.size18, fontWeight: FontWeights.regular, lineHeight: 36 },
+      [MinimumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
+      ...stateSelectors
+    }
+  };
+
   return {
     root: {
       marginTop: 11
     },
-    itemLink: {
-      lineHeight: 36,
-      fontSize: FontSizes.size18,
-      outline: 'none',
-      fontWeight: FontWeights.regular,
-      color: palette.neutralSecondary,
-      selectors: {
-        '&:last-child': {
-          fontWeight: FontWeights.semibold,
-          color: palette.neutralPrimary
-        },
-        '.ms-Fabric--isFocusVisible &:focus': {
-          // Necessary due to changes of Link component not using getFocusStyle.
-          outline: 'none'
-        },
-        // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
-        [MediumScreenSelector]: { fontSize: FontSizes.size18, fontWeight: FontWeights.regular, lineHeight: 36 },
-        [MinimumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
-        ...stateSelectors
-      }
-    },
+    itemLink: itemStyle,
+    item: itemStyle,
     overflowButton: {
       color: palette.neutralSecondary,
       selectors: {
