@@ -47,6 +47,40 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
     };
   }
 
+  public componentDidMount(): void {
+    if (this._cardsForAddCardPanel !== this.props.addCardPanelCards || this._cardsForLayout !== this.props.dashboardCards) {
+      this._cardsForAddCardPanel = this.props.addCardPanelCards;
+      this._cardsForLayout = this.props.dashboardCards;
+      const cardIds: string[] = [];
+      const cardNodes: JSX.Element[] = [];
+      const layout: DashboardGridBreakpointLayouts = { lg: [{ i: 'section0', y: 0, x: 0, size: CardSize.section }] };
+      layout.lg = layout.lg!.concat(this.props.layout.lg!);
+      this.props.dashboardCards.map((card: IDGLCard) => {
+        cardIds.push(card.id);
+        cardNodes.push(
+          <div key={card.id} id={card.id + 'dglCard'}>
+            {card.renderElement}
+          </div>
+        );
+      });
+      this.props.addCardPanelCards.map((card: IDGLCard) => {
+        cardIds.push(card.id);
+      });
+      const sectionsInfo: ISection = {
+        id: 'section0',
+        title: this.props.sectionTitle
+      };
+      sectionsInfo.cardIds = cardIds;
+      this.setState({
+        cardsForAddCardPanel: this._cardsForAddCardPanel,
+        dashboardCards: this._cardsForLayout,
+        sections: [sectionsInfo],
+        layout: layout,
+        cardNodes
+      });
+    }
+  }
+
   public componentDidUpdate(): void {
     if (this._cardsForAddCardPanel !== this.props.addCardPanelCards || this._cardsForLayout !== this.props.dashboardCards) {
       this._cardsForAddCardPanel = this.props.addCardPanelCards;
@@ -189,10 +223,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
           layout: newLayout,
           cardNodes
         });
-        if (Object.is(newLayout, this.state.layout)) {
-          if (this.props.onLayoutChange) {
-            this.props.onLayoutChange(newLayout, cardSelected[0].id);
-          }
+        if (this.props.onLayoutChange) {
+          this.props.onLayoutChange(newLayout, cardSelected[0].id);
         }
       }
     } else {
@@ -222,8 +254,8 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
         newLayout.lg!.push(itemLayout);
       });
 
-      // for object comparision using Object.id method
-      if (Object.is(newLayout, this.state.layout)) {
+      // for object comparison using JSON.stringify method
+      if (JSON.stringify(newLayout) === JSON.stringify(this.state.layout)) {
         if (this.props.onLayoutChange) {
           this.props.onLayoutChange(newLayout);
         }
