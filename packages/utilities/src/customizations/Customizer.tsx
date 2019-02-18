@@ -1,18 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, IBaseProps } from './BaseComponent';
-import { Customizations, ICustomizations, Settings, SettingsFunction } from './Customizations';
-
-export interface ICustomizerContext {
-  customizations: ICustomizations;
-}
-
-export const CustomizerContext = React.createContext<ICustomizerContext>({
-  customizations: {
-    inCustomizerContext: false,
-    settings: {},
-    scopedSettings: {}
-  }
-});
+import { BaseComponent } from '../BaseComponent';
+import { IBaseProps } from '../BaseComponent.types';
+import { Customizations, ISettings, ISettingsFunction } from './Customizations';
+import { CustomizerContext, ICustomizerContext } from './CustomizerContext';
+import { mergeCustomizations } from './mergeCustomizations';
 
 export type ICustomizerProps = IBaseProps &
   Partial<{
@@ -31,7 +22,7 @@ export type ICustomizerProps = IBaseProps &
      *  <Customizer settings={(currentSettings) => ({ ...currentSettings, color: 'red' })} />
      * ```
      */
-    settings: Settings | SettingsFunction;
+    settings: ISettings | ISettingsFunction;
     /**
      * @description
      * Scoped settings are settings that are scoped to a specific scope. The
@@ -56,7 +47,7 @@ export type ICustomizerProps = IBaseProps &
      *  <Customizer scopedSettings={(currentScopedSettings) => ({ ...currentScopedSettings, ...myScopedSettings })} />
      * ```
      */
-    scopedSettings: Settings | SettingsFunction;
+    scopedSettings: ISettings | ISettingsFunction;
   }> & {
     /**
      * Optional transform function for context. Any implementations should take care to return context without
@@ -108,64 +99,4 @@ export class Customizer extends BaseComponent<ICustomizerProps> {
   }
 
   private _onCustomizationChange = () => this.forceUpdate();
-}
-
-/**
- * Merge props and customizations giving priority to props over context.
- * NOTE: This function will always perform multiple merge operations. Use with caution.
- * @param props - New settings to merge in.
- * @param parentContext - Context containing current settings.
- * @returns Merged customizations.
- */
-export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext {
-  const { customizations = { settings: {}, scopedSettings: {} } } = parentContext || {};
-
-  return {
-    customizations: {
-      settings: mergeSettings(customizations.settings, props.settings),
-      scopedSettings: mergeScopedSettings(customizations.scopedSettings, props.scopedSettings),
-      inCustomizerContext: true
-    }
-  };
-}
-
-/**
- * Merge new and old settings, giving priority to new settings.
- * New settings is optional in which case oldSettings is returned as-is.
- * @param oldSettings - Old settings to fall back to.
- * @param newSettings - New settings that will be merged over oldSettings.
- * @returns Merged settings.
- */
-export function mergeSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
-  const mergeSettingsWith = isSettingsFunction(newSettings) ? newSettings : settingsMergeWith(newSettings);
-
-  return mergeSettingsWith(oldSettings);
-}
-
-function mergeScopedSettings(oldSettings: Settings = {}, newSettings?: Settings | SettingsFunction): Settings {
-  const mergeSettingsWith = isSettingsFunction(newSettings) ? newSettings : scopedSettingsMergeWith(newSettings);
-
-  return mergeSettingsWith(oldSettings);
-}
-
-function isSettingsFunction(settings?: Settings | SettingsFunction): settings is SettingsFunction {
-  return typeof settings === 'function';
-}
-
-function settingsMergeWith(newSettings?: object): (settings: Settings) => Settings {
-  return (settings: Settings) => (newSettings ? { ...settings, ...newSettings } : settings);
-}
-
-function scopedSettingsMergeWith(scopedSettingsFromProps: Settings = {}): (scopedSettings: Settings) => Settings {
-  return (oldScopedSettings: Settings): Settings => {
-    const newScopedSettings: Settings = { ...oldScopedSettings };
-
-    for (let scopeName in scopedSettingsFromProps) {
-      if (scopedSettingsFromProps.hasOwnProperty(scopeName)) {
-        newScopedSettings[scopeName] = { ...oldScopedSettings[scopeName], ...scopedSettingsFromProps[scopeName] };
-      }
-    }
-
-    return newScopedSettings;
-  };
 }

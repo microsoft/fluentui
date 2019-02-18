@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Customizations } from './Customizations';
-import { hoistStatics } from './hoistStatics';
-import { CustomizerContext, ICustomizerContext } from './Customizer';
+import { hoistStatics } from '../hoistStatics';
+import { CustomizerContext, ICustomizerContext } from './CustomizerContext';
 import { concatStyleSets } from '@uifabric/merge-styles';
 
 export function customizable(

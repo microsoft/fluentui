@@ -1,13 +1,12 @@
-import { GlobalSettings } from './GlobalSettings';
-import { EventGroup } from './EventGroup';
+import { GlobalSettings } from '../GlobalSettings';
 
 // tslint:disable-next-line:no-any
-export type Settings = { [key: string]: any };
-export type SettingsFunction = (settings: Settings) => Settings;
+export type ISettings = { [key: string]: any };
+export type ISettingsFunction = (settings: ISettings) => ISettings;
 
 export interface ICustomizations {
-  settings: Settings;
-  scopedSettings: { [key: string]: Settings };
+  settings: ISettings;
+  scopedSettings: { [key: string]: ISettings };
   inCustomizerContext?: boolean;
 }
 
@@ -20,7 +19,7 @@ let _allSettings = GlobalSettings.getValue<ICustomizations>(CustomizationsGlobal
   inCustomizerContext: false
 });
 
-const _events = new EventGroup(_allSettings);
+let _events: (() => void)[] = [];
 
 export class Customizations {
   public static reset(): void {
@@ -29,13 +28,13 @@ export class Customizations {
   }
 
   // tslint:disable-next-line:no-any
-  public static applySettings(settings: Settings): void {
+  public static applySettings(settings: ISettings): void {
     _allSettings.settings = { ..._allSettings.settings, ...settings };
     Customizations._raiseChange();
   }
 
   // tslint:disable-next-line:no-any
-  public static applyScopedSettings(scopeName: string, settings: Settings): void {
+  public static applyScopedSettings(scopeName: string, settings: ISettings): void {
     _allSettings.scopedSettings[scopeName] = { ..._allSettings.scopedSettings[scopeName], ...settings };
     Customizations._raiseChange();
   }
@@ -47,7 +46,7 @@ export class Customizations {
     // tslint:disable-next-line:no-any
   ): any {
     // tslint:disable-next-line:no-any
-    const settings: Settings = {};
+    const settings: ISettings = {};
     const localScopedSettings = (scopeName && localSettings.scopedSettings[scopeName]) || {};
     const globalScopedSettings = (scopeName && _allSettings.scopedSettings[scopeName]) || {};
 
@@ -63,14 +62,14 @@ export class Customizations {
   }
 
   public static observe(onChange: () => void): void {
-    _events.on(_allSettings, 'change', onChange);
+    _events.push(onChange);
   }
 
   public static unobserve(onChange: () => void): void {
-    _events.off(_allSettings, 'change', onChange);
+    _events = _events.filter((cb: () => void) => cb !== onChange);
   }
 
   private static _raiseChange(): void {
-    _events.raise('change');
+    _events.forEach((cb: () => void) => cb());
   }
 }

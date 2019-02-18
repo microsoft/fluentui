@@ -1,13 +1,10 @@
-import {
-  DATA_PORTAL_ATTRIBUTE,
-  elementContains,
-  getDocument,
-  getParent,
-  getWindow,
-  portalContainsElement,
-  setPortalAttribute,
-  setSSR
-} from './dom';
+import { setSSR } from './setSSR';
+import { portalContainsElement } from './portalContainsElement';
+import { DATA_PORTAL_ATTRIBUTE, setPortalAttribute } from './setPortalAttribute';
+import { elementContains } from './elementContains';
+import { getParent } from './getParent';
+import { getWindow } from './getWindow';
+import { getDocument } from './getDocument';
 
 let unattachedSvg = document.createElement('svg');
 let unattachedDiv = document.createElement('div');
