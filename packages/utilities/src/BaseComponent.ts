@@ -2,20 +2,14 @@ import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
-import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
+import { ISettingsMap } from './warn/warn';
+import { warnConditionallyRequiredProps } from './warn/warnConditionallyRequiredProps';
+import { warnMutuallyExclusive } from './warn/warnMutuallyExclusive';
+import { warnDeprecations } from './warn/warnDeprecations';
 import { initializeFocusRects } from './initializeFocusRects';
 import { initializeDir } from './initializeDir';
 import { IRefObject } from './createRef';
-
-/**
- * BaseProps interface.
- *
- * @public
- */
-// tslint:disable-next-line:no-any
-export interface IBaseProps<T = any> {
-  componentRef?: IRefObject<T>;
-}
+import { IBaseProps } from './BaseComponent.types';
 
 /**
  * BaseComponent class, which provides basic helpers for all components.
@@ -27,7 +21,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
    * @deprecated Use React's error boundaries instead.
    */
   // tslint:disable-next-line:no-any
-  public static onError: ((errorMessage?: string, ex?: any) => void);
+  public static onError: (errorMessage?: string, ex?: any) => void;
 
   /**
    * Controls whether the componentRef prop will be resolved by this component instance. If you are

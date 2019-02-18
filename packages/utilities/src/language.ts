@@ -1,4 +1,4 @@
-import { getDocument } from './dom';
+import { getDocument } from './dom/getDocument';
 import { getItem, setItem } from './localStorage';
 
 // Default to undefined so that we initialize on first read.

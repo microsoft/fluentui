@@ -7,27 +7,12 @@
  * callers to get called back when it mutates.
  */
 
+// tslint:disable:no-any
+
 const GLOBAL_SETTINGS_PROP_NAME = '__globalSettings__';
 const CALLBACK_STATE_PROP_NAME = '__callbacks__';
 
-// tslint:disable-next-line:no-any
-let _global: { [key: string]: any };
 let _counter = 0;
-
-if (typeof window !== 'undefined') {
-  _global = window;
-} else if (typeof global !== 'undefined') {
-  _global = global;
-} else {
-  _global = {};
-}
-
-// tslint:disable-next-line:no-any
-let _globalSettings: { [key: string]: any } = (_global[GLOBAL_SETTINGS_PROP_NAME] = _global[GLOBAL_SETTINGS_PROP_NAME] || {
-  [CALLBACK_STATE_PROP_NAME]: {}
-});
-
-const _callbacks = _globalSettings[CALLBACK_STATE_PROP_NAME];
 
 /**
  * Change description used for change callbacks in GlobalSettings.
@@ -61,18 +46,22 @@ export interface IChangeEventCallback {
  */
 export class GlobalSettings {
   public static getValue<T>(key: string, defaultValue?: T | (() => T)): T {
-    if (_globalSettings[key] === undefined) {
-      _globalSettings[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+    const globalSettings = _getGlobalSettings();
+
+    if (globalSettings[key] === undefined) {
+      globalSettings[key] = typeof defaultValue === 'function' ? (defaultValue as Function)() : defaultValue;
     }
 
-    return _globalSettings[key];
+    return globalSettings[key];
   }
 
   public static setValue<T>(key: string, value: T): T {
-    let oldValue = _globalSettings[key];
+    const globalSettings = _getGlobalSettings();
+    const callbacks = globalSettings[CALLBACK_STATE_PROP_NAME];
+    let oldValue = globalSettings[key];
 
     if (value !== oldValue) {
-      _globalSettings[key] = value;
+      globalSettings[key] = value;
 
       let changeDescription = {
         oldValue,
@@ -80,9 +69,9 @@ export class GlobalSettings {
         key
       };
 
-      for (let id in _callbacks) {
-        if (_callbacks.hasOwnProperty(id)) {
-          _callbacks[id](changeDescription);
+      for (let id in callbacks) {
+        if (callbacks.hasOwnProperty(id)) {
+          callbacks[id](changeDescription);
         }
       }
     }
@@ -94,15 +83,34 @@ export class GlobalSettings {
     // Note: we use generated ids on the callbacks to create a map of the callbacks, which optimizes removal.
     // (It's faster to delete a key than it is to look up the index of an object and splice an array.)
     let id = cb.__id__;
+    const callbacks = _getCallbacks();
 
     if (!id) {
       id = cb.__id__ = String(_counter++);
     }
 
-    _callbacks[id] = cb;
+    callbacks[id] = cb;
   }
 
   public static removeChangeListener(cb: IChangeEventCallback): void {
-    delete _callbacks[cb.__id__ as string];
+    const callbacks = _getCallbacks();
+    delete callbacks[cb.__id__ as string];
   }
+}
+
+function _getGlobalSettings(): { [key: string]: any } {
+  const globalObj: { [key: string]: any } = typeof window !== 'undefined' ? window : {};
+
+  if (!globalObj[GLOBAL_SETTINGS_PROP_NAME]) {
+    globalObj[GLOBAL_SETTINGS_PROP_NAME] = {
+      [CALLBACK_STATE_PROP_NAME]: {}
+    };
+  }
+
+  return globalObj[GLOBAL_SETTINGS_PROP_NAME];
+}
+
+function _getCallbacks(): { [key: string]: () => void } {
+  const globalSettings = _getGlobalSettings();
+  return globalSettings[CALLBACK_STATE_PROP_NAME];
 }

@@ -1,6 +1,6 @@
 import { EventGroup } from './EventGroup';
 import { findScrollableParent } from './scroll';
-import { getRect } from './dom';
+import { getRect } from './dom/getRect';
 import { IRectangle } from './IRectangle';
 
 declare function setTimeout(cb: Function, delay: number): number;

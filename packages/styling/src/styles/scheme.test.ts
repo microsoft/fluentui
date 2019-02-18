@@ -1,12 +1,10 @@
 import { getThemedContext } from './scheme';
 import { createTheme } from './theme';
-import { IPartialTheme, ISchemeNames, ITheme } from '../interfaces/index';
+import { ISchemeNames, ITheme } from '../interfaces/index';
 import { loadTheme } from './theme';
-import { Customizations, mergeCustomizations, ICustomizerContext } from '@uifabric/utilities';
+import { ICustomizerContext } from '@uifabric/utilities';
 
 describe('getSchemedCustomizations', () => {
-  const testSchemeNameInvalid = 'neutral';
-  const testSchemeNameUnused = 'strong';
   const testSchemeName = 'soft';
 
   let emptyContext: ICustomizerContext;

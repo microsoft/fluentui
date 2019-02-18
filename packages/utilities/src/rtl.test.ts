@@ -1,4 +1,4 @@
-import { setSSR } from './dom';
+import { setSSR } from './dom/setSSR';
 
 describe('rtl', () => {
   const { getRTL, setRTL } = require('./rtl');

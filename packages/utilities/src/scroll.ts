@@ -1,4 +1,4 @@
-import { getDocument } from './dom';
+import { getDocument } from './dom/getDocument';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { EventGroup } from './EventGroup';
 
