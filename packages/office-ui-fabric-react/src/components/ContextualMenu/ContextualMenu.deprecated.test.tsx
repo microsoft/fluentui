@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
+import { setWarningCallback } from '@uifabric/utilities';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItemType } from './ContextualMenu.types';
@@ -12,8 +12,9 @@ let customClassNames: () => IMenuItemClassNames;
 
 describe('ContextualMenu', () => {
   beforeAll(() => {
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
+    // Prevent warn deprecations from failing test
+    setWarningCallback(() => {
+      /* no-op */
     });
 
     customClassNames = (): IMenuItemClassNames => {
@@ -33,6 +34,10 @@ describe('ContextualMenu', () => {
         linkContentMenu: 'linkContentMenuFoo'
       };
     };
+  });
+
+  afterAll(() => {
+    setWarningCallback();
   });
 
   afterEach(() => {

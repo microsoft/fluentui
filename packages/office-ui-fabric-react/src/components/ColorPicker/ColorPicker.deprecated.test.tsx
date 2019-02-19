@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
-
+import { setWarningCallback } from '@uifabric/utilities';
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
 import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
@@ -15,13 +14,13 @@ describe('ColorPicker deprecated', () => {
 
   beforeAll(() => {
     // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
+    setWarningCallback(() => {
+      /* no-op */
     });
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    setWarningCallback();
   });
 
   afterEach(() => {

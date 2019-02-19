@@ -1,8 +1,7 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
-import { setRTL } from '../../Utilities';
+import { setRTL, setWarningCallback } from '@uifabric/utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
 import { getIcon } from '../../Styling';
@@ -22,13 +21,13 @@ describe('Persona', () => {
 
   beforeAll(() => {
     // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
+    setWarningCallback(() => {
+      /* no-op */
     });
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    setWarningCallback();
   });
 
   it('renders Persona correctly with no props', () => {

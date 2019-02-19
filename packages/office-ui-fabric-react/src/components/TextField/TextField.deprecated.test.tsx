@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
+import { setWarningCallback } from '@uifabric/utilities';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 
@@ -11,13 +11,13 @@ import { mockEvent } from '../../common/testUtilities';
 describe('TextField deprecated', () => {
   beforeAll(() => {
     // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
+    setWarningCallback(() => {
+      /* no-op */
     });
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    setWarningCallback();
   });
 
   beforeEach(() => {

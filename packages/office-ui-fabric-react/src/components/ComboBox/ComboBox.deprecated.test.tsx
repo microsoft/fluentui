@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
+import { setWarningCallback } from '@uifabric/utilities';
 
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBoxOption, IComboBoxProps } from './ComboBox.types';
@@ -15,13 +15,13 @@ let wrapper: ReactWrapper<IComboBoxProps, IComboBoxState, ComboBox> | undefined;
 describe('ComboBox', () => {
   beforeAll(() => {
     // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
+    setWarningCallback(() => {
+      /* no-op */
     });
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    setWarningCallback();
   });
 
   afterEach(() => {
