@@ -2725,10 +2725,12 @@ interface IColorPickerProps extends IBaseProps<IColorPicker> {
   alphaSliderHidden?: boolean;
   blueLabel?: string;
   className?: string;
-  color: string;
+  color: IColor | string;
   componentRef?: IRefObject<IColorPicker>;
   greenLabel?: string;
   hexLabel?: string;
+  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+  // @deprecated
   onColorChanged?: (color: string, colorObject: IColor) => void;
   redLabel?: string;
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
@@ -2759,6 +2761,7 @@ interface IColorPickerStyles {
 
 // @public (undocumented)
 interface IColorRectangle {
+  color: IColor;
 }
 
 // @public (undocumented)
@@ -2767,6 +2770,8 @@ interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   color: IColor;
   componentRef?: IRefObject<IColorRectangle>;
   minSize?: number;
+  onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+  // @deprecated
   onSVChanged?: (s: number, v: number) => void;
   styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
   theme?: ITheme;
@@ -10618,8 +10623,28 @@ interface ISpinnerStyles {
 export function isRelativeUrl(url: string): boolean;
 
 // @public (undocumented)
+interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+  align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+  className?: string;
+  disableShrink?: boolean;
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+  shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
+  verticalFill?: boolean;
+}
+
+// @public (undocumented)
+interface IStackItemSlots {
+  // (undocumented)
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface IStackItemTokens {
+}
+
+// @public (undocumented)
 interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React.HTMLAttributes<HTMLElement> {
-  as?: string | React.ReactType<IStackProps>;
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
   disableShrink?: boolean;
   gap?: number | string;
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
@@ -12956,6 +12981,10 @@ module ZIndexes {
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
 // WARNING: Unsupported export: StackItem
+// WARNING: Unsupported export: IStackItemComponent
+// WARNING: Unsupported export: IStackItemTokenReturnType
+// WARNING: Unsupported export: IStackItemStylesReturnType
+// WARNING: Unsupported export: IStackItemStyles
 // WARNING: Unsupported export: Stack
 // WARNING: Unsupported export: Alignment
 // WARNING: Unsupported export: IStackComponent

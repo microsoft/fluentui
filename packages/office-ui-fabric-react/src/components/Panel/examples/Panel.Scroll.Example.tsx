@@ -1,26 +1,24 @@
-import * as React from 'react';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelScrollExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = { showPanel: false };
-  }
+export interface IPanelScrollExampleState {
+  showPanel: boolean;
+}
 
-  public render(): JSX.Element {
+export class PanelScrollExample extends React.Component<{}, IPanelScrollExampleState> {
+  public state = {
+    showPanel: false
+  };
+
+  public render() {
     return (
       <div>
-        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />
+        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
-          onDismiss={this._onClosePanel}
+          onDismiss={this._hidePanel}
           isFooterAtBottom={true}
           headerText="Panel with scrolling content"
           closeButtonAriaLabel="Close"
@@ -65,22 +63,22 @@ export class PanelScrollExample extends React.Component<
     );
   }
 
-  private _onClosePanel = () => {
-    this.setState({ showPanel: false });
-  };
-
   private _onRenderFooterContent = (): JSX.Element => {
     return (
       <div>
-        <PrimaryButton onClick={this._onClosePanel} style={{ marginRight: '8px' }}>
+        <PrimaryButton onClick={this._hidePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
-        <DefaultButton onClick={this._onClosePanel}>Cancel</DefaultButton>
+        <DefaultButton onClick={this._hidePanel}>Cancel</DefaultButton>
       </div>
     );
   };
 
-  private _onShowPanel = () => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
+  };
+
+  private _hidePanel = () => {
+    this.setState({ showPanel: false });
   };
 }

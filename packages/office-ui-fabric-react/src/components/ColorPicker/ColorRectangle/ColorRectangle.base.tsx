@@ -1,18 +1,15 @@
 import * as React from 'react';
-import { BaseComponent, assign, classNamesFunction } from '../../../Utilities';
-import { IColor, MAX_COLOR_SATURATION, MAX_COLOR_VALUE, getFullColorString, hsv2hex } from '../../../utilities/color/colors';
-import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { IColor, MAX_COLOR_SATURATION, MAX_COLOR_VALUE, getFullColorString, updateSV, clamp } from '../../../utilities/color/colors';
+import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles, IColorRectangle } from './ColorRectangle.types';
 
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
 
 export interface IColorRectangleState {
-  isAdjusting?: boolean;
-  origin?: { x: number; y: number; color: IColor };
-  color?: IColor;
-  fullColorString?: string;
+  color: IColor;
 }
 
-export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> {
+export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
   public static defaultProps = {
     minSize: 220
   };
@@ -22,32 +19,32 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   constructor(props: IColorRectangleProps) {
     super(props);
 
+    this._warnDeprecations({
+      onSVChanged: 'onChange'
+    });
+
     const { color } = this.props;
 
     this.state = {
-      isAdjusting: false,
-      origin: undefined,
-      color: color,
-      fullColorString: getFullColorString(color)
+      color: color
     };
   }
 
-  public componentWillUnmount(): void {
-    this._events.dispose();
+  public get color(): IColor {
+    return this.state.color;
   }
 
   public componentWillReceiveProps(newProps: IColorRectangleProps): void {
     const { color } = newProps;
 
     this.setState({
-      color: color,
-      fullColorString: getFullColorString(color)
+      color: color
     });
   }
 
   public render(): JSX.Element {
     const { minSize, theme, className, styles } = this.props;
-    const { color, fullColorString } = this.state;
+    const { color } = this.state;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -58,7 +55,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
       <div
         ref={this._root}
         className={classNames.root}
-        style={{ minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString }}
+        style={{ minWidth: minSize, minHeight: minSize, backgroundColor: getFullColorString(color) }}
         onMouseDown={this._onMouseDown}
       >
         <div className={classNames.light} />
@@ -73,49 +70,63 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
-    this._events.on(window, 'mouseup', this._onMouseUp, true);
+    this._events.on(window, 'mouseup', this._disableEvents, true);
 
     this._onMouseMove(ev);
   };
 
   private _onMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { color, onSVChanged } = this.props;
+    const { color, onSVChanged, onChange } = this.props;
 
     if (!this._root.current) {
       return;
     }
 
-    const rectSize = this._root.current.getBoundingClientRect();
-
-    const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;
-
-    const newColor = assign({}, color, {
-      s: Math.min(MAX_COLOR_SATURATION, Math.max(0, sPercentage * MAX_COLOR_SATURATION)),
-      v: Math.min(MAX_COLOR_VALUE, Math.max(0, MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE))
-    });
-
-    newColor.hex = hsv2hex(newColor.h, newColor.s, newColor.v);
-    newColor.str = newColor.a === 100 ? '#' + newColor.hex : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
-
-    this.setState({
-      isAdjusting: true,
-      color: newColor
-    });
-
-    if (onSVChanged) {
-      onSVChanged(newColor.s, newColor.v);
+    // If the primary button (1) isn't pressed, the user is no longer dragging, so turn off the
+    // event handlers and exit. (this may only be relevant while debugging)
+    // tslint:disable-next-line:no-bitwise
+    if (!(ev.buttons & 1)) {
+      this._disableEvents();
+      return;
     }
+
+    const newColor = _getNewColor(ev, color, this._root.current);
+    if (newColor) {
+      this.setState({
+        color: newColor
+      });
+
+      if (onChange) {
+        onChange(ev, newColor);
+      }
+
+      if (onSVChanged) {
+        onSVChanged(newColor.s, newColor.v);
+      }
+    }
+
     ev.preventDefault();
     ev.stopPropagation();
   };
 
-  private _onMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
+  private _disableEvents = (): void => {
     this._events.off();
-
-    this.setState({
-      isAdjusting: false,
-      origin: undefined
-    });
   };
+}
+
+/**
+ * Exported for testing only.
+ * @private
+ */
+export function _getNewColor(ev: React.MouseEvent<HTMLElement>, prevColor: IColor, root: HTMLElement): IColor | undefined {
+  const rectSize = root.getBoundingClientRect();
+
+  const sPercentage = (ev.clientX - rectSize.left) / rectSize.width;
+  const vPercentage = (ev.clientY - rectSize.top) / rectSize.height;
+
+  return updateSV(
+    prevColor,
+    clamp(sPercentage * MAX_COLOR_SATURATION, MAX_COLOR_SATURATION),
+    clamp(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE, MAX_COLOR_VALUE)
+  );
 }

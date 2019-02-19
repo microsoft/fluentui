@@ -28,8 +28,9 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // Static colors used when displaying 'unknown persona' coin
-  const unknownPersonaBackgroundColor = palette.neutralLight;
-  const unknownPersonaFontColor = palette.redDark;
+  const unknownPersonaBackgroundColor = 'rgb(234, 234, 234)';
+  const unknownPersonaFontColor = 'rgb(168, 0, 0)';
+
   const dimension = coinSize || (props.size && sizeToPixels[props.size]) || 48;
 
   return {
