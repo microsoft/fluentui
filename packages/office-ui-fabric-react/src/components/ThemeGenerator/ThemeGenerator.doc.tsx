@@ -136,10 +136,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             setInitialFocus={true}
             onDismiss={this._colorPickerOnDismiss}
           >
-            <ColorPicker
-              color={colorPickerSlotRule.color!.str}
-              onColorChanged={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
-            />
+            <ColorPicker color={colorPickerSlotRule.color!.str} onChange={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)} />
           </Callout>
         )}
 
@@ -238,14 +235,14 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
     this.setState({ colorPickerVisible: false });
   };
 
-  private _semanticSlotRuleChanged = (slotRule: IThemeSlotRule, color: string): void => {
+  private _semanticSlotRuleChanged = (slotRule: IThemeSlotRule, ev: any, color: IColor): void => {
     if (this._semanticSlotColorChangeTimeout) {
       clearTimeout(this._semanticSlotColorChangeTimeout);
     }
     this._semanticSlotColorChangeTimeout = this._async.setTimeout(() => {
       const { themeRules } = this.state;
 
-      ThemeGenerator.setSlot(slotRule, color, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
+      ThemeGenerator.setSlot(slotRule, color.str, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
@@ -413,14 +410,14 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
   private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
     let colorChangeTimeout: number;
 
-    function _onColorChanged(newColor: string): void {
+    const onChange = (ev: any, newColor: IColor): void => {
       if (colorChangeTimeout) {
         clearTimeout(colorChangeTimeout);
       }
       colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
         const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-        ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
+        ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor.str, currentIsDark, true, true);
         if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
           // isInverted got swapped, so need to refresh slots with new shading rules
           ThemeGenerator.insureSlots(themeRules, !currentIsDark);
@@ -429,7 +426,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
       // but high enough that quick changes don't get bogged down by a million changes inbetween
-    }
+    };
 
     return (
       <div className="ms-themer-paletteSlot" key={baseSlot}>
@@ -438,9 +435,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           <ColorPicker
             key={'baseslotcolorpicker' + baseSlot}
             color={this.state.themeRules[BaseSlots[baseSlot]].color!.str}
-            /* tslint:disable:jsx-no-bind */
-            onColorChanged={_onColorChanged.bind(this)}
-            /* tslint:enable:jsx-no-bind */
+            onChange={onChange}
           />
         </div>
         <div className="ms-themer-swatchBg" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}>

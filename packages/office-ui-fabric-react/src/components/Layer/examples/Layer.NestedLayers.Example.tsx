@@ -1,11 +1,7 @@
-import * as React from 'react';
-
-/* tslint:disable:no-string-literal */
-
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dialog';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
 export interface ILayerNestedLayersExampleState {
   hideDialog: boolean;
@@ -13,14 +9,10 @@ export interface ILayerNestedLayersExampleState {
 }
 
 export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLayersExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      hideDialog: true,
-      showPanel: false
-    };
-  }
+  public state = {
+    hideDialog: true,
+    showPanel: false
+  };
 
   public render() {
     return (
@@ -29,14 +21,14 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
-          onDismiss={this._onClosePanel}
+          onDismiss={this._dismissPanel}
           headerText="This panel makes use of Layer and FocusTrapZone. Focus should be trapped in the panel."
           closeButtonAriaLabel="Close"
         >
           <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
           <Dialog
             hidden={this.state.hideDialog}
-            onDismiss={this._closeDialog}
+            onDismiss={this._dismissDialog}
             isBlocking={true}
             dialogContentProps={{
               type: DialogType.normal,
@@ -50,10 +42,9 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
               containerClassName: 'ms-dialogMainOverride'
             }}
           >
-            {null /** You can also include null values as the result of conditionals */}
             <DialogFooter>
-              <PrimaryButton onClick={this._closeDialog} text="OK" />
-              <DefaultButton onClick={this._closeDialog} text="Cancel" />
+              <PrimaryButton onClick={this._dismissDialog} text="OK" />
+              <DefaultButton onClick={this._dismissDialog} text="Cancel" />
             </DialogFooter>
           </Dialog>
         </Panel>
@@ -65,11 +56,11 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
     this.setState({ hideDialog: false });
   };
 
-  private _closeDialog = (): void => {
+  private _dismissDialog = (): void => {
     this.setState({ hideDialog: true });
   };
 
-  private _onClosePanel = (): void => {
+  private _dismissPanel = (): void => {
     this.setState({ showPanel: false });
   };
 

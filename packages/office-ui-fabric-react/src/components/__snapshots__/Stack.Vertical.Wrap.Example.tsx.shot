@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Stack.Vertical.Wrap.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    className=
+        ms-Slider
+        ms-Slider-enabled
+        ms-Slider-row
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          user-select: none;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            word-wrap: break-word;
+          }
+      htmlFor="Slider0"
+    >
+      Change the stack height to see how child items wrap onto multiple columns:
+    </label>
+    <div
+      className=
+          ms-Slider-container
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+          }
+    >
+      <div
+        aria-disabled={false}
+        aria-label="Change the stack height to see how child items wrap onto multiple columns:"
+        aria-valuemax={420}
+        aria-valuemin={1}
+        aria-valuenow={420}
+        className=
+            ms-Slider-slideBox
+            ms-Slider-showValue
+            ms-Slider-showTransitions
+            {
+              align-items: center;
+              background: transparent;
+              border: none;
+              display: flex;
+              flex-grow: 1;
+              height: 28px;
+              line-height: 28px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              width: auto;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            &:active $activeSection {
+              background-color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:active $activeSection {
+              background-color: Highlight;
+            }
+            &:hover $activeSection {
+              background-color: #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover $activeSection {
+              background-color: Highlight;
+            }
+            &:active $inactiveSection {
+              background-color: #c7e0f4;
+            }
+            @media screen and (-ms-high-contrast: active){&:active $inactiveSection {
+              border-color: Highlight;
+            }
+            &:hover $inactiveSection {
+              background-color: #c7e0f4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover $inactiveSection {
+              border-color: Highlight;
+            }
+            &:active $thumb {
+              border: 2px solid #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:active $thumb {
+              border-color: Highlight;
+            }
+            &:hover $thumb {
+              border: 2px solid #0078d4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover $thumb {
+              border-color: Highlight;
+            }
+            & $thumb {
+              background: #ffffff;
+              border-color: #666666;
+              border-radius: 10px;
+              border-style: solid;
+              border-width: 2px;
+              box-sizing: border-box;
+              display: block;
+              height: 16px;
+              position: absolute;
+              top: -6px;
+              transform: translateX(-50%);
+              transition: left 0.367s cubic-bezier(.1,.9,.2,1);
+              width: 16px;
+            }
+        data-is-focusable={true}
+        id="Slider0"
+        onKeyDown={[Function]}
+        onMouseDown={[Function]}
+        onTouchStart={[Function]}
+        role="slider"
+        tabIndex={0}
+      >
+        <div
+          className=
+              ms-Slider-line
+              {
+                display: flex;
+                position: relative;
+                width: 100%;
+              }
+              & $lineContainer {
+                border-radius: 4px;
+                box-sizing: border-box;
+                height: 4px;
+                width: 100%;
+              }
+        >
+          <span
+            className=
+                ms-Slider-thumb
+
+            style={
+              Object {
+                "left": "100%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-active
+
+                {
+                  background: #666666;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "width": "100%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-inactive
+
+                {
+                  background: #c8c8c8;
+                  transition: width 0.367s cubic-bezier(.1,.9,.2,1);
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border: 1px solid WindowText;
+                }
+            style={
+              Object {
+                "width": "0%",
+              }
+            }
+          />
+        </div>
+      </div>
+      <label
+        className=
+            ms-Label
+            ms-Slider-value
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              flex-shrink: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              line-height: 1;
+              margin-bottom: 0;
+              margin-left: 8px;
+              margin-right: 8px;
+              margin-top: 0;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              white-space: nowrap;
+              width: 40px;
+              word-wrap: break-word;
+            }
+      >
+        420
+      </label>
+    </div>
+  </div>
+  <div
+    className=
+        ms-Stack
+        {
+          background: #71afe5;
+          display: flex;
+          flex-wrap: wrap;
+          height: 420px;
+          overflow: visible;
+          width: auto;
+        }
+        & span {
+          align-items: center;
+          background: #0078d4;
+          color: #ffffff;
+          display: flex;
+          height: 50px;
+          justify-content: center;
+          width: 50px;
+        }
+  >
+    <div
+      className=
+          ms-Stack-inner
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            height: calc(100% + 20px);
+            margin-bottom: -10px;
+            margin-left: -10px;
+            margin-right: -10px;
+            margin-top: -10px;
+            max-width: 100vw;
+            overflow: visible;
+            width: calc(100% + 20px);
+          }
+          & > * {
+            margin-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+            max-height: calc(100% - 20px);
+            text-overflow: ellipsis;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        1
+      </span>
+      <span>
+        2
+      </span>
+      <span>
+        3
+      </span>
+      <span>
+        4
+      </span>
+      <span>
+        5
+      </span>
+      <span>
+        6
+      </span>
+    </div>
+  </div>
+</div>
+`;

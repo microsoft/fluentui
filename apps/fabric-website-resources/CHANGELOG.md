@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Feb 2019 13:38:30 GMT and should not be manually modified.
+
+## 6.11.1
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Remove IColorPickerProps.onColorChanged usage
+
+## 6.11.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackPage to AppDefinition.tsx.
 
 ## 6.10.1
 Thu, 14 Feb 2019 13:34:54 GMT

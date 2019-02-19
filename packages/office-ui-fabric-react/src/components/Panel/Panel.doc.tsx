@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { PanelCustomExample } from './examples/Panel.Custom.Example';
+import { PanelCustomLeftExample } from './examples/Panel.CustomLeft.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
+import { PanelNavigationExample } from './examples/Panel.Navigation.Example';
 import { PanelHandleDismissTargetExample } from './examples/Panel.HandleDismissTarget.Example';
 import { PanelHiddenOnDismissExample } from './examples/Panel.HiddenOnDismiss.Example';
 import { PanelLargeExample } from './examples/Panel.Large.Example';
@@ -27,11 +29,13 @@ const PanelLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 const PanelLargeFixedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LargeFixed.Example.tsx') as string;
 const PanelExtraLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ExtraLarge.Example.tsx') as string;
 const PanelCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Custom.Example.tsx') as string;
+const PanelCustomLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.CustomLeft.Example.tsx') as string;
 const PanelHiddenOnDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HiddenOnDismiss.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
+const PanelNavigationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Navigation.Example.tsx') as string;
 const PanelPreventDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.PreventDefault.Example.tsx') as string;
 const PanelHandleDismissTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HandleDismissTarget.Example.tsx') as string;
 const PanelScrollExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Scroll.Example.tsx') as string;
@@ -84,6 +88,11 @@ export const PanelPageProps: IDocPageProps = {
       view: <PanelCustomExample />
     },
     {
+      title: 'Panel - Custom Width, Anchored Left',
+      code: PanelCustomLeftExampleCode,
+      view: <PanelCustomLeftExample />
+    },
+    {
       title: 'Panel - Hidden on Dismiss',
       code: PanelHiddenOnDismissExampleCode,
       view: <PanelHiddenOnDismissExample />
@@ -107,6 +116,11 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Panel - Footer',
       code: PanelFooterExampleCode,
       view: <PanelFooterExample />
+    },
+    {
+      title: 'Panel - Navigation',
+      code: PanelNavigationExampleCode,
+      view: <PanelNavigationExample />
     },
     {
       title: 'Panel - Prevent Default Sample',

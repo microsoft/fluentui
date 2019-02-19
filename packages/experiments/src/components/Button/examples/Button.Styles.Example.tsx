@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, IButtonProps, Stack } from '@uifabric/experiments';
-import { createTheme, mergeStyles } from 'office-ui-fabric-react';
+import { Button, IButtonProps } from '@uifabric/experiments';
+import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
   semanticColors: {

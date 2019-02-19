@@ -116,11 +116,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       onRenderFooter = this._onRenderFooter
     } = this.props;
     const { isFooterSticky, isOpen, isAnimating, id } = this.state;
-    const isLeft = type === PanelType.smallFixedNear ? true : false;
+    const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = headerText && id + '-headerText';
-    const customWidthStyles = type === PanelType.custom ? { width: customWidth } : {};
+    const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps(this.props, divProperties);
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
@@ -133,11 +133,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       focusTrapZoneClassName: focusTrapZoneProps ? focusTrapZoneProps.className : undefined,
       hasCloseButton,
       headerClassName,
-      isAnimating: this.state.isAnimating,
+      isAnimating,
       isFooterAtBottom,
       isFooterSticky,
       isOnRightSide,
-      isOpen: this.state.isOpen,
+      isOpen,
       isHiddenOnDismiss,
       type
     });
@@ -238,6 +238,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   }
 
   private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
+    const { onRenderNavigationContent = this._onRenderNavigationContent } = this.props;
+    return <div className={this._classNames.navigation}>{onRenderNavigationContent(props, this._onRenderNavigationContent)}</div>;
+  };
+
+  private _onRenderNavigationContent = (props: IPanelProps): JSX.Element | null => {
     const { closeButtonAriaLabel, hasCloseButton } = props;
     const theme = getTheme();
     if (hasCloseButton) {
@@ -246,28 +251,26 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
       // : undefined;
       return (
-        <div className={this._classNames.navigation}>
-          <IconButton
-            // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-            // className={iconButtonStyles}
-            styles={{
-              root: {
-                height: 'auto',
-                width: '44px',
-                color: theme.palette.neutralSecondary,
-                fontSize: IconFontSizes.large
-              },
-              rootHovered: {
-                color: theme.palette.neutralPrimary
-              }
-            }}
-            className={this._classNames.closeButton}
-            onClick={this._onPanelClick}
-            ariaLabel={closeButtonAriaLabel}
-            data-is-visible={true}
-            iconProps={{ iconName: 'Cancel' }}
-          />
-        </div>
+        <IconButton
+          // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
+          // className={iconButtonStyles}
+          styles={{
+            root: {
+              height: 'auto',
+              width: '44px',
+              color: theme.palette.neutralSecondary,
+              fontSize: IconFontSizes.large
+            },
+            rootHovered: {
+              color: theme.palette.neutralPrimary
+            }
+          }}
+          className={this._classNames.closeButton}
+          onClick={this._onPanelClick}
+          ariaLabel={closeButtonAriaLabel}
+          data-is-visible={true}
+          iconProps={{ iconName: 'Cancel' }}
+        />
       );
     }
     return null;

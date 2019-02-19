@@ -1,8 +1,8 @@
-import * as React from 'react';
 import { Customizer, getId } from '@uifabric/utilities';
-import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
 export interface ILayerCustomizedExampleState {
   showPanel: boolean;
@@ -38,7 +38,7 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
               : {}
           }
         >
-          {this.state.showPanel ? (
+          {this.state.showPanel && (
             <Panel
               isOpen={true}
               hasCloseButton={true}
@@ -49,8 +49,6 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
               }}
               onDismissed={this._onDismissPanel}
             />
-          ) : (
-            <div />
           )}
         </Customizer>
         <LayerHost

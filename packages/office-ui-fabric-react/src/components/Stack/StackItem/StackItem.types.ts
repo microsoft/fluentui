@@ -14,11 +14,6 @@ export type IStackItemStylesReturnType = ReturnType<Extract<IStackItemComponent[
 
 export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
   /**
-   * Defines how to render the StackItem.
-   */
-  as?: string | React.ReactType<IStackItemProps>;
-
-  /**
    * Defines a CSS class name used to style the StackItem.
    */
   className?: string;
