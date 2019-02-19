@@ -87,7 +87,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -169,7 +168,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -251,7 +249,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -333,7 +330,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -630,7 +626,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -712,7 +707,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -832,7 +826,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -888,7 +881,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -944,7 +936,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1000,7 +991,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1120,7 +1110,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1379,7 +1368,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1499,7 +1487,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;
-                      max-width: 160px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;

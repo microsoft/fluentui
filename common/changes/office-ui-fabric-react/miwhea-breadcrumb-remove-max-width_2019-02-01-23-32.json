@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make ChoiceGroupOptions stylable",
-      "type": "minor"
+      "comment": "Remove maximum width from Breadcrumb items",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

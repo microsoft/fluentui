@@ -10,13 +10,18 @@ export class TooltipDisplayExample extends BaseComponent<any, any> {
           In some cases when TooltipHost is wrapping inline-block or inline elements the positioning of the Tooltip may be off so it is
           recommended to modify the display property of the TooltipHost as in the following example.
         </p>
-        <TooltipHost content="Incorrect positioning" id="myID" calloutProps={{ gapSpace: 0 }}>
-          <button style={{ fontSize: '2em' }} aria-describedby="myID">
+        <TooltipHost content="Incorrect positioning" id="myID-display1" calloutProps={{ gapSpace: 0 }}>
+          <button style={{ fontSize: '2em' }} aria-labelledby="myID-display1">
             Hover Over Me
           </button>
         </TooltipHost>{' '}
-        <TooltipHost content="Correct positioning" styles={{ root: { display: 'inline-block' } }} id="myID" calloutProps={{ gapSpace: 0 }}>
-          <button style={{ fontSize: '2em' }} aria-describedby="myID">
+        <TooltipHost
+          content="Correct positioning"
+          styles={{ root: { display: 'inline-block' } }}
+          id="myID-display2"
+          calloutProps={{ gapSpace: 0 }}
+        >
+          <button style={{ fontSize: '2em' }} aria-labelledby="myID-display2">
             Hover Over Me
           </button>
         </TooltipHost>
