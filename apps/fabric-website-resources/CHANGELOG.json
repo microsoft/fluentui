@@ -2,6 +2,31 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.11.1",
+      "tag": "@uifabric/fabric-website-resources_v6.11.1",
+      "date": "Mon, 18 Feb 2019 13:38:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove IColorPickerProps.onColorChanged usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "5d6e63cd495261e37cd9e322ff2571182d3f8dd2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.14.1 <1.0.0` to `>=0.14.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.3.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.140.0 <7.0.0` to `>=6.141.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.0",
       "tag": "@uifabric/fabric-website-resources_v6.11.0",
       "date": "Fri, 15 Feb 2019 17:41:16 GMT",

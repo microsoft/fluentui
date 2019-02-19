@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 15 Feb 2019 13:33:05 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Feb 2019 13:38:30 GMT and should not be manually modified.
+
+## 0.14.2
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Dialog: Adjust right padding of title
 
 ## 0.14.1
 Fri, 15 Feb 2019 13:33:05 GMT

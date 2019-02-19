@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "6.4.0",
+      "tag": "@uifabric/icons_v6.4.0",
+      "date": "Mon, 18 Feb 2019 13:38:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Deprecate iconNames due to const enum usage.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "445121a4adac8e479443398a48f5466f0a7b7fc9"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.3.0",
       "tag": "@uifabric/icons_v6.3.0",
       "date": "Tue, 20 Nov 2018 20:12:42 GMT",
