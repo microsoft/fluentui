@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/experiments",
       "comment": "Update Card styles and add tokens",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
