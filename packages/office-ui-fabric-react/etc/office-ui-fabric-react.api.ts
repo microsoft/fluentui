@@ -3062,7 +3062,7 @@ module IconFontSizes {
 
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 enum IconNames {
   // (undocumented)
   AADLogo = "AADLogo",
