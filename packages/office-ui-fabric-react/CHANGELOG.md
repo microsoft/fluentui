@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 Feb 2019 13:38:30 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Feb 2019 13:37:02 GMT and should not be manually modified.
+
+## 6.141.1
+Tue, 19 Feb 2019 13:37:02 GMT
+
+### Patches
+
+- Set colors for unknown persona coin to fixed values
 
 ## 6.141.0
 Mon, 18 Feb 2019 13:38:30 GMT
