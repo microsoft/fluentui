@@ -10,6 +10,9 @@ const AnnouncedAsynchronousExampleCode = require('!raw-loader!@uifabric/experime
 import { AnnouncedBulkLongRunningExample } from './examples/Announced.BulkLongRunning.Example';
 const AnnouncedBulkLongRunningExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.BulkLongRunning.Example.tsx') as string;
 
+import { AnnouncedQuickActionsExample } from './examples/Announced.QuickActions.Example';
+const AnnouncedQuickActionsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
+
 export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -18,6 +21,12 @@ export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="Announced"
         exampleCards={
           <div>
+            <ExampleCard
+              title="Announced component used for quick actions"
+              code={AnnouncedQuickActionsExampleCode}
+            >
+              <AnnouncedQuickActionsExample />
+            </ExampleCard>
             <ExampleCard
               title="Announced component used for asynchronous resolution of contacts or search results"
               code={AnnouncedSearchResultsExampleCode}
