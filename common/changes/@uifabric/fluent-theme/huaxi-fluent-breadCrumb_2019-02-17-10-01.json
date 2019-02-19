@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fluent-theme",
-      "comment": "fixed fluent breadcrumb style, apply bold font to last-child",
+      "comment": "Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.",
       "type": "patch"
     }
   ],
