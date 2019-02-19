@@ -9,7 +9,7 @@ import {
 } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { ISize, fitContentToBounds } from 'office-ui-fabric-react';
+import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
 import { FabricDecorator } from '../utilities';
 
 interface IDocumentItem { name: string; activity: string; }
@@ -24,8 +24,7 @@ const DocumentTileBox = (props: React.Props<{}>): JSX.Element => {
     <div style={{
       position: 'relative',
       width: '176px',
-      height: '171px',
-      fontFamily: 'Segoe UI'
+      height: '171px'
     }}>{props.children}</div>
   );
 };
@@ -69,6 +68,9 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
 };
 
 storiesOf('Tile', module)
+  .addDecorator(story => (
+    <Fabric>{story()}</Fabric>
+  ))
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
