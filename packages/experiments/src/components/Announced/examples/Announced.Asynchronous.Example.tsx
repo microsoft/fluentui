@@ -113,7 +113,6 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
 
   private _renderAnnounced(): JSX.Element | undefined {
     const { announced } = this.state;
-
     return announced;
   }
 

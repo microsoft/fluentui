@@ -74,16 +74,16 @@ const _names: string[] = [
 
 const nullFunction = (): null => null;
 
-export class AnnouncedQuickActionsExample extends React.Component<
-  {},
-  {
-    items: { key: number; name?: string; modified?: number; modifiedby?: string; filesize?: string }[];
-    selectionDetails: {};
-    showItemIndexInView: boolean;
-    renameDialogOpen: boolean;
-    dialogContent: JSX.Element | undefined;
-  }
-> {
+export interface IAnnouncedQuickActionsExampleState {
+  items: { key: number; name?: string; modified?: number; modifiedby?: string; filesize?: string }[];
+  selectionDetails: {};
+  showItemIndexInView: boolean;
+  renameDialogOpen: boolean;
+  dialogContent: JSX.Element | undefined;
+  announced?: JSX.Element;
+}
+
+export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnouncedQuickActionsExampleState> {
   private _selection: Selection;
   private _detailsList = createRef<IDetailsList>();
   private _textField = createRef<ITextField>();
@@ -112,13 +112,15 @@ export class AnnouncedQuickActionsExample extends React.Component<
     this._deleteItem = this._deleteItem.bind(this);
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
     this._closeRenameDialog = this._closeRenameDialog.bind(this);
+    this._renderAnnounced = this._renderAnnounced.bind(this);
 
     this.state = {
       items: _items,
       selectionDetails: this._getSelectionDetails(),
       showItemIndexInView: false,
       renameDialogOpen: false,
-      dialogContent: undefined
+      dialogContent: undefined,
+      announced: undefined
     };
   }
 
@@ -127,7 +129,7 @@ export class AnnouncedQuickActionsExample extends React.Component<
 
     return (
       <div>
-        <Announced message="Mail deleted" />
+        {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             componentRef={this._detailsList}
@@ -198,8 +200,12 @@ export class AnnouncedQuickActionsExample extends React.Component<
     }
   }
 
+  private _renderAnnounced(): JSX.Element | undefined {
+    const { announced } = this.state;
+    return announced;
+  }
+
   private _deleteItem(index: number): void {
-    console.log('item index to delete: ' + index);
     const items = this.state.items;
     items.splice(items.indexOf(items[index]), 1);
     for (let i = 0; i < items.length; i++) {
@@ -207,7 +213,8 @@ export class AnnouncedQuickActionsExample extends React.Component<
     }
     this.setState(
       {
-        items: items
+        items: items,
+        announced: <Announced message={`Item deleted`} />
       },
       () => {
         if (this._detailsList.current) {
@@ -240,7 +247,8 @@ export class AnnouncedQuickActionsExample extends React.Component<
       this.setState(
         {
           renameDialogOpen: false,
-          items: items
+          items: items,
+          announced: <Announced message={`Item renamed`} />
         },
         () => {
           if (this._detailsList.current) {
