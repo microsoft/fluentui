@@ -83,7 +83,7 @@ export class AnnouncedQuickActionsExample extends React.Component<
     renameDialogOpen: boolean;
     dialogContent: JSX.Element | undefined;
   }
-  > {
+> {
   private _selection: Selection;
   private _detailsList = createRef<IDetailsList>();
   private _textField = createRef<ITextField>();
@@ -142,10 +142,7 @@ export class AnnouncedQuickActionsExample extends React.Component<
             onRenderItemColumn={this._onRenderItemColumn}
             onRenderRow={this._onRenderRow}
           />
-          <Dialog
-            hidden={!renameDialogOpen}
-            onDismiss={this._closeRenameDialog}
-          >
+          <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog}>
             {dialogContent}
           </Dialog>
         </MarqueeSelection>
@@ -226,13 +223,9 @@ export class AnnouncedQuickActionsExample extends React.Component<
       renameDialogOpen: true,
       dialogContent: (
         <>
-          <TextField
-            componentRef={this._textField}
-            label='Rename'
-            value={item.name}
-          />
+          <TextField componentRef={this._textField} label="Rename" value={item.name} />
           <DialogFooter>
-            <PrimaryButton onClick={() => this._updateItemName(item, index)} text="Save" />
+            <PrimaryButton onClick={this._updateItemName.bind(this, item, index)} text="Save" />
           </DialogFooter>
         </>
       )
