@@ -154,7 +154,7 @@ export function getScrollbarWidth(): number {
  */
 export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null {
   let el: HTMLElement | null = startingElement;
-
+  const overflowRegex = /(auto|scroll)/;
   // First do a quick scan for the scrollable attribute.
   while (el && el !== document.body) {
     let style = getComputedStyle(el);
@@ -164,7 +164,6 @@ export function findScrollableParent(startingElement: HTMLElement | null): HTMLE
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) === 'true') {
       return el;
     } else {
-      const overflowRegex = /(auto|scroll)/;
       if (style.position === 'absolute' || style.position === 'static') {
         el = el.parentElement;
         continue;
