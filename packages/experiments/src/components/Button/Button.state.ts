@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IButtonProps, IButtonViewProps } from './Button.types';
 import { BaseState } from '../../utilities/BaseState';
 
-export type IButtonState = Pick<IButtonViewProps, 'expanded' | 'onClick' | 'onMenuDismiss' | 'menuTarget'>;
+export type IButtonState = Pick<IButtonViewProps, 'expanded' | 'onClick' | 'onMenuDismiss' | 'menuTarget' | 'onSecondaryActionClick'>;
 
 export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButtonState> {
   constructor(props: ButtonState['props']) {
@@ -13,6 +13,7 @@ export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButt
     this.state = {
       expanded: !!props.defaultExpanded,
       onClick: this._onClick,
+      onSecondaryActionClick: this._onSecondaryActionClick,
       onMenuDismiss: this._onMenuDismiss,
       menuTarget: undefined
     };
@@ -25,9 +26,9 @@ export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButt
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    const { disabled, menu, onClick } = this.props;
+    const { disabled, menu, split, primaryActionDisabled, onClick } = this.props;
 
-    if (!disabled) {
+    if (!disabled && !primaryActionDisabled) {
       if (onClick) {
         onClick(ev);
 
@@ -36,12 +37,23 @@ export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButt
         }
       }
 
-      if (menu) {
+      if (!split && menu) {
         this.setState({
           expanded: !this.state.expanded,
           menuTarget: ev.currentTarget
         });
       }
+    }
+  };
+
+  private _onSecondaryActionClick = (ev: React.MouseEvent<HTMLElement>) => {
+    const { disabled, menu, split } = this.props;
+
+    if (!disabled && menu && split) {
+      this.setState({
+        expanded: !this.state.expanded,
+        menuTarget: ev.currentTarget
+      });
     }
   };
 }

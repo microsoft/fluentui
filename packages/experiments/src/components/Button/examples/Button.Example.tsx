@@ -10,6 +10,10 @@ const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
+const alertClicked = (): void => {
+  alert('Clicked');
+};
+
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   <Stack horizontal disableShrink gap={buttonGap}>
     {props.children}
@@ -31,13 +35,28 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button disabled primary content="Primary disabled button" />
               </ButtonStack>
               <ButtonStack>
-                <Button split icon="Add" content="Default split button" menu={buttonMenu} />
-                <Button split disabled icon="Add" content="Disabled split button" menu={buttonMenu} />
-                <Button split primary icon="Add" content="Primary split button" menu={buttonMenu} />
-                <Button split disabled primary icon="Add" content="Primary disabled split button" menu={buttonMenu} />
+                <Button split icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
+                <Button split disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
+                <Button split primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
+                <Button
+                  split
+                  disabled
+                  primary
+                  icon="Add"
+                  content="Primary disabled split button"
+                  menu={buttonMenu}
+                  onClick={alertClicked}
+                />
               </ButtonStack>
               <ButtonStack>
-                <Button split primaryActionDisabled icon="Add" content="First action disabled split button" menu={buttonMenu} />
+                <Button
+                  split
+                  primaryActionDisabled
+                  icon="Add"
+                  content="First action disabled split button"
+                  menu={buttonMenu}
+                  onClick={alertClicked}
+                />
                 <Button
                   split
                   primaryActionDisabled
@@ -45,6 +64,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                   icon="Add"
                   content="First action disabled primary split button"
                   menu={buttonMenu}
+                  onClick={alertClicked}
                 />
               </ButtonStack>
               <ButtonStack>

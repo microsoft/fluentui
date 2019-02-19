@@ -136,7 +136,7 @@ export interface IButtonViewProps extends IButtonProps {
   /**
    * Defines an event callback that is triggered when the secondary action of a Split Button is clicked.
    */
-  onSplitClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+  onSecondaryActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface IButtonTokens {
