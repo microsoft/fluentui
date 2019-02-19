@@ -8,7 +8,7 @@ export class PivotIconCountExample extends React.Component<any, any> {
     return (
       <div>
         <Pivot>
-          <PivotItem linkText="My Files" itemCount={42} itemIcon="Emoji2">
+          <PivotItem headerText="My Files" itemCount={42} itemIcon="Emoji2">
             <Label>Pivot #1</Label>
           </PivotItem>
           <PivotItem itemCount={23} itemIcon="Recent">
@@ -17,10 +17,10 @@ export class PivotIconCountExample extends React.Component<any, any> {
           <PivotItem itemIcon="Globe">
             <Label>Pivot #3</Label>
           </PivotItem>
-          <PivotItem linkText="Shared with me" itemIcon="Ringer" itemCount={1}>
+          <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
             <Label>Pivot #4</Label>
           </PivotItem>
-          <PivotItem linkText="Customized Rendering" itemIcon="Globe" itemCount={10} onRenderItemLink={this._customRenderer}>
+          <PivotItem headerText="Customized Rendering" itemIcon="Globe" itemCount={10} onRenderItemLink={this._customRenderer}>
             <Label>Customized Rendering</Label>
           </PivotItem>
         </Pivot>

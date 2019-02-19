@@ -325,7 +325,7 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
                 <code>&lt;body&gt;</code>, to set the font-family for all Fabric typography classes used within that element.
               </p>
               <CodeBlock language="html" isLightTheme={true}>
-                {`<body class="ms-Fabric">
+                {`<body class="ms-Fabric" dir="ltr">
   <span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>
 </body>`}
               </CodeBlock>

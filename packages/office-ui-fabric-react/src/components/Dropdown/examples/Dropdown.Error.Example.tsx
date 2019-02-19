@@ -14,7 +14,6 @@ export class DropdownErrorExample extends BaseComponent<{}, {}> {
         <Dropdown
           placeholder="Select an Option"
           label="Error message example:"
-          id="Errormessagedrop1"
           ariaLabel="Error message dropdown example"
           options={[
             { key: 'A', text: 'Option a' },

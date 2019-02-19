@@ -2,6 +2,75 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.11.1",
+      "tag": "@uifabric/fabric-website-resources_v6.11.1",
+      "date": "Mon, 18 Feb 2019 13:38:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove IColorPickerProps.onColorChanged usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "5d6e63cd495261e37cd9e322ff2571182d3f8dd2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.14.1 <1.0.0` to `>=0.14.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.3.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.140.0 <7.0.0` to `>=6.141.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/fabric-website-resources_v6.11.0",
+      "date": "Fri, 15 Feb 2019 17:41:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Adding StackPage to AppDefinition.tsx.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "040ffd402e7ac92ba9d6640f6d9c6291be762a29"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.1 <7.0.0` to `>=6.140.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.1",
+      "tag": "@uifabric/fabric-website-resources_v6.10.1",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Switch PivotItems to use headerText not linkText",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "43e45d90f0c5cad56cf1b35c8a41361176a30b40"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.0",
       "tag": "@uifabric/fabric-website-resources_v6.10.0",
       "date": "Mon, 21 Jan 2019 13:36:01 GMT",

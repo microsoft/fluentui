@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, getId, allowScrollOnElement } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
-import { animationDuration, getOverlayStyles } from './Modal.styles';
+import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
@@ -159,7 +159,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} styles={getOverlayStyles} />
+              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />
               <FocusTrapZone
                 componentRef={this._focusTrapZone}
                 className={classNames.main}

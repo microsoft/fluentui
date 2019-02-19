@@ -1,12 +1,12 @@
 import { ISubwayNavStyles, ISubwayNavStyleProps } from './SubwayNav.types';
-import { DefaultPalette } from 'office-ui-fabric-react';
+import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react';
 
 const regularFontSize = 14;
 const regularLineHeight = 20;
-const fontWeight = 300;
+const fontWeight = DefaultFontStyles.smallPlus.fontWeight;
 const stepIconSize = '16px';
 const subStepIconSize = '8px';
-const commonFontFamily = 'Segoe UI';
+const commonFontFamily = DefaultFontStyles.medium.fontFamily;
 const subwayNavBaseColor = '#333333';
 
 export const getSubwayNavStyles = (props: ISubwayNavStyleProps): ISubwayNavStyles => {
