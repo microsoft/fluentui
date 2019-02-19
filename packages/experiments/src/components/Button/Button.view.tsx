@@ -19,6 +19,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
     menuTarget,
     split,
     onClick,
+    onAltDownKeyDown,
     onSecondaryActionClick,
     ...rest
   } = props;
@@ -44,6 +45,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       <Slots.root
         type="button" // stack doesn't take in native button props
         role="button"
+        onKeyDown={onAltDownKeyDown}
         {...buttonProps}
         aria-disabled={disabled}
       >
@@ -80,6 +82,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       type="button" // stack doesn't take in native button props
       role="button"
       onClick={onClick}
+      onKeyDown={onAltDownKeyDown}
       {...buttonProps}
       aria-disabled={disabled}
     >

@@ -2,7 +2,10 @@ import * as React from 'react';
 import { IButtonProps, IButtonViewProps } from './Button.types';
 import { BaseState } from '../../utilities/BaseState';
 
-export type IButtonState = Pick<IButtonViewProps, 'expanded' | 'onClick' | 'onMenuDismiss' | 'menuTarget' | 'onSecondaryActionClick'>;
+export type IButtonState = Pick<
+  IButtonViewProps,
+  'expanded' | 'onClick' | 'onAltDownKeyDown' | 'onMenuDismiss' | 'menuTarget' | 'onSecondaryActionClick'
+>;
 
 export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButtonState> {
   constructor(props: ButtonState['props']) {
@@ -13,6 +16,7 @@ export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButt
     this.state = {
       expanded: !!props.defaultExpanded,
       onClick: this._onClick,
+      onAltDownKeyDown: this._onAltDownKeyDown,
       onSecondaryActionClick: this._onSecondaryActionClick,
       onMenuDismiss: this._onMenuDismiss,
       menuTarget: undefined
@@ -43,6 +47,16 @@ export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButt
           menuTarget: ev.currentTarget
         });
       }
+    }
+  };
+
+  private _onAltDownKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    const { disabled, menu } = this.props;
+    if (!disabled && menu && ev.altKey && ev.keyCode === 40) {
+      this.setState({
+        expanded: !this.state.expanded,
+        menuTarget: ev.currentTarget
+      });
     }
   };
 

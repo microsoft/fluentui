@@ -120,6 +120,11 @@ export interface IButtonProps
    * Defines an event callback that is triggered when the Button is clicked.
    */
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+
+  /**
+   * Defines an event callback that is triggered when the Alt+Down keypress is made in Buttons with a menu.
+   */
+  onAltDownKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 export interface IButtonViewProps extends IButtonProps {
