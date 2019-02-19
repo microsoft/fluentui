@@ -4,6 +4,16 @@ import { GlobalSettings } from '../GlobalSettings';
 export type ISettings = { [key: string]: any };
 export type ISettingsFunction = (settings: ISettings) => ISettings;
 
+/**
+ * @deprecated Use ISettings.
+ */
+export type Settings = ISettings;
+
+/**
+ * @deprecated Use ISettingsFunction.
+ */
+export type SettingsFunction = ISettingsFunction;
+
 export interface ICustomizations {
   settings: ISettings;
   scopedSettings: { [key: string]: ISettings };
