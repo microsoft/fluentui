@@ -21,10 +21,7 @@ export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName="Announced"
         exampleCards={
           <div>
-            <ExampleCard
-              title="Announced component used for quick actions"
-              code={AnnouncedQuickActionsExampleCode}
-            >
+            <ExampleCard title="Announced component used for quick actions" code={AnnouncedQuickActionsExampleCode}>
               <AnnouncedQuickActionsExample />
             </ExampleCard>
             <ExampleCard

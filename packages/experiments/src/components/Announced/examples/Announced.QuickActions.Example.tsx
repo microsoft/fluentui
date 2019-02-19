@@ -14,11 +14,11 @@ import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: {
-  key: number,
-  name: string,
-  modifiedby: string,
-  modified: number,
-  filesize: string
+  key: number;
+  name: string;
+  modifiedby: string;
+  modified: number;
+  filesize: string;
 }[] = [];
 
 const _columns: IColumn[] = [
@@ -75,7 +75,7 @@ const nullFunction = (): null => null;
 export class AnnouncedQuickActionsExample extends React.Component<
   {},
   {
-    items: { key: number, name?: string, modified?: number, modifiedby?: string, filesize?: string }[];
+    items: { key: number; name?: string; modified?: number; modifiedby?: string; filesize?: string }[];
     selectionDetails: {};
     showItemIndexInView: boolean;
   }
@@ -194,10 +194,10 @@ export class AnnouncedQuickActionsExample extends React.Component<
 
   private _deleteItem(key: number): void {
     console.log('item key to delete: ' + key);
-    var items = this.state.items;
+    const items = this.state.items;
     items.splice(items.indexOf(items[key]), 1);
     for (let i = 0; i < items.length; i++) {
-      console.log(i + ": " + items[i].name);
+      console.log(i + ': ' + items[i].name);
     }
     this.setState(
       {
@@ -205,7 +205,7 @@ export class AnnouncedQuickActionsExample extends React.Component<
       },
       () => {
         if (this._detailsList.current) {
-          this._detailsList.current.forceUpdate()
+          this._detailsList.current.forceUpdate();
         }
       }
     );
