@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Fixed autoscroll issue for all browsers.",
+      "comment": "DetailsList: Fixed autoscroll issue for all browsers.",
       "type": "patch"
     }
   ],
