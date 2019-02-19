@@ -27,8 +27,7 @@ storiesOf('HoverCard', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-HoverCard-host')
-        .wait(2000)
+        .click('.ms-HoverCard-host')
         .snapshot('fully expanded with test content', { cropTo: '.ms-Layer' })
         .end()}
     >
