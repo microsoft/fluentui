@@ -409,56 +409,5 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
       padding: '8px 0px',
       width: 1
     }
-    // splitMenuButton: [
-    //   getFocusStyle(theme),
-    //   theme.fonts.medium,
-    //   {
-    //     backgroundColor: tokens.splitBackgroundColor,
-    //     borderColor: tokens.borderColor,
-    //     borderRadius: tokens.borderRadius,
-    //     borderStyle: 'solid',
-    //     borderWidth: tokens.borderWidth,
-    //     boxSizing: 'border-box',
-    //     color: tokens.splitColor,
-    //     cursor: 'default',
-    //     display: 'inline-block',
-    //     fontSize: tokens.textSize,
-    //     fontWeight: tokens.textWeight,
-    //     height: tokens.height,
-    //     justifyContent: 'center',
-    //     margin: 0,
-    //     minHeight: tokens.minHeight,
-    //     overflow: 'hidden',
-    //     padding: 0,
-    //     textDecoration: 'none',
-    //     textAlign: 'center',
-    //     userSelect: 'none',
-    //     verticalAlign: 'baseline',
-
-    //     selectors: {
-    //       ':hover': {
-    //         backgroundColor: tokens.splitBackgroundColorHovered,
-    //         color: tokens.splitColorHovered,
-    //         borderColor: tokens.borderColorHovered
-    //       },
-    //       ':hover:active': {
-    //         backgroundColor: tokens.splitBackgroundColorPressed,
-    //         color: tokens.splitColorPressed,
-    //         borderColor: tokens.borderColorPressed
-    //       },
-    //       [`:hover .${globalClassNames.icon}`]: {
-    //         color: tokens.iconColorHovered
-    //       },
-    //       [`:hover:active .${globalClassNames.icon}`]: {
-    //         color: tokens.iconColorPressed
-    //       }
-    //     }
-    //   },
-    //   className
-    // ],
-    // splitStack: {
-    //   padding: tokens.splitContentPadding,
-    //   height: '100%'
-    // }
   };
 };
