@@ -10,7 +10,9 @@ import {
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
+import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: {
@@ -78,10 +80,13 @@ export class AnnouncedQuickActionsExample extends React.Component<
     items: { key: number; name?: string; modified?: number; modifiedby?: string; filesize?: string }[];
     selectionDetails: {};
     showItemIndexInView: boolean;
+    renameDialogOpen: boolean;
+    dialogContent: JSX.Element | undefined;
   }
   > {
   private _selection: Selection;
   private _detailsList = createRef<IDetailsList>();
+  private _textField = createRef<ITextField>();
 
   constructor(props: {}) {
     super(props);
@@ -106,16 +111,19 @@ export class AnnouncedQuickActionsExample extends React.Component<
     this._onRenderRow = this._onRenderRow.bind(this);
     this._deleteItem = this._deleteItem.bind(this);
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
+    this._closeRenameDialog = this._closeRenameDialog.bind(this);
 
     this.state = {
       items: _items,
       selectionDetails: this._getSelectionDetails(),
-      showItemIndexInView: false
+      showItemIndexInView: false,
+      renameDialogOpen: false,
+      dialogContent: undefined
     };
   }
 
   public render(): JSX.Element {
-    const { items } = this.state;
+    const { items, renameDialogOpen, dialogContent } = this.state;
 
     return (
       <div>
@@ -134,6 +142,12 @@ export class AnnouncedQuickActionsExample extends React.Component<
             onRenderItemColumn={this._onRenderItemColumn}
             onRenderRow={this._onRenderRow}
           />
+          <Dialog
+            hidden={!renameDialogOpen}
+            onDismiss={this._closeRenameDialog}
+          >
+            {dialogContent}
+          </Dialog>
         </MarqueeSelection>
       </div>
     );
@@ -163,23 +177,18 @@ export class AnnouncedQuickActionsExample extends React.Component<
               role="button"
               aria-haspopup={true}
               onRenderMenuIcon={nullFunction}
-              style={{ float: 'right', height: 'inherit' }}
+              styles={{ root: { float: 'right', height: 'inherit' } }}
               menuProps={{
                 items: [
                   {
-                    key: 'share',
-                    text: 'Share',
-                    onClick: () => console.log('shared!')
-                  },
-                  {
                     key: 'delete',
                     text: 'Delete',
-                    onClick: () => this._deleteItem(item.key)
+                    onClick: () => this._deleteItem(index)
                   },
                   {
                     key: 'rename',
                     text: 'Rename',
-                    onClick: () => console.log('renamed!')
+                    onClick: () => this._renameItem(item, index)
                   }
                 ]
               }}
@@ -192,10 +201,10 @@ export class AnnouncedQuickActionsExample extends React.Component<
     }
   }
 
-  private _deleteItem(key: number): void {
-    console.log('item key to delete: ' + key);
+  private _deleteItem(index: number): void {
+    console.log('item index to delete: ' + index);
     const items = this.state.items;
-    items.splice(items.indexOf(items[key]), 1);
+    items.splice(items.indexOf(items[index]), 1);
     for (let i = 0; i < items.length; i++) {
       console.log(i + ': ' + items[i].name);
     }
@@ -210,6 +219,51 @@ export class AnnouncedQuickActionsExample extends React.Component<
       }
     );
     return;
+  }
+
+  private _renameItem(item: any, index: number): void {
+    this.setState({
+      renameDialogOpen: true,
+      dialogContent: (
+        <>
+          <TextField
+            componentRef={this._textField}
+            label='Rename'
+            value={item.name}
+          />
+          <DialogFooter>
+            <PrimaryButton onClick={() => this._updateItemName(item, index)} text="Save" />
+          </DialogFooter>
+        </>
+      )
+    });
+    return;
+  }
+
+  private _updateItemName(item: any, index: number): void {
+    if (this._textField && this._textField.current) {
+      const items = this.state.items;
+      items[index].name = this._textField.current.value;
+      this.setState(
+        {
+          renameDialogOpen: false,
+          items: items
+        },
+        () => {
+          if (this._detailsList.current) {
+            this._detailsList.current.forceUpdate();
+          }
+        }
+      );
+    } else {
+      return;
+    }
+  }
+
+  private _closeRenameDialog(): void {
+    this.setState({
+      renameDialogOpen: false
+    });
   }
 
   private _getSelectionDetails(): string {
