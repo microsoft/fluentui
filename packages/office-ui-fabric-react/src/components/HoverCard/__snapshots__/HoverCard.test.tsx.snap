@@ -135,7 +135,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               "overflowY": "hidden",
             }
           }
-          tabIndex={-1}
         >
           <div
             onFocusCapture={[Function]}
@@ -298,7 +297,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               "overflowY": undefined,
             }
           }
-          tabIndex={-1}
         >
           <div
             onFocusCapture={[Function]}
