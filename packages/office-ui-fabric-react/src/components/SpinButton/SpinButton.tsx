@@ -2,7 +2,15 @@ import * as React from 'react';
 import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { BaseComponent, getId, KeyCodes, customizable, calculatePrecision, precisionRound } from '../../Utilities';
+import {
+  BaseComponent,
+  getId,
+  KeyCodes,
+  customizable,
+  calculatePrecision,
+  precisionRound,
+  mergeAriaAttributeValues
+} from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
@@ -123,6 +131,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       decrementButtonAriaLabel,
       title,
       ariaLabel,
+      ariaDescribedBy,
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
@@ -177,7 +186,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
-                aria-describedby={keytipAttributes['aria-describedby']}
+                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 onBlur={this._onBlur}
                 ref={this._input}
                 onFocus={this._onFocus}
