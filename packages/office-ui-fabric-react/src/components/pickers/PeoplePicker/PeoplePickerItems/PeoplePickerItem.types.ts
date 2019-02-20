@@ -24,7 +24,7 @@ export interface IPeoplePickerItemSelectedProps
 
 /** Props needed to construct PeoplePickerItemSelected styles. */
 export type IPeoplePickerItemSelectedStyleProps = Required<Pick<IPeoplePickerItemSelectedProps, 'theme'>> &
-  Pick<IPeoplePickerItemSelectedProps, 'className' | 'selected'> & {
+  Pick<IPeoplePickerItemSelectedProps, 'className' | 'selected' | 'disabled'> & {
     /** Whether it's invalid. */
     invalid?: boolean;
   };

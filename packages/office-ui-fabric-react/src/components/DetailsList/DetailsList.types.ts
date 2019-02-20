@@ -475,6 +475,10 @@ export interface IColumn {
    * ARIA label for the status of this column when filtered.
    */
   filterAriaLabel?: string;
+  /**
+   * Indicates whether a dropdown menu is open so that the appropriate ARIA attributes are rendered.
+   */
+  isMenuOpen?: boolean;
 }
 
 /**

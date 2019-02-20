@@ -1,10 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
+import { RenderFunction } from '@storybook/react';
 
-// Wrap all stories in a Fabric component for proper styling
-
-// tslint:disable:jsx-ban-props
-export const FabricDecorator = story => (
+export const FabricDecorator = (story: RenderFunction) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
       {story()}
@@ -12,7 +10,7 @@ export const FabricDecorator = story => (
   </div>
 );
 
-export const FabricDecoratorTall = story => (
+export const FabricDecoratorTall = (story: RenderFunction) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
       {story()}
@@ -20,7 +18,7 @@ export const FabricDecoratorTall = story => (
   </div>
 );
 
-export const FabricDecoratorTallFixedWidth = story => (
+export const FabricDecoratorTallFixedWidth = (story: RenderFunction) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
       {story()}
@@ -28,7 +26,7 @@ export const FabricDecoratorTallFixedWidth = story => (
   </div>
 );
 
-export const FabricDecoratorFixedWidth = story => (
+export const FabricDecoratorFixedWidth = (story: RenderFunction) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story()}
@@ -36,7 +34,7 @@ export const FabricDecoratorFixedWidth = story => (
   </div>
 );
 
-export const FabricDecoratorFullWidth = story => (
+export const FabricDecoratorFullWidth = (story: RenderFunction) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
       {story()}

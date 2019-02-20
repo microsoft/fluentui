@@ -16,6 +16,7 @@ const ShimmerStylingExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
 const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+const ShimmerApplicationExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Application.Example.Codepen.txt') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
@@ -38,8 +39,9 @@ export const ShimmerPageProps: IDocPageProps = {
       view: <ShimmerLoadDataExample />
     },
     {
-      title: 'Shimmered Details List with 500 items simulating loading data in async manner.',
+      title: 'Shimmered DetailsList simulating loading data asynchronously',
       code: ShimmerApplicationExampleCode,
+      codepenJS: ShimmerApplicationExampleCodepen,
       view: <ShimmerApplicationExample />
     },
     {

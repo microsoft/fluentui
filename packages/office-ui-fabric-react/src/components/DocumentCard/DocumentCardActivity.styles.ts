@@ -6,7 +6,7 @@ const HORIZONTAL_PADDING = 16;
 const IMAGE_SIZE = 32;
 const PERSONA_TEXT_GUTTER = 8;
 
-export const GlobalClassNames = {
+export const DocumentCardActivityGlobalClassNames = {
   root: 'ms-DocumentCardActivity',
   multiplePeople: 'ms-DocumentCardActivity--multiplePeople',
   details: 'ms-DocumentCardActivity-details',
@@ -20,7 +20,7 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
   const { theme, className, multiplePeople } = props;
   const { palette } = theme;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(DocumentCardActivityGlobalClassNames, theme);
 
   return {
     root: [

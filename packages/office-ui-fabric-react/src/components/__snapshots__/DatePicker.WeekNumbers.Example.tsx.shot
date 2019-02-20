@@ -47,8 +47,11 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               padding-top: 0px;
               position: relative;
             }
-            @media screen and (-ms-high-contrast: active){& {
-              border-width: 2px;
+            & input[readonly] {
+              cursor: pointer;
+            }
+            & input::-ms-clear {
+              display: none;
             }
       >
         <div
@@ -140,7 +143,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               value=""
             />
             <i
-              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   msDatePickerDisabled
@@ -359,7 +361,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {

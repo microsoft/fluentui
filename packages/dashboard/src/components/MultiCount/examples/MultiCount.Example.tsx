@@ -29,6 +29,12 @@ export class MultiCountExample extends React.Component<{}, {}> {
         hideIcon: true
       }
     ];
-    return <MultiCount multiCountRows={rows} customMessage={'Updatd 6:20pm today'} />;
+
+    return (
+      <MultiCount multiCountRows={rows} customMessage={'Updatd 6:20pm today'} onClicked={this.onClicked} href={'https://www.google.com'} />
+    );
   }
+  public onClicked = () => {
+    alert('onclick ');
+  };
 }

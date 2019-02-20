@@ -39,16 +39,16 @@ task(
       condition('jest', () => !argv().min && !argv().prdeploy),
       series(
         'ts',
+        'build-codepen-examples',
         condition('lint-imports', () => !argv().min && !argv().prdeploy),
-        parallel(
-          condition('webpack', () => !argv().min),
-          condition('verify-api-extractor', () => !argv().min && !argv().prdeploy),
-          'build-codepen-examples'
-        )
+        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
       )
     )
   )
 );
+
+// Special case build for the serializer, which needs to absolutely run typescript and jest serially.
+task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));

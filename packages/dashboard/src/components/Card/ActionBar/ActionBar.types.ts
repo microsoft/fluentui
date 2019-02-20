@@ -33,6 +33,11 @@ export interface IAction {
    * Defines whether or not this button is primary
    */
   primary?: boolean;
+
+  /**
+   * Defines the id of the button
+   */
+  id?: string;
 }
 
 // This is an internal interface used for rendering the action button with unique key

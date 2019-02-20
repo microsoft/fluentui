@@ -1,4 +1,4 @@
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { CoachmarkBase } from './Coachmark.base';
@@ -18,6 +18,11 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ICoachmark>;
+
+  /**
+   * If provided, additional class name to provide on the root element.
+   */
+  className?: string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -176,10 +181,25 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
    * Callback when the Coachmark tries to close.
    */
   onDismiss?: (ev?: any) => void;
+
+  /**
+   * Theme provided by higher order component.
+   */
+  theme?: ITheme;
 }
 
 /** The props needed to construct styles. */
 export interface ICoachmarkStyleProps {
+  /**
+   * ClassName to provide on the root style area.
+   */
+  className?: string;
+
+  /**
+   * Current theme.
+   */
+  theme?: ITheme;
+
   /**
    * Is the Coachmark collapsed.
    * Deprecated, use `isCollapsed` instead.

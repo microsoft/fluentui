@@ -360,6 +360,19 @@ export const AppState: IAppState = {
                     )
                 },
                 {
+                  title: 'Large Grouped',
+                  url: '#/components/detailslist/largegrouped',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Large Grouped DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/DetailsList/DetailsListLargeGroupedComponentPage')
+                          .DetailsListLargeGroupedComponentPage
+                      )
+                    )
+                },
+                {
                   title: 'Custom Item Columns',
                   url: '#/components/detailslist/customitemcolumns',
                   isFilterable: true,
@@ -446,6 +459,16 @@ export const AppState: IAppState = {
                         require<any>('../../pages/Components/DetailsList/DetailsListNavigatingFocusComponentPage')
                           .DetailsListNavigatingFocusComponentPage
                       )
+                    )
+                },
+                {
+                  title: 'Shimmer',
+                  url: '#/components/detailslist/shimmer',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Shimmer DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListShimmerComponentPage').DetailsListShimmerComponentPage)
                     )
                 }
               ]
@@ -769,7 +792,7 @@ export const AppState: IAppState = {
         },
         {
           title: 'Customization',
-          url: '#/components/customization',
+          url: '#/components/customizations',
           className: 'componentsPage',
           isCategory: true,
           component: () => <LoadingComponent title="Customization" />,
@@ -778,7 +801,7 @@ export const AppState: IAppState = {
           pages: [
             {
               title: 'Themes',
-              url: '#/customizations/themes',
+              url: '#/components/customizations/themes',
               isFilterable: true,
               component: () => <LoadingComponent title="Themes" />,
               getComponent: cb =>
@@ -786,7 +809,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'Colors',
-              url: '#/customizations/colors',
+              url: '#/components/customizations/colors',
               isFilterable: true,
               component: () => <LoadingComponent title="Colors" />,
               getComponent: cb =>

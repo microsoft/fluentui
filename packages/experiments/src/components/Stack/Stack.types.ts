@@ -1,108 +1,115 @@
-import { IStyle } from '../../Styling';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 
+/**
+ * Defines a type made by the union of the different values that the align-items and justify-content flexbox
+ * properties can take.
+ */
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-export type IStackComponent = IStatelessComponent<IStackProps, IStackStyles>;
+export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
-export interface IStackProps extends IStyleableComponentProps<IStackProps, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+// These types are redundant with IStackComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens'], Function>>;
+export type IStackStylesReturnType = ReturnType<Extract<IStackComponent['styles'], Function>>;
+
+export type IStackSlot = ISlotProp<IStackProps>;
+
+export interface IStackSlots {
   /**
-   * How to render the Stack.
+   * Defines root slot of the component.
+   */
+  root?: IHTMLSlot;
+
+  /**
+   * Defines a slot that is placed inside the root slot in order to achieve wrapping. Only used when the wrap
+   * property is set to true.
+   */
+  inner?: IHTMLSlot;
+}
+
+export interface IStackProps
+  extends IStackSlots,
+    IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>,
+    React.HTMLAttributes<HTMLElement> {
+  /**
+   * Defines how to render the Stack.
    */
   as?: string | React.ReactType<IStackProps>;
 
   /**
-   * CSS class name used to style the Stack.
-   */
-  className?: string;
-
-  /**
-   * Inline styling.
-   */
-  style?: React.CSSProperties;
-
-  /**
-   * Whether to render Stack child elements horizontally.
+   * Defines whether to render Stack children horizontally.
    * @defaultvalue false
    */
   horizontal?: boolean;
 
   /**
-   * How to align Stack child elements horizontally (along the x-axis).
+   * Defines whether to render Stack children in the opposite direction (bottom-to-top if it's a vertical Stack and
+   * right-to-left if it's a horizontal Stack).
+   * @defaultvalue false
+   */
+  reversed?: boolean;
+
+  /**
+   * Defines how to align Stack children horizontally (along the x-axis).
    */
   horizontalAlign?: Alignment;
 
   /**
-   * How to align Stack child elements vertically (along the y-axis).
+   * Defines how to align Stack children vertically (along the y-axis).
    */
-  verticalAlign?: 'top' | 'bottom' | Alignment;
+  verticalAlign?: Alignment;
 
   /**
-   * Whether the Stack should take up 100% of the width of its parent.
-   */
-  horizontalFill?: boolean;
-
-  /**
-   * Whether the Stack should take up 100% of the height of its parent.
+   * Defines whether the Stack should take up 100% of the height of its parent.
+   * This property is required to be set to true when using the `grow` flag on children in vertical oriented Stacks.
+   * Stacks are rendered as block elements and grow horizontally to the container already.
+   * @defaultvalue false
    */
   verticalFill?: boolean;
 
   /**
-   * Whether Stack child elements should shrink to fit the available space.
+   * Defines whether Stack children should not shrink to fit the available space.
+   * @defaultvalue false
    */
-  shrinkItems?: boolean;
+  preventShrink?: boolean;
 
   /**
-   * How much to grow the Stack in proportion to its siblings.
+   * Defines how much to grow the Stack in proportion to its siblings.
    */
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
 
   /**
-   * Spacing between Stack child elements.
+   * Defines the spacing between Stack children.
+   * The property is specified as a value for 'row gap', followed optionally by a value for 'column gap'.
+   * If 'column gap' is omitted, it's set to the same value as 'row gap'.
    */
   gap?: number | string;
 
   /**
-   * Vertical gap between Stack child elements.
-   */
-  verticalGap?: number | string;
-
-  /**
-   * Maximum width of the Stack.
+   * Defines the maximum width that the Stack can take.
    */
   maxWidth?: number | string;
 
   /**
-   * Maximum height of the Stack.
+   * Defines the maximum height that the Stack can take.
    */
   maxHeight?: number | string;
 
   /**
-   * Padding of the Stack.
+   * Defines the inner padding of the Stack.
    */
   padding?: number | string;
 
   /**
-   * Whether Stack children should wrap onto multiple rows (HorizontalStacks only).
+   * Defines whether Stack children should wrap onto multiple rows or columns when they are about to overflow
+   * the size of the Stack.
    * @defaultvalue false
    */
   wrap?: boolean;
-
-  /**
-   * Custom styles to apply to the Stack.
-   */
-  styles?: IStyleFunctionOrObject<IStackProps, IStackStyles>;
 }
 
-export interface IStackStyles {
-  /**
-   * Style set for the root element.
-   */
-  root: IStyle;
+export interface IStackTokens {}
 
-  /**
-   * Style set for the inner element (only when the wrap property is true).
-   */
-  inner: IStyle;
-}
+export type IStackStyles = IComponentStyles<IStackSlots>;

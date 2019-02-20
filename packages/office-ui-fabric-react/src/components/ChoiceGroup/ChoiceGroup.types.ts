@@ -3,8 +3,14 @@ import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption/ChoiceGroupOption.types';
 
 export interface IChoiceGroup {
+  /**
+   * Gets the current checked option.
+   */
+  checkedOption: IChoiceGroupOption | undefined;
+
   /**
    * Sets focus to the choiceGroup.
    */
@@ -139,6 +145,11 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * The aria label of the ChoiceGroupOption for the benefit of screen readers.
    */
   ariaLabel?: string;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 }
 
 export interface IChoiceGroupStyleProps {

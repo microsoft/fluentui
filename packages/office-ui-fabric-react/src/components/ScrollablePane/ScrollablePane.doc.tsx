@@ -6,8 +6,10 @@ import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.Deta
 import { ScrollablePaneStatus } from './ScrollablePane.checklist';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
-
 const ScrollablePaneDetailsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
+
+const ScrollablePaneDefaultExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ScrollablePane/ScrollablePane.Default.Example.Codepen.txt') as string;
+const ScrollablePaneDetailsListExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ScrollablePane/ScrollablePane.DetailsList.Example.Codepen.txt') as string;
 
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
@@ -19,12 +21,14 @@ export const ScrollablePanePageProps: IDocPageProps = {
     {
       title: 'Default',
       code: ScrollablePaneDefaultExampleCode,
+      codepenJS: ScrollablePaneDefaultExampleCodepen,
       view: <ScrollablePaneDefaultExample />,
       isScrollable: false
     },
     {
       title: 'DetailsList Locked Header',
       code: ScrollablePaneDetailsListExampleCode,
+      codepenJS: ScrollablePaneDetailsListExampleCodepen,
       view: <ScrollablePaneDetailsListExample />,
       isScrollable: false
     }

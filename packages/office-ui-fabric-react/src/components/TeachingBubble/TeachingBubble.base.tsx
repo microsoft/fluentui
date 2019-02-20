@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import {
   ITeachingBubbleProps,
@@ -32,7 +32,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     }
   };
 
-  public rootElement = createRef<HTMLDivElement>();
+  public rootElement = React.createRef<HTMLDivElement>();
   private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
@@ -57,7 +57,8 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
   }
 
   public render(): JSX.Element {
-    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide, styles, theme } = this.props;
+    const { onDismiss, ...rest } = this.props;
+    const { calloutProps: setCalloutProps, targetElement, isWide, styles, theme } = rest;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
     const stylesProps: ITeachingBubbleStyleProps = {
       theme: theme!,
@@ -80,7 +81,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
         hideOverflow
       >
         <div ref={this.rootElement}>
-          <TeachingBubbleContent {...this.props} />
+          <TeachingBubbleContent {...rest} />
         </div>
       </Callout>
     );

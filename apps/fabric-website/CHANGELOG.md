@@ -1,6 +1,36 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Feb 2019 13:37:21 GMT and should not be manually modified.
+
+## 6.8.6
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fix site links to allow for deeplinks to the customizations
+
+## 6.8.5
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- DetailsList examples: Fix copy paste error causing infinite loop
+
+## 6.8.4
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Strengthen typing of styles function.
+
+## 6.8.3
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Add shimmered DetailsList to website
+- Documentation: Updating README to mention buildfast as an advanced build alternative.
+- Updates for new CollapsibleSection API.
 
 ## 6.8.2
 Tue, 08 Jan 2019 13:34:49 GMT

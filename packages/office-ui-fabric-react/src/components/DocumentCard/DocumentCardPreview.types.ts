@@ -135,7 +135,7 @@ export interface IDocumentCardPreviewStyleProps {
 export interface IDocumentCardPreviewStyles {
   root: IStyle;
   previewIcon: IStyle;
-  previewFileTypeIcon: IStyle;
+  icon: IStyle;
   fileList: IStyle;
   fileListIcon: IStyle;
   fileListOverflowText: IStyle;

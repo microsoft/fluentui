@@ -1,12 +1,12 @@
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
-import { IStackComponent } from '@uifabric/experiments/lib/Stack';
+import { IStackComponent, IStackStylesReturnType } from '@uifabric/experiments/lib/Stack';
 
 import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
-export const regionStyles: IStackComponent['styles'] = props => ({
+export const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
   root: {
-    backgroundColor: props.theme.semanticColors.bodyBackground,
-    color: props.theme.semanticColors.bodyText
+    backgroundColor: theme.semanticColors.bodyBackground,
+    color: theme.semanticColors.bodyText
   }
 });
 

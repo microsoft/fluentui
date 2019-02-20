@@ -1,47 +1,62 @@
 import * as React from 'react';
-import { IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IComponentAs, IRefObject } from '../../Utilities';
+import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { ILabelSlot } from '../../utilities/factoryComponents.types';
 
-export type IToggleComponent = IComponent<IToggleProps, IToggleViewProps, IToggleStyles>;
+export type IToggleComponent = IComponent<IToggleProps, IToggleTokens, IToggleStyles, IToggleViewProps>;
 
-export type IToggleSlots = 'root' | 'label' | 'container' | 'pill' | 'thumb' | 'text';
+// These types are redundant with IToggleComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IToggleTokenReturnType = ReturnType<Extract<IToggleComponent['tokens'], Function>>;
+export type IToggleStylesReturnType = ReturnType<Extract<IToggleComponent['styles'], Function>>;
+
+export interface IToggleSlots {
+  /**
+   * Defines root slot.
+   */
+  root?: IHTMLSlot;
+
+  /**
+   * Defines label slot displayed above pill.
+   */
+  label?: ILabelSlot;
+
+  /**
+   * Defines container slot for the toggle pill and the text next to it.
+   */
+  container?: IHTMLSlot;
+
+  /**
+   * Defines pill slot, rendered as a button by default.
+   */
+  pill?: IHTMLElementSlot<'button'>;
+
+  /**
+   * Defines thumb slot inside of the pill.
+   */
+  thumb?: IHTMLSlot;
+
+  /**
+   * Defines text slot displayed alongside pill. Overrides onText and offText.
+   */
+  text?: ILabelSlot;
+}
 
 export interface IToggle {
   focus: () => void;
 }
 
-/**
- * Toggle component props.
- */
-export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps, IToggleStyles> {
+export interface IToggleProps
+  extends IToggleSlots,
+    IStyleableComponentProps<IToggleViewProps, IToggleTokens, IToggleStyles>,
+    IBaseProps<IToggle> {
   /**
    * Render the root element as another type.
    */
   as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Optional callback to access the IToggleComponent interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<IToggle>;
-
-  /**
-   * A label for the toggle.
-   */
-  label?: string;
-
-  /**
-   * Text to display when toggle is ON.
-   */
-  onText?: string;
-
-  /**
-   * Text to display when toggle is OFF.
-   */
-  offText?: string;
 
   /**
    * Text for screen-reader to announce as the name of the toggle.
@@ -77,38 +92,29 @@ export interface IToggleProps extends IStyleableComponentProps<IToggleViewProps,
   keytipProps?: IKeytipProps;
 
   /**
-   * Style variables for Toggle.
+   * Text to display when toggle is ON.
    */
-  styleVariables?: IToggleStyleVariables;
+  onText?: string;
+
+  /**
+   * Text to display when toggle is OFF.
+   */
+  offText?: string;
 }
 
-export type IToggleViewProps = Pick<IToggleProps, 'as' | 'label' | 'ariaLabel' | 'disabled' | 'onChange' | 'keytipProps'> &
-  Required<Pick<IToggleProps, 'checked' | 'styleVariables'>> & {
-    /**
-     * Toggle input callback triggered by mouse and keyboard input.
-     */
-    onClick?: (ev: React.MouseEvent<Element>) => void;
+export interface IToggleViewProps extends IToggleProps {
+  /**
+   * Toggle input callback triggered by mouse and keyboard input.
+   */
+  onClick?: (ev: React.MouseEvent<Element>) => void;
 
-    /**
-     * Root element class name.
-     */
-    className?: string;
+  /**
+   * Reference to the toggle button.
+   */
+  toggleButtonRef?: React.RefObject<HTMLButtonElement>;
+}
 
-    /**
-     * Text to display next to the toggle.
-     */
-    text?: string;
-
-    /**
-     * Reference to the toggle button.
-     */
-    toggleButtonRef?: React.RefObject<HTMLButtonElement>;
-  };
-
-/**
- * Styles for the Toggle component.
- */
-export interface IToggleStyleVariablesTypes {
+export interface IToggleTokens {
   pillBackground?: string;
   pillHoveredBackground?: string;
   pillBorderColor?: string;
@@ -127,6 +133,4 @@ export interface IToggleStyleVariablesTypes {
   textHighContrastColor?: string;
 }
 
-export type IToggleStyleVariables = IToggleStyleVariablesTypes | ((props: IToggleViewProps) => IToggleStyleVariablesTypes) | undefined;
-
-export type IToggleStyles = { [key in IToggleSlots]: IStyle };
+export type IToggleStyles = IComponentStyles<IToggleSlots>;

@@ -10,6 +10,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+import { divProperties, getNativeProps } from '../../Utilities';
 
 import {
   assign,
@@ -392,7 +393,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): JSX.Element => {
     let indexCorrection = 0;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
           const menuItem = this._renderMenuItem(
             item,
@@ -508,38 +509,38 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   private _renderSectionItem(
-    item: IContextualMenuItem,
+    sectionItem: IContextualMenuItem,
     menuClassNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
   ) {
-    const section = item.sectionProps;
-    if (!section) {
+    const sectionProps = sectionItem.sectionProps;
+    if (!sectionProps) {
       return;
     }
 
     let headerItem;
-    if (section.title) {
+    if (sectionProps.title) {
       const headerContextualMenuItem: IContextualMenuItem = {
-        key: `section-${section.title}-title`,
+        key: `section-${sectionProps.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        text: section.title
+        text: sectionProps.title
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }
 
-    if (section.items && section.items.length > 0) {
+    if (sectionProps.items && sectionProps.items.length > 0) {
       return (
-        <li role="presentation" key={section.key}>
+        <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div role="group">
             <ul className={this._classNames.list}>
-              {section.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
-              {headerItem && this._renderListItem(headerItem, item.key || index, menuClassNames, item.title)}
-              {section.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, section.items.length, hasCheckmarks, hasIcons)
+              {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
+              {headerItem && this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
+              {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
+                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, sectionProps.items.length, hasCheckmarks, hasIcons)
               )}
-              {section.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
+              {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
           </div>
         </li>
@@ -601,9 +602,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const { itemProps } = item;
-
+    const divHtmlProperties = itemProps && getNativeProps(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} style={item.style}>
+      <div className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}

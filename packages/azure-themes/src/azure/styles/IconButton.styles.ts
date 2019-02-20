@@ -1,32 +1,33 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import * as StyleConstants from '../Constants';
 
 export const IconButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
 
   return {
     root: {
-      backgroundColor: semanticColors.buttonBackground,
+      backgroundColor: StyleConstants.transparent,
       color: semanticColors.buttonText
     },
     rootDisabled: {
-      backgroundColor: semanticColors.buttonBackgroundDisabled,
+      backgroundColor: StyleConstants.transparent,
       color: semanticColors.buttonTextDisabled
     },
     rootHovered: {
-      backgroundColor: semanticColors.buttonBackgroundHovered,
+      backgroundColor: StyleConstants.transparent,
       color: semanticColors.buttonTextHovered
     },
     rootPressed: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
+      backgroundColor: StyleConstants.transparent,
       color: semanticColors.buttonTextPressed
     },
     rootChecked: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
+      backgroundColor: StyleConstants.transparent,
       color: semanticColors.buttonTextPressed
     },
     rootCheckedHovered: {
-      backgroundColor: semanticColors.buttonBackgroundHovered,
+      backgroundColor: StyleConstants.transparent,
       color: semanticColors.buttonTextHovered
     }
   };

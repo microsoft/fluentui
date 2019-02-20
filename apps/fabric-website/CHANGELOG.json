@@ -2,6 +2,107 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.8.6",
+      "tag": "@uifabric/fabric-website_v6.8.6",
+      "date": "Fri, 08 Feb 2019 13:37:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix site links to allow for deeplinks to the customizations",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a351868eecdb888797848d76144395ce7c3b748f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.2 <7.0.0` to `>=6.54.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.135.1 <7.0.0` to `>=6.136.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.5",
+      "tag": "@uifabric/fabric-website_v6.8.5",
+      "date": "Wed, 23 Jan 2019 22:53:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList examples: Fix copy paste error causing infinite loop",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "e1e88b61e84310ae40ca9b158796a2ed7c690b9f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.1 <7.0.0` to `>=6.51.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.4",
+      "tag": "@uifabric/fabric-website_v6.8.4",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Strengthen typing of styles function.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2e3bdf997b10aad7afb88e462dc929a799085292"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.9.9 <7.0.0` to `>=6.10.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.3",
+      "tag": "@uifabric/fabric-website_v6.8.3",
+      "date": "Tue, 15 Jan 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add shimmered DetailsList to website",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "45a18462510041769b034a495a9fab906d20a8a6"
+          },
+          {
+            "comment": "Documentation: Updating README to mention buildfast as an advanced build alternative.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "bc14f20836eed44160a53d367285cbd2110f752c"
+          },
+          {
+            "comment": "Updates for new CollapsibleSection API.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1a3f5371a2f69c564c27094d602745a5d747253d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.4 <7.0.0` to `>=6.50.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.2 <7.0.0` to `>=6.125.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.2",
       "tag": "@uifabric/fabric-website_v6.8.2",
       "date": "Tue, 08 Jan 2019 13:34:49 GMT",

@@ -121,16 +121,20 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
                   actionButtonText,
                   onActionLinkClicked
                 } = cardContent.content as IGridListProps;
-                contentArea.push(
-                  <GridList
-                    gridRows={gridRows}
-                    gridColumns={gridColumns}
-                    isHeaderVisible={isHeaderVisible}
-                    isRowClickable={isRowClickable}
-                    actionButtonText={actionButtonText}
-                    onActionLinkClicked={onActionLinkClicked}
-                  />
-                );
+                if (gridRows.length !== 0) {
+                  contentArea.push(
+                    <GridList
+                      gridRows={gridRows}
+                      gridColumns={gridColumns}
+                      isHeaderVisible={isHeaderVisible}
+                      isRowClickable={isRowClickable}
+                      actionButtonText={actionButtonText}
+                      onActionLinkClicked={onActionLinkClicked}
+                    />
+                  );
+                } else {
+                  contentArea.push(<></>);
+                }
                 break;
               }
               case CardContentType.Chart: {
@@ -228,7 +232,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
       return null;
     }
     return (
-      <div id="actionBar" className={className}>
+      <div className={className}>
         <ActionBar
           actions={actions}
           actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}

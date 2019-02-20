@@ -22,9 +22,6 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
   >
     <div
       className=
@@ -65,9 +62,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
             {
               align-items: stretch;
               background: #ffffff;
-              border-color: transparent;
-              border-width: 0px;
-              border: 1px solid #a6a6a6;
+              border: none;
               box-shadow: none;
               box-sizing: border-box;
               display: flex;
@@ -164,9 +159,6 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
           padding-top: 0px;
           position: relative;
         }
-        @media screen and (-ms-high-contrast: active){& {
-          border-width: 2px;
-        }
   >
     <div
       className=
@@ -207,9 +199,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
             {
               align-items: stretch;
               background: #ffffff;
-              border-color: transparent;
-              border-width: 0px;
-              border: 1px solid #a6a6a6;
+              border: none;
               box-shadow: none;
               box-sizing: border-box;
               display: flex;

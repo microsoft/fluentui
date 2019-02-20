@@ -1,13 +1,54 @@
-import { ImageLoadState, PersonaPresence, IStyle } from 'office-ui-fabric-react';
-import { IStatelessComponent, IStyleableComponentProps } from '../../Foundation';
+import { ImageLoadState, IBaseProps } from 'office-ui-fabric-react';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
+import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
+import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
 
-export type IPersonaCoinComponent = IStatelessComponent<IPersonaCoinProps, IPersonaCoinStyles>;
+export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles, IPersonaCoinViewProps>;
+
+// These types are redundant with IPersonaCoinComponent but are needed until TS function
+// return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IPersonaCoinTokenReturnType = ReturnType<Extract<IPersonaCoinComponent['tokens'], Function>>;
+export type IPersonaCoinStylesReturnType = ReturnType<Extract<IPersonaCoinComponent['styles'], Function>>;
+
+export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps, string>;
+
+export interface IPersonaCoinSlots {
+  /**
+   * Slot for the root element.
+   */
+  root?: IHTMLSlot;
+
+  /**
+   * Slot for the image element
+   */
+  image?: IPersonaCoinImageSlot;
+
+  /**
+   * Slot for the initials element
+   */
+  initials?: IPersonaCoinSlot;
+
+  /**
+   * Slot for the presence element
+   */
+  presence?: IPersonaPresenceSlot;
+  /**
+   * Slot for the alternative coin for the smallest persona size
+   */
+  personaCoinSize10?: IPersonaCoinSize10Slot;
+}
 
 export type PersonaCoinSize = 10 | 16 | 24 | 28 | 32 | 40 | 48 | 56 | 72 | 100;
 
 // Extending IStyleableComponentProps will automatically add stylable props for you, such as styles and theme.
 //    If you don't want these props to be included in your component, just remove this extension.
-export interface IPersonaCoinProps extends IStyleableComponentProps<IPersonaCoinProps, IPersonaCoinStyles> {
+export interface IPersonaCoinProps
+  extends IPersonaCoinSlots,
+    IStyleableComponentProps<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles>,
+    IBaseProps<IPersonaCoinComponent> {
   /**
    * Whether initials are calculated for phone numbers and number sequences.
    * Example: Set property to true to get initials for project names consisting of numbers only.
@@ -19,12 +60,6 @@ export interface IPersonaCoinProps extends IStyleableComponentProps<IPersonaCoin
    * The color that should be used when rendering the coin.
    */
   coinColor?: string;
-
-  /**
-   * The user's initials to display in the image area when there is no image.
-   * This property can be used instead of `text` to force the initials.
-   */
-  initials?: string;
 
   /**
    * This will be used to extract initials from if `initials` is not passed.
@@ -70,32 +105,12 @@ export interface IPersonaCoinProps extends IStyleableComponentProps<IPersonaCoin
    * @defaultvalue 'white'
    */
   initialsColor?: string;
-
-  /**
-   * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue PersonaPresence.none
-   */
-  presence?: PersonaPresence;
 }
 
-export interface IPersonaCoinStyles {
-  /**
-   * Styling for the root element.
-   */
-  root: IStyle;
-
-  /**
-   * Styling for the image element
-   */
-  image: IStyle;
-
-  /**
-   * Styling for the initials element
-   */
-  initials: IStyle;
-
-  /**
-   * Styling for the presence element
-   */
-  presence: IStyle;
+export interface IPersonaCoinViewProps extends IPersonaCoinProps {
+  isPictureLoaded?: boolean;
 }
+
+export interface IPersonaCoinTokens {}
+
+export type IPersonaCoinStyles = IComponentStyles<IPersonaCoinSlots>;

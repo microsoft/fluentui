@@ -77,8 +77,8 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
           onChange={this._onHeightChange}
         />
 
-        <Stack wrap gap={40} verticalGap={30} className={styles.root}>
-          <Stack wrap gap={30} verticalGap={10} className={styles.stackOne}>
+        <Stack wrap gap={'30 40'} className={styles.root}>
+          <Stack wrap gap={'10 30'} className={styles.stackOne}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
@@ -88,7 +88,7 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
             <span>7</span>
           </Stack>
 
-          <Stack wrap gap={50} verticalGap={20} className={styles.stackTwo}>
+          <Stack wrap gap={'20 50'} className={styles.stackTwo}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
@@ -119,9 +119,9 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
           The one exception to this case being Microsoft Edge that handles it correctly (though this might go soon with the switch to
           Chromium).
         </span>
+        <span>There are ways in which we could have gone around this issue.</span>
         <span>
-          There are ways in which we could have gone around this issue. However, we have chosen to adhere to the flex-box spec so that we
-          have the correct implementation if support comes down the line.
+          However, we have chosen to adhere to the flex-box spec so that we have the correct implementation if support comes down the line.
         </span>
       </Stack>
     );

@@ -119,7 +119,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {
@@ -234,7 +233,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
       size={9}
     >
       <i
-        aria-hidden={true}
         className=
 
             {
@@ -737,8 +735,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1025,8 +1024,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1313,8 +1313,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1601,8 +1602,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1638,7 +1640,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -1916,8 +1917,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1953,7 +1955,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -2223,8 +2224,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -2260,7 +2262,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -2536,8 +2537,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -2606,7 +2608,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon

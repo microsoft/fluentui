@@ -1,9 +1,12 @@
 import { ImageLoadState } from 'office-ui-fabric-react';
+import { ISlotProp } from '../../../Foundation';
 import { IPersonaCoinProps } from '../PersonaCoin.types';
+
+export type IPersonaCoinImageSlot = ISlotProp<IPersonaCoinImageProps>;
 
 export interface IPersonaCoinImageProps {
   src?: string;
-  classNames: { image: string };
+  className?: string;
   dimension?: IPersonaCoinProps['size'];
   imageAlt?: string;
   onPhotoLoadingStateChange?: (loadState: ImageLoadState) => void;

@@ -1,6 +1,41 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 14 Jan 2019 13:39:22 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+
+## 6.11.5
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Changes to support Slots Foundation.
+
+## 6.11.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Use fabric dev build in export to codepen
+
+## 6.11.3
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fix bug where customizations apply to theme and scheme dropdowns.
+
+## 6.11.2
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- ComponentPage: add id to dos and donts section to fix linking on site
+
+## 6.11.1
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Icon: removing aria-hidden attribute.
 
 ## 6.11.0
 Mon, 14 Jan 2019 13:39:22 GMT

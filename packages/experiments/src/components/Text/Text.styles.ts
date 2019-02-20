@@ -1,7 +1,7 @@
-import { ITextComponent } from './Text.types';
+import { ITextComponent, ITextStyles, ITextStylesReturnType } from './Text.types';
 
-export const TextStyles: ITextComponent['styles'] = props => {
-  const { as, className, inline, theme, wrap, variant } = props;
+export const TextStyles: ITextComponent['styles'] = (props, theme): ITextStylesReturnType => {
+  const { as, className, inline, wrap, variant } = props;
   const { fonts } = theme;
   const variantObject = variant && fonts[variant] ? fonts[variant] : fonts.medium;
 
@@ -24,5 +24,5 @@ export const TextStyles: ITextComponent['styles'] = props => {
       },
       className
     ]
-  };
+  } as ITextStyles;
 };

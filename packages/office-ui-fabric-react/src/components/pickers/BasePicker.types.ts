@@ -303,7 +303,7 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 }
 
 /** The props needed to construct styles. */
-export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className'> & {
+export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
   /** Whether text style area is focused */
   isFocused?: boolean;
 

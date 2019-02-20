@@ -1,6 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+
+## 6.41.0
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Minor changes
+
+- theming: add loadFonts function and register font variables
+
+### Patches
+
+- fix createTheme so that it cannot mutate DefaultFontStyles
 
 ## 6.40.0
 Thu, 10 Jan 2019 04:58:48 GMT

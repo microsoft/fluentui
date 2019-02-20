@@ -32,7 +32,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Info/Default MessageBar
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar-multiline
@@ -115,7 +114,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -298,7 +296,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -498,7 +495,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -659,7 +655,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -857,7 +852,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -1015,7 +1009,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -1075,7 +1068,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     SevereWarning MessageBar - defaults to multiline, with action buttons
   </label>
   <div
-    aria-live="assertive"
     className=
         ms-MessageBar
         ms-MessageBar--severeWarning
@@ -1159,7 +1151,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1591,7 +1582,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -2031,7 +2021,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -2367,7 +2356,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -2427,7 +2415,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning MessageBar - defaults to multiline, with dismiss and action buttons
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar--warning
@@ -2511,7 +2498,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -2687,7 +2673,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -2996,7 +2981,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Info/Default MessageBar - custom styles
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar-multiline
@@ -3079,7 +3063,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3263,7 +3246,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3464,7 +3446,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3625,7 +3606,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3825,7 +3805,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3984,7 +3963,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -4044,7 +4022,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Severe warning, multiline, with action buttons - custom styles
   </label>
   <div
-    aria-live="assertive"
     className=
         ms-MessageBar
         ms-MessageBar--severeWarning
@@ -4128,7 +4105,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -4561,7 +4537,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -5004,7 +4979,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -5342,7 +5316,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -5402,7 +5375,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning, multiline, with dismiss and action buttons - custom styles
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar--warning
@@ -5486,7 +5458,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -5662,7 +5633,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

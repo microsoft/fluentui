@@ -9,7 +9,7 @@ export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, ITogg
 
   constructor(props: ToggleState['props']) {
     super(props, {
-      controlledProps: ['checked'],
+      controlledProps: ['checked', 'text'],
       transformViewProps: (newProps: IToggleViewProps) => {
         newProps.text = newProps.checked ? props.onText : props.offText;
         return newProps;

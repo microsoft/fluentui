@@ -2,6 +2,343 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.47.4",
+      "tag": "@uifabric/dashboard_v0.47.4",
+      "date": "Tue, 12 Feb 2019 13:36:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Implement Wizard base control and SetupWizard control in dashboard package",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "33d6853cab79a550bfa2f8dd65939cf7237627ac"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.3 <7.0.0` to `>=6.54.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.3",
+      "tag": "@uifabric/dashboard_v0.47.3",
+      "date": "Wed, 06 Feb 2019 13:38:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding SubwayNav control in Dashboard",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "30929a19bd471440af88dd355fca7894d32dc5a7"
+          },
+          {
+            "comment": "Hide command bar from composite list if no commands exist",
+            "author": "Kevin Chan <2591766+chankev@users.noreply.github.com>",
+            "commit": "4ed6fa95dd1f89f1aafc9ea34b69283d214db4c8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.5` to `^0.28.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.134.0 <7.0.0` to `>=6.135.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.2",
+      "tag": "@uifabric/dashboard_v0.47.2",
+      "date": "Tue, 05 Feb 2019 13:35:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add id's for actions and onclick handler for multicount",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "f132e7dd52c66ef4d3a498e15d050b895a508bff"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.133.0 <7.0.0` to `>=6.134.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.1",
+      "tag": "@uifabric/dashboard_v0.47.1",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: fix content load error on L2 content mode",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a45ba1baed77be42d801bc4dc32e3a638f975fd9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.1 <7.0.0` to `>=6.54.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.132.0 <7.0.0` to `>=6.133.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.0",
+      "tag": "@uifabric/dashboard_v0.47.0",
+      "date": "Thu, 31 Jan 2019 13:36:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event",
+            "author": "Sivaraman Krishnan <12967315+sikrishn@users.noreply.github.com>",
+            "commit": "c61b089015c9fece7ccb436e49e457b840a9505c"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add  optional  id props to  IThumbnailListProps, IGridListProps, ICompoundAction and  optional cardId to ICardProps",
+            "author": "dkishmareishvili <dkishmareishvili@gmail.com>",
+            "commit": "4807977d27c753ed3a3badf69d28222d14804b8b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.53.2 <7.0.0` to `>=6.54.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.0 <7.0.0` to `>=6.131.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.46.2",
+      "tag": "@uifabric/dashboard_v0.46.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix detail panel custom width issue, fix detail panel tiles css issue, add jsx.element support to detail panel tile message",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "c76f02eed90b0c39812451d5a7f947f3bb902628"
+          },
+          {
+            "comment": "Fix edge browser thumbnail list focus items alignment issue",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "b2d063b1b258ab2f0686fdb0d92d2a492eceaaea"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.53.1 <7.0.0` to `>=6.53.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.46.1",
+      "tag": "@uifabric/dashboard_v0.46.1",
+      "date": "Tue, 29 Jan 2019 13:35:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Add cardId for dashboardGridLayout onLayoutChange",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "0923a1d1b538ba0a1a365ecd0a17265a17a51be4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.53.0 <7.0.0` to `>=6.53.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.130.0 <7.0.0` to `>=6.131.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.46.0",
+      "tag": "@uifabric/dashboard_v0.46.0",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailPanel mainContent lifecycle event",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "b06b43d49869b9e93358ac4ab10b2701b8bf2390"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "updated dashboard package to use a fork of react-grid-layout",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "bc116f5ee23d2dd19a21fe52dda28b10e7de0cb1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.2 <7.0.0` to `>=6.52.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.3 <7.0.0` to `>=6.129.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.45.0",
+      "tag": "@uifabric/dashboard_v0.45.0",
+      "date": "Wed, 23 Jan 2019 22:53:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: add with analytics handler",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a88d86c14e3dc7780a4977ee197390caad8c2c2e"
+          },
+          {
+            "comment": "Update README.md to fix title and link to Card component",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "641d41a0f6d08f91ee1854002e7e8afc0907d7a4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add composite list common control component",
+            "author": "exchangeadmin <yuz@microsoft.com>",
+            "commit": "c6f10824a1dcc15778b774d6658993f737acf570"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.1 <7.0.0` to `>=6.51.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.44.0",
+      "tag": "@uifabric/dashboard_v0.44.0",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove extra hidden elements in gridList when gridList is empty",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "ae308bb5173a06e9c537b48bfcb07deaac7aa378"
+          },
+          {
+            "comment": "add focus border for thumbnailList ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "1b24b5993ab5e921b389080aefdc9ad900b1a50e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add common Detail-Panel component",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "9ba881bf7f306d2af4665b5402069edc4e3a8d46"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.5",
+      "tag": "@uifabric/dashboard_v0.43.5",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx",
+            "author": "VamshidharReddyEnumula <vamshidharenumula@gmail.com>",
+            "commit": "4c1197ee90b6b91237b57adc041f4e2b08bbaa81"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.2 <7.0.0` to `>=6.11.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.7 <7.0.0` to `>=6.51.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.4",
+      "tag": "@uifabric/dashboard_v0.43.4",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add is's for card actions",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "048ade0ca70b7bdfc5011603dd951508fab341f7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.1 <7.0.0` to `>=6.11.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.6 <7.0.0` to `>=6.50.7 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.43.3",
+      "tag": "@uifabric/dashboard_v0.43.3",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.0 <7.0.0` to `>=6.11.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.5 <7.0.0` to `>=6.50.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.43.2",
       "tag": "@uifabric/dashboard_v0.43.2",
       "date": "Mon, 14 Jan 2019 13:39:22 GMT",
