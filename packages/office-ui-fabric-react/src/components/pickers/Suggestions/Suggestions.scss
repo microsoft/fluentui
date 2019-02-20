@@ -71,7 +71,7 @@
   position: relative;
   border-top: 1px solid $ms-color-neutralLight;
   height: 40px;
-  @include ms-text-align(left);
+  @include text-align(left);
   width: 100%;
   font-size: 12px;
   &:hover {
