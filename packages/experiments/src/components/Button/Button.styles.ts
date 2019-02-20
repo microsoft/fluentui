@@ -177,12 +177,12 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
-    backgroundColorHovered: semanticColors.primaryButtonBackground,
-    backgroundColorPressed: semanticColors.primaryButtonBackground,
+    backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
+    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
 
     color: semanticColors.primaryButtonText,
-    colorHovered: semanticColors.primaryButtonText,
-    colorPressed: semanticColors.primaryButtonText,
+    colorHovered: semanticColors.primaryButtonTextHovered,
+    colorPressed: semanticColors.primaryButtonTextPressed,
 
     primaryActionBackgroundColor: semanticColors.primaryButtonBackground,
     primaryActionBackgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,

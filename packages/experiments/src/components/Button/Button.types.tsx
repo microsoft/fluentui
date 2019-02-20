@@ -1,4 +1,4 @@
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IStackSlot } from 'office-ui-fabric-react';
 import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
 import { ITextSlot } from '../../Text';
@@ -54,12 +54,12 @@ export interface IButtonSlots {
   /**
    * Defines the span container for the secondary action of the Split Button.
    */
-  secondaryActionContainer?: IHTMLElementSlot<'span'>;
+  secondaryActionContainer?: IHTMLSlot;
 
   /**
    * Defines the divider that separates the left and right parts of a Split Button.
    */
-  splitDivider?: IHTMLElementSlot<'span'>;
+  splitDivider?: IHTMLSlot;
 }
 
 export interface IButton {}
@@ -122,9 +122,9 @@ export interface IButtonProps
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Defines an event callback that is triggered when the Alt+Down keypress is made in Buttons with a menu.
+   * Defines an event callback that is triggered when a keypress is made with the focus on a Button.
    */
-  onAltDownKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 export interface IButtonViewProps extends IButtonProps {
