@@ -40,6 +40,37 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           metadata={20}
           signal={<SharedSignal />}
         />
+        <h3>Fluent Large Default Cover</h3>
+        <FolderCoverWithImage
+          isFluent={true}
+          originalImageSize={{
+            width: 200,
+            height: 150
+          }}
+          folderCoverSize="large"
+          metadata={20}
+          signal={<SharedSignal />}
+        />
+        <h3>Fluent Large Default Cover -- item count only</h3>
+        <FolderCoverWithImage
+          isFluent={true}
+          originalImageSize={{
+            width: 200,
+            height: 150
+          }}
+          folderCoverSize="large"
+          metadata={20}
+        />
+        <h3>Large Default Cover -- signal icon only</h3>
+        <FolderCoverWithImage
+          isFluent={true}
+          originalImageSize={{
+            width: 200,
+            height: 150
+          }}
+          folderCoverSize="large"
+          signal={<SharedSignal />}
+        />
         <h3>Small Default Cover</h3>
         <FolderCoverWithImage
           isFluent={false}

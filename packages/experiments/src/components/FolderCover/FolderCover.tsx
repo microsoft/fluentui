@@ -77,7 +77,11 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
     } = this.props;
 
     const assets = ASSETS[size][type];
-    const metadataIcon = metadata ? <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span> : null;
+    const metadataIcon = metadata ? (
+      <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span>
+    ) : (
+      <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)} />
+    );
 
     const signalIcon = signal ? (
       <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, isFluent ? SignalStyles.isFluent : SignalStyles.dark)}>
