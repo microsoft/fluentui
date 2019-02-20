@@ -188,6 +188,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   theme?: ITheme;
 }
 
+/**
+ * Subset of picker options that may be legally passed through a picker to its
+ * internal Suggestions component.
+ */
 export interface IBasePickerSuggestionsProps<T = any>
   extends Pick<
     ISuggestionsProps<TextDecoderOptions>,
