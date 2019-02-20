@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsRow & DetailsRowFields: onRenderItemColumn return type as React.ReactNode",
+      "type": "none"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "keco@microsoft.com"
+}
