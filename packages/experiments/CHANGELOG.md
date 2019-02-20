@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 18 Feb 2019 13:38:29 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Feb 2019 21:57:24 GMT and should not be manually modified.
+
+## 6.58.0
+Wed, 20 Feb 2019 21:57:24 GMT
+
+### Minor changes
+
+- Add render-prop pattern to Tile and FolderCover components
+
+### Patches
+
+- Stack: Reexporting component from experiments package.
 
 ## 6.57.1
 Mon, 18 Feb 2019 13:38:29 GMT

@@ -44,36 +44,24 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
 
     ReactTestUtils.Simulate.change(choiceOptions[0]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
 
     ReactTestUtils.Simulate.change(choiceOptions[1]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
 
     ReactTestUtils.Simulate.change(choiceOptions[0]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
   });
 
   it('An individual choice option can be disabled', () => {
@@ -87,9 +75,6 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
   });
 
   it('renders all choice options as disabled when disabled', () => {
@@ -100,9 +85,6 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(true);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
   });
 
   it('can act as an uncontrolled component', () => {
@@ -191,11 +173,5 @@ describe('ChoiceGroup', () => {
     ReactTestUtils.Simulate.change(choiceOptions[0]);
     expect(choiceGroupRef.current!.checkedOption).toBeDefined();
     expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
-  });
-
-  it('sets the first enabled option to focusable, even with an invalid defaultSelectedKey', () => {
-    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} defaultSelectedKey="X" />);
-    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
   });
 });

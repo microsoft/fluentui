@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.58.0",
+      "tag": "@uifabric/experiments_v6.58.0",
+      "date": "Wed, 20 Feb 2019 21:57:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Reexporting component from experiments package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "157286e51909c905cd1c3747d92d4c6102f92121"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add render-prop pattern to Tile and FolderCover components",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a8e6072b340f2f5dcb06d1b530f63291f19c33da"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.141.1 <7.0.0` to `>=6.142.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.57.1",
       "tag": "@uifabric/experiments_v6.57.1",
       "date": "Mon, 18 Feb 2019 13:38:29 GMT",
