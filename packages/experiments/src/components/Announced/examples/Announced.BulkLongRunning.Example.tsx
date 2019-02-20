@@ -12,7 +12,7 @@ let _draggedItem: any = null;
 let _draggedIndex = -1;
 const _items: any[] = [];
 
-let _columns: IColumn[] = [
+const _columns: IColumn[] = [
   {
     key: 'name',
     name: 'Name',
@@ -68,7 +68,7 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     columns: IColumn[];
     numberOfItems: number;
   }
-  > {
+> {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -83,7 +83,9 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
       for (let i = 0; i < 20; i++) {
         _items.push({
           name: 'Item ' + i,
-          modified: new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString(),
+          modified: new Date(
+            new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())
+          ).toDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });

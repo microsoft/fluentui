@@ -74,7 +74,7 @@ export interface IAnnouncedQuickActionsExampleItem {
   modified: string;
   modifiedby: string;
   filesize: string;
-};
+}
 
 export interface IAnnouncedQuickActionsExampleState {
   items: IAnnouncedQuickActionsExampleItem[];
@@ -99,7 +99,9 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         _items.push({
           key: i,
           name: 'Item ' + i,
-          modified: new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString(),
+          modified: new Date(
+            new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())
+          ).toDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
@@ -146,7 +148,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
             onRenderItemColumn={this._onRenderItemColumn}
             onRenderRow={this._onRenderRow}
           />
-          <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog} closeButtonAriaLabel='Close'>
+          <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog} closeButtonAriaLabel="Close">
             {dialogContent}
           </Dialog>
         </MarqueeSelection>
@@ -177,7 +179,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
               iconProps={{ iconName: 'MoreVertical' }}
               role="button"
               aria-haspopup={true}
-              aria-label='Show actions'
+              aria-label="Show actions"
               onRenderMenuIcon={nullFunction}
               styles={{ root: { float: 'right', height: 'inherit' } }}
               menuProps={{
