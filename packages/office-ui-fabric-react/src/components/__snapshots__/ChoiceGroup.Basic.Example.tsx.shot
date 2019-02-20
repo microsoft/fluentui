@@ -99,7 +99,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
                     top: 8px;
                   }
               data-automation-id="auto1"
-              data-is-focusable={false}
               id="ChoiceGroup0-A"
               name="ChoiceGroup0"
               onBlur={[Function]}
@@ -213,7 +212,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={true}
               id="ChoiceGroup0-B"
               name="ChoiceGroup0"
               onBlur={[Function]}
@@ -339,7 +337,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={false}
               disabled={true}
               id="ChoiceGroup0-C"
               name="ChoiceGroup0"
@@ -451,7 +448,6 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={false}
               disabled={true}
               id="ChoiceGroup0-D"
               name="ChoiceGroup0"
