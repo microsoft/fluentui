@@ -188,26 +188,27 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   theme?: ITheme;
 }
 
-export type IBasePickerSuggestionsProps = Pick<
-  ISuggestionsProps<any>,
-  | 'onRenderNoResultFound'
-  | 'suggestionsHeaderText'
-  | 'mostRecentlyUsedHeaderText'
-  | 'noResultsFoundText'
-  | 'className'
-  | 'suggestionsClassName'
-  | 'suggestionsItemClassName'
-  | 'searchForMoreText'
-  | 'forceResolveText'
-  | 'loadingText'
-  | 'searchingText'
-  | 'resultsFooterFull'
-  | 'resultsFooter'
-  | 'resultsMaximumNumber'
-  | 'showRemoveButtons'
-  | 'suggestionsAvailableAlertText'
-  | 'suggestionsContainerAriaLabel'
->;
+export interface IBasePickerSuggestionsProps<T = any>
+  extends Pick<
+    ISuggestionsProps<TextDecoderOptions>,
+    | 'onRenderNoResultFound'
+    | 'suggestionsHeaderText'
+    | 'mostRecentlyUsedHeaderText'
+    | 'noResultsFoundText'
+    | 'className'
+    | 'suggestionsClassName'
+    | 'suggestionsItemClassName'
+    | 'searchForMoreText'
+    | 'forceResolveText'
+    | 'loadingText'
+    | 'searchingText'
+    | 'resultsFooterFull'
+    | 'resultsFooter'
+    | 'resultsMaximumNumber'
+    | 'showRemoveButtons'
+    | 'suggestionsAvailableAlertText'
+    | 'suggestionsContainerAriaLabel'
+  > {}
 
 /** Validation state of the user's input. */
 export enum ValidationState {
