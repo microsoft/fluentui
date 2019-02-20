@@ -447,14 +447,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { onRenderCell, role } = this.props;
 
     const {
-      page: { items, startIndex },
+      page: { items = [], startIndex },
       ...divProps
     } = pageProps;
 
     // only assign list item role if no role is assigned
     const cellRole = role === undefined ? 'listitem' : 'presentation';
+    const cells: React.ReactNode[] = [];
 
-    const cells = (items || []).map((item: any, offset: number) => {
+    items.forEach((item: any, offset: number) => {
       const index = startIndex + offset;
 
       let itemKey = this.props.getKey ? this.props.getKey(item, index) : item && item.key;
@@ -463,7 +464,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         itemKey = index;
       }
 
-      return (
+      cells.push(
         <div role={cellRole} className={css('ms-List-cell')} key={itemKey} data-list-index={index} data-automationid="ListCell">
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
@@ -886,13 +887,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const cachedPage = this._pageCache[pageKey];
     if (cachedPage && cachedPage.page) {
       return cachedPage.page;
-    }
-
-    // Fill undefined cells because array.map will ignore undefined cells.
-    if (items) {
-      for (let i = 0; i < items.length; i++) {
-        items[i] = items[i] || undefined;
-      }
     }
 
     return {
