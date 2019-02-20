@@ -81,6 +81,16 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           folderCoverSize="small"
           metadata={15}
         />
+        <h3>Fluent Small Default Cover - metadata only</h3>
+        <FolderCoverWithImage
+          isFluent={true}
+          originalImageSize={{
+            width: 200,
+            height: 150
+          }}
+          folderCoverSize="small"
+          metadata={15}
+        />
         <h3>Large Media Cover</h3>
         <FolderCoverWithImage
           isFluent={false}
@@ -103,6 +113,17 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           folderCoverSize="small"
           folderCoverType="media"
           metadata={15}
+        />
+        <h3>Small Media Cover -- signal icon only</h3>
+        <FolderCoverWithImage
+          isFluent={true}
+          originalImageSize={{
+            width: 200,
+            height: 150
+          }}
+          folderCoverSize="small"
+          folderCoverType="media"
+          signal={<SharedSignal />}
         />
         <h3>Shared Cover</h3>
         <FolderCoverWithImage
