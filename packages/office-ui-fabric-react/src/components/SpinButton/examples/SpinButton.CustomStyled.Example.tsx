@@ -12,6 +12,9 @@ const upArrowButtonStyles: Partial<IButtonStyles> = {
   rootChecked: {
     backgroundColor: 'green'
   },
+  rootCheckedHovered: {
+    backgroundColor: 'green'
+  },
   rootPressed: {
     backgroundColor: 'green'
   }
@@ -19,6 +22,9 @@ const upArrowButtonStyles: Partial<IButtonStyles> = {
 
 const downArrowButtonStyles: Partial<IButtonStyles> = {
   rootChecked: {
+    backgroundColor: 'red'
+  },
+  rootCheckedHovered: {
     backgroundColor: 'red'
   },
   rootPressed: {
