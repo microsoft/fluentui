@@ -125,7 +125,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     }
   }
 
-  private _renderGroup = (group: IGroup | undefined, groupIndex: number): JSX.Element | null => {
+  private _renderGroup = (group: IGroup | undefined, groupIndex: number): React.ReactNode => {
     const {
       dragDropEvents,
       dragDropHelper,
