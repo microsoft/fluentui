@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Feb 2019 13:38:29 GMT and should not be manually modified.
+
+## 6.57.1
+Mon, 18 Feb 2019 13:38:29 GMT
+
+### Patches
+
+- to useFluentIcon prop to change top padding in style
+- Text: Fix 'as' prop circular reference
 
 ## 6.57.0
 Fri, 15 Feb 2019 17:41:16 GMT

@@ -36,7 +36,7 @@ export interface IStackProps
   /**
    * Defines how to render the Stack.
    */
-  as?: string | React.ReactType<IStackProps>;
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Defines whether to render Stack children horizontally.

@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/fluent-theme",
-      "comment": "Dialog: Adjust right padding of title",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fluent-theme",
-  "email": "edwl@microsoft.com"
+  "email": "brandth@microsoft.com"
 }
