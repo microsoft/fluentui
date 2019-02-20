@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, IButtonProps, Stack } from '@uifabric/experiments';
-import { createTheme, mergeStyles } from 'office-ui-fabric-react';
+import { Button, IButtonProps } from '@uifabric/experiments';
+import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
   semanticColors: {
@@ -21,7 +21,7 @@ const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal preventShrink gap={buttonGap}>
+  <Stack horizontal disableShrink gap={buttonGap}>
     {props.children}
   </Stack>
 );

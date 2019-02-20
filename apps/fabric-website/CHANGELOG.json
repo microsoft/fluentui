@@ -2,6 +2,81 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.10.0",
+      "tag": "@uifabric/fabric-website_v6.10.0",
+      "date": "Fri, 15 Feb 2019 17:41:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Adding StackComponentPage to AppState.tsx.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "040ffd402e7ac92ba9d6640f6d9c6291be762a29"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.10.1 <7.0.0` to `>=6.11.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.56.0 <7.0.0` to `>=6.57.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.1 <7.0.0` to `>=6.140.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/fabric-website_v6.9.0",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website: redirects defunct URLs to new",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "bed1c2c2e1019257961334a8bc84a89c9a82aa99"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.55.0 <7.0.0` to `>=6.56.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.7",
+      "tag": "@uifabric/fabric-website_v6.8.7",
+      "date": "Wed, 13 Feb 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds documentation for setting the 'dir' attribute for Fabric Core",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "0574b23c44346353a3ef163a733bcaeb12bed83e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.4 <7.0.0` to `>=6.55.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.0 <7.0.0` to `>=6.138.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.8.6",
       "tag": "@uifabric/fabric-website_v6.8.6",
       "date": "Fri, 08 Feb 2019 13:37:21 GMT",

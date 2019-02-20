@@ -92,7 +92,6 @@ export class AnnouncedSearchResultsExample extends React.Component<
       return (
         <Announced
           message={numberOfSuggestions === 1 ? `${numberOfSuggestions} Color Tag Found` : `${numberOfSuggestions} Color Tags Found`}
-          id={`announced-${numberOfSuggestions}`}
         />
       );
     }

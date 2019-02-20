@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 06 Feb 2019 13:38:06 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+
+## 0.28.7
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add saparator 2px for data segments
 
 ## 0.28.6
 Wed, 06 Feb 2019 13:38:06 GMT

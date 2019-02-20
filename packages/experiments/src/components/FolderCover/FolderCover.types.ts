@@ -43,4 +43,10 @@ export interface IFolderCoverProps extends IBaseProps, React.Props<FolderCover>,
    * @memberof IFolderCoverProps
    */
   metadata?: React.ReactNode[] | React.ReactNode;
+  /**
+   * Support fluent color, yellow folder cover.
+   * @type {boolean}
+   * @memberof IFolderCoverProps
+   */
+  isFluent?: boolean;
 }
