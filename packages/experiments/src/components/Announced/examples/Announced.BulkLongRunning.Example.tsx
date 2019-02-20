@@ -3,7 +3,7 @@ import { Announced } from '../Announced';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
+import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import './Announced.Example.scss';
 
@@ -14,7 +14,7 @@ const _items: any[] = [];
 
 let _columns: IColumn[] = [
   {
-    key: 'column1',
+    key: 'name',
     name: 'Name',
     fieldName: 'name',
     minWidth: 100,
@@ -23,7 +23,7 @@ let _columns: IColumn[] = [
     ariaLabel: 'Operations for name'
   },
   {
-    key: 'column2',
+    key: 'modified',
     name: 'Modified',
     fieldName: 'modified',
     minWidth: 100,
@@ -32,7 +32,7 @@ let _columns: IColumn[] = [
     ariaLabel: 'Operations for modified'
   },
   {
-    key: 'column3',
+    key: 'modifiedby',
     name: 'Modified By',
     fieldName: 'modifiedby',
     minWidth: 100,
@@ -41,7 +41,7 @@ let _columns: IColumn[] = [
     ariaLabel: 'Operations for modifiedby'
   },
   {
-    key: 'column4',
+    key: 'filesize',
     name: 'File Size',
     fieldName: 'filesize',
     minWidth: 100,
@@ -68,29 +68,27 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     columns: IColumn[];
     numberOfItems: number;
   }
-> {
+  > {
   private _selection: Selection;
 
   constructor(props: {}) {
     super(props);
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
+    this._renderAnnounced = this._renderAnnounced.bind(this);
 
     this._selection = new Selection();
 
     if (_items.length === 0) {
       for (let i = 0; i < 20; i++) {
         _items.push({
-          key: i,
           name: 'Item ' + i,
-          modified: i,
+          modified: new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
       }
     }
-
-    _columns = buildColumns(_items, true);
 
     this.state = {
       items: _items,
@@ -100,7 +98,7 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { items, columns, numberOfItems } = this.state;
+    const { items, columns } = this.state;
 
     return (
       <>
@@ -110,7 +108,7 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
           Note: This example is to showcase the concept of copying, uploading, or moving many items and not full illustrative of the real
           world scenario.
         </p>
-        {this._renderAnnounced(numberOfItems)}
+        {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             setKey={'items'}
@@ -129,7 +127,9 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     );
   }
 
-  private _renderAnnounced(numberOfItems: number): JSX.Element | undefined {
+  private _renderAnnounced(): JSX.Element | undefined {
+    const { numberOfItems } = this.state;
+
     if (numberOfItems > 0) {
       return <Announced message={numberOfItems === 1 ? `${numberOfItems} item moved` : `${numberOfItems} items moved`} />;
     }

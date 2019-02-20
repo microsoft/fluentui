@@ -15,13 +15,7 @@ import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
-const _items: {
-  key: number;
-  name: string;
-  modifiedby: string;
-  modified: number;
-  filesize: string;
-}[] = [];
+const _items: IAnnouncedQuickActionsExampleItem[] = [];
 
 const _columns: IColumn[] = [
   {
@@ -74,8 +68,16 @@ const _names: string[] = [
 
 const nullFunction = (): null => null;
 
+export interface IAnnouncedQuickActionsExampleItem {
+  key: number;
+  name: string;
+  modified: string;
+  modifiedby: string;
+  filesize: string;
+};
+
 export interface IAnnouncedQuickActionsExampleState {
-  items: { key: number; name?: string; modified?: number; modifiedby?: string; filesize?: string }[];
+  items: IAnnouncedQuickActionsExampleItem[];
   selectionDetails: {};
   showItemIndexInView: boolean;
   renameDialogOpen: boolean;
@@ -97,7 +99,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         _items.push({
           key: i,
           name: 'Item ' + i,
-          modified: i,
+          modified: new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
@@ -144,7 +146,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
             onRenderItemColumn={this._onRenderItemColumn}
             onRenderRow={this._onRenderRow}
           />
-          <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog}>
+          <Dialog hidden={!renameDialogOpen} onDismiss={this._closeRenameDialog} closeButtonAriaLabel='Close'>
             {dialogContent}
           </Dialog>
         </MarqueeSelection>
@@ -175,6 +177,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
               iconProps={{ iconName: 'MoreVertical' }}
               role="button"
               aria-haspopup={true}
+              aria-label='Show actions'
               onRenderMenuIcon={nullFunction}
               styles={{ root: { float: 'right', height: 'inherit' } }}
               menuProps={{
@@ -243,7 +246,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
   private _updateItemName(item: any, index: number): void {
     if (this._textField && this._textField.current) {
       const items = this.state.items;
-      items[index].name = this._textField.current.value;
+      items[index].name = this._textField.current.value || items[index].name;
       this.setState(
         {
           renameDialogOpen: false,
