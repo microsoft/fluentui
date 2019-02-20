@@ -1,51 +1,58 @@
 import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-// tslint:disable:jsx-no-lambda
-export class SpinButtonStatefulExample extends React.Component<any, any> {
+export interface ISpinButtonStatefulExampleState {
+  value: number;
+  asyncResetTimer: undefined | NodeJS.Timer;
+}
+
+export class SpinButtonStatefulExample extends React.Component<{}, ISpinButtonStatefulExampleState> {
+  private static _initialValue: number = 8;
+
+  public constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      value: SpinButtonStatefulExample._initialValue,
+      asyncResetTimer: undefined
+    };
+  }
+
+  public componentWillUnmount() {
+    if (this.state.asyncResetTimer) {
+      clearTimeout(this.state.asyncResetTimer);
+    }
+  }
+
   public render(): JSX.Element {
-    const suffix = ' cm';
-
     return (
       <div style={{ width: '400px' }}>
-        <SpinButton
-          label="SpinButton with custom implementation:"
-          value={'7' + suffix}
-          onValidate={(value: string) => {
-            value = this._removeSuffix(value, suffix);
-            if (value.trim().length === 0 || isNaN(+value)) {
-              return '0' + suffix;
-            }
-
-            return String(value) + suffix;
-          }}
-          onIncrement={(value: string) => {
-            value = this._removeSuffix(value, suffix);
-            return String(+value + 2) + suffix;
-          }}
-          onDecrement={(value: string) => {
-            value = this._removeSuffix(value, suffix);
-            return String(+value - 2) + suffix;
-          }}
-          onFocus={() => console.log('onFocus called')}
-          onBlur={() => console.log('onBlur called')}
-          incrementButtonAriaLabel={'Increase value by 2'}
-          decrementButtonAriaLabel={'Decrease value by 2'}
-        />
+        <SpinButton label="Controlled SpinButton:" min={0} max={10} value={this.state.value.toString()} onChange={this._handleChange} />
+        <SpinButton label="Shadow SpinButton:" min={5} max={15} value={this.state.value.toString()} onChange={this._handleChange} />
+        <SpinButton label="SpinButton without onChange handler:" value={this.state.value.toString()} />
+        <DefaultButton text="Reset" onClick={this._handleReset} styles={{ root: { marginRight: 10 } }} />
+        <DefaultButton text="Async Reset" onClick={this._handleAsyncReset} disabled={this.state.asyncResetTimer !== undefined} />
       </div>
     );
   }
 
-  private _hasSuffix(value: string, suffix: string): Boolean {
-    const subString = value.substr(value.length - suffix.length);
-    return subString === suffix;
-  }
+  private _handleChange = (value: string) => {
+    this.setState({ value: Number(value) });
+  };
 
-  private _removeSuffix(value: string, suffix: string): string {
-    if (!this._hasSuffix(value, suffix)) {
-      return value;
-    }
+  private _handleReset = () => {
+    this.setState({ value: SpinButtonStatefulExample._initialValue });
+  };
 
-    return value.substr(0, value.length - suffix.length);
-  }
+  private _handleAsyncReset = () => {
+    const timer = setTimeout(() => {
+      this.setState({
+        value: SpinButtonStatefulExample._initialValue,
+        asyncResetTimer: undefined
+      });
+    }, 3000);
+
+    this.setState({ asyncResetTimer: timer });
+  };
 }

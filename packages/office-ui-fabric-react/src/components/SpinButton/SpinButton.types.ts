@@ -119,6 +119,13 @@ export interface ISpinButtonProps {
   onDecrement?: (value: string) => string | void;
 
   /**
+   * This callback is triggered when the display value is changed.
+   * The display value is always validated and normalized.
+   * This callback is used to create stateful component to control the SpinButton.
+   */
+  onChange?: (value: string) => void;
+
+  /**
    * A callback for when the user put focus on the picker
    */
   onFocus?: React.FocusEventHandler<HTMLInputElement>;

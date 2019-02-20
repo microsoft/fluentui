@@ -6,6 +6,7 @@ import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisab
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
 import { SpinButtonCustomValidateExample } from './examples/SpinButton.CustomValidate.Example';
+import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Example';
 import { SpinButtonStatus } from './SpinButton.checklist';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
@@ -14,6 +15,7 @@ const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric
 const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
 const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
 const SpinButtonCustomValidateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomValidate.Example.tsx') as string;
+const SpinButtonStatefulExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
 
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',
@@ -46,6 +48,11 @@ export const SpinButtonPageProps: IDocPageProps = {
       title: 'Custom Validate SpinButton',
       code: SpinButtonCustomValidateExampleCode,
       view: <SpinButtonCustomValidateExample />
+    },
+    {
+      title: 'Stateful SpinButton',
+      code: SpinButtonStatefulExampleCode,
+      view: <SpinButtonStatefulExample />
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')],
