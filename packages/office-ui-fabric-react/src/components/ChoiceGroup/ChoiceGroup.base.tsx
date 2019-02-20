@@ -100,7 +100,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
-                'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
+                // 'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,
