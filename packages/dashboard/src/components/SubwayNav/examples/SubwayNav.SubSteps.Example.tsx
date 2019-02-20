@@ -1,188 +1,78 @@
 import * as React from 'react';
-import { generateRandomId } from './SubwayNav.Util';
-import { SubwayNav } from '../SubwayNav';
-import { ISubwayNavStep, SubwayNavStepState } from '../SubwayNav.types';
+import { generateRandomId, setSubwayState } from './SubwayNav.Util';
+import { SubwayNav, ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard';
 
 export interface ISubwayNavSubStepsExampleState {
-  currStep: ISubwayNavStep;
-  currSubStep: ISubwayNavStep | undefined;
-  steps: ISubwayNavStep[];
+  currentStepId: string;
+  steps: ISubwayNavNodeProps[];
 }
 
 export class SubwayNavSubStepsExample extends React.Component<{}, ISubwayNavSubStepsExampleState> {
-  private steps: ISubwayNavStep[] = [];
-  private subSteps: ISubwayNavStep[] = [];
+  private steps: ISubwayNavNodeProps[];
 
   constructor(props: {}) {
     super(props);
-
     this._handleClickStep = this._handleClickStep.bind(this);
-
-    this.steps = [];
-
-    const substep0: ISubwayNavStep = {
-      key: generateRandomId(),
-      label: 'Sub Step 0',
-      state: SubwayNavStepState.NotStarted,
-      isSubStep: true,
-      onClickStep: this._handleClickStep
-    };
-    const substep1: ISubwayNavStep = {
-      key: generateRandomId(),
-      label: 'Sub Step 1',
-      state: SubwayNavStepState.NotStarted,
-      isSubStep: true,
-      onClickStep: this._handleClickStep
-    };
-    const substep2: ISubwayNavStep = {
-      key: generateRandomId(),
-      label: 'Sub Step 2',
-      state: SubwayNavStepState.NotStarted,
-      isSubStep: true,
-      onClickStep: this._handleClickStep
-    };
-
-    this.subSteps.push(substep0);
-    this.subSteps.push(substep1);
-    this.subSteps.push(substep2);
-
-    const data0: ISubwayNavStep = {
-      key: generateRandomId(),
-      label: 'Step 0',
-      state: SubwayNavStepState.Current,
-      onClickStep: this._handleClickStep
-    };
-    const data1: ISubwayNavStep = {
-      key: generateRandomId(),
-      label: 'Step 1',
-      state: SubwayNavStepState.NotStarted,
-      onClickStep: this._handleClickStep,
-      subSteps: this.subSteps
-    };
-    const data2: ISubwayNavStep = {
-      key: generateRandomId(),
-      label: 'Step 2',
-      state: SubwayNavStepState.NotStarted,
-      onClickStep: this._handleClickStep
-    };
-    const data3: ISubwayNavStep = {
-      key: generateRandomId(),
-      label: 'Step 3',
-      state: SubwayNavStepState.NotStarted,
-      onClickStep: this._handleClickStep
-    };
-
-    this.steps.push(data0);
-    this.steps.push(data1);
-    this.steps.push(data2);
-    this.steps.push(data3);
-  }
-
-  public componentDidMount(): void {
-    let currSubStep: ISubwayNavStep | undefined = undefined;
-    const currStep = this.steps[0];
-    if (currStep.subSteps && currStep.subSteps.length > 0) {
-      currSubStep = currStep.subSteps[0];
-    }
-
-    this.setState({
+    this.steps = [
+      {
+        id: generateRandomId(),
+        label: 'Step 0',
+        state: SubwayNavNodeState.Current,
+        onClickStep: this._handleClickStep
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 1',
+        state: SubwayNavNodeState.NotStarted,
+        onClickStep: this._handleClickStep,
+        subSteps: [
+          {
+            id: generateRandomId(),
+            label: 'Sub Step 0',
+            state: SubwayNavNodeState.NotStarted,
+            isSubStep: true,
+            onClickStep: this._handleClickStep
+          },
+          {
+            id: generateRandomId(),
+            label: 'Sub Step 1',
+            state: SubwayNavNodeState.NotStarted,
+            isSubStep: true,
+            onClickStep: this._handleClickStep
+          },
+          {
+            id: generateRandomId(),
+            label: 'Sub Step 2',
+            state: SubwayNavNodeState.NotStarted,
+            isSubStep: true,
+            onClickStep: this._handleClickStep
+          }
+        ]
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 2',
+        state: SubwayNavNodeState.NotStarted,
+        onClickStep: this._handleClickStep
+      },
+      {
+        id: generateRandomId(),
+        label: 'Step 3',
+        state: SubwayNavNodeState.NotStarted,
+        onClickStep: this._handleClickStep
+      }
+    ];
+    this.state = {
       steps: this.steps,
-      currStep: this.steps[0],
-      currSubStep: currSubStep
-    });
+      currentStepId: this.steps[0].id
+    };
   }
 
   public render(): JSX.Element {
-    return (
-      <div>
-        <SubwayNav steps={this.steps} />
-      </div>
-    );
+    return <SubwayNav steps={this.state.steps} />;
   }
 
-  private _handleClickStep(clickedStep: ISubwayNavStep, clickedSubStep: ISubwayNavStep | undefined): void {
-    if (clickedSubStep === undefined) {
-      this._handleParentClickStep(clickedStep);
-      return;
-    }
-
-    let alertStr = 'Clicked ' + clickedStep.label;
-    if (clickedSubStep !== undefined) {
-      alertStr += ' and ' + clickedSubStep.label;
-    }
-
-    console.log(alertStr);
-
-    if (clickedSubStep.key === this.state!.currSubStep!.key) {
-      // clicked same substep
-      return;
-    }
-
-    let newSteps: ISubwayNavStep[] = [];
-    newSteps = this.state.steps;
-
-    let currSubStep = this.state.currSubStep;
-
-    let foundClickedSubStep: boolean = false;
-
-    newSteps.map((stepObj: ISubwayNavStep) => {
-      if (stepObj.key === clickedStep.key) {
-        if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
-          stepObj.subSteps.map((subStepObj: ISubwayNavStep) => {
-            if (subStepObj.key === this.state!.currSubStep!.key) {
-              subStepObj.state = SubwayNavStepState.Completed;
-            } else if (subStepObj.key === clickedSubStep!.key) {
-              subStepObj.state = SubwayNavStepState.Current;
-              currSubStep = subStepObj;
-              foundClickedSubStep = true;
-            } else if (!foundClickedSubStep && subStepObj.state === SubwayNavStepState.NotStarted) {
-              subStepObj.state = SubwayNavStepState.Skipped;
-            }
-          });
-        }
-      } else if (!foundClickedSubStep && stepObj.state === SubwayNavStepState.NotStarted) {
-        stepObj.state = SubwayNavStepState.Skipped;
-      }
-    });
-
-    this.setState({ steps: newSteps, currSubStep: currSubStep });
-  }
-
-  private _handleParentClickStep(step: ISubwayNavStep): void {
-    const alertStr = 'Clicked ' + step.label;
-
-    if (this.state.currStep.key === step.key) {
-      // Clicked same current step
-      return;
-    }
-
-    let newSteps: ISubwayNavStep[] = [];
-    newSteps = this.state.steps;
-
-    let currStep = this.state.currStep;
-    let currSubStep = this.state.currSubStep;
-
-    let foundClickedStep: boolean = false;
-
-    newSteps.map((stepObj: ISubwayNavStep) => {
-      if (stepObj.key === this.state.currStep.key) {
-        stepObj.state = SubwayNavStepState.Completed;
-      } else if (stepObj.key === step.key) {
-        stepObj.state = SubwayNavStepState.Current;
-        currStep = stepObj;
-        foundClickedStep = true;
-
-        if (stepObj.subSteps !== undefined && stepObj.subSteps.length > 0) {
-          stepObj.subSteps[0].state = SubwayNavStepState.Current;
-          currSubStep = stepObj.subSteps[0];
-        }
-      } else if (!foundClickedStep && stepObj.state === SubwayNavStepState.NotStarted) {
-        stepObj.state = SubwayNavStepState.Skipped;
-      }
-    });
-
-    this.setState({ steps: newSteps, currStep: currStep, currSubStep: currSubStep });
-
-    console.log(alertStr);
+  private _handleClickStep(step: ISubwayNavNodeProps): void {
+    this.setState({ ...setSubwayState(step, this.state.steps, this.state.currentStepId) });
   }
 }

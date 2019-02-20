@@ -5,13 +5,19 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { HoverCard } from 'office-ui-fabric-react';
 
-const onRenderCompactCard = (item: any) => {
-  return <div>Content</div>;
+const onRenderCardContent = (item: any) => {
+  return (
+    <div style={{ padding: '10px' }}>
+      <div>Card content goes here.</div>
+      <div>Test string passed to cards: {item.test}</div>
+    </div>
+  );
 };
 
 const expandingCardProps = {
-  onRenderCompactCard: onRenderCompactCard,
-  renderData: 'New York'
+  onRenderCompactCard: onRenderCardContent,
+  onRenderExpandedCard: onRenderCardContent,
+  renderData: { test: 'Hello World!' }
 };
 
 storiesOf('HoverCard', module)
@@ -21,6 +27,8 @@ storiesOf('HoverCard', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
+        .click('.ms-HoverCard-host')
+        .snapshot('fully expanded with test content', { cropTo: '.ms-Layer' })
         .end()}
     >
       {story()}

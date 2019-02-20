@@ -2,6 +2,27 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.15.0",
+      "tag": "@uifabric/fluent-theme_v0.15.0",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: adds fluent styles overrides.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c97e7f2c3d22bfaedb0e778f2f1dc7645fd60b8c"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "16390fd717dcb5db3c0f0a83965aa1a9f1efc3a8"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.14.2",
       "tag": "@uifabric/fluent-theme_v0.14.2",
       "date": "Mon, 18 Feb 2019 13:38:30 GMT",
