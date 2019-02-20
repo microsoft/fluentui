@@ -1,7 +1,6 @@
 import { memoizeFunction } from '../../Utilities';
 import { mergeStyles, IStyle } from '../../Styling';
 import { ISpinButtonStyles } from './SpinButton.types';
-import { KeyboardSpinDirection } from './SpinButton';
 import { Position } from '../../utilities/positioning';
 
 export interface ISpinButtonClassNames {
@@ -19,7 +18,6 @@ export const getClassNames = memoizeFunction(
     styles: ISpinButtonStyles,
     disabled: boolean,
     isFocused: boolean,
-    keyboardSpinDirection: KeyboardSpinDirection,
     labelPosition: Position = Position.start,
     className: string | undefined = undefined
   ): ISpinButtonClassNames => {
