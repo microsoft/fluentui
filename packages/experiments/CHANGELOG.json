@@ -2,6 +2,36 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.57.1",
+      "tag": "@uifabric/experiments_v6.57.1",
+      "date": "Mon, 18 Feb 2019 13:38:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "to useFluentIcon prop to change top padding in style",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7f690a04d0f766482f5d24a2df7bd18faf8a986c"
+          },
+          {
+            "comment": "Text: Fix 'as' prop circular reference",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "90deffbfc7ba9aefdb9d10bc54fa1452b6fc9cfa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.14.1 <1.0.0` to `>=0.14.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.3.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.140.0 <7.0.0` to `>=6.141.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.57.0",
       "tag": "@uifabric/experiments_v6.57.0",
       "date": "Fri, 15 Feb 2019 17:41:16 GMT",

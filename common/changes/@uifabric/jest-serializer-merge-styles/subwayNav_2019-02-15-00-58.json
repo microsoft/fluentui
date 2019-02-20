@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/jest-serializer-merge-styles",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "email": "brandth@microsoft.com"
+}

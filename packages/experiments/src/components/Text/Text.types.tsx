@@ -20,7 +20,7 @@ export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextPr
   /**
    * Optionally render the component as another component type or primitive.
    */
-  as?: string | React.ReactType<ITextProps>;
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Optional class name for Text.

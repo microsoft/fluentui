@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Feb 2019 13:38:30 GMT and should not be manually modified.
+
+## 6.11.1
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Remove IColorPickerProps.onColorChanged usage
 
 ## 6.11.0
 Fri, 15 Feb 2019 17:41:16 GMT

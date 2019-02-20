@@ -65,4 +65,19 @@ describe('getRTL', () => {
     document.documentElement.setAttribute('dir', 'rtl');
     expect(RTL.getRTL()).toBe(true);
   });
+
+  it('does not cause exception with null body element', () => {
+    const DOM = require('./dom');
+    jest.spyOn(DOM, 'getDocument').mockImplementation(() => {
+      return {
+        documentElement: document.documentElement,
+        body: null
+      };
+    });
+
+    document.documentElement.setAttribute('dir', 'rtl');
+    expect(RTL.getRTL()).toBe(true);
+
+    jest.restoreAllMocks();
+  });
 });

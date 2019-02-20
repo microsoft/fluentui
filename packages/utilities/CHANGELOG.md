@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 14 Feb 2019 13:34:55 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Feb 2019 13:30:29 GMT and should not be manually modified.
+
+## 6.29.2
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Patches
+
+- getRTL: Check for existence of body element before reading attributes.
 
 ## 6.29.1
 Thu, 14 Feb 2019 13:34:55 GMT

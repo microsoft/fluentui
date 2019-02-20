@@ -1,11 +1,11 @@
-import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import './Layer.Example.scss';
 import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
+import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import * as React from 'react';
+import './Layer.Example.scss';
 const exampleStyles: any = exampleStylesImport;
 
 export interface ILayerHostedExampleState {
@@ -26,7 +26,7 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
 
   public render(): JSX.Element {
     const { showLayer, showLayerNoId, showHost } = this.state;
-    const content = <div className={'LayerExample-content ' + AnimationClassNames.scaleUpIn100}>This is example layer content.</div>;
+    const content = <div className={`LayerExample-content ${AnimationClassNames.scaleUpIn100}`}>This is example layer content.</div>;
 
     return (
       <div>
@@ -52,7 +52,7 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
             hostId={this._layerHostId}
             onLayerDidMount={this._log('didmount')}
             onLayerWillUnmount={this._log('willunmount')}
-            className={'exampleLayerClassName'}
+            className="exampleLayerClassName"
           >
             {content}
           </Layer>

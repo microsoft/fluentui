@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Fri, 15 Feb 2019 13:33:05 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Feb 2019 13:30:29 GMT and should not be manually modified.
+
+## 0.49.0
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Minor changes
+
+- Refactor of Wizard and SubwayNav Components
 
 ## 0.48.0
 Fri, 15 Feb 2019 13:33:05 GMT

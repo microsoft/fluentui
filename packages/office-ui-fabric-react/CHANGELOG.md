@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 Feb 2019 17:41:17 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Feb 2019 13:37:02 GMT and should not be manually modified.
+
+## 6.141.1
+Tue, 19 Feb 2019 13:37:02 GMT
+
+### Patches
+
+- Set colors for unknown persona coin to fixed values
+
+## 6.141.0
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Minor changes
+
+- ColorPicker: take color object in props, add standard onChange
+- Deprecate IconNames due to const enum usage.
+- Stack: Fix 'as' prop circular reference.
+- Panel: Enabling the addition of new buttons (or other components) to the Navigation region
+- Panel: fixes several screen breakpoint issues and brings more clarity to docs and logic of applying the breakpoints.
+
+### Patches
+
+- Coding conventions
+- Added custom width, left anchored panel support
 
 ## 6.140.0
 Fri, 15 Feb 2019 17:41:16 GMT
