@@ -59,7 +59,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   /**
    * Element type the root element will use. Default is "div".
    */
-  elementType?: keyof React.ReactHTML;
+  elementType?: any /* FABRIC7TODO keyof React.ReactHTML */;
 
   /**
    * If set, will cycle to the beginning of the targets once the user navigates to the
