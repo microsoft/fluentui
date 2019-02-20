@@ -9,14 +9,11 @@ export class SpinButtonBasicWithEndPositionExample extends React.Component<any, 
         <SpinButton
           defaultValue="0"
           iconProps={{ iconName: 'Light' }}
-          label={'Basic SpinButton'}
+          label={'SpinButton After Input'}
           labelPosition={Position.end}
           min={0}
           max={100}
           step={1}
-          // tslint:disable:jsx-no-lambda
-          onFocus={() => console.log('onFocus called')}
-          onBlur={() => console.log('onBlur called')}
           incrementButtonAriaLabel={'Increase value by 1'}
           decrementButtonAriaLabel={'Decrease value by 1'}
         />
