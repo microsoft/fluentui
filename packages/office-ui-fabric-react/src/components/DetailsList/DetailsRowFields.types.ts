@@ -38,7 +38,7 @@ export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
   /**
    * Callback for rendering an item column
    */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
   /**
    * Whether to show shimmer

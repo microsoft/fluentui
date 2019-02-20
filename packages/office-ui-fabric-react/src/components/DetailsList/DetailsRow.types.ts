@@ -108,7 +108,7 @@ export interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsI
   /**
    * Callback for rendering an item column
    */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
   /**
    * Handling drag and drop events
