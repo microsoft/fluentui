@@ -13,7 +13,7 @@ export interface IThemeProviderProps {
  *
  * @param providers - Injected providers for accessing theme data and providing it via a Customizer component.
  */
-export const ThemeProvider: React.StatelessComponent<IThemeProviderProps> = (props: IThemeProviderProps) => {
+export const ThemeProvider: React.FunctionComponent<IThemeProviderProps> = (props: IThemeProviderProps) => {
   const { scheme, theme, ...rest } = props;
 
   // TODO: consider merging implementation with theme-proto, which only stores a reference / scheme name to theme in context
