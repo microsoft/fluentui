@@ -22,7 +22,7 @@ export function getRTL(): boolean {
 
     let doc = getDocument();
     if (_isRTL === undefined && doc) {
-      _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
+      _isRTL = ((doc.body && doc.body.getAttribute('dir')) || doc.documentElement.getAttribute('dir')) === 'rtl';
       mergeStylesSetRTL(_isRTL);
     }
   }

@@ -35,6 +35,17 @@ export interface IMultiCountProps {
    *Url to be redirected to upon clicking on the component
    */
   href?: string;
+
+  /**
+   * Defines the id for the component
+   */
+  id?: string;
+
+  /**
+   * Defines the function that is executed on clicking this action
+   */
+
+  onClicked?: VoidFunction;
 }
 
 export enum AnnotationType {
@@ -64,6 +75,7 @@ export interface IMultiCountStyleProps {
   currentText?: string;
   href?: string;
   hideIcon?: boolean;
+  onClicked?: VoidFunction;
 }
 
 export interface IMultiCountRow {

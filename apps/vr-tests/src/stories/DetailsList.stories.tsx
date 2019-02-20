@@ -7,7 +7,8 @@ import {
   DetailsList,
   DetailsListLayoutMode,
   IColumn,
-  CheckboxVisibility
+  CheckboxVisibility,
+  SelectionMode
 } from 'office-ui-fabric-react';
 
 const items = [
@@ -146,6 +147,16 @@ storiesOf('DetailsList', module)
       items={items}
       compact
       columns={columns}
+      layoutMode={DetailsListLayoutMode.justified}
+      isHeaderVisible={true}
+    />
+  ))
+  .addStory('Single Selection Mode', () => (
+    <DetailsList
+      items={items}
+      compact={false}
+      columns={columns}
+      selectionMode={SelectionMode.single}
       layoutMode={DetailsListLayoutMode.justified}
       isHeaderVisible={true}
     />

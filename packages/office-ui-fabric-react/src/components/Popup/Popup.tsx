@@ -68,6 +68,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
     return (
       <div
+        tabIndex={-1}
         ref={this._root}
         {...getNativeProps(this.props, divProperties)}
         className={className}
@@ -76,7 +77,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
         onKeyDown={this._onKeyDown}
-        style={{ overflowY: this.state.needsVerticalScrollBar ? 'scroll' : undefined, ...style }}
+        style={{ overflowY: this.state.needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
       >
         {this.props.children}
       </div>

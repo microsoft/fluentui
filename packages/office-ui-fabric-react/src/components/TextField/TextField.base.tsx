@@ -376,7 +376,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
     if (label) {
       return (
-        <Label required={required} htmlFor={this._id} styles={labelStyles}>
+        <Label required={required} htmlFor={this._id} styles={labelStyles} disabled={props.disabled}>
           {props.label}
         </Label>
       );

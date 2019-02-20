@@ -5,13 +5,18 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
-import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
-import { IColor, getColorFromString } from '../../utilities/color/colors';
+import { IColorPickerProps } from './ColorPicker.types';
+import { getColorFromString, IColor } from '../../utilities/color/colors';
 import { mockEvent } from '../../common/testUtilities';
+
+const noOp = () => undefined;
 
 describe('ColorPicker', () => {
   let wrapper: ReactWrapper<IColorPickerProps, IColorPickerState, ColorPickerBase> | undefined;
-  const colorPickerRef = React.createRef<IColorPicker>();
+  let colorPicker: ColorPickerBase | null = null;
+  const colorPickerRef = (ref: ColorPickerBase | null) => {
+    colorPicker = ref;
+  };
 
   afterEach(() => {
     if (wrapper) {
@@ -26,35 +31,36 @@ describe('ColorPicker', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('correctly parses props', () => {
-    wrapper = mount(<ColorPicker color="#abcdef" componentRef={colorPickerRef} />);
+  it('uses provided color string', () => {
+    wrapper = mount(<ColorPicker color="#abcdef" onChange={noOp} componentRef={colorPickerRef} />);
 
-    expect(colorPickerRef.current!.color.hex).toEqual('abcdef');
+    expect(colorPicker!.color.hex).toEqual('abcdef');
   });
 
-  it('reacts to props change', () => {
-    wrapper = mount(<ColorPicker color="#abcdef" componentRef={colorPickerRef} />);
+  it('uses provided color object', () => {
+    const color = getColorFromString('#abcdef')!;
+    wrapper = mount(<ColorPicker color={color} onChange={noOp} componentRef={colorPickerRef} />);
+
+    expect(colorPicker!.color).toEqual(color);
+  });
+
+  it('respects color prop change', () => {
+    const onChange = jest.fn();
+    wrapper = mount(<ColorPicker color="#abcdef" onChange={onChange} componentRef={colorPickerRef} />);
 
     wrapper.setProps({ color: '#AEAEAE' });
-    expect(colorPickerRef.current!.color.hex).toEqual('aeaeae');
+    expect(colorPicker!.color.hex).toEqual('aeaeae');
+    // shouldn't call onChange when the consumer updates the color prop
+    expect(onChange).toHaveBeenCalledTimes(0);
   });
 
-  it('calls onColorChange', () => {
-    let color = '#FFFFFF';
-    let newColorObject: IColor | undefined;
-    const onColorChanged = (str: string, colorObject: IColor): void => {
-      color = str;
-      newColorObject = colorObject;
-    };
+  it('ignores invalid updates to color prop', () => {
+    const onChange = jest.fn();
+    wrapper = mount(<ColorPicker color="#abcdef" onChange={onChange} componentRef={colorPickerRef} />);
 
-    wrapper = mount(<ColorPicker color={color} componentRef={colorPickerRef} onColorChanged={onColorChanged} />);
-
-    const newColor = '#AEAEAE';
-    wrapper.setProps({ color: newColor });
-
-    expect(colorPickerRef.current!.color.hex).toEqual('aeaeae');
-    expect(color).toEqual(newColor);
-    expect(newColorObject).toEqual(getColorFromString(newColor));
+    wrapper.setProps({ color: 'foo' });
+    expect(colorPicker!.color.hex).toEqual('abcdef');
+    expect(onChange).toHaveBeenCalledTimes(0);
   });
 
   it('hides alpha control slider', () => {
@@ -114,13 +120,13 @@ describe('ColorPicker', () => {
     wrapper = mount(
       <ColorPicker
         color={`#${colorStringValue}`}
-        onColorChanged={colorChangeSpy}
+        onChange={colorChangeSpy}
         componentRef={colorPickerRef}
         styles={{ input: inputClassName }}
       />
     );
 
-    expect(colorPickerRef.current!.color.hex).toEqual(colorStringValue);
+    expect(colorPicker!.color.hex).toEqual(colorStringValue);
     expect(colorChangeSpy).toHaveBeenCalledTimes(0);
 
     // Tab between text inputs checking state after each time.
@@ -131,54 +137,75 @@ describe('ColorPicker', () => {
       input.simulate('focus');
       input.simulate('blur');
 
-      expect(colorPickerRef.current!.color.hex).toEqual(colorStringValue);
+      expect(colorPicker!.color.hex).toEqual(colorStringValue);
       expect(colorChangeSpy).toHaveBeenCalledTimes(0);
     });
   });
 
   it('allows updating text fields', () => {
     let updatedColor: string | undefined;
-    const onChange = jest.fn((color: string) => (updatedColor = color));
+    const onChange = jest.fn((ev: any, color: IColor) => {
+      updatedColor = color.str;
+    });
 
-    wrapper = mount(<ColorPicker onColorChanged={onChange} color="#000000" />);
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
 
     const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input');
+
     const redInput = inputs[1];
     ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
-    ReactTestUtils.Simulate.blur(redInput);
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(updatedColor).toBe('#ff0000');
+    expect(colorPicker!.color.str).toBe('#ff0000');
+    // blur and make sure nothing changes
+    ReactTestUtils.Simulate.blur(redInput);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(colorPicker!.color.str).toBe('#ff0000');
 
     const hexInput = inputs[0];
     ReactTestUtils.Simulate.input(hexInput, mockEvent('00ff00'));
-    ReactTestUtils.Simulate.blur(hexInput);
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(updatedColor).toBe('#00ff00');
+    expect(colorPicker!.color.str).toBe('#00ff00');
+    ReactTestUtils.Simulate.blur(hexInput);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(colorPicker!.color.str).toBe('#00ff00');
 
     const alphaInput = inputs[4];
     ReactTestUtils.Simulate.input(alphaInput, mockEvent('50'));
     ReactTestUtils.Simulate.blur(alphaInput);
     expect(onChange).toHaveBeenCalledTimes(3);
     expect(updatedColor).toBe('rgba(0, 255, 0, 0.5)');
+    expect(colorPicker!.color.str).toBe('rgba(0, 255, 0, 0.5)');
   });
 
   it('allows updating text fields when alpha slider is hidden', () => {
     let updatedColor: string | undefined;
-    const onChange = jest.fn((color: string) => (updatedColor = color));
+    const onChange = jest.fn((ev: any, color: IColor) => {
+      updatedColor = color.str;
+    });
 
-    wrapper = mount(<ColorPicker onColorChanged={onChange} color="#000000" alphaSliderHidden />);
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" alphaSliderHidden componentRef={colorPickerRef} />);
 
     const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input');
+
     const redInput = inputs[1];
     ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
-    ReactTestUtils.Simulate.blur(redInput);
     expect(onChange).toHaveBeenCalledTimes(1);
     expect(updatedColor).toBe('#ff0000');
+    expect(colorPicker!.color.str).toBe('#ff0000');
+    // blur and make sure nothing changes
+    ReactTestUtils.Simulate.blur(redInput);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(colorPicker!.color.str).toBe('#ff0000');
 
     const hexInput = inputs[0];
     ReactTestUtils.Simulate.input(hexInput, mockEvent('00ff00'));
-    ReactTestUtils.Simulate.blur(hexInput);
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(updatedColor).toBe('#00ff00');
+    expect(colorPicker!.color.str).toBe('#00ff00');
+    ReactTestUtils.Simulate.blur(hexInput);
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(colorPicker!.color.str).toBe('#00ff00');
   });
 });

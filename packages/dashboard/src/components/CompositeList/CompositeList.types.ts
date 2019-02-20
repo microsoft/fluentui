@@ -74,6 +74,11 @@ export interface ICompositeListProps {
   isCompactMode?: boolean;
 
   /**
+   * To set if the command bar should be hidden, defaults to false
+   */
+  hideCommandBar?: boolean;
+
+  /**
    * Callback when compact mode is changed
    */
   onCompactModeChanged?: (newValue: boolean) => void;

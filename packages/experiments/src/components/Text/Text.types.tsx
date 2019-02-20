@@ -1,4 +1,4 @@
-import { IComponentStyles, IHTMLSpanSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
 export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
@@ -9,10 +9,10 @@ export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
 export type ITextTokenReturnType = ReturnType<Extract<ITextComponent['tokens'], Function>>;
 export type ITextStylesReturnType = ReturnType<Extract<ITextComponent['styles'], Function>>;
 
-export type ITextSlot = ISlotProp<ITextProps, 'children'>;
+export type ITextSlot = ISlotProp<ITextProps, React.ReactNode>;
 
 export interface ITextSlots {
-  root?: IHTMLSpanSlot;
+  root?: IHTMLSlot;
 }
 
 // Inputs to the component
@@ -20,7 +20,7 @@ export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextPr
   /**
    * Optionally render the component as another component type or primitive.
    */
-  as?: string | React.ReactType<ITextProps>;
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Optional class name for Text.

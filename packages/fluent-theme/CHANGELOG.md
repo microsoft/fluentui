@@ -1,6 +1,45 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 25 Jan 2019 13:38:07 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Feb 2019 13:30:29 GMT and should not be manually modified.
+
+## 0.15.0
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Minor changes
+
+- Panel: adds fluent styles overrides.
+
+### Patches
+
+- Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.
+
+## 0.14.2
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Dialog: Adjust right padding of title
+
+## 0.14.1
+Fri, 15 Feb 2019 13:33:05 GMT
+
+### Patches
+
+- Remove unnecessary theme colors
+
+## 0.14.0
+Tue, 12 Feb 2019 13:36:43 GMT
+
+### Minor changes
+
+- Pickers: adds minor adjustments to align to new fluent style patterns.
+
+## 0.13.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Dropdown: fixes a misalignment of some items in the dropdown. 
 
 ## 0.13.3
 Fri, 25 Jan 2019 13:38:07 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 16 Jan 2019 13:38:44 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Feb 2019 13:36:42 GMT and should not be manually modified.
+
+## 0.2.2
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Calendar: adding type="button" in Calendar buttons so they don't submit by default inside forms
 
 ## 0.2.1
 Wed, 16 Jan 2019 13:38:44 GMT

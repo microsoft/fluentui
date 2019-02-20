@@ -6,6 +6,7 @@ import { IButtonStyles } from '../../Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
+import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
 
 export interface IComboBox {
   /**
@@ -117,6 +118,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * The IconProps to use for the button aspect of the combobox
    */
   buttonIconProps?: IIconProps;
+
+  /**
+   * The AutofillProps to be passed into the Autofill component inside combobox
+   */
+  autofill?: IAutofillProps;
 
   /**
    * Theme provided by HOC.

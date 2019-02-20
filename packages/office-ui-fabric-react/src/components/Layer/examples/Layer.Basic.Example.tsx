@@ -1,64 +1,61 @@
-import * as React from 'react'; // tslint:disable-line:no-unused-variable
-import * as PropTypes from 'prop-types';
-import './Layer.Example.scss';
-import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
+import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import './Layer.Example.scss';
 const exampleStyles: any = exampleStylesImport;
 
-export class LayerContentExample extends BaseComponent<
-  {},
-  {
-    time: string;
-  }
-> {
+export interface ILayerContentExampleState {
+  time: string;
+}
+
+export class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
   public static contextTypes = {
     message: PropTypes.string
+  };
+
+  public state = {
+    time: new Date().toLocaleTimeString()
   };
 
   public context: {
     message: string;
   };
 
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      time: new Date().toLocaleTimeString()
-    };
+  public componentDidMount() {
+    this._async.setInterval(() => {
+      this.setState({
+        time: new Date().toLocaleTimeString()
+      });
+    }, 1000);
   }
 
-  public componentDidMount(): void {
-    this._async.setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
-  }
-
-  public render(): JSX.Element {
+  public render() {
     return (
-      <div className={'LayerExample-content ' + AnimationClassNames.scaleUpIn100}>
+      <div className={`LayerExample-content ${AnimationClassNames.scaleUpIn100}`}>
         <div className="LayerExample-textContent">{this.context.message}</div>
         <div>{this.state.time}</div>
       </div>
     );
   }
 }
-export class LayerBasicExample extends BaseComponent<
-  {},
-  {
-    showLayer: boolean;
-  }
-> {
+
+export interface ILayerBasicExampleState {
+  showLayer: boolean;
+}
+
+export class LayerBasicExample extends BaseComponent<{}, ILayerBasicExampleState> {
   public static childContextTypes = {
     message: PropTypes.string
   };
 
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      showLayer: false
-    };
-  }
+  public state = {
+    showLayer: false
+  };
 
   public getChildContext() {
     return {
@@ -66,9 +63,8 @@ export class LayerBasicExample extends BaseComponent<
     };
   }
 
-  public render(): JSX.Element {
+  public render() {
     const { showLayer } = this.state;
-
     return (
       <div>
         <Checkbox

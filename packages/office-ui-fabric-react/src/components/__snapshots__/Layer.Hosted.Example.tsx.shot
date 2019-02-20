@@ -41,7 +41,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Toggle0"
+      htmlFor="Toggle1"
     >
       Show host
     </label>
@@ -106,7 +106,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
               background-color: WindowText;
             }
         data-is-focusable={true}
-        id="Toggle0"
+        id="Toggle1"
         onChange={[Function]}
         onClick={[Function]}
         role="switch"
@@ -136,171 +136,10 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
   </div>
   <div
     className="ms-LayerHost LayerExample-customHost"
-    id="layerhost1"
+    id="layerhost0"
   />
-  <p
-    id="foo"
-  >
-    In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children within the LayerHost. It's meant to contain Layered content only.)
-  </p>
-  <div
-    className=
-        ms-Checkbox
-        is-enabled
-        {
-          display: flex;
-          position: relative;
-        }
-        &:hover .ms-Checkbox-checkbox {
-          border-color: #333333;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          border-color: Highlight;
-        }
-        &:focus .ms-Checkbox-checkbox {
-          border-color: #333333;
-        }
-        &:hover .ms-Checkbox-checkmark {
-          color: #a6a6a6;
-          opacity: 1;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-          color: Highlight;
-        }
-        &:hover .ms-Checkbox-text {
-          color: #333333;
-        }
-        &:focus .ms-Checkbox-text {
-          color: #333333;
-        }
-  >
-    <input
-      checked={false}
-      className=
-
-          {
-            background: none;
-            opacity: 0;
-            position: absolute;
-          }
-          .ms-Fabric--isFocusVisible &:focus + label::before {
-            outline-offset: 2px;
-            outline: 1px solid #666666;
-          }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
-          }
-      id="checkbox-1"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="checkbox"
-    />
-    <label
-      className=
-          ms-Checkbox-label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            align-items: flex-start;
-            cursor: pointer;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            position: relative;
-            text-align: left;
-            user-select: none;
-          }
-          &::before {
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-          }
-      htmlFor="checkbox-1"
-    >
-      <div
-        className=
-            ms-Checkbox-checkbox
-            {
-              align-items: center;
-              border-color: #666666;
-              border-style: solid;
-              border-width: 1px;
-              box-sizing: border-box;
-              display: flex;
-              flex-shrink: 0;
-              height: 20px;
-              justify-content: center;
-              margin-right: 4px;
-              overflow: hidden;
-              transition-duration: 200ms;
-              transition-property: background, border, border-color;
-              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 20px;
-            }
-      >
-        <i
-          className=
-              ms-Checkbox-checkmark
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #ffffff;
-                display: inline-block;
-                font-family: "FabricMDL2Icons";
-                font-style: normal;
-                font-weight: normal;
-                opacity: 0;
-                speak: none;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                color: Window;
-              }
-          data-icon-name="CheckMark"
-          role="presentation"
-        >
-          
-        </i>
-      </div>
-      <span
-        className=
-            ms-Checkbox-text
-            {
-              color: #333333;
-              font-size: 14px;
-              line-height: 20px;
-              margin-left: 4px;
-            }
-      >
-        Render the box below in a Layer and target it at hostId=layerhost1
-      </span>
-    </label>
-  </div>
-  <div
-    className=
-        LayerExample-content
-        {
-          animation-duration: 0.367s;
-          animation-fill-mode: both;
-          animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:scale3d(.98,.98,1);}to{transform:scale3d(1,1,1);};
-          animation-timing-function: cubic-bezier(.1,.9,.2,1);
-        }
-  >
-    This is example layer content.
-  </div>
-  <div
-    className="LayerExample-nonLayered"
-  >
-    I am normally below the content.
-  </div>
   <p>
-    If you do not specify a hostId then the hosted layer will default to being fixed to the page by default.
+    In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children within the LayerHost. It's meant to contain Layered content only.)
   </p>
   <div
     className=
@@ -381,6 +220,165 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             top: 0px;
           }
       htmlFor="checkbox-2"
+    >
+      <div
+        className=
+            ms-Checkbox-checkbox
+            {
+              align-items: center;
+              border-color: #666666;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              display: flex;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-right: 4px;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
+            }
+      >
+        <i
+          className=
+              ms-Checkbox-checkmark
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 0;
+                speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: Window;
+              }
+          data-icon-name="CheckMark"
+          role="presentation"
+        >
+          
+        </i>
+      </div>
+      <span
+        className=
+            ms-Checkbox-text
+            {
+              color: #333333;
+              font-size: 14px;
+              line-height: 20px;
+              margin-left: 4px;
+            }
+      >
+        Render the box below in a Layer and target it at hostId=layerhost0
+      </span>
+    </label>
+  </div>
+  <div
+    className=
+        LayerExample-content
+        {
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:scale3d(.98,.98,1);}to{transform:scale3d(1,1,1);};
+          animation-timing-function: cubic-bezier(.1,.9,.2,1);
+        }
+  >
+    This is example layer content.
+  </div>
+  <div
+    className="LayerExample-nonLayered"
+  >
+    I am normally below the content.
+  </div>
+  <p>
+    If you do not specify a hostId then the hosted layer will default to being fixed to the page by default.
+  </p>
+  <div
+    className=
+        ms-Checkbox
+        is-enabled
+        {
+          display: flex;
+          position: relative;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          border-color: #333333;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          border-color: Highlight;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          border-color: #333333;
+        }
+        &:hover .ms-Checkbox-checkmark {
+          color: #a6a6a6;
+          opacity: 1;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #333333;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #333333;
+        }
+  >
+    <input
+      checked={false}
+      className=
+
+          {
+            background: none;
+            opacity: 0;
+            position: absolute;
+          }
+          .ms-Fabric--isFocusVisible &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #666666;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid ActiveBorder;
+          }
+      id="checkbox-3"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="checkbox"
+    />
+    <label
+      className=
+          ms-Checkbox-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: flex-start;
+            cursor: pointer;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
+          &::before {
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      htmlFor="checkbox-3"
     >
       <div
         className=

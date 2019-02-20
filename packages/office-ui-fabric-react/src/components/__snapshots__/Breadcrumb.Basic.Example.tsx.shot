@@ -127,7 +127,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -142,16 +141,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -201,7 +204,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -289,7 +291,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -304,16 +305,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -363,7 +368,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -451,7 +455,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -466,16 +469,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -525,7 +532,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -541,7 +547,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
-                    This is folder 2
+                    This is folder 2 with a long name
                   </div>
                 </button>
                 <i
@@ -613,7 +619,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -628,16 +633,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -687,7 +696,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -703,7 +711,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
-                    This is folder 3
+                    This is folder 3 long
                   </div>
                 </button>
                 <i
@@ -775,7 +783,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -790,16 +797,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -849,7 +860,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -938,7 +948,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -953,16 +962,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -1012,7 +1025,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1028,7 +1040,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
-                    This is folder 5
+                    This is folder 5 another
                   </div>
                 </button>
               </li>
@@ -1168,7 +1180,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1183,16 +1194,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -1242,7 +1257,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1322,7 +1336,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1337,16 +1350,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -1396,7 +1413,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1476,7 +1492,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1491,16 +1506,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -1550,7 +1569,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1630,7 +1648,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1645,16 +1662,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -1704,7 +1725,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1784,7 +1804,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1799,16 +1818,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -1858,7 +1881,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1939,7 +1961,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -1954,16 +1975,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -2013,7 +2038,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -2107,7 +2131,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         >
           <div
             className="ms-FocusZone"
-            data-focuszone-id="FocusZone14"
+            data-focuszone-id="FocusZone19"
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
@@ -2337,7 +2361,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2350,7 +2373,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -2400,7 +2430,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2478,7 +2507,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2491,7 +2519,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -2541,7 +2576,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2620,7 +2654,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2633,7 +2666,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -2683,7 +2723,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2777,7 +2816,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         >
           <div
             className="ms-FocusZone"
-            data-focuszone-id="FocusZone21"
+            data-focuszone-id="FocusZone26"
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
@@ -2828,7 +2867,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
-                        max-width: 160px;
                         padding-bottom: 0;
                         padding-left: 8px;
                         padding-right: 8px;
@@ -3088,7 +3126,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
-                        max-width: 160px;
                         padding-bottom: 0;
                         padding-left: 8px;
                         padding-right: 8px;
