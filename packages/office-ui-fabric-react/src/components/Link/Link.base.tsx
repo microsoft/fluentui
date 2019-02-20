@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
 export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
-  private _link = createRef<HTMLAnchorElement | HTMLButtonElement | null>();
+  private _link = React.createRef<HTMLAnchorElement | HTMLButtonElement | null>();
 
   public render(): JSX.Element {
     const { disabled, children, className, href, theme, styles, keytipProps } = this.props;
@@ -29,7 +29,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         {(keytipAttributes: any): JSX.Element => (
           <RootType
             {...keytipAttributes}
-            {...this._removeInvalidPropsForRootType(RootType, this.props)}
+            {...this._adjustPropsForRootType(RootType, this.props)}
             className={classNames.root}
             onClick={this._onClick}
             ref={this._link}
@@ -60,14 +60,14 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
     }
   };
 
-  private _removeInvalidPropsForRootType(
+  private _adjustPropsForRootType(
     RootType: string | React.ComponentClass | React.StatelessComponent,
     props: ILinkProps & { getStyles?: any }
   ): Partial<ILinkProps> {
     // Deconstruct the props so we remove props like `as`, `theme` and `styles`
     // as those will always be removed. We also take some props that are optional
     // based on the RootType.
-    const { children, as, disabled, target, href, theme, getStyles, styles, ...restProps } = props;
+    const { children, as, disabled, target, href, theme, getStyles, styles, componentRef, ...restProps } = props;
 
     // RootType will be a string if we're dealing with an html component
     if (typeof RootType === 'string') {
@@ -75,12 +75,21 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       if (RootType === 'a') {
         return {
           target,
-          href,
+          href: disabled ? undefined : href,
           ...restProps
         };
       }
 
-      // Remove the target and href props for non anchor elements
+      // Add the type='button' prop for button elements
+      if (RootType === 'button') {
+        return {
+          type: 'button',
+          disabled,
+          ...restProps
+        };
+      }
+
+      // Remove the target and href props for all other non anchor elements
       return { ...restProps, disabled };
     }
 

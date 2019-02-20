@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, IClassNames } from '../../Utilities';
-import { IGroupDividerProps } from './GroupedList.types';
+import { BaseComponent, classNamesFunction, IClassNames, getRTL } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
@@ -17,13 +16,13 @@ export interface IGroupHeaderState {
 }
 
 export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHeaderState> {
-  public static defaultProps: IGroupDividerProps = {
+  public static defaultProps: IGroupHeaderProps = {
     expandButtonProps: { 'aria-label': 'expand collapse group' }
   };
 
   private _classNames: IClassNames<IGroupHeaderStyles>;
 
-  constructor(props: IGroupDividerProps) {
+  constructor(props: IGroupHeaderProps) {
     super(props);
 
     this.state = {
@@ -58,9 +57,12 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
       onRenderTitle = this._onRenderTitle,
       isCollapsedGroupSelectVisible = true,
       expandButtonProps,
+      selectAllButtonProps,
       theme,
       styles,
-      className
+      className,
+      groupedListId,
+      compact
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -69,11 +71,14 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     const currentlySelected = isSelected || selected;
 
+    const isRTL = getRTL();
+
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
       selected: currentlySelected,
-      isCollapsed
+      isCollapsed,
+      compact
     });
 
     if (!group) {
@@ -96,6 +101,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
               aria-checked={!!currentlySelected}
               data-selection-toggle={true}
               onClick={this._onToggleSelectGroupClick}
+              {...selectAllButtonProps}
             >
               <Check checked={currentlySelected} />
             </button>
@@ -108,8 +114,15 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
           <div className={this._classNames.dropIcon}>
             <Icon iconName="Tag" />
           </div>
-          <button type="button" className={this._classNames.expand} onClick={this._onToggleCollapse} {...expandButtonProps}>
-            <Icon className={this._classNames.expandIsCollapsed} iconName="ChevronDown" />
+          <button
+            type="button"
+            className={this._classNames.expand}
+            onClick={this._onToggleCollapse}
+            aria-expanded={group ? !group.isCollapsed : undefined}
+            aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
+            {...expandButtonProps}
+          >
+            <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}
@@ -160,7 +173,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
     }
   };
 
-  private _onRenderTitle = (props: IGroupDividerProps): JSX.Element | null => {
+  private _onRenderTitle = (props: IGroupHeaderProps): JSX.Element | null => {
     const { group } = props;
 
     if (!group) {

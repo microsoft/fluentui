@@ -1,18 +1,11 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
+
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SuggestionsStore } from '../../Suggestions/SuggestionsStore';
-import {
-  IBaseFloatingPicker,
-  IBaseFloatingPickerSuggestionProps,
-  FloatingPeoplePicker
-} from 'office-ui-fabric-react/lib/FloatingPicker';
-import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.types';
-import { people, mru } from 'office-ui-fabric-react/lib/ExtendedPicker';
+import { IBaseFloatingPicker, IBaseFloatingPickerSuggestionProps, FloatingPeoplePicker } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import './FloatingPeoplePicker.Basic.Example.scss';
+// Helper imports to generate data for this particular examples. Not exported by any package.
+import { people, mru } from '../../../ExtendedPicker/examples/PeopleExampleData';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
@@ -28,16 +21,9 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
 
   constructor(props: {}) {
     super(props);
-    const peopleList: IPersonaWithMenu[] = [];
-    people.forEach((persona: IPersonaProps) => {
-      const target: IPersonaWithMenu = {};
-
-      assign(target, persona);
-      peopleList.push(target);
-    });
 
     this.state = {
-      peopleList: peopleList,
+      peopleList: people,
       mostRecentlyUsed: mru,
       currentSelectedItems: [],
       searchValue: ''
@@ -47,7 +33,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
   public render(): JSX.Element {
     return (
       <div>
-        <div className="ms-SearchBoxSmallExample" ref={this._setInputElementRef}>
+        <div style={{ width: 208 }} ref={this._setInputElementRef}>
           <SearchBox
             placeholder={'Search a person'}
             onChange={this._onSearchChange}
@@ -125,9 +111,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
     const indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
-      const newPeople: IPersonaProps[] = peopleList
-        .slice(0, indexPeopleList)
-        .concat(peopleList.slice(indexPeopleList + 1));
+      const newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
       this.setState({ peopleList: newPeople });
     }
 
@@ -139,16 +123,11 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
     }
   };
 
-  private _onFilterChanged = (
-    filterText: string,
-    currentPersonas: IPersonaProps[],
-    limitResults?: number
-  ): IPersonaProps[] => {
+  private _onFilterChanged = (filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
-      filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
       return filteredPersonas;
     } else {
       return [];
@@ -167,9 +146,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter((item: IPersonaProps) =>
-      this._doesTextStartWith(item.text as string, filterText)
-    );
+    return this.state.peopleList.filter((item: IPersonaProps) => this._doesTextStartWith(item.text as string, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {

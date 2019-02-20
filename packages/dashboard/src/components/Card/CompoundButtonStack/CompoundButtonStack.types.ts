@@ -22,6 +22,11 @@ export interface ICompoundButtonStackStyles {
 
 export interface ICompoundAction {
   /**
+   * Compound Action optional ID Props
+   */
+  id?: string;
+
+  /**
    * Defines the title of the button
    */
   title: string;
@@ -35,6 +40,23 @@ export interface ICompoundAction {
    * Defines whether or not this button is primary
    */
   primary?: boolean;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  ariaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  ariaDescription?: string;
+
+  /**
+   * If provided and is true it adds an 'aria-hidden' attribute instructing screen readers to ignore the element.
+   */
+  ariaHidden?: boolean;
 
   /**
    * Description to help explain what the action would do

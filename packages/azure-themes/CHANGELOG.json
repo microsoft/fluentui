@@ -1,0 +1,110 @@
+{
+  "name": "@uifabric/azure-themes",
+  "entries": [
+    {
+      "version": "0.1.5",
+      "tag": "@uifabric/azure-themes_v0.1.5",
+      "date": "Fri, 01 Feb 2019 13:37:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "azure-themes: update shimmer colors, add documentCard.styles",
+            "author": "chieftn <rick.kessler@outlook.com>",
+            "commit": "752b47cf91c11f4cd93f450e0e4aa3e18914c57e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.4",
+      "tag": "@uifabric/azure-themes_v0.1.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor color adjustments to dialog window close button.",
+            "author": "Ryan K <ryan.k@outlook.com>",
+            "commit": "e44445597c55c3ec265222887bec7f14c77b7e87"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.3",
+      "tag": "@uifabric/azure-themes_v0.1.3",
+      "date": "Thu, 24 Jan 2019 13:36:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown / ComboBox input size tweaks, IconButton background changed to transparent",
+            "author": "Ryan K <ryan.k@outlook.com>",
+            "commit": "e2697e1a255f8c72aa51c8002d2740f23d3e5229"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.2 <7.0.0` to `>=6.129.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.2",
+      "tag": "@uifabric/azure-themes_v0.1.2",
+      "date": "Wed, 23 Jan 2019 22:53:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TagPicker styles, Overlay alpha adjustment, misc. bug fixes and style/color adjustments",
+            "author": "Ryan K <ryan.k@outlook.com>",
+            "commit": "41123e3b075db5a8856b9eed90d2d4961b8044a0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.0 <7.0.0` to `>=6.15.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.1",
+      "tag": "@uifabric/azure-themes_v0.1.1",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Theme color picker, rating, card and various bug fixes",
+            "author": "chieftn <rick.kessler@outlook.com>",
+            "commit": "5f231856701a7217cfd785a69b593593aa9a7210"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.0",
+      "tag": "@uifabric/azure-themes_v0.1.0",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

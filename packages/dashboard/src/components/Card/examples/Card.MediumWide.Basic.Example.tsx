@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  Card,
-  CardContentType,
-  CardSize,
-  IAction,
-  ICardProps,
-  IThumbnailItemProps,
-  Priority
-} from '@uifabric/dashboard';
+import { Card, CardContentType, CardSize, IAction, ICardProps, IThumbnailItemProps, Priority } from '@uifabric/dashboard';
 export class MediumWideCardBasicExample extends React.Component<{}, {}> {
   constructor(props: ICardProps) {
     super(props);
@@ -36,7 +28,11 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
         description: 'This is the first thumbnail item',
         handleThumbnailItemClick: () => {
           alert('First Item clicked');
-        }
+        },
+        altImageText: 'First item',
+        imageAriaHidden: true,
+        title: 'First item',
+        ariaLabel: 'First item'
       },
       {
         imageSource: '../../../public/images/download.jpg',
@@ -44,7 +40,8 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
         handleThumbnailItemClick: () => {
           alert('Second Item clicked');
-        }
+        },
+        altImageText: 'Second item'
       }
     ];
 
@@ -128,6 +125,10 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
       }
     ];
 
+    const actionBarOverflowButtonTitle = 'more actions';
+    const actionBarOverflowButtonAriaLabel = 'more actions';
+    const actionBarOverflowButtonAriaDescription = 'more actions';
+
     return (
       <Card
         cardFrameContent={cardFrameContent}
@@ -135,6 +136,9 @@ export class MediumWideCardBasicExample extends React.Component<{}, {}> {
         cardContentList={contentAreaList}
         cardSize={CardSize.mediumWide}
         actions={actions}
+        actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
+        actionBarOverflowButtonAriaLabel={actionBarOverflowButtonAriaLabel}
+        actionBarOverflowButtonAriaDescription={actionBarOverflowButtonAriaDescription}
       />
     );
   }

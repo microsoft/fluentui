@@ -10,6 +10,194 @@
   },
   "glyphs": [
     {
+      "name": "PeopleRepeat",
+      "unicode": "ED92"
+    },
+    {
+      "name": "PeopleAlert",
+      "unicode": "ED93"
+    },
+    {
+      "name": "PeoplePause",
+      "unicode": "ED94"
+    },
+    {
+      "name": "TransferCall",
+      "unicode": "ED95"
+    },
+    {
+      "name": "AddPhone",
+      "unicode": "ED96"
+    },
+    {
+      "name": "UnknownCall",
+      "unicode": "ED97"
+    },
+    {
+      "name": "NoteReply",
+      "unicode": "ED98"
+    },
+    {
+      "name": "NoteForward",
+      "unicode": "ED99"
+    },
+    {
+      "name": "NotePinned",
+      "unicode": "ED9A"
+    },
+    {
+      "name": "RemoveOccurrence",
+      "unicode": "ED9B"
+    },
+    {
+      "name": "Timeline",
+      "unicode": "ED9C"
+    },
+    {
+      "name": "EditNote",
+      "unicode": "ED9D"
+    },
+    {
+      "name": "CircleHalfFull",
+      "unicode": "ED9E"
+    },
+    {
+      "name": "Room",
+      "unicode": "ED9F"
+    },
+    {
+      "name": "Unsubscribe",
+      "unicode": "EDA0"
+    },
+    {
+      "name": "Subscribe",
+      "unicode": "EDA1"
+    },
+    {
+      "name": "HardDrive",
+      "unicode": "EDA2"
+    },
+    {
+      "name": "RecurringTask",
+      "unicode": "EDB2"
+    },
+    {
+      "name": "TaskManager",
+      "unicode": "EDB7"
+    },
+    {
+      "name": "TaskManagerMirrored",
+      "unicode": "EDB8"
+    },
+    {
+      "name": "Combine",
+      "unicode": "EDBB"
+    },
+    {
+      "name": "Split",
+      "unicode": "EDBC"
+    },
+    {
+      "name": "DoubleChevronUp",
+      "unicode": "EDBD"
+    },
+    {
+      "name": "DoubleChevronLeft",
+      "unicode": "EDBE"
+    },
+    {
+      "name": "DoubleChevronRight",
+      "unicode": "EDBF"
+    },
+    {
+      "name": "TextBox",
+      "unicode": "EDC2"
+    },
+    {
+      "name": "TextField",
+      "unicode": "EDC3"
+    },
+    {
+      "name": "NumberField",
+      "unicode": "EDC4"
+    },
+    {
+      "name": "Dropdown",
+      "unicode": "EDC5"
+    },
+    {
+      "name": "PenWorkspace",
+      "unicode": "EDC6"
+    },
+    {
+      "name": "BookingsLogo",
+      "unicode": "EDC7"
+    },
+    {
+      "name": "ClassNotebookLogoInverse",
+      "unicode": "EDC8"
+    },
+    {
+      "name": "DelveAnalyticsLogo",
+      "unicode": "EDCA"
+    },
+    {
+      "name": "DocsLogoInverse",
+      "unicode": "EDCB"
+    },
+    {
+      "name": "Dynamics365Logo",
+      "unicode": "EDCC"
+    },
+    {
+      "name": "DynamicSMBLogo",
+      "unicode": "EDCD"
+    },
+    {
+      "name": "OfficeAssistantLogo",
+      "unicode": "EDCE"
+    },
+    {
+      "name": "OfficeStoreLogo",
+      "unicode": "EDCF"
+    },
+    {
+      "name": "OneNoteEduLogoInverse",
+      "unicode": "EDD0"
+    },
+    {
+      "name": "PlannerLogo",
+      "unicode": "EDD1"
+    },
+    {
+      "name": "PowerApps",
+      "unicode": "EDD2"
+    },
+    {
+      "name": "Suitcase",
+      "unicode": "EDD3"
+    },
+    {
+      "name": "ProjectLogoInverse",
+      "unicode": "EDD4"
+    },
+    {
+      "name": "CaretLeft8",
+      "unicode": "EDD5"
+    },
+    {
+      "name": "CaretRight8",
+      "unicode": "EDD6"
+    },
+    {
+      "name": "CaretUp8",
+      "unicode": "EDD7"
+    },
+    {
+      "name": "CaretDown8",
+      "unicode": "EDD8"
+    },
+    {
       "name": "CaretLeftSolid8",
       "unicode": "EDD9"
     },
@@ -84,6 +272,10 @@
     {
       "name": "ManagerSelfService",
       "unicode": "EE23"
+    },
+    {
+      "name": "ProductRelease",
+      "unicode": "EE2E"
     },
     {
       "name": "ReplyMirrored",
@@ -216,198 +408,6 @@
     {
       "name": "CustomListMirrored",
       "unicode": "EEBF"
-    },
-    {
-      "name": "IssueTracking",
-      "unicode": "EEC0"
-    },
-    {
-      "name": "IssueTrackingMirrored",
-      "unicode": "EEC1"
-    },
-    {
-      "name": "PictureLibrary",
-      "unicode": "EEC2"
-    },
-    {
-      "name": "OfficeAddinsLogo",
-      "unicode": "EEC7"
-    },
-    {
-      "name": "OfflineOneDriveParachute",
-      "unicode": "EEC8"
-    },
-    {
-      "name": "OfflineOneDriveParachuteDisabled",
-      "unicode": "EEC9"
-    },
-    {
-      "name": "TriangleSolidUp12",
-      "unicode": "EECC"
-    },
-    {
-      "name": "TriangleSolidDown12",
-      "unicode": "EECD"
-    },
-    {
-      "name": "TriangleSolidLeft12",
-      "unicode": "EECE"
-    },
-    {
-      "name": "TriangleSolidRight12",
-      "unicode": "EECF"
-    },
-    {
-      "name": "TriangleUp12",
-      "unicode": "EED0"
-    },
-    {
-      "name": "TriangleDown12",
-      "unicode": "EED1"
-    },
-    {
-      "name": "TriangleLeft12",
-      "unicode": "EED2"
-    },
-    {
-      "name": "TriangleRight12",
-      "unicode": "EED3"
-    },
-    {
-      "name": "ArrowUpRight8",
-      "unicode": "EED4"
-    },
-    {
-      "name": "ArrowDownRight8",
-      "unicode": "EED5"
-    },
-    {
-      "name": "DocumentSet",
-      "unicode": "EED6"
-    },
-    {
-      "name": "DelveAnalytics",
-      "unicode": "EEEE"
-    },
-    {
-      "name": "ArrowUpRightMirrored8",
-      "unicode": "EEEF"
-    },
-    {
-      "name": "ArrowDownRightMirrored8",
-      "unicode": "EEF0"
-    },
-    {
-      "name": "CompanyDirectory",
-      "unicode": "EF0D"
-    },
-    {
-      "name": "CompanyDirectoryMirrored",
-      "unicode": "EF2B"
-    },
-    {
-      "name": "OneDriveAdd",
-      "unicode": "EF32"
-    },
-    {
-      "name": "ProfileSearch",
-      "unicode": "EF35"
-    },
-    {
-      "name": "Header2",
-      "unicode": "EF36"
-    },
-    {
-      "name": "Header3",
-      "unicode": "EF37"
-    },
-    {
-      "name": "Header4",
-      "unicode": "EF38"
-    },
-    {
-      "name": "Eyedropper",
-      "unicode": "EF3C"
-    },
-    {
-      "name": "MarketDown",
-      "unicode": "EF42"
-    },
-    {
-      "name": "CalendarWorkWeek",
-      "unicode": "EF51"
-    },
-    {
-      "name": "SidePanel",
-      "unicode": "EF52"
-    },
-    {
-      "name": "GlobeFavorite",
-      "unicode": "EF53"
-    },
-    {
-      "name": "CaretTopLeftSolid8",
-      "unicode": "EF54"
-    },
-    {
-      "name": "CaretTopRightSolid8",
-      "unicode": "EF55"
-    },
-    {
-      "name": "ViewAll2",
-      "unicode": "EF56"
-    },
-    {
-      "name": "DocumentReply",
-      "unicode": "EF57"
-    },
-    {
-      "name": "PlayerSettings",
-      "unicode": "EF58"
-    },
-    {
-      "name": "ReceiptForward",
-      "unicode": "EF59"
-    },
-    {
-      "name": "ReceiptReply",
-      "unicode": "EF5A"
-    },
-    {
-      "name": "ReceiptCheck",
-      "unicode": "EF5B"
-    },
-    {
-      "name": "Fax",
-      "unicode": "EF5C"
-    },
-    {
-      "name": "RecurringEvent",
-      "unicode": "EF5D"
-    },
-    {
-      "name": "ReplyAlt",
-      "unicode": "EF5E"
-    },
-    {
-      "name": "ReplyAllAlt",
-      "unicode": "EF5F"
-    },
-    {
-      "name": "EditStyle",
-      "unicode": "EF60"
-    },
-    {
-      "name": "EditMail",
-      "unicode": "EF61"
-    },
-    {
-      "name": "Lifesaver",
-      "unicode": "EF62"
-    },
-    {
-      "name": "LifesaverLock",
-      "unicode": "EF63"
     }
   ]
 }

@@ -3,7 +3,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDialogContentProps } from 'office-ui-fabric-react/lib/Dialog';
 import { IModalProps } from 'office-ui-fabric-react/lib/Modal';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Layout, Layouts } from 'react-grid-layout';
+import { Layout, Layouts } from 'react-grid-layout-fabric';
 import { DashboardGridBreakpointLayouts } from '../DashboardGridLayout/DashboardGridLayout.types';
 
 export interface ISectionProps {

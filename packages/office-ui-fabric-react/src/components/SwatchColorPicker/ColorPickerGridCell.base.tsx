@@ -90,7 +90,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
 
   /**
    * Render the core of a color cell
-   * @returns {JSX.Element} - Element representing the core of the item
+   * @returns - Element representing the core of the item
    */
   private _onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     // Build an SVG for the cell with the given shape and color properties

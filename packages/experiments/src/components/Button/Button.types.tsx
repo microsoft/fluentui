@@ -1,21 +1,35 @@
-import { IComponent, IStyleableComponentProps } from '../../Foundation';
-import { IStyle } from '../../Styling';
-import { IIconProps, IContextualMenuProps, IFontWeight } from 'office-ui-fabric-react';
+import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IFontWeight, IStackSlot } from 'office-ui-fabric-react';
+import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
+import { ITextSlot } from '../../Text';
+import { IBaseProps } from '../../Utilities';
 
-export type IButtonComponent = IComponent<IButtonProps, IButtonViewProps, IButtonStyles>;
+export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps>;
 
-// States should only be javascript evluated states. (Not css states.)
-export type IButtonStates = 'baseState' | 'enabled' | 'disabled' | 'expanded';
+// These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IButtonTokenReturnType = ReturnType<Extract<IButtonComponent['tokens'], Function>>;
+export type IButtonStylesReturnType = ReturnType<Extract<IButtonComponent['styles'], Function>>;
 
-export type IButtonVariants = 'baseVariant' | 'primary' | 'circular';
+export type IButtonSlot = ISlotProp<IButtonProps>;
 
-export type IButtonSlots = 'root' | 'stack' | 'text' | 'icon' | 'menuIcon';
+export interface IButtonSlots {
+  root?: IHTMLElementSlot<'button'>;
+  stack?: IStackSlot;
+  content?: ITextSlot;
+  icon?: IIconSlot;
+  menu?: IContextualMenuSlot;
+  menuIcon?: IIconSlot;
+}
 
-export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IButtonStyles> {
-  as?: keyof JSX.IntrinsicElements;
-  className?: string;
+export interface IButton {}
+
+export interface IButtonProps
+  extends IButtonSlots,
+    IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
+    IBaseProps<IButton> {
   href?: string;
-  text?: string;
 
   primary?: boolean;
   circular?: boolean;
@@ -23,15 +37,15 @@ export interface IButtonProps extends IStyleableComponentProps<IButtonProps, IBu
   expanded?: boolean;
   defaultExpanded?: boolean;
 
-  variant?: IButtonVariants;
-
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-  menu?: React.ReactType<IContextualMenuProps>;
-  icon?: string | IIconProps | JSX.Element;
-  styleVariables?: IButtonStyleVariables;
 }
 
-export interface IButtonStyleVariablesTypes {
+export interface IButtonViewProps extends IButtonProps {
+  onMenuDismiss: () => void;
+  menuTarget: HTMLElement | undefined;
+}
+
+export interface IButtonTokens {
   backgroundColor?: string;
   backgroundColorHovered?: string;
   backgroundColorPressed?: string;
@@ -59,11 +73,4 @@ export interface IButtonStyleVariablesTypes {
   minHeight?: number | string;
 }
 
-export type IButtonStyleVariables = { [PVariant in IButtonVariants]?: { [PState in IButtonStates]?: IButtonStyleVariablesTypes } };
-
-export type IButtonStyles = { [key in IButtonSlots]: IStyle };
-
-export type IButtonViewProps = IButtonProps & {
-  onMenuDismiss: () => void;
-  menuTarget: HTMLElement | undefined;
-};
+export type IButtonStyles = IComponentStyles<IButtonSlots>;

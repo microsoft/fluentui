@@ -52,17 +52,17 @@ export interface ISetupBannerProps {
   /**
    * The setup banner header
    */
-  headerText: string;
+  headerText?: string;
 
   /**
    * The content of the banner body
    */
-  onRenderBody: () => JSX.Element;
+  onRenderBody?: (() => JSX.Element) | JSX.Element;
 
   /**
    * The content of the visualization
    */
-  onRenderVisualization: () => JSX.Element;
+  onRenderVisualization?: (() => JSX.Element) | JSX.Element;
 
   /**
    * CSS class name for the outermost div
@@ -85,6 +85,11 @@ export interface ISetupBannerStyles {
   visualizationPartition: IStyle;
 
   /**
+   * Style for the visualization shimmer div
+   */
+  visualizationShimmer: IStyle;
+
+  /**
    * Style for the text partition (header, body, and actions)
    */
   textPartition: IStyle;
@@ -95,17 +100,22 @@ export interface ISetupBannerStyles {
   headerSection: IStyle;
 
   /**
+   * Style for the header shimmer div
+   */
+  headerShimmer: IStyle;
+
+  /**
    * Style for the body section
    */
   bodySection: IStyle;
 
   /**
-   * Style for the action buttons
+   * Style for the body shimmer div
    */
-  actionButton: IStyle;
+  bodyShimmer: IStyle;
 
   /**
-   * Style for the action links
+   * Style for the action section
    */
-  actionLink: IStyle;
+  actionSection: IStyle;
 }

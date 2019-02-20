@@ -1,6 +1,15 @@
 {
-  "enabled": true,
-  "apiReviewFolder": "./api",
-  "apiJsonFolder": "./temp",
-  "entry": "src/index.ts"
+  "compiler": {
+    "configType": "tsconfig",
+    "rootFolder": "./"
+  },
+  "policies": {
+    "namespaceSupport": "conservative"
+  },
+  "project": {
+    "entryPointSourceFile": "lib/index.d.ts"
+  },
+  "validationRules": {
+    "missingReleaseTags": "allow"
+  }
 }

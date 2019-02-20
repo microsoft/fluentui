@@ -6,11 +6,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -57,13 +60,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:hover:before {
-              border-color: #212121;
+              border-color: #333333;
             }
             &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
-              border-color: #212121;
+              border-color: #333333;
             }
             &:before {
               background-color: #ffffff;
@@ -110,11 +113,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -182,13 +188,13 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:hover:before {
-              border-color: #212121;
+              border-color: #333333;
             }
             &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
-              border-color: #212121;
+              border-color: #333333;
             }
             &:before {
               background-color: #ffffff;
@@ -235,11 +241,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -295,6 +304,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             {
               border-color: #0078d4;
               cursor: pointer;
@@ -372,11 +382,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -456,7 +469,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 0px;
             }
             & .ms-ChoiceFieldLabel {
-              color: #c8c8c8;
+              color: #a6a6a6;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -474,11 +487,14 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
     className=
         ms-ChoiceField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
           margin-top: 8px;
@@ -514,6 +530,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             {
               border-color: #0078d4;
               cursor: default;
@@ -568,7 +585,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: Highlight;
             }
             & .ms-ChoiceFieldLabel {
-              color: #c8c8c8;
+              color: #a6a6a6;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -587,12 +604,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -667,7 +687,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:hover:before {
-              border-color: #212121;
+              border-color: #333333;
               opacity: 1;
             }
             &:focus {
@@ -677,7 +697,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:focus:before {
-              border-color: #212121;
+              border-color: #333333;
               opacity: 1;
             }
             &:before {
@@ -735,7 +755,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
               className=
 
                   {
@@ -792,12 +811,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -893,7 +915,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:hover:before {
-              border-color: #212121;
+              border-color: #333333;
               opacity: 1;
             }
             &:focus {
@@ -903,7 +925,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:focus:before {
-              border-color: #212121;
+              border-color: #333333;
               opacity: 1;
             }
             &:before {
@@ -961,7 +983,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
               className=
 
                   {
@@ -1018,12 +1039,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -1069,6 +1093,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             ms-ChoiceField--icon
             {
               align-items: center;
@@ -1178,7 +1203,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
               className=
 
                   {
@@ -1235,12 +1259,15 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         ms-ChoiceField
         ms-ChoiceField--icon
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           align-items: center;
           background-color: #f4f4f4;
           border: none;
           box-sizing: border-box;
           color: #333333;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
           font-weight: 400;
           height: 100%;
@@ -1347,7 +1374,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 0px;
             }
             & .ms-ChoiceFieldLabel {
-              color: #c8c8c8;
+              color: #a6a6a6;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -1378,7 +1405,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
-              aria-hidden={true}
               className=
 
                   {

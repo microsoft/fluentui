@@ -9,6 +9,7 @@ export class CommandBarBasicExample extends React.Component<{}, {}> {
         <CommandBar
           items={this.getItems()}
           overflowItems={this.getOverlflowItems()}
+          overflowButtonProps={{ ariaLabel: 'More commands' }}
           farItems={this.getFarItems()}
           ariaLabel={'Use left and right arrow keys to navigate between commands'}
         />

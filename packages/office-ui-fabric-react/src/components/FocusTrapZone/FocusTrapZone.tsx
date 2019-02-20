@@ -8,44 +8,22 @@ import {
   getFirstTabbable,
   getLastTabbable,
   getNextElement,
-  focusAsync,
-  createRef
+  focusAsync
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
   private static _focusStack: FocusTrapZone[] = [];
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   private _previouslyFocusedElementOutsideTrapZone: HTMLElement;
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
-
-  public componentWillMount(): void {
-    FocusTrapZone._focusStack.push(this);
-  }
+  private _hasFocusHandler: boolean;
+  private _hasClickHandler: boolean;
 
   public componentDidMount(): void {
-    const {
-      isClickableOutsideFocusTrap = false,
-      forceFocusInsideTrap = true,
-      elementToFocusOnDismiss,
-      disableFirstFocus = false
-    } = this.props;
-
-    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
-      ? elementToFocusOnDismiss
-      : (document.activeElement as HTMLElement);
-    if (!elementContains(this._root.current, this._previouslyFocusedElementOutsideTrapZone) && !disableFirstFocus) {
-      this.focus();
-    }
-
-    if (forceFocusInsideTrap) {
-      this._events.on(window, 'focus', this._forceFocusInTrap, true);
-    }
-
-    if (!isClickableOutsideFocusTrap) {
-      this._events.on(window, 'click', this._forceClickInTrap, true);
-    }
+    this._bringFocusIntoZone();
+    this._updateEventHandlers(this.props);
   }
 
   public componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void {
@@ -53,25 +31,26 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (elementToFocusOnDismiss && this._previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {
       this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss;
     }
+
+    this._updateEventHandlers(nextProps);
+  }
+
+  public componentDidUpdate(prevProps: IFocusTrapZoneProps) {
+    const prevForceFocusInsideTrap = prevProps.forceFocusInsideTrap !== undefined ? prevProps.forceFocusInsideTrap : true;
+    const newForceFocusInsideTrap = this.props.forceFocusInsideTrap !== undefined ? this.props.forceFocusInsideTrap : true;
+
+    if (!prevForceFocusInsideTrap && newForceFocusInsideTrap) {
+      // Transition from forceFocusInsideTrap disabled to enabled. Emulate what happens when a FocusTrapZone gets mounted
+      this._bringFocusIntoZone();
+    } else if (prevForceFocusInsideTrap && !newForceFocusInsideTrap) {
+      // Transition from forceFocusInsideTrap enabled to disabled. Emulate what happens when a FocusTrapZone gets unmounted
+      this._returnFocusToInitiator();
+    }
   }
 
   public componentWillUnmount(): void {
-    const { ignoreExternalFocusing } = this.props;
-
     this._events.dispose();
-    FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
-      return this !== value;
-    });
-
-    const activeElement = document.activeElement as HTMLElement;
-    if (
-      !ignoreExternalFocusing &&
-      this._previouslyFocusedElementOutsideTrapZone &&
-      typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
-      (elementContains(this._root.value, activeElement) || activeElement === document.body)
-    ) {
-      focusAsync(this._previouslyFocusedElementOutsideTrapZone);
-    }
+    this._returnFocusToInitiator();
   }
 
   public render(): JSX.Element {
@@ -98,7 +77,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     if (
       focusPreviouslyFocusedInnerElement &&
       this._previouslyFocusedElementInTrapZone &&
-      elementContains(this._root.value, this._previouslyFocusedElementInTrapZone)
+      elementContains(this._root.current, this._previouslyFocusedElementInTrapZone)
     ) {
       // focus on the last item that had focus in the zone before we left the zone
       focusAsync(this._previouslyFocusedElementInTrapZone);
@@ -106,9 +85,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
 
     const focusSelector =
-      typeof firstFocusableSelector === 'string'
-        ? firstFocusableSelector
-        : firstFocusableSelector && firstFocusableSelector();
+      typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild;
 
@@ -116,19 +93,61 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       if (focusSelector) {
         _firstFocusableChild = this._root.current.querySelector('.' + focusSelector);
       } else {
-        _firstFocusableChild = getNextElement(
-          this._root.current,
-          this._root.current.firstChild as HTMLElement,
-          true,
-          false,
-          false,
-          true
-        );
+        _firstFocusableChild = getNextElement(this._root.current, this._root.current.firstChild as HTMLElement, true, false, false, true);
       }
     }
     if (_firstFocusableChild) {
       focusAsync(_firstFocusableChild);
     }
+  }
+
+  private _bringFocusIntoZone(): void {
+    const { elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
+
+    FocusTrapZone._focusStack.push(this);
+
+    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
+      ? elementToFocusOnDismiss
+      : (document.activeElement as HTMLElement);
+    if (!elementContains(this._root.current, this._previouslyFocusedElementOutsideTrapZone) && !disableFirstFocus) {
+      this.focus();
+    }
+  }
+
+  private _returnFocusToInitiator(): void {
+    const { ignoreExternalFocusing } = this.props;
+
+    FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter((value: FocusTrapZone) => {
+      return this !== value;
+    });
+
+    const activeElement = document.activeElement as HTMLElement;
+    if (
+      !ignoreExternalFocusing &&
+      this._previouslyFocusedElementOutsideTrapZone &&
+      typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
+      (elementContains(this._root.current, activeElement) || activeElement === document.body)
+    ) {
+      focusAsync(this._previouslyFocusedElementOutsideTrapZone);
+    }
+  }
+
+  private _updateEventHandlers(newProps: IFocusTrapZoneProps): void {
+    const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = newProps;
+
+    if (forceFocusInsideTrap && !this._hasFocusHandler) {
+      this._events.on(window, 'focus', this._forceFocusInTrap, true);
+    } else if (!forceFocusInsideTrap && this._hasFocusHandler) {
+      this._events.off(window, 'focus', this._forceFocusInTrap, true);
+    }
+    this._hasFocusHandler = forceFocusInsideTrap;
+
+    if (!isClickableOutsideFocusTrap && !this._hasClickHandler) {
+      this._events.on(window, 'click', this._forceClickInTrap, true);
+    } else if (isClickableOutsideFocusTrap && this._hasClickHandler) {
+      this._events.off(window, 'click', this._forceClickInTrap, true);
+    }
+    this._hasClickHandler = !isClickableOutsideFocusTrap;
   }
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
@@ -160,11 +179,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       return;
     }
 
-    const _firstTabbableChild = getFirstTabbable(
-      this._root.current,
-      this._root.current.firstChild as HTMLElement,
-      true
-    );
+    const _firstTabbableChild = getFirstTabbable(this._root.current, this._root.current.firstChild as HTMLElement, true);
     const _lastTabbableChild = getLastTabbable(this._root.current, this._root.current.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstTabbableChild === ev.target) {
@@ -180,7 +195,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
   private _forceFocusInTrap(ev: FocusEvent): void {
     if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
-      const focusedElement = document.activeElement as HTMLElement;
+      const focusedElement = (ev.relatedTarget as HTMLElement) || (document.activeElement as HTMLElement);
 
       if (!elementContains(this._root.current, focusedElement)) {
         this.focus();

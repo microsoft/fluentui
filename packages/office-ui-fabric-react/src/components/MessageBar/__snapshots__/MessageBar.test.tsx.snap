@@ -2,16 +2,20 @@
 
 exports[`MessageBar renders MessageBar correctly 1`] = `
 <div
-  aria-live="polite"
   className=
       ms-MessageBar
       ms-MessageBar-multiline
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         background: #f4f4f4;
         box-sizing: border-box;
         color: #333333;
         display: flex;
         flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         min-height: 32px;
         position: relative;
         width: 100%;
@@ -24,6 +28,9 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         font-weight: 400;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background: windowText;
       }
 >
   <div
@@ -49,7 +56,8 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           top: 0px;
         }
         @media screen and (-ms-high-contrast: active){&:before {
-          border: 1px solid WindowText;
+          background: WindowText;
+          color: Window;
           content:  ;
         }
   >
@@ -76,7 +84,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {
@@ -88,6 +95,10 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
               font-style: normal;
               font-weight: normal;
               speak: none;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         data-icon-name="Info"
         role="presentation"
@@ -117,6 +128,10 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             margin-left: 8px;
             margin-right: 8px;
             margin-top: 8px;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            -ms-high-contrast-adjust: none;
+            color: window;
           }
       id="MessageBar0"
     >

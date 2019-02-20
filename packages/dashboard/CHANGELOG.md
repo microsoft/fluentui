@@ -1,6 +1,371 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 04 Oct 2018 12:26:48 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Feb 2019 13:30:29 GMT and should not be manually modified.
+
+## 0.49.0
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Minor changes
+
+- Refactor of Wizard and SubwayNav Components
+
+## 0.48.0
+Fri, 15 Feb 2019 13:33:05 GMT
+
+### Minor changes
+
+- Add 'StackedBarChart' Visualization support to Recommendation Banner (MIP, Intune Recommendations will use this). Refactor existing visualizations into separate functional components.
+
+## 0.47.5
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add Id for Thumbnail item actions
+
+## 0.47.4
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Implement Wizard base control and SetupWizard control in dashboard package
+
+## 0.47.3
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- Adding SubwayNav control in Dashboard
+- Hide command bar from composite list if no commands exist
+
+## 0.47.2
+Tue, 05 Feb 2019 13:35:00 GMT
+
+### Patches
+
+- Add id's for actions and onclick handler for multicount
+
+## 0.47.1
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- DetailPanel: fix content load error on L2 content mode
+
+## 0.47.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- add  optional  id props to  IThumbnailListProps, IGridListProps, ICompoundAction and  optional cardId to ICardProps
+
+### Patches
+
+- Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event
+
+## 0.46.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix detail panel custom width issue, fix detail panel tiles css issue, add jsx.element support to detail panel tile message
+- Fix edge browser thumbnail list focus items alignment issue
+
+## 0.46.1
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Patches
+
+-  Add cardId for dashboardGridLayout onLayoutChange
+
+## 0.46.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- updated dashboard package to use a fork of react-grid-layout
+
+### Patches
+
+- Fix DetailPanel mainContent lifecycle event
+
+## 0.45.0
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Minor changes
+
+- add composite list common control component
+
+### Patches
+
+- DetailPanel: add with analytics handler
+- Update README.md to fix title and link to Card component
+
+## 0.44.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- Add common Detail-Panel component
+
+### Patches
+
+- Remove extra hidden elements in gridList when gridList is empty
+- add focus border for thumbnailList 
+
+## 0.43.5
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx
+
+## 0.43.4
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- add is's for card actions
+
+## 0.43.3
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Icon: removing aria-hidden attribute.
+
+## 0.43.2
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Patches
+
+- Add Empty card state for addCardPanel
+- Revert horizontal compaction and fix left nav external links to open based on target attr
+
+## 0.43.1
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- "update grid list cursor to pointer"
+
+## 0.43.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+- Adding support for JSX.Element to DGLWithAddCardPanel. Still maintaining support for RTL/LTR and accessibility.
+
+### Patches
+
+- Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps
+
+## 0.42.2
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Add support of accessibility for the card component
+
+## 0.42.1
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Patches
+
+- Adding focus for action bar overflow button
+- Add tooltip for navbar expended button
+
+## 0.42.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+
+## 0.41.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- Minor RTL improvement and bug fix in setup banner
+
+## 0.41.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- Improved low resolution support and added shimmer to setup banner
+
+## 0.40.0
+Mon, 17 Dec 2018 13:36:58 GMT
+
+### Minor changes
+
+- Adding LTR to layout even though RTL is experienced. This way the cards are visible on the layout. Setting RTL to the content of the card, this is necessary as a wrapper was introduced which explicitly said ltr
+
+## 0.39.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Adding aria-hidden and alt property for the image of Thumbnail item in ThumbnailList component
+
+## 0.38.0
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Minor changes
+
+- Support to horizontal compact dashboard cards
+
+## 0.37.1
+Tue, 04 Dec 2018 13:36:40 GMT
+
+### Patches
+
+- Using _async fabric utility functions to prevent timeout leaks
+
+## 0.37.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Adding add card experience to DGL, providing respective callbacks and examples
+
+### Patches
+
+- Add missing dependency
+
+## 0.36.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- RecommendationBanner improvements to support Visualizations and ImageIllustration by default
+
+## 0.35.1
+Tue, 20 Nov 2018 20:12:42 GMT
+
+### Patches
+
+- add default fonts from fabric  for dashboard package 
+
+## 0.35.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- Adding SetupCard and SetupCardBanner.
+
+## 0.34.0
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Minor changes
+
+- Adding props for card to send props to dataviz in charting package
+
+## 0.33.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Fixes #5849: get rid of explicit loader syntax inside component file
+- Updating context menu shadow styling for card frame and action bar
+
+## 0.33.0
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Minor changes
+
+- Fixing change in hover card behavior, this change in behavior was caused due  to fabric version update in dashbaord package by fabric bot
+
+## 0.32.2
+Sun, 04 Nov 2018 02:27:52 GMT
+
+### Patches
+
+- Adding necessary wrapper classes for charting in dashboard package
+
+## 0.32.1
+Fri, 02 Nov 2018 18:11:37 GMT
+
+*Version update only*
+
+## 0.32.0
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Minor changes
+
+- Making changes to layout of card to support scaling of dataviz. Dataviz scale as per the parent element they sit in and in this case the parent element is formed using flex css. Added constraints to check if part of card will have dataviz and changes styles accordingly
+
+### Patches
+
+- css changes in card components
+- render animations for card charts
+
+## 0.31.1
+Wed, 31 Oct 2018 22:35:10 GMT
+
+### Patches
+
+- Add opitional switch for Dashboard Chart -- stack bar chart to not apply default style while data points count is less two
+
+## 0.31.0
+Thu, 25 Oct 2018 12:30:05 GMT
+
+### Minor changes
+
+- Adding support when there is no data for line chart, removing unwanted div's that is not letting flex do it job
+
+## 0.30.3
+Tue, 23 Oct 2018 12:32:16 GMT
+
+### Patches
+
+- Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).
+
+## 0.30.2
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- "Dashboard/Nav component - added focus style to support keyboard inputs"
+
+## 0.30.1
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Remove api-extractor.disabled.json
+
+## 0.30.0
+Tue, 16 Oct 2018 12:28:48 GMT
+
+### Minor changes
+
+- Adding support for different date formats to line chart in dashboard card. Calculating datapoints to render a line chart with evenly spaced ticks. Updated examples for cards
+
+## 0.29.3
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- updating dashboard package
+- Styling for marginLeft in Nav
+
+## 0.29.2
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
+
+## 0.29.1
+Fri, 05 Oct 2018 12:27:02 GMT
+
+### Patches
+
+- removed the line inbetween the grid rows
 
 ## 0.29.0
 Thu, 04 Oct 2018 12:26:48 GMT

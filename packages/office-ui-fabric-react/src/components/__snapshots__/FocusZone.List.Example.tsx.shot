@@ -16,6 +16,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -25,6 +27,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -41,7 +46,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -147,6 +152,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -154,7 +161,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -196,6 +206,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -219,7 +234,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -249,7 +263,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -439,24 +452,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -681,6 +693,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -690,6 +704,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -706,7 +723,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -812,6 +829,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -819,7 +838,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -861,6 +883,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -884,7 +911,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -914,7 +940,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -1104,24 +1129,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -1346,6 +1370,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -1355,6 +1381,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -1371,7 +1400,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -1477,6 +1506,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -1484,7 +1515,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -1526,6 +1560,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -1549,7 +1588,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -1579,7 +1617,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -1769,24 +1806,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -2011,6 +2047,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -2020,6 +2058,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -2036,7 +2077,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -2142,6 +2183,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -2149,7 +2192,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -2191,6 +2237,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -2214,7 +2265,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -2244,7 +2294,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -2434,24 +2483,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -2676,6 +2724,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -2685,6 +2735,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -2701,7 +2754,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -2807,6 +2860,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -2814,7 +2869,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -2856,6 +2914,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -2879,7 +2942,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -2909,7 +2971,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -3099,24 +3160,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -3341,6 +3401,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -3350,6 +3412,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -3366,7 +3431,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -3472,6 +3537,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -3479,7 +3546,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -3521,6 +3591,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -3544,7 +3619,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -3574,7 +3648,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -3764,24 +3837,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -4006,6 +4078,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -4015,6 +4089,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -4031,7 +4108,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -4137,6 +4214,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -4144,7 +4223,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -4186,6 +4268,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -4209,7 +4296,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -4239,7 +4325,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -4429,24 +4514,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -4671,6 +4755,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -4680,6 +4766,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -4696,7 +4785,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -4802,6 +4891,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -4809,7 +4900,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -4851,6 +4945,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -4874,7 +4973,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -4904,7 +5002,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -5094,24 +5191,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -5336,6 +5432,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -5345,6 +5443,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -5361,7 +5462,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -5467,6 +5568,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -5474,7 +5577,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -5516,6 +5622,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -5539,7 +5650,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -5569,7 +5679,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -5759,24 +5868,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -6001,6 +6109,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         ms-FocusZone
         ms-DetailsRow
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           animation-duration: 0.367s;
           animation-fill-mode: both;
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -6010,6 +6120,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           box-sizing: border-box;
           color: #666666;
           display: inline-flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           min-height: 42px;
           min-width: 100%;
           outline: transparent;
@@ -6026,7 +6139,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #0078d4;
+          border: 1px solid #666666;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -6132,6 +6245,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             ms-DetailsRow-check
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: center;
               background-color: transparent;
               background: none;
@@ -6139,7 +6254,10 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               box-sizing: border-box;
               cursor: default;
               display: flex;
-              height: 40px;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -6181,6 +6299,11 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Check
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 height: 18px;
                 line-height: 1;
                 position: relative;
@@ -6204,7 +6327,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -6234,7 +6356,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             
           </i>
           <i
-            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -6424,24 +6545,23 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #0078d4;
-                outline: transparent;
-                position: relative;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: inherit;
+                font-weight: inherit;
+                outline: none;
                 text-decoration: none;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;

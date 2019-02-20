@@ -2,6 +2,264 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.29.2",
+      "tag": "@uifabric/utilities_v6.29.2",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getRTL: Check for existence of body element before reading attributes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f8deb819680c93729495956f900b11a9e7bf3753"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.1",
+      "tag": "@uifabric/utilities_v6.29.1",
+      "date": "Thu, 14 Feb 2019 13:34:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add fallback for reading direction attribute from body element.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ea1c5970709209dab8f7ba2781cdb5e21b92e9f5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.0",
+      "tag": "@uifabric/utilities_v6.29.0",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding helper functions to get and restore focus elements based on index paths.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "468af6a86a680e882009c7bc33e0956877d3fa26"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.28.1",
+      "tag": "@uifabric/utilities_v6.28.1",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating 'customizable.tsx' to evaluate style functions.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4585011f2001a2d276525fb64f81ecabfe2316b4"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.28.0",
+      "tag": "@uifabric/utilities_v6.28.0",
+      "date": "Fri, 11 Jan 2019 05:00:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Scroll: use scrollableParent in _preventOverscrolling, allow EventGroup.on to take event options",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c9613c6206dd9f13c4712c93e91bcbef46d18169"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.27.2",
+      "tag": "@uifabric/utilities_v6.27.2",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecate utility using legacy context",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          },
+          {
+            "comment": "BaseComponent: when updating componentRef, handle case where current or previous props are not given",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "698ab96e08f44a568b8a4e53aa247674b264133a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.27.1",
+      "tag": "@uifabric/utilities_v6.27.1",
+      "date": "Mon, 17 Dec 2018 13:36:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "BaseComponent: Remove componentWillReceiveProps usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "b2c512db6892047c208234265f7cbc8796f00074"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.27.0",
+      "tag": "@uifabric/utilities_v6.27.0",
+      "date": "Thu, 15 Nov 2018 13:36:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a995de20dcd7b3a8967e6d33ccffd6f12dae0ed5"
+          },
+          {
+            "comment": "Styled: now reacts to loadTheme changes even when not wrapped in a Customizer.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c1b673ecb52030b4af42ca51077ca5cebc49246d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.14.0 <7.0.0` to `>=6.15.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.26.0",
+      "tag": "@uifabric/utilities_v6.26.0",
+      "date": "Wed, 14 Nov 2018 13:34:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add osDetector utility",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "7e5dab85401ffdd107514d593d02c0c8df299678"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.25.0",
+      "tag": "@uifabric/utilities_v6.25.0",
+      "date": "Wed, 31 Oct 2018 12:32:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Customizer: Add optional context transform prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "fc5a1f4620c93499a41abe8377ff61161cf5bd76"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Running Prettier on all .ts and .tsx files in the packages folder.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2ce6c5ac3ccf4e62d4866841317b4aa55b8fb541"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.24.0",
+      "tag": "@uifabric/utilities_v6.24.0",
+      "date": "Fri, 26 Oct 2018 12:32:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add api-extractor.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c691b7b89fcfc5a28c211b29c7ba236887ab8256"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.4 <7.0.0` to `>=6.11.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.1",
+      "tag": "@uifabric/utilities_v6.23.1",
+      "date": "Thu, 18 Oct 2018 20:22:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update api-extractor.json",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "e6b2514a003fb41c964fba14b071cb0046fd69eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.1 <7.0.0` to `>=6.10.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.0",
+      "tag": "@uifabric/utilities_v6.23.0",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding `asAsync` HOC wrapper to abstract async loading for components.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5e5703df581b98dbb1e83147427d328682a493fc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.0",
+      "tag": "@uifabric/utilities_v6.22.0",
+      "date": "Wed, 10 Oct 2018 12:29:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add utilities.api.ts, update files to fix api-extractor errors",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "ab236eaebd256f37f03b7d2943e983a149023e81"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.2",
+      "tag": "@uifabric/utilities_v6.21.2",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/set-version\" from `>=1.1.1 <2.0.0` to `>=1.1.2 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `>=6.0.5 <7.0.0` to `>=6.0.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.1",
       "tag": "@uifabric/utilities_v6.21.1",
       "date": "Wed, 26 Sep 2018 12:27:23 GMT",

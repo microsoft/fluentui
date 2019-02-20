@@ -3,7 +3,7 @@ import { CheckBase } from './Check.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ICheckProps extends React.Props<CheckBase> {
+export interface ICheckProps extends React.ClassAttributes<CheckBase> {
   /**
    * Gets the component ref.
    */

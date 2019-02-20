@@ -53,6 +53,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         userSelect: 'none'
       },
@@ -93,6 +94,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         border: 'none',
         flexGrow: 1,
         lineHeight: 28,
+        display: 'flex',
+        alignItems: 'center',
         selectors: {
           ':active $activeSection': slideBoxActiveSectionStyles,
           ':hover $activeSection': slideBoxActiveSectionStyles,

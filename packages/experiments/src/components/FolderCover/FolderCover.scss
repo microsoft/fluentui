@@ -53,6 +53,10 @@
   .hideContent & {
     opacity: 0;
   }
+
+  .isFluent & {
+    top: 12px;
+  }
 }
 
 .frame {
@@ -81,6 +85,12 @@
   font-weight: $ms-font-weight-regular;
   color: $ms-color-white;
   position: relative;
+
+  .isFluent & {
+    @include margin-left(8px);
+    @include text-align(left);
+    color: $ms-color-yellowDark;
+  }
 
   &,
   &.isSmall {

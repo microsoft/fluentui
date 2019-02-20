@@ -3,18 +3,17 @@
 exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] = `
 <div>
   <div
-    id="labelElement"
+    id="labelElement0"
   >
-    Here is a custom label
+    Custom label
   </div>
   <div
     className=
 
 
-    role="application"
   >
     <div
-      aria-labelledby="labelElement"
+      aria-labelledby="labelElement0"
       className=
           ms-ChoiceFieldGroup
           {
@@ -36,11 +35,14 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
           className=
               ms-ChoiceField
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 border: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 margin-top: 8px;
@@ -68,9 +70,8 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     top: 8px;
                   }
               data-automation-id="auto1"
-              data-is-focusable={false}
-              id="ChoiceGroup0-A"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-A"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -93,13 +94,13 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     color: #000000;
                   }
                   &:hover:before {
-                    border-color: #212121;
+                    border-color: #333333;
                   }
                   &:focus .ms-ChoiceFieldLabel {
                     color: #000000;
                   }
                   &:focus:before {
-                    border-color: #212121;
+                    border-color: #333333;
                   }
                   &:before {
                     background-color: #ffffff;
@@ -133,11 +134,11 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 0px;
                   }
-              htmlFor="ChoiceGroup0-A"
+              htmlFor="ChoiceGroup1-A"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-A"
+                id="ChoiceGroupLabel2-A"
               >
                 Option A
               </span>
@@ -148,11 +149,14 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
           className=
               ms-ChoiceField
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 border: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 margin-top: 8px;
@@ -179,9 +183,8 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={true}
-              id="ChoiceGroup0-B"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-B"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -191,6 +194,7 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
             <label
               className=
                   ms-ChoiceField-field
+                  is-checked
                   {
                     border-color: #0078d4;
                     cursor: pointer;
@@ -255,11 +259,11 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                   @media screen and (-ms-high-contrast: active){&:after {
                     border-color: Highlight;
                   }
-              htmlFor="ChoiceGroup0-B"
+              htmlFor="ChoiceGroup1-B"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-B"
+                id="ChoiceGroupLabel2-B"
               >
                 Option B
               </span>
@@ -270,11 +274,14 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
           className=
               ms-ChoiceField
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 border: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 margin-top: 8px;
@@ -301,10 +308,9 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={false}
               disabled={true}
-              id="ChoiceGroup0-C"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-C"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -359,16 +365,16 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     width: 0px;
                   }
                   & .ms-ChoiceFieldLabel {
-                    color: #c8c8c8;
+                    color: #a6a6a6;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
                   }
-              htmlFor="ChoiceGroup0-C"
+              htmlFor="ChoiceGroup1-C"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-C"
+                id="ChoiceGroupLabel2-C"
               >
                 Option C
               </span>
@@ -379,11 +385,14 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
           className=
               ms-ChoiceField
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 border: none;
                 box-sizing: border-box;
                 color: #333333;
                 display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 margin-top: 8px;
@@ -410,10 +419,9 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={false}
               disabled={true}
-              id="ChoiceGroup0-D"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-D"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -468,16 +476,16 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     width: 0px;
                   }
                   & .ms-ChoiceFieldLabel {
-                    color: #c8c8c8;
+                    color: #a6a6a6;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
                   }
-              htmlFor="ChoiceGroup0-D"
+              htmlFor="ChoiceGroup1-D"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-D"
+                id="ChoiceGroupLabel2-D"
               >
                 Option D
               </span>

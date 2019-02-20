@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  classNamesFunction,
-  divProperties,
-  getInitials,
-  getNativeProps,
-  getRTL
-} from '../../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getInitials, getNativeProps, getRTL } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
 import { Icon } from '../../../Icon';
@@ -51,6 +44,15 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
   }
 
+  public componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
+    if (nextProps.imageUrl !== this.props.imageUrl) {
+      this.setState({
+        isImageLoaded: false,
+        isImageError: false
+      });
+    }
+  }
+
   public render(): JSX.Element | null {
     const {
       className,
@@ -68,6 +70,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const size = this.props.size as PersonaSize;
     const divProps = getNativeProps(this.props, divProperties);
+    const divCoinProps = getNativeProps(coinProps || {}, divProperties);
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
     const hideImage = showUnknownPersonaCoin;
 
@@ -88,15 +91,14 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     });
 
     const shouldRenderInitials = Boolean(
-      !this.state.isImageLoaded &&
-        ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
+      !this.state.isImageLoaded && ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
     );
 
     return (
       <div {...divProps} className={classNames.coin}>
         {// Render PersonaCoin if size is not size10
         size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
+          <div {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
               <div
                 className={mergeStyles(
@@ -125,16 +127,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
   }
 
   private _onRenderCoin = (props: IPersonaCoinProps): JSX.Element | null => {
-    const {
-      coinSize,
-      styles,
-      imageUrl,
-      imageAlt,
-      imageShouldFadeIn,
-      imageShouldStartVisible,
-      theme,
-      showUnknownPersonaCoin
-    } = this.props;
+    const { coinSize, styles, imageUrl, imageAlt, imageShouldFadeIn, imageShouldStartVisible, theme, showUnknownPersonaCoin } = this.props;
 
     // Render the Image component only if an image URL is provided
     if (!imageUrl) {

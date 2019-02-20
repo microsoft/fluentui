@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -87,17 +87,13 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                 overflowItems={data.overflow.length ? data.overflow : null}
                 onRenderItem={item => {
                   return (
-                    <DefaultButton
-                      text={item.name}
-                      iconProps={{ iconName: item.icon }}
-                      onClick={item.onClick}
-                      checked={item.checked}
-                    />
+                    <CommandBarButton text={item.name} iconProps={{ iconName: item.icon }} onClick={item.onClick} checked={item.checked} />
                   );
                 }}
                 onRenderOverflowButton={overflowItems => {
-                  return <DefaultButton menuProps={{ items: overflowItems! }} />;
+                  return <CommandBarButton menuProps={{ items: overflowItems! }} />;
                 }}
+                styles={{ root: { height: 40 } }}
               />
             );
           }}

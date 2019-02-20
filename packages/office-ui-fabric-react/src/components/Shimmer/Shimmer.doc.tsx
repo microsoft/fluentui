@@ -16,12 +16,12 @@ const ShimmerStylingExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
 const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+const ShimmerApplicationExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Application.Example.Codepen.txt') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
   componentName: 'ShimmerExample',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
   examples: [
     {
       title: "Shimmer with basic elements using the 'shimmerElements' prop",
@@ -39,8 +39,9 @@ export const ShimmerPageProps: IDocPageProps = {
       view: <ShimmerLoadDataExample />
     },
     {
-      title: 'Shimmered Details List with 500 items simulating loading data in async manner.',
+      title: 'Shimmered DetailsList simulating loading data asynchronously',
       code: ShimmerApplicationExampleCode,
+      codepenJS: ShimmerApplicationExampleCodepen,
       view: <ShimmerApplicationExample />
     },
     {
@@ -50,9 +51,7 @@ export const ShimmerPageProps: IDocPageProps = {
     }
   ],
 
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),

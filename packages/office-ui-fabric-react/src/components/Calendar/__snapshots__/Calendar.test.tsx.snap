@@ -20,7 +20,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
         >
           <div
             className="ms-DatePicker-dayPicker"
-            id="DatePickerDay-dayPicker10"
+            id="DatePickerDay-dayPicker1"
           >
             <div
               className="ms-DatePicker-header"
@@ -29,7 +29,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                 aria-atomic="true"
                 aria-live="polite"
                 aria-relevant="text"
-                id="DatePickerDay-monthAndYear11"
+                id="DatePickerDay-monthAndYear2"
               >
                 <div
                   className="ms-DatePicker-monthAndYear"
@@ -44,16 +44,16 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   className="ms-DatePicker-navContainer"
                 >
                   <button
-                    aria-controls="DatePickerDay-dayPicker10"
+                    aria-controls="DatePickerDay-dayPicker1"
                     aria-disabled={false}
                     className="ms-DatePicker-prevMonth js-prevMonth"
                     disabled={false}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
+                    type="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {
@@ -72,16 +72,16 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </i>
                   </button>
                   <button
-                    aria-controls="DatePickerDay-dayPicker10"
+                    aria-controls="DatePickerDay-dayPicker1"
                     aria-disabled={false}
                     className="ms-DatePicker-nextMonth js-nextMonth"
                     disabled={false}
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
+                    type="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {
@@ -104,15 +104,15 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
             <div
               className="ms-FocusZone"
-              data-focuszone-id="FocusZone12"
+              data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="presentation"
             >
               <table
-                aria-activedescendant="DatePickerDay-active9"
-                aria-labelledby="DatePickerDay-monthAndYear11"
+                aria-activedescendant="DatePickerDay-active0"
+                aria-labelledby="DatePickerDay-monthAndYear2"
                 aria-multiselectable="false"
                 aria-readonly="true"
                 className="ms-DatePicker-table"
@@ -189,6 +189,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -201,6 +202,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -211,6 +213,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -223,6 +226,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -233,6 +237,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--highlighted undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -242,10 +247,11 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         className="ms-DatePicker-day-button"
                         data-is-focusable={true}
                         disabled={false}
-                        id="DatePickerDay-active9"
+                        id="DatePickerDay-active0"
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -256,6 +262,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -268,6 +275,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -278,6 +286,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -290,6 +299,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -300,6 +310,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -312,6 +323,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -322,6 +334,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -334,6 +347,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -346,6 +360,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -358,6 +373,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -368,6 +384,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -380,6 +397,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -390,6 +408,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -402,6 +421,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -412,6 +432,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -424,6 +445,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -434,6 +456,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -446,6 +469,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -456,6 +480,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -468,6 +493,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -478,6 +504,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -490,6 +517,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -502,6 +530,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -514,6 +543,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -524,6 +554,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -536,6 +567,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -546,6 +578,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -558,6 +591,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -568,6 +602,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -580,6 +615,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -590,6 +626,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -602,6 +639,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -612,6 +650,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -624,6 +663,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -634,6 +674,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -646,6 +687,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -658,6 +700,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -670,6 +713,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -680,6 +724,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -692,6 +737,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -702,6 +748,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -714,6 +761,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -724,6 +772,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -736,6 +785,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -746,6 +796,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -758,6 +809,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -768,6 +820,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -780,6 +833,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -790,6 +844,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -802,6 +857,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -814,6 +870,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   <tr>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -826,6 +883,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -836,6 +894,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -848,6 +907,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -858,6 +918,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--infocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -870,6 +931,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -880,6 +942,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -892,6 +955,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -902,6 +966,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -914,6 +979,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -924,6 +990,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -936,6 +1003,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -946,6 +1014,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     </td>
                     <td
                       className="ms-DatePicker-day ms-DatePicker-dayBackground undefined ms-DatePicker-day--outfocus undefined"
+                      onClick={[Function]}
                       role="gridcell"
                     >
                       <button
@@ -958,6 +1027,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         onClick={[Function]}
                         onKeyDown={[Function]}
                         role="button"
+                        type="button"
                       >
                         <span
                           aria-hidden="true"
@@ -979,7 +1049,12 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               className="ms-DatePicker-header"
             >
               <div
+                aria-label="2000"
                 className="ms-DatePicker-currentYear js-showYearPicker"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+                tabIndex={0}
               >
                 2000
               </div>
@@ -995,9 +1070,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
+                    type="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {
@@ -1021,9 +1096,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     onClick={[Function]}
                     onKeyDown={[Function]}
                     role="button"
+                    type="button"
                   >
                     <i
-                      aria-hidden={true}
                       className=
 
                           {
@@ -1046,169 +1121,188 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
             </div>
             <div
               className="ms-FocusZone"
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
               role="presentation"
             >
               <div
+                aria-readonly="true"
                 className="ms-DatePicker-optionGrid"
                 role="grid"
               >
-                <button
-                  aria-label="January 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
+                <div
+                  role="row"
                 >
-                  Jan
-                </button>
-                <button
-                  aria-label="February 2000"
-                  aria-selected={true}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Feb
-                </button>
-                <button
-                  aria-label="March 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Mar
-                </button>
-                <button
-                  aria-label="April 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Apr
-                </button>
-                <button
-                  aria-label="May 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  May
-                </button>
-                <button
-                  aria-label="June 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Jun
-                </button>
-                <button
-                  aria-label="July 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Jul
-                </button>
-                <button
-                  aria-label="August 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Aug
-                </button>
-                <button
-                  aria-label="September 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Sep
-                </button>
-                <button
-                  aria-label="October 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Oct
-                </button>
-                <button
-                  aria-label="November 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Nov
-                </button>
-                <button
-                  aria-label="December 2000"
-                  aria-selected={false}
-                  className="ms-DatePicker-monthOption"
-                  data-is-focusable={true}
-                  disabled={false}
-                  onClick={[Function]}
-                  onKeyDown={[Function]}
-                  role="gridcell"
-                >
-                  Dec
-                </button>
+                  <button
+                    aria-label="January 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Jan
+                  </button>
+                  <button
+                    aria-label="February 2000"
+                    aria-selected={true}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Feb
+                  </button>
+                  <button
+                    aria-label="March 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Mar
+                  </button>
+                  <button
+                    aria-label="April 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Apr
+                  </button>
+                  <button
+                    aria-label="May 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    May
+                  </button>
+                  <button
+                    aria-label="June 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Jun
+                  </button>
+                  <button
+                    aria-label="July 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Jul
+                  </button>
+                  <button
+                    aria-label="August 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Aug
+                  </button>
+                  <button
+                    aria-label="September 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Sep
+                  </button>
+                  <button
+                    aria-label="October 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Oct
+                  </button>
+                  <button
+                    aria-label="November 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Nov
+                  </button>
+                  <button
+                    aria-label="December 2000"
+                    aria-selected={false}
+                    className="ms-DatePicker-monthOption"
+                    data-is-focusable={true}
+                    disabled={false}
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    role="gridcell"
+                    type="button"
+                  >
+                    Dec
+                  </button>
+                </div>
               </div>
             </div>
           </div>
           <button
-            className="ms-DatePicker-goToday js-goToday undefined"
+            className="ms-DatePicker-goToday js-goToday"
+            disabled={false}
             onClick={[Function]}
             onKeyDown={[Function]}
             role="button"
             tabIndex={0}
+            type="button"
           >
             Go to today
           </button>

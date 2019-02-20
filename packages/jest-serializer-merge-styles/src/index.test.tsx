@@ -1,3 +1,5 @@
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 import { print, test } from './index';
 import { Stylesheet, InjectionMode, mergeStyles, keyframes } from '@uifabric/merge-styles';
 
@@ -67,14 +69,22 @@ describe('print', () => {
         '',
         '',
         indent('{'),
-        indent(
-          '  ' +
-            'animation-name: ' +
-            'keyframes from{opacity:0;}to{opacity:1;} ' +
-            'keyframes from{left:-100px;}to{left:0px;};'
-        ),
+        indent('  ' + 'animation-name: ' + 'keyframes from{opacity:0;}to{opacity:1;} ' + 'keyframes from{left:-100px;}to{left:0px;};'),
         indent('}')
       ].join('\n')
     );
+  });
+
+  it('can be used in snapshots', () => {
+    const fadeInAnimationName = keyframes({
+      from: { opacity: 0, color: 'red' },
+      to: { opacity: 1, color: 'green' }
+    });
+    const fadeInClassName = mergeStyles({
+      animationName: fadeInAnimationName,
+      animationDelay: '500ms'
+    });
+
+    expect(renderer.create(<div className={fadeInClassName} />).toJSON()).toMatchSnapshot();
   });
 });

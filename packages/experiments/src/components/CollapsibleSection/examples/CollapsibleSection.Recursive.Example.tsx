@@ -53,7 +53,7 @@ const ExampleFile = (props: IExampleFileProps) => {
   return (
     <div data-is-focusable="true" style={{ display: 'flex', alignItems: 'center', height: 24, paddingLeft: 4 + props.indent * 18 }}>
       <img src={props.iconSource} style={{ maxWidth: 16, padding: 6 }} />
-      <Text size="small">{props.filename}</Text>
+      <Text variant="small">{props.filename}</Text>
     </div>
   );
 };
@@ -88,14 +88,7 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
     for (let i = 0; i < randomFolderCount; i++) {
       const randomFolder = Math.floor(Math.random() * _folderItems.length);
       this._folders.push(
-        <CollapsibleSection
-          key={i}
-          defaultCollapsed={true}
-          titleProps={{
-            text: _folderItems[randomFolder]
-          }}
-          indent={this.props.indent}
-        >
+        <CollapsibleSection key={i} defaultCollapsed={true} title={_folderItems[randomFolder]} indent={this.props.indent}>
           <CollapsibleSectionFolder indent={(this.props.indent || 0) + 1} />
           {this._files}
         </CollapsibleSection>

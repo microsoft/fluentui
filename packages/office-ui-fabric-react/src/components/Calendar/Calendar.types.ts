@@ -7,7 +7,7 @@ export interface ICalendar {
   focus: () => void;
 }
 
-export interface ICalendarProps extends IBaseProps<ICalendar> {
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -68,7 +68,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * The date range type indicating how  many days should be selected as the user
    * selects days
-   * @defaultValue DateRangeType.Day
+   * @defaultvalue DateRangeType.Day
    */
   dateRangeType?: DateRangeType;
 
@@ -77,7 +77,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
    * depending on the selected date. If this property is set to true and the currently displayed
    * month is March 2017, if the user clicks on a day outside the month, i.e., April 1st, the
    * picker will automatically navigate to the month of April.
-   * @defaultValue false
+   * @defaultvalue false
    */
   autoNavigateOnSelection?: boolean;
 
@@ -87,8 +87,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   showGoToToday?: boolean;
 
   /**
-   * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
-   * @deprecated
+   * This property has been removed at 0.80.0 in place of the `focus` method, to be removed \@ 1.0.0.
+   * @deprecated Replaced with the `focus` method.
    */
   shouldFocusOnMount?: boolean;
 
@@ -143,6 +143,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   maxDate?: Date;
 
   /**
+   * If set the Calendar will not allow selection of dates in this array.
+   */
+  restrictedDates?: Date[];
+
+  /**
    * Whether the calendar should show 6 weeks by default.
    * @defaultvalue false
    */
@@ -171,6 +176,12 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
    * @defaultvalue false
    */
   allFocusable?: boolean;
+
+  /**
+   * Whether the year picker is enabled
+   * @defaultvalue false
+   */
+  yearPickerHidden?: boolean;
 }
 
 export interface ICalendarStrings {
@@ -229,7 +240,7 @@ export interface ICalendarStrings {
   closeButtonAriaLabel?: string;
 
   /**
-   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
+   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number \{0\}"
    */
   weekNumberFormatString?: string;
 }
@@ -237,19 +248,19 @@ export interface ICalendarStrings {
 export interface ICalendarIconStrings {
   /**
    * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
-   * @defaultvalue  'Up'
+   * @defaultvalue 'Up'
    */
   leftNavigation?: string;
 
   /**
    * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
-   * @defaultvalue  'Down'
+   * @defaultvalue 'Down'
    */
   rightNavigation?: string;
 
   /**
    * Close icon
-   * @defaultvalue  'CalculatorMultiply'
+   * @defaultvalue 'CalculatorMultiply'
    */
   closeIcon?: string;
 }

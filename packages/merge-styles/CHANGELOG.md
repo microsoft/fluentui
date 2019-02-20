@@ -1,6 +1,92 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 01 Oct 2018 12:27:24 GMT and should not be manually modified.
+This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+
+## 6.15.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix bug where multiple selectors in :global() would not be processed correctly
+
+## 6.15.1
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- Allow :global to be used in more scenarios than just ":global(selector)"
+- Use CSS object-fit in the Image component in capable browsers
+
+## 6.15.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+
+## 6.14.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- `strokeLinecap` added to IRawStyles.
+
+## 6.13.0
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Minor changes
+
+- Fixes #6975: adds ability for mergestyles to handle commas in selectors
+
+## 6.11.0
+Fri, 26 Oct 2018 12:32:35 GMT
+
+### Minor changes
+
+- Add api-extractor.json
+
+## 6.10.4
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- IRawStyleBase: Replace string type on display property with a more specific type of possible values.
+
+## 6.10.3
+Mon, 22 Oct 2018 12:29:57 GMT
+
+### Patches
+
+- Added 'stretch' as valid value for justifyContent in IRawStyleBase.
+
+## 6.10.2
+Thu, 18 Oct 2018 20:22:36 GMT
+
+### Patches
+
+- Update api-extractor
+
+## 6.10.1
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Patches
+
+- IStyleSet: Now uses a form that works better in TS 2.8 and does not require TS 3.0 to work. Thanks [Nimelrian](https://github.com/Nimelrian)!
+- Adding css grid properties to fill out the spec
+
+## 6.10.0
+Thu, 11 Oct 2018 23:13:31 GMT
+
+### Minor changes
+
+- Enable api-extractor task for merge-styles
+
+## 6.9.4
+Mon, 08 Oct 2018 12:24:15 GMT
+
+### Patches
+
+- Moving tslint/prettier dependencies 
 
 ## 6.9.3
 Mon, 01 Oct 2018 12:27:24 GMT

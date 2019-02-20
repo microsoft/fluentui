@@ -8,13 +8,11 @@ import {
   allowScrollOnElement,
   BaseComponent,
   classNamesFunction,
-  createRef,
   divProperties,
   elementContains,
   getId,
   getNativeProps,
-  getRTL,
-  isIOS
+  getRTL
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
@@ -37,8 +35,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     type: PanelType.smallFixedFar
   };
 
-  private _panel = createRef<HTMLDivElement>();
-  private _content = createRef<HTMLDivElement>();
+  private _panel = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
 
@@ -119,11 +116,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       onRenderFooter = this._onRenderFooter
     } = this.props;
     const { isFooterSticky, isOpen, isAnimating, id } = this.state;
-    const isLeft = type === PanelType.smallFixedNear ? true : false;
+    const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
     const isRTL = getRTL();
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = headerText && id + '-headerText';
-    const customWidthStyles = type === PanelType.custom ? { width: customWidth } : {};
+    const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps(this.props, divProperties);
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
@@ -136,11 +133,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       focusTrapZoneClassName: focusTrapZoneProps ? focusTrapZoneProps.className : undefined,
       hasCloseButton,
       headerClassName,
-      isAnimating: this.state.isAnimating,
+      isAnimating,
       isFooterAtBottom,
       isFooterSticky,
       isOnRightSide,
-      isOpen: this.state.isOpen,
+      isOpen,
       isHiddenOnDismiss,
       type
     });
@@ -158,31 +155,32 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       <Layer {...layerProps}>
         <Popup
           role="dialog"
+          aria-modal="true"
           ariaLabelledBy={header ? headerTextId : undefined}
           onDismiss={this.dismiss}
           className={_classNames.hiddenPanel}
         >
-          <div {...nativeProps} ref={this._panel} className={_classNames.root}>
+          <div aria-hidden={!isOpen && isAnimating} {...nativeProps} ref={this._panel} className={_classNames.root}>
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}
               forceFocusInsideTrap={isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
+              isClickableOutsideFocusTrap={true}
               {...focusTrapZoneProps}
               className={_classNames.main}
               style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
-              isClickableOutsideFocusTrap={focusTrapZoneProps && !focusTrapZoneProps.isClickableOutsideFocusTrap ? false : true}
             >
-              <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent}>
-                <div className={_classNames.commands} data-is-visible={true}>
-                  {onRenderNavigation(this.props, this._onRenderNavigation)}
-                </div>
-                <div className={_classNames.contentInner}>
-                  {header}
+              <div className={_classNames.commands} data-is-visible={true}>
+                {onRenderNavigation(this.props, this._onRenderNavigation)}
+              </div>
+              <div className={_classNames.contentInner}>
+                {header}
+                <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
-                  {onRenderFooter(this.props, this._onRenderFooter)}
                 </div>
+                {onRenderFooter(this.props, this._onRenderFooter)}
               </div>
             </FocusTrapZone>
           </div>
@@ -229,9 +227,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _allowScrollOnPanel = (elt: HTMLDivElement | null): void => {
     if (elt) {
       allowScrollOnElement(elt, this._events);
-      if (isIOS()) {
-        elt.style.height = window.innerHeight + 'px';
-      }
     } else {
       this._events.off(this._scrollableContent);
     }
@@ -243,6 +238,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   }
 
   private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
+    const { onRenderNavigationContent = this._onRenderNavigationContent } = this.props;
+    return <div className={this._classNames.navigation}>{onRenderNavigationContent(props, this._onRenderNavigationContent)}</div>;
+  };
+
+  private _onRenderNavigationContent = (props: IPanelProps): JSX.Element | null => {
     const { closeButtonAriaLabel, hasCloseButton } = props;
     const theme = getTheme();
     if (hasCloseButton) {
@@ -251,28 +251,26 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
       // : undefined;
       return (
-        <div className={this._classNames.navigation}>
-          <IconButton
-            // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-            // className={iconButtonStyles}
-            styles={{
-              root: {
-                height: 'auto',
-                width: '44px',
-                color: theme.palette.neutralSecondary,
-                fontSize: IconFontSizes.large
-              },
-              rootHovered: {
-                color: theme.palette.neutralPrimary
-              }
-            }}
-            className={this._classNames.closeButton}
-            onClick={this._onPanelClick}
-            ariaLabel={closeButtonAriaLabel}
-            data-is-visible={true}
-            iconProps={{ iconName: 'Cancel' }}
-          />
-        </div>
+        <IconButton
+          // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
+          // className={iconButtonStyles}
+          styles={{
+            root: {
+              height: 'auto',
+              width: '44px',
+              color: theme.palette.neutralSecondary,
+              fontSize: IconFontSizes.large
+            },
+            rootHovered: {
+              color: theme.palette.neutralPrimary
+            }
+          }}
+          className={this._classNames.closeButton}
+          onClick={this._onPanelClick}
+          ariaLabel={closeButtonAriaLabel}
+          data-is-visible={true}
+          iconProps={{ iconName: 'Cancel' }}
+        />
       );
     }
     return null;
@@ -298,11 +296,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onRenderBody = (props: IPanelProps): JSX.Element => {
-    return (
-      <div ref={this._content} className={this._classNames.content} data-is-scrollable={true}>
-        {props.children}
-      </div>
-    );
+    return <div className={this._classNames.content}>{props.children}</div>;
   };
 
   private _onRenderFooter = (props: IPanelProps): JSX.Element | null => {
@@ -318,10 +312,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _updateFooterPosition(): void {
-    const _content = this._content.current;
-    if (_content) {
-      const height = _content.clientHeight;
-      const innerHeight = _content.scrollHeight;
+    const scrollableContent = this._scrollableContent;
+    if (scrollableContent) {
+      const height = scrollableContent.clientHeight;
+      const innerHeight = scrollableContent.scrollHeight;
 
       this.setState({
         isFooterSticky: height < innerHeight ? true : false
@@ -348,6 +342,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   };
 
   private _onTransitionComplete = (): void => {
+    this._updateFooterPosition();
     this.setState({
       isAnimating: false
     });

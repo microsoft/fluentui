@@ -12,8 +12,7 @@ const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-
 export const RatingPageProps: IDocPageProps = {
   title: 'Rating',
   componentName: 'Rating',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating',
   componentStatus: RatingStatus,
   examples: [
     {
@@ -28,9 +27,7 @@ export const RatingPageProps: IDocPageProps = {
       view: <RatingButtonControlledExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/Rating.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),

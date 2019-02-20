@@ -8,6 +8,7 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   return {
     root: [
       'ms-Tooltip',
+      theme.fonts.medium,
       AnimationClassNames.fadeIn200,
       {
         background: palette.white,
@@ -29,7 +30,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       palette.neutralPrimary,
       {
         wordWrap: 'break-word',
-        overflowWrap: 'break-word'
+        overflowWrap: 'break-word',
+        overflow: 'hidden'
       }
     ],
     subText: [

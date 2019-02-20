@@ -30,7 +30,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {
@@ -69,6 +68,8 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-bottom: 1px solid transparent;
@@ -76,45 +77,37 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
                 cursor: pointer;
                 display: inline;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: inherit;
                 font-weight: bold;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -126,6 +119,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Philippe Lampros
         </button>
@@ -147,6 +141,8 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-bottom: 1px solid transparent;
@@ -154,45 +150,37 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
                 cursor: pointer;
                 display: inline;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: inherit;
                 font-weight: bold;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -204,6 +192,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           @Anđela Debeljak
         </button>
@@ -255,7 +244,6 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {
@@ -294,6 +282,8 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-bottom: 1px solid transparent;
@@ -301,45 +291,37 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
                 cursor: pointer;
                 display: inline;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: inherit;
                 font-weight: bold;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -351,6 +333,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Lisha Refai
         </button>
@@ -411,14 +394,13 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
         className=
 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-7";
+              font-family: "FabricMDL2Icons-8";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -450,6 +432,8 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-bottom: 1px solid transparent;
@@ -457,45 +441,37 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
                 cursor: pointer;
                 display: inline;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: inherit;
                 font-weight: bold;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -507,6 +483,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Julian Arvidsson
         </button>
@@ -517,6 +494,8 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-bottom: 1px solid transparent;
@@ -524,45 +503,37 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
                 cursor: pointer;
                 display: inline;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: inherit;
                 font-weight: bold;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -574,6 +545,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           PresentationTitle.pptx
         </button>
@@ -584,6 +556,8 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
           className=
               ms-Link
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-bottom: 1px solid transparent;
@@ -591,45 +565,37 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
                 cursor: pointer;
                 display: inline;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: inherit;
                 font-weight: bold;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
                 margin-top: 0px;
-                outline: transparent;
+                outline: none;
                 overflow: inherit;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
                 padding-top: 0px;
-                position: relative;
                 text-align: left;
                 text-overflow: inherit;
                 user-select: text;
               }
-              &::-moz-focus-inner {
-                border: 0;
+              .ms-Fabric--isFocusVisible &:focus {
+                box-shadow: 0 0 0 1px #666666 inset;
               }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -1px;
-                content: "";
-                left: -1px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-                z-index: 1;
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                outline: 1px solid WindowText;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                border-bottom: none;
               }
               @media screen and (-ms-high-contrast: white-on-black){& {
                 color: #FFFF00;
               }
               @media screen and (-ms-high-contrast: black-on-white){& {
                 color: #00009F;
-              }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                border-bottom: none;
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
@@ -641,6 +607,7 @@ exports[`Component Examples renders ActivityItem.Basic.Example.tsx correctly 1`]
                 color: #0078d4;
               }
           onClick={[Function]}
+          type="button"
         >
           Destination Folder
         </button>

@@ -1,8 +1,9 @@
 import * as React from 'react';
+
 import { Label } from '../../Label';
-import { ChoiceGroupOption, OnFocusCallback, OnChangeCallback } from './ChoiceGroupOption/index';
-import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
-import { BaseComponent, classNamesFunction, createRef, getId, find } from '../../Utilities';
+import { BaseComponent, classNamesFunction, find, getId } from '../../Utilities';
+import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
+import { ChoiceGroupOption, OnChangeCallback, OnFocusCallback } from './ChoiceGroupOption/index';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -13,14 +14,14 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
+export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   public static defaultProps: IChoiceGroupProps = {
     options: []
   };
 
   private _id: string;
   private _labelId: string;
-  private _inputElement = createRef<HTMLInputElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private focusedVars: { [key: string]: OnFocusCallback } = {};
   private changedVars: { [key: string]: OnChangeCallback } = {};
 
@@ -32,13 +33,25 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       selectedKey: 'defaultSelectedKey'
     });
 
+    const validDefaultSelectedKey: boolean = !!props.options && props.options.some(option => option.key === props.defaultSelectedKey);
+
     this.state = {
-      keyChecked: props.defaultSelectedKey === undefined ? this._getKeyChecked(props)! : props.defaultSelectedKey,
+      keyChecked:
+        props.defaultSelectedKey === undefined || !validDefaultSelectedKey ? this._getKeyChecked(props)! : props.defaultSelectedKey,
       keyFocused: undefined
     };
 
     this._id = getId('ChoiceGroup');
     this._labelId = getId('ChoiceGroupLabel');
+  }
+
+  /**
+   * Gets the current checked option.
+   */
+  public get checkedOption(): IChoiceGroupOption | undefined {
+    const { options = [] } = this.props;
+    const { keyChecked: key } = this.state;
+    return find(options, (value: IChoiceGroupOption) => value.key === key);
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
@@ -53,7 +66,7 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   }
 
   public render(): JSX.Element {
-    const { className, theme, styles, options, label, required, disabled, name } = this.props;
+    const { className, theme, styles, options, label, required, disabled, name, role } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -65,18 +78,11 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const ariaLabelledBy = this.props.ariaLabelledBy
       ? this.props.ariaLabelledBy
       : label
-        ? this._id + '-label'
-        : (this.props as any)['aria-labelledby'];
-
-    // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
-    // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
-    const firstEnabledOption =
-      disabled || options === undefined ? undefined : find(options, option => !option.disabled);
-    const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
+      ? this._id + '-label'
+      : (this.props as any)['aria-labelledby'];
 
     return (
-      // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
-      <div role="application" className={classNames.applicationRole}>
+      <div role={role} className={classNames.applicationRole}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
           {label && (
             <Label className={classNames.label} required={required} id={this._id + '-label'}>
@@ -89,7 +95,6 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
-                'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,

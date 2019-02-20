@@ -8,10 +8,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -27,16 +32,20 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Info/Default MessageBar
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: #f4f4f4;
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -49,6 +58,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
   >
     <div
@@ -74,7 +86,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -101,7 +114,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -113,6 +125,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -143,6 +159,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-right: 8px;
               margin-top: 8px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
         id="MessageBar0"
       >
         <span
@@ -164,10 +184,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -189,10 +214,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -205,6 +235,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
@@ -232,7 +265,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -262,7 +296,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -274,6 +307,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="ErrorBadge"
           role="presentation"
@@ -303,6 +340,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar1"
       >
@@ -338,6 +379,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -352,6 +397,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -403,7 +449,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -418,14 +464,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -448,7 +495,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -484,10 +530,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -503,7 +554,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or multiline and should be used sparingly.
   </label>
   <div
-    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -511,11 +561,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-dismissalSingleLine
         ms-MessageBar-expandingSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -529,6 +584,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -537,6 +595,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           height: 12px;
           line-height: 12px;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+          -ms-high-contrast-adjust: none;
+          color: window;
         }
   >
     <div
@@ -562,7 +624,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -592,7 +655,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -600,10 +662,14 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 color: #a80000;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-4";
+                font-family: "FabricMDL2Icons-5";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Blocked2"
           role="presentation"
@@ -633,6 +699,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar5"
       >
@@ -664,8 +734,14 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
+          aria-controls="MessageBar5"
+          aria-expanded={false}
           aria-label="See more"
           className=
               ms-Button
@@ -678,6 +754,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -729,7 +806,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -744,14 +821,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -774,7 +852,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -816,6 +893,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -830,6 +911,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -881,7 +963,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -896,14 +978,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -926,7 +1009,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -962,10 +1044,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -981,17 +1068,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     SevereWarning MessageBar - defaults to multiline, with action buttons
   </label>
   <div
-    aria-live="assertive"
     className=
         ms-MessageBar
         ms-MessageBar--severeWarning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(234, 67, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -1004,6 +1095,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
   >
     <div
@@ -1029,7 +1123,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -1056,7 +1151,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1068,6 +1162,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Warning"
           role="presentation"
@@ -1097,6 +1195,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar12"
       >
@@ -1369,10 +1471,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1393,10 +1500,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--success
         ms-MessageBar-singleline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(186, 216, 10, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -1409,6 +1521,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
@@ -1436,7 +1551,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1466,7 +1582,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1478,6 +1593,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Completed"
           role="presentation"
@@ -1507,6 +1626,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar19"
       >
@@ -1786,10 +1909,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1811,10 +1939,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -1827,6 +1960,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
@@ -1854,7 +1990,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1884,7 +2021,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1896,6 +2032,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -1925,6 +2065,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar26"
       >
@@ -2096,6 +2240,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -2110,6 +2258,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -2161,7 +2310,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -2176,14 +2325,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2206,7 +2356,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -2242,10 +2391,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2261,17 +2415,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning MessageBar - defaults to multiline, with dismiss and action buttons
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar--warning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -2284,6 +2442,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
   >
     <div
@@ -2309,7 +2470,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -2336,7 +2498,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -2348,6 +2509,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -2378,6 +2543,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-right: 0px;
               margin-top: 8px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
         id="MessageBar33"
       >
         <span
@@ -2406,6 +2575,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
+              color: #333333;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -2457,7 +2627,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #004578;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -2472,14 +2642,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
             @media only screen and (min-width: 0px) and (max-width: 479px){& {
               margin-bottom: 0px;
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -2502,7 +2673,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -2787,10 +2957,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2806,16 +2981,20 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Info/Default MessageBar - custom styles
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(113, 175, 229, 0.2);
           box-sizing: border-box;
           color: #00188f;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -2828,6 +3007,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
   >
     <div
@@ -2853,7 +3035,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -2880,7 +3063,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -2892,6 +3074,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -2922,6 +3108,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-right: 8px;
               margin-top: 8px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
         id="MessageBar43"
       >
         <span
@@ -2943,10 +3133,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2968,10 +3163,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(232, 17, 35, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -2984,6 +3184,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
@@ -3012,7 +3215,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -3042,7 +3246,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3054,6 +3257,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="ErrorBadge"
           role="presentation"
@@ -3084,6 +3291,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar44"
       >
@@ -3119,6 +3330,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -3133,6 +3348,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3184,7 +3400,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3199,14 +3415,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3229,7 +3446,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3265,10 +3481,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -3284,7 +3505,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Blocked, single line, with dismiss button and truncated text - custom styles
   </label>
   <div
-    aria-expanded={false}
     className=
         ms-MessageBar
         ms-MessageBar--blocked
@@ -3292,11 +3512,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-dismissalSingleLine
         ms-MessageBar-expandingSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(0, 178, 148, 0.2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -3310,6 +3535,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -3318,6 +3546,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           height: 12px;
           line-height: 12px;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+          -ms-high-contrast-adjust: none;
+          color: window;
         }
   >
     <div
@@ -3343,7 +3575,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -3373,7 +3606,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3381,10 +3613,14 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -webkit-font-smoothing: antialiased;
                 color: #a80000;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-4";
+                font-family: "FabricMDL2Icons-5";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Blocked2"
           role="presentation"
@@ -3414,6 +3650,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar48"
       >
@@ -3447,8 +3687,14 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
+          aria-controls="MessageBar48"
+          aria-expanded={false}
           aria-label="See more"
           className=
               ms-Button
@@ -3461,6 +3707,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3512,7 +3759,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3527,14 +3774,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3557,7 +3805,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3600,6 +3847,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -3614,6 +3865,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3665,7 +3917,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -3680,14 +3932,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3710,7 +3963,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3746,10 +3998,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -3765,17 +4022,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Severe warning, multiline, with action buttons - custom styles
   </label>
   <div
-    aria-live="assertive"
     className=
         ms-MessageBar
         ms-MessageBar--severeWarning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(227, 0, 140, 0.2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -3788,6 +4049,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
   >
     <div
@@ -3813,7 +4077,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -3840,7 +4105,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3852,6 +4116,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Warning"
           role="presentation"
@@ -3881,6 +4149,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar55"
       >
@@ -4154,10 +4426,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -4178,10 +4455,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar--success
         ms-MessageBar-singleline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(186, 216, 10, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -4194,6 +4476,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
@@ -4221,7 +4506,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -4251,7 +4537,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -4263,6 +4548,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Completed"
           role="presentation"
@@ -4292,6 +4581,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar62"
       >
@@ -4573,10 +4866,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -4598,10 +4896,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
         ms-MessageBar-singleline
         ms-MessageBar-dismissalSingleLine
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(255, 185, 0, .2);
           box-sizing: border-box;
           color: #333333;
           display: flex;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -4614,6 +4917,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
@@ -4642,7 +4948,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -4672,7 +4979,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -4684,6 +4990,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -4713,6 +5023,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar69"
       >
@@ -4886,6 +5200,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -4900,6 +5218,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -4951,7 +5270,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #004578;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -4966,14 +5285,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -4996,7 +5316,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -5032,10 +5351,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     className=
         ms-Label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
           color: #333333;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -5051,17 +5375,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning, multiline, with dismiss and action buttons - custom styles
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar--warning
         ms-MessageBar-multiline
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background: rgba(0, 188, 242, 0.4);
           box-sizing: border-box;
           color: #333333;
           display: flex;
           flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           min-height: 32px;
           position: relative;
           width: 100%;
@@ -5074,6 +5402,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
         }
   >
     <div
@@ -5099,7 +5430,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -5126,7 +5458,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -5138,6 +5469,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -5168,6 +5503,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-right: 0px;
               margin-top: 8px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
         id="MessageBar76"
       >
         <span
@@ -5196,6 +5535,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               border-radius: 0px;
               border: 1px solid #00188f;
               box-sizing: border-box;
+              color: #333333;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -5247,7 +5587,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #004578;
+              color: #212121;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -5262,14 +5602,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
             @media only screen and (min-width: 0px) and (max-width: 479px){& {
               margin-bottom: 0px;
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -5292,7 +5633,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

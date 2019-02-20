@@ -12,6 +12,10 @@
     color: $ms-color-white;
   }
 
+  .isFluent & {
+    color: $ms-color-yellowDark;
+  }
+
   &:first-child {
     @include margin-left(0);
   }
@@ -23,5 +27,4 @@
 
 i.signal {
   top: 0.2em;
-  text-decoration: none;
 }

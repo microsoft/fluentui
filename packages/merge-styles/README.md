@@ -281,20 +281,37 @@ Produces:
 }
 ```
 
-In some cases, you may need to alter a child area by interacting with the parent. For example, when the parent is hovered, change the child background. You can reference the areas defined in the style set using $ tokens:
+In some cases, you may need to alter a child area by interacting with the parent. For example, when the parent is hovered, change the child background. We recommend using global, non-changing static classnames
+to target the parent elements:
 
 ```tsx
+const classNames = {
+  root: 'Foo-root',
+  child: 'Foo-child'
+};
+
 mergeStyleSets({
-  root: {
-    selectors: {
-      ':hover $thumb': { background: 'lightgreen' }
+  root: [
+    classNames.root,
+    { background: 'lightgreen' }
+  ],
+
+  child: [
+    classNames.child,
+    {
+      selectors: {
+        `.${classNames.root}:hover &`: {
+          background: 'green'
+        }
+      }
     }
-   }
-  thumb: { background: 'green' }
+  ]
 });
 ```
 
-The `$thumb` reference in the selector on root will be replaced with the class name generated for thumb.
+The important part here is that the selector does not have any mutable information. In the example above,
+if `classNames.root` were dynamic, it would require the rule to be re-registered when it mutates, which
+would be a performance hit.
 
 ## Custom class names
 

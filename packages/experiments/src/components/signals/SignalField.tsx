@@ -6,8 +6,8 @@ export type SignalFieldMode = 'wide' | 'compact';
 
 export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement> {
   signalsFieldMode?: SignalFieldMode;
-  before?: React.ReactNode | React.ReactNode[];
-  after?: React.ReactNode | React.ReactNode[];
+  before?: React.ReactNode;
+  after?: React.ReactNode;
 }
 
 /**
@@ -29,9 +29,9 @@ export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: 
         className
       )}
     >
-      <span className={SignalFieldStyles.signalFieldBefore}>{props.before}</span>
+      {props.before}
       <span className={SignalFieldStyles.signalFieldValue}>{props.children}</span>
-      <span>{props.after}</span>
+      {props.after}
     </span>
   );
 };

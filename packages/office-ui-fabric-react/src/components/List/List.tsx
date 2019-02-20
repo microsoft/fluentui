@@ -8,8 +8,7 @@ import {
   getParent,
   divProperties,
   getNativeProps,
-  IRenderFunction,
-  createRef
+  IRenderFunction
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -92,8 +91,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     [key: string]: React.ReactInstance;
   };
 
-  private _root = createRef<HTMLDivElement>();
-  private _surface = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _surface = React.createRef<HTMLDivElement>();
+  private _pageRefs: { [pageKey: string]: React.RefObject<HTMLDivElement> };
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -161,6 +161,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       leading: false
     });
 
+    this._pageRefs = {};
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
@@ -174,9 +175,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
    * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
    *
-   * @param index Index of item to scroll to
-   * @param measureItem Optional callback to measure the height of an individual item
-   * @param scrollToMode Optional defines where in the window the item should be positioned to when scrolling
+   * @param index - Index of item to scroll to
+   * @param measureItem - Optional callback to measure the height of an individual item
+   * @param scrollToMode - Optional defines where in the window the item should be positioned to when scrolling
    */
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode: ScrollToMode = ScrollToMode.auto): void {
     const startIndex = this.props.startIndex as number;
@@ -405,12 +406,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     const { onRenderPage = this._onRenderPage } = this.props;
 
+    this._pageRefs[page.key] = this._pageRefs[page.key] || React.createRef();
+
     const pageElement = onRenderPage(
       {
         page: page,
         className: css('ms-List-page'),
         key: page.key,
-        ref: page.key,
+        ref: this._pageRefs[page.key],
         style: pageStyle,
         role: 'presentation'
       },
@@ -593,14 +596,19 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         // Enqueue an idle bump
         this._onAsyncIdle();
       }
+
+      // Notify the caller that rendering the new pages has completed
+      if (props.onPagesUpdated) {
+        props.onPagesUpdated(this.state.pages as IPage[]);
+      }
     });
   }
 
   /**
    * Notify consumers that the rendered pages have changed
-   * @param oldPages The old pages
-   * @param newPages The new pages
-   * @param props The props to use
+   * @param oldPages - The old pages
+   * @param newPages - The new pages
+   * @param props - The props to use
    */
   private _notifyPageChanges(oldPages: IPage[], newPages: IPage[], props: IListProps = this.props): void {
     const { onPageAdded, onPageRemoved } = props;
@@ -659,7 +667,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    */
   private _measurePage(page: IPage): boolean {
     let hasChangedHeight = false;
-    const pageElement = this.refs[page.key] as HTMLElement;
+    const pageElement = this._pageRefs[page.key].current;
     const cachedHeight = this._cachedPageHeights[page.startIndex];
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
@@ -751,8 +759,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       const isPageRendered = findIndex(this.state.pages as IPage[], (page: IPage) => !!page.items && page.startIndex === itemIndex) > -1;
       const isPageInAllowedRange = !allowedRect || (pageBottom >= allowedRect.top && pageTop <= allowedRect.bottom!);
-      const isPageInRequiredRange =
-        !this._requiredRect || (pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!);
+      const isPageInRequiredRange = !this._requiredRect || (pageBottom >= this._requiredRect.top && pageTop <= this._requiredRect.bottom!);
       const isPageVisible = (!isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered))) || !shouldVirtualize;
       const isPageFocused = focusedIndex >= itemIndex && focusedIndex < itemIndex + itemsPerPage;
       const isFirstPage = itemIndex === startIndex;

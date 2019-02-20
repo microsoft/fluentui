@@ -1,46 +1,42 @@
 import * as React from 'react';
-import { IBaseProps } from '../../Utilities';
-import { FolderCover } from './FolderCover';
+import { IBaseProps, ISize } from '../../Utilities';
 
 export type FolderCoverSize = 'small' | 'large';
 
 export type FolderCoverType = 'default' | 'media';
 
-export interface IFolderCoverProps extends IBaseProps, React.Props<FolderCover>, React.HTMLAttributes<HTMLDivElement> {
+export interface IFolderCoverChildrenProps {
+  contentSize: ISize;
+}
+
+export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTMLDivElement> {
   /**
    * The breakpoint size of the folder cover.
-   *
-   * @type {FolderCoverSize}
-   * @memberof IFolderCoverProps
    */
   folderCoverSize?: FolderCoverSize;
   /**
    * The display type of the folder cover.
-   *
-   * @type {FolderCoverType}
-   * @memberof IFolderCoverProps
    */
   folderCoverType?: FolderCoverType;
   /**
    * Whether or not the content should be hidden, even if specified.
    * Use this to "fade in" the content once it is loaded.
-   *
-   * @type {boolean}
-   * @memberof IFolderCoverProps
    */
   hideContent?: boolean;
   /**
    * A signal to display on the folder cover.
-   *
-   * @type {(React.ReactNode[] | React.ReactNode)}
-   * @memberof IFolderCoverProps
    */
-  signal?: React.ReactNode[] | React.ReactNode;
+  signal?: React.ReactNode;
   /**
    * A metadata value to display on the folder cover.
-   *
-   * @type {(React.ReactNode[] | React.ReactNode)}
-   * @memberof IFolderCoverProps
    */
-  metadata?: React.ReactNode[] | React.ReactNode;
+  metadata?: React.ReactNode;
+  /**
+   * Support fluent color, yellow folder cover.
+   */
+  isFluent?: boolean;
+  /**
+   * The children to pass into the content area of the folder cover.
+   */
+  children?: React.Props<{}>['children'] | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
 }

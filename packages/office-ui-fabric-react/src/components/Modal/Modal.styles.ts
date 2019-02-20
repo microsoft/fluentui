@@ -1,18 +1,7 @@
 import { IModalStyleProps, IModalStyles } from './Modal.types';
-import { IOverlayStyles } from '../../Overlay';
-import { AnimationVariables, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { AnimationVariables, getGlobalClassNames } from '../../Styling';
 
 export const animationDuration = AnimationVariables.durationValue2;
-
-export const getOverlayStyles: IOverlayStyles = {
-  root: {
-    selectors: {
-      [HighContrastSelector]: {
-        opacity: 0
-      }
-    }
-  }
-};
 
 const globalClassNames = {
   root: 'ms-Modal',
@@ -40,6 +29,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         backgroundColor: 'transparent',
         position: 'fixed',
@@ -71,7 +61,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         boxSizing: 'border-box',
         position: 'relative',
         textAlign: 'left',
-        outline: '3px solid tranparent',
+        outline: '3px solid transparent',
         maxHeight: '100%',
         overflowY: 'auto'
       },

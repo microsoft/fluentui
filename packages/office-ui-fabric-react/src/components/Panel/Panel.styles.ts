@@ -5,9 +5,11 @@ import {
   DefaultFontStyles,
   getGlobalClassNames,
   ScreenWidthMinMedium,
+  ScreenWidthMinLarge,
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
-  ScreenWidthMinUhfMobile
+  ScreenWidthMinUhfMobile,
+  IStyle
 } from '../../Styling';
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
@@ -35,21 +37,116 @@ const GlobalClassNames = {
   large: 'ms-Panel--lg',
   largeFixed: 'ms-Panel--fixed',
   extraLarge: 'ms-Panel--xl',
-  custom: 'ms-Panel--custom'
+  custom: 'ms-Panel--custom',
+  customNear: 'ms-Panel--customLeft'
 };
 
-const panelSize = {
-  width: {
-    xs: '272px',
-    sm: '340px',
-    md: '643px',
-    lg: '940px'
-  },
-  margin: {
-    md: '48px',
-    lg: '428px',
-    xl: '176px'
+const panelWidth = {
+  full: '100%',
+  auto: 'auto',
+  xs: 272,
+  sm: 340,
+  md1: 592,
+  md2: 644,
+  lg: 940
+};
+
+const panelMargin = {
+  auto: 'auto',
+  none: 0,
+  md: 48,
+  lg: 428,
+  xl: 176
+};
+
+// Following consts are used below in `getPanelBreakpoints()` function to provide
+// necessary fallbacks for different types of Panel in different breakpoints.
+const smallPanelSelectors = {
+  [`@media (min-width: ${ScreenWidthMinMedium}px)`]: {
+    width: panelWidth.sm
   }
+};
+
+const mediumPanelSelectors = {
+  [`@media (min-width: ${ScreenWidthMinLarge}px)`]: {
+    width: panelWidth.md1
+  },
+  [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
+    width: panelWidth.md2
+  }
+};
+
+const largePanelSelectors = {
+  [`@media (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
+    left: panelMargin.md,
+    width: panelWidth.auto
+  },
+  [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
+    left: panelMargin.lg
+  }
+};
+
+const largeFixedPanelSelectors = {
+  [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
+    left: panelMargin.auto,
+    width: panelWidth.lg
+  }
+};
+
+const extraLargePanelSelectors = {
+  [`@media (min-width: ${ScreenWidthMinXXLarge}px)`]: {
+    left: panelMargin.xl
+  }
+};
+
+// Make sure Panels have fallbacks to different breakpoints by reusing same selectors.
+// This is done in the effort to follow design redlines.
+const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefined => {
+  let selectors;
+
+  // Panel types `smallFluid`, `smallFixedNear`, `custom` and `customNear`
+  // are not checked in here because they render the same in all the breakpoints
+  // and have the checks done separately in the `getStyles` function below.
+  switch (type) {
+    case PanelType.smallFixedFar:
+      selectors = {
+        ...smallPanelSelectors
+      };
+      break;
+    case PanelType.medium:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors
+      };
+      break;
+    case PanelType.large:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors,
+        ...largePanelSelectors
+      };
+      break;
+    case PanelType.largeFixed:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors,
+        ...largePanelSelectors,
+        ...largeFixedPanelSelectors
+      };
+      break;
+    case PanelType.extraLarge:
+      selectors = {
+        ...smallPanelSelectors,
+        ...mediumPanelSelectors,
+        ...largePanelSelectors,
+        ...extraLargePanelSelectors
+      };
+      break;
+    default:
+      break;
+  }
+
+  return selectors;
 };
 
 const commandBarHeight = '44px';
@@ -58,11 +155,11 @@ const sharedPaddingStyles = {
   paddingLeft: '16px',
   paddingRight: '16px',
   selectors: {
-    ['@media screen and (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
+    [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
       paddingLeft: '32px',
       paddingRight: '32px'
     },
-    ['@media screen and (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
+    [`@media screen and (min-width: ${ScreenWidthMinXXLarge}px)`]: {
       paddingLeft: '40px',
       paddingRight: '40px'
     }
@@ -98,15 +195,17 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     isOpen,
     isHiddenOnDismiss,
     theme,
-    type
+    type = PanelType.smallFixedFar
   } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-  const isCustomPanel = type === PanelType.custom;
+  const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
+  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : '100%';
 
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       isOpen && classNames.isOpen,
       hasCloseButton && classNames.hasCloseButton,
       {
@@ -117,27 +216,17 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         right: 0,
         bottom: 0
       },
-      !isOpen &&
-        !isAnimating &&
-        isHiddenOnDismiss && {
-          visibility: 'hidden'
-        },
-      isCustomPanel && classNames.custom,
+      isCustomPanel && isOnRightSide && classNames.custom,
+      isCustomPanel && !isOnRightSide && classNames.customNear,
       className
     ],
     overlay: [
       {
-        pointerEvents: 'none',
-        opacity: 1,
-        cursor: 'pointer',
-        transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+        pointerEvents: 'auto',
+        cursor: 'pointer'
       },
-      isOpen && {
-        cursor: 'pointer',
-        pointerEvents: 'auto'
-      },
-      isOpen && isAnimating && AnimationClassNames.fadeIn200,
-      !isOpen && isAnimating && AnimationClassNames.fadeOut200
+      isOpen && isAnimating && AnimationClassNames.fadeIn100,
+      !isOpen && isAnimating && AnimationClassNames.fadeOut100
     ],
     hiddenPanel: [
       !isOpen &&
@@ -150,90 +239,49 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.main,
       {
         backgroundColor: palette.white,
+        boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)',
+        pointerEvents: 'auto',
         position: 'absolute',
-        right: 0,
-        width: '100%',
-        bottom: 0,
-        top: 0,
+        display: 'flex',
+        flexDirection: 'column',
         overflowX: 'hidden',
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
+        maxHeight: '100%',
+        bottom: 0,
+        top: 0,
+        // (left, right, width) - Properties to be overridden depending on the type of the Panel and the screen breakpoint.
+        left: panelMargin.auto,
+        right: panelMargin.none,
+        width: panelWidth.full,
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
-            borderLeft: `1px solid ${palette.neutralLight}`,
-            borderRight: `1px solid ${palette.neutralLight}`,
-            pointerEvents: 'auto',
-            width: panelSize.width.sm,
-            boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
-            left: 'auto'
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
           },
-          '$root &': [
-            isOpen && {
-              pointerEvents: 'auto'
-            },
-            type === PanelType.smallFluid && {
-              width: '100%'
-            },
-            type === PanelType.smallFixedNear && {
-              right: 'auto',
-              left: 0,
-              width: panelSize.width.xs,
-              boxShadow: '30px 0px 30px -30px rgba(0,0,0,0.2)'
-            },
-            type === PanelType.smallFixedFar && {
-              width: panelSize.width.xs,
-              selectors: {
-                ['@media (min-width: ' + ScreenWidthMinMedium + 'px)']: {
-                  width: panelSize.width.sm
-                }
-              }
-            },
-            type === PanelType.medium && {
-              selectors: {
-                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-                  left: panelSize.margin.md,
-                  width: 'auto'
-                },
-                ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
-                  left: 'auto',
-                  width: panelSize.width.md
-                }
-              }
-            },
-            (type === PanelType.large || type === PanelType.largeFixed) && {
-              selectors: {
-                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-                  left: panelSize.margin.md,
-                  width: 'auto'
-                },
-                ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-                  left: panelSize.margin.lg
-                }
-              }
-            },
-            type === PanelType.largeFixed && {
-              selectors: {
-                ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-                  left: 'auto',
-                  width: panelSize.width.lg
-                }
-              }
-            },
-            type === PanelType.extraLarge && {
-              selectors: {
-                ['@media (min-width: ' + ScreenWidthMinUhfMobile + 'px)']: {
-                  left: panelSize.margin.md,
-                  width: 'auto'
-                },
-                ['@media (min-width: ' + ScreenWidthMinXXLarge + 'px)']: {
-                  left: panelSize.margin.xl
-                }
-              }
-            },
-            isCustomPanel && {
-              maxWidth: '100vw'
-            }
-          ]
+          ...getPanelBreakpoints(type)
+        }
+      },
+      type === PanelType.smallFluid && {
+        left: panelMargin.none
+      },
+      type === PanelType.smallFixedNear && {
+        left: panelMargin.none,
+        right: panelMargin.auto,
+        width: panelWidth.xs
+      },
+      type === PanelType.customNear && {
+        right: 'auto',
+        left: 0
+      },
+      isCustomPanel && {
+        maxWidth: '100vw'
+      },
+      isFooterAtBottom && {
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
         }
       },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
@@ -243,29 +291,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       focusTrapZoneClassName
     ],
     commands: [classNames.commands],
-    contentInner: [
-      classNames.contentInner,
-      {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100%',
-        WebkitOverflowScrolling: 'touch',
-        /* Force hw accelleration on scrollable region */
-        transform: 'translateZ(0)'
-      },
-      hasCloseButton && {
-        top: commandBarHeight,
-        minHeight: `calc(100% - ${commandBarHeight})`
-      }
-    ],
-    scrollableContent: [
-      classNames.scrollableContent,
-      {
-        height: '100%',
-        overflowY: 'auto',
-        flexGrow: 1
-      }
-    ],
     navigation: [
       classNames.navigation,
       {
@@ -276,6 +301,29 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       }
     ],
     closeButton: [classNames.closeButton],
+    contentInner: [
+      classNames.contentInner,
+      {
+        display: 'flex',
+        flexDirection: 'column',
+        flexGrow: 1,
+        maxHeight: '100%',
+        overflowY: 'hidden',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: windowHeight
+          }
+        }
+      },
+      isFooterAtBottom && {
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      }
+    ],
     header: [
       classNames.header,
       sharedPaddingStyles,
@@ -284,7 +332,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         // Ensure that title doesn't shrink if screen is too small
         flexGrow: 0,
         selectors: {
-          ['@media (min-width: ' + ScreenWidthMinXLarge + 'px)']: {
+          [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
             marginTop: '30px'
           }
         }
@@ -300,16 +348,24 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       headerClassName
     ],
+    scrollableContent: [
+      classNames.scrollableContent,
+      {
+        overflowY: 'auto',
+        height: '100%',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            height: windowHeight
+          }
+        }
+      }
+    ],
     content: [
       classNames.content,
       sharedPaddingStyles,
       {
         marginBottom: 0,
-        paddingBottom: '20px',
-        overflowY: 'auto'
-      },
-      isFooterAtBottom && {
-        flexGrow: 1
+        paddingBottom: 20
       }
     ],
     footer: [

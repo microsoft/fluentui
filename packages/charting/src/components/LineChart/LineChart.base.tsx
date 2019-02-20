@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
-import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import * as d3TimeFormat from 'd3-time-format';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, IDataPoint, ILineChartPoints } from './LineChart.types';
+import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, ILineChartDataPoint, ILineChartPoints } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
@@ -39,7 +40,7 @@ export class LineChartBase extends React.Component<
   private _uniqLineText: string;
   private chartContainer: HTMLDivElement;
   // These margins are necessary for d3Scales to appear without cutting off
-  private margins = { top: 20, right: 10, bottom: 35, left: 40 };
+  private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   constructor(props: ILineChartProps) {
     super(props);
     this.state = {
@@ -55,7 +56,7 @@ export class LineChartBase extends React.Component<
       refSelected: '',
       hoveredLineColor: ''
     };
-    this._points = this.props.data!.lineChartData || [];
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqLineText =
       '_line_' +
       Math.random()
@@ -70,12 +71,29 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles } = this.props;
-    const isNumeric = this._points[0].data[0] ? typeof this._points[0].data[0]!.x === 'number' : false;
-    isNumeric ? this._createNumericXAxis() : this._createStringXAxis();
-    this._createYAxis();
-    const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
-    const lines = this._createLines(strokeWidth);
+    const { theme, className, styles, tickValues, tickFormat } = this.props;
+    this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
+    if (this.props.parentRef) {
+      this._fitParentContainer();
+    }
+    let dataPresent = false;
+    let dataType = false;
+    if (this._points && this._points.length > 0) {
+      this._points.map((chartData: ILineChartPoints) => {
+        if (chartData.data.length > 0) {
+          dataPresent = true;
+          dataType = chartData.data[0].x instanceof Date;
+          return;
+        }
+      });
+    }
+    let lines: JSX.Element[] = [];
+    if (dataPresent) {
+      dataType ? this._createDateXAxis(tickValues, tickFormat) : this._createNumericXAxis();
+      const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
+      this._createYAxis();
+      lines = this._createLines(strokeWidth);
+    }
     const legendBars = this._createLegends(this._points!);
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -84,10 +102,9 @@ export class LineChartBase extends React.Component<
       color: this.state.lineColor,
       className
     });
-
     const svgDimensions = {
-      width: this.state.containerWidth ? this.state.containerWidth : 800,
-      height: this.state.containerHeight ? this.state.containerHeight : 500
+      width: this.state.containerWidth,
+      height: this.state.containerHeight
     };
     return (
       <div ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)} className={this._classNames.root}>
@@ -122,18 +139,32 @@ export class LineChartBase extends React.Component<
   }
 
   private _fitParentContainer(): void {
-    setTimeout(() => {
-      const { containerWidth, containerHeight } = this.state;
-      const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
-      const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
-      const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
-      if (shouldResize) {
-        this.setState({
-          containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - 26
-        });
-      }
-    }, 100);
+    const { containerWidth, containerHeight } = this.state;
+    if (this.props.parentRef) {
+      setTimeout(() => {
+        const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
+        const currentContainerHeight = this.props.parentRef!.getBoundingClientRect().height;
+        const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - 26
+          });
+        }
+      }, 100);
+    } else {
+      setTimeout(() => {
+        const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
+        const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
+        const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
+        if (shouldResize) {
+          this.setState({
+            containerWidth: currentContainerWidth,
+            containerHeight: currentContainerHeight - 26
+          });
+        }
+      }, 100);
+    }
   }
 
   private _createLegends(data: ILineChartPoints[]): JSX.Element {
@@ -165,7 +196,7 @@ export class LineChartBase extends React.Component<
 
   private _createNumericXAxis(): void {
     const xMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: IDataPoint) => {
+      return d3Max(point.data, (item: ILineChartDataPoint) => {
         return item.x as number;
       });
     })!;
@@ -195,50 +226,42 @@ export class LineChartBase extends React.Component<
     return dataPointsArray;
   }
 
-  private _getXAxisValues(xAxisData: string[]): string[] {
-    let tickValues: string[] = [];
-    if (xAxisData.length <= 7) {
-      tickValues = xAxisData;
-    } else {
-      tickValues.push(xAxisData[0]);
-      const length = Math.ceil((xAxisData.length - 2) / 5);
-      for (let i = length; i < xAxisData.length - 2; i += length) {
-        tickValues.push(xAxisData[i]);
-      }
-      tickValues.push(xAxisData[xAxisData.length - 1]);
-    }
-    return tickValues;
-  }
-
-  private _createStringXAxis = () => {
-    const xAxisData: string[] = [];
+  private _createDateXAxis = (tickValues?: Date[] | number[], tickFormat?: string) => {
+    const xAxisData: Date[] = [];
+    let sDate = new Date();
+    // selecting least date and comparing it with data passed to get farthest Date for the range on X-axis
+    let lDate = new Date(-8640000000000000);
     this._points.map((singleLineChartData: ILineChartPoints) => {
-      singleLineChartData.data.map((point: IDataPoint) => {
-        xAxisData.push(point.x as string);
+      singleLineChartData.data.map((point: ILineChartDataPoint) => {
+        xAxisData.push(point.x as Date);
+        if (point.x < sDate) {
+          sDate = point.x as Date;
+        }
+        if (point.x > lDate) {
+          lDate = point.x as Date;
+        }
       });
     });
-    const tickValues: string[] = this._getXAxisValues(xAxisData);
-    const xAxisScale = d3ScaleBand()
-      .padding(1)
-      .domain(xAxisData)
+    const xAxisScale = d3ScaleTime()
+      .domain([sDate, lDate])
       .range([this.margins.left, this.state.containerWidth - this.margins.right]);
     this._xAxisScale = xAxisScale;
     const xAxis = d3AxisBottom(xAxisScale)
       .tickSize(10)
-      .tickPadding(12)
-      .tickValues(tickValues)
-      .tickSizeOuter(0);
+      .tickPadding(12);
+    tickValues ? xAxis.tickValues(tickValues) : '';
+    tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickFormat)) : '';
     if (this.xAxisElement) {
       d3Select(this.xAxisElement)
         .call(xAxis)
-        .selectAll('text')
-        .style('font', '10px Segoe UI semibold');
+        .select('text')
+        .style('font', '10px Segoe UI Semibold');
     }
   };
 
   private _createYAxis = () => {
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
-      return d3Max(point.data, (item: IDataPoint) => item.y);
+      return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
     })!;
     const domainValues = this._prepareDatapoints(yMax, 4, true);
     const yAxisScale = d3ScaleLinear()
@@ -305,12 +328,13 @@ export class LineChartBase extends React.Component<
     return lines;
   }
 
-  private _handleHover = (x: number | string, y: number | string, lineColor: string, mouseEvent: React.MouseEvent<SVGPathElement>) => {
+  private _handleHover = (x: number | Date, y: number | string, lineColor: string, mouseEvent: React.MouseEvent<SVGPathElement>) => {
     mouseEvent.persist();
+    const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     this.setState({
       isCalloutVisible: true,
       refSelected: mouseEvent,
-      hoverXValue: x,
+      hoverXValue: '' + formattedData,
       hoverYValue: y,
       lineColor: lineColor
     });

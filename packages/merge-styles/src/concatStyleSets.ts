@@ -4,7 +4,7 @@ import { IStyleFunctionOrObject } from './IStyleFunction';
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet The first style set to be concatenated.
+ * @param styleSet - The first style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
   styleSet: TStyleSet | false | null | undefined
@@ -12,8 +12,8 @@ export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 The first style set to be concatenated.
- * @param styleSet2 The second style set to be concatenated.
+ * @param styleSet1 - The first style set to be concatenated.
+ * @param styleSet2 - The second style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
   styleSet1: TStyleSet1 | false | null | undefined,
@@ -22,9 +22,9 @@ export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyle
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 The first style set to be concatenated.
- * @param styleSet2 The second style set to be concatenated.
- * @param styleSet3 The third style set to be concatenated.
+ * @param styleSet1 - The first style set to be concatenated.
+ * @param styleSet2 - The second style set to be concatenated.
+ * @param styleSet3 - The third style set to be concatenated.
  */
 export function concatStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
@@ -38,10 +38,10 @@ export function concatStyleSets<
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 The first style set to be concatenated.
- * @param styleSet2 The second style set to be concatenated.
- * @param styleSet3 The third style set to be concatenated.
- * @param styleSet4 The fourth style set to be concatenated.
+ * @param styleSet1 - The first style set to be concatenated.
+ * @param styleSet2 - The second style set to be concatenated.
+ * @param styleSet3 - The third style set to be concatenated.
+ * @param styleSet4 - The fourth style set to be concatenated.
  */
 export function concatStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
@@ -57,10 +57,10 @@ export function concatStyleSets<
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 The first style set to be concatenated.
- * @param styleSet2 The second style set to be concatenated.
- * @param styleSet3 The third style set to be concatenated.
- * @param styleSet4 The fourth style set to be concatenated.
+ * @param styleSet1 - The first style set to be concatenated.
+ * @param styleSet2 - The second style set to be concatenated.
+ * @param styleSet3 - The third style set to be concatenated.
+ * @param styleSet4 - The fourth style set to be concatenated.
  */
 export function concatStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
@@ -76,11 +76,11 @@ export function concatStyleSets<
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 The first style set to be concatenated.
- * @param styleSet2 The second style set to be concatenated.
- * @param styleSet3 The third style set to be concatenated.
- * @param styleSet4 The fourth style set to be concatenated.
- * @param styleSet5 The fifth set to be concatenated.
+ * @param styleSet1 - The first style set to be concatenated.
+ * @param styleSet2 - The second style set to be concatenated.
+ * @param styleSet3 - The third style set to be concatenated.
+ * @param styleSet4 - The fourth style set to be concatenated.
+ * @param styleSet5 - The fifth set to be concatenated.
  */
 export function concatStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
@@ -98,12 +98,12 @@ export function concatStyleSets<
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSet1 The first style set to be concatenated.
- * @param styleSet2 The second style set to be concatenated.
- * @param styleSet3 The third style set to be concatenated.
- * @param styleSet4 The fourth style set to be concatenated.
- * @param styleSet5 The fifth set to be concatenated.
- * @param styleSet6 The sixth set to be concatenated.
+ * @param styleSet1 - The first style set to be concatenated.
+ * @param styleSet2 - The second style set to be concatenated.
+ * @param styleSet3 - The third style set to be concatenated.
+ * @param styleSet4 - The fourth style set to be concatenated.
+ * @param styleSet5 - The fifth set to be concatenated.
+ * @param styleSet6 - The sixth set to be concatenated.
  */
 export function concatStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
@@ -123,19 +123,15 @@ export function concatStyleSets<
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSets One or more stylesets to be merged (each param can also be falsy).
+ * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
-): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
- * @param styleSets One or more stylesets to be merged (each param can also be falsy).
+ * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(
-  ...styleSets: (IStyleSet<any> | false | null | undefined)[]
-): IConcatenatedStyleSet<any> {
+export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any> {
   const mergedSet: IConcatenatedStyleSet<any> = {};
 
   // We process sub component styles in two phases. First we collect them, then we combine them into 1 style function.
@@ -191,9 +187,8 @@ export function concatStyleSets(
         const workingSet = workingSubcomponentStyles[subCompProp];
         mergedSubStyles[subCompProp] = (styleProps: any) => {
           return concatStyleSets(
-            ...workingSet.map(
-              (styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
-                typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
+            ...workingSet.map((styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
+              typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
             )
           );
         };
