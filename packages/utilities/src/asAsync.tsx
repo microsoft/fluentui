@@ -57,17 +57,18 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Compone
     },
     { Component?: React.ReactType<TProps> }
   > {
-    public state = {
+    // FABRIC7TODO
+    /*public state = {
       Component: _syncModuleCache ? _syncModuleCache.get(options.load) : undefined
-    };
+    };*/
 
     public render(): JSX.Element | null {
       // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
       // tslint:disable-next-line:no-any
       const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;
       const { Component } = this.state;
-
-      return Component ? <Component ref={forwardedRef} {...rest} /> : Placeholder ? <Placeholder /> : null;
+      return null;
+      // FABRIC7TODO     return Component ? <Component ref={forwardedRef} {...rest} /> : Placeholder ? <Placeholder /> : null;
     }
 
     public componentDidMount(): void {
@@ -94,8 +95,8 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Compone
       }
     }
   }
-
-  return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ReactType }, ref: React.Ref<TProps>) => (
+  return Async;
+  /*FABRIC7TODO return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ReactType }, ref: React.Ref<TProps>) => (
     <Async {...props} forwardedRef={ref} />
-  ));
+  ));*/
 }
