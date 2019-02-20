@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { IWizardProps, IWizardStyles } from './Wizard.types';
+import { IWizardProps, IWizardStyles, IWizardStyleProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
 import { getStepContentToShow } from './Wizard.utils';
 
-const getClassNames = classNamesFunction<IWizardProps, IWizardStyles>();
+const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
 /** Component for Wizard */
-export class Wizard extends React.Component<IWizardProps, {}> {
+class WizardBase extends React.Component<IWizardProps, {}> {
   constructor(props: IWizardProps) {
     super(props);
   }
@@ -20,7 +20,7 @@ export class Wizard extends React.Component<IWizardProps, {}> {
       throw new Error('Wizard must have atleast one step.');
     }
 
-    const classNames = getClassNames(getWizardStyles!);
+    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
 
     // if the step to render is already passed in, use that
     const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepContentToShow(this.props);
@@ -38,3 +38,10 @@ export class Wizard extends React.Component<IWizardProps, {}> {
     );
   }
 }
+
+export const Wizard: (props: IWizardProps) => JSX.Element = styled<IWizardProps, IWizardStyleProps, IWizardStyles>(
+  WizardBase,
+  getWizardStyles,
+  undefined,
+  { scope: 'Wizard' }
+);
