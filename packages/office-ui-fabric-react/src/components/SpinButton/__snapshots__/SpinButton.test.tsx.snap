@@ -46,7 +46,7 @@ exports[`SpinButton should render SpinButton correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="input1"
-      id="Label0"
+      id="label0"
     >
       label
     </label>
@@ -74,7 +74,7 @@ exports[`SpinButton should render SpinButton correctly 1`] = `
   >
     <input
       aria-disabled={false}
-      aria-labelledby="Label0"
+      aria-labelledby="label0"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -120,7 +120,6 @@ exports[`SpinButton should render SpinButton correctly 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       readOnly={false}
@@ -448,7 +447,7 @@ exports[`SpinButton should render SpinButton correctly with values that the user
             word-wrap: break-word;
           }
       htmlFor="input1"
-      id="Label0"
+      id="label0"
     >
       label
     </label>
@@ -476,7 +475,7 @@ exports[`SpinButton should render SpinButton correctly with values that the user
   >
     <input
       aria-disabled={false}
-      aria-labelledby="Label0"
+      aria-labelledby="label0"
       aria-valuemax={100}
       aria-valuemin={0}
       aria-valuenow={0}
@@ -523,7 +522,6 @@ exports[`SpinButton should render SpinButton correctly with values that the user
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      onInput={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
       readOnly={false}

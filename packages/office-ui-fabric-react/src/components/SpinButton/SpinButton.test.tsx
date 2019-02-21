@@ -243,7 +243,7 @@ describe('SpinButton', () => {
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(exampleNewValue));
     ReactTestUtils.Simulate.blur(inputDOM);
 
     expect(inputDOM.value).toEqual(exampleNewValue);
@@ -264,7 +264,7 @@ describe('SpinButton', () => {
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(exampleNewValue));
     ReactTestUtils.Simulate.blur(inputDOM);
 
     expect(inputDOM.value).toEqual(exampleDefaultValue);
@@ -286,7 +286,7 @@ describe('SpinButton', () => {
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     // Before commit the user input value, keep display nothing.
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(inputDOM.value).toEqual('');
 
     // After commit the value (blur), reset to the default value.
@@ -309,7 +309,7 @@ describe('SpinButton', () => {
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(exampleNewValue));
     ReactTestUtils.Simulate.blur(inputDOM);
 
     expect(inputDOM.value).toEqual(String(exampleMaxValue));
@@ -330,7 +330,7 @@ describe('SpinButton', () => {
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(String(exampleNewValue)));
     ReactTestUtils.Simulate.blur(inputDOM);
 
     expect(inputDOM.value).toEqual(String(exampleMinValue));
@@ -360,7 +360,7 @@ describe('SpinButton', () => {
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(String(exampleNewValue)));
     ReactTestUtils.Simulate.blur(inputDOM);
 
     expect(inputDOM.value).toEqual(String(errorMessage));
@@ -542,73 +542,59 @@ describe('SpinButton', () => {
     expect(onDecrement).toBeCalled();
   });
 
-  it('should fire custom onValidate handler (with minimal properties)', () => {
-    const onValidate: jest.Mock = jest.fn();
+  it('should leverage custom validate handler if provided', () => {
+    const validateHandler: jest.Mock = jest.fn();
     const exampleNewValue = '99';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidate={onValidate} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidate={validateHandler} />);
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(String(exampleNewValue)));
     ReactTestUtils.Simulate.blur(inputDOM);
 
-    expect(onValidate).toBeCalled();
+    expect(validateHandler).toBeCalled();
   });
 
-  it('should pass enter key code to onValidate handler', () => {
-    let keyCode;
-    const onValidate: jest.Mock = jest.fn((value, event) => {
-      keyCode = event.which;
-      return value;
-    });
-    const exampleNewValue = '99';
-
-    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidate={onValidate} />);
-
-    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.focus(inputDOM);
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
-    ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
-    expect(keyCode).toEqual(KeyCodes.enter);
-    expect(onValidate).toBeCalled();
-    ReactTestUtils.Simulate.blur(inputDOM);
-    expect(onValidate).toHaveBeenCalledTimes(1);
-  });
-
-  it('should not call onValidate when press enter key without input changes', () => {
-    const onValidate: jest.Mock = jest.fn((value, event) => {
-      return value;
-    });
+  it('should not invoke validate and change callbacks when press enter key without changes', () => {
+    const validateHandler: jest.Mock = jest.fn(value => value);
+    const changeHandler: jest.Mock = jest.fn();
     const exampleNewValue = '99';
     const exampleChangedValue = '10';
 
-    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" onValidate={onValidate} />);
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton label="SpinButton" onValidate={validateHandler} onChange={changeHandler} />
+    );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(String(exampleNewValue)));
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
-    expect(onValidate).toHaveBeenCalledTimes(1);
+    expect(validateHandler).toHaveBeenCalledTimes(1);
+    expect(changeHandler).toHaveBeenCalledTimes(1);
+
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
-    expect(onValidate).toHaveBeenCalledTimes(1);
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleChangedValue)));
+    expect(validateHandler).toHaveBeenCalledTimes(1);
+    expect(changeHandler).toHaveBeenCalledTimes(1);
+
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(String(exampleChangedValue)));
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
-    expect(onValidate).toHaveBeenCalledTimes(2);
+    expect(validateHandler).toHaveBeenCalledTimes(2);
+    expect(changeHandler).toHaveBeenCalledTimes(2);
   });
 
   describe('in uncontrolled mode', () => {
     it('should call onChange handler when commit new value', () => {
       const newValue = '21';
-      const onChange = jest.fn();
+      const changeHandler = jest.fn();
 
-      const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="SpinButton" defaultValue="12" onChange={onChange} />);
+      const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="SpinButton" defaultValue="12" onChange={changeHandler} />);
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent(newValue));
-      expect(onChange).not.toBeCalled();
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent(newValue));
+      expect(changeHandler).not.toBeCalled();
 
       ReactTestUtils.Simulate.blur(inputDOM);
-      expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toBeCalledWith(newValue);
+      expect(changeHandler).toHaveBeenCalledTimes(1);
+      expect(changeHandler).toBeCalledWith(newValue);
     });
   });
 
@@ -619,7 +605,7 @@ describe('SpinButton', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="SpinButton" value={value} />);
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent('44'));
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent('44'));
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(inputDOM.value).toEqual(value);
     });
@@ -627,19 +613,19 @@ describe('SpinButton', () => {
     it('should not change back the display value if onChange handler does not set value', () => {
       const value = '37';
       const newValue = '45';
-      const onChange = jest.fn();
+      const changeHandler = jest.fn();
 
-      const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="SpinButton" value={value} onChange={onChange} />);
+      const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="SpinButton" value={value} onChange={changeHandler} />);
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent(newValue));
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent(newValue));
       expect(inputDOM.value).toEqual(newValue);
 
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(inputDOM.value).toEqual(value);
 
-      expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toBeCalledWith(newValue);
+      expect(changeHandler).toHaveBeenCalledTimes(1);
+      expect(changeHandler).toBeCalledWith(newValue);
     });
 
     function createTestSpinButton(initialValue: number, newValue: number) {
@@ -651,10 +637,10 @@ describe('SpinButton', () => {
 
         public render() {
           return (
-            <>
+            <div>
               <SpinButton label="SpinButton" value={this.state.value.toString()} onChange={this._updateValue} />
-              <DefaultButton label="reset" onClick={this._updateValue} />
-            </>
+              <DefaultButton label="reset" type="reset" onClick={this._updateValue} />
+            </div>
           );
         }
 
@@ -669,23 +655,24 @@ describe('SpinButton', () => {
       const renderedDOM: HTMLElement = renderIntoDocument(<TestSpinButton />);
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent(newValue.toString()));
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent(newValue.toString()));
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(inputDOM.value).toEqual(newValue.toString());
     });
 
-    it('should respect the value passed from the parent even it is different', () => {
+    it('should respect the value passed from the parent even it is different than the input value', () => {
       const initialValue = 62;
+      const inputValue = 79;
       const newValue = 96;
       const TestSpinButton = createTestSpinButton(initialValue, newValue);
       const renderedDOM: HTMLElement = renderIntoDocument(<TestSpinButton />);
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent(newValue.toString()));
-      expect(inputDOM.value).toEqual(newValue.toString());
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent(inputValue.toString()));
+      expect(inputDOM.value).toEqual(inputValue.toString());
 
       ReactTestUtils.Simulate.blur(inputDOM);
-      expect(inputDOM.value).toEqual('88');
+      expect(inputDOM.value).toEqual(newValue.toString());
     });
 
     it('should keep input value if SpinButton re-render with same value and user is inputting value', () => {
@@ -694,14 +681,14 @@ describe('SpinButton', () => {
       const TestSpinButton = createTestSpinButton(initialValue, initialValue);
       const renderedDOM: HTMLElement = renderIntoDocument(<TestSpinButton />);
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-      const resetButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0];
+      const resetButtonDOM: HTMLButtonElement = renderedDOM.querySelector('button[type=reset]') as HTMLButtonElement;
 
       // The user is inputting a new value without committed (without blur).
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent(inputValue.toString()));
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent(inputValue.toString()));
       expect(inputDOM.value).toEqual(inputValue.toString());
 
       // Then, reset the SpinButton with same committed value. The user inputting value is kept.
-      resetButtonDOM.click();
+      ReactTestUtils.Simulate.click(resetButtonDOM);
       expect(inputDOM.value).toEqual(inputValue.toString());
     });
 
@@ -712,14 +699,14 @@ describe('SpinButton', () => {
       const TestSpinButton = createTestSpinButton(initialValue, newValue);
       const renderedDOM: HTMLElement = renderIntoDocument(<TestSpinButton />);
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-      const resetButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0];
+      const resetButtonDOM: HTMLButtonElement = renderedDOM.querySelector('button[type=reset]') as HTMLButtonElement;
 
       // The user is inputting a new value without committed (without blur).
-      ReactTestUtils.Simulate.input(inputDOM, mockEvent(inputValue.toString()));
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent(inputValue.toString()));
       expect(inputDOM.value).toEqual(inputValue.toString());
 
       // Then, reset the SpinButton with a new value different than the committed value. Throw the user value away and set to new value.
-      resetButtonDOM.click();
+      ReactTestUtils.Simulate.click(resetButtonDOM);
       expect(inputDOM.value).toEqual(newValue.toString());
     });
   });

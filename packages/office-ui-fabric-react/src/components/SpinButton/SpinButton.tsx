@@ -86,7 +86,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this.state = {
       isFocused: false,
       value: value,
-      lastValidValue: this._validateValue(value),
+      lastValidValue: value, // @todo Can we use this._validateValue(value)? Will it break the validate invoke assumption?
       spinDirection: SpinDirection.notSpinning
     };
   }
@@ -265,10 +265,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return this.state.value;
   }
 
-  private _validateValue = (value: string, event?: React.SyntheticEvent<HTMLElement>): string => {
+  private _validateValue = (value: string): string => {
     if (this.props.onValidate) {
-      // @todo Why do we need to pass an optional event to custom validator?
-      return this.props.onValidate(value, event) || value;
+      return this.props.onValidate(value) || value;
     } else {
       return this._defaultOnValidate(value);
     }
@@ -281,7 +280,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _defaultOnValidate = (value: string): string => {
     if (value.trim().length === 0 || isNaN(Number(value))) {
-      return this.props.value || String(this.props.min) || '0';
+      // @todo Should the `defaultValue` prop be used in constructor only?
+      return this.props.value || this.props.defaultValue || String(this.props.min) || '0';
     } else {
       const newValue = Math.min(this.props.max as number, Math.max(this.props.min as number, Number(value)));
       return String(newValue);
@@ -396,19 +396,40 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _commitValue = () => {
     this.setState((state, props) => {
-      const normalizedValue = this._validateValue(state.value);
-
-      // Invoke the `onChange` callback, the parent can use it to update the value.
-      if (props.onChange) {
-        props.onChange(normalizedValue);
-      }
-
       if (props.value !== undefined) {
-        // Controlled mode, reset `state.value` to the `props.value` first, but it may update when receive new props from parent.
-        return { lastValidValue: normalizedValue, value: props.value };
+        // Controlled mode
+        if (state.value === props.value) {
+          // State value not changed. Do nothing.
+          return { lastValidValue: state.lastValidValue, value: state.value };
+        } else {
+          // State value is changed. We only invoke validate and change callbacks when value changed.
+          const normalizedValue = this._validateValue(state.value);
+
+          // Invoke the `onChange` callback if available, the parent can use it to update the value.
+          if (props.onChange) {
+            props.onChange(normalizedValue);
+          }
+
+          // Reset `state.value` to the `props.value` first, but it may get update from parent.
+          return { lastValidValue: normalizedValue, value: props.value };
+        }
       } else {
-        // Uncontrolled mode, update the component state to the new value directly.
-        return { lastValidValue: normalizedValue, value: normalizedValue };
+        // Uncontrolled mode
+        if (state.value === state.lastValidValue) {
+          // State value not changed. Do nothing.
+          return { lastValidValue: state.lastValidValue, value: state.value };
+        } else {
+          // State value is changed. We only invoke validate and change callbacks when value changed.
+          const normalizedValue = this._validateValue(state.value);
+
+          // Invoke the `onChange` callback if available, the parent can use it to update the value.
+          if (props.onChange) {
+            props.onChange(normalizedValue);
+          }
+
+          // Update the component state to the new normalized value directly.
+          return { lastValidValue: normalizedValue, value: normalizedValue };
+        }
       }
     });
   };
