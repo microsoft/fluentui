@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { INavLinkGroup, styled, classNamesFunction, BaseComponent } from 'office-ui-fabric-react';
+
 import { INavProps, INavStyleProps, INavStyles, INavState } from './Nav.types';
 import { getStyles } from './Nav.styles';
-import { styled, classNamesFunction, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { NavLink } from './NavLink';
 import { NavGroup } from './NavGroup';
 
@@ -34,7 +34,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
 
     return (
-      <div aria-hidden="true" className={classNames.root} onMouseEnter={this._setScrollLayout} onMouseOver={this._setScrollLayout}>
+      <div aria-hidden="true" className={classNames.root}>
         <div aria-hidden="true" className={classNames.navWrapper} ref={this.wrapperRef}>
           <nav role="navigation" className={classNames.navContainer} ref={this.containerRef}>
             {this._renderExpandCollapseNavItem()}
@@ -48,6 +48,12 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
         </div>
       </div>
     );
+  }
+
+  // we also need to hook into a collapse callback for the nav items
+  // also see if we can get rid of refs
+  public componentDidMount(): void {
+    this._setScrollLayout();
   }
 
   //

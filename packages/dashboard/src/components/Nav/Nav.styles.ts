@@ -1,4 +1,3 @@
-/* tslint:disable */
 import { DefaultPalette, FontSizes, FontWeights, AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { INavLinkProps, INavStyles } from './Nav.types';
 
@@ -283,5 +282,3 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
     ]
   };
 };
-
-/* tslint:enable */

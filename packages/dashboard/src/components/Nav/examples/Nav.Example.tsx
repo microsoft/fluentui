@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { INavLinkGroup, mergeStyles } from 'office-ui-fabric-react';
 import { Nav } from '../Nav';
 
 export class NavExample extends React.Component<{}, {}> {
@@ -80,10 +80,10 @@ export class NavExample extends React.Component<{}, {}> {
         ]
       }
     ];
-
+    const mainStyle = mergeStyles({ display: 'flex', height: '1200px' });
+    const contentStyle = mergeStyles({ flex: '1 1 auto', padding: '24px', backgroundColor: 'pink' });
     return (
-      /* tslint:disable */
-      <div style={{ display: 'flex', height: '400px' }}>
+      <div className={mainStyle}>
         <Nav
           groups={navLinkGroups}
           dataHint="PrimaryNavigation"
@@ -93,9 +93,8 @@ export class NavExample extends React.Component<{}, {}> {
           showMoreString={'Show more'}
           showLessString={'Show less'}
         />
-        <div style={{ flex: '1 1 auto', backgroundColor: 'pink' }} />
+        <div className={contentStyle}>Content Here</div>
       </div>
-      /* tslint:enable */
     );
   }
 }

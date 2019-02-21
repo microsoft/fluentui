@@ -1,8 +1,4 @@
-﻿/* tslint:disable */
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IStyleFunctionOrObject, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react/lib/Nav';
-/* tslint:enable */
+﻿import { IStyle, IStyleFunctionOrObject, IBaseProps, INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react';
 
 export interface INavProps extends IBaseProps {
   /**
@@ -76,13 +72,6 @@ export interface INavProps extends IBaseProps {
    * (Optional) callback for the parent component when the edit nav node is clicked
    */
   onEditNavClickedCallback?(): void;
-}
-
-export interface INavTogglerProps extends INavProps {
-  /**
-   * (Optional) callback for the consumer of NavToggler to know about the "Show more" / "Show less" event.
-   */
-  onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>, showMore?: boolean): void;
 }
 
 export interface INavState extends INavState {
