@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Fix mergeAriaAttributeValues",
+      "comment": "mergeAriaAttributeValues: Trim output string",
       "type": "patch"
     }
   ],
