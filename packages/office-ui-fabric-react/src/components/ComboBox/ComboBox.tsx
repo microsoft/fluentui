@@ -948,7 +948,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = document.activeElement;
+      relatedTarget = document.activeElement!; // FABRIC7VALIDATE
     }
     if (
       relatedTarget &&

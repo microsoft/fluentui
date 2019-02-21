@@ -98,6 +98,11 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
    * Defines the element id referencing the element containing the description for the TeachingBubble.
    */
   ariaDescribedBy?: string;
+
+  /**
+   * React children
+   */
+  children?: any; // FABRIC7VALIDATE this should be implicit
 }
 
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> &

@@ -186,6 +186,11 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
    * Theme provided by higher order component.
    */
   theme?: ITheme;
+
+  /**
+   * React children
+   */
+  children?: any; // FABRIC7VALIDATE this should be implicit
 }
 
 /** The props needed to construct styles. */

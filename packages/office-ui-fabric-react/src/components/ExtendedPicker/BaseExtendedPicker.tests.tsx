@@ -100,7 +100,7 @@ describe('Pickers', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const picker: TypedBaseExtendedPicker = ReactDOM.render(
+      const picker: TypedBaseExtendedPicker = (ReactDOM.render(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
@@ -108,7 +108,7 @@ describe('Pickers', () => {
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
         root
-      ) as TypedBaseExtendedPicker;
+      ) as unknown) as TypedBaseExtendedPicker;
 
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
@@ -129,7 +129,7 @@ describe('Pickers', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const picker: TypedBaseExtendedPicker = ReactDOM.render(
+      const picker: TypedBaseExtendedPicker = (ReactDOM.render(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
@@ -137,7 +137,7 @@ describe('Pickers', () => {
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
         root
-      ) as TypedBaseExtendedPicker;
+      ) as unknown) as TypedBaseExtendedPicker;
 
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
@@ -156,7 +156,7 @@ describe('Pickers', () => {
       const root = document.createElement('div');
       document.body.appendChild(root);
 
-      const picker: TypedBaseExtendedPicker = ReactDOM.render(
+      const picker: TypedBaseExtendedPicker = (ReactDOM.render(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
@@ -164,7 +164,7 @@ describe('Pickers', () => {
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
         root
-      ) as TypedBaseExtendedPicker;
+      ) as unknown) as TypedBaseExtendedPicker;
 
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
