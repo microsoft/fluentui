@@ -26,7 +26,7 @@ export interface ITilesGridItem<TItem> {
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
    */
-  onRender: (content: TItem, finalSize?: ISize) => React.ReactNode | React.ReactNode[];
+  onRender: (content: TItem, finalSize?: ISize) => React.ReactNode;
 }
 
 export const enum TilesGridMode {

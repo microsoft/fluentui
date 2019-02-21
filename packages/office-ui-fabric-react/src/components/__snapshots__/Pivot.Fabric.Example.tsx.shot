@@ -774,7 +774,6 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                         "overflowY": undefined,
                       }
                     }
-                    tabIndex={-1}
                   >
                     <div
                       className="ms-CalloutExample-header"

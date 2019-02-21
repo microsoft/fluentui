@@ -98,7 +98,6 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   top: 8px;
                 }
             data-automation-id="auto1"
-            data-is-focusable={true}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -212,7 +211,6 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   position: absolute;
                   top: 8px;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -326,7 +324,6 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   position: absolute;
                   top: 8px;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -470,7 +467,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   top: 8px;
                 }
             data-automation-id="auto1"
-            data-is-focusable={true}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -584,7 +580,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   position: absolute;
                   top: 8px;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -698,7 +693,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   position: absolute;
                   top: 8px;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
             onBlur={[Function]}
