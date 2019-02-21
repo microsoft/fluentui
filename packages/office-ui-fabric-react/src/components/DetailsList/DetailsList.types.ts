@@ -166,7 +166,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.
    * If a column definition provides its own onRender method, that will be used instead of this.
    */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
   /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
