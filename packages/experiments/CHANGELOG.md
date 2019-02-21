@@ -1,6 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 18 Feb 2019 13:38:29 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Feb 2019 13:32:08 GMT and should not be manually modified.
+
+## 6.59.0
+Thu, 21 Feb 2019 13:32:08 GMT
+
+### Minor changes
+
+- Button: Adding split property to get Split Buttons.
+- Fluent folder: positioned signal-icon on the right
+
+## 6.58.0
+Wed, 20 Feb 2019 21:57:24 GMT
+
+### Minor changes
+
+- Add render-prop pattern to Tile and FolderCover components
+
+### Patches
+
+- Stack: Reexporting component from experiments package.
 
 ## 6.57.1
 Mon, 18 Feb 2019 13:38:29 GMT

@@ -69,7 +69,6 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       folderCoverSize: size = 'large',
       folderCoverType: type = 'default',
       hideContent = false,
-      ref,
       metadata,
       signal,
       children,
@@ -78,13 +77,13 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
     } = this.props;
 
     const assets = ASSETS[size][type];
-    const metadataIcon = metadata ? <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span> : null;
+    const metadataIcon = <span className={css('ms-FolderCover-metadata', FolderCoverStyles.metadata)}>{metadata}</span>;
 
-    const signalIcon = signal ? (
+    const signalIcon = (
       <span className={css('ms-FolderCover-signal', FolderCoverStyles.signal, isFluent ? SignalStyles.isFluent : SignalStyles.dark)}>
         {signal}
       </span>
-    ) : null;
+    );
     return (
       <div
         {...divProps}
@@ -98,11 +97,7 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
         })}
       >
         <Icon aria-hidden={true} className={css('ms-FolderCover-back', FolderCoverStyles.back)} iconName={assets.back} />
-        {children ? (
-          <span className={css('ms-FolderCover-content', FolderCoverStyles.content)}>
-            <span className={css('ms-FolderCover-frame', FolderCoverStyles.frame)}>{children}</span>
-          </span>
-        ) : null}
+        {this._renderChildren({ children })}
         <Icon aria-hidden={true} className={css('ms-FolderCover-front', FolderCoverStyles.front)} iconName={assets.front} />
         {isFluent ? (
           <React.Fragment>
@@ -118,6 +113,16 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       </div>
     );
   }
+
+  private _renderChildren({ children }: Pick<IFolderCoverProps, 'children'>): JSX.Element | null {
+    const finalChildren = typeof children === 'function' ? children(getFolderCoverLayoutFromProps(this.props)) : children;
+
+    return finalChildren ? (
+      <span className={css('ms-FolderCover-content', FolderCoverStyles.content)}>
+        <span className={css('ms-FolderCover-frame', FolderCoverStyles.frame)}>{finalChildren}</span>
+      </span>
+    ) : null;
+  }
 }
 
 export interface IFolderCoverLayout {
@@ -127,10 +132,13 @@ export interface IFolderCoverLayout {
 export function getFolderCoverLayout(element: JSX.Element): IFolderCoverLayout {
   const folderCoverProps: IFolderCoverProps = element.props;
 
-  const { folderCoverSize = 'large' } = folderCoverProps;
+  return getFolderCoverLayoutFromProps(folderCoverProps);
+}
+
+function getFolderCoverLayoutFromProps(folderCoverProps: IFolderCoverProps): IFolderCoverLayout {
+  const { folderCoverSize = 'large', isFluent } = folderCoverProps;
 
   const contentSize = { ...SIZES[folderCoverSize] };
-  const { isFluent } = element.props;
 
   if (isFluent) {
     contentSize.height -= 8;

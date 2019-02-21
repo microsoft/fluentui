@@ -6,8 +6,8 @@ export type SignalFieldMode = 'wide' | 'compact';
 
 export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement> {
   signalsFieldMode?: SignalFieldMode;
-  before?: React.ReactNode | React.ReactNode[];
-  after?: React.ReactNode | React.ReactNode[];
+  before?: React.ReactNode;
+  after?: React.ReactNode;
 }
 
 /**
