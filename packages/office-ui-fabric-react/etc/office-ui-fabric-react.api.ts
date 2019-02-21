@@ -9534,6 +9534,8 @@ interface IPivotStyles {
   // (undocumented)
   icon: IStyle;
   // (undocumented)
+  itemContainer?: IStyle;
+  // (undocumented)
   link: IStyle;
   // (undocumented)
   linkContent: IStyle;
