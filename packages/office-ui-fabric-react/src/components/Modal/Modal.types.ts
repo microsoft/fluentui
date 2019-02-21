@@ -65,8 +65,8 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 
   /**
    * Whether the dialog should be sticky (e.g. not dismiss when focusing/clicking outside of the dialog).
-   * if true: @see isBlocking is ignored, there will be no overlay (@see isDarkOverlay is ignored),
-   * @see isClickableOutsideFocusTrap is true, and @see forceFocusInsideTrap is false
+   * if true: isBlocking is ignored, there will be no overlay (isDarkOverlay is ignored),
+   * isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false
    */
   isSticky?: boolean;
 

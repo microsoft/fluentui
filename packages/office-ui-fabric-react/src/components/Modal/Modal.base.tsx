@@ -163,7 +163,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       return (
         <Layer {...mergedLayerProps}>
           <Popup
-            role={isSticky ? 'dialog' : 'alertdialog'}
+            role={isSticky || !isBlocking ? 'dialog' : 'alertdialog'}
             aria-modal={!isSticky}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
