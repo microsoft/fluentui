@@ -280,8 +280,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _defaultOnValidate = (value: string): string => {
     if (value.trim().length === 0 || isNaN(Number(value))) {
-      // @todo Should the `defaultValue` prop be used in constructor only?
-      return this.props.value || this.props.defaultValue || String(this.props.min) || '0';
+      return this.state.lastValidValue;
     } else {
       const newValue = Math.min(this.props.max as number, Math.max(this.props.min as number, Number(value)));
       return String(newValue);
