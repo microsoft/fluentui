@@ -62,7 +62,7 @@ export class IconsPage extends React.Component<any, any> {
 
         <div className={pageStyles.u_maxTextWidth}>
           <p>
-            Next, set the <code>dir</code> attribute on the body to indicate the reading direction for the page. This will select the
+            Next, set the <code>dir</code> attribute on the html tag to indicate the reading direction for the page. This will select the
             appropriate icon for the user's reading direction.
           </p>
         </div>
