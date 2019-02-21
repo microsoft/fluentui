@@ -121,15 +121,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       subtitleAriaId,
       theme,
       topOffsetFixed,
-      onLayerDidMount
+      onLayerDidMount,
+      isSticky
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
-
-    const mergedLayerProps = {
-      ...DefaultLayerProps,
-      ...this.props.layerProps,
-      onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount
-    };
 
     if (!isOpen) {
       return null;
@@ -144,29 +139,45 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isVisible,
       hasBeenOpened,
       modalRectangleTop,
-      topOffsetFixed
+      topOffsetFixed,
+      isSticky
     });
+
+    // if the modal is sticky, add the classname to correctly style the layer
+    const layerClassName = isSticky
+      ? this.props.className
+        ? `${this.props.className} ${classNames.layer}`
+        : classNames.layer
+      : this.props.className;
+
+    const mergedLayerProps = {
+      ...DefaultLayerProps,
+      ...this.props.layerProps,
+      onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
+      className: layerClassName,
+      insertAsHostFirstChild: isSticky
+    };
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
         <Layer {...mergedLayerProps}>
           <Popup
-            role={isBlocking ? 'alertdialog' : 'dialog'}
-            aria-modal="true"
+            role={isSticky ? 'dialog' : 'alertdialog'}
+            aria-modal={!isSticky}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />
+              {!isSticky && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
               <FocusTrapZone
                 componentRef={this._focusTrapZone}
                 className={classNames.main}
                 elementToFocusOnDismiss={elementToFocusOnDismiss}
-                isClickableOutsideFocusTrap={isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking}
+                isClickableOutsideFocusTrap={isSticky || isClickableOutsideFocusTrap || !isBlocking}
                 ignoreExternalFocusing={ignoreExternalFocusing}
-                forceFocusInsideTrap={forceFocusInsideTrap}
+                forceFocusInsideTrap={isSticky ? !isSticky : forceFocusInsideTrap}
                 firstFocusableSelector={firstFocusableSelector}
               >
                 <div ref={this._allowScrollOnModal} className={classNames.scrollableContent} data-is-scrollable={true}>
