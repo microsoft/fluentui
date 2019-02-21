@@ -1,13 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Text.Wrap.Example.tsx correctly 1`] = `
-<div>
-  <div
-    style={
-      Object {
-        "paddingBottom": "10px",
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
       }
-    }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: auto;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 5px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <span
       className=
@@ -43,11 +77,25 @@ exports[`Component Examples renders Text.Wrap.Example.tsx correctly 1`] = `
     </span>
   </div>
   <div
-    style={
-      Object {
-        "paddingBottom": "10px",
-      }
-    }
+    className=
+        ms-Stack
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: auto;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 5px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <span
       className=

@@ -1,1 +1,0 @@
-- Use Text to standardize text across your web app.

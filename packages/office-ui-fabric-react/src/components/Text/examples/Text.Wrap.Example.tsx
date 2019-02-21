@@ -1,10 +1,11 @@
 // @codepen
 import * as React from 'react';
 import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export const TextWrapExample = () => (
-  <div>
-    <div style={{ paddingBottom: '10px' }}>
+  <Stack gap={10}>
+    <Stack gap={5}>
       <Text variant={'large'} block>
         Wrap (Default)
       </Text>
@@ -14,8 +15,8 @@ export const TextWrapExample = () => (
         reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
         in culpa qui officia deserunt mollit anim id est laborum.
       </Text>
-    </div>
-    <div style={{ paddingBottom: '10px' }}>
+    </Stack>
+    <Stack gap={5}>
       <Text variant={'large'} block>
         No Wrap
       </Text>
@@ -25,6 +26,6 @@ export const TextWrapExample = () => (
         reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
         in culpa qui officia deserunt mollit anim id est laborum.
       </Text>
-    </div>
-  </div>
+    </Stack>
+  </Stack>
 );
