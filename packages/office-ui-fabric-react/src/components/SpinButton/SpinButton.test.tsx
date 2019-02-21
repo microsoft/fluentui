@@ -581,6 +581,30 @@ describe('SpinButton', () => {
     expect(changeHandler).toHaveBeenCalledTimes(2);
   });
 
+  it('should not call change handler until finish spinning', async () => {
+    const defaultValue = '31';
+    const validateHandler = jest.fn(value => value);
+    const changeHandler = jest.fn();
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton label="SpinButton" defaultValue={defaultValue} onValidate={validateHandler} onChange={changeHandler} />
+    );
+
+    // Mouse down for 1 second to spin value. The change handler should not invoked during spinning.
+    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
+    expect(buttonDOM.tagName).toEqual('BUTTON');
+    ReactTestUtils.Simulate.mouseDown(buttonDOM);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    expect(validateHandler).not.toHaveBeenCalled();
+    expect(changeHandler).not.toHaveBeenCalled();
+
+    // Mouse up to commit the value. Now, the change handler should invoked.
+    ReactTestUtils.Simulate.mouseUp(buttonDOM);
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    expect(inputDOM.value).not.toEqual(defaultValue);
+    expect(validateHandler).toHaveBeenCalled();
+    expect(changeHandler).toHaveBeenCalled();
+  });
+
   describe('in uncontrolled mode', () => {
     it('should call onChange handler when commit new value', () => {
       const newValue = '21';

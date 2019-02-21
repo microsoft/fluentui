@@ -196,8 +196,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   disabled={disabled}
                   iconProps={incrementButtonIcon}
                   onMouseDown={this._handleIncrementMouseDown}
-                  onMouseLeave={this._stopSpinning}
-                  onMouseUp={this._stopSpinning}
+                  onMouseLeave={this._handleMouseUp}
+                  onMouseUp={this._handleMouseUp}
                   tabIndex={-1}
                   ariaLabel={incrementButtonAriaLabel}
                   data-is-focusable={false}
@@ -209,8 +209,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   disabled={disabled}
                   iconProps={decrementButtonIcon}
                   onMouseDown={this._handleDecrementMouseDown}
-                  onMouseLeave={this._stopSpinning}
-                  onMouseUp={this._stopSpinning}
+                  onMouseLeave={this._handleMouseUp}
+                  onMouseUp={this._handleMouseUp}
                   tabIndex={-1}
                   ariaLabel={decrementButtonAriaLabel}
                   data-is-focusable={false}
@@ -332,13 +332,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   ): void => {
     this.setState({ spinDirection });
     this.setState(state => ({ value: stepFunction(state.value) }));
-    this._commitValue();
 
     if (shouldSpin) {
       this._currentStepFunctionHandle = this._async.setTimeout(() => {
         this._currentStepFunctionHandle = -1;
         this._updateValue(shouldSpin, spinDirection, this._stepDelay, stepFunction);
       }, stepDelay);
+    } else {
+      // If the component is spinning, commit the value at the comment when stop spinning.
+      // If the component is not spinning, commit the value immediately.
+      this._commitValue();
     }
   };
 
@@ -381,7 +384,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   };
 
   private _handleKeyUp = (event: React.KeyboardEvent<HTMLElement>): void => {
-    if (this.props.disabled || event.which === KeyCodes.up || event.which === KeyCodes.down) {
+    if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
       this._stopSpinning();
     }
   };
@@ -392,6 +395,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _handleDecrementMouseDown = (): void => {
     this._updateValue(true /* shouldSpin */, SpinDirection.down, this._initialStepDelay, this._decrementValue);
+  };
+
+  private _handleMouseUp = (): void => {
+    this._commitValue();
+    this._stopSpinning();
   };
 
   private _commitValue = () => {
