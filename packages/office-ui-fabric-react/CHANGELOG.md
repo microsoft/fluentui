@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Feb 2019 21:57:24 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Feb 2019 13:32:08 GMT and should not be manually modified.
+
+## 6.142.1
+Thu, 21 Feb 2019 13:32:08 GMT
+
+### Patches
+
+- GroupedList: Reduce usage of any type in GroupedList and GroupedListSection
 
 ## 6.142.0
 Wed, 20 Feb 2019 21:57:24 GMT

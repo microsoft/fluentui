@@ -101,12 +101,12 @@ describe('isElementTabbable', () => {
     expect(isElementTabbable(div)).toEqual(true);
   });
 
-  it('returns true with role=button divs', () => {
+  it('returns false with role=button divs', () => {
     let div = document.createElement('div');
 
     div.setAttribute('role', 'button');
 
-    expect(isElementTabbable(div)).toEqual(true);
+    expect(isElementTabbable(div)).toEqual(false);
   });
 
   it('returns false with role=button disabled buttons', () => {
