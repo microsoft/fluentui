@@ -24,7 +24,7 @@ export const TextPageProps: IDocPageProps = {
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Text',
   examples: [
     {
-      title: 'Text Ramp Examples',
+      title: 'Text Ramp Example',
       code: TextRampExampleCode,
       view: <TextRampExample />,
       codepenJS: TextRampExampleCodepen
