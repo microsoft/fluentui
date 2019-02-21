@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Coachmark } from 'office-ui-fabric-react/lib/Coachmark';
+// import { Coachmark } from 'office-ui-fabric-react/lib/Coachmark';
 import { BaseComponent, IComponentAsProps, IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+// import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
+// import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 
 export interface IIndividualCommandBarButtonAsExampleProps {
   onDismissCoachmark: () => void;
@@ -24,9 +24,11 @@ interface ICoachmarkCommandBarButtonProps extends IComponentAsProps<ICommandBarI
 }
 
 class CoachmarkCommandBarButton extends BaseComponent<ICoachmarkCommandBarButtonProps> {
-  private _targetButton = React.createRef<HTMLDivElement>();
+  // private _targetButton = React.createRef<HTMLDivElement>();
 
   public render(): JSX.Element {
+    return <div />;
+    /* FABRIC7TODO
     const { defaultRender: DefaultRender = CommandBarButton, isCoachmarkVisible, onDismiss, ...buttonProps } = this.props;
 
     return (
@@ -58,7 +60,7 @@ class CoachmarkCommandBarButton extends BaseComponent<ICoachmarkCommandBarButton
           </Coachmark>
         )}
       </>
-    );
+    ); */
   }
 }
 

@@ -97,7 +97,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       }
     }
     if (_firstFocusableChild) {
-      focusAsync(_firstFocusableChild);
+      focusAsync(_firstFocusableChild as HTMLElement); // FABRIC7VALIDATE
     }
   }
 

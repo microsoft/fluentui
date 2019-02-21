@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import { BaseComponent, divProperties, getNativeProps } from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.types';
 
