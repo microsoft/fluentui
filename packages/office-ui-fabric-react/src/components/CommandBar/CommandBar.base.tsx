@@ -124,7 +124,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _onRenderItem = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
-    const CommandButtonType = this.props.buttonAs || item.commandBarButtonAs || CommandBarButton;
+    const CommandButtonType = (this.props.buttonAs || item.commandBarButtonAs || CommandBarButton) as any; // FABRIC7VALIDATE
 
     const itemText = item.text || item.name;
 
