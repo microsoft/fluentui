@@ -17,7 +17,7 @@ export class KeytipsBasicExample extends React.Component<{}> {
       <div>
         <p>For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content are shown.</p>
         <Pivot>
-          <PivotItem linkText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={{ width: 500, paddingTop: 20 }}>
+          <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={{ width: 500, paddingTop: 20 }}>
             <SpinButton className="u-marginBottom" label={'Spin Button'} keytipProps={keytipMap.SpinButtonKeytip} />
             <Toggle className="u-marginBottom" keytipProps={keytipMap.ToggleKeytip} onText={'Yes'} offText={'No'} />
             <p>
@@ -27,11 +27,11 @@ export class KeytipsBasicExample extends React.Component<{}> {
               </Link>
             </p>
           </PivotItem>
-          <PivotItem linkText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={{ width: 500, paddingTop: 20 }}>
+          <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={{ width: 500, paddingTop: 20 }}>
             <Checkbox className="u-marginBottom" keytipProps={keytipMap.CheckboxKeytip} label={'Checkbox'} />
             <Dropdown label={'Dropdown'} keytipProps={keytipMap.DropdownKeytip} options={this._sampleOptions} />
           </PivotItem>
-          <PivotItem linkText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={{ width: 500, paddingTop: 20 }}>
+          <PivotItem headerText="Pivot 3" keytipProps={keytipMap.Pivot3Keytip} style={{ width: 500, paddingTop: 20 }}>
             <ComboBox label={'Combo Box'} options={this._sampleOptions} keytipProps={keytipMap.ComboBoxKeytip} />
           </PivotItem>
         </Pivot>

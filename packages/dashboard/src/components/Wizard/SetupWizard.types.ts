@@ -18,6 +18,4 @@ export interface ISetupWizardStyles {
   wizardContainer: IStyle;
 
   titleSection: IStyle;
-
-  title: IStyle;
 }

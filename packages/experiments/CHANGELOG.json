@@ -2,6 +2,145 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.59.0",
+      "tag": "@uifabric/experiments_v6.59.0",
+      "date": "Thu, 21 Feb 2019 13:32:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding split property to get Split Buttons.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "0c0c39be6d0c4a3e8a4c044b955b86288612f664"
+          },
+          {
+            "comment": "Fluent folder: positioned signal-icon on the right",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "c987deb47aacad388b4a8d204e6c379aa8019bcd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.142.0 <7.0.0` to `>=6.142.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.58.0",
+      "tag": "@uifabric/experiments_v6.58.0",
+      "date": "Wed, 20 Feb 2019 21:57:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Reexporting component from experiments package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "157286e51909c905cd1c3747d92d4c6102f92121"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add render-prop pattern to Tile and FolderCover components",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a8e6072b340f2f5dcb06d1b530f63291f19c33da"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.141.1 <7.0.0` to `>=6.142.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.57.1",
+      "tag": "@uifabric/experiments_v6.57.1",
+      "date": "Mon, 18 Feb 2019 13:38:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "to useFluentIcon prop to change top padding in style",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7f690a04d0f766482f5d24a2df7bd18faf8a986c"
+          },
+          {
+            "comment": "Text: Fix 'as' prop circular reference",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "90deffbfc7ba9aefdb9d10bc54fa1452b6fc9cfa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.14.1 <1.0.0` to `>=0.14.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.3.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.140.0 <7.0.0` to `>=6.141.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.57.0",
+      "tag": "@uifabric/experiments_v6.57.0",
+      "date": "Fri, 15 Feb 2019 17:41:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Removing component from experiments package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "040ffd402e7ac92ba9d6640f6d9c6291be762a29"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.1 <7.0.0` to `>=6.140.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.56.0",
+      "tag": "@uifabric/experiments_v6.56.0",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Adding first prototype for Basic Card component.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "42df10cf90383149d1e7dce8b6d35b36f1f201e7"
+          },
+          {
+            "comment": "Experiments: Removed form control",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "1ea8a1ec4e5c0b7c12a7a74d67826c5cf205d7ee"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fluent folder cover; updated metadata font color; added yellowDark color variable",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7c1a7f9f8d5157f6cd59a568a89019d816c75e9b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.6` to `^0.28.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.55.0",
       "tag": "@uifabric/experiments_v6.55.0",
       "date": "Wed, 13 Feb 2019 13:36:45 GMT",

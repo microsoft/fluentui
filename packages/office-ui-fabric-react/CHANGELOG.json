@@ -2,6 +2,199 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.142.1",
+      "tag": "office-ui-fabric-react_v6.142.1",
+      "date": "Thu, 21 Feb 2019 13:32:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedList: Reduce usage of any type in GroupedList and GroupedListSection",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "cc339dd1ab9a532054c6b3bc2fc606a71598d261"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.142.0",
+      "tag": "office-ui-fabric-react_v6.142.0",
+      "date": "Wed, 20 Feb 2019 21:57:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: fixing issue when nested in FocusZones.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "af3fdffb02b9ef40ad7309c291f1142d0038782b"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ChoiceGroup: now works again in FocusZone, but this also reverts a bug fix which allowed FocusTrapZones to behave better with ChoiceGroups in them. We will fix this issue separately. Popup: no longer has `tabindex=\"-1\"` specified, which is causing all sorts of regressions wrt FocusTrapZone usage.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "af3fdffb02b9ef40ad7309c291f1142d0038782b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.141.1",
+      "tag": "office-ui-fabric-react_v6.141.1",
+      "date": "Tue, 19 Feb 2019 13:37:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set colors for unknown persona coin to fixed values",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "ba44a8fbbe5fea10c075b2992c14d5cb50606ff3"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.141.0",
+      "tag": "office-ui-fabric-react_v6.141.0",
+      "date": "Mon, 18 Feb 2019 13:38:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ColorPicker: take color object in props, add standard onChange",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "5d6e63cd495261e37cd9e322ff2571182d3f8dd2"
+          },
+          {
+            "comment": "Deprecate IconNames due to const enum usage.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "445121a4adac8e479443398a48f5466f0a7b7fc9"
+          },
+          {
+            "comment": "Stack: Fix 'as' prop circular reference.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "90deffbfc7ba9aefdb9d10bc54fa1452b6fc9cfa"
+          },
+          {
+            "comment": "Panel: Enabling the addition of new buttons (or other components) to the Navigation region",
+            "author": "riosn-n <33673026+riosn-n@users.noreply.github.com>",
+            "commit": "9959ed43594187945e7a24e160b0800e0e231065"
+          },
+          {
+            "comment": "Panel: fixes several screen breakpoint issues and brings more clarity to docs and logic of applying the breakpoints.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "86bf3cec0383f4e775ba7f37d1b90a0fd2551660"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Coding conventions",
+            "author": "Samuel <Samuel.Mendenhall@gmail.com>",
+            "commit": "460f7cdb593824309900f0c3847a152617aceadc"
+          },
+          {
+            "comment": "Added custom width, left anchored panel support",
+            "author": "Rob Vreeland <robv@microsoft.com>",
+            "commit": "c5fee139414f465b4fdc386083150464a6e7e563"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.3.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.140.0",
+      "tag": "office-ui-fabric-react_v6.140.0",
+      "date": "Fri, 15 Feb 2019 17:41:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Promoting component to oufr package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "040ffd402e7ac92ba9d6640f6d9c6291be762a29"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.139.1",
+      "tag": "office-ui-fabric-react_v6.139.1",
+      "date": "Fri, 15 Feb 2019 13:33:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Include component markdown files in npm package.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "79af8c83b984d3dd0a53470dcfbb058fa85f6567"
+          }
+        ],
+        "none": [
+          {
+            "comment": "List: Remove unnecessary null assertion from component, example, and test",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "f6b96b4e32a46315737cb21201ee62858db0ca07"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.139.0",
+      "tag": "office-ui-fabric-react_v6.139.0",
+      "date": "Thu, 14 Feb 2019 13:34:55 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add fallback for reading direction attribute from body element.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ea1c5970709209dab8f7ba2781cdb5e21b92e9f5"
+          },
+          {
+            "comment": "Dropdown: Clarify use of defaultSelectedKeys prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14cd0f75d6fdc356a58b35f176cc554a1f906e3e"
+          },
+          {
+            "comment": "DetailsColumn: Remove unnecessary null assertions",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "5d786a55b178f45e5e91a45a381e00e0b51e4e64"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "TeachingBubble: revert PR #7837",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "0bb3fb04e2a9614c1f6f96402e469f44b117e444"
+          },
+          {
+            "comment": "fluent folder cover; updated metadata font color; added yellowDark color variable",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7c1a7f9f8d5157f6cd59a568a89019d816c75e9b"
+          },
+          {
+            "comment": "Fix DetailsList compiler warnings in test by casting document.activeElement to HTMLElement",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "1d42f44f587a47ed7ced3edc743318e406ea551b"
+          },
+          {
+            "comment": "Pivot cleanup",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "43e45d90f0c5cad56cf1b35c8a41361176a30b40"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Fix type IBaseFloatingPickerSuggestionProps in ExtendedPeoplePicker, expose showRemoveButtons",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "3551e64e93e56e7df1488041b7695ab75a97ebc5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.138.1",
       "tag": "office-ui-fabric-react_v6.138.1",
       "date": "Wed, 13 Feb 2019 13:36:46 GMT",

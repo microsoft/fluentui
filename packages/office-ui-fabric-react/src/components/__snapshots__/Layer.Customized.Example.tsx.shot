@@ -287,7 +287,6 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
       </span>
     </label>
   </div>
-  <div />
   <div
     className="ms-LayerHost"
     id="layerHost0"

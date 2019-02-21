@@ -1,0 +1,314 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Stack.Vertical.Reversed.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 5px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <span>
+    Default vertical stack
+  </span>
+  <div
+    className=
+        ms-Stack
+        {
+          background: #71afe5;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column-reverse;
+          flex-wrap: nowrap;
+          height: auto;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:last-child) {
+          margin-top: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <span>
+      Item One
+    </span>
+    <span>
+      Item Two
+    </span>
+    <span>
+      Item Three
+    </span>
+  </div>
+  <span>
+    Vertical gap between items
+  </span>
+  <div
+    className=
+        ms-Stack
+        {
+          background: #71afe5;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column-reverse;
+          flex-wrap: nowrap;
+          height: auto;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-top: 10px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:last-child) {
+          margin-top: 10px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <span>
+      Item One
+    </span>
+    <span>
+      Item Two
+    </span>
+    <span>
+      Item Three
+    </span>
+  </div>
+  <span>
+    Item alignments
+  </span>
+  <div
+    className=
+        ms-Stack
+        {
+          background: #71afe5;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column-reverse;
+          flex-wrap: nowrap;
+          height: auto;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-top: 10px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:last-child) {
+          margin-top: 5px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-self: auto;
+            background: #0078d4;
+            color: #ffffff;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            width: auto;
+          }
+    >
+      <span>
+        Auto-aligned item
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-self: stretch;
+            background: #0078d4;
+            color: #ffffff;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            width: auto;
+          }
+    >
+      <span>
+        Stretch-aligned item
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-self: baseline;
+            background: #0078d4;
+            color: #ffffff;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            width: auto;
+          }
+    >
+      <span>
+        Baseline-aligned item
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-self: flex-start;
+            background: #0078d4;
+            color: #ffffff;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            width: auto;
+          }
+    >
+      <span>
+        Start-aligned item
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-self: center;
+            background: #0078d4;
+            color: #ffffff;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            width: auto;
+          }
+    >
+      <span>
+        Center-aligned item
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-self: flex-end;
+            background: #0078d4;
+            color: #ffffff;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            width: auto;
+          }
+    >
+      <span>
+        End-aligned item
+      </span>
+    </div>
+  </div>
+  <span>
+    Clickable vertical stack
+  </span>
+  <div
+    className=
+        ms-Stack
+        {
+          background: #71afe5;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: auto;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-top: 10px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+    onClick={[Function]}
+  >
+    <span>
+      Click inside this box
+    </span>
+  </div>
+</div>
+`;

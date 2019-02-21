@@ -1848,13 +1848,6 @@ interface IBaseFloatingPickerState {
   suggestionsVisible?: boolean;
 }
 
-// @public (undocumented)
-interface IBaseFloatingPickerSuggestionProps {
-  footerItemsProps?: ISuggestionsHeaderFooterProps[];
-  headerItemsProps?: ISuggestionsHeaderFooterProps[];
-  shouldSelectFirstItem?: () => boolean;
-}
-
 // @public
 interface IBasePicker<T> {
   focus: () => void;
@@ -2732,10 +2725,12 @@ interface IColorPickerProps extends IBaseProps<IColorPicker> {
   alphaSliderHidden?: boolean;
   blueLabel?: string;
   className?: string;
-  color: string;
+  color: IColor | string;
   componentRef?: IRefObject<IColorPicker>;
   greenLabel?: string;
   hexLabel?: string;
+  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+  // @deprecated
   onColorChanged?: (color: string, colorObject: IColor) => void;
   redLabel?: string;
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
@@ -2766,6 +2761,7 @@ interface IColorPickerStyles {
 
 // @public (undocumented)
 interface IColorRectangle {
+  color: IColor;
 }
 
 // @public (undocumented)
@@ -2774,6 +2770,8 @@ interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   color: IColor;
   componentRef?: IRefObject<IColorRectangle>;
   minSize?: number;
+  onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
+  // @deprecated
   onSVChanged?: (s: number, v: number) => void;
   styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
   theme?: ITheme;
@@ -3064,7 +3062,7 @@ module IconFontSizes {
 
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 enum IconNames {
   // (undocumented)
   AADLogo = "AADLogo",
@@ -9195,6 +9193,7 @@ interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onRenderFooterContent?: IRenderFunction<IPanelProps>;
   onRenderHeader?: IPanelHeaderRenderer;
   onRenderNavigation?: IRenderFunction<IPanelProps>;
+  onRenderNavigationContent?: IRenderFunction<IPanelProps>;
   styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
   theme?: ITheme;
   type?: PanelType;
@@ -9505,9 +9504,13 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
 interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   componentRef?: IRefObject<IPivot>;
+  defaultSelectedIndex?: number;
+  defaultSelectedKey?: string;
   getTabId?: (itemKey: string, index: number) => string;
   headersOnly?: boolean;
+  // @deprecated
   initialSelectedIndex?: number;
+  // @deprecated
   initialSelectedKey?: string;
   linkFormat?: PivotLinkFormat;
   linkSize?: PivotLinkSize;
@@ -9517,14 +9520,12 @@ interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttrib
   theme?: ITheme;
 }
 
-// @public
+// @public (undocumented)
 interface IPivotState {
   // (undocumented)
   links: IPivotItemProps[];
   // (undocumented)
-  selectedKey: string;
-  // (undocumented)
-  selectedTabId: string;
+  selectedKey: string | undefined;
 }
 
 // @public (undocumented)
@@ -10622,6 +10623,53 @@ interface ISpinnerStyles {
 export function isRelativeUrl(url: string): boolean;
 
 // @public (undocumented)
+interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+  align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
+  className?: string;
+  disableShrink?: boolean;
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+  shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
+  verticalFill?: boolean;
+}
+
+// @public (undocumented)
+interface IStackItemSlots {
+  // (undocumented)
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface IStackItemTokens {
+}
+
+// @public (undocumented)
+interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React.HTMLAttributes<HTMLElement> {
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+  disableShrink?: boolean;
+  gap?: number | string;
+  grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+  horizontal?: boolean;
+  horizontalAlign?: Alignment;
+  maxHeight?: number | string;
+  maxWidth?: number | string;
+  padding?: number | string;
+  reversed?: boolean;
+  verticalAlign?: Alignment;
+  verticalFill?: boolean;
+  wrap?: boolean;
+}
+
+// @public (undocumented)
+interface IStackSlots {
+  inner?: IHTMLSlot;
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface IStackTokens {
+}
+
+// @public (undocumented)
 interface IStickyContext {
   // (undocumented)
   scrollablePane: PropTypes.Requireable<object>;
@@ -11580,6 +11628,7 @@ class OverlayBase extends BaseComponent<IOverlayProps, {}> {
 // @public (undocumented)
 enum PanelType {
   custom = 7,
+  customNear = 8,
   extraLarge = 6,
   large = 4,
   largeFixed = 5,
@@ -11721,7 +11770,7 @@ enum PersonaSize {
   tiny = 0
 }
 
-// @public (undocumented)
+// @public
 class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   constructor(props: IPivotProps);
   // (undocumented)
@@ -11733,6 +11782,7 @@ class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
 // @public (undocumented)
 class PivotItem extends BaseComponent<IPivotItemProps, {}> {
+  constructor(props: IPivotItemProps);
   // (undocumented)
   render(): JSX.Element;
 }
@@ -12845,6 +12895,7 @@ module ZIndexes {
 // WARNING: Unsupported export: groupTwo
 // WARNING: Unsupported export: Fabric
 // WARNING: Unsupported export: Facepile
+// WARNING: Unsupported export: IBaseFloatingPickerSuggestionProps
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: Grid
@@ -12929,6 +12980,18 @@ module ZIndexes {
 // WARNING: Unsupported export: DefaultProps
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
+// WARNING: Unsupported export: StackItem
+// WARNING: Unsupported export: IStackItemComponent
+// WARNING: Unsupported export: IStackItemTokenReturnType
+// WARNING: Unsupported export: IStackItemStylesReturnType
+// WARNING: Unsupported export: IStackItemStyles
+// WARNING: Unsupported export: Stack
+// WARNING: Unsupported export: Alignment
+// WARNING: Unsupported export: IStackComponent
+// WARNING: Unsupported export: IStackTokenReturnType
+// WARNING: Unsupported export: IStackStylesReturnType
+// WARNING: Unsupported export: IStackSlot
+// WARNING: Unsupported export: IStackStyles
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames
 // WARNING: Unsupported export: ColorClassNames

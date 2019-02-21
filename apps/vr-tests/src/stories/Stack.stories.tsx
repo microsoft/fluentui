@@ -3,9 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
-import { Stack } from '@uifabric/experiments/lib/Stack';
-import { Fabric } from 'office-ui-fabric-react';
-import { mergeStyleSets, DefaultPalette, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from 'office-ui-fabric-react';
 
 const rootStyles = {
   background: DefaultPalette.themeTertiary

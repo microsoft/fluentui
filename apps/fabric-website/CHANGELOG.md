@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 13 Feb 2019 13:36:45 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+
+## 6.10.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackComponentPage to AppState.tsx.
+
+## 6.9.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Website: redirects defunct URLs to new
 
 ## 6.8.7
 Wed, 13 Feb 2019 13:36:45 GMT

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PersonaCoin } from '../index';
-import { Stack, Text } from '@uifabric/experiments';
+import { Stack } from 'office-ui-fabric-react';
+import { Text } from '@uifabric/experiments';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 
 const sectionGap = 32;

@@ -1,6 +1,75 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 13 Feb 2019 13:36:46 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Feb 2019 13:32:08 GMT and should not be manually modified.
+
+## 6.142.1
+Thu, 21 Feb 2019 13:32:08 GMT
+
+### Patches
+
+- GroupedList: Reduce usage of any type in GroupedList and GroupedListSection
+
+## 6.142.0
+Wed, 20 Feb 2019 21:57:24 GMT
+
+### Minor changes
+
+- ChoiceGroup: now works again in FocusZone, but this also reverts a bug fix which allowed FocusTrapZones to behave better with ChoiceGroups in them. We will fix this issue separately. Popup: no longer has `tabindex="-1"` specified, which is causing all sorts of regressions wrt FocusTrapZone usage.
+
+### Patches
+
+- ChoiceGroup: fixing issue when nested in FocusZones.
+
+## 6.141.1
+Tue, 19 Feb 2019 13:37:02 GMT
+
+### Patches
+
+- Set colors for unknown persona coin to fixed values
+
+## 6.141.0
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Minor changes
+
+- ColorPicker: take color object in props, add standard onChange
+- Deprecate IconNames due to const enum usage.
+- Stack: Fix 'as' prop circular reference.
+- Panel: Enabling the addition of new buttons (or other components) to the Navigation region
+- Panel: fixes several screen breakpoint issues and brings more clarity to docs and logic of applying the breakpoints.
+
+### Patches
+
+- Coding conventions
+- Added custom width, left anchored panel support
+
+## 6.140.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Promoting component to oufr package.
+
+## 6.139.1
+Fri, 15 Feb 2019 13:33:06 GMT
+
+### Patches
+
+- Include component markdown files in npm package.
+
+## 6.139.0
+Thu, 14 Feb 2019 13:34:55 GMT
+
+### Minor changes
+
+- Fix type IBaseFloatingPickerSuggestionProps in ExtendedPeoplePicker, expose showRemoveButtons
+
+### Patches
+
+- TeachingBubble: revert PR #7837
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Fix DetailsList compiler warnings in test by casting document.activeElement to HTMLElement
+- Pivot cleanup
 
 ## 6.138.1
 Wed, 13 Feb 2019 13:36:46 GMT
