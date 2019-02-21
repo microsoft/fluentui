@@ -53,7 +53,7 @@ exports[`Component Examples renders SpinButton.CustomValidate.Example.tsx correc
               word-wrap: break-word;
             }
         htmlFor="input1"
-        id="Label0"
+        id="label0"
       >
         SpinButton with custom validate logic:
       </label>
@@ -81,7 +81,7 @@ exports[`Component Examples renders SpinButton.CustomValidate.Example.tsx correc
     >
       <input
         aria-disabled={false}
-        aria-labelledby="Label0"
+        aria-labelledby="label0"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuetext="0 cm"
@@ -127,7 +127,6 @@ exports[`Component Examples renders SpinButton.CustomValidate.Example.tsx correc
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         readOnly={false}

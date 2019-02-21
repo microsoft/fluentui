@@ -57,7 +57,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               color: GrayText;
             }
         htmlFor="input1"
-        id="Label0"
+        id="label0"
       >
         Disabled SpinButton:
       </label>
@@ -84,7 +84,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
     >
       <input
         aria-disabled={true}
-        aria-labelledby="Label0"
+        aria-labelledby="label0"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={25}
@@ -127,7 +127,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         readOnly={true}

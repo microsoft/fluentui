@@ -47,7 +47,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               word-wrap: break-word;
             }
         htmlFor="input1"
-        id="Label0"
+        id="label0"
       >
         Custom styled SpinButton:
       </label>
@@ -75,7 +75,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
     >
       <input
         aria-disabled={false}
-        aria-labelledby="Label0"
+        aria-labelledby="label0"
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={0}
@@ -121,7 +121,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        onInput={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
         readOnly={false}
