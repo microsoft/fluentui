@@ -68,7 +68,7 @@ export class IconsPage extends React.Component<any, any> {
         </div>
 
         <CodeBlock language="html" isLightTheme={true}>
-          {`<body dir="ltr">`}
+          {`<html dir="ltr">`}
         </CodeBlock>
 
         <div className={pageStyles.u_maxTextWidth}>
