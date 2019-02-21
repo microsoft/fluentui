@@ -1,4 +1,3 @@
-import { Promise } from 'es6-promise';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
@@ -12,6 +11,10 @@ describe('SpinButton', () => {
   beforeEach(() => {
     resetIds();
   });
+
+  function delay(millisecond: number): Promise<string> {
+    return new Promise<string>(resolve => setTimeout(resolve, millisecond));
+  }
 
   it('should render SpinButton correctly', () => {
     const component = renderer.create(<SpinButton label="label" />);
@@ -473,15 +476,11 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).toEqual(String(1));
   });
 
-  it('should stop spinning if text field is focused while actively spinning', () => {
+  it('should stop spinning if text field is focused while actively spinning', async () => {
     const exampleLabelValue = 'SpinButton';
     const exampleMinValue = 2;
     const exampleMaxValue = 22;
     const exampleDefaultValue = '12';
-
-    function delay(millisecond: number): Promise<string> {
-      return new Promise<string>(resolve => setTimeout(resolve, millisecond));
-    }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
@@ -498,7 +497,8 @@ describe('SpinButton', () => {
       clientY: 0
     });
 
-    delay(500).then(() => ReactTestUtils.Simulate.focus(inputDOM));
+    await delay(500);
+    ReactTestUtils.Simulate.focus(inputDOM);
 
     const currentValue = inputDOM.value;
     expect(currentValue).not.toEqual('2');
@@ -593,7 +593,7 @@ describe('SpinButton', () => {
     const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
     expect(buttonDOM.tagName).toEqual('BUTTON');
     ReactTestUtils.Simulate.mouseDown(buttonDOM);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await delay(1000);
     expect(validateHandler).not.toHaveBeenCalled();
     expect(changeHandler).not.toHaveBeenCalled();
 
