@@ -16,7 +16,8 @@ export interface IPanelWizardProps {
 
 /** Styles for the wizard component */
 export interface IPanelWizardStyles {
-  container: IStyle;
+  footerContainer: IStyle;
+  titleElementContainer: IStyle;
 }
 
 export interface IPanelWizardStyleProps {

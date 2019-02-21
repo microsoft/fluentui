@@ -1,27 +1,45 @@
-import { IPanelStyles } from 'office-ui-fabric-react';
+import { IPanelStyles, ITheme } from 'office-ui-fabric-react';
 import { IWizardStyles } from './Wizard.types';
-import { IPanelWizardStyles } from './PanelWizard.types';
+import { IPanelWizardStyles, IPanelWizardStyleProps } from './PanelWizard.types';
 
-export const defaultPanelStyleSet = (): Partial<IPanelStyles> => {
+export const defaultPanelStyleSet = (theme: ITheme): Partial<IPanelStyles> => {
   return {
-    // scrollableContent: {
-    //   height: '100%'
-    // },
     content: {
-      height: '100%'
+      height: '100%',
+      padding: 0
+    },
+    commands: {
+      display: 'flex',
+      flexDirection: 'row',
+      borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`
+    },
+    scrollableContent: {
+      overflowY: 'hidden'
     }
   };
 };
 
-export const defaultWizardStyleSet = (): Partial<IWizardStyles> => {
+export const defaultWizardStyleSet = (theme: ITheme): Partial<IWizardStyles> => {
   return {
     wizardContentNavContainer: {
       height: '100%'
+    },
+    subwayNavSection: {
+      borderRight: `1px solid ${theme.semanticColors.bodyDivider}`
     }
   };
 };
-export const getPanelWizardStyles = (): IPanelWizardStyles => {
+export const getPanelWizardStyles = (props: IPanelWizardStyleProps): IPanelWizardStyles => {
   return {
-    container: {}
+    footerContainer: {
+      borderTop: `1px solid ${props.theme.semanticColors.bodyDivider}`,
+      padding: `17px 48px 15px ${304 + 48}px`, // 304 is to offset width of subway nav
+      display: 'flex',
+      flexDirection: 'row'
+    },
+    titleElementContainer: {
+      flex: 1,
+      padding: '11px 0 0 48px'
+    }
   };
 };
