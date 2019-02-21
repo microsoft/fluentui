@@ -36,6 +36,10 @@ export interface IWizardStepProps {
   wizardContent?: IWizardContentProps;
 
   subSteps?: IWizardStepProps[];
+
+  titleElement: JSX.Element;
+
+  footerElement: JSX.Element;
 }
 
 export interface IWizardContentProps {
