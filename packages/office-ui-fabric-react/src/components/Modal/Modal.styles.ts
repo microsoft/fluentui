@@ -22,7 +22,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     modalRectangleTop,
     theme,
     topOffsetFixed,
-    isSticky
+    isModeless
   } = props;
   const { palette } = theme;
 
@@ -34,7 +34,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       theme.fonts.medium,
       {
         backgroundColor: 'transparent',
-        position: isSticky ? 'absolute' : 'fixed',
+        position: isModeless ? 'absolute' : 'fixed',
         height: '100%',
         width: '100%',
         display: 'flex',
@@ -66,7 +66,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         outline: '3px solid transparent',
         maxHeight: '100%',
         overflowY: 'auto',
-        zIndex: isSticky ? ZIndexes.Layer : undefined
+        zIndex: isModeless ? ZIndexes.Layer : undefined
       },
       topOffsetFixed &&
         hasBeenOpened && {
@@ -82,7 +82,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       },
       scrollableContentClassName
     ],
-    layer: isSticky && [
+    layer: isModeless && [
       classNames.layer,
       {
         position: 'static',

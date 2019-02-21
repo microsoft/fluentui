@@ -122,7 +122,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       theme,
       topOffsetFixed,
       onLayerDidMount,
-      isSticky
+      isModeless
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
 
@@ -140,11 +140,11 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       hasBeenOpened,
       modalRectangleTop,
       topOffsetFixed,
-      isSticky
+      isModeless
     });
 
-    // if the modal is sticky, add the classname to correctly style the layer
-    const layerClassName = isSticky
+    // if the modal is modeless, add the classname to correctly style the layer
+    const layerClassName = isModeless
       ? this.props.className
         ? `${this.props.className} ${classNames.layer}`
         : classNames.layer
@@ -155,7 +155,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       ...this.props.layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
       className: layerClassName,
-      insertAsHostFirstChild: isSticky
+      insertAsHostFirstChild: isModeless
     };
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
@@ -163,21 +163,21 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       return (
         <Layer {...mergedLayerProps}>
           <Popup
-            role={isSticky || !isBlocking ? 'dialog' : 'alertdialog'}
-            aria-modal={!isSticky}
+            role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
+            aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              {!isSticky && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
+              {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
               <FocusTrapZone
                 componentRef={this._focusTrapZone}
                 className={classNames.main}
                 elementToFocusOnDismiss={elementToFocusOnDismiss}
-                isClickableOutsideFocusTrap={isSticky || isClickableOutsideFocusTrap || !isBlocking}
+                isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
                 ignoreExternalFocusing={ignoreExternalFocusing}
-                forceFocusInsideTrap={isSticky ? !isSticky : forceFocusInsideTrap}
+                forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
                 firstFocusableSelector={firstFocusableSelector}
               >
                 <div ref={this._allowScrollOnModal} className={classNames.scrollableContent} data-is-scrollable={true}>

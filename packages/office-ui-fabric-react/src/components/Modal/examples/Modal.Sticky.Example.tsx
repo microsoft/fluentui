@@ -27,7 +27,7 @@ export class ModalStickyExample extends React.Component<{}, IModalStickyExampleS
           subtitleAriaId={this._subtitleId}
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
-          isSticky={true}
+          isModeless={true}
           containerClassName="ms-modalStickyExample-container"
         >
           <div className="ms-modalExample-header">

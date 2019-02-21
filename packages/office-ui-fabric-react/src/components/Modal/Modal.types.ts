@@ -64,11 +64,11 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   isBlocking?: boolean;
 
   /**
-   * Whether the dialog should be sticky (e.g. not dismiss when focusing/clicking outside of the dialog).
+   * Whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).
    * if true: isBlocking is ignored, there will be no overlay (isDarkOverlay is ignored),
    * isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false
    */
-  isSticky?: boolean;
+  isModeless?: boolean;
 
   /**
    * Optional class name to be added to the root class
@@ -109,7 +109,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 }
 
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed'> & {
+  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
@@ -118,8 +118,6 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     hasBeenOpened?: boolean;
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
-    /** Whether the modal is sticky (can interact with content behind the dialog without dismissal) */
-    isSticky?: boolean;
   };
 
 export interface IModalStyles {

@@ -61,7 +61,7 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
    * If true, the layer will be inserted as the first child of the host
    * By default, the layer will be appended at the end to the host
    */
-  insertAsHostFirstChild?: boolean;
+  insertFirst?: boolean;
 }
 
 export interface ILayerStyleProps {

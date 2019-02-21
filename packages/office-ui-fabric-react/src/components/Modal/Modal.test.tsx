@@ -28,7 +28,7 @@ describe('Modal', () => {
     });
 
     const component = renderer.create(
-      <Modal isOpen={true} isSticky={true} className={'test-className'} containerClassName={'test-containerClassName'}>
+      <Modal isOpen={true} isModeless={true} className={'test-className'} containerClassName={'test-containerClassName'}>
         Test Content
       </Modal>
     );

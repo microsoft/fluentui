@@ -29,7 +29,7 @@ export class DialogStickyExample extends React.Component<{}, IDialogStickyExampl
           }}
           modalProps={{
             containerClassName: 'ms-dialogMainOverride',
-            isSticky: true
+            isModeless: true
           }}
         >
           <DialogFooter>

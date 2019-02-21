@@ -8545,7 +8545,7 @@ interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
   componentRef?: IRefObject<ILayer>;
   eventBubblingEnabled?: boolean;
   hostId?: string;
-  insertAsHostFirstChild?: boolean;
+  insertFirst?: boolean;
   onLayerDidMount?: () => void;
   onLayerMounted?: () => void;
   onLayerWillUnmount?: () => void;
@@ -8848,8 +8848,8 @@ interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveM
   containerClassName?: string;
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
+  isModeless?: boolean;
   isOpen?: boolean;
-  isSticky?: boolean;
   layerProps?: ILayerProps;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
   onDismissed?: () => any;
