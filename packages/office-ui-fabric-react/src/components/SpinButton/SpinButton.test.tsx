@@ -650,6 +650,6 @@ describe('SpinButton', () => {
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     const ariaDescribedByAttribute = inputDOM.getAttribute('aria-describedby');
-    expect(ariaDescribedByAttribute).toContain(customId);
+    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
   });
 });

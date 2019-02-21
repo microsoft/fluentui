@@ -498,6 +498,6 @@ describe.only('ComboBox', () => {
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
     const inputElement = comboBoxRoot.find('input').getDOMNode();
     const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
-    expect(ariaDescribedByAttribute).toContain(customId);
+    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
   });
 });
