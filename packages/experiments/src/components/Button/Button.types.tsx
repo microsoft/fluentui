@@ -3,6 +3,7 @@ import { IFontWeight, IStackSlot } from 'office-ui-fabric-react';
 import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
 import { ITextSlot } from '../../Text';
 import { IBaseProps } from '../../Utilities';
+import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps>;
 
@@ -53,14 +54,17 @@ export interface IButtonTokens {
   colorHovered?: string;
   colorPressed?: string;
   borderColor?: string;
+  borderColorFocused?: string;
   borderColorHovered?: string;
   borderColorPressed?: string;
   iconColor?: string;
   iconColorHovered?: string;
   iconColorPressed?: string;
+  outlineColor?: string;
   borderRadius?: number | string;
   borderWidth?: number | string;
   contentPadding?: number | string;
+  contentPaddingFocused?: number | string;
   textFamily?: string;
   textSize?: number | string;
   textWeight?: IFontWeight;
@@ -71,6 +75,7 @@ export interface IButtonTokens {
   lineHeight?: number | string;
   minWidth?: number | string;
   minHeight?: number | string;
+  backgroundClip?: IRawStyleBase['backgroundClip'];
 }
 
 export type IButtonStyles = IComponentStyles<IButtonSlots>;

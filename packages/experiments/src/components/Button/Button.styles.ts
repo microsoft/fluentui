@@ -1,5 +1,6 @@
 import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
 import { getFocusStyle, getGlobalClassNames } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 
 const baseTokens: IButtonComponent['tokens'] = {
   borderRadius: 0,
@@ -14,12 +15,18 @@ const baseTokens: IButtonComponent['tokens'] = {
   iconWeight: 400
 };
 
-const circularTokens: IButtonComponent['tokens'] = {
-  borderRadius: '50%',
-  borderWidth: 1,
-  minWidth: 32,
-  minHeight: 32,
-  contentPadding: ''
+const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  return {
+    borderRadius: '50%',
+    borderWidth: 1,
+    minWidth: 32,
+    minHeight: 32,
+    contentPadding: '',
+    borderColorFocused: theme.palette.neutralSecondary,
+    outlineColor: 'transparent',
+    contentPaddingFocused: 1,
+    backgroundClip: 'content-box'
+  };
 };
 
 const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
@@ -120,7 +127,7 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
 ];
 
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
-  const { className } = props;
+  const { className, circular } = props;
 
   const globalClassNames = getGlobalClassNames(
     {
@@ -132,7 +139,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
 
   return {
     root: [
-      getFocusStyle(theme),
+      !circular && getFocusStyle(theme),
       theme.fonts.medium,
       {
         backgroundColor: tokens.backgroundColor,
@@ -158,6 +165,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         userSelect: 'none',
         verticalAlign: 'baseline',
         width: tokens.width,
+        outlineColor: tokens.outlineColor,
 
         selectors: {
           ':hover': {
@@ -175,6 +183,12 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
           },
           [`:hover:active .${globalClassNames.icon}`]: {
             color: tokens.iconColorPressed
+          },
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            borderColor: tokens.borderColorFocused,
+            outlineColor: tokens.outlineColor,
+            backgroundClip: tokens.backgroundClip,
+            padding: tokens.contentPaddingFocused
           }
         }
       },
