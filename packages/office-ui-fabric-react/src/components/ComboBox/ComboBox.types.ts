@@ -39,7 +39,7 @@ export interface IComboBoxOption extends ISelectableOption {
   useAriaLabelAsText?: boolean;
 }
 
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
   /**
    * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
