@@ -10540,10 +10540,11 @@ interface ISpinButtonProps {
   max?: number;
   min?: number;
   onBlur?: React.FocusEventHandler<HTMLInputElement>;
+  onChange?: (value: string) => void;
   onDecrement?: (value: string) => string | void;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
   onIncrement?: (value: string) => string | void;
-  onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
+  onValidate?: (value: string) => string | void;
   precision?: number;
   step?: number;
   styles?: Partial<ISpinButtonStyles>;
@@ -10556,7 +10557,8 @@ interface ISpinButtonProps {
 // @public (undocumented)
 interface ISpinButtonState {
   isFocused: boolean;
-  keyboardSpinDirection: KeyboardSpinDirection;
+  lastValidValue: string;
+  spinDirection: SpinDirection;
   value: string;
 }
 
@@ -12283,13 +12285,15 @@ class SliderBase extends BaseComponent<ISliderProps, ISliderState>, implements I
 // @public (undocumented)
 class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState>, implements ISpinButton {
   constructor(props: ISpinButtonProps);
-  componentWillReceiveProps(newProps: ISpinButtonProps): void;
   // (undocumented)
-  static defaultProps: DefaultProps;
+  componentWillReceiveProps(nextProps: ISpinButtonProps): void;
+  // (undocumented)
+  static readonly defaultProps: DefaultProps;
   // (undocumented)
   focus(): void;
   // (undocumented)
   render(): JSX.Element;
+  // (undocumented)
   readonly value: string | undefined;
 }
 
