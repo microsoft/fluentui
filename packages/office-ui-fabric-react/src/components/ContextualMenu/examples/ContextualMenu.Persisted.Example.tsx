@@ -16,7 +16,6 @@ export class ContextualMenuPersistedExample extends React.Component {
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuPersistedExample"
           text="Click for ContextualMenu"
           persistMenu={true}
           menuProps={{

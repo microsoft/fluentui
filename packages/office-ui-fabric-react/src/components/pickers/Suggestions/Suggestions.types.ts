@@ -153,8 +153,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 
   /**
    * Function to fire when one of the optional remove buttons on a suggestion is clicked.
+   *
+   * TODO (adjective-object) remove IPersonaprops before the next major version bump
    */
-  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
 
   /**
    * Indicates if the text in resultsFooter or resultsFooterFull should be shown at the end of the suggestion list.

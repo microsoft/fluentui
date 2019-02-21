@@ -102,6 +102,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
             data-is-focusable={!!onHeaderSelect}
             tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
+            type="button"
           >
             {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
           </button>
@@ -159,6 +160,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
               ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
               : undefined
           }
+          type="button"
         >
           <Icon iconName={leftNavigationIcon} />
         </button>
@@ -176,6 +178,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
               ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
               : undefined
           }
+          type="button"
         >
           <Icon iconName={rightNavigationIcon} />
         </button>
@@ -185,6 +188,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
             onClick={this._onClose}
             onKeyDown={this._onButtonKeyDown(this._onClose)}
             aria-label={strings.closeButtonAriaLabel}
+            type="button"
           >
             <Icon iconName={closeNavigationIcon} />
           </button>
@@ -275,6 +279,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!day.isInBounds}
+          type="button"
         >
           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         </button>

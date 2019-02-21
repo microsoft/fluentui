@@ -6,12 +6,9 @@ export class TextFieldIconExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div className="docs-TextFieldExample">
-        <TextField label="TextField with an icon" iconProps={{ iconName: 'Calendar' }} onChange={this._onChange} />
+        <TextField label="TextField with an icon" iconProps={{ iconName: 'Calendar' }} />
+        <TextField label="Disabled TextField with an icon" iconProps={{ iconName: 'Calendar' }} disabled />
       </div>
     );
   }
-
-  private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    console.log(text);
-  };
 }

@@ -1,6 +1,7 @@
 // @codepen
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Interface for ChoiceGroupLabelExample state.
@@ -10,18 +11,18 @@ export interface IChoiceGroupLabelExampleState {
 }
 
 export class ChoiceGroupLabelExample extends React.Component<{}, IChoiceGroupLabelExampleState> {
-  constructor(props: {}) {
-    super(props);
+  public state: IChoiceGroupLabelExampleState = {
+    imageKey: ''
+  };
 
-    this.state = {
-      imageKey: ''
-    };
-  }
+  // Use getId() to ensure that the label ID is unique on the page.
+  // (It's also okay to use a plain string without getId() and manually ensure its uniqueness.)
+  private _labelId: string = getId('labelElement');
 
   public render() {
     return (
       <div>
-        <div id="labelElement">Here is a custom label</div>
+        <div id={this._labelId}>Custom label</div>
         <ChoiceGroup
           defaultSelectedKey="B"
           options={[
@@ -46,7 +47,7 @@ export class ChoiceGroupLabelExample extends React.Component<{}, IChoiceGroupLab
             }
           ]}
           onChange={this._onChange}
-          ariaLabelledBy="labelElement"
+          ariaLabelledBy={this._labelId}
           required={true}
         />
       </div>

@@ -14,8 +14,8 @@ describe('Pivot', () => {
   it('renders link Pivot correctly', () => {
     const component = renderer.create(
       <Pivot>
-        <PivotItem linkText="Test Link 1" />
-        <PivotItem linkText="" />
+        <PivotItem headerText="Test Link 1" />
+        <PivotItem headerText="" />
       </Pivot>
     );
     const tree = component.toJSON();
@@ -25,8 +25,8 @@ describe('Pivot', () => {
   it('renders large link Pivot correctly', () => {
     const component = renderer.create(
       <Pivot linkSize={PivotLinkSize.large}>
-        <PivotItem linkText="Test Link 1" />
-        <PivotItem linkText="" />
+        <PivotItem headerText="Test Link 1" />
+        <PivotItem headerText="" />
       </Pivot>
     );
     const tree = component.toJSON();
@@ -36,8 +36,8 @@ describe('Pivot', () => {
   it('renders tabbed Pivot correctly', () => {
     const component = renderer.create(
       <Pivot linkFormat={PivotLinkFormat.tabs}>
-        <PivotItem linkText="Test Link 1" />
-        <PivotItem linkText="" />
+        <PivotItem headerText="Test Link 1" />
+        <PivotItem headerText="" />
       </Pivot>
     );
     const tree = component.toJSON();
@@ -47,8 +47,8 @@ describe('Pivot', () => {
   it('renders large tabbed Pivot correctly', () => {
     const component = renderer.create(
       <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
-        <PivotItem linkText="Test Link 1" />
-        <PivotItem linkText="" />
+        <PivotItem headerText="Test Link 1" />
+        <PivotItem headerText="" />
       </Pivot>
     );
     const tree = component.toJSON();
@@ -58,8 +58,8 @@ describe('Pivot', () => {
   it('renders Pivot correctly with custom className', () => {
     const component = renderer.create(
       <Pivot className="specialClassName">
-        <PivotItem linkText="Test Link 1" className="specialClassName" />
-        <PivotItem linkText="Test Link 2" />
+        <PivotItem headerText="Test Link 1" className="specialClassName" />
+        <PivotItem headerText="Test Link 2" />
       </Pivot>
     );
     const tree = component.toJSON();
@@ -70,8 +70,19 @@ describe('Pivot', () => {
     const component = renderer.create(
       <Pivot>
         <PivotItem itemCount={12} />
-        <PivotItem linkText="Test Link" itemCount={12} />
-        <PivotItem linkText="Text with icon" itemIcon="Recent" />
+        <PivotItem headerText="Test Link" itemCount={12} />
+        <PivotItem headerText="Text with icon" itemIcon="Recent" />
+      </Pivot>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Pivot correctly when itemCount is a string', () => {
+    const component = renderer.create(
+      <Pivot>
+        <PivotItem headerText="test" />
+        <PivotItem headerText="Test Link" itemCount="20+" />
       </Pivot>
     );
     const tree = component.toJSON();

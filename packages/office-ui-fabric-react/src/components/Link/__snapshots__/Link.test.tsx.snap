@@ -232,7 +232,6 @@ exports[`Link renders disabled Link correctly 1`] = `
       &:link, &:visited {
         pointer-events: none;
       }
-  href="#"
   onClick={[Function]}
 >
   I'm a disabled link

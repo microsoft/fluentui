@@ -75,7 +75,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
           color: #212121;
         }
     data-is-focusable={true}
-    id="ContextualMenuPersistedExample"
     onClick={[Function]}
     onKeyDown={[Function]}
     onKeyPress={[Function]}
@@ -270,7 +269,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                     "overflowY": undefined,
                   }
                 }
-                tabIndex={-1}
               >
                 <div
                   aria-labelledby="id__0"

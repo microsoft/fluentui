@@ -2,6 +2,84 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.15.0",
+      "tag": "@uifabric/fluent-theme_v0.15.0",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: adds fluent styles overrides.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c97e7f2c3d22bfaedb0e778f2f1dc7645fd60b8c"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "16390fd717dcb5db3c0f0a83965aa1a9f1efc3a8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.2",
+      "tag": "@uifabric/fluent-theme_v0.14.2",
+      "date": "Mon, 18 Feb 2019 13:38:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dialog: Adjust right padding of title",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "d83c7d60a13d80584724d88efad035c2edfe5719"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.140.0 <7.0.0` to `>=6.141.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.1",
+      "tag": "@uifabric/fluent-theme_v0.14.1",
+      "date": "Fri, 15 Feb 2019 13:33:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove unnecessary theme colors",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "299c8961fa7c59c990d8618b4885c4e17e5442ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.0 <7.0.0` to `>=6.139.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.0",
+      "tag": "@uifabric/fluent-theme_v0.14.0",
+      "date": "Tue, 12 Feb 2019 13:36:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: adds minor adjustments to align to new fluent style patterns.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7c7b532230b69757253309e2210ee091f5bd63aa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.4",
       "tag": "@uifabric/fluent-theme_v0.13.4",
       "date": "Mon, 28 Jan 2019 13:35:27 GMT",

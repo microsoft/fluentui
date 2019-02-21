@@ -232,6 +232,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
           className={css('js-goToday', classes.goTodayButton)}
           onClick={this._onGotoToday}
           onKeyDown={this._onButtonKeyDown(this._onGotoToday)}
+          type="button"
         >
           {strings!.goToToday}
         </button>

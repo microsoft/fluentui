@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, IButtonProps } from '../index';
-import { Stack } from '@uifabric/experiments';
-import { Icon, CommandBar, Text } from 'office-ui-fabric-react';
+import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
@@ -10,8 +9,12 @@ const sectionGap = 32;
 const headingGap = 16;
 const buttonGap = 12;
 
+const alertClicked = (): void => {
+  alert('Clicked');
+};
+
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal preventShrink gap={buttonGap}>
+  <Stack horizontal disableShrink gap={buttonGap}>
     {props.children}
   </Stack>
 );
@@ -25,10 +28,43 @@ export class ButtonExample extends React.Component<{}, {}> {
           <div>
             <Stack gap={buttonGap}>
               <ButtonStack>
-                <Button content="Default button" />
-                <Button disabled content="Disabled default button" />
-                <Button primary content="Primary button" />
-                <Button disabled primary content="Primary disabled button" />
+                <Button content="Default button" onClick={alertClicked} />
+                <Button disabled content="Disabled default button" onClick={alertClicked} />
+                <Button primary content="Primary button" onClick={alertClicked} />
+                <Button disabled primary content="Primary disabled button" onClick={alertClicked} />
+              </ButtonStack>
+              <ButtonStack>
+                <Button split icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
+                <Button split disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
+                <Button split primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
+                <Button
+                  split
+                  disabled
+                  primary
+                  icon="Add"
+                  content="Primary disabled split button"
+                  menu={buttonMenu}
+                  onClick={alertClicked}
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <Button
+                  split
+                  primaryActionDisabled
+                  icon="Add"
+                  content="First action disabled split button"
+                  menu={buttonMenu}
+                  onClick={alertClicked}
+                />
+                <Button
+                  split
+                  primaryActionDisabled
+                  primary
+                  icon="Add"
+                  content="First action disabled primary split button"
+                  menu={buttonMenu}
+                  onClick={alertClicked}
+                />
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" circular />

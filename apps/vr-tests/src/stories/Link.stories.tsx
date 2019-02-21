@@ -11,6 +11,14 @@ storiesOf('Link', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')"
+        )
+        .executeScript("document.getElementsByClassName('ms-Link')[0].focus()")
+        .snapshot('focus', { cropTo: '.testWrapper' })
+        .executeScript(
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')"
+        )
         .hover('.ms-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Link')
@@ -24,32 +32,24 @@ storiesOf('Link', module)
   .addStory(
     'Root',
     () => (
-      <div className=".ms-Fabric--isFocusVisible">
-        <Link href="#" styles={{ root: { fontSize: '14px' } }}>
-          I'm a link
-        </Link>
-      </div>
+      <Link href="#" styles={{ root: { fontSize: '14px' } }}>
+        I'm a link
+      </Link>
     ),
     { rtl: true }
   )
   .addStory('Disabled', () => (
-    <div className=".ms-Fabric--isFocusVisible">
-      <Link href="#" disabled styles={{ root: { fontSize: '14px' } }}>
-        I'm a disabled link
-      </Link>
-    </div>
+    <Link href="#" disabled styles={{ root: { fontSize: '14px' } }}>
+      I'm a disabled link
+    </Link>
   ))
   .addStory('No Href', () => (
-    <div className=".ms-Fabric--isFocusVisible">
-      <Link styles={{ root: { fontSize: '14px' } }}>
-        I'm rendered as a button because I have no href
-      </Link>
-    </div>
+    <Link styles={{ root: { fontSize: '14px' } }}>
+      I'm rendered as a button because I have no href
+    </Link>
   ))
   .addStory('No Href Disabled', () => (
-    <div className=".ms-Fabric--isFocusVisible">
-      <Link disabled styles={{ root: { fontSize: '14px' } }}>
-        I'm rendered as a button because I have no href and am disabled
-      </Link>
-    </div>
+    <Link disabled styles={{ root: { fontSize: '14px' } }}>
+      I'm rendered as a button because I have no href and am disabled
+    </Link>
   ));

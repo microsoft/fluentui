@@ -109,7 +109,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                     top: 0px;
                     width: 100%;
                   }
-              data-is-focusable={true}
               id="ChoiceGroup0-bar"
               name="ChoiceGroup0"
               onBlur={[Function]}
@@ -120,6 +119,7 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
             <label
               className=
                   ms-ChoiceField-field
+                  is-checked
                   ms-ChoiceField-field--image
                   {
                     align-items: center;
@@ -422,7 +422,6 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                     top: 0px;
                     width: 100%;
                   }
-              data-is-focusable={false}
               id="ChoiceGroup0-pie"
               name="ChoiceGroup0"
               onBlur={[Function]}

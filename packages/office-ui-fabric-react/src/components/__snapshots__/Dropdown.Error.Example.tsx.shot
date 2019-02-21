@@ -34,13 +34,13 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Errormessagedrop1"
-      id="Errormessagedrop1-label"
+      htmlFor="Dropdown0"
+      id="Dropdown0-label"
     >
       Error message example:
     </label>
     <div
-      aria-describedby="Errormessagedrop1-option"
+      aria-describedby="Dropdown0-option"
       aria-expanded="false"
       aria-label="Error message dropdown example"
       className=
@@ -129,7 +129,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
             border-color: #a80000;
           }
       data-is-focusable={true}
-      id="Errormessagedrop1"
+      id="Dropdown0"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -173,7 +173,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Errormessagedrop1-option"
+        id="Dropdown0-option"
         role="option"
       >
         <span>
@@ -184,6 +184,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
         className=
             ms-Dropdown-caretDownWrapper
             {
+              cursor: pointer;
               height: 32px;
               line-height: 30px;
               position: absolute;

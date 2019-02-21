@@ -602,7 +602,6 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     color: #212121;
                   }
               data-is-focusable={true}
-              id="toggleCallout"
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -640,7 +639,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__11"
+                    id="id__13"
                   >
                     Show callout
                   </div>
@@ -756,8 +755,8 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                   tabIndex={-1}
                 >
                   <div
-                    aria-describedby="callout-description-1"
-                    aria-labelledby="callout-label-1"
+                    aria-describedby="callout-description12"
+                    aria-labelledby="callout-label11"
                     className=
                         ms-Callout-main
                         {
@@ -775,14 +774,13 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                         "overflowY": undefined,
                       }
                     }
-                    tabIndex={-1}
                   >
                     <div
                       className="ms-CalloutExample-header"
                     >
                       <p
                         className="ms-CalloutExample-title"
-                        id="callout-label-1"
+                        id="callout-label11"
                       >
                         All of your favorite people
                       </p>
@@ -795,7 +793,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                       >
                         <p
                           className="ms-CalloutExample-subText"
-                          id="callout-description-1"
+                          id="callout-description12"
                         >
                           Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                         </p>

@@ -78,7 +78,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     });
 
     return (
-      <RootType className={classNames.root}>
+      <RootType className={classNames.root} hidden={(toggleNativeProps as any).hidden}>
         {label && (
           <Label htmlFor={this._id} className={classNames.label}>
             {label}

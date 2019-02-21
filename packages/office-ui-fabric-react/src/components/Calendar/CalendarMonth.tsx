@@ -149,6 +149,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
               </button>
@@ -165,6 +166,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
               </button>
@@ -201,6 +203,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     aria-selected={isCurrentMonth || isNavigatedMonth}
                     data-is-focusable={isInBounds ? true : undefined}
                     ref={isNavigatedMonth ? 'navigatedMonth' : undefined}
+                    type="button"
                   >
                     {month}
                   </button>

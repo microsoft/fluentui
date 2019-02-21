@@ -7,15 +7,9 @@ export interface ICheckboxBasicExampleState {
 }
 
 export class CheckboxImplementationExamples extends React.Component<{}, ICheckboxBasicExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      isChecked: false
-    };
-
-    this._onCheckboxChange = this._onCheckboxChange.bind(this);
-  }
+  public state: ICheckboxBasicExampleState = {
+    isChecked: false
+  };
 
   public render(): JSX.Element {
     const { isChecked } = this.state;
@@ -42,11 +36,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
             }
           }}
           styles={checkboxStyles}
-          ariaLabelledBy={'labelID'}
         />
-        <label id="labelID" className="screenReaderOnly">
-          Uncontrolled checkbox label
-        </label>
 
         <Checkbox
           label="Uncontrolled checkbox with defaultChecked true"
@@ -74,19 +64,19 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     );
   }
 
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+  private _onCheckboxChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean) => {
     console.log(`The option has been changed to ${isChecked}.`);
-  }
+  };
 
   private _onControlledCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isChecked: checked! });
   };
 
-  private _renderLabelWithLink(props: ICheckboxProps): JSX.Element {
+  private _renderLabelWithLink = (props: ICheckboxProps) => {
     return (
       <span>
         This is a <a href="https://www.microsoft.com">link</a> inside a label.
       </span>
     );
-  }
+  };
 }

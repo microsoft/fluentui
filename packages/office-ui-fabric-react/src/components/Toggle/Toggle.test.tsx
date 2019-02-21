@@ -34,6 +34,12 @@ describe('Toggle', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders hidden toggle correctly', () => {
+    const component = renderer.create(<Toggle hidden />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders aria-label', () => {
     const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
 

@@ -191,7 +191,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
             "overflowY": undefined,
           }
         }
-        tabIndex={-1}
       >
         <div
           aria-hidden={false}
@@ -210,7 +209,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 position: absolute;
                 right: 0px;
                 top: 0px;
-                visibility: hidden;
               }
           type={1}
         >
@@ -221,32 +219,24 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   -webkit-overflow-scrolling: touch;
                   background-color: #ffffff;
                   bottom: 0px;
+                  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.2);
                   display: flex;
                   flex-direction: column;
+                  left: auto;
                   max-height: 100%;
                   overflow-x: hidden;
                   overflow-y: auto;
+                  pointer-events: auto;
                   position: absolute;
                   right: 0px;
                   top: 0px;
                   width: 100%;
                 }
-                @media (min-width: 480px){& {
-                  border-left: 1px solid #eaeaea;
-                  border-right: 1px solid #eaeaea;
-                  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.2);
-                  left: auto;
-                  pointer-events: auto;
-                  width: 340px;
-                }
-                $root & {
-                  width: 272px;
-                }
-                @media (min-width: 480px){$root & {
-                  width: 340px;
-                }
                 @supports (-webkit-overflow-scrolling: touch){& {
                   max-height: 768px;
+                }
+                @media (min-width: 480px){& {
+                  width: 340px;
                 }
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -418,7 +408,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       padding-left: 16px;
                       padding-right: 16px;
                     }
-                    @media screen and (min-width: 768px){& {
+                    @media screen and (min-width: 640px){& {
                       padding-left: 32px;
                       padding-right: 32px;
                     }
@@ -474,7 +464,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         padding-left: 16px;
                         padding-right: 16px;
                       }
-                      @media screen and (min-width: 768px){& {
+                      @media screen and (min-width: 640px){& {
                         padding-left: 32px;
                         padding-right: 32px;
                       }

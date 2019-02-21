@@ -68,6 +68,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'SubwayNav',
           name: 'SubwayNav',
           url: '#/examples/subwaynav'
+        },
+        {
+          component: require<any>('../components/Wizard/WizardPage').WizardPage,
+          key: 'Wizard',
+          name: 'Wizard',
+          url: '#/examples/wizard'
         }
       ]
     }

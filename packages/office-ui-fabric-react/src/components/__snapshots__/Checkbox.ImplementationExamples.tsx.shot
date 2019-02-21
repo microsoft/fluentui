@@ -35,7 +35,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
         }
   >
     <input
-      aria-labelledby="labelID"
       className=
 
           {
@@ -142,12 +141,6 @@ exports[`Component Examples renders Checkbox.ImplementationExamples.tsx correctl
       </span>
     </label>
   </div>
-  <label
-    className="screenReaderOnly"
-    id="labelID"
-  >
-    Uncontrolled checkbox label
-  </label>
   <div
     className=
         ms-Checkbox

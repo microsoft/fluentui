@@ -32,7 +32,12 @@ export class ChoiceGroupCustomExample extends React.Component {
             },
             {
               key: 'B',
-              text: 'Option B'
+              text: 'Option B',
+              styles: {
+                root: {
+                  border: '1px solid green'
+                }
+              }
             },
             {
               key: 'C',

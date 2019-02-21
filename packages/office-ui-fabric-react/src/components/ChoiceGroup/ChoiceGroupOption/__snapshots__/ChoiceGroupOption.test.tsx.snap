@@ -304,6 +304,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             {
               border-color: #0078d4;
               cursor: pointer;
@@ -529,6 +530,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             {
               border-color: #0078d4;
               cursor: default;
@@ -1091,6 +1093,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             ms-ChoiceField--icon
             {
               align-items: center;

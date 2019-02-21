@@ -1,0 +1,571 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: auto;
+          justify-content: space-between;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 0;
+        }
+  >
+    <div
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Numerical spacing
+      </span>
+      <div
+        className=
+            ms-Stack
+            {
+              background: #71afe5;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              width: 300px;
+            }
+            & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              text-overflow: ellipsis;
+              width: 50px;
+            }
+            & > *:not(:first-child) {
+              margin-left: 10px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <span>
+          1
+        </span>
+        <span>
+          2
+        </span>
+        <span>
+          3
+        </span>
+      </div>
+    </div>
+    <div
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Custom spacing
+      </span>
+      <div
+        className=
+            ms-Stack
+            {
+              background: #71afe5;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 8px;
+              padding-left: 15%;
+              padding-right: 15%;
+              padding-top: 8px;
+              width: 300px;
+            }
+            & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              text-overflow: ellipsis;
+              width: 50px;
+            }
+            & > *:not(:first-child) {
+              margin-left: 10%;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <span>
+          1
+        </span>
+        <span>
+          2
+        </span>
+        <span>
+          3
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-Stack
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: auto;
+          justify-content: space-between;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 0;
+        }
+  >
+    <div
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Themed spacing (extra small)
+      </span>
+      <div
+        className=
+            ms-Stack
+            {
+              background: #71afe5;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 4px;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 4px;
+              width: 300px;
+            }
+            & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              text-overflow: ellipsis;
+              width: 50px;
+            }
+            & > *:not(:first-child) {
+              margin-left: 4px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <span>
+          1
+        </span>
+        <span>
+          2
+        </span>
+        <span>
+          3
+        </span>
+      </div>
+    </div>
+    <div
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Themed spacing (small)
+      </span>
+      <div
+        className=
+            ms-Stack
+            {
+              background: #71afe5;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              width: 300px;
+            }
+            & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              text-overflow: ellipsis;
+              width: 50px;
+            }
+            & > *:not(:first-child) {
+              margin-left: 8px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <span>
+          1
+        </span>
+        <span>
+          2
+        </span>
+        <span>
+          3
+        </span>
+      </div>
+    </div>
+    <div
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Themed spacing (medium)
+      </span>
+      <div
+        className=
+            ms-Stack
+            {
+              background: #71afe5;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 16px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 16px;
+              width: 300px;
+            }
+            & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              text-overflow: ellipsis;
+              width: 50px;
+            }
+            & > *:not(:first-child) {
+              margin-left: 16px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <span>
+          1
+        </span>
+        <span>
+          2
+        </span>
+        <span>
+          3
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-Stack
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: auto;
+          justify-content: space-between;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Themed spacing (large)
+      </span>
+      <div
+        className=
+            ms-Stack
+            {
+              background: #71afe5;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 20px;
+              padding-left: 20px;
+              padding-right: 20px;
+              padding-top: 20px;
+              width: 300px;
+            }
+            & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              text-overflow: ellipsis;
+              width: 50px;
+            }
+            & > *:not(:first-child) {
+              margin-left: 20px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <span>
+          1
+        </span>
+        <span>
+          2
+        </span>
+        <span>
+          3
+        </span>
+      </div>
+    </div>
+    <div
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 0px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
+    >
+      <span>
+        Themed spacing (extra large)
+      </span>
+      <div
+        className=
+            ms-Stack
+            {
+              background: #71afe5;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 32px;
+              padding-left: 32px;
+              padding-right: 32px;
+              padding-top: 32px;
+              width: 300px;
+            }
+            & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              text-overflow: ellipsis;
+              width: 50px;
+            }
+            & > *:not(:first-child) {
+              margin-left: 32px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <span>
+          1
+        </span>
+        <span>
+          2
+        </span>
+        <span>
+          3
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

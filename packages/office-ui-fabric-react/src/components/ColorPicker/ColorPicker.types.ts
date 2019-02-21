@@ -14,14 +14,23 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   componentRef?: IRefObject<IColorPicker>;
 
   /**
-   * CSS-compatible string to describe the initial color.
+   * Object or CSS-compatible string to describe the color.
    */
-  color: string;
+  color: IColor | string;
 
   /**
    * Callback for when the user changes the color.
+   * (To preserve existing behavior, this is also called when the color changes via props.)
+   *
+   * @deprecated Use `onChange` instead.
    */
   onColorChanged?: (color: string, colorObject: IColor) => void;
+
+  /**
+   * Callback for when the user changes the color.
+   * (Not called when the color is changed via props.)
+   */
+  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
 
   /**
    * Whether to hide the alpha control slider.

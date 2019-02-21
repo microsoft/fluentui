@@ -6,6 +6,7 @@ import { ISpinButtonClassNames } from './SpinButton.classNames';
 import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
+import { IRefObject } from '../../Utilities';
 
 export interface ISpinButton {
   /**
@@ -24,7 +25,7 @@ export interface ISpinButtonProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component?: ISpinButton | null) => void;
+  componentRef?: IRefObject<ISpinButton>;
 
   /**
    * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.

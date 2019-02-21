@@ -293,10 +293,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (isImmediateDescendant) {
         this._setFocusAlignment(this._activeElement);
       }
+    }
 
-      if (onActiveElementChanged) {
-        onActiveElementChanged(this._activeElement as HTMLElement, ev);
-      }
+    if (onActiveElementChanged) {
+      onActiveElementChanged(this._activeElement as HTMLElement, ev);
     }
 
     if (doNotAllowFocusEventToPropagate) {

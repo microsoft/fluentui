@@ -82,7 +82,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     return (
       <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
         {!groups ? (
-          this._renderGroup(null, 0)
+          this._renderGroup(undefined, 0)
         ) : (
           <List
             ref={this._list}
@@ -125,7 +125,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     }
   }
 
-  private _renderGroup = (group: any, groupIndex: number): JSX.Element | null => {
+  private _renderGroup = (group: IGroup | undefined, groupIndex: number): React.ReactNode => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -201,7 +201,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     return getGroupHeight(pageGroup, itemIndex);
   };
 
-  private _getGroupKey(group: IGroup, index: number): string {
+  private _getGroupKey(group: IGroup | undefined, index: number): string {
     return 'group-' + (group && group.key ? group.key : String(index));
   }
 

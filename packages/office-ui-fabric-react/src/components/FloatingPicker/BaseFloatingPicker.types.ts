@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISuggestionModel } from '../../Pickers';
 import { IPersonaProps } from '../../Persona';
-import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
+import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
 
@@ -143,18 +143,10 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   suggestionItems?: T[];
 }
 
-export interface IBaseFloatingPickerSuggestionProps {
-  /**
-   * Whether or not the first selectable item in the suggestions list should be selected
-   */
-  shouldSelectFirstItem?: () => boolean;
-
-  /**
-   * The header items props
-   */
-  headerItemsProps?: ISuggestionsHeaderFooterProps[];
-  /**
-   * The footer items props
-   */
-  footerItemsProps?: ISuggestionsHeaderFooterProps[];
-}
+/**
+ * Props which are passed on to the inner Suggestions component
+ */
+export type IBaseFloatingPickerSuggestionProps = Pick<
+  ISuggestionsControlProps<any>,
+  'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
+>;

@@ -284,7 +284,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -362,7 +361,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -450,7 +448,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -528,7 +525,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"
@@ -617,7 +613,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -695,7 +690,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
                   type="button"

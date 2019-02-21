@@ -16,6 +16,8 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
           // tslint:disable:jsx-no-lambda
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
+          incrementButtonAriaLabel={'Increase value by 1'}
+          decrementButtonAriaLabel={'Decrease value by 1'}
         />
         <SpinButton
           defaultValue="0"
@@ -25,6 +27,8 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
           step={0.1}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
+          incrementButtonAriaLabel={'Increase value by 0.1'}
+          decrementButtonAriaLabel={'Decrease value by 0.1'}
         />
       </div>
     );

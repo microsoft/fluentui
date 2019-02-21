@@ -3702,6 +3702,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             className=
                 ms-Dropdown-caretDownWrapper
                 {
+                  cursor: pointer;
                   height: 32px;
                   line-height: 30px;
                   position: absolute;

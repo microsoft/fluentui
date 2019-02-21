@@ -119,6 +119,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             aria-label={dateFormatter.formatYear(navigatedDate)}
             data-is-focusable={!!onHeaderSelect}
             tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+            type="button"
           >
             {dateFormatter.formatYear(navigatedDate)}
           </button>
@@ -135,6 +136,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
                   ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
                   : undefined
               }
+              type="button"
             >
               <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
             </button>
@@ -150,6 +152,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
                   ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
                   : undefined
               }
+              type="button"
             >
               <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
             </button>
@@ -183,6 +186,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
                   aria-label={dateFormatter.formatMonthYear(indexedMonth, strings)}
                   aria-selected={isNavigatedMonth}
                   data-is-focusable={isInBounds ? true : undefined}
+                  type="button"
                 >
                   {month}
                 </button>

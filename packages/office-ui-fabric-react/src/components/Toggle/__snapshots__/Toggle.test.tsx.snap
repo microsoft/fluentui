@@ -1,5 +1,104 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Toggle renders hidden toggle correctly 1`] = `
+<div
+  className=
+      ms-Toggle
+      is-enabled
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 8px;
+      }
+  hidden={true}
+>
+  <div
+    className=
+        ms-Toggle-innerContainer
+        {
+          display: inline-flex;
+          position: relative;
+        }
+  >
+    <button
+      aria-checked={false}
+      className=
+          ms-Toggle-background
+          {
+            align-items: center;
+            background: #ffffff;
+            border-color: #666666;
+            border-radius: 1em;
+            border-style: solid;
+            border-width: 1px;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: flex;
+            font-size: 20px;
+            height: 1em;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: .2em;
+            padding-right: .2em;
+            padding-top: 0;
+            position: relative;
+            transition: all 0.1s ease;
+            width: 2.2em;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
+          &:hover {
+            border-color: #333333;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+            border-color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+          }
+      data-is-focusable={true}
+      hidden={true}
+      id="Toggle4"
+      onChange={[Function]}
+      onClick={[Function]}
+      role="switch"
+      type="button"
+    >
+      <div
+        className=
+            ms-Toggle-thumb
+            {
+              background-color: #333333;
+              border-color: transparent;
+              border-radius: .5em;
+              border-style: solid;
+              border-width: .28em;
+              box-sizing: border-box;
+              height: .5em;
+              transition: all 0.1s ease;
+              width: .5em;
+            }
+      />
+    </button>
+  </div>
+</div>
+`;
+
 exports[`Toggle renders toggle correctly 1`] = `
 <div
   className=

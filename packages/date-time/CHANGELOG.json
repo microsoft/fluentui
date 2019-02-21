@@ -2,6 +2,25 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "0.2.2",
+      "tag": "@uifabric/date-time_v0.2.2",
+      "date": "Tue, 12 Feb 2019 13:36:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: adding type=\"button\" in Calendar buttons so they don't submit by default inside forms",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8272c4c861b4d1d44854aa71ec988ead7498d570"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.1",
       "tag": "@uifabric/date-time_v0.2.1",
       "date": "Wed, 16 Jan 2019 13:38:44 GMT",

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Text } from 'office-ui-fabric-react';
-import { Stack } from '@uifabric/experiments';
+import { Stack, Text } from 'office-ui-fabric-react';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { Persona } from '../Persona';
 

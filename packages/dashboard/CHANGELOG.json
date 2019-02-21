@@ -2,6 +2,94 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.49.0",
+      "tag": "@uifabric/dashboard_v0.49.0",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Refactor of Wizard and SubwayNav Components",
+            "author": "brandonthomas <brandonthomas@users.noreply.github.com>",
+            "commit": "35f3400cf3ad477b39fb7b3b1bf07229eb9d4dc9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.14.2 <1.0.0` to `>=0.15.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.48.0",
+      "tag": "@uifabric/dashboard_v0.48.0",
+      "date": "Fri, 15 Feb 2019 13:33:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add 'StackedBarChart' Visualization support to Recommendation Banner (MIP, Intune Recommendations will use this). Refactor existing visualizations into separate functional components.",
+            "author": "Veerash Ayyagari <veeray@microsoft.com>",
+            "commit": "732052c1345fd1d8557b29d0260d121dcc2140bc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.0 <7.0.0` to `>=6.139.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.5",
+      "tag": "@uifabric/dashboard_v0.47.5",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Id for Thumbnail item actions",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "6667a075316668ecabed98b737f375910379e71b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.6` to `^0.28.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.55.0 <7.0.0` to `>=6.56.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.47.4",
+      "tag": "@uifabric/dashboard_v0.47.4",
+      "date": "Tue, 12 Feb 2019 13:36:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Implement Wizard base control and SetupWizard control in dashboard package",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "33d6853cab79a550bfa2f8dd65939cf7237627ac"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.3 <7.0.0` to `>=6.54.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.47.3",
       "tag": "@uifabric/dashboard_v0.47.3",
       "date": "Wed, 06 Feb 2019 13:38:06 GMT",
