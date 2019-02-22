@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pivot: Removed mention of pivot overflow which is not implemented",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com"
+}
