@@ -1,10 +1,11 @@
 import { IColumn } from './DetailsList.types';
 import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import { IBaseProps, IRefObject } from '../../Utilities';
+import { IDetailsListProps } from './DetailsList';
 
 export interface IDetailsRowFields {}
 
-export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
+export interface IDetailsRowFieldsProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRowFields> {
   /**
    * Ref of component
    */
@@ -34,11 +35,6 @@ export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
    * whether to render as a compact field
    */
   compact?: boolean;
-
-  /**
-   * Callback for rendering an item column
-   */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 
   /**
    * Whether to show shimmer
