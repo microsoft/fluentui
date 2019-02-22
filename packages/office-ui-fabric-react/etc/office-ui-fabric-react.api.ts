@@ -2903,6 +2903,7 @@ interface IComboBoxOptionStyles extends IButtonStyles {
 // @public (undocumented)
 interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   allowFreeform?: boolean;
+  ariaDescribedBy?: string;
   autoComplete?: 'on' | 'off';
   autofill?: IAutofillProps;
   buttonIconProps?: IIconProps;
@@ -6902,7 +6903,7 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
   onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
   onRenderRow?: IRenderFunction<IDetailsRowProps>;
   onRowDidMount?: (item?: any, index?: number) => void;
@@ -6962,7 +6963,7 @@ interface IDetailsRow {
 }
 
 // @public (undocumented)
-interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProps {
+interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
   checkboxCellClassName?: string;
   checkButtonAriaLabel?: string;
   className?: string;
@@ -6981,7 +6982,6 @@ interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProp
   itemIndex: number;
   onDidMount?: (row?: DetailsRowBase) => void;
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
   onWillUnmount?: (row?: DetailsRowBase) => void;
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   shimmer?: boolean;
@@ -10516,6 +10516,7 @@ interface ISpinButton {
 
 // @public (undocumented)
 interface ISpinButtonProps {
+  ariaDescribedBy?: string;
   ariaLabel?: string;
   ariaPositionInSet?: number;
   ariaSetSize?: number;

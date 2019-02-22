@@ -30,7 +30,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           }
     >
       <button
-        aria-describedby=" ktp-layer-id ktp-q"
+        aria-describedby="ktp-layer-id ktp-q"
         className=
             ms-Button
             ms-Button--commandBar
@@ -158,7 +158,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           }
     >
       <button
-        aria-describedby=" ktp-layer-id ktp-w"
+        aria-describedby="ktp-layer-id ktp-w"
         className=
             ms-Button
             ms-Button--commandBar
@@ -286,7 +286,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           }
     >
       <button
-        aria-describedby=" ktp-layer-id ktp-e"
+        aria-describedby="ktp-layer-id ktp-e"
         className=
             ms-Button
             ms-Button--commandBar
@@ -414,7 +414,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           }
     >
       <button
-        aria-describedby=" ktp-layer-id ktp-r"
+        aria-describedby="ktp-layer-id ktp-r"
         aria-expanded={false}
         aria-haspopup={true}
         aria-owns={null}

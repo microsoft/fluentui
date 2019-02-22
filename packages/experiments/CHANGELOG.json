@@ -2,6 +2,30 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.59.0",
+      "tag": "@uifabric/experiments_v6.59.0",
+      "date": "Thu, 21 Feb 2019 13:32:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding split property to get Split Buttons.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "0c0c39be6d0c4a3e8a4c044b955b86288612f664"
+          },
+          {
+            "comment": "Fluent folder: positioned signal-icon on the right",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "c987deb47aacad388b4a8d204e6c379aa8019bcd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.142.0 <7.0.0` to `>=6.142.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.58.0",
       "tag": "@uifabric/experiments_v6.58.0",
       "date": "Wed, 20 Feb 2019 21:57:24 GMT",

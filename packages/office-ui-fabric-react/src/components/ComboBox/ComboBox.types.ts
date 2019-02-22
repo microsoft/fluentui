@@ -201,6 +201,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   isButtonAriaHidden?: boolean;
 
   /**
+   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * Optional keytip for this combo box
    */
   keytipProps?: IKeytipProps;
