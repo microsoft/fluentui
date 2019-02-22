@@ -5,7 +5,7 @@ import { SpinButton } from './SpinButton';
 import { ISpinButton } from './SpinButton.types';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
-import { DefaultButton } from '../Button';
+import { DefaultButton } from '../../Button';
 
 describe('SpinButton', () => {
   beforeEach(() => {
