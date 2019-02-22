@@ -39,7 +39,7 @@ fabric-website/ @jordandrako
 #### Packages
 packages/charting/ @Raghurk @veeray @chankev
 packages/dashboard/ @Raghurk @veeray @chankev
-packages/foundation/ @jagore
+packages/foundation/ @JasonGore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
@@ -65,6 +65,7 @@ dateMath/     @OfficeDev/uifabric-calendar
 dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
+Accordion/ @JasonGore
 # ActivityItem/
 # Breadcrumb/
 # Button/
@@ -73,6 +74,7 @@ Callout/  @joschect
 # Check/
 # Checkbox/ @cliffkoh
 ChoiceGroup/   @srideshpande
+CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
@@ -85,14 +87,15 @@ DocumentCard/ @yiminwu @mikewheaton
 # Fabric/
 # FacePile/
 FolderCover/ @ThomasMichon
-# FocusTrapZone/
-# FocusZone/
+FocusTrapZone/ @JasonGore
+FocusZone/ @JasonGore
 GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
+Layer/  @ThomasMichon @JasonGore
 # Label/ @cliffkoh
-Layer/  @ThomasMichon
+Layer/  @ThomasMichon @JasonGore
 # Link/
 List/ @KevinTCoughlin
 # MarqueeSelection/
@@ -126,7 +129,7 @@ Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
 experiments/src/components/Button/  @khmakoto
-experiments/src/components/Toggle/  @khmakoto @jasongore
+experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/  @micahgodbolt
 
 ## Docs
