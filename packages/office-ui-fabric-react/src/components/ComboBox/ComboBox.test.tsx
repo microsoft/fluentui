@@ -489,4 +489,15 @@ describe.only('ComboBox', () => {
 
     expect(onItemClickMock).toHaveBeenCalledTimes(1);
   });
+
+  it('allows adding a custom aria-describedby id to the input', () => {
+    const comboBoxRef = React.createRef<any>();
+    const customId = 'customAriaDescriptionId';
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} ariaDescribedBy={customId} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
+    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
+  });
 });
