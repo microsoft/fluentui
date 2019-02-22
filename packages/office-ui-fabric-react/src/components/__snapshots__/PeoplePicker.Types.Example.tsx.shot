@@ -506,7 +506,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <button
           aria-checked={false}
-          aria-label="Delay Suggestion Results: Off"
+          aria-label="Delay Suggestion Results"
           className=
               ms-Toggle-background
               {

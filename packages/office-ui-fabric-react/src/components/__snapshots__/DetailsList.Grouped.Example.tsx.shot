@@ -186,7 +186,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
       >
         <button
           aria-checked={false}
-          aria-label="Compact mode: Off"
+          aria-label="Compact mode"
           checked={false}
           className=
               ms-Toggle-background
@@ -317,7 +317,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
       >
         <button
           aria-checked={false}
-          aria-label="Show index of first item in view when unmounting: Off"
+          aria-label="Show index of first item in view when unmounting"
           checked={false}
           className=
               ms-Toggle-background

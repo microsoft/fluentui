@@ -25,7 +25,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
-      aria-label="undefined: Off"
+      aria-label="undefined"
       className=
           ms-Toggle-background
           {
@@ -153,7 +153,7 @@ exports[`Toggle renders toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
-      aria-label="Label: Off"
+      aria-label="Label"
       className=
           ms-Toggle-background
           {
@@ -283,7 +283,7 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
   >
     <button
       aria-checked={false}
-      aria-label="Label: Off"
+      aria-label="Label"
       className=
           ms-Toggle-background
           {

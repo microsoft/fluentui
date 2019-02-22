@@ -65,12 +65,13 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       inlineLabel
     } = this.props;
     const { checked } = this.state;
-    const stateText = checked ? onText : offText;
-    const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
 
-    let composedAriaLabel = badAriaLabel ? badAriaLabel : label;
-    const ariaLabelChecked = checked ? ': On' : ': Off';
-    composedAriaLabel += ariaLabelChecked ? ariaLabelChecked : '';
+    const stateText = checked ? onText : offText;
+
+    const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
+    const ariaLabelText = badAriaLabel ? badAriaLabel : label;
+    const ariaSeparator = ariaLabelText && stateText ? ': ' : '';
+    const composedAriaLabel = ariaLabelText + ariaSeparator + (stateText ? stateText : '');
 
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = getClassNames(styles!, {

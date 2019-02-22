@@ -116,7 +116,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
     >
       <button
         aria-checked={false}
-        aria-label="Controlled component: Off"
+        aria-label="Controlled component"
         className=
             ms-Toggle-background
             {
