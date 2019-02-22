@@ -221,7 +221,6 @@ exports[`Modal renders Sticky Modal correctly 1`] = `
           "overflowY": undefined,
         }
       }
-      tabIndex={-1}
     >
       <div
         className=
