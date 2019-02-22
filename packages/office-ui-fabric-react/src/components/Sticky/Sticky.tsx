@@ -115,7 +115,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       if (this._isFocusActive) {
         const activeElement = this._activeElement;
         if (activeElement) {
-          (activeElement as HTMLElement).focus();
+          activeElement.focus();
         }
       }
       scrollablePane.updateStickyRefHeights();
