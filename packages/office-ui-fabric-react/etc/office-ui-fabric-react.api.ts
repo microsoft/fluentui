@@ -10558,6 +10558,8 @@ interface ISpinButtonProps {
 // @public (undocumented)
 interface ISpinButtonState {
   isFocused: boolean;
+  // @deprecated
+  keyboardSpinDirection: KeyboardSpinDirection;
   lastValidValue: string;
   spinDirection: SpinDirection;
   value: string;
@@ -11305,16 +11307,6 @@ interface IVerticalDividerClassNames {
 // @public (undocumented)
 interface IVerticalDividerProps {
   getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
-}
-
-// @public (undocumented)
-enum KeyboardSpinDirection {
-  // (undocumented)
-  down = -1,
-  // (undocumented)
-  notSpinning = 0,
-  // (undocumented)
-  up = 1
 }
 
 // @public
@@ -12299,6 +12291,16 @@ class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState>, impl
 }
 
 // @public (undocumented)
+enum SpinDirection {
+  // (undocumented)
+  down = -1,
+  // (undocumented)
+  notSpinning = 0,
+  // (undocumented)
+  up = 1
+}
+
+// @public (undocumented)
 class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   // (undocumented)
   static defaultProps: ISpinnerProps;
@@ -12982,6 +12984,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ShimmeredDetailsList
 // WARNING: Unsupported export: Slider
 // WARNING: Unsupported export: ISliderStyleProps
+// WARNING: Unsupported export: KeyboardSpinDirection
 // WARNING: Unsupported export: DefaultProps
 // WARNING: Unsupported export: Spinner
 // WARNING: Unsupported export: SpinnerLabelPosition
