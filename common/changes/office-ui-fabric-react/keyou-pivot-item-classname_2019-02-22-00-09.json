@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add className for Pivot item container div",
+      "comment": "Pivot: Add new stylable area for Pivot item container div.",
       "type": "minor"
     }
   ],
