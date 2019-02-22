@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "getRTL: Check for existence of body element before reading attributes.",
+      "comment": "Add check for tabIndex in isElementTabbable if role=button",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "jagore@microsoft.com"
+  "email": "edwl@microsoft.com"
 }

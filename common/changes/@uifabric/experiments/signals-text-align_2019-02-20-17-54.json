@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/experiments",
-      "type": "none"
+      "comment": "Fix RTL handling in SignalsField",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "brandth@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }

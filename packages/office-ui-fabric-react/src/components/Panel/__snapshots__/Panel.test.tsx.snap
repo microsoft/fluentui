@@ -74,7 +74,6 @@ exports[`Panel renders Panel correctly 1`] = `
           "overflowY": undefined,
         }
       }
-      tabIndex={-1}
     >
       <div
         aria-hidden={false}

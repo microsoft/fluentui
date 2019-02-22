@@ -686,7 +686,7 @@ exports[`Button renders IconButton correctly 1`] = `
 
 exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
 <button
-  aria-describedby=" ktp-layer-id ktp-a"
+  aria-describedby="ktp-layer-id ktp-a"
   className=
       ms-Button
       ms-Button--default

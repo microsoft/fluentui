@@ -191,7 +191,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
             "overflowY": undefined,
           }
         }
-        tabIndex={-1}
       >
         <div
           aria-hidden={false}

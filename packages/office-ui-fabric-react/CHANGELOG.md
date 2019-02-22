@@ -1,6 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 19 Feb 2019 13:37:02 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Feb 2019 13:32:08 GMT and should not be manually modified.
+
+## 6.142.1
+Thu, 21 Feb 2019 13:32:08 GMT
+
+### Patches
+
+- GroupedList: Reduce usage of any type in GroupedList and GroupedListSection
+
+## 6.142.0
+Wed, 20 Feb 2019 21:57:24 GMT
+
+### Minor changes
+
+- ChoiceGroup: now works again in FocusZone, but this also reverts a bug fix which allowed FocusTrapZones to behave better with ChoiceGroups in them. We will fix this issue separately. Popup: no longer has `tabindex="-1"` specified, which is causing all sorts of regressions wrt FocusTrapZone usage.
+
+### Patches
+
+- ChoiceGroup: fixing issue when nested in FocusZones.
 
 ## 6.141.1
 Tue, 19 Feb 2019 13:37:02 GMT
