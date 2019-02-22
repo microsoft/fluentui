@@ -15,8 +15,10 @@ enum SpinDirection {
   up = 1
 }
 
-// @todo Keep backward compatibility. May change it later.
-export { SpinDirection as KeyboardSpinDirection };
+/**
+ * @deprecated Use `SpinDirection` enum instead.
+ */
+export type KeyboardSpinDirection = SpinDirection;
 
 export interface ISpinButtonState {
   /**
@@ -38,6 +40,12 @@ export interface ISpinButtonState {
    * Current spinning direction. It is either not spinning, or up/down direction triggered by keyboard or mouse.
    */
   spinDirection: SpinDirection;
+
+  /**
+   * keyboard spin direction, used to style the up or down button as active when up/down arrow is pressed.
+   * @deprecated Use `spinDirection` state Instead.
+   */
+  keyboardSpinDirection: KeyboardSpinDirection;
 }
 
 export type DefaultProps = Required<
@@ -87,7 +95,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       isFocused: false,
       value: value,
       lastValidValue: value, // @todo Can we use this._validateValue(value)? Will it break the validate invoke assumption?
-      spinDirection: SpinDirection.notSpinning
+      spinDirection: SpinDirection.notSpinning,
+      keyboardSpinDirection: SpinDirection.notSpinning
     };
   }
 
@@ -329,8 +338,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     stepDelay: number,
     stepFunction: (value: string) => string
   ): void => {
-    this.setState({ spinDirection });
-    this.setState(state => ({ value: stepFunction(state.value) }));
+    this.setState(state => ({
+      spinDirection,
+      keyboardSpinDirection: spinDirection,
+      value: stepFunction(state.value)
+    }));
 
     if (shouldSpin) {
       this._currentStepFunctionHandle = this._async.setTimeout(() => {
@@ -350,7 +362,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._currentStepFunctionHandle = -1;
     }
 
-    this.setState({ spinDirection: SpinDirection.notSpinning });
+    this.setState({
+      spinDirection: SpinDirection.notSpinning,
+      keyboardSpinDirection: SpinDirection.notSpinning
+    });
   };
 
   private _handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
