@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "mergeAriaAttributeValues: Trim output string",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "dahajek@microsoft.com"
+}

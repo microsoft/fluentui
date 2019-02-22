@@ -269,7 +269,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                     "overflowY": undefined,
                   }
                 }
-                tabIndex={-1}
               >
                 <div
                   aria-labelledby="id__0"

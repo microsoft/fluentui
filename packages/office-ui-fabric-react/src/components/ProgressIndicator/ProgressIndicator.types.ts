@@ -40,7 +40,8 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
   description?: React.ReactNode;
 
   /**
-   * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
+   * Percentage of the operation's completeness, numerically between 0 and 1. If this is not set,
+   * the indeterminate progress animation will be shown instead.
    */
   percentComplete?: number;
 

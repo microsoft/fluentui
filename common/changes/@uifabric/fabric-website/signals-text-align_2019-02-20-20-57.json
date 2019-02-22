@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Fix usage of 'ms-text-align'",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "tmichon@microsoft.com"
+}

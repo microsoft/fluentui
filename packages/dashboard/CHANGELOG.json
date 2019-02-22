@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.49.0",
+      "tag": "@uifabric/dashboard_v0.49.0",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Refactor of Wizard and SubwayNav Components",
+            "author": "brandonthomas <brandonthomas@users.noreply.github.com>",
+            "commit": "35f3400cf3ad477b39fb7b3b1bf07229eb9d4dc9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.14.2 <1.0.0` to `>=0.15.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.48.0",
       "tag": "@uifabric/dashboard_v0.48.0",
       "date": "Fri, 15 Feb 2019 13:33:05 GMT",
