@@ -2903,6 +2903,7 @@ interface IComboBoxOptionStyles extends IButtonStyles {
 // @public (undocumented)
 interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   allowFreeform?: boolean;
+  ariaDescribedBy?: string;
   autoComplete?: 'on' | 'off';
   autofill?: IAutofillProps;
   buttonIconProps?: IIconProps;
@@ -10515,6 +10516,7 @@ interface ISpinButton {
 
 // @public (undocumented)
 interface ISpinButtonProps {
+  ariaDescribedBy?: string;
   ariaLabel?: string;
   ariaPositionInSet?: number;
   ariaSetSize?: number;
