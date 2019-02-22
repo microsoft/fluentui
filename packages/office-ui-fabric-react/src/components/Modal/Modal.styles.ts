@@ -1,18 +1,7 @@
 import { IModalStyleProps, IModalStyles } from './Modal.types';
-import { IOverlayStyles } from '../../Overlay';
-import { AnimationVariables, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { AnimationVariables, getGlobalClassNames } from '../../Styling';
 
 export const animationDuration = AnimationVariables.durationValue2;
-
-export const getOverlayStyles: IOverlayStyles = {
-  root: {
-    selectors: {
-      [HighContrastSelector]: {
-        opacity: 0
-      }
-    }
-  }
-};
 
 const globalClassNames = {
   root: 'ms-Modal',

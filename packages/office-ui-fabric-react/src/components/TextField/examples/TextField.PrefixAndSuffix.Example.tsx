@@ -7,6 +7,7 @@ export class TextFieldPrefixAndSuffixExample extends React.Component<any, any> {
     return (
       <div className="docs-TextFieldExample">
         <TextField prefix="https://" suffix=".com" />
+        <TextField label="Disabled" prefix="https://" suffix=".com" disabled />
       </div>
     );
   }

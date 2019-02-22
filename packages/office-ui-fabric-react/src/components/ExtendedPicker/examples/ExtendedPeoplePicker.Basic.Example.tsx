@@ -48,6 +48,7 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     };
 
     this._suggestionProps = {
+      showRemoveButtons: true,
       headerItemsProps: [
         {
           renderItem: () => {

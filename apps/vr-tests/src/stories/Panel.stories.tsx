@@ -60,6 +60,9 @@ storiesOf('Panel', module)
   ))
   .addStory('Custom', () => (
     <Panel {...defaultProps} type={PanelType.custom} headerText="Custom" customWidth="200vw" />
+  ))
+  .addStory('Custom anchored left', () => (
+    <Panel {...defaultProps} type={PanelType.customNear} headerText="Custom left" customWidth="320px" />
   ));
 
 storiesOf('Panel', module)

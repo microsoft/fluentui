@@ -39,15 +39,7 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
 
     return (
       <div className="docs-DatePickerExample">
-        <DatePicker
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-          // tslint:disable:jsx-no-lambda
-          onAfterMenuDismiss={() => console.log('onAfterMenuDismiss called')}
-          // tslint:enable:jsx-no-lambda
-        />
+        <DatePicker firstDayOfWeek={firstDayOfWeek} strings={DayPickerStrings} placeholder="Select a date..." ariaLabel="Select a date" />
         <Dropdown
           label="Select the first day of the week"
           options={[

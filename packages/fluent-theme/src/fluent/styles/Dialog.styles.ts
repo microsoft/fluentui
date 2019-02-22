@@ -17,7 +17,7 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
     title: {
       fontSize: FontSizes.size20,
       fontWeight: FontWeights.semibold,
-      padding: '16px 24px 24px 24px',
+      padding: '16px 46px 24px 24px',
       lineHeight: 'normal'
     },
     topButton: {

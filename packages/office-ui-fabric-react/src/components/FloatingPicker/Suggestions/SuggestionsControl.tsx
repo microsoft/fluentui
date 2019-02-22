@@ -267,13 +267,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _renderSuggestions(): JSX.Element {
     const TypedSuggestions = this.SuggestionsOfProperType;
 
-    return (
-      <TypedSuggestions
-        ref={this._resolveRef('_suggestions')}
-        {...this.props as ISuggestionsCoreProps<T>}
-        suggestions={this.state.suggestions}
-      />
-    );
+    return <TypedSuggestions ref={this._resolveRef('_suggestions')} {...this.props} suggestions={this.state.suggestions} />;
   }
 
   /**

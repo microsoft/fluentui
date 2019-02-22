@@ -1,5 +1,6 @@
 /** @jsx withSlots */
-import { Text, Stack, IStackSlot } from '@uifabric/experiments';
+import { Stack, IStackSlot } from 'office-ui-fabric-react';
+import { Text } from '@uifabric/experiments';
 import { IFontStyles } from '@uifabric/experiments/lib/Styling';
 import {
   withSlots,
