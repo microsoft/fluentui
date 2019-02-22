@@ -12,7 +12,7 @@
   "bundlesize": [
     {
       "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
-      "maxSize": "50.1 kB"
+      "maxSize": "49.7 kB"
     }
   ],
   "devDependencies": {
@@ -65,9 +65,9 @@
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
     "typescript": "2.8.4",
-    "webpack": "4.29.5",
-    "webpack-bundle-analyzer": "^3.0.4",
-    "webpack-cli": "3.2.3",
+    "webpack": "4.7.0",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-cli": "2.1.2",
     "webpack-dev-server": "3.1.14",
     "webpack-notifier": "^1.6.0",
     "yargs": "^6.5.0"
