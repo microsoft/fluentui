@@ -339,6 +339,9 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     if (dateRangeType !== DateRangeType.Day) {
       dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
     }
+    dateRange = dateRange.filter(d => {
+      return !this._getIsRestrictedDate(d);
+    });
 
     if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
@@ -432,7 +435,10 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: (minDate ? compareDatePart(minDate, date) < 1 : true) && (maxDate ? compareDatePart(date, maxDate) < 1 : true)
+          isInBounds:
+            (minDate ? compareDatePart(minDate, date) < 1 : true) &&
+            (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
+            !this._getIsRestrictedDate(date)
         };
 
         week.push(dayInfo);
@@ -452,6 +458,16 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     }
 
     return weeks;
+  }
+
+  private _getIsRestrictedDate(date: Date): boolean {
+    const { restrictedDates } = this.props;
+    if (!restrictedDates) {
+      return false;
+    }
+    return !!restrictedDates.find(rd => {
+      return compareDates(rd, date);
+    });
   }
 
   private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
