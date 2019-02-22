@@ -142,6 +142,9 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
       isExpanded: !this.state.isExpanded
     });
 
+    if (this.props.onCollapse) {
+      this.props.onCollapse();
+    }
     ev.preventDefault();
     ev.stopPropagation();
   }

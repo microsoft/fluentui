@@ -98,6 +98,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
         links={group.links}
         dataHint={this.props.dataHint}
         isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
+        onCollapse={this._setScrollLayout}
       />
     );
   }
@@ -147,6 +148,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   }
 
   private _setScrollLayout(): void {
+    console.log('wut');
     const classNames = getClassNames(getStyles);
     if (this.containerRef.current && this.wrapperRef.current) {
       if (this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight) {

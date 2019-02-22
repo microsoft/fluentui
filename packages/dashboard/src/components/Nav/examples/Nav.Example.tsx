@@ -80,7 +80,7 @@ export class NavExample extends React.Component<{}, {}> {
         ]
       }
     ];
-    const mainStyle = mergeStyles({ display: 'flex', height: '1200px' });
+    const mainStyle = mergeStyles({ display: 'flex', height: '800px' });
     const contentStyle = mergeStyles({ flex: '1 1 auto', padding: '24px', backgroundColor: 'pink' });
     return (
       <div className={mainStyle}>

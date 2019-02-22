@@ -73,6 +73,7 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
             link={link}
             hasNestedMenu={true}
             hasSelectedNestedLink={hasSelectedNestedLink}
+            onCollapse={this.props.onCollapse}
           />
         ) : (
           <NavLink

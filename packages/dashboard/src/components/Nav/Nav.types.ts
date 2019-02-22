@@ -106,6 +106,11 @@ export interface INavGroupProps {
    * Passes the state of the nav as a prop so the lower level components know how to behave
    */
   isNavCollapsed: boolean;
+
+  /**
+   * callback for when a group has been collapsed or expanded
+   */
+  onCollapse?: () => void;
 }
 
 export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
@@ -197,6 +202,11 @@ export interface INavLinkGroupProps extends INavLinkProps {
    * Receives this prop from NavGroup and passes it through to NavLink so NavLink knows how to render L2 selected indicator
    */
   hasSelectedNestedLink?: boolean;
+
+  /**
+   * callback for when a group has been collapsed or expanded
+   */
+  onCollapse?: () => void;
 }
 
 export interface INavLinkGroupStates {
