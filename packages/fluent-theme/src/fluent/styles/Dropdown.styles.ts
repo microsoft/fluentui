@@ -1,7 +1,7 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
 import { fluentBorderRadius } from './styleConstants';
-import { SharedColors, NeutralColors } from '../FluentColors';
+import { NeutralColors } from '../FluentColors';
 import { Depths } from '../FluentDepths';
 import { IStyle } from '@uifabric/styling';
 
@@ -92,7 +92,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
 
           // Title has error states
           ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, &:active .ms-Dropdown-title--hasError']: {
-            borderColor: SharedColors.red20,
+            borderColor: palette.redDark,
             color: isRenderingPlaceholder ? palette.neutralSecondary : palette.neutralPrimary
           }
         }
@@ -104,7 +104,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         borderRadius: isOpen ? titleOpenBorderRadius : fluentBorderRadius,
         padding: `0 28px 0 8px`
       },
-      hasError && { borderColor: !isOpen ? SharedColors.red10 : SharedColors.red20 },
+      hasError && { borderColor: !isOpen ? palette.red : palette.redDark },
       isOpen && !hasError && { borderColor: palette.themePrimary },
       disabled && { color: palette.neutralTertiary }
     ],
@@ -116,7 +116,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         color: palette.neutralTertiary
       }
     ],
-    errorMessage: { color: SharedColors.red20 },
+    errorMessage: { color: palette.redDark },
     callout: {
       border: 'none',
       borderRadius: calloutOpenBorderRadius,

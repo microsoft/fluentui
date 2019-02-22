@@ -1,6 +1,6 @@
 import { fluentBorderRadius } from './styleConstants';
 import { Depths } from '../FluentDepths';
-import { NeutralColors, SharedColors } from '../FluentColors';
+import { NeutralColors } from '../FluentColors';
 import { IComboBoxStyles, IComboBoxProps } from 'office-ui-fabric-react/lib/ComboBox';
 
 export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> => {
@@ -25,7 +25,7 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
       }
     },
     rootError: {
-      borderColor: SharedColors.red10 // current structure of ComboBox does not allow to change the hover/focus color when has error
+      borderColor: palette.red // current structure of ComboBox does not allow to change the hover/focus color when has error
     },
     callout: {
       borderRadius: fluentBorderRadius,

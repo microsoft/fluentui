@@ -1,5 +1,5 @@
 import { createTheme, ITheme } from '@uifabric/styling';
-import { NeutralColors } from './FluentColors';
+import { NeutralColors, SharedColors } from './FluentColors';
 
 export const FluentTheme: ITheme = createTheme({
   palette: {
@@ -15,7 +15,10 @@ export const FluentTheme: ITheme = createTheme({
     neutralLight: NeutralColors.gray30,
     neutralLighter: NeutralColors.gray20,
     neutralLighterAlt: NeutralColors.gray10,
-    white: NeutralColors.white
+    white: NeutralColors.white,
+    // Shared Colors
+    red: SharedColors.red10,
+    redDark: SharedColors.red20
   }
 });
 
