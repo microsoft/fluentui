@@ -8,6 +8,7 @@ export const FluentTheme: ITheme = createTheme({
     neutralPrimary: NeutralColors.gray160,
     neutralPrimaryAlt: NeutralColors.gray150,
     neutralSecondary: NeutralColors.gray130,
+    neutralSecondaryAlt: NeutralColors.gray110,
     neutralTertiary: NeutralColors.gray90,
     neutralTertiaryAlt: NeutralColors.gray60,
     neutralQuaternary: NeutralColors.gray50,

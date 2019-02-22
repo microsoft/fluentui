@@ -1,11 +1,7 @@
 import { fluentBorderRadius } from './styleConstants';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
-import { NeutralColors } from '../FluentColors';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-// TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
-//        this 'any' once we upgrade to TS3.1+
-// tslint:disable-next-line:no-any
 export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;
   if (!theme) {
@@ -17,7 +13,7 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
     root: {
       borderRadius: fluentBorderRadius,
       backgroundColor: palette.white,
-      border: `1px solid ${NeutralColors.gray110}`,
+      border: `1px solid ${palette.neutralSecondaryAlt}`,
       ...getFocusStyle(theme, 1)
     },
     rootHovered: {
@@ -42,7 +38,7 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
       background: 'transparent',
       borderTopRightRadius: fluentBorderRadius,
       borderBottomRightRadius: fluentBorderRadius,
-      border: `1px solid ${NeutralColors.gray110}`,
+      border: `1px solid ${palette.neutralSecondaryAlt}`,
       borderLeft: 'none'
     },
     splitButtonContainer: {

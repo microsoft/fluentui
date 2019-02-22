@@ -1,5 +1,4 @@
 import { fluentBorderRadius } from './styleConstants';
-import { NeutralColors } from '../FluentColors';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
@@ -14,7 +13,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
     root: {
       ...getFocusStyle(theme, 2),
       backgroundColor: palette.white,
-      border: `1px solid ${NeutralColors.gray110}`,
+      border: `1px solid ${palette.neutralSecondaryAlt}`,
       borderRadius: fluentBorderRadius,
       padding: '16px 12px',
 
