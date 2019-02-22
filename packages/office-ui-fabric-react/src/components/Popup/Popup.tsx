@@ -28,7 +28,9 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
     let tempActive: HTMLElement = getDocument()!.activeElement as HTMLElement;
 
     while (tempActive instanceof HTMLIFrameElement) {
-      tempActive = tempActive!.contentDocument!.activeElement as HTMLIFrameElement;
+      if (tempActive !== null && tempActive.contentDocument !== null) {
+        tempActive = tempActive.contentDocument.activeElement as HTMLIFrameElement;
+      }
     }
 
     this._originalFocusedElement = tempActive as HTMLElement;
