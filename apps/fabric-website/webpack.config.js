@@ -9,7 +9,7 @@ module.exports = function(env) {
   // Production defaults
   let minFileNamePart = '';
   let entryPointName = 'fabric-sitev5';
-  let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  let publicPath = '/';
 
   // Dogfood overrides
   if (isDogfoodArg) {
