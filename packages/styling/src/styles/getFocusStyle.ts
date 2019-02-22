@@ -9,7 +9,7 @@ import { ZIndexes } from './zIndexes';
  * @param theme - The theme object to use.
  * @param options {IGetFocusStyleOptions} - Options to customize the focus border.
  */
-export function getFocusStyle(theme: ITheme, options?: IGetFocusStyleOptions): IRawStyle {
+export function getFocusStyles(theme: ITheme, options?: IGetFocusStyleOptions): IRawStyle {
   // Explicity define each option since `options` is optional.
   const inset: IGetFocusStyleOptions['inset'] = options!.inset || 0;
   const position: IGetFocusStyleOptions['position'] = options!.position || 'relative';
@@ -43,6 +43,32 @@ export function getFocusStyle(theme: ITheme, options?: IGetFocusStyleOptions): I
       }
     }
   };
+}
+
+/**
+ * Generates a focus style which can be used to define an :after focus border.
+ * @deprecated Use getFocusStyles instead.
+ *
+ * @param theme - The theme object to use.
+ * @param inset - The number of pixels to inset the border.
+ * @param position - The positioning applied to the container. Must
+ * be 'relative' or 'absolute' so that the focus border can live around it.
+ * @param highContrastStyle - Style for high contrast mode.
+ * @param borderColor - Color of the border.
+ * @param outlineColor - Color of the outline.
+ * @param isFocusedOnly - If the styles should apply on focus or not.
+ * @returns The style object.
+ */
+export function getFocusStyle(
+  theme: ITheme,
+  inset: number = 0,
+  position: 'relative' | 'absolute' = 'relative',
+  highContrastStyle: IRawStyle | undefined = undefined,
+  borderColor: string = theme.palette.white,
+  outlineColor: string = theme.palette.neutralSecondary,
+  isFocusedOnly: boolean = true
+): IRawStyle {
+  return getFocusStyles(theme, { inset, position, highContrastStyle, borderColor, outlineColor, isFocusedOnly });
 }
 
 /**
