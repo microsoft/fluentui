@@ -93,6 +93,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
+          aria-label="Enable compact mode: Off"
           checked={false}
           className=
               ms-Toggle-background
@@ -260,6 +261,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
+          aria-label="Enable modal selection: Off"
           checked={false}
           className=
               ms-Toggle-background

@@ -25,7 +25,7 @@ describe('Toggle', () => {
         .first()
         .getDOMNode()
         .getAttribute('aria-label')
-    ).toEqual('offLabel');
+    ).toEqual('offLabel: Off');
   });
 
   it('renders aria-label based on onAriaLabel when Toggle is ON', () => {
@@ -44,7 +44,7 @@ describe('Toggle', () => {
         .first()
         .getDOMNode()
         .getAttribute('aria-label')
-    ).toEqual('offLabel');
+    ).toEqual('offLabel: Off');
 
     component
       .find('button')
@@ -59,6 +59,6 @@ describe('Toggle', () => {
         .first()
         .getDOMNode()
         .getAttribute('aria-label')
-    ).toEqual('onLabel');
+    ).toEqual('onLabel: On');
   });
 });

@@ -68,7 +68,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     const stateText = checked ? onText : offText;
     const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
 
-    let composedAriaLabel = ariaLabel ? ariaLabel : badAriaLabel ? badAriaLabel : label;
+    let composedAriaLabel = badAriaLabel ? badAriaLabel : label;
     const ariaLabelChecked = checked ? ': On' : ': Off';
     composedAriaLabel += ariaLabelChecked ? ariaLabelChecked : '';
 
@@ -104,7 +104,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
                 ref={this._toggleButton}
                 aria-disabled={disabled}
                 aria-checked={checked}
-                aria-label={composedAriaLabel}
+                aria-label={ariaLabel ? ariaLabel : composedAriaLabel}
                 data-is-focusable={true}
                 onChange={this._noop}
                 onClick={this._onClick}
