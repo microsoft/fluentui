@@ -1,7 +1,6 @@
 /** @jsx withSlots */
-import { ContextualMenu, Stack, DirectionalHint } from 'office-ui-fabric-react';
+import { ContextualMenu, DirectionalHint, Stack, Text } from 'office-ui-fabric-react';
 import { withSlots, getSlots, ISlots, IPropsWithChildren } from '../../Foundation';
-import { Text } from 'office-ui-fabric-react/lib/Text';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
 
