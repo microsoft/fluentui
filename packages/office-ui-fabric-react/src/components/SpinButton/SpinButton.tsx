@@ -17,7 +17,7 @@ import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
 import { KeytipData } from '../../KeytipData';
 
-enum SpinDirection {
+export enum SpinDirection {
   down = -1,
   notSpinning = 0,
   up = 1
