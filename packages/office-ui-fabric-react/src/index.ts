@@ -66,6 +66,7 @@ export * from './ShimmeredDetailsList';
 export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
+export * from './Stack';
 export * from './Sticky';
 export * from './Styling';
 export * from './SwatchColorPicker';

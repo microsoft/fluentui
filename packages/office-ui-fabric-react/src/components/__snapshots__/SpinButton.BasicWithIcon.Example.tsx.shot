@@ -176,6 +176,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
             }
       >
         <button
+          aria-label="Increase value by 1"
           checked={false}
           className=
               ms-Button
@@ -302,6 +303,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
           </div>
         </button>
         <button
+          aria-label="Decrease value by 1"
           checked={false}
           className=
               ms-Button

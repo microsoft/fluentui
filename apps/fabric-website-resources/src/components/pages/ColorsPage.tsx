@@ -122,13 +122,13 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
           </p>
         </div>
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
-          * Cognitive Vision API, documented here:
-          * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
-          * We use that API to identify the most prominent background and foreground colors, and the accent color,
-          * and generate a theme based off of those.
-          * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-          * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
-          * Then, just uncomment this section. */}
+         * Cognitive Vision API, documented here:
+         * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
+         * We use that API to identify the most prominent background and foreground colors, and the accent color,
+         * and generate a theme based off of those.
+         * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
+         * key in _makeThemeFromImg() @ https://raw.githubusercontent.com/cliffkoh/office-ui-fabric-react/9c95e9b92f8caa1fe5ffb9da769ce0921a5272ed/packages/office-ui-fabric-react/src/components/ThemeGenerator/ThemeGeneratorPage.tsx
+         * Then, just uncomment this section. */}
         {/*}
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
@@ -140,23 +140,17 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
         {*/}
 
         {/* the shared popup color picker for slots */}
-        {colorPickerVisible &&
-          colorPickerSlotRule !== null &&
-          colorPickerSlotRule !== undefined &&
-          colorPickerElement && (
-            <Callout
-              key={colorPickerSlotRule.name}
-              gapSpace={10}
-              target={colorPickerElement}
-              setInitialFocus={true}
-              onDismiss={this._colorPickerOnDismiss}
-            >
-              <ColorPicker
-                color={colorPickerSlotRule.color!.str}
-                onColorChanged={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)}
-              />
-            </Callout>
-          )}
+        {colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement && (
+          <Callout
+            key={colorPickerSlotRule.name}
+            gapSpace={10}
+            target={colorPickerElement}
+            setInitialFocus={true}
+            onDismiss={this._colorPickerOnDismiss}
+          >
+            <ColorPicker color={colorPickerSlotRule.color!.str} onChange={this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule)} />
+          </Callout>
+        )}
 
         {/* the three base slots, prominently displayed at the top of the page */}
         <div style={{ display: 'flex' }}>
@@ -253,14 +247,14 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
     this.setState({ colorPickerVisible: false });
   };
 
-  private _semanticSlotRuleChanged = (slotRule: IThemeSlotRule, color: string): void => {
+  private _semanticSlotRuleChanged = (slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>, color: IColor): void => {
     if (this._semanticSlotColorChangeTimeout) {
       clearTimeout(this._semanticSlotColorChangeTimeout);
     }
     this._semanticSlotColorChangeTimeout = this._async.setTimeout(() => {
       const { themeRules } = this.state;
 
-      ThemeGenerator.setSlot(slotRule, color, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
+      ThemeGenerator.setSlot(slotRule, color.str, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
     // 20ms is low enough that you can slowly drag to change color and see that theme,
@@ -390,7 +384,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
         <h2 id="Output">Output</h2>
         <div className={'ms-themer-output-root'}>
           <Pivot styles={{ root: { padding: 10 } }}>
-            <PivotItem linkText="Code">
+            <PivotItem headerText="Code">
               <textarea readOnly={true} spellCheck={false} value={codeHeader + themeAsCode} style={{ width: 350 }} />
               <p>
                 This code block initializes the theme you have configured above and loads it using the loadTheme utility function. Calling
@@ -399,7 +393,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
               </p>
               <CodepenComponent jsContent={codepenHeader + themeAsCode + codepenSamples} buttonAs={PrimaryButton} />
             </PivotItem>
-            <PivotItem linkText="JSON">
+            <PivotItem headerText="JSON">
               <textarea
                 readOnly={true}
                 spellCheck={false}
@@ -407,7 +401,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
                 style={{ width: 350 }}
               />
             </PivotItem>
-            <PivotItem linkText="PowerShell">
+            <PivotItem headerText="PowerShell">
               <textarea
                 readOnly={true}
                 spellCheck={false}
@@ -444,14 +438,14 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
   private _baseColorSlotPicker = (baseSlot: BaseSlots, title: string): JSX.Element => {
     let colorChangeTimeout: number;
 
-    function _onColorChanged(newColor: string): void {
+    const onChange = (ev: React.MouseEvent<HTMLElement>, newColor: IColor): void => {
       if (colorChangeTimeout) {
         clearTimeout(colorChangeTimeout);
       }
       colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
         const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-        ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
+        ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor.str, currentIsDark, true, true);
         if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
           // isInverted got swapped, so need to refresh slots with new shading rules
           ThemeGenerator.insureSlots(themeRules, !currentIsDark);
@@ -460,7 +454,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
       // but high enough that quick changes don't get bogged down by a million changes inbetween
-    }
+    };
 
     return (
       <div className="ms-themer-paletteSlot" key={baseSlot}>
@@ -469,9 +463,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
           <ColorPicker
             key={'baseslotcolorpicker' + baseSlot}
             color={this.state.themeRules[BaseSlots[baseSlot]].color!.str}
-            /* tslint:disable:jsx-no-bind */
-            onColorChanged={_onColorChanged.bind(this)}
-            /* tslint:enable:jsx-no-bind */
+            onChange={onChange}
           />
         </div>
         <div className="ms-themer-swatchBg" style={{ backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str }}>

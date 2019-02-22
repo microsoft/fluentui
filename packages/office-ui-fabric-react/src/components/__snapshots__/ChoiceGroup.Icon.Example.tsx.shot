@@ -108,7 +108,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-            data-is-focusable={true}
             id="ChoiceGroup0-day"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -321,7 +320,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-week"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -534,7 +532,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-            data-is-focusable={false}
             disabled={true}
             id="ChoiceGroup0-month"
             name="ChoiceGroup0"

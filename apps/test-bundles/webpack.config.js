@@ -49,7 +49,7 @@ function _buildEntries(packageName) {
   let packagePath = '';
 
   try {
-    packagePath = path.dirname(require.resolve(packageName));
+    packagePath = path.dirname(require.resolve(packageName)).replace('lib-commonjs', 'lib');
   } catch (e) {
     console.log(`The package "${packageName}" could not be resolved. Add it as a dependency to this project.`);
     console.log(e);
@@ -64,7 +64,7 @@ function _buildEntries(packageName) {
       const entryName = itemName.replace(/.js$/, '');
 
       // Replace commonjs paths with lib paths.
-      const entryPath = path.join(packagePath, itemName).replace('/lib-commonjs/', '/lib/');
+      const entryPath = path.join(packagePath, itemName);
 
       entries[`${packageName}-${entryName}`] = entryPath;
     }

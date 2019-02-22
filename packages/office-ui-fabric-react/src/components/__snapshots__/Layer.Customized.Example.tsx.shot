@@ -56,7 +56,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
-      id="checkbox-0"
+      id="checkbox-1"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -87,7 +87,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
             right: 0px;
             top: 0px;
           }
-      htmlFor="checkbox-0"
+      htmlFor="checkbox-1"
     >
       <div
         className=
@@ -195,7 +195,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
           }
-      id="checkbox-1"
+      id="checkbox-2"
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
@@ -226,7 +226,7 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
             right: 0px;
             top: 0px;
           }
-      htmlFor="checkbox-1"
+      htmlFor="checkbox-2"
     >
       <div
         className=
@@ -287,10 +287,9 @@ exports[`Component Examples renders Layer.Customized.Example.tsx correctly 1`] =
       </span>
     </label>
   </div>
-  <div />
   <div
     className="ms-LayerHost"
-    id="test"
+    id="layerHost0"
     style={
       Object {
         "border": "1px solid #ccc",

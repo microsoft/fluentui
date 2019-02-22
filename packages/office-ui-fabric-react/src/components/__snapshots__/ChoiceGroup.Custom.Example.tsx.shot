@@ -98,7 +98,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={false}
               id="ChoiceGroup0-A"
               name="ChoiceGroup0"
               onBlur={[Function]}
@@ -323,6 +322,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     className=
                         ms-Dropdown-caretDownWrapper
                         {
+                          cursor: pointer;
                           height: 32px;
                           line-height: 30px;
                           position: absolute;
@@ -394,7 +394,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={true}
               id="ChoiceGroup0-B"
               name="ChoiceGroup0"
               onBlur={[Function]}
@@ -520,7 +519,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={false}
               disabled={true}
               id="ChoiceGroup0-C"
               name="ChoiceGroup0"
@@ -632,7 +630,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     position: absolute;
                     top: 8px;
                   }
-              data-is-focusable={false}
               id="ChoiceGroup0-D"
               name="ChoiceGroup0"
               onBlur={[Function]}

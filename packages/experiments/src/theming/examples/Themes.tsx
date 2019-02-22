@@ -1,6 +1,6 @@
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
-import { IStackComponent, IStackStylesReturnType } from '@uifabric/experiments/lib/Stack';
 
+import { IStackComponent, IStackStylesReturnType } from 'office-ui-fabric-react/lib/Stack';
 import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 export const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({

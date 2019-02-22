@@ -39,7 +39,7 @@ function mockItems(count: number): any[] {
   return items;
 }
 
-const renderRow = (row: IDetailsRowProps) => <div>{row!.item.name}</div>;
+const renderRow = (row: IDetailsRowProps) => <div>{row.item.name}</div>;
 
 const mockProps: IDetailsListProps = {
   items: mockItems(5),

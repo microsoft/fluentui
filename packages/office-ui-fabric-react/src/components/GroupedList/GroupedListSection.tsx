@@ -66,7 +66,7 @@ export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedL
   items: any[];
 
   /** Optional list props to pass to list renderer.  */
-  listProps?: any;
+  listProps?: IListProps;
 
   /** Rendering callback to render the group items. */
   onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
@@ -316,7 +316,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     );
   }
 
-  private _renderSubGroup = (subGroup: any, subGroupIndex: number): JSX.Element | null => {
+  private _renderSubGroup = (subGroup: IGroup, subGroupIndex: number): JSX.Element | null => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -376,7 +376,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return 1;
   }
 
-  private _getGroupKey(group: any, index: number): string {
+  private _getGroupKey(group: IGroup, index: number): string {
     return 'group-' + (group && group.key ? group.key : String(group.level) + String(index));
   }
 

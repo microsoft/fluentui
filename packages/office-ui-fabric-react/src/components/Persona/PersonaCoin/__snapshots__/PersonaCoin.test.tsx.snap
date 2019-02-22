@@ -239,9 +239,9 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #eaeaea;
+              background-color: rgb(234, 234, 234);
               border-radius: 50%;
-              color: #a80000;
+              color: rgb(168, 0, 0);
               font-size: 17px;
               font-weight: 400;
               height: 48px;

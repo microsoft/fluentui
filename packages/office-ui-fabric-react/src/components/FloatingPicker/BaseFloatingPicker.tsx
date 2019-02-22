@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
 import { BaseComponent, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { IBaseFloatingPicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
+import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
@@ -167,7 +167,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           ref={this._resolveRef('suggestionsControl')}
           completeSuggestion={this.completeSuggestion}
           shouldLoopSelection={false}
-          {...this.props.pickerSuggestionsProps as IBaseFloatingPickerSuggestionProps}
+          {...this.props.pickerSuggestionsProps}
         />
       </Callout>
     ) : null;
