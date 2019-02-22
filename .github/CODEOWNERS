@@ -127,7 +127,6 @@ TeachingBubble/   @micahgodbolt
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
-experiments/src/components/Button/  @khmakoto
 experiments/src/components/Card/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/  @micahgodbolt
@@ -135,7 +134,7 @@ Tooltip/  @micahgodbolt
 ## Docs
 # ActivityItem/docs/
 # Breadcrumb/docs/
-# Button/docs/
+Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
