@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Feb 2019 13:31:09 GMT and should not be manually modified.
+
+## 6.10.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Icon Page: updated directions for adding dir tag
+- Fix usage of 'ms-text-align'
 
 ## 6.10.0
 Fri, 15 Feb 2019 17:41:16 GMT
