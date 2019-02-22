@@ -53,17 +53,29 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
           borderBottomRightRadius: '0'
         },
         '.ms-Button--primary': {
+          borderTopRightRadius: '0',
+          borderBottomRightRadius: '0',
           border: 'none',
-          backgroundColor: palette.themePrimary
+          backgroundColor: palette.themePrimary,
+          selectors: {
+            ':hover': {
+              background: palette.themeDarkAlt
+            }
+          }
         },
         '.ms-Button--primary + .ms-Button': {
           backgroundColor: palette.themePrimary,
-          border: 'none'
+          border: 'none',
+          selectors: {
+            ':hover': {
+              background: palette.themeDarkAlt
+            }
+          }
         },
         '.ms-Button.is-disabled': {
           backgroundColor: palette.neutralLighter
         },
-        '.ms-Button.is-disabled + .ms-Button': {
+        '.ms-Button.is-disabled + .ms-Button.is-disabled': {
           backgroundColor: palette.neutralLighter,
           border: 'none'
         }
