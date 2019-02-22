@@ -32,7 +32,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button content="Default button" onClick={alertClicked} />
                 <Button disabled content="Disabled default button" onClick={alertClicked} />
                 <Button primary content="Primary button" onClick={alertClicked} />
-                <Button disabled primary content="Primary disabled button" onClick={alertClicked} />
+                <Button primary disabled content="Disabled primary button" onClick={alertClicked} />
               </ButtonStack>
               <ButtonStack>
                 <Button split icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
@@ -43,7 +43,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                   disabled
                   primary
                   icon="Add"
-                  content="Primary disabled split button"
+                  content="Disabled primary split button"
                   menu={buttonMenu}
                   onClick={alertClicked}
                 />

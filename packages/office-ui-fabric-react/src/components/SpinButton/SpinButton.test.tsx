@@ -642,4 +642,14 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
     expect(onValidate).toHaveBeenCalledTimes(2);
   });
+
+  it('allows adding a custom aria-describedby id to the input', () => {
+    const customId = 'customAriaDescriptionId';
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" ariaDescribedBy={customId} />);
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    const ariaDescribedByAttribute = inputDOM.getAttribute('aria-describedby');
+    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
+  });
 });

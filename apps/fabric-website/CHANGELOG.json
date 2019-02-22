@@ -2,6 +2,33 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.10.1",
+      "tag": "@uifabric/fabric-website_v6.10.1",
+      "date": "Fri, 22 Feb 2019 13:31:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Page: updated directions for adding dir tag",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "55668e1836ac86a92e3c2bee3ce800b66242a83f"
+          },
+          {
+            "comment": "Fix usage of 'ms-text-align'",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a0633a7c307576ed0feeefe8d5a1364071fba4f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.59.0 <7.0.0` to `>=6.59.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.142.1 <7.0.0` to `>=6.143.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.0",
       "tag": "@uifabric/fabric-website_v6.10.0",
       "date": "Fri, 15 Feb 2019 17:41:16 GMT",
