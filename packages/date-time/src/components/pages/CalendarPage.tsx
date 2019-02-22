@@ -3,7 +3,7 @@ import { ExampleCard, ComponentPage, PropertiesTableSet, PageMarkdown } from '@u
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { CalendarButtonExample } from '../Calendar/examples/Calendar.Button.Example';
 import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Example';
-import { addMonths, addYears } from '../../utilities/dateMath/DateMath';
+import { addMonths, addYears, addDays } from '../../utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarButtonExampleCodepen = require('!raw-loader!@uifabric/date-time/lib/codepen/components/Calendar/Calendar.Button.Example.Codepen.txt') as string;
@@ -95,7 +95,10 @@ export class CalendarPage extends React.Component<{}, {}> {
                 isDayPickerVisible={false}
               />
             </ExampleCard>
-            <ExampleCard title="Inline Calendar with date boundary (minDate, maxDate)" code={CalendarInlineExampleCode}>
+            <ExampleCard
+              title="Inline Calendar with date boundary (minDate, maxDate) and disabled dates (restrictedDates)"
+              code={CalendarInlineExampleCode}
+            >
               <CalendarInlineExample
                 dateRangeType={DateRangeType.Day}
                 autoNavigateOnSelection={true}
@@ -104,6 +107,7 @@ export class CalendarPage extends React.Component<{}, {}> {
                 showGoToToday={false}
                 minDate={addMonths(today, -1)}
                 maxDate={addYears(today, 1)}
+                restrictedDates={[addDays(today, -2), addDays(today, -8), addDays(today, 2), addDays(today, 8)]}
               />
             </ExampleCard>
             <ExampleCard
