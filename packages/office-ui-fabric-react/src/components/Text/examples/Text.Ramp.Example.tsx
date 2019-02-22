@@ -48,7 +48,8 @@ export class TextRampExample extends React.Component<{}, ITextRampExampleState> 
     super(props);
 
     this._allItems = [];
-    Variants.map((setting: ISetting<keyof IFontStyles>, index: number) =>
+
+    Variants.forEach((setting: ISetting<keyof IFontStyles>, index: number) =>
       this._allItems.push({
         key: setting.name + index,
         variant: setting.name,
