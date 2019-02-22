@@ -33,7 +33,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
   private _isFocusActive: boolean;
-  private _activeElement: Element | undefined;
+  private _activeElement: HTMLElement | undefined;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -253,13 +253,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       }
 
       if (
+        document.activeElement &&
         this.nonStickyContent.contains(document.activeElement) &&
         (this.state.isStickyTop !== isStickyTop || this.state.isStickyBottom !== isStickyBottom)
       ) {
         this._isFocusActive = true;
-        if (document.activeElement) {
-          this._activeElement = document.activeElement;
-        }
+        this._activeElement = document.activeElement as HTMLElement;
       } else {
         this._isFocusActive = false;
       }
