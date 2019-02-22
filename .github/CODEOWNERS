@@ -72,7 +72,7 @@ Accordion/ @JasonGore
 Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
-# Checkbox/
+# Checkbox/ @cliffkoh
 ChoiceGroup/   @srideshpande
 CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
@@ -93,7 +93,8 @@ GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
-# Label/
+Layer/  @ThomasMichon @JasonGore
+# Label/ @cliffkoh
 Layer/  @ThomasMichon @JasonGore
 # Link/
 List/ @KevinTCoughlin
