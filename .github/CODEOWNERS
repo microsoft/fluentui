@@ -71,7 +71,7 @@ dateValues/   @OfficeDev/uifabric-calendar
 Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
-# Checkbox/
+# Checkbox/ @cliffkoh
 ChoiceGroup/   @srideshpande
 ColorPicker/ @ecraig12345
 # ComboBox/
@@ -91,7 +91,7 @@ GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
-# Label/
+# Label/ @cliffkoh
 Layer/  @ThomasMichon
 # Link/
 List/ @KevinTCoughlin
