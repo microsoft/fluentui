@@ -68,7 +68,7 @@ dateValues/   @OfficeDev/uifabric-calendar
 Accordion/ @JasonGore
 # ActivityItem/
 # Breadcrumb/
-# Button/
+Button/  @khmakoto
 Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
@@ -93,7 +93,6 @@ GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
-Layer/  @ThomasMichon @JasonGore
 # Label/ @cliffkoh
 Layer/  @ThomasMichon @JasonGore
 # Link/
@@ -120,7 +119,7 @@ Signals/ @ThomasMichon
 # Slider/
 # SpinButton/   @aneeshack4
 # Spinner/
-Stack/   @khmakoto @kkjeer
+Stack/  @khmakoto @kkjeer
 # SwatchColorPicker/
 TeachingBubble/   @micahgodbolt
 # TextField/
@@ -128,14 +127,14 @@ TeachingBubble/   @micahgodbolt
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
-experiments/src/components/Button/  @khmakoto
+experiments/src/components/Card/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/  @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
 # Breadcrumb/docs/
-# Button/docs/
+Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
@@ -180,6 +179,7 @@ ResizeGroup/docs/  @micahgodbolt
 # Slider/docs/
 # SpinButton/docs/
 # Spinner/docs/
+Stack/docs/  @khmakoto
 # SwatchColorPicker/docs/
 TeachingBubble/docs/   @micahgodbolt
 # TextField/docs/
