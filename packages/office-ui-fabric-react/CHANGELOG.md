@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 21 Feb 2019 13:32:08 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Feb 2019 13:31:09 GMT and should not be manually modified.
+
+## 6.143.0
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Minor changes
+
+- DetailsRow & DetailsRowFields: onRenderItemColumn return type as React.ReactNode
+- Pivot: Add new stylable area for Pivot item container div.
+- Add aria-describedby prop to Combo Box and Spin Button
+
+### Patches
+
+- Fix usage of 'ms-text-align'
 
 ## 6.142.1
 Thu, 21 Feb 2019 13:32:08 GMT

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 21 Feb 2019 13:32:08 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Feb 2019 13:31:09 GMT and should not be manually modified.
+
+## 6.59.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Button: Fixing focus outline and border on circular buttons.
+- Fix RTL handling in SignalsField
 
 ## 6.59.0
 Thu, 21 Feb 2019 13:32:08 GMT

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix usage of 'ms-text-align'",
+      "comment": "Pivot: Removed mention of pivot overflow which is not implemented",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }
