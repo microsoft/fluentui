@@ -12,15 +12,20 @@ export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, ITogg
       controlledProps: ['checked', 'text'],
       transformViewProps: (newProps: IToggleViewProps) => {
         newProps.text = newProps.checked ? props.onText : props.offText;
+
+        // If the user provides an ariaLabel, then let that be the label for the Toggle.
+        if (!props.ariaLabel) {
+          const ariaLabelText = typeof props.label === 'string' ? props.label : '';
+          const ariaCheckedText = newProps.checked ? props.onText : props.offText;
+          const ariaSeparator = ariaLabelText && ariaCheckedText ? ': ' : '';
+          newProps.ariaLabel = ariaLabelText + ariaSeparator + (ariaCheckedText ? ariaCheckedText : '');
+        }
+
         return newProps;
       }
     });
 
-    let label: string = typeof props.label === 'string' ? props.label : 'No label';
-    label += !!props.defaultChecked ? ': On' : ': Off';
-
     this.state = {
-      ariaLabel: props.ariaLabel ? props.ariaLabel : label,
       checked: !!props.defaultChecked,
       text: !!props.defaultChecked ? props.onText : props.offText,
       onChange: this._noop,
@@ -36,15 +41,12 @@ export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, ITogg
   };
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    const { label, disabled, onChange } = this.props;
+    const { disabled, onChange } = this.props;
     const { checked } = this.state;
 
     if (!disabled) {
-      let ariaLabel: string = typeof label === 'string' ? label : 'No label';
-      ariaLabel += !checked ? ': On' : ': Off';
-
       // Only update the state if the user hasn't provided it.
-      this.setState({ ariaLabel: ariaLabel, checked: !checked });
+      this.setState({ checked: !checked });
 
       if (onChange) {
         onChange(ev, !checked);

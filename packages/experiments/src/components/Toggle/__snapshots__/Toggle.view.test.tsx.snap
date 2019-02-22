@@ -52,7 +52,7 @@ exports[`ToggleView renders toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
-      aria-label="Label: Off"
+      aria-label="Label"
       className=
           ms-Toggle-background
           {
