@@ -32,7 +32,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _stickyContentBottom = React.createRef<HTMLDivElement>();
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
-  private _isFocusActive: boolean;
   private _activeElement: HTMLElement | undefined;
 
   constructor(props: IStickyProps) {
@@ -42,7 +41,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom: false
     };
     this.distanceFromTop = 0;
-    this._isFocusActive = false;
     this._activeElement = undefined;
   }
 
@@ -112,11 +110,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     if (prevState.isStickyTop !== this.state.isStickyTop || prevState.isStickyBottom !== this.state.isStickyBottom) {
-      if (this._isFocusActive) {
-        const activeElement = this._activeElement;
-        if (activeElement) {
-          activeElement.focus();
-        }
+      if (this._activeElement) {
+        this._activeElement.focus();
       }
       scrollablePane.updateStickyRefHeights();
       // Sync Sticky scroll position with content container on each update
@@ -257,10 +252,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         this.nonStickyContent.contains(document.activeElement) &&
         (this.state.isStickyTop !== isStickyTop || this.state.isStickyBottom !== isStickyBottom)
       ) {
-        this._isFocusActive = true;
         this._activeElement = document.activeElement as HTMLElement;
       } else {
-        this._isFocusActive = false;
+        this._activeElement = undefined;
       }
 
       this.setState({
