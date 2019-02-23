@@ -188,7 +188,7 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
   // (undocumented)
   protected onInputChange: (value: string) => void;
   // (undocumented)
-  protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill>) => void;
+  protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
   // (undocumented)
   protected onInputFocus: (ev: React.FocusEvent<HTMLInputElement | Autofill>) => void;
   // (undocumented)
@@ -249,9 +249,9 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   // (undocumented)
   protected onSelectionChange(): void;
   // (undocumented)
-  protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
+  protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
   // (undocumented)
-  protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
+  protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
@@ -352,9 +352,9 @@ class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBas
   // (undocumented)
   protected onSelectionChange(): void;
   // (undocumented)
-  protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: any, index: number) => void;
+  protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: any, index: number) => void;
   // (undocumented)
-  protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number) => void;
+  protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: IPersonaProps, index: number) => void;
   // (undocumented)
   protected onSuggestionSelect(): void;
   // (undocumented)
@@ -595,7 +595,7 @@ class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState>, imp
   // (undocumented)
   static defaultProps: Partial<ICoachmarkProps>;
   // (undocumented)
-  dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+  dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
@@ -1369,8 +1369,11 @@ export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLE
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
 
-// @public
+// @public @deprecated
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
+
+// @public
+export function getFocusStyles(theme: ITheme, options?: IGetFocusStylesOptions): IRawStyle;
 
 // @public
 export function getFullColorString(color: IColor): string;
@@ -2072,6 +2075,7 @@ interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLB
   className?: string;
   componentRef?: IRefObject<IButton>;
   data?: any;
+  defaultRender?: any;
   // @deprecated
   description?: IStyle;
   disabled?: boolean;
@@ -2575,6 +2579,7 @@ interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   beakHeight?: number;
   // @deprecated
   beakWidth?: number;
+  children?: any;
   className?: string;
   // @deprecated
   collapsed?: boolean;
@@ -2901,7 +2906,7 @@ interface IComboBoxOptionStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
+interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
   allowFreeform?: boolean;
   ariaDescribedBy?: string;
   autoComplete?: 'on' | 'off';
@@ -7091,6 +7096,7 @@ interface IDialogContent {
 
 // @public (undocumented)
 interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
+  children?: any;
   className?: string;
   closeButtonAriaLabel?: string;
   componentRef?: IRefObject<IDialogContent>;
@@ -7937,7 +7943,7 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   direction?: FocusZoneDirection;
   disabled?: boolean;
   doNotAllowFocusEventToPropagate?: boolean;
-  elementType?: keyof React.ReactHTML;
+  elementType?: any;
   handleTabKey?: FocusZoneTabbableElements;
   isCircularNavigation?: boolean;
   isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
@@ -7996,6 +8002,16 @@ interface IGenericItem {
   primaryText: string;
   // (undocumented)
   ValidationState: ValidationState;
+}
+
+// @public (undocumented)
+interface IGetFocusStylesOptions {
+  borderColor?: string;
+  highContrastStyle?: IRawStyle;
+  inset?: number;
+  isFocusedOnly?: boolean;
+  outlineColor?: string;
+  position?: 'relative' | 'absolute';
 }
 
 // @public (undocumented)
@@ -8842,6 +8858,7 @@ interface IModal {
 
 // @public (undocumented)
 interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+  children?: any;
   className?: string;
   componentRef?: IRefObject<IModal>;
   containerClassName?: string;
@@ -10000,7 +10017,7 @@ interface ISearchBoxStyles {
 }
 
 // @public
-interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponent> extends React.HTMLAttributes<TListenerElement> {
+interface ISelectableDroppableTextProps<TComponent, TListenerElement> extends React.HTMLAttributes<TListenerElement> {
   ariaLabel?: string;
   calloutProps?: ICalloutProps;
   className?: string;
@@ -10010,9 +10027,9 @@ interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponen
   errorMessage?: string;
   id?: string;
   label?: string;
-  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
   onRenderItem?: IRenderFunction<ISelectableOption>;
-  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
   onRenderOption?: IRenderFunction<ISelectableOption>;
   options?: any;
   panelProps?: IPanelProps;
@@ -10979,6 +10996,7 @@ interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase 
   ariaDescribedBy?: string;
   ariaLabelledBy?: string;
   calloutProps?: ICalloutProps;
+  children?: any;
   componentRef?: IRefObject<ITeachingBubble>;
   hasCloseIcon?: boolean;
   hasCondensedHeadline?: boolean;
@@ -11852,9 +11870,9 @@ class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPo
   // (undocumented)
   static defaultProps: IPositioningContainerProps;
   // @deprecated
-  dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+  dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
   // (undocumented)
-  onResize: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+  onResize: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
   // (undocumented)
   render(): JSX.Element | null;
 }
@@ -11881,9 +11899,6 @@ class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
   // (undocumented)
   render(): JSX.Element;
 }
-
-// @public @deprecated (undocumented)
-export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public (undocumented)
 class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
@@ -12618,6 +12633,7 @@ class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBu
   constructor(props: ITeachingBubbleProps);
   // (undocumented)
   static defaultProps: {
+    // @deprecated
     calloutProps: {
       beakWidth: number;
       directionalHint: 12;
