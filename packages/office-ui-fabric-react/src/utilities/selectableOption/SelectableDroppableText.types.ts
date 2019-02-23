@@ -43,6 +43,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
   /**
    * The key(s) of the selected item. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
+   * Note that passing in `null` will cause selection to be reset.
    */
   selectedKey?: string | number | string[] | number[] | null;
 
