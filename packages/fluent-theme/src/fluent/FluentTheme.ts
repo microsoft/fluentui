@@ -4,7 +4,6 @@ import { Depths } from './FluentDepths';
 
 export const FluentTheme: ITheme = createTheme({
   palette: {
-    black: NeutralColors.black,
     neutralDark: NeutralColors.gray190,
     neutralPrimary: NeutralColors.gray160,
     neutralPrimaryAlt: NeutralColors.gray150,
@@ -17,7 +16,6 @@ export const FluentTheme: ITheme = createTheme({
     neutralLight: NeutralColors.gray30,
     neutralLighter: NeutralColors.gray20,
     neutralLighterAlt: NeutralColors.gray10,
-    white: NeutralColors.white,
     // Shared Colors
     red: SharedColors.red10,
     redDark: SharedColors.red20
