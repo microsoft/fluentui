@@ -10,11 +10,9 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
   return {
     root: {
       borderRadius: effects.roundedCorner2, // the bound input box
-      borderColor: palette.neutralTertiary,
       paddingLeft: 8
     },
     rootHovered: {
-      borderColor: palette.neutralPrimary,
       selectors: {
         '.ms-ComboBox-Input': {
           color: palette.neutralDark

@@ -28,11 +28,7 @@ export const SpinButtonStyles = (props: ISpinButtonProps): Partial<ISpinButtonSt
 
   return {
     spinButtonWrapper: {
-      borderRadius: effects.roundedCorner2,
-      borderColor: palette.neutralTertiary
-    },
-    spinButtonWrapperHovered: {
-      borderColor: palette.neutralPrimary
+      borderRadius: effects.roundedCorner2
     },
     input: {
       padding: '0 8px',
