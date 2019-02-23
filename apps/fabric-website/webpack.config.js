@@ -9,11 +9,11 @@ module.exports = function(env) {
   // Production defaults
   let minFileNamePart = '';
   let entryPointName = 'fabric-sitev5';
-  let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  let publicPath = '/'; // https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
   // Dogfood overrides
   if (isDogfoodArg) {
-    publicPath = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
+    publicPath = '/'; //https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
     entryPointName = 'fabric-sitev5-df';
   } else if (!isProductionArg) {
     publicPath = '/dist/';
