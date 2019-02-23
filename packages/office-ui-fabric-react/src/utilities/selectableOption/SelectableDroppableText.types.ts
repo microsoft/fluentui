@@ -44,7 +44,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
    * The key(s) of the selected item. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
    */
-  selectedKey?: string | number | string[] | number[];
+  selectedKey?: string | number | string[] | number[] | null;
 
   /**
    * Collection of options for this ISelectableDroppableText
