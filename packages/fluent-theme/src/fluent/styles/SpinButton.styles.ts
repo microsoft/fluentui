@@ -1,5 +1,3 @@
-import { fluentBorderRadius } from './styleConstants';
-import { NeutralColors } from '../FluentColors';
 import { ISpinButtonStyles, ISpinButtonProps } from 'office-ui-fabric-react/lib/SpinButton';
 
 export const SpinButtonStyles = (props: ISpinButtonProps): Partial<ISpinButtonStyles> => {
@@ -8,7 +6,7 @@ export const SpinButtonStyles = (props: ISpinButtonProps): Partial<ISpinButtonSt
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   const buttonStyles = {
     color: palette.neutralSecondary,
@@ -30,8 +28,8 @@ export const SpinButtonStyles = (props: ISpinButtonProps): Partial<ISpinButtonSt
 
   return {
     spinButtonWrapper: {
-      borderRadius: fluentBorderRadius,
-      borderColor: NeutralColors.gray80
+      borderRadius: effects.roundedCorner2,
+      borderColor: palette.neutralTertiary
     },
     spinButtonWrapperHovered: {
       borderColor: palette.neutralPrimary
@@ -39,18 +37,18 @@ export const SpinButtonStyles = (props: ISpinButtonProps): Partial<ISpinButtonSt
     input: {
       padding: '0 8px',
       width: `calc(100% - ${SPIN_BUTTON_WIDTH}px)`, // -23px because buttons width changed
-      borderRadius: `${fluentBorderRadius} 0 0 ${fluentBorderRadius}`
+      borderRadius: `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
     },
     arrowButtonsContainer: {
       selectors: {
         // No direct style section available so need to target a global className
         '.ms-DownButton': {
           ...buttonStyles,
-          borderRadius: `0 0 ${fluentBorderRadius} 0`
+          borderRadius: `0 0 ${effects.roundedCorner2} 0`
         },
         '.ms-UpButton': {
           ...buttonStyles,
-          borderRadius: `0 ${fluentBorderRadius} 0 0`
+          borderRadius: `0 ${effects.roundedCorner2} 0 0`
         }
       }
     }

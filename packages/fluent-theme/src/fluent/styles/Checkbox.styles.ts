@@ -1,14 +1,13 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
-import { fluentBorderRadius } from './styleConstants';
 
 export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
   const { disabled, checked, theme } = props;
-  const { semanticColors, palette } = theme;
+  const { semanticColors, palette, effects } = theme;
 
   return {
     checkbox: [
       {
-        borderRadius: fluentBorderRadius,
+        borderRadius: effects.roundedCorner2,
         borderColor: palette.neutralPrimary
       },
       !disabled &&

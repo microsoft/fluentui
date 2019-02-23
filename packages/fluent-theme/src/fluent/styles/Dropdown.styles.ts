@@ -1,7 +1,5 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { fluentBorderRadius } from './styleConstants';
-import { NeutralColors } from '../FluentColors';
 import { Depths } from '../FluentDepths';
 import { IStyle } from '@uifabric/styling';
 
@@ -12,18 +10,18 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');
   }
 
-  const { palette } = theme;
+  const { palette, effects } = theme;
   const ITEM_HEIGHT = '36px';
 
   const titleOpenBorderRadius =
     calloutRenderEdge === RectangleEdge.bottom
-      ? `${fluentBorderRadius} ${fluentBorderRadius} 0 0`
-      : `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`;
+      ? `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`
+      : `0 0 ${effects.roundedCorner2} ${effects.roundedCorner2}`;
 
   const calloutOpenBorderRadius =
     calloutRenderEdge === RectangleEdge.bottom
-      ? `0 0 ${fluentBorderRadius} ${fluentBorderRadius}`
-      : `${fluentBorderRadius} ${fluentBorderRadius} 0 0`;
+      ? `0 0 ${effects.roundedCorner2} ${effects.roundedCorner2}`
+      : `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`;
 
   const commonItemStyles: IStyle = {
     minHeight: ITEM_HEIGHT,
@@ -100,8 +98,8 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     ],
     title: [
       {
-        borderColor: NeutralColors.gray80,
-        borderRadius: isOpen ? titleOpenBorderRadius : fluentBorderRadius,
+        borderColor: palette.neutralTertiary,
+        borderRadius: isOpen ? titleOpenBorderRadius : effects.roundedCorner2,
         padding: `0 28px 0 8px`
       },
       hasError && { borderColor: !isOpen ? palette.red : palette.redDark },

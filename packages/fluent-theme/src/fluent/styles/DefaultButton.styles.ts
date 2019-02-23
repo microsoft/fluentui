@@ -1,4 +1,3 @@
-import { fluentBorderRadius } from './styleConstants';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
@@ -7,11 +6,11 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     root: {
-      borderRadius: fluentBorderRadius,
+      borderRadius: effects.roundedCorner2,
       backgroundColor: palette.white,
       border: `1px solid ${palette.neutralSecondaryAlt}`,
       ...getFocusStyle(theme, 1)
@@ -36,8 +35,8 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
     },
     splitButtonMenuButton: {
       background: 'transparent',
-      borderTopRightRadius: fluentBorderRadius,
-      borderBottomRightRadius: fluentBorderRadius,
+      borderTopRightRadius: effects.roundedCorner2,
+      borderBottomRightRadius: effects.roundedCorner2,
       border: `1px solid ${palette.neutralSecondaryAlt}`,
       borderLeft: 'none'
     },

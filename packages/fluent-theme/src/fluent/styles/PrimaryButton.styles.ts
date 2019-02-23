@@ -1,4 +1,3 @@
-import { fluentBorderRadius } from './styleConstants';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export const PrimaryButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
@@ -6,11 +5,11 @@ export const PrimaryButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     root: {
-      borderRadius: fluentBorderRadius,
+      borderRadius: effects.roundedCorner2,
       border: 'none',
       backgroundColor: palette.themePrimary,
       color: palette.white

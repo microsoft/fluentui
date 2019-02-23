@@ -1,6 +1,4 @@
-import { fluentBorderRadius } from './styleConstants';
 import { Depths } from '../FluentDepths';
-import { NeutralColors } from '../FluentColors';
 import { IComboBoxStyles, IComboBoxProps } from 'office-ui-fabric-react/lib/ComboBox';
 
 export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> => {
@@ -8,12 +6,12 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     root: {
-      borderRadius: fluentBorderRadius, // the bound input box
-      borderColor: NeutralColors.gray80,
+      borderRadius: effects.roundedCorner2, // the bound input box
+      borderColor: palette.neutralTertiary,
       paddingLeft: 8
     },
     rootHovered: {
@@ -28,11 +26,11 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
       borderColor: palette.red // current structure of ComboBox does not allow to change the hover/focus color when has error
     },
     callout: {
-      borderRadius: fluentBorderRadius,
+      borderRadius: effects.roundedCorner2,
       border: 'none',
       boxShadow: Depths.depth8,
       selectors: {
-        '.ms-Callout-main': { borderRadius: fluentBorderRadius }
+        '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }
       }
     },
     header: {

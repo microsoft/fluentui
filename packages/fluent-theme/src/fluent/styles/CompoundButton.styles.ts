@@ -1,4 +1,3 @@
-import { fluentBorderRadius } from './styleConstants';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
@@ -7,14 +6,14 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     root: {
       ...getFocusStyle(theme, 2),
       backgroundColor: palette.white,
       border: `1px solid ${palette.neutralSecondaryAlt}`,
-      borderRadius: fluentBorderRadius,
+      borderRadius: effects.roundedCorner2,
       padding: '16px 12px',
 
       // Primary styles require targeting a selector for now.

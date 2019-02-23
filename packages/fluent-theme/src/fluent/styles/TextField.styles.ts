@@ -1,20 +1,18 @@
 import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { fluentBorderRadius } from './styleConstants';
-import { NeutralColors } from '../FluentColors';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     fieldGroup: [
       {
-        borderRadius: fluentBorderRadius
+        borderRadius: effects.roundedCorner2
       },
       !focused &&
         !disabled &&
         !hasErrorMessage && {
-          borderColor: NeutralColors.gray80,
+          borderColor: palette.neutralTertiary,
           selectors: {
             ':hover': {
               borderColor: palette.neutralPrimary
