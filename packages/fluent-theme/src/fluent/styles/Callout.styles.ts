@@ -2,9 +2,6 @@ import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabr
 
 export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<ICalloutContentStyles> => {
   const { theme } = props;
-  if (!theme) {
-    throw new Error('Theme is undefined or null.');
-  }
   const { effects } = theme;
 
   return {

@@ -2,9 +2,6 @@ import { ITagItemStyleProps, ITagItemStyles } from 'office-ui-fabric-react/lib/P
 
 export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles> => {
   const { theme } = props;
-  if (!theme) {
-    throw new Error('Theme is undefined or null.');
-  }
   const { effects } = theme;
 
   return {

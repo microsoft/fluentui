@@ -4,11 +4,9 @@ import { IStyle } from '@uifabric/styling';
 
 export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownStyles> => {
   const { disabled, hasError, isOpen, calloutRenderEdge, theme, isRenderingPlaceholder } = props;
-
   if (!theme) {
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');
   }
-
   const { palette, effects } = theme;
   const ITEM_HEIGHT = '36px';
 
