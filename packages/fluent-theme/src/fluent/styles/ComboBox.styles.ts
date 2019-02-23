@@ -1,4 +1,3 @@
-import { Depths } from '../FluentDepths';
 import { IComboBoxStyles, IComboBoxProps } from 'office-ui-fabric-react/lib/ComboBox';
 
 export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> => {
@@ -28,7 +27,7 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
     callout: {
       borderRadius: effects.roundedCorner2,
       border: 'none',
-      boxShadow: Depths.depth8,
+      boxShadow: effects.elevation8,
       selectors: {
         '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }
       }

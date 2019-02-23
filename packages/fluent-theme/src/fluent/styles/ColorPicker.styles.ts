@@ -6,7 +6,6 @@ import {
   IColorSliderStyleProps,
   IColorSliderStyles
 } from 'office-ui-fabric-react/lib/ColorPicker';
-import { Depths } from '../FluentDepths';
 
 export const ColorPickerStyles = (props: IColorPickerStyleProps): Partial<IColorPickerStyles> => {
   return {
@@ -50,7 +49,7 @@ export const ColorRectangleStyles = (props: IColorRectangleStyleProps): Partial<
     },
     thumb: {
       borderColor: palette.neutralTertiary,
-      boxShadow: Depths.depth8
+      boxShadow: effects.elevation8
     }
   };
 };
@@ -66,7 +65,7 @@ export const ColorSliderStyles = (props: IColorSliderStyleProps): Partial<IColor
     },
     sliderThumb: {
       borderColor: palette.neutralTertiary,
-      boxShadow: Depths.depth8
+      boxShadow: effects.elevation8
     }
   };
 };

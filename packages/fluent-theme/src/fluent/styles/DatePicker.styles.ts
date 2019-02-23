@@ -1,5 +1,4 @@
 import { IDatePickerStyleProps, IDatePickerStyles } from 'office-ui-fabric-react/lib/DatePicker';
-import { Depths } from '../FluentDepths';
 
 export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {
   const { theme } = props;
@@ -12,7 +11,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     callout: {
       border: 'none',
       borderRadius: effects.roundedCorner2,
-      boxShadow: Depths.depth8,
+      boxShadow: effects.elevation8,
       selectors: {
         '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }
       }

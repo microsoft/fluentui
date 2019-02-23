@@ -6,7 +6,6 @@ import {
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 import { MinimumScreenSelector } from './styleConstants';
-import { Depths } from '../FluentDepths';
 import { FontSizes } from '../FluentType';
 
 export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
@@ -32,7 +31,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
         root: {
           border: 'none',
           borderRadius: effects.roundedCorner2,
-          boxShadow: Depths.depth8,
+          boxShadow: effects.elevation8,
           selectors: {
             ['.ms-Callout-main']: { borderRadius: effects.roundedCorner2 }
           }

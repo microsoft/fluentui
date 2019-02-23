@@ -1,4 +1,3 @@
-import { Depths } from '../FluentDepths';
 import { IModalStyles, IModalProps } from 'office-ui-fabric-react/lib/Modal';
 
 export const ModalStyles = (props: IModalProps): Partial<IModalStyles> => {
@@ -10,7 +9,7 @@ export const ModalStyles = (props: IModalProps): Partial<IModalStyles> => {
 
   return {
     main: {
-      boxShadow: Depths.depth64,
+      boxShadow: effects.elevation64,
       borderRadius: effects.roundedCorner2
     }
   };

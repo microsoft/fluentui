@@ -4,7 +4,6 @@ import {
   IPlainCardStyleProps,
   IPlainCardStyles
 } from 'office-ui-fabric-react/lib/HoverCard';
-import { Depths } from '../FluentDepths';
 
 const commonCardStyles = (props: IExpandingCardStyleProps | IPlainCardStyleProps) => {
   const { theme } = props;
@@ -15,7 +14,7 @@ const commonCardStyles = (props: IExpandingCardStyleProps | IPlainCardStyleProps
 
   return {
     border: 'none',
-    boxShadow: Depths.depth16,
+    boxShadow: effects.elevation16,
     borderRadius: effects.roundedCorner2,
     selectors: {
       '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }

@@ -1,6 +1,5 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { RectangleEdge } from 'office-ui-fabric-react/lib/utilities/positioning';
-import { Depths } from '../FluentDepths';
 import { IStyle } from '@uifabric/styling';
 
 export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownStyles> => {
@@ -118,7 +117,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     callout: {
       border: 'none',
       borderRadius: calloutOpenBorderRadius,
-      boxShadow: Depths.depth8,
+      boxShadow: effects.elevation8,
       selectors: {
         ['.ms-Callout-main']: { borderRadius: calloutOpenBorderRadius }
       }
