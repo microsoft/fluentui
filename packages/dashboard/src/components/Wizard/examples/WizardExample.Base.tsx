@@ -17,7 +17,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
     const testFooter = (
       <>
         <DefaultButton>Back</DefaultButton>
-        <PrimaryButton>Next</PrimaryButton>
+        <PrimaryButton onClick={this._goToNextStep}>Next</PrimaryButton>
         <DefaultButton>Exit Wizard</DefaultButton>
       </>
     );

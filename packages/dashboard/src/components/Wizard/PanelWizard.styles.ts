@@ -6,7 +6,8 @@ export const defaultPanelStyleSet = (theme: ITheme): Partial<IPanelStyles> => {
   return {
     content: {
       height: '100%',
-      padding: 0
+      padding: 0,
+      overflow: 'hidden'
     },
     commands: {
       display: 'flex',
@@ -38,7 +39,7 @@ export const getPanelWizardStyles = (props: IPanelWizardStyleProps): IPanelWizar
       flexDirection: 'row'
     },
     titleElementContainer: {
-      flex: 1,
+      flex: '1 1 0%',
       padding: '11px 0 0 48px'
     }
   };
