@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getFocusStyle } from '../../Styling';
+import { getGlobalClassNames, getFocusStyles } from '../../Styling';
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 import { HEADER_HEIGHT } from './DetailsHeader.styles';
@@ -24,7 +24,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
     check: [
       !canSelect && classNames.isDisabled,
       isHeader && classNames.isHeader,
-      getFocusStyle(theme),
+      getFocusStyles(theme),
       theme.fonts.small,
       {
         display: 'flex',

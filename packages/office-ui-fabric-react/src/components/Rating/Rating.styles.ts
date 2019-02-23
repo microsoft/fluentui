@@ -1,4 +1,4 @@
-import { getFocusStyle, hiddenContentStyle, HighContrastSelector, getGlobalClassNames } from '../../Styling';
+import { getFocusStyles, hiddenContentStyle, HighContrastSelector, getGlobalClassNames } from '../../Styling';
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const GlobalClassNames = {
@@ -103,7 +103,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
     ],
     ratingButton: [
-      getFocusStyle(theme, 0),
+      getFocusStyles(theme),
       classNames.ratingButton,
       {
         backgroundColor: 'transparent',

@@ -1,5 +1,5 @@
 import { fluentBorderRadius } from './styleConstants';
-import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyles } from 'office-ui-fabric-react/lib/Styling';
 import FluentTheme from '../FluentTheme';
 import { NeutralColors, CommunicationColors } from '../FluentColors';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
@@ -12,7 +12,7 @@ export const DefaultButtonStyles: Partial<IButtonStyles> = {
     borderRadius: fluentBorderRadius,
     backgroundColor: NeutralColors.white,
     border: `1px solid ${NeutralColors.gray110}`,
-    ...getFocusStyle(FluentTheme, 1)
+    ...getFocusStyles(FluentTheme, { inset: 1 })
   },
   rootHovered: {
     backgroundColor: NeutralColors.gray20,

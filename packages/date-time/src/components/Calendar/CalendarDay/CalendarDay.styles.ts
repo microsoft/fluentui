@@ -1,5 +1,5 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
+import { normalize, FontSizes, FontWeights, getFocusStyles, getGlobalClassNames } from '@uifabric/styling';
 import { DateRangeType } from '../../../utilities/dateValues/DateValues';
 
 const GlobalClassNames = {
@@ -43,7 +43,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       width: '100%'
     },
     monthAndYear: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyles(theme, { inset: -1 }),
       {
         alignItems: 'center',
         fontSize: FontSizes.medium,
@@ -85,7 +85,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       alignSelf: 'flex-end'
     },
     headerIconButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyles(theme, { inset: -1 }),
       {
         width: 28,
         height: 28,
@@ -160,7 +160,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       fontWeight: FontWeights.regular
     },
     dayButton: [
-      getFocusStyle(theme, -2, 'relative'),
+      getFocusStyles(theme, { inset: -2 }),
       {
         width: 24,
         height: 24,

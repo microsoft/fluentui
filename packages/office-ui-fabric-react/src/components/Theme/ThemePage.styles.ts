@@ -1,12 +1,12 @@
 import { IThemePageStyleProps, IThemePageStyles } from './ThemePage.types';
-import { getFocusStyle, getTheme } from '../../Styling';
+import { getFocusStyles, getTheme } from '../../Styling';
 
 export const getStyles = (props: IThemePageStyleProps): IThemePageStyles => {
   const theme = getTheme();
   return {
     colorSwatch: [
       'ThemePage-colorSwatch',
-      getFocusStyle(theme),
+      getFocusStyles(theme),
       {
         margin: '-10px 0',
         lineHeight: '36px',

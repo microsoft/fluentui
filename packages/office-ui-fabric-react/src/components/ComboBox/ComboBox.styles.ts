@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, IRawStyle, ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../Styling';
+import { FontSizes, FontWeights, IRawStyle, ITheme, concatStyleSets, getFocusStyles, HighContrastSelector } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
@@ -97,7 +97,7 @@ export const getOptionStyles = memoizeFunction(
           backgroundColor: ComboBoxOptionBackgroundHovered,
           color: ComboBoxOptionTextColorSelected
         },
-        getFocusStyle(theme, undefined, undefined, undefined, undefined, undefined, false),
+        getFocusStyles(theme, { isFocusOnly: false }),
         getListOptionHighContrastStyles(theme)
       ],
       rootDisabled: {

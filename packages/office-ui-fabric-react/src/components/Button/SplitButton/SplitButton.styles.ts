@@ -1,5 +1,5 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, getFocusStyle } from '../../../Styling';
+import { ITheme, concatStyleSets, getFocusStyles } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
 export const getStyles = memoizeFunction(
@@ -14,7 +14,7 @@ export const getStyles = memoizeFunction(
 
     const splitButtonStyles: IButtonStyles = {
       splitButtonContainer: [
-        getFocusStyle(theme, 0, 'relative', buttonHighContrastFocus),
+        getFocusStyles(theme, { highContrastStyle: buttonHighContrastFocus }),
         {
           display: 'inline-flex'
         }

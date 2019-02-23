@@ -1,5 +1,5 @@
 import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle } from '../../Styling';
+import { getFocusStyles, getGlobalClassNames, hiddenContentStyle, IStyle } from '../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
 
@@ -145,7 +145,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     cellTitle: [
       classNames.cellTitle,
-      getFocusStyle(theme),
+      getFocusStyles(theme),
       {
         display: 'flex',
         flexDirection: 'row',

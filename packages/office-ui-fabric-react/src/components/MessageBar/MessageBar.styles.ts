@@ -5,7 +5,7 @@ import {
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
-  getFocusStyle,
+  getFocusStyles,
   getGlobalClassNames
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
@@ -104,7 +104,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     }
   };
 
-  const focusStyle = getFocusStyle(theme, 0, 'relative', undefined, palette.black);
+  const focusStyle = getFocusStyles(theme, { borderColor: palette.black });
 
   return {
     root: [

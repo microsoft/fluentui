@@ -1,6 +1,6 @@
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
 import {
-  getFocusStyle,
+  getFocusStyles,
   focusClear,
   IStyle,
   getGlobalClassNames,
@@ -45,7 +45,7 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
 
   return [
     classNames.cell,
-    getFocusStyle(theme),
+    getFocusStyles(theme),
     {
       color: semanticColors.bodyText,
       position: 'relative',

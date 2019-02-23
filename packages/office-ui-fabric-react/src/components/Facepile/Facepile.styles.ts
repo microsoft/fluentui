@@ -1,6 +1,6 @@
 import { IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 
-import { IStyle, hiddenContentStyle, getFocusStyle, getGlobalClassNames } from '../../Styling';
+import { IStyle, hiddenContentStyle, getFocusStyles, getGlobalClassNames } from '../../Styli{inset: ng}';
 
 const GlobalClassNames = {
   root: 'ms-Facepile',
@@ -48,7 +48,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     addButton: [
       classNames.addButton,
-      getFocusStyle(theme, -1),
+      getFocusStyles(theme, { inset: -1 }),
       ItemButtonStyles,
       {
         fontSize: fonts.medium.fontSize,
@@ -74,7 +74,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     descriptiveOverflowButton: [
       classNames.descriptiveOverflowButton,
-      getFocusStyle(theme, -1),
+      getFocusStyles(theme, { inset: -1 }),
       ItemButtonStyles,
       {
         fontSize: fonts.small.fontSize,
@@ -115,7 +115,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     overflowButton: [
       classNames.overflowButton,
-      getFocusStyle(theme, -1),
+      getFocusStyles(theme, { inset: -1 }),
       ItemButtonStyles,
       {
         fontSize: fonts.medium.fontSize,

@@ -4,7 +4,7 @@ import {
   ScreenWidthMaxMedium,
   ScreenWidthMaxSmall,
   ScreenWidthMinMedium,
-  getFocusStyle,
+  getFocusStyles,
   getScreenSelector
 } from '../../Styling';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
@@ -89,7 +89,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
 
     overflowButton: [
       'ms-Breadcrumb-overflowButton',
-      getFocusStyle(theme),
+      getFocusStyles(theme),
       SingleLineTextStyle,
       {
         fontSize: overflowButtonFontSize,
@@ -119,7 +119,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
 
     itemLink: [
       'ms-Breadcrumb-itemLink',
-      getFocusStyle(theme),
+      getFocusStyles(theme),
       SingleLineTextStyle,
       theme.fonts.xLarge,
       {

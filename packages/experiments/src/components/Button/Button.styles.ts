@@ -1,5 +1,5 @@
 import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
-import { getFocusStyle, getGlobalClassNames } from '../../Styling';
+import { getFocusStyles, getGlobalClassNames } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const baseTokens: IButtonComponent['tokens'] = {
@@ -285,7 +285,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
 
   return {
     root: [
-      !circular && getFocusStyle(theme),
+      !circular && getFocusStyles(theme),
       theme.fonts.medium,
       {
         backgroundColor: tokens.backgroundColor,
@@ -330,9 +330,9 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
           [`:hover:active .${globalClassNames.icon}`]: {
             color: tokens.iconColorPressed
           },
-          // We have this here to establish the focus style of circular Buttons. If we use getFocusStyle to get the focus style, then the
+          // We have this here to establish the focus style of circular Buttons. If we use getFocusStyles to get the focus style, then the
           // focus style for circular Buttons becomes busted, and the way to fix it is via the backgroundClip and padding attributes, which
-          // we don't have access to via getFocusStyle.
+          // we don't have access to via getFocusStyles.
           [`.${IsFocusVisibleClassName} &:focus`]: {
             borderColor: tokens.borderColorFocused,
             outlineColor: tokens.outlineColor,

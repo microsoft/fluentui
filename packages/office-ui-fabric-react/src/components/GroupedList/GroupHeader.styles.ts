@@ -1,5 +1,5 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import { getGlobalClassNames, getFocusStyle, FontSizes, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
+import { getGlobalClassNames, getFocusStyles, FontSizes, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
 import { DEFAULT_ROW_HEIGHTS, DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as EXPAND_BUTTON_WIDTH } from './GroupSpacer';
@@ -35,7 +35,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
   const classNames = getGlobalClassNames(GlobalClassNames, theme!);
 
   const checkExpandResetStyles: IStyle = [
-    getFocusStyle(theme),
+    getFocusStyles(theme),
     {
       cursor: 'default',
       background: 'none',
@@ -48,7 +48,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
   return {
     root: [
       classNames.root,
-      getFocusStyle(theme),
+      getFocusStyles(theme),
       theme.fonts.medium,
       {
         borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.

@@ -1,5 +1,5 @@
 import { ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyles } from '../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
 const GlobalClassNames = {
@@ -88,7 +88,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     slideBox: [
       classNames.slideBox,
-      getFocusStyle(theme),
+      getFocusStyles(theme),
       {
         background: 'transparent',
         border: 'none',
