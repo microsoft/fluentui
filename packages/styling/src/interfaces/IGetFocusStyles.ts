@@ -1,6 +1,6 @@
 import { IRawStyle } from '@uifabric/merge-styles';
 
-export interface IGetFocusStyleOptions {
+export interface IGetFocusStylesOptions {
   /**
    * The number of pixels to inset the border.
    * @defaultvalue 0
