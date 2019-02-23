@@ -9,6 +9,7 @@ const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavStyles>();
 
 export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLinkGroupStates> {
   private navLinkGroupRef: React.RefObject<HTMLDivElement>;
+  private fireCollapseUpdate: boolean = false;
 
   constructor(props: INavLinkGroupProps) {
     super(props);
@@ -50,6 +51,13 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
         {isNavCollapsed ? this._renderWhenNavCollapsed(link) : this._renderWhenNavExpanded(link)}
       </>
     );
+  }
+
+  public componentDidUpdate(): void {
+    if (this.fireCollapseUpdate && this.props.onCollapse) {
+      this.props.onCollapse();
+      this.fireCollapseUpdate = false;
+    }
   }
 
   private _renderWhenNavCollapsed(link: INavLink): React.ReactElement<{}> | null {
@@ -138,13 +146,10 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
   }
 
   private _onLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
+    this.fireCollapseUpdate = true;
     this.setState({
       isExpanded: !this.state.isExpanded
     });
-
-    if (this.props.onCollapse) {
-      this.props.onCollapse();
-    }
     ev.preventDefault();
     ev.stopPropagation();
   }
