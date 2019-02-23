@@ -39,7 +39,7 @@ fabric-website/ @jordandrako
 #### Packages
 packages/charting/ @Raghurk @veeray @chankev
 packages/dashboard/ @Raghurk @veeray @chankev
-packages/foundation/ @jagore
+packages/foundation/ @JasonGore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
@@ -65,14 +65,16 @@ dateMath/     @OfficeDev/uifabric-calendar
 dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
+Accordion/ @JasonGore
 # ActivityItem/
 # Breadcrumb/
-# Button/
+Button/  @khmakoto
 Calendar/   @OfficeDev/uifabric-calendar
 Callout/  @joschect
 # Check/
-# Checkbox/
+# Checkbox/ @cliffkoh
 ChoiceGroup/   @srideshpande
+CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
 # ComboBox/
 CommandBar/   @micahgodbolt @JasonGore
@@ -85,14 +87,14 @@ DocumentCard/ @yiminwu @mikewheaton
 # Fabric/
 # FacePile/
 FolderCover/ @ThomasMichon
-# FocusTrapZone/
-# FocusZone/
+FocusTrapZone/ @JasonGore
+FocusZone/ @JasonGore
 GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp
 # Icon/
 # Image/
-# Label/
-Layer/  @ThomasMichon
+# Label/ @cliffkoh
+Layer/  @ThomasMichon @JasonGore
 # Link/
 List/ @KevinTCoughlin
 # MarqueeSelection/
@@ -115,9 +117,9 @@ ResizeGroup/  @micahgodbolt
 # SearchBox/
 Signals/ @ThomasMichon
 # Slider/
-# SpinButton/
+# SpinButton/   @aneeshack4
 # Spinner/
-Stack/   @khmakoto @kkjeer
+Stack/  @khmakoto @kkjeer
 # SwatchColorPicker/
 TeachingBubble/   @micahgodbolt
 # TextField/
@@ -125,14 +127,14 @@ TeachingBubble/   @micahgodbolt
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
-experiments/src/components/Button/  @khmakoto
-experiments/src/components/Toggle/  @khmakoto @jasongore
+experiments/src/components/Card/  @khmakoto
+experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/  @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
 # Breadcrumb/docs/
-# Button/docs/
+Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
 # Check/docs/
@@ -177,6 +179,7 @@ ResizeGroup/docs/  @micahgodbolt
 # Slider/docs/
 # SpinButton/docs/
 # Spinner/docs/
+Stack/docs/  @khmakoto
 # SwatchColorPicker/docs/
 TeachingBubble/docs/   @micahgodbolt
 # TextField/docs/
