@@ -204,7 +204,16 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode = this._selection.mode, columns, viewport, compact } = this.props;
+    const {
+      checkboxVisibility,
+      items,
+      setKey,
+      selectionMode = this._selection.mode,
+      columns,
+      viewport,
+      compact,
+      dragDropEvents
+    } = this.props;
     const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
 
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
@@ -246,6 +255,17 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
         isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
       });
+    }
+
+    if (newProps.dragDropEvents !== dragDropEvents) {
+      this._dragDropHelper && this._dragDropHelper.dispose();
+      this._dragDropHelper = newProps.dragDropEvents
+        ? new DragDropHelper({
+            selection: this._selection,
+            minimumPixelsForDrag: newProps.minimumPixelsForDrag
+          })
+        : undefined;
+      shouldForceUpdates = true;
     }
 
     if (shouldForceUpdates) {
