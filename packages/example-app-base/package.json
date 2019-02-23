@@ -4,7 +4,9 @@
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": true,
+  "sideEffects": [
+    "*.scss.js"
+  ],
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",

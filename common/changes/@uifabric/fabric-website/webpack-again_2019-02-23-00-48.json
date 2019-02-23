@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Tweaking the package json to remove uneeded side effects, which helps with bundling.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "dzearing@microsoft.com"
+}

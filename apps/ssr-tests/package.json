@@ -30,7 +30,7 @@
     "raw-loader": "^0.5.1",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
-    "webpack": "4.10.2"
+    "webpack": "4.29.5"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
