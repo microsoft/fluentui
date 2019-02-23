@@ -1,7 +1,6 @@
 import { createTheme, ITheme } from '@uifabric/styling';
 import { NeutralColors, SharedColors } from './FluentColors';
 import { Depths } from './FluentDepths';
-import { FontSizes } from './FluentType';
 
 export const FluentTheme: ITheme = createTheme({
   palette: {
@@ -29,19 +28,6 @@ export const FluentTheme: ITheme = createTheme({
     elevation8: Depths.depth8,
     elevation16: Depths.depth16,
     elevation64: Depths.depth64
-  },
-  fonts: {
-    tiny: { fontSize: FontSizes.size10 },
-    xSmall: { fontSize: FontSizes.size12 },
-    small: { fontSize: FontSizes.size14 },
-    smallPlus: { fontSize: FontSizes.size16 },
-    medium: { fontSize: FontSizes.size18 },
-    mediumPlus: { fontSize: FontSizes.size20 },
-    large: { fontSize: FontSizes.size24 },
-    xLarge: { fontSize: FontSizes.size28 },
-    xxLarge: { fontSize: FontSizes.size32 },
-    superLarge: { fontSize: FontSizes.size42 },
-    mega: { fontSize: FontSizes.size68 }
   }
 });
 
