@@ -1,6 +1,6 @@
 import { IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 
-import { IStyle, hiddenContentStyle, getFocusStyles, getGlobalClassNames } from '../../Styli{inset: ng}';
+import { IStyle, hiddenContentStyle, getFocusStyles, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Facepile',

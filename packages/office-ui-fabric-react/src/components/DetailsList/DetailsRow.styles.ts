@@ -217,7 +217,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   };
 
   const defaultCellStyles: IStyle = [
-    getFocusStyles(theme, -1),
+    getFocusStyles(theme, { inset: -1 }),
     classNames.cell,
     {
       display: 'inline-block',
@@ -236,7 +236,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           maxWidth: '100%'
         },
 
-        [classNames.isFocusable!]: getFocusStyles(theme, -1, undefined, undefined, neutralSecondary, white),
+        [classNames.isFocusable!]: getFocusStyles(theme, { inset: -1, borderColor: neutralSecondary, outlineColor: white }),
 
         '&$shimmer': {
           padding: 0,
@@ -288,7 +288,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       droppingClassName,
       theme.fonts.small,
       isCheckVisible && classNames.isCheckVisible,
-      getFocusStyles(theme, 0, undefined, undefined, focusBorder, white),
+      getFocusStyles(theme, { borderColor: focusBorder, outlineColor: white }),
       {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackgroundColor,
