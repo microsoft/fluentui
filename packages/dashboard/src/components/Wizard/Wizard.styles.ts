@@ -1,5 +1,7 @@
 import { IWizardStyles } from './Wizard.types';
 
+export const subwayNavWidthPx = 221;
+
 export const getWizardStyles = (): IWizardStyles => {
   return {
     wizardContentNavContainer: {
@@ -7,7 +9,7 @@ export const getWizardStyles = (): IWizardStyles => {
       flexDirection: 'row'
     },
     subwayNavSection: {
-      width: '221px'
+      width: `${subwayNavWidthPx}px`
     },
     contentSection: {},
     content: {

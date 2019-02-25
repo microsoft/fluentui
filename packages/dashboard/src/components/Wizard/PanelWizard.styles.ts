@@ -1,6 +1,7 @@
 import { IPanelStyles, ITheme } from 'office-ui-fabric-react';
 import { IWizardStyles } from './Wizard.types';
 import { IPanelWizardStyles, IPanelWizardStyleProps } from './PanelWizard.types';
+import { subwayNavWidthPx } from './Wizard.styles';
 
 export const defaultPanelStyleSet = (theme: ITheme): Partial<IPanelStyles> => {
   return {
@@ -34,7 +35,7 @@ export const getPanelWizardStyles = (props: IPanelWizardStyleProps): IPanelWizar
   return {
     footerContainer: {
       borderTop: `1px solid ${props.theme.semanticColors.bodyDivider}`,
-      padding: `17px 48px 15px ${304 + 48}px`, // 304 is to offset width of subway nav
+      padding: `17px 48px 15px ${subwayNavWidthPx + 48}px`, // 304 is to offset width of subway nav
       display: 'flex',
       flexDirection: 'row'
     },
