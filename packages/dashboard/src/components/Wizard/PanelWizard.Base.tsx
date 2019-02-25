@@ -5,7 +5,7 @@ import { Panel, PanelType, IPanelProps } from 'office-ui-fabric-react/lib/Panel'
 import { Wizard } from './Wizard';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { defaultPanelStyleSet, defaultWizardStyleSet, getPanelWizardStyles } from './PanelWizard.styles';
-import { getStepContentToShow } from './Wizard.utils';
+import { getCurrentStep } from './Wizard.utils';
 
 const getClassNames = classNamesFunction<IPanelWizardStyleProps, IPanelWizardStyles>();
 
@@ -43,7 +43,7 @@ export class PanelWizardBase extends React.Component<IPanelWizardProps, {}> {
 
   private _onRenderNavigationContent = (props: IPanelProps, defaultRender: IRenderFunction<IPanelProps>): JSX.Element => {
     const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-    const step = getStepContentToShow(this.props.wizardProps);
+    const step = getCurrentStep(this.props.wizardProps.steps);
 
     return (
       <>
@@ -55,7 +55,7 @@ export class PanelWizardBase extends React.Component<IPanelWizardProps, {}> {
 
   private _onRenderFooter = (): JSX.Element => {
     const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-    const step = getStepContentToShow(this.props.wizardProps);
+    const step = getCurrentStep(this.props.wizardProps.steps);
 
     return <div className={classNames.footerContainer}>{step.footerElement}</div>;
   };

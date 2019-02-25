@@ -18,12 +18,15 @@ export class PanelWizardExample extends WizardExampleBase<IPanelWizardExampleSta
     };
   }
   public render(): React.ReactNode {
+    const wizardCompleteContent = this.getWizCompleteContent('Panel wizard example');
+
     return (
       <div className="ms-WizardExample">
         <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
         <PanelWizard
           wizardProps={{
-            steps: this.state.steps
+            steps: this.state.steps,
+            wizardCompleteContent: wizardCompleteContent
           }}
           panelProps={{
             onDismiss: this._hidePanel,

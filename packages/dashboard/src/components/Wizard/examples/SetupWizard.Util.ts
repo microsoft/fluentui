@@ -26,6 +26,12 @@ export function getNextStep(
   steps.some((step: IWizardStepProps, index: number) => {
     if (step.id === currentStepId && steps[index + 1]) {
       nextStep = steps[index + 1];
+
+      // if next main step has substeps, return the first substep
+      if (nextStep.subSteps) {
+        nextStep = nextStep.subSteps[0];
+      }
+
       return true;
     } else if (step.subSteps) {
       let nextSubStep: IWizardStepProps | undefined;

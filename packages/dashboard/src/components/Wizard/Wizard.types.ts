@@ -7,7 +7,9 @@ export interface IWizardProps {
 
   wizardComplete?: boolean;
 
-  stepToShow?: IWizardStepProps;
+  wizardCompleteContent?: IWizardContentProps;
+
+  contentToShow?: IWizardContentProps;
 
   styles?: IWizardStyles;
 
@@ -43,11 +45,15 @@ export interface IWizardStepProps {
 }
 
 export interface IWizardContentProps {
-  contentTitle?: string;
+  contentTitleElement?: JSX.Element;
 
   content: JSX.Element;
 
   mainAction: IWizardStepAction;
+
+  exitWizardAction: IWizardStepAction;
+
+  backClickAction?: IWizardStepAction;
 }
 
 export interface IWizardStepAction {
@@ -84,6 +90,8 @@ export interface IWizardStyles {
   subwayNavSection: IStyle;
 
   contentSection: IStyle;
+
+  contentTitle: IStyle;
 
   content: IStyle;
 }
