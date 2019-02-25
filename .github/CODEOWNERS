@@ -85,7 +85,7 @@ DetailsList/ @KevinTCoughlin
 DocumentCard/ @yiminwu @mikewheaton
 # Dropdown/
 # Fabric/
-# FacePile/
+FacePile/ @markionium
 FolderCover/ @ThomasMichon
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
@@ -105,7 +105,7 @@ OverflowSet/  @micahgodbolt
 # Overlay/
 Pagination/ @caradong
 # Panel/
-# Persona/
+Persona/ @markionium
 PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
@@ -168,7 +168,7 @@ List/docs/ @KevinTCoughlin
 OverflowSet/docs/  @micahgodbolt
 # Overlay/docs/
 # Panel/docs/
-# Persona/docs/
+Persona/docs/ @markionium
 pickers/docs/  @joschect
 # Pivot/docs/
 # Popup/docs/
