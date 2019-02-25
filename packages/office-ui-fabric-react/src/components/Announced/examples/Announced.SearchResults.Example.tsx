@@ -31,7 +31,7 @@ export class AnnouncedSearchResultsExample extends React.Component<
   IAnnouncedSearchResultsExampleProps,
   IAnnouncedSearchResultsExampleState
 > {
-  private timer: number;
+  private timer: NodeJS.Timer;
 
   constructor(props: {}) {
     super(props);

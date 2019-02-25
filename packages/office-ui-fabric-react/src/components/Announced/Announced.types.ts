@@ -19,12 +19,6 @@ export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLA
    * The status message provided as screen reader output
    */
   message?: string;
-
-  /**
-   * Politeness setting for Announced component
-   * @default 'assertive'
-   */
-  ariaLive?: 'off' | 'polite' | 'assertive';
 }
 
 export interface IAnnouncedStyles {

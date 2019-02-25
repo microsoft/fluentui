@@ -23,8 +23,8 @@ export interface IAnnouncedAsynchronousExampleProps {}
 
 export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsynchronousExampleProps, IAnnouncedAsynchronousExampleState> {
   private _root = createRef<HTMLElement>();
-  private timer: number;
-  private increaseTotal: number;
+  private timer: NodeJS.Timer;
+  private increaseTotal: NodeJS.Timer;
 
   constructor(props: {}) {
     super(props);

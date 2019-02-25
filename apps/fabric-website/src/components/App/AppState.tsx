@@ -834,6 +834,22 @@ export const AppState: IAppState = {
                 )
             }
           ]
+        },
+        {
+          title: 'Accessibility',
+          url: '#/components',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: [
+            {
+              title: 'Announced',
+              url: '#/components/announced',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Announced" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/AnnouncedComponentPage').AnnouncedComponentPage))
+            }
+          ]
         }
       ]
     },

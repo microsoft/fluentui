@@ -1697,6 +1697,23 @@ interface IAnimationVariables {
 }
 
 // @public (undocumented)
+interface IAnnounced {
+}
+
+// WARNING: The type "AnnouncedBase" needs to be exported by the package (e.g. added to index.ts)
+// @public (undocumented)
+interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: (component: IAnnounced) => void;
+  message?: string;
+  styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
+}
+
+// @public (undocumented)
+interface IAnnouncedStyles {
+  screenReaderText: IStyle;
+}
+
+// @public (undocumented)
 interface IAsAsyncOptions<TProps> {
   load: () => Promise<React.ReactType<TProps>>;
   onError?: (error: Error) => void;
@@ -12843,6 +12860,7 @@ module ZIndexes {
 
 }
 
+// WARNING: Unsupported export: Announced
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
 // WARNING: Unsupported export: FocusTrapCallout

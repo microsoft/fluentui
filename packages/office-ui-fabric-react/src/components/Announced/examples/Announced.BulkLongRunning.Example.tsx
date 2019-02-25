@@ -5,12 +5,15 @@ import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
+import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import './Announced.Example.scss';
 
-/* tslint:disable:no-any */
-let _draggedItem: any = null;
-let _draggedIndex = -1;
-const _items: any[] = [];
+const _items: IFileExampleItem[] = [];
+
+const theme = getTheme();
+const dragEnterClass = mergeStyles({
+  backgroundColor: theme.palette.neutralLight
+});
 
 const _columns: IColumn[] = [
   {
@@ -61,19 +64,31 @@ const _names: string[] = [
   'Makenzie Sharett'
 ];
 
+export interface IFileExampleItem {
+  name: string;
+  modified: string;
+  modifiedby: string;
+  filesize: string;
+}
+
 export class AnnouncedBulkLongRunningExample extends React.Component<
   {},
   {
-    items: {}[];
+    items: IFileExampleItem[];
     columns: IColumn[];
     numberOfItems: number;
   }
 > {
   private _selection: Selection;
+  private _dragDropEvents: IDragDropEvents;
+  private _draggedItem: IFileExampleItem | undefined;
+  private _draggedIndex: number;
 
   constructor(props: {}) {
     super(props);
 
+    this._dragDropEvents = this._getDragDropEvents();
+    this._draggedIndex = -1;
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
     this._renderAnnounced = this._renderAnnounced.bind(this);
 
@@ -120,7 +135,7 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
-            dragDropEvents={this._getDragDropEvents()}
+            dragDropEvents={this._dragDropEvents}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
@@ -147,23 +162,24 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
         return true;
       },
       onDragEnter: (item?: any, event?: DragEvent) => {
-        return 'dragEnter';
-      }, // return string is the css classes that will be added to the entering element.
+        // return string is the css classes that will be added to the entering element.
+        return dragEnterClass;
+      },
       onDragLeave: (item?: any, event?: DragEvent) => {
         return;
       },
       onDrop: (item?: any, event?: DragEvent) => {
-        if (_draggedItem) {
+        if (this._draggedItem) {
           this._insertBeforeItem(item);
         }
       },
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
-        _draggedItem = item;
-        _draggedIndex = itemIndex!;
+        this._draggedItem = item;
+        this._draggedIndex = itemIndex!;
       },
       onDragEnd: (item?: any, event?: DragEvent) => {
-        _draggedItem = null;
-        _draggedIndex = -1;
+        this._draggedItem = undefined;
+        this._draggedIndex = -1;
       }
     };
   }
@@ -180,10 +196,12 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     return item[column.key];
   }
 
-  private _insertBeforeItem(item: any): void {
-    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+  private _insertBeforeItem(item: IFileExampleItem): void {
+    const draggedItems = this._selection.isIndexSelected(this._draggedIndex)
+      ? (this._selection.getSelection() as IFileExampleItem[])
+      : [this._draggedItem!];
 
-    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.

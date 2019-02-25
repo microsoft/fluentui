@@ -480,6 +480,17 @@ export const AppDefinition: IAppDefinition = {
         }
       ],
       name: 'Utilities'
+    },
+    {
+      links: [
+        {
+          component: require<any>('./components/pages/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#examples/announced'
+        }
+      ],
+      name: 'Accessibility'
     }
   ],
 
