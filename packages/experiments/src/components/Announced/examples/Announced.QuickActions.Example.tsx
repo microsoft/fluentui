@@ -133,6 +133,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
 
     return (
       <div>
+        {/* AnnouncedOverview */}
         {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
           <DetailsList

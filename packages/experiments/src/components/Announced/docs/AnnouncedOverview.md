@@ -37,6 +37,29 @@ Editing text, deletion
     ```
 
 ***
+### Asynchronous resolution of contacts or search results
+Appearance of search like results such as in contact fields, or search boxes.
+
+#### Examples
+To: line in mail clients, search boxes
+
+| Do                | Don't             |
+| ----------------- | ----------------- |
+| Announce the number of search results found. | Announce the content of each search result. |
+
+#### Scenarios
+1. User types the letter 'b' into a picker
+
+    The component should announce the number of search results found.
+
+    Usage:
+    ```
+    <Announced id={announcedId} message='3 items found' />
+    ```
+
+    By default, the announced component should wait for .5 seconds before sending out the status message, in case the user keeps typing in the picker, to avoid reading unneccessary updates.
+
+***
 ### Asynchronous page/page content loading
 "Lazy loading" of page sections that do not appear all at once.
 
@@ -55,9 +78,10 @@ Pages, custom lists and libraries
     <Announced id={announcedId} message='50% complete' />
     ```
 
-    There should only be one announced message per group of sections loaded, unless it has been over a specified period of time. A user can decide on a reasonable delay that sends out a status message after a chosen amount of time has passed.
+    There should only be one announced message per group of sections loaded, unless it has been over a specified period of time.
+    A user can decide on a reasonable delay that sends out a status message after a chosen amount of time has passed.
 
-    Announced would also handle the "completed" status.
+    Announced should also handle the "completed" status.
 
 ***
 ### Bulk async long running operations
@@ -68,40 +92,19 @@ Copying, uploading, or moving many items
 
 | Do                | Don't             |
 | ----------------- | ----------------- |
-| Announce overall status without focus.  | Announce sub-operations.  |
+| Announce overall status.  | Announce sub-operations.  |
 
 #### Scenarios
 1. User moves 30 items to another folder
 
-    Similar to some previous scenarios mentioned above, we want to debounce so that there is only one annouced message per group of items instead of per item operation. It would not be desirable to read off when every single item is moved to the other folder. Instead, a user can decide on a delay that sends out a status message after a chosen amount of time has passed.
+    The Announced component should announce the total number of items moved.
+    There should only be one annouced message per group of items instead of per item operation.
+    It would not be desirable to read off the details of every item that is moved to the other folder.
 
     Usage:
     ```
     <Announced id={announcedId} message='30 items moved' />
     ```
-
-***
-### Asynchronous resolution of contacts or search results
-Appearance of search like results such as in contact fields, or search boxes.
-
-#### Examples
-To: line in mail clients, search boxes
-
-| Do                | Don't             |
-| ----------------- | ----------------- |
-| Announce the number of search results found. | Announce the content of each search result. |
-
-#### Scenarios
-1. User types the letter 'A' into a picker
-
-    The component should announce the number of search results found.
-
-    Usage:
-    ```
-    <Announced id={announcedId} message='7 items found' />
-    ```
-
-    By default, the announced component should wait for .5 seconds before sending out the status message, in case the user keeps typing in the picker, to avoid reading unneccessary updates.
 
 ***
 ## Props

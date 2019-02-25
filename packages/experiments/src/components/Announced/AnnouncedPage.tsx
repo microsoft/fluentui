@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet, EditSection } from '@uifabric/example-app-base';
+// import { IDocPageProps } from '../../common/DocPage.types';
 
 import { AnnouncedSearchResultsExample } from './examples/Announced.SearchResults.Example';
 const AnnouncedSearchResultsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
@@ -12,6 +13,44 @@ const AnnouncedBulkLongRunningExampleCode = require('!raw-loader!@uifabric/exper
 
 import { AnnouncedQuickActionsExample } from './examples/Announced.QuickActions.Example';
 const AnnouncedQuickActionsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
+
+// export const AnnouncedPageProps: IDocPageProps = {
+//   title: 'Announced',
+//   componentName: 'Announced',
+//   componentUrl:
+//     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/experiments/src/components/Announced',
+//   examples: [
+//     {
+//       title: 'Announced component used for quick actions',
+//       code: AnnouncedQuickActionsExampleCode,
+//       view: <AnnouncedQuickActionsExample />,
+//       isScrollable: false
+//     },
+//     {
+//       title: 'Announced component used for quick actions',
+//       code: AnnouncedQuickActionsExampleCode,
+//       view: <AnnouncedQuickActionsExample />,
+//       isScrollable: false
+//     },
+//     {
+//       title: 'Announced component used for quick actions',
+//       code: AnnouncedQuickActionsExampleCode,
+//       view: <AnnouncedQuickActionsExample />,
+//       isScrollable: false
+//     },
+//     {
+//       title: 'Announced component used for quick actions',
+//       code: AnnouncedQuickActionsExampleCode,
+//       view: <AnnouncedQuickActionsExample />,
+//       isScrollable: false
+//     }
+//   ],
+//   propertiesTablesSources: [
+//     require<string>(require<string>('!raw-loader!@uifabric/experiments/src/components/Announced/Announced.types.ts'))
+//   ],
+//   overview: require('!raw-loader!@uifabric/experiments/src/components/Announced/docs/AnnouncedOverview.md'),
+//   isHeaderVisible: true
+// };
 
 export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -46,34 +85,7 @@ export class AnnouncedPage extends React.Component<IComponentDemoPageProps, {}> 
             sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Announced/Announced.types.ts')]}
           />
         }
-        overview={
-          <div>
-            <p>
-              The Announced component aims to fill several of the accessibility gaps that exist in various web application experiences. It
-              provides text for the screen reader in certain scenarios that are lacking comprehensive updates, particularly those showing
-              the completion status or progress of operation(s).
-            </p>
-            <p>
-              Some real-world applications of the component include copying, uploading, deleting, or moving many files, "lazy loading" of
-              page sections that do not appear all at once, and appearance of search results.
-            </p>
-          </div>
-        }
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
-        donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
-        }
+        overview={<div>{require('!raw-loader!@uifabric/experiments/src/components/Announced/docs/AnnouncedOverview.md')}</div>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

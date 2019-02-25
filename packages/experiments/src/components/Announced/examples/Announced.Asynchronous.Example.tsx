@@ -40,7 +40,6 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
 
     this._renderPhotos = this._renderPhotos.bind(this);
     this._renderAnnounced = this._renderAnnounced.bind(this);
-    this._onFocusPhotoCell = this._onFocusPhotoCell.bind(this);
     this._onToggleChange = this._onToggleChange.bind(this);
 
     this.increaseTotal = setInterval(() => {
@@ -70,15 +69,10 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
 
     return (
       <>
+        {/* AnnouncedOverview */}
         <p>
           Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
           seconds, as that is the delay chosen for this example.
-        </p>
-        <p>
-          An exception is if a user focuses on a photo that hasn't loaded yet. When focusing on a photo that hasn't loaded yet, the
-          Announced component should announce "Photo loading" and another status message should not be read for another 10 seconds. Once
-          this status message triggered by the focus event is sent to the screen reader, the 10 second timer starts again so that the status
-          messages are not read over one another.
         </p>
         <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
         <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
@@ -125,20 +119,6 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     return result;
   }
 
-  private _onFocusPhotoCell(): void {
-    if (
-      document.activeElement &&
-      document.activeElement.children &&
-      document.activeElement.children[0] &&
-      document.activeElement.children[0].children.length === 0
-    ) {
-      this.setState({
-        timeSinceLastAnnounce: 0,
-        announced: <Announced message={`Photo loading`} />
-      });
-    }
-  }
-
   private _renderPhotos(): JSX.Element[] {
     const result = this.state.photos.map((photo: { url: string; width: number; height: number }, index: number) => (
       <ul
@@ -149,7 +129,6 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
         aria-label="Photo"
         data-is-focusable={true}
         ref={this._root}
-        onFocus={this._onFocusPhotoCell}
       >
         {this.state.total > index ? <Image src={photo.url} width={photo.width} height={photo.height} /> : <div />}
       </ul>

@@ -48,10 +48,10 @@ export class AnnouncedSearchResultsExample extends React.Component<
   public render(): JSX.Element {
     return (
       <>
+        {/* AnnouncedOverview */}
         <p>
           Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
         </p>
-        <p>The Announced component should announce the number of search results found.</p>
         {this._renderAnnounced()}
         <TagPicker
           onResolveSuggestions={this._onFilterChanged}
