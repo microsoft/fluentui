@@ -123,7 +123,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <th
                       aria-label="Sunday"
                       className="ms-DatePicker-weekday"
-                      role="gridcell"
+                      role="columnheader"
                       scope="col"
                       title="Sunday"
                     >
@@ -132,7 +132,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <th
                       aria-label="Monday"
                       className="ms-DatePicker-weekday"
-                      role="gridcell"
+                      role="columnheader"
                       scope="col"
                       title="Monday"
                     >
@@ -141,7 +141,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <th
                       aria-label="Tuesday"
                       className="ms-DatePicker-weekday"
-                      role="gridcell"
+                      role="columnheader"
                       scope="col"
                       title="Tuesday"
                     >
@@ -150,7 +150,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <th
                       aria-label="Wednesday"
                       className="ms-DatePicker-weekday"
-                      role="gridcell"
+                      role="columnheader"
                       scope="col"
                       title="Wednesday"
                     >
@@ -159,7 +159,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <th
                       aria-label="Thursday"
                       className="ms-DatePicker-weekday"
-                      role="gridcell"
+                      role="columnheader"
                       scope="col"
                       title="Thursday"
                     >
@@ -168,7 +168,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <th
                       aria-label="Friday"
                       className="ms-DatePicker-weekday"
-                      role="gridcell"
+                      role="columnheader"
                       scope="col"
                       title="Friday"
                     >
@@ -177,7 +177,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     <th
                       aria-label="Saturday"
                       className="ms-DatePicker-weekday"
-                      role="gridcell"
+                      role="columnheader"
                       scope="col"
                       title="Saturday"
                     >
