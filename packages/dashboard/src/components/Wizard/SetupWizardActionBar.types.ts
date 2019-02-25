@@ -4,8 +4,6 @@ import { IWizardStepAction, IWizardStepProps } from './Wizard.types';
 export interface ISetupWizardActionBarStyles {
   root: IStyle;
 
-  actionLink: IStyle;
-
   backAction: IStyle;
 
   exitAction: IStyle;

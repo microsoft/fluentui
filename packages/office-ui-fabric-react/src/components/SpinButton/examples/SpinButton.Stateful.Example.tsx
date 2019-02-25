@@ -29,6 +29,8 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
           }}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
+          incrementButtonAriaLabel={'Increase value by 2'}
+          decrementButtonAriaLabel={'Decrease value by 2'}
         />
       </div>
     );

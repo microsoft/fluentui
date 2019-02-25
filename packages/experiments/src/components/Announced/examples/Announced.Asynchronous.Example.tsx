@@ -57,12 +57,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
 
         if (this.state.timeSinceLastAnnounce === DELAY || this.state.percentComplete === 1) {
           this.setState({
-            announced: (
-              <Announced
-                message={`${this.state.total} of ${this.state.photos.length} photos loaded`}
-                id={'announced-' + this.state.total}
-              />
-            ),
+            announced: <Announced message={`${this.state.total} of ${this.state.photos.length} photos loaded`} />,
             timeSinceLastAnnounce: 0
           });
         }
@@ -139,17 +134,7 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     ) {
       this.setState({
         timeSinceLastAnnounce: 0,
-        announced: (
-          <Announced
-            message={`Photo loading`}
-            id={
-              'announced-photo-' +
-              (document.activeElement.getAttribute('aria-posinset')
-                ? document.activeElement.getAttribute('aria-posinset')
-                : this.state.total)
-            }
-          />
-        )
+        announced: <Announced message={`Photo loading`} />
       });
     }
   }

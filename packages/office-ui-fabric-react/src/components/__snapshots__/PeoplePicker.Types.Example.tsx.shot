@@ -283,6 +283,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           className=
               ms-Dropdown-caretDownWrapper
               {
+                cursor: pointer;
                 height: 32px;
                 line-height: 30px;
                 position: absolute;

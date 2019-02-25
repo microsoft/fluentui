@@ -68,7 +68,6 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
     return (
       <div
-        tabIndex={-1}
         ref={this._root}
         {...getNativeProps(this.props, divProperties)}
         className={className}

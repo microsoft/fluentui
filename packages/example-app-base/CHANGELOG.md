@@ -1,6 +1,14 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 31 Jan 2019 20:10:48 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+
+## 6.11.6
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Switch PivotItems to use headerText not linkText
 
 ## 6.11.5
 Thu, 31 Jan 2019 20:10:48 GMT

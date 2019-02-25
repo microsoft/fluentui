@@ -1,6 +1,13 @@
 # Change Log - @uifabric/icons
 
-This log was last generated on Tue, 20 Nov 2018 20:12:42 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Feb 2019 13:38:30 GMT and should not be manually modified.
+
+## 6.4.0
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Minor changes
+
+- Deprecate iconNames due to const enum usage.
 
 ## 6.3.0
 Tue, 20 Nov 2018 20:12:42 GMT

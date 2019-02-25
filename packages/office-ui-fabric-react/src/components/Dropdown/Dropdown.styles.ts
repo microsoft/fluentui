@@ -199,6 +199,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         right: 12,
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2 // height minus the border
+      },
+      !disabled && {
+        cursor: 'pointer'
       }
     ],
     caretDown: [
