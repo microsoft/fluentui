@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pivot: Removed mention of pivot overflow which is not implemented",
+      "comment": "Force Suggestion items to be shrinkable",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "mhuan13@gmail.com"
 }

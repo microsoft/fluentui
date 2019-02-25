@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.15.1",
+      "tag": "@uifabric/fluent-theme_v0.15.1",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update DetailsList Fluent styles",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f548938819def5e9e8a2f81bf9cd11aaa401e68c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.0",
       "tag": "@uifabric/fluent-theme_v0.15.0",
       "date": "Wed, 20 Feb 2019 13:30:29 GMT",

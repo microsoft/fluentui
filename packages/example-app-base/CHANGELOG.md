@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+
+## 6.11.7
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
 
 ## 6.11.6
 Thu, 14 Feb 2019 13:34:54 GMT

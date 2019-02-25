@@ -2,6 +2,41 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.50.0",
+      "tag": "@uifabric/dashboard_v0.50.0",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add styling to WizardBase, refactor examples",
+            "author": "Wei Chen <xbtsw@users.noreply.github.com>",
+            "commit": "19541cee18d89f9b32d00c098dc4dcf9cc31e7bf"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add panel wizard implementation",
+            "author": "Wei Chen <xbtsw@users.noreply.github.com>",
+            "commit": "19541cee18d89f9b32d00c098dc4dcf9cc31e7bf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.6 <7.0.0` to `>=6.11.7 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.59.1 <7.0.0` to `>=6.59.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.15.0 <1.0.0` to `>=0.15.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.49.0",
       "tag": "@uifabric/dashboard_v0.49.0",
       "date": "Wed, 20 Feb 2019 13:30:29 GMT",

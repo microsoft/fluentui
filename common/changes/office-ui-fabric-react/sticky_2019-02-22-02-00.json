@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Persona: Augment documentation for `optionalText` and `tertiaryText` to be more useful.",
+      "comment": "Sticky: maintain focus on Sticky header when scrolled",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "cliff.koh@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

@@ -15,3 +15,4 @@ declare module '@storybook/react' {
 }
 
 export * from './FabricDecorator';
+export * from './DevOnlyStoryHeader';
