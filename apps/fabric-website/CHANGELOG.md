@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 22 Feb 2019 13:31:09 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+
+## 6.10.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
 
 ## 6.10.1
 Fri, 22 Feb 2019 13:31:09 GMT

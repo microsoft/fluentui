@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 22 Feb 2019 13:31:09 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+
+## 6.59.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Stack: Making doc block in `Stack.ts` in the `experiments` package so that @deprecated is recognized.
 
 ## 6.59.1
 Fri, 22 Feb 2019 13:31:09 GMT
