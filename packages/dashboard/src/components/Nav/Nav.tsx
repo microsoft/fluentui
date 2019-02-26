@@ -99,6 +99,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
         dataHint={this.props.dataHint}
         isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
         onCollapse={this._setScrollLayout}
+        navRef={this.containerRef}
       />
     );
   }
