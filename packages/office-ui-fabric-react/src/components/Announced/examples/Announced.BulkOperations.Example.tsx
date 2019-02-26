@@ -4,6 +4,8 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import './Announced.Example.scss';
@@ -65,13 +67,14 @@ const _names: string[] = [
 ];
 
 export interface IFileExampleItem {
+  key: string;
   name: string;
   modified: string;
   modifiedby: string;
   filesize: string;
 }
 
-export class AnnouncedBulkLongRunningExample extends React.Component<
+export class AnnouncedBulkOperationsExample extends React.Component<
   {},
   {
     items: IFileExampleItem[];
@@ -87,16 +90,17 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
   constructor(props: {}) {
     super(props);
 
+    this._selection = new Selection();
     this._dragDropEvents = this._getDragDropEvents();
     this._draggedIndex = -1;
+
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
     this._renderAnnounced = this._renderAnnounced.bind(this);
-
-    this._selection = new Selection();
 
     if (_items.length === 0) {
       for (let i = 0; i < 20; i++) {
         _items.push({
+          key: 'item-' + i,
           name: 'Item ' + i,
           modified: new Date(
             new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())
@@ -118,13 +122,12 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     const { items, columns } = this.state;
 
     return (
-      <>
-        {/* AnnouncedOverview */}
-        <p>Turn on Narrator and drag and drop the items.</p>
-        <p>
+      <Stack gap={10}>
+        <Text>Turn on Narrator and drag and drop the items.</Text>
+        <Text>
           Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real
           world scenario.
-        </p>
+        </Text>
         {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
@@ -140,7 +143,7 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
-      </>
+      </Stack>
     );
   }
 

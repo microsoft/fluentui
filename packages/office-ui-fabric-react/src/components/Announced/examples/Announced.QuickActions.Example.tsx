@@ -132,8 +132,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     const { items, renameDialogOpen, dialogContent } = this.state;
 
     return (
-      <div>
-        {/* AnnouncedOverview */}
+      <>
         {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
@@ -153,7 +152,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
             {dialogContent}
           </Dialog>
         </MarqueeSelection>
-      </div>
+      </>
     );
   }
 

@@ -1,10 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Announced.SearchResults.Example.tsx correctly 1`] = `
-Array [
-  <p>
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
     Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
-  </p>,
+  </span>
   <div
     className=
         ms-BasePicker
@@ -97,6 +129,6 @@ Array [
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

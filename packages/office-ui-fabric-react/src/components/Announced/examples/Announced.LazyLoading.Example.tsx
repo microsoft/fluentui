@@ -3,13 +3,15 @@ import { Announced } from '../Announced';
 import { createArray, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Announced.Example.scss';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 
 const DELAY = 10;
 
-export interface IAnnouncedAsynchronousExampleState {
+export interface IAnnouncedLazyLoadingExampleState {
   photos: { url: string; width: number; height: number }[];
   total: number;
   announced?: JSX.Element;
@@ -19,9 +21,9 @@ export interface IAnnouncedAsynchronousExampleState {
   timeSinceLastAnnounce: number;
 }
 
-export interface IAnnouncedAsynchronousExampleProps {}
+export interface IAnnouncedLazyLoadingExampleProps {}
 
-export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsynchronousExampleProps, IAnnouncedAsynchronousExampleState> {
+export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyLoadingExampleProps, IAnnouncedLazyLoadingExampleState> {
   private _root = createRef<HTMLElement>();
   private timer: NodeJS.Timer;
   private increaseTotal: NodeJS.Timer;
@@ -68,19 +70,18 @@ export class AnnouncedAsynchronousExample extends React.Component<IAnnouncedAsyn
     const { percentComplete } = this.state;
 
     return (
-      <>
-        {/* AnnouncedOverview */}
-        <p>
+      <Stack gap={10}>
+        <Text>
           Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
           seconds, as that is the delay chosen for this example.
-        </p>
+        </Text>
         <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
         <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
         {this._renderAnnounced()}
         <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
           {this._renderPhotos()}
         </FocusZone>
-      </>
+      </Stack>
     );
   }
 
