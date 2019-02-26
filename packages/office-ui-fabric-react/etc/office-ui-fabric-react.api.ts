@@ -8883,6 +8883,7 @@ interface INavLink {
   altText?: string;
   ariaLabel?: string;
   automationId?: string;
+  disabled?: boolean;
   // @deprecated
   engagementName?: string;
   forceAnchor?: boolean;
@@ -8952,6 +8953,7 @@ interface INavStyleProps {
   groups: INavLinkGroup[] | null;
   // (undocumented)
   isButtonEntry?: boolean;
+  isDisabled?: boolean;
   isExpanded?: boolean;
   isGroup?: boolean;
   isLink?: boolean;
