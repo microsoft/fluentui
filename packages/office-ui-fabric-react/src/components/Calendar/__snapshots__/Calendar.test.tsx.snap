@@ -201,7 +201,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -225,7 +225,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -250,7 +250,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         id="DatePickerDay-active0"
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -274,7 +274,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -298,7 +298,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -322,7 +322,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -346,7 +346,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -372,7 +372,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -396,7 +396,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -420,7 +420,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -444,7 +444,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -468,7 +468,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -492,7 +492,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -516,7 +516,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -542,7 +542,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -566,7 +566,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -590,7 +590,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -614,7 +614,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -638,7 +638,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -662,7 +662,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -686,7 +686,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -712,7 +712,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -736,7 +736,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -760,7 +760,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -784,7 +784,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -808,7 +808,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -832,7 +832,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -856,7 +856,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -882,7 +882,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -906,7 +906,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -930,7 +930,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -954,7 +954,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -978,7 +978,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -1002,7 +1002,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
@@ -1026,7 +1026,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                         disabled={false}
                         onClick={[Function]}
                         onKeyDown={[Function]}
-                        role="button"
+                        role="gridcell"
                         type="button"
                       >
                         <span
