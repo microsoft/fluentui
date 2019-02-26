@@ -306,13 +306,11 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       direction = -1;
     } else if (ev.which === KeyCodes.down) {
       targetDate = addWeeks(date, 1);
-      direction = 1;
     } else if (ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
       targetDate = addDays(date, -1);
       direction = -1;
     } else if (ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
       targetDate = addDays(date, 1);
-      direction = 1;
     }
 
     if (!targetDate) {
