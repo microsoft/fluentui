@@ -103,7 +103,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            required={true}
+            required={false}
             type="radio"
           />
           <label
@@ -216,7 +216,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            required={true}
+            required={false}
             type="radio"
           />
           <label
@@ -329,7 +329,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            required={true}
+            required={false}
             type="radio"
           />
           <label
@@ -472,7 +472,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            required={true}
+            required={false}
             type="radio"
           />
           <label
@@ -585,7 +585,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            required={true}
+            required={false}
             type="radio"
           />
           <label
@@ -698,7 +698,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
-            required={true}
+            required={false}
             type="radio"
           />
           <label

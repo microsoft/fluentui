@@ -113,6 +113,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            required={false}
             type="radio"
           />
           <label
@@ -325,6 +326,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            required={false}
             type="radio"
           />
           <label
@@ -538,6 +540,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
+            required={false}
             type="radio"
           />
           <label

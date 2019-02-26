@@ -29,7 +29,8 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       id,
       styles,
       name,
-      onRenderField = this._onRenderField
+      onRenderField = this._onRenderField,
+      ...rest
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -42,7 +43,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       focused
     });
 
-    const { className, ...nativeProps } = getNativeProps<{ className: string }>(this.props, inputProperties);
+    const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);
 
     return (
       <div className={this._classNames.root}>
@@ -56,7 +57,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
             name={name}
             disabled={disabled}
             checked={checked}
-            required={required}
+            required={checked && !disabled && required}
             onChange={this._onChange.bind(this, this.props)}
             onFocus={this._onFocus.bind(this, this.props)}
             onBlur={this._onBlur.bind(this, this.props)}
