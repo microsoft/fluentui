@@ -196,13 +196,13 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     return 1;
   }
 
-  private _getGroupItemLimit = (group: IGroup): number => {
+  private _getDefaultGroupItemLimit = (group: IGroup): number => {
     return group.count;
   };
 
-  private _getGroupRenderCount = (group: IGroup): number => {
+  private _getGroupItemLimit = (group: IGroup): number => {
     const { groupProps } = this.props;
-    const getGroupItemLimit = groupProps && groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit : this._getGroupItemLimit;
+    const getGroupItemLimit = groupProps && groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit : this._getDefaultGroupItemLimit;
 
     return getGroupItemLimit(group);
   };
@@ -210,7 +210,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   private _getGroupHeight = (group: IGroup): number => {
     const rowHeight = this.props.compact ? COMPACT_ROW_HEIGHT : ROW_HEIGHT;
 
-    return rowHeight + (group.isCollapsed ? 0 : rowHeight * this._getGroupRenderCount(group));
+    return rowHeight + (group.isCollapsed ? 0 : rowHeight * this._getGroupItemLimit(group));
   };
 
   private _getPageHeight: IListProps['getPageHeight'] = (itemIndex: number) => {
