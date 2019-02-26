@@ -86,6 +86,14 @@ describe('aria utils tests', () => {
           {
             args: ['', 'arg1', 'arg2 '],
             expected: 'arg1 arg2'
+          },
+          {
+            args: ['', ''],
+            expected: undefined
+          },
+          {
+            args: [' ', ' '],
+            expected: undefined
           }
         ]
       }
