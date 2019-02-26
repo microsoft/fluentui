@@ -90,6 +90,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
+              aria-label="Mark displayed items as read after - Press tab for further action"
               checked={false}
               className=
                   ms-ChoiceField-input
@@ -183,6 +184,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                   aria-describedby="Dropdown2-option"
                   aria-disabled={true}
                   aria-expanded="false"
+                  aria-label="Select a time span"
                   className=
                       ms-Dropdown
                       is-disabled
