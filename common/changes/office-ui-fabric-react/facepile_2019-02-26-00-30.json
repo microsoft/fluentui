@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Make the list items of personas used in rendering Facepile have role=\"option\" which is required because the <ul> encompassing these has a role=\"listbox\". Caught in a Keros FastPass.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com"
+}
