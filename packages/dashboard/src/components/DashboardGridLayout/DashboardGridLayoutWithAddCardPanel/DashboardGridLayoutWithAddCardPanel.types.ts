@@ -30,6 +30,11 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   isDraggable?: boolean;
 
   /**
+   * The sections information
+   */
+  sections: ISection[];
+
+  /**
    * The header for the add card panel
    */
   addCardPanelProps?: IAddCardPanelProps;
@@ -84,11 +89,6 @@ export interface IDashboardGridLayoutWithAddCardPanelState {
    * The cards that are shown in the add card panel
    */
   cardsForAddCardPanel: IDGLCard[];
-
-  /**
-   * The sections information
-   */
-  sections: ISection[];
 
   /**
    * The breakpoints details along with each layout's card position and size info
