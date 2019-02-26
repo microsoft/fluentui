@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { ISubwayNavNodeProps, SubwayNavNodeState } from '../SubwayNav/SubwayNode.types';
 
 export interface IWizardProps {
@@ -8,6 +8,10 @@ export interface IWizardProps {
   wizardComplete?: boolean;
 
   stepToShow?: IWizardStepProps;
+
+  styles?: IWizardStyles;
+
+  theme?: ITheme;
 }
 
 export interface IWizardStepProps {
@@ -32,6 +36,10 @@ export interface IWizardStepProps {
   wizardContent?: IWizardContentProps;
 
   subSteps?: IWizardStepProps[];
+
+  titleElement: JSX.Element;
+
+  footerElement: JSX.Element;
 }
 
 export interface IWizardContentProps {
@@ -78,4 +86,8 @@ export interface IWizardStyles {
   contentSection: IStyle;
 
   content: IStyle;
+}
+
+export interface IWizardStyleProps {
+  theme: ITheme;
 }

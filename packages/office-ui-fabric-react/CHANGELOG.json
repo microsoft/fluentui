@@ -2,6 +2,61 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.143.1",
+      "tag": "office-ui-fabric-react_v6.143.1",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persona: Augment documentation for `optionalText` and `tertiaryText` to be more useful.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "5492a3be86c0209caf80a722d260ab82c217b9f8"
+          },
+          {
+            "comment": "Pivot: Removed mention of pivot overflow which is not implemented",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "45abf59e60a157e6b19f970f825624b9b7b81637"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.143.0",
+      "tag": "office-ui-fabric-react_v6.143.0",
+      "date": "Fri, 22 Feb 2019 13:31:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsRow & DetailsRowFields: onRenderItemColumn return type as React.ReactNode",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "455f2f98e40d3120344cfb002861a526064e0dce"
+          },
+          {
+            "comment": "Pivot: Add new stylable area for Pivot item container div.",
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "142a07290aed17b597251a8aa6c18bdb2c76c6ef"
+          },
+          {
+            "comment": "Add aria-describedby prop to Combo Box and Spin Button",
+            "author": "Dalimil Hajek <dalimilhajek@gmail.com>",
+            "commit": "2f516dd704711bb7ac7c7a2d581693751ba54e94"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix usage of 'ms-text-align'",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a0633a7c307576ed0feeefe8d5a1364071fba4f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.2 <7.0.0` to `>=6.29.3 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.142.1",
       "tag": "office-ui-fabric-react_v6.142.1",
       "date": "Thu, 21 Feb 2019 13:32:08 GMT",

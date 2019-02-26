@@ -3,8 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { Button } from './Button';
 import { IButtonProps } from './Button.types';
-import { Text } from '../Text/Text';
-import { CommandBar, Icon, Stack } from 'office-ui-fabric-react';
+import { CommandBar, Icon, Stack, Text } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);

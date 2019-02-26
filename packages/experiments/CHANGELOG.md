@@ -1,6 +1,21 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 21 Feb 2019 13:32:08 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+
+## 6.59.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Stack: Making doc block in `Stack.ts` in the `experiments` package so that @deprecated is recognized.
+
+## 6.59.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Button: Fixing focus outline and border on circular buttons.
+- Fix RTL handling in SignalsField
 
 ## 6.59.0
 Thu, 21 Feb 2019 13:32:08 GMT

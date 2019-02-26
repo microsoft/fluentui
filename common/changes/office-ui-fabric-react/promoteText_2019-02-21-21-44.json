@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix usage of 'ms-text-align'",
-      "type": "patch"
+      "comment": "Text: add Text component",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "natalie.ethell@microsoft.com"
 }

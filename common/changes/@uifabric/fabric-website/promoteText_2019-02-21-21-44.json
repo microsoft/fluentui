@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Icon Page: updated directions for adding dir tag",
-      "type": "patch"
+      "comment": "add Text component",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "mgodbolt@microsoft.com"
+  "email": "natalie.ethell@microsoft.com"
 }
