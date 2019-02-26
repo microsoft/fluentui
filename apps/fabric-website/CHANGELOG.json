@@ -2,6 +2,56 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.11.0",
+      "tag": "@uifabric/fabric-website_v6.11.0",
+      "date": "Tue, 26 Feb 2019 13:31:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Text component",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a79d1760a092e653aa48a6bbf9e34e2834b00da6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.11.1 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.59.2 <7.0.0` to `>=6.60.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.1 <7.0.0` to `>=6.144.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.2",
+      "tag": "@uifabric/fabric-website_v6.10.2",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tweaking the package json to remove uneeded side effects, which helps with bundling.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "9e04bf432ee5962ba9a7e6eeed5b598eed1661be"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.6 <7.0.0` to `>=6.11.7 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.59.1 <7.0.0` to `>=6.59.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.10.1",
       "tag": "@uifabric/fabric-website_v6.10.1",
       "date": "Fri, 22 Feb 2019 13:31:09 GMT",

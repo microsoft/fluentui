@@ -11146,6 +11146,24 @@ interface ITextFieldSubComponentStyles {
 }
 
 // @public (undocumented)
+interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React.HTMLAttributes<HTMLElement> {
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+  block?: boolean;
+  nowrap?: boolean;
+  variant?: keyof IFontStyles;
+}
+
+// @public (undocumented)
+interface ITextSlots {
+  // (undocumented)
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface ITextTokens {
+}
+
+// @public (undocumented)
 interface ITheme extends IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
@@ -13054,6 +13072,14 @@ module ZIndexes {
 // WARNING: Unsupported export: TeachingBubble
 // WARNING: Unsupported export: ITeachingBubbleStyleProps
 // WARNING: Unsupported export: TeachingBubbleContent
+// WARNING: Unsupported export: Text
+// WARNING: Unsupported export: ITextComponent
+// WARNING: Unsupported export: ITextTokenReturnType
+// WARNING: Unsupported export: ITextStylesReturnType
+// WARNING: Unsupported export: ITextSlot
+// WARNING: Unsupported export: ITextStyles
+// WARNING: Unsupported export: TextView
+// WARNING: Unsupported export: TextStyles
 // WARNING: Unsupported export: TextField
 // WARNING: Unsupported export: ITextFieldStyleProps
 // WARNING: Unsupported export: DEFAULT_MASK_CHAR

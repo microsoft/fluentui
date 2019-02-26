@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Text.Block.Example.tsx correctly 1`] = `
+Array [
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    I am block text.
+  </span>,
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    Since block is specified,
+  </span>,
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    every block of text
+  </span>,
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: block;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    gets its own line.
+  </span>,
+]
+`;

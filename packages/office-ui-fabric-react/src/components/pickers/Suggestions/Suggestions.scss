@@ -143,6 +143,10 @@
   width: 100%;
   padding: 0px;
 
+  // Force the item button to be collapsible so it can always shrink
+  // to accommodate the close button as a peer in its flex container.
+  min-width: 0;
+
   /* once this is converted to js css, then specificity won't be an issue. */
   height: 100%;
 

@@ -16,21 +16,14 @@ export interface ITextSlots {
 }
 
 // Inputs to the component
-export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles> {
+export interface ITextProps
+  extends ITextSlots,
+    IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>,
+    React.HTMLAttributes<HTMLElement> {
   /**
    * Optionally render the component as another component type or primitive.
    */
   as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
-
-  /**
-   * Optional class name for Text.
-   */
-  className?: string;
-
-  /**
-   * Inline styling.
-   */
-  style?: React.CSSProperties;
 
   /**
    * Optional font type for Text.
@@ -38,15 +31,20 @@ export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextPr
   variant?: keyof IFontStyles;
 
   /**
-   * Whether the text is displayed as an inline element.
-   * Note that inline does not support ellipsis truncation by default.
+   * Whether the text is displayed as a block element.
+   *
+   * Note that in order for ellipsis on overflow to work properly,
+   * `block` and `nowrap` should be set to true.
    */
-  inline?: boolean;
+  block?: boolean;
 
   /**
-   * Whether the text is wrapped.
+   * Whether the text is not wrapped.
+   *
+   * Note that in order for ellipsis on overflow to work properly,
+   * `block` and `nowrap` should be set to true.
    */
-  wrap?: boolean;
+  nowrap?: boolean;
 }
 
 export interface ITextTokens {}

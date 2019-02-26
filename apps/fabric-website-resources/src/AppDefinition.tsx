@@ -403,6 +403,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/teachingbubble'
         },
         {
+          component: require<any>('./components/pages/TextPage').TextPage,
+          key: 'Text',
+          name: 'Text',
+          url: '#/examples/text'
+        },
+        {
           component: require<any>('./components/pages/TextFieldPage').TextFieldPage,
           key: 'TextField',
           name: 'TextField',

@@ -222,6 +222,14 @@ export const AppState: IAppState = {
                 require.ensure([], require => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
             },
             {
+              title: 'Text',
+              url: '#/components/text',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Text" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/TextComponentPage').TextComponentPage))
+            },
+            {
               title: 'TextField',
               url: '#/components/textfield',
               isFilterable: true,

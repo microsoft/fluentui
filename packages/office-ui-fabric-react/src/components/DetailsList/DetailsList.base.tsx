@@ -350,7 +350,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         selection={selection}
         selectionMode={checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none}
         dragDropEvents={dragDropEvents}
-        dragDropHelper={dragDropHelper as DragDropHelper}
+        dragDropHelper={dragDropHelper}
         eventsToRegister={rowElementEventMap}
         listProps={additionalListProps}
         onGroupExpandStateChanged={this._onGroupExpandStateChanged}
@@ -484,7 +484,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
     return (item: any, itemIndex: number): React.ReactNode => {
-      return this._onRenderCell(nestingDepth, item, itemIndex as number);
+      return this._onRenderCell(nestingDepth, item, itemIndex);
     };
   };
 
@@ -517,7 +517,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       item: item,
       itemIndex: index,
       compact: compact,
-      columns: columns as IColumn[],
+      columns: columns,
       groupNestingDepth: nestingDepth,
       selectionMode: selectionMode,
       selection: selection,
@@ -855,7 +855,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   private _getColumnOverride(key: string): IColumn {
-    return (this._columnOverrides[key] = this._columnOverrides[key] || ({} as IColumn));
+    return (this._columnOverrides[key] = this._columnOverrides[key] || {});
   }
 
   /**
@@ -1024,9 +1024,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         }
       : undefined;
 
-    const groupProps = detailsGroupProps as IGroupRenderProps;
     return {
-      ...groupProps,
+      ...detailsGroupProps,
       onRenderFooter,
       onRenderHeader
     };
