@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard';
-import { IWizardStepProps, IWizardStepAction, IWizardContentProps } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
+import { IWizardStepProps } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 import { getNextStep } from './SetupWizard.Util';
 import { setSubwayState } from '../../SubwayNav/examples/SubwayNav.Util';
 import { Label, PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
@@ -31,10 +31,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         titleElement: testHeader,
         footerElement: testFooter,
         wizardContent: {
-          content: this._getContentForStep('Step 0'),
-          mainAction: this._getMainActionForStep('Step 0'),
-          exitWizardAction: this._getExitWizardAction(),
-          backClickAction: this._getBackClickAction()
+          content: this._getContentForStep('Step 0')
         }
       },
       {
@@ -53,10 +50,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: testHeader,
             wizardContent: {
-              content: this._getContentForStep('Step 1, Sub step 0'),
-              mainAction: this._getMainActionForStep('Step 1, Sub step 0'),
-              exitWizardAction: this._getExitWizardAction(),
-              backClickAction: this._getBackClickAction()
+              content: this._getContentForStep('Step 1, Sub step 0')
             }
           },
           {
@@ -67,10 +61,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: testHeader,
             wizardContent: {
-              content: this._getContentForStep('Step 1, Sub step 1'),
-              mainAction: this._getMainActionForStep('Step 1, Sub step 1'),
-              exitWizardAction: this._getExitWizardAction(),
-              backClickAction: this._getBackClickAction()
+              content: this._getContentForStep('Step 1, Sub step 1')
             }
           },
           {
@@ -81,10 +72,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: testHeader,
             wizardContent: {
-              content: this._getContentForStep('Step 1, Sub step 2'),
-              mainAction: this._getMainActionForStep('Step 1, Sub step 2'),
-              exitWizardAction: this._getExitWizardAction(),
-              backClickAction: this._getBackClickAction()
+              content: this._getContentForStep('Step 1, Sub step 2')
             }
           }
         ]
@@ -97,10 +85,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 2'),
-          mainAction: this._getMainActionForStep('Step 2'),
-          exitWizardAction: this._getExitWizardAction(),
-          backClickAction: this._getBackClickAction()
+          content: this._getContentForStep('Step 2')
         }
       },
       {
@@ -111,10 +96,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 3'),
-          mainAction: this._getMainActionForStep('Step 3'),
-          exitWizardAction: this._getExitWizardAction(),
-          backClickAction: this._getBackClickAction()
+          content: this._getContentForStep('Step 3')
         }
       }
     ];
@@ -139,10 +121,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         titleElement: testHeader,
         footerElement: testFooter,
         wizardContent: {
-          content: this._getContentForStep('Step 0'),
-          mainAction: this._getMainActionForStep('Step 0'),
-          exitWizardAction: this._getExitWizardAction(),
-          backClickAction: this._getBackClickAction()
+          content: this._getContentForStep('Step 0')
         }
       },
       {
@@ -153,10 +132,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 1'),
-          mainAction: this._getMainActionForStep('Step 1'),
-          exitWizardAction: this._getExitWizardAction(),
-          backClickAction: this._getBackClickAction()
+          content: this._getContentForStep('Step 1')
         }
       },
       {
@@ -167,10 +143,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 2'),
-          mainAction: this._getMainActionForStep('Step 2'),
-          exitWizardAction: this._getExitWizardAction(),
-          backClickAction: this._getBackClickAction()
+          content: this._getContentForStep('Step 2')
         }
       },
       {
@@ -181,60 +154,34 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 3'),
-          mainAction: this._getMainActionForStep('Step 3'),
-          exitWizardAction: this._getExitWizardAction(),
-          backClickAction: this._getBackClickAction()
+          content: this._getContentForStep('Step 3')
         }
       }
     ];
   };
 
-  protected getWizCompleteContent = (titleStr: string): IWizardContentProps => {
+  protected getWizCompleteStep = (titleStr: string): IWizardStepProps => {
+    const testHeader = <Label>Wizard Complete</Label>;
+    const testFooter = (
+      <>
+        <PrimaryButton>Go back to Admin center</PrimaryButton>
+      </>
+    );
+
     return {
-      content: (
-        <div>
-          Congratulations.... <b>{titleStr}</b> is successfully complete
-        </div>
-      ),
-      mainAction: this._getMainActionForStep('Wizard complete'),
-      exitWizardAction: this._getExitWizardAction()
+      id: 'Complete wizard',
+      label: 'Complete wizard',
+      state: SubwayNavNodeState.WizardComplete,
+      wizardContent: {
+        content: (
+          <div>
+            Congratulations.... <b>{titleStr}</b> is successfully complete
+          </div>
+        )
+      },
+      footerElement: testFooter,
+      titleElement: testHeader
     };
-  };
-
-  private _getExitWizardAction = (): IWizardStepAction => {
-    const action: IWizardStepAction = {
-      title: 'Exit Wizard',
-      action: (currentStep: IWizardStepProps): void => {
-        console.log('Exit Wizard clicked - currentStep: ' + currentStep.label);
-      }
-    };
-
-    return action;
-  };
-
-  private _getBackClickAction = (): IWizardStepAction => {
-    const action: IWizardStepAction = {
-      title: 'Go Back',
-      action: (currentStep: IWizardStepProps): void => {
-        console.log('Go Back clicked - currentStep: ' + currentStep.label);
-      }
-    };
-
-    return action;
-  };
-  private _getMainActionForStep = (stepStr: string): IWizardStepAction => {
-    const action: IWizardStepAction = {
-      title: stepStr + ' Next',
-      action: (currentStep: IWizardStepProps): void => {
-        console.log(stepStr + ' Next clicked - currentStep: ' + currentStep.label);
-        this._goToNextStep();
-        // return WizardContentState.Completed;
-        return;
-      }
-    };
-
-    return action;
   };
 
   private _goToNextStep = (): void => {
@@ -252,6 +199,8 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
   private _handleClickStep = (step: ISubwayNavNodeProps): void => {
     const { steps, currentStepId } = setSubwayState(step, this.state.steps, this.state.currentStepId);
     this.setState({ steps: steps as IWizardStepProps[], currentStepId });
+
+    console.log('Clicked step : ' + step.label);
   };
 
   private _getContentForStep = (stepStr: string): JSX.Element => {

@@ -1,4 +1,4 @@
-import { IWizardProps, IWizardStepProps, IWizardContentProps } from './Wizard.types';
+import { IWizardProps, IWizardStepProps } from './Wizard.types';
 import { SubwayNavNodeState } from '../SubwayNav/index';
 
 // Get current step
@@ -39,16 +39,16 @@ export function getCurrentStep(steps: IWizardStepProps[]): IWizardStepProps {
   return stepToShow;
 }
 
-// Get content to show
-export function getStepContentToShow(props: IWizardProps): IWizardContentProps {
-  const { wizardComplete, wizardCompleteContent } = props;
-  let contentToShow;
+// Get step to show
+export function getStepToShow(props: IWizardProps): IWizardStepProps {
+  const { wizardComplete, wizardCompleteStep } = props;
+  let stepToShow;
 
-  if (wizardComplete! && wizardCompleteContent) {
-    contentToShow = wizardCompleteContent;
+  if (wizardComplete! && wizardCompleteStep) {
+    stepToShow = wizardCompleteStep;
   } else {
-    contentToShow = getCurrentStep(props.steps).wizardContent;
+    stepToShow = getCurrentStep(props.steps);
   }
 
-  return contentToShow!;
+  return stepToShow!;
 }

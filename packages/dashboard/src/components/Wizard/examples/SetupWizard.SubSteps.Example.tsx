@@ -16,15 +16,12 @@ export class SetupWizardSubStepsExample extends WizardExampleBase<ISetupWizardSt
   }
 
   public render(): React.ReactNode {
-    const wizardCompleteContent = this.getWizCompleteContent('Setup wizard example');
-
     return (
       <div className="ms-WizardExample">
         <SetupWizard
           wizardTitle={{ title: 'Sample wizard with 4 steps' }}
           wizardProps={{
-            steps: this.state.steps,
-            wizardCompleteContent: wizardCompleteContent
+            steps: this.state.steps
           }}
         />
       </div>

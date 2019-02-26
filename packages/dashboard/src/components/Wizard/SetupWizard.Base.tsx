@@ -3,7 +3,8 @@ import { ISetupWizardProps, ISetupWizardStyles, ISetupWizardStyleProps } from '.
 import { getSetupWizardStyles } from './SetupWizard.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { Wizard } from './Wizard';
-import { getStepContentToShow, getCurrentStep } from './Wizard.utils';
+import { getStepToShow } from './Wizard.utils';
+import { IWizardStepProps } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 
 const getClassNames = classNamesFunction<ISetupWizardStyleProps, ISetupWizardStyles>();
 
@@ -15,29 +16,27 @@ export class SetupWizardBase extends React.Component<ISetupWizardProps, {}> {
 
   public render(): JSX.Element {
     const classNames = getClassNames(getSetupWizardStyles!);
-    const stepContentToShow = getStepContentToShow(this.props.wizardProps);
+    const stepToShow = getStepToShow(this.props.wizardProps);
 
     return (
       <div className={classNames.wizardContainer}>
-        {this._onRenderTitleSection()}
-        <Wizard {...this.props.wizardProps} contentToShow={stepContentToShow} />
-        {this._onRenderActionBar()}
+        {this._onRenderTitleSection(stepToShow)}
+        <Wizard {...this.props.wizardProps} stepToShow={stepToShow} />
+        {this._onRenderActionBar(stepToShow)}
       </div>
     );
   }
 
   // Get wizard title section
-  private _onRenderTitleSection = (): React.ReactNode => {
+  private _onRenderTitleSection = (step: IWizardStepProps): React.ReactNode => {
     const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-    const step = getCurrentStep(this.props.wizardProps.steps);
 
     return <div className={classNames.titleSection}>{step.titleElement}</div>;
   };
 
   // Get wizard action bar
-  private _onRenderActionBar = (): React.ReactNode => {
+  private _onRenderActionBar = (step: IWizardStepProps): React.ReactNode => {
     const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-    const step = getCurrentStep(this.props.wizardProps.steps);
 
     return <div className={classNames.actionBarSection}>{step.footerElement}</div>;
   };
