@@ -3,9 +3,6 @@
 import * as React from 'react';
 import { DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 
-const GROUP_HEADER_HEIGHT = 40;
-const GROUP_ITEM_HEIGHT = 43;
-
 interface IDetailsListGroupedLargeExampleItem {
   key: string;
   name: string;
@@ -51,14 +48,9 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
         items={this._items}
         groups={this._groups}
         columns={this._columns}
-        getGroupHeight={this._getGroupHeight}
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
       />
     );
   }
-
-  private _getGroupHeight = (group: IGroup) => {
-    return GROUP_HEADER_HEIGHT + (group.isCollapsed ? 0 : GROUP_ITEM_HEIGHT * group.count);
-  };
 }
