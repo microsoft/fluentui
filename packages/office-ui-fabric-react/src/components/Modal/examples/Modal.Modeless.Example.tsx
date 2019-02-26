@@ -5,12 +5,12 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './Modal.Example.scss';
 
-export interface IModalStickyExampleState {
+export interface IModalModelessExampleState {
   showModal: boolean;
 }
 
-export class ModalStickyExample extends React.Component<{}, IModalStickyExampleState> {
-  public state: IModalStickyExampleState = {
+export class ModalModelessExample extends React.Component<{}, IModalModelessExampleState> {
+  public state: IModalModelessExampleState = {
     showModal: false
   };
   // Use getId() to ensure that the IDs are unique on the page.

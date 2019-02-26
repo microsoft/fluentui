@@ -151,7 +151,7 @@ exports[`Modal renders Modal correctly 1`] = `
 </span>
 `;
 
-exports[`Modal renders Sticky Modal correctly 1`] = `
+exports[`Modal renders Modeless Modal correctly 1`] = `
 <span
   className="ms-layer"
 >

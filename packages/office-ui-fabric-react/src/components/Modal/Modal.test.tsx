@@ -20,7 +20,7 @@ describe('Modal', () => {
 
     ReactDOM.createPortal.mockClear();
   });
-  it('renders Sticky Modal correctly', () => {
+  it('renders Modeless Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
     ReactDOM.createPortal = jest.fn(element => {

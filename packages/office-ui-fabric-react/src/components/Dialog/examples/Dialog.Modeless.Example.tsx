@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-export interface IDialogStickyExampleState {
+export interface IDialogModelessExampleState {
   hideDialog: boolean;
 }
 
-export class DialogStickyExample extends React.Component<{}, IDialogStickyExampleState> {
-  public state: IDialogStickyExampleState = {
+export class DialogModelessExample extends React.Component<{}, IDialogModelessExampleState> {
+  public state: IDialogModelessExampleState = {
     hideDialog: true
   };
 
