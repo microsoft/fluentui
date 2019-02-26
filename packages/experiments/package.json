@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "6.59.2",
+  "version": "6.60.0",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -64,7 +64,7 @@
     "@uifabric/styling": ">=6.41.0 <7.0.0",
     "@uifabric/utilities": ">=6.29.3 <7.0.0",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": ">=6.143.1 <7.0.0",
+    "office-ui-fabric-react": ">=6.144.0 <7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

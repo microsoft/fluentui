@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Feb 2019 13:31:28 GMT and should not be manually modified.
+
+## 6.144.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- Text: add Text component
+
+### Patches
+
+- DetailsList: Remove redundant casts and local declaration
+- Sticky: maintain focus on Sticky header when scrolled
+- Force Suggestion items to be shrinkable
 
 ## 6.143.1
 Mon, 25 Feb 2019 13:31:08 GMT
