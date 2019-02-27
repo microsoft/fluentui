@@ -14,8 +14,16 @@ export const getSetupWizardStyles = (): ISetupWizardStyles => {
     ],
     titleSection: {
       border: `1px solid ${NeutralColors.gray40}`,
+      height: '75px'
+    },
+    actionBarSection: {
+      whiteSpace: 'nowrap',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'row',
+      border: `1px solid ${NeutralColors.gray40}`,
       height: '75px',
-      padding: '30px'
+      alignItems: 'center'
     }
   };
 };

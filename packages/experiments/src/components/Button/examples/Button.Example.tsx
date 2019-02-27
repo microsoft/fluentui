@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, IButtonProps } from '../index';
-import { Text } from '@uifabric/experiments';
-import { Icon, CommandBar, Stack } from 'office-ui-fabric-react';
+import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);

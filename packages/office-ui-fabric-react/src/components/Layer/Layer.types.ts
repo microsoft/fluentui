@@ -55,6 +55,13 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
    * default while allowing users to opt in to the new event bubbling functionality.
    */
   eventBubblingEnabled?: boolean;
+
+  /**
+   * Whether the layer should be added as the first child of the host.
+   * If true, the layer will be inserted as the first child of the host
+   * By default, the layer will be appended at the end to the host
+   */
+  insertFirst?: boolean;
 }
 
 export interface ILayerStyleProps {

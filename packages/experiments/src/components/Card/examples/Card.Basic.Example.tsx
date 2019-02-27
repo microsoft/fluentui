@@ -33,9 +33,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
         <Text variant="large" className={styles.textLarge}>
           Contoso
         </Text>
-        <Text wrap variant="large">
-          Contoso Denver expansion design marketing hero guidelines
-        </Text>
+        <Text variant="large">Contoso Denver expansion design marketing hero guidelines</Text>
         <Text className={styles.textBold}>Is this recommendation helpful?</Text>
         <Card.Item disableChildPadding>
           <Stack

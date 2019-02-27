@@ -97,15 +97,10 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           color: inherit;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          display: inline;
+          font-family: inherit;
           font-size: 19.2px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          webkit-font-smoothing: antialiased;
-          white-space: nowrap;
+          font-weight: inherit;
         }
   >
     JB
@@ -136,15 +131,10 @@ exports[`PersonaCoin renders a correct persona 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           color: inherit;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          display: inline;
+          font-family: inherit;
           font-size: 19.2px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          webkit-font-smoothing: antialiased;
-          white-space: nowrap;
+          font-weight: inherit;
         }
   >
     JB
@@ -175,15 +165,10 @@ exports[`PersonaCoin renders a red coin 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           color: inherit;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          display: inline;
+          font-family: inherit;
           font-size: 19.2px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          webkit-font-smoothing: antialiased;
-          white-space: nowrap;
+          font-weight: inherit;
         }
   >
     JB
@@ -408,15 +393,10 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           color: inherit;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          display: inline;
+          font-family: inherit;
           font-size: 19.2px;
-          font-weight: 400;
-          moz-osx-font-smoothing: grayscale;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          webkit-font-smoothing: antialiased;
-          white-space: nowrap;
+          font-weight: inherit;
         }
   >
     EG

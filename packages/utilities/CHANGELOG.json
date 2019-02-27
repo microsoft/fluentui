@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.29.4",
+      "tag": "@uifabric/utilities_v6.29.4",
+      "date": "Tue, 26 Feb 2019 22:45:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ARIA: mergeAriaAttributeValues should produce space-delimited output by default",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "6381336da4f0bf9ae6cd6c8963534fe8a44451a0"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.29.3",
       "tag": "@uifabric/utilities_v6.29.3",
       "date": "Fri, 22 Feb 2019 13:31:09 GMT",
