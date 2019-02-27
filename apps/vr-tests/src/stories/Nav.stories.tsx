@@ -54,6 +54,38 @@ const links: INavLink[] = [
   }
 ];
 
+const disabledLinks: INavLink[] = [
+  {
+    name: 'Home',
+    url: 'http://example.com',
+    disabled: true,
+    links: [
+      {
+        name: 'Activity',
+        url: 'http://msn.com',
+        key: 'key1'
+      },
+      {
+        name: 'MSN',
+        url: 'http://msn.com',
+        key: 'key2',
+        disabled: true,
+        altText: 'The link is temporary disabled'
+      }
+    ],
+    isExpanded: true
+  },
+  { name: 'Documents', url: 'http://example.com', key: 'key3' },
+
+  {
+    name: 'Unavailable Item',
+    url: 'http://cnn.com',
+    icon: 'News',
+    disabled: true,
+    key: 'key9'
+  }
+]
+
 storiesOf('Nav', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
@@ -76,6 +108,20 @@ storiesOf('Nav', module)
       <div style={{ width: '208px' }}>
         <Nav
           groups={[{ links: links }]}
+          expandedStateText={'expanded'}
+          collapsedStateText={'collapsed'}
+          selectedKey={'key3'}
+        />
+      </div>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Disabled',
+    () => (
+      <div style={{ width: '208px' }}>
+        <Nav
+          groups={[{ links: disabledLinks }]}
           expandedStateText={'expanded'}
           collapsedStateText={'collapsed'}
           selectedKey={'key3'}
