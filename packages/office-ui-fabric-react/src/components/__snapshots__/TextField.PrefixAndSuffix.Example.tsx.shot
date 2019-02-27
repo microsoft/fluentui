@@ -65,10 +65,15 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           className=
               ms-TextField-prefix
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 background: #f4f4f4;
                 color: #666666;
                 display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -256,10 +261,15 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           className=
               ms-TextField-prefix
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 background: #f4f4f4;
                 color: #a6a6a6;
                 display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
