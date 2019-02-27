@@ -196,7 +196,6 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
           addCardPanelCards={cardsVisibleInAddCardPanel}
           dashboardCards={cardsVisibleInLayout}
           isOpen={this.state.isOpen}
-          sectionTitle={'First section'}
           addCardPanelProps={addCardPanelProps}
           onLayoutChange={this._onLayoutChange}
           onPanelDismiss={this._onPanelDismiss}

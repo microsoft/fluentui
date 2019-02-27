@@ -1,10 +1,18 @@
 import * as React from 'react';
 import { Breakpoints, Layout, Layouts } from 'react-grid-layout-fabric';
-import { IDashboardCardLayout, DashboardSectionMapping, IDashboardGridLayoutProps } from './DashboardGridLayout.types';
+import {
+  IDashboardGridLayoutStyles,
+  IDashboardCardLayout,
+  DashboardSectionMapping,
+  IDashboardGridLayoutProps
+} from './DashboardGridLayout.types';
 import { DashboardGridLayoutBase } from './DashboardGridLayoutBase';
 import { ICard, CardSize } from '../Card/Card.types';
 import { ISection } from '../Section/Section.types';
 import { Card } from '../Card/Card';
+import { Section } from '../Section/Section';
+import { getStyles } from './DashboardGridLayout.styles';
+import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   CardSizeToWidthHeight,
   getFirstDefinedDashboardLayout,
@@ -44,11 +52,11 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
   }
 
   public render(): JSX.Element {
-    // const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
-    // const classNames = getClassNames(getStyles!);
+    const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
+    const classNames = getClassNames(getStyles!);
     return (
       <DashboardGridLayoutBase createRGLLayouts={this._createLayout} onLayoutChange={this._onLayoutChanged} {...this.props}>
-        {this._renderAllSections()}
+        {this._renderAllSections(classNames.section)}
       </DashboardGridLayoutBase>
     );
   }
@@ -102,20 +110,20 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
    * @param expanded expand or collapse, the current status of the section
    * @param key the key of the section clicked
    */
-  // private _onExpandCollapseToggled = (expanded: boolean, key: string): void => {
-  //   if (this._sectionMapping && key in this._sectionMapping) {
-  //     this._expandCollapseLayoutsUnderSection(expanded, key);
-  //   }
-  // };
+  private _onExpandCollapseToggled = (expanded: boolean, key: string): void => {
+    if (this._sectionMapping && key in this._sectionMapping) {
+      this._expandCollapseLayoutsUnderSection(expanded, key);
+    }
+  };
 
   /**
    * expand collapse section
    * @param expanded expand or collapse, the current status of the section
    * @param sectionKey the key of the section clicked
    */
-  // private _expandCollapseLayoutsUnderSection(expanded: boolean, sectionKey: string): void {
-  //   // TODO the exand/collapse function is not yet implemented.
-  // }
+  private _expandCollapseLayoutsUnderSection(expanded: boolean, sectionKey: string): void {
+    // TODO the exand/collapse function is not yet implemented.
+  }
 
   /**
    * return the list of layout for sections, sorted vertically
@@ -139,28 +147,27 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
     return this._sectionKeys.indexOf(String(layout.i)) > -1;
   }
 
-  private _renderAllSections(/* sectionClass: string */): JSX.Element[] {
+  private _renderAllSections(sectionClass: string): JSX.Element[] {
     let result: JSX.Element[] = [];
     const self = this;
     if (this.props.sections) {
       this.props.sections.forEach((section: ISection) => {
-        // result = result.concat(
-        //   <div key={section.id} className={sectionClass}>
-        //     <Section
-        //       key={section.id}
-        //       id={section.id}
-        //       title={section.title}
-        //       disabled={true}
-        //       onCollapseExpand={this.props.isCollapsible ? this._onExpandCollapseToggled : undefined}
-        //     />
-        //   </div>
-        // );
+        result = result.concat(
+          <div key={section.id} className={sectionClass}>
+            <Section
+              key={section.id}
+              id={section.id}
+              title={section.title}
+              disabled={true}
+              onCollapseExpand={this.props.isCollapsible ? this._onExpandCollapseToggled : undefined}
+            />
+          </div>
+        );
         if (section.cardIds) {
           result = result.concat(self._renderCards(section.cardIds));
         }
       });
     }
-
     return result;
   }
 

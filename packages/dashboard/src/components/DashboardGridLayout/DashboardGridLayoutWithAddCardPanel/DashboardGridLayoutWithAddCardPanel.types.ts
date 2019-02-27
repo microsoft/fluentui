@@ -19,11 +19,6 @@ export interface IDashboardGridLayoutWithAddCardPanelProps extends IBaseProps {
   addCardPanelCards: IDGLCard[];
 
   /**
-   * The section title
-   */
-  sectionTitle: string;
-
-  /**
    * Whether items in this grid should be draggable or not
    * @default true
    */
