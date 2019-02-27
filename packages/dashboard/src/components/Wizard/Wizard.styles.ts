@@ -1,4 +1,5 @@
 import { IWizardStyles } from './Wizard.types';
+import { NeutralColors } from '@uifabric/fluent-theme';
 
 export const getWizardStyles = (): IWizardStyles => {
   return {
@@ -8,9 +9,10 @@ export const getWizardStyles = (): IWizardStyles => {
     },
     subwayNavSection: {
       width: '303px',
-      marginLeft: '48px',
-      marginTop: '48px',
-      marginBottom: '48px'
+      paddingLeft: '48px',
+      paddingTop: '48px',
+      paddingBottom: '48px',
+      borderRight: `1px solid ${NeutralColors.gray40}`
     },
     contentSection: {
       marginTop: '48px'
