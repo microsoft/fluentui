@@ -11,6 +11,7 @@ import * as ReactDOM from 'react-dom';
 
 import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
+import FluentMessageBar from './components/FluentMessageBar/FluentMessageBar';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import { isLocal, hasUHF } from './utilities/location';
@@ -110,6 +111,7 @@ function _renderApp(TopNav?) {
   ReactDOM.render(
     <Fabric>
       { TopNav && <TopNav pages={ AppState.pages } /> }
+      <FluentMessageBar />
       <Router onNewRouteLoaded={ _routerDidMount }>
         <Route component={ App }>{ _getAppRoutes() }</Route>
       </Router>
