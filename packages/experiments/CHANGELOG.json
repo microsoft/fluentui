@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.60.0",
+      "tag": "@uifabric/experiments_v6.60.0",
+      "date": "Tue, 26 Feb 2019 13:31:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "move Text component from experiments -> OUFR",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a79d1760a092e653aa48a6bbf9e34e2834b00da6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.1 <7.0.0` to `>=6.144.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.59.2",
       "tag": "@uifabric/experiments_v6.59.2",
       "date": "Mon, 25 Feb 2019 13:31:08 GMT",

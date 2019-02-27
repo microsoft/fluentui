@@ -1,6 +1,6 @@
 import { IRefObject } from '../../Utilities';
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
-import { ITextSlot } from '../../Text';
+import { ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 
 export type ICollapsibleSectionTitleComponent = IComponent<
