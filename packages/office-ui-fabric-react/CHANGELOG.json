@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.146.0",
+      "tag": "office-ui-fabric-react_v6.146.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Announce column header for Day in Calendar",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "982451c5f485492c96e64f7d3ab3a261ded19c8e"
+          },
+          {
+            "comment": "Calendar: Change role of CalendarDay button from 'button' to 'gridcell'",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "ddff3c72d245459659d92bfd04dc3f07091f1126"
+          },
+          {
+            "comment": "DetailsList: dragDropEvents props updates not respected",
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "0f6b6ccea7fe693f4deadd56b45da79b26f45fb2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Updating the API file resulted in the updates to the @uifabric/styling package which is exported form OUFR.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4f0b6edde9d6fe846bf84cad542fceca9eb1e729"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.41.0 <7.0.0` to `>=6.42.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.145.0",
       "tag": "office-ui-fabric-react_v6.145.0",
       "date": "Tue, 26 Feb 2019 22:45:29 GMT",

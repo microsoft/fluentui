@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Feb 2019 22:45:29 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+
+## 6.146.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Updating the API file resulted in the updates to the @uifabric/styling package which is exported form OUFR.
+
+### Patches
+
+- Announce column header for Day in Calendar
+- Calendar: Change role of CalendarDay button from 'button' to 'gridcell'
+- DetailsList: dragDropEvents props updates not respected
 
 ## 6.145.0
 Tue, 26 Feb 2019 22:45:29 GMT
