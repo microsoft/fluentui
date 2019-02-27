@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TagItem: Adding white-space CSS prop which is required for text-overflow\"",
+      "comment": "TagItemSuggestion: adds `white-space: nowrap` CSS declaration which is required for `text-overflow: ellipsis` to work.",
       "type": "patch"
     }
   ],
