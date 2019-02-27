@@ -8,7 +8,8 @@ import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { hasSubmenu } from '../../utilities/contextualMenu/index';
 
-describe('ContextMenuItemChildren', () => {
+describe.skip('ContextMenuItemChildren', () => {
+  // FABRIC7VALIDATE
   describe('when a checkmark icon', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
