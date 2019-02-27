@@ -2,7 +2,8 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Calendar, DateRangeType, DayOfWeek } from '@uifabric/date-time/lib/components/Calendar';
+import { Calendar } from '../Calendar';
+import { DateRangeType, DayOfWeek } from '../Calendar.types';
 
 import * as styles from './Calendar.Example.scss';
 
