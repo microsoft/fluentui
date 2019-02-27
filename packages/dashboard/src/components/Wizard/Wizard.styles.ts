@@ -7,11 +7,17 @@ export const getWizardStyles = (): IWizardStyles => {
       flexDirection: 'row'
     },
     subwayNavSection: {
-      width: '221px'
+      width: '303px',
+      marginLeft: '48px',
+      marginTop: '48px',
+      marginBottom: '48px'
     },
-    contentSection: {},
+    contentSection: {
+      marginTop: '48px'
+    },
+    contentTitle: {},
     content: {
-      margin: '20px'
+      marginLeft: '20px'
     }
   };
 };
