@@ -10,25 +10,24 @@ const defaultTheme = getTheme(true);
 // Font slots
 const fonts = defaultTheme.fonts;
 const lines = [];
-let fontSizeThemeToken, fontWeightThemeToken;
+let fontSizeTokenName, fontWeightTokenName;
 for (const fontName in fonts) {
   const font = fonts[fontName];
   for (const propName in font) {
     const titleCasePropName = propName.charAt(0).toUpperCase() + propName.slice(1);
     const slotName = fontName + titleCasePropName;
-    const name = 'ms-font-' + slotName;
-    const tokenText = `"[theme:${slotName}, default: ${font[propName]}]";`;
-    lines.push(`$${name}: ${tokenText}`);
+    const name = '$ms-font-' + slotName;
+    lines.push(`${name}: "[theme:${slotName}, default: ${font[propName]}]";`);
 
     if (titleCasePropName === 'FontSize') {
-      fontSizeThemeToken = tokenText;
+      fontSizeTokenName = name;
     } else if (titleCasePropName === 'FontWeight') {
-      fontWeightThemeToken = tokenText;
+      fontWeightTokenName = name;
     }
   }
   lines.push(`@mixin ${fontName}FontBasic {`);
-  lines.push(`    font-size: ${fontSizeThemeToken};`);
-  lines.push(`    font-weight: ${fontWeightThemeToken};`);
+  lines.push(`    font-size: ${fontSizeTokenName};`);
+  lines.push(`    font-weight: ${fontWeightTokenName};`);
   lines.push(`}`);
 }
 
