@@ -1,9 +1,9 @@
-const { outdatedTask, selfUpdateTask } = require('just-task-preset');
+const { outdatedTask, selfUpdateTask } = require('just-scripts');
 
 const options = {
   versionSpec: {
     'just-task': 'latest',
-    'just-task-preset': 'latest'
+    'just-scripts': 'latest'
   }
 };
 
