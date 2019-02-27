@@ -1,6 +1,8 @@
 import { IWizardStyles } from './Wizard.types';
 
-export const subwayNavWidthPx = 221;
+export const subwayNavWidthPx = 303;
+
+export const subwayNavPaddingPx = 48;
 
 export const getWizardStyles = (): IWizardStyles => {
   return {
@@ -9,11 +11,17 @@ export const getWizardStyles = (): IWizardStyles => {
       flexDirection: 'row'
     },
     subwayNavSection: {
-      width: `${subwayNavWidthPx}px`
+      width: `${subwayNavWidthPx}px`,
+      paddingLeft: `${subwayNavPaddingPx}px`,
+      paddingTop: `${subwayNavPaddingPx}px`,
+      paddingBottom: `${subwayNavPaddingPx}px`
     },
-    contentSection: {},
+    contentSection: {
+      paddingTop: `${subwayNavPaddingPx}px`
+    },
+    contentTitle: {},
     content: {
-      margin: '20px'
+      marginLeft: '20px'
     }
   };
 };

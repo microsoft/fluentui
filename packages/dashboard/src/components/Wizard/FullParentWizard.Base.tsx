@@ -2,14 +2,14 @@ import { IFullParentWizardProps, IFullParentWizardStyleProps, IFullParentWizardS
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
 import { Wizard } from './Wizard';
-import { getStepContentToShow } from './Wizard.utils';
+import { getStepToShow } from './Wizard.utils';
 
 const getClassNames = classNamesFunction<IFullParentWizardStyleProps, IFullParentWizardStyles>();
 
 export class FullParentWizardBase extends React.Component<IFullParentWizardProps, {}> {
   public render(): JSX.Element {
     const classNames = getClassNames(this.props.styles, { theme: this.props.theme! });
-    const step = getStepContentToShow(this.props);
+    const step = getStepToShow(this.props);
 
     return (
       <div className={classNames.parentContainer}>

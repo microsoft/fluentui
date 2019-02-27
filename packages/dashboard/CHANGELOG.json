@@ -2,6 +2,28 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.51.0",
+      "tag": "@uifabric/dashboard_v0.51.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make updates to SetupWizard and Wizard Base",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "bde8a0069709b18b4bf1d30545d72642d5afab9e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.15.1 <1.0.0` to `>=0.16.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.145.0 <7.0.0` to `>=6.146.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.50.0",
       "tag": "@uifabric/dashboard_v0.50.0",
       "date": "Mon, 25 Feb 2019 13:31:08 GMT",

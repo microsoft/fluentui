@@ -1,5 +1,5 @@
 import { IFullParentWizardStyles, IFullParentWizardStyleProps } from './FullParentWizard.types';
-import { getWizardStyles, subwayNavWidthPx } from './Wizard.styles';
+import { getWizardStyles, subwayNavWidthPx, subwayNavPaddingPx } from './Wizard.styles';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 export const getFullParentWizardStyles = (props: IFullParentWizardStyleProps): IFullParentWizardStyles => {
@@ -24,7 +24,7 @@ export const getFullParentWizardStyles = (props: IFullParentWizardStyleProps): I
     },
     footerContainer: {
       borderTop: `1px solid ${props.theme.semanticColors.bodyDivider}`,
-      padding: `17px 48px 15px ${subwayNavWidthPx + 48}px`,
+      padding: `17px 48px 15px ${subwayNavWidthPx + subwayNavPaddingPx + 48}px`,
       display: 'flex',
       flexDirection: 'row'
     }

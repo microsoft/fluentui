@@ -83,6 +83,9 @@ const requiredProps: { [key: string]: any } = {
   SwatchColorPicker: {
     colorCells: [{ id: 'TestId', color: '#ffffff' }],
     columnCount: 1
+  },
+  Text: {
+    children: 'TestText'
   }
 };
 

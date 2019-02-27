@@ -20,9 +20,9 @@ export class SetupWizardSubStepsExample extends WizardExampleBase<ISetupWizardSt
       <div className="ms-WizardExample">
         <SetupWizard
           wizardTitle={{ title: 'Sample wizard with 4 steps' }}
-          exitWizardAction={this._getExitWizardAction()}
-          backClickAction={this._getBackClickAction()}
-          steps={this.state.steps}
+          wizardProps={{
+            steps: this.state.steps
+          }}
         />
       </div>
     );
