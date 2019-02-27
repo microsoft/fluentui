@@ -79,7 +79,7 @@ export interface INavState extends INavState {
   /**
    * Used to toggle the nav component between expanded and collapsed state.
    */
-  isNavCollapsed?: boolean;
+  isNavCollapsed: boolean;
 }
 
 export interface INavGroupProps {

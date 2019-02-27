@@ -110,47 +110,46 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     );
   }
 
-  private _renderCustomizationLinks(): React.ReactElement<{}> | null {
+  private _renderCustomizationLinks(): JSX.Element {
     const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
     const { enableCustomization, showMore, editString, showMoreString, showLessString } = this.props;
 
-    if (!enableCustomization) {
-      // If enable customization is not on, then don't render anything
-      return null;
-    }
-
     return (
-      // If enableCustomization
-      <ul role={'list'} className={classNames.navGroup}>
-        <li role={'listitem'} title={'Edit navigation'}>
-          <NavLink
-            id={'EditNav'}
-            href={'#'}
-            name={editString}
-            onClick={this._editClicked}
-            dataHint={'Edit navigation'}
-            dataValue={'NavToggle'}
-            ariaLabel={'Edit navigation'}
-            primaryIconName={'Edit'}
-            role="menu"
-          />
-        </li>
-        {!!showMore && showMore ? (
-          <li role={'listitem'} title={'Show more'}>
-            <NavLink
-              id={'ShowMore'}
-              href={'#'}
-              name={this.props.showMore ? showMoreString : showLessString}
-              onClick={this._toggleHidden}
-              dataHint={'Show more'}
-              dataValue={'Show more'}
-              ariaLabel={'Show more'}
-              primaryIconName={'More'}
-              role="menu"
-            />
-          </li>
-        ) : null}
-      </ul>
+      <>
+        {enableCustomization && (
+          // If enableCustomization
+          <ul role={'list'} className={classNames.navGroup}>
+            <li role={'listitem'} title={'Edit navigation'}>
+              <NavLink
+                id={'EditNav'}
+                href={'#'}
+                name={editString}
+                onClick={this._editClicked}
+                dataHint={'Edit navigation'}
+                dataValue={'NavToggle'}
+                ariaLabel={'Edit navigation'}
+                primaryIconName={'Edit'}
+                role="menu"
+              />
+            </li>
+            {showMore && (
+              <li role={'listitem'} title={'Show more'}>
+                <NavLink
+                  id={'ShowMore'}
+                  href={'#'}
+                  name={this.props.showMore ? showMoreString : showLessString}
+                  onClick={this._toggleHidden}
+                  dataHint={'Show more'}
+                  dataValue={'Show more'}
+                  ariaLabel={'Show more'}
+                  primaryIconName={'More'}
+                  role="menu"
+                />
+              </li>
+            )}
+          </ul>
+        )}
+      </>
     );
   }
 
