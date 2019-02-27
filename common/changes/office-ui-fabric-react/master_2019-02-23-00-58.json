@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Force Suggestion items to be shrinkable",
+      "comment": "DetailsList: dragDropEvents props updates not respected",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mhuan13@gmail.com"
+  "email": "aditima@microsoft.com"
 }

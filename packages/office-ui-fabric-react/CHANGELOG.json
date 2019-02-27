@@ -2,6 +2,68 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.145.0",
+      "tag": "office-ui-fabric-react_v6.145.0",
+      "date": "Tue, 26 Feb 2019 22:45:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make the list items of personas used in rendering Facepile have role=\"option\" which is required because the <ul> encompassing these has a role=\"listbox\". Caught in a Keros FastPass.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "cd235204b4d8ac8c799e794bb7b92c5a116bd0e4"
+          },
+          {
+            "comment": "ARIA: Update calls to mergeAriaAttributeValues to no longer explicitly supply output element id padding.",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "6381336da4f0bf9ae6cd6c8963534fe8a44451a0"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dialog: Add the ability for dialogs to be sticky (can interact with content behind dialog while dialog is open)",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "132adcbe878a6a7c1b24a38c4c5eb45fb17f1619"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.3 <7.0.0` to `>=6.29.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.144.0",
+      "tag": "office-ui-fabric-react_v6.144.0",
+      "date": "Tue, 26 Feb 2019 13:31:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Remove redundant casts and local declaration",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "08df808822fe9dd59b05c1ea479acc8cb14cf01d"
+          },
+          {
+            "comment": "Sticky: maintain focus on Sticky header when scrolled",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "62ae6192eaa46a89393e110b80e2d5f839536ba5"
+          },
+          {
+            "comment": "Force Suggestion items to be shrinkable",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "3a8028bbc08d139bca2463461b0dab6bff00737e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Text: add Text component",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a79d1760a092e653aa48a6bbf9e34e2834b00da6"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.143.1",
       "tag": "office-ui-fabric-react_v6.143.1",
       "date": "Mon, 25 Feb 2019 13:31:08 GMT",

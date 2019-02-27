@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Sticky: maintain focus on Sticky header when scrolled",
+      "comment": "Calendar: Change role of CalendarDay button from 'button' to 'gridcell'",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com"
+  "email": "edwl@microsoft.com"
 }
