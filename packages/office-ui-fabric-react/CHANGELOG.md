@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Feb 2019 06:49:08 GMT and should not be manually modified.
+
+## 6.146.1
+Wed, 27 Feb 2019 06:49:08 GMT
+
+### Patches
+
+- Modal: Fix missed naming updated from Modeless PR
 
 ## 6.146.0
 Wed, 27 Feb 2019 01:28:58 GMT
