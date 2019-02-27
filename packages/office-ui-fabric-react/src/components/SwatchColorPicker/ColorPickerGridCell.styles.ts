@@ -4,13 +4,17 @@ import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './Co
 
 // Size breakpoint when the default border width changes from 2px to 4px.
 const CELL_BORDER_BREAKPOINT = 24;
+const LARGE_BORDER = 4;
+const SMALL_BORDER = 2;
 const DIVIDING_PADDING = 2;
+const DEFAULT_CELL_SIZE = 20;
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
-  const { theme, disabled, selected, circle, isWhite, height = 20, width = 20, borderWidth } = props;
+  const { theme, disabled, selected, circle, isWhite, height = DEFAULT_CELL_SIZE, width = DEFAULT_CELL_SIZE, borderWidth } = props;
   const { semanticColors } = theme;
 
-  const calculatedBorderWidth = borderWidth ? borderWidth : width < CELL_BORDER_BREAKPOINT ? 2 : 4;
+  // If user provided a value, use it. If not, then we decide depending on the 24px size breakpoint.
+  const calculatedBorderWidth = borderWidth ? borderWidth : width < CELL_BORDER_BREAKPOINT ? SMALL_BORDER : LARGE_BORDER;
 
   return {
     // this is a button that wraps the color
@@ -30,10 +34,12 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       !circle && {
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus::after`]: {
+            // -1px so that we don't increase visually the size of the cell.
             outlineOffset: `${calculatedBorderWidth - 1}px`
           }
         }
       },
+      // In focus state for circle we want a round border which is not possible with outline.
       circle && {
         borderRadius: '50%',
         selectors: {
