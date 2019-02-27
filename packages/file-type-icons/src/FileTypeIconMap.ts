@@ -4,8 +4,6 @@
  * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
  */
 export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
-  photo360: {},
-  video360: {},
   accdb: { extensions: ['accdb', 'mdb'] },
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z']
@@ -290,8 +288,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   mpp: { extensions: ['mpp'] },
   mpt: { extensions: ['mpt'] },
-  one: { extensions: ['one', 'onepkg'] }, // this is a format for exported single-file notebook pages
-  onetoc: { extensions: ['ms-one-stub', 'onetoc', 'onetoc2'] }, // this icon represents a complete, logical notebook.
+  one: { extensions: ['one'] }, // this is a format for exported single-file notebook pages
+  onetoc: { extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'] }, // this icon represents a complete, logical notebook.
   pdf: { extensions: ['pdf'] },
   photo: {
     extensions: [
@@ -375,6 +373,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   txt: { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
+  vaultclosed: {},
+  vaultopen: {},
   vector: {
     extensions: [
       'ai',
