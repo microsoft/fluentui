@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '~office-ui-fabric-react/src/common/common';
 
 .table {
   color: $ms-color-neutralPrimary;
@@ -15,7 +16,7 @@
     th {
       font-weight: $ms-font-weight-semibold;
       color: $ms-color-neutralSecondary;
-      @include ms-text-align(left);
+      @include text-align(left);
     }
   }
 

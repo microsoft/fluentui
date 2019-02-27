@@ -1,5 +1,6 @@
 import { ICheckStyleProps, ICheckStyles } from 'office-ui-fabric-react/lib/Check';
 import { IDetailsRowStyleProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
+import { FontWeights } from '@uifabric/styling';
 
 export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { theme, checked } = props;
@@ -15,8 +16,16 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
   const { theme, isSelected } = props;
   const { palette } = theme;
 
+  const { neutralPrimary, neutralSecondary, neutralLight, neutralQuaternaryAlt } = palette;
+
   return {
     root: [
+      {
+        color: neutralSecondary
+      },
+      isSelected && {
+        color: neutralPrimary
+      },
       {
         selectors: {
           ':focus $check': {
@@ -26,20 +35,28 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       },
       isSelected && [
         {
-          background: palette.neutralLight,
+          background: neutralLight,
           selectors: {
             ':hover': {
-              background: palette.neutralQuaternaryAlt
+              background: neutralQuaternaryAlt
             },
             ':focus': {
-              background: palette.neutralLight
+              background: neutralLight
             },
             ':focus:hover': {
-              background: palette.neutralQuaternaryAlt
+              background: neutralQuaternaryAlt
             }
           }
         }
       ]
+    ],
+    isRowHeader: [
+      {
+        color: neutralPrimary
+      },
+      isSelected && {
+        fontWeight: FontWeights.semibold
+      }
     ]
   };
 };

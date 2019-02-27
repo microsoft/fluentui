@@ -7,7 +7,6 @@ script:
     then npm run checkchange;
     fi
   - npm run buildci
-  - npm run bundlesize
   - npm run vrtest
   - npm run check-for-changed-files
 # after_success:

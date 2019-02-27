@@ -1,12 +1,11 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { Text } from '../../Text';
 
 import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoin } from './index';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
-import { Icon, Image } from 'office-ui-fabric-react';
+import { Icon, Image, Text } from 'office-ui-fabric-react';
 import { setRTL } from '../../Utilities';
 
 const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {

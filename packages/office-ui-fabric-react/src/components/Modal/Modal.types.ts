@@ -64,6 +64,13 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   isBlocking?: boolean;
 
   /**
+   * Whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).
+   * if true: isBlocking is ignored, there will be no overlay (isDarkOverlay is ignored),
+   * isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false
+   */
+  isModeless?: boolean;
+
+  /**
    * Optional class name to be added to the root class
    */
   className?: string;
@@ -102,7 +109,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 }
 
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed'> & {
+  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
@@ -117,4 +124,5 @@ export interface IModalStyles {
   root: IStyle;
   main: IStyle;
   scrollableContent: IStyle;
+  layer: IStyle;
 }

@@ -49,6 +49,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <div
           className=
@@ -172,6 +173,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <div
           className=
@@ -295,6 +297,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <button
           className=

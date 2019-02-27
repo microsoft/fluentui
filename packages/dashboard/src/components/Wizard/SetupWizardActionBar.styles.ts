@@ -1,5 +1,10 @@
+import { NeutralColors, SharedColors } from '@uifabric/fluent-theme';
+import { DefaultFontStyles, FontWeights } from 'office-ui-fabric-react';
 import { ISetupWizardActionBarStyles } from './SetupWizardActionBar.types';
 
+const actionLinkStyle = {
+  color: NeutralColors.gray130
+};
 export const getStyles = (): ISetupWizardActionBarStyles => {
   return {
     root: {
@@ -7,26 +12,34 @@ export const getStyles = (): ISetupWizardActionBarStyles => {
       width: '100%',
       display: 'flex',
       flexDirection: 'row',
-      border: '1px solid #E1DFDD',
+      border: `1px solid ${NeutralColors.gray40}`,
       height: '75px',
       alignItems: 'center'
     },
-    actionLink: {
-      color: '#605E5C'
-    },
-    backAction: {
-      fontSize: '14px',
-      marginLeft: '30px',
-      width: '221px'
-    },
-    mainAction: {
-      fontSize: '28px',
-      marginLeft: '30px',
-      flexGrow: '1'
-    },
-    exitAction: {
-      fontSize: '14px',
-      marginRight: '30px'
-    }
+    backAction: [
+      DefaultFontStyles.medium,
+      actionLinkStyle,
+      {
+        marginLeft: '30px',
+        width: '221px'
+      }
+    ],
+    mainAction: [
+      DefaultFontStyles.xxLarge,
+      actionLinkStyle,
+      {
+        color: SharedColors.cyanBlue10,
+        marginLeft: '30px',
+        flexGrow: '1',
+        fontWeight: FontWeights.bold
+      }
+    ],
+    exitAction: [
+      DefaultFontStyles.medium,
+      actionLinkStyle,
+      {
+        marginRight: '30px'
+      }
+    ]
   };
 };

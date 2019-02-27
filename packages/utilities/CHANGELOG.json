@@ -2,6 +2,53 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.29.4",
+      "tag": "@uifabric/utilities_v6.29.4",
+      "date": "Tue, 26 Feb 2019 22:45:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ARIA: mergeAriaAttributeValues should produce space-delimited output by default",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "6381336da4f0bf9ae6cd6c8963534fe8a44451a0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.3",
+      "tag": "@uifabric/utilities_v6.29.3",
+      "date": "Fri, 22 Feb 2019 13:31:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "mergeAriaAttributeValues: Trim output string",
+            "author": "Dalimil Hajek <dalimilhajek@gmail.com>",
+            "commit": "2f516dd704711bb7ac7c7a2d581693751ba54e94"
+          },
+          {
+            "comment": "Add check for tabIndex in isElementTabbable if role=button",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a1526db47d9afd3518b295b15e69ab6d4020b220"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.2",
+      "tag": "@uifabric/utilities_v6.29.2",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getRTL: Check for existence of body element before reading attributes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f8deb819680c93729495956f900b11a9e7bf3753"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.29.1",
       "tag": "@uifabric/utilities_v6.29.1",
       "date": "Thu, 14 Feb 2019 13:34:55 GMT",

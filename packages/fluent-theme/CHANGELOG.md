@@ -1,6 +1,31 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 18 Feb 2019 13:38:30 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+
+## 0.16.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.
+
+## 0.15.1
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Update DetailsList Fluent styles
+
+## 0.15.0
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Minor changes
+
+- Panel: adds fluent styles overrides.
+
+### Patches
+
+- Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.
 
 ## 0.14.2
 Mon, 18 Feb 2019 13:38:30 GMT

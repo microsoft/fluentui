@@ -1,14 +1,16 @@
 import { ITagItemStyleProps, ITagItemStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { fluentBorderRadius } from './styleConstants';
 
 export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles> => {
+  const { theme } = props;
+  const { effects } = theme;
+
   return {
     root: {
-      borderRadius: fluentBorderRadius
+      borderRadius: effects.roundedCorner2
     },
     close: {
       background: 'transparent',
-      borderRadius: `0 ${fluentBorderRadius} ${fluentBorderRadius} 0`
+      borderRadius: `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`
     }
   };
 };

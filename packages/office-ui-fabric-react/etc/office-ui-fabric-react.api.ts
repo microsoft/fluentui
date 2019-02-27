@@ -2903,6 +2903,7 @@ interface IComboBoxOptionStyles extends IButtonStyles {
 // @public (undocumented)
 interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   allowFreeform?: boolean;
+  ariaDescribedBy?: string;
   autoComplete?: 'on' | 'off';
   autofill?: IAutofillProps;
   buttonIconProps?: IIconProps;
@@ -6902,7 +6903,7 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
   onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
   onRenderRow?: IRenderFunction<IDetailsRowProps>;
   onRowDidMount?: (item?: any, index?: number) => void;
@@ -6962,7 +6963,7 @@ interface IDetailsRow {
 }
 
 // @public (undocumented)
-interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProps {
+interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
   checkboxCellClassName?: string;
   checkButtonAriaLabel?: string;
   className?: string;
@@ -6981,7 +6982,6 @@ interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProp
   itemIndex: number;
   onDidMount?: (row?: DetailsRowBase) => void;
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
   onWillUnmount?: (row?: DetailsRowBase) => void;
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   shimmer?: boolean;
@@ -7690,11 +7690,11 @@ interface IDropdownSubComponentStyles {
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IEffects {
-  elevation16: IRawStyle;
-  elevation4: IRawStyle;
-  elevation64: IRawStyle;
-  elevation8: IRawStyle;
-  roundedCorner2: number;
+  elevation16: string;
+  elevation4: string;
+  elevation64: string;
+  elevation8: string;
+  roundedCorner2: string;
 }
 
 // @public
@@ -8545,6 +8545,7 @@ interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
   componentRef?: IRefObject<ILayer>;
   eventBubblingEnabled?: boolean;
   hostId?: string;
+  insertFirst?: boolean;
   onLayerDidMount?: () => void;
   onLayerMounted?: () => void;
   onLayerWillUnmount?: () => void;
@@ -8847,6 +8848,7 @@ interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveM
   containerClassName?: string;
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
+  isModeless?: boolean;
   isOpen?: boolean;
   layerProps?: ILayerProps;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
@@ -8863,6 +8865,8 @@ interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveM
 
 // @public (undocumented)
 interface IModalStyles {
+  // (undocumented)
+  layer: IStyle;
   // (undocumented)
   main: IStyle;
   // (undocumented)
@@ -9534,6 +9538,8 @@ interface IPivotStyles {
   count: IStyle;
   // (undocumented)
   icon: IStyle;
+  // (undocumented)
+  itemContainer?: IStyle;
   // (undocumented)
   link: IStyle;
   // (undocumented)
@@ -10516,6 +10522,7 @@ interface ISpinButton {
 
 // @public (undocumented)
 interface ISpinButtonProps {
+  ariaDescribedBy?: string;
   ariaLabel?: string;
   ariaPositionInSet?: number;
   ariaSetSize?: number;
@@ -11126,6 +11133,24 @@ interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
 // @public (undocumented)
 interface ITextFieldSubComponentStyles {
   label: IStyleFunctionOrObject<any, any>;
+}
+
+// @public (undocumented)
+interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React.HTMLAttributes<HTMLElement> {
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+  block?: boolean;
+  nowrap?: boolean;
+  variant?: keyof IFontStyles;
+}
+
+// @public (undocumented)
+interface ITextSlots {
+  // (undocumented)
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface ITextTokens {
 }
 
 // @public (undocumented)
@@ -13048,6 +13073,14 @@ module ZIndexes {
 // WARNING: Unsupported export: TeachingBubble
 // WARNING: Unsupported export: ITeachingBubbleStyleProps
 // WARNING: Unsupported export: TeachingBubbleContent
+// WARNING: Unsupported export: Text
+// WARNING: Unsupported export: ITextComponent
+// WARNING: Unsupported export: ITextTokenReturnType
+// WARNING: Unsupported export: ITextStylesReturnType
+// WARNING: Unsupported export: ITextSlot
+// WARNING: Unsupported export: ITextStyles
+// WARNING: Unsupported export: TextView
+// WARNING: Unsupported export: TextStyles
 // WARNING: Unsupported export: TextField
 // WARNING: Unsupported export: ITextFieldStyleProps
 // WARNING: Unsupported export: DEFAULT_MASK_CHAR

@@ -13,6 +13,7 @@ import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
+import { DetailsColumnStyles } from './styles/DetailsColumn.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
@@ -21,6 +22,7 @@ import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { ModalStyles } from './styles/Modal.styles';
+import { PanelStyles } from './styles/Panel.styles';
 import { PeoplePickerItemStyles } from './styles/PeoplePicker.styles';
 import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
@@ -91,6 +93,9 @@ export const FluentStyles: any = {
   DefaultButton: {
     styles: DefaultButtonStyles
   },
+  DetailsColumn: {
+    styles: DetailsColumnStyles
+  },
   DetailsRow: {
     styles: DetailsRowStyles
   },
@@ -123,6 +128,9 @@ export const FluentStyles: any = {
   },
   Modal: {
     styles: ModalStyles
+  },
+  Panel: {
+    styles: PanelStyles
   },
   NormalPeoplePicker: {
     styles: BasePickerStyles
