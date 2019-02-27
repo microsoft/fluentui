@@ -55,6 +55,7 @@ storiesOf('TextField', module)
       <TextField
         label="Green styled prefix"
         prefix="https://"
+        value="example.com"
         styles={{ prefix: { color: 'green' } }}
       />
     ),
