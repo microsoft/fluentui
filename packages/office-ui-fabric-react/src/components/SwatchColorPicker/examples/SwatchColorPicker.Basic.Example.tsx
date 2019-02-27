@@ -35,9 +35,24 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
             { id: 'e', label: 'white', color: '#ffffff' }
           ]}
         />
-        <div>Simple square swatch color picker:</div>
+        <div>Simple square swatch color picker with default size of 20px:</div>
         <SwatchColorPicker
           columnCount={5}
+          selectedId={this.state.color}
+          cellShape={'square'}
+          colorCells={[
+            { id: 'a', label: 'green', color: '#00ff00' },
+            { id: 'b', label: 'orange', color: '#ffa500' },
+            { id: 'c', label: 'blue', color: '#0000ff' },
+            { id: 'd', label: 'red', color: '#ff0000' },
+            { id: 'e', label: 'white', color: '#ffffff' }
+          ]}
+        />
+        <div>Simple square swatch color picker with custom size of 35px:</div>
+        <SwatchColorPicker
+          columnCount={5}
+          cellHeight={35}
+          cellWidth={35}
           selectedId={this.state.color}
           cellShape={'square'}
           colorCells={[
