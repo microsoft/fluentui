@@ -21,7 +21,6 @@
   },
   "disabledTasks": [
     "sass",
-    "karma",
     "jest",
     "build-codepen-examples",
     "verify-api-extractor"

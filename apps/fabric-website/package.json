@@ -22,7 +22,8 @@
   },
   "license": "MIT",
   "disabledTasks": [
-    "verify-api-extractor"
+    "verify-api-extractor",
+    "jest"
   ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",

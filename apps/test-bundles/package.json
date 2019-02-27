@@ -22,7 +22,8 @@
     "start": "node ../../scripts/just.js dev"
   },
   "disabledTasks": [
-    "verify-api-extractor"
+    "verify-api-extractor",
+    "jest"
   ],
   "devDependencies": {
     "@types/react": "16.3.16",
