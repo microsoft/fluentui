@@ -256,6 +256,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         }
     ],
     field: [
+      theme.fonts.medium,
       classNames.field,
       normalize,
       {
@@ -275,14 +276,20 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '::-ms-clear': {
             display: 'none'
           },
-          '::placeholder': {
-            color: semanticColors.inputPlaceholderText,
-            opacity: 1
-          },
-          ':-ms-input-placeholder': {
-            color: semanticColors.inputPlaceholderText,
-            opacity: 1
-          }
+          '::placeholder': [
+            theme.fonts.medium,
+            {
+              color: semanticColors.inputPlaceholderText,
+              opacity: 1
+            }
+          ],
+          ':-ms-input-placeholder': [
+            theme.fonts.medium,
+            {
+              color: semanticColors.inputPlaceholderText,
+              opacity: 1
+            }
+          ]
         }
       },
       multiline &&
@@ -386,8 +393,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         alignItems: 'center'
       }
     ],
-    prefix: [classNames.prefix, theme.fonts.medium, fieldPrefixSuffix],
-    suffix: [classNames.suffix, fieldPrefixSuffix],
+    prefix: [theme.fonts.medium, classNames.prefix, fieldPrefixSuffix],
+    suffix: [theme.fonts.medium, classNames.suffix, fieldPrefixSuffix],
     subComponentStyles: {
       label: getLabelStyles(props)
     }
