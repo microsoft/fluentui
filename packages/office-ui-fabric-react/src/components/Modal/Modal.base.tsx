@@ -155,7 +155,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       ...this.props.layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
       className: layerClassName,
-      insertAsHostFirstChild: isModeless
+      insertFirst: isModeless
     };
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
