@@ -6881,7 +6881,7 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   dragDropEvents?: IDragDropEvents;
   enableShimmer?: boolean;
   enterModalSelectionOnTouch?: boolean;
-  getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+  getGroupHeight?: IGroupedListProps['getGroupHeight'];
   getKey?: (item: any, index?: number) => string;
   getRowAriaDescribedBy?: (item: any) => string;
   getRowAriaLabel?: (item: any) => string;
