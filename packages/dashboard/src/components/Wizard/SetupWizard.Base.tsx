@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ISetupWizardProps, ISetupWizardStyles, ISetupWizardStyleProps } from './SetupWizard.types';
-import { getSetupWizardStyles } from './SetupWizard.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { Wizard } from './Wizard';
 import { getStepToShow } from './Wizard.utils';
@@ -15,7 +14,7 @@ export class SetupWizardBase extends React.Component<ISetupWizardProps, {}> {
   }
 
   public render(): JSX.Element {
-    const classNames = getClassNames(getSetupWizardStyles!);
+    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
     const stepToShow = getStepToShow(this.props.wizardProps);
 
     return (
