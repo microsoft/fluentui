@@ -1,25 +1,32 @@
-import { CommunicationColors, NeutralColors } from '../FluentColors';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
-export const IconButtonStyles: Partial<IButtonStyles> = {
-  root: {
-    backgroundColor: NeutralColors.white,
-    color: CommunicationColors.primary
-  },
-  rootHovered: {
-    backgroundColor: NeutralColors.gray20,
-    color: CommunicationColors.shade10
-  },
-  rootPressed: {
-    backgroundColor: NeutralColors.gray30,
-    color: CommunicationColors.shade20
-  },
-  rootChecked: {
-    backgroundColor: NeutralColors.gray30,
-    color: CommunicationColors.shade20
-  },
-  rootDisabled: {
-    backgroundColor: NeutralColors.white,
-    color: NeutralColors.gray90
+export const IconButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
+  const { theme } = props;
+  if (!theme) {
+    throw new Error('Theme is undefined or null.');
   }
+  const { palette } = theme;
+
+  return {
+    root: {
+      backgroundColor: palette.white,
+      color: palette.themePrimary
+    },
+    rootHovered: {
+      backgroundColor: palette.neutralLighter,
+      color: palette.themeDarkAlt
+    },
+    rootPressed: {
+      backgroundColor: palette.neutralLight,
+      color: palette.themeDark
+    },
+    rootChecked: {
+      backgroundColor: palette.neutralLight,
+      color: palette.themeDark
+    },
+    rootDisabled: {
+      backgroundColor: palette.white,
+      color: palette.neutralTertiary
+    }
+  };
 };

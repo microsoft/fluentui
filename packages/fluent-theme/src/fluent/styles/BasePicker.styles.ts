@@ -1,13 +1,18 @@
 import { IBasePickerStyleProps, IBasePickerStyles } from 'office-ui-fabric-react/lib/Pickers';
-import { fluentBorderRadius } from './styleConstants';
 
 export const BasePickerStyles = (props: IBasePickerStyleProps): Partial<IBasePickerStyles> => {
+  const { theme } = props;
+  if (!theme) {
+    throw new Error('Theme is undefined or null.');
+  }
+  const { effects } = theme;
+
   return {
     text: {
-      borderRadius: fluentBorderRadius
+      borderRadius: effects.roundedCorner2
     },
     input: {
-      borderRadius: fluentBorderRadius
+      borderRadius: effects.roundedCorner2
     }
   };
 };
