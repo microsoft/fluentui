@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, IButtonProps } from '../index';
-import { Text } from '@uifabric/experiments';
-import { Icon, CommandBar, Stack } from 'office-ui-fabric-react';
+import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
@@ -32,7 +31,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button content="Default button" onClick={alertClicked} />
                 <Button disabled content="Disabled default button" onClick={alertClicked} />
                 <Button primary content="Primary button" onClick={alertClicked} />
-                <Button disabled primary content="Primary disabled button" onClick={alertClicked} />
+                <Button primary disabled content="Disabled primary button" onClick={alertClicked} />
               </ButtonStack>
               <ButtonStack>
                 <Button split icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
@@ -43,7 +42,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                   disabled
                   primary
                   icon="Add"
-                  content="Primary disabled split button"
+                  content="Disabled primary split button"
                   menu={buttonMenu}
                   onClick={alertClicked}
                 />

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix RTL handling in SignalsField",
-      "type": "patch"
+      "comment": "Card: Exporting Card from experiments.",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com"
+  "email": "makotom@microsoft.com"
 }

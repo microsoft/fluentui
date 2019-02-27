@@ -194,7 +194,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     const selectedTabId = this._keyToTabIds[itemKey];
 
     return (
-      <div role="tabpanel" aria-labelledby={selectedTabId}>
+      <div role="tabpanel" aria-labelledby={selectedTabId} className={this._classNames.itemContainer}>
         {React.Children.toArray(this.props.children)[index]}
       </div>
     );

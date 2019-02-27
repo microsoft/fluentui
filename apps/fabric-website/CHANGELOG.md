@@ -1,6 +1,28 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Feb 2019 13:31:28 GMT and should not be manually modified.
+
+## 6.11.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.10.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.10.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Icon Page: updated directions for adding dir tag
+- Fix usage of 'ms-text-align'
 
 ## 6.10.0
 Fri, 15 Feb 2019 17:41:16 GMT

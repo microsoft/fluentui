@@ -7690,11 +7690,11 @@ interface IDropdownSubComponentStyles {
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IEffects {
-  elevation16: IRawStyle;
-  elevation4: IRawStyle;
-  elevation64: IRawStyle;
-  elevation8: IRawStyle;
-  roundedCorner2: number;
+  elevation16: string;
+  elevation4: string;
+  elevation64: string;
+  elevation8: string;
+  roundedCorner2: string;
 }
 
 // @public
@@ -8545,6 +8545,7 @@ interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
   componentRef?: IRefObject<ILayer>;
   eventBubblingEnabled?: boolean;
   hostId?: string;
+  insertFirst?: boolean;
   onLayerDidMount?: () => void;
   onLayerMounted?: () => void;
   onLayerWillUnmount?: () => void;
@@ -8847,6 +8848,7 @@ interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveM
   containerClassName?: string;
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
+  isModeless?: boolean;
   isOpen?: boolean;
   layerProps?: ILayerProps;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
@@ -8863,6 +8865,8 @@ interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveM
 
 // @public (undocumented)
 interface IModalStyles {
+  // (undocumented)
+  layer: IStyle;
   // (undocumented)
   main: IStyle;
   // (undocumented)
@@ -9534,6 +9538,8 @@ interface IPivotStyles {
   count: IStyle;
   // (undocumented)
   icon: IStyle;
+  // (undocumented)
+  itemContainer?: IStyle;
   // (undocumented)
   link: IStyle;
   // (undocumented)
@@ -11124,6 +11130,24 @@ interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
 // @public (undocumented)
 interface ITextFieldSubComponentStyles {
   label: IStyleFunctionOrObject<any, any>;
+}
+
+// @public (undocumented)
+interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React.HTMLAttributes<HTMLElement> {
+  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+  block?: boolean;
+  nowrap?: boolean;
+  variant?: keyof IFontStyles;
+}
+
+// @public (undocumented)
+interface ITextSlots {
+  // (undocumented)
+  root?: IHTMLSlot;
+}
+
+// @public (undocumented)
+interface ITextTokens {
 }
 
 // @public (undocumented)
@@ -13034,6 +13058,14 @@ module ZIndexes {
 // WARNING: Unsupported export: TeachingBubble
 // WARNING: Unsupported export: ITeachingBubbleStyleProps
 // WARNING: Unsupported export: TeachingBubbleContent
+// WARNING: Unsupported export: Text
+// WARNING: Unsupported export: ITextComponent
+// WARNING: Unsupported export: ITextTokenReturnType
+// WARNING: Unsupported export: ITextStylesReturnType
+// WARNING: Unsupported export: ITextSlot
+// WARNING: Unsupported export: ITextStyles
+// WARNING: Unsupported export: TextView
+// WARNING: Unsupported export: TextStyles
 // WARNING: Unsupported export: TextField
 // WARNING: Unsupported export: ITextFieldStyleProps
 // WARNING: Unsupported export: DEFAULT_MASK_CHAR
