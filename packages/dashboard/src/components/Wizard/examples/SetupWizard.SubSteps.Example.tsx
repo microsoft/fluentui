@@ -19,7 +19,6 @@ export class SetupWizardSubStepsExample extends WizardExampleBase<ISetupWizardSt
     return (
       <div className="ms-WizardExample">
         <SetupWizard
-          wizardTitle={{ title: 'Sample wizard with 4 steps' }}
           wizardProps={{
             steps: this.state.steps
           }}

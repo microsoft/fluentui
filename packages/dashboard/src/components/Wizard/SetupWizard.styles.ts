@@ -9,7 +9,8 @@ export const getSetupWizardStyles = (): ISetupWizardStyles => {
       {
         color: NeutralColors.gray130,
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        height: '100%'
       }
     ],
     titleSection: {

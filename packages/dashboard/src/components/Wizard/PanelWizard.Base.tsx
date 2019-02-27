@@ -47,7 +47,7 @@ export class PanelWizardBase extends React.Component<IPanelWizardProps, {}> {
 
     return (
       <>
-        <div className={classNames.titleElementContainer}>{step.titleElement}</div>
+        <div className={classNames.titleElementContainer}>{step.titleElement!}</div>
         {defaultRender(props)}
       </>
     );
