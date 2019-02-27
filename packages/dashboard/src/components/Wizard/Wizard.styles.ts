@@ -1,7 +1,6 @@
-import { IWizardStyles } from './Wizard.types';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import { IWizardStyles, IWizardStyleProps } from './Wizard.types';
 
-export const getWizardStyles = (): IWizardStyles => {
+export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
   return {
     wizardContentNavContainer: {
       display: 'flex',
@@ -12,7 +11,7 @@ export const getWizardStyles = (): IWizardStyles => {
       paddingLeft: '48px',
       paddingTop: '48px',
       paddingBottom: '48px',
-      borderRight: `1px solid ${NeutralColors.gray40}`
+      borderRight: `1px solid ${props.theme.semanticColors.bodyDivider}`
     },
     contentSection: {
       marginTop: '48px'
