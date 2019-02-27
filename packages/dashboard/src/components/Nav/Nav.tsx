@@ -11,6 +11,7 @@ const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 class NavComponent extends BaseComponent<INavProps, INavState> {
   private wrapperRef: React.RefObject<HTMLDivElement>;
   private containerRef: React.RefObject<HTMLDivElement>;
+  private shouldScroll: boolean = false;
 
   constructor(props: INavProps) {
     super(props);
@@ -27,16 +28,21 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   }
 
   public render(): JSX.Element | null {
+    const isNavCollapsed = this.props.isNavCollapsed ? this.props.isNavCollapsed : this.state.isNavCollapsed;
     if (!this.props.groups || this.props.groups.length === 0) {
       return null;
     }
 
-    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
+    const classNames = getClassNames(getStyles, { isNavCollapsed });
+    const navWrapperClassName = this.shouldScroll ? classNames.navWrapper + ' ' + classNames.navWrapperScroll : classNames.navWrapper;
+    const navContainerClassName = this.shouldScroll
+      ? classNames.navContainer + ' ' + classNames.navContainerScroll
+      : classNames.navContainer;
 
     return (
       <div aria-hidden="true" className={classNames.root}>
-        <div aria-hidden="true" className={classNames.navWrapper} ref={this.wrapperRef}>
-          <nav role="navigation" className={classNames.navContainer} ref={this.containerRef}>
+        <div aria-hidden="true" className={navWrapperClassName} ref={this.wrapperRef}>
+          <nav role="navigation" className={navContainerClassName} ref={this.containerRef}>
             {this._renderExpandCollapseNavItem()}
 
             {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
@@ -60,7 +66,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   // Basic methods
   //
   private _renderExpandCollapseNavItem(): React.ReactElement<{}> | null {
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
     const isNavCollapsed = this.state.isNavCollapsed;
     const { dataHint } = this.props;
     const ariaLabel = isNavCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
@@ -99,63 +105,65 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
         dataHint={this.props.dataHint}
         isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
         onCollapse={this._setScrollLayout}
+        navRef={this.containerRef}
       />
     );
   }
 
-  private _renderCustomizationLinks(): React.ReactElement<{}> | null {
-    const classNames = getClassNames(getStyles);
+  private _renderCustomizationLinks(): JSX.Element {
+    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
     const { enableCustomization, showMore, editString, showMoreString, showLessString } = this.props;
 
-    if (!enableCustomization) {
-      // If enable customization is not on, then don't render anything
-      return null;
-    }
-
     return (
-      // If enableCustomization
-      <ul role={'list'} className={classNames.navGroup}>
-        <li role={'listitem'} title={'Edit navigation'}>
-          <NavLink
-            id={'EditNav'}
-            href={'#'}
-            name={editString}
-            onClick={this._editClicked}
-            dataHint={'Edit navigation'}
-            dataValue={'NavToggle'}
-            ariaLabel={'Edit navigation'}
-            primaryIconName={'Edit'}
-            role="menu"
-          />
-        </li>
-        {!!showMore && showMore ? (
-          <li role={'listitem'} title={'Show more'}>
-            <NavLink
-              id={'ShowMore'}
-              href={'#'}
-              name={this.props.showMore ? showMoreString : showLessString}
-              onClick={this._toggleHidden}
-              dataHint={'Show more'}
-              dataValue={'Show more'}
-              ariaLabel={'Show more'}
-              primaryIconName={'More'}
-              role="menu"
-            />
-          </li>
-        ) : null}
-      </ul>
+      <>
+        {enableCustomization && (
+          // If enableCustomization
+          <ul role={'list'} className={classNames.navGroup}>
+            <li role={'listitem'} title={'Edit navigation'}>
+              <NavLink
+                id={'EditNav'}
+                href={'#'}
+                name={editString}
+                onClick={this._editClicked}
+                dataHint={'Edit navigation'}
+                dataValue={'NavToggle'}
+                ariaLabel={'Edit navigation'}
+                primaryIconName={'Edit'}
+                role="menu"
+              />
+            </li>
+            {showMore && (
+              <li role={'listitem'} title={'Show more'}>
+                <NavLink
+                  id={'ShowMore'}
+                  href={'#'}
+                  name={this.props.showMore ? showMoreString : showLessString}
+                  onClick={this._toggleHidden}
+                  dataHint={'Show more'}
+                  dataValue={'Show more'}
+                  ariaLabel={'Show more'}
+                  primaryIconName={'More'}
+                  role="menu"
+                />
+              </li>
+            )}
+          </ul>
+        )}
+      </>
     );
   }
 
   private _setScrollLayout(): void {
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
     if (this.containerRef.current && this.wrapperRef.current) {
       if (this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight) {
         this.containerRef.current.classList.add(classNames.navContainerScroll);
         this.wrapperRef.current.classList.add(classNames.navWrapperScroll);
+        this.shouldScroll = true;
       } else {
         this.containerRef.current.classList.remove(classNames.navContainerScroll);
         this.wrapperRef.current.classList.remove(classNames.navWrapperScroll);
+        this.shouldScroll = false;
       }
     }
   }
@@ -169,7 +177,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     });
 
     // inform the caller about the collapse event
-    if (!!this.props.onNavCollapsedCallback && !!this.state.isNavCollapsed) {
+    if (!!this.props.onNavCollapsedCallback) {
       this.props.onNavCollapsedCallback(this.state.isNavCollapsed);
     }
 

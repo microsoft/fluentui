@@ -1,4 +1,5 @@
-﻿import { IStyle, IStyleFunctionOrObject, IBaseProps, INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react';
+﻿import * as React from 'react';
+import { IStyle, IStyleFunctionOrObject, IBaseProps, INavLink, INavLinkGroup, INavState } from 'office-ui-fabric-react';
 
 export interface INavProps extends IBaseProps {
   /**
@@ -78,7 +79,7 @@ export interface INavState extends INavState {
   /**
    * Used to toggle the nav component between expanded and collapsed state.
    */
-  isNavCollapsed?: boolean;
+  isNavCollapsed: boolean;
 }
 
 export interface INavGroupProps {
@@ -111,6 +112,11 @@ export interface INavGroupProps {
    * callback for when a group has been collapsed or expanded
    */
   onCollapse?: () => void;
+
+  /**
+   * Ref to the scrolling container of the navigation
+   */
+  navRef: React.RefObject<HTMLDivElement>;
 }
 
 export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
@@ -207,6 +213,11 @@ export interface INavLinkGroupProps extends INavLinkProps {
    * callback for when a group has been collapsed or expanded
    */
   onCollapse?: () => void;
+
+  /**
+   * Ref to the scrolling container of the navigation
+   */
+  navRef: React.RefObject<HTMLDivElement>;
 }
 
 export interface INavLinkGroupStates {

@@ -155,9 +155,8 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
   }
 
   private _offsetUpdated(offset: number): void {
-    if (this.navLinkGroupRef.current) {
-      const scrollOffset = this.navLinkGroupRef.current.parentNode!.parentNode!.parentElement!.scrollTop;
-      this.navLinkGroupRef.current.style.top = offset - scrollOffset + 'px';
+    if (this.navLinkGroupRef.current && this.props.navRef.current) {
+      this.navLinkGroupRef.current.style.top = offset - this.props.navRef.current.scrollTop + 'px';
     }
   }
 }

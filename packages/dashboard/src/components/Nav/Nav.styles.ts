@@ -32,7 +32,6 @@ const navItemWithChildBgColor = '#CCCCCC';
 const navIconSize = FontSizes.icon;
 const navChildItemHeight = 32;
 const navItemHoverColor = '#CCCCCC';
-// const scrollBarWidth = getBrowserScollbarWidth;
 
 export const getStyles = (props: INavLinkProps): INavStyles => {
   const { isNavCollapsed, isExpanded, hasNestedMenu, isSelected, hasSelectedNestedLink, isNested } = props;
@@ -127,9 +126,6 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
       marginLeft: '16px'
     },
     navItem: [
-      // {
-      //   position: 'relative'
-      // },
       isNavCollapsed && {
         selectors: {
           ':hover $nestedNavMenuWhenNavCollapsed': {
@@ -180,12 +176,6 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
     nestedNavLinksWhenNavCollapsed: [
       {
         padding: 0
-        // selectors: {
-        //   ['@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))']: {
-        //     WebkitBackdropFilter: 'blur(20px)',
-        //     backdropFilter: 'blur(20px)'
-        //   }
-        // }
       },
       AnimationClassNames.slideRightIn10
     ],
