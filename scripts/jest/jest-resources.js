@@ -17,7 +17,7 @@ const styleMockPath = (module.exports = {
         },
 
         transform: {
-          '.(ts|tsx)': resolve.sync('ts-jest/preprocessor.js')
+          '.(ts|tsx)': resolve.sync('ts-jest/dist')
         },
 
         reporters: [path.resolve(__dirname, './jest-reporter.js')],
@@ -31,7 +31,8 @@ const styleMockPath = (module.exports = {
 
         globals: {
           'ts-jest': {
-            tsConfigFile: path.resolve(process.cwd(), 'tsconfig.json')
+            tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
+            projectPackageJson: path.resolve(process.cwd(), 'package.json')
           }
         },
 
