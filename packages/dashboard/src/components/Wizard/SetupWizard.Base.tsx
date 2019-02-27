@@ -31,7 +31,9 @@ export class SetupWizardBase extends React.Component<ISetupWizardProps, {}> {
   private _onRenderTitleSection = (step: IWizardStepProps): React.ReactNode => {
     const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
 
-    return <div className={classNames.titleSection}>{step.titleElement!}</div>;
+    if (step.titleElement) {
+      return <div className={classNames.titleSection}>{step.titleElement}</div>;
+    }
   };
 
   // Get wizard action bar
