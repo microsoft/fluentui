@@ -525,7 +525,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        required={false}
         type="radio"
       />
       <label
