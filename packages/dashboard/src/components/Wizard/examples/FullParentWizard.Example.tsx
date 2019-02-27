@@ -21,7 +21,7 @@ export class FullParentWizardExample extends WizardExampleBase<IWizardExampleBas
     const classNames = getClassName({ containerHeight });
     return (
       <div className={`ms-WizardExample ${classNames.containerHeight}`}>
-        <FullParentWizard steps={this.state.steps} />
+        <FullParentWizard wizardProps={{ steps: this.state.steps }} />
       </div>
     );
   }

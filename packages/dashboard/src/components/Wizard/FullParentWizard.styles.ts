@@ -1,18 +1,10 @@
 import { IFullParentWizardStyles, IFullParentWizardStyleProps } from './FullParentWizard.types';
-import { getWizardStyles, subwayNavWidthPx, subwayNavPaddingPx } from './Wizard.styles';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { subwayNavWidthPx, subwayNavPaddingPx } from './Wizard.styles';
+import { ITheme } from 'office-ui-fabric-react';
+import { IWizardStyles } from './Wizard.types';
 
 export const getFullParentWizardStyles = (props: IFullParentWizardStyleProps): IFullParentWizardStyles => {
-  const defaultStyle = getWizardStyles();
-
-  const styleOverride = <IFullParentWizardStyles>{
-    wizardContentNavContainer: {
-      height: '100%'
-    },
-    subwayNavSection: {
-      borderRight: `1px solid ${props.theme.semanticColors.bodyDivider}`,
-      paddingTop: '40px'
-    },
+  return {
     parentContainer: {
       height: '100%',
       display: 'flex',
@@ -29,6 +21,16 @@ export const getFullParentWizardStyles = (props: IFullParentWizardStyleProps): I
       flexDirection: 'row'
     }
   };
+};
 
-  return mergeStyleSets(defaultStyle, styleOverride);
+export const wizardStyleOverride = (theme: ITheme): Partial<IWizardStyles> => {
+  return {
+    wizardContentNavContainer: {
+      height: '100%'
+    },
+    subwayNavSection: {
+      borderRight: `1px solid ${theme.semanticColors.bodyDivider}`,
+      paddingTop: '40px'
+    }
+  };
 };
