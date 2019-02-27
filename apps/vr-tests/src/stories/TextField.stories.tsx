@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
-import { TextField, Fabric } from 'office-ui-fabric-react';
+import { TextField } from 'office-ui-fabric-react';
 
 storiesOf('TextField', module)
   .addDecorator(FabricDecoratorFixedWidth)
@@ -21,73 +21,29 @@ storiesOf('TextField', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => (
-    <Fabric>
-      <TextField label="Standard" />
-    </Fabric>
-  ))
-  .addStory(
-    'Placeholder',
-    () => (
-      <Fabric>
-        <TextField label="Standard" placeholder="Placeholder" />
-      </Fabric>
-    ),
-    { rtl: true }
-  )
-  .addStory('Disabled', () => (
-    <Fabric>
-      <TextField label="Disabled" disabled />
-    </Fabric>
-  ))
-  .addStory('Required', () => (
-    <Fabric>
-      <TextField label="Required" required />
-    </Fabric>
-  ))
-  .addStory(
-    'Error',
-    () => (
-      <Fabric>
-        <TextField label="Error" errorMessage="Error message" />
-      </Fabric>
-    ),
-    { rtl: true }
-  )
-  .addStory(
-    'Multiline',
-    () => (
-      <Fabric>
-        <TextField label="Multiline" multiline rows={4} />
-      </Fabric>
-    ),
-    { rtl: true }
-  )
+  .addStory('Root', () => <TextField label="Standard" />)
+  .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {
+    rtl: true
+  })
+  .addStory('Disabled', () => <TextField label="Disabled" disabled />)
+  .addStory('Required', () => <TextField label="Required" required />)
+  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, { rtl: true })
+  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, { rtl: true })
   .addStory('Multiline nonresizable', () => (
-    <Fabric>
-      <TextField label="Multiline" multiline rows={4} resizable={false} />
-    </Fabric>
+    <TextField label="Multiline" multiline rows={4} resizable={false} />
   ))
-  .addStory('Underlined', () => (
-    <Fabric>
-      <TextField label="Underlined" underlined />
-    </Fabric>
-  ))
+  .addStory('Underlined', () => <TextField label="Underlined" underlined />)
   .addStory('Borderless', () => (
-    <Fabric>
-      <TextField label="Borderless" borderless placeholder="Placeholder text" />
-    </Fabric>
+    <TextField label="Borderless" borderless placeholder="Placeholder text" />
   ))
   .addStory(
     'Icon',
     () => (
-      <Fabric>
-        <TextField
-          styles={{ icon: { color: '#333333' } }}
-          label="Icon"
-          iconProps={{ iconName: 'Calendar' }}
-        />
-      </Fabric>
+      <TextField
+        styles={{ icon: { color: 'green' } }}
+        label="Green styled icon"
+        iconProps={{ iconName: 'Calendar' }}
+      />
     ),
     {
       rtl: true
@@ -96,13 +52,11 @@ storiesOf('TextField', module)
   .addStory(
     'Prefix with Value, Disabled, and Prefix Style-Override',
     () => (
-      <Fabric>
-        <TextField
-          label="Prefix"
-          prefix="https://"
-          styles={{ prefix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
-        />
-      </Fabric>
+      <TextField
+        label="Green styled prefix"
+        prefix="https://"
+        styles={{ prefix: { color: 'green' } }}
+      />
     ),
     {
       rtl: true
@@ -115,18 +69,6 @@ storiesOf('TextField', module)
       rtl: true
     }
   )
-  .addStory(
-    'Suffix',
-    () => (
-      <Fabric>
-        <TextField
-          label="Suffix"
-          suffix=".com"
-          styles={{ suffix: { color: '#666666', fontFamily: 'Segoe UI', fontSize: '14px' } }}
-        />
-      </Fabric>
-    ),
-    {
-      rtl: true
-    }
-  );
+  .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
+    rtl: true
+  });
