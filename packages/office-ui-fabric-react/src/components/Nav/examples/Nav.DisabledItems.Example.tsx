@@ -36,14 +36,17 @@ export class NavDisabledItemsExample extends React.Component<any, any> {
                   ],
                   isExpanded: true
                 },
-                { name: 'Documents', url: 'http://example.com', key: 'key3' },
-
+                {
+                  name: 'Documents',
+                  url: 'http://example.com',
+                  key: 'key3'
+                },
                 {
                   name: 'Unavailable Item',
                   url: 'http://cnn.com',
                   icon: 'News',
                   disabled: true,
-                  key: 'key9'
+                  key: 'key4'
                 }
               ]
             }

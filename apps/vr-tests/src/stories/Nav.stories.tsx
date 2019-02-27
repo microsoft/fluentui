@@ -69,20 +69,22 @@ const disabledLinks: INavLink[] = [
         name: 'MSN',
         url: 'http://msn.com',
         key: 'key2',
-        disabled: true,
-        altText: 'The link is temporary disabled'
+        disabled: true
       }
     ],
     isExpanded: true
   },
-  { name: 'Documents', url: 'http://example.com', key: 'key3' },
-
+  {
+    name: 'Documents',
+    url: 'http://example.com',
+    key: 'key3'
+  },
   {
     name: 'Unavailable Item',
     url: 'http://cnn.com',
-    icon: 'News',
+    icon: IconNames.News,
     disabled: true,
-    key: 'key9'
+    key: 'key4'
   }
 ]
 
