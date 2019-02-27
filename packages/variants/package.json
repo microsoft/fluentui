@@ -23,7 +23,6 @@
   "disabledTasks": [
     "copy",
     "sass",
-    "karma",
     "build-codepen-examples",
     "verify-api-extractor"
   ],
