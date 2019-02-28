@@ -31,7 +31,7 @@ export class TopNavBase extends React.Component<ITopNavProps, ITopNavState> {
 
     return (
       <FocusZone className={styles.topNavWrapper}>
-        <nav className={css(styles.topNav)} role="navigation">
+        <nav className={css(styles.topNav)} role='navigation'>
           {isSmallScreen && (
             <>
               <IconButton
@@ -48,7 +48,7 @@ export class TopNavBase extends React.Component<ITopNavProps, ITopNavState> {
               />
               {this._renderMicrosoftLogo()}
               <Panel
-                className="ms-App-topNavPanel"
+                className='ms-App-topNavPanel'
                 isOpen={isNavOpen}
                 isLightDismiss={true}
                 type={PanelType.smallFixedNear}
@@ -90,24 +90,24 @@ export class TopNavBase extends React.Component<ITopNavProps, ITopNavState> {
         isSmallScreen: window.innerWidth < UHFBreakPoints.mobile
       });
     }, 100);
-  };
+  }
 
   private _onHashChange = (): void => {
     this.setState({ isNavOpen: false });
-  };
+  }
 
   private _openNavPanel = (): void => {
     this.setState({ isNavOpen: true });
-  };
+  }
 
   private _closeNavPanel = (): void => {
     this.setState({ isNavOpen: false });
-  };
+  }
 
   private _renderMicrosoftLogo(): JSX.Element {
     return (
-      <a href="https://microsoft.com/" title="Home page" aria-label="Home page" className={styles.microsoftLogo}>
-        <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" alt="Microsoft logo" />
+      <a href='https://microsoft.com/' title='Home page' aria-label='Home page' className={styles.microsoftLogo}>
+        <img src='https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31' alt='Microsoft logo' />
       </a>
     );
   }
@@ -118,7 +118,7 @@ export class TopNavBase extends React.Component<ITopNavProps, ITopNavState> {
     return (
       <div className={styles.isHomePage}>
         {this._renderMicrosoftLogo()}
-        <a href="/#" className={styles.isFabricLink}>
+        <a href='/#' className={styles.isFabricLink}>
           Fabric
         </a>
       </div>
@@ -159,7 +159,7 @@ export class TopNavBase extends React.Component<ITopNavProps, ITopNavState> {
       .map((page, pageIndex) => this._renderLink(page, pageIndex, isStacked));
 
     return (
-      <ul className={css(styles.links, isStacked && styles.isStacked)} aria-label="Website top-level navigation">
+      <ul className={css(styles.links, isStacked && styles.isStacked)} aria-label='Website top-level navigation'>
         {links}
       </ul>
     );
