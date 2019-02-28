@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: `selectedKey` can now take null to clear the selection.",
+      "comment": "Dropdown and ComboBox: `selectedKey` can now take null to clear the selection.",
       "type": "minor"
     }
   ],
