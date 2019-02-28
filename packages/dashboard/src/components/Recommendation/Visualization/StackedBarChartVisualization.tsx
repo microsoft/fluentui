@@ -7,7 +7,9 @@ import { IStackedBarChartVisualizationProps, IStackedBarChartVisualizationStyles
 
 import { IRecommendationBannerChartData } from '../Recommendation.types';
 
-export const StackedBarChartVisualization: React.SFC<IStackedBarChartVisualizationProps> = (props: IStackedBarChartVisualizationProps) => {
+export const StackedBarChartVisualization: React.FunctionComponent<IStackedBarChartVisualizationProps> = (
+  props: IStackedBarChartVisualizationProps
+) => {
   const chartColors = ['#662D91', '#E6E6E6'];
   const { visualizationDatapoints } = props;
   const getClassNames = classNamesFunction<{}, IStackedBarChartVisualizationStyles>();

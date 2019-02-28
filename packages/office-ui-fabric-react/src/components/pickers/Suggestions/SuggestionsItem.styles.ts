@@ -58,6 +58,9 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         padding: 0,
         border: 'none',
         height: '100%',
+        // Force the item button to be collapsible so it can always shrink
+        // to accommodate the close button as a peer in its flex container.
+        minWidth: 0,
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText'

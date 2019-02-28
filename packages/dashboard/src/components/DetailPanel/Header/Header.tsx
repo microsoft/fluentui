@@ -7,7 +7,7 @@ import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
 type DetailPanelHeaderProps = IDetailPanelHeaderProps & IDetailPanelAnalytics;
 
-const header: React.SFC<DetailPanelHeaderProps> = (props: DetailPanelHeaderProps) => {
+const header: React.FunctionComponent<DetailPanelHeaderProps> = (props: DetailPanelHeaderProps) => {
   const css = detailPanelHeaderStyles;
 
   const _onQuickActionClick = (quickAction: IQuickAction) => () => {

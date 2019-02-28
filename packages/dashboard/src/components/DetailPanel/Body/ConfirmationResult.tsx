@@ -11,7 +11,7 @@ import { detailPanelConfirmationStyles } from '../DetailPanel.styles';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const confirmationResult: React.SFC<IDetailPanelConfirmationResultProps> = (props: IDetailPanelConfirmationResultProps) => {
+const confirmationResult: React.FunctionComponent<IDetailPanelConfirmationResultProps> = (props: IDetailPanelConfirmationResultProps) => {
   const css = detailPanelConfirmationStyles;
   const _getStatusIcon = (status?: ConfirmationStatus) => {
     if (status) {

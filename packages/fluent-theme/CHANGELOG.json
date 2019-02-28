@@ -2,6 +2,47 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.0",
+      "tag": "@uifabric/fluent-theme_v0.16.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4f0b6edde9d6fe846bf84cad542fceca9eb1e729"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.41.0 <7.0.0` to `>=6.42.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.145.0 <7.0.0` to `>=6.146.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.15.1",
+      "tag": "@uifabric/fluent-theme_v0.15.1",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update DetailsList Fluent styles",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f548938819def5e9e8a2f81bf9cd11aaa401e68c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.0",
       "tag": "@uifabric/fluent-theme_v0.15.0",
       "date": "Wed, 20 Feb 2019 13:30:29 GMT",

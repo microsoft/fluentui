@@ -13,6 +13,7 @@ import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
 import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
+import { DetailsColumnStyles } from './styles/DetailsColumn.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
 import { DropdownStyles } from './styles/Dropdown.styles';
 import { ExpandingCardStyles, PlainCardStyles } from './styles/HoverCard.styles';
@@ -91,6 +92,9 @@ export const FluentStyles: any = {
   },
   DefaultButton: {
     styles: DefaultButtonStyles
+  },
+  DetailsColumn: {
+    styles: DetailsColumnStyles
   },
   DetailsRow: {
     styles: DetailsRowStyles

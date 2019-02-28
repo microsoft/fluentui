@@ -174,7 +174,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     }
 
     // tslint:disable-next-line:jsx-ban-props
-    return <ItemTag ref={this._spacerRef.bind(this, key)} key={key} style={{ height: spacerHeight }} />;
+    return React.createElement(ItemTag, { ref: this._spacerRef.bind(this, key), key, style: { height: spacerHeight } });
   }
 
   private _spacerRef = (key: string, ref: HTMLElement): void => {

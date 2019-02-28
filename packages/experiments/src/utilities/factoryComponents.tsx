@@ -20,16 +20,16 @@ import { createFactory, ISlottableComponentType } from '../Foundation';
 // can be absorbed into their respective OUFR components.
 export const Icon: ISlottableComponentType<IIconProps> = props => (props.iconName ? <FabricIcon {...props} /> : null);
 Icon.displayName = 'Icon';
-Icon.create = createFactory(Icon, { defaultProp: 'iconName' });
+(Icon.create as any) = createFactory(Icon, { defaultProp: 'iconName' }); // FABRIC7TODO
 
 export const Label: ISlottableComponentType<ILabelProps> = props =>
   React.Children.count(props.children) > 0 ? <FabricLabel {...props} /> : null;
 Label.displayName = 'Label';
-Label.create = createFactory(Label);
+(Label.create as any) = createFactory(Label); // FABRIC7TODO
 
 export const PersonaPresence: ISlottableComponentType<IPersonaPresenceProps> =
   // TODO: This is a bug in PersonaPresence that needs to be fixed. 'presence' prop comment mentions that it won't render
   //        if presence is undefined, but it does render. Check for undefined here for now.
   props => (props.presence !== undefined ? <FabricPersonaPresence {...props} /> : null);
 PersonaPresence.displayName = 'PersonaPresence';
-PersonaPresence.create = createFactory(PersonaPresence, { defaultProp: 'presence' });
+(PersonaPresence.create as any) = createFactory(PersonaPresence, { defaultProp: 'presence' }); // FABRIC7TODO
