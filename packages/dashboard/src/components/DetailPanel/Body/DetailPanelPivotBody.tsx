@@ -11,7 +11,7 @@ import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
 type DetailPanelPivotBodyProps = IDetailPanelPivotBodyProps & IDetailPanelBaseCommonAction & IDetailPanelAnalytics;
 
-const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: DetailPanelPivotBodyProps) => {
+const detailPanelPivotBody: React.FunctionComponent<DetailPanelPivotBodyProps> = (props: DetailPanelPivotBodyProps) => {
   const _onPivotItemClick = (item?: PivotItem) => {
     if (item) {
       const { onPivotLinkClick, analyticsHandler } = props;

@@ -185,7 +185,7 @@ export class EditSectionsExample extends React.Component<{}, IEditSectionsExampl
   private _addLayoutForNewSection(id: string): DashboardGridBreakpointLayouts {
     const newLayout: DashboardGridBreakpointLayouts = JSON.parse(JSON.stringify(this.state.layout));
 
-    for (const [_, value] of Object.entries(newLayout)) {
+    for (const [, value] of Object.entries(newLayout)) {
       if (value === undefined) {
         continue;
       }

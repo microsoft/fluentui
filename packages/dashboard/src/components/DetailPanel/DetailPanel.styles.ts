@@ -1,4 +1,4 @@
-import { IStyle, FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, FontSizes, FontWeights, DefaultPalette, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const PrimaryTextColor = '#323130';
@@ -275,14 +275,26 @@ const getDetailPanelConfirmationStyles = (): IDetailPanelConfirmationStyles => {
   };
 };
 
-export const detailPanelBaseStyles = classNamesFunction<{}, IDetailPanelBaseStyles>()(getDetailPanelBaseStyles);
+export const detailPanelBaseStyles: IProcessedStyleSet<IDetailPanelBaseStyles> = classNamesFunction<{}, IDetailPanelBaseStyles>()(
+  getDetailPanelBaseStyles
+);
 
-export const detailPanelLoadingStyles = classNamesFunction<{}, IDetailPanelLoadingStyles>()(getDetailPanelLoadingStyles);
+export const detailPanelLoadingStyles: IProcessedStyleSet<IDetailPanelLoadingStyles> = classNamesFunction<{}, IDetailPanelLoadingStyles>()(
+  getDetailPanelLoadingStyles
+);
 
-export const detailPanelPivotItemStyles = classNamesFunction<{}, IDetailPanelPivotItemStyles>()(getDetailPanelPivotItemStyles);
+export const detailPanelPivotItemStyles: IProcessedStyleSet<IDetailPanelPivotItemStyles> = classNamesFunction<
+  {},
+  IDetailPanelPivotItemStyles
+>()(getDetailPanelPivotItemStyles);
 
-export const detailTileClassNames = classNamesFunction<{}, IDetailTileStyles>()(getDetailTileStyles);
+export const detailTileClassNames: IProcessedStyleSet<IDetailTileStyles> = classNamesFunction<{}, IDetailTileStyles>()(getDetailTileStyles);
 
-export const detailPanelHeaderStyles = classNamesFunction<{}, IDetailPanelHederStyles>()(getDetailPanelHeaderStyles);
+export const detailPanelHeaderStyles: IProcessedStyleSet<IDetailPanelHederStyles> = classNamesFunction<{}, IDetailPanelHederStyles>()(
+  getDetailPanelHeaderStyles
+);
 
-export const detailPanelConfirmationStyles = classNamesFunction<{}, IDetailPanelConfirmationStyles>()(getDetailPanelConfirmationStyles);
+export const detailPanelConfirmationStyles: IProcessedStyleSet<IDetailPanelConfirmationStyles> = classNamesFunction<
+  {},
+  IDetailPanelConfirmationStyles
+>()(getDetailPanelConfirmationStyles);
