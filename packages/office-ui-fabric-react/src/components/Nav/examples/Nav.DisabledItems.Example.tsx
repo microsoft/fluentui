@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 import './Nav.Basic.Example.scss';
 
-export class NavBasicExample extends React.Component<any, any> {
+export class NavDisabledItemsExample extends React.Component<any, any> {
   public onLinkClick = (ev: React.MouseEvent<HTMLElement>, item?: INavLink) => {
     if (item && item.name === 'News') {
       alert('News link clicked');
@@ -19,6 +19,7 @@ export class NavBasicExample extends React.Component<any, any> {
                 {
                   name: 'Home',
                   url: 'http://example.com',
+                  disabled: true,
                   links: [
                     {
                       name: 'Activity',
@@ -28,7 +29,9 @@ export class NavBasicExample extends React.Component<any, any> {
                     {
                       name: 'MSN',
                       url: 'http://msn.com',
-                      key: 'key2'
+                      key: 'key2',
+                      disabled: true,
+                      altText: 'The link is temporary disabled'
                     }
                   ],
                   isExpanded: true
@@ -36,29 +39,14 @@ export class NavBasicExample extends React.Component<any, any> {
                 {
                   name: 'Documents',
                   url: 'http://example.com',
-                  key: 'key3',
-                  isExpanded: true
+                  key: 'key3'
                 },
                 {
-                  name: 'Pages',
-                  url: 'http://msn.com',
-                  key: 'key4'
-                },
-                {
-                  name: 'Notebook',
-                  url: 'http://msn.com',
-                  key: 'key5'
-                },
-                {
-                  name: 'Communication and Media',
-                  url: 'http://msn.com',
-                  key: 'key6'
-                },
-                {
-                  name: 'News',
+                  name: 'Unavailable Item',
                   url: 'http://cnn.com',
                   icon: 'News',
-                  key: 'key7'
+                  disabled: true,
+                  key: 'key4'
                 }
               ]
             }
