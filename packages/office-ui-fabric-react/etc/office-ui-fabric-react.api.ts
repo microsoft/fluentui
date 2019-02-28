@@ -13107,7 +13107,6 @@ module ZIndexes {
 // WARNING: Unsupported export: ICustomizerProps
 // WARNING: Unsupported export: CustomizerContext
 // WARNING: Unsupported export: DATA_PORTAL_ATTRIBUTE
-// WARNING: Unsupported export: _isSSR
 // WARNING: Unsupported export: IsFocusVisibleClassName
 // WARNING: Unsupported export: FitMode
 // WARNING: Unsupported export: isIOS

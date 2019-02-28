@@ -1,6 +1,7 @@
 import { _isSSR } from './setSSR';
 /**
- * Helper to get the window object.
+ * Helper to get the window object. Note that in popup scenarios the window object
+ * may not be the window use ex
  *
  * @public
  */
