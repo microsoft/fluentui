@@ -134,6 +134,11 @@ export interface IPalette {
   whiteTranslucent40: string;
 
   /**
+   * Color code for yellowDark.
+   */
+  yellowDark: string;
+
+  /**
    * Color code for yellow.
    */
   yellow: string;
