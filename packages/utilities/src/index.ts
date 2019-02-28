@@ -46,7 +46,7 @@ export * from './dom/getWindow';
 export * from './dom/isVirtualElement';
 export * from './dom/portalContainsElement';
 export * from './dom/setPortalAttribute';
-export * from './dom/setSSR';
+export { setSSR } from './dom/setSSR';
 export * from './dom/setVirtualParent';
 export * from './focus';
 export * from './hoist';
