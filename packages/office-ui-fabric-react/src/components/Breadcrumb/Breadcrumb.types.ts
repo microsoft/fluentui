@@ -11,7 +11,7 @@ export interface IBreadcrumb {
   focus(): void;
 }
 
-export interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

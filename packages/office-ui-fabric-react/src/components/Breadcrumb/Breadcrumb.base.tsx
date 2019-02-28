@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, getRTL, classNamesFunction } from '../../Utilities';
+import { BaseComponent, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -143,8 +143,10 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       );
     }
 
+    const nativeProps = getNativeProps(this.props, htmlElementProperties, ['className']);
+
     return (
-      <div className={this._classNames.root} role="navigation" aria-label={ariaLabel}>
+      <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
         <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
           <ol className={this._classNames.list}>{itemElements}</ol>
         </FocusZone>
