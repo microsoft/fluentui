@@ -154,7 +154,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
-    const Tag = this.props.elementType || 'div';
+    const Tag = this.props.as || 'div';
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
     // was in the zone before the update. This helper will track this and, if focus

@@ -57,9 +57,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   disabled?: boolean;
 
   /**
-   * Element type the root element will use. Default is "div".
+   * A component that should be used as the root element of the link returned from the Link component.
    */
-  elementType?: keyof React.ReactHTML;
+  as?: string | React.ComponentClass | React.StatelessComponent;
 
   /**
    * If set, will cycle to the beginning of the targets once the user navigates to the
