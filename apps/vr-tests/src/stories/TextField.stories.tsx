@@ -57,6 +57,7 @@ storiesOf('TextField', module)
         prefix="https://"
         value="example.com"
         styles={{ prefix: { color: 'green' } }}
+        disabled
       />
     ),
     {
