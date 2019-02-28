@@ -85,6 +85,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Keys of the selected items. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
+   * Passing null in will clear the selection.
    */
   selectedKeys?: string[] | number[] | null;
 

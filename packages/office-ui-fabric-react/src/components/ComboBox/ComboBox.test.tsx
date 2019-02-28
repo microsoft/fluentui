@@ -110,6 +110,17 @@ describe.only('ComboBox', () => {
     expect(inputElement.props().value).toEqual('zero');
   });
 
+  it('Changes to  a selected item on key change', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
+    expect(inputElement.props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: 1 });
+    expect(inputElement.props().value).toEqual('one');
+  });
+
   it('Renders a placeholder', () => {
     const placeholder = 'Select an option';
     wrapper = mount(<ComboBox placeholder={placeholder} options={DEFAULT_OPTIONS} />);
