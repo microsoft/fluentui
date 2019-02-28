@@ -129,7 +129,8 @@ describe.only('ComboBox', () => {
 
     wrapper.setProps({ selectedKey: null });
 
-    // \u200B is a zero width space. Not sure why this shows up, instead of empty string.
+    // \u200B is a zero width space. 
+    // See https://github.com/OfficeDev/office-ui-fabric-react/blob/d4e9b6d28b25a3e123b2d47c0a03f18113fbee60/packages/office-ui-fabric-react/src/components/ComboBox/ComboBox.tsx#L481.
     expect(wrapper.find('input').props().value).toEqual('\u200B');
   });
 
