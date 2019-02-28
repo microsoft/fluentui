@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
+import { IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
