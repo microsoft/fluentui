@@ -481,7 +481,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // If visibleValue is empty, make it a zero width space.
       // If we did not do that, the empty string would not get used
       // potentially resulting in an unexpected value being used
-      return visibleValue || '​';
+      return visibleValue || '';
     }
 
     return comboBox.value;
