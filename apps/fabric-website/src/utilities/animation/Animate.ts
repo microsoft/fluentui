@@ -119,7 +119,7 @@ export class Animate {
     let obj: IScrollObj = { element: element, props: props, step: 0 };
     Animate._setScrollProperties(obj);
     if (obj.props.delay) {
-      setTimeout(Animate._animationObjects, obj.props.delay * 1000, obj);
+      setTimeout(Animate._animationObjects as any, obj.props.delay * 1000, obj);
     } else {
       Animate._animateScroll(obj);
     }
