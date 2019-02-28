@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Feb 2019 06:49:08 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Feb 2019 13:29:08 GMT and should not be manually modified.
+
+## 6.146.2
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Patches
+
+- TagItemSuggestion: adds `white-space: nowrap` CSS declaration which is required for `text-overflow: ellipsis` to work.
+- TextField: adds font styles passed from theme to the root element.
 
 ## 6.146.1
 Wed, 27 Feb 2019 06:49:08 GMT

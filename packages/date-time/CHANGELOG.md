@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 12 Feb 2019 13:36:42 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Feb 2019 13:29:07 GMT and should not be manually modified.
+
+## 0.3.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- cherry picking restricted dates functionality to date-time package calendar
 
 ## 0.2.2
 Tue, 12 Feb 2019 13:36:42 GMT
