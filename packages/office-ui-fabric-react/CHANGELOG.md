@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Feb 2019 13:29:08 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Feb 2019 17:04:01 GMT and should not be manually modified.
+
+## 6.147.0
+Thu, 28 Feb 2019 17:04:01 GMT
+
+### Minor changes
+
+- Dropdown and ComboBox: `selectedKey` can now take null to clear the selection.
 
 ## 6.146.2
 Thu, 28 Feb 2019 13:29:07 GMT

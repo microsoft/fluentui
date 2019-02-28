@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.147.0",
+      "tag": "office-ui-fabric-react_v6.147.0",
+      "date": "Thu, 28 Feb 2019 17:04:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dropdown and ComboBox: `selectedKey` can now take null to clear the selection.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5d7edcdd927a7f6158e30ab43de41fff919b1767"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.146.2",
       "tag": "office-ui-fabric-react_v6.146.2",
       "date": "Thu, 28 Feb 2019 13:29:07 GMT",
