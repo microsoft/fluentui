@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "move Text component from experiments -> OUFR",
+      "comment": "Card: Exporting Card from experiments.",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "natalie.ethell@microsoft.com"
+  "email": "makotom@microsoft.com"
 }

@@ -6,12 +6,14 @@ import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example'
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 import { DialogTopOffsetFixedExample } from './examples/Dialog.TopOffsetFixed.Example';
 import { DialogStatus } from './Dialog.checklist';
+import { DialogModelessExample } from './examples/Dialog.Modeless.Example';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
 const DialogBlockingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
 const DialogTopOffsetFixedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.TopOffsetFixed.Example.tsx') as string;
 const DialogBlockingExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Dialog/Dialog.Blocking.Example.Codepen.txt') as string;
+const DialogModelessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Modeless.Example.tsx') as string;
 
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
@@ -64,6 +66,11 @@ export const DialogPageProps: IDocPageProps = {
           <DialogTopOffsetFixedExample />
         </>
       )
+    },
+    {
+      title: 'Modeless Dialog',
+      code: DialogModelessExampleCode,
+      view: <DialogModelessExample />
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.types.ts')],

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+
+## 0.16.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.
 
 ## 0.15.1
 Mon, 25 Feb 2019 13:31:08 GMT

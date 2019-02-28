@@ -13,7 +13,7 @@ const alias = {
 };
 
 module.exports = [
-  resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
+  ...resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     entry: {
       [BUNDLE_NAME]: './lib/index.js'
     },

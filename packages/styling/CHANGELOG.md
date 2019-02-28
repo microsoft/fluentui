@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+
+## 6.42.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- IEffects: changes types of the `elevation` and `roundedCorner2` properties to `string` to allow a more flexible way to provide values.
 
 ## 6.41.0
 Tue, 15 Jan 2019 13:36:45 GMT

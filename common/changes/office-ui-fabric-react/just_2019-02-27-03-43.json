@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "Text: add Text component",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "natalie.ethell@microsoft.com"
+  "email": "elcraig@microsoft.com"
 }

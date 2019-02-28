@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Remove redundant casts and local declaration",
+      "comment": "TextField: adds font styles passed from theme to the root element.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "aneeshak@microsoft.com"
 }
