@@ -2008,7 +2008,7 @@ interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
+interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IBreadcrumb>;
