@@ -36,12 +36,12 @@
     "es6-map": "^0.1.5",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0"
+    "react": ">=16.8.3-0 <17.0.0",
+    "react-dom": ">=16.8.3-0 <17.0.0"
   },
   "peerDependencies": {
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0"
+    "react": ">=16.8.3-0 <17.0.0",
+    "react-dom": ">=16.8.3-0 <17.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",

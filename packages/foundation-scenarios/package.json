@@ -37,8 +37,8 @@
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0",
+    "react": ">=16.8.3-0 <17.0.0",
+    "react-dom": ">=16.8.3-0 <17.0.0",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
