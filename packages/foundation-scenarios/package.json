@@ -30,7 +30,7 @@
     "@types/react-dom": "16.0.5",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=6.11.6 <7.0.0",
+    "@uifabric/example-app-base": ">=6.11.8 <7.0.0",
     "@uifabric/jest-serializer-merge-styles": ">=6.0.7 <7.0.0",
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
     "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
@@ -44,11 +44,16 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/set-version": ">=1.1.3 <2.0.0",
-    "office-ui-fabric-react": ">=6.142.1 <7.0.0",
+    "office-ui-fabric-react": ">=6.146.1 <7.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
-  }
+  },
+  "disabledTasks": [
+    "jest",
+    "verify-api-extractor",
+    "build-codepen-examples"
+  ]
 }

@@ -84,7 +84,7 @@ function transformFile(file, callback) {
     }
 
     const outPath = path.join(dirPath, exampleName + '.Codepen.txt');
-    logger.info('Writing codepen: ' + outPath);
+    logger.verbose('Writing codepen: ' + outPath);
     fs.writeFileSync(outPath, transformResult);
   }
 

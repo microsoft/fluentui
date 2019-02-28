@@ -1,6 +1,21 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 20 Feb 2019 13:30:29 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Feb 2019 22:45:29 GMT and should not be manually modified.
+
+## 6.29.4
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- ARIA: mergeAriaAttributeValues should produce space-delimited output by default
+
+## 6.29.3
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- mergeAriaAttributeValues: Trim output string
+- Add check for tabIndex in isElementTabbable if role=button
 
 ## 6.29.2
 Wed, 20 Feb 2019 13:30:29 GMT

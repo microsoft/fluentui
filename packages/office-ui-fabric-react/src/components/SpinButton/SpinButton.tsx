@@ -195,7 +195,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
-                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, ' ', keytipAttributes['aria-describedby'])}
+                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 onBlur={this._handleBlur}
                 ref={this._input}
                 onFocus={this._handleFocus}

@@ -6,8 +6,13 @@ exports[`TextField renders TextField correctly 1`] = `
       ms-TextField
       testClassName
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -88,6 +93,8 @@ exports[`TextField renders TextField correctly 1`] = `
             ms-TextField-field
             testInputClassName
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               background-color: transparent;
               background: none;
               border-radius: 0px;
@@ -95,7 +102,9 @@ exports[`TextField renders TextField correctly 1`] = `
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -116,11 +125,21 @@ exports[`TextField renders TextField correctly 1`] = `
               display: none;
             }
             &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
         id="TextField0"
@@ -142,8 +161,13 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
       ms-TextField
       ms-TextField--multiline
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -224,6 +248,8 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
         className=
             ms-TextField-field
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               background-color: transparent;
               background: none;
               border-radius: 0px;
@@ -232,7 +258,9 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
               box-sizing: border-box;
               color: #333333;
               flex-grow: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               line-height: 17px;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -256,11 +284,21 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
               display: none;
             }
             &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
         id="TextField0"
@@ -281,8 +319,13 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
       ms-TextField
       ms-TextField--multiline
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -364,6 +407,8 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
             ms-TextField-field
             ms-TextField--unresizable
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               background-color: transparent;
               background: none;
               border-radius: 0px;
@@ -372,7 +417,9 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
               box-sizing: border-box;
               color: #333333;
               flex-grow: 1;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               line-height: 17px;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -397,11 +444,21 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
               display: none;
             }
             &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
         id="TextField0"
@@ -422,8 +479,13 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
       ms-TextField
       ms-TextField--underlined
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -550,6 +612,8 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
         className=
             ms-TextField-field
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               background-color: transparent;
               background: none;
               border-radius: 0px;
@@ -557,7 +621,9 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -579,11 +645,21 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
               display: none;
             }
             &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
         id="TextField0"
@@ -638,8 +714,13 @@ exports[`TextField renders multiline TextField correctly with props affecting st
       ms-TextField
       ms-TextField--underlined
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -766,6 +847,8 @@ exports[`TextField renders multiline TextField correctly with props affecting st
         className=
             ms-TextField-field
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               background-color: transparent;
               background: none;
               border-radius: 0px;
@@ -773,7 +856,9 @@ exports[`TextField renders multiline TextField correctly with props affecting st
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -795,11 +880,21 @@ exports[`TextField renders multiline TextField correctly with props affecting st
               display: none;
             }
             &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
         id="TextField0"
@@ -855,8 +950,13 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
       ms-TextField--underlined
       root-testClassName
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
         box-shadow: none;
         box-sizing: border-box;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -984,6 +1084,8 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
         className=
             ms-TextField-field
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               background-color: transparent;
               background: none;
               border-radius: 0px;
@@ -991,7 +1093,9 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1013,11 +1117,21 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
               display: none;
             }
             &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #666666;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               opacity: 1;
             }
         id="TextField0"

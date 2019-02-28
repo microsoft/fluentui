@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { series, resolveCwd } = require('just-task');
-const { copyTask } = require('just-task-preset');
+const { copyTask } = require('just-scripts');
 
 function expandSourcePath(pattern) {
   if (!pattern) {

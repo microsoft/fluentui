@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Feb 2019 22:45:29 GMT and should not be manually modified.
+
+## 6.11.8
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- Feedback button: Increase styles specificity to override MWF conflicts.
+
+## 6.11.7
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
 
 ## 6.11.6
 Thu, 14 Feb 2019 13:34:54 GMT

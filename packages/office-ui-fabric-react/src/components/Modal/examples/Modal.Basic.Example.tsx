@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import './Modal.Basic.Example.scss';
+import './Modal.Example.scss';
 
 export interface IModalBasicExampleState {
   showModal: boolean;

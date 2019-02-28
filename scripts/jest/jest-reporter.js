@@ -5,10 +5,6 @@ const DefaultReporter = require('jest-cli/build/reporters/default_reporter').def
  * when there are no errors.
  */
 class JestReporter extends DefaultReporter {
-  constructor(globalConfig) {
-    super(globalConfig);
-  }
-
   log(message) {
     process.stdout.write(message + '\n');
   }

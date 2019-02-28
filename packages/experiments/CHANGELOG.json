@@ -2,6 +2,77 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.60.0",
+      "tag": "@uifabric/experiments_v6.60.0",
+      "date": "Tue, 26 Feb 2019 13:31:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "move Text component from experiments -> OUFR",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a79d1760a092e653aa48a6bbf9e34e2834b00da6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.1 <7.0.0` to `>=6.144.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.59.2",
+      "tag": "@uifabric/experiments_v6.59.2",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Stack: Making doc block in `Stack.ts` in the `experiments` package so that @deprecated is recognized.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1210885da0fe37cdc1611535fc828f84c25b2981"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.15.0 <1.0.0` to `>=0.15.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.6 <7.0.0` to `>=6.11.7 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.59.1",
+      "tag": "@uifabric/experiments_v6.59.1",
+      "date": "Fri, 22 Feb 2019 13:31:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fixing focus outline and border on circular buttons.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "ecc33a7ee4aa7c21aefc920e043b42a775d2e899"
+          },
+          {
+            "comment": "Fix RTL handling in SignalsField",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a0633a7c307576ed0feeefe8d5a1364071fba4f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.2 <7.0.0` to `>=6.29.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.142.1 <7.0.0` to `>=6.143.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.59.0",
       "tag": "@uifabric/experiments_v6.59.0",
       "date": "Thu, 21 Feb 2019 13:32:08 GMT",
