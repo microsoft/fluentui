@@ -67,7 +67,7 @@ describe('getRTL', () => {
   });
 
   it('does not cause exception with null body element', () => {
-    const DOM = require('./dom');
+    const DOM = require('./dom/getDocument');
     jest.spyOn(DOM, 'getDocument').mockImplementation(() => {
       return {
         documentElement: document.documentElement,
