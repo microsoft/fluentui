@@ -56,7 +56,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="green"
+              aria-label="orange"
               aria-selected={false}
               className=
                   ms-Button
@@ -159,7 +159,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="green"
+              title="orange"
               type="button"
             >
               <div
@@ -181,7 +181,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#00ff00"
+                  fill="#ca5010"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -205,7 +205,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="orange"
+              aria-label="cyan"
               aria-selected={false}
               className=
                   ms-Button
@@ -308,7 +308,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="orange"
+              title="cyan"
               type="button"
             >
               <div
@@ -330,7 +330,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ffa500"
+                  fill="#038387"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -354,7 +354,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="blue"
+              aria-label="blueMagenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -457,7 +457,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="blue"
+              title="blueMagenta"
               type="button"
             >
               <div
@@ -479,7 +479,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#0000ff"
+                  fill="#8764b8"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -503,7 +503,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="red"
+              aria-label="magenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -606,7 +606,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="red"
+              title="magenta"
               type="button"
             >
               <div
@@ -628,7 +628,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ff0000"
+                  fill="#881798"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -847,7 +847,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="green"
+              aria-label="orange"
               aria-selected={false}
               className=
                   ms-Button
@@ -941,7 +941,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="green"
+              title="orange"
               type="button"
             >
               <div
@@ -962,7 +962,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#00ff00"
+                  fill="#ca5010"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -985,7 +985,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="orange"
+              aria-label="cyan"
               aria-selected={false}
               className=
                   ms-Button
@@ -1079,7 +1079,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="orange"
+              title="cyan"
               type="button"
             >
               <div
@@ -1100,7 +1100,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ffa500"
+                  fill="#038387"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -1123,7 +1123,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="blue"
+              aria-label="blueMagenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -1217,7 +1217,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="blue"
+              title="blueMagenta"
               type="button"
             >
               <div
@@ -1238,7 +1238,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#0000ff"
+                  fill="#8764b8"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -1261,7 +1261,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="red"
+              aria-label="magenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -1355,7 +1355,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="red"
+              title="magenta"
               type="button"
             >
               <div
@@ -1376,7 +1376,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ff0000"
+                  fill="#881798"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -1583,7 +1583,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="green"
+              aria-label="orange"
               aria-selected={false}
               className=
                   ms-Button
@@ -1677,7 +1677,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="green"
+              title="orange"
               type="button"
             >
               <div
@@ -1698,7 +1698,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#00ff00"
+                  fill="#ca5010"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -1721,7 +1721,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="orange"
+              aria-label="cyan"
               aria-selected={false}
               className=
                   ms-Button
@@ -1815,7 +1815,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="orange"
+              title="cyan"
               type="button"
             >
               <div
@@ -1836,7 +1836,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ffa500"
+                  fill="#038387"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -1859,7 +1859,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="blue"
+              aria-label="blueMagenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -1953,7 +1953,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="blue"
+              title="blueMagenta"
               type="button"
             >
               <div
@@ -1974,7 +1974,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#0000ff"
+                  fill="#8764b8"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -1997,7 +1997,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="red"
+              aria-label="magenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -2091,7 +2091,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="red"
+              title="magenta"
               type="button"
             >
               <div
@@ -2112,7 +2112,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ff0000"
+                  fill="#881798"
                   viewBox="0 0 20 20"
                 >
                   <rect
@@ -2329,7 +2329,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="green"
+              aria-label="red"
               aria-selected={false}
               className=
                   ms-Button
@@ -2432,7 +2432,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="green"
+              title="red"
               type="button"
             >
               <div
@@ -2454,7 +2454,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#00ff00"
+                  fill="#a4262c"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -2603,7 +2603,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ffa500"
+                  fill="#ca5010"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -2627,7 +2627,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="blue"
+              aria-label="orangeYellow"
               aria-selected={false}
               className=
                   ms-Button
@@ -2730,7 +2730,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="blue"
+              title="orangeYellow"
               type="button"
             >
               <div
@@ -2752,7 +2752,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#0000ff"
+                  fill="#986f0b"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -2776,7 +2776,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="red"
+              aria-label="yellowGreen"
               aria-selected={false}
               className=
                   ms-Button
@@ -2879,7 +2879,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="red"
+              title="yellowGreen"
               type="button"
             >
               <div
@@ -2901,7 +2901,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ff0000"
+                  fill="#8cbd18"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -3020,7 +3020,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={4}
               data-is-focusable={true}
-              id="swatchColorPicker54-g-4"
+              id="swatchColorPicker54-e-4"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3054,7 +3054,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="green"
+                  fill="#0b6a0b"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -3078,7 +3078,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="orange"
+              aria-label="cyan"
               aria-selected={false}
               className=
                   ms-Button
@@ -3169,7 +3169,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={5}
               data-is-focusable={true}
-              id="swatchColorPicker54-h-5"
+              id="swatchColorPicker54-f-5"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3181,7 +3181,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="orange"
+              title="cyan"
               type="button"
             >
               <div
@@ -3203,7 +3203,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="orange"
+                  fill="#038387"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -3227,7 +3227,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="blue"
+              aria-label="cyanBlue"
               aria-selected={false}
               className=
                   ms-Button
@@ -3318,7 +3318,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={6}
               data-is-focusable={true}
-              id="swatchColorPicker54-i-6"
+              id="swatchColorPicker54-g-6"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3330,7 +3330,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="blue"
+              title="cyanBlue"
               type="button"
             >
               <div
@@ -3352,7 +3352,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="blue"
+                  fill="#004e8c"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -3376,7 +3376,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="red"
+              aria-label="magenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -3467,7 +3467,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={7}
               data-is-focusable={true}
-              id="swatchColorPicker54-j-7"
+              id="swatchColorPicker54-h-7"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3479,7 +3479,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="red"
+              title="magenta"
               type="button"
             >
               <div
@@ -3501,7 +3501,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="red"
+                  fill="#881798"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -3517,6 +3517,155 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
         <tr
           role="row"
         >
+          <td
+            className=
+
+                {
+                  padding-bottom: 5px;
+                  padding-left: 5px;
+                  padding-right: 5px;
+                  padding-top: 5px;
+                }
+            role="presentation"
+          >
+            <button
+              aria-label="magentaPink"
+              aria-selected={false}
+              className=
+                  ms-Button
+                  ms-Button--action
+                  ms-Button--command
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: #ffffff;
+                    border-radius: 50%;
+                    border: none;
+                    box-sizing: border-box;
+                    color: #333333;
+                    cursor: pointer;
+                    display: inline-block;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    height: 35px;
+                    outline: transparent;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: top;
+                    width: 35px;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    outline: 1px solid #666666;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    border: none;
+                    bottom: -2px;
+                    left: -2px;
+                    outline-color: ButtonText;
+                    right: -2px;
+                    top: -2px;
+                  }
+                  &:active > * {
+                    left: 0px;
+                    position: relative;
+                    top: 0px;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus::after {
+                    border-color: #666666;
+                    border-radius: 50%;
+                    bottom: -3px;
+                    left: -3px;
+                    outline: none;
+                    right: -3px;
+                    top: -3px;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                    outline: 1px solid ButtonText;
+                  }
+                  &:hover, &:active, &:focus {
+                    background-color: #ffffff;
+                    border: 3px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
+                    color: #0078d4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    color: #000000;
+                  }
+              data-index={8}
+              data-is-focusable={true}
+              id="swatchColorPicker54-i-8"
+              onClick={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyPress={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseUp={[Function]}
+              role="gridcell"
+              title="magentaPink"
+              type="button"
+            >
+              <div
+                className=
+                    ms-Button-flexContainer
+                    {
+                      align-items: center;
+                      display: flex;
+                      flex-wrap: nowrap;
+                      height: 100%;
+                      justify-content: flex-start;
+                    }
+              >
+                <svg
+                  className=
+
+                      {
+                        border-radius: 50%;
+                        height: 100%;
+                        width: 100%;
+                      }
+                  fill="#9b0062"
+                  viewBox="0 0 20 20"
+                >
+                  <circle
+                    cx="50%"
+                    cy="50%"
+                    r="50%"
+                  />
+                </svg>
+              </div>
+            </button>
+          </td>
           <td
             className=
 
@@ -3618,9 +3767,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:active {
                     color: #000000;
                   }
-              data-index={8}
+              data-index={9}
               data-is-focusable={true}
-              id="swatchColorPicker54-k-8"
+              id="swatchColorPicker54-j-9"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3654,7 +3803,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="black"
+                  fill="#000000"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -3678,156 +3827,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="grey"
-              aria-selected={false}
-              className=
-                  ms-Button
-                  ms-Button--action
-                  ms-Button--command
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    background-color: #ffffff;
-                    border-radius: 50%;
-                    border: none;
-                    box-sizing: border-box;
-                    color: #333333;
-                    cursor: pointer;
-                    display: inline-block;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    height: 35px;
-                    outline: transparent;
-                    padding-bottom: 0px;
-                    padding-left: 0px;
-                    padding-right: 0px;
-                    padding-top: 0px;
-                    position: relative;
-                    text-align: center;
-                    text-decoration: none;
-                    user-select: none;
-                    vertical-align: top;
-                    width: 35px;
-                  }
-                  &::-moz-focus-inner {
-                    border: 0;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
-                    z-index: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                    border: none;
-                    bottom: -2px;
-                    left: -2px;
-                    outline-color: ButtonText;
-                    right: -2px;
-                    top: -2px;
-                  }
-                  &:active > * {
-                    left: 0px;
-                    position: relative;
-                    top: 0px;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
-                    border-radius: 50%;
-                    bottom: -3px;
-                    left: -3px;
-                    outline: none;
-                    right: -3px;
-                    top: -3px;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
-                    outline: 1px solid ButtonText;
-                  }
-                  &:hover, &:active, &:focus {
-                    background-color: #ffffff;
-                    border: 3px solid #eaeaea;
-                    padding-bottom: 2px;
-                    padding-left: 2px;
-                    padding-right: 2px;
-                    padding-top: 2px;
-                  }
-                  &:hover {
-                    color: #0078d4;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover {
-                    border-color: Highlight;
-                    color: Highlight;
-                  }
-                  &:active {
-                    color: #000000;
-                  }
-              data-index={9}
-              data-is-focusable={true}
-              id="swatchColorPicker54-l-9"
-              onClick={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyPress={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseUp={[Function]}
-              role="gridcell"
-              title="grey"
-              type="button"
-            >
-              <div
-                className=
-                    ms-Button-flexContainer
-                    {
-                      align-items: center;
-                      display: flex;
-                      flex-wrap: nowrap;
-                      height: 100%;
-                      justify-content: flex-start;
-                    }
-              >
-                <svg
-                  className=
-
-                      {
-                        border-radius: 50%;
-                        height: 100%;
-                        width: 100%;
-                      }
-                  fill="grey"
-                  viewBox="0 0 20 20"
-                >
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    r="50%"
-                  />
-                </svg>
-              </div>
-            </button>
-          </td>
-          <td
-            className=
-
-                {
-                  padding-bottom: 5px;
-                  padding-left: 5px;
-                  padding-right: 5px;
-                  padding-top: 5px;
-                }
-            role="presentation"
-          >
-            <button
-              aria-label="purple"
+              aria-label="gray"
               aria-selected={false}
               className=
                   ms-Button
@@ -3918,7 +3918,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={10}
               data-is-focusable={true}
-              id="swatchColorPicker54-m-10"
+              id="swatchColorPicker54-k-10"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3930,7 +3930,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="purple"
+              title="gray"
               type="button"
             >
               <div
@@ -3952,7 +3952,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="purple"
+                  fill="#7a7574"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -3976,7 +3976,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
             role="presentation"
           >
             <button
-              aria-label="yellow"
+              aria-label="gray20"
               aria-selected={false}
               className=
                   ms-Button
@@ -4067,7 +4067,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
               data-index={11}
               data-is-focusable={true}
-              id="swatchColorPicker54-n-11"
+              id="swatchColorPicker54-l-11"
               onClick={[Function]}
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4079,7 +4079,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="yellow"
+              title="gray20"
               type="button"
             >
               <div
@@ -4101,7 +4101,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="yellow"
+                  fill="#69797e"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -4172,7 +4172,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-disabled={true}
-              aria-label="green"
+              aria-label="orange"
               aria-selected={false}
               className=
                   ms-Button
@@ -4280,7 +4280,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="green"
+              title="orange"
               type="button"
             >
               <div
@@ -4302,7 +4302,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#00ff00"
+                  fill="#ca5010"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -4327,7 +4327,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-disabled={true}
-              aria-label="orange"
+              aria-label="cyan"
               aria-selected={false}
               className=
                   ms-Button
@@ -4435,7 +4435,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="orange"
+              title="cyan"
               type="button"
             >
               <div
@@ -4457,7 +4457,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ffa500"
+                  fill="#038387"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -4482,7 +4482,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-disabled={true}
-              aria-label="blue"
+              aria-label="blueMagenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -4590,7 +4590,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="blue"
+              title="blueMagenta"
               type="button"
             >
               <div
@@ -4612,7 +4612,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#0000ff"
+                  fill="#8764b8"
                   viewBox="0 0 20 20"
                 >
                   <circle
@@ -4637,7 +4637,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
           >
             <button
               aria-disabled={true}
-              aria-label="red"
+              aria-label="magenta"
               aria-selected={false}
               className=
                   ms-Button
@@ -4745,7 +4745,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               onMouseMove={[Function]}
               onMouseUp={[Function]}
               role="gridcell"
-              title="red"
+              title="magenta"
               type="button"
             >
               <div
@@ -4767,7 +4767,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                         height: 100%;
                         width: 100%;
                       }
-                  fill="#ff0000"
+                  fill="#881798"
                   viewBox="0 0 20 20"
                 >
                   <circle
