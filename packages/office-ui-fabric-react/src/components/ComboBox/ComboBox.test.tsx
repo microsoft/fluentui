@@ -110,15 +110,27 @@ describe.only('ComboBox', () => {
     expect(inputElement.props().value).toEqual('zero');
   });
 
-  it('Changes to  a selected item on key change', () => {
+  it('changes to a selected key change the input', () => {
     const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
-    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
-    expect(inputElement.props().value).toEqual('zero');
+    expect(wrapper.find('input').props().value).toEqual('zero');
 
     wrapper.setProps({ selectedKey: 1 });
-    expect(inputElement.props().value).toEqual('one');
+
+    expect(wrapper.find('input').props().value).toEqual('one');
+  });
+
+  it('changes to a selected item on key change', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    expect(wrapper.find('input').props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: null });
+
+    // \u200B is a zero width space. Not sure why this shows up, instead of empty string.
+    expect(wrapper.find('input').props().value).toEqual('\u200B');
   });
 
   it('Renders a placeholder', () => {
