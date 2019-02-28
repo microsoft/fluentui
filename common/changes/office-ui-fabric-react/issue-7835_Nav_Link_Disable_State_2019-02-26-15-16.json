@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Force Suggestion items to be shrinkable",
-      "type": "patch"
+      "comment": "Nav: Add disable state for navigation links",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mhuan13@gmail.com"
+  "email": "iv@elearningforce.com"
 }

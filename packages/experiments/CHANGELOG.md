@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Feb 2019 13:29:07 GMT and should not be manually modified.
+
+## 6.61.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- Card: Exporting Card from experiments.
+
+## 6.60.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- move Text component from experiments -> OUFR
 
 ## 6.59.2
 Mon, 25 Feb 2019 13:31:08 GMT

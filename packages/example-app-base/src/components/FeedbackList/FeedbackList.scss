@@ -15,7 +15,10 @@
   }
 
   // Temporary workaround for https://github.com/OfficeDev/office-ui-fabric-react/issues/6782.
-  a.FeedbackList-button {
+  a:link.FeedbackList-button,
+  a:hover.FeedbackList-button,
+  a:focus.FeedbackList-button,
+  a:visited.FeedbackList-button {
     color: $ms-color-white;
   }
 

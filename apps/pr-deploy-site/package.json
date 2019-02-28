@@ -8,13 +8,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uifabric/fabric-website-resources": ">=6.11.1 <7.0.0",
+    "@uifabric/fabric-website-resources": ">=6.12.0 <7.0.0",
     "test-bundles": ">=6.0.0",
     "todo-app": ">=6.0.0",
     "@uifabric/charting": "^0.28.7",
-    "@uifabric/dashboard": "0.50.0",
-    "@uifabric/date-time": "0.2.2",
-    "@uifabric/experiments": ">=6.59.2 <7.0.0",
+    "@uifabric/dashboard": "0.52.0",
+    "@uifabric/date-time": "0.3.0",
+    "@uifabric/experiments": ">=6.61.0 <7.0.0",
     "@uifabric/foundation-scenarios": ">=0.1.0"
   }
 }

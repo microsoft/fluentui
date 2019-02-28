@@ -2,7 +2,7 @@ const path = require('path');
 const merge = require('../tasks/merge');
 const resolve = require('resolve');
 
-const styleMockPath = (module.exports = {
+module.exports = {
   createRawConfig: () => ({
     rootDir: 'lib',
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$'
@@ -39,4 +39,4 @@ const styleMockPath = (module.exports = {
       },
       customConfig
     )
-});
+};

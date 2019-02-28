@@ -5,7 +5,8 @@ import { Panel, PanelType, IPanelProps } from 'office-ui-fabric-react/lib/Panel'
 import { Wizard } from './Wizard';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { defaultPanelStyleSet, defaultWizardStyleSet, getPanelWizardStyles } from './PanelWizard.styles';
-import { getStepContentToShow } from './Wizard.utils';
+import { getStepToShow } from './Wizard.utils';
+import { IWizardStepProps } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 
 const getClassNames = classNamesFunction<IPanelWizardStyleProps, IPanelWizardStyles>();
 
@@ -42,20 +43,27 @@ export class PanelWizardBase extends React.Component<IPanelWizardProps, {}> {
   }
 
   private _onRenderNavigationContent = (props: IPanelProps, defaultRender: IRenderFunction<IPanelProps>): JSX.Element => {
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-    const step = getStepContentToShow(this.props.wizardProps);
+    const step = getStepToShow(this.props.wizardProps);
 
     return (
       <>
-        <div className={classNames.titleElementContainer}>{step.titleElement}</div>
+        {this._onRenderTitle(step)}
         {defaultRender(props)}
       </>
     );
   };
 
+  private _onRenderTitle = (step: IWizardStepProps): React.ReactNode => {
+    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
+
+    if (step.titleElement) {
+      return <div className={classNames.titleElementContainer}>{step.titleElement}</div>;
+    }
+  };
+
   private _onRenderFooter = (): JSX.Element => {
     const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-    const step = getStepContentToShow(this.props.wizardProps);
+    const step = getStepToShow(this.props.wizardProps);
 
     return <div className={classNames.footerContainer}>{step.footerElement}</div>;
   };
