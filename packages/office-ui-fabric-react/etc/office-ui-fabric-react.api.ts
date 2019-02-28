@@ -18,6 +18,14 @@ export function addDirectionalKeyCode(which: number): void;
 // @public
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
+// @public (undocumented)
+class AnnouncedBase extends BaseComponent<IAnnouncedProps, {}> {
+  // (undocumented)
+  static defaultProps: Partial<IAnnouncedProps>;
+  // (undocumented)
+  render(): JSX.Element;
+}
+
 // @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
@@ -1700,7 +1708,6 @@ interface IAnimationVariables {
 interface IAnnounced {
 }
 
-// WARNING: The type "AnnouncedBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
 interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
   componentRef?: (component: IAnnounced) => void;
