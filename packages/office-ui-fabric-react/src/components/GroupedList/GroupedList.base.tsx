@@ -218,7 +218,11 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     const { getGroupHeight = this._getGroupHeight } = this.props;
     const pageGroup = groups && groups[itemIndex];
 
-    return getGroupHeight(pageGroup!, itemIndex);
+    if (pageGroup) {
+      return getGroupHeight(pageGroup, itemIndex);
+    } else {
+      return 0;
+    }
   };
 
   private _getGroupKey(group: IGroup | undefined, index: number): string {
