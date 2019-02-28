@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.61.0",
+      "tag": "@uifabric/experiments_v6.61.0",
+      "date": "Thu, 28 Feb 2019 13:29:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Exporting Card from experiments.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "ee4a57d387c1c1d973b1c654fa42ba592ceb91e4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.146.1 <7.0.0` to `>=6.146.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.60.0",
       "tag": "@uifabric/experiments_v6.60.0",
       "date": "Tue, 26 Feb 2019 13:31:28 GMT",

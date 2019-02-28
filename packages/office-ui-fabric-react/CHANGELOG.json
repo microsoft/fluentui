@@ -2,6 +2,39 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.147.0",
+      "tag": "office-ui-fabric-react_v6.147.0",
+      "date": "Thu, 28 Feb 2019 17:04:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dropdown and ComboBox: `selectedKey` can now take null to clear the selection.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5d7edcdd927a7f6158e30ab43de41fff919b1767"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.146.2",
+      "tag": "office-ui-fabric-react_v6.146.2",
+      "date": "Thu, 28 Feb 2019 13:29:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TagItemSuggestion: adds `white-space: nowrap` CSS declaration which is required for `text-overflow: ellipsis` to work.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "ee8b5f149a40ea4a8bd80df7e93eac9fdf582614"
+          },
+          {
+            "comment": "TextField: adds font styles passed from theme to the root element.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "e29a9d4b2f52cf7be376328c1cd7334f4e43a7d4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.146.1",
       "tag": "office-ui-fabric-react_v6.146.1",
       "date": "Wed, 27 Feb 2019 06:49:08 GMT",

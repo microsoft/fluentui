@@ -24,8 +24,7 @@
   "disabledTasks": [
     "copy",
     "sass",
-    "build-codepen-examples",
-    "karma"
+    "build-codepen-examples"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
