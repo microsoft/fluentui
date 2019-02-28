@@ -138,7 +138,7 @@ function _getAppRoutes() {
   routes = _createRoutes(AppState.pages);
 
   // Add the default route
-  routes.push(<Route key="home" component={ HomePage } />);
+  routes.push(<Route key='home' component={ HomePage } />);
 
   return routes;
 }

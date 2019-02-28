@@ -24,8 +24,8 @@ export default class IFluentMessageBar extends React.Component<IFluentMessageBar
 
     return (
       isVisible && (
-        <MessageBar onDismiss={ this._onClose } dismissButtonAriaLabel="Close" className="ms-App-fluentMessageBar">
-          Get an early look at the latest Fluent updates coming to Fabric. <Link href="https://aka.ms/fabric-preview">Learn more</Link>
+        <MessageBar onDismiss={ this._onClose } dismissButtonAriaLabel='Close' className='ms-App-fluentMessageBar'>
+          Get an early look at the latest Fluent updates coming to Fabric. <Link href='https://aka.ms/fabric-preview'>Learn more</Link>
         </MessageBar>
       )
     );
