@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
+import { ModalModelessExample } from './examples/Modal.Modeless.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { ModalStatus } from './Modal.checklist';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
 const ModalBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Modal/Modal.Basic.Example.Codepen.txt') as string;
+const ModalModelessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Modeless.Example.tsx') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',
@@ -18,6 +20,11 @@ export const ModalPageProps: IDocPageProps = {
       code: ModalBasicExampleCode,
       view: <ModalBasicExample />,
       codepenJS: ModalBasicExampleCodepen
+    },
+    {
+      title: 'Modeless Modal',
+      code: ModalModelessExampleCode,
+      view: <ModalModelessExample />
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/Modal.types.ts')],

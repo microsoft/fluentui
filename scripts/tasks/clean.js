@@ -1,7 +1,7 @@
 // @ts-check
 
 const path = require('path');
-const { cleanTask } = require('just-task-preset');
+const { cleanTask } = require('just-scripts');
 
 exports.clean = cleanTask(
   [

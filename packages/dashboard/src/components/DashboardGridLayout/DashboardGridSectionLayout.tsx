@@ -168,7 +168,6 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
         }
       });
     }
-
     return result;
   }
 

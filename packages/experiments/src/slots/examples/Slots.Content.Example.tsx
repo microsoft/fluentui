@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, Text } from '@uifabric/experiments';
-import { Spinner, Stack } from 'office-ui-fabric-react';
+import { Button } from '@uifabric/experiments';
+import { Spinner, Stack, Text } from 'office-ui-fabric-react';
 import { stackProps } from './SlotExampleUtils';
 
 // tslint:disable:jsx-no-lambda
