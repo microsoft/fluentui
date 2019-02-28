@@ -49,7 +49,9 @@ const _syncModuleCache =
  *
  * This overload accepts a module with a default export for the component.
  */
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & { asyncPlaceholder?: React.ReactType }> {
+export function asAsync<TProps>(
+  options: IAsAsyncOptions<TProps>
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & { asyncPlaceholder?: React.ReactType }>> {
   class Async extends React.Component<
     TProps & {
       asyncPlaceholder?: React.ReactType;
@@ -57,18 +59,16 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Compone
     },
     { Component?: React.ReactType<TProps> }
   > {
-    // FABRIC7TODO
-    /*public state = {
-      Component: _syncModuleCache ? _syncModuleCache.get(options.load) : undefined
-    };*/
+    public state = {
+      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ReactType<TProps>) : undefined
+    };
 
     public render(): JSX.Element | null {
       // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
       // tslint:disable-next-line:no-any
       const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;
       const { Component } = this.state;
-      return null;
-      // FABRIC7TODO     return Component ? <Component ref={forwardedRef} {...rest} /> : Placeholder ? <Placeholder /> : null;
+      return Component ? React.createElement(Component, { ...rest, ref: forwardedRef }) : Placeholder ? <Placeholder /> : null;
     }
 
     public componentDidMount(): void {
@@ -95,8 +95,7 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.Compone
       }
     }
   }
-  return Async;
-  /*FABRIC7TODO return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ReactType }, ref: React.Ref<TProps>) => (
+  return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ReactType }, ref: React.Ref<TProps>) => (
     <Async {...props} forwardedRef={ref} />
-  ));*/
+  ));
 }

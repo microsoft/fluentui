@@ -32,7 +32,7 @@ const styleMockPath = (module.exports = {
         globals: {
           'ts-jest': {
             tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
-            diagnostics: false // FABRIC7VALIDATE Would like this to be enabled
+            diagnostics: false
           }
         },
 

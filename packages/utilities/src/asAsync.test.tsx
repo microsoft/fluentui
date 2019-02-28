@@ -2,8 +2,7 @@ import * as React from 'react';
 import { asAsync } from './asAsync';
 import { mount } from 'enzyme';
 
-describe.skip('asAsync', () => {
-  // FABRIC7TODO
+describe('asAsync', () => {
   it('can async load exports', (done: () => undefined) => {
     let _resolve: (result: React.ReactType<{}>) => void = () => undefined;
     let _loadCalled = false;
