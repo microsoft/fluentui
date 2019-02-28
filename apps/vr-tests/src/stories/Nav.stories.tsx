@@ -4,7 +4,6 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
-import { IconNames } from 'office-ui-fabric-react/lib/Icons';
 
 const links: INavLink[] = [
   {
@@ -13,7 +12,7 @@ const links: INavLink[] = [
     links: [
       {
         name: 'Activity',
-        icon: IconNames.Upload,
+        icon: 'Upload',
         url: 'http://msn.com',
         key: 'key1'
       },
@@ -27,7 +26,7 @@ const links: INavLink[] = [
   },
   {
     name: 'Documents',
-    icon: IconNames.Accept,
+    icon: 'Accept',
     url: 'http://example.com',
     key: 'key3'
   },
@@ -49,7 +48,7 @@ const links: INavLink[] = [
   {
     name: 'Edit',
     url: 'http://cnn.com',
-    icon: IconNames.Edit,
+    icon: 'Edit',
     key: 'key8'
   }
 ];
@@ -82,7 +81,7 @@ const disabledLinks: INavLink[] = [
   {
     name: 'Unavailable Item',
     url: 'http://cnn.com',
-    icon: IconNames.News,
+    icon: 'News',
     disabled: true,
     key: 'key4'
   }
