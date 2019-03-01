@@ -83,7 +83,6 @@ export interface IAnnouncedQuickActionsExampleItem {
 export interface IAnnouncedQuickActionsExampleState {
   items: IAnnouncedQuickActionsExampleItem[];
   selectionDetails: {};
-  showItemIndexInView: boolean;
   renameDialogOpen: boolean;
   dialogContent: JSX.Element | undefined;
   announced?: JSX.Element;
@@ -123,7 +122,6 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     this.state = {
       items: _items,
       selectionDetails: this._getSelectionDetails(),
-      showItemIndexInView: false,
       renameDialogOpen: false,
       dialogContent: undefined,
       announced: undefined
@@ -156,13 +154,6 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         </MarqueeSelection>
       </>
     );
-  }
-
-  public componentWillUnmount() {
-    if (this.state.showItemIndexInView) {
-      const itemIndexInView = this._detailsList!.current!.getStartItemIndexInView();
-      alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
-    }
   }
 
   private _onRenderRow(props: IDetailsRowProps): JSX.Element {
@@ -215,9 +206,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
   private _deleteItem(index: number): void {
     const items = this.state.items;
     items.splice(items.indexOf(items[index]), 1);
-    for (let i = 0; i < items.length; i++) {
-      console.log(i + ': ' + items[i].name);
-    }
+
     this.setState(
       {
         items: items,
