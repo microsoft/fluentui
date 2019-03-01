@@ -136,6 +136,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       {
         key: 'sort',
         name: 'Sort',
+        ariaLabel: 'Sort',
         iconProps: {
           iconName: 'SortLines'
         },
@@ -144,6 +145,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       {
         key: 'tile',
         name: 'Grid view',
+        ariaLabel: 'Grid view',
         iconProps: {
           iconName: 'Tiles'
         },
@@ -153,6 +155,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       {
         key: 'info',
         name: 'Info',
+        ariaLabel: 'Info',
         iconProps: {
           iconName: 'Info'
         },
