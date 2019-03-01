@@ -9,7 +9,7 @@ The Announced component currently has the following 4 documented use cases:
 
 1. [Quick Actions](#examples/announced/quickactions): Operations such as editing text or deletion that are short enough that they do not require a status during progress.
 
-2. [Search Results](#examples/announced/searchresults): Appearance of search like results such as in contact fields, or search boxes.
+2. [Search Results](#examples/announced/searchresults): Appearance of search results such as in contact fields or search boxes.
 
 3. [Lazy Loading](#examples/announced/lazyloading): "Lazy loading" of page sections that do not appear all at once.
 
