@@ -44,6 +44,7 @@ export * from './memoize';
 export * from './merge';
 export * from './mobileDetector';
 export * from './object';
+export * from './on';
 export * from './osDetector';
 export * from './overflow';
 export * from './properties';
