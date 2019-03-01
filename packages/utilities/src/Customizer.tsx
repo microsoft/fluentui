@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IBaseProps } from './BaseComponent';
+import { IBaseProps } from './IBaseProps';
 import { Customizations, ICustomizations, Settings, SettingsFunction } from './Customizations';
 
 export interface ICustomizerContext {
@@ -79,7 +79,7 @@ export type ICustomizerProps = IBaseProps &
  *
  * @public
  */
-export class Customizer extends BaseComponent<ICustomizerProps> {
+export class Customizer extends React.Component<ICustomizerProps> {
   private _changeCount = 0;
 
   public componentDidMount(): void {
