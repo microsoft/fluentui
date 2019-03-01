@@ -22,9 +22,9 @@ export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
     asyncPlaceholder?: React.ReactType;
-}>;
+}>>;
 
 // @public
 export function assertNever(x: never): never;
