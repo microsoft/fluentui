@@ -4,7 +4,7 @@ import { IDetailPanelAnalytics } from './DetailPanel.types';
 const AnalyticsContext = React.createContext<IDetailPanelAnalytics>({});
 
 const withAnalyticsHandler = <T extends IDetailPanelAnalytics, R = Pick<T, Exclude<keyof T, keyof IDetailPanelAnalytics>>>(
-  Component: React.ComponentClass<T> | React.SFC<T>
+  Component: React.ComponentClass<T> | React.FunctionComponent<T>
 ): React.ComponentClass<R> => {
   return class ComponentWithAnalyticsHanlder extends React.PureComponent<R> {
     public render(): React.ReactNode {

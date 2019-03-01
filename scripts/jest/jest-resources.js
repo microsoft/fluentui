@@ -32,7 +32,7 @@ const styleMockPath = (module.exports = {
         globals: {
           'ts-jest': {
             tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
-            projectPackageJson: path.resolve(process.cwd(), 'package.json')
+            diagnostics: false
           }
         },
 

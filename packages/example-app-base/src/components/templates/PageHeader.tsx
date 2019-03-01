@@ -43,8 +43,7 @@ export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
     const { as: RootType = 'h1', theme, children, styles } = this.props;
 
     const classNames = getClassNames(styles, { theme: theme!, as: RootType });
-
-    return <RootType className={classNames.root}>{children}</RootType>;
+    return React.createElement(RootType, { className: classNames.root }, children);
   }
 }
 

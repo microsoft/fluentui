@@ -6,7 +6,7 @@ import { IStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 /**
  * Represents a composed link in the Nav component.
  */
-export const NavLink: React.SFC<INavLinkProps> = (props: INavLinkProps) => {
+export const NavLink: React.FunctionComponent<INavLinkProps> = (props: INavLinkProps) => {
   if (!props) {
     return null;
   }
