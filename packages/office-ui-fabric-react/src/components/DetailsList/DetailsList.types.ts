@@ -131,7 +131,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   rowElementEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
-  onDidUpdate?: (detailsList?: DetailsListBase) => any;
+  onDidUpdate?: (detailsList?: DetailsListBase) => void;
 
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
@@ -412,12 +412,12 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.
    */
-  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
+  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * If provided, will be executed when the column is resized with the column's current width.
