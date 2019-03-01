@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "Some references to \"process\" have been removed to help with tree shaking.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com"
+}
