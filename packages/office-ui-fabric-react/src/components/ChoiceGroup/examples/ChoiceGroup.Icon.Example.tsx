@@ -7,6 +7,7 @@ export class ChoiceGroupIconExample extends React.Component<any, any> {
     return (
       <ChoiceGroup
         label="Pick one icon"
+        defaultSelectedKey="day"
         options={[
           {
             key: 'day',

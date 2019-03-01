@@ -1,6 +1,8 @@
-/* tslint:disable:no-string-literal */
-
-import { elementContains, elementContainsAttribute, getDocument, getParent, getWindow } from './dom';
+import { elementContainsAttribute } from './dom/elementContainsAttribute';
+import { elementContains } from './dom/elementContains';
+import { getParent } from './dom/getParent';
+import { getWindow } from './dom/getWindow';
+import { getDocument } from './dom/getDocument';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';

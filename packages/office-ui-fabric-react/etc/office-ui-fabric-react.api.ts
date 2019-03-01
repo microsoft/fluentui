@@ -145,7 +145,7 @@ class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.C
   componentDidUpdate(prevProps: TProps, prevState: TState): void;
   componentWillUnmount(): void;
   // @deprecated (undocumented)
-  static onError: ((errorMessage?: string, ex?: any) => void);
+  static onError: (errorMessage?: string, ex?: any) => void;
 }
 
 // @public (undocumented)
@@ -796,9 +796,9 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 // @public (undocumented)
 class Customizations {
   // (undocumented)
-  static applyScopedSettings(scopeName: string, settings: Settings): void;
+  static applyScopedSettings(scopeName: string, settings: ISettings): void;
   // (undocumented)
-  static applySettings(settings: Settings): void;
+  static applySettings(settings: ISettings): void;
   // (undocumented)
   static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;
   // (undocumented)
@@ -6653,10 +6653,10 @@ interface ICustomizations {
   inCustomizerContext?: boolean;
   // (undocumented)
   scopedSettings: {
-    [key: string]: Settings;
+    [key: string]: ISettings;
   }
   // (undocumented)
-  settings: Settings;
+  settings: ISettings;
 }
 
 // @public (undocumented)
@@ -6881,7 +6881,7 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   dragDropEvents?: IDragDropEvents;
   enableShimmer?: boolean;
   enterModalSelectionOnTouch?: boolean;
-  getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+  getGroupHeight?: IGroupedListProps['getGroupHeight'];
   getKey?: (item: any, index?: number) => string;
   getRowAriaDescribedBy?: (item: any) => string;
   getRowAriaLabel?: (item: any) => string;
@@ -7642,7 +7642,7 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   // @deprecated
   placeHolder?: string;
   responsiveMode?: ResponsiveMode;
-  selectedKeys?: string[] | number[];
+  selectedKeys?: string[] | number[] | null;
   styles?: IStyleFunctionOrObject<IDropdownStyleProps, IDropdownStyles>;
   theme?: ITheme;
 }
@@ -8887,6 +8887,7 @@ interface INavLink {
   altText?: string;
   ariaLabel?: string;
   automationId?: string;
+  disabled?: boolean;
   // @deprecated
   engagementName?: string;
   forceAnchor?: boolean;
@@ -8956,6 +8957,7 @@ interface INavStyleProps {
   groups: INavLinkGroup[] | null;
   // (undocumented)
   isButtonEntry?: boolean;
+  isDisabled?: boolean;
   isExpanded?: boolean;
   isGroup?: boolean;
   isLink?: boolean;
@@ -10010,7 +10012,7 @@ interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponen
   calloutProps?: ICalloutProps;
   className?: string;
   componentRef?: IRefObject<TComponent>;
-  defaultSelectedKey?: string | number | string[] | number[];
+  defaultSelectedKey?: string | number | string[] | number[] | null;
   disabled?: boolean;
   errorMessage?: string;
   id?: string;
@@ -10023,7 +10025,7 @@ interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponen
   panelProps?: IPanelProps;
   placeholder?: string;
   required?: boolean;
-  selectedKey?: string | number | string[] | number[];
+  selectedKey?: string | number | string[] | number[] | null;
 }
 
 // @public (undocumented)
@@ -10885,6 +10887,9 @@ interface ISuggestionsSubComponentStyles {
 // @public
 export function isValidShade(shade?: Shade): boolean;
 
+// @public
+export function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement;
+
 // @public (undocumented)
 interface ISwatchColorPicker {
 }
@@ -11330,6 +11335,15 @@ interface IVerticalDividerProps {
   getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 }
 
+// @public
+interface IVirtualElement extends HTMLElement {
+  // (undocumented)
+  _virtual: {
+    children: IVirtualElement[];
+    parent?: IVirtualElement;
+  }
+}
+
 // @public (undocumented)
 enum KeyboardSpinDirection {
   // (undocumented)
@@ -11532,8 +11546,11 @@ export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
 
+// @public (undocumented)
+export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
+
 // @public
-export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
+export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
@@ -13075,10 +13092,6 @@ module ZIndexes {
 // WARNING: Unsupported export: TooltipHost
 // WARNING: Unsupported export: IStyleFunctionOrObject
 // WARNING: Unsupported export: ICancelable
-// WARNING: Unsupported export: Settings
-// WARNING: Unsupported export: SettingsFunction
-// WARNING: Unsupported export: CustomizerContext
-// WARNING: Unsupported export: ICustomizerProps
 // WARNING: Unsupported export: IClassNames
 // WARNING: Unsupported export: IComponentAsProps
 // WARNING: Unsupported export: IComponentAs
@@ -13088,6 +13101,12 @@ module ZIndexes {
 // WARNING: Unsupported export: IRefObject
 // WARNING: Unsupported export: RefObject
 // WARNING: Unsupported export: ICssInput
+// WARNING: Unsupported export: ISettings
+// WARNING: Unsupported export: ISettingsFunction
+// WARNING: Unsupported export: Settings
+// WARNING: Unsupported export: SettingsFunction
+// WARNING: Unsupported export: ICustomizerProps
+// WARNING: Unsupported export: CustomizerContext
 // WARNING: Unsupported export: DATA_PORTAL_ATTRIBUTE
 // WARNING: Unsupported export: IsFocusVisibleClassName
 // WARNING: Unsupported export: FitMode

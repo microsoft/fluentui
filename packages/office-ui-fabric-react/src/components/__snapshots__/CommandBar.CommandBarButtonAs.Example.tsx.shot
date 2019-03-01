@@ -67,7 +67,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button
@@ -1388,7 +1388,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button

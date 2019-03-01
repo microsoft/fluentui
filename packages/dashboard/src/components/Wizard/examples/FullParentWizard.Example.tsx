@@ -9,7 +9,7 @@ const getClassName = classNamesFunction<{}, { containerHeight: IStyle }>();
 export class FullParentWizardExample extends WizardExampleBase<IWizardExampleBaseState> {
   constructor(props: {}) {
     super(props);
-    const steps = this.getTestSteps();
+    const steps = this.getTestSteps(true);
     this.state = {
       steps: steps,
       currentStepId: steps[0].id
