@@ -475,7 +475,7 @@ export function buildClassMap<T>(styles: T): {
 };
 
 // @public (undocumented)
-export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
+export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
 
 // @public @deprecated
 class Button extends BaseComponent<IButtonProps, {}> {
@@ -892,9 +892,9 @@ class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderS
 class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState>, implements IDetailsList {
   constructor(props: IDetailsListProps);
   // (undocumented)
-  protected _onRenderRow: (props: IDetailsRowProps, defaultRender?: any) => JSX.Element;
+  protected _onRenderRow: (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps> | undefined) => JSX.Element;
   // (undocumented)
-  componentDidUpdate(prevProps: any, prevState: any): void;
+  componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
   // (undocumented)
   componentWillReceiveProps(newProps: IDetailsListProps): void;
   // (undocumented)
@@ -2856,8 +2856,8 @@ interface IColumn {
   maxWidth?: number;
   minWidth: number;
   name: string;
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
-  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
+  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
   onColumnResize?: (width?: number) => void;
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
@@ -6898,7 +6898,7 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   onColumnHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
   onColumnResize?: (column?: IColumn, newWidth?: number, columnIndex?: number) => void;
-  onDidUpdate?: (detailsList?: DetailsListBase) => any;
+  onDidUpdate?: (detailsList?: DetailsListBase) => void;
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
@@ -9080,7 +9080,7 @@ interface IPage {
   // (undocumented)
   startIndex: number;
   // (undocumented)
-  style: any;
+  style: React.CSSProperties;
   // (undocumented)
   top: number;
 }
