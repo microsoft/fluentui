@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Mar 2019 13:33:08 GMT and should not be manually modified.
+
+## 6.43.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- The package side-effects flag has been removed, allowing for tree shaking to do its magic much better.
 
 ## 6.42.0
 Wed, 27 Feb 2019 01:28:58 GMT

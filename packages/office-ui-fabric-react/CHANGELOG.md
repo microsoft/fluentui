@@ -1,6 +1,23 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Feb 2019 17:04:01 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Mar 2019 13:33:08 GMT and should not be manually modified.
+
+## 6.148.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- Nav: Add disable state for navigation links
+
+### Patches
+
+- ChoiceGroup: Make dropdown on example disabled until the option with the dropdown is selected so that tab focus goes to the default selected option.
+- ChoiceGroup: Visually present 'required' prop in 'ChoiceGroup with a custom label' example and remove 'required' prop from non-selected radio buttons.
+- ChoiceGroup: Fixing Narrator focus on ChoiceGroupOptions.
+- ChoiceGroup: Adding defaultSelectedKey to 'ChoiceGroup with Icons' example so that aria-selected property is set.
+- CommandBar: Fixing aria-label in examples so that it doesn't repeat information.
+- GroupedList: Provide default getGroupHeight implementation to avoid infinite scroll handlers
+- Updated dependencies.
 
 ## 6.147.0
 Thu, 28 Feb 2019 17:04:01 GMT
