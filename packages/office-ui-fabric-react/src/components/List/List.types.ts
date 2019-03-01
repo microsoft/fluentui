@@ -169,7 +169,7 @@ export interface IPage {
   items: any[] | undefined;
   startIndex: number;
   itemCount: number;
-  style: any;
+  style: React.CSSProperties;
   top: number;
   height: number;
   data?: any;
