@@ -258,9 +258,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     ms-TextField
                     ms-ColorPicker-input
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border: none;
                       box-shadow: none;
                       box-sizing: border-box;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 30px;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -326,6 +331,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       className=
                           ms-TextField-field
                           {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             background-color: transparent;
                             background: none;
                             border-radius: 0px;
@@ -333,7 +340,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             box-shadow: none;
                             box-sizing: border-box;
                             color: #333333;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                             font-size: 14px;
+                            font-weight: 400;
                             margin-bottom: 0px;
                             margin-left: 0px;
                             margin-right: 0px;
@@ -354,11 +363,21 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                       id="TextField0"
@@ -386,9 +405,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     ms-TextField
                     ms-ColorPicker-input
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border: none;
                       box-shadow: none;
                       box-sizing: border-box;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 30px;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -454,6 +478,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       className=
                           ms-TextField-field
                           {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             background-color: transparent;
                             background: none;
                             border-radius: 0px;
@@ -461,7 +487,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             box-shadow: none;
                             box-sizing: border-box;
                             color: #333333;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                             font-size: 14px;
+                            font-weight: 400;
                             margin-bottom: 0px;
                             margin-left: 0px;
                             margin-right: 0px;
@@ -482,11 +510,21 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                       id="TextField2"
@@ -514,9 +552,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     ms-TextField
                     ms-ColorPicker-input
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border: none;
                       box-shadow: none;
                       box-sizing: border-box;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 30px;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -582,6 +625,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       className=
                           ms-TextField-field
                           {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             background-color: transparent;
                             background: none;
                             border-radius: 0px;
@@ -589,7 +634,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             box-shadow: none;
                             box-sizing: border-box;
                             color: #333333;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                             font-size: 14px;
+                            font-weight: 400;
                             margin-bottom: 0px;
                             margin-left: 0px;
                             margin-right: 0px;
@@ -610,11 +657,21 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                       id="TextField4"
@@ -642,9 +699,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     ms-TextField
                     ms-ColorPicker-input
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border: none;
                       box-shadow: none;
                       box-sizing: border-box;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 30px;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -710,6 +772,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       className=
                           ms-TextField-field
                           {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             background-color: transparent;
                             background: none;
                             border-radius: 0px;
@@ -717,7 +781,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             box-shadow: none;
                             box-sizing: border-box;
                             color: #333333;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                             font-size: 14px;
+                            font-weight: 400;
                             margin-bottom: 0px;
                             margin-left: 0px;
                             margin-right: 0px;
@@ -738,11 +804,21 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                       id="TextField6"
@@ -770,9 +846,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     ms-TextField
                     ms-ColorPicker-input
                     {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
                       border: none;
                       box-shadow: none;
                       box-sizing: border-box;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
                       height: 30px;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -838,6 +919,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       className=
                           ms-TextField-field
                           {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             background-color: transparent;
                             background: none;
                             border-radius: 0px;
@@ -845,7 +928,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             box-shadow: none;
                             box-sizing: border-box;
                             color: #333333;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                             font-size: 14px;
+                            font-weight: 400;
                             margin-bottom: 0px;
                             margin-left: 0px;
                             margin-right: 0px;
@@ -866,11 +951,21 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
                             color: #666666;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
                             opacity: 1;
                           }
                       id="TextField8"

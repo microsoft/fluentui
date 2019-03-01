@@ -38,13 +38,14 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
   /**
    * The key(s) that will be initially used to set a selected item.
    */
-  defaultSelectedKey?: string | number | string[] | number[];
+  defaultSelectedKey?: string | number | string[] | number[] | null;
 
   /**
    * The key(s) of the selected item. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
+   * Note that passing in `null` will cause selection to be reset.
    */
-  selectedKey?: string | number | string[] | number[];
+  selectedKey?: string | number | string[] | number[] | null;
 
   /**
    * Collection of options for this ISelectableDroppableText

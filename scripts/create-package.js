@@ -139,7 +139,7 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   if (templateName.toLowerCase().indexOf('packagejson') !== -1) {
     // The package.json template has an additional tag for the version of each dependency.
     // This is preferable over hardcoding dependency versions to prevent errors with rush check.
-    // As of writing, @uifabric/examples also depends on all the packages the template needs,
+    // As of writing, @uifabric/experiments also depends on all the packages the template needs,
     // so we grab the current versions from there and add tags for them in the view object.
     const templatePackageJson = JSON.parse(data);
     const deps = { ...templatePackageJson.devDependencies, ...templatePackageJson.dependencies };

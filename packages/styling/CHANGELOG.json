@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.42.0",
+      "tag": "@uifabric/styling_v6.42.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "IEffects: changes types of the `elevation` and `roundedCorner2` properties to `string` to allow a more flexible way to provide values.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4f0b6edde9d6fe846bf84cad542fceca9eb1e729"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.0",
       "tag": "@uifabric/styling_v6.41.0",
       "date": "Tue, 15 Jan 2019 13:36:45 GMT",

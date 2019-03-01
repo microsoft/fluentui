@@ -288,8 +288,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   mpp: { extensions: ['mpp'] },
   mpt: { extensions: ['mpt'] },
-  one: { extensions: ['one', 'onepkg'] }, // this is a format for exported single-file notebook pages
-  onetoc: { extensions: ['ms-one-stub', 'onetoc', 'onetoc2'] }, // this icon represents a complete, logical notebook.
+  one: { extensions: ['one'] }, // this is a format for exported single-file notebook pages
+  onetoc: { extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'] }, // this icon represents a complete, logical notebook.
   pdf: { extensions: ['pdf'] },
   photo: {
     extensions: [
@@ -373,6 +373,8 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   txt: { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
+  vaultclosed: {},
+  vaultopen: {},
   vector: {
     extensions: [
       'ai',

@@ -254,9 +254,11 @@ describe('DetailsList', () => {
     };
 
     const container = document.createElement('div');
+    const items = mockData(5);
+    const columns = mockData(5, true);
 
     ReactDOM.render(
-      <DetailsListBase columns={mockData(5, true)} skipViewportMeasures={true} items={mockData(5)} dragDropEvents={_dragDropEvents} />,
+      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
       container
     );
 
@@ -270,7 +272,7 @@ describe('DetailsList', () => {
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
     ReactDOM.render(
-      <DetailsListBase columns={mockData(5, true)} skipViewportMeasures={true} items={mockData(5)} dragDropEvents={_dragDropEvents} />,
+      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
       container
     );
 
@@ -283,7 +285,7 @@ describe('DetailsList', () => {
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(0);
 
     ReactDOM.render(
-      <DetailsListBase columns={mockData(5, true)} skipViewportMeasures={true} items={mockData(5)} dragDropEvents={_dragDropEvents2} />,
+      <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents2} />,
       container
     );
 
