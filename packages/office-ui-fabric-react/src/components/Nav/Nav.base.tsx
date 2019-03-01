@@ -109,6 +109,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isSelected: this._isLinkSelected(link),
+      isDisabled: link.disabled,
       isButtonEntry: link.onClick && !link.forceAnchor,
       leftPadding: _indentationSize * nestingLevel + _baseIndent,
       groups
@@ -127,6 +128,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         title={link.title || link.name}
         target={link.target}
         rel={rel}
+        disabled={link.disabled}
         aria-label={link.ariaLabel}
       >
         {onRenderLink(link, this._onRenderLink)}
@@ -142,6 +144,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       isExpanded: !!link.isExpanded,
       isSelected: this._isLinkSelected(link),
       isLink: true,
+      isDisabled: link.disabled,
       position: _indentationSize * nestingLevel + 1,
       groups
     });

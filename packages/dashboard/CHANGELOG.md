@@ -1,6 +1,25 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Feb 2019 13:29:07 GMT and should not be manually modified.
+
+## 0.52.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- Implemented full parent wizard in dashboard package
+- Make titleElement optional as SetupWizard design has no title bar
+
+### Patches
+
+- first time cards not added on dashboard and onLayoutChange calling issue fixed
+
+## 0.51.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Make updates to SetupWizard and Wizard Base
 
 ## 0.50.0
 Mon, 25 Feb 2019 13:31:08 GMT

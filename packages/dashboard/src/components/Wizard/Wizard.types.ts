@@ -7,6 +7,9 @@ export interface IWizardProps {
 
   wizardComplete?: boolean;
 
+  /* Step that is not part of navigation, only shown when wizard is complete */
+  wizardCompleteStep?: IWizardStepProps;
+
   stepToShow?: IWizardStepProps;
 
   styles?: IWizardStyles;
@@ -37,17 +40,15 @@ export interface IWizardStepProps {
 
   subSteps?: IWizardStepProps[];
 
-  titleElement: JSX.Element;
+  titleElement?: JSX.Element;
 
   footerElement: JSX.Element;
 }
 
 export interface IWizardContentProps {
-  contentTitle?: string;
+  contentTitleElement?: JSX.Element;
 
   content: JSX.Element;
-
-  mainAction: IWizardStepAction;
 }
 
 export interface IWizardStepAction {
@@ -84,6 +85,8 @@ export interface IWizardStyles {
   subwayNavSection: IStyle;
 
   contentSection: IStyle;
+
+  contentTitle: IStyle;
 
   content: IStyle;
 }
