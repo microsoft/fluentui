@@ -207,17 +207,10 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     const items = this.state.items;
     items.splice(items.indexOf(items[index]), 1);
 
-    this.setState(
-      {
-        items: items,
-        announced: <Announced message={`Item deleted`} />
-      },
-      () => {
-        if (this._detailsList.current) {
-          this._detailsList.current.forceUpdate();
-        }
-      }
-    );
+    this.setState({
+      items: [...items],
+      announced: <Announced message={`Item deleted`} />
+    });
     return;
   }
 
@@ -240,18 +233,11 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     if (this._textField && this._textField.current) {
       const items = this.state.items;
       items[index].name = this._textField.current.value || items[index].name;
-      this.setState(
-        {
-          renameDialogOpen: false,
-          items: items,
-          announced: <Announced message={`Item renamed`} />
-        },
-        () => {
-          if (this._detailsList.current) {
-            this._detailsList.current.forceUpdate();
-          }
-        }
-      );
+      this.setState({
+        renameDialogOpen: false,
+        items: [...items],
+        announced: <Announced message={`Item renamed`} />
+      });
     } else {
       return;
     }
