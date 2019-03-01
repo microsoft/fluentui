@@ -1,20 +1,19 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
-import { resetIds } from '../../Utilities';
+import { setWarningCallback, resetIds } from '@uifabric/utilities';
 
 import { Pivot, PivotItem } from './index';
 
 describe('Pivot', () => {
   beforeAll(() => {
     // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
+    setWarningCallback(() => {
+      /* no-op */
     });
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    setWarningCallback();
   });
 
   beforeEach(() => {
