@@ -40,7 +40,7 @@ export interface IWizardStepProps {
 
   subSteps?: IWizardStepProps[];
 
-  titleElement: JSX.Element;
+  titleElement?: JSX.Element;
 
   footerElement: JSX.Element;
 }

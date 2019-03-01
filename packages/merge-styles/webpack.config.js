@@ -1,6 +1,4 @@
-const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
-const webpack = resources.webpack;
 
 const BUNDLE_NAME = 'merge-styles';
 

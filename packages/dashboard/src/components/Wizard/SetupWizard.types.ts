@@ -2,8 +2,6 @@ import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IWizardProps } from './Wizard.types';
 
 export interface ISetupWizardProps {
-  wizardTitle?: ISetupWizardTitleProps;
-
   /** pass-thru wizard props */
   wizardProps: IWizardProps;
 
