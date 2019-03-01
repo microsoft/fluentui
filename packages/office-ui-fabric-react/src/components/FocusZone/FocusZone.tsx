@@ -1,25 +1,25 @@
 import * as React from 'react';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 import {
-  BaseComponent,
-  EventGroup,
   KeyCodes,
   css,
-  htmlElementProperties,
   elementContains,
   getDocument,
   getElementIndexPath,
   getFocusableByIndexPath,
   getId,
-  getNextElement,
   getNativeProps,
+  getNextElement,
   getParent,
   getPreviousElement,
   getRTL,
-  isElementFocusZone,
+  htmlElementProperties,
   isElementFocusSubZone,
+  isElementFocusZone,
   isElementTabbable,
-  shouldWrapFocus
+  on,
+  shouldWrapFocus,
+  warnDeprecations
 } from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
@@ -43,12 +43,13 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional
   };
 
+  private _disposables: Function[] = [];
   private _root = React.createRef<HTMLElement>();
   private _id: string;
 
@@ -78,7 +79,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   constructor(props: IFocusZoneProps) {
     super(props);
 
-    this._warnDeprecations({
+    warnDeprecations('FocusZone', props, {
       rootProps: undefined,
       allowTabKey: 'handleTabKey'
     });
@@ -112,8 +113,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       if (!this._isInnerZone) {
-        this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
-        this._events.on(root, 'blur', this._onBlur, true);
+        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -148,6 +148,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   public componentWillUnmount() {
     delete _allInstances[this._id];
+
+    // Dispose all events.
+    this._disposables.forEach(d => d());
   }
 
   public render() {
@@ -557,7 +560,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
         target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
       ) {
-        EventGroup.raise(target, 'click', null, true);
+        const event = new Event('MouseEvents');
+
+        event.initEvent('click', true, true);
+        target.dispatchEvent(event);
 
         return true;
       }
