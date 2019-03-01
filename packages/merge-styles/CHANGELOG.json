@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.16.0",
+      "tag": "@uifabric/merge-styles_v6.16.0",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Some references to \"process\" have been removed to help with tree shaking.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bd191a3964734c6619fa49fcdb1d6127e2834522"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.15.2",
       "tag": "@uifabric/merge-styles_v6.15.2",
       "date": "Wed, 30 Jan 2019 13:36:21 GMT",

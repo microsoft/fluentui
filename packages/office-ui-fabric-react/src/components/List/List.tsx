@@ -882,8 +882,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     items: any[] | undefined,
     startIndex: number = -1,
     count: number = items ? items.length : 0,
-    style: any = {},
-    data: any = undefined,
+    style: React.CSSProperties = {},
+    data?: any,
     isSpacer?: boolean
   ): IPage {
     pageKey = pageKey || PAGE_KEY_PREFIX + startIndex;
@@ -904,7 +904,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       startIndex: startIndex,
       itemCount: count,
       items: items,
-      style: style || {},
+      style: style,
       top: 0,
       height: 0,
       data: data,

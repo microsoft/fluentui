@@ -2,6 +2,68 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.148.0",
+      "tag": "office-ui-fabric-react_v6.148.0",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: Make dropdown on example disabled until the option with the dropdown is selected so that tab focus goes to the default selected option.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4d826f70b2a29161b8ec26af1e0030cdf07656cd"
+          },
+          {
+            "comment": "ChoiceGroup: Visually present 'required' prop in 'ChoiceGroup with a custom label' example and remove 'required' prop from non-selected radio buttons.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "422a05c28cbff89bd54da12aebd4086a0c107fa6"
+          },
+          {
+            "comment": "ChoiceGroup: Fixing Narrator focus on ChoiceGroupOptions.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "3a35dcd3a944a10c800c2580b80b47720e764666"
+          },
+          {
+            "comment": "ChoiceGroup: Adding defaultSelectedKey to 'ChoiceGroup with Icons' example so that aria-selected property is set.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "61d3a3869f804e3e989c51578b07a9c096137cbe"
+          },
+          {
+            "comment": "CommandBar: Fixing aria-label in examples so that it doesn't repeat information.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "96235651d8640582bedadfa6806434353fc02e80"
+          },
+          {
+            "comment": "GroupedList: Provide default getGroupHeight implementation to avoid infinite scroll handlers",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "2302c041472d63057a51d4b6c28c27fef1db8511"
+          },
+          {
+            "comment": "Updated dependencies.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bd191a3964734c6619fa49fcdb1d6127e2834522"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Nav: Add disable state for navigation links",
+            "author": "Ilya Velesevich <winperec@gmail.com>",
+            "commit": "7ddc1ee22030e748076a6c861f7407bdda29e413"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.2 <7.0.0` to `>=6.16.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.4 <7.0.0` to `>=6.30.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.147.0",
       "tag": "office-ui-fabric-react_v6.147.0",
       "date": "Thu, 28 Feb 2019 17:04:01 GMT",

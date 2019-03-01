@@ -90,13 +90,21 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
+              aria-label="Mark displayed items as read after - Press tab for further action"
               checked={false}
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               id="ChoiceGroup0-A"
               name="ChoiceGroup0"
@@ -181,10 +189,12 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               >
                 <div
                   aria-describedby="Dropdown2-option"
-                  aria-disabled={false}
+                  aria-disabled={true}
                   aria-expanded="false"
+                  aria-label="Select a time span"
                   className=
                       ms-Dropdown
+                      is-disabled
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
@@ -208,14 +218,12 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       }
                       &:hover .ms-Dropdown-title {
                         border-color: #212121;
-                        color: #212121;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                         border-color: Highlight;
                       }
                       &:focus .ms-Dropdown-title {
                         border-color: #0078d4;
-                        color: #212121;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                         background-color: Highlight;
@@ -230,25 +238,15 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       }
                       &:active .ms-Dropdown-title {
                         border-color: #005a9e;
-                        color: #212121;
                       }
                       @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                         border-color: Highlight;
-                      }
-                      &:hover .ms-Dropdown-caretDown {
-                        color: #212121;
-                      }
-                      &:focus .ms-Dropdown-caretDown {
-                        color: #212121;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                         color: HighlightText;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
                         -ms-high-contrast-adjust: none;
-                      }
-                      &:active .ms-Dropdown-caretDown {
-                        color: #212121;
                       }
                       &:hover .ms-Dropdown-titleIsPlaceHolder {
                         color: #666666;
@@ -268,33 +266,31 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       &:focus .ms-Dropdown-title--hasError {
                         border-color: #a80000;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable={false}
                   id="Dropdown2"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
-                  role="listbox"
-                  tabIndex={0}
+                  tabIndex={-1}
                 >
                   <span
                     aria-atomic={true}
                     aria-label="5 seconds"
                     aria-live="off"
-                    aria-posinset={1}
-                    aria-selected={true}
-                    aria-setsize={3}
                     className=
                         ms-Dropdown-title
                         {
-                          background-color: #ffffff;
+                          background-color: #f4f4f4;
                           border-color: #a6a6a6;
                           border-style: solid;
                           border-width: 1px;
+                          border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          cursor: pointer;
+                          color: #a6a6a6;
+                          cursor: default;
                           display: block;
                           height: 32px;
                           line-height: 30px;
@@ -311,8 +307,11 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border: 1px solid GrayText;
+                          color: GrayText;
+                        }
                     id="Dropdown2-option"
-                    role="option"
                   >
                     <span>
                       5 seconds
@@ -322,7 +321,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     className=
                         ms-Dropdown-caretDownWrapper
                         {
-                          cursor: pointer;
                           height: 32px;
                           line-height: 30px;
                           position: absolute;
@@ -336,7 +334,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #666666;
+                            color: #a6a6a6;
                             display: inline-block;
                             font-family: "FabricMDL2Icons";
                             font-size: 12px;
@@ -344,6 +342,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                             font-weight: normal;
                             pointer-events: none;
                             speak: none;
+                          }
+                          @media screen and (-ms-high-contrast: active){& {
+                            color: GrayText;
                           }
                       data-icon-name="ChevronDown"
                       role="presentation"
@@ -390,9 +391,16 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               id="ChoiceGroup0-B"
               name="ChoiceGroup0"
@@ -515,9 +523,16 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               disabled={true}
               id="ChoiceGroup0-C"
@@ -626,9 +641,16 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               id="ChoiceGroup0-D"
               name="ChoiceGroup0"
