@@ -19,7 +19,7 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public (undocumented)
-class AnnouncedBase extends BaseComponent<IAnnouncedProps, {}> {
+class AnnouncedBase extends React.Component<IAnnouncedProps> {
   // (undocumented)
   static defaultProps: Partial<IAnnouncedProps>;
   // (undocumented)

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
+import { DelayedRender, classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IAnnouncedProps, IAnnouncedStyles } from './Announced.types';
 
 const getClassNames = classNamesFunction<{}, IAnnouncedStyles>();
 
-export class AnnouncedBase extends BaseComponent<IAnnouncedProps, {}> {
+export class AnnouncedBase extends React.Component<IAnnouncedProps> {
   public static defaultProps: Partial<IAnnouncedProps> = {
     'aria-live': 'assertive'
   };
