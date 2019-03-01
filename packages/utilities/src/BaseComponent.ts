@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
-import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
+import { ISettingsMap } from './warn/warn';
+import { warnConditionallyRequiredProps } from './warn/warnConditionallyRequiredProps';
+import { warnMutuallyExclusive } from './warn/warnMutuallyExclusive';
+import { warnDeprecations } from './warn/warnDeprecations';
 import { initializeFocusRects } from './initializeFocusRects';
 import { initializeDir } from './initializeDir';
 import { IRefObject } from './createRef';
-import { IBaseProps } from './IBaseProps';
+import { IBaseProps } from './BaseComponent.types';
 
 /**
  * BaseComponent class, which provides basic helpers for all components.

@@ -1,4 +1,4 @@
-import { IBaseProps } from './IBaseProps';
+import { IBaseProps } from './BaseComponent.types';
 import { appendFunction } from './appendFunction';
 
 export function initializeComponentRef<TProps, TState>(obj: React.Component<TProps, TState>): void {

@@ -1,4 +1,7 @@
-import { setWarningCallback, warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps } from './warn';
+import { setWarningCallback } from './warn';
+import { warnConditionallyRequiredProps } from './warnConditionallyRequiredProps';
+import { warnMutuallyExclusive } from './warnMutuallyExclusive';
+import { warnDeprecations } from './warnDeprecations';
 
 let _lastWarning: string | undefined;
 

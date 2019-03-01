@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "A number of files containing many exports have been split into smaller units for finer debuggability in bundle size implications. Some unneeded dependencies on EventGroup have been removed.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@microsoft.com"
+}
