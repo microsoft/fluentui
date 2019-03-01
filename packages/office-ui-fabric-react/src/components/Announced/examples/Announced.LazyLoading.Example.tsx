@@ -6,8 +6,9 @@ import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import './Announced.Example.scss';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
+import './Announced.Example.scss';
 
 const DELAY = 10;
 
@@ -25,11 +26,15 @@ export interface IAnnouncedLazyLoadingExampleProps {}
 
 export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyLoadingExampleProps, IAnnouncedLazyLoadingExampleState> {
   private _root = createRef<HTMLElement>();
-  private timer: NodeJS.Timer;
-  private increaseTotal: NodeJS.Timer;
+  private timer: number;
+  private increaseTotal: number;
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
+
+    this._async = new Async(this);
+
     this.state = {
       photos: this._createPhotos(),
       total: 0,
@@ -44,7 +49,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
     this._renderAnnounced = this._renderAnnounced.bind(this);
     this._onToggleChange = this._onToggleChange.bind(this);
 
-    this.increaseTotal = setInterval(() => {
+    this.increaseTotal = this._async.setInterval(() => {
       if (this.state.loading && this.state.total < this.state.photos.length) {
         this.setState({ total: this.state.total + 1 });
       } else if (this.state.total === this.state.photos.length && this.state.complete !== true) {
@@ -52,7 +57,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
       }
     }, 2000);
 
-    this.timer = setInterval(() => {
+    this.timer = this._async.setInterval(() => {
       if (this.state.loading && !this.state.complete) {
         this.setState({ timeSinceLastAnnounce: this.state.timeSinceLastAnnounce + 1 });
 

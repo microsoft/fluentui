@@ -3,6 +3,7 @@ import { Announced } from '../Announced';
 import { TagPicker } from 'office-ui-fabric-react/lib/Pickers';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 
 const _testTags = [
   'black',
@@ -34,17 +35,21 @@ export class AnnouncedSearchResultsExample extends React.Component<
   IAnnouncedSearchResultsExampleProps,
   IAnnouncedSearchResultsExampleState
 > {
-  private timer: NodeJS.Timer;
+  private timer: number;
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
+
+    this._async = new Async(this);
+
     this.state = {
       seconds: 0,
       numberOfSuggestions: 0,
       emptyInput: true
     };
 
-    this.timer = setInterval(() => {
+    this.timer = this._async.setInterval(() => {
       this.setState({ seconds: this.state.seconds + 1 });
     }, 1000);
   }
