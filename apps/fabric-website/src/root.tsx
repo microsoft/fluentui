@@ -1,5 +1,4 @@
 import './styles/styles.scss';
-import './version';
 import 'whatwg-fetch';
 
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
