@@ -11,7 +11,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -60,17 +60,17 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
             }
             &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #605e5c;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -118,7 +118,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -145,7 +145,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             border: 0px;
           }
           .ms-Fabric--isFocusVisible &:after {
-            border: 1px solid #333333;
+            border: 1px solid #323130;
             bottom: -2px;
             content: "";
             left: -2px;
@@ -188,17 +188,17 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: #000000;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
             }
             &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #605e5c;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -246,7 +246,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -273,7 +273,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             border: 0px;
           }
           .ms-Fabric--isFocusVisible &:after {
-            border: 1px solid #333333;
+            border: 1px solid #323130;
             bottom: -2px;
             content: "";
             left: -2px;
@@ -387,7 +387,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -434,8 +434,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:before {
-              background-color: #a6a6a6;
-              border-color: #a6a6a6;
+              background-color: #a19f9d;
+              border-color: #a19f9d;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -469,7 +469,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 0px;
             }
             & .ms-ChoiceFieldLabel {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -492,7 +492,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           align-items: center;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -585,7 +585,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               border-color: Highlight;
             }
             & .ms-ChoiceFieldLabel {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -607,10 +607,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -681,28 +681,28 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:hover {
-              border-color: #c8c8c8;
+              border-color: #c8c6c4;
             }
             &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:focus {
-              border-color: #c8c8c8;
+              border-color: #c8c6c4;
             }
             &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #605e5c;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -814,10 +814,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -848,7 +848,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             border: 0px;
           }
           .ms-Fabric--isFocusVisible &:after {
-            border: 1px solid #666666;
+            border: 1px solid #605e5c;
             bottom: -2px;
             content: "";
             left: -2px;
@@ -909,28 +909,28 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:hover {
-              border-color: #c8c8c8;
+              border-color: #c8c6c4;
             }
             &:hover .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:hover:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:focus {
-              border-color: #c8c8c8;
+              border-color: #c8c6c4;
             }
             &:focus .ms-ChoiceFieldLabel {
               color: #000000;
             }
             &:focus:before {
-              border-color: #333333;
+              border-color: #323130;
               opacity: 1;
             }
             &:before {
               background-color: #ffffff;
-              border-color: #666666;
+              border-color: #605e5c;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -1042,10 +1042,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -1262,10 +1262,10 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: inline-flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 0px;
@@ -1337,8 +1337,8 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               vertical-align: top;
             }
             &:before {
-              background-color: #a6a6a6;
-              border-color: #a6a6a6;
+              background-color: #a19f9d;
+              border-color: #a19f9d;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -1374,7 +1374,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               width: 0px;
             }
             & .ms-ChoiceFieldLabel {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;

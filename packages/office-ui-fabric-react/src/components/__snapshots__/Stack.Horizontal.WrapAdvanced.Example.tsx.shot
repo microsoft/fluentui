@@ -80,7 +80,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -143,7 +143,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -187,7 +187,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 }
                 & $thumb {
                   background: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 10px;
                   border-style: solid;
                   border-width: 2px;
@@ -238,7 +238,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                     ms-Slider-active
 
                     {
-                      background: #666666;
+                      background: #605e5c;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -255,7 +255,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                     ms-Slider-inactive
 
                     {
-                      background: #c8c8c8;
+                      background: #c8c6c4;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -278,7 +278,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   flex-shrink: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -341,7 +341,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -404,7 +404,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -448,7 +448,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 }
                 & $thumb {
                   background: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 10px;
                   border-style: solid;
                   border-width: 2px;
@@ -499,7 +499,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                     ms-Slider-active
 
                     {
-                      background: #666666;
+                      background: #605e5c;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -516,7 +516,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                     ms-Slider-inactive
 
                     {
-                      background: #c8c8c8;
+                      background: #c8c6c4;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -539,7 +539,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   flex-shrink: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -616,7 +616,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -648,7 +648,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -665,15 +665,15 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 user-select: none;
               }
               &:hover .ms-Dropdown-title {
-                border-color: #212121;
-                color: #212121;
+                border-color: #201f1e;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -688,16 +688,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               }
               &:active .ms-Dropdown-title {
                 border-color: #005a9e;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:hover .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               &:focus .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                 color: HighlightText;
@@ -706,16 +706,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               &:hover .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:focus .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:active .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:hover .ms-Dropdown-title--hasError {
                 border-color: #a80000;
@@ -749,7 +749,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a6a6a6;
+                  border-color: #a19f9d;
                   border-style: solid;
                   border-width: 1px;
                   box-shadow: none;
@@ -796,7 +796,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 12px;
@@ -843,7 +843,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -875,7 +875,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -892,15 +892,15 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 user-select: none;
               }
               &:hover .ms-Dropdown-title {
-                border-color: #212121;
-                color: #212121;
+                border-color: #201f1e;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -915,16 +915,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               }
               &:active .ms-Dropdown-title {
                 border-color: #005a9e;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:hover .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               &:focus .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                 color: HighlightText;
@@ -933,16 +933,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               &:hover .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:focus .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:active .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:hover .ms-Dropdown-title--hasError {
                 border-color: #a80000;
@@ -976,7 +976,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a6a6a6;
+                  border-color: #a19f9d;
                   border-style: solid;
                   border-width: 1px;
                   box-shadow: none;
@@ -1023,7 +1023,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 12px;
@@ -1070,7 +1070,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -1102,7 +1102,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -1119,15 +1119,15 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 user-select: none;
               }
               &:hover .ms-Dropdown-title {
-                border-color: #212121;
-                color: #212121;
+                border-color: #201f1e;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -1142,16 +1142,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               }
               &:active .ms-Dropdown-title {
                 border-color: #005a9e;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:hover .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               &:focus .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                 color: HighlightText;
@@ -1160,16 +1160,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #201f1e;
               }
               &:hover .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:focus .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:active .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #605e5c;
               }
               &:hover .ms-Dropdown-title--hasError {
                 border-color: #a80000;
@@ -1203,7 +1203,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a6a6a6;
+                  border-color: #a19f9d;
                   border-style: solid;
                   border-width: 1px;
                   box-shadow: none;
@@ -1250,7 +1250,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 12px;

@@ -33,7 +33,7 @@ exports[`TagPicker renders correctly 1`] = `
             ms-BasePicker-text
             {
               align-items: center;
-              border: 1px solid #a6a6a6;
+              border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -42,7 +42,7 @@ exports[`TagPicker renders correctly 1`] = `
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
       >
         <span

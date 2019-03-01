@@ -73,7 +73,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   ms-Nav-compositeLink
                   {
                     background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
@@ -92,7 +92,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       border-radius: 0px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -123,7 +123,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -159,8 +159,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"
@@ -241,7 +241,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   ms-Nav-compositeLink
                   {
                     background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
@@ -260,7 +260,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       border-radius: 0px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -291,7 +291,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -327,8 +327,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       color: #004578;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://msn.com"

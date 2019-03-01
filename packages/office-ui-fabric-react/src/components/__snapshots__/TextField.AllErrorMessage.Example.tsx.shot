@@ -34,7 +34,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -61,7 +61,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               align-items: stretch;
               background: #ffffff;
               border-color: #a80000;
-              border: 1px solid #a6a6a6;
+              border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -79,7 +79,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -100,7 +100,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-size: 14px;
                 margin-bottom: 0px;
                 margin-left: 0px;
@@ -122,11 +122,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
           id="TextField0"
@@ -176,7 +176,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               align-items: stretch;
               background: #ffffff;
               border-color: #a80000;
-              border: 1px solid #a6a6a6;
+              border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -194,7 +194,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -215,7 +215,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-size: 14px;
                 margin-bottom: 0px;
                 margin-left: 0px;
@@ -237,11 +237,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
           id="TextField2"
@@ -306,7 +306,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -355,7 +355,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               text-align: left;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -376,7 +376,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-size: 14px;
                 margin-bottom: 0px;
                 margin-left: 0px;
@@ -399,11 +399,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
           id="TextField4"
@@ -455,7 +455,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -482,7 +482,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               align-items: stretch;
               background: #ffffff;
               border-color: #a80000;
-              border: 1px solid #a6a6a6;
+              border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -501,7 +501,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -522,7 +522,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 flex-grow: 1;
                 font-size: 14px;
                 line-height: 17px;
@@ -548,11 +548,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                color: #605e5c;
                 opacity: 1;
               }
           id="TextField6"

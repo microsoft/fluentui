@@ -24,12 +24,12 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
           animation-iteration-count: infinite;
           animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
           animation-timing-function: ease-in-out;
-          background: #f4f4f4
+          background: #f3f2f1
                             linear-gradient(
                               to right,
-                              #f4f4f4 0%,
-                              #eaeaea 50%,
-                              #f4f4f4 100%)
+                              #f3f2f1 0%,
+                              #edebe9 50%,
+                              #f3f2f1 100%)
                             0 0 / 90% 100%
                             no-repeat;
           transition: opacity 200ms;
@@ -265,12 +265,12 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
           animation-iteration-count: infinite;
           animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
           animation-timing-function: ease-in-out;
-          background: #f4f4f4
+          background: #f3f2f1
                             linear-gradient(
                               to right,
-                              #f4f4f4 0%,
-                              #eaeaea 50%,
-                              #f4f4f4 100%)
+                              #f3f2f1 0%,
+                              #edebe9 50%,
+                              #f3f2f1 100%)
                             0 0 / 90% 100%
                             no-repeat;
           transition: opacity 200ms;

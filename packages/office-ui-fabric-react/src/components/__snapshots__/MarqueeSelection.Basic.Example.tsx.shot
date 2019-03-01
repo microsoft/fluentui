@@ -43,10 +43,10 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
-          color: #333333;
+          color: #323130;
         }
         &:focus .ms-Checkbox-text {
-          color: #333333;
+          color: #323130;
         }
   >
     <input
@@ -59,7 +59,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
           .ms-Fabric--isFocusVisible &:focus + label::before {
             outline-offset: 2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
@@ -152,7 +152,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         className=
             ms-Checkbox-text
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;

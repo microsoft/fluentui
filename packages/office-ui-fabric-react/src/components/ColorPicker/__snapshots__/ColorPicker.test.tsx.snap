@@ -94,7 +94,7 @@ exports[`ColorPicker renders correctly 1`] = `
           ms-ColorPicker-slider
           is-hue
           {
-            border: 1px solid #eaeaea;
+            border: 1px solid #edebe9;
             box-sizing: border-box;
             height: 20px;
             margin-bottom: 5px;
@@ -146,7 +146,7 @@ exports[`ColorPicker renders correctly 1`] = `
           ms-ColorPicker-slider
           is-alpha
           {
-            border: 1px solid #eaeaea;
+            border: 1px solid #edebe9;
             box-sizing: border-box;
             height: 20px;
             margin-bottom: 5px;
@@ -289,7 +289,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border: 1px solid #a19f9d;
                         box-shadow: none;
                         box-sizing: border-box;
                         cursor: text;
@@ -307,7 +307,7 @@ exports[`ColorPicker renders correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -325,7 +325,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           font-size: 14px;
                           margin-bottom: 0px;
                           margin-left: 0px;
@@ -347,11 +347,11 @@ exports[`ColorPicker renders correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                     id="TextField0"
@@ -417,7 +417,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border: 1px solid #a19f9d;
                         box-shadow: none;
                         box-sizing: border-box;
                         cursor: text;
@@ -435,7 +435,7 @@ exports[`ColorPicker renders correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -453,7 +453,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           font-size: 14px;
                           margin-bottom: 0px;
                           margin-left: 0px;
@@ -475,11 +475,11 @@ exports[`ColorPicker renders correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                     id="TextField2"
@@ -545,7 +545,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border: 1px solid #a19f9d;
                         box-shadow: none;
                         box-sizing: border-box;
                         cursor: text;
@@ -563,7 +563,7 @@ exports[`ColorPicker renders correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -581,7 +581,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           font-size: 14px;
                           margin-bottom: 0px;
                           margin-left: 0px;
@@ -603,11 +603,11 @@ exports[`ColorPicker renders correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                     id="TextField4"
@@ -673,7 +673,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border: 1px solid #a19f9d;
                         box-shadow: none;
                         box-sizing: border-box;
                         cursor: text;
@@ -691,7 +691,7 @@ exports[`ColorPicker renders correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -709,7 +709,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           font-size: 14px;
                           margin-bottom: 0px;
                           margin-left: 0px;
@@ -731,11 +731,11 @@ exports[`ColorPicker renders correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                     id="TextField6"
@@ -801,7 +801,7 @@ exports[`ColorPicker renders correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border: 1px solid #a19f9d;
                         box-shadow: none;
                         box-sizing: border-box;
                         cursor: text;
@@ -819,7 +819,7 @@ exports[`ColorPicker renders correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -837,7 +837,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           font-size: 14px;
                           margin-bottom: 0px;
                           margin-left: 0px;
@@ -859,11 +859,11 @@ exports[`ColorPicker renders correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          color: #605e5c;
                           opacity: 1;
                         }
                     id="TextField8"

@@ -8,9 +8,9 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background: #f4f4f4;
+        background: #f3f2f1;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         flex-direction: column;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -65,7 +65,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
       className=
           ms-MessageBar-icon
           {
-            color: #666666;
+            color: #605e5c;
             display: flex;
             flex-shrink: 0;
             font-size: 16px;
@@ -89,7 +89,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               display: inline-block;
               font-family: "FabricMDL2Icons";
               font-style: normal;

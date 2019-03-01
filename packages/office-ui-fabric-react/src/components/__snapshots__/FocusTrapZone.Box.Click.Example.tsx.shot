@@ -11,11 +11,11 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border-radius: 0px;
-          border: 1px solid transparent;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -42,7 +42,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           bottom: 0px;
           content: "";
           left: 0px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 0px;
           top: 0px;
@@ -62,16 +62,16 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           top: 0px;
         }
         &:hover {
-          background-color: #eaeaea;
-          color: #212121;
+          background-color: #edebe9;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          background-color: #c8c8c8;
-          color: #212121;
+          background-color: #c8c6c4;
+          color: #201f1e;
         }
     data-is-focusable={true}
     onClick={[Function]}
@@ -152,7 +152,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -178,7 +178,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 {
                   align-items: stretch;
                   background: #ffffff;
-                  border: 1px solid #a6a6a6;
+                  border: 1px solid #a19f9d;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: text;
@@ -196,7 +196,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   position: relative;
                 }
                 &:hover {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -213,7 +213,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     font-size: 14px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -235,11 +235,11 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                     display: none;
                   }
                   &::placeholder {
-                    color: #666666;
+                    color: #605e5c;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #666666;
+                    color: #605e5c;
                     opacity: 1;
                   }
               id="TextField3"
@@ -285,7 +285,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               user-select: text;
             }
             .ms-Fabric--isFocusVisible &:focus {
-              box-shadow: 0 0 0 1px #666666 inset;
+              box-shadow: 0 0 0 1px #605e5c inset;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
               outline: 1px solid WindowText;
@@ -337,7 +337,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -373,7 +373,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 {
                   align-items: center;
                   background: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 1em;
                   border-style: solid;
                   border-width: 1px;
@@ -399,14 +399,14 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   bottom: -2px;
                   content: "";
                   left: -2px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: -2px;
                   top: -2px;
                   z-index: 1;
                 }
                 &:hover {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                   border-color: Highlight;
@@ -425,7 +425,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
               className=
                   ms-Toggle-thumb
                   {
-                    background-color: #333333;
+                    background-color: #323130;
                     border-color: transparent;
                     border-radius: .5em;
                     border-style: solid;
@@ -446,7 +446,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
