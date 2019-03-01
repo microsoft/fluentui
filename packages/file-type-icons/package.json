@@ -30,8 +30,8 @@
     "@types/react-dom": "16.0.5",
     "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
     "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
-    "react": ">=16.8.3-0 <17.0.0",
-    "react-dom": ">=16.8.3-0 <17.0.0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "dependencies": {
     "@uifabric/styling": ">=6.42.0 <7.0.0",
@@ -39,7 +39,7 @@
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
-    "react": ">=16.8.3-0 <17.0.0",
-    "react-dom": ">=16.8.3-0 <17.0.0"
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
   }
 }
