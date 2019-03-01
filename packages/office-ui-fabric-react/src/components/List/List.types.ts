@@ -116,7 +116,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * Method called by the list to derive the page style object. For spacer pages, the list will derive
    * the height and passed in heights will be ignored.
    */
-  getPageStyle?: (page: IPage) => React.CSSProperties;
+  getPageStyle?: (page: IPage) => any;
 
   /**
    * In addition to the visible window, how many windowHeights should we render ahead.
