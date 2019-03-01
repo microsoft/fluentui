@@ -204,7 +204,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<
       ? (this._selection.getSelection() as IFileExampleItem[])
       : [this._draggedItem!];
 
-    const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
+    const items = this.state.items.filter(currentItem => draggedItems.indexOf(currentItem) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.
