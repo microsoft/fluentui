@@ -63,7 +63,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   elementType?: keyof React.ReactHTML;
 
   /**
-   * A component that should be used as the root element of the link returned from the Link component.
+   * A component that should be used as the root element of the FocusZone component.
    */
   as?: React.ReactType;
 
