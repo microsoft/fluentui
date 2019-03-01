@@ -27,3 +27,8 @@ export default class WindowWidthUtility {
     }
   }
 }
+
+export enum UHFBreakPoints {
+  mobile = 768,
+  large = 1083
+}
