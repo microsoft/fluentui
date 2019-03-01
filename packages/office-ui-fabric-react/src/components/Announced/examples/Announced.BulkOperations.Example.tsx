@@ -66,6 +66,10 @@ const _names: string[] = [
   'Makenzie Sharett'
 ];
 
+function generateRandomDate(): string {
+  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+}
+
 export interface IFileExampleItem {
   key: string;
   name: string;
@@ -102,9 +106,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<
         _items.push({
           key: 'item-' + i,
           name: 'Item ' + i,
-          modified: new Date(
-            new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())
-          ).toDateString(),
+          modified: generateRandomDate(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });

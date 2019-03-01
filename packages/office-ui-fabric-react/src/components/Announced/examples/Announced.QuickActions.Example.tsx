@@ -68,6 +68,10 @@ const _names: string[] = [
 
 const nullFunction = (): null => null;
 
+function generateRandomDate(): string {
+  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+}
+
 export interface IAnnouncedQuickActionsExampleItem {
   key: number;
   name: string;
@@ -99,9 +103,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         _items.push({
           key: i,
           name: 'Item ' + i,
-          modified: new Date(
-            new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())
-          ).toDateString(),
+          modified: generateRandomDate(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
