@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 01 Mar 2019 13:33:08 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Mar 2019 19:40:21 GMT and should not be manually modified.
+
+## 6.31.0
+Fri, 01 Mar 2019 19:40:21 GMT
+
+### Minor changes
+
+- Reinstroducing dom/warn top level imports.
 
 ## 6.30.0
 Fri, 01 Mar 2019 13:33:08 GMT
