@@ -14,6 +14,7 @@ import {
   getPreviousElement,
   getRTL,
   htmlElementProperties,
+  initializeComponentRef,
   isElementFocusSubZone,
   isElementFocusZone,
   isElementTabbable,
@@ -79,10 +80,15 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   constructor(props: IFocusZoneProps) {
     super(props);
 
-    warnDeprecations('FocusZone', props, {
-      rootProps: undefined,
-      allowTabKey: 'handleTabKey'
-    });
+    // Manage componentRef resolution.
+    initializeComponentRef(this);
+
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('FocusZone', props, {
+        rootProps: undefined,
+        allowTabKey: 'handleTabKey'
+      });
+    }
 
     this._id = getId('FocusZone');
 

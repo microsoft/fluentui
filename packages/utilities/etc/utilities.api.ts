@@ -5,6 +5,9 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
+export function appendFunction<TRetVal>(parent: any, ...functions: (null | undefined | any)[]): () => TRetVal;
+
+// @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
@@ -173,6 +176,11 @@ class EventGroup {
   // (undocumented)
   static stopPropagation(event: any): void;
 }
+
+// @public
+export function extendComponent<T>(parent: T, methods: {
+    [key in keyof T]?: T[key];
+}): void;
 
 // @public
 class FabricPerformance {
@@ -443,6 +451,9 @@ interface IFitContentToBoundsOptions {
 }
 
 // @public
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
+
+// @public
 export function initializeFocusRects(window?: Window): void;
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -587,6 +598,9 @@ export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings |
 
 // @public
 export function nullRender(): JSX.Element | null;
+
+// @public (undocumented)
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;

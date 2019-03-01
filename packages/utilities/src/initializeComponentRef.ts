@@ -1,27 +1,42 @@
 import { IBaseProps } from './BaseComponent.types';
-import { appendFunction } from './appendFunction';
+import { extendComponent } from './extendComponent';
 
-export function initializeComponentRef<TProps, TState>(obj: React.Component<TProps, TState>): void {
-  obj.componentDidUpdate = appendFunction(this.componentDidUpdate, _updateComponentRef);
-  obj.componentDidMount = appendFunction(this.componentDidMount, _setComponentRef);
-  obj.componentWillUnmount = appendFunction(this.componentWillUnmount, _clearComponentRef);
+/**
+ * Helper to manage componentRef resolution. Internally appends logic to
+ * lifetime methods to resolve componentRef to the passed in object.
+ *
+ * Usage: call initializeComponentRef(this) in the constructor,
+ */
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void {
+  extendComponent(obj, {
+    componentDidMount: _onMount,
+    componentDidUpdate: _onUpdate,
+    componentWillUnmount: _onUnmount
+  });
 }
 
-// tslint:disable-next-line:no-any
-const _updateComponentRef = (newProps: { componentRef: (ref: any) => void }) => {
-  const { componentRef } = this.props;
-  if (componentRef !== newProps.componentRef) {
-    componentRef(null);
-    newProps.componentRef(this);
+function _onMount(): void {
+  _setComponentRef(this.props.componentRef, this);
+}
+
+function _onUpdate(prevProps: IBaseProps): void {
+  if (prevProps.componentRef !== this.props.componentRef) {
+    // tslint:disable-next-line:no-any
+    _setComponentRef((prevProps as any).componentRef, null);
+    _setComponentRef(this.props.componentRef, this);
   }
-};
+}
 
-const _setComponentRef = () => {
-  const { componentRef } = this.props;
-  componentRef && componentRef(this);
-};
+function _onUnmount(): void {
+  _setComponentRef(this.props.componentRef, null);
+}
 
-const _clearComponentRef = () => {
-  const { componentRef } = this.props;
-  componentRef && componentRef(null);
+const _setComponentRef = <TInterface>(componentRef: React.RefObject<TInterface>, value: TInterface | null) => {
+  if (componentRef) {
+    if (typeof componentRef === 'object') {
+      (componentRef as { current: TInterface | null }).current = value;
+    } else if (typeof componentRef === 'function') {
+      (componentRef as Function)(value);
+    }
+  }
 };
