@@ -99,7 +99,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
         iconProps: {
           iconName: 'Add'
         },
-        ariaLabel: 'New. Use left and right arrow keys to navigate',
+        ariaLabel: 'New',
         subMenuProps: {
           items: [
             {
