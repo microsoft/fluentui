@@ -1,7 +1,7 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
-const GlobalClassNames = {
+export const SuggestionsItemGlobalClassNames = {
   root: 'ms-Suggestions-item',
   itemButton: 'ms-Suggestions-itemButton',
   closeButton: 'ms-Suggestions-closeButton',
@@ -13,7 +13,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
 
   const { palette } = theme;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(SuggestionsItemGlobalClassNames, theme);
 
   return {
     root: [
