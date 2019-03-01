@@ -167,7 +167,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
-  public componentDidUpdate(prevProps: any, prevState: any) {
+  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
     if (this._initialFocusedIndex !== undefined) {
       const item = this.props.items[this._initialFocusedIndex];
       if (item) {
@@ -484,7 +484,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     this._forceListUpdates();
   }
 
-  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
     return <DetailsRow {...props} />;
   };
 
@@ -1055,7 +1055,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 export function buildColumns(
   items: any[],
   canResizeColumns?: boolean,
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any,
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void,
   sortedColumnKey?: string,
   isSortedDescending?: boolean,
   groupedColumnKey?: string,

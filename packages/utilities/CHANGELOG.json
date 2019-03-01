@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.31.0",
+      "tag": "@uifabric/utilities_v6.31.0",
+      "date": "Fri, 01 Mar 2019 19:40:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Reinstroducing dom/warn top level imports.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c224ca9e56e49a2dbe983fa5b1203fb339407d66"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.30.0",
       "tag": "@uifabric/utilities_v6.30.0",
       "date": "Fri, 01 Mar 2019 13:33:08 GMT",
