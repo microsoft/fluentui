@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavLinkGroup, styled, classNamesFunction, BaseComponent } from 'office-ui-fabric-react';
+import { INavLinkGroup, styled, classNamesFunction, BaseComponent, FocusZone } from 'office-ui-fabric-react';
 
 import { INavProps, INavStyleProps, INavStyles, INavState } from './Nav.types';
 import { getStyles } from './Nav.styles';
@@ -40,7 +40,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       : classNames.navContainer;
 
     return (
-      <div aria-hidden="true" className={classNames.root}>
+      <FocusZone isCircularNavigation aria-hidden="true" className={classNames.root}>
         <div aria-hidden="true" className={navWrapperClassName} ref={this.wrapperRef}>
           <nav role="navigation" className={navContainerClassName} ref={this.containerRef}>
             {this._renderExpandCollapseNavItem()}
@@ -52,7 +52,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
             {this._renderCustomizationLinks()}
           </nav>
         </div>
-      </div>
+      </FocusZone>
     );
   }
 
