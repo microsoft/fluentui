@@ -493,31 +493,31 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('./components/pages/Announced/AnnouncedPage').AnnouncedPage,
           key: 'Announced',
           name: 'Announced',
-          url: '#examples/announced'
+          url: '#/examples/announced'
         },
         {
           component: require<any>('./components/pages/Announced/AnnouncedQuickActionsPage').AnnouncedQuickActionsPage,
           key: 'Announced - Quick Actions',
           name: 'Announced - Quick Actions',
-          url: '#examples/announced/quickactions'
+          url: '#/examples/announced/quickactions'
         },
         {
           component: require<any>('./components/pages/Announced/AnnouncedSearchResultsPage').AnnouncedSearchResultsPage,
           key: 'Announced - Search Results',
           name: 'Announced - Search Results',
-          url: '#examples/announced/searchresults'
+          url: '#/examples/announced/searchresults'
         },
         {
           component: require<any>('./components/pages/Announced/AnnouncedLazyLoadingPage').AnnouncedLazyLoadingPage,
           key: 'Announced - Lazy Loading',
           name: 'Announced - Lazy Loading',
-          url: '#examples/announced/lazyloading'
+          url: '#/examples/announced/lazyloading'
         },
         {
           component: require<any>('./components/pages/Announced/AnnouncedBulkOperationsPage').AnnouncedBulkOperationsPage,
           key: 'Announced - Bulk Operations',
           name: 'Announced - Bulk Operations',
-          url: '#examples/announced/bulkoperations'
+          url: '#/examples/announced/bulkoperations'
         }
       ],
       name: 'Accessibility'
