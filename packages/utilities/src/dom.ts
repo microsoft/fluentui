@@ -9,6 +9,7 @@ export * from './dom/getRect';
 export * from './dom/getVirtualParent';
 export * from './dom/getWindow';
 export * from './dom/isVirtualElement';
+export * from './dom/on';
 export * from './dom/portalContainsElement';
 export * from './dom/setPortalAttribute';
 export * from './dom/setVirtualParent';
