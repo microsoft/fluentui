@@ -599,9 +599,6 @@ export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings |
 // @public
 export function nullRender(): JSX.Element | null;
 
-// @public (undocumented)
-export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
-
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
 
