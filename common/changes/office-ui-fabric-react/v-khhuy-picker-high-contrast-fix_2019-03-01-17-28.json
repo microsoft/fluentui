@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Improved Accessibility with the Pickers and PeoplePicker Components by adjusting styles for High Contrast Mode.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "khoawin92@gmail.com"
+}

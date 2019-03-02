@@ -9265,7 +9265,7 @@ interface IPeoplePickerItemSelectedStyles {
 // @public
 interface IPeoplePickerItemSelectedSubComponentStyles {
   persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
-  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
+  personaCoin?: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
 }
 
 // @public
@@ -9292,6 +9292,7 @@ interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemSharedProps 
 interface IPeoplePickerItemSuggestionStyles {
   personaWrapper: IStyle;
   root: IStyle;
+  subComponentStyles: IPeoplePickerItemSelectedSubComponentStyles;
 }
 
 // @public @deprecated
