@@ -9,7 +9,7 @@ export function appendFunction<TRetVal>(parent: any, ...functions: (null | undef
     return functions[0] as () => TRetVal;
   }
 
-  return function(...args: any[]): TRetVal {
+  return (...args: any[]): TRetVal => {
     let retVal: TRetVal | undefined = undefined;
 
     functions.forEach((f: () => TRetVal) => f && (retVal = f.apply(parent, args)));
