@@ -344,18 +344,18 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
   }
 
-  private _onBlur() {
+  private _onBlur = (): void => {
     this._setParkedFocus(false);
-  }
+  };
 
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
-  private _onKeyDownCapture(ev: KeyboardEvent) {
+  private _onKeyDownCapture = (ev: KeyboardEvent): void => {
     if (ev.which === KeyCodes.tab) {
       this._updateTabIndexes();
     }
-  }
+  };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     const { disabled } = this.props;
