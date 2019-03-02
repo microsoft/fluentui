@@ -1,4 +1,5 @@
 export { IAnimationStyles, IAnimationVariables } from './IAnimationStyles';
+export { ICommunicationColors, INeutralColors, ISharedColors } from './IFluentColors';
 export { IFontStyles } from './IFontStyles';
 export { IPalette } from './IPalette';
 export { ISemanticColors } from './ISemanticColors';
