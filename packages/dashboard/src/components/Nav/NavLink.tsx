@@ -16,7 +16,7 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   }
 
   public render(): JSX.Element {
-    const classNames = getClassNames(getStyles);
+    const classNames = getClassNames(getStyles, this.props);
     return (
       <a
         id={this.props.id}

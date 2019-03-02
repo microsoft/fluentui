@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { INavLinkGroup, styled, classNamesFunction, BaseComponent, FocusZone } from 'office-ui-fabric-react';
+import { INavLinkGroup, styled, classNamesFunction, BaseComponent, FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
 
 import { INavProps, INavStyleProps, INavStyles, INavState } from './Nav.types';
 import { getStyles } from './Nav.styles';
@@ -40,7 +40,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       : classNames.navContainer;
 
     return (
-      <FocusZone isCircularNavigation aria-hidden="true" className={classNames.root}>
+      <FocusZone isCircularNavigation aria-hidden="true" direction={FocusZoneDirection.vertical} className={classNames.root}>
         <div aria-hidden="true" className={navWrapperClassName} ref={this.wrapperRef}>
           <nav role="navigation" className={navContainerClassName} ref={this.containerRef}>
             {this._renderExpandCollapseNavItem()}
@@ -72,8 +72,8 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     const ariaLabel = isNavCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
 
     return (
-      <ul role={'list'} className={classNames.navGroup}>
-        <li role={'listitem'} title={'NavToggle'}>
+      <ul role="menubar" className={classNames.navGroup}>
+        <li role="none" title={'NavToggle'}>
           <NavLink
             id={'NavToggle'}
             href={'#'}
@@ -83,7 +83,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
             dataValue={'NavToggle'}
             ariaLabel={ariaLabel}
             primaryIconName={'GlobalNavButton'}
-            role="menu"
+            role="menuitem"
           />
         </li>
       </ul>
@@ -118,8 +118,8 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       <>
         {enableCustomization && (
           // If enableCustomization
-          <ul role={'list'} className={classNames.navGroup}>
-            <li role={'listitem'} title={'Edit navigation'}>
+          <ul role="menubar" className={classNames.navGroup}>
+            <li role="none" title={'Edit navigation'}>
               <NavLink
                 id={'EditNav'}
                 href={'#'}
@@ -129,11 +129,11 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                 dataValue={'NavToggle'}
                 ariaLabel={'Edit navigation'}
                 primaryIconName={'Edit'}
-                role="menu"
+                role="menuitem"
               />
             </li>
             {showMore && (
-              <li role={'listitem'} title={'Show more'}>
+              <li role="none" title={'Show more'}>
                 <NavLink
                   id={'ShowMore'}
                   href={'#'}
@@ -143,7 +143,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                   dataValue={'Show more'}
                   ariaLabel={'Show more'}
                   primaryIconName={'More'}
-                  role="menu"
+                  role="menuitem"
                 />
               </li>
             )}

@@ -128,7 +128,7 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
     navItem: [
       isNavCollapsed && {
         selectors: {
-          ':hover $nestedNavMenuWhenNavCollapsed': {
+          ':hover $nestedNavMenuWhenNavCollapsed, :focus $nestedNavMenuWhenNavCollapsed': {
             display: 'flex'
           }
         }

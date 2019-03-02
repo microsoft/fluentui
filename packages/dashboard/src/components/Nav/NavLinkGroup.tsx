@@ -122,7 +122,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
     const { isNavCollapsed } = this.props;
 
     return (
-      <li role="listitem" key={linkIndex}>
+      <li role="none" key={linkIndex}>
         <NavLink
           key={linkIndex * 100}
           isNavCollapsed={isNavCollapsed}

@@ -39,7 +39,7 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
 
     return (
       <>
-        <li className={classNames.navGroupDivider} />
+        <li role="none" className={classNames.navGroupDivider} />
         {!isNavCollapsed ? <li className={classNames.navGroupTitle}>{groupName}</li> : null}
       </>
     );
@@ -65,7 +65,7 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
 
     return (
       // if there are nested links, render a NavLinkGroup, otherwise just render a NavLink
-      <li className={classNames.navItem} role="listitem" key={keyStr}>
+      <li className={classNames.navItem} role="none" key={keyStr}>
         {!!link.links && link.links ? (
           <NavLinkGroup
             isExpanded={link.isExpanded ? link.isExpanded : false}
