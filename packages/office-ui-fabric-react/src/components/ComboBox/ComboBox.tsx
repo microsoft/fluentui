@@ -1385,24 +1385,31 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   /**
-   * Get the index of the option that is marked as selected
+   * Get the indices of the options that are marked as selected
    * @param options - the comboBox options
-   * @param selectedKeys - the known selected key to find
-   * @returns - the index of the selected option, -1 if not found
+   * @param selectedKeys - the known selected keys to find
+   * @returns - an array of the indices of the selected options, empty array if nothing is selected
    */
   private _getSelectedIndices(options: IComboBoxOption[] | undefined, selectedKeys: (string | number | undefined)[]): number[] {
-    const selectedIndices: any[] = [];
     if (options === undefined || selectedKeys === undefined) {
-      return selectedIndices;
+      return [];
     }
 
+    const selectedIndices: Set<number> = new Set<number>();
+    options.forEach((option: IComboBoxOption, index: number) => {
+      if (option.selected) {
+        selectedIndices.add(index);
+      }
+    });
+
     for (const selectedKey of selectedKeys) {
-      const index = findIndex(options, option => option.selected || option.key === selectedKey);
+      const index = findIndex(options, option => option.key === selectedKey);
       if (index > -1) {
-        selectedIndices.push(index);
+        selectedIndices.add(index);
       }
     }
-    return selectedIndices;
+
+    return Array.from(selectedIndices).sort();
   }
 
   /**

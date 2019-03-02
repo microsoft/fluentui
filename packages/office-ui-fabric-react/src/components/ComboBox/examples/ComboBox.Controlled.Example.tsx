@@ -57,7 +57,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
       optionsMulti: [],
       // This is the text of the option which will be initially selected after the options are resolved
       initialDisplayValue: 'Option C',
-      initialDisplayValueMulti: 'Option C'
+      initialDisplayValueMulti: 'Option C, Option D'
     };
   }
 
@@ -117,7 +117,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
 
     this.setState({
       optionsMulti: options,
-      selectedOptionKeys: ['C'],
+      selectedOptionKeys: ['C', 'D'],
       initialDisplayValueMulti: undefined
     });
 
