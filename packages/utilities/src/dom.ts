@@ -12,4 +12,3 @@ export * from './dom/isVirtualElement';
 export * from './dom/portalContainsElement';
 export * from './dom/setPortalAttribute';
 export * from './dom/setVirtualParent';
-export { setSSR } from './dom/setSSR';

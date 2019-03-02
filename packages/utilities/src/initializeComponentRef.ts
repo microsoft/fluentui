@@ -31,7 +31,7 @@ function _onUnmount(): void {
   _setComponentRef(this.props.componentRef, null);
 }
 
-const _setComponentRef = <TInterface>(componentRef: React.RefObject<TInterface>, value: TInterface | null) => {
+function _setComponentRef<TInterface>(componentRef: React.RefObject<TInterface>, value: TInterface | null): void {
   if (componentRef) {
     if (typeof componentRef === 'object') {
       (componentRef as { current: TInterface | null }).current = value;
@@ -39,4 +39,4 @@ const _setComponentRef = <TInterface>(componentRef: React.RefObject<TInterface>,
       (componentRef as Function)(value);
     }
   }
-};
+}
