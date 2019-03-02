@@ -22,9 +22,9 @@ export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
     asyncPlaceholder?: React.ReactType;
-}>;
+}>>;
 
 // @public
 export function assertNever(x: never): never;
@@ -3033,6 +3033,18 @@ interface ICommandBarStyles {
   root?: IStyle;
   // (undocumented)
   secondarySet?: IStyle;
+}
+
+// @public
+interface ICommunicationColors {
+  primary: string;
+  shade10: string;
+  shade20: string;
+  shade30: string;
+  tint10: string;
+  tint20: string;
+  tint30: string;
+  tint40: string;
 }
 
 // @public (undocumented)
@@ -8988,6 +9000,34 @@ interface INavStyles {
 }
 
 // @public
+interface INeutralColors {
+  black: string;
+  gray10: string;
+  gray100: string;
+  gray110: string;
+  gray120: string;
+  gray130: string;
+  gray140: string;
+  gray150: string;
+  gray160: string;
+  gray170: string;
+  gray180: string;
+  gray190: string;
+  gray20: string;
+  gray200: string;
+  gray210: string;
+  gray220: string;
+  gray30: string;
+  gray40: string;
+  gray50: string;
+  gray60: string;
+  gray70: string;
+  gray80: string;
+  gray90: string;
+  white: string;
+}
+
+// @public
 export function initializeFocusRects(window?: Window): void;
 
 // @public (undocumented)
@@ -10280,6 +10320,44 @@ interface ISemanticTextColors {
 interface ISerializableObject {
   // (undocumented)
   toString?: () => string;
+}
+
+// @public
+interface ISharedColors {
+  blue10: string;
+  blueMagenta10: string;
+  blueMagenta20: string;
+  blueMagenta30: string;
+  blueMagenta40: string;
+  cyan10: string;
+  cyan20: string;
+  cyan30: string;
+  cyan40: string;
+  cyanBlue10: string;
+  cyanBlue20: string;
+  gray10: string;
+  gray20: string;
+  gray30: string;
+  gray40: string;
+  green10: string;
+  green20: string;
+  greenCyan10: string;
+  magenta10: string;
+  magenta20: string;
+  magentaPink10: string;
+  magentaPink20: string;
+  orange10: string;
+  orange20: string;
+  orange30: string;
+  orangeYellow10: string;
+  orangeYellow20: string;
+  pinkRed10: string;
+  red10: string;
+  red20: string;
+  redOrange10: string;
+  redOrange20: string;
+  yellow10: string;
+  yellowGreen10: string;
 }
 
 // @public (undocumented)
