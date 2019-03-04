@@ -194,7 +194,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
  */
 export interface IBasePickerSuggestionsProps<T = any>
   extends Pick<
-    ISuggestionsProps<TextDecoderOptions>,
+    ISuggestionsProps<T>,
     | 'onRenderNoResultFound'
     | 'suggestionsHeaderText'
     | 'mostRecentlyUsedHeaderText'
