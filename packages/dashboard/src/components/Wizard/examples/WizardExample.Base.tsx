@@ -32,11 +32,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         titleElement: withTitle ? testHeader : undefined,
         footerElement: testFooter,
         wizardContent: {
-          contentTitleElement: (
-            <div>
-              <h1>Step 0</h1>
-            </div>
-          ),
+          contentTitleElement: this._getContentTitleElement('Step 0'),
           content: this._getContentForStep1('Step 0')
         }
       },
@@ -56,11 +52,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
-              contentTitleElement: (
-                <div>
-                  <h1>Step 1, Sub step 0</h1>
-                </div>
-              ),
+              contentTitleElement: this._getContentTitleElement('Step 1, Sub step 0'),
               content: this._getContentForStep2('Step 1, Sub step 0')
             }
           },
@@ -72,11 +64,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
-              contentTitleElement: (
-                <div>
-                  <h1>Step 1, Sub step 1</h1>
-                </div>
-              ),
+              contentTitleElement: this._getContentTitleElement('Step 1, Sub step 1'),
               content: this._getContentForStep1('Step 1, Sub step 1')
             }
           },
@@ -88,11 +76,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
-              contentTitleElement: (
-                <div>
-                  <h1>Step 1, Sub step 2</h1>
-                </div>
-              ),
+              contentTitleElement: this._getContentTitleElement('Step 1, Sub step 2'),
               content: this._getContentForStep2('Step 1, Sub step 2')
             }
           }
@@ -106,11 +90,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: withTitle ? testHeader : undefined,
         wizardContent: {
-          contentTitleElement: (
-            <div>
-              <h1>Step 2</h1>
-            </div>
-          ),
+          contentTitleElement: this._getContentTitleElement('Step 2'),
           content: this._getContentForStep1('Step 2')
         }
       },
@@ -122,11 +102,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: withTitle ? testHeader : undefined,
         wizardContent: {
-          contentTitleElement: (
-            <div>
-              <h1>Step 3</h1>
-            </div>
-          ),
+          contentTitleElement: this._getContentTitleElement('Step 3'),
           content: this._getContentForStep2('Step 3')
         }
       }
@@ -244,6 +220,14 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
     this.setState({ steps: steps as IWizardStepProps[], currentStepId });
 
     console.log('Clicked step : ' + step.label);
+  };
+
+  private _getContentTitleElement = (stepStr: string): JSX.Element => {
+    return (
+      <div>
+        <h1>{stepStr}</h1>
+      </div>
+    );
   };
 
   private _getContentForStep1 = (stepStr: string): JSX.Element => {
