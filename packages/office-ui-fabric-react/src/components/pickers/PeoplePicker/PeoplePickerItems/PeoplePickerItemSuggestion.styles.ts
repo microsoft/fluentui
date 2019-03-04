@@ -1,6 +1,6 @@
-import { getGlobalClassNames } from '../../../../Styling';
+import { getGlobalClassNames, HighContrastSelector, IStyle } from '../../../../Styling';
 import { IPeoplePickerItemSuggestionStyles, IPeoplePickerItemSuggestionStyleProps } from './PeoplePickerItem.types';
-
+import { SuggestionsItemGlobalClassNames as suggested } from '../../Suggestions/SuggestionsItem.styles';
 const GlobalClassNames = {
   root: 'ms-PeoplePicker-personaContent',
   personaWrapper: 'ms-PeoplePicker-Persona'
@@ -9,6 +9,26 @@ const GlobalClassNames = {
 export function getStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeoplePickerItemSuggestionStyles {
   const { className, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const textSelectorsStyles: IStyle = {
+    selectors: {
+      [`.${suggested.isSuggested} &`]: {
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'HighlightText'
+          }
+        }
+      },
+      [`.${classNames.root}:hover &`]: {
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'HighlightText'
+          }
+        }
+      }
+    }
+  };
+
   return {
     root: [
       classNames.root,
@@ -23,6 +43,12 @@ export function getStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeople
       {
         width: 180
       }
-    ]
+    ],
+    subComponentStyles: {
+      persona: {
+        primaryText: textSelectorsStyles,
+        secondaryText: textSelectorsStyles
+      }
+    }
   };
 }

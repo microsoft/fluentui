@@ -1,6 +1,3 @@
-// tslint:disable-next-line:no-any
-declare const process: { [key: string]: any };
-
 import { IStyle } from './IStyle';
 
 export const InjectionMode = {
@@ -82,7 +79,7 @@ export class Stylesheet {
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const global: any = typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
+    const global: any = typeof window !== 'undefined' ? window : _fileScopedGlobal;
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {

@@ -27,7 +27,7 @@ export class CommandBarBasicExample extends React.Component<{}, {}> {
         iconProps: {
           iconName: 'Add'
         },
-        ariaLabel: 'New. Use left and right arrow keys to navigate',
+        ariaLabel: 'New',
         subMenuProps: {
           items: [
             {
@@ -110,6 +110,7 @@ export class CommandBarBasicExample extends React.Component<{}, {}> {
       {
         key: 'sort',
         name: 'Sort',
+        ariaLabel: 'Sort',
         iconProps: {
           iconName: 'SortLines'
         },
@@ -118,6 +119,7 @@ export class CommandBarBasicExample extends React.Component<{}, {}> {
       {
         key: 'tile',
         name: 'Grid view',
+        ariaLabel: 'Grid view',
         iconProps: {
           iconName: 'Tiles'
         },
@@ -127,6 +129,7 @@ export class CommandBarBasicExample extends React.Component<{}, {}> {
       {
         key: 'info',
         name: 'Info',
+        ariaLabel: 'Info',
         iconProps: {
           iconName: 'Info'
         },

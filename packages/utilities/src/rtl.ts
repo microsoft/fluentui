@@ -1,5 +1,5 @@
 import { KeyCodes } from './KeyCodes';
-import { getDocument } from './dom';
+import { getDocument } from './dom/getDocument';
 import { getItem, setItem } from './sessionStorage';
 import { setRTL as mergeStylesSetRTL } from '@uifabric/merge-styles';
 

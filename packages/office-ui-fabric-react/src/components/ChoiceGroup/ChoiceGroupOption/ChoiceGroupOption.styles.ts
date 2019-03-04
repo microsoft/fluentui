@@ -245,12 +245,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       {
         position: 'absolute',
         opacity: 0,
-        top: 8
-      },
-      (hasIcon || hasImage) && {
         top: 0,
         right: 0,
-        opacity: 0,
         width: '100%',
         height: '100%',
         margin: 0

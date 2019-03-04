@@ -88,12 +88,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   secondaryText?: string;
 
   /**
-   * Tertiary text to display, usually the status of the user.
+   * Tertiary text to display, usually the status of the user. The tertiary text will only be shown when using Size72 or Size100.
    */
   tertiaryText?: string;
 
   /**
-   * Optional text to display, usually a custom message set.
+   * Optional text to display, usually a custom message set. The optional text will only be shown when using Size100.
    */
   optionalText?: string;
 

@@ -1,5 +1,4 @@
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from 'office-ui-fabric-react/lib/SwatchColorPicker';
-import { NeutralColors } from '../FluentColors';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 
 export const ColorPickerGridCellStyles = (props: IColorPickerGridCellStyleProps): Partial<IColorPickerGridCellStyles> => {
@@ -26,7 +25,7 @@ export const ColorPickerGridCellStyles = (props: IColorPickerGridCellStyleProps)
       },
       isWhite &&
         !selected && {
-          backgroundColor: NeutralColors.gray80
+          backgroundColor: palette.neutralTertiary
         },
       !selected && {
         selectors: {

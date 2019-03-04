@@ -1,5 +1,6 @@
 export * from './ActivityItem';
 export * from './Autofill';
+export * from './Announced';
 export * from './Breadcrumb';
 export * from './Button';
 export * from './Calendar';
@@ -71,6 +72,7 @@ export * from './Sticky';
 export * from './Styling';
 export * from './SwatchColorPicker';
 export * from './TeachingBubble';
+export * from './Text';
 export * from './TextField';
 export * from './ThemeGenerator';
 export * from './Toggle';

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
-import { Customizer } from './Customizer';
+import { Customizer } from './customizations/Customizer';
 import { IStyle, Stylesheet, InjectionMode, IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
-import { Customizations } from './Customizations';
+import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@uifabric/test-utilities';
 
 interface ITestStyles {

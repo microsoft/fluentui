@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DetailsRowBase } from './DetailsRow.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IColumn, CheckboxVisibility } from './DetailsList.types';
+import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
@@ -54,7 +54,7 @@ export interface IDetailsItemProps {
   cellStyleProps?: ICellStyleProps;
 }
 
-export interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
   /**
    * Theme provided by styled() function
    */
@@ -104,11 +104,6 @@ export interface IDetailsRowBaseProps extends IBaseProps<IDetailsRow>, IDetailsI
    * Callback for rendering a checkbox
    */
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
-
-  /**
-   * Callback for rendering an item column
-   */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 
   /**
    * Handling drag and drop events

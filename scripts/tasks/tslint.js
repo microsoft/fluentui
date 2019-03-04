@@ -1,4 +1,4 @@
 // @ts-check
 
-const { tslintTask } = require('just-task-preset');
+const { tslintTask } = require('just-scripts');
 exports.tslint = tslintTask();

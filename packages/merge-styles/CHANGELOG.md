@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 30 Jan 2019 13:36:21 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Mar 2019 13:33:08 GMT and should not be manually modified.
+
+## 6.16.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- Some references to "process" have been removed to help with tree shaking.
 
 ## 6.15.2
 Wed, 30 Jan 2019 13:36:21 GMT
