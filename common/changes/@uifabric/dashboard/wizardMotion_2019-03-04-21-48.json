@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Added props required for content animation in wizard, Moved util functions from exampls to main util file, Added util methods \"getPrevStep, getParentStep, getStep\", Animations in progress",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "ashasun@microsoft.com"
+}
