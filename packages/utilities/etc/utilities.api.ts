@@ -612,6 +612,9 @@ export function precisionRound(value: number, precision: number, base?: number):
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public
+export function raiseClick(target: Element): void;
+
+// @public
 class Rectangle {
   constructor(left?: number, right?: number, top?: number, bottom?: number);
   // (undocumented)

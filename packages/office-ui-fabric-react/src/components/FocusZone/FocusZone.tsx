@@ -19,6 +19,7 @@ import {
   isElementFocusZone,
   isElementTabbable,
   on,
+  raiseClick,
   shouldWrapFocus,
   warnDeprecations
 } from '../../Utilities';
@@ -566,11 +567,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
         target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
       ) {
-        const event = new Event('MouseEvents');
-
-        event.initEvent('click', true, true);
-        target.dispatchEvent(event);
-
+        raiseClick(target);
         return true;
       }
 
