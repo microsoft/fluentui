@@ -187,6 +187,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           'aria-label': 'People Picker'
         }}
+        styles={{ root: { maxWidth: '200px' } }}
         componentRef={this._picker}
         resolveDelay={300}
         disabled={this.state.isPickerDisabled}

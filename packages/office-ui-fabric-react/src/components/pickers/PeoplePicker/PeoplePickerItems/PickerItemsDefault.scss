@@ -115,4 +115,6 @@
 .itemContainer {
   display: inline-block;
   vertical-align: top;
+  min-width: 0px;
+  max-width: 100%;
 }
