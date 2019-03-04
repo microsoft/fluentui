@@ -71,7 +71,7 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                   }
             >
               <button
-                aria-describedby=" ktp-layer-id ktp-j"
+                aria-describedby="ktp-layer-id ktp-j"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -230,7 +230,7 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                   }
             >
               <button
-                aria-describedby=" ktp-layer-id ktp-m"
+                aria-describedby="ktp-layer-id ktp-m"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -403,7 +403,7 @@ exports[`Component Examples renders Keytips.CommandBar.Example.tsx correctly 1`]
                   }
             >
               <button
-                aria-describedby=" ktp-layer-id ktp-l-k"
+                aria-describedby="ktp-layer-id ktp-l-k"
                 aria-expanded={false}
                 aria-haspopup={true}
                 aria-owns={null}

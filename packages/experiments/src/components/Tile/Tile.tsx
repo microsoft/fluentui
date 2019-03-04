@@ -167,21 +167,21 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {background
           ? this._onRenderBackground({
-            background: background,
-            hideBackground
-          })
+              background: background,
+              hideBackground
+            })
           : null}
         {foreground
           ? this._onRenderForeground({
-            foreground: foreground,
-            hideForeground
-          })
+              foreground: foreground,
+              hideForeground
+            })
           : null}
         {itemName || itemActivity
           ? this._onRenderNameplate({
-            name: itemName,
-            activity: itemActivity
-          })
+              name: itemName,
+              activity: itemActivity
+            })
           : null}
       </>
     );
@@ -234,8 +234,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-            isSelected: isSelected
-          })
+              isSelected: isSelected
+            })
           : null}
       </div>
     );
@@ -245,29 +245,33 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     background,
     hideBackground
   }: {
-    background: React.ReactNode | React.ReactNode[];
+    background: ITileProps['background'];
     hideBackground: boolean;
-  }): JSX.Element {
-    return (
+  }): JSX.Element | null {
+    const finalBackground = typeof background === 'function' ? background(getTileLayoutFromProps(this.props)) : background;
+
+    return finalBackground ? (
       <span
         key="background"
         className={css('ms-Tile-background', TileStyles.background, {
           [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground
         })}
       >
-        {background}
+        {finalBackground}
       </span>
-    );
+    ) : null;
   }
 
   private _onRenderForeground({
     foreground,
     hideForeground
   }: {
-    foreground: React.ReactNode | React.ReactNode[];
+    foreground: ITileProps['foreground'];
     hideForeground: boolean;
-  }): JSX.Element {
-    return (
+  }): JSX.Element | null {
+    const finalForeground = typeof foreground === 'function' ? foreground(getTileLayoutFromProps(this.props)) : foreground;
+
+    return finalForeground ? (
       <span key="foreground" role="presentation" className={css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate)}>
         <span role="presentation" className={css('ms-Tile-content', TileStyles.content)}>
           <span
@@ -276,20 +280,14 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
               [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
             })}
           >
-            {foreground}
+            {finalForeground}
           </span>
         </span>
       </span>
-    );
+    ) : null;
   }
 
-  private _onRenderNameplate({
-    name,
-    activity
-  }: {
-    name: React.ReactNode | React.ReactNode[];
-    activity: React.ReactNode | React.ReactNode[];
-  }): JSX.Element {
+  private _onRenderNameplate({ name, activity }: { name: React.ReactNode; activity: React.ReactNode }): JSX.Element {
     return (
       <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate)}>
         {name ? (
@@ -346,6 +344,10 @@ export interface ITileLayout {
 export function getTileLayout(tileElement: JSX.Element): ITileLayout {
   const tileProps: ITileProps = tileElement.props;
 
+  return getTileLayoutFromProps(tileProps);
+}
+
+function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
   const { contentSize, tileSize = 'large' } = tileProps;
 
   if (!contentSize) {

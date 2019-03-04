@@ -27,7 +27,7 @@ export class CommandBarBasicExample extends React.Component<{}, {}> {
         iconProps: {
           iconName: 'Add'
         },
-        ariaLabel: 'New. Use left and right arrow keys to navigate',
+        ariaLabel: 'New',
         subMenuProps: {
           items: [
             {

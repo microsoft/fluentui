@@ -2,10 +2,12 @@ import * as React from 'react';
 import { BaseComponent, IRectangle, assign, classNamesFunction, IClassNames } from '../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
-import { List, ScrollToMode } from '../../List';
+import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
+import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
+const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 
 export interface IGroupedListState {
   lastWidth?: number;
@@ -71,7 +73,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   }
 
   public render(): JSX.Element {
-    const { className, usePageCache, onShouldVirtualize, getGroupHeight, theme, styles, compact } = this.props;
+    const { className, usePageCache, onShouldVirtualize, theme, styles, compact } = this.props;
     const { groups } = this.state;
     this._classNames = getClassNames(styles, {
       theme: theme!,
@@ -82,7 +84,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     return (
       <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
         {!groups ? (
-          this._renderGroup(null, 0)
+          this._renderGroup(undefined, 0)
         ) : (
           <List
             ref={this._list}
@@ -90,7 +92,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
             items={groups}
             onRenderCell={this._renderGroup}
             getItemCountForPage={this._returnOne}
-            getPageHeight={getGroupHeight && this._getPageHeight(getGroupHeight)}
+            getPageHeight={this._getPageHeight}
             getPageSpecification={this._getPageSpecification}
             usePageCache={usePageCache}
             onShouldVirtualize={onShouldVirtualize}
@@ -125,7 +127,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     }
   }
 
-  private _renderGroup = (group: any, groupIndex: number): JSX.Element | null => {
+  private _renderGroup = (group: IGroup | undefined, groupIndex: number): React.ReactNode => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -194,14 +196,36 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     return 1;
   }
 
-  private _getPageHeight = (getGroupHeight: (group?: IGroup, groupIndex?: number) => number) => (itemIndex: number) => {
-    const { groups } = this.state;
-
-    const pageGroup = groups && groups[itemIndex];
-    return getGroupHeight(pageGroup, itemIndex);
+  private _getDefaultGroupItemLimit = (group: IGroup): number => {
+    return group.count;
   };
 
-  private _getGroupKey(group: IGroup, index: number): string {
+  private _getGroupItemLimit = (group: IGroup): number => {
+    const { groupProps } = this.props;
+    const getGroupItemLimit = groupProps && groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit : this._getDefaultGroupItemLimit;
+
+    return getGroupItemLimit(group);
+  };
+
+  private _getGroupHeight = (group: IGroup): number => {
+    const rowHeight = this.props.compact ? COMPACT_ROW_HEIGHT : ROW_HEIGHT;
+
+    return rowHeight + (group.isCollapsed ? 0 : rowHeight * this._getGroupItemLimit(group));
+  };
+
+  private _getPageHeight: IListProps['getPageHeight'] = (itemIndex: number) => {
+    const { groups } = this.state;
+    const { getGroupHeight = this._getGroupHeight } = this.props;
+    const pageGroup = groups && groups[itemIndex];
+
+    if (pageGroup) {
+      return getGroupHeight(pageGroup, itemIndex);
+    } else {
+      return 0;
+    }
+  };
+
+  private _getGroupKey(group: IGroup | undefined, index: number): string {
     return 'group-' + (group && group.key ? group.key : String(index));
   }
 

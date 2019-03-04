@@ -126,6 +126,7 @@ export interface IPivotStyles {
   text: IStyle;
   count: IStyle;
   icon: IStyle;
+  itemContainer?: IStyle;
 }
 
 export enum PivotLinkFormat {

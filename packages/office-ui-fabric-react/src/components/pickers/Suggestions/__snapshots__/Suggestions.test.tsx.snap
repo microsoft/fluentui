@@ -16,25 +16,18 @@ exports[`Suggestions renders a list properly 1`] = `
       <div
         className=
             ms-Suggestions-item
-            is-suggested
             {
               align-items: stretch;
-              background: #eaeaea;
               box-sizing: border-box;
               display: flex;
               position: relative;
               width: 100%;
             }
             &:hover {
-              background: #c8c8c8;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background: Highlight;
-              color: HighlightText;
             }
       >
         <button
@@ -43,10 +36,12 @@ exports[`Suggestions renders a list properly 1`] = `
               ms-Button--action
               ms-Button--command
               ms-Suggestions-itemButton
+              is-suggested
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
+                background: #eaeaea;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
@@ -57,6 +52,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -97,11 +93,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
+                background: #c8c8c8;
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -113,7 +112,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
               @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                color: HighlightText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -186,6 +187,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -229,8 +231,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -315,6 +319,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -358,8 +363,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -444,6 +451,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -487,8 +495,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -573,6 +583,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -616,8 +627,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -702,6 +715,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -745,8 +759,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -831,6 +847,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -874,8 +891,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -960,6 +979,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1003,8 +1023,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1089,6 +1111,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1132,8 +1155,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1218,6 +1243,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1261,8 +1287,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1347,6 +1375,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1390,8 +1419,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1476,6 +1507,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1519,8 +1551,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1605,6 +1639,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1648,8 +1683,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1734,6 +1771,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1777,8 +1815,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1863,6 +1903,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -1906,8 +1947,10 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1986,25 +2029,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       <div
         className=
             ms-Suggestions-item
-            is-suggested
             {
               align-items: stretch;
-              background: #eaeaea;
               box-sizing: border-box;
               display: flex;
               position: relative;
               width: 100%;
             }
             &:hover {
-              background: #c8c8c8;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background: Highlight;
-              color: HighlightText;
             }
       >
         <button
@@ -2013,10 +2049,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               ms-Button--action
               ms-Button--command
               ms-Suggestions-itemButton
+              is-suggested
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
+                background: #eaeaea;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
@@ -2027,6 +2065,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2067,11 +2106,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
+                background: #c8c8c8;
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2083,7 +2125,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #004578;
               }
               @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                color: HighlightText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2156,6 +2200,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2199,8 +2244,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2285,6 +2332,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2328,8 +2376,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2414,6 +2464,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2457,8 +2508,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2543,6 +2596,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2586,8 +2640,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2672,6 +2728,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2715,8 +2772,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2801,6 +2860,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2844,8 +2904,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2930,6 +2992,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -2973,8 +3036,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3059,6 +3124,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -3102,8 +3168,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3188,6 +3256,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -3231,8 +3300,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3317,6 +3388,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -3360,8 +3432,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3446,6 +3520,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -3489,8 +3564,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3575,6 +3652,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -3618,8 +3696,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3704,6 +3784,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -3747,8 +3828,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3833,6 +3916,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -3876,8 +3960,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3995,6 +4081,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4038,8 +4125,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4124,6 +4213,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4167,8 +4257,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4253,6 +4345,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4296,8 +4389,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4382,6 +4477,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4425,8 +4521,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4511,6 +4609,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4554,8 +4653,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4640,6 +4741,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4683,8 +4785,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4769,6 +4873,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4812,8 +4917,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4898,6 +5005,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -4941,8 +5049,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4993,25 +5103,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       <div
         className=
             ms-Suggestions-item
-            is-suggested
             {
               align-items: stretch;
-              background: #eaeaea;
               box-sizing: border-box;
               display: flex;
               position: relative;
               width: 100%;
             }
             &:hover {
-              background: #c8c8c8;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background: Highlight;
-              color: HighlightText;
             }
       >
         <button
@@ -5020,10 +5123,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               ms-Button--action
               ms-Button--command
               ms-Suggestions-itemButton
+              is-suggested
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
+                background: #eaeaea;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
@@ -5034,6 +5139,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -5074,11 +5180,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
+                background: #c8c8c8;
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5090,7 +5199,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
               @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                color: HighlightText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -5163,6 +5274,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -5206,8 +5318,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5292,6 +5406,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -5335,8 +5450,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5421,6 +5538,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -5464,8 +5582,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5550,6 +5670,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -5593,8 +5714,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5679,6 +5802,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -5722,8 +5846,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5808,6 +5934,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 font-size: 14px;
                 font-weight: 400;
                 height: 100%;
+                min-width: 0px;
                 outline: transparent;
                 padding-bottom: 0px;
                 padding-left: 0px;
@@ -5851,8 +5978,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;

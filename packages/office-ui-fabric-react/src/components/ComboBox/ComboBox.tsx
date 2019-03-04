@@ -13,7 +13,8 @@ import {
   isIOS,
   isMac,
   KeyCodes,
-  shallowCompare
+  shallowCompare,
+  mergeAriaAttributeValues
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -311,6 +312,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       label,
       disabled,
       ariaLabel,
+      ariaDescribedBy,
       required,
       errorMessage,
       onRenderContainer = this._onRenderContainer,
@@ -383,7 +385,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 readOnly={disabled || !allowFreeform}
                 aria-labelledby={label && id + '-label'}
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
-                aria-describedby={keytipAttributes['aria-describedby']}
+                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 aria-activedescendant={this._getAriaActiveDescentValue()}
                 aria-disabled={disabled}
                 aria-owns={isOpen ? id + '-list' : undefined}
@@ -948,7 +950,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = document.activeElement;
+      relatedTarget = document.activeElement as Element;
     }
     if (
       relatedTarget &&
@@ -1969,8 +1971,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
    */
   private _buildDefaultSelectedKeys(
-    defaultSelectedKey: string | number | string[] | number[] | undefined,
-    selectedKey: string | number | string[] | number[] | undefined
+    defaultSelectedKey: string | number | string[] | number[] | null | undefined,
+    selectedKey: string | number | string[] | number[] | null | undefined
   ): string[] | number[] {
     const selectedKeys: string[] | number[] = this._buildSelectedKeys(defaultSelectedKey);
     if (selectedKeys.length) {
@@ -1979,7 +1981,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return this._buildSelectedKeys(selectedKey);
   }
 
-  private _buildSelectedKeys(selectedKey: string | number | string[] | number[] | undefined): string[] | number[] {
+  private _buildSelectedKeys(selectedKey: string | number | string[] | number[] | null | undefined): string[] | number[] {
     if (selectedKey === undefined) {
       return [];
     }

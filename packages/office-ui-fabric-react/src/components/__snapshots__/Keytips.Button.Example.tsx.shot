@@ -6,7 +6,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     When multiple Keytips start with the same character, typing that character will filter the visible keytips.
   </p>
   <button
-    aria-describedby=" ktp-layer-id ktp-1-a"
+    aria-describedby="ktp-layer-id ktp-1-a"
     className=
         ms-Button
         ms-Button--default
@@ -124,7 +124,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     </div>
   </button>
   <button
-    aria-describedby="id__4 ktp-layer-id ktp-1-b"
+    aria-describedby="id__4  ktp-layer-id ktp-1-b"
     aria-labelledby="id__3"
     className=
         ms-Button
@@ -274,7 +274,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     </div>
   </button>
   <button
-    aria-describedby=" ktp-layer-id ktp-2-a"
+    aria-describedby="ktp-layer-id ktp-2-a"
     aria-expanded={false}
     aria-haspopup={true}
     aria-owns={null}
@@ -422,7 +422,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     </div>
   </button>
   <div
-    aria-describedby=" ktp-layer-id ktp-2-b"
+    aria-describedby="ktp-layer-id ktp-2-b"
     aria-expanded={false}
     aria-haspopup={true}
     className=
@@ -807,7 +807,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     The 'offset' prop can be used to position the keytip a set distance from the top-left corner of the element.
   </p>
   <button
-    aria-describedby=" ktp-layer-id ktp-0-0"
+    aria-describedby="ktp-layer-id ktp-0-0"
     className=
         ms-Button
         ms-Button--default
@@ -1069,7 +1069,7 @@ exports[`Component Examples renders Keytips.Button.Example.tsx correctly 1`] = `
     </div>
   </div>
   <button
-    aria-describedby=" ktp-layer-id ktp-0-1"
+    aria-describedby="ktp-layer-id ktp-0-1"
     className=
         ms-Button
         ms-Button--default
