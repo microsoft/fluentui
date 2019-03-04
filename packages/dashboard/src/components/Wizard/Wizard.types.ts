@@ -92,5 +92,9 @@ export interface IWizardStyles {
 }
 
 export interface IWizardStyleProps {
+  isSubStep: boolean;
+
+  isFirstSubStep: boolean;
+
   theme: ITheme;
 }

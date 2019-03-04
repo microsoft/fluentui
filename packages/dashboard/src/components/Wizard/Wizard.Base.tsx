@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { IWizardProps, IWizardStyles, IWizardStyleProps, IWizardContentProps } from './Wizard.types';
+import { IWizardProps, IWizardStyles, IWizardStyleProps, IWizardStepProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getStepToShow } from './Wizard.utils';
+import { getStepToShow, getParentStep } from './Wizard.utils';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
@@ -19,33 +20,53 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
       throw new Error('Wizard must have atleast one step.');
     }
 
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-
     // if the step to render is already passed in, use that
     const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
+
+    let parentStep: IWizardStepProps | undefined;
+    let isFirstSubStep: boolean = false;
+
+    if (wizardStepProps.isSubStep) {
+      parentStep = getParentStep(steps, wizardStepProps);
+
+      if (parentStep!.subSteps![0].id === wizardStepProps.id) {
+        // If rendering step is a substep and is a first substep, we need to know for applying animation
+        isFirstSubStep = true;
+      }
+    }
+
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      isSubStep: wizardStepProps.isSubStep!,
+      isFirstSubStep: isFirstSubStep
+    });
 
     return (
       <div className={classNames.wizardContentNavContainer}>
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
-        <div className={classNames.contentSection}>
-          {this._onRenderContentTitle(wizardStepProps.wizardContent)}
-          {this._onRenderContent(wizardStepProps.wizardContent)}
-        </div>
+        {this._onRenderContentSection(wizardStepProps, classNames)}
       </div>
     );
   }
 
-  private _onRenderContentTitle = (wizardContent: IWizardContentProps | undefined): React.ReactNode => {
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-
-    return <div className={classNames.contentTitle}>{wizardContent!.contentTitleElement}</div>;
+  private _onRenderContentSection = (wizardStep: IWizardStepProps, styleClassNames: IProcessedStyleSet<IWizardStyles>): React.ReactNode => {
+    return (
+      <div className={styleClassNames.contentSection}>
+        {this._onRenderContentTitle(wizardStep, styleClassNames)}
+        {this._onRenderContent(wizardStep, styleClassNames)}
+      </div>
+    );
   };
 
-  private _onRenderContent = (wizardContent: IWizardContentProps | undefined): React.ReactNode => {
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
+  private _onRenderContentTitle = (wizardStep: IWizardStepProps, styleClassNames: IProcessedStyleSet<IWizardStyles>): React.ReactNode => {
+    if (wizardStep.wizardContent!.contentTitleElement) {
+      return <div className={styleClassNames.contentTitle}>{wizardStep.wizardContent!.contentTitleElement}</div>;
+    }
+  };
 
-    return <div className={classNames.content}>{wizardContent!.content}</div>;
+  private _onRenderContent = (wizardStep: IWizardStepProps, styleClassNames: IProcessedStyleSet<IWizardStyles>): React.ReactNode => {
+    return <div className={styleClassNames.content}>{wizardStep.wizardContent!.content}</div>;
   };
 }

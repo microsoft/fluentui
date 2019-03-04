@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard';
 import { IWizardStepProps } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
-import { getNextStep } from './SetupWizard.Util';
-import { setSubwayState } from '../../SubwayNav/examples/SubwayNav.Util';
+import { getNextStep, getPrevStep } from '../Wizard.utils';
+import { setSubwayState } from '../Wizard.utils';
 import { Label, PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 export interface IWizardExampleBaseState {
   steps: IWizardStepProps[];
@@ -16,7 +17,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
     const testHeader = <Label>Wizard Title</Label>;
     const testFooter = (
       <>
-        <DefaultButton>Back</DefaultButton>
+        <DefaultButton onClick={this._goToPrevStep}>Back</DefaultButton>
         <PrimaryButton onClick={this._goToNextStep}>Next</PrimaryButton>
         <DefaultButton>Exit Wizard</DefaultButton>
       </>
@@ -31,7 +32,12 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         titleElement: withTitle ? testHeader : undefined,
         footerElement: testFooter,
         wizardContent: {
-          content: this._getContentForStep('Step 0')
+          contentTitleElement: (
+            <div>
+              <h1>Step 0</h1>
+            </div>
+          ),
+          content: this._getContentForStep1('Step 0')
         }
       },
       {
@@ -50,7 +56,12 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
-              content: this._getContentForStep('Step 1, Sub step 0')
+              contentTitleElement: (
+                <div>
+                  <h1>Step 1, Sub step 0</h1>
+                </div>
+              ),
+              content: this._getContentForStep2('Step 1, Sub step 0')
             }
           },
           {
@@ -61,7 +72,12 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
-              content: this._getContentForStep('Step 1, Sub step 1')
+              contentTitleElement: (
+                <div>
+                  <h1>Step 1, Sub step 1</h1>
+                </div>
+              ),
+              content: this._getContentForStep1('Step 1, Sub step 1')
             }
           },
           {
@@ -72,7 +88,12 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             footerElement: testFooter,
             titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
-              content: this._getContentForStep('Step 1, Sub step 2')
+              contentTitleElement: (
+                <div>
+                  <h1>Step 1, Sub step 2</h1>
+                </div>
+              ),
+              content: this._getContentForStep2('Step 1, Sub step 2')
             }
           }
         ]
@@ -85,7 +106,12 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: withTitle ? testHeader : undefined,
         wizardContent: {
-          content: this._getContentForStep('Step 2')
+          contentTitleElement: (
+            <div>
+              <h1>Step 2</h1>
+            </div>
+          ),
+          content: this._getContentForStep1('Step 2')
         }
       },
       {
@@ -96,7 +122,12 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: withTitle ? testHeader : undefined,
         wizardContent: {
-          content: this._getContentForStep('Step 3')
+          contentTitleElement: (
+            <div>
+              <h1>Step 3</h1>
+            </div>
+          ),
+          content: this._getContentForStep2('Step 3')
         }
       }
     ];
@@ -121,7 +152,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         titleElement: testHeader,
         footerElement: testFooter,
         wizardContent: {
-          content: this._getContentForStep('Step 0')
+          content: this._getContentForStep1('Step 0')
         }
       },
       {
@@ -132,7 +163,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 1')
+          content: this._getContentForStep2('Step 1')
         }
       },
       {
@@ -143,7 +174,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 2')
+          content: this._getContentForStep1('Step 2')
         }
       },
       {
@@ -154,7 +185,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         footerElement: testFooter,
         titleElement: testHeader,
         wizardContent: {
-          content: this._getContentForStep('Step 3')
+          content: this._getContentForStep2('Step 3')
         }
       }
     ];
@@ -196,6 +227,18 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
     }
   };
 
+  private _goToPrevStep = (): void => {
+    const { prevStep, parentId } = getPrevStep(this.state.steps, this.state.currentStepId);
+
+    // if we are at the end nextStep is undefined and no action is taken
+    if (prevStep) {
+      const { steps, currentStepId } = setSubwayState({ ...prevStep, parentId: parentId }, this.state.steps, this.state.currentStepId);
+      this.setState({ steps: steps as IWizardStepProps[], currentStepId });
+
+      console.log('Now at step : ' + prevStep.label);
+    }
+  };
+
   private _handleClickStep = (step: ISubwayNavNodeProps): void => {
     const { steps, currentStepId } = setSubwayState(step, this.state.steps, this.state.currentStepId);
     this.setState({ steps: steps as IWizardStepProps[], currentStepId });
@@ -203,7 +246,34 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
     console.log('Clicked step : ' + step.label);
   };
 
-  private _getContentForStep = (stepStr: string): JSX.Element => {
-    return <div>This is the content for step - {stepStr}</div>;
+  private _getContentForStep1 = (stepStr: string): JSX.Element => {
+    return (
+      <div className="docs-TextFieldExample">
+        <TextField label="First name" placeholder={'First name in ' + stepStr} styles={this.getStyles} />
+        <TextField label="Last name" placeholder={'Last name in ' + stepStr} styles={this.getStyles} />
+        <TextField label="Address" placeholder={'Address in ' + stepStr} styles={this.getStyles} />
+        <TextField label="Details" placeholder={'Details in ' + stepStr} styles={this.getStyles} />
+      </div>
+    );
+  };
+
+  private _getContentForStep2 = (stepStr: string): JSX.Element => {
+    return (
+      <div className="docs-TextFieldExample">
+        <TextField label="Make of the car" placeholder={'Make of the car in ' + stepStr} styles={this.getStyles} />
+        <TextField label="Model name" placeholder={'Model in ' + stepStr} styles={this.getStyles} />
+        <TextField label="Year" placeholder={'Year in ' + stepStr} styles={this.getStyles} />
+        <TextField label="Color" placeholder={'Color in ' + stepStr} styles={this.getStyles} />
+        <TextField label="Details" multiline rows={4} placeholder={'Details in ' + stepStr} styles={this.getStyles} />
+      </div>
+    );
+  };
+
+  private getStyles = () => {
+    return {
+      root: {
+        maxWidth: '400px'
+      }
+    };
   };
 }
