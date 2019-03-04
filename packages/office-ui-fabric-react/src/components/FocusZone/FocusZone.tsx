@@ -81,7 +81,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     this._warnDeprecations({
       rootProps: undefined,
       allowTabKey: 'handleTabKey',
-      elementType: 'elementType'
+      elementType: 'as'
     });
 
     this._id = getId('FocusZone');
