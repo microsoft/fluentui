@@ -3,18 +3,23 @@ import { Announced } from '../Announced';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
+import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
+import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import './Announced.Example.scss';
 
-/* tslint:disable:no-any */
-let _draggedItem: any = null;
-let _draggedIndex = -1;
-const _items: any[] = [];
+const _items: IFileExampleItem[] = [];
 
-let _columns: IColumn[] = [
+const theme = getTheme();
+const dragEnterClass = mergeStyles({
+  backgroundColor: theme.palette.neutralLight
+});
+
+const _columns: IColumn[] = [
   {
-    key: 'column1',
+    key: 'name',
     name: 'Name',
     fieldName: 'name',
     minWidth: 100,
@@ -23,7 +28,7 @@ let _columns: IColumn[] = [
     ariaLabel: 'Operations for name'
   },
   {
-    key: 'column2',
+    key: 'modified',
     name: 'Modified',
     fieldName: 'modified',
     minWidth: 100,
@@ -32,7 +37,7 @@ let _columns: IColumn[] = [
     ariaLabel: 'Operations for modified'
   },
   {
-    key: 'column3',
+    key: 'modifiedby',
     name: 'Modified By',
     fieldName: 'modifiedby',
     minWidth: 100,
@@ -41,7 +46,7 @@ let _columns: IColumn[] = [
     ariaLabel: 'Operations for modifiedby'
   },
   {
-    key: 'column4',
+    key: 'filesize',
     name: 'File Size',
     fieldName: 'filesize',
     minWidth: 100,
@@ -61,36 +66,52 @@ const _names: string[] = [
   'Makenzie Sharett'
 ];
 
-export class AnnouncedBulkLongRunningExample extends React.Component<
+function generateRandomDate(): string {
+  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+}
+
+export interface IFileExampleItem {
+  key: string;
+  name: string;
+  modified: string;
+  modifiedby: string;
+  filesize: string;
+}
+
+export class AnnouncedBulkOperationsExample extends React.Component<
   {},
   {
-    items: {}[];
+    items: IFileExampleItem[];
     columns: IColumn[];
     numberOfItems: number;
   }
 > {
   private _selection: Selection;
+  private _dragDropEvents: IDragDropEvents;
+  private _draggedItem: IFileExampleItem | undefined;
+  private _draggedIndex: number;
 
   constructor(props: {}) {
     super(props);
 
-    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
-
     this._selection = new Selection();
+    this._dragDropEvents = this._getDragDropEvents();
+    this._draggedIndex = -1;
+
+    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
+    this._renderAnnounced = this._renderAnnounced.bind(this);
 
     if (_items.length === 0) {
       for (let i = 0; i < 20; i++) {
         _items.push({
-          key: i,
+          key: 'item-' + i,
           name: 'Item ' + i,
-          modified: i,
+          modified: generateRandomDate(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
       }
     }
-
-    _columns = buildColumns(_items, true);
 
     this.state = {
       items: _items,
@@ -100,17 +121,16 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { items, columns, numberOfItems } = this.state;
+    const { items, columns } = this.state;
 
     return (
-      <>
-        <p>Turn on Narrator and drag and drop the items.</p>
-        <p>The Announced component should announce the number of items moved.</p>
-        <p>
-          Note: This example is to showcase the concept of copying, uploading, or moving many items and not full illustrative of the real
+      <Stack gap={10}>
+        <Text>Turn on Narrator and drag and drop the items.</Text>
+        <Text>
+          Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real
           world scenario.
-        </p>
-        {this._renderAnnounced(numberOfItems)}
+        </Text>
+        {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             setKey={'items'}
@@ -120,16 +140,18 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
-            dragDropEvents={this._getDragDropEvents()}
+            dragDropEvents={this._dragDropEvents}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
-      </>
+      </Stack>
     );
   }
 
-  private _renderAnnounced(numberOfItems: number): JSX.Element | undefined {
+  private _renderAnnounced(): JSX.Element | undefined {
+    const { numberOfItems } = this.state;
+
     if (numberOfItems > 0) {
       return <Announced message={numberOfItems === 1 ? `${numberOfItems} item moved` : `${numberOfItems} items moved`} />;
     }
@@ -145,23 +167,24 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
         return true;
       },
       onDragEnter: (item?: any, event?: DragEvent) => {
-        return 'dragEnter';
-      }, // return string is the css classes that will be added to the entering element.
+        // return string is the css classes that will be added to the entering element.
+        return dragEnterClass;
+      },
       onDragLeave: (item?: any, event?: DragEvent) => {
         return;
       },
       onDrop: (item?: any, event?: DragEvent) => {
-        if (_draggedItem) {
+        if (this._draggedItem) {
           this._insertBeforeItem(item);
         }
       },
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
-        _draggedItem = item;
-        _draggedIndex = itemIndex!;
+        this._draggedItem = item;
+        this._draggedIndex = itemIndex!;
       },
       onDragEnd: (item?: any, event?: DragEvent) => {
-        _draggedItem = null;
-        _draggedIndex = -1;
+        this._draggedItem = undefined;
+        this._draggedIndex = -1;
       }
     };
   }
@@ -178,10 +201,12 @@ export class AnnouncedBulkLongRunningExample extends React.Component<
     return item[column.key];
   }
 
-  private _insertBeforeItem(item: any): void {
-    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+  private _insertBeforeItem(item: IFileExampleItem): void {
+    const draggedItems = this._selection.isIndexSelected(this._draggedIndex)
+      ? (this._selection.getSelection() as IFileExampleItem[])
+      : [this._draggedItem!];
 
-    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    const items = this.state.items.filter(currentItem => draggedItems.indexOf(currentItem) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.
