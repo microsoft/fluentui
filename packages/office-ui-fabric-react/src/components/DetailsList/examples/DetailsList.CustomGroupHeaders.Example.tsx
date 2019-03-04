@@ -5,14 +5,21 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { DEFAULT_ROW_HEIGHTS } from '../DetailsRow.styles';
+
+const { rowHeight: ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
+const GROUP_HEADER_AND_FOOTER_SPACING: number = 8;
+const GROUP_HEADER_AND_FOOTER_BORDER_WIDTH: number = 1;
+const GROUP_HEADER_HEIGHT: number = 95;
+const GROUP_FOOTER_HEIGHT: number = GROUP_HEADER_AND_FOOTER_SPACING * 4 + GROUP_HEADER_AND_FOOTER_BORDER_WIDTH * 2;
 
 const theme = getTheme();
 const classNames = mergeStyleSets({
   headerAndFooter: {
-    borderTop: '1px solid ' + theme.palette.neutralQuaternary,
-    borderBottom: '1px solid ' + theme.palette.neutralQuaternary,
-    padding: '8px',
-    margin: '8px 0',
+    borderTop: `${GROUP_HEADER_AND_FOOTER_BORDER_WIDTH}px solid ${theme.palette.neutralQuaternary}`,
+    borderBottom: `${GROUP_HEADER_AND_FOOTER_BORDER_WIDTH}px solid ${theme.palette.neutralQuaternary}`,
+    padding: GROUP_HEADER_AND_FOOTER_SPACING,
+    margin: `${GROUP_HEADER_AND_FOOTER_SPACING}px 0`,
     background: theme.palette.neutralLighterAlt,
     // Overlay the sizer bars
     position: 'relative',
@@ -55,6 +62,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
           onRenderHeader: this._onRenderGroupHeader,
           onRenderFooter: this._onRenderGroupFooter
         }}
+        getGroupHeight={this._getGroupHeight}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
       />
@@ -83,6 +91,14 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         <em>{`Custom footer for ${props.group!.name}`}</em>
       </div>
     );
+  };
+
+  private _getGroupTotalRowHeight = (group: IGroup): number => {
+    return group.isCollapsed ? 0 : ROW_HEIGHT * group.count;
+  };
+
+  private _getGroupHeight = (group: IGroup, _groupIndex: number): number => {
+    return GROUP_HEADER_HEIGHT + GROUP_FOOTER_HEIGHT + this._getGroupTotalRowHeight(group);
   };
 
   private _onToggleSelectGroup(props: IGroupDividerProps): () => void {

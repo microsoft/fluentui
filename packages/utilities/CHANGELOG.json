@@ -2,6 +2,53 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.32.0",
+      "tag": "@uifabric/utilities_v6.32.0",
+      "date": "Mon, 04 Mar 2019 13:29:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilities: Adding setVirtualParent export.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1a77a4df9b080b4b582f6cea185e3c6180cbb5de"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.31.0",
+      "tag": "@uifabric/utilities_v6.31.0",
+      "date": "Fri, 01 Mar 2019 19:40:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Reinstroducing dom/warn top level imports.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c224ca9e56e49a2dbe983fa5b1203fb339407d66"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.30.0",
+      "tag": "@uifabric/utilities_v6.30.0",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "A number of files containing many exports have been split into smaller units for finer debuggability in bundle size implications. Some unneeded dependencies on EventGroup have been removed.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bd191a3964734c6619fa49fcdb1d6127e2834522"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.2 <7.0.0` to `>=6.16.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.29.4",
       "tag": "@uifabric/utilities_v6.29.4",
       "date": "Tue, 26 Feb 2019 22:45:29 GMT",

@@ -217,6 +217,11 @@ export interface INavLink {
   target?: string;
 
   /**
+   * Whether or not the link is disabled.
+   */
+  disabled?: boolean;
+
+  /**
    * @deprecated Not used in the Nav control or anywhere else in office-ui-fabric-react.
    */
   parentId?: string;
@@ -254,6 +259,11 @@ export interface INavStyleProps {
    * is element a link boolean
    */
   isLink?: boolean;
+
+  /**
+   * is element disabled
+   */
+  isDisabled?: boolean;
 
   /**
    * is element a group boolean

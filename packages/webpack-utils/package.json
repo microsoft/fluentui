@@ -18,7 +18,6 @@
   },
   "disabledTasks": [
     "copy",
-    "karma",
     "webpack",
     "build-codepen-examples",
     "verify-api-extractor"

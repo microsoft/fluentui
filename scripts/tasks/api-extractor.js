@@ -1,3 +1,3 @@
-const { apiExtractorVerifyTask, apiExtractorUpdateTask } = require('just-task-preset');
+const { apiExtractorVerifyTask, apiExtractorUpdateTask } = require('just-scripts');
 exports.verifyApiExtractor = apiExtractorVerifyTask();
 exports.updateApiExtractor = apiExtractorUpdateTask();
