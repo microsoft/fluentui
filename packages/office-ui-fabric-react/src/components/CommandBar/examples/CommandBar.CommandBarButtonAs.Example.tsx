@@ -183,6 +183,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
       {
         key: 'sort',
         name: 'Sort',
+        ariaLabel: 'Sort',
         iconProps: {
           iconName: 'SortLines'
         },
@@ -191,6 +192,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
       {
         key: 'tile',
         name: 'Grid view',
+        ariaLabel: 'Grid view',
         iconProps: {
           iconName: 'Tiles'
         },
@@ -200,6 +202,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
       {
         key: 'info',
         name: 'Info',
+        ariaLabel: 'Info',
         iconProps: {
           iconName: 'Info'
         },
