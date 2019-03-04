@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.32.0",
+      "tag": "@uifabric/utilities_v6.32.0",
+      "date": "Mon, 04 Mar 2019 13:29:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilities: Adding setVirtualParent export.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1a77a4df9b080b4b582f6cea185e3c6180cbb5de"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.31.0",
       "tag": "@uifabric/utilities_v6.31.0",
       "date": "Fri, 01 Mar 2019 19:40:21 GMT",

@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 01 Mar 2019 19:40:22 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Mar 2019 13:29:58 GMT and should not be manually modified.
+
+## 6.149.0
+Mon, 04 Mar 2019 13:29:58 GMT
+
+### Minor changes
+
+- Improved Accessibility with the Pickers and PeoplePicker Components by adjusting styles for High Contrast Mode.
 
 ## 6.148.1
 Fri, 01 Mar 2019 19:40:22 GMT
