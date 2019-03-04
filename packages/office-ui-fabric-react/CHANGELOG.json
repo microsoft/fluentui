@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.149.0",
+      "tag": "office-ui-fabric-react_v6.149.0",
+      "date": "Mon, 04 Mar 2019 13:29:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improved Accessibility with the Pickers and PeoplePicker Components by adjusting styles for High Contrast Mode.",
+            "author": "Khoa Huynh <35128180+khuynh92@users.noreply.github.com>",
+            "commit": "6467d75adbd009d0bc38585e3cf949fa8dabcdd5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.31.0 <7.0.0` to `>=6.32.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.148.1",
+      "tag": "office-ui-fabric-react_v6.148.1",
+      "date": "Fri, 01 Mar 2019 19:40:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList & List: Improve typings currently typed as any",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "3029f67059a367f6077731a648e19b13c38de492"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.30.0 <7.0.0` to `>=6.31.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.148.0",
       "tag": "office-ui-fabric-react_v6.148.0",
       "date": "Fri, 01 Mar 2019 13:33:08 GMT",

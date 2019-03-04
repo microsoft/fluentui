@@ -18,6 +18,14 @@ export function addDirectionalKeyCode(which: number): void;
 // @public
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
+// @public (undocumented)
+class AnnouncedBase extends React.Component<IAnnouncedProps> {
+  // (undocumented)
+  static defaultProps: Partial<IAnnouncedProps>;
+  // (undocumented)
+  render(): JSX.Element;
+}
+
 // @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
@@ -1694,6 +1702,22 @@ interface IAnimationVariables {
   easeFunction1: string;
   // (undocumented)
   easeFunction2: string;
+}
+
+// @public (undocumented)
+interface IAnnounced {
+}
+
+// @public (undocumented)
+interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: (component: IAnnounced) => void;
+  message?: string;
+  styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
+}
+
+// @public (undocumented)
+interface IAnnouncedStyles {
+  screenReaderText: IStyle;
 }
 
 // @public (undocumented)
@@ -9267,7 +9291,7 @@ interface IPeoplePickerItemSelectedStyles {
 // @public
 interface IPeoplePickerItemSelectedSubComponentStyles {
   persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
-  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
+  personaCoin?: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
 }
 
 // @public
@@ -9294,6 +9318,7 @@ interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemSharedProps 
 interface IPeoplePickerItemSuggestionStyles {
   personaWrapper: IStyle;
   root: IStyle;
+  subComponentStyles: IPeoplePickerItemSelectedSubComponentStyles;
 }
 
 // @public @deprecated
@@ -12884,6 +12909,7 @@ module ZIndexes {
 
 }
 
+// WARNING: Unsupported export: Announced
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
 // WARNING: Unsupported export: FocusTrapCallout
