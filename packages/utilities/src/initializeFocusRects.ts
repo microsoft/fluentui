@@ -1,4 +1,4 @@
-import { getWindow } from './dom';
+import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 
 export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';

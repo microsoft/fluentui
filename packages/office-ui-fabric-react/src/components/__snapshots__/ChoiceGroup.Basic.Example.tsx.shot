@@ -94,9 +94,16 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               data-automation-id="auto1"
               id="ChoiceGroup0-A"
@@ -208,9 +215,16 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               id="ChoiceGroup0-B"
               name="ChoiceGroup0"
@@ -333,9 +347,16 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               disabled={true}
               id="ChoiceGroup0-C"
@@ -444,9 +465,16 @@ exports[`Component Examples renders ChoiceGroup.Basic.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               disabled={true}
               id="ChoiceGroup0-D"

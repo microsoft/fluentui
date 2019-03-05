@@ -93,9 +93,16 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             data-automation-id="auto1"
             id="ChoiceGroup0-1"
@@ -207,9 +214,16 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
@@ -320,9 +334,16 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
@@ -462,9 +483,16 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             data-automation-id="auto1"
             id="ChoiceGroup0-1"
@@ -576,9 +604,16 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
@@ -689,9 +724,16 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"

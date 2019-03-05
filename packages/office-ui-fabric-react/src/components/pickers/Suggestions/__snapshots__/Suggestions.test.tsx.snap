@@ -16,25 +16,18 @@ exports[`Suggestions renders a list properly 1`] = `
       <div
         className=
             ms-Suggestions-item
-            is-suggested
             {
               align-items: stretch;
-              background: #edebe9;
               box-sizing: border-box;
               display: flex;
               position: relative;
               width: 100%;
             }
             &:hover {
-              background: #c8c6c4;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background: Highlight;
-              color: HighlightText;
             }
       >
         <button
@@ -43,14 +36,16 @@ exports[`Suggestions renders a list properly 1`] = `
               ms-Button--action
               ms-Button--command
               ms-Suggestions-itemButton
+              is-suggested
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
+                background: #eaeaea;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -78,7 +73,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -98,11 +93,14 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background: #c8c8c8;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -114,7 +112,9 @@ exports[`Suggestions renders a list properly 1`] = `
                 color: #004578;
               }
               @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                color: HighlightText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -161,7 +161,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -180,7 +180,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -208,7 +208,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -228,11 +228,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -291,7 +293,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -310,7 +312,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -338,7 +340,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -358,11 +360,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -421,7 +425,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -440,7 +444,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -468,7 +472,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -488,11 +492,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -551,7 +557,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -570,7 +576,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -598,7 +604,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -618,11 +624,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -681,7 +689,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -700,7 +708,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -728,7 +736,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -748,11 +756,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -811,7 +821,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -830,7 +840,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -858,7 +868,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -878,11 +888,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -941,7 +953,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -960,7 +972,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -988,7 +1000,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1008,11 +1020,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1071,7 +1085,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1090,7 +1104,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1118,7 +1132,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1138,11 +1152,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1201,7 +1217,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1220,7 +1236,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1248,7 +1264,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1268,11 +1284,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1331,7 +1349,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1350,7 +1368,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1378,7 +1396,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1398,11 +1416,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1461,7 +1481,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1480,7 +1500,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1508,7 +1528,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1528,11 +1548,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1591,7 +1613,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1610,7 +1632,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1638,7 +1660,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1658,11 +1680,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1721,7 +1745,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1740,7 +1764,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1768,7 +1792,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1788,11 +1812,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1851,7 +1877,7 @@ exports[`Suggestions renders a list properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -1870,7 +1896,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1898,7 +1924,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1918,11 +1944,13 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1986,7 +2014,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
     className=
         ms-Suggestions-container
         {
-          border-bottom: 1px solid #edebe9;
+          border-bottom: 1px solid #eaeaea;
           max-height: 300px;
           overflow-x: hidden;
           overflow-y: auto;
@@ -2001,25 +2029,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
       <div
         className=
             ms-Suggestions-item
-            is-suggested
             {
               align-items: stretch;
-              background: #edebe9;
               box-sizing: border-box;
               display: flex;
               position: relative;
               width: 100%;
             }
             &:hover {
-              background: #c8c6c4;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background: Highlight;
-              color: HighlightText;
             }
       >
         <button
@@ -2028,14 +2049,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               ms-Button--action
               ms-Button--command
               ms-Suggestions-itemButton
+              is-suggested
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
+                background: #eaeaea;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2063,7 +2086,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2083,11 +2106,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background: #c8c8c8;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2099,7 +2125,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 color: #004578;
               }
               @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                color: HighlightText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2146,7 +2174,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2165,7 +2193,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2193,7 +2221,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2213,11 +2241,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2276,7 +2306,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2295,7 +2325,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2323,7 +2353,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2343,11 +2373,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2406,7 +2438,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2425,7 +2457,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2453,7 +2485,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2473,11 +2505,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2536,7 +2570,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2555,7 +2589,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2583,7 +2617,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2603,11 +2637,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2666,7 +2702,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2685,7 +2721,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2713,7 +2749,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2733,11 +2769,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2796,7 +2834,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2815,7 +2853,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2843,7 +2881,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2863,11 +2901,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2926,7 +2966,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -2945,7 +2985,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2973,7 +3013,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -2993,11 +3033,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3056,7 +3098,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3075,7 +3117,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3103,7 +3145,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -3123,11 +3165,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3186,7 +3230,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3205,7 +3249,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3233,7 +3277,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -3253,11 +3297,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3316,7 +3362,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3335,7 +3381,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3363,7 +3409,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -3383,11 +3429,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3446,7 +3494,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3465,7 +3513,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3493,7 +3541,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -3513,11 +3561,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3576,7 +3626,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3595,7 +3645,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3623,7 +3673,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -3643,11 +3693,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3706,7 +3758,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3725,7 +3777,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3753,7 +3805,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -3773,11 +3825,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3836,7 +3890,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -3855,7 +3909,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3883,7 +3937,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -3903,11 +3957,13 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3999,7 +4055,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4018,7 +4074,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4046,7 +4102,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4066,11 +4122,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4129,7 +4187,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4148,7 +4206,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4176,7 +4234,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4196,11 +4254,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4259,7 +4319,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4278,7 +4338,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4306,7 +4366,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4326,11 +4386,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4389,7 +4451,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4408,7 +4470,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4436,7 +4498,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4456,11 +4518,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4519,7 +4583,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4538,7 +4602,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4566,7 +4630,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4586,11 +4650,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4649,7 +4715,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4668,7 +4734,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4696,7 +4762,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4716,11 +4782,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4779,7 +4847,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4798,7 +4866,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4826,7 +4894,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4846,11 +4914,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4909,7 +4979,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -4928,7 +4998,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4956,7 +5026,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -4976,11 +5046,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5031,25 +5103,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
       <div
         className=
             ms-Suggestions-item
-            is-suggested
             {
               align-items: stretch;
-              background: #edebe9;
               box-sizing: border-box;
               display: flex;
               position: relative;
               width: 100%;
             }
             &:hover {
-              background: #c8c6c4;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
-              background: Highlight;
-              color: HighlightText;
             }
       >
         <button
@@ -5058,14 +5123,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               ms-Button--action
               ms-Button--command
               ms-Suggestions-itemButton
+              is-suggested
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
+                background: #eaeaea;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5093,7 +5160,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -5113,11 +5180,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background: #c8c8c8;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5129,7 +5199,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 color: #004578;
               }
               @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                color: HighlightText;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -5176,7 +5248,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5195,7 +5267,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5223,7 +5295,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -5243,11 +5315,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5306,7 +5380,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5325,7 +5399,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5353,7 +5427,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -5373,11 +5447,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5436,7 +5512,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5455,7 +5531,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5483,7 +5559,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -5503,11 +5579,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5566,7 +5644,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5585,7 +5663,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5613,7 +5691,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -5633,11 +5711,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5696,7 +5776,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5715,7 +5795,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5743,7 +5823,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -5763,11 +5843,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5826,7 +5908,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               width: 100%;
             }
             &:hover {
-              background: #f3f2f1;
+              background: #f4f4f4;
             }
             &:hover .ms-Suggestions-closeButton {
               display: block;
@@ -5845,7 +5927,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5873,7 +5955,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #605e5c;
+                outline: 1px solid #666666;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -5893,11 +5975,13 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                color: #212121;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
                 border-color: Highlight;
-                color: Highlight;
+                color: HighlightText;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;

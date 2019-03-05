@@ -29,7 +29,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #323130;
+              color: #333333;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -69,7 +69,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 align-items: center;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -90,13 +90,21 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
 
           >
             <input
+              aria-label="Mark displayed items as read after - Press tab for further action"
               checked={false}
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               id="ChoiceGroup0-A"
               name="ChoiceGroup0"
@@ -125,17 +133,17 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       color: #000000;
                     }
                     &:hover:before {
-                      border-color: #323130;
+                      border-color: #333333;
                     }
                     &:focus .ms-ChoiceFieldLabel {
                       color: #000000;
                     }
                     &:focus:before {
-                      border-color: #323130;
+                      border-color: #333333;
                     }
                     &:before {
                       background-color: #ffffff;
-                      border-color: #605e5c;
+                      border-color: #666666;
                       border-radius: 50%;
                       border-style: solid;
                       border-width: 1px;
@@ -181,16 +189,18 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               >
                 <div
                   aria-describedby="Dropdown2-option"
-                  aria-disabled={false}
+                  aria-disabled={true}
                   aria-expanded="false"
+                  aria-label="Select a time span"
                   className=
                       ms-Dropdown
+                      is-disabled
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         box-shadow: none;
                         box-sizing: border-box;
-                        color: #323130;
+                        color: #333333;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
@@ -207,15 +217,13 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                         user-select: none;
                       }
                       &:hover .ms-Dropdown-title {
-                        border-color: #201f1e;
-                        color: #201f1e;
+                        border-color: #212121;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                         border-color: Highlight;
                       }
                       &:focus .ms-Dropdown-title {
                         border-color: #0078d4;
-                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                         background-color: Highlight;
@@ -230,16 +238,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       }
                       &:active .ms-Dropdown-title {
                         border-color: #005a9e;
-                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                         border-color: Highlight;
-                      }
-                      &:hover .ms-Dropdown-caretDown {
-                        color: #201f1e;
-                      }
-                      &:focus .ms-Dropdown-caretDown {
-                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                         color: HighlightText;
@@ -247,17 +248,14 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
                         -ms-high-contrast-adjust: none;
                       }
-                      &:active .ms-Dropdown-caretDown {
-                        color: #201f1e;
-                      }
                       &:hover .ms-Dropdown-titleIsPlaceHolder {
-                        color: #605e5c;
+                        color: #666666;
                       }
                       &:focus .ms-Dropdown-titleIsPlaceHolder {
-                        color: #605e5c;
+                        color: #666666;
                       }
                       &:active .ms-Dropdown-titleIsPlaceHolder {
-                        color: #605e5c;
+                        color: #666666;
                       }
                       &:hover .ms-Dropdown-title--hasError {
                         border-color: #a80000;
@@ -268,33 +266,31 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                       &:focus .ms-Dropdown-title--hasError {
                         border-color: #a80000;
                       }
-                  data-is-focusable={true}
+                  data-is-focusable={false}
                   id="Dropdown2"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
-                  role="listbox"
-                  tabIndex={0}
+                  tabIndex={-1}
                 >
                   <span
                     aria-atomic={true}
                     aria-label="5 seconds"
                     aria-live="off"
-                    aria-posinset={1}
-                    aria-selected={true}
-                    aria-setsize={3}
                     className=
                         ms-Dropdown-title
                         {
-                          background-color: #ffffff;
-                          border-color: #a19f9d;
+                          background-color: #f4f4f4;
+                          border-color: #a6a6a6;
                           border-style: solid;
                           border-width: 1px;
+                          border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          cursor: pointer;
+                          color: #a6a6a6;
+                          cursor: default;
                           display: block;
                           height: 32px;
                           line-height: 30px;
@@ -311,8 +307,11 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border: 1px solid GrayText;
+                          color: GrayText;
+                        }
                     id="Dropdown2-option"
-                    role="option"
                   >
                     <span>
                       5 seconds
@@ -322,7 +321,6 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     className=
                         ms-Dropdown-caretDownWrapper
                         {
-                          cursor: pointer;
                           height: 32px;
                           line-height: 30px;
                           position: absolute;
@@ -336,7 +334,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
+                            color: #a6a6a6;
                             display: inline-block;
                             font-family: "FabricMDL2Icons";
                             font-size: 12px;
@@ -344,6 +342,9 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                             font-weight: normal;
                             pointer-events: none;
                             speak: none;
+                          }
+                          @media screen and (-ms-high-contrast: active){& {
+                            color: GrayText;
                           }
                       data-icon-name="ChevronDown"
                       role="presentation"
@@ -365,7 +366,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 align-items: center;
                 border: 1px solid green;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -390,9 +391,16 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               id="ChoiceGroup0-B"
               name="ChoiceGroup0"
@@ -490,7 +498,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 align-items: center;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -515,9 +523,16 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               disabled={true}
               id="ChoiceGroup0-C"
@@ -541,8 +556,8 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     vertical-align: top;
                   }
                   &:before {
-                    background-color: #a19f9d;
-                    border-color: #a19f9d;
+                    background-color: #a6a6a6;
+                    border-color: #a6a6a6;
                     border-radius: 50%;
                     border-style: solid;
                     border-width: 1px;
@@ -576,7 +591,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     width: 0px;
                   }
                   & .ms-ChoiceFieldLabel {
-                    color: #a19f9d;
+                    color: #a6a6a6;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
@@ -601,7 +616,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                 align-items: center;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #333333;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -626,9 +641,16 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               id="ChoiceGroup0-D"
               name="ChoiceGroup0"
@@ -654,17 +676,17 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
                     color: #000000;
                   }
                   &:hover:before {
-                    border-color: #323130;
+                    border-color: #333333;
                   }
                   &:focus .ms-ChoiceFieldLabel {
                     color: #000000;
                   }
                   &:focus:before {
-                    border-color: #323130;
+                    border-color: #333333;
                   }
                   &:before {
                     background-color: #ffffff;
-                    border-color: #605e5c;
+                    border-color: #666666;
                     border-radius: 50%;
                     border-style: solid;
                     border-width: 1px;

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/webpack-utils",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "elcraig@microsoft.com"
+}
