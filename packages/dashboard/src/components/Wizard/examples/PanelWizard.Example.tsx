@@ -10,7 +10,7 @@ export interface IPanelWizardExampleState extends IWizardExampleBaseState {
 export class PanelWizardExample extends WizardExampleBase<IPanelWizardExampleState> {
   constructor(props: {}) {
     super(props);
-    const steps = this.getTestSteps();
+    const steps = this.getTestSteps(true);
     this.state = {
       steps: steps,
       currentStepId: steps[0].id,

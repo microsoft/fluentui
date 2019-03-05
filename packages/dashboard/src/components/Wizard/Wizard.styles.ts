@@ -1,10 +1,10 @@
-import { IWizardStyles } from './Wizard.types';
+import { IWizardStyles, IWizardStyleProps } from './Wizard.types';
 
 export const subwayNavWidthPx = 303;
 
 export const subwayNavPaddingPx = 48;
 
-export const getWizardStyles = (): IWizardStyles => {
+export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
   return {
     wizardContentNavContainer: {
       display: 'flex',
@@ -14,7 +14,8 @@ export const getWizardStyles = (): IWizardStyles => {
       width: `${subwayNavWidthPx}px`,
       paddingLeft: `${subwayNavPaddingPx}px`,
       paddingTop: `${subwayNavPaddingPx}px`,
-      paddingBottom: `${subwayNavPaddingPx}px`
+      paddingBottom: `${subwayNavPaddingPx}px`,
+      borderRight: `1px solid ${props.theme.semanticColors.bodyDivider}`
     },
     contentSection: {
       paddingTop: `${subwayNavPaddingPx}px`

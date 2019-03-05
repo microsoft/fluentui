@@ -44,6 +44,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     isGroup,
     isLink,
     isSelected,
+    isDisabled,
     isButtonEntry,
     navHeight = 36,
     position,
@@ -92,7 +93,11 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         backgroundColor: semanticColors.bodyBackground
       },
       isExpanded && 'is-expanded',
-      isSelected && 'is-selected'
+      isSelected && 'is-selected',
+      isDisabled && 'is-disabled',
+      isDisabled && {
+        color: semanticColors.disabledText
+      }
     ],
     link: [
       classNames.link,
@@ -111,12 +116,14 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
         color: semanticColors.bodyText,
-        selectors: {
-          '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt,
-            color: semanticColors.bodyText
-          }
-        }
+        selectors: !isDisabled
+          ? {
+              '.ms-Nav-compositeLink:hover &': {
+                backgroundColor: palette.neutralLighterAlt,
+                color: semanticColors.bodyText
+              }
+            }
+          : {}
       },
       isSelected && {
         color: palette.themePrimary,
@@ -133,6 +140,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             pointerEvents: 'none'
           }
         }
+      },
+      isDisabled && {
+        color: semanticColors.disabledText
       },
       isButtonEntry && {
         color: palette.themePrimary

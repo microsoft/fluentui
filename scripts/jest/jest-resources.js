@@ -2,7 +2,7 @@ const path = require('path');
 const merge = require('../tasks/merge');
 const resolve = require('resolve');
 
-const styleMockPath = (module.exports = {
+module.exports = {
   createRawConfig: () => ({
     rootDir: 'lib',
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$'
@@ -32,7 +32,7 @@ const styleMockPath = (module.exports = {
         globals: {
           'ts-jest': {
             tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
-            diagnostics: false // FABRIC7VALIDATE Would like this to be enabled
+            diagnostics: false
           }
         },
 
@@ -40,4 +40,4 @@ const styleMockPath = (module.exports = {
       },
       customConfig
     )
-});
+};
