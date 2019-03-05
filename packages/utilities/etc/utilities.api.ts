@@ -5,7 +5,7 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
-export function appendFunction<TRetVal>(parent: any, ...functions: (null | undefined | any)[]): () => TRetVal;
+export function appendFunction(parent: any, ...functions: (any)[]): () => void;
 
 // @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
@@ -178,7 +178,7 @@ class EventGroup {
 }
 
 // @public
-export function extendComponent<T>(parent: T, methods: {
+export function extendComponent<T extends React.Component>(parent: T, methods: {
     [key in keyof T]?: T[key];
 }): void;
 
