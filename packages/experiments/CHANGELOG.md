@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 6.62.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
 
 ## 6.62.0
 Tue, 05 Mar 2019 04:25:07 GMT

@@ -11,10 +11,10 @@
     "@uifabric/fabric-website-resources": ">=6.13.0 <7.0.0",
     "test-bundles": ">=6.0.0",
     "todo-app": ">=6.0.0",
-    "@uifabric/charting": "^0.28.7",
-    "@uifabric/dashboard": "0.52.1",
-    "@uifabric/date-time": "0.3.0",
-    "@uifabric/experiments": ">=6.62.0 <7.0.0",
+    "@uifabric/charting": "^0.28.8",
+    "@uifabric/dashboard": "0.52.2",
+    "@uifabric/date-time": "0.3.1",
+    "@uifabric/experiments": ">=6.62.1 <7.0.0",
     "@uifabric/foundation-scenarios": ">=0.1.0"
   }
 }
