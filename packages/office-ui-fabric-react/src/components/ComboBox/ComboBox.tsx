@@ -1116,6 +1116,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   };
 
   private _onCalloutLayerMounted() {
+    // In persistMenu mode _onLayerMounted is only called once for the lifetime
+    // of the component. Any functionality required for callout "on mount" can
+    // go here so that we can also call it again during callout dismissal to reset
+    // object state.
     this._gotMouseMove = false;
   }
 
