@@ -1115,8 +1115,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     );
   };
 
-  private _onLayerMounted = () => {
+  private onCalloutLayerMounted() {
     this._gotMouseMove = false;
+  }
+
+  private _onLayerMounted = () => {
+    this.onCalloutLayerMounted();
 
     if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
       this.props.calloutProps.onLayerMounted();
@@ -1382,6 +1386,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
+    // In persistMode we need to simulate callout layer mount
+    // since that only happens once. We do it on dismiss since
+    // it works either way.
+    if (this.props.persistMenu) {
+      this.onCalloutLayerMounted();
+    }
+
     // close the menu
     this._setOpenStateAndFocusOnClose(false /* isOpen */, false /* focusInputAfterClose */);
 
@@ -1828,13 +1839,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return;
     }
 
+    // Ignore the event in persistMenu mode if the callout has
+    // closed. This is to avoid clearing the visuals on item click.
+    if (this.props.persistMenu && !this.state.isOpen) {
+      return;
+    }
+
     this.setState({
       currentPendingValueValidIndexOnHover: HoverStatus.clearAll
     });
   };
 
   private _shouldIgnoreMouseEvent(): boolean {
-    return !this.state.isOpen || !this._isScrollIdle || !this._gotMouseMove;
+    return !this._isScrollIdle || !this._gotMouseMove;
   }
 
   /**
