@@ -225,8 +225,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If Button's menu was closed, run onAfterMenuDismiss. If the menu is being persisted
     // this condition is tested by checking on a change on the menuProps hidden value.
     if (this.props.onAfterMenuDismiss && prevState.menuProps) {
-      if (!this.state.menuProps || (this.props.persistMenu && this.props.persistMenu &&
-        !prevState.menuProps.hidden && this.state.menuProps.hidden)) {
+      if (!this.state.menuProps || (this.props.persistMenu && !prevState.menuProps.hidden && this.state.menuProps.hidden)) {
         this.props.onAfterMenuDismiss();
       }
     }
