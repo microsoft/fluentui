@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "List & DetailsList: Add documentation covering item immutability and shouldComponentUpdate",
+      "comment": "List, DetailsList, & GroupedList: Add documentation covering item immutability and shouldComponentUpdate",
       "type": "none"
     }
   ],
