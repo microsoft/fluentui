@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Announced.SearchResults.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
+  </span>
+  <div
+    className=
+        ms-BasePicker
+
+    onBlur={[Function]}
+    onKeyDown={[Function]}
+  >
+    <div
+      className="ms-FocusZone"
+      data-focuszone-id="FocusZone1"
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDownCapture={[Function]}
+      role="presentation"
+    >
+      <div
+        className="ms-SelectionZone"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDoubleClick={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onKeyDownCapture={[Function]}
+        onMouseDown={[Function]}
+        onMouseDownCapture={[Function]}
+        role="presentation"
+      >
+        <div
+          className=
+              ms-BasePicker-text
+              {
+                align-items: center;
+                border: 1px solid #a6a6a6;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 30px;
+                min-width: 180px;
+                position: relative;
+              }
+              &:hover {
+                border-color: #333333;
+              }
+        >
+          <span
+            className=
+                ms-BasePicker-itemsWrapper
+                {
+                  display: flex;
+                  flex-wrap: wrap;
+                }
+            id="selected-items-id__0"
+            role="list"
+          />
+          <input
+            aria-autocomplete="both"
+            aria-controls=" "
+            aria-describedby="selected-items-id__0"
+            aria-expanded={false}
+            aria-haspopup="true"
+            aria-label="Tag Picker"
+            autoCapitalize="off"
+            autoComplete="off"
+            className=
+                ms-BasePicker-input
+                {
+                  align-self: flex-end;
+                  border: none;
+                  flex-grow: 1;
+                  height: 30px;
+                  outline: none;
+                  padding-bottom: 0;
+                  padding-left: 6px;
+                  padding-right: 6px;
+                  padding-top: 0;
+                }
+            data-lpignore={true}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onCompositionEnd={[Function]}
+            onCompositionStart={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+            role="combobox"
+            spellCheck={false}
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
