@@ -35,7 +35,6 @@ export * from './customizations/mergeCustomizations';
 export * from './customizations/mergeSettings';
 export * from './dom';
 export { setSSR } from './dom/setSSR';
-export * from './dom/setVirtualParent';
 export * from './focus';
 export * from './hoist';
 export * from './hoistStatics';
