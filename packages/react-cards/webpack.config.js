@@ -19,8 +19,6 @@ module.exports = [
 
     resolve: {
       alias: {
-        '@uifabric/fluent-theme$': path.join(__dirname, '../../packages/fluent-theme/src'),
-        '@uifabric/theme-samples$': path.join(__dirname, '../../packages/theme-samples/src'),
         '@uifabric/react-cards/src': path.join(__dirname, 'src'),
         '@uifabric/react-cards/lib': path.join(__dirname, 'lib'),
         '@uifabric/react-cards': path.join(__dirname, 'lib')

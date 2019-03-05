@@ -10,7 +10,7 @@ export class GettingStartedPage extends React.Component<{}, {}> {
     return (
       <div className="ms-GettingStartedPage">
         <div className="ms-GettingStartedPage-banner">
-          <h1>Office UI Fabric React Experiments!</h1>
+          <h1>Office UI Fabric React Cards!</h1>
           <h3>A library of reusable, generic React components</h3>
         </div>
 
