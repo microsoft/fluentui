@@ -20,7 +20,7 @@ export class SetupWizardSubStepsExample extends WizardExampleBase<ISetupWizardSt
   }
 
   public render(): React.ReactNode {
-    const containerHeight = { height: '50vh' };
+    const containerHeight = { height: '80vh' };
     const classNames = getClassName({ containerHeight });
 
     return (

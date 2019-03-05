@@ -7,20 +7,20 @@ export const subwayNavPaddingPx = 48;
 const animationTimingFunction = 'cubic-bezier(0,.9,.2,1)';
 const animationDuration = '1000ms';
 
+/*
 const stepSlideUpIn = keyframes({
   from: { transform: 'translate3d(0,200,0)' },
   to: { transform: 'translate3d(0,0,0)' }
 });
 
-/*
-  const stepSlideUpOut = keyframes({
+const stepSlideUpOut = keyframes({
   from: { transform: 'translate3d(0,0,0)' },
   to: { transform: 'translate3d(0,-200px,0)' }
 });
 */
 
 const stepSlideLeftIn = keyframes({
-  from: { transform: 'translate3d(200px,0,0)' },
+  from: { transform: 'translate3d(400px,0,0)' },
   to: { transform: 'translate3d(0,0,0)' }
 });
 
@@ -52,11 +52,11 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
 
     if (props.isFirstSubStep) {
       // substepTitleMotion = `${stepSlideUpIn}, ${fadeOut}, ${stepSlideUpOut}, ${fadeOut}`;
-      substepTitleMotion = `${stepSlideUpIn}`;
+      substepTitleMotion = `${stepSlideLeftIn}`;
     }
   } else {
     // fullContentMotion = `${stepSlideUpIn}, ${fadeOut}`;
-    fullContentMotion = `${stepSlideUpIn}`;
+    fullContentMotion = `${stepSlideLeftIn}`;
   }
 
   return {

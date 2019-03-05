@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IWizardProps, IWizardStyles, IWizardStyleProps, IWizardStepProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getStepToShow, getParentStep } from './Wizard.utils';
+import { getStepToShow } from './Wizard.utils';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
@@ -23,22 +23,10 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
     // if the step to render is already passed in, use that
     const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
 
-    let parentStep: IWizardStepProps | undefined;
-    let isFirstSubStep: boolean = false;
-
-    if (wizardStepProps.isSubStep) {
-      parentStep = getParentStep(steps, wizardStepProps);
-
-      if (parentStep!.subSteps![0].id === wizardStepProps.id) {
-        // If rendering step is a substep and is a first substep, we need to know for applying animation
-        isFirstSubStep = true;
-      }
-    }
-
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
       isSubStep: wizardStepProps.isSubStep!,
-      isFirstSubStep: isFirstSubStep
+      isFirstSubStep: wizardStepProps.isFirstSubStep!
     });
 
     return (

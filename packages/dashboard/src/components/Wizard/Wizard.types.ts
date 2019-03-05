@@ -34,6 +34,9 @@ export interface IWizardStepProps {
 
   isSubStep?: boolean;
 
+  // This property is used for animation
+  isFirstSubStep?: boolean;
+
   onClickStep?: (step: ISubwayNavNodeProps) => void;
 
   wizardContent?: IWizardContentProps;
