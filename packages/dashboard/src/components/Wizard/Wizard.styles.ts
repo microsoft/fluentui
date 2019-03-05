@@ -4,15 +4,14 @@ import { keyframes } from 'office-ui-fabric-react';
 export const subwayNavWidthPx = 303;
 export const subwayNavPaddingPx = 48;
 
-const animationTimingFunction = 'cubic-bezier(0,.9,.2,1)';
 const animationDuration = '1000ms';
 
-/*
 const stepSlideUpIn = keyframes({
-  from: { transform: 'translate3d(0,200,0)' },
+  from: { transform: 'translate3d(0,400px,0)' },
   to: { transform: 'translate3d(0,0,0)' }
 });
 
+/*
 const stepSlideUpOut = keyframes({
   from: { transform: 'translate3d(0,0,0)' },
   to: { transform: 'translate3d(0,-200px,0)' }
@@ -27,12 +26,7 @@ const stepSlideLeftIn = keyframes({
 /*
   const stepSlideLeftOut = keyframes({
   from: { transform: 'translate3d(0,0,0)' },
-  to: { transform: 'translate3d(-200,0,0)' }
-});
-
-const fadeIn = keyframes({
-  from: { opacity: 0.0 },
-  to: { opacity: 1.0 }
+  to: { transform: 'translate3d(-200px,0,0)' }
 });
 
 const fadeOut = keyframes({
@@ -41,22 +35,28 @@ const fadeOut = keyframes({
 });
 */
 
+const fadeIn = keyframes({
+  from: { opacity: 0.0 },
+  to: { opacity: 1.0 }
+});
+
 export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
-  let substepTitleMotion: string | undefined = undefined;
-  let substepContentMotion: string | undefined = undefined;
-  let fullContentMotion: string | undefined = undefined;
+  // let substepTitleMotion: string  = '';
+  // let contentAnimationDelay = '0ms';
+  let substepContentMotion: string = '';
+  let fullContentMotion: string = '';
 
   if (props.isSubStep) {
-    // substepContentMotion = `${stepSlideLeftIn}, ${fadeIn}, ${stepSlideLeftOut}, ${fadeOut}`;
-    substepContentMotion = `${stepSlideLeftIn}`;
+    substepContentMotion = `${stepSlideLeftIn}, ${fadeIn}`;
 
     if (props.isFirstSubStep) {
-      // substepTitleMotion = `${stepSlideUpIn}, ${fadeOut}, ${stepSlideUpOut}, ${fadeOut}`;
-      substepTitleMotion = `${stepSlideLeftIn}`;
+      // If first sub step, then first slide up the title, and then slide left the substep content
+      /* substepTitleMotion = `${stepSlideUpIn}, ${fadeOut}, ${stepSlideUpOut}, ${fadeOut}`;
+        contentAnimationDelay = animationDuration;
+        substepTitleMotion = `${stepSlideUpIn}`; */
     }
   } else {
-    // fullContentMotion = `${stepSlideUpIn}, ${fadeOut}`;
-    fullContentMotion = `${stepSlideLeftIn}`;
+    fullContentMotion = `${stepSlideUpIn}, ${fadeIn}`;
   }
 
   return {
@@ -76,9 +76,7 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
     contentSection: {
       animationName: fullContentMotion,
       animationDuration: animationDuration,
-      animationTimingFunction: animationTimingFunction,
-      animationDelay: '0.2s',
-      animationFillMode: 'both',
+      animationFillMode: 'forwards',
       width: '100%',
       paddingTop: `37px`,
       paddingLeft: `${subwayNavPaddingPx}px`,
@@ -86,18 +84,15 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
       overflowY: 'auto'
     },
     contentTitle: {
-      animationName: substepTitleMotion,
-      animationDuration: animationDuration,
-      animationTimingFunction: animationTimingFunction,
-      animationDelay: '0.2s',
-      animationFillMode: 'both'
+      // animationName: substepTitleMotion,
+      // animationDuration: animationDuration,
+      // animationFillMode: 'forwards'
     },
     content: {
       animationName: substepContentMotion,
       animationDuration: animationDuration,
-      animationTimingFunction: animationTimingFunction,
-      animationDelay: '0.2s',
-      animationFillMode: 'both'
+      animationFillMode: 'forwards'
+      // animationDelay: contentAnimationDelay
     }
   };
 };
