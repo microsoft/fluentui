@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Replacing elementType usage with as in SubwayNavBase and SubwaNodeBase",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "aneeshak@microsoft.com"
+}
