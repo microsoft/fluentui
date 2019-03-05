@@ -187,6 +187,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
       >
         <input
           aria-invalid={false}
+          aria-label="Please enter text here"
           className=
               ms-TextField-field
               {
@@ -323,6 +324,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
       >
         <input
           aria-invalid={false}
+          aria-label="Please enter text here"
           className=
               ms-TextField-field
               {
@@ -451,7 +453,8 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
       >
         <input
           aria-describedby="TextFieldDescription7"
-          aria-invalid={false}
+          aria-invalid={true}
+          aria-label="Please enter text here"
           className=
               ms-TextField-field
               {

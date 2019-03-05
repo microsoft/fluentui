@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './TextField.Examples.scss';
 
 export class TextFieldCustomRenderExample extends React.Component<
@@ -11,6 +12,7 @@ export class TextFieldCustomRenderExample extends React.Component<
   }
 > {
   private _iconButtonElement: HTMLElement;
+  private _descriptionId: string = getId('description');
 
   constructor(props: {}) {
     super(props);
@@ -37,8 +39,19 @@ export class TextFieldCustomRenderExample extends React.Component<
           <IconButton iconProps={{ iconName: 'Info' }} title="Info" ariaLabel="Info" onClick={this._onClick} />
         </span>
         {isCalloutVisible && (
-          <Callout className="ms-CustomRenderExample-callout" target={this._iconButtonElement} onDismiss={this._onDismiss}>
-            <text> In additon to the label itself, this label includes an iconbutton which pops out more information in a callout</text>
+          <Callout
+            className="ms-CustomRenderExample-callout"
+            target={this._iconButtonElement}
+            setInitialFocus={true}
+            onDismiss={this._onDismiss}
+            ariaDescribedBy={this._descriptionId}
+          >
+            <div className="ms-CustomRenderExample-callout-description" id={this._descriptionId}>
+              In additon to the label itself, this label includes an iconbutton which pops out more information in a callout
+            </div>
+            <div className="ms-CustomRenderExample-callout-actions">
+              <DefaultButton onClick={this._onDismiss}>Close</DefaultButton>
+            </div>
           </Callout>
         )}
       </div>

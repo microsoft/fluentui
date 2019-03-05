@@ -623,7 +623,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
       >
         <input
           aria-describedby="TextFieldDescription7"
-          aria-invalid={false}
+          aria-invalid={true}
           className=
               ms-TextField-field
               {
