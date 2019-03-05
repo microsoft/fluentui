@@ -5,9 +5,12 @@ import * as ReactDOM from 'react-dom';
 import { App, AppDefinition } from './AppDefinition';
 import { IAppLink, IAppLinkGroup } from '@uifabric/example-app-base';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import { setBaseUrl, Fabric } from 'office-ui-fabric-react';
 import { GettingStartedPage } from './GettingStartedPage';
+import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
+import { initializeFolderCovers } from '@uifabric/experiments';
 
 import './index.scss';
 import './ColorStyles.scss';
@@ -16,6 +19,8 @@ setBaseUrl('./dist/');
 
 // Initialize all icons.
 initializeIcons();
+initializeFileTypeIcons();
+initializeFolderCovers();
 
 let rootElement: HTMLElement | null;
 

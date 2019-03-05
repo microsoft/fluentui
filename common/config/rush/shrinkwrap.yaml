@@ -881,12 +881,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-NWOAxVQeJxpXuNKgw83Hah0nquiw1nUexM9qY/Hk3a+XhZwgMtaa6GLA9E1TKMT75Odb3/KE/jiBO4enTuEJjQ==
-  /@types/react-test-renderer/16.8.1:
-    dependencies:
-      '@types/react': 16.3.16
-    dev: false
-    resolution:
-      integrity: sha512-8gU69ELfJGxzVWVYj4MTtuHxz9nO+d175XeQ1XrXXxesUBsB4KK6OCfzVhEX6leZWWBDVtMJXp/rUjhClzL7gw==
   /@types/react/16.3.16:
     dependencies:
       csstype: 2.5.7
@@ -14846,7 +14840,7 @@ packages:
       '@types/jest': 23.0.0
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
-      '@types/react-test-renderer': 16.8.1
+      '@types/react-test-renderer': 16.0.3
       '@types/webpack-env': 1.13.0
       enzyme: 3.9.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.10.0/ca330bebd2626bd9cb8e393ae8a11715

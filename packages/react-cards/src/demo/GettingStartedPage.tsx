@@ -10,7 +10,7 @@ export class GettingStartedPage extends React.Component<{}, {}> {
     return (
       <div className="ms-GettingStartedPage">
         <div className="ms-GettingStartedPage-banner">
-          <h1>Office UI Fabric React ReactCards!</h1>
+          <h1>Office UI Fabric React Experiments!</h1>
           <h3>A library of reusable, generic React components</h3>
         </div>
 
@@ -19,14 +19,14 @@ export class GettingStartedPage extends React.Component<{}, {}> {
         <p>
           Fabric React components are built as production ready components to be used in Microsoft products, but generalized, documented,
           and reusable. This enables us and our partners to more easily build great applications without spending a ton of time implementing
-          the same things over and over.
+          the same things over and over.`
         </p>
 
         <p>
           Each component is designed to be RTL friendly, keyboard accessible, screen reader friendly, themeable, and generalized. TypeScript
           definition files are also included, so if you use TypeScript (which isn't a requirement), you will get compiler validation and
           using an editor like VS Code, you'll get intellisense. Each component is exported as a named module that can be easily imported in
-          your code, allowing your external bundler to create small bundles that include just what you need.
+          your code, allowing your external bundler to create small bundles that include just what you need.`
         </p>
 
         <h2>Getting started</h2>

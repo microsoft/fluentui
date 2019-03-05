@@ -454,6 +454,7 @@
     {
       "packageName": "@uifabric/react-cards",
       "projectFolder": "packages/react-cards",
+      "versionPolicyName": "lockedMajor",
       "shouldPublish": false
     }
   ]
