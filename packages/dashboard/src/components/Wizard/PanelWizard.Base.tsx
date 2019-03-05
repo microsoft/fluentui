@@ -69,9 +69,8 @@ export class PanelWizardBase extends React.Component<IPanelWizardProps, {}> {
   };
 }
 
-export const PanelWizard: (props: IPanelWizardProps) => JSX.Element = styled<IPanelWizardProps, IPanelWizardStyleProps, IPanelWizardStyles>(
-  PanelWizardBase,
-  getPanelWizardStyles,
-  undefined,
-  { scope: 'PanelWizard' }
-);
+export const PanelWizard: React.StatelessComponent<IPanelWizardProps> = styled<
+  IPanelWizardProps,
+  IPanelWizardStyleProps,
+  IPanelWizardStyles
+>(PanelWizardBase, getPanelWizardStyles, undefined, { scope: 'PanelWizard' });
