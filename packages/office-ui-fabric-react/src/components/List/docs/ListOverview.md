@@ -21,7 +21,19 @@ As a result of this implementation, the List will not determine it should re-ren
 To avoid this problem, we recommend re-creating the items array backing the List by using a method such as `Array.prototype.concat` or ES6 spread syntax shown below:
 
 ```tsx
-<List items={[...items, ...newItems]} />
+public appendItems(): void {
+  const { items } = this.state;
+
+  this.setState({
+    items: [...items, ...[{ name: 'Foo' }, { name: 'Bar' }]]
+  })
+}
+
+public render(): JSX.Element {
+  const { items } = this.state;
+
+  return <List items={items} />;
+}
 ```
 
 By re-creating the items array without mutating the values, the List will correctly determine its contents have changed and that it should re-render the new values.

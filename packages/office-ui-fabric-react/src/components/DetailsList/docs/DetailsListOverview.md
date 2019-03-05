@@ -19,7 +19,19 @@ As a result of this implementation, the inner List will not determine it should 
 To avoid this problem, we recommend re-creating the items array backing the DetailsList by using a method such as `Array.prototype.concat` or ES6 spread syntax shown below:
 
 ```tsx
-<DetailsList items={[...items, ...newItems]} />
+public appendItems(): void {
+  const { items } = this.state;
+
+  this.setState({
+    items: [...items, ...['Foo', 'Bar']]
+  })
+}
+
+public render(): JSX.Element {
+  const { items } = this.state;
+
+  return <DetailsList items={items} />;
+}
 ```
 
 By re-creating the items array without mutating the values, the inner List will correctly determine its contents have changed and that it should re-render the new values.
