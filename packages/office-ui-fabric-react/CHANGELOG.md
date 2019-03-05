@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 13:30:24 GMT and should not be manually modified.
+
+## 6.150.1
+Tue, 05 Mar 2019 13:30:24 GMT
+
+### Patches
+
+- DetailsRowFields: Inherit from React.Component instead of BaseComponent"
 
 ## 6.150.0
 Tue, 05 Mar 2019 04:25:07 GMT
