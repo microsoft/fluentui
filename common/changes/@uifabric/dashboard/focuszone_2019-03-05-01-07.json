@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/dashboard",
-      "comment": "Replacing elementType usage with as in SubwayNavBase and SubwaNodeBase",
+      "comment": "Replacing elementType usage with as in SubwayNavBase and SubwayNodeBase",
       "type": "minor"
     }
   ],
