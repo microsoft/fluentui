@@ -1115,12 +1115,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     );
   };
 
-  private onCalloutLayerMounted() {
+  private _onCalloutLayerMounted() {
     this._gotMouseMove = false;
   }
 
   private _onLayerMounted = () => {
-    this.onCalloutLayerMounted();
+    this._onCalloutLayerMounted();
 
     if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
       this.props.calloutProps.onLayerMounted();
@@ -1390,7 +1390,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // since that only happens once. We do it on dismiss since
     // it works either way.
     if (this.props.persistMenu) {
-      this.onCalloutLayerMounted();
+      this._onCalloutLayerMounted();
     }
 
     // close the menu
