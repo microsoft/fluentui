@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 04 Mar 2019 13:29:58 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+
+## 6.32.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Utilities: removing redundant export for `setVirtualParent`.
 
 ## 6.32.0
 Mon, 04 Mar 2019 13:29:58 GMT
