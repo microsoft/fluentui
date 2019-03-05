@@ -123,7 +123,10 @@ export const getStyles = (props: INavLinkProps): INavStyles => {
       lineHeight: navItemHeight,
       color: DefaultPalette.black,
       fontWeight: FontWeights.bold,
-      marginLeft: '16px'
+      marginLeft: '16px',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap'
     },
     navItem: [
       isNavCollapsed && {

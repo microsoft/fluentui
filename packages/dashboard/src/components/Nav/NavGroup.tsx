@@ -15,15 +15,14 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
 
   public render(): JSX.Element {
     const { groupIndex, groupName, links } = this.props;
-    const classNames = getClassNames(getStyles);
 
     return (
-      <ul role="list" className={classNames.navGroup}>
+      <>
         {this._renderGroupName(groupName, groupIndex)}
         {links.map((link: INavLink, linkIndex: number) => {
           return this._renderLinks(link, linkIndex, groupIndex);
         })}
-      </ul>
+      </>
     );
   }
 

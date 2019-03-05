@@ -58,54 +58,54 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                   role="menuitem"
                 />
               </li>
-            </ul>
 
-            {groups.map((group: INavLinkGroup, groupIndex: number) => (
-              <NavGroup
-                key={'group_' + groupIndex}
-                groupIndex={groupIndex}
-                groupName={group.name}
-                links={group.links}
-                dataHint={this.props.dataHint}
-                isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
-                onCollapse={this._setScrollLayout}
-                navRef={this.containerRef}
-              />
-            ))}
+              {groups.map((group: INavLinkGroup, groupIndex: number) => (
+                <NavGroup
+                  key={'group_' + groupIndex}
+                  groupIndex={groupIndex}
+                  groupName={group.name}
+                  links={group.links}
+                  dataHint={this.props.dataHint}
+                  isNavCollapsed={navCollapsed}
+                  onCollapse={this._setScrollLayout}
+                  navRef={this.containerRef}
+                />
+              ))}
 
-            {enableCustomization && (
-              // If enableCustomization
-              <ul role="menubar" className={classNames.navGroup}>
-                <li role="none" title={'Edit navigation'}>
-                  <NavLink
-                    id={'EditNav'}
-                    href={'#'}
-                    name={editString}
-                    onClick={this._editClicked}
-                    dataHint={'Edit navigation'}
-                    dataValue={'NavToggle'}
-                    ariaLabel={'Edit navigation'}
-                    primaryIconName={'Edit'}
-                    role="menuitem"
-                  />
-                </li>
-                {showMore && (
-                  <li role="none" title={'Show more'}>
+              {enableCustomization && (
+                // If enableCustomization
+                <>
+                  <li role="none" title={'Edit navigation'}>
                     <NavLink
-                      id={'ShowMore'}
+                      id={'EditNav'}
                       href={'#'}
-                      name={this.props.showMore ? showMoreString : showLessString}
-                      onClick={this._toggleHidden}
-                      dataHint={'Show more'}
-                      dataValue={'Show more'}
-                      ariaLabel={'Show more'}
-                      primaryIconName={'More'}
+                      name={editString}
+                      onClick={this._editClicked}
+                      dataHint={'Edit navigation'}
+                      dataValue={'NavToggle'}
+                      ariaLabel={'Edit navigation'}
+                      primaryIconName={'Edit'}
                       role="menuitem"
                     />
                   </li>
-                )}
-              </ul>
-            )}
+                  {showMore && (
+                    <li role="none" title={'Show more'}>
+                      <NavLink
+                        id={'ShowMore'}
+                        href={'#'}
+                        name={this.props.showMore ? showMoreString : showLessString}
+                        onClick={this._toggleHidden}
+                        dataHint={'Show more'}
+                        dataValue={'Show more'}
+                        ariaLabel={'Show more'}
+                        primaryIconName={'More'}
+                        role="menuitem"
+                      />
+                    </li>
+                  )}
+                </>
+              )}
+            </ul>
           </nav>
         </div>
       </FocusZone>
