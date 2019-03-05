@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- remove not null assertion for optional prop
+
+## 6.11.8
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- Feedback button: Increase styles specificity to override MWF conflicts.
 
 ## 6.11.7
 Mon, 25 Feb 2019 13:31:08 GMT

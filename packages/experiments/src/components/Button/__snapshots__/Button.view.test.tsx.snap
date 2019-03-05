@@ -108,15 +108,11 @@ exports[`Button view renders a default Button with content correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            moz-osx-font-smoothing: grayscale;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
             overflow: visible;
-            text-overflow: ellipsis;
-            webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       Default button
@@ -234,15 +230,11 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            moz-osx-font-smoothing: grayscale;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
             overflow: visible;
-            text-overflow: ellipsis;
-            webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       Disabled primary button
@@ -359,15 +351,11 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            moz-osx-font-smoothing: grayscale;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
             overflow: visible;
-            text-overflow: ellipsis;
-            webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       Primary button

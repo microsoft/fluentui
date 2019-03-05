@@ -1,0 +1,121 @@
+@import '../../../common/common';
+
+$componentPageColor: #0f8387;
+$componentPagePadding: 50px;
+$componentPageDividingMargin: 40px;
+$componentSubHeadMargin: 24px;
+$dosColor: #177d3e;
+$dontColor: #a61e22;
+
+:global {
+  .ms-AnnouncedExamples-photoList {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 10px;
+    line-height: 0;
+    overflow: auto;
+  }
+
+  .ms-AnnouncedExamples-photoCell {
+    position: relative;
+    display: inline-block;
+    padding: 2px;
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+
+    &:focus {
+      outline: none;
+
+      &:after {
+        content: '';
+        position: absolute;
+        right: 4px;
+        left: 4px;
+        top: 4px;
+        bottom: 4px;
+        border: 1px solid white;
+        outline: 2px solid black;
+      }
+    }
+  }
+
+  .detailsListDragDropExample {
+    .dragEnter {
+      background-color: #eaeaea;
+    }
+  }
+
+  .ComponentPage-overviewSection {
+    padding-top: 15px;
+    padding-bottom: $componentPagePadding;
+    padding-left: $componentPagePadding;
+    padding-right: $componentPagePadding;
+  }
+
+  .ComponentPage-overviewSectionHeader,
+  .ComponentPage-doSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ComponentPage-doSection {
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
+
+    h3 {
+      @include ms-font-xl;
+    }
+
+    ul {
+      @include ms-padding-left(18px);
+    }
+
+    li {
+      list-style: disc;
+      margin-bottom: 20px;
+
+      ul li {
+        list-style: circle;
+        margin-bottom: 0;
+      }
+    }
+
+    &:first-child {
+      @include ms-margin-right(120px);
+    }
+
+    .ComponentPage-doSectionHeader {
+      margin: 16px 0 0 0;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .ComponentPage-doSectionLine {
+      background-color: #a4cf0c;
+      border-radius: 3px;
+      display: block;
+      height: 8px;
+      margin: 12px 0 40px;
+      border: 0;
+    }
+  }
+
+  .ComponentPage-doSection--dont .ComponentPage-doSectionLine {
+    background-color: #e74856;
+  }
+
+  @media screen and (min-width: $uhf-screen-min-mobile) {
+    .ComponentPage-doSection {
+      margin-bottom: -10px; // Trim last list item
+      width: calc(50% - 60px);
+    }
+  }
+}

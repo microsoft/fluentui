@@ -1,14 +1,16 @@
-import { Depths } from '../FluentDepths';
 import { FontSizes } from '../FluentType';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
+  const { theme } = props;
+  const { effects } = theme;
+
   return {
     subComponentStyles: {
       callout: {
         root: {
-          boxShadow: Depths.depth16
+          boxShadow: effects.elevation16
         }
       }
     }

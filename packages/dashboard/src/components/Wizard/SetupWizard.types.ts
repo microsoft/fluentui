@@ -1,12 +1,13 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IWizardProps, IWizardStepAction } from './Wizard.types';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IWizardProps } from './Wizard.types';
 
-export interface ISetupWizardProps extends IWizardProps {
-  wizardTitle?: ISetupWizardTitleProps;
+export interface ISetupWizardProps {
+  /** pass-thru wizard props */
+  wizardProps: IWizardProps;
 
-  exitWizardAction: IWizardStepAction;
+  styles?: ISetupWizardStyles;
 
-  backClickAction: IWizardStepAction;
+  theme?: ITheme;
 }
 
 export interface ISetupWizardTitleProps {
@@ -18,4 +19,10 @@ export interface ISetupWizardStyles {
   wizardContainer: IStyle;
 
   titleSection: IStyle;
+
+  actionBarSection: IStyle;
+}
+
+export interface ISetupWizardStyleProps {
+  theme: ITheme;
 }

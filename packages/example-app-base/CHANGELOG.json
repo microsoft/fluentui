@@ -2,6 +2,44 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.12.0",
+      "tag": "@uifabric/example-app-base_v6.12.0",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "remove not null assertion for optional prop",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "ce2154375e321a95b86d0e7bb9be491ad933e7fc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.149.0 <7.0.0` to `>=6.150.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.8",
+      "tag": "@uifabric/example-app-base_v6.11.8",
+      "date": "Tue, 26 Feb 2019 22:45:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Feedback button: Increase styles specificity to override MWF conflicts.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "ab29c5f3b3a0e01c2c660dcd581b8a1978ab47c8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.144.0 <7.0.0` to `>=6.145.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.7",
       "tag": "@uifabric/example-app-base_v6.11.7",
       "date": "Mon, 25 Feb 2019 13:31:08 GMT",

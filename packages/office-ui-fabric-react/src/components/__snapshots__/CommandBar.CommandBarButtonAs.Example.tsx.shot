@@ -67,7 +67,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button
@@ -876,6 +876,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 }
           >
             <button
+              aria-label="Sort"
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1044,6 +1045,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Grid view"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1189,6 +1191,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Info"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1388,7 +1391,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button
@@ -2658,6 +2661,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 }
           >
             <button
+              aria-label="Sort"
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2826,6 +2830,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Grid view"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -2971,6 +2976,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Info"
                 className=
                     ms-Button
                     ms-Button--commandBar

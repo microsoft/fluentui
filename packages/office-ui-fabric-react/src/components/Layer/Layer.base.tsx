@@ -207,7 +207,7 @@ export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
         this._layerElement.className = classNames.root!;
         setPortalAttribute(this._layerElement);
 
-        host.appendChild(this._layerElement);
+        this.props.insertFirst ? host.insertBefore(this._layerElement, host.firstChild) : host.appendChild(this._layerElement);
       }
     }
 

@@ -2,6 +2,112 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.52.2",
+      "tag": "@uifabric/dashboard_v0.52.2",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add type annotations based on update to \"styled\"",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.7` to `^0.28.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.62.0 <7.0.0` to `>=6.62.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.150.1 <7.0.0` to `>=6.151.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.52.1",
+      "tag": "@uifabric/dashboard_v0.52.1",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make the stepToShow parameter take effect on footerAction",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "e85da7ef4cdf9d6fbfff06f32b963a2bb3bcf34d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.61.0 <7.0.0` to `>=6.62.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.149.0 <7.0.0` to `>=6.150.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.8 <7.0.0` to `>=6.12.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.52.0",
+      "tag": "@uifabric/dashboard_v0.52.0",
+      "date": "Thu, 28 Feb 2019 13:29:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "first time cards not added on dashboard and onLayoutChange calling issue fixed",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "e5b0da09b9ff2e6374f9592febb9165c4eda1e62"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Implemented full parent wizard in dashboard package",
+            "author": "Sayyid Sofwan <1856058+sysofwan@users.noreply.github.com>",
+            "commit": "239a633825d1441c7c21ea6d814fa31d438350dc"
+          },
+          {
+            "comment": "Make titleElement optional as SetupWizard design has no title bar",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "00b03d02d6cf57aa9e8a6e4f4235249ee8b0eaa0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.60.0 <7.0.0` to `>=6.61.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.146.1 <7.0.0` to `>=6.146.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.51.0",
+      "tag": "@uifabric/dashboard_v0.51.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make updates to SetupWizard and Wizard Base",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "bde8a0069709b18b4bf1d30545d72642d5afab9e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.15.1 <1.0.0` to `>=0.16.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.145.0 <7.0.0` to `>=6.146.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.50.0",
       "tag": "@uifabric/dashboard_v0.50.0",
       "date": "Mon, 25 Feb 2019 13:31:08 GMT",

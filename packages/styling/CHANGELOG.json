@@ -2,6 +2,80 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.44.1",
+      "tag": "@uifabric/styling_v6.44.1",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding theme.js to sideEffects list to prevent webpack from treeshaking it out.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b33d62dde725c7a1313b8573703972dcdf338673"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.32.1 <7.0.0` to `>=6.33.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.44.0",
+      "tag": "@uifabric/styling_v6.44.0",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add yellowDark to IPalette",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "15a211ecee250953ac3f999f5aba94ed66706efb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.32.0 <7.0.0` to `>=6.32.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.43.0",
+      "tag": "@uifabric/styling_v6.43.0",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "The package side-effects flag has been removed, allowing for tree shaking to do its magic much better.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bd191a3964734c6619fa49fcdb1d6127e2834522"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.4 <7.0.0` to `>=6.30.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.2 <7.0.0` to `>=6.16.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.42.0",
+      "tag": "@uifabric/styling_v6.42.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "IEffects: changes types of the `elevation` and `roundedCorner2` properties to `string` to allow a more flexible way to provide values.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4f0b6edde9d6fe846bf84cad542fceca9eb1e729"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.0",
       "tag": "@uifabric/styling_v6.41.0",
       "date": "Tue, 15 Jan 2019 13:36:45 GMT",

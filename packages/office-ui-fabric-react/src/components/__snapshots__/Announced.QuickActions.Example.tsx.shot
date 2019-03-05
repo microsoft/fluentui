@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly 1`] = `
+<div
+  className=
+
+      {
+        cursor: default;
+        position: relative;
+      }
+>
+  <div
+    className="ms-Viewport"
+    style={
+      Object {
+        "minHeight": 1,
+        "minWidth": 1,
+      }
+    }
+  />
+</div>
+`;

@@ -1,6 +1,38 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 25 Feb 2019 13:31:08 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 6.62.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 6.62.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- remove Announced
+
+### Patches
+
+- add yellowDark as required
+
+## 6.61.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- Card: Exporting Card from experiments.
+
+## 6.60.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- move Text component from experiments -> OUFR
 
 ## 6.59.2
 Mon, 25 Feb 2019 13:31:08 GMT

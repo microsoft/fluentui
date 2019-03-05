@@ -41,7 +41,7 @@ function createConfig(config, onlyProduction) {
 }
 
 module.exports = [
-  createConfig(
+  ...createConfig(
     {
       output: {
         libraryTarget: 'var',
@@ -50,7 +50,7 @@ module.exports = [
     },
     false
   ),
-  createConfig(
+  ...createConfig(
     {
       plugins: [new ManifestServicePlugin()],
       output: {

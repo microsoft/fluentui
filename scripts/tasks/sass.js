@@ -1,8 +1,14 @@
 // @ts-check
 
 const path = require('path');
-const { sassTask } = require('just-task-preset');
+const { sassTask } = require('just-scripts');
 const postcssModules = require('postcss-modules');
+
+const modules = postcssModules({
+  getJSON,
+  generateScopedName
+});
+const _fileNameToClassMap = {};
 
 function createTypeScriptModule(fileName, css) {
   const { splitStyles } = require('@microsoft/load-themed-styles');
@@ -22,12 +28,6 @@ function createTypeScriptModule(fileName, css) {
 
   return source.join('\n');
 }
-
-const modules = postcssModules({
-  getJSON,
-  generateScopedName
-});
-const _fileNameToClassMap = {};
 
 function generateScopedName(name, fileName, css) {
   const crypto = require('crypto');

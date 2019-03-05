@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Announced.BulkOperations.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    Turn on Narrator and drag and drop the items.
+  </span>
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real world scenario.
+  </span>
+  <div
+    className=
+
+        {
+          cursor: default;
+          position: relative;
+        }
+  >
+    <div
+      className="ms-Viewport"
+      style={
+        Object {
+          "minHeight": 1,
+          "minWidth": 1,
+        }
+      }
+    />
+  </div>
+</div>
+`;
