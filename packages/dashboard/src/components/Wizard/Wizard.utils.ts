@@ -41,7 +41,11 @@ export function getCurrentStep(steps: IWizardStepProps[]): IWizardStepProps {
 
 // Get step to show
 export function getStepToShow(props: IWizardProps): IWizardStepProps {
-  const { wizardComplete, wizardCompleteStep } = props;
+  const { wizardComplete, wizardCompleteStep, stepToShow: stepToShowFromProps } = props;
+  if (stepToShowFromProps) {
+    return stepToShowFromProps;
+  }
+
   let stepToShow;
 
   if (wizardComplete! && wizardCompleteStep) {

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 28 Feb 2019 13:29:07 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 0.3.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
 
 ## 0.3.0
 Thu, 28 Feb 2019 13:29:07 GMT

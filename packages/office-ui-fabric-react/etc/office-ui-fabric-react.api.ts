@@ -18,6 +18,14 @@ export function addDirectionalKeyCode(which: number): void;
 // @public
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
+// @public (undocumented)
+class AnnouncedBase extends React.Component<IAnnouncedProps> {
+  // (undocumented)
+  static defaultProps: Partial<IAnnouncedProps>;
+  // (undocumented)
+  render(): JSX.Element;
+}
+
 // @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
@@ -1697,6 +1705,22 @@ interface IAnimationVariables {
 }
 
 // @public (undocumented)
+interface IAnnounced {
+}
+
+// @public (undocumented)
+interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: (component: IAnnounced) => void;
+  message?: string;
+  styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
+}
+
+// @public (undocumented)
+interface IAnnouncedStyles {
+  screenReaderText: IStyle;
+}
+
+// @public (undocumented)
 interface IAsAsyncOptions<TProps> {
   load: () => Promise<React.ReactType<TProps>>;
   onError?: (error: Error) => void;
@@ -2008,7 +2032,7 @@ interface IBreadcrumbItem {
 }
 
 // @public (undocumented)
-interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
+interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   ariaLabel?: string;
   className?: string;
   componentRef?: IRefObject<IBreadcrumb>;
@@ -9149,6 +9173,7 @@ interface IPalette {
   white: string;
   whiteTranslucent40: string;
   yellow: string;
+  yellowDark: string;
   yellowLight: string;
 }
 
@@ -12416,7 +12441,7 @@ enum StickyPositionType {
 }
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): (props: TComponentProps) => JSX.Element;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
 
 // @public
 class Stylesheet {
@@ -12883,6 +12908,7 @@ module ZIndexes {
 
 }
 
+// WARNING: Unsupported export: Announced
 // WARNING: Unsupported export: Breadcrumb
 // WARNING: Unsupported export: CommandButton
 // WARNING: Unsupported export: FocusTrapCallout

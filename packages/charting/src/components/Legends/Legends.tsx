@@ -3,4 +3,7 @@ import { ILegendsProps, ILegendStyleProps, ILegendsStyles } from './Legends.type
 import { LegendsBase } from './Legends.base';
 import { getStyles } from './Legends.styles';
 
-export const Legends = styled<ILegendsProps, ILegendStyleProps, ILegendsStyles>(LegendsBase, getStyles);
+export const Legends: React.StatelessComponent<ILegendsProps> = styled<ILegendsProps, ILegendStyleProps, ILegendsStyles>(
+  LegendsBase,
+  getStyles
+);

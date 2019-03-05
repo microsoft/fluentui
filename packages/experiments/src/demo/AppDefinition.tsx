@@ -11,12 +11,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
-          key: 'Announced',
-          name: 'Announced',
-          url: '#/examples/announced'
-        },
-        {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,
           key: 'Button',
           name: 'Button',
