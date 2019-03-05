@@ -28,13 +28,13 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     this._setScrollLayout = this._setScrollLayout.bind(this);
   }
 
-  public render(): JSX.Element | null {
-    const isNavCollapsed = this.props.isNavCollapsed ? this.props.isNavCollapsed : this.state.isNavCollapsed;
-    if (!this.props.groups || this.props.groups.length === 0) {
-      return null;
-    }
+  public render(): JSX.Element {
+    const { isNavCollapsed, groups, enableCustomization, showMore, editString, showMoreString, showLessString, dataHint } = this.props;
 
-    const classNames = getClassNames(getStyles, { isNavCollapsed });
+    const navCollapsed = isNavCollapsed ? isNavCollapsed : this.state.isNavCollapsed;
+
+    const classNames = getClassNames(getStyles, { isNavCollapsed: navCollapsed });
+    const collapseButtonAriaLabel = navCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
     const navWrapperClassName = this.shouldScroll ? classNames.navWrapper + ' ' + classNames.navWrapperScroll : classNames.navWrapper;
     const navContainerClassName = this.shouldScroll
       ? classNames.navContainer + ' ' + classNames.navContainerScroll
@@ -44,13 +44,68 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       <FocusZone isCircularNavigation aria-hidden="true" direction={FocusZoneDirection.vertical} className={classNames.root}>
         <div aria-hidden="true" className={navWrapperClassName} ref={this.wrapperRef}>
           <nav role="navigation" className={navContainerClassName} ref={this.containerRef}>
-            {this._renderExpandCollapseNavItem()}
+            <ul role="menubar" className={classNames.navGroup}>
+              <li role="none" title={'NavToggle'}>
+                <NavLink
+                  id={'NavToggle'}
+                  href={'#'}
+                  onClick={this._onNavCollapseClicked}
+                  ariaExpanded={!isNavCollapsed}
+                  dataHint={dataHint}
+                  dataValue={'NavToggle'}
+                  ariaLabel={collapseButtonAriaLabel}
+                  primaryIconName={'GlobalNavButton'}
+                  role="menuitem"
+                />
+              </li>
+            </ul>
 
-            {this.props.groups.map((group: INavLinkGroup, groupIndex: number) => {
-              return this._renderGroup(group, groupIndex);
-            })}
+            {groups.map((group: INavLinkGroup, groupIndex: number) => (
+              <NavGroup
+                key={'group_' + groupIndex}
+                groupIndex={groupIndex}
+                groupName={group.name}
+                links={group.links}
+                dataHint={this.props.dataHint}
+                isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
+                onCollapse={this._setScrollLayout}
+                navRef={this.containerRef}
+              />
+            ))}
 
-            {this._renderCustomizationLinks()}
+            {enableCustomization && (
+              // If enableCustomization
+              <ul role="menubar" className={classNames.navGroup}>
+                <li role="none" title={'Edit navigation'}>
+                  <NavLink
+                    id={'EditNav'}
+                    href={'#'}
+                    name={editString}
+                    onClick={this._editClicked}
+                    dataHint={'Edit navigation'}
+                    dataValue={'NavToggle'}
+                    ariaLabel={'Edit navigation'}
+                    primaryIconName={'Edit'}
+                    role="menuitem"
+                  />
+                </li>
+                {showMore && (
+                  <li role="none" title={'Show more'}>
+                    <NavLink
+                      id={'ShowMore'}
+                      href={'#'}
+                      name={this.props.showMore ? showMoreString : showLessString}
+                      onClick={this._toggleHidden}
+                      dataHint={'Show more'}
+                      dataValue={'Show more'}
+                      ariaLabel={'Show more'}
+                      primaryIconName={'More'}
+                      role="menuitem"
+                    />
+                  </li>
+                )}
+              </ul>
+            )}
           </nav>
         </div>
       </FocusZone>
@@ -69,97 +124,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       this._setScrollLayout();
     }
     console.log('nav updated');
-  }
-
-  //
-  // Basic methods
-  //
-  private _renderExpandCollapseNavItem(): React.ReactElement<{}> | null {
-    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
-    const isNavCollapsed = this.state.isNavCollapsed;
-    const { dataHint } = this.props;
-    const ariaLabel = isNavCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
-
-    return (
-      <ul role="menubar" className={classNames.navGroup}>
-        <li role="none" title={'NavToggle'}>
-          <NavLink
-            id={'NavToggle'}
-            href={'#'}
-            onClick={this._onNavCollapseClicked}
-            ariaExpanded={!isNavCollapsed}
-            dataHint={dataHint}
-            dataValue={'NavToggle'}
-            ariaLabel={ariaLabel}
-            primaryIconName={'GlobalNavButton'}
-            role="menuitem"
-          />
-        </li>
-      </ul>
-    );
-  }
-
-  // Start to parse the Nav Schema
-  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> | null {
-    if (!group || !group.links || group.links.length === 0) {
-      return null;
-    }
-
-    return (
-      <NavGroup
-        key={'group_' + groupIndex}
-        groupIndex={groupIndex}
-        groupName={group.name}
-        links={group.links}
-        dataHint={this.props.dataHint}
-        isNavCollapsed={this.state.isNavCollapsed ? this.state.isNavCollapsed : false}
-        onCollapse={this._setScrollLayout}
-        navRef={this.containerRef}
-      />
-    );
-  }
-
-  private _renderCustomizationLinks(): JSX.Element {
-    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
-    const { enableCustomization, showMore, editString, showMoreString, showLessString } = this.props;
-
-    return (
-      <>
-        {enableCustomization && (
-          // If enableCustomization
-          <ul role="menubar" className={classNames.navGroup}>
-            <li role="none" title={'Edit navigation'}>
-              <NavLink
-                id={'EditNav'}
-                href={'#'}
-                name={editString}
-                onClick={this._editClicked}
-                dataHint={'Edit navigation'}
-                dataValue={'NavToggle'}
-                ariaLabel={'Edit navigation'}
-                primaryIconName={'Edit'}
-                role="menuitem"
-              />
-            </li>
-            {showMore && (
-              <li role="none" title={'Show more'}>
-                <NavLink
-                  id={'ShowMore'}
-                  href={'#'}
-                  name={this.props.showMore ? showMoreString : showLessString}
-                  onClick={this._toggleHidden}
-                  dataHint={'Show more'}
-                  dataValue={'Show more'}
-                  ariaLabel={'Show more'}
-                  primaryIconName={'More'}
-                  role="menuitem"
-                />
-              </li>
-            )}
-          </ul>
-        )}
-      </>
-    );
   }
 
   private _setScrollLayout(): void {

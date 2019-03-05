@@ -5,7 +5,7 @@ export interface INavProps extends IBaseProps {
   /**
    * A collection of link groups to display in the navigation bar
    */
-  groups: INavLinkGroup[] | null;
+  groups: INavLinkGroup[];
 
   /**
    * (Optional) Used to toggle the nav component between expanded and collapsed state
