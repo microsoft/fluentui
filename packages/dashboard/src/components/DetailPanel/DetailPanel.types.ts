@@ -151,7 +151,7 @@ export interface IDetailPanelBaseProps {
   /**
    * Main content header props
    */
-  mainHeader: IDetailPanelHeaderProps;
+  mainHeader: IDetailPanelHeaderProps | JSX.Element;
 
   /**
    * Content to display in the main area
@@ -173,7 +173,7 @@ export interface IDetailPanelBaseProps {
   /**
    * On Get the L2 header props
    */
-  onGetL2Header?: (l2Id: string | number) => IDetailPanelHeaderProps;
+  onGetL2Header?: (l2Id: string | number) => IDetailPanelHeaderProps | JSX.Element;
 
   /**
    * On Get the L2 content element call back
@@ -238,7 +238,7 @@ export interface IBaseContainerProps extends IBaseContainerExtendProps {
   /**
    * Main content header props
    */
-  header?: IDetailPanelHeaderProps;
+  header?: IDetailPanelHeaderProps | JSX.Element;
 
   /**
    * Message banner settings
