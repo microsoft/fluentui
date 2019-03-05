@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Mar 2019 13:30:24 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 6.151.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Update version of 'styled', add type annotations to usages of 'styled'.
 
 ## 6.150.1
 Tue, 05 Mar 2019 13:30:24 GMT

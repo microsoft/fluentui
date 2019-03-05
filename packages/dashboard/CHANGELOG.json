@@ -2,6 +2,31 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.52.2",
+      "tag": "@uifabric/dashboard_v0.52.2",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add type annotations based on update to \"styled\"",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.7` to `^0.28.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.62.0 <7.0.0` to `>=6.62.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.150.1 <7.0.0` to `>=6.151.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.52.1",
       "tag": "@uifabric/dashboard_v0.52.1",
       "date": "Tue, 05 Mar 2019 04:25:07 GMT",

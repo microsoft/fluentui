@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 6.33.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Modify return type of styled (function to React.StatelessComponent)
 
 ## 6.32.1
 Tue, 05 Mar 2019 04:25:07 GMT
