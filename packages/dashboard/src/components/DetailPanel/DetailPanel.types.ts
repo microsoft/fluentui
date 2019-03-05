@@ -77,6 +77,21 @@ export interface IDetailPanelHeaderProps {
    * Status string
    */
   status?: string;
+
+  /**
+   * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
+   */
+  imageUrl?: string;
+  /**
+   * Alt text for the image to use. Defaults to an empty string.
+   */
+  imageAlt?: string;
+
+  /**
+   * The user's initials to display in the image area when there is no image.
+   * @defaultvalue [Derived from title]
+   */
+  imageInitials?: string;
 }
 
 export interface IDetailPanelLoadingProps {
