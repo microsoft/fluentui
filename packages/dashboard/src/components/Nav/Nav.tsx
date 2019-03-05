@@ -12,6 +12,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   private wrapperRef: React.RefObject<HTMLDivElement>;
   private containerRef: React.RefObject<HTMLDivElement>;
   private shouldScroll: boolean = false;
+  private fireCollapse: boolean = false;
 
   constructor(props: INavProps) {
     super(props);
@@ -60,6 +61,14 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   // also see if we can get rid of refs
   public componentDidMount(): void {
     this._setScrollLayout();
+  }
+
+  public componentDidUpdate(): void {
+    if (this.fireCollapse) {
+      this.fireCollapse = false;
+      this._setScrollLayout();
+    }
+    console.log('nav updated');
   }
 
   //
@@ -165,6 +174,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
         this.wrapperRef.current.classList.remove(classNames.navWrapperScroll);
         this.shouldScroll = false;
       }
+      console.log(this.containerRef.current.scrollHeight, this.containerRef.current.clientHeight);
     }
   }
 
@@ -172,6 +182,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   // Event handlers
   //
   private _onNavCollapseClicked(ev: React.MouseEvent<HTMLElement>): void {
+    this.fireCollapse = true;
     this.setState({
       isNavCollapsed: !this.state.isNavCollapsed
     });

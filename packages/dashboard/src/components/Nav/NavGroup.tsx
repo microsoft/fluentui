@@ -27,14 +27,18 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
     );
   }
 
+  public componentDidUpdate(): void {
+    console.log('nav group updated');
+  }
+
   private _renderGroupName(groupName: string | undefined, groupIndex: number): React.ReactElement<{}> | null {
-    const classNames = getClassNames(getStyles);
     // The default group heading will not show even if it is supplied
     // because it is redundant
     if (!groupName || groupIndex === 0) {
       return null;
     }
 
+    const classNames = getClassNames(getStyles);
     const { isNavCollapsed } = this.props;
 
     return (

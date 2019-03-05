@@ -58,6 +58,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
       this.props.onCollapse();
       this.fireCollapseUpdate = false;
     }
+    console.log('nav link group updated');
   }
 
   private _renderWhenNavCollapsed(link: INavLink): React.ReactElement<{}> | null {
@@ -90,61 +91,73 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
         <div className={classNames.nestedNavLinksWrapper}>
           {/* This one has the blur. */}
           <ul className={classNames.nestedNavLinksWhenNavCollapsed}>
-            {!!link.links
-              ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
-                  return this._renderNestedLinks(nestedLink, linkIndex);
-                })
-              : null}
+            {link.links &&
+              link.links.map((nestedLink: INavLink, linkIndex: number) => {
+                return (
+                  <li role="none" key={linkIndex}>
+                    <NavLink
+                      key={linkIndex * 100}
+                      isNavCollapsed={isNavCollapsed}
+                      id={nestedLink.name}
+                      name={nestedLink.name}
+                      href={nestedLink.url}
+                      target={nestedLink.target}
+                      onClick={nestedLink.onClick}
+                      ariaExpanded={!isNavCollapsed}
+                      dataValue={nestedLink.name}
+                      ariaLabel={nestedLink.ariaLabel}
+                      primaryIconName={nestedLink.icon}
+                      hasNestedMenu={false}
+                      hasSelectedNestedLink={false}
+                      isNested={true}
+                      isSelected={nestedLink.isSelected}
+                      role="menuitem"
+                    />
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </div>
     );
   }
 
-  private _renderWhenNavExpanded(link: INavLink): React.ReactElement<{}> | null {
+  private _renderWhenNavExpanded(link: INavLink): JSX.Element {
     const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: this.props.isNavCollapsed });
-    return (
-      <ul className={classNames.nestedNavMenu}>
-        {!!link.links
-          ? link.links.map((nestedLink: INavLink, linkIndex: number) => {
-              return this._renderNestedLinks(nestedLink, linkIndex);
-            })
-          : null}
-      </ul>
-    );
-  }
-
-  private _renderNestedLinks(nestedLink: INavLink, linkIndex: number): React.ReactElement<{}> | null {
-    if (!nestedLink) {
-      return null;
-    }
-
     const { isNavCollapsed } = this.props;
-
     return (
-      <li role="none" key={linkIndex}>
-        <NavLink
-          key={linkIndex * 100}
-          isNavCollapsed={isNavCollapsed}
-          id={nestedLink.name}
-          name={nestedLink.name}
-          href={nestedLink.url}
-          target={nestedLink.target}
-          onClick={nestedLink.onClick}
-          ariaExpanded={!isNavCollapsed}
-          dataValue={nestedLink.name}
-          ariaLabel={nestedLink.ariaLabel}
-          primaryIconName={nestedLink.icon}
-          hasNestedMenu={false}
-          hasSelectedNestedLink={false}
-          isNested={true}
-          isSelected={nestedLink.isSelected}
-          role="menuitem"
-        />
-      </li>
+      <>
+        {link.links && (
+          <ul className={classNames.nestedNavMenu}>
+            {link.links.map((nestedLink: INavLink, linkIndex: number) => {
+              return (
+                <li role="none" key={linkIndex}>
+                  <NavLink
+                    key={linkIndex * 100}
+                    isNavCollapsed={isNavCollapsed}
+                    id={nestedLink.name}
+                    name={nestedLink.name}
+                    href={nestedLink.url}
+                    target={nestedLink.target}
+                    onClick={nestedLink.onClick}
+                    ariaExpanded={!isNavCollapsed}
+                    dataValue={nestedLink.name}
+                    ariaLabel={nestedLink.ariaLabel}
+                    primaryIconName={nestedLink.icon}
+                    hasNestedMenu={false}
+                    hasSelectedNestedLink={false}
+                    isNested={true}
+                    isSelected={nestedLink.isSelected}
+                    role="menuitem"
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </>
     );
   }
-
   private _onLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
     this.fireCollapseUpdate = true;
     this.setState({

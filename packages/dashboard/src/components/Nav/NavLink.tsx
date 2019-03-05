@@ -23,7 +23,7 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
         href={this.props.href}
         target={this.props.target}
         onClick={this.props.onClick}
-        onMouseOver={this._getLinkPosition}
+        onMouseEnter={this._getLinkPosition}
         data-hint={this.props.dataHint}
         data-value={this.props.dataValue}
         aria-label={this.props.ariaLabel}
@@ -95,6 +95,7 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   }
 
   private _getLinkPosition(ev: React.MouseEvent<HTMLElement>): void {
+    console.log('mouse stuff');
     if (this.navLinkRef.current && this.props.offsetUpdated) {
       this.props.offsetUpdated(this.navLinkRef.current.offsetTop);
     }
