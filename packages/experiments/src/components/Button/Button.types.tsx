@@ -1,6 +1,7 @@
+import { IButtonMenuSlot } from './ButtonMenu/ButtonMenu.types';
 import { IComponent, IComponentStyles, IHTMLSlot, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
-import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
+import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
@@ -36,9 +37,9 @@ export interface IButtonSlots {
   icon?: IIconSlot;
 
   /**
-   * Defines the contextual menu that appears when you click on the Button.
+   * Defines the menu that appears when you click on the Button.
    */
-  menu?: IContextualMenuSlot;
+  menu?: IButtonMenuSlot;
 
   /**
    * Defines the menu chevron icon that is displayed insisde the Button.
@@ -105,7 +106,12 @@ export interface IButtonProps
   expanded?: boolean;
 
   /**
-   * Defines whether the button is rendered as a Split Button.
+   * Defines the type of the menu that is going to be rendered.
+   */
+  menuType?: any;
+
+  /**
+   * Defines whether the Button is rendered as a Split Button.
    * @defaultvalue false
    */
   split?: boolean;
@@ -131,12 +137,12 @@ export interface IButtonViewProps extends IButtonProps {
   /**
    * Defines a callback that runs after the Button's contextual menu has been closed (removed from the DOM).
    */
-  onMenuDismiss: () => void;
+  onMenuDismiss?: () => void;
 
   /**
    * Defines the target that the contextual menu uses to position itself.
    */
-  menuTarget: HTMLElement | undefined;
+  menuTarget?: HTMLElement | undefined;
 
   /**
    * Defines an event callback that is triggered when the secondary action of a Split Button is clicked.

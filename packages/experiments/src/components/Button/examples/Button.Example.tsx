@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, IButtonProps } from '../index';
-import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
+import { CommandBar, ContextualMenu, Icon, Stack, Text } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
@@ -34,9 +34,32 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button primary disabled content="Disabled primary button" onClick={alertClicked} />
               </ButtonStack>
               <ButtonStack>
-                <Button split icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
-                <Button split disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
-                <Button split primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
+                <Button
+                  split
+                  icon="Add"
+                  content="Default split button"
+                  menu={buttonMenu}
+                  menuType={ContextualMenu}
+                  onClick={alertClicked}
+                />
+                <Button
+                  split
+                  disabled
+                  icon="Add"
+                  content="Disabled split button"
+                  menu={buttonMenu}
+                  menuType={ContextualMenu}
+                  onClick={alertClicked}
+                />
+                <Button
+                  split
+                  primary
+                  icon="Add"
+                  content="Primary split button"
+                  menu={buttonMenu}
+                  menuType={ContextualMenu}
+                  onClick={alertClicked}
+                />
                 <Button
                   split
                   disabled
@@ -44,6 +67,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                   icon="Add"
                   content="Disabled primary split button"
                   menu={buttonMenu}
+                  menuType={ContextualMenu}
                   onClick={alertClicked}
                 />
               </ButtonStack>
@@ -54,6 +78,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                   icon="Add"
                   content="First action disabled split button"
                   menu={buttonMenu}
+                  menuType={ContextualMenu}
                   onClick={alertClicked}
                 />
                 <Button
@@ -63,6 +88,7 @@ export class ButtonExample extends React.Component<{}, {}> {
                   icon="Add"
                   content="First action disabled primary split button"
                   menu={buttonMenu}
+                  menuType={ContextualMenu}
                   onClick={alertClicked}
                 />
               </ButtonStack>
@@ -88,14 +114,14 @@ export class ButtonExample extends React.Component<{}, {}> {
                 </Button>
               </ButtonStack>
               <ButtonStack>
-                <Button content="Menu button" menu={buttonMenu} />
-                <Button primary content="Menu primary button" menu={buttonMenu} />
-                <Button disabled content="Menu disabled button" menu={buttonMenu} />
+                <Button content="Menu button" menu={buttonMenu} menuType={ContextualMenu} />
+                <Button primary content="Menu primary button" menu={buttonMenu} menuType={ContextualMenu} />
+                <Button disabled content="Menu disabled button" menu={buttonMenu} menuType={ContextualMenu} />
                 <Button expanded content="Menu expanded button" />
                 <Button expanded primary content="Menu expanded primary button" />
               </ButtonStack>
               <ButtonStack>
-                <Button icon="Share" menu={buttonMenu}>
+                <Button icon="Share" menu={buttonMenu} menuType={ContextualMenu}>
                   <Stack padding="8px 0" as="span" horizontalAlign="start">
                     <Text>I am a compound multiline button.</Text>
                     <Text variant="small">I can have a caption.</Text>
