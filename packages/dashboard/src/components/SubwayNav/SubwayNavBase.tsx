@@ -18,7 +18,7 @@ export class SubwayNavBase extends React.PureComponent<ISubwayNavProps> {
     this._classNames = getClassNames(styles!, { steps, wizardComplete });
     return (
       <FocusZone
-        elementType="ul"
+        as="ul"
         className={this._classNames.root}
         direction={FocusZoneDirection.vertical}
         isInnerZoneKeystroke={navInnerZone}

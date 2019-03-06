@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.151.0",
+      "tag": "office-ui-fabric-react_v6.151.0",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update version of 'styled', add type annotations to usages of 'styled'.",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.44.0 <7.0.0` to `>=6.44.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.32.1 <7.0.0` to `>=6.33.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.150.1",
+      "tag": "office-ui-fabric-react_v6.150.1",
+      "date": "Tue, 05 Mar 2019 13:30:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsRowFields: Inherit from React.Component instead of BaseComponent\"",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "26216ffb6de0074891bda0ce86339189eb1f237d"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.150.0",
       "tag": "office-ui-fabric-react_v6.150.0",
       "date": "Tue, 05 Mar 2019 04:25:07 GMT",

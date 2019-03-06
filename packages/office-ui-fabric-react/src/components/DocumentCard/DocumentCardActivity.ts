@@ -3,9 +3,8 @@ import { DocumentCardActivityBase } from './DocumentCardActivity.base';
 import { getStyles } from './DocumentCardActivity.styles';
 import { IDocumentCardActivityProps, IDocumentCardActivityStyleProps, IDocumentCardActivityStyles } from './DocumentCardActivity.types';
 
-export const DocumentCardActivity = styled<IDocumentCardActivityProps, IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>(
-  DocumentCardActivityBase,
-  getStyles,
-  undefined,
-  { scope: 'DocumentCardActivity' }
-);
+export const DocumentCardActivity: React.StatelessComponent<IDocumentCardActivityProps> = styled<
+  IDocumentCardActivityProps,
+  IDocumentCardActivityStyleProps,
+  IDocumentCardActivityStyles
+>(DocumentCardActivityBase, getStyles, undefined, { scope: 'DocumentCardActivity' });

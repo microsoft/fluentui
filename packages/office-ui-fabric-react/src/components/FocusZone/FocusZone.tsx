@@ -87,8 +87,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('FocusZone', props, {
         rootProps: undefined,
-        allowTabKey: 'handleTabKey'
-      });
+        allowTabKey: 'handleTabKey',
+        elementType: 'as'
+      });      
     }
 
     this._id = getId('FocusZone');
@@ -164,7 +165,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
-    const Tag = this.props.elementType || 'div';
+    const Tag = this.props.as || this.props.elementType || 'div';
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
     // was in the zone before the update. This helper will track this and, if focus
