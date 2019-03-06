@@ -65,8 +65,6 @@ describe('FocusTrapZone', () => {
   const ftzClassname = 'ftzTestClassname';
 
   function _onFocus(ev: any): void {
-    const target = ev.target.getAttribute('class') + ' -> ' + (ev.relatedTarget && ev.relatedTarget.getAttribute('class'));
-    console.log('_onFocus: ' + target);
     lastFocusedElement = ev.target;
   }
 
