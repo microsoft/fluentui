@@ -100,7 +100,7 @@ List/ @KevinTCoughlin
 MarqueeSelection/ @dzearing
 MessageBar/ @ecraig12345
 Modal/ @JasonGore
-Nav/ @jdh
+Nav/ @jdhuntington
 OverflowSet/ @micahgodbolt
 Overlay/ @JasonGore
 Pagination/ @caradong
@@ -112,7 +112,7 @@ pickers/  @joschect
 Pivot/ @jdhuntington
 Popup/ @JasonGore
 ProgressIndicator/ @aneeshak
-Rating/ @jdh
+Rating/ @jdhuntington
 ResizeGroup/ @micahgodbolt
 SearchBox/ @ecraig12345
 Signals/ @ThomasMichon
