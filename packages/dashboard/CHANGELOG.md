@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+
+## 0.53.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Added wizard to dashboard package index
+- Replacing elementType usage with as in SubwayNavBase and SubwayNodeBase
 
 ## 0.52.2
 Tue, 05 Mar 2019 17:33:41 GMT
