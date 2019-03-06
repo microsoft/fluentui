@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Tooltip: Add absolute position example to documentation",
+      "comment": "SwatchColorPicker: updates the styles so that they align to the toolkit specs.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "edwl@microsoft.com"
+  "email": "v-vibr@microsoft.com"
 }
