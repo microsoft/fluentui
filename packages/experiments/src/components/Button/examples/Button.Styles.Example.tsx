@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, IButtonProps } from '@uifabric/experiments';
-import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
+import { createTheme, mergeStyles, Stack, ContextualMenu } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
   semanticColors: {
@@ -123,6 +123,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   content="All Classnames"
                   icon="PeopleAdd"
                   menu={buttonMenu}
+                  menuType={ContextualMenu}
                   styles={{
                     root: 'root-classname',
                     stack: 'stack-classname',

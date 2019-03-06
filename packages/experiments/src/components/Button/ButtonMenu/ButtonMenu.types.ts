@@ -45,7 +45,7 @@ export interface IButtonMenuProps extends IButtonMenuSlots, IBaseProps<IButtonMe
   directionalHint?: DirectionalHint;
 
   /**
-   * Defines the type of menu that is to be rendered.
+   * Defines what type of component the menu is going to be rendered as.
    */
   menuType?: ISlottableReactType<IButtonMenuProps>;
 }

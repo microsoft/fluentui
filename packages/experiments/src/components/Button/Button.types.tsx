@@ -114,7 +114,7 @@ export interface IButtonProps
   expanded?: boolean;
 
   /**
-   * Defines the type of the menu that is going to be rendered.
+   * Defines what type of component the menu is going to be rendered as.
    */
   menuType?: ISlottableReactType<IButtonMenuProps>;
 
