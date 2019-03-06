@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+
+## 6.34.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Utilities for managing componentRef initialization added.
 
 ## 6.33.0
 Tue, 05 Mar 2019 17:33:41 GMT

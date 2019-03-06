@@ -2,6 +2,28 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.34.0",
+      "tag": "@uifabric/utilities_v6.34.0",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilities for managing componentRef initialization added.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf912f0679f7c54bfd6864c6e8b7a9dfc2de128b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.33.0",
       "tag": "@uifabric/utilities_v6.33.0",
       "date": "Tue, 05 Mar 2019 17:33:41 GMT",
