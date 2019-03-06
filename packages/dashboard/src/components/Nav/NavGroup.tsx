@@ -26,10 +26,6 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
     );
   }
 
-  public componentDidUpdate(): void {
-    console.log('nav group updated');
-  }
-
   private _renderGroupName(groupName: string | undefined, groupIndex: number): React.ReactElement<{}> | null {
     // The default group heading will not show even if it is supplied
     // because it is redundant

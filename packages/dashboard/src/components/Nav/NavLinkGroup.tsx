@@ -58,7 +58,6 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
       this.props.onCollapse();
       this.fireCollapseUpdate = false;
     }
-    console.log('nav link group updated');
   }
 
   private _renderWhenNavCollapsed(link: INavLink): React.ReactElement<{}> | null {

@@ -123,7 +123,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       this.fireCollapse = false;
       this._setScrollLayout();
     }
-    console.log('nav updated');
   }
 
   private _setScrollLayout(): void {
@@ -138,7 +137,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
         this.wrapperRef.current.classList.remove(classNames.navWrapperScroll);
         this.shouldScroll = false;
       }
-      console.log(this.containerRef.current.scrollHeight, this.containerRef.current.clientHeight);
     }
   }
 
