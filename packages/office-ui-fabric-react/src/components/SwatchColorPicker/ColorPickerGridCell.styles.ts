@@ -69,6 +69,16 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
             backgroundColor: semanticColors.bodyBackground, // overwrite white's override
             padding: DIVIDING_PADDING,
             border: `${calculatedBorderWidth}px solid ${theme.palette.neutralLight}`
+          },
+          ['&:focus']: {
+            borderColor: semanticColors.bodyBackground,
+            padding: 0,
+            selectors: {
+              ':hover': {
+                borderColor: theme.palette.neutralLight,
+                padding: DIVIDING_PADDING
+              }
+            }
           }
         }
       },
