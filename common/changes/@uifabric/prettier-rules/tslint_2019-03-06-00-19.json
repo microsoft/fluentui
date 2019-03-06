@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/prettier-rules",
+      "comment": "Update package description",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/prettier-rules",
+  "email": "elcraig@microsoft.com"
+}

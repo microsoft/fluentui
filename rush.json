@@ -408,12 +408,12 @@
     {
       "packageName": "@uifabric/tslint-rules",
       "projectFolder": "packages/tslint-rules",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/prettier-rules",
       "projectFolder": "packages/prettier-rules",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/theme-samples",
