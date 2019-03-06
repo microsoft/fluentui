@@ -150,13 +150,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
-    // Korean characters typing issue has been addressed in React 16.5
-    // TODO: revert back below lines when we upgrade to React 16.5
-    // Find out at https://github.com/facebook/react/pull/12563/commits/06524c6c542c571705c0fd7df61ac48f3d5ce244
-    const isKorean = (ev.nativeEvent as any).locale === 'ko';
+
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
-      const updatedInputValue = isKorean ? this.value : inputValue;
+      const updatedInputValue = inputValue;
       this._updateValue(updatedInputValue);
     }, 0);
   };
