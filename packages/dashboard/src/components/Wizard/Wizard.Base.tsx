@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { IWizardProps, IWizardStyles, IWizardStyleProps, IWizardStepProps } from './Wizard.types';
+import { IWizardProps, IWizardStyles, IWizardStyleProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
@@ -34,27 +33,11 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
-        {this._onRenderContentSection(wizardStepProps, classNames)}
+        <div className={classNames.contentSection}>
+          <div className={classNames.contentTitle}>{wizardStepProps.wizardContent!.contentTitleElement}</div>
+          <div className={classNames.content}>{wizardStepProps.wizardContent!.content}</div>
+        </div>
       </div>
     );
   }
-
-  private _onRenderContentSection = (wizardStep: IWizardStepProps, styleClassNames: IProcessedStyleSet<IWizardStyles>): React.ReactNode => {
-    return (
-      <div className={styleClassNames.contentSection}>
-        {this._onRenderContentTitle(wizardStep, styleClassNames)}
-        {this._onRenderContent(wizardStep, styleClassNames)}
-      </div>
-    );
-  };
-
-  private _onRenderContentTitle = (wizardStep: IWizardStepProps, styleClassNames: IProcessedStyleSet<IWizardStyles>): React.ReactNode => {
-    if (wizardStep.wizardContent!.contentTitleElement) {
-      return <div className={styleClassNames.contentTitle}>{wizardStep.wizardContent!.contentTitleElement}</div>;
-    }
-  };
-
-  private _onRenderContent = (wizardStep: IWizardStepProps, styleClassNames: IProcessedStyleSet<IWizardStyles>): React.ReactNode => {
-    return <div className={styleClassNames.content}>{wizardStep.wizardContent!.content}</div>;
-  };
 }

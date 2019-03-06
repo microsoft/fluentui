@@ -7,7 +7,7 @@ export function getCurrentStep(steps: IWizardStepProps[]): IWizardStepProps {
 
   steps.some((wizStep: IWizardStepProps) => {
     if (wizStep.state === SubwayNavNodeState.Current) {
-      currentStep = wizStep;
+      currentStep = { ...wizStep };
       return true;
     } else if (wizStep.state === SubwayNavNodeState.CurrentWithSubSteps) {
       // throw error if CurrentWithSubSteps is set without subSteps
@@ -17,16 +17,16 @@ export function getCurrentStep(steps: IWizardStepProps[]): IWizardStepProps {
 
       const foundSubStep = wizStep.subSteps.some((wizSubStep: IWizardStepProps, index: number) => {
         if (wizSubStep.state === SubwayNavNodeState.Current) {
-          currentStep = wizSubStep;
+          currentStep = { ...wizSubStep };
           currentStep.isSubStep = true;
-          currentStep.isFirstSubStep = index === 0 ? true : false;
+          currentStep.isFirstSubStep = index === 0;
           return true;
         }
         return false;
       });
 
       if (!foundSubStep) {
-        currentStep = wizStep.subSteps[0];
+        currentStep = { ...wizStep.subSteps[0] };
         currentStep.isSubStep = true;
         currentStep.isFirstSubStep = true;
       }
@@ -37,9 +37,9 @@ export function getCurrentStep(steps: IWizardStepProps[]): IWizardStepProps {
 
   if (!currentStep) {
     // If no steps is set as "Current", just return the first step
-    currentStep = steps[0];
+    currentStep = { ...steps[0] };
     if (currentStep.subSteps!.length > 0) {
-      currentStep = currentStep.subSteps![0];
+      currentStep = { ...currentStep.subSteps![0] };
       currentStep.isSubStep = true;
       currentStep.isFirstSubStep = true;
     }
