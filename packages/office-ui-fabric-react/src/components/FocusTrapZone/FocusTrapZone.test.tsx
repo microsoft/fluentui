@@ -444,6 +444,8 @@ describe('FocusTrapZone', () => {
       const buttonC = topLevelDiv.querySelector('.c') as HTMLElement;
       const buttonZ2 = topLevelDiv.querySelector('.z2') as HTMLElement;
 
+      const { firstBumper, lastBumper } = getFtzBumpers(topLevelDiv);
+
       // Assign bounding locations to buttons.
       setupElement(buttonZ1, { clientRect: { top: 0, bottom: 10, left: 0, right: 10 } });
       setupElement(buttonA, { clientRect: { top: 10, bottom: 20, left: 0, right: 10 } });
@@ -451,7 +453,7 @@ describe('FocusTrapZone', () => {
       setupElement(buttonC, { clientRect: { top: 30, bottom: 40, left: 0, right: 10 } });
       setupElement(buttonZ2, { clientRect: { top: 40, bottom: 50, left: 0, right: 10 } });
 
-      return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2 };
+      return { buttonZ1, buttonA, buttonB, buttonC, buttonZ2, firstBumper, lastBumper };
     }
 
     it('Restores focus to FTZ when clicking outside FTZ', async () => {
@@ -475,6 +477,30 @@ describe('FocusTrapZone', () => {
       // FTZ doesn't register a window click listener when isClickableOutsideFocusTrap is true, so we can't simulate clicks directly.
       // Therefore we test indirectly by making sure FTZ doesn't register a window click listener.
       expect(componentEventListeners.click).toBeUndefined();
+    });
+
+    it('Focuses first element when FTZ does not have focus and first bumper receives focus', async () => {
+      expect.assertions(2);
+
+      const { buttonA, buttonZ1, firstBumper } = setupTest({ isClickableOutsideFocusTrap: true });
+
+      ReactTestUtils.Simulate.focus(buttonZ1);
+      expect(lastFocusedElement).toBe(buttonZ1);
+
+      ReactTestUtils.Simulate.focus(firstBumper);
+      expect(lastFocusedElement).toBe(buttonA);
+    });
+
+    it('Focuses last element when FTZ does not have focus and last bumper receives focus', async () => {
+      expect.assertions(2);
+
+      const { buttonC, buttonZ2, lastBumper } = setupTest({ isClickableOutsideFocusTrap: true });
+
+      ReactTestUtils.Simulate.focus(buttonZ2);
+      expect(lastFocusedElement).toBe(buttonZ2);
+
+      ReactTestUtils.Simulate.focus(lastBumper);
+      expect(lastFocusedElement).toBe(buttonC);
     });
 
     it('Restores focus to FTZ when focusing outside FTZ', async () => {

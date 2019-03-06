@@ -141,27 +141,20 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   };
 
   private _onFirstBumperFocus = () => {
-    if (this._root.current) {
-      const nextFocusable = this._hasFocus
-        ? getLastTabbable(this._root.current, this._lastBumper.current as HTMLElement, true, false)
-        : getFirstTabbable(this._root.current, this._firstBumper.current as HTMLElement, true, false);
-
-      if (nextFocusable) {
-        if (this._isBumper(nextFocusable)) {
-          // This can happen when FTZ contains no tabbable elements. focus will take care of finding a focusable element in FTZ.
-          this.focus();
-        } else {
-          nextFocusable.focus();
-        }
-      }
-    }
+    this._onBumperFocus(true);
   };
 
   private _onLastBumperFocus = () => {
+    this._onBumperFocus(false);
+  };
+
+  private _onBumperFocus = (isFirstBumper: boolean) => {
+    const currentBumper = (isFirstBumper === this._hasFocus ? this._lastBumper.current : this._firstBumper.current) as HTMLElement;
     if (this._root.current) {
-      const nextFocusable = this._hasFocus
-        ? getFirstTabbable(this._root.current, this._firstBumper.current as HTMLElement, true, false)
-        : getLastTabbable(this._root.current, this._lastBumper.current as HTMLElement, true, false);
+      const nextFocusable =
+        isFirstBumper === this._hasFocus
+          ? getLastTabbable(this._root.current, currentBumper, true, false)
+          : getFirstTabbable(this._root.current, currentBumper, true, false);
 
       if (nextFocusable) {
         if (this._isBumper(nextFocusable)) {
