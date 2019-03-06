@@ -23,11 +23,19 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
           }}
           onIncrement={(value: string) => {
             value = this._removeSuffix(value, suffix);
-            return String(+value + 2) + suffix;
+            if (Number(value) + 2 > 100) {
+              return String(+value) + suffix;
+            } else {
+              return String(+value + 2) + suffix;
+            }
           }}
           onDecrement={(value: string) => {
             value = this._removeSuffix(value, suffix);
-            return String(+value - 2) + suffix;
+            if (Number(value) - 2 < 0) {
+              return String(+value) + suffix;
+            } else {
+              return String(+value - 2) + suffix;
+            }
           }}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
