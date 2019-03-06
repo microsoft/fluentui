@@ -89,7 +89,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         rootProps: undefined,
         allowTabKey: 'handleTabKey',
         elementType: 'as'
-      });      
+      });
     }
 
     this._id = getId('FocusZone');
