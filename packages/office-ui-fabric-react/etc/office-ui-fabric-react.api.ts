@@ -9568,8 +9568,6 @@ interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttrib
 // @public (undocumented)
 interface IPivotState {
   // (undocumented)
-  links: IPivotItemProps[];
-  // (undocumented)
   selectedKey: string | undefined;
 }
 
@@ -11850,8 +11848,6 @@ enum PersonaSize {
 // @public
 class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   constructor(props: IPivotProps);
-  // (undocumented)
-  componentWillReceiveProps(nextProps: IPivotProps): void;
   focus(): void;
   // (undocumented)
   render(): JSX.Element;
