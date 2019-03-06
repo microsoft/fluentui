@@ -21,10 +21,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   public static defaultProps = {
     circle: true,
     disabled: false,
-    selected: false,
-    height: 20,
-    width: 20,
-    borderWidth: 2
+    selected: false
   } as IColorPickerGridCellProps;
 
   private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };
