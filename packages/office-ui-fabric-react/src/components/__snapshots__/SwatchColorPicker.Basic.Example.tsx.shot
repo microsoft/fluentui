@@ -135,6 +135,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -279,6 +293,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -433,6 +461,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -582,6 +624,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -726,6 +782,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -917,6 +987,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -1050,6 +1134,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1193,6 +1291,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -1331,6 +1443,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -1464,6 +1590,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 2px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1653,6 +1793,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -1786,6 +1940,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 4px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1929,6 +2097,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -2067,6 +2249,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -2200,6 +2396,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 4px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2408,6 +2618,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -2552,6 +2776,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 3px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2706,6 +2944,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -2850,6 +3102,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 3px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3008,6 +3274,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -3152,6 +3432,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 3px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3306,6 +3600,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -3450,6 +3758,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 3px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3608,6 +3930,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -3752,6 +4088,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 3px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3906,6 +4256,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
                   &:hover {
                     color: #0078d4;
                   }
@@ -4050,6 +4414,20 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
                     border: 3px solid #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:focus {
+                    border-color: #ffffff;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4255,10 +4633,22 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  &:hover {
-                    outline: 0px;
-                  }
                   &:focus {
+                    border-color: #ffffff;
+                    outline: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -4410,10 +4800,22 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  &:hover {
-                    outline: 0px;
-                  }
                   &:focus {
+                    border-color: #ffffff;
+                    outline: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -4565,10 +4967,22 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  &:hover {
-                    outline: 0px;
-                  }
                   &:focus {
+                    border-color: #ffffff;
+                    outline: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -4720,10 +5134,22 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  &:hover {
-                    outline: 0px;
-                  }
                   &:focus {
+                    border-color: #ffffff;
+                    outline: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -4875,10 +5301,22 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  &:hover {
-                    outline: 0px;
-                  }
                   &:focus {
+                    border-color: #ffffff;
+                    outline: 0px;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                  }
+                  &:focus:hover {
+                    border-color: #eaeaea;
+                    padding-bottom: 2px;
+                    padding-left: 2px;
+                    padding-right: 2px;
+                    padding-top: 2px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
