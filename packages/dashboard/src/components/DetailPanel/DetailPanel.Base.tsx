@@ -201,14 +201,14 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
     const { mainHeader, onGetL2Header } = this.props;
     const { currentL2Id: currentL2Key } = this.state;
 
-    let header: IDetailPanelHeaderProps;
+    let header: IDetailPanelHeaderProps | JSX.Element;
     if (currentL2Key && onGetL2Header) {
       header = onGetL2Header(currentL2Key);
     } else {
       header = mainHeader;
     }
 
-    if (titleTextOnly) {
+    if (titleTextOnly && !_isReactComponent(header)) {
       return { title: header.title };
     }
 
