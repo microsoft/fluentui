@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "changed follow signal icon's color",
+      "comment": "Signals: changes icon color of `follow` signal.",
       "type": "patch"
     }
   ],
