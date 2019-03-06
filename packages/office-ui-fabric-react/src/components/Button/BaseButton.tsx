@@ -37,10 +37,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private get _isExpanded(): boolean {
+    const { menuProps } = this.state;
     if (this.props.persistMenu) {
-      return !this.state.menuProps!.hidden;
+      return !!menuProps && !menuProps.hidden;
     }
-    return !!this.state.menuProps;
+    return !!menuProps;
   }
 
   public static defaultProps: Partial<IBaseButtonProps> = {
@@ -107,29 +108,29 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     this._classNames = getClassNames
       ? getClassNames(
-          theme!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          isPrimaryButtonDisabled!,
-          checked!,
-          this._isMenuExpanded(),
-          this.props.split,
-          !!allowDisabledFocus
-        )
+        theme!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        this._isMenuExpanded(),
+        this.props.split,
+        !!allowDisabledFocus
+      )
       : getBaseButtonClassNames(
-          theme!,
-          styles!,
-          className!,
-          variantClassName!,
-          iconProps && iconProps.className,
-          menuIconProps && menuIconProps.className,
-          isPrimaryButtonDisabled!,
-          checked!,
-          this._isMenuExpanded(),
-          this.props.split
-        );
+        theme!,
+        styles!,
+        className!,
+        variantClassName!,
+        iconProps && iconProps.className,
+        menuIconProps && menuIconProps.className,
+        isPrimaryButtonDisabled!,
+        checked!,
+        this._isMenuExpanded(),
+        this.props.split
+      );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     // Anchor tag cannot be disabled hence in disabled state rendering
@@ -221,9 +222,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
-    // If Button's menu was closed, run onAfterMenuDismiss
-    if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
-      this.props.onAfterMenuDismiss();
+    // If Button's menu was closed, run onAfterMenuDismiss. If the menu is being persisted
+    // this condition is tested by checking on a change on the menuProps hidden value.
+    if (this.props.onAfterMenuDismiss && prevState.menuProps) {
+      if (!this.state.menuProps || (this.props.persistMenu && !prevState.menuProps.hidden && this.state.menuProps.hidden)) {
+        this.props.onAfterMenuDismiss();
+      }
     }
   }
 
@@ -435,8 +439,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _dismissMenu = (): void => {
     let menuProps = null;
     if (this.props.persistMenu && this.state.menuProps) {
-      menuProps = this.state.menuProps;
-      menuProps.hidden = true;
+      // Create a new object to trigger componentDidUpdate
+      menuProps = { ...this.state.menuProps, hidden: true };
     }
     this.setState({ menuProps: menuProps });
   };

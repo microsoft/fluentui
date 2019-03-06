@@ -609,13 +609,15 @@ describe('Button', () => {
         didClick = false;
       });
 
-      it('Clicking SplitButton button triggers action', () => {
+      function buildRenderButtonWithMenu(callbackMock?: jest.Mock<{}>, persistMenu?: boolean): HTMLElement {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
             data-automation-id="test"
             text="Create account"
             split={true}
             onClick={setTrue}
+            onAfterMenuDismiss={callbackMock}
+            persistMenu={persistMenu}
             menuProps={{
               items: [
                 {
@@ -632,6 +634,11 @@ describe('Button', () => {
             }}
           />
         );
+        return renderedDOM;
+      }
+
+      it('Clicking SplitButton button triggers action', () => {
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu();
         const menuButtonDOM: HTMLButtonElement = renderedDOM.querySelectorAll('button')[0];
 
         ReactTestUtils.Simulate.click(menuButtonDOM);
@@ -639,29 +646,7 @@ describe('Button', () => {
       });
 
       it('Pressing alt + down on SplitButton triggers menu', () => {
-        const renderedDOM: HTMLElement = renderIntoDocument(
-          <DefaultButton
-            data-automation-id="test"
-            text="Create account"
-            split={true}
-            onClick={setTrue}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        );
-
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu();
         const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
         ReactTestUtils.Simulate.keyDown(menuButtonElement, {
@@ -674,30 +659,21 @@ describe('Button', () => {
       it('Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
         const callbackMock = jest.fn();
 
-        const renderedDOM: HTMLElement = renderIntoDocument(
-          <DefaultButton
-            data-automation-id="test"
-            text="Create account"
-            split={true}
-            onClick={setTrue}
-            onAfterMenuDismiss={callbackMock}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        );
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu(callbackMock);
+        const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
+        ReactTestUtils.Simulate.click(menuButtonElement);
+        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+
+        ReactTestUtils.Simulate.click(menuButtonElement);
+        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('false');
+        expect(callbackMock.mock.calls.length).toBe(1);
+      });
+
+      it('[PersistedMenu] Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
+        const callbackMock = jest.fn();
+
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu(callbackMock, true);
         const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
         ReactTestUtils.Simulate.click(menuButtonElement);
@@ -976,16 +952,16 @@ describe('Button', () => {
 
       it(`If button has text but labelElementId provided in menuProps, contextual menu has
       aria-labelledBy reflecting labelElementId`, () => {
-        const explicitLabelElementId = 'id_ExplicitLabel';
-        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
-          { labelElementId: explicitLabelElementId },
-          'Button Text'
-        );
+          const explicitLabelElementId = 'id_ExplicitLabel';
+          const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+            { labelElementId: explicitLabelElementId },
+            'Button Text'
+          );
 
-        expect(contextualMenuElement).not.toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
-      });
+          expect(contextualMenuElement).not.toBeNull();
+          expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+          expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
+        });
     });
   });
 });
