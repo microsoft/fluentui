@@ -1,5 +1,13 @@
-import { IButtonMenuSlot } from './ButtonMenu/ButtonMenu.types';
-import { IComponent, IComponentStyles, IHTMLSlot, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IButtonMenuProps, IButtonMenuSlot } from './ButtonMenu/ButtonMenu.types';
+import {
+  IComponent,
+  IComponentStyles,
+  IHTMLSlot,
+  IHTMLElementSlot,
+  ISlotProp,
+  ISlottableReactType,
+  IStyleableComponentProps
+} from '../../Foundation';
 import { IFontWeight, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
@@ -108,7 +116,7 @@ export interface IButtonProps
   /**
    * Defines the type of the menu that is going to be rendered.
    */
-  menuType?: any;
+  menuType?: ISlottableReactType<IButtonMenuProps>;
 
   /**
    * Defines whether the Button is rendered as a Split Button.

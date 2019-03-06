@@ -15,7 +15,7 @@ const alias = {
 module.exports = [
   ...resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     entry: {
-      [BUNDLE_NAME]: './lib/components/Button/index.js'
+      [BUNDLE_NAME]: './lib/index.js'
     },
     externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
     resolve: {

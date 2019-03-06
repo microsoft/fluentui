@@ -1,4 +1,4 @@
-import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableReactType } from '../../../Foundation';
 import { IBaseProps, IPoint } from '../../../Utilities';
 import { DirectionalHint } from 'office-ui-fabric-react';
 
@@ -18,10 +18,7 @@ export interface IButtonMenuSlots {
 
 export interface IButtonMenu {}
 
-export interface IButtonMenuProps
-  extends IButtonMenuSlots,
-    IStyleableComponentProps<IButtonMenuProps, IButtonMenuTokens, IButtonMenuStyles>,
-    IBaseProps<IButtonMenu> {
+export interface IButtonMenuProps extends IButtonMenuSlots, IBaseProps<IButtonMenu> {
   /**
    * Defines the target that the ButtonMenu should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
@@ -50,7 +47,7 @@ export interface IButtonMenuProps
   /**
    * Defines the type of menu that is to be rendered.
    */
-  menuType: any;
+  menuType?: ISlottableReactType<IButtonMenuProps>;
 }
 
 export interface IButtonMenuTokens {}
