@@ -64,4 +64,4 @@ storiesOf('Signals', module)
   .addStory('Read-only', () => <SignalExample name="Read-only" signal={<ReadOnlySignal />} />)
   .addStory('Shared', () => <SignalExample name="Shared" signal={<SharedSignal />} />)
   .addStory('Follow', () => <FollowedSignal name="Save for later" signal={<FollowedSignal />} />)
-  .addStory('NotFollow', () => <NotFollowedSignal name="Remove from saved" signal={<NotFollowedSignal />} />)
+  .addStory('NotFollow', () => <NotFollowedSignal name="Remove from saved" signal={<NotFollowedSignal />} />);
