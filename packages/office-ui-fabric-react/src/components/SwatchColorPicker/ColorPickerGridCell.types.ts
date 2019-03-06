@@ -63,7 +63,7 @@ export interface IColorPickerGridCellProps {
 
   /**
    * Width of the border that indicates a selected/hovered cell, in pixels.
-   * If `cellWidth` is less than 24px than default value is 2px. Otherwise it defaults to 4px.
+   * If `cellWidth` is less than 24px, then default value is 2px. Otherwise it defaults to 4px.
    * @defaultvalue 2
    */
   borderWidth?: number;
