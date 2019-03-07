@@ -68,6 +68,7 @@ const steps = [
   { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
   { template: 'VsCodeLaunch', output: path.join('.vscode', 'launch.json') },
   { template: 'Tests', output: path.join('config', 'tests.js') },
+  { template: 'PreCopy', output: path.join('config', 'pre-copy.json') },
   { template: 'Tests', output: path.join('src', 'common', 'tests.js') },
   { template: 'IndexTs', output: path.join('src', 'index.ts') },
   { template: 'Version', output: path.join('src', 'version.ts') },
