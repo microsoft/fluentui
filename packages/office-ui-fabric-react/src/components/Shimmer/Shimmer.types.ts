@@ -63,7 +63,7 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
 }
 
 /**
- * Shimmer Elements Interface
+ * Shimmer Elements Interface representing all common properties between Gap, Circle and Line.
  */
 export interface IShimmerElement {
   /**
@@ -91,6 +91,9 @@ export interface IShimmerElement {
   verticalAlign?: 'top' | 'center' | 'bottom';
 }
 
+/**
+ * Line element interface
+ */
 export interface ILine extends IShimmerElement {
   /**
    * Sets the height of the shimmer line in pixels.
@@ -105,6 +108,9 @@ export interface ILine extends IShimmerElement {
   width?: number | string;
 }
 
+/**
+ * Circle element interface
+ */
 export interface ICircle extends IShimmerElement {
   /**
    * Sets the height of the shimmer circle in pixels.
@@ -114,6 +120,9 @@ export interface ICircle extends IShimmerElement {
   height?: number;
 }
 
+/**
+ * Gap element interface
+ */
 export interface IGap extends IShimmerElement {
   /**
    * Sets the height of the shimmer gap in pixels.
@@ -128,22 +137,49 @@ export interface IGap extends IShimmerElement {
   width?: number | string;
 }
 
+/**
+ * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ */
 export interface IShimmerStyleProps {
+  /** Boolean flag to trigger fadeIn/fadeOut transition animation when content is loaded. */
   isDataLoaded?: boolean;
+
+  /** Optional CSS class name for the component attached to the root stylable area. */
   className?: string;
+
+  /** Theme provided by High-Order Component. */
   theme: ITheme;
+
+  /** Interval in milliseconds for the adeIn/fadeOut transition animation. */
   transitionAnimationInterval?: number;
+
+  /** Color to be used as the main background color of Shimmer when not animating. */
   shimmerMainColor?: string;
+
+  /** Tip color of the shimmer wave which gradually gets from and to `shimmerMainColor`. */
   shimmerWaveColor?: string;
 }
 
+/**
+ * Represents the stylable areas of the control.
+ */
 export interface IShimmerStyles {
+  /** Refers to the root wrapper element. */
   root?: IStyle;
+
+  /** Refers to wrapper element of the shimmer animation only. */
   shimmerWrapper?: IStyle;
+
+  /** Refers to wrapper element of the children only. */
   dataWrapper?: IStyle;
+
+  /** Styles for the hidden helper element to aid with screen readers. */
   screenReaderText?: IStyle;
 }
 
+/**
+ * Describes the possible types for shimmer elements used.
+ */
 export enum ShimmerElementType {
   /**
    * Line element type
@@ -161,6 +197,9 @@ export enum ShimmerElementType {
   gap = 3
 }
 
+/**
+ * Describes the default heights for shimmer elements when omitted in implementation.
+ */
 export enum ShimmerElementsDefaultHeights {
   /**
    * Default height of the line element when not provided by user: 16px

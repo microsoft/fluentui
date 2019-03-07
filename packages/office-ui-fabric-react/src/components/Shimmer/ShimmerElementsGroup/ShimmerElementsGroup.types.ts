@@ -53,11 +53,25 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
   styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
 }
 
+/**
+ * Props needed to construct styles.
+ */
 export interface IShimmerElementsGroupStyleProps {
+  /**
+   * Boolean flag to notify whether the root element needs to flex wrap.
+   */
   flexWrap?: boolean;
+
+  /** Theme provided by High-Order Component. */
   theme: ITheme;
 }
 
+/**
+ * Represents the stylable areas of the control.
+ */
 export interface IShimmerElementsGroupStyles {
+  /**
+   * Represents the wrapper root element holding all elements inside.
+   */
   root?: IStyle;
 }
