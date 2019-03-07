@@ -3,9 +3,8 @@ import { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from
 import { DialogFooterBase } from './DialogFooter.base';
 import { getStyles } from './DialogFooter.styles';
 
-export const DialogFooter = styled<IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles>(
-  DialogFooterBase,
-  getStyles,
-  undefined,
-  { scope: 'DialogFooter' }
-);
+export const DialogFooter: React.StatelessComponent<IDialogFooterProps> = styled<
+  IDialogFooterProps,
+  IDialogFooterStyleProps,
+  IDialogFooterStyles
+>(DialogFooterBase, getStyles, undefined, { scope: 'DialogFooter' });

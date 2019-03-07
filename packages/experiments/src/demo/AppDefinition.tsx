@@ -17,12 +17,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/button'
         },
         {
-          component: require<any>('../components/Card/CardPage').CardPage,
-          key: 'Card',
-          name: 'Card',
-          url: '#/examples/card'
-        },
-        {
           component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
           key: 'CollapsibleSection',
           name: 'CollapsibleSection',

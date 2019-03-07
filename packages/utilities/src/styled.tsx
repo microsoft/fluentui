@@ -47,7 +47,7 @@ export function styled<
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps
-): (props: TComponentProps) => JSX.Element {
+): React.StatelessComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 
   const { scope, fields = DefaultFields } = customizable;

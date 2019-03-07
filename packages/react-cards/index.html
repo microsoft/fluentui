@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
+
+    <title>Office UI Fabric React ReactCards Examples</title>
+  </head>
+
+  <body>
+    <div id="content"></div>
+    <script type="text/javascript">
+      window.FabricConfig = {
+        // Uncommenting this prevents the fontfaces from being registered.
+        // Alternatively you can specify a base url which contains the font/icon assets.
+        // fontBaseUrl: ''
+      };
+
+      var isLocalHost = document.location.href.indexOf('localhost') !== -1 || document.location.href.indexOf('127.0.0.1') !== -1;
+
+      var useMinified =
+        document.location.search.indexOf('?min=0') === -1 &&
+        (document.location.search.indexOf('?min=1') > -1 || location.pathname === '/fabric-react/master/');
+
+      function loadScript(n) {
+        for (var i = 0; i < n.length; i++) {
+          var s = document.createElement('script');
+          s.src = n[i];
+          s.async = false;
+          document.body.appendChild(s);
+        }
+      }
+
+      const scripts = [];
+
+      if (isLocalHost) {
+        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.development.js');
+        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.development.js');
+      } else {
+        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.production.min.js');
+        scripts.push('//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.production.min.js');
+      }
+
+      if (useMinified) {
+        scripts.push('demo-app.min.js');
+      } else {
+        scripts.push('demo-app.js');
+      }
+
+      loadScript(scripts);
+    </script>
+  </body>
+</html>

@@ -1,6 +1,28 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 28 Feb 2019 13:29:07 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+
+## 0.53.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Added wizard to dashboard package index
+- Replacing elementType usage with as in SubwayNavBase and SubwayNodeBase
+
+## 0.52.2
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.52.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Make the stepToShow parameter take effect on footerAction
 
 ## 0.52.0
 Thu, 28 Feb 2019 13:29:07 GMT

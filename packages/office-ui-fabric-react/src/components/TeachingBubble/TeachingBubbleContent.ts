@@ -3,9 +3,8 @@ import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles 
 import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { getStyles } from './TeachingBubble.styles';
 
-export const TeachingBubbleContent = styled<ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles>(
-  TeachingBubbleContentBase,
-  getStyles,
-  undefined,
-  { scope: 'TeachingBubbleContent' }
-);
+export const TeachingBubbleContent: React.StatelessComponent<ITeachingBubbleProps> = styled<
+  ITeachingBubbleProps,
+  ITeachingBubbleStyleProps,
+  ITeachingBubbleStyles
+>(TeachingBubbleContentBase, getStyles, undefined, { scope: 'TeachingBubbleContent' });
