@@ -1,6 +1,6 @@
-import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
 import { IBaseProps } from '@uifabric/utilities';
 import { IStackSlot } from 'office-ui-fabric-react';
+import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
 
 export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
 
@@ -24,16 +24,31 @@ export interface ICardSlots {
   stack?: IStackSlot;
 }
 
-// Extending IStyleableComponentProps will automatically add stylable props for you, such as styles and theme.
-//    If you don't want these props to be included in your component, just remove this extension.
 export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard> {
   /**
    * Defines whether to render a regular or a compact Card.
    * @defaultvalue false
    */
   compact?: boolean;
+
+  /**
+   * Defines the spacing between Card children.
+   */
+  gap?: number | string;
+
+  /**
+   * Defines a callback that is called when the Card is clicked.
+   */
+  onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface ICardTokens {}
+export interface ICardTokens {
+  boxShadow?: string;
+  boxShadowHovered?: string;
+  padding?: number | string;
+  width?: number | string;
+  minWidth?: number | string;
+  maxWidth?: number | string;
+}
 
 export type ICardStyles = IComponentStyles<ICardSlots>;

@@ -1,6 +1,7 @@
 import { IComponentStyles, IHTMLSlot, IComponent, IStyleableComponentProps } from '@uifabric/foundation';
+import { IStackItemProps } from 'office-ui-fabric-react';
 
-export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICardItemStyles>;
+export type ICardItemComponent = IComponent<ICardItemProps & IStackItemProps, ICardItemTokens, ICardItemStyles>;
 
 export interface ICardItemSlots {
   root?: IHTMLSlot;
