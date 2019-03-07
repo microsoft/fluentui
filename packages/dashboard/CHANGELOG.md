@@ -1,6 +1,14 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2019 13:32:46 GMT and should not be manually modified.
+
+## 0.53.1
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Patches
+
+- DetailPanel: Allow persona header set image icon 
+- DetailPanel: Allow header property to take JSX.Element
 
 ## 0.53.0
 Wed, 06 Mar 2019 13:27:18 GMT
