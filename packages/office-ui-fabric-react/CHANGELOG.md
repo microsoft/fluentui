@@ -1,6 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2019 13:32:47 GMT and should not be manually modified.
+
+## 6.152.1
+Thu, 07 Mar 2019 13:32:47 GMT
+
+### Patches
+
+- Remove console log in Tooltip absolute position example
+- Pivot - remove deprecated lifecycle method, and deterministically render selected PivotItem. Will change behavior of Pivot instances that specified `selectedKey` but use in an uncontrolled fashion. 
+- Suggestions: set className on Suggestion header/footer
+- SwatchColorPicker: updates the styles so that they align to the toolkit specs.
 
 ## 6.152.0
 Wed, 06 Mar 2019 13:27:18 GMT
