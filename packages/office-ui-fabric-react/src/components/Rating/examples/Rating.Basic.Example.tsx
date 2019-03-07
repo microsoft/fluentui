@@ -41,6 +41,8 @@ export class RatingBasicExample extends React.Component<
           max={5}
           size={RatingSize.Large}
           rating={this.state.largeStarRating}
+          icon="FavoriteStarFill"
+          unselectedIcon="FavoriteStar"
           getAriaLabel={this._getRatingComponentAriaLabel}
           onChange={this._onLargeStarChange}
           onFocus={this._onFocus}
@@ -52,6 +54,8 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={5}
           rating={this.state.smallStarRating}
+          icon="FavoriteStarFill"
+          unselectedIcon="FavoriteStar"
           onChange={this._onSmallStarChange}
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
@@ -63,6 +67,8 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={10}
           rating={this.state.tenStarRating}
+          icon="FavoriteStarFill"
+          unselectedIcon="FavoriteStar'"
           onChange={this._onTenStarChange}
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
@@ -74,6 +80,8 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={5}
           rating={this.state.rating}
+          icon="FavoriteStarFill"
+          unselectedIcon="FavoriteStar"
           disabled={true}
           onFocus={this._onFocus}
           onBlur={this._onBlur}
@@ -84,6 +92,8 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={5}
           rating={2.5}
+          icon="FavoriteStarFill"
+          unselectedIcon="FavoriteStar"
           getAriaLabel={this._getRatingComponentAriaLabel}
           readOnly={true}
           ariaLabelFormat={'{0} of {1} stars selected'}
@@ -104,6 +114,8 @@ export class RatingBasicExample extends React.Component<
           min={1}
           max={5}
           rating={this.state.themedStarRating}
+          icon="FavoriteStarFill"
+          unselectedIcon="FavoriteStar"
           onChange={this._onThemedStarChange}
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}

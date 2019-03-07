@@ -22,7 +22,14 @@ export class RatingButtonControlledExample extends React.Component<
 
     return (
       <div className="ms-RatingButtonControlledExample">
-        <Rating rating={this.state.rating} max={5} readOnly={true} allowZeroStars={true} />
+        <Rating
+          rating={this.state.rating}
+          max={5}
+          readOnly={true}
+          allowZeroStars={true}
+          icon="FavoriteStarFill"
+          unselectedIcon="FavoriteStar"
+        />
         <PrimaryButton
           text={'Click to change rating to ' + (maxrating - this.state.rating)}
           onClick={e => {
