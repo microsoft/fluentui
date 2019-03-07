@@ -1,5 +1,4 @@
 export * from './Button';
-export * from './Card';
 export * from './Chiclet';
 export * from './CollapsibleSection';
 export * from './CommandBar';

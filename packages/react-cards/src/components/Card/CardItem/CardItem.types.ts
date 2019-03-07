@@ -1,4 +1,4 @@
-import { IComponentStyles, IHTMLSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLSlot, IComponent, IStyleableComponentProps } from '@uifabric/foundation';
 
 export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICardItemStyles>;
 

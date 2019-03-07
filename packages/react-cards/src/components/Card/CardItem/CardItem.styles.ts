@@ -1,4 +1,4 @@
-import { getGlobalClassNames } from '../../../Styling';
+import { getGlobalClassNames } from '@uifabric/styling';
 import { ICardItemComponent, ICardItemStylesReturnType } from './CardItem.types';
 
 const GlobalClassNames = {
