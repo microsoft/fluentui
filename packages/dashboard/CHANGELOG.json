@@ -2,6 +2,33 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.53.1",
+      "tag": "@uifabric/dashboard_v0.53.1",
+      "date": "Thu, 07 Mar 2019 13:32:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: Allow persona header set image icon ",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a13e2423b12dab019746cf604633caf0de24c4f2"
+          },
+          {
+            "comment": "DetailPanel: Allow header property to take JSX.Element",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a13e2423b12dab019746cf604633caf0de24c4f2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.62.2 <7.0.0` to `>=6.63.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.152.0 <7.0.0` to `>=6.152.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.53.0",
       "tag": "@uifabric/dashboard_v0.53.0",
       "date": "Wed, 06 Mar 2019 13:27:18 GMT",
