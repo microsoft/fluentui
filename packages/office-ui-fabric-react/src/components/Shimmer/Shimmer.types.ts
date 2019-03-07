@@ -55,6 +55,11 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
    * Theme provided by High-Order Component.
    */
   theme?: ITheme;
+
+  /**
+   * Defines an object with possible colors to pass for Shimmer customization used on different backgrounds.
+   */
+  shimmerColors?: IShimmerColors;
 }
 
 /**
@@ -62,24 +67,25 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
  */
 export interface IShimmerElement {
   /**
+   * Represents the possible type of the shimmer elements: Gap, Circle, Line.
    * Required for every element you intend to use.
    */
   type: ShimmerElementType;
 
   /**
-   * The height of the element (ICircle, ILine, IGap) in pixels.
+   * Sets the height of the element (ICircle, ILine, IGap) in pixels.
    * Read more details for each specific element.
    */
   height?: number;
 
   /**
-   * The width value of the element (ILine, IGap) in pixels.
+   * Sets the width value of the element (ILine, IGap) in pixels.
    * Read more details for each specific element.
    */
   width?: number | string;
 
   /**
-   * The vertical alignemt of the element (ICircle, ILine).
+   * Sets vertical alignment of the element (ICircle, ILine).
    * @defaultvalue center
    */
   verticalAlign?: 'top' | 'center' | 'bottom';
@@ -127,6 +133,8 @@ export interface IShimmerStyleProps {
   className?: string;
   theme: ITheme;
   transitionAnimationInterval?: number;
+  shimmerMainColor?: string;
+  shimmerWaveColor?: string;
 }
 
 export interface IShimmerStyles {
@@ -168,4 +176,27 @@ export enum ShimmerElementsDefaultHeights {
    * Default height of the circle element when not provided by user: 24px
    */
   circle = 24
+}
+
+/**
+ * Interface describing the possible color customizations of Shimmer.
+ */
+export interface IShimmerColors {
+  /**
+   * Defines the main background color which is the color you see when the wave is not animating.
+   * @defaultvalue theme.palette.neutralLight
+   */
+  shimmerMain?: string;
+
+  /**
+   * Defines the tip color of the shimmer wave which gradually gets from and to `shimmerMain` color.
+   * @defaultvalue theme.palette.neutralLighter
+   */
+  shimmerWave?: string;
+
+  /**
+   * Defines the background color of the space in between and around shimmer elements (borders, gaps and rounded corners).
+   * @defaultvalue theme.palette.white
+   */
+  surroundingSpace?: string;
 }

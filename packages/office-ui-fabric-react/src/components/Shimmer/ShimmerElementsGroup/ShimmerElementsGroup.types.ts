@@ -42,6 +42,12 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
   theme?: ITheme;
 
   /**
+   * Defines the background color of the space in between and around shimmer elements.
+   * @defaultvalue theme.palette.white
+   */
+  surroundingColor?: string;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
