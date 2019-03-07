@@ -5,9 +5,8 @@ import { getStyles } from './DetailsHeader.styles';
 
 export { IDetailsHeaderProps, IDetailsHeaderBaseProps };
 
-export const DetailsHeader = styled<IDetailsHeaderBaseProps, IDetailsHeaderStyleProps, IDetailsHeaderStyles>(
-  DetailsHeaderBase,
-  getStyles,
-  undefined,
-  { scope: 'DetailsHeader' }
-);
+export const DetailsHeader: React.StatelessComponent<IDetailsHeaderBaseProps> = styled<
+  IDetailsHeaderBaseProps,
+  IDetailsHeaderStyleProps,
+  IDetailsHeaderStyles
+>(DetailsHeaderBase, getStyles, undefined, { scope: 'DetailsHeader' });

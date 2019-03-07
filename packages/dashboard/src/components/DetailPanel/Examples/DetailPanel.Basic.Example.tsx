@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { DetailPanel } from '../DetailPanel';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IDetailPanelHeaderProps } from '../DetailPanel.types';
 
 export interface IDetailPanelBasicExampleStates {
   show: boolean;
@@ -17,9 +16,7 @@ export class DetailPanelBasicExample extends React.PureComponent<{}, IDetailPane
   public render(): JSX.Element {
     const { show } = this.state;
     if (show) {
-      const header: IDetailPanelHeaderProps = {
-        title: ' I am a basic detail panel'
-      };
+      const header: JSX.Element = <div>I am a custom JSX.ELement</div>;
 
       return (
         <DetailPanel

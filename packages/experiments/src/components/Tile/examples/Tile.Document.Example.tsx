@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Tile, getTileLayout, renderTileWithLayout } from '@uifabric/experiments/lib/Tile';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { SignalField, NewSignal, CommentsSignal, TrendingSignal, SharedSignal } from '../../signals/Signals';
-import { lorem } from '@uifabric/example-app-base/lib/utilities/data';
+import { lorem } from '@uifabric/example-app-base';
 import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 

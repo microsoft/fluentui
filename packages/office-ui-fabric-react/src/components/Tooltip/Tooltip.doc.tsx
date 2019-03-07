@@ -7,6 +7,7 @@ import { TooltipDisplayExample } from './examples/Tooltip.Display.Example';
 import { TooltipInteractiveExample } from './examples/Tooltip.Interactive.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
 import { TooltipNoScrollExample } from './examples/Tooltip.NoScroll.Example';
+import { TooltipAbsolutePositionExample } from './examples/Tooltip.Absolute.Position.Example';
 import { TooltipStatus } from './Tooltip.checklist';
 
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
@@ -16,6 +17,7 @@ const TooltipCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const TooltipInteractiveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Interactive.Example.tsx') as string;
 const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
 const TooltipNoScrollExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.NoScroll.Example.tsx') as string;
+const TooltipAbsolutePositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Absolute.Position.Example.tsx') as string;
 
 export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',
@@ -53,6 +55,11 @@ export const TooltipPageProps: IDocPageProps = {
       title: 'Tooltip without scroll (improves performance)',
       code: TooltipNoScrollExampleCode,
       view: <TooltipNoScrollExample />
+    },
+    {
+      title: 'Tooltip with position absolute',
+      code: TooltipAbsolutePositionExampleCode,
+      view: <TooltipAbsolutePositionExample />
     }
   ],
   propertiesTablesSources: [

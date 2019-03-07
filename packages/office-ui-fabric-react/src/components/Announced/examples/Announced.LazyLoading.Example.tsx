@@ -83,7 +83,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
         <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
         <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
         {this._renderAnnounced()}
-        <FocusZone elementType="ul" className="ms-AnnouncedExamples-photoList">
+        <FocusZone as="ul" className="ms-AnnouncedExamples-photoList">
           {this._renderPhotos()}
         </FocusZone>
       </Stack>

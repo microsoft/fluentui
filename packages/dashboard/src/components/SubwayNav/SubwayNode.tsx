@@ -3,7 +3,7 @@ import { SubwayNodeBase } from './SubwayNodeBase';
 import { getSubwayNodeStyles } from './SubwayNode.styles';
 import { ISubwayNavNodeProps, ISubwayNavNodeStyleProps, ISubwayNavNodeStyles } from './SubwayNode.types';
 
-export const SubwayNode: (props: ISubwayNavNodeProps) => JSX.Element = styled<
+export const SubwayNode: React.StatelessComponent<ISubwayNavNodeProps> = styled<
   ISubwayNavNodeProps,
   ISubwayNavNodeStyleProps,
   ISubwayNavNodeStyles
