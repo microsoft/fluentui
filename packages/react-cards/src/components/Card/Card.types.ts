@@ -1,6 +1,6 @@
-import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
+import { IBaseProps } from '@uifabric/utilities';
 import { IStackSlot } from 'office-ui-fabric-react';
-import { IBaseProps } from '../../Utilities';
 
 export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
 

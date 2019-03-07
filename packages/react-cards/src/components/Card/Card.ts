@@ -3,7 +3,7 @@ import { CardStyles as styles, CardTokens as tokens } from './Card.styles';
 import { ICardProps } from './Card.types';
 import { CardItem } from './CardItem/CardItem';
 import { ICardItemProps } from './CardItem/CardItem.types';
-import { createComponent } from '../../Foundation';
+import { createComponent } from '@uifabric/foundation';
 
 const CardStatics = {
   Item: CardItem

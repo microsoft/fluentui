@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, createComponent, getSlots } from '../../../Foundation';
+import { withSlots, createComponent, getSlots } from '@uifabric/foundation';
 import { ICardItemComponent, ICardItemProps, ICardItemSlots } from './CardItem.types';
 import { CardItemStyles as styles } from './CardItem.styles';
 
