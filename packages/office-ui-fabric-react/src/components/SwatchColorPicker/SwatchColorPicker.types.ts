@@ -107,6 +107,7 @@ export interface ISwatchColorPickerProps {
 
   /**
    * Width of the border indicating a hovered/selected cell, in pixels
+   * If `cellWidth` is less than 24px, then default value is 2px. Otherwise it defaults to 4px.
    * @defaultvalue 2
    */
   cellBorderWidth?: number;

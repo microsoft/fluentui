@@ -2,6 +2,68 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.63.0",
+      "tag": "@uifabric/experiments_v6.63.0",
+      "date": "Thu, 07 Mar 2019 13:32:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "folder cover ux cleaned up",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "15fc20513cb4b2bbe722718f7f9bc4a693861b9d"
+          },
+          {
+            "comment": "Signals: changes icon color of `follow` signal.",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "ec354ff191a91f187bdc01bbe8eb553fc8b8ace1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Removing Card component from experiments package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "89c91d93100f85435ecc442e330222af91b01435"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.152.0 <7.0.0` to `>=6.152.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.62.2",
+      "tag": "@uifabric/experiments_v6.62.2",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up a few imports.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "699e46023b7ff583d8c50bb0a82f8bee66896fdf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.33.0 <7.0.0` to `>=6.34.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.151.0 <7.0.0` to `>=6.152.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.0 <7.0.0` to `>=6.12.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.62.1",
       "tag": "@uifabric/experiments_v6.62.1",
       "date": "Tue, 05 Mar 2019 17:33:41 GMT",

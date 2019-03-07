@@ -1,6 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2019 13:32:46 GMT and should not be manually modified.
+
+## 6.63.0
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Minor changes
+
+- Removing Card component from experiments package.
+
+### Patches
+
+- folder cover ux cleaned up
+- Signals: changes icon color of `follow` signal.
+
+## 6.62.2
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Patches
+
+- Clean up a few imports.
 
 ## 6.62.1
 Tue, 05 Mar 2019 17:33:41 GMT

@@ -1,5 +1,5 @@
 import { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames } from '@uifabric/styling';
 
 const GlobalClassNames = {
   root: 'ms-Card',

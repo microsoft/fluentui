@@ -1,9 +1,8 @@
 // @codepen
 import * as React from 'react';
 import { Card } from '../Card';
-import { Persona } from '../../../Persona';
+import { Persona, Text } from '@uifabric/experiments';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
-import { Text } from '../../../Text';
 import { Icon, Image, Stack } from 'office-ui-fabric-react';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 

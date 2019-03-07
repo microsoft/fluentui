@@ -2,6 +2,31 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.12.1",
+      "tag": "@uifabric/example-app-base_v6.12.1",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve autodoc to deal with line breaks in extends clause.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "699e46023b7ff583d8c50bb0a82f8bee66896fdf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.151.0 <7.0.0` to `>=6.152.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.0",
       "tag": "@uifabric/example-app-base_v6.12.0",
       "date": "Tue, 05 Mar 2019 04:25:07 GMT",

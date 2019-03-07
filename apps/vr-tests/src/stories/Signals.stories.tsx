@@ -17,7 +17,9 @@ import {
   UnseenEditSignal,
   EmailedSignal,
   RecordSignal,
-  ReadOnlySignal
+  ReadOnlySignal,
+  FollowedSignal,
+  NotFollowedSignal
 } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -60,4 +62,6 @@ storiesOf('Signals', module)
   .addStory('Emailed', () => <SignalExample name="Emailed" signal={<EmailedSignal />} />)
   .addStory('Record', () => <SignalExample name="Record" signal={<RecordSignal />} />)
   .addStory('Read-only', () => <SignalExample name="Read-only" signal={<ReadOnlySignal />} />)
-  .addStory('Shared', () => <SignalExample name="Shared" signal={<SharedSignal />} />);
+  .addStory('Shared', () => <SignalExample name="Shared" signal={<SharedSignal />} />)
+  .addStory('Follow', () => <SignalExample name="Save for later" signal={<FollowedSignal />} />)
+  .addStory('NotFollow', () => <SignalExample name="Remove from saved" signal={<NotFollowedSignal />} />);
