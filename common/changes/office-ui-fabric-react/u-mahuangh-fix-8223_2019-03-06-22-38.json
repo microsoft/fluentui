@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "set className on Suggestion header/footer",
-      "type": "minor"
+      "comment": "Suggestions: set className on Suggestion header/footer",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
