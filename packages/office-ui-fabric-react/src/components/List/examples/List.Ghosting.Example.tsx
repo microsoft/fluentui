@@ -4,7 +4,7 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import './List.Ghosting.Example.scss';
 
-type IExampleItem = { name: string; thumbnail: string };
+export type IExampleItem = { name: string; thumbnail: string };
 
 export interface IListGhostingExampleProps {
   items: IExampleItem[];

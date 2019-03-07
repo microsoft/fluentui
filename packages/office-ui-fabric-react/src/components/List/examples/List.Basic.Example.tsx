@@ -7,7 +7,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Basic.Example.scss';
 
-type IExampleItem = { name: string; thumbnail: string; description: string };
+export type IExampleItem = { name: string; thumbnail: string; description: string };
 
 export interface IListBasicExampleProps {
   items: IExampleItem[];

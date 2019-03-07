@@ -8,7 +8,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
-type IExampleItem = { name: string };
+export type IExampleItem = { name: string };
 
 export interface IListScrollingExampleProps {
   items: IExampleItem[];
