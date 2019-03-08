@@ -106,11 +106,6 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * when the content changes dynamically.
    */
   topOffsetFixed?: boolean;
-
-  /**
-   * React children
-   */
-  children?: any; // FABRIC7VALIDATE this should be implicit
 }
 
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &

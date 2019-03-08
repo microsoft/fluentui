@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "Fix selector in a mergeStyleSets Readme example",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "ivdijan@microsoft.com"
+}

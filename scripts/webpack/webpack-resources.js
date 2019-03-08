@@ -142,8 +142,10 @@ module.exports = {
         plugins: [
           // TODO: will investigate why this doesn't work on mac
           // new WebpackNotifierPlugin(),
-          new ForkTsCheckerWebpackPlugin(),
-          ...(process.env.TRAVIS ? [] : [new webpack.ProgressPlugin()])
+          new ForkTsCheckerWebpackPlugin()
+          // This sends output to stderr for some reason, which makes rush build say
+          // "succeeded with warnings" when there were no real warnings
+          // ...(process.env.TRAVIS ? [] : [new webpack.ProgressPlugin()])
         ]
       },
       customConfig

@@ -3,7 +3,7 @@ import { styled } from 'office-ui-fabric-react/lib/Utilities';
 import { getWizardStyles } from './Wizard.styles';
 import { IWizardProps, IWizardStyleProps, IWizardStyles } from './Wizard.types';
 
-export const Wizard: (props: IWizardProps) => JSX.Element = styled<IWizardProps, IWizardStyleProps, IWizardStyles>(
+export const Wizard: React.StatelessComponent<IWizardProps> = styled<IWizardProps, IWizardStyleProps, IWizardStyles>(
   WizardBase,
   getWizardStyles,
   undefined,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.types';
-import { BaseComponent, css } from '../../Utilities';
+import { css } from '../../Utilities';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 
@@ -14,7 +14,7 @@ const getCellText = (item: any, column: IColumn): string => {
   return value;
 };
 
-export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps> {
+export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps> {
   public render(): JSX.Element {
     const {
       columns,
