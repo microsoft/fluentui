@@ -68,7 +68,7 @@ export class RatingBasicExample extends React.Component<
           max={10}
           rating={this.state.tenStarRating}
           icon="FavoriteStarFill"
-          unselectedIcon="FavoriteStar'"
+          unselectedIcon="FavoriteStar"
           onChange={this._onTenStarChange}
           getAriaLabel={this._getRatingComponentAriaLabel}
           onFocus={this._onFocus}
