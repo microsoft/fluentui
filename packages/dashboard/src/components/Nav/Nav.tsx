@@ -11,32 +11,32 @@ const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 class NavComponent extends BaseComponent<INavProps, INavState> {
   private wrapperRef: React.RefObject<HTMLDivElement>;
   private containerRef: React.RefObject<HTMLDivElement>;
-  private shouldScroll: boolean = false;
   private fireCollapse: boolean = false;
 
   constructor(props: INavProps) {
     super(props);
     this.state = {
-      isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false
+      isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false,
+      shouldScroll: false
     };
 
     this.wrapperRef = React.createRef<HTMLDivElement>();
     this.containerRef = React.createRef<HTMLDivElement>();
     this._onNavCollapseClicked = this._onNavCollapseClicked.bind(this);
     this._editClicked = this._editClicked.bind(this);
-    this._toggleHidden = this._toggleHidden.bind(this);
+    this._toggleMore = this._toggleMore.bind(this);
     this._setScrollLayout = this._setScrollLayout.bind(this);
   }
 
   public render(): JSX.Element {
-    const { isNavCollapsed, groups, enableCustomization, showMore, editString, showMoreString, showLessString, dataHint } = this.props;
+    const { groups, enableCustomization, showMore, editString, showMoreString, showLessString, dataHint, isNavCollapsed } = this.props;
 
     const navCollapsed = isNavCollapsed ? isNavCollapsed : this.state.isNavCollapsed;
 
     const classNames = getClassNames(getStyles, { isNavCollapsed: navCollapsed });
     const collapseButtonAriaLabel = navCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
-    const navWrapperClassName = this.shouldScroll ? classNames.navWrapper + ' ' + classNames.navWrapperScroll : classNames.navWrapper;
-    const navContainerClassName = this.shouldScroll
+    const navWrapperClassName = this.state.shouldScroll ? classNames.navWrapper + ' ' + classNames.navWrapperScroll : classNames.navWrapper;
+    const navContainerClassName = this.state.shouldScroll
       ? classNames.navContainer + ' ' + classNames.navContainerScroll
       : classNames.navContainer;
 
@@ -94,7 +94,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                         id={'ShowMore'}
                         href={'#'}
                         name={this.props.showMore ? showMoreString : showLessString}
-                        onClick={this._toggleHidden}
+                        onClick={this._toggleMore}
                         dataHint={'Show more'}
                         dataValue={'Show more'}
                         ariaLabel={'Show more'}
@@ -126,16 +126,11 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   }
 
   private _setScrollLayout(): void {
-    const classNames = getClassNames(getStyles, { isNavCollapsed: this.state.isNavCollapsed });
     if (this.containerRef.current && this.wrapperRef.current) {
       if (this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight) {
-        this.containerRef.current.classList.add(classNames.navContainerScroll);
-        this.wrapperRef.current.classList.add(classNames.navWrapperScroll);
-        this.shouldScroll = true;
+        this.setState({ shouldScroll: true });
       } else {
-        this.containerRef.current.classList.remove(classNames.navContainerScroll);
-        this.wrapperRef.current.classList.remove(classNames.navWrapperScroll);
-        this.shouldScroll = false;
+        this.setState({ shouldScroll: false });
       }
     }
   }
@@ -165,9 +160,12 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   }
 
   // TODO: make this a callback
-  private _toggleHidden(ev: React.MouseEvent<HTMLElement>): void {
+  private _toggleMore(ev: React.MouseEvent<HTMLElement>): void {
     ev.preventDefault();
     ev.stopPropagation();
+    if (this.props.onShowMoreLinkClicked) {
+      this.props.onShowMoreLinkClicked(ev);
+    }
   }
 }
 

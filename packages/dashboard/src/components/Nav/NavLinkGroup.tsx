@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavStyles } from './Nav.types';
+import { INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavLinkGroupStyles } from './NavLinkGroup.types';
 import { NavLink } from './NavLink';
-import { getStyles } from './Nav.styles';
+import { getStyles } from './NavLinkGroup.styles';
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavStyles>();
+const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupStyles>();
 
 export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLinkGroupStates> {
   private navLinkGroupRef: React.RefObject<HTMLDivElement>;
@@ -61,8 +61,8 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
   }
 
   private _renderWhenNavCollapsed(link: INavLink): React.ReactElement<{}> | null {
-    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: this.props.isNavCollapsed });
     const { isNavCollapsed, hasSelectedNestedLink } = this.props;
+    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: isNavCollapsed });
 
     return (
       <div className={classNames.nestedNavMenuWhenNavCollapsed} ref={this.navLinkGroupRef}>
@@ -122,8 +122,8 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
   }
 
   private _renderWhenNavExpanded(link: INavLink): JSX.Element {
-    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: this.props.isNavCollapsed });
     const { isNavCollapsed } = this.props;
+    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: isNavCollapsed });
     return (
       <>
         {link.links && (

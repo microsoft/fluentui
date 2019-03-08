@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { INavStyles, INavLinkProps } from './Nav.types';
-import { getStyles } from './Nav.styles';
+import { INavLinkStyles, INavLinkProps } from './NavLink.types';
+import { getStyles } from './NavLink.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<INavLinkProps, INavStyles>();
+const getClassNames = classNamesFunction<INavLinkProps, INavLinkStyles>();
 
 export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   private navLinkRef: React.RefObject<HTMLAnchorElement>;
