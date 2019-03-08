@@ -86,6 +86,15 @@ export class ComboBoxBasicExample extends React.Component<{}, {}> {
         />
 
         <ComboBox
+          label="ComboBox with persisted menu"
+          defaultSelectedKey="B"
+          allowFreeform
+          autoComplete="on"
+          persistMenu={true}
+          options={INITIAL_OPTIONS}
+        />
+
+        <ComboBox
           label="ComboBox with error message"
           defaultSelectedKey="B"
           errorMessage="Oh no! This ComboBox has an error!"
