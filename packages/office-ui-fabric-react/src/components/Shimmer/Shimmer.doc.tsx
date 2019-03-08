@@ -24,12 +24,12 @@ export const ShimmerPageProps: IDocPageProps = {
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Shimmer',
   examples: [
     {
-      title: "Shimmer with basic elements using the 'shimmerElements' prop",
+      title: 'Shimmer with basic elements using the ~shimmerElements~ prop',
       code: ShimmerBasicExampleCode,
       view: <ShimmerBasicExample />
     },
     {
-      title: "Shimmer with custom elements using the 'customElementsGroup' prop",
+      title: 'Shimmer with custom elements using the ~customElementsGroup~ prop',
       code: ShimmerCustomExampleCode,
       view: <ShimmerCustomElementsExample />
     },
@@ -45,7 +45,7 @@ export const ShimmerPageProps: IDocPageProps = {
       view: <ShimmerApplicationExample />
     },
     {
-      title: "Style override of shimmering wave using 'styles' prop",
+      title: 'Shimmer styles customizations',
       code: ShimmerStylingExampleCode,
       view: <ShimmerStylingExample />
     }
