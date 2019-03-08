@@ -154,9 +154,9 @@ export interface IShimmerStyleProps {
   transitionAnimationInterval?: number;
 
   /** Color to be used as the main background color of Shimmer when not animating. */
-  shimmerMainColor?: string;
+  shimmerColor?: string;
 
-  /** Tip color of the shimmer wave which gradually gets from and to `shimmerMainColor`. */
+  /** Tip color of the shimmer wave which gradually gets from and to `shimmerColor`. */
   shimmerWaveColor?: string;
 }
 
@@ -225,10 +225,10 @@ export interface IShimmerColors {
    * Defines the main background color which is the color you see when the wave is not animating.
    * @defaultvalue theme.palette.neutralLight
    */
-  shimmerMain?: string;
+  shimmer?: string;
 
   /**
-   * Defines the tip color of the shimmer wave which gradually gets from and to `shimmerMain` color.
+   * Defines the tip color of the shimmer wave which gradually gets from and to `shimmer` color.
    * @defaultvalue theme.palette.neutralLighter
    */
   shimmerWave?: string;
@@ -237,5 +237,5 @@ export interface IShimmerColors {
    * Defines the background color of the space in between and around shimmer elements (borders, gaps and rounded corners).
    * @defaultvalue theme.palette.white
    */
-  surroundingSpace?: string;
+  background?: string;
 }

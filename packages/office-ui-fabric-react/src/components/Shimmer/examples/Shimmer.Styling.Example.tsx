@@ -74,9 +74,9 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
         <div className={classNames.themedBackgroundWrapper}>
           <Shimmer
             shimmerColors={{
-              shimmerMain: customThemeForShimmer.palette.themeTertiary,
+              shimmer: customThemeForShimmer.palette.themeTertiary,
               shimmerWave: customThemeForShimmer.palette.themeSecondary,
-              surroundingSpace: customThemeForShimmer.palette.white // to match the background color of the containing div
+              background: customThemeForShimmer.palette.white // to match the background color of the containing div
             }}
             shimmerElements={[
               { type: ShimmerElementType.circle, height: 24 },
@@ -99,7 +99,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
             customElementsGroup={this._getCustomElements(customThemeForShimmer.palette.white)}
             width={300}
             shimmerColors={{
-              shimmerMain: customThemeForShimmer.palette.themeTertiary,
+              shimmer: customThemeForShimmer.palette.themeTertiary,
               shimmerWave: customThemeForShimmer.palette.themeSecondary
             }}
           />
@@ -127,15 +127,15 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
   }
 
   // Passing a color to match the background color of the containing div.
-  private _getCustomElements = (surroundingColor?: string) => {
+  private _getCustomElements = (spaceColor?: string) => {
     return (
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
-          surroundingColor={surroundingColor}
+          spaceColor={spaceColor}
           shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 16, height: 40 }]}
         />
         <ShimmerElementsGroup
-          surroundingColor={surroundingColor}
+          spaceColor={spaceColor}
           flexWrap={true}
           width="100%"
           shimmerElements={[

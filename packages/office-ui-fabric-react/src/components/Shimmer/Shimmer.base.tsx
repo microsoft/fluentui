@@ -72,7 +72,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       isDataLoaded,
       className,
       transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL,
-      shimmerMainColor: shimmerColors && shimmerColors.shimmerMain,
+      shimmerColor: shimmerColors && shimmerColors.shimmer,
       shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave
     });
 
@@ -85,7 +85,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
             {customElementsGroup ? (
               customElementsGroup
             ) : (
-              <ShimmerElementsGroup shimmerElements={shimmerElements} surroundingColor={shimmerColors && shimmerColors.surroundingSpace} />
+              <ShimmerElementsGroup shimmerElements={shimmerElements} spaceColor={shimmerColors && shimmerColors.background} />
             )}
           </div>
         )}

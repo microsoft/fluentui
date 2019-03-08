@@ -64,7 +64,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
   };
 
   private _getStyles = (elem: IShimmerElement, rowHeight?: number): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
-    const { surroundingColor } = this.props;
+    const { spaceColor } = this.props;
     const { verticalAlign, type } = elem;
     const elemHeight: number | undefined = elem.height;
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
@@ -88,24 +88,24 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
       };
     }
 
-    if (surroundingColor) {
+    if (spaceColor) {
       switch (type) {
         case ShimmerElementType.circle:
           return {
-            root: { ...borderStyle, borderColor: surroundingColor },
-            svg: { fill: surroundingColor }
+            root: { ...borderStyle, borderColor: spaceColor },
+            svg: { fill: spaceColor }
           };
         case ShimmerElementType.gap:
           return {
-            root: { ...borderStyle, borderColor: surroundingColor, backgroundColor: surroundingColor }
+            root: { ...borderStyle, borderColor: spaceColor, backgroundColor: spaceColor }
           };
         case ShimmerElementType.line:
           return {
-            root: { ...borderStyle, borderColor: surroundingColor },
-            topLeftCorner: { fill: surroundingColor },
-            topRightCorner: { fill: surroundingColor },
-            bottomLeftCorner: { fill: surroundingColor },
-            bottomRightCorner: { fill: surroundingColor }
+            root: { ...borderStyle, borderColor: spaceColor },
+            topLeftCorner: { fill: spaceColor },
+            topRightCorner: { fill: spaceColor },
+            bottomLeftCorner: { fill: spaceColor },
+            bottomRightCorner: { fill: spaceColor }
           };
       }
     }
