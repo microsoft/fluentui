@@ -34,6 +34,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
         <Card gap={8} tokens={{ padding: 12 }}>
           Basic card
         </Card>
+
         <Card gap={8} tokens={{ padding: 12, width: '220px' }} onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           <Card.Item tokens={{ margin: '0 -13px' }}>
