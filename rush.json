@@ -396,6 +396,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "theming-designer-app",
+      "projectFolder": "apps/theming-designer",
+      "shouldPublish": false
+    },
+    {
       "packageName": "server-rendered-app",
       "projectFolder": "apps/server-rendered-app",
       "shouldPublish": false
