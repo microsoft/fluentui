@@ -85,7 +85,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
             {customElementsGroup ? (
               customElementsGroup
             ) : (
-              <ShimmerElementsGroup shimmerElements={shimmerElements} spaceColor={shimmerColors && shimmerColors.background} />
+              <ShimmerElementsGroup shimmerElements={shimmerElements} backgroundColor={shimmerColors && shimmerColors.background} />
             )}
           </div>
         )}

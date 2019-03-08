@@ -127,15 +127,15 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
   }
 
   // Passing a color to match the background color of the containing div.
-  private _getCustomElements = (spaceColor?: string) => {
+  private _getCustomElements = (backgroundColor?: string) => {
     return (
       <div style={{ display: 'flex' }}>
         <ShimmerElementsGroup
-          spaceColor={spaceColor}
+          backgroundColor={backgroundColor}
           shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 16, height: 40 }]}
         />
         <ShimmerElementsGroup
-          spaceColor={spaceColor}
+          backgroundColor={backgroundColor}
           flexWrap={true}
           width="100%"
           shimmerElements={[

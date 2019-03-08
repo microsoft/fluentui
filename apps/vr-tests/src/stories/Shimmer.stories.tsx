@@ -88,14 +88,14 @@ storiesOf('Shimmer', module)
         customElementsGroup={
           <div style={{ display: 'flex' }}>
             <ShimmerElementsGroup
-              spaceColor={'#0078D4'}
+              backgroundColor={'#0078D4'}
               shimmerElements={[
                 { type: ElemType.circle, height: 40 },
                 { type: ElemType.gap, width: 16, height: 40 }
               ]}
             />
             <ShimmerElementsGroup
-              spaceColor={'#0078D4'}
+              backgroundColor={'#0078D4'}
               flexWrap={true}
               width="100%"
               shimmerElements={[
