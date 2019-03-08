@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.153.0",
+      "tag": "office-ui-fabric-react_v6.153.0",
+      "date": "Fri, 08 Mar 2019 13:32:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose persistMenu in combobox similar to baseButton",
+            "author": "David De La Brena <36862912+ddlbrena@users.noreply.github.com>",
+            "commit": "6c0b6c3f726c1d488164853a71ac711c339838cd"
+          },
+          {
+            "comment": "SpinButton: Stateful example should restrict input value to range.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "aaf0fa11c9fe9d426b8de85342dc31a6e8ff5228"
+          }
+        ],
+        "none": [
+          {
+            "comment": "List Examples: Clean-up typings in example List code",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "eadf610ec82b7c808e24279a8a57faa99dd81272"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "List: Revert remove usage of string refs for List pages #7704",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "2a7a5ae39526999b5e0c47bbda1656beb755d1b1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.0 <7.0.0` to `>=6.16.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.152.1",
       "tag": "office-ui-fabric-react_v6.152.1",
       "date": "Thu, 07 Mar 2019 13:32:47 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 01 Mar 2019 13:33:08 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Mar 2019 13:32:10 GMT and should not be manually modified.
+
+## 6.16.1
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Patches
+
+- Fix selector in a mergeStyleSets Readme example
 
 ## 6.16.0
 Fri, 01 Mar 2019 13:33:08 GMT
