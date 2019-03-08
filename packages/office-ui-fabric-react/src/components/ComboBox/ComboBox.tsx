@@ -328,7 +328,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       keytipProps,
       placeholder,
       tabIndex,
-      autofill
+      autofill,
+      persistMenu
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -340,15 +341,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._classNames = this.props.getClassNames
       ? this.props.getClassNames(theme!, !!isOpen, !!disabled, !!required, !!focused, !!allowFreeform, !!hasErrorMessage, className)
       : getClassNames(
-          getStyles(theme!, customStyles),
-          className!,
-          !!isOpen,
-          !!disabled,
-          !!required,
-          !!focused,
-          !!allowFreeform,
-          !!hasErrorMessage
-        );
+        getStyles(theme!, customStyles),
+        className!,
+        !!isOpen,
+        !!disabled,
+        !!required,
+        !!focused,
+        !!allowFreeform,
+        !!hasErrorMessage
+      );
 
     return (
       <div {...divProps} ref={this._root} className={this._classNames.container}>
@@ -415,7 +416,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             </div>
           )}
         </KeytipData>
-        {isOpen &&
+        {(persistMenu || isOpen) &&
           (onRenderContainer as any)(
             {
               ...this.props,
@@ -425,9 +426,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
             },
             this._onRenderContainer
-          )}
+          )
+        }
         {errorMessage && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
-      </div>
+      </div >
     );
   }
 
@@ -542,8 +544,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           currentPendingValue !== null && currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
-            ? currentOptions[index].text
-            : ''
+              ? currentOptions[index].text
+              : ''
         );
       } else {
         for (let idx = 0; selectedIndices && idx < selectedIndices.length; idx++) {
@@ -570,8 +572,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           currentPendingValue !== null && currentPendingValue !== undefined
             ? currentPendingValue
             : this._indexWithinBounds(currentOptions, index)
-            ? currentOptions[index].text
-            : ''
+              ? currentOptions[index].text
+              : ''
         );
       } else {
         // If we are not allowing freeform and have a
@@ -1019,7 +1021,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             (this._autofill.current &&
               this._autofill.current.isValueSelected &&
               currentPendingValue.length + (this._autofill.current.selectionEnd! - this._autofill.current.selectionStart!) ===
-                pendingOptionText.length)) ||
+              pendingOptionText.length)) ||
             (this._autofill.current &&
               this._autofill.current.inputElement &&
               this._autofill.current.inputElement.value.toLocaleLowerCase() === pendingOptionText))
@@ -1078,8 +1080,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       dropdownWidth,
       dropdownMaxWidth,
       onRenderLowerContent = this._onRenderLowerContent,
-      useComboBoxAsMenuWidth
+      useComboBoxAsMenuWidth,
+      persistMenu
     } = props;
+
+    const { isOpen } = this.state;
 
     const comboBoxMenuWidth =
       useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? this._comboBoxWrapper.current.clientWidth + 2 : undefined;
@@ -1100,6 +1105,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         setInitialFocus={false}
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
+        hidden={persistMenu ? !isOpen : undefined}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
@@ -1109,8 +1115,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     );
   };
 
-  private _onLayerMounted = () => {
+  private _onCalloutLayerMounted() {
+    // In persistMenu mode _onLayerMounted is only called once for the lifetime
+    // of the component. Any functionality required for callout "on mount" can
+    // go here so that we can also call it again during callout dismissal to reset
+    // object state.
     this._gotMouseMove = false;
+  }
+
+  private _onLayerMounted = () => {
+    this._onCalloutLayerMounted();
 
     if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
       this.props.calloutProps.onLayerMounted();
@@ -1204,24 +1218,24 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           }
         </CommandButton>
       ) : (
-        <Checkbox
-          id={id + '-list' + item.index}
-          ariaLabel={this._getPreviewText(item)}
-          key={item.key}
-          data-index={item.index}
-          styles={checkboxStyles}
-          className={'ms-ComboBox-option'}
-          data-is-focusable={true}
-          onChange={this._onItemClick(item)}
-          label={item.text}
-          role="option"
-          aria-selected={isSelected ? 'true' : 'false'}
-          checked={isSelected}
-          title={title}
-        >
-          {onRenderOption(item, this._onRenderOptionContent)}
-        </Checkbox>
-      );
+          <Checkbox
+            id={id + '-list' + item.index}
+            ariaLabel={this._getPreviewText(item)}
+            key={item.key}
+            data-index={item.index}
+            styles={checkboxStyles}
+            className={'ms-ComboBox-option'}
+            data-is-focusable={true}
+            onChange={this._onItemClick(item)}
+            label={item.text}
+            role="option"
+            aria-selected={isSelected ? 'true' : 'false'}
+            checked={isSelected}
+            title={title}
+          >
+            {onRenderOption(item, this._onRenderOptionContent)}
+          </Checkbox>
+        );
     };
 
     return (
@@ -1280,10 +1294,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       ? currentPendingValueValidIndexOnHover
       : currentPendingValueValidIndex >= 0 ||
         (includeCurrentPendingValue && (currentPendingValue !== null && currentPendingValue !== undefined))
-      ? currentPendingValueValidIndex
-      : this.props.multiSelect
-      ? 0
-      : this._getFirstSelectedIndex();
+        ? currentPendingValueValidIndex
+        : this.props.multiSelect
+          ? 0
+          : this._getFirstSelectedIndex();
   }
 
   /**
@@ -1376,6 +1390,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
+    // In persistMode we need to simulate callout layer mount
+    // since that only happens once. We do it on dismiss since
+    // it works either way.
+    if (this.props.persistMenu) {
+      this._onCalloutLayerMounted();
+    }
+
     // close the menu
     this._setOpenStateAndFocusOnClose(false /* isOpen */, false /* focusInputAfterClose */);
 
@@ -1819,6 +1840,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _onOptionMouseLeave = () => {
     if (this._shouldIgnoreMouseEvent()) {
+      return;
+    }
+
+    // Ignore the event in persistMenu mode if the callout has
+    // closed. This is to avoid clearing the visuals on item click.
+    if (this.props.persistMenu && !this.state.isOpen) {
       return;
     }
 
