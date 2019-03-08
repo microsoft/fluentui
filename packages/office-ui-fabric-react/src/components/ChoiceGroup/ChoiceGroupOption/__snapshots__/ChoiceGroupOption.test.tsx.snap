@@ -578,7 +578,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
             &:before {
               background-color: #ffffff;
-              border-color: #a6a6a6;
+              border-color: #a19f9d;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -600,7 +600,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: GrayText;
             }
             &:after {
-              border-color: #a6a6a6;
+              border-color: #a19f9d;
               border-radius: 50%;
               border-style: solid;
               border-width: 5px;
