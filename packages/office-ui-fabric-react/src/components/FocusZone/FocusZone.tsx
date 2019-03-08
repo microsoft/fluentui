@@ -121,7 +121,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       }
 
       if (!this._isInnerZone) {
-        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
+        this._disposables.push(on(windowElement!, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
