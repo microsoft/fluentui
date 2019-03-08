@@ -26,7 +26,7 @@ export class FocusZonePhotosExample extends React.Component<{}, { items: IPhoto[
     const { items } = this.state;
 
     return (
-      <FocusZone elementType="ul" className="ms-FocusZoneExamples-photoList">
+      <FocusZone as="ul" className="ms-FocusZoneExamples-photoList">
         <p>Note: clicking on the items below will remove them, illustrating how FocusZone will retain focus even when items are removed.</p>
         {items.map((item: IPhoto, index) => (
           <li

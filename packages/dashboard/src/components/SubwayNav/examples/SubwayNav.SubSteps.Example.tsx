@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { generateRandomId, setSubwayState } from './SubwayNav.Util';
+import { generateRandomId } from './SubwayNav.Util';
+import { setSubwayState } from '../../Wizard/Wizard.utils';
 import { SubwayNav, ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard';
 
 export interface ISubwayNavSubStepsExampleState {

@@ -1,16 +1,8 @@
 import { IColumn } from './DetailsList.types';
 import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
-import { IBaseProps, IRefObject } from '../../Utilities';
 import { IDetailsListProps } from './DetailsList';
 
-export interface IDetailsRowFields {}
-
-export interface IDetailsRowFieldsProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRowFields> {
-  /**
-   * Ref of component
-   */
-  componentRef?: IRefObject<IDetailsRowFields>;
-
+export interface IDetailsRowFieldsProps extends Pick<IDetailsListProps, 'onRenderItemColumn'> {
   /**
    * Data source for this component
    */

@@ -300,7 +300,7 @@ mergeStyleSets({
     classNames.child,
     {
       selectors: {
-        `.${classNames.root}:hover &`: {
+        [`.${classNames.root}:hover &`]: {
           background: 'green'
         }
       }

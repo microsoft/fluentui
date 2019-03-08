@@ -1,25 +1,27 @@
 import * as React from 'react';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 import {
-  BaseComponent,
-  EventGroup,
   KeyCodes,
   css,
-  htmlElementProperties,
   elementContains,
   getDocument,
   getElementIndexPath,
   getFocusableByIndexPath,
   getId,
-  getNextElement,
   getNativeProps,
+  getNextElement,
   getParent,
   getPreviousElement,
   getRTL,
-  isElementFocusZone,
+  htmlElementProperties,
+  initializeComponentRef,
   isElementFocusSubZone,
+  isElementFocusZone,
   isElementTabbable,
-  shouldWrapFocus
+  on,
+  raiseClick,
+  shouldWrapFocus,
+  warnDeprecations
 } from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
@@ -43,12 +45,13 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional
   };
 
+  private _disposables: Function[] = [];
   private _root = React.createRef<HTMLElement>();
   private _id: string;
 
@@ -78,10 +81,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   constructor(props: IFocusZoneProps) {
     super(props);
 
-    this._warnDeprecations({
-      rootProps: undefined,
-      allowTabKey: 'handleTabKey'
-    });
+    // Manage componentRef resolution.
+    initializeComponentRef(this);
+
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('FocusZone', props, {
+        rootProps: undefined,
+        allowTabKey: 'handleTabKey',
+        elementType: 'as'
+      });
+    }
 
     this._id = getId('FocusZone');
 
@@ -112,8 +121,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
 
       if (!this._isInnerZone) {
-        this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
-        this._events.on(root, 'blur', this._onBlur, true);
+        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
@@ -148,13 +156,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   public componentWillUnmount() {
     delete _allInstances[this._id];
+
+    // Dispose all events.
+    this._disposables.forEach(d => d());
   }
 
   public render() {
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
-    const Tag = this.props.elementType || 'div';
+    const Tag = this.props.as || this.props.elementType || 'div';
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
     // was in the zone before the update. This helper will track this and, if focus
@@ -335,18 +346,18 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
-  private _onBlur() {
+  private _onBlur = (): void => {
     this._setParkedFocus(false);
-  }
+  };
 
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
-  private _onKeyDownCapture(ev: KeyboardEvent) {
+  private _onKeyDownCapture = (ev: KeyboardEvent): void => {
     if (ev.which === KeyCodes.tab) {
       this._updateTabIndexes();
     }
-  }
+  };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     const { disabled } = this.props;
@@ -557,8 +568,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
         target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
       ) {
-        EventGroup.raise(target, 'click', null, true);
-
+        raiseClick(target);
         return true;
       }
 
