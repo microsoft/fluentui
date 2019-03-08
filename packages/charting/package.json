@@ -72,7 +72,6 @@
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
   },
   "disabledTasks": [
-    "build-codepen-examples",
     "verify-api-extractor"
   ]
 }
