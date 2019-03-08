@@ -10336,9 +10336,9 @@ interface IShimmerCircleStyles {
 
 // @public
 interface IShimmerColors {
-  shimmerMain?: string;
+  background?: string;
+  shimmer?: string;
   shimmerWave?: string;
-  surroundingSpace?: string;
 }
 
 // @public
@@ -10359,8 +10359,8 @@ interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement
   flexWrap?: boolean;
   rowHeight?: number;
   shimmerElements?: IShimmerElement[];
+  spaceColor?: string;
   styles?: IStyleFunctionOrObject<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>;
-  surroundingColor?: string;
   theme?: ITheme;
   width?: string;
 }
@@ -10443,7 +10443,7 @@ interface IShimmerState {
 interface IShimmerStyleProps {
   className?: string;
   isDataLoaded?: boolean;
-  shimmerMainColor?: string;
+  shimmerColor?: string;
   shimmerWaveColor?: string;
   theme: ITheme;
   transitionAnimationInterval?: number;
