@@ -50,6 +50,9 @@ const classNames = mergeStyleSets({
     background: customThemeForShimmer.palette.white, // using the palette color to match the gaps and borders of the shimmer.
     outline: `1px solid ${customThemeForShimmer.palette.neutralPrimary}`,
     outlineOffset: '-10px'
+  },
+  indent: {
+    paddingLeft: 18
   }
 });
 
@@ -64,9 +67,9 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
         <div>
           <b>1.</b> The recommended way by using the <b>shimmerColors</b> prop which in turn has 2 sub-scenarios:
         </div>
-        <div>
-          &emsp;<b>a. </b>
-          When using <b>shimmerElements</b> prop to build the placeholder you can pass all 3 possible colors to <b>shimmerColors</b> prop.
+        <div className={classNames.indent}>
+          <b>a. </b>When using <b>shimmerElements</b> prop to build the placeholder you can pass all 3 possible colors to{' '}
+          <b>shimmerColors</b> prop.
         </div>
         <div className={classNames.themedBackgroundWrapper}>
           <Shimmer
@@ -88,8 +91,8 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
             ]}
           />
         </div>
-        <div>
-          &emsp;<b>b.</b> When using <b>customElementsGroup</b> prop to build the placeholder:
+        <div className={classNames.indent}>
+          <b>b. </b>When using <b>customElementsGroup</b> prop to build the placeholder:
         </div>
         <div className={classNames.themedBackgroundWrapper2}>
           <Shimmer
@@ -102,7 +105,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
           />
         </div>
         <div>
-          <b>2.</b> Another way of doing it by using <b>Customizer</b> component wrapper.
+          <b>2. </b>Another way of doing it by using <b>Customizer</b> component wrapper.
         </div>
         <Customizer settings={{ theme: { ...customThemeForShimmer } }}>
           <div className={classNames.themedBackgroundWrapper2}>
@@ -110,7 +113,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
           </div>
         </Customizer>
         <div>
-          <b>3.</b> Style overrides of shimmering wave using <b>styles</b> prop.
+          <b>3. </b>Style overrides of shimmering wave using <b>styles</b> prop.
         </div>
         <div className={classNames.wrapper}>
           <Shimmer width="75%" styles={this._getShimmerStyles} />
