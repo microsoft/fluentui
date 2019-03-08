@@ -13,14 +13,10 @@ export interface ICardItemSlots {
 export type ICardItemTokenReturnType = ReturnType<Extract<ICardItemComponent['tokens'], Function>>;
 export type ICardItemStylesReturnType = ReturnType<Extract<ICardItemComponent['styles'], Function>>;
 
-export interface ICardItemProps extends ICardItemSlots, IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles> {
-  /**
-   * Defines if the default horizontal padding of the Card applies to this CardItem child or not.
-   * @defaultvalue false
-   */
-  disableChildPadding?: boolean;
-}
+export interface ICardItemProps extends ICardItemSlots, IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles> {}
 
-export interface ICardItemTokens {}
+export interface ICardItemTokens {
+  margin?: number | string;
+}
 
 export type ICardItemStyles = IComponentStyles<ICardItemSlots>;

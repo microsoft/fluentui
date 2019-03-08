@@ -8,6 +8,7 @@ exports[`CardView renders correctly 1`] = `
     className=
         ms-Stack
         {
+          align-items: space-between;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
@@ -23,7 +24,7 @@ exports[`CardView renders correctly 1`] = `
           margin-top: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   />
 </div>

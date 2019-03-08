@@ -8,10 +8,10 @@ exports[`Card Item renders correctly 1`] = `
         box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
         max-width: 250px;
         min-width: 200px;
-        padding-bottom: 12px;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 12px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
         transition: box-shadow 0.5s ease;
       }
 >
@@ -20,6 +20,7 @@ exports[`Card Item renders correctly 1`] = `
         ms-Stack
         ms-Card-stack
         {
+          align-items: space-between;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
@@ -29,14 +30,13 @@ exports[`Card Item renders correctly 1`] = `
           width: auto;
         }
         & > * {
-          height: auto;
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 12px;
+          margin-top: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     <div
@@ -60,7 +60,7 @@ exports[`Card Item renders correctly 1`] = `
 </div>
 `;
 
-exports[`Card Item renders correctly when having the disableChildPadding prop set to true 1`] = `
+exports[`Card Item renders correctly when having tokens passed to it 1`] = `
 <div
   className=
       ms-Card
@@ -68,10 +68,10 @@ exports[`Card Item renders correctly when having the disableChildPadding prop se
         box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
         max-width: 250px;
         min-width: 200px;
-        padding-bottom: 12px;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 12px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
         transition: box-shadow 0.5s ease;
       }
 >
@@ -80,6 +80,7 @@ exports[`Card Item renders correctly when having the disableChildPadding prop se
         ms-Stack
         ms-Card-stack
         {
+          align-items: space-between;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
@@ -89,14 +90,13 @@ exports[`Card Item renders correctly when having the disableChildPadding prop se
           width: auto;
         }
         & > * {
-          height: auto;
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 12px;
+          margin-top: 0px;
         }
         & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
+          flex-shrink: 1;
         }
   >
     <div
@@ -111,8 +111,10 @@ exports[`Card Item renders correctly when having the disableChildPadding prop se
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-left: -12px;
-            margin-right: -13px;
+            margin-bottom: 12px;
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-top: 12px;
             width: auto;
           }
     >

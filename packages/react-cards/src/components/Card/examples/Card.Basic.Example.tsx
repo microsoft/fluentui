@@ -31,9 +31,12 @@ export class CardBasicExample extends React.Component<{}, {}> {
 
     return (
       <Stack horizontal gap={30}>
-        <Card>
+        <Card gap={8} tokens={{ padding: 12 }}>
+          Basic card
+        </Card>
+        <Card gap={8} tokens={{ padding: 12, width: '220px' }} onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
-          <Card.Item disableChildPadding>
+          <Card.Item tokens={{ margin: '0 -13px' }}>
             <Image
               src="https://placehold.it/250x120"
               alt="Example implementation of the property image fit using the center value on an image larger than the frame."
@@ -44,60 +47,6 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Text className={styles.siteText}>Contoso</Text>
           <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
           <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
-          <Card.Item>
-            <Stack horizontal gap={16} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
-              <Icon iconName="RedEye" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-              <Icon iconName="SingleBookmark" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-              <Stack.Item grow={1}>
-                <span />
-              </Stack.Item>
-              <Icon iconName="MoreVertical" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-            </Stack>
-          </Card.Item>
-        </Card>
-
-        <Card tokens={{ width: '150px' }}>
-          <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
-          <Card.Item disableChildPadding>
-            <Image
-              src="https://placehold.it/250x120"
-              alt="Example implementation of the property image fit using the center value on an image larger than the frame."
-              width="100%"
-              height="120px"
-            />
-          </Card.Item>
-          <Text className={styles.siteText}>Contoso</Text>
-          <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
-          <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
-          <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
-          <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
-          <Card.Item>
-            <Stack horizontal gap={16} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
-              <Icon iconName="RedEye" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-              <Icon iconName="SingleBookmark" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-              <Stack.Item grow={1}>
-                <span />
-              </Stack.Item>
-              <Icon iconName="MoreVertical" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-            </Stack>
-          </Card.Item>
-        </Card>
-
-        <Card gap={10} onClick={alertClicked}>
-          <Card.Item>
-            <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
-          </Card.Item>
-          <Card.Item disableChildPadding>
-            <Image
-              src="https://placehold.it/250x120"
-              alt="Example implementation of the property image fit using the center value on an image larger than the frame."
-              width="100%"
-              height="120px"
-            />
-          </Card.Item>
-          <Card.Item grow={1}>
-            <div />
-          </Card.Item>
           <Card.Item>
             <Stack horizontal gap={16} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
               <Icon iconName="RedEye" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />

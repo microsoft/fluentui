@@ -17,15 +17,7 @@ export const CardView: ICardComponent['view'] = props => {
 
   return (
     <Slots.root {...nativeProps}>
-      <Slots.stack
-        horizontal={compact}
-        gap={gap}
-        disableShrink
-        verticalFill
-        verticalAlign="space-between"
-        horizontalAlign="space-between"
-        wrap={compact}
-      >
+      <Slots.stack horizontal={compact} gap={gap} verticalFill verticalAlign="space-between" horizontalAlign="space-between">
         {props.children}
       </Slots.stack>
     </Slots.root>

@@ -1,10 +1,13 @@
 // @codepen
 import * as React from 'react';
-import { Persona, Text } from '@uifabric/experiments';
+import { Text } from '@uifabric/experiments';
 import { Icon, Image, Stack } from 'office-ui-fabric-react';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { Card } from '../Card';
 
+const alertClicked = (): void => {
+  alert('Clicked');
+};
 export class CardCompactExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const styles = mergeStyleSets({
@@ -26,18 +29,33 @@ export class CardCompactExample extends React.Component<{}, {}> {
     });
 
     return (
-      <Card compact={true}>
-        <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
-        <Image
-          src="https://placehold.it/250x120"
-          alt="Example implementation of the property image fit using the center value on an image larger than the frame."
-        />
-        <Text className={styles.siteText}>Contoso</Text>
-        <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
-        <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
-        <Icon iconName="RedEye" styles={{ root: { color: 'mediumturquoise', fontSize: '20px' } }} />
-        <Icon iconName="MoreVertical" styles={{ root: { color: 'mediumturquoise', fontSize: '20px' } }} />
-      </Card>
+      <Stack gap={20}>
+        <Card compact={true} gap={12} tokens={{ padding: 12 }}>
+          Basic compact card
+        </Card>
+
+        <Card compact={true} gap={12} tokens={{ padding: 12 }} onClick={alertClicked}>
+          <Card.Item tokens={{ margin: '-12px 0 -12px -12px' }}>
+            <Image
+              src="https://placehold.it/180x135"
+              alt="Example implementation of the property image fit using the center value on an image larger than the frame."
+            />
+          </Card.Item>
+          <Stack gap={12}>
+            <Text className={styles.siteText}>Contoso</Text>
+            <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
+            <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
+          </Stack>
+          <Stack gap={16} padding="0 0 0 12px" styles={{ root: { borderLeft: '1px solid #F3F2F1' } }}>
+            <Icon iconName="RedEye" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
+            <Icon iconName="SingleBookmark" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
+            <Stack.Item grow={1}>
+              <span />
+            </Stack.Item>
+            <Icon iconName="MoreVertical" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
+          </Stack>
+        </Card>
+      </Stack>
     );
   }
 }
