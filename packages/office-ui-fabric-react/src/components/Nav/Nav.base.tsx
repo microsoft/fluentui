@@ -316,20 +316,23 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       return true;
     }
 
-    if (location.protocol + '//' + location.host + location.pathname === target) {
-      return true;
-    }
-
-    if (location.hash) {
-      // Match the hash to the url.
-      if (location.hash === link.url) {
+    // If selectedKey is not defined in state, then check URL to determine link selected status
+    if (!this.state.selectedKey) {
+      if (location.protocol + '//' + location.host + location.pathname === target) {
         return true;
       }
 
-      // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
-      _urlResolver.href = location.hash.substring(1);
+      if (location.hash) {
+        // Match the hash to the url.
+        if (location.hash === link.url) {
+          return true;
+        }
 
-      return _urlResolver.href === target;
+        // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
+        _urlResolver.href = location.hash.substring(1);
+
+        return _urlResolver.href === target;
+      }
     }
     return false;
   }
