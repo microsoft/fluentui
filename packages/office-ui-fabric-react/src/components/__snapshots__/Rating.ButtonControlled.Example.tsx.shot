@@ -130,7 +130,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #767676;
+                  color: #a6a6a6;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -267,7 +267,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #767676;
+                  color: #a6a6a6;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -404,7 +404,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #767676;
+                  color: #a6a6a6;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -541,7 +541,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #767676;
+                  color: #a6a6a6;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -678,7 +678,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #767676;
+                  color: #a6a6a6;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
