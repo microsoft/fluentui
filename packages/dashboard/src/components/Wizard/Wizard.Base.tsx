@@ -28,14 +28,25 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
       isFirstSubStep: wizardStepProps.isFirstSubStep!
     });
 
+    const contentSectionKey = 'contentSection-' + wizardStepProps.id;
+    const contentTitleKey = 'contentTitle-' + wizardStepProps.id;
+    const contentKey = 'content-' + wizardStepProps.id;
     return (
       <div className={classNames.wizardContentNavContainer}>
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
-        <div className={classNames.contentSection}>
-          <div className={classNames.contentTitle}>{wizardStepProps.wizardContent!.contentTitleElement}</div>
-          <div className={classNames.content}>{wizardStepProps.wizardContent!.content}</div>
+        <div key={contentSectionKey} className={classNames.contentSectionAnim}>
+          <div className={classNames.contentSection}>
+            <div key={contentTitleKey} className={classNames.contentTitle}>
+              {wizardStepProps.wizardContent!.contentTitleElement}
+            </div>
+            <div className={classNames.contentAnim}>
+              <div key={contentKey} className={classNames.content}>
+                {wizardStepProps.wizardContent!.content}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
