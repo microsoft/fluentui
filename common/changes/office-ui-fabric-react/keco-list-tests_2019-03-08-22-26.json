@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "List: Add unit tests for default and optional behaviors\"",
+      "comment": "List: Add unit tests for default and optional behaviors",
       "type": "none"
     }
   ],
