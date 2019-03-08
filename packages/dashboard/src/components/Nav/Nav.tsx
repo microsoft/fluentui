@@ -35,21 +35,22 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     const classNames = getClassNames(getStyles, { isNavCollapsed: navCollapsed, shouldScroll });
 
     return (
-      <FocusZone isCircularNavigation aria-hidden="true" direction={FocusZoneDirection.vertical} className={classNames.root}>
-        <div aria-hidden="true" className={classNames.navWrapper}>
-          <nav role="navigation" className={classNames.navContainer} ref={this.containerRef} aria-expanded={!isNavCollapsed}>
+      <FocusZone isCircularNavigation direction={FocusZoneDirection.vertical} className={classNames.root}>
+        <div className={classNames.navWrapper}>
+          <nav role="navigation" className={classNames.navContainer} ref={this.containerRef} aria-expanded={!navCollapsed}>
             <ul role="menubar" className={classNames.navGroup}>
               <li role="none" title={'NavToggle'}>
+                {/** TODO convert this to an actual checkbox and hook into changed event instead */}
                 <NavLink
                   id={'NavToggle'}
                   href={'#'}
                   onClick={this._onNavCollapseClicked}
-                  dataHint={dataHint}
-                  dataValue={'NavToggle'}
-                  ariaLabel="Navigation Collapse Toggle"
+                  data-hint={dataHint}
+                  data-value={'NavToggle'}
+                  aria-label="Navigation Collapse Toggle"
                   primaryIconName={'GlobalNavButton'}
                   role="switch"
-                  aria-checked={isNavCollapsed}
+                  aria-checked={navCollapsed}
                 />
               </li>
 
@@ -75,9 +76,9 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                       href={'#'}
                       name={editString}
                       onClick={this._editClicked}
-                      dataHint={'Edit navigation'}
-                      dataValue={'NavToggle'}
-                      ariaLabel={'Edit navigation'}
+                      data-hint={'Edit navigation'}
+                      data-value={'NavToggle'}
+                      aria-label={'Edit navigation'}
                       primaryIconName={'Edit'}
                       role="menuitem"
                     />
@@ -89,9 +90,9 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                         href={'#'}
                         name={this.props.showMore ? showMoreString : showLessString}
                         onClick={this._toggleMore}
-                        dataHint={'Show more'}
-                        dataValue={'Show more'}
-                        ariaLabel={'Show more'}
+                        data-hint={'Show more'}
+                        data-value={'Show more'}
+                        aria-label={'Show more'}
                         primaryIconName={'More'}
                         role="menuitem"
                       />
@@ -129,14 +130,15 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   //
   private _onNavCollapseClicked(ev: React.MouseEvent<HTMLElement>): void {
     this.fireCollapse = true;
-    this.setState({
-      isNavCollapsed: !this.state.isNavCollapsed
-    });
 
     // inform the caller about the collapse event
     if (!!this.props.onNavCollapsedCallback) {
-      this.props.onNavCollapsedCallback(this.state.isNavCollapsed);
+      this.props.onNavCollapsedCallback(!this.state.isNavCollapsed);
     }
+
+    this.setState({
+      isNavCollapsed: !this.state.isNavCollapsed
+    });
 
     ev.preventDefault();
     ev.stopPropagation();

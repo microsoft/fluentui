@@ -2,26 +2,6 @@ import { IStyle } from 'office-ui-fabric-react';
 
 export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
   /**
-   * Used for telemetry
-   */
-  dataHint?: string;
-
-  /**
-   * Used for telemetry
-   */
-  dataValue?: string;
-
-  /**
-   * Used by the screen reader to describe the nav link
-   */
-  ariaLabel?: string;
-
-  /**
-   * True means the nav link is currently expanded (visible), false means the nav link is currently collapsed (invisible)
-   */
-  ariaExpanded?: boolean;
-
-  /**
    * Icon name for the icon shown on the left side of the nav link
    */
   primaryIconName?: string;

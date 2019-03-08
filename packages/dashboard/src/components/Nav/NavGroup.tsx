@@ -50,9 +50,8 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
                   href={link.url}
                   target={link.target}
                   onClick={link.onClick}
-                  ariaExpanded={!isNavCollapsed}
-                  dataValue={link.name}
-                  ariaLabel={link.ariaLabel}
+                  data-value={link.name}
+                  aria-label={link.ariaLabel ? link.ariaLabel : link.name}
                   primaryIconName={link.icon}
                   hasNestedMenu={false}
                   isNested={false}

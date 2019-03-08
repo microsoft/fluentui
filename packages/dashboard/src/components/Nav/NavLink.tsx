@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { classNamesFunction, Icon, anchorProperties, getNativeProps } from 'office-ui-fabric-react';
 import { INavLinkStyles, INavLinkProps } from './NavLink.types';
 import { getStyles } from './NavLink.styles';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavLinkProps, INavLinkStyles>();
 
@@ -19,15 +18,12 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
     const classNames = getClassNames(getStyles, this.props);
     return (
       <a
+        {...getNativeProps(this.props, anchorProperties)}
         id={this.props.id}
         href={this.props.href}
         target={this.props.target}
         onClick={this.props.onClick}
         onMouseEnter={this._getLinkPosition}
-        data-hint={this.props.dataHint}
-        data-value={this.props.dataValue}
-        aria-label={this.props.ariaLabel}
-        aria-expanded={this.props.ariaExpanded}
         role={this.props.role}
         className={classNames.navLink}
         ref={this.navLinkRef}
@@ -69,7 +65,11 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   private _generateLinkContent(): React.ReactElement<{}> | null {
     const { isNested, name } = this.props;
     const classNames = getClassNames(getStyles, { isNested: isNested });
-    return <div className={classNames.navItemText}>{name}</div>;
+    return (
+      <div className={classNames.navItemText} aria-hidden="true">
+        {name}
+      </div>
+    );
   }
 
   private _generateSecondaryIcon(): React.ReactElement<{}> | null {
@@ -88,7 +88,7 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
     }
 
     return (
-      <div className={classNames.iconWrapper}>
+      <div className={classNames.iconWrapper} aria-hidden="true">
         <Icon iconName={iconName} className={classNames.navItemIcon} />
       </div>
     );
