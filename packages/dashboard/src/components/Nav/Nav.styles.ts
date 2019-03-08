@@ -26,7 +26,7 @@ export const navItemHeight = 48;
 // NavLink
 
 export const getStyles = (props: INavStyleProps): INavStyles => {
-  const { isNavCollapsed } = props;
+  const { isNavCollapsed, shouldScroll } = props;
 
   return {
     // Nav
@@ -34,18 +34,20 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       position: 'relative',
       flex: '0 0 auto'
     },
-    navWrapper: {
-      overflow: 'hidden',
-      height: '100%'
-    },
-    navWrapperScroll: {
-      selectors: {
-        ':hover': {
-          overflow: 'unset',
-          marginRight: -scrollBarWidth + 'px'
+    navWrapper: [
+      {
+        overflow: 'hidden',
+        height: '100%'
+      },
+      shouldScroll && {
+        selectors: {
+          ':hover': {
+            overflow: 'unset',
+            marginRight: -scrollBarWidth + 'px'
+          }
         }
       }
-    },
+    ],
     navContainer: [
       {
         width: navWidth,
@@ -62,15 +64,15 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       },
       isNavCollapsed && {
         width: navCollapsedWidth
-      }
-    ],
-    navContainerScroll: {
-      selectors: {
-        ':hover': {
-          marginRight: '0px'
+      },
+      shouldScroll && {
+        selectors: {
+          ':hover': {
+            marginRight: '0px'
+          }
         }
       }
-    },
+    ],
     // NavGroup
     navGroup: {
       margin: 0,

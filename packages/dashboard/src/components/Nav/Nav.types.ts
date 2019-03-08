@@ -89,6 +89,11 @@ export interface INavStyleProps {
    * When the Nav is collapsed
    */
   isNavCollapsed: boolean;
+
+  /**
+   * When the nav has enough content to scroll
+   */
+  shouldScroll: boolean;
 }
 
 export interface INavStyles {
@@ -98,8 +103,6 @@ export interface INavStyles {
   root: IStyle;
   navWrapper: IStyle;
   navContainer: IStyle;
-  navWrapperScroll: IStyle;
-  navContainerScroll: IStyle;
   navGroup: IStyle;
 }
 

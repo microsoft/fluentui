@@ -30,20 +30,17 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
 
   public render(): JSX.Element {
     const { groups, enableCustomization, showMore, editString, showMoreString, showLessString, dataHint, isNavCollapsed } = this.props;
+    const { shouldScroll } = this.state;
 
     const navCollapsed = isNavCollapsed ? isNavCollapsed : this.state.isNavCollapsed;
 
-    const classNames = getClassNames(getStyles, { isNavCollapsed: navCollapsed });
+    const classNames = getClassNames(getStyles, { isNavCollapsed: navCollapsed, shouldScroll });
     const collapseButtonAriaLabel = navCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
-    const navWrapperClassName = this.state.shouldScroll ? classNames.navWrapper + ' ' + classNames.navWrapperScroll : classNames.navWrapper;
-    const navContainerClassName = this.state.shouldScroll
-      ? classNames.navContainer + ' ' + classNames.navContainerScroll
-      : classNames.navContainer;
 
     return (
       <FocusZone isCircularNavigation aria-hidden="true" direction={FocusZoneDirection.vertical} className={classNames.root}>
-        <div aria-hidden="true" className={navWrapperClassName} ref={this.wrapperRef}>
-          <nav role="navigation" className={navContainerClassName} ref={this.containerRef}>
+        <div aria-hidden="true" className={classNames.navWrapper} ref={this.wrapperRef}>
+          <nav role="navigation" className={classNames.navContainer} ref={this.containerRef}>
             <ul role="menubar" className={classNames.navGroup}>
               <li role="none" title={'NavToggle'}>
                 <NavLink
