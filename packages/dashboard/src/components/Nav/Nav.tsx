@@ -9,7 +9,6 @@ import { NavGroup } from './NavGroup';
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 class NavComponent extends BaseComponent<INavProps, INavState> {
-  private wrapperRef: React.RefObject<HTMLDivElement>;
   private containerRef: React.RefObject<HTMLDivElement>;
   private fireCollapse: boolean = false;
 
@@ -20,7 +19,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       shouldScroll: false
     };
 
-    this.wrapperRef = React.createRef<HTMLDivElement>();
     this.containerRef = React.createRef<HTMLDivElement>();
     this._onNavCollapseClicked = this._onNavCollapseClicked.bind(this);
     this._editClicked = this._editClicked.bind(this);
@@ -35,24 +33,23 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     const navCollapsed = isNavCollapsed ? isNavCollapsed : this.state.isNavCollapsed;
 
     const classNames = getClassNames(getStyles, { isNavCollapsed: navCollapsed, shouldScroll });
-    const collapseButtonAriaLabel = navCollapsed ? 'Navigation collapsed' : 'Navigation expanded';
 
     return (
       <FocusZone isCircularNavigation aria-hidden="true" direction={FocusZoneDirection.vertical} className={classNames.root}>
-        <div aria-hidden="true" className={classNames.navWrapper} ref={this.wrapperRef}>
-          <nav role="navigation" className={classNames.navContainer} ref={this.containerRef}>
+        <div aria-hidden="true" className={classNames.navWrapper}>
+          <nav role="navigation" className={classNames.navContainer} ref={this.containerRef} aria-expanded={!isNavCollapsed}>
             <ul role="menubar" className={classNames.navGroup}>
               <li role="none" title={'NavToggle'}>
                 <NavLink
                   id={'NavToggle'}
                   href={'#'}
                   onClick={this._onNavCollapseClicked}
-                  ariaExpanded={!isNavCollapsed}
                   dataHint={dataHint}
                   dataValue={'NavToggle'}
-                  ariaLabel={collapseButtonAriaLabel}
+                  ariaLabel="Navigation Collapse Toggle"
                   primaryIconName={'GlobalNavButton'}
-                  role="menuitem"
+                  role="switch"
+                  aria-checked={isNavCollapsed}
                 />
               </li>
 
@@ -123,13 +120,8 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   }
 
   private _setScrollLayout(): void {
-    if (this.containerRef.current && this.wrapperRef.current) {
-      if (this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight) {
-        this.setState({ shouldScroll: true });
-      } else {
-        this.setState({ shouldScroll: false });
-      }
-    }
+    const shouldScroll = !!this.containerRef.current && this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight;
+    this.setState({ shouldScroll });
   }
 
   //
