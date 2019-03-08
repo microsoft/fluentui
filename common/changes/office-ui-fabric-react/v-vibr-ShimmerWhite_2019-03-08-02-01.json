@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Shimmer: adds new props `shimmerColors` to Shimmer and `surroundingColor` to ShimmerElementsGroup to allow easy customization of Shimmer colors when placed on elements with background colors other than white.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-vibr@microsoft.com"
+}
