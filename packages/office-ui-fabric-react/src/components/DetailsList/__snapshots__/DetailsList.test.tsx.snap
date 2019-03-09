@@ -4564,6 +4564,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           }
         >
           <div
+            aria-expanded={true}
             className=
                 ms-DetailsHeader-cell
                 {
