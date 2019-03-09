@@ -105,33 +105,3 @@ export interface INavStyles {
   navContainer: IStyle;
   navGroup: IStyle;
 }
-
-export interface INavClassNames {
-  root?: string;
-
-  /**
-   * NavGroup
-   */
-  navGroup?: string;
-  navGroupDivider?: string;
-  navGroupTitle?: string;
-  navItem?: string;
-
-  /**
-   * NavLinkGroup
-   */
-  nestedNavMenu?: string;
-  nestedNavMenuWhenNavCollapsed?: string;
-  nestedNavLinksWrapper?: string;
-  nestedNavLinksWhenNavCollapsed?: string;
-
-  /**
-   * NavLink
-   */
-  navLink?: string;
-  navLinkSmall?: string;
-  navItemBarMarker?: string;
-  navItemIcon?: string;
-  navItemText?: string;
-  iconWrapper?: string;
-}
