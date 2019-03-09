@@ -28,7 +28,7 @@ dependencies:
   '@rush-temp/test-bundles': 'file:projects/test-bundles.tgz'
   '@rush-temp/test-utilities': 'file:projects/test-utilities.tgz'
   '@rush-temp/theme-samples': 'file:projects/theme-samples.tgz'
-  '@rush-temp/theming-designer-app': 'file:projects/theming-designer-app.tgz'
+  '@rush-temp/theming-designer': 'file:projects/theming-designer.tgz'
   '@rush-temp/todo-app': 'file:projects/todo-app.tgz'
   '@rush-temp/tslint-rules': 'file:projects/tslint-rules.tgz'
   '@rush-temp/utilities': 'file:projects/utilities.tgz'
@@ -14813,7 +14813,7 @@ packages:
       integrity: sha512-D1ioIoMqW5/EFRgaRMxi1mXBdc0gtOmRMRr1/SpoAlFfiWgJap9n06GoxP2NdPXOwOKHlT4z9LqrYwMh0PV4Rg==
       tarball: 'file:projects/theme-samples.tgz'
     version: 0.0.0
-  'file:projects/theming-designer-app.tgz':
+  'file:projects/theming-designer.tgz':
     dependencies:
       '@microsoft/load-themed-styles': 1.8.64
       '@types/es6-promise': 0.0.32
@@ -14827,10 +14827,10 @@ packages:
       tslib: 1.9.3
       typescript: 2.8.4
     dev: false
-    name: '@rush-temp/theming-designer-app'
+    name: '@rush-temp/theming-designer'
     resolution:
-      integrity: sha512-V8rIu2pQ9PegBG9UhaxHkkKQ7ZkESqEM4xKXTZml5Q0neu+hFvAsGN+Lfh6gaI2bKksK9/JERiSHKRh9KmP24A==
-      tarball: 'file:projects/theming-designer-app.tgz'
+      integrity: sha512-tajS3F1q6y6yIxGD1ZbLRuEtJG7sK6DWPxYAl/9vjNE3LtK/HTnQ4q5f5vil4QcaxU/ikTVE4VpVjwrG0yq4Cw==
+      tarball: 'file:projects/theming-designer.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
     dependencies:
@@ -14983,7 +14983,7 @@ specifiers:
   '@rush-temp/test-bundles': 'file:./projects/test-bundles.tgz'
   '@rush-temp/test-utilities': 'file:./projects/test-utilities.tgz'
   '@rush-temp/theme-samples': 'file:./projects/theme-samples.tgz'
-  '@rush-temp/theming-designer-app': 'file:./projects/theming-designer-app.tgz'
+  '@rush-temp/theming-designer': 'file:./projects/theming-designer.tgz'
   '@rush-temp/todo-app': 'file:./projects/todo-app.tgz'
   '@rush-temp/tslint-rules': 'file:./projects/tslint-rules.tgz'
   '@rush-temp/utilities': 'file:./projects/utilities.tgz'

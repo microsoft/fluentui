@@ -396,7 +396,7 @@
       "shouldPublish": false
     },
     {
-      "packageName": "theming-designer-app",
+      "packageName": "theming-designer",
       "projectFolder": "apps/theming-designer",
       "shouldPublish": false
     },
