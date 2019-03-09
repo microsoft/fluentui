@@ -7974,7 +7974,7 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   disabled?: boolean;
   doNotAllowFocusEventToPropagate?: boolean;
   // @deprecated
-  elementType?: keyof React.ReactHTML;
+  elementType?: any;
   handleTabKey?: FocusZoneTabbableElements;
   isCircularNavigation?: boolean;
   isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
@@ -8880,7 +8880,6 @@ interface IModal {
 
 // @public (undocumented)
 interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
-  children?: any;
   className?: string;
   componentRef?: IRefObject<IModal>;
   containerClassName?: string;
@@ -11955,9 +11954,6 @@ class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}>
   // (undocumented)
   render(): JSX.Element;
 }
-
-// @public @deprecated (undocumented)
-export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public
 export function raiseClick(target: Element): void;

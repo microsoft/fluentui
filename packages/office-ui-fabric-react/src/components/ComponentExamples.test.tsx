@@ -75,9 +75,7 @@ const excludedExampleFiles: string[] = [
   'Picker.CustomResult.Example.tsx',
   'ScrollablePane.Default.Example.tsx',
   'ScrollablePane.DetailsList.Example.tsx',
-  'SelectedPeopleList.Basic.Example.tsx',
-  'DetailsList.Advanced.Example.tsx', // FABRIC7TODO
-  'CommandBar.CommandBarButtonAs.Example.tsx' // FABRIC7TODO
+  'SelectedPeopleList.Basic.Example.tsx'
 ];
 
 declare const global: any;
