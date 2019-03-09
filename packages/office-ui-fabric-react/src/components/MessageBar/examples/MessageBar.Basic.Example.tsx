@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';

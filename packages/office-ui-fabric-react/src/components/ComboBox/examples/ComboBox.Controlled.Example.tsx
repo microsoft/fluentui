@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { ComboBox, IComboBoxOption, IComboBox, SelectableOptionMenuItemType, Fabric, mergeStyles } from 'office-ui-fabric-react/lib/index';
 

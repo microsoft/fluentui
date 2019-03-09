@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import {
   ComboBox,
