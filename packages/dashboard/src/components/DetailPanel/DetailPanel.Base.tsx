@@ -55,7 +55,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
     let snapshotUpdated = false;
     const snapshot = {} as IMainBodySnapshot;
 
-    if (this.props.currentL2Id !== prevProps.currentL2Id) {
+    if (this.props.currentL2Id !== this.state.currentL2Id) {
       // L2Id is changed
       snapshot.nextL2Id = this.props.currentL2Id;
       snapshotUpdated = true;
@@ -124,6 +124,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
       const { onGetL2Content, onGetL2ActionBar, mainActionBar } = this.props;
       if (snapshot.nextL2Id && onGetL2Content) {
         // Set loading animation
+        this.setState({ currentL2Id: snapshot.nextL2Id });
         this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad);
         Promise.resolve(onGetL2Content(snapshot.nextL2Id))
           .then((element: JSX.Element) => {
