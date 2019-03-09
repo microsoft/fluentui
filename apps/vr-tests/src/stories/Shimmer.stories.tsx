@@ -8,6 +8,19 @@ import {
   ShimmerElementType as ElemType,
   ShimmerElementsGroup
 } from 'office-ui-fabric-react';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+const wrapperClassName = mergeStyles({
+  width: 400,
+  height: 100,
+  margin: '10px 0',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: '#0078D4',
+  outline: `1px solid #333333`,
+  outlineOffset: '-10px'
+});
 
 storiesOf('Shimmer', module)
   .addDecorator(story => (
@@ -63,6 +76,38 @@ storiesOf('Shimmer', module)
       }
       width={300}
     />
+  ))
+  .addStory('Custom elements on themed background', () => (
+    <div className={wrapperClassName}>
+      <Shimmer
+        width={300}
+        shimmerColors={{
+          shimmer: '#71afe5',
+          shimmerWave: '#2b88d8'
+        }}
+        customElementsGroup={
+          <div style={{ display: 'flex' }}>
+            <ShimmerElementsGroup
+              backgroundColor={'#0078D4'}
+              shimmerElements={[
+                { type: ElemType.circle, height: 40 },
+                { type: ElemType.gap, width: 16, height: 40 }
+              ]}
+            />
+            <ShimmerElementsGroup
+              backgroundColor={'#0078D4'}
+              flexWrap={true}
+              width="100%"
+              shimmerElements={[
+                { type: ElemType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
+                { type: ElemType.line, width: '90%', height: 8 },
+                { type: ElemType.gap, width: '10%', height: 20 }
+              ]}
+            />
+          </div>
+        }
+      />
+    </div>
   ))
   .addStory('Data not loaded', () => (
     <Shimmer isDataLoaded={false} ariaLabel={'Loading content'}>
