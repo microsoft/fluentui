@@ -27,8 +27,6 @@ export class RatingButtonControlledExample extends React.Component<
           max={5}
           readOnly={true}
           allowZeroStars={true}
-          icon="FavoriteStarFill"
-          unselectedIcon="FavoriteStar"
           getAriaLabel={this._getRatingComponentAriaLabel}
           ariaLabelFormat={'{0} of {1} stars selected'}
         />
