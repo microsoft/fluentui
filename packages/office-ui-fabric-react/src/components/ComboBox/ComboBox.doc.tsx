@@ -9,19 +9,19 @@ import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Ex
 import { ComboBoxStatus } from './ComboBox.checklist';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
-const ComboBoxBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Basic.Example.Codepen.txt') as string;
+const ComboBoxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
 
 const ComboBoxTogglesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Toggles.Example.tsx') as string;
-const ComboBoxTogglesExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Toggles.Example.Codepen.txt') as string;
+const ComboBoxTogglesExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Toggles.Example.tsx') as string;
 
 const ComboBoxControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Controlled.Example.tsx') as string;
-const ComboBoxControlledExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Controlled.Example.Codepen.txt') as string;
+const ComboBoxControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Controlled.Example.tsx') as string;
 
 const ComboBoxVirtualizedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Virtualized.Example.tsx') as string;
-const ComboBoxVirtualizedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Virtualized.Example.Codepen.txt') as string;
+const ComboBoxVirtualizedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Virtualized.Example.tsx') as string;
 
 const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
-const ComboBoxCustomStyledExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.CustomStyled.Example.Codepen.txt') as string;
+const ComboBoxCustomStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
 
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',

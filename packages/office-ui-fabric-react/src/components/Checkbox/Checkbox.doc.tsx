@@ -6,7 +6,7 @@ import { CheckboxImplementationExamples } from './examples/Checkbox.Other.Exampl
 import { CheckboxStatus } from './Checkbox.checklist';
 
 const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
-const CheckboxBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Checkbox/Checkbox.Basic.Example.Codepen.txt') as string;
+const CheckboxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
 const CheckboxImplementationExamplesCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
 
 export const CheckboxPageProps: IDocPageProps = {
