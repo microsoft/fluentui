@@ -167,6 +167,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const {
       columns = NO_COLUMNS,
       ariaLabel,
+      ariaLabelForGroupChevron,
       ariaLabelForSelectAllCheckbox,
       selectAllVisibility,
       ariaLabelForSelectionColumn,
@@ -279,7 +280,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
-          <div className={classNames.cellIsGroupExpander} onClick={this._onToggleCollapseAll} data-is-focusable={true}>
+          <div
+            className={classNames.cellIsGroupExpander}
+            onClick={this._onToggleCollapseAll}
+            data-is-focusable={true}
+            aria-label={ariaLabelForGroupChevron}
+            aria-expanded={!isAllCollapsed}
+          >
             <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
