@@ -1,6 +1,20 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 07 Mar 2019 13:32:46 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Mar 2019 12:31:10 GMT and should not be manually modified.
+
+## 0.54.1
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Patches
+
+- DetailPanel: Enable use the currentL2Id on Panel load to load L2 page directly
+
+## 0.54.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Added props required for content animation in wizard, Moved util functions from exampls to main util file, Added util methods "getPrevStep, getParentStep, getStep", Animations in progress
 
 ## 0.53.1
 Thu, 07 Mar 2019 13:32:46 GMT
