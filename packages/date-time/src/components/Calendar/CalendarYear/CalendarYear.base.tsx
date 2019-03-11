@@ -408,10 +408,6 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
     this.state = this._getState(this.props);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarYearProps): void {
-    this.setState(this._getState(nextProps));
-  }
-
   public focus(): void {
     if (this._gridRef) {
       this._gridRef.focus();
