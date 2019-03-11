@@ -5,7 +5,6 @@ import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
 import { SelectedPeopleList, IExtendedPersonaProps } from './SelectedPeopleList';
-import { FloatingPeoplePicker } from '../../FloatingPicker';
 
 describe('SelectedPeopleList', () => {
   describe('Element keying behavior', () => {

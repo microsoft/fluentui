@@ -12,7 +12,7 @@ import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem } from './Items/EditingItem';
 
 export interface IExtendedPersonaProps extends IPersonaProps {
-  key?: string;
+  key?: React.Key;
   isValid: boolean;
   blockRecipientRemoval?: boolean;
   shouldBlockSelection?: boolean;
@@ -74,7 +74,8 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       index,
       key: item.key ? item.key : index,
       selected: this.selection.isIndexSelected(index),
-      onRemoveItem: () => this.removeItem(item),
+      // TODO removeItem is incorrectly typed. Remove this cast in the fix.
+      onRemoveItem: () => this.removeItem(item as any),
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
