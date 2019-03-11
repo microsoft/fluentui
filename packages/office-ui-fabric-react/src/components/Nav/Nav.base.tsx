@@ -294,8 +294,8 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
     // if current state.selectedKey (from addressbar) is match to the link
     if (this.props.selectedKey !== undefined) {
       return link.key === this.props.selectedKey;
-    } else if (this.state.selectedKey !== undefined && link.key === this.state.selectedKey) {
-      return true;
+    } else if (this.state.selectedKey !== undefined) {
+      return link.key === this.state.selectedKey;
     } else {
       // If selectedKey is undefined in props and state, then check URL
       _urlResolver = _urlResolver || document.createElement('a');
