@@ -68,9 +68,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       &:hover:active .ms-Icon-47 {
         color: #212121;
       }
-  content="Default button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -190,9 +188,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       &:hover:active .ms-Icon-57 {
         color: #a6a6a6;
       }
-  content="Disabled primary button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -311,9 +307,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       &:hover:active .ms-Icon-55 {
         color: #ffffff;
       }
-  content="Primary button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >

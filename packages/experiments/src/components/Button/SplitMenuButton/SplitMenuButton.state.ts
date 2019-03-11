@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { IButtonProps, IButtonViewProps } from './Button.types';
-import { BaseState } from '../../utilities/BaseState';
+import { BaseState } from '../../../utilities/BaseState';
+import { ISplitMenuButtonProps, ISplitMenuButtonViewProps } from './SplitMenuButton.types';
 
-export type IButtonState = Pick<
-  IButtonViewProps,
+export type ISplitMenuButtonState = Pick<
+  ISplitMenuButtonViewProps,
   'expanded' | 'onClick' | 'onKeyDown' | 'onMenuDismiss' | 'menuTarget' | 'onSecondaryActionClick'
 >;
 
-export class ButtonState extends BaseState<IButtonProps, IButtonViewProps, IButtonState> {
-  constructor(props: ButtonState['props']) {
+export class SplitMenuButtonState extends BaseState<ISplitMenuButtonProps, ISplitMenuButtonViewProps, ISplitMenuButtonState> {
+  constructor(props: SplitMenuButtonState['props']) {
     super(props, {
       controlledProps: ['expanded']
     });
