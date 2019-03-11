@@ -6997,6 +6997,9 @@ interface IDetailsRow {
 
 // @public (undocumented)
 interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+  cellsByColumn?: {
+    [columnKey: string]: React.ReactNode;
+  }
   checkboxCellClassName?: string;
   checkButtonAriaLabel?: string;
   className?: string;
