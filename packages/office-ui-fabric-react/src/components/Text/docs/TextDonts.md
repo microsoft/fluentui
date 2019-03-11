@@ -1,0 +1,2 @@
+- Don't nest Text components if you want to inherit font styling.
+Use a div or span instead that inherits by default.
