@@ -29,7 +29,7 @@ const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollableP
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
   public static childContextTypes: React.ValidationMap<IScrollablePaneContext> = {
     scrollablePane: PropTypes.object
-  } as any; // FABRIC7VALIDATE
+  } as any; // TODO use new context
 
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
