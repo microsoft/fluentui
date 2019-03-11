@@ -2608,7 +2608,6 @@ interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   beakHeight?: number;
   // @deprecated
   beakWidth?: number;
-  children?: any;
   className?: string;
   // @deprecated
   collapsed?: boolean;
@@ -7126,7 +7125,6 @@ interface IDialogContent {
 
 // @public (undocumented)
 interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
-  children?: any;
   className?: string;
   closeButtonAriaLabel?: string;
   componentRef?: IRefObject<IDialogContent>;
@@ -11022,7 +11020,6 @@ interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase 
   ariaDescribedBy?: string;
   ariaLabelledBy?: string;
   calloutProps?: ICalloutProps;
-  children?: any;
   componentRef?: IRefObject<ITeachingBubble>;
   hasCloseIcon?: boolean;
   hasCondensedHeadline?: boolean;
@@ -13041,6 +13038,7 @@ module ZIndexes {
 // WARNING: Unsupported export: ResizeGroup
 // WARNING: Unsupported export: getMeasurementCache
 // WARNING: Unsupported export: getNextResizeGroupStateProvider
+// WARNING: Unsupported export: MeasuredContext
 // WARNING: Unsupported export: ScrollablePane
 // WARNING: Unsupported export: ScrollbarVisibility
 // WARNING: Unsupported export: ScrollbarVisibility
