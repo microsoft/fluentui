@@ -3,7 +3,7 @@ import { ISetupWizardProps, ISetupWizardStyles, ISetupWizardStyleProps } from '.
 import { getSetupWizardStyles } from './SetupWizard.styles';
 import { SetupWizardBase } from './SetupWizard.Base';
 
-export const SetupWizard: React.StatelessComponent<ISetupWizardProps> = styled<
+export const SetupWizard: React.FunctionComponent<ISetupWizardProps> = styled<
   ISetupWizardProps,
   ISetupWizardStyleProps,
   ISetupWizardStyles
