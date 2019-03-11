@@ -11,7 +11,7 @@ import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
 import { renderIntoDocument } from '../../common/testUtilities';
-import { IContextualMenuProps } from '../ContextualMenu';
+import { IContextualMenuProps } from '../ContextualMenu/index';
 
 const alertClicked = (): void => {
   /*noop*/
