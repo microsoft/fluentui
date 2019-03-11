@@ -291,11 +291,14 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
   private _isLinkSelected(link: INavLink): boolean {
     // if caller passes in selectedKey, use it as first choice or
-    // if current state.selectedKey (from addressbar) is match to the link
+    // if current state.selectedKey (from addressbar) is match to the link or
+    // check if URL is matching location.href (if link.url exists)
     if (this.props.selectedKey !== undefined) {
       return link.key === this.props.selectedKey;
     } else if (this.state.selectedKey !== undefined) {
       return link.key === this.state.selectedKey;
+    } else if (!link.url) {
+      return false;
     } else {
       // If selectedKey is undefined in props and state, then check URL
       _urlResolver = _urlResolver || document.createElement('a');
@@ -327,10 +330,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
     // resolve is not supported for ssr
     if (typeof window === 'undefined') {
-      return false;
-    }
-
-    if (!link.url) {
       return false;
     }
 
