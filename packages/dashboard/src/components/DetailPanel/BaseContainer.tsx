@@ -7,6 +7,7 @@ import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Header } from './Header/index';
 import { detailPanelBaseStyles } from './DetailPanel.styles';
 import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { _isReactComponent } from './Utils';
 
 type BodyContainerType = IBaseContainerProps & IDetailPanelBaseCommonAction;
 
@@ -38,6 +39,10 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
     }
     const { header } = props;
     if (header) {
+      if (_isReactComponent(header)) {
+        return <div className={css.header}>{header}</div>;
+      }
+
       return (
         <div className={css.header}>
           <Header {...header} />

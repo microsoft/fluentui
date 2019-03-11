@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+
+## 6.12.1
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Patches
+
+- Improve autodoc to deal with line breaks in extends clause.
 
 ## 6.12.0
 Tue, 05 Mar 2019 04:25:07 GMT

@@ -27,6 +27,9 @@ class AnnouncedBase extends React.Component<IAnnouncedProps> {
 }
 
 // @public
+export function appendFunction(parent: any, ...functions: (any)[]): () => void;
+
+// @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
@@ -1091,6 +1094,11 @@ enum ExpandingCardMode {
   expanded = 1
 }
 
+// @public
+export function extendComponent<T extends React.Component>(parent: T, methods: {
+    [key in keyof T]?: T[key];
+}): void;
+
 // @public (undocumented)
 class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 }
@@ -1250,7 +1258,7 @@ class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements I
 }
 
 // @public (undocumented)
-class FocusZone extends BaseComponent<IFocusZoneProps, {}>, implements IFocusZone {
+class FocusZone extends React.Component<IFocusZoneProps, {}>, implements IFocusZone {
   constructor(props: IFocusZoneProps);
   // (undocumented)
   componentDidMount(): void;
@@ -2576,7 +2584,7 @@ interface IChoiceGroupStyles {
   root?: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ICircle extends IShimmerElement {
   height?: number;
 }
@@ -2951,6 +2959,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
   onScrollToItem?: (itemIndex: number) => void;
   options: IComboBoxOption[];
+  persistMenu?: boolean;
   scrollSelectedToTop?: boolean;
   styles?: Partial<IComboBoxStyles>;
   text?: string;
@@ -7954,6 +7963,7 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   allowTabKey?: boolean;
   ariaDescribedBy?: string;
   ariaLabelledBy?: string;
+  as?: React.ReactType;
   checkForNoWrap?: boolean;
   className?: string;
   componentRef?: IRefObject<IFocusZone>;
@@ -7961,6 +7971,7 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   direction?: FocusZoneDirection;
   disabled?: boolean;
   doNotAllowFocusEventToPropagate?: boolean;
+  // @deprecated
   elementType?: keyof React.ReactHTML;
   handleTabKey?: FocusZoneTabbableElements;
   isCircularNavigation?: boolean;
@@ -8006,7 +8017,7 @@ interface IFontStyles {
   xxLarge: IRawStyle;
 }
 
-// @public (undocumented)
+// @public
 interface IGap extends IShimmerElement {
   height?: number;
   width?: number | string;
@@ -8590,7 +8601,7 @@ interface ILayerStyles {
   root?: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ILine extends IShimmerElement {
   height?: number;
   width?: number | string;
@@ -9008,6 +9019,9 @@ interface INavStyles {
   navItems: IStyle;
   root: IStyle;
 }
+
+// @public
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
 // @public
 export function initializeFocusRects(window?: Window): void;
@@ -9555,8 +9569,6 @@ interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttrib
 // @public (undocumented)
 interface IPivotState {
   // (undocumented)
-  links: IPivotItemProps[];
-  // (undocumented)
   selectedKey: string | undefined;
 }
 
@@ -9669,17 +9681,10 @@ interface IPositioningContainerState {
 }
 
 // @public (undocumented)
-interface IProgressIndicator {
-  // (undocumented)
-  focus: () => void;
-}
-
-// @public (undocumented)
 interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   ariaValueText?: string;
   barHeight?: number;
   className?: string;
-  componentRef?: IRefObject<IProgressIndicator>;
   description?: React.ReactNode;
   label?: React.ReactNode;
   onRenderProgress?: IRenderFunction<IProgressIndicatorProps>;
@@ -10331,6 +10336,13 @@ interface IShimmerCircleStyles {
 }
 
 // @public
+interface IShimmerColors {
+  background?: string;
+  shimmer?: string;
+  shimmerWave?: string;
+}
+
+// @public
 interface IShimmerElement {
   height?: number;
   type: ShimmerElementType;
@@ -10344,6 +10356,7 @@ interface IShimmerElementsGroup {
 
 // @public
 interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement> {
+  backgroundColor?: string;
   componentRef?: IRefObject<IShimmerElementsGroup>;
   flexWrap?: boolean;
   rowHeight?: number;
@@ -10353,17 +10366,14 @@ interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement
   width?: string;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerElementsGroupStyleProps {
-  // (undocumented)
   flexWrap?: boolean;
-  // (undocumented)
   theme: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerElementsGroupStyles {
-  // (undocumented)
   root?: IStyle;
 }
 
@@ -10418,6 +10428,7 @@ interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: IRefObject<IShimmer>;
   customElementsGroup?: React.ReactNode;
   isDataLoaded?: boolean;
+  shimmerColors?: IShimmerColors;
   shimmerElements?: IShimmerElement[];
   styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
   theme?: ITheme;
@@ -10429,27 +10440,21 @@ interface IShimmerState {
   contentLoaded?: boolean;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerStyleProps {
-  // (undocumented)
   className?: string;
-  // (undocumented)
   isDataLoaded?: boolean;
-  // (undocumented)
+  shimmerColor?: string;
+  shimmerWaveColor?: string;
   theme: ITheme;
-  // (undocumented)
   transitionAnimationInterval?: number;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerStyles {
-  // (undocumented)
   dataWrapper?: IStyle;
-  // (undocumented)
   root?: IStyle;
-  // (undocumented)
   screenReaderText?: IStyle;
-  // (undocumented)
   shimmerWrapper?: IStyle;
 }
 
@@ -11651,6 +11656,9 @@ class NormalPeoplePickerBase extends BasePeoplePicker {
 export function nullRender(): JSX.Element | null;
 
 // @public (undocumented)
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
+
+// @public (undocumented)
 enum OpenCardMode {
   hotKey = 1,
   hover = 0
@@ -11841,8 +11849,6 @@ enum PersonaSize {
 // @public
 class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   constructor(props: IPivotProps);
-  // (undocumented)
-  componentWillReceiveProps(nextProps: IPivotProps): void;
   focus(): void;
   // (undocumented)
   render(): JSX.Element;
@@ -11935,8 +11941,7 @@ class PrimaryButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public
-class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
-  constructor(props: IProgressIndicatorProps);
+class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}> {
   // (undocumented)
   static defaultProps: {
     description: string;
@@ -11949,6 +11954,9 @@ class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
 
 // @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
+
+// @public
+export function raiseClick(target: Element): void;
 
 // @public (undocumented)
 class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
@@ -12294,7 +12302,7 @@ class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps,
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 enum ShimmerElementsDefaultHeights {
   circle = 24,
   gap = 16,
@@ -12310,7 +12318,7 @@ class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps,
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 enum ShimmerElementType {
   circle = 2,
   gap = 3,

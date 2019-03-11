@@ -58,8 +58,14 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Element type the root element will use. Default is "div".
+   * @deprecated Use 'as' instead.
    */
   elementType?: keyof React.ReactHTML;
+
+  /**
+   * A component that should be used as the root element of the FocusZone component.
+   */
+  as?: React.ReactType;
 
   /**
    * If set, will cycle to the beginning of the targets once the user navigates to the

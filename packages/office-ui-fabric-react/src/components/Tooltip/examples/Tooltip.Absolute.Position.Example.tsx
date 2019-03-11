@@ -11,7 +11,6 @@ export class TooltipAbsolutePositionExample extends React.Component<any, any> {
   private _buttonId: string = getId('targetButton');
 
   public render(): JSX.Element {
-    console.log(this._buttonId);
     return (
       <div
         style={{
