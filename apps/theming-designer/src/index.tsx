@@ -10,7 +10,7 @@ function start(): void {
     _rootDiv = document.createElement('div');
     document.body.appendChild(_rootDiv);
   }
-  ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'));
+  ReactDOM.render(<h1>Hello, world!</h1>, _rootDiv);
 }
 
 // Start the application.
