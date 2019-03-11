@@ -24,7 +24,8 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps> {
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       item,
       itemIndex,
-      onRenderItemColumn
+      onRenderItemColumn,
+      cellsByColumn
     } = this.props;
 
     return (
@@ -39,7 +40,12 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps> {
                 (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
 
           const { onRender = onRenderItemColumn } = column;
-          const cellContentsRender = onRender && !shimmer ? onRender(item, itemIndex, column) : getCellText(item, column);
+          const cellContentsRender =
+            cellsByColumn && column.key in cellsByColumn
+              ? cellsByColumn[column.key]
+              : onRender && !shimmer
+              ? onRender(item, itemIndex, column)
+              : getCellText(item, column);
 
           return (
             <div
