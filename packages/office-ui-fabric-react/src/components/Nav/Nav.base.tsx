@@ -296,28 +296,18 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       return link.key === this.props.selectedKey;
     } else if (this.state.selectedKey !== undefined && link.key === this.state.selectedKey) {
       return true;
-    }
+    } else {
+      // If selectedKey is undefined in props and state, then check URL
+      _urlResolver = _urlResolver || document.createElement('a');
 
-    // resolve is not supported for ssr
-    if (typeof window === 'undefined') {
-      return false;
-    }
+      _urlResolver.href = link.url || '';
+      const target: string = _urlResolver.href;
 
-    if (!link.url) {
-      return false;
-    }
+      if (location.href === target) {
+        return true;
+      }
 
-    _urlResolver = _urlResolver || document.createElement('a');
-
-    _urlResolver.href = link.url || '';
-    const target: string = _urlResolver.href;
-
-    if (location.href === target) {
-      return true;
-    }
-
-    // If selectedKey is not defined in state, then check URL to determine link selected status
-    if (!this.state.selectedKey) {
+      // If selectedKey is not defined in state, then check URL to determine link selected status
       if (location.protocol + '//' + location.host + location.pathname === target) {
         return true;
       }
@@ -334,6 +324,16 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
         return _urlResolver.href === target;
       }
     }
+
+    // resolve is not supported for ssr
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    if (!link.url) {
+      return false;
+    }
+
     return false;
   }
 }
