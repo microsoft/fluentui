@@ -238,6 +238,9 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   }
 
   private _onRenderNavigation = (props: IPanelProps): JSX.Element | null => {
+    if (!this.props.onRenderNavigationContent && !this.props.onRenderNavigation && !this.props.hasCloseButton) {
+      return null;
+    }
     const { onRenderNavigationContent = this._onRenderNavigationContent } = this.props;
     return <div className={this._classNames.navigation}>{onRenderNavigationContent(props, this._onRenderNavigationContent)}</div>;
   };
