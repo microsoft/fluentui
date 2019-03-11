@@ -66,7 +66,7 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
     const { isNested, name } = this.props;
     const classNames = getClassNames(getStyles, { isNested: isNested });
     return (
-      <div className={classNames.navItemText} aria-hidden="true">
+      <div className={classNames.navItemText} aria-hidden="true" data-is-focusable="false">
         {name}
       </div>
     );
