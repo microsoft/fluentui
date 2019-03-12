@@ -94,6 +94,9 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           onGetL2ActionBar={this._onGetL2ActionBar}
           onGetLoadingAnimation={this._onGetLoadingAnimation}
           analyticsHandler={this._analyticsLogger}
+          onPivotLinkClick={(key: string) => {
+            console.log(key);
+          }}
         />
       );
     } else {

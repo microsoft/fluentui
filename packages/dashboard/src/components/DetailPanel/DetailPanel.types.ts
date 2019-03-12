@@ -195,6 +195,11 @@ export interface IDetailPanelBaseProps {
    * Callback on close the detail panel
    */
   onDetailPanelDimiss?: () => void;
+
+  /**
+   * On pivot link click
+   */
+  onPivotLinkClick?: (key: string) => void;
 }
 
 export interface IBaseContainerExtendProps {

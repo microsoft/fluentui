@@ -184,14 +184,19 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
   }
 
   private _getMainContent = () => {
-    const { mainContent } = this.props;
+    const { mainContent, onPivotLinkClick } = this.props;
     if (mainContent) {
       if (_isReactComponent(mainContent)) {
         return mainContent;
       }
 
       return (
-        <DetailPanelPivotBody {...mainContent} onGetLoadingElement={this._getPageLoadingAnimation} onSetActionBar={this._setActionBar} />
+        <DetailPanelPivotBody
+          {...mainContent}
+          onPivotLinkClick={onPivotLinkClick}
+          onGetLoadingElement={this._getPageLoadingAnimation}
+          onSetActionBar={this._setActionBar}
+        />
       );
     }
 
