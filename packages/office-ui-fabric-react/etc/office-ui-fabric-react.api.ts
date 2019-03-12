@@ -3109,6 +3109,8 @@ enum IconNames {
   // (undocumented)
   AccessLogoFill = "AccessLogoFill",
   // (undocumented)
+  AccountBrowser = "AccountBrowser",
+  // (undocumented)
   AccountManagement = "AccountManagement",
   // (undocumented)
   Accounts = "Accounts",
@@ -3133,6 +3135,8 @@ enum IconNames {
   // (undocumented)
   AddGroup = "AddGroup",
   // (undocumented)
+  AddHome = "AddHome",
+  // (undocumented)
   AddIn = "AddIn",
   // (undocumented)
   AddNotes = "AddNotes",
@@ -3140,6 +3144,8 @@ enum IconNames {
   AddOnlineMeeting = "AddOnlineMeeting",
   // (undocumented)
   AddPhone = "AddPhone",
+  // (undocumented)
+  AddReaction = "AddReaction",
   // (undocumented)
   AddTo = "AddTo",
   // (undocumented)
@@ -3227,6 +3233,14 @@ enum IconNames {
   // (undocumented)
   AppIconDefaultList = "AppIconDefaultList",
   // (undocumented)
+  AppleTVMenu = "AppleTVMenu",
+  // (undocumented)
+  AppleTVMicrophone = "AppleTVMicrophone",
+  // (undocumented)
+  AppleTVMonitor = "AppleTVMonitor",
+  // (undocumented)
+  AppleTVPlay = "AppleTVPlay",
+  // (undocumented)
   Archive = "Archive",
   // (undocumented)
   AreaChart = "AreaChart",
@@ -3284,6 +3298,8 @@ enum IconNames {
   Attach = "Attach",
   // (undocumented)
   AustralianRules = "AustralianRules",
+  // (undocumented)
+  AuthenticatorApp = "AuthenticatorApp",
   // (undocumented)
   AutoEnhanceOff = "AutoEnhanceOff",
   // (undocumented)
@@ -3502,6 +3518,8 @@ enum IconNames {
   CalculatorMultiply = "CalculatorMultiply",
   // (undocumented)
   CalculatorNotEqualTo = "CalculatorNotEqualTo",
+  // (undocumented)
+  CalculatorPercentage = "CalculatorPercentage",
   // (undocumented)
   CalculatorSubtract = "CalculatorSubtract",
   // (undocumented)
@@ -3743,6 +3761,10 @@ enum IconNames {
   // (undocumented)
   ClearNight = "ClearNight",
   // (undocumented)
+  ClipboardList = "ClipboardList",
+  // (undocumented)
+  ClipboardListMirrored = "ClipboardListMirrored",
+  // (undocumented)
   ClipboardSolid = "ClipboardSolid",
   // (undocumented)
   Clock = "Clock",
@@ -3803,6 +3825,8 @@ enum IconNames {
   // (undocumented)
   ColumnVerticalSection = "ColumnVerticalSection",
   // (undocumented)
+  ColumnVerticalSectionEdit = "ColumnVerticalSectionEdit",
+  // (undocumented)
   Combine = "Combine",
   // (undocumented)
   Combobox = "Combobox",
@@ -3810,6 +3834,8 @@ enum IconNames {
   CommandPrompt = "CommandPrompt",
   // (undocumented)
   Comment = "Comment",
+  // (undocumented)
+  CommentActive = "CommentActive",
   // (undocumented)
   CommentAdd = "CommentAdd",
   // (undocumented)
@@ -3826,6 +3852,8 @@ enum IconNames {
   CompanyDirectory = "CompanyDirectory",
   // (undocumented)
   CompanyDirectoryMirrored = "CompanyDirectoryMirrored",
+  // (undocumented)
+  Compare = "Compare",
   // (undocumented)
   CompassNW = "CompassNW",
   // (undocumented)
@@ -3919,6 +3947,8 @@ enum IconNames {
   // (undocumented)
   Dataflows = "Dataflows",
   // (undocumented)
+  DataManagementSettings = "DataManagementSettings",
+  // (undocumented)
   DateTime = "DateTime",
   // (undocumented)
   DateTime2 = "DateTime2",
@@ -3946,6 +3976,8 @@ enum IconNames {
   DefaultRatio = "DefaultRatio",
   // (undocumented)
   DefectSolid = "DefectSolid",
+  // (undocumented)
+  DefenderTVM = "DefenderTVM",
   // (undocumented)
   Delete = "Delete",
   // (undocumented)
@@ -4247,6 +4279,8 @@ enum IconNames {
   // (undocumented)
   FabricFolder = "FabricFolder",
   // (undocumented)
+  FabricFolderConfirm = "FabricFolderConfirm",
+  // (undocumented)
   FabricFolderFill = "FabricFolderFill",
   // (undocumented)
   FabricFolderSearch = "FabricFolderSearch",
@@ -4483,6 +4517,8 @@ enum IconNames {
   // (undocumented)
   GenericScanFilled = "GenericScanFilled",
   // (undocumented)
+  GIF = "GIF",
+  // (undocumented)
   Giftbox = "Giftbox",
   // (undocumented)
   GiftboxOpen = "GiftboxOpen",
@@ -4595,6 +4631,8 @@ enum IconNames {
   // (undocumented)
   Hide2 = "Hide2",
   // (undocumented)
+  Hide3 = "Hide3",
+  // (undocumented)
   Highlight = "Highlight",
   // (undocumented)
   HighlightMappedShapes = "HighlightMappedShapes",
@@ -4610,6 +4648,8 @@ enum IconNames {
   HomeGroup = "HomeGroup",
   // (undocumented)
   HomeSolid = "HomeSolid",
+  // (undocumented)
+  HomeVerify = "HomeVerify",
   // (undocumented)
   HorizontalDistributeCenter = "HorizontalDistributeCenter",
   // (undocumented)
@@ -4645,6 +4685,8 @@ enum IconNames {
   // (undocumented)
   IncidentTriangle = "IncidentTriangle",
   // (undocumented)
+  IncomingCall = "IncomingCall",
+  // (undocumented)
   IncreaseIndentArrow = "IncreaseIndentArrow",
   // (undocumented)
   IncreaseIndentArrowMirrored = "IncreaseIndentArrowMirrored",
@@ -4659,7 +4701,11 @@ enum IconNames {
   // (undocumented)
   Info2 = "Info2",
   // (undocumented)
+  InformationBarriers = "InformationBarriers",
+  // (undocumented)
   InfoSolid = "InfoSolid",
+  // (undocumented)
+  InkingTool = "InkingTool",
   // (undocumented)
   InsertColumnsLeft = "InsertColumnsLeft",
   // (undocumented)
@@ -4674,6 +4720,8 @@ enum IconNames {
   InsertTextBox = "InsertTextBox",
   // (undocumented)
   InstallToDrive = "InstallToDrive",
+  // (undocumented)
+  InternalInvestigation = "InternalInvestigation",
   // (undocumented)
   InternetSharing = "InternetSharing",
   // (undocumented)
@@ -4843,6 +4891,8 @@ enum IconNames {
   // (undocumented)
   MapPinSolid = "MapPinSolid",
   // (undocumented)
+  MarkAsProtected = "MarkAsProtected",
+  // (undocumented)
   MarkDownLanguage = "MarkDownLanguage",
   // (undocumented)
   Market = "Market",
@@ -4854,6 +4904,8 @@ enum IconNames {
   MaximumValue = "MaximumValue",
   // (undocumented)
   Medal = "Medal",
+  // (undocumented)
+  MedalSolid = "MedalSolid",
   // (undocumented)
   Media = "Media",
   // (undocumented)
@@ -4882,6 +4934,12 @@ enum IconNames {
   MicrosoftFlowLogo = "MicrosoftFlowLogo",
   // (undocumented)
   MicrosoftStaffhubLogo = "MicrosoftStaffhubLogo",
+  // (undocumented)
+  MicrosoftTranslatorLogo = "MicrosoftTranslatorLogo",
+  // (undocumented)
+  MicrosoftTranslatorLogoBlue = "MicrosoftTranslatorLogoBlue",
+  // (undocumented)
+  MicrosoftTranslatorLogoGreen = "MicrosoftTranslatorLogoGreen",
   // (undocumented)
   MiniContract = "MiniContract",
   // (undocumented)
@@ -5069,6 +5127,8 @@ enum IconNames {
   // (undocumented)
   OpenFolderHorizontal = "OpenFolderHorizontal",
   // (undocumented)
+  OpenInNewTab = "OpenInNewTab",
+  // (undocumented)
   OpenInNewWindow = "OpenInNewWindow",
   // (undocumented)
   OpenPane = "OpenPane",
@@ -5166,6 +5226,8 @@ enum IconNames {
   PartyLeader = "PartyLeader",
   // (undocumented)
   PassiveAuthentication = "PassiveAuthentication",
+  // (undocumented)
+  PasswordField = "PasswordField",
   // (undocumented)
   Paste = "Paste",
   // (undocumented)
@@ -5525,6 +5587,8 @@ enum IconNames {
   // (undocumented)
   RepeatAll = "RepeatAll",
   // (undocumented)
+  RepeatOne = "RepeatOne",
+  // (undocumented)
   Reply = "Reply",
   // (undocumented)
   ReplyAll = "ReplyAll",
@@ -5551,7 +5615,11 @@ enum IconNames {
   // (undocumented)
   RepoSolid = "RepoSolid",
   // (undocumented)
+  ReservationOrders = "ReservationOrders",
+  // (undocumented)
   ResponsesMenu = "ResponsesMenu",
+  // (undocumented)
+  ReturnKey = "ReturnKey",
   // (undocumented)
   ReturnToSession = "ReturnToSession",
   // (undocumented)
@@ -5581,6 +5649,8 @@ enum IconNames {
   // (undocumented)
   RingerRemove = "RingerRemove",
   // (undocumented)
+  RingerSolid = "RingerSolid",
+  // (undocumented)
   Robot = "Robot",
   // (undocumented)
   Rocket = "Rocket",
@@ -5588,6 +5658,10 @@ enum IconNames {
   Room = "Room",
   // (undocumented)
   Rotate = "Rotate",
+  // (undocumented)
+  Rotate90Clockwise = "Rotate90Clockwise",
+  // (undocumented)
+  Rotate90CounterClockwise = "Rotate90CounterClockwise",
   // (undocumented)
   RowsChild = "RowsChild",
   // (undocumented)
@@ -5675,6 +5749,8 @@ enum IconNames {
   // (undocumented)
   Settings = "Settings",
   // (undocumented)
+  ShakeDevice = "ShakeDevice",
+  // (undocumented)
   Shapes = "Shapes",
   // (undocumented)
   Share = "Share",
@@ -5712,6 +5788,8 @@ enum IconNames {
   SidePanel = "SidePanel",
   // (undocumented)
   SidePanelMirrored = "SidePanelMirrored",
+  // (undocumented)
+  Signin = "Signin",
   // (undocumented)
   SignOut = "SignOut",
   // (undocumented)
@@ -5774,6 +5852,8 @@ enum IconNames {
   SliderThumb = "SliderThumb",
   // (undocumented)
   Slideshow = "Slideshow",
+  // (undocumented)
+  SmartGlassRemote = "SmartGlassRemote",
   // (undocumented)
   SnapToGrid = "SnapToGrid",
   // (undocumented)
@@ -6249,6 +6329,8 @@ enum IconNames {
   // (undocumented)
   Upload = "Upload",
   // (undocumented)
+  USB = "USB",
+  // (undocumented)
   UserEvent = "UserEvent",
   // (undocumented)
   UserFollowed = "UserFollowed",
@@ -6274,6 +6356,8 @@ enum IconNames {
   VennDiagram = "VennDiagram",
   // (undocumented)
   VerifiedBrand = "VerifiedBrand",
+  // (undocumented)
+  VerifiedBrandSolid = "VerifiedBrandSolid",
   // (undocumented)
   VersionControlPush = "VersionControlPush",
   // (undocumented)
@@ -6375,11 +6459,15 @@ enum IconNames {
   // (undocumented)
   WarningSolid = "WarningSolid",
   // (undocumented)
+  WavingHand = "WavingHand",
+  // (undocumented)
   WebComponents = "WebComponents",
   // (undocumented)
   WebPublish = "WebPublish",
   // (undocumented)
   Website = "Website",
+  // (undocumented)
+  WebTemplate = "WebTemplate",
   // (undocumented)
   Weights = "Weights",
   // (undocumented)
