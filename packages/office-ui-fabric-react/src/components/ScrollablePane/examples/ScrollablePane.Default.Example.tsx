@@ -1,50 +1,81 @@
+// @codepen
+
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import './ScrollablePane.Example.scss';
+import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
-const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4', '#71afe5', '#eff6fc', '#deecf9'];
+const theme = getTheme();
+const classNames = mergeStyleSets({
+  wrapper: {
+    height: '80vh',
+    position: 'relative',
+    maxHeight: 'inherit'
+  },
+  pane: {
+    maxWidth: 400,
+    border: '1px solid ' + theme.palette.neutralLight
+  },
+  sticky: {
+    color: theme.palette.neutralDark,
+    padding: '5px 20px 5px 10px',
+    fontSize: '13px',
+    borderTop: '1px solid ' + theme.palette.black,
+    borderBottom: '1px solid ' + theme.palette.black
+  },
+  textContent: {
+    padding: '15px 10px'
+  }
+});
+
+export interface IScrollablePaneExampleItem {
+  color: string;
+  text: string;
+  index: number;
+}
 
 export class ScrollablePaneDefaultExample extends React.Component {
-  public render() {
-    const contentAreas: JSX.Element[] = [];
+  private _items: IScrollablePaneExampleItem[];
+
+  constructor(props: any) {
+    super(props);
+
+    const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4', '#71afe5', '#eff6fc', '#deecf9'];
+    this._items = [];
+    // Using splice prevents the colors from being duplicated
     for (let i = 0; i < 5; i++) {
-      contentAreas.push(this._createContentArea(i));
+      this._items.push({
+        color: colors.splice(Math.floor(Math.random() * colors.length), 1)[0],
+        text: lorem(200),
+        index: i
+      });
     }
+  }
+
+  public render() {
+    const contentAreas = this._items.map(this._createContentArea);
 
     return (
-      <div
-        style={{
-          height: '900px',
-          position: 'relative',
-          maxHeight: 'inherit'
-        }}
-      >
-        <ScrollablePane className="scrollablePaneDefaultExample">
-          {contentAreas.map(ele => {
-            return ele;
-          })}
-        </ScrollablePane>
+      <div className={classNames.wrapper}>
+        <ScrollablePane styles={{ root: classNames.pane }}>{...contentAreas}</ScrollablePane>
       </div>
     );
   }
 
-  private _createContentArea(index: number) {
-    const color = colors.splice(Math.floor(Math.random() * colors.length), 1)[0];
-
+  private _createContentArea = (item: IScrollablePaneExampleItem) => {
     return (
       <div
-        key={index}
+        key={item.index}
         style={{
-          backgroundColor: color
+          backgroundColor: item.color
         }}
       >
         <Sticky stickyPosition={StickyPositionType.Both}>
-          <div className="sticky">Sticky Component #{index + 1}</div>
+          <div className={classNames.sticky}>Sticky Component #{item.index + 1}</div>
         </Sticky>
-        <div className="textContent">{lorem(200)}</div>
+        <div className={classNames.textContent}>{item.text}</div>
       </div>
     );
-  }
+  };
 }

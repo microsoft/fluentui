@@ -1,6 +1,34 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 0.28.8
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.28.7
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add saparator 2px for data segments
+
+## 0.28.6
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- office ui fabric charting package, legend related changes 
+
+## 0.28.5
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Basic conversions from componentWillReceiveProps to getDerivedStateFromProps
 
 ## 0.28.4
 Wed, 14 Nov 2018 13:34:01 GMT

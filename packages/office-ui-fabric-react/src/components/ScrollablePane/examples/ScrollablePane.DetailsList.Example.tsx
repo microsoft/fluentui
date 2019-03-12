@@ -1,3 +1,5 @@
+// @codepen
+
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
@@ -12,71 +14,41 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, IScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
-const _columns: IColumn[] = [
-  {
-    key: 'column1',
-    name: 'Test 1',
-    fieldName: 'test1',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for name'
+const classNames = mergeStyleSets({
+  wrapper: {
+    height: '80vh',
+    position: 'relative'
   },
-  {
-    key: 'column2',
-    name: 'Test 2',
-    fieldName: 'test2',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+  filter: {
+    paddingBottom: 20,
+    maxWidth: 300
   },
-  {
-    key: 'column3',
-    name: 'Test 3',
-    fieldName: 'test3',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+  header: {
+    margin: 0
   },
-  {
-    key: 'column4',
-    name: 'Test 4',
-    fieldName: 'test4',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
-  },
-  {
-    key: 'column5',
-    name: 'Test 4',
-    fieldName: 'test5',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
-  },
-  {
-    key: 'column6',
-    name: 'Test 6',
-    fieldName: 'test6',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
+  row: {
+    display: 'inline-block'
   }
-];
+});
 
-interface IItem {
-  key: number;
+const _footerItem: IScrollablePaneDetailsListExampleItem = {
+  key: 'footer',
+  test1: 'Footer 1',
+  test2: 'Footer 2',
+  test3: 'Footer 3',
+  test4: 'Footer 4',
+  test5: 'Footer 5',
+  test6: 'Footer 6'
+};
+
+export interface IScrollablePaneDetailsListExampleItem {
+  key: number | string;
   test1: string;
   test2: string;
   test3: string;
@@ -85,75 +57,66 @@ interface IItem {
   test6: string;
 }
 
-export class ScrollablePaneDetailsListExample extends React.Component<
-  {},
-  {
-    items: {}[];
-    selectionDetails: string;
-  }
-> {
-  private _scrollablePane = React.createRef<IScrollablePane>();
+export interface IScrollablePaneDetailsListExampleState {
+  items: IScrollablePaneDetailsListExampleItem[];
+}
+
+export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrollablePaneDetailsListExampleState> {
   private _selection: Selection;
-  private readonly _items: IItem[];
+  private _allItems: IScrollablePaneDetailsListExampleItem[];
+  private _columns: IColumn[];
 
   constructor(props: {}) {
     super(props);
 
-    const items: IItem[] = [];
+    this._selection = new Selection();
 
-    // Populate with items for demos.
+    this._allItems = [];
     for (let i = 0; i < 200; i++) {
-      items.push({
+      this._allItems.push({
         key: i,
-        test1: lorem(2),
-        test2: lorem(2),
-        test3: lorem(2),
-        test4: lorem(2),
-        test5: lorem(2),
-        test6: lorem(2)
+        test1: _lorem(4),
+        test2: _lorem(4),
+        test3: _lorem(4),
+        test4: _lorem(4),
+        test5: _lorem(4),
+        test6: _lorem(4)
       });
     }
 
-    this._items = items;
-
-    this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
-    });
+    this._columns = [];
+    for (let i = 1; i < 7; i++) {
+      this._columns.push({
+        key: 'column' + i,
+        name: 'Test ' + i,
+        fieldName: 'test' + i,
+        minWidth: 100,
+        maxWidth: 200,
+        isResizable: true
+      });
+    }
 
     this.state = {
-      items: items,
-      selectionDetails: this._getSelectionDetails()
+      items: this._allItems
     };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails } = this.state;
+    const { items } = this.state;
 
     return (
-      <div
-        style={{
-          height: '80vh',
-          position: 'relative'
-        }}
-      >
-        <ScrollablePane componentRef={this._scrollablePane} scrollbarVisibility={ScrollbarVisibility.auto}>
-          <Sticky stickyPosition={StickyPositionType.Header}>{selectionDetails}</Sticky>
-          <TextField
-            label="Filter by name:"
-            // tslint:disable-next-line:jsx-no-lambda
-            onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string) =>
-              this.setState({
-                items: text ? this._items.filter((item: IItem) => hasText(item, text)) : this._items
-              })
-            }
-          />
+      <div className={classNames.wrapper}>
+        <ScrollablePane scrollbarVisibility={ScrollbarVisibility.auto}>
           <Sticky stickyPosition={StickyPositionType.Header}>
-            <h1 style={{ margin: '0px' }}>Item List</h1>
+            <TextField className={classNames.filter} label="Filter by name:" onChange={this._onFilterChange} />
+          </Sticky>
+          <Sticky stickyPosition={StickyPositionType.Header}>
+            <h1 className={classNames.header}>Item list</h1>
           </Sticky>
           <MarqueeSelection selection={this._selection}>
             <DetailsList
               items={items}
-              columns={_columns}
+              columns={this._columns}
               setKey="set"
               layoutMode={DetailsListLayoutMode.fixedColumns}
               constrainMode={ConstrainMode.unconstrained}
@@ -163,8 +126,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
               selectionPreservedOnEmptyClick={true}
               ariaLabelForSelectionColumn="Toggle selection"
               ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-              // tslint:disable-next-line:jsx-no-lambda
-              onItemInvoked={item => alert(`Item invoked: ${item.name}`)}
+              onItemInvoked={_onItemInvoked}
             />
           </MarqueeSelection>
         </ScrollablePane>
@@ -172,18 +134,15 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     );
   }
 
-  private _getSelectionDetails(): string {
-    const selectionCount = this._selection.getSelectedCount();
+  private _onFilterChange = (ev: React.FormEvent<HTMLElement>, text: string) => {
+    this.setState({
+      items: text ? this._allItems.filter((item: IScrollablePaneDetailsListExampleItem) => hasText(item, text)) : this._allItems
+    });
+  };
+}
 
-    switch (selectionCount) {
-      case 0:
-        return 'No items selected';
-      case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
-      default:
-        return `${selectionCount} items selected`;
-    }
-  }
+function _onItemInvoked(item: IScrollablePaneDetailsListExampleItem): void {
+  alert('Item invoked: ' + item.test1);
 }
 
 function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
@@ -200,18 +159,10 @@ function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRend
 function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
-      <div style={{ display: 'inline-block' }}>
+      <div className={classNames.row}>
         <DetailsRow
           columns={props.columns}
-          item={{
-            key: 'footer',
-            test1: 'Total 1',
-            test2: 'Total 2',
-            test3: 'Total 3',
-            test4: 'Total 4',
-            test5: 'Total 5',
-            test6: 'Total 6'
-          }}
+          item={_footerItem}
           itemIndex={-1}
           selection={props.selection}
           selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
@@ -222,6 +173,19 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
   );
 }
 
-function hasText(item: IItem, text: string): boolean {
+function hasText(item: IScrollablePaneDetailsListExampleItem, text: string): boolean {
   return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;
+}
+
+const LOREM_IPSUM = (
+  'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut ' +
+  'labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut ' +
+  'aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
+  'eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt '
+).split(' ');
+let loremIndex = 0;
+function _lorem(wordCount: number): string {
+  const startIndex = loremIndex + wordCount > LOREM_IPSUM.length ? 0 : loremIndex;
+  loremIndex = startIndex + wordCount;
+  return LOREM_IPSUM.slice(startIndex, loremIndex).join(' ');
 }

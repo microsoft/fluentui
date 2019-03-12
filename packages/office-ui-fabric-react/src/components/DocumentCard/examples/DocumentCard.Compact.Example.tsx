@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   DocumentCard,
   DocumentCardActivity,
+  DocumentCardDetails,
   DocumentCardPreview,
   DocumentCardTitle,
   IDocumentCardPreviewProps,
@@ -76,46 +77,46 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       <div>
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview {...previewProps} />
-          <div className="ms-DocumentCard-details">
+          <DocumentCardDetails>
             <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Created a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
-          </div>
+          </DocumentCardDetails>
         </DocumentCard>
         <p />
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
-          <div className="ms-DocumentCard-details">
+          <DocumentCardDetails>
             <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Created a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
-          </div>
+          </DocumentCardDetails>
         </DocumentCard>
         <p />
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview {...previewPropsUsingIcon} />
-          <div className="ms-DocumentCard-details">
+          <DocumentCardDetails>
             <DocumentCardTitle title="View and share files" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Created a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
-          </div>
+          </DocumentCardDetails>
         </DocumentCard>
         <p />
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview {...previewOutlookUsingIcon} />
-          <div className="ms-DocumentCard-details">
-            <DocumentCardTitle title="Conversation about anual report from SharePoint conference" shouldTruncate={true} />
+          <DocumentCardDetails>
+            <DocumentCardTitle title="Conversation about annual from SharePoint conference" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Sent a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
-          </div>
+          </DocumentCardDetails>
         </DocumentCard>
       </div>
     );

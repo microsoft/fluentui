@@ -93,4 +93,12 @@ describe('Slider', () => {
 
     expect(component.find('.ms-Slider-slideBox').prop('aria-valuetext')).toEqual(values[selected]);
   });
+
+  it('formats the value when a format function is passed', () => {
+    const value = 10;
+    const valueFormat = (val: any) => `${val}%`;
+    const component = mount(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
+
+    expect(component.find('label.ms-Label.ms-Slider-value').text()).toEqual(valueFormat(value));
+  });
 });

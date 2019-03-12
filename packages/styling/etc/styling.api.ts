@@ -217,11 +217,11 @@ module IconFontSizes {
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IEffects {
-  elevation16: IRawStyle;
-  elevation4: IRawStyle;
-  elevation64: IRawStyle;
-  elevation8: IRawStyle;
-  roundedCorner2: number;
+  elevation16: string;
+  elevation4: string;
+  elevation64: string;
+  elevation8: string;
+  roundedCorner2: string;
 }
 
 // @public
@@ -334,6 +334,7 @@ interface IPalette {
   white: string;
   whiteTranslucent40: string;
   yellow: string;
+  yellowDark: string;
   yellowLight: string;
 }
 

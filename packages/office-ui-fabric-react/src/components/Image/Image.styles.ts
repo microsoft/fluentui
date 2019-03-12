@@ -1,5 +1,6 @@
 import { AnimationClassNames, getGlobalClassNames, IStyle } from '../../Styling';
 import { IImageStyleProps, IImageStyles } from './Image.types';
+import { getWindow } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Image',
@@ -43,6 +44,12 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
     transform: 'translate(-50%,-50%)' // @todo test RTL renders transform: translate(50%,-50%);
   };
 
+  // Cut the mustard using msMaxTouchPoints to detect IE11 which does not support CSS object-fit
+  const window: Window | undefined = getWindow();
+  const supportsObjectFit: boolean = window !== undefined && window.navigator.msMaxTouchPoints === undefined;
+  const fallbackObjectFitStyles =
+    (isContain && isLandscape) || (isCover && !isLandscape) ? { width: '100%', height: 'auto' } : { width: 'auto', height: '100%' };
+
   return {
     root: [
       classNames.root,
@@ -77,26 +84,22 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
       isCenter && [classNames.imageCenter, ImageFitStyles],
       isContain && [
         classNames.imageContain,
-        isLandscape && {
+        supportsObjectFit && {
           width: '100%',
-          height: 'auto'
+          height: '100%',
+          objectFit: 'contain'
         },
-        !isLandscape && {
-          width: 'auto',
-          height: '100%'
-        },
+        !supportsObjectFit && fallbackObjectFitStyles,
         ImageFitStyles
       ],
       isCover && [
         classNames.imageCover,
-        isLandscape && {
-          width: 'auto',
-          height: '100%'
-        },
-        !isLandscape && {
+        supportsObjectFit && {
           width: '100%',
-          height: 'auto'
+          height: '100%',
+          objectFit: 'cover'
         },
+        !supportsObjectFit && fallbackObjectFitStyles,
         ImageFitStyles
       ],
       isCenterCover && [

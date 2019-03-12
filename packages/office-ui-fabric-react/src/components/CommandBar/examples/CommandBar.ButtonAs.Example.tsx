@@ -25,6 +25,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       <div>
         <CommandBar
           overflowButtonProps={{
+            ariaLabel: 'More commands',
             menuProps: {
               items: [], // Items must be passed for typesafety, but commandBar will determine items rendered in overflow
               isBeakVisible: true,
@@ -35,7 +36,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
           }}
           buttonAs={customButton}
           items={this.getItems()}
-          overflowItems={this.getOverlflowItems()}
+          overflowItems={this.getOverflowItems()}
           farItems={this.getFarItems()}
           ariaLabel={'Use left and right arrow keys to navigate between commands'}
         />
@@ -52,7 +53,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
         iconProps: {
           iconName: 'Add'
         },
-        ariaLabel: 'New. Use left and right arrow keys to navigate',
+        ariaLabel: 'New',
         subMenuProps: {
           items: [
             {
@@ -101,7 +102,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
     ];
   };
 
-  private getOverlflowItems = () => {
+  private getOverflowItems = () => {
     return [
       {
         key: 'move',
@@ -135,6 +136,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       {
         key: 'sort',
         name: 'Sort',
+        ariaLabel: 'Sort',
         iconProps: {
           iconName: 'SortLines'
         },
@@ -143,6 +145,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       {
         key: 'tile',
         name: 'Grid view',
+        ariaLabel: 'Grid view',
         iconProps: {
           iconName: 'Tiles'
         },
@@ -152,6 +155,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
       {
         key: 'info',
         name: 'Info',
+        ariaLabel: 'Info',
         iconProps: {
           iconName: 'Info'
         },

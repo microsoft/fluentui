@@ -2,6 +2,67 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.16.1",
+      "tag": "@uifabric/merge-styles_v6.16.1",
+      "date": "Fri, 08 Mar 2019 13:32:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix selector in a mergeStyleSets Readme example",
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "69a0b2bb065c894aae430001cd92eee3e17b9630"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.0",
+      "tag": "@uifabric/merge-styles_v6.16.0",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Some references to \"process\" have been removed to help with tree shaking.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bd191a3964734c6619fa49fcdb1d6127e2834522"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.2",
+      "tag": "@uifabric/merge-styles_v6.15.2",
+      "date": "Wed, 30 Jan 2019 13:36:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where multiple selectors in :global() would not be processed correctly",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "91e8cf63bf2e057f609905f66363ac6ab5b5880e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.1",
+      "tag": "@uifabric/merge-styles_v6.15.1",
+      "date": "Wed, 23 Jan 2019 22:53:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow :global to be used in more scenarios than just \":global(selector)\"",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "034ac9dad6f8687da78fb358db9da0c43d976fbc"
+          },
+          {
+            "comment": "Use CSS object-fit in the Image component in capable browsers",
+            "author": "Mathieu 'p01' Henri <mathieu@p01.org>",
+            "commit": "dffc46f4917a381eb75cccc81b5eb89c5c3c9af7"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.15.0",
       "tag": "@uifabric/merge-styles_v6.15.0",
       "date": "Thu, 15 Nov 2018 13:36:22 GMT",

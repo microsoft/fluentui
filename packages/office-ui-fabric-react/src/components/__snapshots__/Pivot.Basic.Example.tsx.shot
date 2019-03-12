@@ -99,7 +99,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #333333;
+                color: #212121;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -254,7 +254,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #333333;
+                color: #212121;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -403,7 +403,7 @@ exports[`Component Examples renders Pivot.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #333333;
+                color: #212121;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {

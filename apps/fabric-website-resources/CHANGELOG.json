@@ -2,6 +2,178 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.13.0",
+      "tag": "@uifabric/fabric-website-resources_v6.13.0",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Announced demo pages",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "ce2154375e321a95b86d0e7bb9be491ad933e7fc"
+          },
+          {
+            "comment": "Export all theme variables in one file",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "15a211ecee250953ac3f999f5aba94ed66706efb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.8 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.32.0 <7.0.0` to `>=6.32.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.149.0 <7.0.0` to `>=6.150.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.0",
+      "tag": "@uifabric/fabric-website-resources_v6.12.0",
+      "date": "Tue, 26 Feb 2019 13:31:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Text component",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a79d1760a092e653aa48a6bbf9e34e2834b00da6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.1 <7.0.0` to `>=6.144.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.1",
+      "tag": "@uifabric/fabric-website-resources_v6.11.1",
+      "date": "Mon, 18 Feb 2019 13:38:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove IColorPickerProps.onColorChanged usage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "5d6e63cd495261e37cd9e322ff2571182d3f8dd2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.14.1 <1.0.0` to `>=0.14.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.3.0 <7.0.0` to `>=6.4.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.140.0 <7.0.0` to `>=6.141.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/fabric-website-resources_v6.11.0",
+      "date": "Fri, 15 Feb 2019 17:41:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Adding StackPage to AppDefinition.tsx.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "040ffd402e7ac92ba9d6640f6d9c6291be762a29"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.1 <7.0.0` to `>=6.140.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.1",
+      "tag": "@uifabric/fabric-website-resources_v6.10.1",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Switch PivotItems to use headerText not linkText",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "43e45d90f0c5cad56cf1b35c8a41361176a30b40"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.29.0 <7.0.0` to `>=6.29.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/fabric-website-resources_v6.10.0",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "config: add _themeVariables.scss and _legacyThemePalette.scss to pre-copy",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b52887ae8e6a1ca4bf0733e2a4caa95e207b0589"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `>=0.1.0 <1.0.0` to `>=0.1.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.9",
+      "tag": "@uifabric/fabric-website-resources_v6.9.9",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added azure themes to demo page",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4a06a2807bee39c26e58c114f0343e6ba930aace"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Prettier changes",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "04558fe11e54e6c0f1db85e14c32f65cfb1d502f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.1 <7.0.0` to `>=6.11.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.8",
       "tag": "@uifabric/fabric-website-resources_v6.9.8",
       "date": "Thu, 25 Oct 2018 12:30:05 GMT",

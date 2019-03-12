@@ -118,6 +118,19 @@ describe('Dropdown', () => {
       expect(titleElement.textContent).toEqual('2');
     });
 
+    it('does clear when the selectedKey is null', () => {
+      const wrapper = mount(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />);
+
+      expect(wrapper.find('.ms-Dropdown-title').text()).toEqual('1');
+
+      wrapper.setProps({
+        selectedKey: null,
+        options: DEFAULT_OPTIONS
+      });
+
+      expect(wrapper.find('.ms-Dropdown-title').text()).toEqual('');
+    });
+
     it('Can change items in uncontrolled case', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
@@ -480,8 +493,8 @@ describe('Dropdown', () => {
 
         ReactTestUtils.Simulate.click(dropdownRoot);
 
-        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item[role="checkbox"]')[1] as HTMLElement;
-        ReactTestUtils.Simulate.click(secondItemElement);
+        const secondItemElement = document.querySelectorAll('.ms-Dropdown-item > input[type="checkbox"]')[1] as HTMLElement;
+        ReactTestUtils.Simulate.change(secondItemElement);
       } finally {
         expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).toEqual('1, 2');
       }

@@ -1,6 +1,35 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 15 Nov 2018 13:36:22 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Mar 2019 13:32:10 GMT and should not be manually modified.
+
+## 6.16.1
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Patches
+
+- Fix selector in a mergeStyleSets Readme example
+
+## 6.16.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- Some references to "process" have been removed to help with tree shaking.
+
+## 6.15.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix bug where multiple selectors in :global() would not be processed correctly
+
+## 6.15.1
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- Allow :global to be used in more scenarios than just ":global(selector)"
+- Use CSS object-fit in the Image component in capable browsers
 
 ## 6.15.0
 Thu, 15 Nov 2018 13:36:22 GMT

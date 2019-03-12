@@ -79,7 +79,6 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuWithCustomMenuListExample"
           text="Click for ContextualMenu"
           menuProps={{
             onRenderMenuList: this._renderMenuList,

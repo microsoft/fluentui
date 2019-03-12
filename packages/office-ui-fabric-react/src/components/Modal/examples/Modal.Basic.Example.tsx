@@ -2,37 +2,38 @@
 import * as React from 'react';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import './Modal.Basic.Example.scss';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import './Modal.Example.scss';
 
-export class ModalBasicExample extends React.Component<
-  {},
-  {
-    showModal: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      showModal: false
-    };
-  }
+export interface IModalBasicExampleState {
+  showModal: boolean;
+}
+
+export class ModalBasicExample extends React.Component<{}, IModalBasicExampleState> {
+  public state: IModalBasicExampleState = {
+    showModal: false
+  };
+  // Use getId() to ensure that the IDs are unique on the page.
+  // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
+  private _titleId: string = getId('title');
+  private _subtitleId: string = getId('subText');
 
   public render(): JSX.Element {
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Modal" onClick={this._showModal} text="Open Modal" />
         <Modal
-          titleAriaId="titleId"
-          subtitleAriaId="subtitleId"
+          titleAriaId={this._titleId}
+          subtitleAriaId={this._subtitleId}
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
           isBlocking={false}
           containerClassName="ms-modalExample-container"
         >
           <div className="ms-modalExample-header">
-            <span id="titleId">Lorem Ipsum</span>
+            <span id={this._titleId}>Lorem Ipsum</span>
           </div>
-          <div id="subtitleId" className="ms-modalExample-body">
+          <div id={this._subtitleId} className="ms-modalExample-body">
             <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in

@@ -162,9 +162,11 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       showCloseButton,
       calendarProps,
       calloutProps,
+      textField: textFieldProps,
       underlined,
       allFocusable,
-      calendarAs: CalendarType = Calendar
+      calendarAs: CalendarType = Calendar,
+      tabIndex
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
@@ -178,34 +180,45 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     const calloutId = getId('DatePicker-Callout');
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
+    const iconProps = textFieldProps && textFieldProps.iconProps;
 
     return (
       <div {...nativeProps} className={classNames.root}>
-        <div ref={this._datePickerDiv} role="combobox" aria-expanded={isDatePickerShown} aria-haspopup="true" aria-owns={calloutId}>
+        <div
+          ref={this._datePickerDiv}
+          role="combobox"
+          aria-expanded={isDatePickerShown}
+          aria-haspopup="true"
+          aria-owns={isDatePickerShown ? calloutId : undefined}
+        >
           <TextField
-            id={this._id + '-label'}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}
             required={isRequired}
             disabled={disabled}
+            errorMessage={errorMessage}
+            placeholder={placeholder}
+            borderless={borderless}
+            value={formattedDate}
+            componentRef={this._textField}
+            underlined={underlined}
+            tabIndex={tabIndex}
+            readOnly={!allowTextInput}
+            {...textFieldProps}
+            id={this._id + '-label'}
+            className={css(classNames.textField, textFieldProps && textFieldProps.className)}
+            iconProps={{
+              iconName: 'Calendar',
+              ...iconProps,
+              className: css(classNames.icon, iconProps && iconProps.className),
+              onClick: this._onIconClick
+            }}
             onKeyDown={this._onTextFieldKeyDown}
             onFocus={this._onTextFieldFocus}
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
             onChange={this._onTextFieldChanged}
-            errorMessage={errorMessage}
-            placeholder={placeholder}
-            borderless={borderless}
-            iconProps={{
-              iconName: 'Calendar',
-              onClick: this._onIconClick,
-              className: classNames.icon
-            }}
-            readOnly={!allowTextInput}
-            value={formattedDate}
-            componentRef={this._textField}
-            underlined={underlined}
           />
         </div>
         {isDatePickerShown && (
@@ -418,7 +431,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
         if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
-          date = this.state.selectedDate;
+          return;
         } else {
           date = parseDateFromString!(inputValue);
 

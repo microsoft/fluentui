@@ -1,6 +1,56 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+
+## 6.13.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages
+- Export all theme variables in one file
+
+## 6.12.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.11.1
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Remove IColorPickerProps.onColorChanged usage
+
+## 6.11.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackPage to AppDefinition.tsx.
+
+## 6.10.1
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Switch PivotItems to use headerText not linkText
+
+## 6.10.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- config: add _themeVariables.scss and _legacyThemePalette.scss to pre-copy
+
+## 6.9.9
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- Added azure themes to demo page
 
 ## 6.9.8
 Thu, 25 Oct 2018 12:30:05 GMT

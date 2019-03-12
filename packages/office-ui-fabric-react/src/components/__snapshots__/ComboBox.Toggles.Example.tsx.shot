@@ -316,7 +316,6 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

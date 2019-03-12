@@ -66,6 +66,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -237,7 +238,6 @@ exports[`DetailsList renders List correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -267,7 +267,6 @@ exports[`DetailsList renders List correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -648,6 +647,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -819,7 +819,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -849,7 +848,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -1818,6 +1816,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -1989,7 +1988,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2019,7 +2017,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -2401,6 +2398,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2572,7 +2570,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2602,7 +2599,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -3359,6 +3355,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -3530,7 +3527,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -3560,7 +3556,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -4543,6 +4538,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -4571,27 +4567,30 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             className=
                 ms-DetailsHeader-cell
                 {
+                  align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
-                  display: inline-block;
+                  color: #666666;
+                  display: inline-flex;
+                  font-size: 12px;
                   height: 32px;
+                  justify-content: center;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
                   margin-right: 0;
                   margin-top: 0;
                   outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
                   position: relative;
                   text-align: left;
                   text-overflow: ellipsis;
                   vertical-align: top;
                   white-space: nowrap;
-                  width: 36px;
+                  width: 32px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -4607,33 +4606,34 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                &:hover {
+                  background-color: #f4f4f4;
+                }
+                &:active {
+                  background-color: #eaeaea;
+                }
             data-is-focusable={true}
             onClick={[Function]}
           >
             <i
-              aria-hidden={true}
               className=
                   ms-DetailsHeader-collapseButton
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
-                    outline: 0px;
-                    padding-right: 0px;
                     speak: none;
-                    text-align: center;
                     transform-origin: 50% 50%;
-                    transform: rotate(-180deg);
-                    transition: transform 0.1s linear;
-                    width: 20px;
+                    transform: rotate(90deg);
+                    transition: transform .1s linear;
                   }
-              data-icon-name="ChevronDown"
+              data-icon-name="ChevronRightMed"
               role="presentation"
             >
-              
+              
             </i>
           </div>
           <div
@@ -4871,8 +4871,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     font-weight: 400;
                     position: relative;
                   }
-                  & :global(.ms-List-cell) {
-                    min-height: 36px;
+                  & .ms-List-cell {
+                    min-height: 38px;
                   }
               data-automationid="GroupedList"
               data-is-scrollable="false"
@@ -4912,6 +4912,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
+                                border-bottom: 1px solid #ffffff;
                                 cursor: default;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
@@ -4940,6 +4941,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               &:hover $check {
                                 opacity: 1;
                               }
+                              &:focus $check {
+                                opacity: 1;
+                              }
                               .ms-GroupedList-group.is-dropping > $root $dropIcon {
                                 opacity: 1;
                                 transform: rotate(0.2deg) scale(1);
@@ -4959,7 +4963,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 {
                                   align-items: center;
                                   display: flex;
-                                  height: 40px;
+                                  height: 42px;
                                 }
                             data-focuszone-id="FocusZone19"
                             onFocus={[Function]}
@@ -4985,7 +4989,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {
@@ -5010,17 +5013,23 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-expand
                                   {
+                                    align-items: center;
                                     background-color: transparent;
                                     background: none;
                                     border: none;
                                     color: #666666;
                                     cursor: default;
-                                    font-size: 20px;
-                                    height: 40px;
+                                    display: flex;
+                                    font-size: 18px;
+                                    height: 42px;
+                                    justify-content: center;
                                     outline: transparent;
-                                    padding-top: 4px;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
                                     position: relative;
-                                    width: 36px;
+                                    width: 32px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -5036,29 +5045,34 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     top: 1px;
                                     z-index: 1;
                                   }
+                                  &:hover {
+                                    background-color: #eaeaea;
+                                  }
+                                  &:active {
+                                    background-color: #dadada;
+                                  }
                               onClick={[Function]}
                               type="button"
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons";
+                                      font-family: "FabricMDL2Icons-2";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
                                       transform-origin: 50% 50%;
-                                      transform: rotate(-180deg);
+                                      transform: rotate(90deg);
                                       transition: transform .1s linear;
                                     }
-                                data-icon-name="ChevronDown"
+                                data-icon-name="ChevronRightMed"
                                 role="presentation"
                               >
-                                
+                                
                               </i>
                             </button>
                             <div
@@ -5067,7 +5081,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   {
                                     cursor: pointer;
                                     font-size: 21px;
-                                    font-weight: 100;
+                                    font-weight: 300;
                                     outline: 0px;
                                     padding-left: 12px;
                                     text-overflow: ellipsis;
@@ -5200,12 +5214,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 36,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -5398,12 +5408,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 36,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -5536,6 +5542,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
+                                border-bottom: 1px solid #ffffff;
                                 cursor: default;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
@@ -5564,6 +5571,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               &:hover $check {
                                 opacity: 1;
                               }
+                              &:focus $check {
+                                opacity: 1;
+                              }
                               .ms-GroupedList-group.is-dropping > $root $dropIcon {
                                 opacity: 1;
                                 transform: rotate(0.2deg) scale(1);
@@ -5583,7 +5593,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 {
                                   align-items: center;
                                   display: flex;
-                                  height: 40px;
+                                  height: 42px;
                                 }
                             data-focuszone-id="FocusZone21"
                             onFocus={[Function]}
@@ -5609,7 +5619,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {
@@ -5634,17 +5643,23 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-expand
                                   {
+                                    align-items: center;
                                     background-color: transparent;
                                     background: none;
                                     border: none;
                                     color: #666666;
                                     cursor: default;
-                                    font-size: 20px;
-                                    height: 40px;
+                                    display: flex;
+                                    font-size: 18px;
+                                    height: 42px;
+                                    justify-content: center;
                                     outline: transparent;
-                                    padding-top: 4px;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
                                     position: relative;
-                                    width: 36px;
+                                    width: 32px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -5660,29 +5675,34 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     top: 1px;
                                     z-index: 1;
                                   }
+                                  &:hover {
+                                    background-color: #eaeaea;
+                                  }
+                                  &:active {
+                                    background-color: #dadada;
+                                  }
                               onClick={[Function]}
                               type="button"
                             >
                               <i
-                                aria-hidden={true}
                                 className=
 
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons";
+                                      font-family: "FabricMDL2Icons-2";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
                                       transform-origin: 50% 50%;
-                                      transform: rotate(-180deg);
+                                      transform: rotate(90deg);
                                       transition: transform .1s linear;
                                     }
-                                data-icon-name="ChevronDown"
+                                data-icon-name="ChevronRightMed"
                                 role="presentation"
                               >
-                                
+                                
                               </i>
                             </button>
                             <div
@@ -5691,7 +5711,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   {
                                     cursor: pointer;
                                     font-size: 21px;
-                                    font-weight: 100;
+                                    font-weight: 300;
                                     outline: 0px;
                                     padding-left: 12px;
                                     text-overflow: ellipsis;
@@ -5824,12 +5844,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 36,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -6022,12 +6038,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 36,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=
@@ -6220,12 +6232,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                           font-size: 14px;
                                           font-weight: 400;
+                                          width: 32px;
                                         }
-                                    style={
-                                      Object {
-                                        "width": 36,
-                                      }
-                                    }
                                   />
                                   <div
                                     className=

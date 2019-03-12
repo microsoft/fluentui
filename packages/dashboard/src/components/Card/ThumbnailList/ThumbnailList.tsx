@@ -24,6 +24,10 @@ export class ThumbnailList extends React.Component<IThumbnailListProps> {
           handleThumbnailItemClick={thumbnailItem.handleThumbnailItemClick}
           imageAriaHidden={thumbnailItem.imageAriaHidden}
           altImageText={thumbnailItem.altImageText}
+          ariaDescription={thumbnailItem.ariaDescription}
+          ariaHidden={thumbnailItem.ariaHidden}
+          ariaLabel={thumbnailItem.ariaLabel}
+          title={thumbnailItem.title}
         />
       );
     });

@@ -1,5 +1,5 @@
-import { buildClassMap } from '../utilities/index';
-import { IFontStyles } from '../interfaces/index';
-import { DefaultFontStyles } from '../styles/index';
+import { buildClassMap } from '../utilities/buildClassMap';
+import { IFontStyles } from '../interfaces/IFontStyles';
+import { DefaultFontStyles } from '../styles/DefaultFontStyles';
 
 export const FontClassNames: { [key in keyof IFontStyles]?: string } = buildClassMap(DefaultFontStyles);

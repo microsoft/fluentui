@@ -363,9 +363,10 @@ export interface IContextualMenuItem {
 
   /**
    * Properties to apply to a submenu to this item.
-   * The ContextualMenu will provide default values for 'target', 'onDismiss', 'isSubMenu',
-   *  'id', 'shouldFocusOnMount', 'directionalHint', 'className', and 'gapSpace', all of which
-   *  can be overridden.
+   *
+   * The ContextualMenu will provide default values for `target`, `onDismiss`, `isSubMenu`,
+   * `id`, `shouldFocusOnMount`, `directionalHint`, `className`, and `gapSpace`, all of which
+   * can be overridden.
    */
   subMenuProps?: IContextualMenuProps;
 

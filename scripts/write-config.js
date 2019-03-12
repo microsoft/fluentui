@@ -20,11 +20,8 @@ function writeConfig(file, newValue) {
 
   const oldContents = fs.readFileSync(file, 'utf8');
   const newContents = jju.update(oldContents, newValue, {
-    mode: 'jsonc',
-    indent: 2,
-    quote: '"',
-    quote_keys: true,
-    no_trailing_comma: true
+    mode: 'cjson',
+    indent: 2
   });
   fs.writeFileSync(file, newContents);
   return true;

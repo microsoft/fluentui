@@ -6,7 +6,7 @@ import {
   DashboardGridSectionLayout,
   ISection
 } from '@uifabric/dashboard';
-import { Layout, Layouts } from 'react-grid-layout';
+import { Layout, Layouts } from 'react-grid-layout-fabric';
 
 export interface IDashboardGridLayoutSectionsWithCardNodesState {
   sectionMapping: DashboardSectionMapping;

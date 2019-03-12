@@ -1,6 +1,275 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Mar 2019 12:31:10 GMT and should not be manually modified.
+
+## 0.54.1
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Patches
+
+- DetailPanel: Enable use the currentL2Id on Panel load to load L2 page directly
+
+## 0.54.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Added props required for content animation in wizard, Moved util functions from exampls to main util file, Added util methods "getPrevStep, getParentStep, getStep", Animations in progress
+
+## 0.53.1
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Patches
+
+- DetailPanel: Allow persona header set image icon 
+- DetailPanel: Allow header property to take JSX.Element
+
+## 0.53.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Added wizard to dashboard package index
+- Replacing elementType usage with as in SubwayNavBase and SubwayNodeBase
+
+## 0.52.2
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.52.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Make the stepToShow parameter take effect on footerAction
+
+## 0.52.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- Implemented full parent wizard in dashboard package
+- Make titleElement optional as SetupWizard design has no title bar
+
+### Patches
+
+- first time cards not added on dashboard and onLayoutChange calling issue fixed
+
+## 0.51.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Make updates to SetupWizard and Wizard Base
+
+## 0.50.0
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Minor changes
+
+- Add panel wizard implementation
+
+### Patches
+
+- Add styling to WizardBase, refactor examples
+
+## 0.49.0
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Minor changes
+
+- Refactor of Wizard and SubwayNav Components
+
+## 0.48.0
+Fri, 15 Feb 2019 13:33:05 GMT
+
+### Minor changes
+
+- Add 'StackedBarChart' Visualization support to Recommendation Banner (MIP, Intune Recommendations will use this). Refactor existing visualizations into separate functional components.
+
+## 0.47.5
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add Id for Thumbnail item actions
+
+## 0.47.4
+Tue, 12 Feb 2019 13:36:42 GMT
+
+### Patches
+
+- Implement Wizard base control and SetupWizard control in dashboard package
+
+## 0.47.3
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- Adding SubwayNav control in Dashboard
+- Hide command bar from composite list if no commands exist
+
+## 0.47.2
+Tue, 05 Feb 2019 13:35:00 GMT
+
+### Patches
+
+- Add id's for actions and onclick handler for multicount
+
+## 0.47.1
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- DetailPanel: fix content load error on L2 content mode
+
+## 0.47.0
+Thu, 31 Jan 2019 13:36:13 GMT
+
+### Minor changes
+
+- add  optional  id props to  IThumbnailListProps, IGridListProps, ICompoundAction and  optional cardId to ICardProps
+
+### Patches
+
+- Expose RGL types to DGL consumers, let the consumer know about the show more/less nav link event
+
+## 0.46.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix detail panel custom width issue, fix detail panel tiles css issue, add jsx.element support to detail panel tile message
+- Fix edge browser thumbnail list focus items alignment issue
+
+## 0.46.1
+Tue, 29 Jan 2019 13:35:55 GMT
+
+### Patches
+
+-  Add cardId for dashboardGridLayout onLayoutChange
+
+## 0.46.0
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Minor changes
+
+- updated dashboard package to use a fork of react-grid-layout
+
+### Patches
+
+- Fix DetailPanel mainContent lifecycle event
+
+## 0.45.0
+Wed, 23 Jan 2019 22:53:12 GMT
+
+### Minor changes
+
+- add composite list common control component
+
+### Patches
+
+- DetailPanel: add with analytics handler
+- Update README.md to fix title and link to Card component
+
+## 0.44.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- Add common Detail-Panel component
+
+### Patches
+
+- Remove extra hidden elements in gridList when gridList is empty
+- add focus border for thumbnailList 
+
+## 0.43.5
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fixed Add card panel re-render issue in onLayoutChange method in DashboardGridLayoutWithAddCardPanel.tsx
+
+## 0.43.4
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- add is's for card actions
+
+## 0.43.3
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Icon: removing aria-hidden attribute.
+
+## 0.43.2
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Patches
+
+- Add Empty card state for addCardPanel
+- Revert horizontal compaction and fix left nav external links to open based on target attr
+
+## 0.43.1
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Patches
+
+- "update grid list cursor to pointer"
+
+## 0.43.0
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+- Adding support for JSX.Element to DGLWithAddCardPanel. Still maintaining support for RTL/LTR and accessibility.
+
+### Patches
+
+- Convert DashboardGridLayout from componentWillReceiveProps to getDerivedStateFromProps
+
+## 0.42.2
+Fri, 04 Jan 2019 13:36:07 GMT
+
+### Patches
+
+- Add support of accessibility for the card component
+
+## 0.42.1
+Thu, 03 Jan 2019 13:33:55 GMT
+
+### Patches
+
+- Adding focus for action bar overflow button
+- Add tooltip for navbar expended button
+
+## 0.42.0
+Fri, 28 Dec 2018 13:35:08 GMT
+
+### Minor changes
+
+- Adding drag and drop experience to existing dashboard experience. Adding DraggingCard and changes to existing add card pane and addCard to support drag and drop functionality.
+
+## 0.41.1
+Fri, 21 Dec 2018 13:34:57 GMT
+
+### Patches
+
+- Minor RTL improvement and bug fix in setup banner
+
+## 0.41.0
+Thu, 20 Dec 2018 13:39:35 GMT
+
+### Minor changes
+
+- Improved low resolution support and added shimmer to setup banner
 
 ## 0.40.0
 Mon, 17 Dec 2018 13:36:58 GMT

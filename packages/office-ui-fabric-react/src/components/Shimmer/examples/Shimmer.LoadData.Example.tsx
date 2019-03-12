@@ -1,10 +1,19 @@
+// @codepen
+
 import * as React from 'react';
-import { Shimmer, ShimmerElementsGroup, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { PersonaDetails } from './ExampleHelper';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-import * as ShimmerExampleStyles from './Shimmer.Example.scss';
+const wrapperClass = mergeStyles({
+  padding: 2,
+  selectors: {
+    '& > *': {
+      margin: '10px 0'
+    }
+  }
+});
 
 export interface IShimmerLoadDataExampleState {
   isDataLoadedOne?: boolean;
@@ -28,11 +37,10 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     const { isDataLoadedOne, isDataLoadedTwo, contentOne, examplePersona } = this.state;
 
     return (
-      <div className={ShimmerExampleStyles.shimmerExampleContainer}>
+      <div className={wrapperClass}>
         <Toggle checked={isDataLoadedOne} onChange={this._getContentOne} onText="Toggle to show shimmer" offText="Toggle to load content" />
-        <Shimmer isDataLoaded={isDataLoadedOne} ariaLabel={'Loading content'}>
+        <Shimmer isDataLoaded={isDataLoadedOne} ariaLabel="Loading content">
           <div
-            // tslint:disable-next-line:jsx-ban-props
             style={{
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -66,24 +74,30 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     const { isDataLoadedTwo } = this.state;
     this.setState({
       isDataLoadedTwo: checked,
-      examplePersona: !isDataLoadedTwo ? { ...PersonaDetails } : {}
+      examplePersona: !isDataLoadedTwo
+        ? {
+            imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
+            imageInitials: 'AL',
+            primaryText: 'Annie Lindqvist',
+            secondaryText: 'Software Engineer'
+          }
+        : {}
     });
   };
 
   private _getCustomElements = (): JSX.Element => {
     return (
-      <div
-        // tslint:disable-next-line:jsx-ban-props
-        style={{ display: 'flex' }}
-      >
-        <ShimmerElementsGroup shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 16, height: 40 }]} />
+      <div style={{ display: 'flex' }}>
+        <ShimmerElementsGroup
+          shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 16, height: 40 }]}
+        />
         <ShimmerElementsGroup
           flexWrap={true}
-          width={'100%'}
+          width="100%"
           shimmerElements={[
-            { type: ElemType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
-            { type: ElemType.line, width: '90%', height: 8 },
-            { type: ElemType.gap, width: '10%', height: 20 }
+            { type: ShimmerElementType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
+            { type: ShimmerElementType.line, width: '90%', height: 8 },
+            { type: ShimmerElementType.gap, width: '10%', height: 20 }
           ]}
         />
       </div>

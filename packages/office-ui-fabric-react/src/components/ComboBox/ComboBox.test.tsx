@@ -110,6 +110,30 @@ describe.only('ComboBox', () => {
     expect(inputElement.props().value).toEqual('zero');
   });
 
+  it('changes to a selected key change the input', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    expect(wrapper.find('input').props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: 1 });
+
+    expect(wrapper.find('input').props().value).toEqual('one');
+  });
+
+  it('changes to a selected item on key change', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    expect(wrapper.find('input').props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: null });
+
+    // \u200B is a zero width space.
+    // See https://github.com/OfficeDev/office-ui-fabric-react/blob/d4e9b6d28b25a3e123b2d47c0a03f18113fbee60/packages/office-ui-fabric-react/src/components/ComboBox/ComboBox.tsx#L481.
+    expect(wrapper.find('input').props().value).toEqual('\u200B');
+  });
+
   it('Renders a placeholder', () => {
     const placeholder = 'Select an option';
     wrapper = mount(<ComboBox placeholder={placeholder} options={DEFAULT_OPTIONS} />);
@@ -457,11 +481,11 @@ describe.only('ComboBox', () => {
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
     const inputElement = comboBoxRoot.find('input');
     inputElement.simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option');
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
 
-    ReactTestUtils.Simulate.click(buttons[0]);
-    ReactTestUtils.Simulate.click(buttons[1]);
-    ReactTestUtils.Simulate.click(buttons[2]);
+    ReactTestUtils.Simulate.change(buttons[0]);
+    ReactTestUtils.Simulate.change(buttons[1]);
+    ReactTestUtils.Simulate.change(buttons[2]);
 
     expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 1, 2]);
   });
@@ -470,11 +494,11 @@ describe.only('ComboBox', () => {
     const onItemClickMock = jest.fn();
     wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />);
     wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    const buttons = document.querySelectorAll('.ms-ComboBox-option');
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
 
-    ReactTestUtils.Simulate.click(buttons[0]);
-    ReactTestUtils.Simulate.click(buttons[1]);
-    ReactTestUtils.Simulate.click(buttons[2]);
+    ReactTestUtils.Simulate.change(buttons[0]);
+    ReactTestUtils.Simulate.change(buttons[1]);
+    ReactTestUtils.Simulate.change(buttons[2]);
 
     expect(onItemClickMock).toHaveBeenCalledTimes(3);
   });
@@ -485,8 +509,54 @@ describe.only('ComboBox', () => {
     wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
     const buttons = document.querySelectorAll('.ms-ComboBox-option');
 
-    (buttons[0] as HTMLButtonElement).click();
+    (buttons[0] as HTMLInputElement).click();
 
     expect(onItemClickMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('allows adding a custom aria-describedby id to the input', () => {
+    const comboBoxRef = React.createRef<any>();
+    const customId = 'customAriaDescriptionId';
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} ariaDescribedBy={customId} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
+    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
+  });
+
+  it('test persistMenu, callout should exist before and after opening menu', () => {
+    const onMenuOpenMock = jest.fn();
+    const onMenuDismissedMock = jest.fn();
+
+    wrapper = mount(
+      <ComboBox
+        defaultSelectedKey="1"
+        persistMenu={true}
+        options={DEFAULT_OPTIONS2}
+        onMenuOpen={onMenuOpenMock}
+        onMenuDismissed={onMenuDismissedMock}
+      />
+    );
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+
+    // Find menu
+    const calloutBeforeOpen = document.querySelector('.ms-Callout')!;
+    expect(calloutBeforeOpen).toBeDefined();
+    expect(calloutBeforeOpen.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+
+    // Open combobox
+    const buttonElement = comboBoxRoot.find('button');
+    buttonElement.simulate('click');
+    expect(onMenuOpenMock.mock.calls.length).toBe(1);
+
+    // Close combobox
+    buttonElement.simulate('click');
+    expect(onMenuDismissedMock.mock.calls.length).toBe(1);
+
+    // Ensure menu is still there
+    const calloutAfterClose = document.querySelector('.ms-Callout')!;
+    expect(calloutAfterClose).toBeDefined();
+    expect(calloutAfterClose.classList.contains('ms-ComboBox-callout')).toBeTruthy();
   });
 });

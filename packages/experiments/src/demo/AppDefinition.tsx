@@ -11,12 +11,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
-          key: 'Announced',
-          name: 'Announced',
-          url: '#/examples/announced'
-        },
-        {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,
           key: 'Button',
           name: 'Button',
@@ -41,12 +35,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
-          component: require<any>('../components/Form/FormPage').FormPage,
-          key: 'Form',
-          name: 'Form',
-          url: '#/examples/form'
-        },
-        {
           component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
           key: 'FileTypeIcon',
           name: 'FileTypeIcon',
@@ -63,6 +51,18 @@ export const AppDefinition: IAppDefinition = {
           key: 'Pagination',
           name: 'Pagination',
           url: '#/examples/pagination'
+        },
+        {
+          component: require<any>('../components/PersonaCoin/PersonaCoinPage').PersonaCoinPage,
+          key: 'PersonaCoin',
+          name: 'PersonaCoin',
+          url: '#/examples/personacoin'
+        },
+        {
+          component: require<any>('../components/Persona/PersonaPage').PersonaPage,
+          key: 'Persona',
+          name: 'Persona',
+          url: '#/examples/persona'
         },
         {
           component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
@@ -87,18 +87,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Slots',
           name: 'Slots',
           url: '#/examples/slots'
-        },
-        {
-          component: require<any>('../components/Stack/StackPage').StackPage,
-          key: 'Stack',
-          name: 'Stack',
-          url: '#/examples/stack'
-        },
-        {
-          component: require<any>('../components/Text/TextPage').TextPage,
-          key: 'Text',
-          name: 'Text',
-          url: '#/examples/text'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,

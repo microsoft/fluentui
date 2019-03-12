@@ -1,9 +1,16 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Fabric, CompactPeoplePicker, ListPeoplePicker, NormalPeoplePicker, IPersonaProps, PersonaPresence } from 'office-ui-fabric-react';
+import {
+  Fabric,
+  CompactPeoplePicker,
+  ListPeoplePicker,
+  NormalPeoplePicker,
+  IPersonaProps,
+  PersonaPresence
+} from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
 

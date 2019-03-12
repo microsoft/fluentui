@@ -1,8 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -10,13 +10,14 @@ import {
   DocumentCardActivity,
   DocumentCardType,
   ImageFit,
-  DocumentCardActions,
-  Fabric
+  DocumentCardDetails,
+  Fabric,
+  IDocumentCardPreviewProps
 } from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
 
-let previewProps = {
+const previewProps: IDocumentCardPreviewProps = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
@@ -32,7 +33,7 @@ let previewProps = {
   ]
 };
 
-let previewPropsCompact = {
+const previewPropsCompact: IDocumentCardPreviewProps = {
   getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
   previewImages: [
     {
@@ -74,7 +75,7 @@ let previewPropsCompact = {
   ]
 };
 
-let DocActivity = (
+const docActivity = (
   <Fabric>
     <DocumentCardActivity
       activity="Created a few minutes ago"
@@ -85,7 +86,16 @@ let DocActivity = (
 
 storiesOf('DocumentCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
   .addStory('Root', () => (
     <Fabric>
       <DocumentCard onClickHref="http://bing.com">
@@ -94,7 +104,7 @@ storiesOf('DocumentCard', module)
           title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
           shouldTruncate={true}
         />
-        {DocActivity}
+        {docActivity}
       </DocumentCard>
     </Fabric>
   ))
@@ -106,7 +116,7 @@ storiesOf('DocumentCard', module)
           title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
           shouldTruncate={false}
         />
-        {DocActivity}
+        {docActivity}
       </DocumentCard>
     </Fabric>
   ))
@@ -115,38 +125,31 @@ storiesOf('DocumentCard', module)
       <DocumentCard onClickHref="http://bing.com">
         <DocumentCardPreview {...previewProps} />
         <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
-        {DocActivity}
+        {docActivity}
       </DocumentCard>
     </Fabric>
-  ))
+  ));
+
+storiesOf('DocumentCard', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
   .addStory('Compact', () => (
     <Fabric>
       <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
         <DocumentCardPreview {...previewPropsCompact} />
-        <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
-        {DocActivity}
+        <DocumentCardDetails>
+          <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+          {docActivity}
+        </DocumentCardDetails>
       </DocumentCard>
     </Fabric>
-  ))
-  .addStory(
-    'With Views',
-    () => (
-      <Fabric>
-        <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
-          <DocumentCardPreview {...previewPropsCompact} />
-          <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
-          {DocActivity}
-          <DocumentCardActions
-            actions={[
-              {
-                iconProps: { iconName: 'Share' },
-                ariaLabel: 'share action'
-              }
-            ]}
-            views={432}
-          />
-        </DocumentCard>
-      </Fabric>
-    ),
-    { rtl: true }
-  );
+  ));

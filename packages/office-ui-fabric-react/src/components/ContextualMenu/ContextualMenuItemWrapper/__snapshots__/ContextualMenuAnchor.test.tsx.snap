@@ -11,6 +11,7 @@ exports[`ContextualMenuButton creates a normal button renders the contextual men
     onKeyDown={null}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
+    onMouseMove={[Function]}
     role="menuitem"
   >
     <div

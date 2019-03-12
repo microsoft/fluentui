@@ -98,6 +98,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
+                  aria-expanded={
+                    column.columnActionsMode === ColumnActionsMode.hasDropdown ? (column.isMenuOpen ? true : false) : undefined
+                  }
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
                     {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}
@@ -131,7 +134,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       delete this._dragDropSubscription;
     }
 
-    if (this.props.dragDropHelper && this.props.isDraggable!) {
+    if (this.props.dragDropHelper && this.props.isDraggable) {
       this._dragDropSubscription = this.props.dragDropHelper.subscribe(
         this._root.current as HTMLElement,
         this._events,
@@ -145,20 +148,20 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     const classNames = this._classNames;
 
     if (this.props.isDropped) {
-      if (this._root!.current!) {
-        this._root!.current!.classList!.add(classNames.borderAfterDropping);
+      if (this._root.current) {
+        this._root.current.classList.add(classNames.borderAfterDropping);
 
         this._async.setTimeout(() => {
-          if (this._root!.current!) {
-            this._root!.current!.classList!.add(classNames.noBorderAfterDropping);
+          if (this._root.current) {
+            this._root.current.classList.add(classNames.noBorderAfterDropping);
           }
         }, CLASSNAME_ADD_INTERVAL);
       }
 
       this._async.setTimeout(() => {
-        if (this._root!.current!) {
-          this._root!.current!.classList!.remove(classNames.borderAfterDropping);
-          this._root!.current!.classList!.remove(classNames.noBorderAfterDropping);
+        if (this._root.current) {
+          this._root.current.classList.remove(classNames.borderAfterDropping);
+          this._root.current.classList.remove(classNames.noBorderAfterDropping);
         }
       }, TRANSITION_DURATION_DROP + CLASSNAME_ADD_INTERVAL);
     }
@@ -172,7 +175,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   }
 
   public componentDidUpdate(): void {
-    if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable!) {
+    if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable) {
       this._dragDropSubscription = this.props.dragDropHelper.subscribe(
         this._root.current as HTMLElement,
         this._events,
@@ -182,7 +185,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       // We need to use native on this to avoid MarqueeSelection from handling the event before us.
       this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
     }
-    if (this._dragDropSubscription && !this.props.isDraggable!) {
+    if (this._dragDropSubscription && !this.props.isDraggable) {
       this._dragDropSubscription.dispose();
       this._events.off(this._root.current, 'mousedown');
       delete this._dragDropSubscription;
@@ -259,8 +262,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       this._updateHeaderDragInfo(itemIndex);
       this._root.current.classList.add(classNames.borderWhileDragging);
       this._async.setTimeout(() => {
-        if (this._root!.current!) {
-          this._root!.current!.classList!.add(classNames.noBorderWhileDragging);
+        if (this._root.current) {
+          this._root.current.classList.add(classNames.noBorderWhileDragging);
         }
       }, CLASSNAME_ADD_INTERVAL);
     }

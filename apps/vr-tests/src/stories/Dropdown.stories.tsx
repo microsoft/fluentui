@@ -1,9 +1,15 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Dropdown, DropdownMenuItemType, IDropdownProps, Icon, IDropdownOption } from 'office-ui-fabric-react';
+import {
+  Dropdown,
+  DropdownMenuItemType,
+  IDropdownProps,
+  Icon,
+  IDropdownOption
+} from 'office-ui-fabric-react';
 
 storiesOf('Dropdown', module)
   .addDecorator(FabricDecorator)
@@ -116,7 +122,12 @@ storiesOf('Dropdown', module)
           return (
             <div className="dropdownExample-option">
               {option.data && option.data.icon && (
-                <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+                <Icon
+                  style={{ marginRight: '8px' }}
+                  iconName={option.data.icon}
+                  aria-hidden="true"
+                  title={option.data.icon}
+                />
               )}
               <span>{option.text}</span>
             </div>
@@ -126,7 +137,12 @@ storiesOf('Dropdown', module)
           return (
             <div className="dropdownExample-option">
               {option.data && option.data.icon && (
-                <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+                <Icon
+                  style={{ marginRight: '8px' }}
+                  iconName={option.data.icon}
+                  aria-hidden="true"
+                  title={option.data.icon}
+                />
               )}
               <span>{option.text}</span>
             </div>

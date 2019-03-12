@@ -1,6 +1,88 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 14 Dec 2018 13:35:30 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+
+## 0.16.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.
+
+## 0.15.1
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Update DetailsList Fluent styles
+
+## 0.15.0
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Minor changes
+
+- Panel: adds fluent styles overrides.
+
+### Patches
+
+- Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.
+
+## 0.14.2
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Dialog: Adjust right padding of title
+
+## 0.14.1
+Fri, 15 Feb 2019 13:33:05 GMT
+
+### Patches
+
+- Remove unnecessary theme colors
+
+## 0.14.0
+Tue, 12 Feb 2019 13:36:43 GMT
+
+### Minor changes
+
+- Pickers: adds minor adjustments to align to new fluent style patterns.
+
+## 0.13.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Dropdown: fixes a misalignment of some items in the dropdown. 
+
+## 0.13.3
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.
+
+## 0.13.2
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Patches
+
+- Rating: Use palette colors where possible
+
+## 0.13.1
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Replacing references to 'office-ui-fabric-react/lib/Styling' with references to '@uifabric/styling' in fluent-theme package.
+
+## 0.13.0
+Mon, 24 Dec 2018 13:33:49 GMT
+
+### Minor changes
+
+- Export animations as strings instead of objects
+- Add Facepile styles to theme
 
 ## 0.12.0
 Fri, 14 Dec 2018 13:35:30 GMT

@@ -2,6 +2,228 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.0",
+      "tag": "@uifabric/fluent-theme_v0.16.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4f0b6edde9d6fe846bf84cad542fceca9eb1e729"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.41.0 <7.0.0` to `>=6.42.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.145.0 <7.0.0` to `>=6.146.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.15.1",
+      "tag": "@uifabric/fluent-theme_v0.15.1",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update DetailsList Fluent styles",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f548938819def5e9e8a2f81bf9cd11aaa401e68c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.15.0",
+      "tag": "@uifabric/fluent-theme_v0.15.0",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: adds fluent styles overrides.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c97e7f2c3d22bfaedb0e778f2f1dc7645fd60b8c"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "16390fd717dcb5db3c0f0a83965aa1a9f1efc3a8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.2",
+      "tag": "@uifabric/fluent-theme_v0.14.2",
+      "date": "Mon, 18 Feb 2019 13:38:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dialog: Adjust right padding of title",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "d83c7d60a13d80584724d88efad035c2edfe5719"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.140.0 <7.0.0` to `>=6.141.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.1",
+      "tag": "@uifabric/fluent-theme_v0.14.1",
+      "date": "Fri, 15 Feb 2019 13:33:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove unnecessary theme colors",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "299c8961fa7c59c990d8618b4885c4e17e5442ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.0 <7.0.0` to `>=6.139.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.0",
+      "tag": "@uifabric/fluent-theme_v0.14.0",
+      "date": "Tue, 12 Feb 2019 13:36:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pickers: adds minor adjustments to align to new fluent style patterns.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "7c7b532230b69757253309e2210ee091f5bd63aa"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.137.0 <7.0.0` to `>=6.138.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.4",
+      "tag": "@uifabric/fluent-theme_v0.13.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fixes a misalignment of some items in the dropdown. ",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "69a8cfcb14d8d61500179c8dfe870abd2371dbfd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.3",
+      "tag": "@uifabric/fluent-theme_v0.13.3",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "6aea41c720e996979f9687f70d1b4df1ea43cf9d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.3 <7.0.0` to `>=6.129.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.2",
+      "tag": "@uifabric/fluent-theme_v0.13.2",
+      "date": "Thu, 10 Jan 2019 04:58:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Rating: Use palette colors where possible",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "d0ccedbd10c9072c75ce79cde3801bdfb0ac8925"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.39.0 <7.0.0` to `>=6.40.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.122.0 <7.0.0` to `>=6.123.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.1",
+      "tag": "@uifabric/fluent-theme_v0.13.1",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replacing references to 'office-ui-fabric-react/lib/Styling' with references to '@uifabric/styling' in fluent-theme package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "b85cf92ef1d0bb9918d369e9e56709343a7c9d5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.0",
+      "tag": "@uifabric/fluent-theme_v0.13.0",
+      "date": "Mon, 24 Dec 2018 13:33:49 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export animations as strings instead of objects",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "80dd303e8481eb0917c8a8caa6b9a594e0420f69"
+          },
+          {
+            "comment": "Add Facepile styles to theme",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "ed10d6723d7ca6480d06f478eb1dd93a4eca488d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.117.1 <7.0.0` to `>=6.117.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.12.0",
       "tag": "@uifabric/fluent-theme_v0.12.0",
       "date": "Fri, 14 Dec 2018 13:35:30 GMT",

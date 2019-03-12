@@ -1,18 +1,19 @@
 import * as React from 'react';
 import {
   IDGLCard,
-  ICardContentDetails,
+  Card,
   Priority,
   CardContentType,
   CardSize,
   DashboardGridLayoutWithAddCardPanel,
   DashboardGridBreakpointLayouts,
-  IThumbnailItemProps
+  IAddCardPanelProps,
+  DraggingAnimationType
 } from '@uifabric/dashboard';
+import { ISection } from '../../../index';
 
-// Cards information that go into the layout and add card panel
 const cardFrameContent = {
-  cardTitle: 'Example Card',
+  cardTitle: 'Small Card',
   cardDropDownOptions: [
     {
       key: 'Remove',
@@ -27,33 +28,7 @@ const cardFrameContent = {
   ]
 };
 
-const thumbnailItems: IThumbnailItemProps[] = [
-  {
-    imageSource: './src/images/download.jpg',
-    subheaderText: 'First item',
-    description: 'This is the first thumbnail item',
-    handleThumbnailItemClick: () => {
-      alert('First Item clicked');
-    }
-  },
-  {
-    imageSource: './src/images/download.jpg',
-    subheaderText: 'Second item',
-    description: 'Lorem ipsum dolor sit amet, ',
-    handleThumbnailItemClick: () => {
-      alert('Second Item clicked');
-    }
-  }
-];
-
-const getHeader = (name: string) => {
-  return {
-    headerText: 'Card ' + name,
-    annotationText: 'Annotation Text '
-  };
-};
-
-const contentAreaList: ICardContentDetails[] = [
+const contentAreaList = [
   {
     priority: Priority.Priority1,
     cardContentType: CardContentType.BodyText,
@@ -61,85 +36,123 @@ const contentAreaList: ICardContentDetails[] = [
       subHeaderText: 'Subheader Text',
       bodyText: 'Body Text'
     }
-  },
-  {
-    priority: Priority.Priority2,
-    cardContentType: CardContentType.ThumbnailList,
-    content: {
-      thumbnailItems: thumbnailItems
-    }
   }
 ];
 
-let i = 0;
+const header = {
+  headerText: '1st card Header Text ',
+  annotationText: 'Annotation Text '
+};
+const header1 = {
+  headerText: '2 nd card Header Text ',
+  annotationText: 'Annotation Text '
+};
+const header2 = {
+  headerText: '3rd card Header Text ',
+  annotationText: 'Annotation Text '
+};
+const header3 = {
+  headerText: '4th cardHeader Text ',
+  annotationText: 'Annotation Text '
+};
+const header4 = {
+  headerText: '5th Header Text ',
+  annotationText: 'Annotation Text '
+};
+
+const exampleCard = (
+  <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.small} />
+);
+const exampleCard1 = (
+  <Card cardFrameContent={cardFrameContent} header={header1} cardContentList={contentAreaList} cardSize={CardSize.small} />
+);
+const exampleCard2 = (
+  <Card cardFrameContent={cardFrameContent} header={header2} cardContentList={contentAreaList} cardSize={CardSize.small} />
+);
+const exampleCard3 = (
+  <Card cardFrameContent={cardFrameContent} header={header3} cardContentList={contentAreaList} cardSize={CardSize.small} />
+);
+const exampleCard4 = (
+  <Card cardFrameContent={cardFrameContent} header={header4} cardContentList={contentAreaList} cardSize={CardSize.small} />
+);
 
 const cardsVisibleInLayout: IDGLCard[] = [
   {
-    id: i++ + '',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('0'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.small,
-    x: 0,
-    y: 0,
+    id: 'first',
     addCardInfo: {
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
-      addCardPanelHeader: 'Lorem ipsum',
-      addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg'
-    }
+      addCardPanelHeader: 'Ut enim ad minim veniam',
+      addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg',
+      draggingAnimation: DraggingAnimationType.Shimmer,
+      addCardIconAriaLabel: 'Click to add first card to dashboard',
+      addCardImageAltText: 'Alt text for the first card representation in the add card panel'
+    },
+    renderElement: exampleCard,
+    cardSize: CardSize.mediumTall
+  },
+  {
+    id: 'fifth',
+    addCardInfo: {
+      addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
+      addCardPanelHeader: 'quis nostrud',
+      addCardPanelImageUrl: '../../../../public/images/DetailsList.svg',
+      draggingAnimation: DraggingAnimationType.BarGraph
+    },
+    renderElement: exampleCard4,
+    cardSize: CardSize.mediumWide
   }
 ];
 
 const cardsVisibleInAddCardPanel: IDGLCard[] = [
   {
-    id: i++ + '',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('6'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.small,
-    x: 0,
-    y: 0,
+    id: 'second',
     addCardInfo: {
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
       addCardPanelHeader: 'Ut enim ad minim veniam',
-      addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg'
-    }
+      addCardPanelImageUrl: '../../../../public/images/CompoundButtonStack.svg',
+      draggingAnimation: DraggingAnimationType.Shimmer,
+      addCardIconAriaLabel: 'Click to add first card to dashboard',
+      addCardImageAltText: 'Alt text for the first card representation in the add card panel'
+    },
+    renderElement: exampleCard1,
+    cardSize: CardSize.mediumTall
   },
   {
-    id: i++ + '',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('7'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.small,
-    x: 1,
-    y: 0,
+    id: 'third',
     addCardInfo: {
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
       addCardPanelHeader: 'quis nostrud',
-      addCardPanelImageUrl: '../../../../public/images/DetailsList.svg'
-    }
+      addCardPanelImageUrl: '../../../../public/images/DetailsList.svg',
+      draggingAnimation: DraggingAnimationType.BarGraph
+    },
+    renderElement: exampleCard2,
+    cardSize: CardSize.mediumWide
   },
   {
-    id: i++ + '',
-    cardFrameContent: cardFrameContent,
-    header: getHeader('8'),
-    cardContentList: contentAreaList,
-    cardSize: CardSize.mediumWide,
-    x: 2,
-    y: 0,
+    id: 'fourth',
     addCardInfo: {
       addCardPanelBodyText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit magna aliqua',
       addCardPanelHeader: 'exercitation ullamco',
-      addCardPanelImageUrl: '../../../../public/images/Donut.svg'
-    }
+      addCardPanelImageUrl: '../../../../public/images/Donut.svg',
+      draggingAnimation: DraggingAnimationType.DonutChart
+    },
+    renderElement: exampleCard3,
+    cardSize: CardSize.large
   }
 ];
+
+const addCardPanelProps: IAddCardPanelProps = {
+  panelHeader: 'Click to add cards to your dashboard',
+  panelCloseButtonAriaLabel: 'Close the add card panel',
+  emptyPanelMessage: 'You already have all the cards on your home page'
+};
 
 export interface IDGLWithAddCardPanelState {
   isOpen: boolean;
 }
 
 export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddCardPanelState> {
+  private refObject: HTMLElement | null;
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -147,26 +160,61 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
     };
   }
   public render(): JSX.Element {
+    const cardIds: string[] = [];
+    cardsVisibleInAddCardPanel.forEach((card: IDGLCard) => {
+      cardIds.push(card.id);
+    });
+    cardsVisibleInLayout.forEach((card: IDGLCard) => {
+      cardIds.push(card.id);
+    });
+
+    const sections: ISection = {
+      cardIds: cardIds,
+      id: 'section0',
+      title: 'First section'
+    };
+
     return (
       <>
-        <button onClick={this._openAddCardPanel}>Add Card</button>
+        <button
+          onClick={this._openAddCardPanel}
+          ref={(e: HTMLElement | null) => {
+            this.refObject = e;
+          }}
+        >
+          Add Card
+        </button>
         <DashboardGridLayoutWithAddCardPanel
+          layout={{
+            lg: [
+              { i: 'section0', y: 0, x: 0, size: CardSize.section },
+              { i: 'first', x: 0, y: 1, size: CardSize.small },
+              { i: 'fifth', x: 1, y: 1, size: CardSize.small }
+            ]
+          }}
+          sections={[sections]}
           addCardPanelCards={cardsVisibleInAddCardPanel}
           dashboardCards={cardsVisibleInLayout}
           isOpen={this.state.isOpen}
-          sectionTitle={'First section'}
-          panelHeader={'Click to add cards to your dashboard'}
+          addCardPanelProps={addCardPanelProps}
           onLayoutChange={this._onLayoutChange}
+          onPanelDismiss={this._onPanelDismiss}
+          scrollElement={this.refObject ? this.refObject.parentElement! : undefined}
         />
       </>
     );
   }
 
+  private _onPanelDismiss = () => {
+    this.setState({ isOpen: false });
+  };
+
   private _openAddCardPanel = () => {
     this.setState({ isOpen: true });
   };
 
-  private _onLayoutChange(newLayout: DashboardGridBreakpointLayouts): void {
+  private _onLayoutChange(newLayout: DashboardGridBreakpointLayouts, cardId: string): void {
     console.log('The new layout is: ', newLayout);
+    console.log('card id', cardId);
   }
 }

@@ -319,7 +319,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -630,7 +629,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

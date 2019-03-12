@@ -32,7 +32,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Info/Default MessageBar
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar-multiline
@@ -60,6 +59,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
   >
     <div
       className=
@@ -84,7 +86,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -111,7 +114,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -123,6 +125,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -152,6 +158,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar0"
       >
@@ -226,6 +236,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -252,7 +265,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -282,7 +296,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -294,6 +307,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="ErrorBadge"
           role="presentation"
@@ -323,6 +340,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar1"
       >
@@ -357,6 +378,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               font-size: 12px;
               height: 12px;
               line-height: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
       >
         <button
@@ -439,14 +464,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -469,7 +495,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -559,6 +584,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -567,6 +595,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           height: 12px;
           line-height: 12px;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+          -ms-high-contrast-adjust: none;
+          color: window;
         }
   >
     <div
@@ -592,7 +624,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -622,7 +655,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -634,6 +666,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Blocked2"
           role="presentation"
@@ -664,6 +700,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-right: 0px;
               margin-top: 8px;
             }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
         id="MessageBar5"
       >
         <span
@@ -693,6 +733,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               font-size: 12px;
               height: 12px;
               line-height: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
       >
         <button
@@ -777,14 +821,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -807,7 +852,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -848,6 +892,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               font-size: 12px;
               height: 12px;
               line-height: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
       >
         <button
@@ -930,14 +978,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -960,7 +1009,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -1020,7 +1068,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     SevereWarning MessageBar - defaults to multiline, with action buttons
   </label>
   <div
-    aria-live="assertive"
     className=
         ms-MessageBar
         ms-MessageBar--severeWarning
@@ -1049,6 +1096,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
   >
     <div
       className=
@@ -1073,7 +1123,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -1100,7 +1151,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1112,6 +1162,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Warning"
           role="presentation"
@@ -1141,6 +1195,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar12"
       >
@@ -1464,6 +1522,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -1490,7 +1551,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1520,7 +1582,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1532,6 +1593,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Completed"
           role="presentation"
@@ -1561,6 +1626,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar19"
       >
@@ -1892,6 +1961,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -1918,7 +1990,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1948,7 +2021,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -1960,6 +2032,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -1989,6 +2065,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar26"
       >
@@ -2160,6 +2240,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -2241,14 +2325,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2271,7 +2356,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -2331,7 +2415,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning MessageBar - defaults to multiline, with dismiss and action buttons
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar--warning
@@ -2360,6 +2443,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
   >
     <div
       className=
@@ -2384,7 +2470,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -2411,7 +2498,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -2423,6 +2509,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -2452,6 +2542,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar33"
       >
@@ -2548,14 +2642,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
             @media only screen and (min-width: 0px) and (max-width: 479px){& {
               margin-bottom: 0px;
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -2578,7 +2673,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -2887,7 +2981,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Info/Default MessageBar - custom styles
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar-multiline
@@ -2915,6 +3008,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
   >
     <div
       className=
@@ -2939,7 +3035,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -2966,7 +3063,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -2978,6 +3074,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -3007,6 +3107,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar43"
       >
@@ -3081,6 +3185,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -3108,7 +3215,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -3138,7 +3246,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3150,6 +3257,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="ErrorBadge"
           role="presentation"
@@ -3180,6 +3291,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar44"
       >
@@ -3214,6 +3329,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               font-size: 12px;
               height: 12px;
               line-height: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
       >
         <button
@@ -3296,14 +3415,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3326,7 +3446,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3416,6 +3535,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -3424,6 +3546,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           height: 12px;
           line-height: 12px;
+        }
+        @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+          -ms-high-contrast-adjust: none;
+          color: window;
         }
   >
     <div
@@ -3449,7 +3575,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -3479,7 +3606,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3491,6 +3617,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Blocked2"
           role="presentation"
@@ -3520,6 +3650,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar48"
       >
@@ -3552,6 +3686,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               font-size: 12px;
               height: 12px;
               line-height: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
       >
         <button
@@ -3636,14 +3774,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3666,7 +3805,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3708,6 +3846,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               font-size: 12px;
               height: 12px;
               line-height: 12px;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
       >
         <button
@@ -3790,14 +3932,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3820,7 +3963,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -3880,7 +4022,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Severe warning, multiline, with action buttons - custom styles
   </label>
   <div
-    aria-live="assertive"
     className=
         ms-MessageBar
         ms-MessageBar--severeWarning
@@ -3909,6 +4050,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
   >
     <div
       className=
@@ -3933,7 +4077,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -3960,7 +4105,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -3972,6 +4116,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Warning"
           role="presentation"
@@ -4001,6 +4149,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar55"
       >
@@ -4325,6 +4477,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -4351,7 +4506,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -4381,7 +4537,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -4393,6 +4548,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Completed"
           role="presentation"
@@ -4422,6 +4581,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 8px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar62"
       >
@@ -4755,6 +4918,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
         @media only screen and (min-width: 0px) and (max-width: 479px){& {
           flex-direction: column;
         }
@@ -4782,7 +4948,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
           @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -4812,7 +4979,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -4824,6 +4990,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -4853,6 +5023,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar69"
       >
@@ -5026,6 +5200,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
       >
         <button
           aria-label="Close"
@@ -5107,14 +5285,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 height: 12px;
                 line-height: 12px;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+                -ms-high-contrast-adjust: none;
+                color: window;
+              }
               @media only screen and (min-width: 0px) and (max-width: 479px){& {
                 margin-bottom: 0px;
                 margin-left: 8px;
                 margin-right: 0px;
                 margin-top: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -5137,7 +5316,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -5197,7 +5375,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
     Warning, multiline, with dismiss and action buttons - custom styles
   </label>
   <div
-    aria-live="polite"
     className=
         ms-MessageBar
         ms-MessageBar--warning
@@ -5226,6 +5403,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
           font-size: 12px;
           font-weight: 400;
         }
+        @media screen and (-ms-high-contrast: active){& {
+          background: windowText;
+        }
   >
     <div
       className=
@@ -5250,7 +5430,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             top: 0px;
           }
           @media screen and (-ms-high-contrast: active){&:before {
-            border: 1px solid WindowText;
+            background: WindowText;
+            color: Window;
             content:  ;
           }
     >
@@ -5277,7 +5458,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -5289,6 +5469,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+              }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                color: window;
               }
           data-icon-name="Info"
           role="presentation"
@@ -5318,6 +5502,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 8px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              color: window;
             }
         id="MessageBar76"
       >
@@ -5414,14 +5602,15 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               height: 12px;
               line-height: 12px;
             }
+            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
+              -ms-high-contrast-adjust: none;
+              color: window;
+            }
             @media only screen and (min-width: 0px) and (max-width: 479px){& {
               margin-bottom: 0px;
               margin-left: 8px;
               margin-right: 0px;
               margin-top: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              -ms-high-contrast-adjust: none;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -5444,7 +5633,6 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

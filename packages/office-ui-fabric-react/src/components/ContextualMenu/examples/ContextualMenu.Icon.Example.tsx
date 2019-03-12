@@ -22,7 +22,6 @@ export class ContextualMenuIconExample extends React.Component<{}, { showCallout
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuButton2"
           text="Click for ContextualMenu"
           menuProps={{
             shouldFocusOnMount: true,

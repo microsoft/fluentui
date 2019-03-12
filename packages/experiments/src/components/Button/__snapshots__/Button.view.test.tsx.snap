@@ -1,0 +1,365 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button view renders a default Button with content correctly 1`] = `
+<button
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f4f4f4;
+        border-color: transparent;
+        border-radius: 0px;
+        border-style: solid;
+        border-width: 0px;
+        box-sizing: border-box;
+        color: #333333;
+        cursor: default;
+        display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        justify-content: center;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-height: 32px;
+        min-width: 100px;
+        outline: transparent;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: baseline;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: #eaeaea;
+        border-color: transparent;
+        color: #212121;
+      }
+      &:hover:active {
+        background-color: #eaeaea;
+        border-color: transparent;
+        color: #212121;
+      }
+      &:hover .ms-Icon-47 {
+        color: #212121;
+      }
+      &:hover:active .ms-Icon-47 {
+        color: #212121;
+      }
+  content="Default button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="button"
+  type="button"
+>
+  <span
+    className=
+        ms-Stack
+        {
+          align-items: center;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 8px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 8px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: inherit;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            overflow: visible;
+          }
+    >
+      Default button
+    </span>
+  </span>
+</button>
+`;
+
+exports[`Button view renders a disabled primary Button with content correctly 1`] = `
+<button
+  aria-disabled={true}
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f4f4f4;
+        border-color: transparent;
+        border-radius: 0px;
+        border-style: solid;
+        border-width: 0px;
+        box-sizing: border-box;
+        color: #a6a6a6;
+        cursor: default;
+        display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        justify-content: center;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-height: 32px;
+        min-width: 100px;
+        outline: transparent;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: baseline;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: #f4f4f4;
+        border-color: transparent;
+        color: #a6a6a6;
+      }
+      &:hover:active {
+        background-color: #f4f4f4;
+        border-color: transparent;
+        color: #a6a6a6;
+      }
+      &:hover .ms-Icon-57 {
+        color: #a6a6a6;
+      }
+      &:hover:active .ms-Icon-57 {
+        color: #a6a6a6;
+      }
+  content="Disabled primary button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="button"
+  type="button"
+>
+  <span
+    className=
+        ms-Stack
+        {
+          align-items: center;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 8px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 8px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: inherit;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            overflow: visible;
+          }
+    >
+      Disabled primary button
+    </span>
+  </span>
+</button>
+`;
+
+exports[`Button view renders a primary Button with content correctly 1`] = `
+<button
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #0078d4;
+        border-color: transparent;
+        border-radius: 0px;
+        border-style: solid;
+        border-width: 0px;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: default;
+        display: inline-block;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        justify-content: center;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-height: 32px;
+        min-width: 100px;
+        outline: transparent;
+        overflow: hidden;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        user-select: none;
+        vertical-align: baseline;
+      }
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #666666;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: #106ebe;
+        border-color: transparent;
+        color: #ffffff;
+      }
+      &:hover:active {
+        background-color: #005a9e;
+        border-color: transparent;
+        color: #ffffff;
+      }
+      &:hover .ms-Icon-55 {
+        color: #ffffff;
+      }
+      &:hover:active .ms-Icon-55 {
+        color: #ffffff;
+      }
+  content="Primary button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="button"
+  type="button"
+>
+  <span
+    className=
+        ms-Stack
+        {
+          align-items: center;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          height: 100%;
+          justify-content: center;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 8px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-left: 8px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: inherit;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            overflow: visible;
+          }
+    >
+      Primary button
+    </span>
+  </span>
+</button>
+`;

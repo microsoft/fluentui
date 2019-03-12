@@ -119,7 +119,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {

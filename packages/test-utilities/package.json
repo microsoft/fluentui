@@ -14,12 +14,16 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
-    "start": "node ../../scripts/start.js",
-    "start-test": "node ../../scripts/start-test.js",
+    "build": "node ../../scripts/just.js build",
+    "just": "node ../../scripts/just.js",
+    "clean": "node ../../scripts/just.js clean",
+    "start": "node ../../scripts/just.js dev",
+    "start-test": "node ../../scripts/just.js jest-watch",
     "update-api": "node ../../scripts/update-api.js"
   },
+  "disabledTasks": [
+    "build-codepen-examples"
+  ],
   "devDependencies": {
     "@types/enzyme": "3.1.13",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -29,9 +33,9 @@
     "@types/react-dom": "16.0.5",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/jest-serializer-merge-styles": ">=6.0.6 <7.0.0",
-    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
-    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.7 <7.0.0",
+    "@uifabric/prettier-rules": ">=1.0.1 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.1 <2.0.0",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",

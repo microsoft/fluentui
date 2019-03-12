@@ -3,6 +3,7 @@ import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 import { ISpacing } from './ISpacing';
 import { IEffects } from './IEffects';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 /**
  * @internal
@@ -50,8 +51,18 @@ export interface ITheme extends IScheme {
 }
 
 export type IPartialTheme = {
-  [P in keyof Pick<
-    ITheme,
-    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes' | 'effects'
-  >]?: Partial<ITheme[P]>
+  palette?: Partial<IPalette>;
+  fonts?: Partial<IFontStyles>;
+
+  /**
+   * Use this property to specify font property defaults.
+   */
+  defaultFontStyle?: IRawStyle;
+
+  semanticColors?: Partial<ISemanticColors>;
+  isInverted?: boolean;
+  disableGlobalClassNames?: boolean;
+  spacing?: Partial<ISpacing>;
+  effects?: Partial<IEffects>;
+  schemes?: { [P in ISchemeNames]?: IScheme };
 };

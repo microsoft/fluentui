@@ -7,46 +7,13 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
   <div
     className="ms-ContextualMenuDirectionalExample-configArea"
   >
-    <button
-      aria-checked={false}
-      checked={false}
+    <div
       className=
           ms-Checkbox
           is-enabled
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
+            display: flex;
             position: relative;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: -2px;
-            content: "";
-            left: -2px;
-            outline: 1px solid #666666;
-            position: absolute;
-            right: -2px;
-            top: -2px;
-            z-index: 1;
           }
           &:hover .ms-Checkbox-checkbox {
             border-color: #333333;
@@ -70,27 +37,53 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           &:focus .ms-Checkbox-text {
             color: #333333;
           }
-      id="checkbox-0"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      role="checkbox"
-      type="button"
     >
+      <input
+        checked={false}
+        className=
+
+            {
+              background: none;
+              opacity: 0;
+              position: absolute;
+            }
+            .ms-Fabric--isFocusVisible &:focus + label::before {
+              outline-offset: 2px;
+              outline: 1px solid #666666;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid ActiveBorder;
+            }
+        id="checkbox-0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="checkbox"
+      />
       <label
         className=
             ms-Checkbox-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: flex-start;
               cursor: pointer;
               display: flex;
-              margin-bottom: 0;
-              margin-left: -4px;
-              margin-right: -4px;
-              margin-top: 0;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               position: relative;
               text-align: left;
               user-select: none;
+            }
+            &::before {
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              pointer-events: none;
+              position: absolute;
+              right: 0px;
+              top: 0px;
             }
         htmlFor="checkbox-0"
       >
@@ -107,10 +100,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                 flex-shrink: 0;
                 height: 20px;
                 justify-content: center;
-                margin-bottom: 0;
-                margin-left: 4px;
                 margin-right: 4px;
-                margin-top: 0;
                 overflow: hidden;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
@@ -119,7 +109,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {
@@ -150,16 +139,13 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
                 color: #333333;
                 font-size: 14px;
                 line-height: 20px;
-                margin-bottom: 0;
                 margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
               }
         >
           Show beak
         </span>
       </label>
-    </button>
+    </div>
     <div
       className=
           ms-Dropdown-container
@@ -339,6 +325,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           className=
               ms-Dropdown-caretDownWrapper
               {
+                cursor: pointer;
                 height: 32px;
                 line-height: 30px;
                 position: absolute;
@@ -347,7 +334,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Dropdown-caretDown
                 {
@@ -490,7 +476,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           </div>
         </div>
         <i
-          aria-hidden={true}
           className=
               ms-Button-menuIcon
               {

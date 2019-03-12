@@ -36,6 +36,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
             padding-right: 0px;
             padding-top: 0px;
           }
+      role="listbox"
     >
       <li
         className=
@@ -48,6 +49,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <div
           className=
@@ -142,8 +144,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       is-fadeIn
                       {
                         display: block;
-                        height: auto;
+                        height: 100%;
                         left: 50% /* @noflip */;
+                        object-fit: cover;
                         opacity: 0;
                         position: absolute;
                         top: 50%;
@@ -170,6 +173,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <div
           className=
@@ -264,8 +268,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
                       is-fadeIn
                       {
                         display: block;
-                        height: auto;
+                        height: 100%;
                         left: 50% /* @noflip */;
+                        object-fit: cover;
                         opacity: 0;
                         position: absolute;
                         top: 50%;
@@ -292,6 +297,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <button
           className=

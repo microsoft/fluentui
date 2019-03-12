@@ -7,7 +7,7 @@ In order to use themes, an application must call `loadTheme()` immediately at ap
 Here is an example that has been generated from the <a href='#/customizations/colors'>Colors Customization page</a> (using the default palette generated):
 
 ```tsx
-import { loadTheme } from 'office-ui-fabric-react';
+import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 
 loadTheme({
   palette: {

@@ -30,7 +30,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       palette.neutralPrimary,
       {
         wordWrap: 'break-word',
-        overflowWrap: 'break-word'
+        overflowWrap: 'break-word',
+        overflow: 'hidden'
       }
     ],
     subText: [

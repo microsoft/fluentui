@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, createRef, elementContains, getId, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, elementContains, getId, classNamesFunction, styled } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
-import { ISuggestionsProps } from './Suggestions/Suggestions.types';
+import { ISuggestions, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions/Suggestions.types';
+import { getStyles as suggestionsStyles } from './Suggestions/Suggestions.styles';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
@@ -48,13 +49,13 @@ export type IPickerAriaIds = {
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
+  // Refs
+  protected root = React.createRef<HTMLDivElement>();
+  protected input = React.createRef<IAutofill>();
+  protected focusZone = React.createRef<IFocusZone>();
+  protected suggestionElement = React.createRef<ISuggestions<T>>();
+
   protected selection: Selection;
-
-  protected root = createRef<HTMLDivElement>();
-  protected input = createRef<IAutofill>();
-  protected focusZone = createRef<IFocusZone>();
-  protected suggestionElement = createRef<Suggestions<T>>();
-
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
@@ -118,7 +119,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           items: newProps.selectedItems
         },
         () => {
-          if (focusIndex >= 0) {
+          // Only update the focus if this component is currently focused to ensure that the basepicker
+          // doesn't steal focus from something else.
+          if (this.state.isFocused) {
+            // Need to reset focus in the same that way that we do if an item is selected by a non-controlled component
+            // See _onSelectedItemsUpdated.
             this.resetFocus(focusIndex);
           }
         }
@@ -207,6 +212,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           theme,
           className,
           isFocused,
+          disabled,
           inputClassName: inputProps && inputProps.className
         })
       : {
@@ -218,7 +224,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         };
 
     return (
-      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown}>
+      <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
@@ -235,7 +241,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   spellCheck={false}
                   {...inputProps as any}
                   className={classNames.input}
-                  ref={this.input}
+                  componentRef={this.input}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
                   onInputValueChange={this.onInputChange}
@@ -269,7 +275,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestion = this.SuggestionOfProperType;
+    const TypedSuggestions = this.SuggestionOfProperType;
+
+    // TODO:
+    // Move this styled component in a separate file and make it available to the public API.
+    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
+    const StyledTypedSuggestions = styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
+      TypedSuggestions,
+      suggestionsStyles,
+      undefined,
+      { scope: 'Suggestions' }
+    );
+
     return this.state.suggestionsVisible && this.input ? (
       <Callout
         isBeakVisible={false}
@@ -280,12 +297,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         directionalHintForRTL={DirectionalHint.bottomRightEdge}
         {...this.props.pickerCalloutProps}
       >
-        <TypedSuggestion
+        <StyledTypedSuggestions
           onRenderSuggestion={this.props.onRenderSuggestionsItem}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
-          ref={this.suggestionElement}
+          componentRef={this.suggestionElement}
           onGetMoreResults={this.onGetMoreResults}
           moreSuggestionsAvailable={this.state.moreSuggestionsAvailable}
           isLoading={this.state.suggestionsLoading}
@@ -295,7 +312,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           refocusSuggestions={this.refocusSuggestions}
           removeSuggestionAriaLabel={this.props.removeButtonAriaLabel}
           suggestionsListId={this._ariaMap.suggestionList}
-          {...this.props.pickerSuggestionsProps as any}
+          {...this.props.pickerSuggestionsProps}
         />
       </Callout>
     ) : null;
@@ -484,25 +501,29 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (this.props.inputProps && this.props.inputProps.onBlur) {
       this.props.inputProps.onBlur(ev as React.FocusEvent<HTMLInputElement>);
     }
+  };
 
-    // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
-    // Do nothing if the blur is coming from something
-    // inside the comboBox root or the comboBox menu since
-    // it we are not really bluring from the whole comboBox
-    let relatedTarget: EventTarget | null = ev.relatedTarget;
+  protected onBlur = (ev: React.FocusEvent<HTMLElement | Autofill>): void => {
+    if (this.state.isFocused) {
+      // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+      // Do nothing if the blur is coming from something
+      // inside the comboBox root or the comboBox menu since
+      // it we are not really bluring from the whole comboBox
+      let relatedTarget: EventTarget | null = ev.relatedTarget;
 
-    if (ev.relatedTarget === null) {
-      // In IE11, due to lack of support, event.relatedTarget is always
-      // null making every onBlur call to be "outside" of the ComboBox
-      // even when it's not. Using document.activeElement is another way
-      // for us to be able to get what the relatedTarget without relying
-      // on the event
-      relatedTarget = document.activeElement;
-    }
-    if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
-      this.setState({ isFocused: false });
-      if (this.props.onBlur) {
-        this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+      if (ev.relatedTarget === null) {
+        // In IE11, due to lack of support, event.relatedTarget is always
+        // null making every onBlur call to be "outside" of the ComboBox
+        // even when it's not. Using document.activeElement is another way
+        // for us to be able to get what the relatedTarget without relying
+        // on the event
+        relatedTarget = document.activeElement;
+      }
+      if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
+        this.setState({ isFocused: false });
+        if (this.props.onBlur) {
+          this.props.onBlur(ev as React.FocusEvent<HTMLInputElement>);
+        }
       }
     }
   };
@@ -790,7 +811,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
    */
   private _updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
-      // If the component is a controlled component then the controlling component will need
+      // If the component is a controlled component then the controlling component will need to add or remove the items.
       this.onChange(items);
     } else {
       this.setState({ items: items }, () => {
@@ -868,14 +889,14 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         };
 
     return (
-      <div ref={this.root}>
+      <div ref={this.root} onBlur={this.onBlur}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <div className={classNames.text}>
             <Autofill
               {...inputProps as any}
               className={classNames.input}
-              ref={this.input}
+              componentRef={this.input}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
               onInputValueChange={this.onInputChange}

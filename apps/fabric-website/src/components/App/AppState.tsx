@@ -222,6 +222,14 @@ export const AppState: IAppState = {
                 require.ensure([], require => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
             },
             {
+              title: 'Text',
+              url: '#/components/text',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Text" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/TextComponentPage').TextComponentPage))
+            },
+            {
               title: 'TextField',
               url: '#/components/textfield',
               isFilterable: true,
@@ -296,6 +304,22 @@ export const AppState: IAppState = {
           ]
         },
         {
+          title: 'Layout',
+          url: '#/components',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: [
+            {
+              title: 'Stack',
+              url: '#/components/stack',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Stack" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/StackComponentPage').StackComponentPage))
+            }
+          ]
+        },
+        {
           title: 'Content',
           url: '#/components',
           className: 'componentsPage',
@@ -357,6 +381,19 @@ export const AppState: IAppState = {
                   getComponent: cb =>
                     require.ensure([], require =>
                       cb(require<any>('../../pages/Components/DetailsList/DetailsListGroupedComponentPage').DetailsListGroupedComponentPage)
+                    )
+                },
+                {
+                  title: 'Large Grouped',
+                  url: '#/components/detailslist/largegrouped',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Large Grouped DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/DetailsList/DetailsListLargeGroupedComponentPage')
+                          .DetailsListLargeGroupedComponentPage
+                      )
                     )
                 },
                 {
@@ -446,6 +483,16 @@ export const AppState: IAppState = {
                         require<any>('../../pages/Components/DetailsList/DetailsListNavigatingFocusComponentPage')
                           .DetailsListNavigatingFocusComponentPage
                       )
+                    )
+                },
+                {
+                  title: 'Shimmer',
+                  url: '#/components/detailslist/shimmer',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Shimmer DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListShimmerComponentPage').DetailsListShimmerComponentPage)
                     )
                 }
               ]
@@ -769,7 +816,7 @@ export const AppState: IAppState = {
         },
         {
           title: 'Customization',
-          url: '#/components/customization',
+          url: '#/components/customizations',
           className: 'componentsPage',
           isCategory: true,
           component: () => <LoadingComponent title="Customization" />,
@@ -778,7 +825,7 @@ export const AppState: IAppState = {
           pages: [
             {
               title: 'Themes',
-              url: '#/customizations/themes',
+              url: '#/components/customizations/themes',
               isFilterable: true,
               component: () => <LoadingComponent title="Themes" />,
               getComponent: cb =>
@@ -786,13 +833,85 @@ export const AppState: IAppState = {
             },
             {
               title: 'Colors',
-              url: '#/customizations/colors',
+              url: '#/components/customizations/colors',
               isFilterable: true,
               component: () => <LoadingComponent title="Colors" />,
               getComponent: cb =>
                 require.ensure([], require =>
                   cb(require<any>('../../pages/Customizations/ColorsCustomizationPage').ColorsCustomizationPage)
                 )
+            }
+          ]
+        },
+        {
+          title: 'Accessibility',
+          url: '#/components/accessibility',
+          className: 'componentsPage',
+          isCategory: true,
+          component: () => <LoadingComponent title="Accessibility" />,
+          pages: [
+            {
+              title: 'Announced',
+              url: '#/components/announced',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Announced" />,
+              getComponent: cb =>
+                require.ensure([], require =>
+                  cb(require<any>('../../pages/Components/Announced/AnnouncedComponentPage').AnnouncedComponentPage)
+                ),
+              pages: [
+                {
+                  title: 'Quick Actions',
+                  url: '#/components/announced/quickactions',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Quick Actions" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedQuickActionsComponentPage')
+                          .AnnouncedQuickActionsComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Search Results',
+                  url: '#/components/announced/searchresults',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Search Results" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedSearchResultsComponentPage')
+                          .AnnouncedSearchResultsComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Lazy Loading',
+                  url: '#/components/announced/lazyloading',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Lazy Loading" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedLazyLoadingComponentPage').AnnouncedLazyLoadingComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Bulk Operations',
+                  url: '#/components/announced/bulkoperations',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Bulk Operations" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedBulkOperationsComponentPage')
+                          .AnnouncedBulkOperationsComponentPage
+                      )
+                    )
+                }
+              ]
             }
           ]
         }

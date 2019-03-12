@@ -28,7 +28,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
           }
     >
       <i
-        aria-hidden={true}
+        aria-hidden="true"
         className=
 
             {
@@ -176,6 +176,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
             }
       >
         <button
+          aria-label="Increase value by 1"
           checked={false}
           className=
               ms-Button
@@ -273,7 +274,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -303,6 +303,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
           </div>
         </button>
         <button
+          aria-label="Decrease value by 1"
           checked={false}
           className=
               ms-Button
@@ -400,7 +401,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -577,6 +577,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
             }
       >
         <button
+          aria-label="Increase value by 0.1"
           checked={false}
           className=
               ms-Button
@@ -674,7 +675,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -704,6 +704,7 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
           </div>
         </button>
         <button
+          aria-label="Decrease value by 0.1"
           checked={false}
           className=
               ms-Button
@@ -801,7 +802,6 @@ exports[`Component Examples renders SpinButton.Basic.Example.tsx correctly 1`] =
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

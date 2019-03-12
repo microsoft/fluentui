@@ -1,26 +1,24 @@
-import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelNonModalExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = { showPanel: false };
-  }
+export interface IPanelNonModalExampleState {
+  showPanel: boolean;
+}
 
-  public render(): JSX.Element {
+export class PanelNonModalExample extends React.Component<{}, IPanelNonModalExampleState> {
+  public state = {
+    showPanel: false
+  };
+
+  public render() {
     return (
       <div>
-        <DefaultButton text="Open panel" onClick={this._setShowPanel(true)} />
+        <DefaultButton text="Open panel" onClick={this._showPanel} />
         <Panel
           isBlocking={false}
           isOpen={this.state.showPanel}
-          onDismiss={this._setShowPanel(false)}
+          onDismiss={this._hidePanel}
           type={PanelType.medium}
           headerText="Non-Modal Panel"
           closeButtonAriaLabel="Close"
@@ -31,9 +29,11 @@ export class PanelNonModalExample extends React.Component<
     );
   }
 
-  private _setShowPanel = (showPanel: boolean): (() => void) => {
-    return (): void => {
-      this.setState({ showPanel });
-    };
+  private _showPanel = (): void => {
+    this.setState({ showPanel: true });
+  };
+
+  private _hidePanel = (): void => {
+    this.setState({ showPanel: false });
   };
 }

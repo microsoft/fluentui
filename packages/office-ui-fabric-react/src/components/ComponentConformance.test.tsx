@@ -26,6 +26,9 @@ const requiredProps: { [key: string]: any } = {
   PlainCard: {
     onRenderPlainCard: () => null
   },
+  Announced: {
+    message: 'TestMessage'
+  },
   ColorPicker: {
     color: '#ffffff'
   },
@@ -70,6 +73,9 @@ const requiredProps: { [key: string]: any } = {
     onRenderItem: () => <div key="TestItem" />,
     selectedItems: ['TestItem']
   },
+  StackItem: {
+    children: ['TestItem']
+  },
   Suggestions: {
     suggestions: []
   },
@@ -80,6 +86,9 @@ const requiredProps: { [key: string]: any } = {
   SwatchColorPicker: {
     colorCells: [{ id: 'TestId', color: '#ffffff' }],
     columnCount: 1
+  },
+  Text: {
+    children: 'TestText'
   }
 };
 

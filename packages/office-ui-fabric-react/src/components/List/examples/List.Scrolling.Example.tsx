@@ -8,8 +8,10 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
+export type IExampleItem = { name: string };
+
 export interface IListScrollingExampleProps {
-  items: any[];
+  items: IExampleItem[];
 }
 
 export interface IListScrollingExampleState {
@@ -49,7 +51,6 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
         <Dropdown
           placeholder="Select an Option"
           label="Scroll To Mode:"
-          id="Scrolldrop1"
           ariaLabel="Scroll To Mode"
           defaultSelectedKey={'auto'}
           options={[
@@ -120,7 +121,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     this._scroll(this.state.selectedIndex, scrollMode);
   };
 
-  private _onRenderCell = (item: any, index: number): JSX.Element => {
+  private _onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
     return (
       <div className="ms-ListScrollingExample-itemCell" data-is-focusable={true}>
         <div

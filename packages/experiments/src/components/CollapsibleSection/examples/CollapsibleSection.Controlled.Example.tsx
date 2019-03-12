@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { Stack } from 'office-ui-fabric-react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
-import { Stack } from '@uifabric/experiments/lib/Stack';
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;
@@ -39,7 +39,7 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
           </Stack>
           <CollapsibleSection
             collapsed={this.state.collapsed}
-            titleProps={{
+            title={{
               text: `Title 1`,
               onClick: () => {
                 this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
@@ -50,7 +50,7 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
           </CollapsibleSection>
           <CollapsibleSection
             collapsed={this.state.collapsed}
-            titleProps={{
+            title={{
               text: `Title 2`,
               onClick: () => {
                 this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));

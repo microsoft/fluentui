@@ -117,3 +117,10 @@ gulp-cache
 npm-debug.log.*
 
 package-lock.json
+
+*.swp
+
+# Temporary files
+*~
+*swp
+*swo

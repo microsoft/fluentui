@@ -1,6 +1,106 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 17 Dec 2018 13:36:58 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+
+## 6.34.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Utilities for managing componentRef initialization added.
+
+## 6.33.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Modify return type of styled (function to React.StatelessComponent)
+
+## 6.32.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Utilities: removing redundant export for `setVirtualParent`.
+
+## 6.32.0
+Mon, 04 Mar 2019 13:29:58 GMT
+
+### Minor changes
+
+- Utilities: Adding setVirtualParent export.
+
+## 6.31.0
+Fri, 01 Mar 2019 19:40:21 GMT
+
+### Minor changes
+
+- Reinstroducing dom/warn top level imports.
+
+## 6.30.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- A number of files containing many exports have been split into smaller units for finer debuggability in bundle size implications. Some unneeded dependencies on EventGroup have been removed.
+
+## 6.29.4
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- ARIA: mergeAriaAttributeValues should produce space-delimited output by default
+
+## 6.29.3
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- mergeAriaAttributeValues: Trim output string
+- Add check for tabIndex in isElementTabbable if role=button
+
+## 6.29.2
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Patches
+
+- getRTL: Check for existence of body element before reading attributes.
+
+## 6.29.1
+Thu, 14 Feb 2019 13:34:55 GMT
+
+### Patches
+
+- Add fallback for reading direction attribute from body element.
+
+## 6.29.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- Adding helper functions to get and restore focus elements based on index paths.
+
+## 6.28.1
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- Updating 'customizable.tsx' to evaluate style functions.
+
+## 6.28.0
+Fri, 11 Jan 2019 05:00:46 GMT
+
+### Minor changes
+
+- Scroll: use scrollableParent in _preventOverscrolling, allow EventGroup.on to take event options
+
+## 6.27.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Deprecate utility using legacy context
+- BaseComponent: when updating componentRef, handle case where current or previous props are not given
 
 ## 6.27.1
 Mon, 17 Dec 2018 13:36:58 GMT

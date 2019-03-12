@@ -105,8 +105,9 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -142,7 +143,6 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -219,7 +219,6 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
       >
         <div>
           <i
-            aria-hidden={true}
             className=
                 ms-JobIconExample
                 {

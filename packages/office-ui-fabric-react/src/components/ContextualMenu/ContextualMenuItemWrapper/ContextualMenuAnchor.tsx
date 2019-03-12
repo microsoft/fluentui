@@ -67,6 +67,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               onClick={this._onItemClick}
               onMouseEnter={this._onItemMouseEnter}
               onMouseLeave={this._onItemMouseLeave}
+              onMouseMove={this._onItemMouseMove}
               onKeyDown={itemHasSubmenu ? this._onItemKeyDown : null}
             >
               <ChildrenRenderer

@@ -1,6 +1,5 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { getRTL, getInitials, styled } from '../../../Utilities';
 import { BasePicker, BasePickerListBelow } from '../BasePicker';
 import {
@@ -10,13 +9,13 @@ import {
   IBasePickerStyleProps,
   IBasePickerStyles
 } from '../BasePicker.types';
-import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
+import { PeoplePickerItem } from './PeoplePickerItems/PeoplePickerItem';
 import { IPersonaProps } from '../../../Persona';
-import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
-import './PeoplePicker.scss';
-import { IPeoplePickerItemProps } from './PeoplePickerItems/PeoplePickerItem.types';
+import { PeoplePickerItemSuggestion } from './PeoplePickerItems/PeoplePickerItemSuggestion';
+import { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
 import { getStyles } from '../BasePicker.styles';
 
+/** PeoplePicker props interface which renders Personas as items. */
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {}
 
 export class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {}
@@ -27,22 +26,26 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
  * Standard People Picker.
  */
 export class NormalPeoplePickerBase extends BasePeoplePicker {
+  /** Default props for NormalPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
-      SuggestionItemNormal({ ...props }, { ...itemProps }),
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
+      <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
+    ),
     createGenericItem: createGenericItem
   };
 }
 
 /**
- * Compact layout. It uses small personas when displaying search results.
+ * Compact layout. It uses personas without secondary text when displaying search results.
  */
 export class CompactPeoplePickerBase extends BasePeoplePicker {
+  /** Default props for CompactPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
-      SuggestionItemSmall({ ...props }, { ...itemProps }),
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
+      <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} compact={true} />
+    ),
     createGenericItem: createGenericItem
   };
 }
@@ -51,10 +54,12 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
  * MemberList layout. The selected people show up below the search box.
  */
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
+  /** Default props for ListPeoplePicker. */
   public static defaultProps = {
-    onRenderItem: (props: IPeoplePickerItemProps) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
-      SuggestionItemNormal({ ...props }, { ...itemProps }),
+    onRenderItem: (props: IPeoplePickerItemSelectedProps) => <PeoplePickerItem {...props} />,
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
+      <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
+    ),
     createGenericItem: createGenericItem
   };
 }

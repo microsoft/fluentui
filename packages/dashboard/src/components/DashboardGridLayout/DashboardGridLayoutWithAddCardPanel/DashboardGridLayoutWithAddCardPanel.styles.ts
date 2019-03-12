@@ -1,7 +1,7 @@
 import { IStyle, keyframes } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ICardStyles {
+  root: IStyle;
   fadeIn: IStyle;
 }
 
@@ -18,8 +18,9 @@ const fadeInAnimation = {
 
 export const getCardStyles = (): ICardStyles => {
   return {
+    root: {
+      height: 'calc(100vh - 100px)'
+    },
     fadeIn: [fadeInAnimation]
   };
 };
-
-export const getClassNames = classNamesFunction<{}, ICardStyles>();

@@ -1,6 +1,93 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 30 Nov 2018 13:37:17 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages and values to redirect map for Announced links
+
+## 6.11.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.10.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.10.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Icon Page: updated directions for adding dir tag
+- Fix usage of 'ms-text-align'
+
+## 6.10.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackComponentPage to AppState.tsx.
+
+## 6.9.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Website: redirects defunct URLs to new
+
+## 6.8.7
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Patches
+
+- Adds documentation for setting the 'dir' attribute for Fabric Core
+
+## 6.8.6
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fix site links to allow for deeplinks to the customizations
+
+## 6.8.5
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- DetailsList examples: Fix copy paste error causing infinite loop
+
+## 6.8.4
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Strengthen typing of styles function.
+
+## 6.8.3
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Add shimmered DetailsList to website
+- Documentation: Updating README to mention buildfast as an advanced build alternative.
+- Updates for new CollapsibleSection API.
+
+## 6.8.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Remove string refs from IconGrid
 
 ## 6.8.1
 Fri, 30 Nov 2018 13:37:17 GMT

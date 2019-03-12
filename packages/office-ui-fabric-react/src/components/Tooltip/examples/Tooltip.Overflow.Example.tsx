@@ -46,7 +46,7 @@ export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowEx
               overflowMode={TooltipOverflowMode.Parent}
               onTooltipToggle={(isTooltipVisible: boolean) => this.setState({ isTooltipVisible })}
             >
-              <span aria-describedby={this.state.isTooltipVisible ? this.tooltipId : undefined}>
+              <span aria-labelledby={this.state.isTooltipVisible ? this.tooltipId : undefined}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat lectus ut magna sodales, sit amet accumsan arcu
                 accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </span>

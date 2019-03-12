@@ -1,3 +1,6 @@
+/**
+ * @deprecated Const enum use is deprecated. See github issue #7110: https://github.com/OfficeDev/office-ui-fabric-react/issues/7110
+ */
 export const enum IconNames {
   GlobalNavButton = 'GlobalNavButton',
   InternetSharing = 'InternetSharing',
@@ -1675,4 +1678,5 @@ export const enum IconNames {
   SizeLegacy = 'SizeLegacy'
 }
 
+// tslint:disable-next-line:deprecation
 export type IconNamesInput = keyof typeof IconNames;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Draggable, { DraggableData, ControlPosition } from 'react-draggable';
-import { createDragApiRef, Layout } from 'react-grid-layout';
+import { createDragApiRef, Layout } from 'react-grid-layout-fabric';
 import { CardSize, DashboardGridLayout } from '@uifabric/dashboard';
 import * as exampleStyles from './DashboardGridLayout.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib//Button';

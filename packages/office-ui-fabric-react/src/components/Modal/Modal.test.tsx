@@ -20,4 +20,20 @@ describe('Modal', () => {
 
     ReactDOM.createPortal.mockClear();
   });
+  it('renders Modeless Modal correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const ReactDOM = require('react-dom');
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
+
+    const component = renderer.create(
+      <Modal isOpen={true} isModeless={true} className={'test-className'} containerClassName={'test-containerClassName'}>
+        Test Content
+      </Modal>
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+
+    ReactDOM.createPortal.mockClear();
+  });
 });

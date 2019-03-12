@@ -25,6 +25,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
 
   /**
    * A description of the message bar for the benefit of screen readers.
+   * @deprecated Use native prop `aria-label` instead.
    */
   ariaLabel?: string;
 

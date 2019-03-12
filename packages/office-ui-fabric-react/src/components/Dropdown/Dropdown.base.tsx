@@ -1,37 +1,36 @@
 import * as React from 'react';
-
-import { CommandButton } from '../../Button';
-import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Icon } from '../../Icon';
-import { KeytipData } from '../../KeytipData';
-import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
-import { Panel } from '../../Panel';
-import { IProcessedStyleSet } from '../../Styling';
 import {
   BaseComponent,
-  KeyCodes,
+  classNamesFunction,
   divProperties,
   findIndex,
+  getDocument,
   getFirstFocusable,
   getId,
   getLastFocusable,
   getNativeProps,
-  mergeAriaAttributeValues,
-  classNamesFunction,
-  IStyleFunctionOrObject,
-  getDocument,
+  isIOS,
   isMac,
-  isIOS
+  IStyleFunctionOrObject,
+  KeyCodes,
+  mergeAriaAttributeValues
 } from '../../Utilities';
+import { Callout } from '../../Callout';
+import { Checkbox } from '../../Checkbox';
+import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
-import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
-import { RectangleEdge, ICalloutPositionedInfo } from '../../utilities/positioning';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioning';
+import { Icon } from '../../Icon';
+import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
+import { IProcessedStyleSet } from '../../Styling';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { KeytipData } from '../../KeytipData';
+import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
+import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -423,15 +422,12 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
+    const panelStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
+      : undefined;
+
     return isSmall ? (
-      <Panel
-        className={this._classNames.panel}
-        isOpen={true}
-        isLightDismiss={true}
-        onDismissed={this._onDismiss}
-        hasCloseButton={false}
-        {...panelProps}
-      >
+      <Panel isOpen={true} isLightDismiss={true} onDismissed={this._onDismiss} hasCloseButton={false} styles={panelStyles} {...panelProps}>
         {this._renderFocusableList(props)}
       </Panel>
     ) : (
@@ -528,11 +524,11 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const id = this._id;
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
-    // select the right classname based on the combination of selected/disabled
+    // select the right className based on the combination of selected/disabled
     const itemClassName =
-      isItemSelected && item.disabled === true // preciate: both selected and disabled
+      isItemSelected && item.disabled === true // predicate: both selected and disabled
         ? this._classNames.dropdownItemSelectedAndDisabled
-        : isItemSelected // preciate: selected only
+        : isItemSelected // predicate: selected only
         ? this._classNames.dropdownItemSelected
         : item.disabled === true // predicate: disabled only
         ? this._classNames.dropdownItemDisabled
@@ -552,7 +548,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         onMouseMove={this._onItemMouseMove.bind(this, item)}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
-        ariaLabel={item.ariaLabel || item.text}
+        ariaLabel={item.ariaLabel}
         title={item.title ? item.title : item.text}
       >
         {onRenderOption(item, this._onRenderOption)}
@@ -701,7 +697,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   /** Get all selected indexes for multi-select mode */
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
+  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | null | undefined): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);

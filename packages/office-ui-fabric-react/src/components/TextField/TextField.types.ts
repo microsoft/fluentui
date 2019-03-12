@@ -254,8 +254,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
+   * Common values are 'on' and 'off' but for all possible values see the following links:
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#Values
+   * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
 
   /**
    * The masking string that defines the mask's behavior.

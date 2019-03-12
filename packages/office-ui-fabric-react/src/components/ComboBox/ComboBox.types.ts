@@ -6,6 +6,7 @@ import { IButtonStyles } from '../../Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
+import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
 
 export interface IComboBox {
   /**
@@ -119,6 +120,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   buttonIconProps?: IIconProps;
 
   /**
+   * The AutofillProps to be passed into the Autofill component inside combobox
+   */
+  autofill?: IAutofillProps;
+
+  /**
    * Theme provided by HOC.
    */
   theme?: ITheme;
@@ -195,6 +201,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   isButtonAriaHidden?: boolean;
 
   /**
+   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * Optional keytip for this combo box
    */
   keytipProps?: IKeytipProps;
@@ -205,6 +216,15 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @deprecated Use `text` instead.
    */
   value?: string;
+
+  /**
+ * Menu will not be created or destroyed when opened or closed, instead it
+ * will be hidden. This will improve perf of the menu opening but could potentially
+ * impact overall perf by having more elemnts in the dom. Should only be used
+ * when perf is important.
+ * Note: This may increase the amount of time it takes for the comboBox itself to mount.
+ */
+  persistMenu?: boolean;
 }
 
 export interface IComboBoxStyles {

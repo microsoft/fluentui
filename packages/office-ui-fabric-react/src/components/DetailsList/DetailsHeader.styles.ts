@@ -1,8 +1,19 @@
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
-import { getFocusStyle, focusClear, IStyle, getGlobalClassNames, HighContrastSelector, hiddenContentStyle, ITheme } from '../../Styling';
+import {
+  getFocusStyle,
+  focusClear,
+  IStyle,
+  getGlobalClassNames,
+  HighContrastSelector,
+  hiddenContentStyle,
+  ITheme,
+  FontSizes
+} from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
+// For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
+import { SPACER_WIDTH as GROUP_EXPANDER_WIDTH } from '../GroupedList/GroupSpacer';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',
@@ -25,9 +36,7 @@ const GlobalClassNames = {
   gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical'
 };
 
-const values = {
-  rowHeight: 32
-};
+export const HEADER_HEIGHT = 32;
 
 export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyleProps }): IStyle => {
   const { theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
@@ -45,7 +54,7 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
       padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
       lineHeight: 'inherit',
       margin: '0',
-      height: values.rowHeight,
+      height: HEADER_HEIGHT,
       verticalAlign: 'top',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
@@ -94,11 +103,12 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         position: 'relative',
         minWidth: '100%',
         verticalAlign: 'top',
-        height: values.rowHeight,
-        lineHeight: values.rowHeight,
+        height: HEADER_HEIGHT,
+        lineHeight: HEADER_HEIGHT,
         whiteSpace: 'nowrap',
         boxSizing: 'content-box',
         paddingBottom: '1px',
+        paddingTop: '1px',
         borderBottom: `1px solid ${semanticColors.bodyDivider}`,
         cursor: 'default',
         userSelect: 'none',
@@ -125,7 +135,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
     check: [
       {
-        height: 32
+        height: HEADER_HEIGHT
       },
       {
         selectors: {
@@ -161,10 +171,22 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     cellIsGroupExpander: [
       cellStyles,
       {
-        paddingLeft: '8px',
-        paddingRight: '8px',
-        width: '36px',
-        border: 'none'
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: FontSizes.small,
+        padding: 0,
+        border: 'none',
+        width: GROUP_EXPANDER_WIDTH, // align with GroupedList's first expandIcon cell width.
+        color: palette.neutralSecondary,
+        selectors: {
+          ':hover': {
+            backgroundColor: palette.neutralLighter
+          },
+          ':active': {
+            backgroundColor: palette.neutralLight
+          }
+        }
       }
     ],
 
@@ -241,19 +263,20 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
 
     collapseButton: [
       classNames.collapseButton,
-      {
-        textAlign: 'center',
-        transform: 'rotate(-180deg)',
-        transformOrigin: '50% 50%',
-        transition: 'transform 0.1s linear',
-        width: 20,
-        outline: 0,
-        paddingRight: 0
-      },
-      isAllCollapsed && {
-        transform: 'rotate(0deg)'
-      },
-      isAllCollapsed && classNames.isCollapsed
+      isAllCollapsed
+        ? [
+            classNames.isCollapsed,
+            {
+              transform: 'rotate(0deg)',
+              transformOrigin: '50% 50%',
+              transition: 'transform .1s linear'
+            }
+          ]
+        : {
+            transform: 'rotate(90deg)',
+            transformOrigin: '50% 50%',
+            transition: 'transform .1s linear'
+          }
     ],
 
     checkTooltip: [],

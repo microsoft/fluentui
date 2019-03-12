@@ -1,8 +1,9 @@
-import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, DragApiRefObject, ItemCallback, Layout, Layouts } from 'react-grid-layout-fabric';
 import { ISection } from '../Section/Section.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { DragApiRefObject, ItemCallback } from 'react-grid-layout';
 import { ICard, CardSize } from '../Card/Card.types';
+
+export { DragApiRefObject, Layout as RGLLayout };
 
 export interface IDashboardGridLayoutStyles {
   root: IStyle;
@@ -87,6 +88,16 @@ export interface IDashboardGridLayoutProps {
    * # of cols. This is a breakpoint -> cols map, e.g. {lg: 12, md: 10, ...}
    */
   cols?: { [P in Breakpoints]: number };
+
+  /**
+   * role of the  card for the benefit of screen readers
+   */
+  role?: string;
+
+  /**
+   * The aria labelledby of the card for the benefit of screen readers.
+   */
+  DGLAriaLabelledby?: string;
 
   /**
    * Margin between items [x, y] in px.
@@ -182,11 +193,4 @@ export interface IDashboardGridLayoutProps {
    * Callback when the width changes, so you can modify the layout as needed.
    */
   onWidthChange?: (containerWidth: number, margin: [number, number], cols: number, containerPadding: [number, number]) => void;
-}
-
-export interface IDashboardGridLayoutBaseState {
-  /**
-   * Layouts for all breakpoints, stored internally to look for layout changes and run compaction
-   */
-  layouts?: Layouts;
 }

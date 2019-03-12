@@ -66,6 +66,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -237,7 +238,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -267,7 +267,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -876,6 +875,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -1047,7 +1047,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -1077,7 +1076,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -1776,7 +1774,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
-            height: 40px;
+            height: 42px;
             justify-content: center;
             margin-bottom: 0px;
             margin-left: 0px;
@@ -1846,7 +1844,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Check-circle
               {
@@ -1876,7 +1873,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           
         </i>
         <i
-          aria-hidden={true}
           className=
               ms-Check-check
               {
@@ -2220,6 +2216,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2391,7 +2388,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2421,7 +2417,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -3030,6 +3025,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -3201,7 +3197,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -3231,7 +3226,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {

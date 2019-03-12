@@ -1,6 +1,6 @@
 import { ISetupBannerStyles } from './SetupBanner.types';
 
-export const getStyles = (): ISetupBannerStyles => {
+export const getStyles = (rtl: boolean): ISetupBannerStyles => {
   return {
     root: {
       display: 'flex',
@@ -9,14 +9,27 @@ export const getStyles = (): ISetupBannerStyles => {
       flexWrap: 'wrap'
     },
     visualizationPartition: {
-      minWidth: '400px',
       alignItems: 'center',
       justifyContent: 'center',
-      flex: 1
+      flex: 1,
+      paddingLeft: rtl ? '10px' : undefined,
+      paddingRight: rtl ? undefined : '10px',
+      selectors: {
+        '@media(max-width: 1000px)': [
+          {
+            display: 'none'
+          }
+        ]
+      }
+    },
+    visualizationShimmer: {
+      paddingTop: '20px',
+      width: '70%',
+      margin: 'auto'
     },
     textPartition: {
       display: 'flex',
-      minWidth: '400px',
+      minWidth: '240px',
       flexDirection: 'column',
       flex: 1
     },
@@ -24,13 +37,27 @@ export const getStyles = (): ISetupBannerStyles => {
       display: 'flex',
       fontWeight: 'bold',
       fontSize: '42px',
-      lineHeight: '51px'
+      lineHeight: '51px',
+      selectors: {
+        '@media(max-width: 1200px)': [
+          {
+            fontSize: '28px',
+            lineHeight: '34px'
+          }
+        ]
+      }
+    },
+    headerShimmer: {
+      width: '75%'
     },
     bodySection: {
       display: 'flex',
       flex: '1 1 0%',
       paddingBottom: '16px',
       alignItems: 'center'
+    },
+    bodyShimmer: {
+      width: '100%'
     },
     actionSection: {
       display: 'flex',

@@ -35,50 +35,68 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
   className?: string;
 
   /**
-   * The index of the pivot item initially selected.
+   * Default selected key for the pivot. Only provide this if the pivot is an uncontrolled component;
+   * otherwise, use the `selectedKey` property.
    *
-   * It only works when initialSelectedKey is not defined. You must not use them together.
+   * This property is also mutually exclusive with `defaultSelectedIndex`.
+   */
+  defaultSelectedKey?: string;
+
+  /**
+   * Default selected index for the pivot. Only provide this if the pivot is an uncontrolled component;
+   * otherwise, use the `selectedKey` property.
+   *
+   * This property is also mutually exclusive with `defaultSelectedKey`.
+   */
+  defaultSelectedIndex?: number;
+
+  /**
+   * Index of the pivot item initially selected. Mutually exclusive with `initialSelectedKey`.
+   * Only provide this if the pivot is an uncontrolled component; otherwise, use `selectedKey`.
+   *
+   * @deprecated Use `defaultSelectedIndex`
    */
   initialSelectedIndex?: number;
 
   /**
-   * The key of the pivot item initially selected.
+   * Key of the pivot item initially selected. Mutually exclusive with `initialSelectedIndex`.
+   * Only provide this if the pivot is an uncontrolled component; otherwise, use `selectedKey`.
    *
-   * It will make initialSelectedIndex not work. You must not use them together.
+   * @deprecated Use `defaultSelectedKey`
    */
   initialSelectedKey?: string;
 
   /**
-   * The key of the selected pivot item.
-   *
-   * If set, this will override the Pivot's selected item state.
+   * Key of the selected pivot item. Updating this will override the Pivot's selected item state.
+   * Only provide this if the pivot is a controlled component where you are maintaining the
+   * current state; otherwise, use `defaultSelectedKey`.
    */
   selectedKey?: string;
 
   /**
-   * Callback issued when the selected pivot item is changed
+   * Callback for when the selected pivot item is changed.
    */
   onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Specify the PivotLinkSize to use (normal, large)
+   * PivotLinkSize to use (normal, large)
    */
   linkSize?: PivotLinkSize;
 
   /**
-   * Specify the PivotLinkFormat to use (links, tabs)
+   * PivotLinkFormat to use (links, tabs)
    */
   linkFormat?: PivotLinkFormat;
 
   /**
-   * Specify whether to skip rendering the tabpanel with the content of the selected tab.
+   * Whether to skip rendering the tabpanel with the content of the selected tab.
    * Use this prop if you plan to separately render the tab content
    * and don't want to leave an empty tabpanel in the page that may confuse Screen Readers.
    */
   headersOnly?: boolean;
 
   /**
-   * Optional. Specify how IDs are generated for each tab header.
+   * Callback to customize how IDs are generated for each tab header.
    * Useful if you're rendering content outside and need to connect aria-labelledby.
    */
   getTabId?: (itemKey: string, index: number) => string;
@@ -108,6 +126,7 @@ export interface IPivotStyles {
   text: IStyle;
   count: IStyle;
   icon: IStyle;
+  itemContainer?: IStyle;
 }
 
 export enum PivotLinkFormat {
