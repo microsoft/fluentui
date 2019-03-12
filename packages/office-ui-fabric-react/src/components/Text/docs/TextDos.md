@@ -1,1 +1,1 @@
-- Use Text to get styled text out of the box.
+- Use Text to display read-only text that inherits styling from ITheme.
