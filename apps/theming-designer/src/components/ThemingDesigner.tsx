@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylesImport from './app.scss';
-import { ColorPicker } from './ColorPicker';
+import { ThemingDesignerColorPicker } from './ThemingDesignerColorPicker';
 import { Palette } from './Palette';
 import { AccChecker } from './AccChecker';
 import { SemanticSlots } from './SemanticSlots';
@@ -14,7 +14,7 @@ export class ThemingDesigner extends React.Component {
     return (
       <div className={styles.app}>
         <div className={styles.sidebar}>
-          <ColorPicker />
+          <ThemingDesignerColorPicker />
         </div>
         <div className={styles.main}>
           <Stack>

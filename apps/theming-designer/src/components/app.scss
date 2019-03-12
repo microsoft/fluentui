@@ -16,8 +16,17 @@ html {
 }
 
 .main {
-  background: #ccc;
+  background: #ffc0cb;
   flex: 1;
   margin: 0;
   padding: 0;
+}
+
+.colorpicker {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: auto;
+  width: auto;
 }
