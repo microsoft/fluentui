@@ -130,9 +130,21 @@ exports[`Modal renders Modal correctly 1`] = `
                 position: relative;
                 text-align: left;
               }
+          onBlur={[Function]}
+          onFocus={[Function]}
           onFocusCapture={[Function]}
-          onKeyDown={[Function]}
         >
+          <div
+            aria-hidden={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
           <div
             className=
                 ms-Modal-scrollableContent
@@ -144,6 +156,17 @@ exports[`Modal renders Modal correctly 1`] = `
           >
             Test Content
           </div>
+          <div
+            aria-hidden={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
         </div>
       </div>
     </div>
@@ -260,9 +283,21 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                 text-align: left;
                 z-index: 1000000;
               }
+          onBlur={[Function]}
+          onFocus={[Function]}
           onFocusCapture={[Function]}
-          onKeyDown={[Function]}
         >
+          <div
+            aria-hidden={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
           <div
             className=
                 ms-Modal-scrollableContent
@@ -274,6 +309,17 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
           >
             Test Content
           </div>
+          <div
+            aria-hidden={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
         </div>
       </div>
     </div>
