@@ -366,21 +366,11 @@ export interface ICalendarYearState {
 }
 
 export class CalendarYear extends React.Component<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
-  public state: ICalendarYearState = {
-    fromYear: 0 // overwritten by getDerivedStateFromProps
-  };
-
   private _gridRef = React.createRef<CalendarYearGrid>();
 
-  public static getDerivedStateFromProps(nextProps: Readonly<ICalendarYearProps>): Partial<ICalendarYearState> {
-    const { selectedYear, navigatedYear } = nextProps;
-    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-    const fromYear = Math.floor(rangeYear / 10) * 10;
-    return {
-      fromYear: fromYear,
-      navigatedYear: navigatedYear,
-      selectedYear: selectedYear
-    };
+  public constructor(props: ICalendarYearProps) {
+    super(props);
+    this.state = this._calculateInitialStateFromProps(props);
   }
 
   public focus() {
@@ -423,4 +413,15 @@ export class CalendarYear extends React.Component<ICalendarYearProps, ICalendarY
       <CalendarYearGrid {...this.props} fromYear={this.state.fromYear} toYear={this.state.fromYear + CELL_COUNT - 1} ref={this._gridRef} />
     );
   };
+
+  private _calculateInitialStateFromProps(props: ICalendarYearProps): ICalendarYearState {
+    const { selectedYear, navigatedYear } = props;
+    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
+    const fromYear = Math.floor(rangeYear / 10) * 10;
+    return {
+      fromYear: fromYear,
+      navigatedYear: navigatedYear,
+      selectedYear: selectedYear
+    };
+  }
 }
