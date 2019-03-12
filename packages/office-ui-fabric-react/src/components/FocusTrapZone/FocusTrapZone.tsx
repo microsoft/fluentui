@@ -60,10 +60,15 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const { className, ariaLabelledBy } = this.props;
     const divProps = getNativeProps(this.props, divProperties);
 
-    const bumperStyle: React.CSSProperties = {
-      pointerEvents: 'none',
-      position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
-    };
+    const bumperProps = {
+      style: {
+        pointerEvents: 'none',
+        position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
+      },
+      tabIndex: 0,
+      'aria-hidden': true,
+      'data-is-visible': 'true'
+    } as React.HTMLAttributes<HTMLDivElement>;
 
     return (
       <div
@@ -75,9 +80,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
         onFocus={this._onRootFocus}
         onBlur={this._onRootBlur}
       >
-        <div ref={this._firstBumper} onFocus={this._onFirstBumperFocus} style={bumperStyle} tabIndex={0} aria-hidden={true} />
+        <div {...bumperProps} ref={this._firstBumper} onFocus={this._onFirstBumperFocus} />
         {this.props.children}
-        <div ref={this._lastBumper} onFocus={this._onLastBumperFocus} style={bumperStyle} tabIndex={0} aria-hidden={true} />
+        <div {...bumperProps} ref={this._lastBumper} onFocus={this._onLastBumperFocus} />
       </div>
     );
   }
