@@ -45,8 +45,8 @@ export class MenuButtonState extends BaseState<IMenuButtonProps, IMenuButtonView
   };
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    const { disabled, menu } = this.props;
-    if (!disabled && menu && (ev.altKey || ev.metaKey) && ev.keyCode === 40) {
+    const { disabled } = this.props;
+    if (!disabled && (ev.altKey || ev.metaKey) && ev.keyCode === 40) {
       this.setState({
         expanded: !this.state.expanded,
         menuTarget: ev.currentTarget

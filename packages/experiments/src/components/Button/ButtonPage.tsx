@@ -27,7 +27,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Menu Button Examples" code={MenuButtonExampleCode}>
               <MenuButtonExample />
             </ExampleCard>
-            <ExampleCard title="Split Button based on Menu Button Examples" code={SplitMenuButtonExampleCode}>
+            <ExampleCard title="Split Button with two focus stops" code={SplitMenuButtonExampleCode}>
               <SplitMenuButtonExample />
             </ExampleCard>
             <ExampleCard title="Button Styles" code={ButtonStylesExampleCode}>

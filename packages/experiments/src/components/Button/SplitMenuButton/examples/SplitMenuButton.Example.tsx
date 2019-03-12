@@ -28,15 +28,31 @@ export class SplitMenuButtonExample extends React.Component<{}, {}> {
           <div>
             <Stack gap={buttonGap}>
               <ButtonStack>
-                <SplitMenuButton split icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitMenuButton split disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitMenuButton split primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
+                <SplitMenuButton icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
+                <SplitMenuButton disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
+                <SplitMenuButton primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
                 <SplitMenuButton
-                  split
                   disabled
                   primary
                   icon="Add"
                   content="Disabled primary split button"
+                  menu={buttonMenu}
+                  onClick={alertClicked}
+                />
+              </ButtonStack>
+              <ButtonStack>
+                <SplitMenuButton
+                  primaryActionDisabled
+                  icon="Add"
+                  content="First action disabled split button"
+                  menu={buttonMenu}
+                  onClick={alertClicked}
+                />
+                <SplitMenuButton
+                  primaryActionDisabled
+                  primary
+                  icon="Add"
+                  content="First action disabled primary split button"
                   menu={buttonMenu}
                   onClick={alertClicked}
                 />

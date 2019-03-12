@@ -1,6 +1,5 @@
-import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
-import { IFontWeight, IStackSlot } from 'office-ui-fabric-react';
-import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IStackSlot } from 'office-ui-fabric-react';
+import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import {
   IMenuButtonProps,
@@ -29,22 +28,12 @@ export interface ISplitMenuButtonSlots extends IMenuButtonSlots {
   /**
    * Defines the root slot of the component.
    */
-  root?: IHTMLElementSlot<'div'>;
+  root?: IStackSlot;
 
   /**
    * Menu button that is going to be rendered.
    */
   menuButton?: IMenuButtonSlot;
-
-  /**
-   * Defines the stack container for the primary action of the Split Button.
-   */
-  primaryActionContainer?: IStackSlot;
-
-  /**
-   * Defines the span container for the secondary action of the Split Button.
-   */
-  secondaryActionContainer?: IHTMLSlot;
 
   /**
    * Defines the divider that separates the left and right parts of a Split Button.
@@ -60,12 +49,6 @@ export interface ISplitMenuButtonProps
     IStyleableComponentProps<ISplitMenuButtonProps, ISplitMenuButtonTokens, ISplitMenuButtonStyles>,
     IBaseProps<ISplitMenuButton> {
   /**
-   * Defines whether the button is rendered as a Split Button.
-   * @defaultvalue false
-   */
-  split?: boolean;
-
-  /**
    * Split Buttons only - Defines whether the first action of the Split Button is disabled.
    * @defaultvalue false
    */
@@ -79,50 +62,6 @@ export interface ISplitMenuButtonViewProps extends Pick<IMenuButtonViewProps, 'o
   onSecondaryActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface ISplitMenuButtonTokens extends IMenuButtonTokens {
-  backgroundColor?: string;
-  backgroundColorHovered?: string;
-  backgroundColorPressed?: string;
-  color?: string;
-  colorHovered?: string;
-  colorPressed?: string;
-  borderColor?: string;
-  borderColorFocused?: string;
-  borderColorHovered?: string;
-  borderColorPressed?: string;
-  iconColor?: string;
-  iconColorHovered?: string;
-  iconColorPressed?: string;
-  outlineColor?: string;
-  borderRadius?: number | string;
-  borderWidth?: number | string;
-  contentPadding?: number | string;
-  contentPaddingFocused?: number | string;
-  textFamily?: string;
-  textSize?: number | string;
-  textWeight?: IFontWeight;
-  width?: number | string;
-  height?: number | string;
-  iconSize?: number | string;
-  iconWeight?: number;
-  lineHeight?: number | string;
-  minWidth?: number | string;
-  minHeight?: number | string;
-  backgroundClip?: IRawStyleBase['backgroundClip'];
-
-  // The following tokens are specific to Split Button and aren't used if the split property is not present.
-  primaryActionBackgroundColor?: string;
-  primaryActionBackgroundColorHovered?: string;
-  primaryActionBackgroundColorPressed?: string;
-  secondaryActionBackgroundColor?: string;
-  secondaryActionBackgroundColorHovered?: string;
-  secondaryActionBackgroundColorPressed?: string;
-  primaryActionColor?: string;
-  primaryActionColorHovered?: string;
-  primaryActionColorPressed?: string;
-  secondaryActionColor?: string;
-  secondaryActionColorHovered?: string;
-  secondaryActionColorPressed?: string;
-}
+export interface ISplitMenuButtonTokens extends IMenuButtonTokens {}
 
 export type ISplitMenuButtonStyles = IComponentStyles<ISplitMenuButtonSlots>;

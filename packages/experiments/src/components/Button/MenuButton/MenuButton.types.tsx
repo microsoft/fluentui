@@ -1,5 +1,3 @@
-import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
-import { IFontWeight } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
@@ -74,36 +72,6 @@ export interface IMenuButtonViewProps extends IMenuButtonProps {
   menuTarget: HTMLElement | undefined;
 }
 
-export interface IMenuButtonTokens extends IButtonTokens {
-  backgroundColor?: string;
-  backgroundColorHovered?: string;
-  backgroundColorPressed?: string;
-  color?: string;
-  colorHovered?: string;
-  colorPressed?: string;
-  borderColor?: string;
-  borderColorFocused?: string;
-  borderColorHovered?: string;
-  borderColorPressed?: string;
-  iconColor?: string;
-  iconColorHovered?: string;
-  iconColorPressed?: string;
-  outlineColor?: string;
-  borderRadius?: number | string;
-  borderWidth?: number | string;
-  contentPadding?: number | string;
-  contentPaddingFocused?: number | string;
-  textFamily?: string;
-  textSize?: number | string;
-  textWeight?: IFontWeight;
-  width?: number | string;
-  height?: number | string;
-  iconSize?: number | string;
-  iconWeight?: number;
-  lineHeight?: number | string;
-  minWidth?: number | string;
-  minHeight?: number | string;
-  backgroundClip?: IRawStyleBase['backgroundClip'];
-}
+export interface IMenuButtonTokens extends IButtonTokens {}
 
 export type IMenuButtonStyles = IComponentStyles<IMenuButtonSlots>;

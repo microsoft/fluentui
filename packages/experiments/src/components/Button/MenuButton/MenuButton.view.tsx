@@ -25,13 +25,11 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
       role="button"
       aria-disabled={disabled}
     >
-      <Slots.button onClick={onClick} {...rest} aria-disabled={disabled} disabled={disabled}>
-        <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
-          {children}
-          <Stack.Item>
-            <Slots.menuIcon iconName="ChevronDown" />
-          </Stack.Item>
-        </Slots.stack>
+      <Slots.button onClick={onClick} disabled={disabled} {...rest}>
+        {children}
+        <Stack.Item>
+          <Slots.menuIcon iconName="ChevronDown" />
+        </Stack.Item>
       </Slots.button>
       {expanded && (
         <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} directionalHint={DirectionalHint.bottomRightEdge} />
