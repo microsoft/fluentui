@@ -5,7 +5,7 @@ import { ITheme } from '../../Styling';
 export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: ITheme): ITextStylesReturnType => {
   const { as, className, block, nowrap, variant } = props;
   const { fonts } = theme;
-  const variantObject = variant && fonts[variant] ? fonts[variant] : undefined;
+  const variantObject = fonts[variant || 'medium'];
 
   return {
     root: [
