@@ -22,7 +22,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     modalRectangleTop,
     theme,
     topOffsetFixed,
-    isModeless
+    isModeless,
+    layerProps
   } = props;
   const { palette } = theme;
 
@@ -83,6 +84,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       scrollableContentClassName
     ],
     layer: isModeless && [
+      layerProps && layerProps.className,
       classNames.layer,
       {
         position: 'static',
