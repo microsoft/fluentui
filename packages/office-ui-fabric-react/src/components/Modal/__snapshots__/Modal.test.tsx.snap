@@ -136,6 +136,7 @@ exports[`Modal renders Modal correctly 1`] = `
         >
           <div
             aria-hidden={true}
+            data-is-visible={true}
             onFocus={[Function]}
             style={
               Object {
@@ -158,6 +159,7 @@ exports[`Modal renders Modal correctly 1`] = `
           </div>
           <div
             aria-hidden={true}
+            data-is-visible={true}
             onFocus={[Function]}
             style={
               Object {
@@ -289,6 +291,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
         >
           <div
             aria-hidden={true}
+            data-is-visible={true}
             onFocus={[Function]}
             style={
               Object {
@@ -311,6 +314,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
           </div>
           <div
             aria-hidden={true}
+            data-is-visible={true}
             onFocus={[Function]}
             style={
               Object {
