@@ -52,6 +52,8 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     const myObj = JSON.parse(responseText);
     const { items = [] } = myObj;
 
+    // Intentionally render the first 30 issues until pagination support is added for
+    // https://github.com/OfficeDev/office-ui-fabric-react/issues/8284
     return items.map((item: { created_at: string; title: string; number: number }) => {
       const dateCreated = new Date(item.created_at);
       const openedOn = relativeDates(dateCreated, new Date());
