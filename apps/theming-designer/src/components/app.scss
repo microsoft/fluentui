@@ -1,0 +1,23 @@
+@import '~office-ui-fabric-react/dist/sass/References';
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+}
+
+.sidebar {
+  flex: 0 0 250px;
+  background: #fff;
+}
+
+.main {
+  background: #ccc;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
