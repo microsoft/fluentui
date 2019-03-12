@@ -34,6 +34,14 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
     return <div className={css.generalContainer}>{this._renderContent()}</div>;
   }
 
+  public componentDidUpdate(prevProps: DetailPanelPivotItemProps): void {
+    if (this.props.actionBar !== prevProps.actionBar) {
+      if (this.props.onSetActionBar) {
+        this.props.onSetActionBar(this.props.actionBar);
+      }
+    }
+  }
+
   public componentDidMount(): void {
     const { onContentLoad, onGetLoadingElement, itemKey, actionBar, onSetActionBar } = this.props;
 
