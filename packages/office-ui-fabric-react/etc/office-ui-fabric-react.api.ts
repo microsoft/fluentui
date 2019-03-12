@@ -1380,7 +1380,7 @@ export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColo
 export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
@@ -1413,7 +1413,7 @@ export function getLanguage(): string | null;
 export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
@@ -6997,6 +6997,9 @@ interface IDetailsRow {
 
 // @public (undocumented)
 interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+  cellsByColumn?: {
+    [columnKey: string]: React.ReactNode;
+  }
   checkboxCellClassName?: string;
   checkButtonAriaLabel?: string;
   className?: string;

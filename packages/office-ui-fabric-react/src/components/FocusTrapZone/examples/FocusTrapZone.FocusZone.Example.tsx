@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
+import './FocusTrapZone.Box.Example.scss';
 
 export interface IBoxExampleExampleState {
   isChecked: boolean;
@@ -12,7 +12,6 @@ export interface IBoxExampleExampleState {
 
 export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
   private _toggle: IToggle;
-  private focusClassName = 'shouldFocusInput';
 
   constructor(props: React.HTMLAttributes<HTMLDivElement>) {
     super(props);
@@ -27,10 +26,14 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
 
     return (
       <div>
-        <DefaultButton onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
+        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
         {(() => {
           if (isChecked) {
-            return <FocusTrapZone firstFocusableSelector={this.focusClassName}>{this._internalContents()}</FocusTrapZone>;
+            return (
+              <FocusTrapZone forceFocusInsideTrap={true} focusPreviouslyFocusedInnerElement={true}>
+                {this._internalContents()}
+              </FocusTrapZone>
+            );
           } else {
             return <div>{this._internalContents()}</div>;
           }
@@ -44,31 +47,33 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
 
     return (
       <div className="ms-FocusTrapZoneBoxExample">
-        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
-        <Link href="" className="">
-          Hyperlink inside FocusTrapZone
-        </Link>
+        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+          <DefaultButton text="FZ1" />
+          <DefaultButton text="FZ1" />
+          <DefaultButton text="FZ1" />
+        </FocusZone>
+        <br />
+        <DefaultButton text="No FZ" />
         <br />
         <br />
-        <div>
-          <Toggle
-            componentRef={this._setRef}
-            checked={isChecked}
-            onChange={this._onFocusTrapZoneToggleChanged}
-            label="Focus Trap Zone"
-            onText="On"
-            offText="Off"
-          />
-        </div>
+        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+          <DefaultButton text="FZ2" />
+          <DefaultButton text="FZ2" />
+          <DefaultButton text="FZ2" />
+        </FocusZone>
+        <br />
+        <Toggle
+          componentRef={this._setRef}
+          checked={isChecked}
+          onChange={this._onFocusTrapZoneToggleChanged}
+          label="Focus Trap Zone"
+          onText="On"
+          offText="Off"
+        />
         {(() => {
           if (isChecked) {
             return (
-              <DefaultButton
-                className={this.focusClassName}
-                secondaryText="Exit Focus Trap Zone"
-                onClick={this._onExitButtonClickHandler}
-                text="Exit Focus Trap Zone"
-              />
+              <DefaultButton secondaryText="Exit Focus Trap Zone" onClick={this._onExitButtonClickHandler} text="Exit Focus Trap Zone" />
             );
           }
         })()}

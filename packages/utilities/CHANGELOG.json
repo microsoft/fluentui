@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.35.0",
+      "tag": "@uifabric/utilities_v6.35.0",
+      "date": "Tue, 12 Mar 2019 12:31:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Focus utilities: Fix tabbable element issue and add optional argument.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "882f4b91eddf44fca406d1d66b1081d7e72fa439"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.34.0",
       "tag": "@uifabric/utilities_v6.34.0",
       "date": "Wed, 06 Mar 2019 13:27:18 GMT",
