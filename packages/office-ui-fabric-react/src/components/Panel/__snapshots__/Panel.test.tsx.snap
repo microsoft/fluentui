@@ -160,7 +160,7 @@ exports[`Panel renders Panel correctly 1`] = `
         >
           <div
             aria-hidden={true}
-            data-is-visible="true"
+            data-is-visible={true}
             onFocus={[Function]}
             style={
               Object {
@@ -409,7 +409,7 @@ exports[`Panel renders Panel correctly 1`] = `
           </div>
           <div
             aria-hidden={true}
-            data-is-visible="true"
+            data-is-visible={true}
             onFocus={[Function]}
             style={
               Object {
