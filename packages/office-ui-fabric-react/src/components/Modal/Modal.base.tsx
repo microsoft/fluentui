@@ -144,11 +144,11 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     });
 
     // if the modal is modeless, add the classname to correctly style the layer
-    const layerClassName = isModeless
-      ? this.props.className
-        ? `${this.props.className} ${classNames.layer}`
-        : classNames.layer
-      : this.props.className;
+    let layerClassName = layerProps && layerProps.className;
+
+    if (isModeless) {
+      layerClassName = layerClassName ? `${layerClassName} ${classNames.layer}` : classNames.layer;
+    }
 
     const mergedLayerProps = {
       ...DefaultLayerProps,
