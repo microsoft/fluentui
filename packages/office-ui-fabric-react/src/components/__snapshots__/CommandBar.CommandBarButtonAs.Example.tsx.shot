@@ -2118,6 +2118,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   style={
                                     Object {
                                       "pointerEvents": "none",
+                                      "position": "fixed",
                                     }
                                   }
                                   tabIndex={0}
@@ -2353,6 +2354,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   style={
                                     Object {
                                       "pointerEvents": "none",
+                                      "position": "fixed",
                                     }
                                   }
                                   tabIndex={0}

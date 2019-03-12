@@ -140,6 +140,7 @@ exports[`Modal renders Modal correctly 1`] = `
             style={
               Object {
                 "pointerEvents": "none",
+                "position": "fixed",
               }
             }
             tabIndex={0}
@@ -161,6 +162,7 @@ exports[`Modal renders Modal correctly 1`] = `
             style={
               Object {
                 "pointerEvents": "none",
+                "position": "fixed",
               }
             }
             tabIndex={0}
@@ -291,6 +293,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
             style={
               Object {
                 "pointerEvents": "none",
+                "position": "fixed",
               }
             }
             tabIndex={0}
@@ -312,6 +315,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
             style={
               Object {
                 "pointerEvents": "none",
+                "position": "fixed",
               }
             }
             tabIndex={0}

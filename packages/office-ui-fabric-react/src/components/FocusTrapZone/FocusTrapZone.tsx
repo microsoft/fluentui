@@ -61,7 +61,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const divProps = getNativeProps(this.props, divProperties);
 
     const bumperStyle: React.CSSProperties = {
-      pointerEvents: 'none'
+      pointerEvents: 'none',
+      position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
     };
 
     return (

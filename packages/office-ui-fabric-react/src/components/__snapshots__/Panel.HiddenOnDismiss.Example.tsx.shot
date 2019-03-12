@@ -249,6 +249,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
               style={
                 Object {
                   "pointerEvents": "none",
+                  "position": "fixed",
                 }
               }
               tabIndex={0}
@@ -496,6 +497,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
               style={
                 Object {
                   "pointerEvents": "none",
+                  "position": "fixed",
                 }
               }
               tabIndex={0}

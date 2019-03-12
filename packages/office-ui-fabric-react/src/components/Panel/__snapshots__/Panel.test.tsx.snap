@@ -164,6 +164,7 @@ exports[`Panel renders Panel correctly 1`] = `
             style={
               Object {
                 "pointerEvents": "none",
+                "position": "fixed",
               }
             }
             tabIndex={0}
@@ -411,6 +412,7 @@ exports[`Panel renders Panel correctly 1`] = `
             style={
               Object {
                 "pointerEvents": "none",
+                "position": "fixed",
               }
             }
             tabIndex={0}

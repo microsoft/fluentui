@@ -147,6 +147,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               style={
                 Object {
                   "pointerEvents": "none",
+                  "position": "fixed",
                 }
               }
               tabIndex={0}
@@ -173,6 +174,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               style={
                 Object {
                   "pointerEvents": "none",
+                  "position": "fixed",
                 }
               }
               tabIndex={0}
@@ -330,6 +332,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               style={
                 Object {
                   "pointerEvents": "none",
+                  "position": "fixed",
                 }
               }
               tabIndex={0}
@@ -354,6 +357,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               style={
                 Object {
                   "pointerEvents": "none",
+                  "position": "fixed",
                 }
               }
               tabIndex={0}
