@@ -1,0 +1,67 @@
+{
+  "name": "@uifabric/react-cards",
+  "version": "0.1.0",
+  "description": "Card container components to help build experiences with the use of Fabric.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/just.js build",
+    "just": "node ../../scripts/just.js",
+    "clean": "node ../../scripts/just.js clean",
+    "start": "node ../../scripts/just.js dev",
+    "start-test": "node ../../scripts/just.js jest-watch",
+    "update-snapshots": "node ../../scripts/just.js jest -u"
+  },
+  "devDependencies": {
+    "@types/enzyme": "3.1.13",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/es6-promise": "0.0.32",
+    "@types/jest": "23.0.0",
+    "@types/react": "16.3.16",
+    "@types/react-dom": "16.0.5",
+    "@types/react-test-renderer": "^16.0.0",
+    "@types/resemblejs": "~1.3.28",
+    "@types/webpack-env": "1.13.0",
+    "@uifabric/example-app-base": ">=6.12.1 <7.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.7 <7.0.0",
+    "@uifabric/prettier-rules": ">=1.0.1 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.1 <2.0.0",
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "es6-weak-map": "^2.0.2",
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0",
+    "react-test-renderer": "^16.3.0"
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": "^1.7.13",
+    "@uifabric/azure-themes": ">=0.1.5 <1.0.0",
+    "@uifabric/experiments": ">=6.63.0 <7.0.0",
+    "@uifabric/file-type-icons": ">=6.4.3 <7.0.0",
+    "@uifabric/fluent-theme": ">=0.16.0 <1.0.0",
+    "@uifabric/foundation": ">=0.7.1 <1.0.0",
+    "@uifabric/set-version": ">=1.1.3 <2.0.0",
+    "@uifabric/styling": ">=6.44.1 <7.0.0",
+    "@uifabric/theme-samples": ">=0.1.4 <1.0.0",
+    "@uifabric/utilities": ">=6.35.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.155.0 <7.0.0",
+    "tslib": "^1.7.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.2-0 <17.0.0",
+    "react-dom": ">=16.3.2-0 <17.0.0"
+  },
+  "disabledTasks": [
+    "build-codepen-examples",
+    "verify-api-extractor"
+  ]
+}

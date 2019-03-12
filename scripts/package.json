@@ -19,7 +19,7 @@
     "@microsoft/api-extractor": "^6.0.4",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=6.16.0 <7.0.0",
+    "@uifabric/merge-styles": ">=6.16.1 <7.0.0",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",

@@ -91,14 +91,17 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
     } = this.props;
 
     if (this.state.isYearPickerVisible) {
+      // default the year picker to the current navigated date
+      const currentSelectedDate = navigatedDate ? navigatedDate.getFullYear() : undefined;
       return (
         <CalendarYear
+          key={'calendarYear_' + (currentSelectedDate && currentSelectedDate.toString())}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
           navigationIcons={navigationIcons}
           onHeaderSelect={this._onYearPickerHeaderSelect}
-          selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
+          selectedYear={currentSelectedDate}
           onRenderYear={this._onRenderYear}
           strings={{
             rangeAriaLabel: this._yearRangeToString

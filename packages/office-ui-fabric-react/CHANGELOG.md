@@ -1,6 +1,99 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 01 Mar 2019 19:40:22 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Mar 2019 12:31:43 GMT and should not be manually modified.
+
+## 6.155.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Provide a way to pass cell contents directly to DetailsRow
+- FocusTrapZone: Refactor trapping behavior to fix multiple outstanding issues.
+
+### Patches
+
+- Fix overflow calculation for non-collapsible columns
+- FocusTrapZone: Fix for zones that have zero tabbable elements.
+- updating calendaryear to work when react version upgrades
+- DetailsHeader: remove duplicate IDetailsHeaderState
+- Panel: fixes regression when no custom navigation renderer provided and `hasCloseButton` prop is set to false there should not be an empty div rendered occupying the space.
+
+## 6.154.0
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Minor changes
+
+- Shimmer: adds new props `shimmerColors` to Shimmer and `backgroundColor` to ShimmerElementsGroup to allow easy customization of Shimmer colors when placed on elements with background colors other than white.
+
+## 6.153.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Expose persistMenu in combobox similar to baseButton
+- SpinButton: Stateful example should restrict input value to range.
+
+### Patches
+
+- List: Revert remove usage of string refs for List pages #7704
+
+## 6.152.1
+Thu, 07 Mar 2019 13:32:47 GMT
+
+### Patches
+
+- Remove console log in Tooltip absolute position example
+- Pivot - remove deprecated lifecycle method, and deterministically render selected PivotItem. Will change behavior of Pivot instances that specified `selectedKey` but use in an uncontrolled fashion. 
+- Suggestions: set className on Suggestion header/footer
+- SwatchColorPicker: updates the styles so that they align to the toolkit specs.
+
+## 6.152.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- BaseButton does not call onAfterMenuDismiss when persistMenu is true
+- Change FocusZone to use the as pattern
+
+### Patches
+
+- Tooltip: Add absolute position example to documentation
+- FocusZone: removing dependency on BaseComponent, slicing about 3k gzipped off the payload.
+
+## 6.151.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Update version of 'styled', add type annotations to usages of 'styled'.
+
+## 6.150.1
+Tue, 05 Mar 2019 13:30:24 GMT
+
+### Patches
+
+- DetailsRowFields: Inherit from React.Component instead of BaseComponent"
+
+## 6.150.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced component
+- Breadcrumb: Add native props support
+- Export all theme variables in one file, and emit basic font token mixins
+
+### Patches
+
+- CommandBar: Adding aria-label to Grid View and Information Buttons in examples.
+- ChoiceGroup: Fix disabled selected styles
+
+## 6.149.0
+Mon, 04 Mar 2019 13:29:58 GMT
+
+### Minor changes
+
+- Improved Accessibility with the Pickers and PeoplePicker Components by adjusting styles for High Contrast Mode.
 
 ## 6.148.1
 Fri, 01 Mar 2019 19:40:22 GMT

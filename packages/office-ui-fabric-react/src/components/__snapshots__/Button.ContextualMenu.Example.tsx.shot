@@ -2,9 +2,46 @@
 
 exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 1`] = `
 <div
-  className="ms-ContextualMenuButtonsExample"
+  className=
+      ms-BasicButtonsTwoUp
+      {
+        display: flex;
+      }
+      & > * {
+        flex-grow: 1;
+      }
+      & .ms-Label {
+        margin-bottom: 10px;
+      }
 >
   <div>
+    <label
+      className=
+          ms-Label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+    >
+      Non persisted menu
+    </label>
     <button
       aria-expanded={false}
       aria-haspopup={true}
@@ -175,6 +212,721 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
         >
           
         </i>
+      </div>
+    </button>
+  </div>
+  <div>
+    <label
+      className=
+          ms-Label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+    >
+      Persisted menu
+    </label>
+    <button
+      aria-expanded={false}
+      aria-haspopup={true}
+      aria-owns="id__3-menu"
+      className=
+          ms-Button
+          ms-Button--default
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #f4f4f4;
+            border-radius: 0px;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            color: #333333;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            min-width: 80px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            vertical-align: top;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          &:hover {
+            background-color: #eaeaea;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
+          &:active {
+            background-color: #c8c8c8;
+            color: #212121;
+          }
+      data-automation-id="test"
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
+    >
+      <div
+        className=
+            ms-Button-flexContainer
+            {
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
+            }
+      >
+        <i
+          className=
+              ms-Button-icon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: normal;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                speak: none;
+                text-align: center;
+                vertical-align: middle;
+              }
+          data-icon-name="Add"
+          role="presentation"
+        >
+          
+        </i>
+        <div
+          className=
+              ms-Button-textContainer
+              {
+                flex-grow: 1;
+              }
+        >
+          <div
+            className=
+                ms-Button-label
+                {
+                  font-weight: 600;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__3"
+          >
+            New
+          </div>
+        </div>
+        <i
+          className=
+              ms-Button-menuIcon
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                flex-shrink: 0;
+                font-family: "FabricMDL2Icons";
+                font-size: 12px;
+                font-style: normal;
+                font-weight: normal;
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+                speak: none;
+                text-align: center;
+                vertical-align: middle;
+              }
+          data-icon-name="ChevronDown"
+          role="presentation"
+        >
+          
+        </i>
+        <span
+          className="ms-layer"
+        >
+          <div
+            className=
+                ms-Fabric
+                ms-Layer-content
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #333333;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  visibility: visible;
+                }
+                & button {
+                  font-family: inherit;
+                }
+                & input {
+                  font-family: inherit;
+                }
+                & textarea {
+                  font-family: inherit;
+                }
+                button {
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow: visible;
+                }
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDoubleClick={[Function]}
+            onDrag={[Function]}
+            onDragEnd={[Function]}
+            onDragEnter={[Function]}
+            onDragExit={[Function]}
+            onDragLeave={[Function]}
+            onDragOver={[Function]}
+            onDragStart={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            onMouseUp={[Function]}
+            onSubmit={[Function]}
+          >
+            <div
+              className=
+                  ms-Callout-container
+                  {
+                    position: relative;
+                  }
+              style={
+                Object {
+                  "visibility": "hidden",
+                }
+              }
+            >
+              <div
+                className=
+                    ms-Callout
+                    ms-ContextualMenu-Callout
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      border-color: #eaeaea;
+                      border-style: solid;
+                      border-width: 1px;
+                      box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+                      box-sizing: border-box;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 14px;
+                      font-weight: 400;
+                      outline: transparent;
+                      position: absolute;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: WindowText;
+                      border-style: solid;
+                      border-width: 1px;
+                    }
+                    &::-moz-focus-inner {
+                      border: 0px;
+                    }
+                hidden={true}
+                onScroll={[Function]}
+                style={
+                  Object {
+                    "filter": "opacity(0)",
+                    "opacity": 0,
+                  }
+                }
+                tabIndex={-1}
+              >
+                <div
+                  className=
+                      ms-Callout-main
+                      {
+                        background-color: #ffffff;
+                        overflow-x: hidden;
+                        overflow-y: auto;
+                        position: relative;
+                      }
+                  onKeyDown={[Function]}
+                  onScroll={[Function]}
+                  style={
+                    Object {
+                      "maxHeight": 750,
+                      "outline": "none",
+                      "overflowY": undefined,
+                    }
+                  }
+                >
+                  <div
+                    aria-labelledby="id__3"
+                    className=
+                        ms-ContextualMenu-container
+                        &:focus {
+                          outline: 0px;
+                        }
+                    id="id__3-menu"
+                    onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    role="menu"
+                    tabIndex={-1}
+                  >
+                    <div
+                      className=
+                          ms-FocusZone
+                          ms-ContextualMenu
+                          is-open
+                          ms-BaseButton-menuhost
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            background-color: #ffffff;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            min-width: 180px;
+                          }
+                      data-focuszone-id="FocusZone7"
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onMouseDownCapture={[Function]}
+                      role="presentation"
+                    >
+                      <ul
+                        className=
+                            ms-ContextualMenu-list
+                            is-open
+                            {
+                              list-style-type: none;
+                              margin-bottom: 0;
+                              margin-left: 0;
+                              margin-right: 0;
+                              margin-top: 0;
+                              padding-bottom: 0;
+                              padding-left: 0;
+                              padding-right: 0;
+                              padding-top: 0;
+                            }
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        role="menu"
+                      >
+                        <li
+                          className=
+                              ms-ContextualMenu-item
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                box-sizing: border-box;
+                                color: #333333;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 14px;
+                                font-weight: 400;
+                                position: relative;
+                              }
+                          role="presentation"
+                        >
+                          <button
+                            aria-disabled={false}
+                            aria-posinset={1}
+                            aria-setsize={2}
+                            className=
+                                ms-ContextualMenu-link
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  background-color: transparent;
+                                  border: none;
+                                  color: #333333;
+                                  cursor: pointer;
+                                  display: block;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  height: 32px;
+                                  line-height: 32px;
+                                  outline: transparent;
+                                  padding-bottom: 0;
+                                  padding-left: 4px;
+                                  padding-right: 8px;
+                                  padding-top: 0px;
+                                  position: relative;
+                                  text-align: left;
+                                  width: 100%;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #ffffff;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #666666;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                &:hover {
+                                  background-color: #f4f4f4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  -ms-high-contrast-adjust: none;
+                                  background-color: Highlight;
+                                  border-color: Highlight;
+                                  color: HighlightText;
+                                }
+                                &:active {
+                                  background-color: #eaeaea;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  -ms-high-contrast-adjust: none;
+                                  background-color: Highlight;
+                                  border-color: Highlight;
+                                  color: HighlightText;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
+                                  background-color: #f4f4f4;
+                                }
+                                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
+                                  -ms-high-contrast-adjust: none;
+                                  background-color: Highlight;
+                                  border-color: Highlight;
+                                  color: HighlightText;
+                                }
+                                .ms-Fabric--isFocusVisible &:hover {
+                                  background: inherit;
+                                }
+                            onClick={[Function]}
+                            onKeyDown={null}
+                            onMouseDown={[Function]}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            onMouseMove={[Function]}
+                            role="menuitem"
+                          >
+                            <div
+                              className=
+                                  ms-ContextualMenu-linkContent
+                                  {
+                                    align-items: center;
+                                    display: flex;
+                                    height: inherit;
+                                    max-width: 100%;
+                                    white-space: nowrap;
+                                  }
+                            >
+                              <i
+                                className=
+                                    ms-ContextualMenu-icon
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      color: #0078d4;
+                                      display: inline-block;
+                                      flex-shrink: 0;
+                                      font-family: "FabricMDL2Icons";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      margin-bottom: 0;
+                                      margin-left: 4px;
+                                      margin-right: 4px;
+                                      margin-top: 0;
+                                      max-height: 32px;
+                                      min-height: 1px;
+                                      speak: none;
+                                      vertical-align: middle;
+                                      width: 14px;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){& {
+                                      color: inherit;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){$root:hover & {
+                                      color: HighlightText;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){$root:focus & {
+                                      color: HighlightText;
+                                    }
+                                data-icon-name="Mail"
+                                role="presentation"
+                              >
+                                
+                              </i>
+                              <span
+                                className=
+                                    ms-ContextualMenu-itemText
+                                    {
+                                      display: inline-block;
+                                      flex-grow: 1;
+                                      margin-bottom: 0;
+                                      margin-left: 4px;
+                                      margin-right: 4px;
+                                      margin-top: 0;
+                                      overflow: hidden;
+                                      text-overflow: ellipsis;
+                                      vertical-align: middle;
+                                      white-space: nowrap;
+                                    }
+                              >
+                                Email message
+                              </span>
+                            </div>
+                          </button>
+                        </li>
+                        <li
+                          className=
+                              ms-ContextualMenu-item
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                box-sizing: border-box;
+                                color: #333333;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 14px;
+                                font-weight: 400;
+                                position: relative;
+                              }
+                          role="presentation"
+                        >
+                          <button
+                            aria-disabled={false}
+                            aria-posinset={2}
+                            aria-setsize={2}
+                            className=
+                                ms-ContextualMenu-link
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  background-color: transparent;
+                                  border: none;
+                                  color: #333333;
+                                  cursor: pointer;
+                                  display: block;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  height: 32px;
+                                  line-height: 32px;
+                                  outline: transparent;
+                                  padding-bottom: 0;
+                                  padding-left: 4px;
+                                  padding-right: 8px;
+                                  padding-top: 0px;
+                                  position: relative;
+                                  text-align: left;
+                                  width: 100%;
+                                }
+                                &::-moz-focus-inner {
+                                  border: 0;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #ffffff;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #666666;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                &:hover {
+                                  background-color: #f4f4f4;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:hover {
+                                  -ms-high-contrast-adjust: none;
+                                  background-color: Highlight;
+                                  border-color: Highlight;
+                                  color: HighlightText;
+                                }
+                                &:active {
+                                  background-color: #eaeaea;
+                                }
+                                @media screen and (-ms-high-contrast: active){&:active {
+                                  -ms-high-contrast-adjust: none;
+                                  background-color: Highlight;
+                                  border-color: Highlight;
+                                  color: HighlightText;
+                                }
+                                .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
+                                  background-color: #f4f4f4;
+                                }
+                                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
+                                  -ms-high-contrast-adjust: none;
+                                  background-color: Highlight;
+                                  border-color: Highlight;
+                                  color: HighlightText;
+                                }
+                                .ms-Fabric--isFocusVisible &:hover {
+                                  background: inherit;
+                                }
+                            onClick={[Function]}
+                            onKeyDown={null}
+                            onMouseDown={[Function]}
+                            onMouseEnter={[Function]}
+                            onMouseLeave={[Function]}
+                            onMouseMove={[Function]}
+                            role="menuitem"
+                          >
+                            <div
+                              className=
+                                  ms-ContextualMenu-linkContent
+                                  {
+                                    align-items: center;
+                                    display: flex;
+                                    height: inherit;
+                                    max-width: 100%;
+                                    white-space: nowrap;
+                                  }
+                            >
+                              <i
+                                className=
+                                    ms-ContextualMenu-icon
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      color: #0078d4;
+                                      display: inline-block;
+                                      flex-shrink: 0;
+                                      font-family: "FabricMDL2Icons";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      margin-bottom: 0;
+                                      margin-left: 4px;
+                                      margin-right: 4px;
+                                      margin-top: 0;
+                                      max-height: 32px;
+                                      min-height: 1px;
+                                      speak: none;
+                                      vertical-align: middle;
+                                      width: 14px;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){& {
+                                      color: inherit;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){$root:hover & {
+                                      color: HighlightText;
+                                    }
+                                    @media screen and (-ms-high-contrast: active){$root:focus & {
+                                      color: HighlightText;
+                                    }
+                                data-icon-name="Calendar"
+                                role="presentation"
+                              >
+                                
+                              </i>
+                              <span
+                                className=
+                                    ms-ContextualMenu-itemText
+                                    {
+                                      display: inline-block;
+                                      flex-grow: 1;
+                                      margin-bottom: 0;
+                                      margin-left: 4px;
+                                      margin-right: 4px;
+                                      margin-top: 0;
+                                      overflow: hidden;
+                                      text-overflow: ellipsis;
+                                      vertical-align: middle;
+                                      white-space: nowrap;
+                                    }
+                              >
+                                Calendar event
+                              </span>
+                            </div>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
       </div>
     </button>
   </div>

@@ -19,7 +19,7 @@ import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
-import { IColumnResizeDetails, SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps } from './DetailsHeader.types';
+import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
 import { classNamesFunction } from '../../Utilities';
 
@@ -32,15 +32,6 @@ const NO_COLUMNS: IColumn[] = [];
 
 export interface IDetailsHeader {
   focus: () => boolean;
-}
-
-export interface IDetailsHeaderState {
-  columnReorderProps?: IColumnReorderHeaderProps;
-  columnResizeDetails?: IColumnResizeDetails;
-  isAllSelected?: boolean;
-  isSizing?: boolean;
-  groupNestingDepth?: number;
-  isAllCollapsed?: boolean;
 }
 
 export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {

@@ -12,6 +12,7 @@ export interface IBoxExampleExampleState {
 
 export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
   private _toggle: IToggle;
+  private focusClassName = 'shouldFocusInput';
 
   constructor(props: React.HTMLAttributes<HTMLDivElement>) {
     super(props);
@@ -23,14 +24,13 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
 
   public render() {
     const { isChecked } = this.state;
-    const className = 'shouldFocus input';
 
     return (
       <div>
         <DefaultButton onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
         {(() => {
           if (isChecked) {
-            return <FocusTrapZone firstFocusableSelector={className}>{this._internalContents()}</FocusTrapZone>;
+            return <FocusTrapZone firstFocusableSelector={this.focusClassName}>{this._internalContents()}</FocusTrapZone>;
           } else {
             return <div>{this._internalContents()}</div>;
           }
@@ -50,7 +50,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
         </Link>
         <br />
         <br />
-        <div className="shouldFocus input">
+        <div>
           <Toggle
             componentRef={this._setRef}
             checked={isChecked}
@@ -63,7 +63,12 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
         {(() => {
           if (isChecked) {
             return (
-              <DefaultButton secondaryText="Exit Focus Trap Zone" onClick={this._onExitButtonClickHandler} text="Exit Focus Trap Zone" />
+              <DefaultButton
+                className={this.focusClassName}
+                secondaryText="Exit Focus Trap Zone"
+                onClick={this._onExitButtonClickHandler}
+                text="Exit Focus Trap Zone"
+              />
             );
           }
         })()}

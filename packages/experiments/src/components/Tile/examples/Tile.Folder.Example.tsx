@@ -3,7 +3,7 @@ import { Tile } from '../Tile';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { SignalField, NewSignal, CommentsSignal, SharedSignal } from '../../signals/Signals';
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout, FolderCoverType } from '@uifabric/experiments/lib/FolderCover';
-import { lorem } from '@uifabric/example-app-base/lib/utilities/data';
+import { lorem } from '@uifabric/example-app-base';
 import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 

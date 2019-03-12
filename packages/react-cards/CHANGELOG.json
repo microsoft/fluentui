@@ -1,0 +1,17 @@
+{
+  "name": "@uifabric/react-cards",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "@uifabric/react-cards_v0.1.0",
+      "date": "Fri, 08 Mar 2019 13:32:10 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.152.1 <7.0.0` to `>=6.153.0 <7.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

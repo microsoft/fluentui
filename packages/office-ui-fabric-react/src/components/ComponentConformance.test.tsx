@@ -26,6 +26,9 @@ const requiredProps: { [key: string]: any } = {
   PlainCard: {
     onRenderPlainCard: () => null
   },
+  Announced: {
+    message: 'TestMessage'
+  },
   ColorPicker: {
     color: '#ffffff'
   },

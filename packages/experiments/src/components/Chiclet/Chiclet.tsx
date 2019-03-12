@@ -3,6 +3,11 @@ import { IChicletProps, IChicletStyleProps, IChicletStyles } from './Chiclet.typ
 import { getStyles } from './Chiclet.styles';
 import { ChicletBase } from './Chiclet.base';
 
-export const Chiclet = styled<IChicletProps, IChicletStyleProps, IChicletStyles>(ChicletBase, getStyles, undefined, {
-  scope: 'Chiclet'
-});
+export const Chiclet: React.StatelessComponent<IChicletProps> = styled<IChicletProps, IChicletStyleProps, IChicletStyles>(
+  ChicletBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'Chiclet'
+  }
+);

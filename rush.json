@@ -408,12 +408,12 @@
     {
       "packageName": "@uifabric/tslint-rules",
       "projectFolder": "packages/tslint-rules",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/prettier-rules",
       "projectFolder": "packages/prettier-rules",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/theme-samples",
@@ -450,6 +450,11 @@
       "packageName": "@uifabric/pr-deploy-site",
       "projectFolder": "apps/pr-deploy-site",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/react-cards",
+      "projectFolder": "packages/react-cards",
+      "versionPolicyName": "lockedMajor"
     }
   ]
 }

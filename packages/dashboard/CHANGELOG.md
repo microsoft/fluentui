@@ -1,6 +1,57 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 28 Feb 2019 13:29:07 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Mar 2019 12:31:43 GMT and should not be manually modified.
+
+## 0.55.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Fixed dashboard grid layout example for low resolution screen
+
+## 0.54.1
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Patches
+
+- DetailPanel: Enable use the currentL2Id on Panel load to load L2 page directly
+
+## 0.54.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Added props required for content animation in wizard, Moved util functions from exampls to main util file, Added util methods "getPrevStep, getParentStep, getStep", Animations in progress
+
+## 0.53.1
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Patches
+
+- DetailPanel: Allow persona header set image icon 
+- DetailPanel: Allow header property to take JSX.Element
+
+## 0.53.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Added wizard to dashboard package index
+- Replacing elementType usage with as in SubwayNavBase and SubwayNodeBase
+
+## 0.52.2
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.52.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Make the stepToShow parameter take effect on footerAction
 
 ## 0.52.0
 Thu, 28 Feb 2019 13:29:07 GMT

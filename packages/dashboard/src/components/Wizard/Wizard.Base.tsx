@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IWizardProps, IWizardStyles, IWizardStyleProps, IWizardContentProps } from './Wizard.types';
+import { IWizardProps, IWizardStyles, IWizardStyleProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
@@ -19,10 +19,14 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
       throw new Error('Wizard must have atleast one step.');
     }
 
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-
     // if the step to render is already passed in, use that
     const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
+
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      isSubStep: wizardStepProps.isSubStep!,
+      isFirstSubStep: wizardStepProps.isFirstSubStep!
+    });
 
     return (
       <div className={classNames.wizardContentNavContainer}>
@@ -30,22 +34,10 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
         <div className={classNames.contentSection}>
-          {this._onRenderContentTitle(wizardStepProps.wizardContent)}
-          {this._onRenderContent(wizardStepProps.wizardContent)}
+          <div className={classNames.contentTitle}>{wizardStepProps.wizardContent!.contentTitleElement}</div>
+          <div className={classNames.content}>{wizardStepProps.wizardContent!.content}</div>
         </div>
       </div>
     );
   }
-
-  private _onRenderContentTitle = (wizardContent: IWizardContentProps | undefined): React.ReactNode => {
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-
-    return <div className={classNames.contentTitle}>{wizardContent!.contentTitleElement}</div>;
-  };
-
-  private _onRenderContent = (wizardContent: IWizardContentProps | undefined): React.ReactNode => {
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
-
-    return <div className={classNames.content}>{wizardContent!.content}</div>;
-  };
 }

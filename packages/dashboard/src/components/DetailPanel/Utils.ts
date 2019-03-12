@@ -1,6 +1,8 @@
-import { IDetailInfoTileProps, IDetailPanelPivotBodyProps } from './DetailPanel.types';
+import { IDetailInfoTileProps, IDetailPanelPivotBodyProps, IDetailPanelHeaderProps } from './DetailPanel.types';
 
-const _isReactComponent = (content?: JSX.Element | IDetailInfoTileProps[] | IDetailPanelPivotBodyProps): content is JSX.Element => {
+const _isReactComponent = (
+  content?: JSX.Element | IDetailInfoTileProps[] | IDetailPanelPivotBodyProps | IDetailPanelHeaderProps
+): content is JSX.Element => {
   // tslint:disable-next-line
   return !!content && !!(content as JSX.Element).type && !!(content as any).$$typeof;
 };
