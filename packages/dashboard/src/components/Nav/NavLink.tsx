@@ -15,7 +15,15 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   }
 
   public render(): JSX.Element {
-    const classNames = getClassNames(getStyles, this.props);
+    const { name, hasNestedMenu, isNested, target, isNavCollapsed, isExpanded, isSelected, hasSelectedNestedLink } = this.props;
+    const classNames = getClassNames(getStyles, { isNavCollapsed, hasNestedMenu, isExpanded, isSelected, hasSelectedNestedLink, isNested });
+
+    let iconName = undefined;
+    if (hasNestedMenu) {
+      iconName = 'ChevronUp';
+    } else if (target === '_blank') {
+      iconName = 'OpenInNewWindow';
+    }
     return (
       <a
         {...getNativeProps(this.props, anchorProperties)}
@@ -28,69 +36,15 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
         className={classNames.navLink}
         ref={this.navLinkRef}
       >
-        {this._generatePrimaryIcon()}
-        {this._generateLinkContent()}
-        {this._generateSecondaryIcon()}
+        <div className={classNames.iconWrapper} aria-hidden="true">
+          <div className={classNames.navItemBarMarker} />
+          <Icon iconName={this.props.primaryIconName} className={classNames.navItemIcon} />
+        </div>
+        <div className={classNames.navItemText} aria-hidden="true" data-is-focusable="false">
+          {name}
+        </div>
+        {!isNavCollapsed && isNested && <Icon iconName={iconName} className={classNames.navItemIcon} aria-hidden="true" />}
       </a>
-    );
-  }
-
-  private _generateActiveBar(): React.ReactElement<{}> | null {
-    const { isNested, isSelected, hasNestedMenu, isNavCollapsed, hasSelectedNestedLink, isExpanded } = this.props;
-    // Pass all the right props to getStyles so we can handle all the cases where the selected indicator is shown/hidden
-    const classNames = getClassNames(getStyles, {
-      isNested: isNested,
-      hasNestedMenu: hasNestedMenu,
-      isNavCollapsed: isNavCollapsed,
-      hasSelectedNestedLink: hasSelectedNestedLink,
-      isSelected: isSelected,
-      isExpanded: isExpanded
-    });
-
-    return <div className={classNames.navItemBarMarker} />;
-  }
-
-  private _generatePrimaryIcon(): React.ReactElement<{}> | null {
-    const { isNested, isNavCollapsed } = this.props;
-    const classNames = getClassNames(getStyles, { isNested: isNested, isNavCollapsed: isNavCollapsed });
-
-    return (
-      <div className={classNames.iconWrapper} aria-hidden="true">
-        {this._generateActiveBar()}
-        <Icon iconName={this.props.primaryIconName} className={classNames.navItemIcon} />
-      </div>
-    );
-  }
-
-  private _generateLinkContent(): React.ReactElement<{}> | null {
-    const { isNested, name } = this.props;
-    const classNames = getClassNames(getStyles, { isNested: isNested });
-    return (
-      <div className={classNames.navItemText} aria-hidden="true" data-is-focusable="false">
-        {name}
-      </div>
-    );
-  }
-
-  private _generateSecondaryIcon(): React.ReactElement<{}> | null {
-    const { hasNestedMenu, isNested, target, isNavCollapsed, isExpanded } = this.props;
-    const classNames = getClassNames(getStyles, { isExpanded: isExpanded, isNested: isNested });
-
-    if (isNavCollapsed && !isNested) {
-      return null;
-    }
-
-    let iconName = undefined;
-    if (hasNestedMenu) {
-      iconName = 'ChevronUp';
-    } else if (target === '_blank') {
-      iconName = 'OpenInNewWindow';
-    }
-
-    return (
-      <div className={classNames.iconWrapper} aria-hidden="true">
-        <Icon iconName={iconName} className={classNames.navItemIcon} />
-      </div>
     );
   }
 
