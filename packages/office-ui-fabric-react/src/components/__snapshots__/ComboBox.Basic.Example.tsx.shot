@@ -1132,6 +1132,2050 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       htmlFor="ComboBox15-input"
       id="ComboBox15-label"
     >
+      ComboBox with persisted menu
+    </label>
+    <div
+      className=
+          ms-ComboBox
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #ffffff;
+            border-color: #a6a6a6;
+            border-style: solid;
+            border-width: 1px;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            cursor: text;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            margin-left: 0;
+            outline: 0;
+            overflow: hidden;
+            padding-bottom: 1px;
+            padding-left: 12px;
+            padding-right: 32px;
+            padding-top: 1px;
+            position: relative;
+            text-overflow: ellipsis;
+            user-select: none;
+            white-space: nowrap;
+          }
+          & .ms-Label {
+            display: inline-block;
+            margin-bottom: 8px;
+          }
+          & input::-ms-clear {
+            display: none;
+          }
+          &.is-open {
+            border-color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-open {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            border-width: 2px;
+            color: HighlightText;
+            padding-bottom: 0;
+            padding-left: 11px;
+            padding-top: 0;
+          }
+          @media screen and (-ms-high-contrast: active){&.is-open .ms-ComboBox-CaretDown-button {
+            right: -2px;
+            top: -2px;
+          }
+          &:hover {
+            border-color: #333333;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            color: HighlightText;
+          }
+          &:active {
+            border-color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:active {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            border-width: 2px;
+            color: HighlightText;
+            padding-bottom: 0;
+            padding-left: 11px;
+            padding-top: 0;
+          }
+          @media screen and (-ms-high-contrast: active){&:active .ms-ComboBox-CaretDown-button {
+            right: -2px;
+            top: -2px;
+          }
+          &:focus {
+            border-color: #0078d4;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus {
+            -ms-high-contrast-adjust: none;
+            background-color: Window;
+            border-color: Highlight;
+            border-width: 2px;
+            color: HighlightText;
+            padding-bottom: 0;
+            padding-left: 11px;
+            padding-top: 0;
+          }
+          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-CaretDown-button {
+            right: -2px;
+            top: -2px;
+          }
+      id="ComboBox15wrapper"
+    >
+      <input
+        aria-autocomplete="inline"
+        aria-expanded={false}
+        aria-labelledby="ComboBox15-label"
+        autoCapitalize="off"
+        autoComplete="off"
+        className=
+            ms-ComboBox-Input
+            {
+              background-color: #ffffff;
+              border-style: none;
+              box-sizing: border-box;
+              color: #333333;
+              font: inherit;
+              height: 28px;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              text-overflow: ellipsis;
+              width: 100%;
+            }
+        data-is-interactable={true}
+        data-lpignore={true}
+        id="ComboBox15-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onCompositionEnd={[Function]}
+        onCompositionStart={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onTouchStart={[Function]}
+        readOnly={false}
+        role="combobox"
+        spellCheck={false}
+        type="text"
+        value="Option B"
+      />
+      <button
+        aria-hidden={true}
+        checked={false}
+        className=
+            ms-Button
+            ms-Button--icon
+            ms-ComboBox-CaretDown-button
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: none;
+              box-sizing: border-box;
+              color: #666666;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              height: 32px;
+              line-height: 30px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: absolute;
+              right: -1px;
+              text-align: center;
+              text-decoration: none;
+              top: -1px;
+              user-select: none;
+              vertical-align: top;
+              width: 32px;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              -ms-high-contrast-adjust: none;
+              background-color: ButtonFace;
+              border-color: ButtonText;
+              color: ButtonText;
+            }
+            &:hover {
+              background-color: #f4f4f4;
+              color: #212121;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:active {
+              background-color: #eaeaea;
+              color: #212121;
+            }
+        data-is-focusable={false}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="presentation"
+        tabIndex={-1}
+        type="button"
+      >
+        <div
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
+              }
+        >
+          <i
+            className=
+                ms-Button-icon
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  flex-shrink: 0;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  speak: none;
+                  text-align: center;
+                  vertical-align: middle;
+                }
+            data-icon-name="ChevronDown"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
+    </div>
+    <span
+      className="ms-layer"
+    >
+      <div
+        className=
+            ms-Fabric
+            ms-Layer-content
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              visibility: visible;
+            }
+            & button {
+              font-family: inherit;
+            }
+            & input {
+              font-family: inherit;
+            }
+            & textarea {
+              font-family: inherit;
+            }
+            button {
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow: visible;
+            }
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDoubleClick={[Function]}
+        onDrag={[Function]}
+        onDragEnd={[Function]}
+        onDragEnter={[Function]}
+        onDragExit={[Function]}
+        onDragLeave={[Function]}
+        onDragOver={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        onInput={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseMove={[Function]}
+        onMouseOut={[Function]}
+        onMouseOver={[Function]}
+        onMouseUp={[Function]}
+        onSubmit={[Function]}
+      >
+        <div
+          className=
+              ms-Callout-container
+              {
+                position: relative;
+              }
+          style={
+            Object {
+              "visibility": "hidden",
+            }
+          }
+        >
+          <div
+            className=
+                ms-Callout
+                ms-ComboBox-callout
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  border-color: #eaeaea;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+                  box-sizing: border-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  outline: transparent;
+                  position: absolute;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-color: WindowText;
+                  border-style: solid;
+                  border-width: 1px;
+                }
+                &::-moz-focus-inner {
+                  border: 0px;
+                }
+            hidden={true}
+            onScroll={[Function]}
+            style={
+              Object {
+                "filter": "opacity(0)",
+                "opacity": 0,
+              }
+            }
+            tabIndex={-1}
+          >
+            <div
+              className=
+                  ms-Callout-main
+                  {
+                    background-color: #ffffff;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    position: relative;
+                  }
+              onKeyDown={[Function]}
+              onScroll={[Function]}
+              style={
+                Object {
+                  "maxHeight": 750,
+                  "outline": "none",
+                  "overflowY": undefined,
+                }
+              }
+            >
+              <div
+                className="ms-ComboBox-optionsContainerWrapper "
+              >
+                <div
+                  aria-labelledby="ComboBox15-label"
+                  className=
+                      ms-ComboBox-optionsContainer
+                      {
+                        display: block;
+                      }
+                  id="ComboBox15-list"
+                  role="listbox"
+                >
+                  <div
+                    className=
+                        ms-ComboBox-header
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: none;
+                          border-style: none;
+                          color: #0078d4;
+                          cursor: default;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 600;
+                          height: 32px;
+                          line-height: 32px;
+                          padding-bottom: 0px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 0px;
+                          text-align: left;
+                          user-select: none;
+                        }
+                  >
+                    <span
+                      className=
+                          ms-ComboBox-optionText
+                          {
+                            display: inline-block;
+                            margin-bottom: 1px;
+                            margin-left: 1px;
+                            margin-right: 1px;
+                            margin-top: 1px;
+                            max-width: 100%;
+                            min-width: 0px;
+                            overflow-wrap: break-word;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            word-wrap: break-word;
+                          }
+                    >
+                      First heading
+                    </span>
+                  </div>
+                  <button
+                    aria-label="Option A"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={1}
+                    data-is-focusable={true}
+                    id="ComboBox15-list1"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option A"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option A
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Option B"
+                    aria-selected="true"
+                    checked={true}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        is-checked
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: #f4f4f4;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #000000;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          -ms-high-contrast-adjust: none;
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
+                        }
+                        .ms-Fabric--isFocusVisible &:after {
+                          border: 1px solid #ffffff;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                    data-index={2}
+                    data-is-focusable={true}
+                    id="ComboBox15-list2"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option B"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option B
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Option C"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={3}
+                    data-is-focusable={true}
+                    id="ComboBox15-list3"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option C"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option C
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Option D"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={4}
+                    data-is-focusable={true}
+                    id="ComboBox15-list4"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option D"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option D
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <div
+                    className=
+                        ms-ComboBox-divider
+                        {
+                          border-color: #eaeaea;
+                          border-style: solid;
+                          border-width: 1px;
+                        }
+                    role="separator"
+                  />
+                  <div
+                    className=
+                        ms-ComboBox-header
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: none;
+                          border-style: none;
+                          color: #0078d4;
+                          cursor: default;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 600;
+                          height: 32px;
+                          line-height: 32px;
+                          padding-bottom: 0px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 0px;
+                          text-align: left;
+                          user-select: none;
+                        }
+                  >
+                    <span
+                      className=
+                          ms-ComboBox-optionText
+                          {
+                            display: inline-block;
+                            margin-bottom: 1px;
+                            margin-left: 1px;
+                            margin-right: 1px;
+                            margin-top: 1px;
+                            max-width: 100%;
+                            min-width: 0px;
+                            overflow-wrap: break-word;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            word-wrap: break-word;
+                          }
+                    >
+                      Second heading
+                    </span>
+                  </div>
+                  <button
+                    aria-label="Option E"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={7}
+                    data-is-focusable={true}
+                    id="ComboBox15-list7"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option E"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option E
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-disabled={true}
+                    aria-label="Option F"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        is-disabled
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: #ffffff;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #a6a6a6;
+                          cursor: default;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          pointer-events: none;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                          bordercolor: grayText;
+                          color: grayText;
+                        }
+                        &:hover {
+                          outline: 0px;
+                        }
+                        &:focus {
+                          outline: 0px;
+                        }
+                        & .ms-Button-flexContainer {
+                          justify-content: flex-start;
+                        }
+                    data-index={8}
+                    data-is-focusable={false}
+                    disabled={true}
+                    id="ComboBox15-list8"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option F"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option F
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Option G"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={9}
+                    data-is-focusable={true}
+                    id="ComboBox15-list9"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option G"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option G
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Option H"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={10}
+                    data-is-focusable={true}
+                    id="ComboBox15-list10"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option H"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option H
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Option I"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={11}
+                    data-is-focusable={true}
+                    id="ComboBox15-list11"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option I"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option I
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                  <button
+                    aria-label="Option J"
+                    aria-selected="false"
+                    checked={false}
+                    className=
+                        ms-Button
+                        ms-Button--action
+                        ms-Button--command
+                        ms-ComboBox-option
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          background-color: transparent;
+                          border-color: transparent;
+                          border-radius: 0px;
+                          border-style: solid;
+                          border-width: 1px;
+                          border: 1px solid transparent;
+                          box-sizing: border-box;
+                          color: #333333;
+                          cursor: pointer;
+                          display: block;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          height: auto;
+                          line-height: 20px;
+                          min-height: 32px;
+                          outline: transparent;
+                          overflow-wrap: break-word;
+                          padding-bottom: 5px;
+                          padding-left: 16px;
+                          padding-right: 16px;
+                          padding-top: 5px;
+                          position: relative;
+                          text-align: left;
+                          text-decoration: none;
+                          user-select: none;
+                          vertical-align: top;
+                          width: 100%;
+                          word-wrap: break-word;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid #ffffff;
+                          bottom: 0px;
+                          content: "";
+                          left: 0px;
+                          outline: 1px solid #666666;
+                          position: absolute;
+                          right: 0px;
+                          top: 0px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          border: none;
+                          bottom: -2px;
+                          left: -2px;
+                          outline-color: ButtonText;
+                          right: -2px;
+                          top: -2px;
+                        }
+                        &:active > * {
+                          left: 0px;
+                          position: relative;
+                          top: 0px;
+                        }
+                        @media screen and (-ms-high-contrast: active){& {
+                          border-color: Background;
+                        }
+                        &:hover {
+                          background-color: #f4f4f4;
+                          color: #333333;
+                        }
+                        @media screen and (-ms-high-contrast: active){&:hover {
+                          border-color: Highlight;
+                          color: Highlight;
+                        }
+                        &:hover .ms-Button-icon {
+                          color: #0078d4;
+                        }
+                        &:focus {
+                          background-color: #f4f4f4;
+                        }
+                        &:active {
+                          color: #000000;
+                        }
+                        &:active .ms-Button-icon {
+                          color: #004578;
+                        }
+                    data-index={12}
+                    data-is-focusable={true}
+                    id="ComboBox15-list12"
+                    onClick={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyPress={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    role="option"
+                    title="Option J"
+                    type="button"
+                  >
+                    <div
+                      className=
+                          ms-Button-flexContainer
+                          {
+                            align-items: center;
+                            display: flex;
+                            flex-wrap: nowrap;
+                            height: 100%;
+                            justify-content: flex-start;
+                          }
+                    >
+                       
+                      <span
+                        className=
+
+                            {
+                              max-width: 100%;
+                            }
+                      >
+                        <span
+                          className=
+                              ms-ComboBox-optionText
+                              {
+                                display: inline-block;
+                                margin-bottom: 1px;
+                                margin-left: 1px;
+                                margin-right: 1px;
+                                margin-top: 1px;
+                                max-width: 100%;
+                                min-width: 0px;
+                                overflow-wrap: break-word;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                word-wrap: break-word;
+                              }
+                        >
+                          Option J
+                        </span>
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+  <div
+    autoComplete="on"
+    className="ms-ComboBox-container "
+  >
+    <label
+      className=
+          ms-Label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="ComboBox19-input"
+      id="ComboBox19-label"
+    >
       ComboBox with error message
     </label>
     <div
@@ -1202,12 +3246,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border-color: #a80000;
             margin-bottom: 5px;
           }
-      id="ComboBox15wrapper"
+      id="ComboBox19wrapper"
     >
       <input
         aria-autocomplete="both"
         aria-expanded={false}
-        aria-labelledby="ComboBox15-label"
+        aria-labelledby="ComboBox19-label"
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -1229,7 +3273,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
         data-is-interactable={true}
         data-lpignore={true}
-        id="ComboBox15-input"
+        id="ComboBox19-input"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -1421,8 +3465,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active){& {
             color: GrayText;
           }
-      htmlFor="ComboBox19-input"
-      id="ComboBox19-label"
+      htmlFor="ComboBox23-input"
+      id="ComboBox23-label"
     >
       Disabled ComboBox
     </label>
@@ -1486,13 +3530,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border-color: GrayText;
             color: GrayText;
           }
-      id="ComboBox19wrapper"
+      id="ComboBox23wrapper"
     >
       <input
         aria-autocomplete="none"
         aria-disabled={true}
         aria-expanded={false}
-        aria-labelledby="ComboBox19-label"
+        aria-labelledby="ComboBox23-label"
         autoCapitalize="off"
         autoComplete="off"
         className=
@@ -1520,7 +3564,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
         data-is-interactable={false}
         data-lpignore={true}
-        id="ComboBox19-input"
+        id="ComboBox23-input"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}

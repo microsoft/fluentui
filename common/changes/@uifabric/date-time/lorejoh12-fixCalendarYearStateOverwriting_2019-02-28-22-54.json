@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/date-time",
+      "comment": "updating calendaryear to work when react version upgrades",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "jolore@microsoft.com"
+}

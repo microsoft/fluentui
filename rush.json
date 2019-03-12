@@ -450,6 +450,11 @@
       "packageName": "@uifabric/pr-deploy-site",
       "projectFolder": "apps/pr-deploy-site",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/react-cards",
+      "projectFolder": "packages/react-cards",
+      "versionPolicyName": "lockedMajor"
     }
   ]
 }

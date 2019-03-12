@@ -216,6 +216,15 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @deprecated Use `text` instead.
    */
   value?: string;
+
+  /**
+ * Menu will not be created or destroyed when opened or closed, instead it
+ * will be hidden. This will improve perf of the menu opening but could potentially
+ * impact overall perf by having more elemnts in the dom. Should only be used
+ * when perf is important.
+ * Note: This may increase the amount of time it takes for the comboBox itself to mount.
+ */
+  persistMenu?: boolean;
 }
 
 export interface IComboBoxStyles {

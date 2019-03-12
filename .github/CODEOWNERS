@@ -90,7 +90,7 @@ FolderCover/ @ThomasMichon
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
 GroupedList/  @aditima @KevinTCoughlin
-HoverCard/   @atneik @Jahnp
+HoverCard/   @atneik @Jahnp @Vitalius1
 Icon/ @dzearing
 Image/ @dzearing
 Label/ @cliffkoh
@@ -115,6 +115,7 @@ ProgressIndicator/ @aneeshak
 Rating/ @jdhuntington
 ResizeGroup/ @micahgodbolt
 SearchBox/ @ecraig12345
+Shimmer/ @Vitalius1 @atneik
 Signals/ @ThomasMichon
 Slider/ @aneeshak
 SpinButton/ @aneeshack4
@@ -154,7 +155,7 @@ DocumentCard/docs/ @yiminwu @mikewheaton
 # FocusTrapZone/docs/
 # FocusZone/docs/
 GroupedList/docs/  @aditima @KevinTCoughlin
-HoverCard/docs/   @atneik @Jahnp
+HoverCard/docs/   @atneik @Jahnp @Vitalius1
 # Icon/docs/
 # Image/docs/
 # Label/docs/
@@ -176,6 +177,7 @@ pickers/docs/  @joschect
 # Rating/docs/
 ResizeGroup/docs/  @micahgodbolt
 # SearchBox/docs/
+Shimmer/docs/ @Vitalius1 @atneik
 # Slider/docs/
 # SpinButton/docs/
 # Spinner/docs/

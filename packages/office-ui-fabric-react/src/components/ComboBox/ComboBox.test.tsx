@@ -524,4 +524,39 @@ describe.only('ComboBox', () => {
     const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
     expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
   });
+
+  it('test persistMenu, callout should exist before and after opening menu', () => {
+    const onMenuOpenMock = jest.fn();
+    const onMenuDismissedMock = jest.fn();
+
+    wrapper = mount(
+      <ComboBox
+        defaultSelectedKey="1"
+        persistMenu={true}
+        options={DEFAULT_OPTIONS2}
+        onMenuOpen={onMenuOpenMock}
+        onMenuDismissed={onMenuDismissedMock}
+      />
+    );
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+
+    // Find menu
+    const calloutBeforeOpen = document.querySelector('.ms-Callout')!;
+    expect(calloutBeforeOpen).toBeDefined();
+    expect(calloutBeforeOpen.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+
+    // Open combobox
+    const buttonElement = comboBoxRoot.find('button');
+    buttonElement.simulate('click');
+    expect(onMenuOpenMock.mock.calls.length).toBe(1);
+
+    // Close combobox
+    buttonElement.simulate('click');
+    expect(onMenuDismissedMock.mock.calls.length).toBe(1);
+
+    // Ensure menu is still there
+    const calloutAfterClose = document.querySelector('.ms-Callout')!;
+    expect(calloutAfterClose).toBeDefined();
+    expect(calloutAfterClose.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+  });
 });

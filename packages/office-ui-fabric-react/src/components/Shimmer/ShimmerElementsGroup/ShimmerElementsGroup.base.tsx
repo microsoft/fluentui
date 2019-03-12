@@ -48,11 +48,11 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
           const { type, ...filteredElem } = elem;
           switch (elem.type) {
             case ShimmerElementType.circle:
-              return <ShimmerCircle key={index} {...filteredElem} styles={this._getBorderStyles(elem, rowHeight)} />;
+              return <ShimmerCircle key={index} {...filteredElem} styles={this._getStyles(elem, rowHeight)} />;
             case ShimmerElementType.gap:
-              return <ShimmerGap key={index} {...filteredElem} styles={this._getBorderStyles(elem, rowHeight)} />;
+              return <ShimmerGap key={index} {...filteredElem} styles={this._getStyles(elem, rowHeight)} />;
             case ShimmerElementType.line:
-              return <ShimmerLine key={index} {...filteredElem} styles={this._getBorderStyles(elem, rowHeight)} />;
+              return <ShimmerLine key={index} {...filteredElem} styles={this._getStyles(elem, rowHeight)} />;
           }
         }
       )
@@ -63,31 +63,55 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
     return renderedElements;
   };
 
-  private _getBorderStyles = (elem: IShimmerElement, rowHeight?: number): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
+  private _getStyles = (elem: IShimmerElement, rowHeight?: number): IShimmerCircleStyles | IShimmerGapStyles | IShimmerLineStyles => {
+    const { backgroundColor } = this.props;
+    const { verticalAlign, type } = elem;
     const elemHeight: number | undefined = elem.height;
     const dif: number = rowHeight && elemHeight ? rowHeight - elemHeight : 0;
 
     let borderStyle: IRawStyle | undefined;
 
-    if (!elem.verticalAlign || elem.verticalAlign === 'center') {
+    if (!verticalAlign || verticalAlign === 'center') {
       borderStyle = {
         borderBottomWidth: `${dif ? Math.floor(dif / 2) : 0}px`,
         borderTopWidth: `${dif ? Math.ceil(dif / 2) : 0}px`
       };
-    } else if (elem.verticalAlign && elem.verticalAlign === 'top') {
+    } else if (verticalAlign && verticalAlign === 'top') {
       borderStyle = {
         borderBottomWidth: `${dif ? dif : 0}px`,
         borderTopWidth: `0px`
       };
-    } else if (elem.verticalAlign && elem.verticalAlign === 'bottom') {
+    } else if (verticalAlign && verticalAlign === 'bottom') {
       borderStyle = {
         borderBottomWidth: `0px`,
         borderTopWidth: `${dif ? dif : 0}px`
       };
     }
 
+    if (backgroundColor) {
+      switch (type) {
+        case ShimmerElementType.circle:
+          return {
+            root: { ...borderStyle, borderColor: backgroundColor },
+            svg: { fill: backgroundColor }
+          };
+        case ShimmerElementType.gap:
+          return {
+            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor: backgroundColor }
+          };
+        case ShimmerElementType.line:
+          return {
+            root: { ...borderStyle, borderColor: backgroundColor },
+            topLeftCorner: { fill: backgroundColor },
+            topRightCorner: { fill: backgroundColor },
+            bottomLeftCorner: { fill: backgroundColor },
+            bottomRightCorner: { fill: backgroundColor }
+          };
+      }
+    }
+
     return {
-      root: [{ ...borderStyle }]
+      root: { ...borderStyle }
     };
   };
 

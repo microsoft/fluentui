@@ -20,7 +20,7 @@ export interface IDetailPanelL2ContentExampleStates {
 export class DetailPanelL2ContentExample extends React.PureComponent<{}, IDetailPanelL2ContentExampleStates> {
   constructor(props: {}) {
     super(props);
-    this.state = { show: false, currentL2Id: undefined };
+    this.state = { show: false, currentL2Id: 'dog' };
   }
 
   public render(): JSX.Element {
