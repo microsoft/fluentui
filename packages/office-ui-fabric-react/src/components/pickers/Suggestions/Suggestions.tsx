@@ -321,8 +321,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       }
     );
 
+    const selectedIndex = suggestions.findIndex(suggestion => suggestion.selected);
     if (resultsMaximumNumber) {
-      suggestions = suggestions.slice(0, resultsMaximumNumber);
+      suggestions =
+        selectedIndex >= resultsMaximumNumber
+          ? suggestions.slice(selectedIndex - resultsMaximumNumber + 1, selectedIndex + 1)
+          : suggestions.slice(0, resultsMaximumNumber);
     }
 
     if (suggestions.length === 0) {
