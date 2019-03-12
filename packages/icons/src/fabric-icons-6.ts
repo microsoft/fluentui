@@ -15,9 +15,15 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-6"`,
-      src: `url('${baseUrl}fabric-icons-6-957ed700.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-6-32b702b9.woff') format('woff')`
     },
     icons: {
+      ForwardEvent: '\uED8C',
+      WipePhone: '\uED8D',
+      AddOnlineMeeting: '\uED8E',
+      JoinOnlineMeeting: '\uED8F',
+      RemoveLink: '\uED90',
+      PeopleBlock: '\uED91',
       PeopleRepeat: '\uED92',
       PeopleAlert: '\uED93',
       PeoplePause: '\uED94',
@@ -111,13 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       AssetLibrary: '\uEEB6',
       DataConnectionLibrary: '\uEEB7',
       DocLibrary: '\uEEB8',
-      FormLibrary: '\uEEB9',
-      FormLibraryMirrored: '\uEEBA',
-      ReportLibrary: '\uEEBB',
-      ReportLibraryMirrored: '\uEEBC',
-      ContactCard: '\uEEBD',
-      CustomList: '\uEEBE',
-      CustomListMirrored: '\uEEBF'
+      FormLibrary: '\uEEB9'
     }
   };
 
