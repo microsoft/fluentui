@@ -25,15 +25,27 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   }
 
   public componentWillMount(): void {
-    let tempActive: HTMLElement = getDocument()!.activeElement as HTMLElement;
+    let tempActive: Element | null = null;
+    let tempActiveLastSeen: Element | null = null;
+    const doc: Document | undefined = getDocument();
 
-    while (tempActive instanceof HTMLIFrameElement) {
-      if (tempActive !== null && tempActive.contentDocument !== null) {
-        tempActive = tempActive.contentDocument.activeElement as HTMLIFrameElement;
+    if (doc) {
+      tempActive = doc.activeElement;
+    }
+
+    while (tempActive !== null && tempActive instanceof HTMLIFrameElement) {
+      if (tempActive.contentDocument !== null && tempActive.contentDocument.activeElement !== null) {
+        tempActiveLastSeen = tempActive;
+        tempActive = tempActive.contentDocument.activeElement;
+        if (tempActive === tempActiveLastSeen) {
+          break;
+        }
       }
     }
 
-    this._originalFocusedElement = tempActive as HTMLElement;
+    if (tempActive !== null) {
+      this._originalFocusedElement = tempActive as HTMLElement;
+    }
   }
 
   public componentDidMount(): void {
