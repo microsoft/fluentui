@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Add new icons",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "pejahn@microsoft.com"
+}
