@@ -67,7 +67,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       },
       tabIndex: 0,
       'aria-hidden': true,
-      'data-is-visible': 'true'
+      'data-is-visible': true
     } as React.HTMLAttributes<HTMLDivElement>;
 
     return (
