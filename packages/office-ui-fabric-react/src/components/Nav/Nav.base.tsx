@@ -297,7 +297,8 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
       return link.key === this.props.selectedKey;
     } else if (this.state.selectedKey !== undefined) {
       return link.key === this.state.selectedKey;
-    } else if (!link.url) {
+    } else if (typeof window === 'undefined' || !link.url) {
+      // resolve is not supported for ssr
       return false;
     } else {
       // If selectedKey is undefined in props and state, then check URL
@@ -326,11 +327,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> implements INav
 
         return _urlResolver.href === target;
       }
-    }
-
-    // resolve is not supported for ssr
-    if (typeof window === 'undefined') {
-      return false;
     }
 
     return false;
