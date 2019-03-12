@@ -11,8 +11,7 @@
   "module": "lib/index.js",
   "sideEffects": [
     "lib/version.js",
-    "lib/styles/DefaultFontStyles.js",
-    "lib/styles/theme.js"
+    "*.global.*"
   ],
   "typings": "lib/index.d.ts",
   "scripts": {

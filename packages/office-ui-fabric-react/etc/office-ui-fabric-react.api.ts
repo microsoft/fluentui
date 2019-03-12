@@ -802,9 +802,6 @@ export function css(...args: ICssInput[]): string;
 export function cssColor(color: string): IRGB | undefined;
 
 // @public (undocumented)
-export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React.ComponentType<P>) => any;
-
-// @public (undocumented)
 class Customizations {
   // (undocumented)
   static applyScopedSettings(scopeName: string, settings: ISettings): void;
@@ -9024,6 +9021,9 @@ interface INavStyles {
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
 // @public
+export function initializeDefaultTheme(): void;
+
+// @public
 export function initializeFocusRects(window?: Window): void;
 
 // @public (undocumented)
@@ -12449,9 +12449,6 @@ enum StickyPositionType {
 }
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
-
-// @public
 class Stylesheet {
   constructor(config?: IStyleSheetConfig);
   argsFromClassName(className: string): IStyle[] | undefined;
@@ -13124,6 +13121,8 @@ module ZIndexes {
 // WARNING: Unsupported export: Toggle
 // WARNING: Unsupported export: Tooltip
 // WARNING: Unsupported export: TooltipHost
+// WARNING: Unsupported export: styled
+// WARNING: Unsupported export: customizable
 // WARNING: Unsupported export: IStyleFunctionOrObject
 // WARNING: Unsupported export: ICancelable
 // WARNING: Unsupported export: IClassNames

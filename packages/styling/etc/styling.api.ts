@@ -285,6 +285,9 @@ interface IIconSubset {
 }
 
 // @public
+export function initializeDefaultTheme(): void;
+
+// @public
 interface IPalette {
   accent: string;
   black: string;

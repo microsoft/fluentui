@@ -1,33 +1,48 @@
-import { Customizations, merge } from '@uifabric/utilities';
+import { Customizations, merge, getWindow } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { DefaultEffects } from './DefaultEffects';
+import { registerDefaultFontFaces, getFontBaseUrl } from '../styles/DefaultFontStyles';
 
-let _theme: ITheme = createTheme({
-  palette: DefaultPalette,
-  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
-  fonts: DefaultFontStyles,
-  isInverted: false,
-  disableGlobalClassNames: false
-});
-let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
+let _hasInitialized = false;
+let _theme: ITheme;
+const _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
 export const ThemeSettingName = 'theme';
 
-if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  let win = typeof window !== 'undefined' ? window : undefined;
+/**
+ * Initializes the default theme. Important to call from any code which assumes
+ * a default theme object will be available from Customization global settings.
+ */
+export function initializeDefaultTheme(): void {
+  if (!_hasInitialized) {
+    _hasInitialized = true;
+    registerDefaultFontFaces(getFontBaseUrl());
 
-  // tslint:disable:no-string-literal no-any
-  if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
-    _theme = createTheme((win as any)['FabricConfig'].theme);
+    _theme = Customizations.getSettings([ThemeSettingName]).theme;
+
+    if (!_theme) {
+      const win = getWindow();
+
+      // tslint:disable:no-string-literal no-any
+      if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
+        _theme = createTheme((win as any)['FabricConfig'].theme);
+      } else {
+        _theme = createTheme({
+          palette: DefaultPalette,
+          semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
+          fonts: DefaultFontStyles,
+          isInverted: false,
+          disableGlobalClassNames: false
+        });
+      }
+
+      Customizations.applySettings({ [ThemeSettingName]: _theme });
+    }
   }
-  // tslint:enable:no-string-literal no-any
-
-  // Set the default theme.
-  Customizations.applySettings({ [ThemeSettingName]: _theme });
 }
 
 /**
@@ -112,13 +127,16 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function createTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
+  // Ensure that we've initialized the default theme at least once.
+  initializeDefaultTheme();
+
   let newPalette = { ...DefaultPalette, ...theme.palette };
 
   if (!theme.palette || !theme.palette.accent) {
     newPalette.accent = newPalette.themePrimary;
   }
 
-  // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
+  // Mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
   let newSemanticColors = {
     ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
     ...theme.semanticColors

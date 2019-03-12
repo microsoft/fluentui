@@ -66,7 +66,7 @@ export function registerDefaultFontFaces(baseUrl: string): void {
 /**
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
-function _getFontBaseUrl(): string {
+export function getFontBaseUrl(): string {
   let win = typeof window !== 'undefined' ? window : undefined;
 
   // tslint:disable-next-line:no-string-literal no-any
@@ -74,8 +74,3 @@ function _getFontBaseUrl(): string {
 
   return fabricConfig && fabricConfig.fontBaseUrl !== undefined ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
 }
-
-/**
- * Register the font faces.
- */
-registerDefaultFontFaces(_getFontBaseUrl());
