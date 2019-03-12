@@ -7673,7 +7673,7 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   onDismiss?: () => void;
   onRenderCaretDown?: IRenderFunction<IDropdownProps>;
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
-  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
+  onRenderTitle?: IRenderFunction<IDropdownOption[]>;
   options: IDropdownOption[];
   // @deprecated
   placeHolder?: string;
