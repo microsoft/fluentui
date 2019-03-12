@@ -33,7 +33,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
     this.state = {
       cardsForAddCardPanel: [],
       dashboardCards: [],
-      layout: {},
+      layout: this.props.layout,
       renderDraggingCard: false,
       selectedCardId: '',
       selectedCardInitialX: 0,
