@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.154.0",
+      "tag": "office-ui-fabric-react_v6.154.0",
+      "date": "Mon, 11 Mar 2019 12:31:10 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "List: Add unit tests for default and optional behaviors",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "7bd3fa5670e1209dbfa5a8245480b791bbe0f81b"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Shimmer: adds new props `shimmerColors` to Shimmer and `backgroundColor` to ShimmerElementsGroup to allow easy customization of Shimmer colors when placed on elements with background colors other than white.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "b22400f2acdebd3998b2d4ca700f07f4b4903b0d"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.153.0",
       "tag": "office-ui-fabric-react_v6.153.0",
       "date": "Fri, 08 Mar 2019 13:32:10 GMT",

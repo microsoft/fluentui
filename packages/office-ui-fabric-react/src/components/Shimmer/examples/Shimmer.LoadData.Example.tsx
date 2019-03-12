@@ -1,7 +1,7 @@
 // @codepen
 
 import * as React from 'react';
-import { Shimmer, ShimmerElementsGroup, ShimmerElementType as ElemType } from 'office-ui-fabric-react/lib/Shimmer';
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -88,14 +88,16 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
   private _getCustomElements = (): JSX.Element => {
     return (
       <div style={{ display: 'flex' }}>
-        <ShimmerElementsGroup shimmerElements={[{ type: ElemType.circle, height: 40 }, { type: ElemType.gap, width: 16, height: 40 }]} />
+        <ShimmerElementsGroup
+          shimmerElements={[{ type: ShimmerElementType.circle, height: 40 }, { type: ShimmerElementType.gap, width: 16, height: 40 }]}
+        />
         <ShimmerElementsGroup
           flexWrap={true}
           width="100%"
           shimmerElements={[
-            { type: ElemType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
-            { type: ElemType.line, width: '90%', height: 8 },
-            { type: ElemType.gap, width: '10%', height: 20 }
+            { type: ShimmerElementType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
+            { type: ShimmerElementType.line, width: '90%', height: 8 },
+            { type: ShimmerElementType.gap, width: '10%', height: 20 }
           ]}
         />
       </div>
