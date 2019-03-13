@@ -29,7 +29,7 @@ const shimmerAnimationRTL: string = keyframes({
 });
 
 export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
-  const { isDataLoaded, className, theme, transitionAnimationInterval } = props;
+  const { isDataLoaded, className, theme, transitionAnimationInterval, shimmerColor, shimmerWaveColor } = props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -49,12 +49,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
     shimmerWrapper: [
       classNames.shimmerWrapper,
       {
-        background: `${palette.neutralLighter}
+        background: `${shimmerColor || palette.neutralLighter}
                     linear-gradient(
                       to right,
-                      ${palette.neutralLighter} 0%,
-                      ${palette.neutralLight} 50%,
-                      ${palette.neutralLighter} 100%)
+                      ${shimmerColor || palette.neutralLighter} 0%,
+                      ${shimmerWaveColor || palette.neutralLight} 50%,
+                      ${shimmerColor || palette.neutralLighter} 100%)
                     0 0 / 90% 100%
                     no-repeat`,
         animationDuration: '2s',

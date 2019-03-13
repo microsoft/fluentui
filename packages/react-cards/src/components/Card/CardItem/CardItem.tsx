@@ -17,7 +17,7 @@ const view: ICardItemComponent['view'] = props => {
   return <Slots.root>{children}</Slots.root>;
 };
 
-export const CardItem: React.StatelessComponent<ICardItemProps> = createComponent({
+export const CardItem: React.FunctionComponent<ICardItemProps> = createComponent({
   displayName: 'CardItem',
   styles,
   view
