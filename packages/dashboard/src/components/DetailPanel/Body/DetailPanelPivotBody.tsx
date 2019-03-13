@@ -27,7 +27,7 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
   };
 
   const _renderElement = () => {
-    const { selectedPivotKey, items, onGetLoadingElement, onSetActionBar } = props;
+    const { selectedPivotKey, items, onGetLoadingElement, onSetActionBar, messageBanner } = props;
     return (
       <Pivot selectedKey={selectedPivotKey} onLinkClick={_onPivotItemClick}>
         {items &&
@@ -41,6 +41,7 @@ const detailPanelPivotBody: React.SFC<DetailPanelPivotBodyProps> = (props: Detai
                   actionBar={_.actionBar}
                   onGetLoadingElement={onGetLoadingElement}
                   onSetActionBar={onSetActionBar}
+                  messageBanner={messageBanner}
                 />
               </PivotItem>
             );

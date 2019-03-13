@@ -10577,7 +10577,7 @@ interface ISpinButtonProps {
   incrementButtonAriaLabel?: string;
   incrementButtonIcon?: IIconProps;
   keytipProps?: IKeytipProps;
-  label: string;
+  label?: string;
   // (undocumented)
   labelPosition?: Position;
   max?: number;

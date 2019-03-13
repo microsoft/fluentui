@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Type onRenderTitle as Array<IDropdownOption> only",
+      "comment": "SpinButton: label prop should be marked as optional",
       "type": "minor"
     }
   ],

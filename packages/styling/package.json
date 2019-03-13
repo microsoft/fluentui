@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "6.44.1",
+  "version": "6.45.0",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "repository": {
     "type": "git",
@@ -9,11 +9,7 @@
   "license": "MIT",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js",
-    "lib/styles/DefaultFontStyles.js",
-    "lib/styles/theme.js"
-  ],
+  "sideEffects": true,
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "node ../../scripts/just.js build",
