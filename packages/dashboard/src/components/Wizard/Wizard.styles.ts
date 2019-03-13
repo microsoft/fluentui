@@ -29,8 +29,7 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
     },
     contentTitle: {},
     content: {
-      flex: 1,
-      overflowX: 'auto'
+      flex: 1
     }
   };
 };

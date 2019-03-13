@@ -75,20 +75,18 @@ export class WizardBase extends React.Component<IWizardProps, IWizardBaseState> 
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
-        <div className={classNames.contentSection}>
-          <TransitionGroup>
-            <CSSTransition key={contentAnimKey} classNames={mainStepTransitionClass} timeout={500}>
-              <div key={contentSectionKey}>
-                <div key={contentTitleKey} className={classNames.contentTitle}>
-                  {wizardStepProps.wizardContent!.contentTitleElement}
-                </div>
-                <div key={contentKey} className={classNames.content}>
-                  {wizardStepProps.wizardContent!.content}
-                </div>
+        <TransitionGroup className={classNames.contentSection}>
+          <CSSTransition key={contentAnimKey} classNames={mainStepTransitionClass} timeout={500}>
+            <div key={contentSectionKey}>
+              <div key={contentTitleKey} className={classNames.contentTitle}>
+                {wizardStepProps.wizardContent!.contentTitleElement}
               </div>
-            </CSSTransition>
-          </TransitionGroup>
-        </div>
+              <div key={contentKey} className={classNames.content}>
+                {wizardStepProps.wizardContent!.content}
+              </div>
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
     );
   }
