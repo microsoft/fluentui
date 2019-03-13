@@ -33,7 +33,15 @@ export class ThemingDesignerColorPicker extends React.Component {
           <span />
           <Stack horizontal disableShrink className="colorpicker">
             <Text>Primary color</Text>
-            <SwatchColorPicker columnCount={1} cellShape={'square'} colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]} />
+            <SwatchColorPicker
+              colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
+              columnCount={1}
+              cellMargin={2}
+              cellShape={'square'}
+              //disabled={true}
+              //setSize={1}
+              //focusOnHover={false}
+            />
             <TextField value={'#00ff00'} onChange={this._updateColor} />
           </Stack>
           <Stack horizontal disableShrink className="colorpicker">
