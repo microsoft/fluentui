@@ -65,9 +65,9 @@ export class WizardBase extends React.Component<IWizardProps, IWizardBaseState> 
     const contentTitleKey = 'contentTitle-' + wizardStepProps.id;
     const contentKey = 'content-' + wizardStepProps.id;
 
-    let mainStepTransitionClass = 'wizmainstep-fwd';
+    let mainStepTransitionClass = 'stepSlideUp';
     if (!wizardStyleProps.clickedForward) {
-      mainStepTransitionClass = 'wizmainstep-back';
+      mainStepTransitionClass = 'stepSlideDown';
     }
 
     return (

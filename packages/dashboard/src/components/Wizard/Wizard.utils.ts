@@ -37,6 +37,8 @@ export function getCurrentStep(steps: IWizardStepProps[]): IWizardStepProps {
         currentStep.index = indexToShow - wizStep.subSteps.length + 1;
       }
       return true;
+    } else if (wizStep.subSteps) {
+      indexToShow += wizStep.subSteps.length;
     }
     return false;
   });
