@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Add ariaLabelForGroupChevron to DetailsList props",
+      "comment": "DetailsHeader: Add ariaLabelForToggleAllGroupsButton to IDetailsHeaderProps",
       "type": "minor"
     }
   ],
