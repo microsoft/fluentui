@@ -2,6 +2,83 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.156.0",
+      "tag": "office-ui-fabric-react_v6.156.0",
+      "date": "Wed, 13 Mar 2019 00:42:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Text: default to fonts.medium",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "e4ab66c8976e0f6808ad90295b526b1a20ba1142"
+          },
+          {
+            "comment": "Dropdown: Type onRenderTitle as Array<IDropdownOption> only",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "b1268e9483baebde1af06e1df18797b3d1417bde"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "BaseButton: Correctly clone props instead of mutating them",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "279258865be3364f3531e2431bc28d7915cefe4b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.155.0",
+      "tag": "office-ui-fabric-react_v6.155.0",
+      "date": "Tue, 12 Mar 2019 12:31:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Provide a way to pass cell contents directly to DetailsRow",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "d206093d1976603974a4fffea80caba32280471f"
+          },
+          {
+            "comment": "FocusTrapZone: Refactor trapping behavior to fix multiple outstanding issues.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "882f4b91eddf44fca406d1d66b1081d7e72fa439"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix overflow calculation for non-collapsible columns",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "d206093d1976603974a4fffea80caba32280471f"
+          },
+          {
+            "comment": "FocusTrapZone: Fix for zones that have zero tabbable elements.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "962ce8748b5ad49fa3b97b9d557bfb02de494f70"
+          },
+          {
+            "comment": "updating calendaryear to work when react version upgrades",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "3cf52bb0edb9fcfcbc6a6666131a53c18a696d6f"
+          },
+          {
+            "comment": "DetailsHeader: remove duplicate IDetailsHeaderState",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "9eda7edd62a3ca20c87b792a4abc223bfe77b945"
+          },
+          {
+            "comment": "Panel: fixes regression when no custom navigation renderer provided and `hasCloseButton` prop is set to false there should not be an empty div rendered occupying the space.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "526fe7fff3c778327ea447ce200b195d9cef3bb1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.34.0 <7.0.0` to `>=6.35.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.154.0",
       "tag": "office-ui-fabric-react_v6.154.0",
       "date": "Mon, 11 Mar 2019 12:31:10 GMT",

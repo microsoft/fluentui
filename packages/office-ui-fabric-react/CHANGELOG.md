@@ -1,6 +1,34 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 11 Mar 2019 12:31:10 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+
+## 6.156.0
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Minor changes
+
+- Text: default to fonts.medium
+- Dropdown: Type onRenderTitle as Array<IDropdownOption> only
+
+### Patches
+
+- BaseButton: Correctly clone props instead of mutating them
+
+## 6.155.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Provide a way to pass cell contents directly to DetailsRow
+- FocusTrapZone: Refactor trapping behavior to fix multiple outstanding issues.
+
+### Patches
+
+- Fix overflow calculation for non-collapsible columns
+- FocusTrapZone: Fix for zones that have zero tabbable elements.
+- updating calendaryear to work when react version upgrades
+- DetailsHeader: remove duplicate IDetailsHeaderState
+- Panel: fixes regression when no custom navigation renderer provided and `hasCloseButton` prop is set to false there should not be an empty div rendered occupying the space.
 
 ## 6.154.0
 Mon, 11 Mar 2019 12:31:10 GMT

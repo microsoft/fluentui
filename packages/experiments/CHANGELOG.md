@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 07 Mar 2019 13:32:46 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+
+## 6.63.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- update snapshots to reflect default change in Text
 
 ## 6.63.0
 Thu, 07 Mar 2019 13:32:46 GMT

@@ -1,6 +1,22 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 11 Mar 2019 12:31:10 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+
+## 0.55.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- DetailPanel: Update allow Message Banner to show inside or/and outside Pivot
+- Update dashboard dependency
+- DetailPanel: Fix ActionBar lifecylce in Pivot Item change outside, expose onPivotLinkClick
+
+## 0.55.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Fixed dashboard grid layout example for low resolution screen
 
 ## 0.54.1
 Mon, 11 Mar 2019 12:31:10 GMT

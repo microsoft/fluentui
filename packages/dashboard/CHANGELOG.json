@@ -2,6 +2,60 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.55.1",
+      "tag": "@uifabric/dashboard_v0.55.1",
+      "date": "Wed, 13 Mar 2019 00:42:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: Update allow Message Banner to show inside or/and outside Pivot",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "08c58053747d9e587fde7693dc4cc26a59a87c94"
+          },
+          {
+            "comment": "Update dashboard dependency",
+            "author": "Wei Chen <xbtsw@users.noreply.github.com>",
+            "commit": "5f60e2a4399f14886ae2506dfd41322fbe277b21"
+          },
+          {
+            "comment": "DetailPanel: Fix ActionBar lifecylce in Pivot Item change outside, expose onPivotLinkClick",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "8b00fd7d0620960c069a0228dc6617e1fcc54af7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.63.0 <7.0.0` to `>=6.63.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.155.0 <7.0.0` to `>=6.156.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.1 <7.0.0` to `>=6.12.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.55.0",
+      "tag": "@uifabric/dashboard_v0.55.0",
+      "date": "Tue, 12 Mar 2019 12:31:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fixed dashboard grid layout example for low resolution screen",
+            "author": "dkishmareishvili <dkishmareishvili@gmail.com>",
+            "commit": "2aa9644be0c2e793573a091a281b5ef77f7fc62f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.154.0 <7.0.0` to `>=6.155.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.54.1",
       "tag": "@uifabric/dashboard_v0.54.1",
       "date": "Mon, 11 Mar 2019 12:31:10 GMT",
