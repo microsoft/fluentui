@@ -18,12 +18,15 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
       borderRight: `1px solid ${props.theme.semanticColors.bodyDivider}`,
       overflowY: 'auto'
     },
+    contentAnimSection: {
+      flex: 1,
+      overflowY: 'auto'
+    },
     contentSection: {
       flex: 1,
       paddingTop: `37px`,
       paddingLeft: `${subwayNavPadding}px`,
       paddingBottom: `${subwayNavPadding}px`,
-      overflowY: 'auto',
       display: 'flex',
       flexDirection: 'column'
     },

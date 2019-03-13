@@ -5,71 +5,57 @@
   CSS for steps moving forward - we need to slide up
   */
   .stepSlideUp-enter {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 0;
     transform: translateY(100%);
   }
 
   .stepSlideUp-enter-active {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 1;
     transform: translateY(0%);
     transition: transform 500ms;
   }
 
   .stepSlideUp-exit {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 1;
     transform: translateY(0%);
   }
 
   .stepSlideUp-exit-active {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 0;
     transform: translateY(-100%);
     transition: transform 500ms;
-  }
-
-  .stepSlideUp-enter-done {
-    // overflow-y: auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
   }
 
   /*
   CSS for steps moving back - we need to slide down
   */
   .stepSlideDown-enter {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 0;
     transform: translateY(-100%);
   }
 
   .stepSlideDown-enter-active {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 1;
     transform: translateY(0%);
     transition: transform 500ms;
   }
 
   .stepSlideDown-exit {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 1;
     transform: translateY(0%);
   }
 
   .stepSlideDown-exit-active {
-    overflow-y: hidden;
+    // overflow-y: hidden;
     opacity: 0;
     transform: translateY(100%);
     transition: transform 500ms;
-  }
-
-  .stepSlideDown-enter-done {
-    overflow-y: auto;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
   }
 }
