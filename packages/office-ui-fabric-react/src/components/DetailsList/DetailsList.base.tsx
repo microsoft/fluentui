@@ -281,7 +281,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public render(): JSX.Element {
     const {
-      ariaLabelForGroupChevron,
       ariaLabelForListHeader,
       ariaLabelForSelectAllCheckbox,
       ariaLabelForSelectionColumn,
@@ -428,7 +427,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   isAllCollapsed: isCollapsed,
                   onToggleCollapseAll: this._onToggleCollapse,
                   ariaLabel: ariaLabelForListHeader,
-                  ariaLabelForGroupChevron: ariaLabelForGroupChevron,
                   ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
                   selectAllVisibility: selectAllVisibility,

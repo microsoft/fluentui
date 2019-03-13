@@ -196,9 +196,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it with keyboard. */
   onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent<HTMLElement>) => void;
 
-  /** The aria-label attribute for the expand/collapse group button  */
-  ariaLabelForGroupChevron?: string;
-
   /** The aria-label attribute to stamp out on the list header */
   ariaLabelForListHeader?: string;
 
