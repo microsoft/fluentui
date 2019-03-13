@@ -215,7 +215,7 @@ export interface IImageStyleProps {
   width?: number | string;
 
   /**
-   * Image height valye
+   * Image height value
    */
   height?: number | string;
 }
