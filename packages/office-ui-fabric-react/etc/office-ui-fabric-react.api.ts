@@ -6847,6 +6847,7 @@ interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBas
   ariaLabel?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
+  ariaLabelForToggleAllGroupsButton?: string;
   className?: string;
   collapseAllVisibility?: CollapseAllVisibility;
   columnReorderOptions?: IColumnReorderOptions;
