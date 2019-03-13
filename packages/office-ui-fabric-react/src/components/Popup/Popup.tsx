@@ -25,7 +25,27 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
   }
 
   public componentWillMount(): void {
-    this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
+    let tempActive: Element | null = null;
+    let tempActiveLastSeen: Element | null = null;
+    const doc: Document | undefined = getDocument();
+
+    if (doc) {
+      tempActive = doc.activeElement;
+    }
+
+    while (tempActive !== null && tempActive instanceof HTMLIFrameElement) {
+      if (tempActive.contentDocument !== null && tempActive.contentDocument.activeElement !== null) {
+        tempActiveLastSeen = tempActive;
+        tempActive = tempActive.contentDocument.activeElement;
+        if (tempActive === tempActiveLastSeen) {
+          break;
+        }
+      }
+    }
+
+    if (tempActive !== null) {
+      this._originalFocusedElement = tempActive as HTMLElement;
+    }
   }
 
   public componentDidMount(): void {
@@ -76,7 +96,11 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
         onKeyDown={this._onKeyDown}
-        style={{ overflowY: this.state.needsVerticalScrollBar ? 'scroll' : undefined, outline: 'none', ...style }}
+        style={{
+          overflowY: this.state.needsVerticalScrollBar ? 'scroll' : undefined,
+          outline: 'none',
+          ...style
+        }}
       >
         {this.props.children}
       </div>
