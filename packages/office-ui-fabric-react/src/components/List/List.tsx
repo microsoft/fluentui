@@ -82,7 +82,7 @@ const _measureScrollRect = _measurePageRect;
 export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item: any, index: number, containsFocus: boolean) => <div>{(item && item.name) || ''}</div>,
+    onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
