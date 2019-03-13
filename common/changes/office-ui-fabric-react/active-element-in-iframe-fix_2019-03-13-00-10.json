@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "in casse of an iframe, get active element appropriately",
+      "comment": "in case of an iframe, get active element appropriately",
       "type": "patch"
     }
   ],
