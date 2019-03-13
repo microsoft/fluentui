@@ -321,7 +321,15 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       }
     );
 
-    const selectedIndex = suggestions.findIndex(suggestion => suggestion.selected);
+    let selectedIndex = -1;
+    suggestions.some((element, index) => {
+      if (element.selected) {
+        selectedIndex = index;
+        return true;
+      }
+      return false;
+    });
+
     if (resultsMaximumNumber) {
       suggestions =
         selectedIndex >= resultsMaximumNumber
