@@ -1,0 +1,1 @@
+- Use Text to display read-only text that inherits styling from ITheme.

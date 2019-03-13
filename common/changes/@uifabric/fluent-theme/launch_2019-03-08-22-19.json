@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/example-app-base",
+      "packageName": "@uifabric/fluent-theme",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/example-app-base",
+  "packageName": "@uifabric/fluent-theme",
   "email": "elcraig@microsoft.com"
 }

@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/file-type-icons",
+      "packageName": "@uifabric/theme-samples",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/file-type-icons",
+  "packageName": "@uifabric/theme-samples",
   "email": "elcraig@microsoft.com"
 }

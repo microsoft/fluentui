@@ -2108,9 +2108,22 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 id="coachmark-desc1"
                               />
                               <div
+                                onBlur={[Function]}
+                                onFocus={[Function]}
                                 onFocusCapture={[Function]}
-                                onKeyDown={[Function]}
                               >
+                                <div
+                                  aria-hidden={true}
+                                  data-is-visible={true}
+                                  onFocus={[Function]}
+                                  style={
+                                    Object {
+                                      "pointerEvents": "none",
+                                      "position": "fixed",
+                                    }
+                                  }
+                                  tabIndex={0}
+                                />
                                 <div
                                   className=
 
@@ -2336,6 +2349,18 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     </div>
                                   </div>
                                 </div>
+                                <div
+                                  aria-hidden={true}
+                                  data-is-visible={true}
+                                  onFocus={[Function]}
+                                  style={
+                                    Object {
+                                      "pointerEvents": "none",
+                                      "position": "fixed",
+                                    }
+                                  }
+                                  tabIndex={0}
+                                />
                               </div>
                             </div>
                           </div>

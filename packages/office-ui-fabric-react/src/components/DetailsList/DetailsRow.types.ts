@@ -160,6 +160,12 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
    * @defaultvalue false
    */
   useReducedRowRenderer?: boolean;
+  /**
+   * Optional pre-rendered content per column. Preferred over onRender or onRenderItemColumn if provided.
+   */
+  cellsByColumn?: {
+    [columnKey: string]: React.ReactNode;
+  };
 }
 
 export interface IDetailsRowProps extends IDetailsRowBaseProps {
