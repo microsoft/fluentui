@@ -47,6 +47,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/Microfeedback/MicrofeedbackPage').MicrofeedbackPage,
+          key: 'Microfeedback',
+          name: 'Microfeedback',
+          url: '#/examples/microfeedback'
+        },
+        {
           component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
           key: 'Pagination',
           name: 'Pagination',

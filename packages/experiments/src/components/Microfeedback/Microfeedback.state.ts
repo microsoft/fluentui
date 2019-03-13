@@ -6,15 +6,11 @@ export type IMicrofeedbackState = IMicrofeedbackViewProps;
 
 export class MicrofeedbackState extends BaseState<IMicrofeedbackProps, IMicrofeedbackViewProps, IMicrofeedbackState> {
   constructor(props: MicrofeedbackState['props']) {
-    super(props, {
-      // Mark controlledProps to ensure that they get priority when provided as a component prop.
-      // For props not marked controlled, component state will get priority over component props.
-      controlledProps: ['text']
-    });
+    super(props, {});
 
     this.state = {
-      text: props.defaultText || 'Default Text',
-      status: 'State Text'
+      isDisliked: false,
+      isLiked: false
     };
   }
 }
