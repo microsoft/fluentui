@@ -1,19 +1,21 @@
-// @ts-check
+import * as babylon from 'babylon';
+import * as prettier from 'prettier';
+import * as fs from 'fs';
+import * as path from 'path';
 
-const babylon = require('babylon');
-/** @type {*} */
-const recast = require('recast');
-const prettier = require('prettier');
-const jscodeshift = require('jscodeshift');
-const path = require('path');
-const fse = require('fs-extra');
+import { Recast, JSCodeShift, IASTPath, IASTSpecifier, IASTNode } from './interfaces';
 
-const exampleData = fse.readFileSync(path.resolve(__dirname, '../../packages/office-ui-fabric-react/src/utilities/exampleData.ts'));
+// recast and jscodeshift have no @types :(
+const recast: Recast = require('recast');
+const jscodeshift: {
+  withParser: (parser: string) => JSCodeShift;
+} = require('jscodeshift');
 
-const api = { jscodeshift: jscodeshift.withParser('babylon'), stats: {} };
+const exampleData = fs.readFileSync(path.resolve(__dirname, '../lib/exampleData.ts')).toString();
 
-/** @type {(source: string) => any} */
-const parse = source =>
+const j = jscodeshift.withParser('babylon');
+
+const parse = (source: string) =>
   babylon.parse(source, {
     sourceType: 'module',
     plugins: ['jsx', 'typescript', 'classProperties', 'objectRestSpread']
@@ -25,42 +27,41 @@ const parse = source =>
  * There are two types of supported example templates:
  *
  *     [imports]
- *     [variable export named declaration with example code inside]
+ *     [named variable export with example code inside]
  *
  * and
  *
  *     [imports]
- *     [class export named declaration with example code inside]
+ *     [named class export with example code inside]
  *
  * Currently, examples which are scattered across multiple files are NOT supported.
  *
- * @param {string} file - Example file contents to transform
- * @returns {string} The transformed file
+ * @param file Example file contents to transform
+ * @returns The transformed file contents
  */
-function transform(file) {
+export function transform(file: string): string {
   let sourceStr = file;
   // If the exampleData file was imported, append the file contents
   if (sourceStr.indexOf('/utilities/exampleData') !== -1) {
     sourceStr += `\n${exampleData}\n`;
   }
 
-  const j = api.jscodeshift;
-  let source = j(recast.parse(sourceStr, { parser: { parse } }));
+  const source = j(recast.parse(sourceStr, { parser: { parse } }));
 
   // Make a list of imported identifiers, and remove all imports
-  let identifiers = [];
-  source.find(j.ImportDeclaration).forEach(path => {
-    const importPath = path.node.source.value;
+  const identifiers: string[] = [];
+  source.find(j.ImportDeclaration).forEach((p: IASTPath) => {
+    const importPath = p.node.source.value;
     // Ignore identifiers from the React import (which will be a global) and from exampleData
     // (since that whole file is appended to the example if needed)
     if (importPath !== 'react' && !/(exampleData|\.scss|\.css)$/.test(importPath)) {
-      path.node.specifiers.forEach(spec => {
+      p.node.specifiers.forEach((spec: IASTSpecifier) => {
         identifiers.push(spec.local.loc.identifierName);
       });
     }
 
     // Remove the import
-    path.prune();
+    p.prune();
   });
 
   let exampleName;
@@ -68,9 +69,11 @@ function transform(file) {
   source
     .find(
       j.ExportNamedDeclaration,
-      node => node.declaration.type == 'VariableDeclaration' || node.declaration.type === 'FunctionDeclaration'
+      (node: IASTNode) =>
+        node.declaration.type === 'VariableDeclaration' ||
+        node.declaration.type === 'FunctionDeclaration'
     )
-    .replaceWith(p => {
+    .replaceWith((p: IASTPath) => {
       if (p.node.declaration.type === 'VariableDeclaration') {
         exampleName = p.node.declaration.declarations[0].id.name;
       }
@@ -80,9 +83,11 @@ function transform(file) {
   source
     .find(
       j.ExportNamedDeclaration,
-      node => node.declaration.type == 'ClassDeclaration' || node.declaration.type == 'TSInterfaceDeclaration'
+      (node: IASTNode) =>
+        node.declaration.type === 'ClassDeclaration' ||
+        node.declaration.type === 'TSInterfaceDeclaration'
     )
-    .replaceWith(p => {
+    .replaceWith((p: IASTPath) => {
       if (p.node.declaration.type === 'ClassDeclaration') {
         exampleName = p.node.declaration.id.name;
       }
@@ -90,7 +95,7 @@ function transform(file) {
     });
 
   // Build the list of imports from window.Fabric
-  let attachedWindowString = 'let {';
+  let attachedWindowString = 'const {';
   if (identifiers.length > 0) {
     attachedWindowString += identifiers.join(',') + ',';
   }
@@ -110,5 +115,3 @@ function transform(file) {
     singleQuote: true
   });
 }
-
-module.exports = transform;

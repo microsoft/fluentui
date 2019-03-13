@@ -46,7 +46,6 @@
     "tslib": "^1.7.1"
   },
   "disabledTasks": [
-    "build-codepen-examples",
     "verify-api-extractor"
   ],
   "peerDependencies": {
