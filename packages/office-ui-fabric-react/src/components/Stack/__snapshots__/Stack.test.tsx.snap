@@ -34,10 +34,6 @@ exports[`Stack accepts custom className on child items 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -151,10 +147,6 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -172,10 +164,6 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -193,10 +181,6 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -214,10 +198,6 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -235,10 +215,6 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -256,10 +232,6 @@ exports[`Stack renders horizontal Stack item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -301,10 +273,6 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -321,10 +289,6 @@ exports[`Stack renders horizontal Stack with StackItems correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -366,10 +330,6 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -386,10 +346,6 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -531,10 +487,6 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 1`] 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -551,10 +503,6 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 1`] 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -596,10 +544,6 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 2`] 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -616,10 +560,6 @@ exports[`Stack renders horizontal Stack with shrinking StackItems correctly 2`] 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -787,10 +727,6 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -807,10 +743,6 @@ exports[`Stack renders vertical Stack with StackItems correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -852,10 +784,6 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -872,10 +800,6 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1018,10 +942,6 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1039,10 +959,6 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1060,10 +976,6 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1081,10 +993,6 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1102,10 +1010,6 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1123,10 +1027,6 @@ exports[`Stack renders vertical Stack with item alignments correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1168,10 +1068,6 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 1`] = 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1188,10 +1084,6 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 1`] = 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1233,10 +1125,6 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 2`] = 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1253,10 +1141,6 @@ exports[`Stack renders vertical Stack with shrinking StackItems correctly 2`] = 
           font-size: 14px;
           font-weight: 400;
           height: auto;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           width: auto;
         }
   >
@@ -1381,10 +1265,6 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             width: auto;
           }
     >
@@ -1401,10 +1281,6 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             width: auto;
           }
     >
@@ -1421,10 +1297,6 @@ exports[`Stack renders wrapped horizontal Stack correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             width: auto;
           }
     >

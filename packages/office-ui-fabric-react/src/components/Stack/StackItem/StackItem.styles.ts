@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../../Styling';
-import { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType, IStackItemTokenReturnType } from './StackItem.types';
+import { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType } from './StackItem.types';
 
 const GlobalClassNames = {
   root: 'ms-StackItem'
@@ -9,12 +9,6 @@ const alignMap: { [key: string]: string } = {
   start: 'flex-start',
   end: 'flex-end'
 };
-
-const baseTokens: IStackItemComponent['tokens'] = {
-  margin: 0
-};
-
-export const StackItemTokens: IStackItemComponent['tokens'] = (props, theme): IStackItemTokenReturnType => [baseTokens];
 
 export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tokens): IStackItemStylesReturnType => {
   const { grow, shrink, disableShrink, align, verticalFill, className } = props;

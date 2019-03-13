@@ -139,10 +139,6 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             padding-bottom: 5px;
             padding-left: 5px;
             padding-right: 5px;
@@ -168,10 +164,6 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             padding-bottom: 5px;
             padding-left: 5px;
             padding-right: 5px;
@@ -197,10 +189,6 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             padding-bottom: 5px;
             padding-left: 5px;
             padding-right: 5px;
@@ -226,10 +214,6 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             padding-bottom: 5px;
             padding-left: 5px;
             padding-right: 5px;
@@ -255,10 +239,6 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             padding-bottom: 5px;
             padding-left: 5px;
             padding-right: 5px;
@@ -284,10 +264,6 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
             font-size: 14px;
             font-weight: 400;
             height: auto;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
             padding-bottom: 5px;
             padding-left: 5px;
             padding-right: 5px;
