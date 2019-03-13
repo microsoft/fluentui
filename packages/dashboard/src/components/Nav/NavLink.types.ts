@@ -45,11 +45,12 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
 }
 
 export interface INavLinkStyles {
-  navLink: IStyle;
-  navItemBarMarker: IStyle;
-  iconWrapper: IStyle;
-  navItemIcon: IStyle;
-  navItemText: IStyle;
+  root: IStyle;
+  iconContainer: IStyle;
+  icon: IStyle;
+  text: IStyle;
+  secondaryIcon: IStyle;
+  secondaryItemContainer: IStyle;
 }
 
 export interface INavLinkStyleProps {

@@ -33,17 +33,16 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
         onClick={this.props.onClick}
         onMouseEnter={this._getLinkPosition}
         role={this.props.role}
-        className={classNames.navLink}
+        className={classNames.root}
         ref={this.navLinkRef}
       >
-        <div className={classNames.iconWrapper} aria-hidden="true">
-          <div className={classNames.navItemBarMarker} />
-          <Icon iconName={this.props.primaryIconName} className={classNames.navItemIcon} />
+        <div className={classNames.iconContainer} aria-hidden="true">
+          <Icon iconName={this.props.primaryIconName} className={classNames.icon} />
         </div>
-        <div className={classNames.navItemText} aria-hidden="true" data-is-focusable="false">
+        <div className={classNames.text} aria-hidden="true" data-is-focusable="false">
           {name}
         </div>
-        {!isNavCollapsed && isNested && <Icon iconName={iconName} className={classNames.navItemIcon} aria-hidden="true" />}
+        {!(isNavCollapsed && !isNested) && <Icon iconName={iconName} className={classNames.secondaryIcon} aria-hidden="true" />}
       </a>
     );
   }
