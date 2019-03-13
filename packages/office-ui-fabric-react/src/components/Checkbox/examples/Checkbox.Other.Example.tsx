@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
 

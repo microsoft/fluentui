@@ -22,7 +22,6 @@
     "update-api": "node ../../scripts/update-api.js"
   },
   "disabledTasks": [
-    "build-codepen-examples"
   ],
   "devDependencies": {
     "@types/enzyme": "3.1.13",

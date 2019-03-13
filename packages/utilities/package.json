@@ -24,8 +24,7 @@
   },
   "disabledTasks": [
     "copy",
-    "webpack",
-    "build-codepen-examples"
+    "webpack"
   ],
   "devDependencies": {
     "@types/enzyme": "3.1.13",
