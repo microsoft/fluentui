@@ -9,7 +9,7 @@ const GlobalClassNames = {
 
 const baseTokens: ICardComponent['tokens'] = {
   boxShadow: Depths.depth16,
-  padding: 0,
+  padding: 12,
   minWidth: '200px',
   maxWidth: '250px'
 };

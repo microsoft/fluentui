@@ -30,11 +30,9 @@ export class CardCompactExample extends React.Component<{}, {}> {
 
     return (
       <Stack gap={20}>
-        <Card compact={true} gap={12} tokens={{ padding: 12 }}>
-          Basic compact card
-        </Card>
+        <Card compact={true}>Basic compact card</Card>
 
-        <Card compact={true} gap={12} tokens={{ padding: 12 }} onClick={alertClicked}>
+        <Card compact={true} onClick={alertClicked}>
           <Card.Item tokens={{ margin: '-12px 0 -12px -12px' }}>
             <Image
               src="https://placehold.it/180x135"
