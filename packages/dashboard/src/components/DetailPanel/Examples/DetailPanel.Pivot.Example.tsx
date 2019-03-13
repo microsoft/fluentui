@@ -14,7 +14,8 @@ import {
   IQuickAction,
   IDetailPanelConfirmationResultProps,
   ConfirmationStatus,
-  IActionButton
+  IActionButton,
+  IDetailPanelMessageBannerProps
 } from '../DetailPanel.types';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -66,19 +67,16 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
       return (
         <DetailPanel
           panelSetting={{ customWidth: '860px' }}
-          onPageLoad={() => {
-            return new Promise((resolve: () => void) => {
-              setTimeout(() => {
-                resolve();
-              }, 1000);
-            });
-          }}
+          onPageLoad={() => {}}
           onRefresh={() => {
             return new Promise((resolve: () => void) => {
               setTimeout(() => {
                 resolve();
               }, 10000);
             });
+          }}
+          globalMessageBanner={{
+            message: 'I am a global message'
           }}
           mainHeader={header}
           mainContent={this.getMainContent()}
@@ -94,6 +92,9 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           onGetL2ActionBar={this._onGetL2ActionBar}
           onGetLoadingAnimation={this._onGetLoadingAnimation}
           analyticsHandler={this._analyticsLogger}
+          onPivotLinkClick={(key: string) => {
+            console.log(key);
+          }}
         />
       );
     } else {
@@ -179,7 +180,13 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
             primaryButton: {
               buttonText: 'Primary detail',
               onAction: () => {
-                alert('primary detail');
+                return {
+                  messageBanner: {
+                    messageType: MessageBarType.success,
+                    message: 'Hooray! you did it!',
+                    forceGlobal: false
+                  } as IDetailPanelMessageBannerProps
+                } as IDetailPanelActionResult;
               }
             } as IActionButton,
             secondaryButton: {

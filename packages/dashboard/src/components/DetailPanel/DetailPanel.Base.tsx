@@ -50,16 +50,19 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
 
   public getSnapshotBeforeUpdate(
     prevProps: Readonly<IDetailPanelBaseProps>,
-    _prevStates: Readonly<IMainBodyStates>
+    prevStates: Readonly<IMainBodyStates>
   ): IMainBodySnapshot | null {
     let snapshotUpdated = false;
     const snapshot = {} as IMainBodySnapshot;
 
-    if (this.props.currentL2Id !== prevProps.currentL2Id) {
+    if (this.props.currentL2Id !== this.state.currentL2Id) {
       // L2Id is changed
       snapshot.nextL2Id = this.props.currentL2Id;
       snapshotUpdated = true;
     } else if (!this.props.currentL2Id && !shallowCompare(this.props.mainContent, prevProps.mainContent)) {
+      snapshot.nextMainContent = this._getMainContent();
+      snapshotUpdated = true;
+    } else if (this.state.messageBanner !== prevStates.messageBanner) {
       snapshot.nextMainContent = this._getMainContent();
       snapshotUpdated = true;
     }
@@ -73,7 +76,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
 
   public render(): JSX.Element | null {
     const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar, confirmation } = this.state;
-    const { onRefresh, panelSetting } = this.props;
+    const { onRefresh, panelSetting, globalMessageBanner } = this.props;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
@@ -107,6 +110,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
         onSetConfirmationResult={this._setConfirmationResult}
         header={this._getCurrentHeader(false)}
         messageBanner={messageBanner}
+        globalMessageBanner={globalMessageBanner}
         mainContent={contentElement}
         actionBar={actionBar}
         loadingElement={loadingElement}
@@ -124,6 +128,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
       const { onGetL2Content, onGetL2ActionBar, mainActionBar } = this.props;
       if (snapshot.nextL2Id && onGetL2Content) {
         // Set loading animation
+        this.setState({ currentL2Id: snapshot.nextL2Id });
         this._setLoadingAnimation(LoadingTheme.OnL2ContentLoad);
         Promise.resolve(onGetL2Content(snapshot.nextL2Id))
           .then((element: JSX.Element) => {
@@ -183,14 +188,20 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
   }
 
   private _getMainContent = () => {
-    const { mainContent } = this.props;
+    const { mainContent, onPivotLinkClick } = this.props;
     if (mainContent) {
       if (_isReactComponent(mainContent)) {
         return mainContent;
       }
 
       return (
-        <DetailPanelPivotBody {...mainContent} onGetLoadingElement={this._getPageLoadingAnimation} onSetActionBar={this._setActionBar} />
+        <DetailPanelPivotBody
+          {...mainContent}
+          onGetLoadingElement={this._getPageLoadingAnimation}
+          onSetActionBar={this._setActionBar}
+          messageBanner={this.state && this.state.messageBanner}
+          onPivotLinkClick={onPivotLinkClick}
+        />
       );
     }
 

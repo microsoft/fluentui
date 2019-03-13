@@ -153,10 +153,23 @@ exports[`Panel renders Panel correctly 1`] = `
               @media (min-width: 480px){& {
                 width: 340px;
               }
+          onBlur={[Function]}
+          onFocus={[Function]}
           onFocusCapture={[Function]}
-          onKeyDown={[Function]}
           style={Object {}}
         >
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
           <div
             className=
                 ms-Panel-commands
@@ -394,6 +407,18 @@ exports[`Panel renders Panel correctly 1`] = `
               </div>
             </div>
           </div>
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
         </div>
       </div>
     </div>

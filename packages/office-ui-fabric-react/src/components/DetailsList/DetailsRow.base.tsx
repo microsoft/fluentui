@@ -174,7 +174,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       shimmer,
       compact,
       theme,
-      styles
+      styles,
+      cellsByColumn
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -201,6 +202,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     const rowFields = (
       <RowFields
         rowClassNames={classNames}
+        cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
         itemIndex={itemIndex}

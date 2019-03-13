@@ -2,7 +2,6 @@ import * as React from 'react';
 import { TextRampExample } from './examples/Text.Ramp.Example';
 import { TextWrapExample } from './examples/Text.Wrap.Example';
 import { TextBlockExample } from './examples/Text.Block.Example';
-import { TextInheritsExample } from './examples/Text.Inherits.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
@@ -14,9 +13,6 @@ const TextWrapExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/c
 
 const TextBlockExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Block.Example.tsx') as string;
 const TextBlockExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Block.Example.Codepen.txt') as string;
-
-const TextInheritsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Inherits.Example.tsx') as string;
-const TextInheritsExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Inherits.Example.Codepen.txt') as string;
 
 export const TextPageProps: IDocPageProps = {
   title: 'Text',
@@ -40,12 +36,6 @@ export const TextPageProps: IDocPageProps = {
       code: TextBlockExampleCode,
       view: <TextBlockExample />,
       codepenJS: TextBlockExampleCodepen
-    },
-    {
-      title: 'Text Inherit Styles Example',
-      code: TextInheritsExampleCode,
-      view: <TextInheritsExample />,
-      codepenJS: TextInheritsExampleCodepen
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/Text.types.tsx')],
