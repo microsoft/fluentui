@@ -1,5 +1,4 @@
-import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
-import { ITextSlot } from '../../Text';
+import { IComponent, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
 import { IBaseProps } from '../../Utilities';
 
 export type IMicrofeedbackComponent = IComponent<IMicrofeedbackProps, IMicrofeedbackTokens, IMicrofeedbackStyles, IMicrofeedbackViewProps>;
@@ -13,19 +12,7 @@ export type IMicrofeedbackStylesReturnType = ReturnType<Extract<IMicrofeedbackCo
 // Optional interface to use for componentRef. This should be limited in scope with the most common scenario being for focusing elements.
 export interface IMicrofeedback {}
 
-export interface IMicrofeedbackSlots {
-  // All props for your component are to be defined here.
-  /**
-   * Root element.
-   */
-  root?: IHTMLSlot;
-
-  /**
-   * Component sample prop. If provided, component is controlled.
-   * @defaultValue defaultText
-   */
-  text?: ITextSlot;
-}
+export interface IMicrofeedbackSlots {}
 
 // Extending IStyleableComponentProps will automatically add styleable props for you, such as styles, tokens and theme.
 // If you don't want these props to be included in your component, just remove this extension.
@@ -46,11 +33,8 @@ export interface IMicrofeedbackProps
 
 export interface IMicrofeedbackViewProps extends IMicrofeedbackProps {
   // You can define view only props here.
-  /**
-   * Sample prop internal to component. These types of props aren't exposed
-   *   externally to consumers and their values are typically determined by component state.
-   */
-  status: string;
+  isDisliked: boolean;
+  isLiked: boolean;
 }
 
 export interface IMicrofeedbackTokens {
