@@ -455,8 +455,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const cellRole = role === undefined ? 'listitem' : 'presentation';
     const cells: React.ReactNode[] = [];
 
-    items.forEach((item: any, offset: number) => {
-      const index = startIndex + offset;
+    for (let i = 0; i < items.length; i++) {
+      const index = startIndex + i;
+      const item = items[i];
 
       let itemKey = this.props.getKey ? this.props.getKey(item, index) : item && item.key;
 
@@ -469,7 +470,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
-    });
+    }
 
     return <div {...divProps}>{cells}</div>;
   };
