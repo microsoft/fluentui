@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '../../../Foundation';
 import { IStackItemComponent, IStackItemProps, IStackItemSlots } from './StackItem.types';
-import { styles } from './StackItem.styles';
+import { StackItemStyles as styles, StackItemTokens as tokens } from './StackItem.styles';
 
 const view: IStackItemComponent['view'] = props => {
   const { children } = props;
@@ -20,6 +20,7 @@ const view: IStackItemComponent['view'] = props => {
 export const StackItem: React.StatelessComponent<IStackItemProps> = createComponent({
   displayName: 'StackItem',
   styles,
+  tokens,
   view
 });
 

@@ -311,6 +311,10 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
             font-weight: 400;
             height: 50px;
             justify-content: center;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             overflow: hidden;
             width: auto;
           }
@@ -334,6 +338,10 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
             font-weight: 400;
             height: 50px;
             justify-content: center;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             overflow: hidden;
             width: auto;
           }
@@ -357,6 +365,10 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
             font-weight: 400;
             height: 50px;
             justify-content: center;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             overflow: hidden;
             width: 500px;
           }
@@ -380,6 +392,10 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
             font-weight: 400;
             height: 50px;
             justify-content: center;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             overflow: hidden;
             width: auto;
           }

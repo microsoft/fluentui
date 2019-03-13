@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../../Styling';
-import { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType } from './StackItem.types';
+import { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType, IStackItemTokenReturnType } from './StackItem.types';
 
 const GlobalClassNames = {
   root: 'ms-StackItem'
@@ -10,7 +10,13 @@ const alignMap: { [key: string]: string } = {
   end: 'flex-end'
 };
 
-export const styles: IStackItemComponent['styles'] = (props, theme): IStackItemStylesReturnType => {
+const baseTokens: IStackItemComponent['tokens'] = {
+  margin: 0
+};
+
+export const StackItemTokens: IStackItemComponent['tokens'] = (props, theme): IStackItemTokenReturnType => [baseTokens];
+
+export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tokens): IStackItemStylesReturnType => {
   const { grow, shrink, disableShrink, align, verticalFill, className } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -20,8 +26,9 @@ export const styles: IStackItemComponent['styles'] = (props, theme): IStackItemS
       theme.fonts.medium,
       classNames.root,
       {
-        width: 'auto',
-        height: verticalFill ? '100%' : 'auto'
+        margin: tokens.margin,
+        height: verticalFill ? '100%' : 'auto',
+        width: 'auto'
       },
       grow && { flexGrow: grow === true ? 1 : grow },
       (disableShrink || (!grow && !shrink)) && {

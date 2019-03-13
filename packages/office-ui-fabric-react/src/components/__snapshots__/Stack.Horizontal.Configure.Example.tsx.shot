@@ -54,6 +54,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -635,6 +639,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -969,6 +977,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 font-size: 14px;
                 font-weight: 400;
                 height: auto;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 width: auto;
               }
         >
@@ -1253,6 +1265,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -1780,6 +1796,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -2307,6 +2327,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -2857,6 +2881,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -3083,6 +3111,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -3309,6 +3341,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >
@@ -3462,6 +3498,10 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             font-size: 14px;
             font-weight: 400;
             height: auto;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             width: auto;
           }
     >

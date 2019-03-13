@@ -10683,6 +10683,8 @@ interface IStackItemSlots {
 
 // @public (undocumented)
 interface IStackItemTokens {
+  // (undocumented)
+  margin?: number | string;
 }
 
 // @public (undocumented)
