@@ -1,0 +1,121 @@
+@import '~office-ui-fabric-react/dist/sass/References';
+
+:global {
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    50% {
+      transform: translateY(8%);
+    }
+    65% {
+      transform: translateY(-4%);
+    }
+    80% {
+      transform: translateY(4%);
+    }
+    95% {
+      transform: translateY(-2%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(100%);
+    }
+    50% {
+      transform: translateY(-8%);
+    }
+    65% {
+      transform: translateY(4%);
+    }
+    80% {
+      transform: translateY(-4%);
+    }
+    95% {
+      transform: translateY(2%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  /*
+  CSS for steps moving forward - we need to slide up
+  */
+  .wizmainstep-fwd-exit {
+    overflow-y: hidden;
+    opacity: 1;
+    // transform: translate3d(0, 0, 0);
+  }
+
+  .wizmainstep-fwd-exit-active {
+    overflow-y: hidden;
+    opacity: 0.1;
+    // transform: translate3d(0, -50px, 0);
+    animation: slideUp 500ms ease-in forwards;
+    transition: opacity 500ms ease-in;
+  }
+
+  .wizmainstep-fwd-enter {
+    overflow-y: hidden;
+    opacity: 0;
+    // transform: translate3d(0, -50px, 0);    
+  }
+
+  .wizmainstep-fwd-enter-active {
+    overflow-y: hidden;
+    opacity: 1;
+    // transform: translate3d(0, 0, 0);
+    animation: slideUp 500ms ease-in forwards;
+    transition: opacity 500ms ease-in;
+  }
+
+  .wizmainstep-fwd-enter-done {
+    // overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*
+  CSS for steps moving back - we need to slide down
+  */
+  .wizmainstep-back-exit {
+    overflow-y: hidden;
+    opacity: 1;
+    // transform: translate3d(0, 0, 0);
+  }
+
+  .wizmainstep-back-exit-active {
+    overflow-y: hidden;
+    opacity: 0.1;
+    // transform: translate3d(0, 50px, 0);
+    animation: slideDown 500ms ease-in forwards;
+    transition: opacity 500ms ease-in;
+  }
+
+  .wizmainstep-back-enter {
+    overflow-y: hidden;
+    opacity: 0;
+    // transform: translate3d(0, 50px, 0);    
+  }
+
+  .wizmainstep-back-enter-active {
+    overflow-y: hidden;
+    opacity: 1;
+    // transform: translate3d(0, 0, 0);
+    animation: slideDown 500ms ease-in forwards;
+    transition: opacity 500ms ease-in;
+  }
+
+  .wizmainstep-back-enter-done {
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
