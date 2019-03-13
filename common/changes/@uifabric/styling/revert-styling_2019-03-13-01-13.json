@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Reverting sideEffects opt out. We are trying to reduce bundle size, but a number of reports have indicated that sideEffects aren't working correctly for them. We will revert until we remove all side effects.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@microsoft.com"
+}
