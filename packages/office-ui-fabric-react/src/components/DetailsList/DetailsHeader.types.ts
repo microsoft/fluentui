@@ -57,7 +57,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
   ariaLabel?: string;
 
   /** ariaLabel for expand/collapse group button */
-  ariaLabelForGroupChevron?: string;
+  ariaLabelForToggleAllGroupsButton?: string;
 
   /** ariaLabel for the header checkbox that selects or deselects everything */
   ariaLabelForSelectAllCheckbox?: string;

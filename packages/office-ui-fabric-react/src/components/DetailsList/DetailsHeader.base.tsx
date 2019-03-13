@@ -167,7 +167,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const {
       columns = NO_COLUMNS,
       ariaLabel,
-      ariaLabelForGroupChevron,
+      ariaLabelForToggleAllGroupsButton,
       ariaLabelForSelectAllCheckbox,
       selectAllVisibility,
       ariaLabelForSelectionColumn,
@@ -284,7 +284,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             className={classNames.cellIsGroupExpander}
             onClick={this._onToggleCollapseAll}
             data-is-focusable={true}
-            aria-label={ariaLabelForGroupChevron}
+            aria-label={ariaLabelForToggleAllGroupsButton}
             aria-expanded={!isAllCollapsed}
           >
             <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
