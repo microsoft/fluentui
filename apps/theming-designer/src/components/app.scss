@@ -23,10 +23,21 @@ html {
 }
 
 .colorpicker {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  height: auto;
-  width: auto;
+  position: relative;
+
+  .textinput {
+    padding-left: 20px;
+    margin: 0 0 15px 0;
+    max-width: 150px;
+  }
+
+  .colorinput {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #0078d4;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
 }
