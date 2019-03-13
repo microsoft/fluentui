@@ -155,5 +155,37 @@ describe('List', () => {
 
       expect(rows).toHaveLength(100);
     });
+
+    it('renders items of mixed sparse array and primitive', done => {
+      const wrapper = mount(<List />);
+
+      const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
+        <div className="cell" key={index}>
+          {item}
+        </div>
+      );
+
+      wrapper.setProps({ items: [, , 'foo', 'bar'], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+
+      const rows = wrapper.find('.cell');
+
+      expect(rows).toHaveLength(4);
+    });
+
+    it('renders sparse array of items', done => {
+      const wrapper = mount(<List />);
+
+      const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
+        <div className="cell" key={index}>
+          {item}
+        </div>
+      );
+
+      wrapper.setProps({ items: [, , , ,], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+
+      const rows = wrapper.find('.cell');
+
+      expect(rows).toHaveLength(4);
+    });
   });
 });
