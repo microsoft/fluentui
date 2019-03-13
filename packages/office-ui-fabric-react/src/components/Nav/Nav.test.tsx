@@ -78,4 +78,32 @@ describe('Nav', () => {
     const nav = mount<NavBase>(<Nav ariaLabel={label} groups={[]} />);
     expect(nav.find('[role="navigation"]').prop('aria-label')).toEqual(label);
   });
+
+  it('uses location.href to determine link selected status if state/props is not set', () => {
+    const nav = mount<NavBase>(
+      <Nav
+        groups={[
+          {
+            links: [
+              {
+                key: 'Bing',
+                name: 'Bing',
+                url: 'http://localhost/#/testing1'
+              },
+              {
+                key: 'OneDrive',
+                name: 'OneDrive',
+                url: 'http://localhost/#/testing2'
+              }
+            ]
+          }
+        ]}
+      />
+    );
+    window.history.pushState({}, 'Test Title', '/#/testing1');
+    nav.instance().forceUpdate();
+
+    expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected').length).toBe(1);
+    expect(nav.getDOMNode().querySelectorAll('.ms-Nav-compositeLink.is-selected')[0].textContent).toEqual('Bing');
+  });
 });
