@@ -30,7 +30,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
       children: 'Try it out'
     };
     const exampleSecondaryButtonProps: IButtonProps = {
-      children: 'May be later',
+      children: 'Maybe later',
       onClick: this._onDismiss
     };
 
