@@ -6845,9 +6845,9 @@ interface IDetailsGroupRenderProps extends IGroupRenderProps {
 // @public (undocumented)
 interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   ariaLabel?: string;
-  ariaLabelForGroupChevron?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
+  ariaLabelForToggleAllGroupsButton?: string;
   className?: string;
   collapseAllVisibility?: CollapseAllVisibility;
   columnReorderOptions?: IColumnReorderOptions;
@@ -6898,7 +6898,6 @@ interface IDetailsList extends IList {
 interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
   ariaLabel?: string;
   ariaLabelForGrid?: string;
-  ariaLabelForGroupChevron?: string;
   ariaLabelForListHeader?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
