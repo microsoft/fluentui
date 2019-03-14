@@ -11,8 +11,10 @@ const navItemWithChildBgColor = '#CCCCCC';
 
 export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
   const { isNavCollapsed, isExpanded, hasNestedMenu, isSelected, hasSelectedNestedLink, isNested } = props;
+  const selectedMarkerOffset = !isNavCollapsed && isNested && isSelected ? '34px' : '4px';
   return {
     root: {
+      height: isNested ? navChildItemHeight : navItemHeight,
       color: navTextColor,
       textDecoration: 'none',
       display: 'flex',
@@ -20,6 +22,7 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
       flexWrap: 'nowrap',
       alignItems: 'center',
       cursor: 'pointer',
+      position: 'relative',
       selectors: {
         ':hover': {
           backgroundColor: hasNestedMenu ? navItemWithChildBgColor : navItemHoverColor
@@ -34,14 +37,17 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
     },
     iconContainer: [
       {
-        position: 'relative',
         display: 'flex',
         flex: '0 0 48px',
+        alignItems: 'center',
+        justifyContent: 'center',
         selectors: {
           '::before': [
             {
               content: '" "',
-              justifySelf: 'flex-start',
+              position: 'absolute',
+              top: '12px',
+              left: selectedMarkerOffset,
               width: '2px',
               height: '24px',
               backgroundColor: DefaultPalette.accent,
@@ -49,7 +55,8 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
               transition: 'opacity 300ms'
             },
             isNested && {
-              height: '18px'
+              height: '18px',
+              top: '7px'
             },
             ((!isNavCollapsed && !isExpanded && hasSelectedNestedLink) || // Nav is open, L2 menu collapsed, L2 has a selected link => true
             (!isNavCollapsed && !hasNestedMenu && isSelected) || // Nav is open, is an L2 menu, is selected => true
@@ -58,10 +65,8 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
               opacity: 1
             }
           ],
-          '::after': {
-            content: '" "',
-            flex: '1 1 auto',
-            order: 2
+          '*[dir="rtl"] &::before': {
+            right: selectedMarkerOffset
           }
         }
       },
@@ -72,9 +77,7 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
     ],
     icon: {
       fontSize: navIconSize,
-      color: DefaultPalette.black,
-      justifySelf: 'flex-end',
-      order: 3
+      color: DefaultPalette.black
     },
     secondaryItemContainer: {},
     secondaryIcon: [
@@ -90,15 +93,10 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
     text: [
       {
         flex: '1 1 auto',
-        lineHeight: isNested ? navChildItemHeight : navItemHeight,
         textOverflow: 'ellipsis',
         overflowX: 'hidden',
         whiteSpace: 'nowrap',
         color: DefaultPalette.black
-      },
-      isNested && {
-        height: navChildItemHeight,
-        lineHeight: navChildItemHeight
       }
     ]
   };

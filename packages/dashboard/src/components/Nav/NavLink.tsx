@@ -37,7 +37,7 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
         ref={this.navLinkRef}
       >
         <div className={classNames.iconContainer} aria-hidden="true">
-          <Icon iconName={this.props.primaryIconName} className={classNames.icon} />
+          {this.props.primaryIconName && <Icon iconName={this.props.primaryIconName} className={classNames.icon} />}
         </div>
         <div className={classNames.text} aria-hidden="true" data-is-focusable="false">
           {name}
