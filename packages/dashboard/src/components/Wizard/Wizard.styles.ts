@@ -10,7 +10,7 @@ const slideUpOutKeyframes = keyframes({
     opacity: 0.75,
     transform: 'translateY(-100%)'
   },
-  '50%': {
+  '45%': {
     opacity: 0.5,
     transform: 'translateY(-150%)'
   },
@@ -42,7 +42,7 @@ const slideDownOutKeyframes = keyframes({
     opacity: 0.75,
     transform: 'translateY(-100%)'
   },
-  '50%': {
+  '45%': {
     opacity: 0.5,
     transform: 'translateY(-50%)'
   },
@@ -100,15 +100,14 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
     content: {
       flex: 1
     },
-
     stepSlideUpEnter: {
-      opacity: 0.5,
+      opacity: 0,
       transform: 'translateY(50%)'
     },
     stepSlideUpEnterActive: {
       animation: slideUpInKeyframes,
       animationDuration: `${wizardAnimationDurationMilliSec}ms`,
-      animationTimingFunction: 'ease-in'
+      animationTimingFunction: 'ease-in-out'
     },
     stepSlideUpExit: {
       opacity: 0,
@@ -123,14 +122,14 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
       opacity: 0
     },
     stepSlideDownEnter: {
-      opacity: 0.5,
+      opacity: 0,
       transform: 'translateY(-150%)'
     },
     stepSlideDownEnterActive: {
       opacity: 1,
       animation: slideDownInKeyframes,
       animationDuration: `${wizardAnimationDurationMilliSec}ms`,
-      animationTimingFunction: 'ease-in'
+      animationTimingFunction: 'ease-in-out'
     },
     stepSlideDownExit: {
       opacity: 0,
