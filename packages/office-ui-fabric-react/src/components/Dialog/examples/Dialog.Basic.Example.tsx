@@ -31,7 +31,6 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
         <Dialog
           hidden={this.state.hideDialog}
           onDismiss={this._closeDialog}
-          className="XXXXXXXXX"
           dialogContentProps={{
             type: DialogType.normal,
             title: 'All emails together',

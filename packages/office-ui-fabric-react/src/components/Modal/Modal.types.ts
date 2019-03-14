@@ -118,8 +118,8 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     hasBeenOpened?: boolean;
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
-    /** Props of layer */
-    layerProps?: any;
+    /** Props for layer element */
+    layerProps?: ILayerProps;
   };
 
 export interface IModalStyles {
