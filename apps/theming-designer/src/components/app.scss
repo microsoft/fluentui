@@ -11,7 +11,7 @@ html {
 }
 
 .sidebar {
-  flex: 0 0 250px;
+  flex: 0 0 300px;
   background: #fff;
 }
 
@@ -31,7 +31,7 @@ html {
     max-width: 150px;
   }
 
-  .colorinput {
+  .colorinputprimary {
     width: 10px;
     height: 10px;
     display: inline-block;
@@ -39,5 +39,28 @@ html {
     position: absolute;
     left: 5px;
     top: 5px;
+    border: 1px solid black;
+  }
+
+  .colorinputtext {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #323130;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border: 1px solid black;
+  }
+
+  .colorinputbackground {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: #ffffff;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border: 1px solid black;
   }
 }
