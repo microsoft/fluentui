@@ -1,0 +1,9 @@
+{
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "Performance improvement of the shimmer component",
+    "type": "major"
+  }],
+  "packageName": "office-ui-fabric-react",
+  "email": "tomdezentje@gmail.com"
+}
