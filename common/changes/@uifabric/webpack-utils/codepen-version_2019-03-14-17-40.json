@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Remove unneeded version file",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "elcraig@microsoft.com"
+}
