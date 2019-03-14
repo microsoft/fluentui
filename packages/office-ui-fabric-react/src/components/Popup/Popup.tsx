@@ -33,6 +33,7 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
       tempActive = doc.activeElement;
     }
 
+    // Seek inner-most frame's activeElement to set focus on dismissal
     while (tempActive !== null && tempActive instanceof HTMLIFrameElement) {
       if (tempActive.contentDocument !== null && tempActive.contentDocument.activeElement !== null) {
         tempActiveLastSeen = tempActive;
