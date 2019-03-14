@@ -60,6 +60,11 @@ exports[`Component Examples renders TextField.OnRenderDescription.Example.tsx co
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-describedby="TextFieldDescription1"

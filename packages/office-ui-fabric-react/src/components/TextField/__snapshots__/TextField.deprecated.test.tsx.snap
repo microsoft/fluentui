@@ -57,6 +57,11 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+      style={
+        Object {
+          "border": "",
+        }
+      }
     >
       <div
         className=

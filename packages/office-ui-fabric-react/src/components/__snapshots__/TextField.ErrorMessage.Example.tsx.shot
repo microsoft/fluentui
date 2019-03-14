@@ -88,6 +88,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -238,6 +243,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -392,6 +402,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             &:focus, &:hover {
               border-color: #a80000;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-describedby="TextFieldDescription5"
@@ -550,6 +565,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -700,6 +720,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -854,6 +879,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             &:focus, &:hover {
               border-color: #a80000;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-describedby="TextFieldDescription11"
@@ -1022,6 +1052,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -1173,6 +1208,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -1324,6 +1364,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -1492,6 +1537,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -1647,6 +1697,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             &:focus, &:hover {
               border-color: #a80000;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-describedby="TextFieldDescription21"
@@ -1810,6 +1865,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
+          style={
+            Object {
+              "border": "",
+            }
+          }
         >
           <input
             aria-invalid={false}
@@ -2087,6 +2147,11 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
               &:focus, &:hover {
                 border-color: #a80000;
               }
+          style={
+            Object {
+              "border": "",
+            }
+          }
         >
           <input
             aria-describedby="TextFieldDescription28"

@@ -60,6 +60,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <div
           className=
@@ -265,6 +270,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <div
           className=

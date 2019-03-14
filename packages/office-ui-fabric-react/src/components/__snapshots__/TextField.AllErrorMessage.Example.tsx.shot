@@ -92,6 +92,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
             &:focus, &:hover {
               border-color: #a80000;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-describedby="TextFieldDescription1"
@@ -226,6 +231,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
             &:focus, &:hover {
               border-color: #a80000;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-describedby="TextFieldDescription3"
@@ -406,6 +416,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
             &:focus, &:hover {
               border-color: #a80000;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-describedby="TextFieldDescription5"
@@ -571,6 +586,11 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
             &:focus, &:hover {
               border-color: #a80000;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <textarea
           aria-describedby="TextFieldDescription7"

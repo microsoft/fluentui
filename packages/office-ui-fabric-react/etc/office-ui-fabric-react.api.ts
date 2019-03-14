@@ -11146,6 +11146,8 @@ interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTM
 
 // @public (undocumented)
 interface ITextFieldState {
+  // (undocumented)
+  color: string;
   errorMessage: string;
   isFocused: boolean;
   // (undocumented)

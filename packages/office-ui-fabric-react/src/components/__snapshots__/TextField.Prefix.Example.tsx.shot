@@ -60,6 +60,11 @@ exports[`Component Examples renders TextField.Prefix.Example.tsx correctly 1`] =
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <div
           className=
@@ -239,6 +244,11 @@ exports[`Component Examples renders TextField.Prefix.Example.tsx correctly 1`] =
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <div
           className=

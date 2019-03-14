@@ -86,6 +86,11 @@ exports[`TextField renders TextField correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+      style={
+        Object {
+          "border": "",
+        }
+      }
     >
       <input
         aria-invalid={false}
@@ -242,6 +247,11 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+      style={
+        Object {
+          "border": "",
+        }
+      }
     >
       <textarea
         aria-invalid={false}
@@ -400,6 +410,11 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
+      style={
+        Object {
+          "border": "",
+        }
+      }
     >
       <textarea
         aria-invalid={false}
@@ -579,6 +594,11 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
           &:focus, &:hover {
             border-color: #a80000;
           }
+      style={
+        Object {
+          "border": "",
+        }
+      }
     >
       <div
         className=
@@ -814,6 +834,11 @@ exports[`TextField renders multiline TextField correctly with props affecting st
           &:focus, &:hover {
             border-color: #a80000;
           }
+      style={
+        Object {
+          "border": "",
+        }
+      }
     >
       <div
         className=
@@ -1051,6 +1076,11 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
           &:focus, &:hover {
             border-color: #a80000;
           }
+      style={
+        Object {
+          "border": "",
+        }
+      }
     >
       <div
         className=

@@ -30,6 +30,9 @@ export interface ITextFieldState {
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
   errorMessage: string;
+
+  /* The color of the border to be used in case of a required TextField */
+  color: string;
 }
 
 const DEFAULT_STATE_VALUE = '';
@@ -106,7 +109,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
     this.state = {
       value: this._latestValue,
       isFocused: false,
-      errorMessage: ''
+      errorMessage: '',
+      color: ''
     };
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
@@ -230,7 +234,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
       <div className={this._classNames.root}>
         <div className={this._classNames.wrapper}>
           {onRenderLabel(this.props, this._onRenderLabel)}
-          <div className={this._classNames.fieldGroup}>
+          <div className={this._classNames.fieldGroup} style={{ border: this.state.color }}>
             {(addonString !== undefined || this.props.onRenderAddon) && (
               <div className={this._classNames.prefix}>{onRenderAddon(this.props, this._onRenderAddon)}</div>
             )}
@@ -346,6 +350,12 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    if (ev.target.required) {
+      if (!ev.target.value) {
+        this.setState({ color: '' });
+      }
+    }
+
     if (this.props.onFocus) {
       this.props.onFocus(ev);
     }
@@ -357,6 +367,11 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    if (ev.target.required) {
+      if (!ev.target.value) {
+        this.setState({ color: '1px solid rgb(168, 0, 0)' });
+      }
+    }
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
@@ -441,6 +456,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         aria-invalid={!!this.state.errorMessage}
         aria-label={this.props.ariaLabel}
         readOnly={this.props.readOnly}
+        required={this.props.required}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
       />
@@ -464,6 +480,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this.state.errorMessage}
         readOnly={this.props.readOnly}
+        required={this.props.required}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
       />

@@ -88,6 +88,11 @@ exports[`Component Examples renders TextField.Icon.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}
@@ -265,6 +270,11 @@ exports[`Component Examples renders TextField.Icon.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}

@@ -60,6 +60,11 @@ exports[`Component Examples renders TextField.Suffix.Example.tsx correctly 1`] =
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
             }
+        style={
+          Object {
+            "border": "",
+          }
+        }
       >
         <input
           aria-invalid={false}

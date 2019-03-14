@@ -2336,6 +2336,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                       }
+                  style={
+                    Object {
+                      "border": "",
+                    }
+                  }
                 >
                   <input
                     aria-invalid={false}

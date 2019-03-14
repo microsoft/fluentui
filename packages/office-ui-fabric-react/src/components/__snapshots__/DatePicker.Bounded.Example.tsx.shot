@@ -98,6 +98,11 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
+            style={
+              Object {
+                "border": "",
+              }
+            }
           >
             <input
               aria-invalid={false}
