@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "List: Remove duplicate page rows iteration and add tests for SparseArray scenarios\"",
+      "comment": "List: Remove duplicate page rows iteration and add tests for SparseArray scenarios",
       "type": "patch"
     }
   ],
