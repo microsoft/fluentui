@@ -1,0 +1,9 @@
+{
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "Image: Fix typo in width prop doc block",
+    "type": "none"
+  }],
+  "packageName": "office-ui-fabric-react",
+  "email": "keco@microsoft.com"
+}
