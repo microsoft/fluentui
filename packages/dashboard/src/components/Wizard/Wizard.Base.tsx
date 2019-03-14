@@ -4,16 +4,16 @@ import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import './WizardCss.scss';
+import { wizardAnimationDurationMilliSec } from './Wizard.styles';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
-export interface IWizardBaseState {
+export interface IWizardState {
   currentIndexShowing: number;
 }
 
 /** Component for Wizard Base */
-export class WizardBase extends React.Component<IWizardProps, IWizardBaseState> {
+export class WizardBase extends React.Component<IWizardProps, IWizardState> {
   constructor(props: IWizardProps) {
     super(props);
 
@@ -22,14 +22,16 @@ export class WizardBase extends React.Component<IWizardProps, IWizardBaseState> 
     };
   }
 
-  // If currentIndexShowing state is being updated, then we should not render the component
-  public shouldComponentUpdate(): boolean {
-    let ret = true;
-    const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
-    if (this.state.currentIndexShowing !== wizardStepProps.index!) {
-      ret = false;
+  // If currentIndexShowing state is being updated, then we should not render the component.
+  // Because, we are sure that other props are not changed if currentIndexShowing is different,
+  // as it is done only from componentDidUpdate method
+  // tslint:disable-next-line: no-any
+  public shouldComponentUpdate(nextProps: IWizardProps, nextState: IWizardState, nextContext: any): boolean {
+    // currentIndexShowing will change only post render of new step, so, we dont need to re-render if this is changed
+    if (this.state.currentIndexShowing !== nextState.currentIndexShowing) {
+      return false;
     }
-    return ret;
+    return true;
   }
 
   // If update state currentIndexShowing to the new step, after component is rendered
@@ -65,9 +67,22 @@ export class WizardBase extends React.Component<IWizardProps, IWizardBaseState> 
     const contentTitleKey = 'contentTitle-' + wizardStepProps.id;
     const contentKey = 'content-' + wizardStepProps.id;
 
-    let mainStepTransitionClass = 'stepSlideUp';
+    let mainStepTransitionClass = {
+      enter: classNames.stepSlideUpEnter,
+      enterActive: classNames.stepSlideUpEnterActive,
+      exit: classNames.stepSlideUpExit,
+      exitActive: classNames.stepSlideUpExitActive,
+      exitDone: classNames.stepSlideUpExitDone
+    };
+
     if (!wizardStyleProps.clickedForward) {
-      mainStepTransitionClass = 'stepSlideDown';
+      mainStepTransitionClass = {
+        enter: classNames.stepSlideDownEnter,
+        enterActive: classNames.stepSlideDownEnterActive,
+        exit: classNames.stepSlideDownExit,
+        exitActive: classNames.stepSlideDownExitActive,
+        exitDone: classNames.stepSlideDownExitDone
+      };
     }
 
     return (
@@ -77,7 +92,12 @@ export class WizardBase extends React.Component<IWizardProps, IWizardBaseState> 
         </div>
         <div className={classNames.contentAnimSection}>
           <TransitionGroup>
-            <CSSTransition key={contentAnimKey} className={classNames.contentSection} classNames={mainStepTransitionClass} timeout={500}>
+            <CSSTransition
+              key={contentAnimKey}
+              className={classNames.contentSection}
+              classNames={mainStepTransitionClass}
+              timeout={wizardAnimationDurationMilliSec}
+            >
               <div key={contentSectionKey}>
                 <div key={contentTitleKey} className={classNames.contentTitle}>
                   {wizardStepProps.wizardContent!.contentTitleElement}

@@ -97,6 +97,27 @@ export interface IWizardStyles {
   contentTitle: IStyle;
 
   content: IStyle;
+
+  // React transition classes
+  stepSlideUpEnter: IStyle;
+
+  stepSlideUpEnterActive: IStyle;
+
+  stepSlideUpExit: IStyle;
+
+  stepSlideUpExitActive: IStyle;
+
+  stepSlideUpExitDone: IStyle;
+
+  stepSlideDownEnter: IStyle;
+
+  stepSlideDownEnterActive: IStyle;
+
+  stepSlideDownExit: IStyle;
+
+  stepSlideDownExitActive: IStyle;
+
+  stepSlideDownExitDone: IStyle;
 }
 
 export interface IWizardStyleProps {
