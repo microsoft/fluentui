@@ -25,7 +25,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
 
   public render(): JSX.Element {
     const { link, isNavCollapsed } = this.props;
-    const { hasSelectedNestedLink } = this.state;
+    const { hasSelectedNestedLink, isExpanded } = this.state;
 
     return (
       <>
@@ -44,7 +44,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
           hasSelectedNestedLink={hasSelectedNestedLink}
           hasNestedMenu={true}
           isNested={false}
-          isExpanded={this.state.isExpanded}
+          isExpanded={isExpanded}
           role="menuitem"
           offsetUpdated={this._offsetUpdated}
         />

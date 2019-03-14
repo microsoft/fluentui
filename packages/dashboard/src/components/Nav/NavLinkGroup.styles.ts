@@ -13,6 +13,10 @@ export const getStyles = (props: INavLinkGroupStyleProps): INavLinkGroupStyles =
       },
       AnimationClassNames.slideDownIn20
     ],
+    // we should hover here to show the child menu
+    // display none when collapsed and not expanded
+    // change to position absolute on hover in the collapsed hover state
+    // position can be normal otherwise
     nestedNavMenuWhenNavCollapsed: [
       {
         display: 'none',
