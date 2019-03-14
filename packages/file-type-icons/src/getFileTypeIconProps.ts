@@ -7,7 +7,7 @@ const GENERIC_FILE = 'genericfile';
 const FOLDER = 'folder';
 const SHARED_FOLDER = 'sharedfolder';
 const DOCSET_FOLDER = 'docset';
-const LIST_ITEM = 'listitem';
+const LIST_ITEM = 'splist';
 const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
 export type FileTypeIconSize = 16 | 20 | 32 | 40 | 48 | 64 | 96;

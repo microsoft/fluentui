@@ -454,6 +454,11 @@
     {
       "packageName": "@uifabric/react-cards",
       "projectFolder": "packages/react-cards",
+      "versionPolicyName": "lockedMajor"
+    },
+    {
+      "packageName": "@uifabric/codepen-loader",
+      "projectFolder": "packages/codepen-loader",
       "shouldPublish": false
     }
   ]

@@ -68,9 +68,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       &:hover:active .ms-Icon-47 {
         color: #212121;
       }
-  content="Default button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -109,10 +107,12 @@ exports[`Button view renders a default Button with content correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
-            font-size: inherit;
-            font-weight: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
             overflow: visible;
+            webkit-font-smoothing: antialiased;
           }
     >
       Default button
@@ -190,9 +190,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       &:hover:active .ms-Icon-57 {
         color: #a6a6a6;
       }
-  content="Disabled primary button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -231,10 +229,12 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
-            font-size: inherit;
-            font-weight: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
             overflow: visible;
+            webkit-font-smoothing: antialiased;
           }
     >
       Disabled primary button
@@ -311,9 +311,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       &:hover:active .ms-Icon-55 {
         color: #ffffff;
       }
-  content="Primary button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -352,10 +350,12 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
-            font-size: inherit;
-            font-weight: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
             overflow: visible;
+            webkit-font-smoothing: antialiased;
           }
     >
       Primary button

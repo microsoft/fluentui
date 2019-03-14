@@ -1,8 +1,11 @@
 import { IColumn } from './DetailsList.types';
 import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import { IDetailsListProps } from './DetailsList';
+import { IDetailsRowProps } from './DetailsRow';
 
-export interface IDetailsRowFieldsProps extends Pick<IDetailsListProps, 'onRenderItemColumn'> {
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+
+export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   /**
    * Data source for this component
    */

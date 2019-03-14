@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';

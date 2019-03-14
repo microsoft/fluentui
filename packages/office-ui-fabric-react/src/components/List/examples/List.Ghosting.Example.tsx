@@ -4,11 +4,13 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import './List.Ghosting.Example.scss';
 
+export type IExampleItem = { name: string; thumbnail: string };
+
 export interface IListGhostingExampleProps {
-  items: any[];
+  items: IExampleItem[];
 }
 
-export class ListGhostingExample extends React.Component<IListGhostingExampleProps, {}> {
+export class ListGhostingExample extends React.Component<IListGhostingExampleProps> {
   constructor(props: IListGhostingExampleProps) {
     super(props);
   }
@@ -25,7 +27,7 @@ export class ListGhostingExample extends React.Component<IListGhostingExamplePro
     );
   }
 
-  private _onRenderCell(item: any, index: number, isScrolling: boolean): JSX.Element {
+  private _onRenderCell(item: IExampleItem, index: number, isScrolling: boolean): JSX.Element {
     return (
       <div className="ms-ListGhostingExample-itemCell" data-is-focusable={true}>
         <Image
