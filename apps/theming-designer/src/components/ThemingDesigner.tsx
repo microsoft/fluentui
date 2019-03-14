@@ -4,6 +4,7 @@ import { ThemingDesignerColorPicker } from './ThemingDesignerColorPicker';
 import { Palette } from './Palette';
 import { AccChecker } from './AccChecker';
 import { SemanticSlots } from './SemanticSlots';
+import { Samples } from './Samples';
 
 import { Stack } from '../../../../packages/office-ui-fabric-react/lib/Stack';
 
@@ -16,8 +17,9 @@ export class ThemingDesigner extends React.Component {
         <div className={styles.sidebar}>
           <ThemingDesignerColorPicker />
         </div>
-        <div className={styles.main}>
-          <Stack>
+        <div>
+          <Stack className={styles.main}>
+            <Samples />
             <AccChecker />
             <Palette />
             <SemanticSlots />

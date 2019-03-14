@@ -4,10 +4,9 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Dropdown } from '../../../../packages/office-ui-fabric-react/lib/Dropdown';
 import { Text } from '../../../../packages/office-ui-fabric-react/lib/Text';
 import { TextField } from '../../../../packages/office-ui-fabric-react/lib/TextField';
-import { IColor } from 'office-ui-fabric-react/lib/index';
 import { IColorCellProps, ColorPickerGridCell, SwatchColorPicker } from '../../../../packages/office-ui-fabric-react/lib/SwatchColorPicker';
 
-const DEFAULT_OPTIONS: IColorCellProps[] = [{ id: 'primary', label: 'green', color: '#00ff00' }];
+//const DEFAULT_OPTIONS: IColorCellProps[] = [{ id: 'primary', label: 'green', color: '#00ff00' }];
 //<ColorPickerGridCell selected={false} item={DEFAULT_OPTIONS} color={'#ffa500'} label={'orange'} circle={true} />
 const styles: any = stylesImport;
 
@@ -26,7 +25,7 @@ export class ThemingDesignerColorPicker extends React.Component {
       <>
         <h1>Color</h1>
         <span>Presets</span>
-        <Stack gap={10} padding={10}>
+        <Stack gap={15} padding={10}>
           <Dropdown
             placeholder="Select an Option"
             label="Theme dropdown"

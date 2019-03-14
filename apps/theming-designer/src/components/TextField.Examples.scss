@@ -1,0 +1,11 @@
+//@import '../../../common/_variables';
+
+:global {
+  .docs-TextFieldExample {
+    .ms-TextField {
+      margin: 0 0 15px 0;
+      max-width: 200px;
+      //max-width: $maxFieldWidth;
+    }
+  }
+}

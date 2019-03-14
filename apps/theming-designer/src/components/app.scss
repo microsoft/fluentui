@@ -16,7 +16,9 @@ html {
 }
 
 .main {
-  background: #ffc0cb;
+  flex-direction: column;
+  // display: flex;
+  background: #fff;
   flex: 1;
   margin: 0;
   padding: 0;
@@ -62,5 +64,9 @@ html {
     left: 5px;
     top: 5px;
     border: 1px solid black;
+  }
+  .textfieldexample {
+    padding: 20px;
+    max-width: 40%;
   }
 }
