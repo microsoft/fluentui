@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/codepen-loader",
+      "comment": "Add @uifabric/set-version to codepen loader.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/codepen-loader",
+  "email": "jdh@microsoft.com"
+}
