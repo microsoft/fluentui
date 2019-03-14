@@ -82,6 +82,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       <div {...divProps} className={this._classNames.root}>
         {!contentLoaded && (
           <div style={{ width: width ? width : '100%' }} className={this._classNames.shimmerWrapper}>
+            <div className={this._classNames.shimmerGradient} />
             {customElementsGroup ? (
               customElementsGroup
             ) : (

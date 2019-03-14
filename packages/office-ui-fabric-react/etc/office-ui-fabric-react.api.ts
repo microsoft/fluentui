@@ -10569,6 +10569,7 @@ interface IShimmerStyles {
   dataWrapper?: IStyle;
   root?: IStyle;
   screenReaderText?: IStyle;
+  shimmerGradient?: IStyle;
   shimmerWrapper?: IStyle;
 }
 
