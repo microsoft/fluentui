@@ -8,39 +8,14 @@ import { wizardAnimationDurationMilliSec } from './Wizard.styles';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
-export interface IWizardState {
-  currentIndexShowing: number;
-}
-
 /** Component for Wizard Base */
-export class WizardBase extends React.Component<IWizardProps, IWizardState> {
+export class WizardBase extends React.Component<IWizardProps, {}> {
+  private lastStepIndexShown: number;
+
   constructor(props: IWizardProps) {
     super(props);
 
-    this.state = {
-      currentIndexShowing: 0
-    };
-  }
-
-  // If currentIndexShowing state is being updated, then we should not render the component.
-  // Because, we are sure that other props are not changed if currentIndexShowing is different,
-  // as it is done only from componentDidUpdate method
-  // tslint:disable-next-line: no-any
-  public shouldComponentUpdate(nextProps: IWizardProps, nextState: IWizardState, nextContext: any): boolean {
-    // currentIndexShowing will change only post render of new step, so, we dont need to re-render if this is changed
-    if (this.state.currentIndexShowing !== nextState.currentIndexShowing) {
-      return false;
-    }
-    return true;
-  }
-
-  // If update state currentIndexShowing to the new step, after component is rendered
-  public componentDidUpdate(): void {
-    console.log('componentDidUpdate');
-    const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
-    if (this.state.currentIndexShowing !== wizardStepProps.index!) {
-      this.setState({ currentIndexShowing: wizardStepProps.index! });
-    }
+    this.lastStepIndexShown = 0;
   }
 
   public render(): React.ReactNode {
@@ -57,8 +32,11 @@ export class WizardBase extends React.Component<IWizardProps, IWizardState> {
       theme: this.props.theme!,
       isSubStep: wizardStepProps.isSubStep!,
       isFirstSubStep: wizardStepProps.isFirstSubStep!,
-      clickedForward: this.state.currentIndexShowing <= wizardStepProps.index! ? true : false
+      clickedForward: this.lastStepIndexShown <= wizardStepProps.index! ? true : false
     };
+
+    // Update the step index showing
+    this.lastStepIndexShown = wizardStepProps.index!;
 
     const classNames = getClassNames(this.props.styles!, wizardStyleProps);
 
