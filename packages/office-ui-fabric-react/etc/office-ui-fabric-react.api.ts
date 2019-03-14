@@ -706,7 +706,7 @@ class CompactPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
@@ -1956,25 +1956,8 @@ interface IBasePickerStyles {
   text: IStyle;
 }
 
-// @public (undocumented)
-interface IBasePickerSuggestionsProps {
-  className?: string;
-  forceResolveText?: string;
-  loadingText?: string;
-  mostRecentlyUsedHeaderText?: string;
-  noResultsFoundText?: string;
-  onRenderNoResultFound?: IRenderFunction<void>;
-  resultsFooter?: () => JSX.Element;
-  resultsFooterFull?: () => JSX.Element;
-  resultsMaximumNumber?: number;
-  searchForMoreText?: string;
-  searchingText?: string;
-  showRemoveButtons?: boolean;
-  suggestionsAvailableAlertText?: string;
-  suggestionsClassName?: string;
-  suggestionsContainerAriaLabel?: string;
-  suggestionsHeaderText?: string;
-  suggestionsItemClassName?: string;
+// @public
+interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
 }
 
 // @public
@@ -11514,7 +11497,7 @@ class ListPeoplePickerBase extends MemberListPeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
@@ -11652,7 +11635,7 @@ class NormalPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
