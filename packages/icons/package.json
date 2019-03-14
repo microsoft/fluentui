@@ -22,7 +22,6 @@
   "disabledTasks": [
     "sass",
     "jest",
-    "build-codepen-examples",
     "verify-api-extractor"
   ],
   "devDependencies": {
@@ -31,7 +30,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": ">=1.1.3 <2.0.0",
-    "@uifabric/styling": ">=6.44.1 <7.0.0",
+    "@uifabric/styling": ">=6.45.0 <7.0.0",
     "tslib": "^1.7.1"
   }
 }

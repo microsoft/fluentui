@@ -83,7 +83,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                 <span
                   id={`${parentId}-${column.key}`}
                   aria-label={column.isIconOnly ? column.name : undefined}
-                  aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
+                  aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name`}
                   className={classNames.cellTitle}
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                   role={

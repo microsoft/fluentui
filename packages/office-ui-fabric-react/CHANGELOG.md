@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Mar 2019 12:31:43 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+
+## 6.156.0
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Minor changes
+
+- Text: default to fonts.medium
+- Dropdown: Type onRenderTitle as Array<IDropdownOption> only
+
+### Patches
+
+- BaseButton: Correctly clone props instead of mutating them
 
 ## 6.155.0
 Tue, 12 Mar 2019 12:31:43 GMT

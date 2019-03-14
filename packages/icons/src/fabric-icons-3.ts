@@ -15,9 +15,15 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-3"`,
-      src: `url('${baseUrl}fabric-icons-3-ccddc9e1.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-3-7c253e01.woff') format('woff')`
     },
     icons: {
+      PartlyCloudyNight: '\uE9C1',
+      ClearNight: '\uE9C2',
+      RainShowersDay: '\uE9C3',
+      Rain: '\uE9C4',
+      Thunderstorms: '\uE9C6',
+      RainSnow: '\uE9C7',
       Snow: '\uE9C8',
       BlowingSnow: '\uE9C9',
       Frigid: '\uE9CA',
@@ -111,13 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       StoreLogo16: '\uEA96',
       MultiSelectMirrored: '\uEA98',
       Broom: '\uEA99',
-      Cocktails: '\uEA9D',
-      Wines: '\uEABF',
-      Articles: '\uEAC1',
-      Cycling: '\uEAC7',
-      DietPlanNotebook: '\uEAC8',
-      Pill: '\uEACB',
-      ExerciseTracker: '\uEACC'
+      Cocktails: '\uEA9D'
     }
   };
 

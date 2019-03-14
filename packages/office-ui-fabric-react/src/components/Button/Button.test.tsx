@@ -11,6 +11,7 @@ import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
 import { renderIntoDocument } from '../../common/testUtilities';
+import { IContextualMenuProps } from '../ContextualMenu/index';
 
 const alertClicked = (): void => {
   /*noop*/
@@ -281,6 +282,28 @@ describe('Button', () => {
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+      });
+
+      it('does not mutate menuprops hidden property', () => {
+        const menuProps: IContextualMenuProps = {
+          hidden: false,
+          items: [
+            {
+              key: 'emailMessage',
+              text: 'Email message',
+              iconProps: { iconName: 'Mail' }
+            }
+          ]
+        };
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton toggle={true} split={true} onClick={alertClicked} persistMenu={true} menuProps={menuProps}>
+            Hello
+          </DefaultButton>
+        );
+
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        expect(renderedDOM).toBeTruthy();
+        expect(menuProps.hidden).toEqual(false);
       });
 
       it('applies aria-pressed to a checked split button', () => {
@@ -952,16 +975,16 @@ describe('Button', () => {
 
       it(`If button has text but labelElementId provided in menuProps, contextual menu has
       aria-labelledBy reflecting labelElementId`, () => {
-          const explicitLabelElementId = 'id_ExplicitLabel';
-          const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
-            { labelElementId: explicitLabelElementId },
-            'Button Text'
-          );
+        const explicitLabelElementId = 'id_ExplicitLabel';
+        const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
+          { labelElementId: explicitLabelElementId },
+          'Button Text'
+        );
 
-          expect(contextualMenuElement).not.toBeNull();
-          expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
-          expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
-        });
+        expect(contextualMenuElement).not.toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-label')).toBeNull();
+        expect(contextualMenuElement.getAttribute('aria-labelledBy')).toEqual(explicitLabelElementId);
+      });
     });
   });
 });

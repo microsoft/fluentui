@@ -401,10 +401,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   /** Render text in dropdown input */
-  private _onRenderTitle = (item: IDropdownOption[]): JSX.Element => {
+  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
     const { multiSelectDelimiter = ', ' } = this.props;
 
-    const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
+    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
     return <span>{displayTxt}</span>;
   };
 

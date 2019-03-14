@@ -15,7 +15,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-498a310c.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-0-2a8db1f5.woff') format('woff')`
     },
     icons: {
       InternetSharing: '\uE704',
@@ -63,6 +63,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Down: '\uE74B',
       OEM: '\uE74C',
       Save: '\uE74E',
+      ReturnKey: '\uE751',
       Cloud: '\uE753',
       Flashlight: '\uE754',
       CommandPrompt: '\uE756',
@@ -78,6 +79,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       KeyboardClassic: '\uE765',
       Play: '\uE768',
       Pause: '\uE769',
+      InkingTool: '\uE76D',
       Emoji2: '\uE76E',
       GripperBarHorizontal: '\uE76F',
       System: '\uE770',
@@ -89,6 +91,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Unpin: '\uE77A',
       Contact: '\uE77B',
       Memo: '\uE77C',
+      IncomingCall: '\uE77E',
       Paste: '\uE77F',
       WindowsLogo: '\uE782',
       Error: '\uE783',
@@ -114,10 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       ThumbnailView: '\uE7B6',
       Package: '\uE7B8',
       Telemarketer: '\uE7B9',
-      Warning: '\uE7BA',
-      Financial: '\uE7BB',
-      Education: '\uE7BE',
-      ShoppingCart: '\uE7BF'
+      Warning: '\uE7BA'
     }
   };
 

@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';

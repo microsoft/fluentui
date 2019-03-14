@@ -6,92 +6,92 @@ import { StackStatus } from './Stack.checklist';
 // Vertical Stack Examples
 import { VerticalStackBasicExample } from './examples/Stack.Vertical.Basic.Example';
 const VerticalStackBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Basic.Example.tsx') as string;
-const VerticalStackBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Basic.Example.Codepen.txt') as string;
+const VerticalStackBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Basic.Example.tsx') as string;
 
 import { VerticalStackReversedExample } from './examples/Stack.Vertical.Reversed.Example';
 const VerticalStackReversedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Reversed.Example.tsx') as string;
-const VerticalStackReversedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Reversed.Example.Codepen.txt') as string;
+const VerticalStackReversedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Reversed.Example.tsx') as string;
 
 import { VerticalStackSpacingExample } from './examples/Stack.Vertical.Spacing.Example';
 const VerticalStackSpacingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Spacing.Example.tsx') as string;
-const VerticalStackSpacingExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Spacing.Example.Codepen.txt') as string;
+const VerticalStackSpacingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Spacing.Example.tsx') as string;
 
 import { VerticalStackGrowExample } from './examples/Stack.Vertical.Grow.Example';
 const VerticalStackGrowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Grow.Example.tsx') as string;
-const VerticalStackGrowExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Grow.Example.Codepen.txt') as string;
+const VerticalStackGrowExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Grow.Example.tsx') as string;
 
 import { VerticalStackShrinkExample } from './examples/Stack.Vertical.Shrink.Example';
 const VerticalStackShrinkExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Shrink.Example.tsx') as string;
-const VerticalStackShrinkExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Shrink.Example.Codepen.txt') as string;
+const VerticalStackShrinkExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Shrink.Example.tsx') as string;
 
 import { VerticalStackWrapExample } from './examples/Stack.Vertical.Wrap.Example';
 const VerticalStackWrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Wrap.Example.tsx') as string;
-const VerticalStackWrapExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Wrap.Example.Codepen.txt') as string;
+const VerticalStackWrapExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Wrap.Example.tsx') as string;
 
 import { VerticalStackWrapAdvancedExample } from './examples/Stack.Vertical.WrapAdvanced.Example';
 const VerticalStackWrapAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.WrapAdvanced.Example.tsx') as string;
-const VerticalStackWrapAdvancedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.WrapAdvanced.Example.Codepen.txt') as string;
+const VerticalStackWrapAdvancedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.WrapAdvanced.Example.tsx') as string;
 
 import { VerticalStackWrapNestedExample } from './examples/Stack.Vertical.WrapNested.Example';
 const VerticalStackWrapNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.WrapNested.Example.tsx') as string;
-const VerticalStackWrapNestedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.WrapNested.Example.Codepen.txt') as string;
+const VerticalStackWrapNestedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.WrapNested.Example.tsx') as string;
 
 import { VerticalStackVerticalAlignExample } from './examples/Stack.Vertical.VerticalAlign.Example';
 const VerticalStackVerticalAlignExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.VerticalAlign.Example.tsx') as string;
-const VerticalStackVerticalAlignExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.VerticalAlign.Example.Codepen.txt') as string;
+const VerticalStackVerticalAlignExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.VerticalAlign.Example.tsx') as string;
 
 import { VerticalStackHorizontalAlignExample } from './examples/Stack.Vertical.HorizontalAlign.Example';
 const VerticalStackHorizontalAlignExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.HorizontalAlign.Example.tsx') as string;
-const VerticalStackHorizontalAlignExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.HorizontalAlign.Example.Codepen.txt') as string;
+const VerticalStackHorizontalAlignExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.HorizontalAlign.Example.tsx') as string;
 
 import { VerticalStackConfigureExample } from './examples/Stack.Vertical.Configure.Example';
 const VerticalStackConfigureExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Configure.Example.tsx') as string;
-const VerticalStackConfigureExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Vertical.Configure.Example.Codepen.txt') as string;
+const VerticalStackConfigureExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Vertical.Configure.Example.tsx') as string;
 
 // Horizontal Stack Examples
 import { HorizontalStackBasicExample } from './examples/Stack.Horizontal.Basic.Example';
 const HorizontalStackBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Basic.Example.tsx') as string;
-const HorizontalStackBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.Basic.Example.Codepen.txt') as string;
+const HorizontalStackBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Basic.Example.tsx') as string;
 
 import { HorizontalStackReversedExample } from './examples/Stack.Horizontal.Reversed.Example';
 const HorizontalStackReversedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Reversed.Example.tsx') as string;
-const HorizontalStackReversedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.Reversed.Example.Codepen.txt') as string;
+const HorizontalStackReversedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Reversed.Example.tsx') as string;
 
 import { HorizontalStackSpacingExample } from './examples/Stack.Horizontal.Spacing.Example';
 const HorizontalStackSpacingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Spacing.Example.tsx') as string;
-const HorizontalStackSpacingExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.Spacing.Example.Codepen.txt') as string;
+const HorizontalStackSpacingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Spacing.Example.tsx') as string;
 
 import { HorizontalStackGrowExample } from './examples/Stack.Horizontal.Grow.Example';
 const HorizontalStackGrowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Grow.Example.tsx') as string;
-const HorizontalStackGrowExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.Grow.Example.Codepen.txt') as string;
+const HorizontalStackGrowExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Grow.Example.tsx') as string;
 
 import { HorizontalStackShrinkExample } from './examples/Stack.Horizontal.Shrink.Example';
 const HorizontalStackShrinkExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Shrink.Example.tsx') as string;
-const HorizontalStackShrinkExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.Shrink.Example.Codepen.txt') as string;
+const HorizontalStackShrinkExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Shrink.Example.tsx') as string;
 
 import { HorizontalStackWrapExample } from './examples/Stack.Horizontal.Wrap.Example';
 const HorizontalStackWrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Wrap.Example.tsx') as string;
-const HorizontalStackWrapExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.Wrap.Example.Codepen.txt') as string;
+const HorizontalStackWrapExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Wrap.Example.tsx') as string;
 
 import { HorizontalStackWrapAdvancedExample } from './examples/Stack.Horizontal.WrapAdvanced.Example';
 const HorizontalStackWrapAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.WrapAdvanced.Example.tsx') as string;
-const HorizontalStackWrapAdvancedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.WrapAdvanced.Example.Codepen.txt') as string;
+const HorizontalStackWrapAdvancedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.WrapAdvanced.Example.tsx') as string;
 
 import { HorizontalStackWrapNestedExample } from './examples/Stack.Horizontal.WrapNested.Example';
 const HorizontalStackWrapNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.WrapNested.Example.tsx') as string;
-const HorizontalStackWrapNestedExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.WrapNested.Example.Codepen.txt') as string;
+const HorizontalStackWrapNestedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.WrapNested.Example.tsx') as string;
 
 import { HorizontalStackHorizontalAlignExample } from './examples/Stack.Horizontal.HorizontalAlign.Example';
 const HorizontalStackHorizontalAlignExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.HorizontalAlign.Example.tsx') as string;
-const HorizontalStackHorizontalAlignExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.HorizontalAlign.Example.Codepen.txt') as string;
+const HorizontalStackHorizontalAlignExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.HorizontalAlign.Example.tsx') as string;
 
 import { HorizontalStackVerticalAlignExample } from './examples/Stack.Horizontal.VerticalAlign.Example';
 const HorizontalStackVerticalAlignExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.VerticalAlign.Example.tsx') as string;
-const HorizontalStackVerticalAlignExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.VerticalAlign.Example.Codepen.txt') as string;
+const HorizontalStackVerticalAlignExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.VerticalAlign.Example.tsx') as string;
 
 import { HorizontalStackConfigureExample } from './examples/Stack.Horizontal.Configure.Example';
 const HorizontalStackConfigureExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Configure.Example.tsx') as string;
-const HorizontalStackConfigureExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Stack/Stack.Horizontal.Configure.Example.Codepen.txt') as string;
+const HorizontalStackConfigureExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Stack/examples/Stack.Horizontal.Configure.Example.tsx') as string;
 
 export const StackPageProps: IDocPageProps = {
   title: 'Stack',
