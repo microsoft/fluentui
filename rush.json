@@ -459,7 +459,7 @@
     {
       "packageName": "@uifabric/codepen-loader",
       "projectFolder": "packages/codepen-loader",
-      "shouldPublish": true
+      "shouldPublish": false
     }
   ]
 }
