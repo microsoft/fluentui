@@ -26,8 +26,7 @@
     "update-sass-theme-files": "node ./scripts/generateDefaultThemeSassFiles.js",
     "update-snapshots": "node ../../scripts/just.js jest -u",
     "update-api": "node ../../scripts/update-api.js",
-    "codepen": "node ../../scripts/local-codepen.js",
-    "build-codepen-examples": "node ../../scripts/tasks/build-codepen-examples.js"
+    "codepen": "node ../../scripts/local-codepen.js"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",

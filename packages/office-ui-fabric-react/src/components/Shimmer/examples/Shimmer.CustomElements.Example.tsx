@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';

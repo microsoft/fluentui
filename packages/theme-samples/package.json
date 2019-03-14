@@ -21,7 +21,6 @@
   "disabledTasks": [
     "jest",
     "sass",
-    "build-codepen-examples",
     "verify-api-extractor"
   ],
   "devDependencies": {

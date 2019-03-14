@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
 import { IPersonaProps } from '../Persona/Persona.types';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { ISuggestionModel } from './Suggestions/Suggestions.types';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
@@ -188,92 +188,31 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   theme?: ITheme;
 }
 
-export interface IBasePickerSuggestionsProps {
-  /**
-   * Function that specifies what to render when no results are found.
-   */
-  onRenderNoResultFound?: IRenderFunction<void>;
-
-  /**
-   * The text that should appear at the top of the suggestion box.
-   */
-  suggestionsHeaderText?: string;
-
-  /**
-   * The text that should appear at the top of the most recently used box.
-   */
-  mostRecentlyUsedHeaderText?: string;
-
-  /**
-   * The text that should appear when no results are returned.
-   */
-  noResultsFoundText?: string;
-
-  /**
-   * Suggestions root className.
-   */
-  className?: string;
-
-  /**
-   * Suggestions List className.
-   */
-  suggestionsClassName?: string;
-
-  /**
-   * ClassName for suggestion items.
-   */
-  suggestionsItemClassName?: string;
-
-  /**
-   * The text that should appear on the button to search for more.
-   */
-  searchForMoreText?: string;
-
-  /**
-   * The text that appears indicating to the use to force resolve the input
-   */
-  forceResolveText?: string;
-
-  /**
-   * The text to display while the results are loading.
-   */
-  loadingText?: string;
-
-  /**
-   * The text to display while searching for more results in a limited suggestions list.
-   */
-  searchingText?: string;
-
-  /**
-   * A renderer that adds an element at the end of the suggestions list if it has more items than resultsMaximumNumber.
-   */
-  resultsFooterFull?: () => JSX.Element;
-
-  /**
-   * A renderer that adds an element at the end of the suggestions list when there are fewer than resultsMaximumNumber.
-   */
-  resultsFooter?: () => JSX.Element;
-
-  /**
-   * Maximum number of suggestions to show in the full suggestion list.
-   */
-  resultsMaximumNumber?: number;
-
-  /**
-   * Indicates whether to show a button with each suggestion to remove that suggestion.
-   */
-  showRemoveButtons?: boolean;
-
-  /**
-   * Screen reader message to read when there are suggestions available.
-   */
-  suggestionsAvailableAlertText?: string;
-
-  /**
-   * An ARIA label for the container that is the parent of the suggestions.
-   */
-  suggestionsContainerAriaLabel?: string;
-}
+/**
+ * Subset of picker options that may be legally passed through a picker to its
+ * internal Suggestions component.
+ */
+export interface IBasePickerSuggestionsProps<T = any>
+  extends Pick<
+    ISuggestionsProps<T>,
+    | 'onRenderNoResultFound'
+    | 'suggestionsHeaderText'
+    | 'mostRecentlyUsedHeaderText'
+    | 'noResultsFoundText'
+    | 'className'
+    | 'suggestionsClassName'
+    | 'suggestionsItemClassName'
+    | 'searchForMoreText'
+    | 'forceResolveText'
+    | 'loadingText'
+    | 'searchingText'
+    | 'resultsFooterFull'
+    | 'resultsFooter'
+    | 'resultsMaximumNumber'
+    | 'showRemoveButtons'
+    | 'suggestionsAvailableAlertText'
+    | 'suggestionsContainerAriaLabel'
+  > {}
 
 /** Validation state of the user's input. */
 export enum ValidationState {

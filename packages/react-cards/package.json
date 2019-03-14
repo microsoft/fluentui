@@ -61,7 +61,6 @@
     "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "disabledTasks": [
-    "build-codepen-examples",
     "verify-api-extractor"
   ]
 }
