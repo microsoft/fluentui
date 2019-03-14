@@ -58,19 +58,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f4f4f4;
+            overflow: hidden;
+            position: relative;
             transition: opacity 200ms;
           }
           @media screen and (-ms-high-contrast: active){& {
@@ -90,6 +80,32 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       }
     >
       <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-delay: 4.5s;
+              animation-direction: normal;
+              animation-duration: 1.5s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+              animation-timing-function: ease-in-out;
+              background: #f4f4f4
+                                  linear-gradient(
+                                    to right,
+                                    #f4f4f4 0%,
+                                    #eaeaea 50%,
+                                    #f4f4f4 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translate3d(-100%, 0, 0);
+              width: 100%;
+            }
+      />
+      <div
         style={
           Object {
             "display": "flex",
@@ -108,6 +124,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                position: relative;
               }
           style={
             Object {
@@ -253,6 +270,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                position: relative;
               }
           style={
             Object {
@@ -503,19 +521,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f4f4f4;
+            overflow: hidden;
+            position: relative;
             transition: opacity 200ms;
           }
           @media screen and (-ms-high-contrast: active){& {
@@ -535,6 +543,32 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       }
     >
       <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-delay: 4.5s;
+              animation-direction: normal;
+              animation-duration: 1.5s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+              animation-timing-function: ease-in-out;
+              background: #f4f4f4
+                                  linear-gradient(
+                                    to right,
+                                    #f4f4f4 0%,
+                                    #eaeaea 50%,
+                                    #f4f4f4 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translate3d(-100%, 0, 0);
+              width: 100%;
+            }
+      />
+      <div
         style={
           Object {
             "display": "flex",
@@ -553,6 +587,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                position: relative;
               }
           style={
             Object {
@@ -644,6 +679,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                position: relative;
               }
           style={
             Object {
@@ -894,19 +930,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       className=
           ms-Shimmer-shimmerWrapper
           {
-            animation-direction: normal;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
-            animation-timing-function: ease-in-out;
-            background: #f4f4f4
-                              linear-gradient(
-                                to right,
-                                #f4f4f4 0%,
-                                #eaeaea 50%,
-                                #f4f4f4 100%)
-                              0 0 / 90% 100%
-                              no-repeat;
+            background-color: #f4f4f4;
+            overflow: hidden;
+            position: relative;
             transition: opacity 200ms;
           }
           @media screen and (-ms-high-contrast: active){& {
@@ -926,6 +952,32 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       }
     >
       <div
+        className=
+            ms-Shimmer-shimmerGradient
+            {
+              animation-delay: 4.5s;
+              animation-direction: normal;
+              animation-duration: 1.5s;
+              animation-iteration-count: infinite;
+              animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+              animation-timing-function: ease-in-out;
+              background: #f4f4f4
+                                  linear-gradient(
+                                    to right,
+                                    #f4f4f4 0%,
+                                    #eaeaea 50%,
+                                    #f4f4f4 100%)
+                                  0 0 / 90% 100%
+                                  no-repeat;
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              transform: translate3d(-100%, 0, 0);
+              width: 100%;
+            }
+      />
+      <div
         style={
           Object {
             "display": "flex",
@@ -944,6 +996,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                position: relative;
               }
           style={
             Object {
@@ -1098,6 +1151,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  position: relative;
                 }
             style={
               Object {
@@ -1189,6 +1243,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  position: relative;
                 }
             style={
               Object {
@@ -1430,6 +1485,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  position: relative;
                 }
             style={
               Object {
