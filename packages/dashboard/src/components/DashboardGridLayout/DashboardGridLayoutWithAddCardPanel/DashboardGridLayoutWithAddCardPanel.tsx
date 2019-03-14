@@ -165,7 +165,7 @@ export class DashboardGridLayoutWithAddCardPanel extends BaseComponent<
     const lastCardIndex = currentLayout.length - 1;
     // checking if a dragging card action is performed.
     // If dragging is performed, dragging card is added to the layout whose id starts with 'n'
-    if (lastCardIndex > -1 && currentLayout[lastCardIndex].i!.startsWith('n')) {
+    if (lastCardIndex > -1 && currentLayout[lastCardIndex].i![0] === 'n') {
       const newlyAddedCardId = currentLayout[lastCardIndex].i!.substring(1);
       const newlyAddedCard = currentLayout[lastCardIndex];
       const addCardPanelCards = this.state.cardsForAddCardPanel;

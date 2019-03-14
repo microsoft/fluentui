@@ -10,6 +10,9 @@ import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
 
 const ReactDOM = require('react-dom');
 
+// Disable "ban" rule which gives spurious errors about .find()
+// tslint:disable:ban
+
 // Extend Jest Expect to allow us to map each component example to its own snapshot file.
 const snapshotsStateMap = new Map();
 const jestSnapshot = require('jest-snapshot');
@@ -49,7 +52,7 @@ expect.extend({
       snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
     }
 
-    const newThis = Object.assign({}, this, { snapshotState });
+    const newThis = { ...this, snapshotState };
     const patchedToMatchSnapshot = jestSnapshot.toMatchSnapshot.bind(newThis);
 
     return patchedToMatchSnapshot(received);

@@ -131,6 +131,7 @@ export function getTileCells(
       spacing: isLargeSize ? 8 : 12,
       marginBottom: shimmerMode ? 0 : 40,
       minRowHeight: isLargeSize ? 171 : 135,
+      // tslint:disable-next-line:ban (for .fill)
       mode: group.type === 'document' ? (size === 'small' ? TilesGridMode.fillHorizontal : TilesGridMode.stack) : TilesGridMode.fill,
       key: group.key,
       isPlaceholder: shimmerMode

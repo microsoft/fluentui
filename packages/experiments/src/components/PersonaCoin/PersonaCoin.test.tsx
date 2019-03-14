@@ -8,6 +8,9 @@ import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { Icon, Image, Text } from 'office-ui-fabric-react';
 import { setRTL } from '../../Utilities';
 
+// Disable "ban" rule which gives spurious errors about .find()
+// tslint:disable:ban
+
 const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
   root: 'test-cn-root',
   image: 'test-cn-image',

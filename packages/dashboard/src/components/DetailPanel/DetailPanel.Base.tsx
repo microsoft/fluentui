@@ -143,7 +143,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
           .catch((err: IDetailPanelErrorResult) => {
             // set message bar
             if (err && err.messageBannerSetting) {
-              const messageBannerSetting = Object.assign({}, err.messageBannerSetting);
+              const messageBannerSetting = { ...err.messageBannerSetting };
               if (messageBannerSetting.messageType === undefined) {
                 messageBannerSetting.messageType = MessageBarType.error;
               }

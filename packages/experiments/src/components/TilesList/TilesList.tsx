@@ -214,9 +214,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
             finalSize = {
               width: finalSize.width * finalScaleFactor,
+              // tslint:disable-next-line:ban (for .fill)
               height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight
             };
           } else if (
+            // tslint:disable-next-line:ban (for .fill)
             (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal) &&
             (!isLastRow || scaleFactor <= grid.maxScaleFactor)
           ) {
@@ -225,6 +227,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
             finalSize = {
               width: finalSize.width * finalScaleFactor,
+              // tslint:disable-next-line:ban (for .fill)
               height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight
             };
           }
@@ -413,6 +416,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         const totalMargin = grid.spacing * (i - rowStart);
         currentRow.scaleFactor = (boundsWidth - totalMargin) / (rowWidth - totalMargin);
 
+        // tslint:disable-next-line:ban (for .fill)
         if ((grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal) && currentRow.isLastRow) {
           if (i - rowStart > 0) {
             // If the grid is in 'fill' mode, and there is underflow in the last row, then by default, flexbox will
@@ -445,6 +449,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       if (
         !isAtGridEnd &&
+        // tslint:disable-next-line:ban (for .fill)
         currentRow.scaleFactor > (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
       ) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
@@ -496,6 +501,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const itemWidthOverHeight = item.aspectRatio || 1;
     const margin = grid.spacing / 2;
+    // tslint:disable-next-line:ban (for .fill)
     const isFill = gridMode === TilesGridMode.fill || gridMode === TilesGridMode.fillHorizontal;
     const width = itemWidthOverHeight * grid.minRowHeight;
 

@@ -8,6 +8,9 @@ import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import * as React from 'react';
 import { ISidebar, ISidebarProps, Sidebar, SidebarButton } from './index';
 
+// Disable "ban" rule which gives spurious errors about .find()
+// tslint:disable:ban
+
 describe('Sidebar', () => {
   let sidebarButtonExampleProps: ISidebarProps;
   let sidebarAccordionExampleProps: ISidebarProps;

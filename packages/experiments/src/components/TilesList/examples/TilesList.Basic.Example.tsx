@@ -41,6 +41,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
     const gridSegment: ITilesGridSegment<IBasicItem> = {
       items: this.state.items,
       key: 'grid',
+      // tslint:disable-next-line:ban (for .fill)
       mode: TilesGridMode.fill,
       minRowHeight: 100,
       spacing: 10

@@ -95,7 +95,7 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
   }
 
   private _onChange(newValue: any) {
-    const filteredItems = ITEMS.filter(item => item.text && item.text.toLowerCase().includes(newValue.toLowerCase()));
+    const filteredItems = ITEMS.filter(item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1);
 
     if (!filteredItems || !filteredItems.length) {
       filteredItems.push({
