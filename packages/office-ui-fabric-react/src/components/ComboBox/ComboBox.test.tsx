@@ -484,10 +484,10 @@ describe.only('ComboBox', () => {
     const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
 
     ReactTestUtils.Simulate.change(buttons[0]);
-    ReactTestUtils.Simulate.change(buttons[1]);
     ReactTestUtils.Simulate.change(buttons[2]);
+    ReactTestUtils.Simulate.change(buttons[1]);
 
-    expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 1, 2]);
+    expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 2, 1]);
   });
 
   it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {

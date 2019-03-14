@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Persona, Text } from '@uifabric/experiments';
 import { Icon, Image, Stack } from 'office-ui-fabric-react';

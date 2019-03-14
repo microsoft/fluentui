@@ -53,7 +53,6 @@
   },
   "disabledTasks": [
     "jest",
-    "verify-api-extractor",
-    "build-codepen-examples"
+    "verify-api-extractor"
   ]
 }

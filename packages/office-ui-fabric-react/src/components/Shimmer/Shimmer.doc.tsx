@@ -8,19 +8,19 @@ import { ShimmerStatus } from './Shimmer.checklist';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const ShimmerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
-const ShimmerBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Basic.Example.Codepen.txt') as string;
+const ShimmerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
 
 const ShimmerCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx') as string;
-const ShimmerCustomExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.CustomElements.Example.Codepen.txt') as string;
+const ShimmerCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.CustomElements.Example.tsx') as string;
 
 const ShimmerStylingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
-const ShimmerStylingExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Styling.Example.Codepen.txt') as string;
+const ShimmerStylingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
 
 const ShimmerLoadDataExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
-const ShimmerLoadDataExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.LoadData.Example.Codepen.txt') as string;
+const ShimmerLoadDataExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
 
 const ShimmerApplicationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
-const ShimmerApplicationExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Shimmer/Shimmer.Application.Example.Codepen.txt') as string;
+const ShimmerApplicationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',

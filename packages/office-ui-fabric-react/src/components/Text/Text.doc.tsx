@@ -6,13 +6,13 @@ import { TextBlockExample } from './examples/Text.Block.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const TextRampExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Ramp.Example.tsx') as string;
-const TextRampExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Ramp.Example.Codepen.txt') as string;
+const TextRampExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Text/examples/Text.Ramp.Example.tsx') as string;
 
 const TextWrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Wrap.Example.tsx') as string;
-const TextWrapExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Wrap.Example.Codepen.txt') as string;
+const TextWrapExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Text/examples/Text.Wrap.Example.tsx') as string;
 
 const TextBlockExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Block.Example.tsx') as string;
-const TextBlockExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Block.Example.Codepen.txt') as string;
+const TextBlockExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Text/examples/Text.Block.Example.tsx') as string;
 
 export const TextPageProps: IDocPageProps = {
   title: 'Text',

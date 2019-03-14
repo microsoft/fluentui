@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { GroupedList, IGroup, IGroupHeaderProps, IGroupFooterProps } from 'office-ui-fabric-react/lib/GroupedList';
 import { Link } from 'office-ui-fabric-react/lib/Link';

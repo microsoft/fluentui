@@ -15,9 +15,15 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-5"`,
-      src: `url('${baseUrl}fabric-icons-5-fca90b7d.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-5-f6de453a.woff') format('woff')`
     },
     icons: {
+      HomeGroup: '\uEC26',
+      ExcelLogoInverse: '\uEC28',
+      WordLogoInverse: '\uEC29',
+      PowerPointLogoInverse: '\uEC2A',
+      Cafe: '\uEC32',
+      SpeedHigh: '\uEC4A',
       Commitments: '\uEC4D',
       ThisPC: '\uEC4E',
       MusicNote: '\uEC4F',
@@ -111,13 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       VoicemailReply: '\uED88',
       Waffle: '\uED89',
       RemoveEvent: '\uED8A',
-      EventInfo: '\uED8B',
-      ForwardEvent: '\uED8C',
-      WipePhone: '\uED8D',
-      AddOnlineMeeting: '\uED8E',
-      JoinOnlineMeeting: '\uED8F',
-      RemoveLink: '\uED90',
-      PeopleBlock: '\uED91'
+      EventInfo: '\uED8B'
     }
   };
 
