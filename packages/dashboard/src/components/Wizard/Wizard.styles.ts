@@ -29,7 +29,7 @@ const slideUpInKeyframes = keyframes({
   },
   '75%': {
     opacity: 0.5,
-    transform: 'translateY(50%)'
+    transform: 'translateY(35%)'
   },
   '100%': {
     opacity: 0.9,
@@ -44,7 +44,7 @@ const slideDownOutKeyframes = keyframes({
   },
   '45%': {
     opacity: 0.5,
-    transform: 'translateY(-50%)'
+    transform: 'translateY(-70%)'
   },
   '100%': {
     opacity: 0,
@@ -61,7 +61,7 @@ const slideDownInKeyframes = keyframes({
   },
   '75%': {
     opacity: 0.5,
-    transform: 'translateY(-150%)'
+    transform: 'translateY(-65%)'
   },
   '100%': {
     opacity: 0.9,
