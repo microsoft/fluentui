@@ -35,7 +35,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
     });
 
     return (
-      <Stack gap={5}>
+      <Stack tokens={{ childrenGap: 5 }}>
         <Slider
           label="Change the stack width to see how child items shrink:"
           min={1}
@@ -45,7 +45,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
           showValue={true}
           onChange={this._onWidthChange}
         />
-        <Stack horizontal gap={5} padding={10} className={styles.root}>
+        <Stack horizontal tokens={{ childrenGap: 5 }} padding={10} className={styles.root}>
           <Stack.Item grow className={styles.item}>
             I shrink
           </Stack.Item>

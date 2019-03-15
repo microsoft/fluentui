@@ -31,7 +31,7 @@ export interface IStackSlots {
 
 export interface IStackProps
   extends IStackSlots,
-    IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>,
+    IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>,
     React.HTMLAttributes<HTMLElement> {
   /**
    * Defines how to render the Stack.
@@ -84,6 +84,7 @@ export interface IStackProps
    * Defines the spacing between Stack children.
    * The property is specified as a value for 'row gap', followed optionally by a value for 'column gap'.
    * If 'column gap' is omitted, it's set to the same value as 'row gap'.
+   * @deprecated Use `childrenGap` token instead.
    */
   gap?: number | string;
 
@@ -110,6 +111,8 @@ export interface IStackProps
   wrap?: boolean;
 }
 
-export interface IStackTokens {}
+export interface IStackTokens {
+  childrenGap?: number | string;
+}
 
 export type IStackStyles = IComponentStyles<IStackSlots>;

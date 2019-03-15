@@ -20,8 +20,8 @@ export class VerticalStackGrowExample extends React.Component<{}, {}> {
     });
 
     return (
-      <Stack gap={5}>
-        <Stack gap={5} padding={10} className={styles.root}>
+      <Stack tokens={{ childrenGap: 5 }}>
+        <Stack tokens={{ childrenGap: 5 }} padding={10} className={styles.root}>
           <Stack.Item grow={3} className={styles.item}>
             Grow is 3
           </Stack.Item>

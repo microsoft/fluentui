@@ -65,7 +65,7 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
     });
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Slider
           label="Change the stack height to see how child items wrap onto multiple columns:"
           min={1}
@@ -76,8 +76,8 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
           onChange={this._onHeightChange}
         />
 
-        <Stack wrap gap={'30 40'} className={styles.root}>
-          <Stack wrap gap={'10 30'} className={styles.stackOne}>
+        <Stack wrap tokens={{ childrenGap: '30 40' }} className={styles.root}>
+          <Stack wrap tokens={{ childrenGap: '10 30' }} className={styles.stackOne}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
@@ -87,7 +87,7 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
             <span>7</span>
           </Stack>
 
-          <Stack wrap gap={'20 50'} className={styles.stackTwo}>
+          <Stack wrap tokens={{ childrenGap: '20 50' }} className={styles.stackTwo}>
             <span>1</span>
             <span>2</span>
             <span>3</span>

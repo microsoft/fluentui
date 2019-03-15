@@ -10760,9 +10760,10 @@ interface IStackItemTokens {
 }
 
 // @public (undocumented)
-interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React.HTMLAttributes<HTMLElement> {
+interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React.HTMLAttributes<HTMLElement> {
   as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
   disableShrink?: boolean;
+  // @deprecated
   gap?: number | string;
   grow?: boolean | number | 'inherit' | 'initial' | 'unset';
   horizontal?: boolean;
@@ -10784,6 +10785,8 @@ interface IStackSlots {
 
 // @public (undocumented)
 interface IStackTokens {
+  // (undocumented)
+  childrenGap?: number | string;
 }
 
 // @public (undocumented)

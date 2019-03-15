@@ -63,7 +63,7 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
     });
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Slider
           label="Change the stack width to see how child items wrap onto multiple rows:"
           min={1}
@@ -74,8 +74,8 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
           onChange={this._onWidthChange}
         />
 
-        <Stack horizontal wrap gap={'30 40'} className={styles.root}>
-          <Stack horizontal wrap gap={'10 30'} className={styles.stackOne}>
+        <Stack horizontal wrap tokens={{ childrenGap: '30 40' }} className={styles.root}>
+          <Stack horizontal wrap tokens={{ childrenGap: '10 30' }} className={styles.stackOne}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
@@ -85,7 +85,7 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
             <span>7</span>
           </Stack>
 
-          <Stack horizontal wrap gap={'20 50'} className={styles.stackTwo}>
+          <Stack horizontal wrap tokens={{ childrenGap: '20 50' }} className={styles.stackTwo}>
             <span>1</span>
             <span>2</span>
             <span>3</span>

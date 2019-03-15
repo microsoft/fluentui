@@ -17,7 +17,7 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
     });
 
     return (
-      <Stack gap={5}>
+      <Stack tokens={{ childrenGap: 5 }}>
         <span>Default horizontal stack</span>
         <Stack horizontal disableShrink className={styles.root}>
           <span>Item One</span>
@@ -26,14 +26,14 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Horizontal gap between items</span>
-        <Stack horizontal disableShrink gap={10} padding={10} className={styles.root}>
+        <Stack horizontal disableShrink tokens={{ childrenGap: 10 }} padding={10} className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack horizontal disableShrink gap={5} padding={10} className={styles.root} styles={{ root: { height: 100 } }}>
+        <Stack horizontal disableShrink tokens={{ childrenGap: 5 }} padding={10} className={styles.root} styles={{ root: { height: 100 } }}>
           <Stack.Item align="auto" className={styles.item}>
             <span>Auto-aligned item</span>
           </Stack.Item>

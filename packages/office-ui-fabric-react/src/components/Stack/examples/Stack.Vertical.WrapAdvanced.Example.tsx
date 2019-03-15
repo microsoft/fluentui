@@ -55,7 +55,7 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
     });
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Stack horizontal>
           <Stack.Item grow>
             <Slider label="Stack height:" min={1} max={420} step={1} defaultValue={420} showValue={true} onChange={this._onHeightChange} />
@@ -73,7 +73,7 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20}>
+        <Stack horizontal tokens={{ childrenGap: 20 }}>
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -111,7 +111,13 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
         </Stack>
 
         <div className={styles.container}>
-          <Stack wrap gap={20} horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} className={styles.root}>
+          <Stack
+            wrap
+            tokens={{ childrenGap: 20 }}
+            horizontalAlign={horizontalAlignment}
+            verticalAlign={verticalAlignment}
+            className={styles.root}
+          >
             <span>1</span>
             <span>2</span>
             <span>3</span>
