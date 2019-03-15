@@ -369,17 +369,20 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
 
     return (
-      <div
-        ref={this._root}
-        {...divProps}
-        role={role === undefined ? (pageElements.length === 0 ? '' : 'list') : role}
-        className={css('ms-List', className)}
-      >
+      <div ref={this._root} {...divProps} role={this._getRole(role, pageElements)} className={css('ms-List', className)}>
         <div ref={this._surface} className={css('ms-List-surface')} role="presentation">
           {pageElements}
         </div>
       </div>
     );
+  }
+
+  private _getRole(role: string | undefined, pageElements: JSX.Element[]): string | undefined {
+    if (role === undefined) {
+      return pageElements.length === 0 ? undefined : 'list';
+    } else {
+      return role;
+    }
   }
 
   private _shouldVirtualize(props: IListProps = this.props): boolean {
