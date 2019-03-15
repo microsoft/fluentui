@@ -8,6 +8,13 @@ import { wizardAnimationDurationMilliSec } from './Wizard.styles';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
+// This returns a childFactory to provide to TransitionGroup
+// tslint:disable:no-any
+const childFactoryCreator = (classNames: any) => (child: any) =>
+  React.cloneElement(child, {
+    classNames
+  });
+
 /** Component for Wizard Base */
 export class WizardBase extends React.Component<IWizardProps, {}> {
   private lastStepIndexShown: number;
@@ -69,7 +76,7 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
         <div className={classNames.contentAnimSection}>
-          <TransitionGroup>
+          <TransitionGroup childFactory={childFactoryCreator(mainStepTransitionClass)}>
             <CSSTransition
               key={contentAnimKey}
               className={classNames.contentSection}
