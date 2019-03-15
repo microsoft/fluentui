@@ -26,6 +26,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
   public render(): JSX.Element {
     const { link, isNavCollapsed } = this.props;
     const { hasSelectedNestedLink, isExpanded } = this.state;
+    const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed });
 
     return (
       <>
@@ -47,42 +48,6 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
           isExpanded={isExpanded}
           role="menuitem"
           offsetUpdated={this._offsetUpdated}
-        />
-        {isNavCollapsed ? this._renderWhenNavCollapsed(link) : this._renderWhenNavExpanded(link)}
-      </>
-    );
-  }
-
-  public componentDidUpdate(): void {
-    if (this.fireCollapseUpdate && this.props.onCollapse) {
-      this.props.onCollapse();
-      this.fireCollapseUpdate = false;
-    }
-  }
-
-  private _renderWhenNavCollapsed(link: INavLink): React.ReactElement<{}> | null {
-    const { isNavCollapsed, hasSelectedNestedLink } = this.props;
-    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: isNavCollapsed });
-
-    return (
-      <div className={classNames.nestedNavMenuWhenNavCollapsed} ref={this.navLinkGroupRef}>
-        <NavLink
-          isNavCollapsed={isNavCollapsed}
-          id={link.name}
-          name={link.name}
-          href={link.href}
-          target={link.target}
-          onClick={this._onLinkClicked}
-          aria-expanded={isNavCollapsed}
-          data-value={link.name}
-          aria-label={link.ariaLabel ? link.ariaLabel : link.name}
-          primaryIconName={link.icon}
-          isSelected={hasSelectedNestedLink}
-          hasSelectedNestedLink={hasSelectedNestedLink}
-          hasNestedMenu={true}
-          isNested={false}
-          isExpanded={this.state.isExpanded}
-          role="menuitem"
         />
         {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
             so those elements need to be separated. This one has the shadow.
@@ -116,45 +81,17 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
               })}
           </ul>
         </div>
-      </div>
-    );
-  }
-
-  private _renderWhenNavExpanded(link: INavLink): JSX.Element {
-    const { isNavCollapsed } = this.props;
-    const classNames = getClassNames(getStyles, { isExpanded: this.state.isExpanded, isNavCollapsed: isNavCollapsed });
-    return (
-      <>
-        {link.links && (
-          <ul className={classNames.nestedNavMenu}>
-            {link.links.map((nestedLink: INavLink, linkIndex: number) => {
-              return (
-                <li role="none" key={linkIndex}>
-                  <NavLink
-                    key={linkIndex * 100}
-                    isNavCollapsed={isNavCollapsed}
-                    id={nestedLink.name}
-                    name={nestedLink.name}
-                    href={nestedLink.url}
-                    target={nestedLink.target}
-                    onClick={nestedLink.onClick}
-                    data-value={nestedLink.name}
-                    aria-label={nestedLink.ariaLabel ? nestedLink.ariaLabel : nestedLink.name}
-                    primaryIconName={nestedLink.icon}
-                    hasNestedMenu={false}
-                    hasSelectedNestedLink={false}
-                    isNested={true}
-                    isSelected={nestedLink.isSelected}
-                    role="menuitem"
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        )}
       </>
     );
   }
+
+  public componentDidUpdate(): void {
+    if (this.fireCollapseUpdate && this.props.onCollapse) {
+      this.props.onCollapse();
+      this.fireCollapseUpdate = false;
+    }
+  }
+
   private _onLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
     this.fireCollapseUpdate = true;
     this.setState({
