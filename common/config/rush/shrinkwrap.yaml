@@ -19,6 +19,7 @@ dependencies:
   '@rush-temp/jest-serializer-merge-styles': 'file:projects/jest-serializer-merge-styles.tgz'
   '@rush-temp/merge-styles': 'file:projects/merge-styles.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:projects/office-ui-fabric-react.tgz'
+  '@rush-temp/perf-test': 'file:projects/perf-test.tgz'
   '@rush-temp/pr-deploy-site': 'file:projects/pr-deploy-site.tgz'
   '@rush-temp/prettier-rules': 'file:projects/prettier-rules.tgz'
   '@rush-temp/react-cards': 'file:projects/react-cards.tgz'
@@ -328,6 +329,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-FLFjtEzWBfvyCs2mR2oRfApIhv1dlEdRgNaTBOcPWaI7sJd+7CZ9EGlftEU0Qz2e7+yifYcWh1Rd0Qx0NPur8w==
+  /@microsoft/load-themed-styles/1.8.67:
+    dev: false
+    resolution:
+      integrity: sha512-ttFKIBCNR79aur1ZW7d4Fz+XTOPBB8YoWseKiIiAjXry95lZRYBwFzPk37UvTljHuYmG2Axo6LXiu3T8tW7g6A==
   /@microsoft/loader-load-themed-styles/1.7.127:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.59
@@ -5067,6 +5072,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-n6wvpdE43VFtJq+lUDYDBFUwV8TZbuGXLV4D6wKafg13ldznKsyEvatubnmUe31zcvelSzOHF+XbaT+Bl9ObDg==
+  /es6-promise/4.2.6:
+    dev: false
+    resolution:
+      integrity: sha512-aRVgGdnmW2OiySVPUC9e6m+plolMAJKjZnQlCwNSuK5yQ0JN61DZSO1X1Ufd1foqWRAlig0rhduTCHe7sVtK5Q==
   /es6-promisify/5.0.0:
     dependencies:
       es6-promise: 4.2.5
@@ -14751,6 +14760,25 @@ packages:
       integrity: sha512-AuGNwIwIY8BOSC0OxopizlWISQSFa7k8JMx0noSsbfe69vhvMVDhKZtbWKsdPdTWy2qcQrUc0CK7nQzDpXwxFQ==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
+  'file:projects/perf-test.tgz':
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.67
+      '@types/es6-promise': 0.0.32
+      '@types/react': 16.8.3
+      '@types/react-dom': 16.8.1
+      '@types/webpack-env': 1.13.0
+      es6-promise: 4.2.6
+      immutability-helper: 2.8.1
+      react: 16.8.4
+      react-dom: /react-dom/16.8.4/react@16.8.4
+      tslib: 1.9.3
+      typescript: 3.3.3
+    dev: false
+    name: '@rush-temp/perf-test'
+    resolution:
+      integrity: sha512-zTfzAKFZfRamEKEHVJZiSwhecK2845WLc7fqtM2hcIKAWm8ozAijp9GIq3lywVHLhRZeZp95QBx8APUeCXZsjA==
+      tarball: 'file:projects/perf-test.tgz'
+    version: 0.0.0
   'file:projects/pr-deploy-site.tgz':
     dev: false
     name: '@rush-temp/pr-deploy-site'
@@ -15035,6 +15063,7 @@ specifiers:
   '@rush-temp/jest-serializer-merge-styles': 'file:./projects/jest-serializer-merge-styles.tgz'
   '@rush-temp/merge-styles': 'file:./projects/merge-styles.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:./projects/office-ui-fabric-react.tgz'
+  '@rush-temp/perf-test': 'file:./projects/perf-test.tgz'
   '@rush-temp/pr-deploy-site': 'file:./projects/pr-deploy-site.tgz'
   '@rush-temp/prettier-rules': 'file:./projects/prettier-rules.tgz'
   '@rush-temp/react-cards': 'file:./projects/react-cards.tgz'

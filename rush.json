@@ -396,6 +396,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "perf-test",
+      "projectFolder": "apps/perf-test",
+      "shouldPublish": false
+    },
+    {
       "packageName": "server-rendered-app",
       "projectFolder": "apps/server-rendered-app",
       "shouldPublish": false
