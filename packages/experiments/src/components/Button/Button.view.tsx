@@ -37,7 +37,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       {...buttonProps}
       aria-disabled={disabled}
     >
-      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center" verticalFill>
+      <Slots.stack horizontal as="span" tokens={{ childrenGap: 8 }} verticalAlign="center" horizontalAlign="center" verticalFill>
         {icon && <Slots.icon />}
         {content && <Slots.content />}
         {children}

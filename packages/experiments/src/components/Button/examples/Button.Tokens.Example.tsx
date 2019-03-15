@@ -22,7 +22,7 @@ const testTheme = createTheme({
 export class ButtonTokensExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const ButtonSet = (props: IButtonProps) => (
-      <Stack horizontal disableShrink verticalAlign="center" gap={8}>
+      <Stack horizontal disableShrink verticalAlign="center" tokens={{ childrenGap: 8 }}>
         <Button {...props} />
         <Button {...props} primary />
         <Button {...props} disabled />
@@ -41,7 +41,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
     );
 
     const MenuButtonSet = (props: IMenuButtonProps) => (
-      <Stack horizontal disableShrink verticalAlign="center" gap={8}>
+      <Stack horizontal disableShrink verticalAlign="center" tokens={{ childrenGap: 8 }}>
         <MenuButton {...props} />
         <MenuButton {...props} primary />
         <MenuButton {...props} disabled />
@@ -60,7 +60,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
     );
 
     return (
-      <Stack gap={sectionGap}>
+      <Stack tokens={{ childrenGap: sectionGap }}>
         <ButtonSet />
         <ButtonSet content="No Icon" />
         <ButtonSet content={<Spinner />} />
@@ -73,7 +73,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
           content="Menu button with icon"
           menu={buttonMenu}
         />
-        <Stack horizontal disableShrink verticalAlign="center" gap={8}>
+        <Stack horizontal disableShrink verticalAlign="center" tokens={{ childrenGap: 8 }}>
           <Button
             primary
             icon="PeopleAdd"

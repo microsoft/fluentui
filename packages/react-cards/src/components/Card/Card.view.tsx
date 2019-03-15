@@ -3,7 +3,7 @@ import { withSlots, getSlots } from '@uifabric/foundation';
 import { getNativeProps, htmlElementProperties } from '@uifabric/utilities';
 import { Stack } from 'office-ui-fabric-react';
 
-import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
+import { ICardComponent, ICardProps, ICardSlots } from './Card.types';
 
 export const CardView: ICardComponent['view'] = props => {
   const Slots = getSlots<ICardProps, ICardSlots>(props, {
@@ -12,8 +12,6 @@ export const CardView: ICardComponent['view'] = props => {
   });
 
   const { tokens, compact, ...rest } = props;
-  const cardTokens = tokens && typeof tokens !== 'function' ? (tokens as ICardTokens) : undefined;
-  const { childrenGap } = cardTokens ? cardTokens : { childrenGap: 12 };
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
@@ -21,7 +19,7 @@ export const CardView: ICardComponent['view'] = props => {
     <Slots.root {...nativeProps}>
       <Slots.stack
         horizontal={compact}
-        tokens={{ childrenGap: childrenGap }}
+        tokens={{ childrenGap: 12 }}
         verticalFill
         verticalAlign="space-between"
         horizontalAlign="space-between"

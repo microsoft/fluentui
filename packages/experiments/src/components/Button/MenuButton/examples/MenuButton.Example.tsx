@@ -10,7 +10,7 @@ const headingGap = 16;
 const buttonGap = 12;
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal disableShrink gap={buttonGap}>
+  <Stack horizontal disableShrink tokens={{ childrenGap: buttonGap }}>
     {props.children}
   </Stack>
 );
@@ -19,10 +19,10 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 export class MenuButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
+      <Stack tokens={{ childrenGap: sectionGap }}>
+        <Stack tokens={{ childrenGap: headingGap }} padding={8}>
           <div>
-            <Stack gap={buttonGap}>
+            <Stack tokens={{ childrenGap: buttonGap }}>
               <ButtonStack>
                 <MenuButton content="Menu button" menu={buttonMenu} />
                 <MenuButton primary content="Menu primary button" menu={buttonMenu} />

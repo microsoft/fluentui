@@ -29,8 +29,10 @@ export class CardBasicExample extends React.Component<{}, {}> {
     });
 
     return (
-      <Stack horizontal gap={30}>
-        <Card>Basic card</Card>
+      <Stack horizontal tokens={{ childrenGap: 30 }}>
+        <Card>
+          <Text>Basic card</Text>
+        </Card>
 
         <Card tokens={{ width: '220px' }} onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
@@ -46,7 +48,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
           <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
           <Card.Item>
-            <Stack horizontal gap={16} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
+            <Stack horizontal tokens={{ childrenGap: 16 }} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
               <Icon iconName="RedEye" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
               <Icon iconName="SingleBookmark" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
               <Stack.Item grow={1}>

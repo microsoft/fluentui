@@ -28,7 +28,7 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
             component's output when the controlled prop has a value passed in automatically. As a result, clicking on the titles in this
             example does not affect collapsed state, only clicking on the Toggle button does.
           </p>
-          <Stack horizontal gap={20} verticalAlign="center">
+          <Stack horizontal tokens={{ childrenGap: 20 }} verticalAlign="center">
             <DefaultButton
               text="Toggle"
               onClick={() => {

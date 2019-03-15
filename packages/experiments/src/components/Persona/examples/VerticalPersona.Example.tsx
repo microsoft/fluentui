@@ -15,9 +15,9 @@ const VerticalPersonaStack = (props: { children: JSX.Element[] }) => <div classN
 export class VerticalPersonaExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
-          <Stack gap={personaCoinGap}>
+      <Stack tokens={{ childrenGap: sectionGap }}>
+        <Stack tokens={{ childrenGap: headingGap }} padding={8}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>Basic Usage</Text>
             <VerticalPersonaStack>
               <Persona vertical text="Sukhnam Chander" secondaryText="Principal Program manager" />
@@ -36,7 +36,7 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
               />
             </VerticalPersonaStack>
           </Stack>
-          <Stack gap={personaCoinGap}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>When passing coinProps</Text>
             <VerticalPersonaStack>
               <Persona vertical text="Eline Page" secondaryText="eSports commentator" coin={{ presence: 4 }} />
@@ -44,7 +44,7 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
               <Persona vertical text="Kevin Jameson" coin={{ imageUrl: PersonaTestImages.personMale }} />
             </VerticalPersonaStack>
           </Stack>
-          <Stack gap={personaCoinGap}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>Tokens!</Text>
             <VerticalPersonaStack>
               <Persona

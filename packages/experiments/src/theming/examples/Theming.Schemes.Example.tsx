@@ -41,10 +41,10 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
     // TODO: Even though this styles function is the same for all regions, it has to be provided whenever the scheme
     //        is changed to apply the new semanticColors. Is this the best way we can do this?
     return (
-      <Stack horizontal gap={10}>
+      <Stack horizontal tokens={{ childrenGap: 10 }}>
         <Stack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
           <ThemeProvider scheme={sideScheme}>
-            <Stack styles={regionStyles} gap={10} padding={5}>
+            <Stack styles={regionStyles} tokens={{ childrenGap: 10 }} padding={5}>
               <Text>{sideCaption}</Text>
               <Toggle offText={sideCaption} onText={sideCaption} onChange={this.toggleSide} />
               <CollapsibleSectionRecursiveExample />
@@ -54,7 +54,7 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
         <Stack.Item grow={true} styles={{ root: { height: 'auto' } }}>
           <Stack grow={true} verticalFill={true}>
             <ThemeProvider scheme={topScheme}>
-              <Stack styles={regionStyles} gap={10} padding={5}>
+              <Stack styles={regionStyles} tokens={{ childrenGap: 10 }} padding={5}>
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{topCaption}</Text>
                   <Toggle offText={topCaption} onText={topCaption} onChange={this.toggleTop} />
