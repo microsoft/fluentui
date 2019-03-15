@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Modal-Ensure dialog class is applied only once",
+      "comment": "Modal: Ensure that the \"ms-Dialog\" class name is only applied once.",
       "type": "patch"
     }
   ],
