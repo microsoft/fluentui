@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 12 Mar 2019 12:31:43 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:06 GMT and should not be manually modified.
+
+## 0.3.3
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Patches
+
+- Use codepen loader in examples
 
 ## 0.3.2
 Tue, 12 Mar 2019 12:31:43 GMT
