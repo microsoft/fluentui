@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "For multiSelectComboBox, if allowFreeForm is true, currentPendingValue should get added to option and be selected onBlur",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "hatrived@microsoft.com"
+}
