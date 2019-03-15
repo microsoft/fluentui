@@ -1,55 +1,43 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import { RenderFunction } from '@storybook/react';
-import { Customizer } from 'office-ui-fabric-react/lib/Utilities';
-import { FluentCustomizations } from '../../../../packages/fluent-theme/src/FluentCustomizations';
 
 export const FabricDecorator = (story: RenderFunction) => (
-  <Customizer {...FluentCustomizations}>
-    <div style={{ display: 'flex' }}>
-      <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
-        {story()}
-      </div>
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
+      {story()}
     </div>
-  </Customizer>
+  </div>
 );
 
 export const FabricDecoratorTall = (story: RenderFunction) => (
-  <Customizer {...FluentCustomizations}>
-    <div style={{ display: 'flex' }}>
-      <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
-        {story()}
-      </div>
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
+      {story()}
     </div>
-  </Customizer>
+  </div>
 );
 
 export const FabricDecoratorTallFixedWidth = (story: RenderFunction) => (
-  <Customizer {...FluentCustomizations}>
-    <div style={{ display: 'flex' }}>
-      <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
-        {story()}
-      </div>
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
+      {story()}
     </div>
-  </Customizer>
+  </div>
 );
 
 export const FabricDecoratorFixedWidth = (story: RenderFunction) => (
-  <Customizer {...FluentCustomizations}>
-    <div style={{ display: 'flex' }}>
-      <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
-        {story()}
-      </div>
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
+      {story()}
     </div>
-  </Customizer>
+  </div>
 );
 
 export const FabricDecoratorFullWidth = (story: RenderFunction) => (
-  <Customizer {...FluentCustomizations}>
-    <div style={{ display: 'flex' }}>
-      <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
-        {story()}
-      </div>
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
+      {story()}
     </div>
-  </Customizer>
+  </div>
 );
