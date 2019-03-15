@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.1",
+      "tag": "@uifabric/fabric-website_v5.8.1",
+      "date": "Fri, 15 Mar 2019 11:27:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "4c9713c605e2367c390e851ce3e65de31d656673",
+            "comment": "Cherry-pick master of root.tsx in fabric-website to allow website versioning"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.0",
       "tag": "@uifabric/fabric-website_v5.8.0",
       "date": "Fri, 10 Aug 2018 11:26:02 GMT",

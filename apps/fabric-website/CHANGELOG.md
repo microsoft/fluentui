@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 10 Aug 2018 11:26:02 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 11:27:10 GMT and should not be manually modified.
+
+## 5.8.1
+Fri, 15 Mar 2019 11:27:10 GMT
+
+### Patches
+
+- Cherry-pick master of root.tsx in fabric-website to allow website versioning
 
 ## 5.8.0
 Fri, 10 Aug 2018 11:26:02 GMT
