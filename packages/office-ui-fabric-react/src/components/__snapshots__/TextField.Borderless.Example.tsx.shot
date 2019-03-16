@@ -41,7 +41,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -86,7 +86,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -105,7 +105,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 flex-grow: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -135,7 +135,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -144,7 +144,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -198,7 +198,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -242,7 +242,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -261,7 +261,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -287,7 +287,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -296,7 +296,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;

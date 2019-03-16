@@ -34,7 +34,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #a6a6a6;
+              color: #a19f9d;
               display: inline-block;
               font-family: "FabricMDL2Icons-16";
               font-size: 20px;
@@ -59,7 +59,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -90,12 +90,12 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
       className=
 
           {
-            background-color: #f4f4f4;
+            background-color: #f3f2f1;
             border-color: transparent;
             border-style: solid;
             border-width: 1px;
             box-sizing: border-box;
-            color: #a6a6a6;
+            color: #a19f9d;
             cursor: default;
             display: flex;
             height: 32px;
@@ -116,12 +116,12 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
         className=
             ms-spinButton-input
             {
-              background-color: #f4f4f4;
+              background-color: #f3f2f1;
               border-color: transparent;
               border-style: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               display: block;
               float: left;
@@ -163,10 +163,10 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
         className=
 
             {
-              background-color: #f4f4f4;
+              background-color: #f3f2f1;
               border-color: transparent;
               box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               display: block;
               float: left;
@@ -195,11 +195,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -228,7 +228,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -287,7 +287,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
@@ -323,11 +323,11 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -356,7 +356,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -415,7 +415,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";

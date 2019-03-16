@@ -19,7 +19,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -55,7 +55,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
@@ -101,7 +101,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
                   height: 32px;
                   line-height: inherit;
@@ -128,7 +128,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -190,7 +190,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -243,7 +243,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
+                          color: #c8c6c4;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -272,7 +272,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
+                          color: #c8c6c4;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -407,12 +407,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -532,12 +532,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -657,12 +657,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -782,12 +782,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -907,12 +907,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -1032,12 +1032,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -1157,12 +1157,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -1282,12 +1282,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -1407,12 +1407,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;
@@ -1532,12 +1532,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 animation-iteration-count: infinite;
                                 animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
+                                background: #f3f2f1
                                                   linear-gradient(
                                                     to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
+                                                    #f3f2f1 0%,
+                                                    #edebe9 50%,
+                                                    #f3f2f1 100%)
                                                   0 0 / 90% 100%
                                                   no-repeat;
                                 transition: opacity 200ms;

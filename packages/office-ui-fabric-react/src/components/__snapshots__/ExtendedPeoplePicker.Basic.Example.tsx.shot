@@ -86,7 +86,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
@@ -121,7 +121,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             {
               align-items: center;
               background: #ffffff;
-              border-color: #666666;
+              border-color: #605e5c;
               border-radius: 1em;
               border-style: solid;
               border-width: 1px;
@@ -147,14 +147,14 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
               z-index: 1;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -173,7 +173,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           className=
               ms-Toggle-thumb
               {
-                background-color: #333333;
+                background-color: #323130;
                 border-color: transparent;
                 border-radius: .5em;
                 border-style: solid;
@@ -196,7 +196,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
           border-radius: 0px;
-          border: 1px solid transparent;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -225,7 +225,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           bottom: 0px;
           content: "";
           left: 0px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 0px;
           top: 0px;

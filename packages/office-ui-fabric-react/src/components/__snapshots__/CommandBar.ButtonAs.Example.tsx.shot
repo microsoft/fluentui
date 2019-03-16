@@ -27,7 +27,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 display: flex;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -77,11 +77,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #f3f2f1;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -108,7 +108,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       bottom: 0px;
                       content: "";
                       left: 0px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 0px;
                       top: 0px;
@@ -131,14 +131,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #e1dfdd;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -222,7 +222,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #666666;
+                          color: #605e5c;
                           display: inline-block;
                           flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
@@ -263,11 +263,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #f3f2f1;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -294,7 +294,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       bottom: 0px;
                       content: "";
                       left: 0px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 0px;
                       top: 0px;
@@ -317,14 +317,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #e1dfdd;
                       color: #000000;
                     }
                 data-automation-id="uploadButton"
@@ -422,11 +422,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #f3f2f1;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -453,7 +453,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       bottom: 0px;
                       content: "";
                       left: 0px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 0px;
                       top: 0px;
@@ -476,14 +476,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #e1dfdd;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -580,11 +580,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #f3f2f1;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -611,7 +611,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       bottom: 0px;
                       content: "";
                       left: 0px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 0px;
                       top: 0px;
@@ -634,14 +634,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #e1dfdd;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -742,11 +742,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #f3f2f1;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -772,7 +772,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       bottom: 0px;
                       content: "";
                       left: 0px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 0px;
                       top: 0px;
@@ -795,14 +795,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #e1dfdd;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -831,7 +831,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #666666;
+                          color: #605e5c;
                           display: inline-block;
                           flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
@@ -887,11 +887,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: #f3f2f1;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -918,7 +918,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       bottom: 0px;
                       content: "";
                       left: 0px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 0px;
                       top: 0px;
@@ -941,14 +941,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #e1dfdd;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -1057,11 +1057,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         border-radius: 0px;
-                        border: 1px solid transparent;
+                        border: 1px solid #8a8886;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1088,7 +1088,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         bottom: 0px;
                         content: "";
                         left: 0px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 0px;
                         top: 0px;
@@ -1111,14 +1111,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         border: none;
                       }
                       &:hover {
-                        background-color: #eaeaea;
-                        color: #212121;
+                        background-color: #edebe9;
+                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #dadada;
+                        background-color: #e1dfdd;
                         color: #000000;
                       }
                   data-is-focusable={true}
@@ -1203,11 +1203,11 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         border-radius: 0px;
-                        border: 1px solid transparent;
+                        border: 1px solid #8a8886;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1234,7 +1234,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         bottom: 0px;
                         content: "";
                         left: 0px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 0px;
                         top: 0px;
@@ -1257,14 +1257,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         border: none;
                       }
                       &:hover {
-                        background-color: #eaeaea;
-                        color: #212121;
+                        background-color: #edebe9;
+                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #dadada;
+                        background-color: #e1dfdd;
                         color: #000000;
                       }
                   data-is-focusable={true}

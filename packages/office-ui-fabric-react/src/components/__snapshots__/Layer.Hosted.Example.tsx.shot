@@ -25,7 +25,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
@@ -88,7 +88,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
@@ -150,26 +150,26 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
           position: relative;
         }
         &:hover .ms-Checkbox-checkbox {
-          border-color: #333333;
+          border-color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
-          border-color: #333333;
+          border-color: #323130;
         }
         &:hover .ms-Checkbox-checkmark {
-          color: #a6a6a6;
+          color: #a19f9d;
           opacity: 1;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
-          color: #333333;
+          color: #323130;
         }
         &:focus .ms-Checkbox-text {
-          color: #333333;
+          color: #323130;
         }
   >
     <input
@@ -183,7 +183,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus + label::before {
             outline-offset: 2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
@@ -226,7 +226,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             ms-Checkbox-checkbox
             {
               align-items: center;
-              border-color: #666666;
+              border-color: #605e5c;
               border-style: solid;
               border-width: 1px;
               box-sizing: border-box;
@@ -270,7 +270,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
         className=
             ms-Checkbox-text
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;
@@ -309,26 +309,26 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
           position: relative;
         }
         &:hover .ms-Checkbox-checkbox {
-          border-color: #333333;
+          border-color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
-          border-color: #333333;
+          border-color: #323130;
         }
         &:hover .ms-Checkbox-checkmark {
-          color: #a6a6a6;
+          color: #a19f9d;
           opacity: 1;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
-          color: #333333;
+          color: #323130;
         }
         &:focus .ms-Checkbox-text {
-          color: #333333;
+          color: #323130;
         }
   >
     <input
@@ -342,7 +342,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus + label::before {
             outline-offset: 2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
@@ -385,7 +385,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
             ms-Checkbox-checkbox
             {
               align-items: center;
-              border-color: #666666;
+              border-color: #605e5c;
               border-style: solid;
               border-width: 1px;
               box-sizing: border-box;
@@ -429,7 +429,7 @@ exports[`Component Examples renders Layer.Hosted.Example.tsx correctly 1`] = `
         className=
             ms-Checkbox-text
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;

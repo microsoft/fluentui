@@ -12,12 +12,12 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border-color: #a6a6a6;
+          border-color: #a19f9d;
           border-style: solid;
           border-width: 1px;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: text;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -61,7 +61,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #333333;
+          border-color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -116,7 +116,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             background-color: #ffffff;
             border-style: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             font: inherit;
             height: 28px;
             outline: none;
@@ -160,7 +160,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             border-radius: 0px;
             border: none;
             box-sizing: border-box;
-            color: #666666;
+            color: #605e5c;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -190,7 +190,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             bottom: 0px;
             content: "";
             left: 0px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 0px;
             top: 0px;
@@ -216,8 +216,8 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: ButtonText;
           }
           &:hover {
-            background-color: #f4f4f4;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -225,8 +225,8 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: Highlight;
           }
           &:active {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={false}
       onClick={[Function]}

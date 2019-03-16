@@ -11,7 +11,7 @@ exports[`Panel renders Panel correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -189,7 +189,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       border-radius: 0px;
                       border: none;
                       box-sizing: border-box;
-                      color: #666666;
+                      color: #605e5c;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -216,7 +216,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       bottom: 0px;
                       content: "";
                       left: 0px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 0px;
                       top: 0px;
@@ -236,7 +236,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       top: 0px;
                     }
                     &:hover {
-                      color: #333333;
+                      color: #323130;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -342,7 +342,7 @@ exports[`Panel renders Panel correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #333333;
+                      color: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 21px;
                       font-weight: 100;

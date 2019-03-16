@@ -23,7 +23,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
@@ -64,7 +64,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -104,11 +104,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -135,7 +135,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -155,16 +155,16 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #c8c6c4;
+                color: #201f1e;
               }
           data-automation-id="test"
           data-is-focusable={false}
@@ -224,7 +224,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
               ms-Button
               {
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
@@ -245,7 +245,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #eaeaea;
+                background-color: #edebe9;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
@@ -278,7 +278,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #333333;
+                    color: #323130;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
@@ -306,7 +306,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
 
               {
-                background-color: #c8c8c8;
+                background-color: #c8c6c4;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
@@ -326,7 +326,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
@@ -367,7 +367,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -409,7 +409,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 -webkit-font-smoothing: antialiased;
                 background-color: #0078d4;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
                 color: #ffffff;
                 cursor: pointer;
@@ -438,7 +438,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -638,7 +638,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
@@ -679,7 +679,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -720,11 +720,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -752,7 +752,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -896,7 +896,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
@@ -944,7 +944,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
@@ -987,7 +987,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -1025,11 +1025,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
-                border: 1px solid transparent;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1057,7 +1057,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -1149,7 +1149,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               ms-Button
               is-disabled
               {
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
@@ -1171,7 +1171,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 cursor: default;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -1206,7 +1206,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
@@ -1258,7 +1258,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1296,7 +1296,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
           bottom: 1px;
           content: "";
           left: 1px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 1px;
           top: 1px;
@@ -1343,7 +1343,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1370,7 +1370,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               bottom: 0px;
               content: "";
               left: 0px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 0px;
               top: 0px;
@@ -1390,7 +1390,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               top: 0px;
             }
             &:hover {
-              color: #212121;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
