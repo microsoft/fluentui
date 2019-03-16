@@ -60,7 +60,7 @@
 
     // If the site is hosted, load the flight config script for production or dogfood
     if (!isLocal) {
-      var v5 = fabricVersion == '5' ? 'v5-' : '';
+      var v5 = fabricVersion === '5' ? 'v5-' : '';
       var configPrefix = isProduction ? `fabric-website-${v5}prod` : `fabric-website-${v5}df`;
 
       var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
