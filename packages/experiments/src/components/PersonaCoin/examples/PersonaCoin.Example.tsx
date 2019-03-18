@@ -8,7 +8,7 @@ const headingGap = 16;
 const personaCoinGap = 12;
 
 const PersonaCoinStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal disableShrink gap={personaCoinGap}>
+  <Stack horizontal disableShrink tokens={{ childrenGap: personaCoinGap }}>
     {props.children}
   </Stack>
 );
@@ -16,9 +16,9 @@ const PersonaCoinStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 export class PersonaCoinExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
-          <Stack gap={personaCoinGap}>
+      <Stack tokens={{ childrenGap: sectionGap }}>
+        <Stack tokens={{ childrenGap: headingGap }} padding={8}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>When passing text initials will be extracted from the text</Text>
             <PersonaCoinStack>
               <PersonaCoin text="Kevin Jameson" />
@@ -28,14 +28,14 @@ export class PersonaCoinExample extends React.Component<{}, {}> {
               <PersonaCoin text="Kevin Jameson" imageUrl={PersonaTestImages.personMale} />
             </PersonaCoinStack>
           </Stack>
-          <Stack gap={personaCoinGap}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>When passing specific initials</Text>
             <PersonaCoinStack>
               <PersonaCoin initials="JB" />
               <PersonaCoin initials="王力" />
             </PersonaCoinStack>
           </Stack>
-          <Stack gap={personaCoinGap}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>Initials not available</Text>
             <PersonaCoinStack>
               <PersonaCoin />

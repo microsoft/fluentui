@@ -47,6 +47,8 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
   verticalFill?: boolean;
 }
 
-export interface IStackItemTokens {}
+export interface IStackItemTokens {
+  margin?: number | string;
+}
 
 export type IStackItemStyles = IComponentStyles<IStackItemSlots>;

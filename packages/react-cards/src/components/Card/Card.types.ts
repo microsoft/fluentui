@@ -1,5 +1,5 @@
 import { IBaseProps } from '@uifabric/utilities';
-import { IStackSlot } from 'office-ui-fabric-react';
+import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
 
 export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
@@ -32,23 +32,19 @@ export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardPr
   compact?: boolean;
 
   /**
-   * Defines the spacing between Card children.
-   */
-  gap?: number | string;
-
-  /**
    * Defines a callback that is called when the Card is clicked.
    */
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface ICardTokens {
+export interface ICardTokens extends IStackTokens {
   boxShadow?: string;
   boxShadowHovered?: string;
-  padding?: number | string;
-  width?: number | string;
+  height?: number | string;
   minWidth?: number | string;
   maxWidth?: number | string;
+  padding?: number | string;
+  width?: number | string;
 }
 
 export type ICardStyles = IComponentStyles<ICardSlots>;

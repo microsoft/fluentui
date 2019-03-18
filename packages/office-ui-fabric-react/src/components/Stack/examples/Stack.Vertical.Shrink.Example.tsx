@@ -38,7 +38,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
     });
 
     return (
-      <Stack gap={5}>
+      <Stack tokens={{ childrenGap: 5 }}>
         <Slider
           label="Change the stack height to see how child items shrink:"
           min={1}
@@ -49,7 +49,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
           onChange={this._onHeightChange}
         />
         <div className={styles.container}>
-          <Stack gap={5} padding={10} className={styles.root}>
+          <Stack tokens={{ childrenGap: 5 }} padding={10} className={styles.root}>
             <Stack.Item grow className={styles.item}>
               I shrink
             </Stack.Item>

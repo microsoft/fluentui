@@ -21,7 +21,7 @@ const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal disableShrink gap={buttonGap}>
+  <Stack horizontal disableShrink tokens={{ childrenGap: buttonGap }}>
     {props.children}
   </Stack>
 );
@@ -32,10 +32,10 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
     const testClassName = mergeStyles({ color: 'blue' });
 
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
+      <Stack tokens={{ childrenGap: sectionGap }}>
+        <Stack tokens={{ childrenGap: headingGap }} padding={8}>
           <div>
-            <Stack gap={buttonGap}>
+            <Stack tokens={{ childrenGap: buttonGap }}>
               <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Theme: Red Icon and Text" theme={testTheme} />
                 <Button icon="PeopleAdd" content={{ children: 'Slot Theme: Purple Text', theme: testTheme }} />

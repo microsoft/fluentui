@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Stack: Adding margin as a token of StackItem and childrenGap as a token of Stack and updating examples accordingly.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "makotom@microsoft.com"
+}

@@ -56,7 +56,7 @@ export class AnnouncedSearchResultsExample extends React.Component<
 
   public render(): JSX.Element {
     return (
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Text>
           Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
         </Text>

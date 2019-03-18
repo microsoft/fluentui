@@ -20,7 +20,7 @@ export class HorizontalStackGrowExample extends React.Component<{}, {}> {
     });
 
     return (
-      <Stack horizontal gap={5} padding={10} className={styles.root}>
+      <Stack horizontal tokens={{ childrenGap: 5 }} padding={10} className={styles.root}>
         <Stack.Item grow={3} className={styles.item}>
           Grow is 3
         </Stack.Item>

@@ -11,13 +11,19 @@ export const CardView: ICardComponent['view'] = props => {
     stack: Stack
   });
 
-  const { compact, gap, ...rest } = props;
+  const { tokens, compact, ...rest } = props;
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
   return (
     <Slots.root {...nativeProps}>
-      <Slots.stack horizontal={compact} gap={gap} verticalFill verticalAlign="space-between" horizontalAlign="space-between">
+      <Slots.stack
+        horizontal={compact}
+        tokens={{ childrenGap: 12 }}
+        verticalFill
+        verticalAlign="space-between"
+        horizontalAlign="space-between"
+      >
         {props.children}
       </Slots.stack>
     </Slots.root>

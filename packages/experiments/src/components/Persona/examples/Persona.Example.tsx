@@ -10,19 +10,19 @@ const personaCoinGap = 12;
 export class PersonaExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
-          <Stack gap={personaCoinGap}>
+      <Stack tokens={{ childrenGap: sectionGap }}>
+        <Stack tokens={{ childrenGap: headingGap }} padding={8}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>Basic Usage</Text>
-            <Stack gap={personaCoinGap}>
+            <Stack tokens={{ childrenGap: personaCoinGap }}>
               <Persona text="Sukhnam Chander" secondaryText="Principal Program manager" />
               <Persona text="Kevin Jameson" secondaryText="Professional traveller" />
               <Persona text="王力" secondaryText="Principal Program manager" />
             </Stack>
           </Stack>
-          <Stack gap={personaCoinGap}>
+          <Stack tokens={{ childrenGap: personaCoinGap }}>
             <Text>When passing coinProps</Text>
-            <Stack gap={personaCoinGap}>
+            <Stack tokens={{ childrenGap: personaCoinGap }}>
               <Persona text="Eline Page" secondaryText="eSports commentator" coin={{ presence: 4 }} />
               <Persona text="赵丽颖" coin={{ imageUrl: PersonaTestImages.personFemale }} />
               <Persona text="Kevin Jameson" coin={{ imageUrl: PersonaTestImages.personMale }} />

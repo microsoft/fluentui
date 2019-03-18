@@ -33,11 +33,11 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
     });
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Stack horizontal disableShrink horizontalAlign="space-between">
           <Stack>
             <span>Numerical spacing</span>
-            <Stack horizontal className={styles.root} gap={10} padding={10}>
+            <Stack horizontal className={styles.root} tokens={{ childrenGap: 10 }} padding={10}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -45,7 +45,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Custom spacing</span>
-            <Stack horizontal className={styles.root} gap="10%" padding="s1 15%">
+            <Stack horizontal className={styles.root} tokens={{ childrenGap: '10%' }} padding="s1 15%">
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -56,7 +56,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
         <Stack horizontal disableShrink horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (extra small)</span>
-            <Stack horizontal className={styles.root} gap="s2" padding="s2">
+            <Stack horizontal className={styles.root} tokens={{ childrenGap: 's2' }} padding="s2">
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -64,7 +64,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Themed spacing (small)</span>
-            <Stack horizontal className={styles.root} gap="s1" padding="s1">
+            <Stack horizontal className={styles.root} tokens={{ childrenGap: 's1' }} padding="s1">
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -72,7 +72,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Themed spacing (medium)</span>
-            <Stack horizontal className={styles.root} gap="m" padding="m">
+            <Stack horizontal className={styles.root} tokens={{ childrenGap: 'm' }} padding="m">
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -83,7 +83,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
         <Stack horizontal horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (large)</span>
-            <Stack horizontal className={styles.root} gap="l1" padding="l1">
+            <Stack horizontal className={styles.root} tokens={{ childrenGap: 'l1' }} padding="l1">
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -91,7 +91,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Themed spacing (extra large)</span>
-            <Stack horizontal className={styles.root} gap="l2" padding="l2">
+            <Stack horizontal className={styles.root} tokens={{ childrenGap: 'l2' }} padding="l2">
               <span>1</span>
               <span>2</span>
               <span>3</span>

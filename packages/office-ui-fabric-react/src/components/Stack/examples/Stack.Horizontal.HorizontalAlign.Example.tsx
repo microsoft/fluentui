@@ -22,7 +22,7 @@ export class HorizontalStackHorizontalAlignExample extends React.Component<{}, {
     });
 
     return (
-      <Stack gap={5}>
+      <Stack tokens={{ childrenGap: 5 }}>
         <span>Left-aligned</span>
         <Stack horizontal horizontalAlign="start" className={styles.root}>
           <span>1</span>

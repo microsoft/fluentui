@@ -21,7 +21,7 @@ exports[`CardView renders correctly 1`] = `
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 0px;
+          margin-top: 12px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;

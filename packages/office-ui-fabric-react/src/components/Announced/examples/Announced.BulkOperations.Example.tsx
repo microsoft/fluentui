@@ -124,7 +124,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<
     const { items, columns } = this.state;
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Text>Turn on Narrator and drag and drop the items.</Text>
         <Text>
           Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real

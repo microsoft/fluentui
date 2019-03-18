@@ -8,10 +8,12 @@ const GlobalClassNames = {
 };
 
 const baseTokens: ICardComponent['tokens'] = {
-  boxShadow: Depths.depth16,
-  padding: 0,
-  minWidth: '200px',
-  maxWidth: '250px'
+  boxShadow: Depths.depth4,
+  childrenGap: 12,
+  height: '348px',
+  minWidth: '212px',
+  maxWidth: '286px',
+  padding: 12
 };
 
 const compactTokens: ICardComponent['tokens'] = {
@@ -20,7 +22,7 @@ const compactTokens: ICardComponent['tokens'] = {
 };
 
 const clickableTokens: ICardComponent['tokens'] = {
-  boxShadowHovered: Depths.depth64
+  boxShadowHovered: Depths.depth8
 };
 
 export const CardTokens: ICardComponent['tokens'] = (props, theme): ICardTokenReturnType => [

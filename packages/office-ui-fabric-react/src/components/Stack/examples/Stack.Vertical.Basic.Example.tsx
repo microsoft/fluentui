@@ -17,7 +17,7 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
     });
 
     return (
-      <Stack gap={5}>
+      <Stack tokens={{ childrenGap: 5 }}>
         <span>Default vertical stack</span>
         <Stack className={styles.root}>
           <span>Item One</span>
@@ -26,14 +26,14 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Vertical gap between items</span>
-        <Stack gap={10} padding={10} className={styles.root}>
+        <Stack tokens={{ childrenGap: 10 }} padding={10} className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack gap={5} padding={10} className={styles.root}>
+        <Stack tokens={{ childrenGap: 5 }} padding={10} className={styles.root}>
           <Stack.Item align="auto" className={styles.item}>
             <span>Auto-aligned item</span>
           </Stack.Item>

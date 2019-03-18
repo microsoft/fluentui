@@ -5,13 +5,13 @@ exports[`Card Item renders correctly 1`] = `
   className=
       ms-Card
       {
-        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-        max-width: 250px;
-        min-width: 200px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        max-width: 286px;
+        min-width: 212px;
+        padding-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
         transition: box-shadow 0.5s ease;
       }
 >
@@ -33,7 +33,7 @@ exports[`Card Item renders correctly 1`] = `
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 0px;
+          margin-top: 12px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -42,11 +42,10 @@ exports[`Card Item renders correctly 1`] = `
     <div
       className=
           ms-StackItem
-          ms-CardItem
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            flex-shrink: 0;
+            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -65,13 +64,13 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
   className=
       ms-Card
       {
-        box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-        max-width: 250px;
-        min-width: 200px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        max-width: 286px;
+        min-width: 212px;
+        padding-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
         transition: box-shadow 0.5s ease;
       }
 >
@@ -93,7 +92,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 0px;
+          margin-top: 12px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -102,11 +101,10 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
     <div
       className=
           ms-StackItem
-          ms-CardItem
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            flex-shrink: 0;
+            flex-shrink: 1;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;

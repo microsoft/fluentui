@@ -14,7 +14,7 @@ const alertClicked = (): void => {
 };
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal disableShrink gap={buttonGap}>
+  <Stack horizontal disableShrink tokens={{ childrenGap: buttonGap }}>
     {props.children}
   </Stack>
 );
@@ -23,10 +23,10 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 export class SplitMenuButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
+      <Stack tokens={{ childrenGap: sectionGap }}>
+        <Stack tokens={{ childrenGap: headingGap }} padding={8}>
           <div>
-            <Stack gap={buttonGap}>
+            <Stack tokens={{ childrenGap: buttonGap }}>
               <ButtonStack>
                 <SplitMenuButton icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
                 <SplitMenuButton disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />

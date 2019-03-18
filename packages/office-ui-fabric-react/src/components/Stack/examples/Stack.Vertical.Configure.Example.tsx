@@ -17,7 +17,7 @@ export interface IExampleState {
   wrap: boolean;
   stackHeight: number;
   autoHeight: boolean;
-  gap: number;
+  childrenGap: number;
   paddingLeft: number;
   paddingRight: number;
   paddingTop: number;
@@ -39,7 +39,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       wrap: false,
       stackHeight: 200,
       autoHeight: true,
-      gap: 0,
+      childrenGap: 0,
       paddingLeft: 0,
       paddingRight: 0,
       paddingTop: 0,
@@ -60,7 +60,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       wrap,
       stackHeight,
       autoHeight,
-      gap,
+      childrenGap,
       paddingLeft,
       paddingRight,
       paddingTop,
@@ -97,8 +97,8 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
     });
 
     return (
-      <Stack gap={10}>
-        <Stack horizontal gap={20}>
+      <Stack tokens={{ childrenGap: 10 }}>
+        <Stack horizontal tokens={{ childrenGap: 20 }}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -135,7 +135,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20}>
+        <Stack horizontal tokens={{ childrenGap: 20 }}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -147,7 +147,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <Stack horizontal gap={20} verticalAlign="end">
+              <Stack horizontal tokens={{ childrenGap: 20 }} verticalAlign="end">
                 <Stack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
@@ -231,7 +231,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         <Stack
           disableShrink={disableShrink}
           wrap={wrap}
-          gap={gap + ' ' + 0}
+          tokens={{ childrenGap: childrenGap + ' ' + 0 }}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           verticalAlign={verticalAlignment}
           horizontalAlign={horizontalAlignment}
@@ -290,7 +290,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
   };
 
   private _onGapChange = (value: number): void => {
-    this.setState({ gap: value });
+    this.setState({ childrenGap: value });
   };
 
   private _onPaddingLeftChange = (value: number): void => {

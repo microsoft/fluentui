@@ -75,7 +75,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
     const { percentComplete } = this.state;
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Text>
           Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
           seconds, as that is the delay chosen for this example.
