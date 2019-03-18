@@ -130,7 +130,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
               rootDisabled: this._classNames.previousNextPageDisabled
             }}
           />
-          <TooltipHost content={`${pageAriaLabel ? pageAriaLabel : ''} ${pageCount}`} directionalHint={DirectionalHint.bottomCenter}>
+          <TooltipHost content={`${pageAriaLabel ? pageAriaLabel + ' ' : ''}${pageCount}`} directionalHint={DirectionalHint.bottomCenter}>
             <IconButton
               iconProps={this.props.lastPageIconProps}
               onClick={this.handleLastPage}
