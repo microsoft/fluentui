@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './TextField.Examples.scss';
-import { Label } from '../../Label';
 
 export class TextFieldAutoCompleteExample extends React.Component<any, any> {
   private _textFieldId: string = getId('autoCompleteTextField');
