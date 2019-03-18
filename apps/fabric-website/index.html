@@ -60,8 +60,15 @@
 
     // If the site is hosted, load the flight config script for production or dogfood
     if (!isLocal) {
-      var v5 = fabricVersion === '5' ? 'v5-' : '';
-      var configPrefix = isProduction ? `fabric-website-${v5}prod` : `fabric-website-${v5}df`;
+      // Update as new fabric versions and its documentation are supported
+      var fabricVersions = [5, 6];
+      fabricVersion = Number(fabricVersion);
+
+      var prefixVer = fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ?
+        `v${fabricVersion}-` :
+        '';
+
+      var configPrefix = isProduction ? `fabric-website-${prefixVer}prod` : `fabric-website-${prefixVer}df`;
 
       var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
