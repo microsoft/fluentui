@@ -1,6 +1,7 @@
 import semver from 'semver';
 import fs from 'fs';
 import path from 'path';
+import { applyRegisteredMigrations, registerMigration } from './migration';
 
 if (process.argv.length < 2) {
   console.error('Please specify a target version (e.g. 7)');
@@ -40,8 +41,10 @@ function applyMigrations(): void {
 
     if (modPaths) {
       modPaths.forEach(modPath => {
-        require(modPath);
+        registerMigration(require(modPath).default);
       });
+
+      applyRegisteredMigrations();
     }
   } catch (e) {
     console.error(e);
