@@ -17,11 +17,6 @@ export class TextFieldPlaceholderExample extends React.Component<any, any> {
           placeholder="I am required."
           ariaLabel="Please enter text here. Example required text field with placeholder."
         />
-        <TextField
-          errorMessage="Error message"
-          placeholder="I have an error message."
-          ariaLabel="Please enter text here. Example text field with error and placeholder."
-        />
       </div>
     );
   }

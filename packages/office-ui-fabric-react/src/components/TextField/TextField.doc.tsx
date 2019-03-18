@@ -14,7 +14,6 @@ import { TextFieldStatus } from './TextField.checklist';
 import { TextFieldStyledExample } from './examples/TextField.Styled.Example';
 import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
 import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
-import { TextFieldAutoCompleteExample } from './examples/TextField.AutoComplete.Example';
 import { TextFieldOnRenderDescriptionExample } from './examples/TextField.OnRenderDescription.Example';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
@@ -33,7 +32,6 @@ const TextFieldStyledExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const TextFieldSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Suffix.Example.tsx') as string;
 const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
 const TextFieldUnderlinedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
-const TextFieldAutoCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.AutoComplete.Example.tsx') as string;
 const TextFieldOnRenderDescriptionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.OnRenderDescription.Example.tsx') as string;
 
 export const TextFieldPageProps: IDocPageProps = {
@@ -70,11 +68,6 @@ export const TextFieldPageProps: IDocPageProps = {
       code: TextFieldBorderlessExampleCode,
       view: <TextFieldBorderlessExample />,
       codepenJS: TextFieldBorderlessExampleCodepen
-    },
-    {
-      title: 'TextField with browser AutoComplete',
-      code: TextFieldAutoCompleteExampleCode,
-      view: <TextFieldAutoCompleteExample />
     }
   ],
   implementationExamples: [
