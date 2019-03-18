@@ -233,6 +233,14 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
   private _getContentForStep1 = (stepStr: string): JSX.Element => {
     return (
       <div className="docs-TextFieldExample">
+        <div>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+          ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
+          not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+          1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+          Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+        <h2>Enter your details</h2>
         <TextField label="First name" placeholder={'First name in ' + stepStr} styles={this.getStyles} />
         <TextField label="Last name" placeholder={'Last name in ' + stepStr} styles={this.getStyles} />
         <TextField label="Address" placeholder={'Address in ' + stepStr} styles={this.getStyles} />
@@ -249,6 +257,14 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         <TextField label="Year" placeholder={'Year in ' + stepStr} styles={this.getStyles} />
         <TextField label="Color" placeholder={'Color in ' + stepStr} styles={this.getStyles} />
         <TextField label="Details" multiline rows={4} placeholder={'Details in ' + stepStr} styles={this.getStyles} />
+        <h2>Click next to proceed...</h2>
+        <div>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+          ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
+          not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the
+          1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+          Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
       </div>
     );
   };

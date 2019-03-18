@@ -22,7 +22,8 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
   constructor(props: IWizardProps) {
     super(props);
 
-    this.lastStepIndexShown = 0;
+    const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
+    this.lastStepIndexShown = wizardStepProps.index!;
   }
 
   public render(): React.ReactNode {
@@ -52,15 +53,16 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
     const contentTitleKey = 'contentTitle-' + wizardStepProps.id;
     const contentKey = 'content-' + wizardStepProps.id;
 
-    let mainStepTransitionClass = {
-      enter: classNames.stepSlideUpEnter,
-      enterActive: classNames.stepSlideUpEnterActive,
-      exit: classNames.stepSlideUpExit,
-      exitActive: classNames.stepSlideUpExitActive,
-      exitDone: classNames.stepSlideUpExitDone
-    };
-
-    if (!wizardStyleProps.clickedForward) {
+    let mainStepTransitionClass;
+    if (wizardStyleProps.clickedForward) {
+      mainStepTransitionClass = {
+        enter: classNames.stepSlideUpEnter,
+        enterActive: classNames.stepSlideUpEnterActive,
+        exit: classNames.stepSlideUpExit,
+        exitActive: classNames.stepSlideUpExitActive,
+        exitDone: classNames.stepSlideUpExitDone
+      };
+    } else {
       mainStepTransitionClass = {
         enter: classNames.stepSlideDownEnter,
         enterActive: classNames.stepSlideDownEnterActive,
@@ -75,7 +77,7 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
-        <div className={classNames.contentAnimSection}>
+        <div className={classNames.contentSectionContainer}>
           <TransitionGroup childFactory={childFactoryCreator(mainStepTransitionClass)}>
             <CSSTransition
               key={contentAnimKey}

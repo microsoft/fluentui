@@ -3,16 +3,24 @@ import { keyframes } from 'office-ui-fabric-react';
 
 export const subwayNavWidth = 303;
 export const subwayNavPadding = 48;
-export const wizardAnimationDurationMilliSec = 1000;
+export const wizardAnimationDurationMilliSec = 500;
 
 const slideUpOutKeyframes = keyframes({
   '0%': {
     opacity: 0.75,
     transform: 'translateY(-100%)'
   },
-  '45%': {
+  '15%': {
+    opacity: 0.6,
+    transform: 'translateY(-140%)'
+  },
+  '25%': {
     opacity: 0.5,
-    transform: 'translateY(-150%)'
+    transform: 'translateY(-140%)'
+  },
+  '45%': {
+    opacity: 0.4,
+    transform: 'translateY(-140%)'
   },
   '100%': {
     opacity: 0,
@@ -24,11 +32,19 @@ const slideUpInKeyframes = keyframes({
   '0%': {
     opacity: 0
   },
-  '50%': {
+  '45%': {
     opacity: 0
   },
   '75%': {
+    opacity: 0.4,
+    transform: 'translateY(35%)'
+  },
+  '85%': {
     opacity: 0.5,
+    transform: 'translateY(35%)'
+  },
+  '95%': {
+    opacity: 0.7,
     transform: 'translateY(35%)'
   },
   '100%': {
@@ -42,8 +58,16 @@ const slideDownOutKeyframes = keyframes({
     opacity: 0.75,
     transform: 'translateY(-100%)'
   },
-  '45%': {
+  '15%': {
+    opacity: 0.6,
+    transform: 'translateY(-70%)'
+  },
+  '25%': {
     opacity: 0.5,
+    transform: 'translateY(-70%)'
+  },
+  '45%': {
+    opacity: 0.4,
     transform: 'translateY(-70%)'
   },
   '100%': {
@@ -60,7 +84,15 @@ const slideDownInKeyframes = keyframes({
     opacity: 0
   },
   '75%': {
+    opacity: 0.4,
+    transform: 'translateY(-65%)'
+  },
+  '85%': {
     opacity: 0.5,
+    transform: 'translateY(-65%)'
+  },
+  '95%': {
+    opacity: 0.7,
     transform: 'translateY(-65%)'
   },
   '100%': {
@@ -84,7 +116,7 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
       borderRight: `1px solid ${props.theme.semanticColors.bodyDivider}`,
       overflowY: 'auto'
     },
-    contentAnimSection: {
+    contentSectionContainer: {
       flex: 1,
       overflowY: 'auto'
     },

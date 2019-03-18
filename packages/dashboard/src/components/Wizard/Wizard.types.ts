@@ -90,7 +90,7 @@ export interface IWizardStyles {
 
   subwayNavSection: IStyle;
 
-  contentAnimSection: IStyle;
+  contentSectionContainer: IStyle;
 
   contentSection: IStyle;
 
