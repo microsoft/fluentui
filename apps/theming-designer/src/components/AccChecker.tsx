@@ -6,7 +6,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 export class AccChecker extends React.Component {
   render() {
     return (
-      <Card>
+      <Card styles={{ root: { width: '800px' } }}>
         <Text>Accessibility Checker</Text>
         {/* <ColorsPage /> */}
       </Card>

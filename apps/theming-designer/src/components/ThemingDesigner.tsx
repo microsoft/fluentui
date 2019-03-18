@@ -18,7 +18,7 @@ export class ThemingDesigner extends React.Component {
           <ThemingDesignerColorPicker />
         </div>
         <div>
-          <Stack className={styles.main}>
+          <Stack className={styles.main} gap={10}>
             <Samples />
             <AccChecker />
             <Palette />

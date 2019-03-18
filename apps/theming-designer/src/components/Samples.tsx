@@ -10,7 +10,7 @@ const styles: any = stylesImport;
 export class Samples extends React.Component {
   render() {
     return (
-      <Card>
+      <Card styles={{ root: { width: '800px' } }}>
         <Text>Samples</Text>
         <div style={{ display: 'flex', height: '300px' }}>
           <div className="docs-TextFieldExample">
