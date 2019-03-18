@@ -121,6 +121,11 @@ export interface IDetailPanelMessageBannerProps {
    * On dismiss action callback
    */
   onDismissAction?: FunctionCallback<void>;
+
+  /**
+   * force this message show on global
+   */
+  forceGlobal?: boolean;
 }
 
 export interface IDetailPanelBaseProps {
@@ -171,6 +176,11 @@ export interface IDetailPanelBaseProps {
   currentL2Id?: string | number;
 
   /**
+   * Set the global message bar
+   */
+  globalMessageBanner?: IDetailPanelMessageBannerProps;
+
+  /**
    * On Get the L2 header props
    */
   onGetL2Header?: (l2Id: string | number) => IDetailPanelHeaderProps | JSX.Element;
@@ -195,6 +205,11 @@ export interface IDetailPanelBaseProps {
    * Callback on close the detail panel
    */
   onDetailPanelDimiss?: () => void;
+
+  /**
+   * On pivot link click
+   */
+  onPivotLinkClick?: (key: string) => void;
 }
 
 export interface IBaseContainerExtendProps {
@@ -244,6 +259,11 @@ export interface IBaseContainerProps extends IBaseContainerExtendProps {
    * Message banner settings
    */
   messageBanner?: IDetailPanelMessageBannerProps;
+
+  /**
+   * Set the global message bar
+   */
+  globalMessageBanner?: IDetailPanelMessageBannerProps;
 
   /**
    * Loading element
@@ -416,6 +436,11 @@ export interface IDetailPanelPivotItemProps {
    * Action bar setting for current pivot item
    */
   actionBar?: IDetailPanelActionBarProps;
+
+  /**
+   * Message banner show inside pivot item
+   */
+  messageBanner?: IDetailPanelMessageBannerProps;
 }
 
 export interface IDetailPanelPivotBodyItem extends IDetailPanelPivotItemProps {
@@ -440,6 +465,11 @@ export interface IDetailPanelPivotBodyProps {
    * Pivot items
    */
   items: IDetailPanelPivotBodyItem[];
+
+  /**
+   * Message banner show inside pivot item
+   */
+  messageBanner?: IDetailPanelMessageBannerProps;
 }
 
 export interface IDetailPanelConfirmationStatusText {

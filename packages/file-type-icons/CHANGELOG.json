@@ -2,6 +2,25 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "6.4.3",
+      "tag": "@uifabric/file-type-icons_v6.4.3",
+      "date": "Tue, 12 Mar 2019 12:31:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix mapping for OneNote notebook filetype icon",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "4dff01ca4ecf3985386cfea56e61f8836939ef3e"
+          },
+          {
+            "comment": "updating getFileTypeIconProps to make reference to correct sharepoint… ",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "4dff01ca4ecf3985386cfea56e61f8836939ef3e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.2",
       "tag": "@uifabric/file-type-icons_v6.4.2",
       "date": "Fri, 01 Mar 2019 13:33:08 GMT",

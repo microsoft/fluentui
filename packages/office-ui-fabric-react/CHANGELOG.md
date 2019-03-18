@@ -1,6 +1,67 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Mar 2019 13:32:10 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:07 GMT and should not be manually modified.
+
+## 6.157.0
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Minor changes
+
+- DetailsHeader: Add ariaLabelForToggleAllGroupsButton to IDetailsHeaderProps
+- Add new icons to OUIFR API
+- Export Foundation package.
+- SpinButton: label prop should be marked as optional
+- Rating: unchecked stars should be unfilled.
+
+### Patches
+
+- Popup: If framed, set focus to frame's activeElement on dismiss
+- Use codepen loader in examples
+- For multiSelectComboBox, if allowFreeForm is true, currentPendingValue should get added to option and be selected onBlur
+- Nav: Fix selection state to only check URL if state.selectedKey is undefined
+- Fix combobox behaviour: multiple selections are now correctly shown in dropdown
+- TeachingBubble examples: separate onDismiss into onDismiss and onShow
+- List: Remove duplicate page rows iteration and add tests for SparseArray scenarios
+- Fix color contrast ratio of unchecked Rating stars
+- Use typeof check on process before checking process.env.NODE_ENV
+- Turn IBasePickerSuggestionsProps into a Pick<> type
+- Drop space from DetailsList header aria-labeledby
+- HoverCard: fixes the native event listeners assignment when the target prop is updated.
+
+## 6.156.0
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Minor changes
+
+- Text: default to fonts.medium
+- Dropdown: Type onRenderTitle as Array<IDropdownOption> only
+
+### Patches
+
+- BaseButton: Correctly clone props instead of mutating them
+
+## 6.155.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Provide a way to pass cell contents directly to DetailsRow
+- FocusTrapZone: Refactor trapping behavior to fix multiple outstanding issues.
+
+### Patches
+
+- Fix overflow calculation for non-collapsible columns
+- FocusTrapZone: Fix for zones that have zero tabbable elements.
+- updating calendaryear to work when react version upgrades
+- DetailsHeader: remove duplicate IDetailsHeaderState
+- Panel: fixes regression when no custom navigation renderer provided and `hasCloseButton` prop is set to false there should not be an empty div rendered occupying the space.
+
+## 6.154.0
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Minor changes
+
+- Shimmer: adds new props `shimmerColors` to Shimmer and `backgroundColor` to ShimmerElementsGroup to allow easy customization of Shimmer colors when placed on elements with background colors other than white.
 
 ## 6.153.0
 Fri, 08 Mar 2019 13:32:10 GMT

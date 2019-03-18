@@ -84,7 +84,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     // Manage componentRef resolution.
     initializeComponentRef(this);
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
       warnDeprecations('FocusZone', props, {
         rootProps: undefined,
         allowTabKey: 'handleTabKey',

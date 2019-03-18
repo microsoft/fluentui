@@ -2,6 +2,27 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "version": "0.8.0",
+      "tag": "@uifabric/webpack-utils_v0.8.0",
+      "date": "Fri, 15 Mar 2019 12:34:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add index file",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "faeffcb5cc3b937dd45edc0a4188eebd987b0048"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove unneeded version file",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "f5d94c9532c2a4ad1baf5c40201c42909be69e82"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.4",
       "tag": "@uifabric/webpack-utils_v0.7.4",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

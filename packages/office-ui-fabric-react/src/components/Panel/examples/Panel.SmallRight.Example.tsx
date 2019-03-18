@@ -1,4 +1,3 @@
-// @codepen
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';

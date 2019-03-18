@@ -10,7 +10,7 @@ import { _isReactComponent } from '../Utils';
 import { DetailInfoTile } from './DetailTile';
 import { MessageBanner } from './MessageBanner';
 import { MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { detailPanelPivotItemStyles } from '../DetailPanel.styles';
+import { detailPanelPivotItemStyles, detailPanelBaseStyles } from '../DetailPanel.styles';
 
 interface IDetailPanelPivotItemStates {
   contentElement?: JSX.Element;
@@ -32,6 +32,14 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
   public render(): JSX.Element {
     const css = detailPanelPivotItemStyles;
     return <div className={css.generalContainer}>{this._renderContent()}</div>;
+  }
+
+  public componentDidUpdate(prevProps: DetailPanelPivotItemProps): void {
+    if (this.props.actionBar !== prevProps.actionBar) {
+      if (this.props.onSetActionBar) {
+        this.props.onSetActionBar(this.props.actionBar);
+      }
+    }
   }
 
   public componentDidMount(): void {
@@ -93,10 +101,28 @@ class DetailPanelPivotItem extends React.PureComponent<DetailPanelPivotItemProps
     this._isMounted = false;
   }
 
+  private _renderMessageBanner = () => {
+    const { messageBanner } = this.props;
+    const css = detailPanelBaseStyles;
+    if (messageBanner && !messageBanner.forceGlobal) {
+      return (
+        <div className={css.messageBar}>
+          <MessageBanner {...messageBanner} />
+        </div>
+      );
+    }
+    return null;
+  };
+
   private _renderContent = () => {
     const { content } = this.props;
     if (content) {
-      return this._renderElement(content);
+      return (
+        <>
+          {this._renderMessageBanner()}
+          {this._renderElement(content)}
+        </>
+      );
     }
 
     const { loadingElement, contentElement } = this.state;
