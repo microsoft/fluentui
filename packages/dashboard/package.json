@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.55.1",
+  "version": "0.55.2",
   "dependencies": {
     "@uifabric/charting": "^0.28.8",
     "@uifabric/experiments": ">=6.64.0 <7.0.0",
