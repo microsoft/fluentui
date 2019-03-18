@@ -464,7 +464,7 @@
     {
       "packageName": "@uifabric/migration",
       "projectFolder": "packages/migration",
-      "shouldPublish": false
+      "shouldPublish": true
     }
   ]
 }
