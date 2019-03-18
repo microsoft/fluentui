@@ -102,7 +102,7 @@ export class TextFieldErrorMessageExample extends React.Component<{}, { displayE
   };
 
   private _getErrorMessage(value: string): string {
-    return value.length < 3 ? '' : `The length of the input value should be less than 3, actual is ${value.length}.`;
+    return value.length < 3 ? '' : `The length of the input value must be less than 3, actual length is ${value.length}.`;
   }
 
   private _getErrorMessagePromise(value: string): Promise<string> {

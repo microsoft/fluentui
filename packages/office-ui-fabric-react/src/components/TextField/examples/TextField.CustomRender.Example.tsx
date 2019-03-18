@@ -47,7 +47,7 @@ export class TextFieldCustomRenderExample extends React.Component<
             ariaDescribedBy={this._descriptionId}
           >
             <div className="ms-CustomRenderExample-callout-description" id={this._descriptionId}>
-              In additon to the label itself, this label includes an iconbutton which pops out more information in a callout
+              In addition to the label itself, this label includes an IconButton which pops out more information in a Callout
             </div>
             <div className="ms-CustomRenderExample-callout-actions">
               <DefaultButton onClick={this._onDismiss}>Close</DefaultButton>
