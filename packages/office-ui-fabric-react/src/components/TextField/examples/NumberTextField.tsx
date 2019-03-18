@@ -12,7 +12,7 @@ export interface INumberTextFieldState {
 }
 
 export class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
-  private _textField: ITextField;
+  private _textField = React.createRef<ITextField>();
 
   constructor(props: INumberTextFieldProps) {
     super(props);
@@ -35,7 +35,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
           value={this.state.value}
           onChange={this._onChange}
           onGetErrorMessage={this._validateNumber}
-          componentRef={this._updateRef}
+          componentRef={this._textField}
         />
         <div className="NumberTextField-restoreButton">
           <DefaultButton onClick={this._restore}>Restore</DefaultButton>
@@ -43,12 +43,6 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
       </div>
     );
   }
-
-  private _updateRef = (ref: any) => {
-    if (ref) {
-      this._textField = ref;
-    }
-  };
 
   private _validateNumber(value: string): string {
     return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
@@ -66,8 +60,8 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
         value: this.props.initialValue
       },
       () => {
-        if (this._textField) {
-          this._textField.focus();
+        if (this._textField && this._textField.current) {
+          this._textField.current.focus();
         }
       }
     );

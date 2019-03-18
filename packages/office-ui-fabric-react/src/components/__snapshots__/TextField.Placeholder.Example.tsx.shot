@@ -63,7 +63,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
       >
         <input
           aria-invalid={false}
-          aria-label="Please enter text here"
+          aria-label="Please enter text here. Example text field with placeholder."
           className=
               ms-TextField-field
               {
@@ -187,7 +187,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
       >
         <input
           aria-invalid={false}
-          aria-label="Please enter text here"
+          aria-label="Please enter text here. Example disabled text field with placeholder."
           className=
               ms-TextField-field
               {
@@ -324,7 +324,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
       >
         <input
           aria-invalid={false}
-          aria-label="Please enter text here"
+          aria-label="Please enter text here. Example required text field with placeholder."
           className=
               ms-TextField-field
               {
@@ -454,7 +454,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
         <input
           aria-describedby="TextFieldDescription7"
           aria-invalid={true}
-          aria-label="Please enter text here"
+          aria-label="Please enter text here. Example text field with error and placeholder."
           className=
               ms-TextField-field
               {

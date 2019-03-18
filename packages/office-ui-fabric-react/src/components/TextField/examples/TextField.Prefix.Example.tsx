@@ -6,8 +6,8 @@ export class TextFieldPrefixExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div className="docs-TextFieldExample">
-        <TextField ariaLabel="Prefix https://" prefix="https://" />
-        <TextField ariaLabel="Prefix https://" label="Disabled" prefix="https://" disabled />
+        <TextField ariaLabel="Example text field with https:// prefix" prefix="https://" />
+        <TextField ariaLabel="Example text field with https:// prefix" label="Disabled" prefix="https://" disabled />
       </div>
     );
   }

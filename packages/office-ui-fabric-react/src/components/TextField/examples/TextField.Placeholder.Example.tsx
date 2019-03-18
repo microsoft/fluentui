@@ -6,10 +6,22 @@ export class TextFieldPlaceholderExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div className="docs-TextFieldExample">
-        <TextField placeholder="I am a placeholder." ariaLabel="Please enter text here" />
-        <TextField disabled={true} placeholder="I am disabled. " ariaLabel="Please enter text here" />
-        <TextField required={true} placeholder="I am required." ariaLabel="Please enter text here" />
-        <TextField errorMessage="Error message" placeholder="I have an error message." ariaLabel="Please enter text here" />
+        <TextField placeholder="I am a placeholder." ariaLabel="Please enter text here. Example text field with placeholder." />
+        <TextField
+          disabled={true}
+          placeholder="I am disabled. "
+          ariaLabel="Please enter text here. Example disabled text field with placeholder."
+        />
+        <TextField
+          required={true}
+          placeholder="I am required."
+          ariaLabel="Please enter text here. Example required text field with placeholder."
+        />
+        <TextField
+          errorMessage="Error message"
+          placeholder="I have an error message."
+          ariaLabel="Please enter text here. Example text field with error and placeholder."
+        />
       </div>
     );
   }

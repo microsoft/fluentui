@@ -6,7 +6,7 @@ export class TextFieldSuffixExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div className="docs-TextFieldExample">
-        <TextField ariaLabel="Suffix .com" suffix=".com" />
+        <TextField ariaLabel="Example text field with .com suffix" suffix=".com" />
       </div>
     );
   }

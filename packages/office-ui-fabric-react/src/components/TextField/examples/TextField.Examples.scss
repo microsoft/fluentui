@@ -6,29 +6,17 @@
       margin: 0 0 15px 0;
       max-width: $maxFieldWidth;
     }
-
-    .ms-TextFieldStandaloneLabel {
-      margin: 0 0 7px 0;
-      max-width: $maxFieldWidth;
-    }
   }
 
   .docs-TextFieldErrorExample {
     .ms-TextField,
     .NumberTextField {
       margin: 0 0 15px 0;
-      max-width: $maxFieldWidth * 2; // wider width due to long labels / values / placeholders in the error message example
+      max-width: $maxFieldWidth*2; // wider width due to long labels / values / placeholders in the error message example
     }
 
     .NumberTextField .ms-TextField {
       margin: 0 0 5px 0;
-    }
-  }
-
-  .ms-CustomRenderExample-callout {
-    .ms-CustomRenderExample-callout-description,
-    .ms-CustomRenderExample-callout-actions {
-      padding: 10px;
     }
   }
 }

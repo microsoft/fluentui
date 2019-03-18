@@ -24,9 +24,7 @@ export class TextFieldErrorMessageExample extends React.Component<{}, { displayE
   public render(): JSX.Element {
     return (
       <div className="docs-TextFieldErrorExample">
-        <div>
-          <Toggle label="Show controls?" onChange={this._toggleErrors} />
-        </div>
+        <Toggle label="Show text fields" onChange={this._toggleErrors} />
         {this.state.displayEnabled && this._renderFields()}
       </div>
     );

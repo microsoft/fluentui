@@ -2,8 +2,13 @@ import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './TextField.Examples.scss';
+
+const calloutChildren = mergeStyles({
+  padding: '10px'
+});
 
 export class TextFieldCustomRenderExample extends React.Component<
   {},
@@ -45,11 +50,12 @@ export class TextFieldCustomRenderExample extends React.Component<
             setInitialFocus={true}
             onDismiss={this._onDismiss}
             ariaDescribedBy={this._descriptionId}
+            role="alertdialog"
           >
-            <div className="ms-CustomRenderExample-callout-description" id={this._descriptionId}>
+            <div className={calloutChildren} id={this._descriptionId}>
               In addition to the label itself, this label includes an IconButton which pops out more information in a Callout
             </div>
-            <div className="ms-CustomRenderExample-callout-actions">
+            <div className={calloutChildren}>
               <DefaultButton onClick={this._onDismiss}>Close</DefaultButton>
             </div>
           </Callout>
