@@ -74,8 +74,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._ariaDescriptionId = getId();
     let menuProps = null;
     if (props.persistMenu && props.menuProps) {
-      menuProps = props.menuProps;
-      menuProps.hidden = true;
+      // Clone props so we don't mutate them.
+      menuProps = { ...props.menuProps, hidden: true };
     }
     this.state = {
       menuProps: menuProps

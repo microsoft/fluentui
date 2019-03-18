@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';

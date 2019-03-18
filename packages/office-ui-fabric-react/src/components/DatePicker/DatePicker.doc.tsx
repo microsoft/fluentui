@@ -12,7 +12,7 @@ import { DatePickerStatus } from './DatePicker.checklist';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Disabled.Example.tsx') as string;
-const DatePickerBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/DatePicker/DatePicker.Basic.Example.Codepen.txt') as string;
+const DatePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerWeekNumbersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;

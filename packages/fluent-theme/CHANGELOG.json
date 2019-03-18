@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.1",
+      "tag": "@uifabric/fluent-theme_v0.16.1",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Breadcrumb: fixed last-child styling",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "e64f3beede5328eb553dac20ced49170e1227892"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.156.0 <7.0.0` to `>=6.157.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.0",
       "tag": "@uifabric/fluent-theme_v0.16.0",
       "date": "Wed, 27 Feb 2019 01:28:58 GMT",

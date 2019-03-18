@@ -21,7 +21,7 @@ import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
 import { PanelStatus } from './Panel.checklist';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
-const PanelSmallRightExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Panel/Panel.SmallRight.Example.Codepen.txt') as string;
+const PanelSmallRightExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
 const PanelSmallFluidExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallFluid.Example.tsx') as string;
 const PanelMediumExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Medium.Example.tsx') as string;

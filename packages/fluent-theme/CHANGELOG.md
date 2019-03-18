@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:06 GMT and should not be manually modified.
+
+## 0.16.1
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Patches
+
+- Breadcrumb: fixed last-child styling
 
 ## 0.16.0
 Wed, 27 Feb 2019 01:28:58 GMT

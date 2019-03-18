@@ -5,7 +5,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { LinkStatus } from './Link.checklist';
 
 const LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
-const LinkBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Link/Link.Basic.Example.Codepen.txt') as string;
+const LinkBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
 
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',
