@@ -6,7 +6,7 @@ import { styled } from 'office-ui-fabric-react/lib/Utilities';
 /**
  * CalendarMonth description
  */
-export const CalendarMonth: (props: ICalendarMonthProps) => JSX.Element = styled<
+export const CalendarMonth: React.FunctionComponent<ICalendarMonthProps> = styled<
   ICalendarMonthProps,
   ICalendarMonthStyleProps,
   ICalendarMonthStyles

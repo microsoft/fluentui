@@ -2,6 +2,50 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "0.3.1",
+      "tag": "@uifabric/date-time_v0.3.1",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add type annotations based on update to \"styled\"",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.44.0 <7.0.0` to `>=6.44.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.32.1 <7.0.0` to `>=6.33.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.150.1 <7.0.0` to `>=6.151.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.0",
+      "tag": "@uifabric/date-time_v0.3.0",
+      "date": "Thu, 28 Feb 2019 13:29:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "cherry picking restricted dates functionality to date-time package calendar",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "8a1722266fef99cdc8602bd00d422f085a761de8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.146.1 <7.0.0` to `>=6.146.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@uifabric/date-time_v0.2.2",
       "date": "Tue, 12 Feb 2019 13:36:42 GMT",

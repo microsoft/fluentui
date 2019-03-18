@@ -105,4 +105,22 @@ describe('Breadcrumb', () => {
         .text()
     ).toEqual('TestText3');
   });
+
+  it('supports native props on the root element', () => {
+    const items: IBreadcrumbItem[] = [
+      { text: 'TestText1', key: 'TestKey1' },
+      { text: 'TestText2', key: 'TestKey2' },
+      { text: 'TestText3', key: 'TestKey3' },
+      { text: 'TestText4', key: 'TestKey4' }
+    ];
+
+    const wrapper = mount(<Breadcrumb items={items} maxDisplayedItems={2} role="region" />);
+
+    expect(
+      wrapper
+        .find('.ms-Breadcrumb')
+        .getDOMNode()
+        .getAttribute('role')
+    ).toEqual('region');
+  });
 });

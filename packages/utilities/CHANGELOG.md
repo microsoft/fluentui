@@ -1,6 +1,48 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 26 Feb 2019 22:45:29 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+
+## 6.34.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Utilities for managing componentRef initialization added.
+
+## 6.33.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Modify return type of styled (function to React.StatelessComponent)
+
+## 6.32.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Utilities: removing redundant export for `setVirtualParent`.
+
+## 6.32.0
+Mon, 04 Mar 2019 13:29:58 GMT
+
+### Minor changes
+
+- Utilities: Adding setVirtualParent export.
+
+## 6.31.0
+Fri, 01 Mar 2019 19:40:21 GMT
+
+### Minor changes
+
+- Reinstroducing dom/warn top level imports.
+
+## 6.30.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- A number of files containing many exports have been split into smaller units for finer debuggability in bundle size implications. Some unneeded dependencies on EventGroup have been removed.
 
 ## 6.29.4
 Tue, 26 Feb 2019 22:45:29 GMT

@@ -1,19 +1,18 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import * as WarnUtil from '@uifabric/utilities/lib-commonjs/warn';
-
+import { setWarningCallback } from '@uifabric/utilities';
 import { Toggle } from './Toggle';
 
 describe('Toggle', () => {
   beforeAll(() => {
     // Prevent warn deprecations from failing test
-    jest.spyOn(WarnUtil, 'warnDeprecations').mockImplementation(() => {
-      /** no impl **/
+    setWarningCallback(() => {
+      /* no-op */
     });
   });
 
   afterAll(() => {
-    jest.restoreAllMocks();
+    setWarningCallback();
   });
 
   it('renders aria-label based on offAriaLabel', () => {

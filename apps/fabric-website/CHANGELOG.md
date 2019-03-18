@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 26 Feb 2019 13:31:28 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages and values to redirect map for Announced links
 
 ## 6.11.0
 Tue, 26 Feb 2019 13:31:28 GMT

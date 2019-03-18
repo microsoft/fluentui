@@ -374,6 +374,7 @@ interface IPalette {
   white: string;
   whiteTranslucent40: string;
   yellow: string;
+  yellowDark: string;
   yellowLight: string;
 }
 

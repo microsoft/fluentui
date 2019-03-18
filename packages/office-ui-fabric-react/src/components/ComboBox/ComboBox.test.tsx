@@ -110,6 +110,30 @@ describe.only('ComboBox', () => {
     expect(inputElement.props().value).toEqual('zero');
   });
 
+  it('changes to a selected key change the input', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    expect(wrapper.find('input').props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: 1 });
+
+    expect(wrapper.find('input').props().value).toEqual('one');
+  });
+
+  it('changes to a selected item on key change', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    expect(wrapper.find('input').props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: null });
+
+    // \u200B is a zero width space.
+    // See https://github.com/OfficeDev/office-ui-fabric-react/blob/d4e9b6d28b25a3e123b2d47c0a03f18113fbee60/packages/office-ui-fabric-react/src/components/ComboBox/ComboBox.tsx#L481.
+    expect(wrapper.find('input').props().value).toEqual('\u200B');
+  });
+
   it('Renders a placeholder', () => {
     const placeholder = 'Select an option';
     wrapper = mount(<ComboBox placeholder={placeholder} options={DEFAULT_OPTIONS} />);
@@ -499,5 +523,40 @@ describe.only('ComboBox', () => {
     const inputElement = comboBoxRoot.find('input').getDOMNode();
     const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
     expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
+  });
+
+  it('test persistMenu, callout should exist before and after opening menu', () => {
+    const onMenuOpenMock = jest.fn();
+    const onMenuDismissedMock = jest.fn();
+
+    wrapper = mount(
+      <ComboBox
+        defaultSelectedKey="1"
+        persistMenu={true}
+        options={DEFAULT_OPTIONS2}
+        onMenuOpen={onMenuOpenMock}
+        onMenuDismissed={onMenuDismissedMock}
+      />
+    );
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+
+    // Find menu
+    const calloutBeforeOpen = document.querySelector('.ms-Callout')!;
+    expect(calloutBeforeOpen).toBeDefined();
+    expect(calloutBeforeOpen.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+
+    // Open combobox
+    const buttonElement = comboBoxRoot.find('button');
+    buttonElement.simulate('click');
+    expect(onMenuOpenMock.mock.calls.length).toBe(1);
+
+    // Close combobox
+    buttonElement.simulate('click');
+    expect(onMenuDismissedMock.mock.calls.length).toBe(1);
+
+    // Ensure menu is still there
+    const calloutAfterClose = document.querySelector('.ms-Callout')!;
+    expect(calloutAfterClose).toBeDefined();
+    expect(calloutAfterClose.classList.contains('ms-ComboBox-callout')).toBeTruthy();
   });
 });

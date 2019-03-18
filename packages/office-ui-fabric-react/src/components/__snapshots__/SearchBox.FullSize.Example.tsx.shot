@@ -12,10 +12,10 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           -webkit-font-smoothing: antialiased;
           align-items: stretch;
           background-color: #ffffff;
-          border: 1px solid #a6a6a6;
+          border: 1px solid #a19f9d;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
@@ -36,7 +36,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           border: 1px solid WindowText;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
@@ -93,7 +93,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
             border: none;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             flex: 1 1 0px;
             font-family: inherit;
             font-size: inherit;
@@ -115,11 +115,11 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
             display: none;
           }
           &::placeholder {
-            color: #666666;
+            color: #605e5c;
             opacity: 1;
           }
           &:-ms-input-placeholder {
-            color: #666666;
+            color: #605e5c;
           }
       id="SearchBox0"
       onChange={[Function]}
@@ -137,10 +137,10 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           -webkit-font-smoothing: antialiased;
           align-items: stretch;
           background-color: #ffffff;
-          border: 1px solid #a6a6a6;
+          border: 1px solid #a19f9d;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           flex-direction: row;
           flex-wrap: nowrap;
@@ -161,7 +161,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
           border: 1px solid WindowText;
         }
         &:hover {
-          border-color: #212121;
+          border-color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
@@ -216,7 +216,7 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
             border: none;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             flex: 1 1 0px;
             font-family: inherit;
             font-size: inherit;
@@ -238,11 +238,11 @@ exports[`Component Examples renders SearchBox.FullSize.Example.tsx correctly 1`]
             display: none;
           }
           &::placeholder {
-            color: #666666;
+            color: #605e5c;
             opacity: 1;
           }
           &:-ms-input-placeholder {
-            color: #666666;
+            color: #605e5c;
           }
       id="SearchBox1"
       onChange={[Function]}

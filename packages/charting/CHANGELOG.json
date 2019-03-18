@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.8",
+      "tag": "@uifabric/charting_v0.28.8",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add type annotations based on update to \"styled\"",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.150.1 <7.0.0` to `>=6.151.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.7",
       "tag": "@uifabric/charting_v0.28.7",
       "date": "Thu, 14 Feb 2019 13:34:54 GMT",

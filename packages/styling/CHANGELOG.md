@@ -1,6 +1,27 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 27 Feb 2019 01:28:58 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 6.44.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Adding theme.js to sideEffects list to prevent webpack from treeshaking it out.
+
+## 6.44.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add yellowDark to IPalette
+
+## 6.43.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- The package side-effects flag has been removed, allowing for tree shaking to do its magic much better.
 
 ## 6.42.0
 Wed, 27 Feb 2019 01:28:58 GMT

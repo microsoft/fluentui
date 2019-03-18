@@ -8,8 +8,13 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
     className=
         ms-TextField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -32,7 +37,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
             {
               align-items: stretch;
               background: #ffffff;
-              border: 1px solid #a6a6a6;
+              border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -50,7 +55,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -62,14 +67,18 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           className=
               ms-TextField-field
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-radius: 0px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -90,11 +99,21 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           id="TextField0"
@@ -114,8 +133,13 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
         ms-TextField
         is-disabled
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -137,10 +161,10 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
             ms-TextField-fieldGroup
             {
               align-items: stretch;
-              background-color: #f4f4f4;
+              background-color: #f3f2f1;
               background: #ffffff;
-              border-color: #f4f4f4;
-              border: 1px solid #a6a6a6;
+              border-color: #f3f2f1;
+              border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
               cursor: default;
@@ -166,6 +190,8 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           className=
               ms-TextField-field
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-color: transparent;
@@ -173,8 +199,10 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -195,11 +223,21 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 display: none;
               }
               &::placeholder {
-                color: #a6a6a6;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #a19f9d;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #a6a6a6;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #a19f9d;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           disabled={true}
@@ -220,8 +258,13 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
         ms-TextField
         is-required
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -244,7 +287,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
             {
               align-items: stretch;
               background: #ffffff;
-              border: 1px solid #a6a6a6;
+              border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -262,7 +305,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -283,14 +326,18 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           className=
               ms-TextField-field
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-radius: 0px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -311,11 +358,21 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           id="TextField4"
@@ -335,8 +392,13 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
     className=
         ms-TextField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -360,7 +422,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
               align-items: stretch;
               background: #ffffff;
               border-color: #a80000;
-              border: 1px solid #a6a6a6;
+              border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -378,7 +440,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -393,14 +455,18 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
           className=
               ms-TextField-field
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-radius: 0px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -421,11 +487,21 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           id="TextField6"

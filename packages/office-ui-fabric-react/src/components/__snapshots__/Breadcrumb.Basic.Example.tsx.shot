@@ -10,7 +10,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -117,7 +117,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -141,7 +141,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -163,7 +163,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -173,14 +173,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -188,8 +188,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -228,7 +228,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -281,7 +281,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -305,7 +305,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -327,7 +327,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -337,14 +337,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -352,8 +352,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -392,7 +392,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -445,7 +445,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -469,7 +469,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -491,7 +491,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -501,14 +501,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -516,8 +516,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -556,7 +556,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -609,7 +609,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -633,7 +633,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -655,7 +655,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -665,14 +665,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -680,8 +680,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -720,7 +720,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -773,7 +773,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -797,7 +797,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -819,7 +819,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -829,14 +829,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -844,8 +844,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -884,7 +884,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -938,7 +938,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -962,7 +962,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -984,7 +984,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -994,14 +994,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -1009,8 +1009,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -1058,7 +1058,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1170,7 +1170,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1194,7 +1194,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1216,7 +1216,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1226,14 +1226,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -1241,8 +1241,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -1326,7 +1326,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1350,7 +1350,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1372,7 +1372,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1382,14 +1382,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -1397,8 +1397,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -1482,7 +1482,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1506,7 +1506,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1528,7 +1528,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1538,14 +1538,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -1553,8 +1553,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -1638,7 +1638,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1662,7 +1662,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1684,7 +1684,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1694,14 +1694,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -1709,8 +1709,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -1794,7 +1794,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1818,7 +1818,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1840,7 +1840,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1850,14 +1850,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -1865,8 +1865,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -1951,7 +1951,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1975,7 +1975,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1997,7 +1997,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2007,14 +2007,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -2022,8 +2022,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -2071,7 +2071,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -2179,7 +2179,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         border-radius: 0px;
                         border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2209,7 +2209,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
@@ -2229,19 +2229,19 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 0px;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       &:hover:active {
-                        background-color: #d0d0d0;
+                        background-color: #d2d0ce;
                       }
                       @media only screen and (min-width: 0px) and (max-width: 479px){& {
                         padding-bottom: 4px;
@@ -2308,7 +2308,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2357,7 +2357,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
@@ -2373,7 +2373,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -2389,7 +2389,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2399,14 +2399,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -2414,8 +2414,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -2454,7 +2454,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2503,7 +2503,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
@@ -2519,7 +2519,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -2535,7 +2535,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2545,14 +2545,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -2560,8 +2560,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -2600,7 +2600,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2650,7 +2650,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
@@ -2666,7 +2666,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -2682,7 +2682,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         text-decoration: underline;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2692,14 +2692,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
+                        background-color: #f3f2f1;
                         color: initial;
                         cursor: pointer;
                       }
@@ -2707,8 +2707,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         -moz-osx-font-smoothing: grayscale;
@@ -2756,7 +2756,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -2863,7 +2863,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
@@ -2896,7 +2896,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2945,7 +2945,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         border-radius: 0px;
                         border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #323130;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2975,7 +2975,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
@@ -2995,19 +2995,19 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 0px;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #201f1e;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #c8c6c4;
+                        color: #323130;
                       }
                       &:hover:active {
-                        background-color: #d0d0d0;
+                        background-color: #d2d0ce;
                       }
                       @media only screen and (min-width: 0px) and (max-width: 479px){& {
                         padding-bottom: 4px;
@@ -3074,7 +3074,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -3122,7 +3122,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;

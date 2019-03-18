@@ -2,6 +2,34 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.12.0",
+      "tag": "@uifabric/fabric-website_v6.12.0",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Announced demo pages and values to redirect map for Announced links",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "ce2154375e321a95b86d0e7bb9be491ad933e7fc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.12.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.8 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.61.0 <7.0.0` to `>=6.62.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.149.0 <7.0.0` to `>=6.150.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.11.0",
       "tag": "@uifabric/fabric-website_v6.11.0",
       "date": "Tue, 26 Feb 2019 13:31:28 GMT",

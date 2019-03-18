@@ -2,6 +2,191 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.54.1",
+      "tag": "@uifabric/dashboard_v0.54.1",
+      "date": "Mon, 11 Mar 2019 12:31:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: Enable use the currentL2Id on Panel load to load L2 page directly",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "236eb73575fd2d08296ca20a79ca3ff09eeecfdc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.153.0 <7.0.0` to `>=6.154.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.54.0",
+      "tag": "@uifabric/dashboard_v0.54.0",
+      "date": "Fri, 08 Mar 2019 13:32:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added props required for content animation in wizard, Moved util functions from exampls to main util file, Added util methods \"getPrevStep, getParentStep, getStep\", Animations in progress",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "1ff4c20ea320f5115402c3165504f3f7e53cccbb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.152.1 <7.0.0` to `>=6.153.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.53.1",
+      "tag": "@uifabric/dashboard_v0.53.1",
+      "date": "Thu, 07 Mar 2019 13:32:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailPanel: Allow persona header set image icon ",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a13e2423b12dab019746cf604633caf0de24c4f2"
+          },
+          {
+            "comment": "DetailPanel: Allow header property to take JSX.Element",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "a13e2423b12dab019746cf604633caf0de24c4f2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.62.2 <7.0.0` to `>=6.63.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.152.0 <7.0.0` to `>=6.152.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.53.0",
+      "tag": "@uifabric/dashboard_v0.53.0",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added wizard to dashboard package index",
+            "author": "Sayyid Sofwan <sofwanhaddad@gmail.com>",
+            "commit": "2d6ffd0f0832e8f5717961bbc15ca8008cd4f32b"
+          },
+          {
+            "comment": "Replacing elementType usage with as in SubwayNavBase and SubwayNodeBase",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "caed5d40b8a675b3df12c2579af5a5bdd90c583a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.62.1 <7.0.0` to `>=6.62.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.151.0 <7.0.0` to `>=6.152.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.0 <7.0.0` to `>=6.12.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.52.2",
+      "tag": "@uifabric/dashboard_v0.52.2",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add type annotations based on update to \"styled\"",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.7` to `^0.28.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.62.0 <7.0.0` to `>=6.62.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.150.1 <7.0.0` to `>=6.151.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.52.1",
+      "tag": "@uifabric/dashboard_v0.52.1",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make the stepToShow parameter take effect on footerAction",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "e85da7ef4cdf9d6fbfff06f32b963a2bb3bcf34d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.61.0 <7.0.0` to `>=6.62.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.149.0 <7.0.0` to `>=6.150.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.8 <7.0.0` to `>=6.12.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.52.0",
+      "tag": "@uifabric/dashboard_v0.52.0",
+      "date": "Thu, 28 Feb 2019 13:29:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "first time cards not added on dashboard and onLayoutChange calling issue fixed",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "e5b0da09b9ff2e6374f9592febb9165c4eda1e62"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Implemented full parent wizard in dashboard package",
+            "author": "Sayyid Sofwan <1856058+sysofwan@users.noreply.github.com>",
+            "commit": "239a633825d1441c7c21ea6d814fa31d438350dc"
+          },
+          {
+            "comment": "Make titleElement optional as SetupWizard design has no title bar",
+            "author": "ashasunmsft <46506123+ashasunmsft@users.noreply.github.com>",
+            "commit": "00b03d02d6cf57aa9e8a6e4f4235249ee8b0eaa0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.60.0 <7.0.0` to `>=6.61.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.146.1 <7.0.0` to `>=6.146.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.51.0",
       "tag": "@uifabric/dashboard_v0.51.0",
       "date": "Wed, 27 Feb 2019 01:28:58 GMT",

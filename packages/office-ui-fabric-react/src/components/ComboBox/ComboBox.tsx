@@ -328,7 +328,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       keytipProps,
       placeholder,
       tabIndex,
-      autofill
+      autofill,
+      persistMenu
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -415,7 +416,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             </div>
           )}
         </KeytipData>
-        {isOpen &&
+        {(persistMenu || isOpen) &&
           (onRenderContainer as any)(
             {
               ...this.props,
@@ -950,7 +951,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = document.activeElement!; // FABRIC7VALIDATE
+      relatedTarget = document.activeElement as Element;
     }
     if (
       relatedTarget &&
@@ -1078,8 +1079,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       dropdownWidth,
       dropdownMaxWidth,
       onRenderLowerContent = this._onRenderLowerContent,
-      useComboBoxAsMenuWidth
+      useComboBoxAsMenuWidth,
+      persistMenu
     } = props;
+
+    const { isOpen } = this.state;
 
     const comboBoxMenuWidth =
       useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? this._comboBoxWrapper.current.clientWidth + 2 : undefined;
@@ -1100,6 +1104,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         setInitialFocus={false}
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
+        hidden={persistMenu ? !isOpen : undefined}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
@@ -1109,8 +1114,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     );
   };
 
-  private _onLayerMounted = () => {
+  private _onCalloutLayerMounted() {
+    // In persistMenu mode _onLayerMounted is only called once for the lifetime
+    // of the component. Any functionality required for callout "on mount" can
+    // go here so that we can also call it again during callout dismissal to reset
+    // object state.
     this._gotMouseMove = false;
+  }
+
+  private _onLayerMounted = () => {
+    this._onCalloutLayerMounted();
 
     if (this.props.calloutProps && this.props.calloutProps.onLayerMounted) {
       this.props.calloutProps.onLayerMounted();
@@ -1376,6 +1389,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
+    // In persistMode we need to simulate callout layer mount
+    // since that only happens once. We do it on dismiss since
+    // it works either way.
+    if (this.props.persistMenu) {
+      this._onCalloutLayerMounted();
+    }
+
     // close the menu
     this._setOpenStateAndFocusOnClose(false /* isOpen */, false /* focusInputAfterClose */);
 
@@ -1822,6 +1842,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return;
     }
 
+    // Ignore the event in persistMenu mode if the callout has
+    // closed. This is to avoid clearing the visuals on item click.
+    if (this.props.persistMenu && !this.state.isOpen) {
+      return;
+    }
+
     this.setState({
       currentPendingValueValidIndexOnHover: HoverStatus.clearAll
     });
@@ -1971,8 +1997,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    *  either strings or numbers instead of premitive type.  This normlization makes caller's logic easier.
    */
   private _buildDefaultSelectedKeys(
-    defaultSelectedKey: string | number | string[] | number[] | undefined,
-    selectedKey: string | number | string[] | number[] | undefined
+    defaultSelectedKey: string | number | string[] | number[] | null | undefined,
+    selectedKey: string | number | string[] | number[] | null | undefined
   ): string[] | number[] {
     const selectedKeys: string[] | number[] = this._buildSelectedKeys(defaultSelectedKey);
     if (selectedKeys.length) {
@@ -1981,7 +2007,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return this._buildSelectedKeys(selectedKey);
   }
 
-  private _buildSelectedKeys(selectedKey: string | number | string[] | number[] | undefined): string[] | number[] {
+  private _buildSelectedKeys(selectedKey: string | number | string[] | number[] | null | undefined): string[] | number[] {
     if (selectedKey === undefined) {
       return [];
     }

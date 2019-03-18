@@ -1,9 +1,20 @@
 import { IsFocusVisibleClassName } from '../../Utilities';
+import { HighContrastSelector } from '../../Styling';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
+// Size breakpoint when the default border width changes from 2px to 4px.
+const CELL_BORDER_BREAKPOINT = 24;
+const LARGE_BORDER = 4;
+const SMALL_BORDER = 2;
+const DIVIDING_PADDING = 2;
+const DEFAULT_CELL_SIZE = 20;
+
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
-  const { theme, disabled, selected, circle, isWhite, height, width, borderWidth } = props;
+  const { theme, disabled, selected, circle, isWhite, height = DEFAULT_CELL_SIZE, width = DEFAULT_CELL_SIZE, borderWidth } = props;
   const { semanticColors } = theme;
+
+  // If user provided a value, use it. If not, then we decide depending on the 24px size breakpoint.
+  const calculatedBorderWidth = borderWidth ? borderWidth : width < CELL_BORDER_BREAKPOINT ? SMALL_BORDER : LARGE_BORDER;
 
   return {
     // this is a button that wraps the color
@@ -16,28 +27,58 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         display: 'inline-block',
         cursor: 'pointer',
         userSelect: 'none',
+        border: 'none',
         height: height,
-        width: width,
+        width: width
+      },
+      !circle && {
         selectors: {
-          // remove default focus border
-          [`.${IsFocusVisibleClassName} &:focus::after`]: { display: 'none' },
-          // add a custom focus border
-          [`.${IsFocusVisibleClassName} &:focus`]: { outline: `1px solid ${semanticColors.focusBorder}` }
+          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+            // -1px so that we don't increase visually the size of the cell.
+            outlineOffset: `${calculatedBorderWidth - 1}px`
+          }
         }
       },
+      // In focus state for circle we want a round border which is not possible with outline.
       circle && {
-        borderRadius: '100%'
+        borderRadius: '50%',
+        selectors: {
+          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+            outline: 'none',
+            borderColor: semanticColors.focusBorder,
+            borderRadius: '50%',
+            left: -calculatedBorderWidth,
+            right: -calculatedBorderWidth,
+            top: -calculatedBorderWidth,
+            bottom: -calculatedBorderWidth,
+            selectors: {
+              [HighContrastSelector]: {
+                outline: `1px solid ButtonText`
+              }
+            }
+          }
+        }
       },
       selected && {
-        padding: borderWidth,
-        border: `${borderWidth}px solid ${theme.palette.neutralTertiaryAlt}`
+        padding: DIVIDING_PADDING,
+        border: `${calculatedBorderWidth}px solid ${theme.palette.neutralTertiaryAlt}`
       },
       !selected && {
         selectors: {
           ['&:hover, &:active, &:focus']: {
             backgroundColor: semanticColors.bodyBackground, // overwrite white's override
-            padding: borderWidth,
-            border: `${borderWidth}px solid ${theme.palette.neutralLight}`
+            padding: DIVIDING_PADDING,
+            border: `${calculatedBorderWidth}px solid ${theme.palette.neutralLight}`
+          },
+          ['&:focus']: {
+            borderColor: semanticColors.bodyBackground,
+            padding: 0,
+            selectors: {
+              ':hover': {
+                borderColor: theme.palette.neutralLight,
+                padding: DIVIDING_PADDING
+              }
+            }
           }
         }
       },
@@ -60,7 +101,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         height: '100%'
       },
       circle && {
-        borderRadius: '100%'
+        borderRadius: '50%'
       }
     ]
   };

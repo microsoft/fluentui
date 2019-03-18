@@ -294,14 +294,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
 // Provides a context property that (if true) tells any child components that
 // they are only being used for measurement purposes and will not be visible.
-/* const MeasuredContext = provideContext( //FABRIC7TODO
-  {
-    isMeasured: PropTypes.bool
-  },
-  () => {
-    return { isMeasured: true };
-  }
-); */
+export const MeasuredContext = React.createContext({ isMeasured: false });
 
 // Styles for the hidden div used for measurement
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
@@ -350,7 +343,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
         <div style={hiddenParentStyles}>
           {dataNeedsMeasuring && !isInitialMeasure && (
             <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
-              {onRenderData(dataToMeasure)}
+              <MeasuredContext.Provider value={{ isMeasured: true }}>{onRenderData(dataToMeasure)}</MeasuredContext.Provider>
             </div>
           )}
 

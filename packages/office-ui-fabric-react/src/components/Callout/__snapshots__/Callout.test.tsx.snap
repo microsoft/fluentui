@@ -14,7 +14,7 @@ exports[`Callout renders Callout correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          border-color: #eaeaea;
+          border-color: #edebe9;
           border-style: solid;
           border-width: 1px;
           box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);

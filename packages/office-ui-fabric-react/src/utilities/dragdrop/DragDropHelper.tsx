@@ -175,7 +175,9 @@ export class DragDropHelper implements IDragDropHelper {
             options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
           }
           this._isDragging = true;
-          event.dataTransfer!.setData('id', root.id); // FABRIC7VALIDATE
+          if (event.dataTransfer) {
+            event.dataTransfer.setData('id', root.id);
+          }
         };
 
         events.on(root, 'dragstart', onDragStart);

@@ -132,6 +132,11 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay> {
   maxDate?: Date;
 
   /**
+   * If set the Calendar will not allow selection of dates in this array.
+   */
+  restrictedDates?: Date[];
+
+  /**
    * The days that are selectable when dateRangeType is WorkWeek. If dateRangeType is not WorkWeek this property does nothing.
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */

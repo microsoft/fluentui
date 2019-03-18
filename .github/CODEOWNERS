@@ -66,70 +66,71 @@ dateValues/   @OfficeDev/uifabric-calendar
 
 ## Components
 Accordion/ @JasonGore
-# ActivityItem/
-# Breadcrumb/
-Button/  @khmakoto
-Calendar/   @OfficeDev/uifabric-calendar
-Callout/  @joschect
-# Check/
+ActivityItem/ @jdhuntington
+Breadcrumb/ @jdhuntington
+Button/ @khmakoto
+Calendar/ @OfficeDev/uifabric-calendar
+Callout/ @joschect
+Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
-ChoiceGroup/   @srideshpande
+ChoiceGroup/ @srideshpande
 CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
-# ComboBox/
-CommandBar/   @micahgodbolt @JasonGore
-ContextualMenu/  @joschect
-DatePicker/   @OfficeDev/uifabric-calendar
+ComboBox/ @JasonGore
+CommandBar/ @micahgodbolt @JasonGore
+ContextualMenu/ @joschect
+DatePicker/ @OfficeDev/uifabric-calendar
 DetailsList/ @KevinTCoughlin
-# Dialog/
+Dialog/ @kkjeer
 DocumentCard/ @yiminwu @mikewheaton
-# Dropdown/
-# Fabric/
+Dropdown/ @JasonGore
+Fabric/ @dzearing
 FacePile/ @markionium
 FolderCover/ @ThomasMichon
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
 GroupedList/  @aditima @KevinTCoughlin
-HoverCard/   @atneik @Jahnp
-# Icon/
-# Image/
+HoverCard/   @atneik @Jahnp @Vitalius1
+Icon/ @dzearing
+Image/ @dzearing
 Label/ @cliffkoh
 Layer/  @ThomasMichon @JasonGore
-# Link/
+Link/ @khmakoto
 List/ @KevinTCoughlin
-# MarqueeSelection/
-# MessageBar/
-# Modal/
-# Nav/
-OverflowSet/  @micahgodbolt
-# Overlay/
+MarqueeSelection/ @dzearing
+MessageBar/ @ecraig12345
+Modal/ @JasonGore
+Nav/ @jdhuntington
+OverflowSet/ @micahgodbolt
+Overlay/ @JasonGore
 Pagination/ @caradong
-# Panel/
+Panel/ @kkjeer
 Persona/ @markionium
 PersonaCoin/ @mtennoe @jakob101
 Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
-# Pivot/
-# Popup/
-# ProgressIndicator/
-# Rating/
-ResizeGroup/  @micahgodbolt
-# SearchBox/
+Pivot/ @jdhuntington
+Popup/ @JasonGore
+ProgressIndicator/ @aneeshak
+Rating/ @jdhuntington
+ResizeGroup/ @micahgodbolt
+SearchBox/ @ecraig12345
+Shimmer/ @Vitalius1 @atneik
 Signals/ @ThomasMichon
-# Slider/
-# SpinButton/   @aneeshack4
-# Spinner/
+Slider/ @aneeshak
+SpinButton/ @aneeshack4
+Spinner/ @aneeshack4
 Stack/  @khmakoto @kkjeer
-# SwatchColorPicker/
-TeachingBubble/   @micahgodbolt
-# TextField/
-# Theme/
+SwatchColorPicker/ @ecraig12345
+TeachingBubble/ @micahgodbolt
+TextField/ @ecraig12345
+Theme/ @JasonGore
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
 experiments/src/components/Card/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @JasonGore
-Tooltip/  @micahgodbolt
+Tooltip/ @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
@@ -154,7 +155,7 @@ DocumentCard/docs/ @yiminwu @mikewheaton
 # FocusTrapZone/docs/
 # FocusZone/docs/
 GroupedList/docs/  @aditima @KevinTCoughlin
-HoverCard/docs/   @atneik @Jahnp
+HoverCard/docs/   @atneik @Jahnp @Vitalius1
 # Icon/docs/
 # Image/docs/
 # Label/docs/
@@ -176,6 +177,7 @@ pickers/docs/  @joschect
 # Rating/docs/
 ResizeGroup/docs/  @micahgodbolt
 # SearchBox/docs/
+Shimmer/docs/ @Vitalius1 @atneik
 # Slider/docs/
 # SpinButton/docs/
 # Spinner/docs/

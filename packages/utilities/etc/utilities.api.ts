@@ -5,6 +5,9 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
+export function appendFunction(parent: any, ...functions: (any)[]): () => void;
+
+// @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
@@ -77,7 +80,7 @@ class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.C
   componentDidUpdate(prevProps: TProps, prevState: TState): void;
   componentWillUnmount(): void;
   // @deprecated (undocumented)
-  static onError: ((errorMessage?: string, ex?: any) => void);
+  static onError: (errorMessage?: string, ex?: any) => void;
 }
 
 // @public
@@ -101,9 +104,9 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 // @public (undocumented)
 class Customizations {
   // (undocumented)
-  static applyScopedSettings(scopeName: string, settings: Settings): void;
+  static applyScopedSettings(scopeName: string, settings: ISettings): void;
   // (undocumented)
-  static applySettings(settings: Settings): void;
+  static applySettings(settings: ISettings): void;
   // (undocumented)
   static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;
   // (undocumented)
@@ -173,6 +176,11 @@ class EventGroup {
   // (undocumented)
   static stopPropagation(event: any): void;
 }
+
+// @public
+export function extendComponent<T extends React.Component>(parent: T, methods: {
+    [key in keyof T]?: T[key];
+}): void;
 
 // @public
 class FabricPerformance {
@@ -356,10 +364,10 @@ interface ICustomizations {
   inCustomizerContext?: boolean;
   // (undocumented)
   scopedSettings: {
-    [key: string]: Settings;
+    [key: string]: ISettings;
   }
   // (undocumented)
-  settings: Settings;
+  settings: ISettings;
 }
 
 // @public (undocumented)
@@ -441,6 +449,9 @@ interface IFitContentToBoundsOptions {
   maxScale?: number;
   mode: FitMode;
 }
+
+// @public
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
 // @public
 export function initializeFocusRects(window?: Window): void;
@@ -546,6 +557,18 @@ interface ISize {
 // @public
 export function isMac(reset?: boolean): boolean;
 
+// @public
+export function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement;
+
+// @public
+interface IVirtualElement extends HTMLElement {
+  // (undocumented)
+  _virtual: {
+    children: IVirtualElement[];
+    parent?: IVirtualElement;
+  }
+}
+
 // @public (undocumented)
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
 
@@ -567,17 +590,26 @@ export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
 
+// @public (undocumented)
+export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
+
 // @public
-export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
+export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
 export function nullRender(): JSX.Element | null;
+
+// @public (undocumented)
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
 
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
+
+// @public
+export function raiseClick(target: Element): void;
 
 // @public
 class Rectangle {
@@ -639,7 +671,7 @@ export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): (props: TComponentProps) => JSX.Element;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
 
 // @public
 export function toMatrix<T>(items: T[], columnCount: number): T[][];
@@ -664,10 +696,6 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 
 // WARNING: Unsupported export: IStyleFunctionOrObject
 // WARNING: Unsupported export: ICancelable
-// WARNING: Unsupported export: Settings
-// WARNING: Unsupported export: SettingsFunction
-// WARNING: Unsupported export: CustomizerContext
-// WARNING: Unsupported export: ICustomizerProps
 // WARNING: Unsupported export: IClassNames
 // WARNING: Unsupported export: IComponentAsProps
 // WARNING: Unsupported export: IComponentAs
@@ -677,6 +705,12 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 // WARNING: Unsupported export: IRefObject
 // WARNING: Unsupported export: RefObject
 // WARNING: Unsupported export: ICssInput
+// WARNING: Unsupported export: ISettings
+// WARNING: Unsupported export: ISettingsFunction
+// WARNING: Unsupported export: Settings
+// WARNING: Unsupported export: SettingsFunction
+// WARNING: Unsupported export: ICustomizerProps
+// WARNING: Unsupported export: CustomizerContext
 // WARNING: Unsupported export: DATA_PORTAL_ATTRIBUTE
 // WARNING: Unsupported export: IsFocusVisibleClassName
 // WARNING: Unsupported export: FitMode

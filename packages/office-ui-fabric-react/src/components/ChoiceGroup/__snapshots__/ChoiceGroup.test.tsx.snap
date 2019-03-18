@@ -28,7 +28,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
@@ -68,7 +68,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
               align-items: center;
               border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -93,9 +93,16 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             data-automation-id="auto1"
             id="ChoiceGroup0-1"
@@ -122,17 +129,17 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:before {
                   background-color: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 50%;
                   border-style: solid;
                   border-width: 1px;
@@ -182,7 +189,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
               align-items: center;
               border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -207,9 +214,16 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
@@ -235,17 +249,17 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:before {
                   background-color: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 50%;
                   border-style: solid;
                   border-width: 1px;
@@ -295,7 +309,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
               align-items: center;
               border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -320,9 +334,16 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
@@ -348,17 +369,17 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:before {
                   background-color: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 50%;
                   border-style: solid;
                   border-width: 1px;
@@ -437,7 +458,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               align-items: center;
               border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -462,9 +483,16 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             data-automation-id="auto1"
             id="ChoiceGroup0-1"
@@ -491,17 +519,17 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:before {
                   background-color: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 50%;
                   border-style: solid;
                   border-width: 1px;
@@ -551,7 +579,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               align-items: center;
               border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -576,9 +604,16 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
@@ -604,17 +639,17 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:before {
                   background-color: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 50%;
                   border-style: solid;
                   border-width: 1px;
@@ -664,7 +699,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
               align-items: center;
               border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -689,9 +724,16 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
@@ -717,17 +759,17 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 &:before {
                   background-color: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 50%;
                   border-style: solid;
                   border-width: 1px;

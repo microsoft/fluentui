@@ -2,6 +2,103 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.34.0",
+      "tag": "@uifabric/utilities_v6.34.0",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilities for managing componentRef initialization added.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf912f0679f7c54bfd6864c6e8b7a9dfc2de128b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.33.0",
+      "tag": "@uifabric/utilities_v6.33.0",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Modify return type of styled (function to React.StatelessComponent)",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.1",
+      "tag": "@uifabric/utilities_v6.32.1",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilities: removing redundant export for `setVirtualParent`.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "43389eaf8b8a548d18420253258930b047bdae01"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.0",
+      "tag": "@uifabric/utilities_v6.32.0",
+      "date": "Mon, 04 Mar 2019 13:29:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilities: Adding setVirtualParent export.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1a77a4df9b080b4b582f6cea185e3c6180cbb5de"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.31.0",
+      "tag": "@uifabric/utilities_v6.31.0",
+      "date": "Fri, 01 Mar 2019 19:40:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Reinstroducing dom/warn top level imports.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c224ca9e56e49a2dbe983fa5b1203fb339407d66"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.30.0",
+      "tag": "@uifabric/utilities_v6.30.0",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "A number of files containing many exports have been split into smaller units for finer debuggability in bundle size implications. Some unneeded dependencies on EventGroup have been removed.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bd191a3964734c6619fa49fcdb1d6127e2834522"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.2 <7.0.0` to `>=6.16.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.29.4",
       "tag": "@uifabric/utilities_v6.29.4",
       "date": "Tue, 26 Feb 2019 22:45:29 GMT",

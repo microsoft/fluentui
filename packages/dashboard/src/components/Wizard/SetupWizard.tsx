@@ -3,9 +3,8 @@ import { ISetupWizardProps, ISetupWizardStyles, ISetupWizardStyleProps } from '.
 import { getSetupWizardStyles } from './SetupWizard.styles';
 import { SetupWizardBase } from './SetupWizard.Base';
 
-export const SetupWizard: (props: ISetupWizardProps) => JSX.Element = styled<ISetupWizardProps, ISetupWizardStyleProps, ISetupWizardStyles>(
-  SetupWizardBase,
-  getSetupWizardStyles,
-  undefined,
-  { scope: 'SetupWizard' }
-);
+export const SetupWizard: React.FunctionComponent<ISetupWizardProps> = styled<
+  ISetupWizardProps,
+  ISetupWizardStyleProps,
+  ISetupWizardStyles
+>(SetupWizardBase, getSetupWizardStyles, undefined, { scope: 'SetupWizard' });

@@ -34,13 +34,16 @@ export interface IWizardStepProps {
 
   isSubStep?: boolean;
 
+  // This property is used for animation
+  isFirstSubStep?: boolean;
+
   onClickStep?: (step: ISubwayNavNodeProps) => void;
 
   wizardContent?: IWizardContentProps;
 
   subSteps?: IWizardStepProps[];
 
-  titleElement: JSX.Element;
+  titleElement?: JSX.Element;
 
   footerElement: JSX.Element;
 }
@@ -92,5 +95,9 @@ export interface IWizardStyles {
 }
 
 export interface IWizardStyleProps {
+  isSubStep: boolean;
+
+  isFirstSubStep: boolean;
+
   theme: ITheme;
 }

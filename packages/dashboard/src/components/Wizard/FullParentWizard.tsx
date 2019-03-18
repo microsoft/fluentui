@@ -3,7 +3,7 @@ import { FullParentWizardBase } from './FullParentWizard.Base';
 import { IFullParentWizardProps, IFullParentWizardStyleProps, IFullParentWizardStyles } from './FullParentWizard.types';
 import { getFullParentWizardStyles } from './FullParentWizard.styles';
 
-export const FullParentWizard: (props: IFullParentWizardProps) => JSX.Element = styled<
+export const FullParentWizard: React.FunctionComponent<IFullParentWizardProps> = styled<
   IFullParentWizardProps,
   IFullParentWizardStyleProps,
   IFullParentWizardStyles
