@@ -1,6 +1,6 @@
 ---
 name: Accessibility Issue
-about: Have you identified an accessibility issue with a Fabric control?
+about: Have you identified an accessibility issue regarding a Fabric control?
 ---
 
 <!-- 
