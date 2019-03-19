@@ -1,17 +1,6 @@
-import * as React from "react";
-import {
-  classNamesFunction,
-  getNativeProps,
-  imageProperties
-} from "../../Utilities";
-import {
-  IImageProps,
-  IImageStyleProps,
-  IImageStyles,
-  ImageCoverStyle,
-  ImageFit,
-  ImageLoadState
-} from "./Image.types";
+import * as React from 'react';
+import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
 
@@ -19,7 +8,7 @@ export interface IImageState {
   loadState?: ImageLoadState;
 }
 
-const KEY_PREFIX = "fabricImage";
+const KEY_PREFIX = 'fabricImage';
 
 export class ImageBase extends React.Component<IImageProps, IImageState> {
   public static defaultProps = {
@@ -55,19 +44,13 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
 
   public componentDidUpdate(prevProps: IImageProps, prevState: IImageState) {
     this._checkImageLoaded();
-    if (
-      this.props.onLoadingStateChange &&
-      prevState.loadState !== this.state.loadState
-    ) {
+    if (this.props.onLoadingStateChange && prevState.loadState !== this.state.loadState) {
       this.props.onLoadingStateChange(this.state.loadState!);
     }
   }
 
   public render(): JSX.Element {
-    const imageProps = getNativeProps(this.props, imageProperties, [
-      "width",
-      "height"
-    ]);
+    const imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
     const {
       src,
       alt,
@@ -83,10 +66,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       theme
     } = this.props;
     const { loadState } = this.state;
-    const coverStyle =
-      this.props.coverStyle !== undefined
-        ? this.props.coverStyle
-        : this._coverStyle;
+    const coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -95,10 +75,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       maximizeFrame,
       shouldFadeIn,
       shouldStartVisible,
-      isLoaded:
-        loadState === ImageLoadState.loaded ||
-        (loadState === ImageLoadState.notLoaded &&
-          this.props.shouldStartVisible),
+      isLoaded: loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
       isLandscape: coverStyle === ImageCoverStyle.landscape,
       isCenter: imageFit === ImageFit.center,
       isCenterCover: imageFit === ImageFit.centerCover,
@@ -111,16 +88,12 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <div
-        className={classNames.root}
-        style={{ width: width, height: height }}
-        ref={this._frameElement}
-      >
+      <div className={classNames.root} style={{ width: width, height: height }} ref={this._frameElement}>
         <img
           {...imageProps}
           onLoad={this._onImageLoaded}
           onError={this._onImageError}
-          key={KEY_PREFIX + this.props.src || ""}
+          key={KEY_PREFIX + this.props.src || ''}
           className={classNames.image}
           ref={this._imageElement}
           src={src}
@@ -131,9 +104,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
     );
   }
 
-  private _onImageLoaded = (
-    ev: React.SyntheticEvent<HTMLImageElement>
-  ): void => {
+  private _onImageLoaded = (ev: React.SyntheticEvent<HTMLImageElement>): void => {
     const { src, onLoad } = this.props;
     if (onLoad) {
       onLoad(ev);
@@ -158,11 +129,8 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
       const isLoaded: boolean = this._imageElement.current
-        ? (src &&
-            (this._imageElement.current.naturalWidth > 0 &&
-              this._imageElement.current.naturalHeight > 0)) ||
-          (this._imageElement.current.complete &&
-            ImageBase._svgRegex.test(src!))
+        ? (src && (this._imageElement.current.naturalWidth > 0 && this._imageElement.current.naturalHeight > 0)) ||
+          (this._imageElement.current.complete && ImageBase._svgRegex.test(src!))
         : false;
 
       if (isLoaded) {
@@ -179,9 +147,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
 
     // Do not compute cover style if it was already specified in props
     if (
-      (imageFit === ImageFit.cover ||
-        imageFit === ImageFit.contain ||
-        imageFit === ImageFit.centerCover) &&
+      (imageFit === ImageFit.cover || imageFit === ImageFit.contain || imageFit === ImageFit.centerCover) &&
       this.props.coverStyle === undefined &&
       this._imageElement.current &&
       this._frameElement.current
@@ -192,15 +158,11 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
       if (!!width && !!height && imageFit !== ImageFit.centerCover) {
         desiredRatio = (width as number) / (height as number);
       } else {
-        desiredRatio =
-          this._frameElement.current.clientWidth /
-          this._frameElement.current.clientHeight;
+        desiredRatio = this._frameElement.current.clientWidth / this._frameElement.current.clientHeight;
       }
 
       // Examine the source image to determine its original ratio.
-      const naturalRatio =
-        this._imageElement.current.naturalWidth /
-        this._imageElement.current.naturalHeight;
+      const naturalRatio = this._imageElement.current.naturalWidth / this._imageElement.current.naturalHeight;
 
       // Should we crop from the top or the sides?
       if (naturalRatio > desiredRatio) {
@@ -211,9 +173,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
     }
   }
 
-  private _onImageError = (
-    ev: React.SyntheticEvent<HTMLImageElement>
-  ): void => {
+  private _onImageError = (ev: React.SyntheticEvent<HTMLImageElement>): void => {
     if (this.props.onError) {
       this.props.onError(ev);
     }
