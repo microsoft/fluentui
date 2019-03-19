@@ -12,6 +12,11 @@ export const isLocal: boolean = window.location.hostname === 'localhost' || wind
 
 // Todo: Move URL Utilities here (see BlogPost.tsx and index.html)
 
+/**
+ * Get URL parameters by name
+ * @param name - Name of the URL parameter to look for
+ * @param url - Target URL. If URL is not defined, look for window.location.href
+ */
 export const getParameterByName = (name: string, url?: string): string => {
   if (!url) {
     url = window.location.href;
@@ -28,4 +33,34 @@ export const getParameterByName = (name: string, url?: string): string => {
     return '';
   }
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+};
+
+/**
+ * Update a URL GET variable with a new parameter
+ * @param param - Parameter name
+ * @param paramVal - Updated value
+ * @param url - Optional URL to update/check.  If undefined, then use window.location.href
+ */
+export const updateUrlParameter = (param: string, paramVal: string, url?: string): string => {
+  if (!url) {
+    url = window.location.href;
+  }
+
+  let newAdditionalURL = '';
+  let tempArray = url.split('?');
+  const baseURL = tempArray[0];
+  const additionalURL = tempArray[1];
+  let temp = '';
+  if (additionalURL) {
+    tempArray = additionalURL.split('&');
+    for (let i = 0; i < tempArray.length; i++) {
+      if (tempArray[i].split('=')[0] !== param) {
+        newAdditionalURL += temp + tempArray[i];
+        temp = '&';
+      }
+    }
+  }
+
+  const rowsText = temp + '' + param + '=' + paramVal;
+  return baseURL + '?' + newAdditionalURL + rowsText;
 };

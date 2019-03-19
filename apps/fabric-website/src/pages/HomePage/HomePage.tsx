@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 import * as stylesImport from './HomePage.module.scss';
-import { getParameterByName } from '../../utilities/location';
+import { getParameterByName, updateUrlParameter } from '../../utilities/location';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
@@ -24,7 +24,7 @@ export interface IHomepageState {
 export class HomePage extends React.Component<any, IHomepageState> {
   constructor(props: {}) {
     super(props);
-    const version = getParameterByName('fabricVer', window.location.href);
+    const version = getParameterByName('fabricVer');
 
     this.state = {
       fabricVer: !!version ? version : fabricVersionOptions[0].data,
@@ -34,7 +34,7 @@ export class HomePage extends React.Component<any, IHomepageState> {
 
   public componentDidUpdate(prevProps: any, prevState: IHomepageState): void {
     if (prevState.fabricVer !== this.state.fabricVer) {
-      window.location.href = this._updateURLParameter(window.location.href, 'fabricVer', this.state.fabricVer);
+      window.location.href = updateUrlParameter('fabricVer', this.state.fabricVer);
     }
   }
 
@@ -218,26 +218,6 @@ export class HomePage extends React.Component<any, IHomepageState> {
         </div>
       </div>
     );
-  }
-
-  private _updateURLParameter(url: string, param: string, paramVal: string) {
-    let newAdditionalURL = '';
-    let tempArray = url.split('?');
-    const baseURL = tempArray[0];
-    const additionalURL = tempArray[1];
-    let temp = '';
-    if (additionalURL) {
-      tempArray = additionalURL.split('&');
-      for (let i = 0; i < tempArray.length; i++) {
-        if (tempArray[i].split('=')[0] !== param) {
-          newAdditionalURL += temp + tempArray[i];
-          temp = '&';
-        }
-      }
-    }
-
-    let rowsText = temp + '' + param + '=' + paramVal;
-    return baseURL + '?' + newAdditionalURL + rowsText;
   }
 
   private _onVersionMenuClick = (event, item: IContextualMenuItem): void => {
