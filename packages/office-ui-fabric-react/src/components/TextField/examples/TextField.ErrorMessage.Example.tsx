@@ -12,7 +12,7 @@ export class TextFieldErrorMessageExample extends React.Component<{}, { displayE
       /*
        * Screen readers will read all errors on a page as soon as they are present,
        * making this demo potentially unpleasant when using a screen reader.
-       * Disabling the controls by default makes for a more pleasant experience.
+       * Not rendering the controls by default makes for a more pleasant experience.
        */
       displayEnabled: false
     };
