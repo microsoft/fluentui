@@ -332,9 +332,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
       </button>
       <br />
       <br />
-      <div
-        className="shouldFocus input"
-      >
+      <div>
         <div
           className=
               ms-Toggle

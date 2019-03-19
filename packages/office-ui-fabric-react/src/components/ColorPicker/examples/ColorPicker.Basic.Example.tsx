@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { ColorPicker, Toggle, getColorFromString, IColor } from 'office-ui-fabric-react/lib/index';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';

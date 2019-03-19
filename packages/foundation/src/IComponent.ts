@@ -1,7 +1,5 @@
 import { IStyle, IStyleSet, ITheme } from '@uifabric/styling';
 
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.
 //        Effect is that mistyped property keys on returned style objects will not generate errors.
 //        This affects lookup types used as functional decorations on IComponent and IStatelessComponent, e.g.:
@@ -102,7 +100,13 @@ export type IViewRenderer<TViewProps> = (props?: TViewProps) => JSX.Element | nu
 
 /**
  * Component used by foundation to tie elements together.
- * @see createComponent for generic type documentation.
+ *
+ * * TComponentProps: A styleable props interface for the created component.
+ * * TTokens: The type for tokens props.
+ * * TStyleSet: The type for styles properties.
+ * * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
+ * component is not provided, TComponentProps is the same as TViewProps.
+ * * TStatics: Static type for statics applied to created component object.
  */
 export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
   /**

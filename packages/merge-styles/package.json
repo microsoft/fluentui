@@ -23,8 +23,7 @@
   },
   "disabledTasks": [
     "copy",
-    "sass",
-    "build-codepen-examples"
+    "sass"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",

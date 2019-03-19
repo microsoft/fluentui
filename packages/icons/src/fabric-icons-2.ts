@@ -15,9 +15,14 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-2"`,
-      src: `url('${baseUrl}fabric-icons-2-be6a5f70.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-2-8820ef0b.woff') format('woff')`
     },
     icons: {
+      FontIncrease: '\uE8E8',
+      FontSize: '\uE8E9',
+      CellPhone: '\uE8EA',
+      RepeatOne: '\uE8ED',
+      RepeatAll: '\uE8EE',
       Calculator: '\uE8EF',
       Library: '\uE8F1',
       PostUpdate: '\uE8F3',
@@ -73,6 +78,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       CalculatorMultiply: '\uE947',
       CalculatorAddition: '\uE948',
       CalculatorSubtract: '\uE949',
+      CalculatorPercentage: '\uE94C',
       CalculatorEqualTo: '\uE94E',
       PrintfaxPrinterFile: '\uE956',
       StorageOptical: '\uE958',
@@ -111,13 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Sunny: '\uE9BD',
       CloudWeather: '\uE9BE',
       Cloudy: '\uE9BF',
-      PartlyCloudyDay: '\uE9C0',
-      PartlyCloudyNight: '\uE9C1',
-      ClearNight: '\uE9C2',
-      RainShowersDay: '\uE9C3',
-      Rain: '\uE9C4',
-      Thunderstorms: '\uE9C6',
-      RainSnow: '\uE9C7'
+      PartlyCloudyDay: '\uE9C0'
     }
   };
 

@@ -19,7 +19,7 @@ import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
-import { IColumnResizeDetails, SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps } from './DetailsHeader.types';
+import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
 import { classNamesFunction } from '../../Utilities';
 
@@ -32,15 +32,6 @@ const NO_COLUMNS: IColumn[] = [];
 
 export interface IDetailsHeader {
   focus: () => boolean;
-}
-
-export interface IDetailsHeaderState {
-  columnReorderProps?: IColumnReorderHeaderProps;
-  columnResizeDetails?: IColumnResizeDetails;
-  isAllSelected?: boolean;
-  isSizing?: boolean;
-  groupNestingDepth?: number;
-  isAllCollapsed?: boolean;
 }
 
 export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
@@ -167,6 +158,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     const {
       columns = NO_COLUMNS,
       ariaLabel,
+      ariaLabelForToggleAllGroupsButton,
       ariaLabelForSelectAllCheckbox,
       selectAllVisibility,
       ariaLabelForSelectionColumn,
@@ -279,7 +271,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
-          <div className={classNames.cellIsGroupExpander} onClick={this._onToggleCollapseAll} data-is-focusable={true}>
+          <div
+            className={classNames.cellIsGroupExpander}
+            onClick={this._onToggleCollapseAll}
+            data-is-focusable={true}
+            aria-label={ariaLabelForToggleAllGroupsButton}
+            aria-expanded={!isAllCollapsed}
+          >
             <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
