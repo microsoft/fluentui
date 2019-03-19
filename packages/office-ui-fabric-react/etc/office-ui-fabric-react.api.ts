@@ -411,7 +411,7 @@ class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T
 }
 
 // @public (undocumented)
-class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState>, implements IBaseSelectedItemsList<T> {
+class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>>, implements IBaseSelectedItemsList<T> {
   constructor(basePickerProps: P);
   // (undocumented)
   addItems: (items: T[]) => void;
@@ -438,7 +438,7 @@ class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends
   // (undocumented)
   protected onSelectionChanged: () => void;
   // (undocumented)
-  removeItem: (item: ISelectedItemProps<T>) => void;
+  removeItem: (item: T) => void;
   // (undocumented)
   removeItemAt: (index: number) => void;
   // (undocumented)
@@ -2002,9 +2002,9 @@ interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
 }
 
 // @public (undocumented)
-interface IBaseSelectedItemsListState {
+interface IBaseSelectedItemsListState<T = any> {
   // (undocumented)
-  items?: any;
+  items: T[];
 }
 
 // @public (undocumented)
