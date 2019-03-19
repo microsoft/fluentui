@@ -2,6 +2,25 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.7.2",
+      "tag": "@uifabric/foundation_v0.7.2",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TSDoc fixes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "480f82474e77ccaa31960c0fb34ae8600d48e14f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.35.0 <7.0.0` to `>=6.35.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.1",
       "tag": "@uifabric/foundation_v0.7.1",
       "date": "Mon, 04 Feb 2019 13:36:12 GMT",

@@ -706,7 +706,7 @@ class CompactPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
@@ -777,6 +777,12 @@ export function correctRGB(color: IRGB): IRGB;
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
+
+// @public
+export function createComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.FunctionComponent<TComponentProps> & TStatics;
+
+// @public
+export function createFactory<TProps>(ComponentType: React.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps>;
 
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
@@ -1380,7 +1386,7 @@ export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColo
 export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
@@ -1413,7 +1419,7 @@ export function getLanguage(): string | null;
 export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
@@ -1447,6 +1453,9 @@ export function getScrollbarWidth(): number;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public
+export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(userProps: TProps, slots: ISlotDefinition<Required<TSlots>>): ISlots<Required<TSlots>>;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -1956,25 +1965,8 @@ interface IBasePickerStyles {
   text: IStyle;
 }
 
-// @public (undocumented)
-interface IBasePickerSuggestionsProps {
-  className?: string;
-  forceResolveText?: string;
-  loadingText?: string;
-  mostRecentlyUsedHeaderText?: string;
-  noResultsFoundText?: string;
-  onRenderNoResultFound?: IRenderFunction<void>;
-  resultsFooter?: () => JSX.Element;
-  resultsFooterFull?: () => JSX.Element;
-  resultsMaximumNumber?: number;
-  searchForMoreText?: string;
-  searchingText?: string;
-  showRemoveButtons?: boolean;
-  suggestionsAvailableAlertText?: string;
-  suggestionsClassName?: string;
-  suggestionsContainerAriaLabel?: string;
-  suggestionsHeaderText?: string;
-  suggestionsItemClassName?: string;
+// @public
+interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
 }
 
 // @public
@@ -3068,15 +3060,15 @@ interface ICommandBarStyles {
 }
 
 // @public
-interface ICommunicationColors {
-  primary: string;
-  shade10: string;
-  shade20: string;
-  shade30: string;
-  tint10: string;
-  tint20: string;
-  tint30: string;
-  tint40: string;
+interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
+  displayName: string;
+  factoryOptions?: IFactoryOptions<TComponentProps>;
+  fields?: string[];
+  state?: IStateComponentType<TComponentProps, TViewProps>;
+  statics?: TStatics;
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
+  view: IViewComponent<TViewProps>;
 }
 
 // @public (undocumented)
@@ -3122,6 +3114,8 @@ enum IconNames {
   // (undocumented)
   AccessLogoFill = "AccessLogoFill",
   // (undocumented)
+  AccountBrowser = "AccountBrowser",
+  // (undocumented)
   AccountManagement = "AccountManagement",
   // (undocumented)
   Accounts = "Accounts",
@@ -3146,6 +3140,8 @@ enum IconNames {
   // (undocumented)
   AddGroup = "AddGroup",
   // (undocumented)
+  AddHome = "AddHome",
+  // (undocumented)
   AddIn = "AddIn",
   // (undocumented)
   AddNotes = "AddNotes",
@@ -3153,6 +3149,8 @@ enum IconNames {
   AddOnlineMeeting = "AddOnlineMeeting",
   // (undocumented)
   AddPhone = "AddPhone",
+  // (undocumented)
+  AddReaction = "AddReaction",
   // (undocumented)
   AddTo = "AddTo",
   // (undocumented)
@@ -3240,6 +3238,14 @@ enum IconNames {
   // (undocumented)
   AppIconDefaultList = "AppIconDefaultList",
   // (undocumented)
+  AppleTVMenu = "AppleTVMenu",
+  // (undocumented)
+  AppleTVMicrophone = "AppleTVMicrophone",
+  // (undocumented)
+  AppleTVMonitor = "AppleTVMonitor",
+  // (undocumented)
+  AppleTVPlay = "AppleTVPlay",
+  // (undocumented)
   Archive = "Archive",
   // (undocumented)
   AreaChart = "AreaChart",
@@ -3297,6 +3303,8 @@ enum IconNames {
   Attach = "Attach",
   // (undocumented)
   AustralianRules = "AustralianRules",
+  // (undocumented)
+  AuthenticatorApp = "AuthenticatorApp",
   // (undocumented)
   AutoEnhanceOff = "AutoEnhanceOff",
   // (undocumented)
@@ -3515,6 +3523,8 @@ enum IconNames {
   CalculatorMultiply = "CalculatorMultiply",
   // (undocumented)
   CalculatorNotEqualTo = "CalculatorNotEqualTo",
+  // (undocumented)
+  CalculatorPercentage = "CalculatorPercentage",
   // (undocumented)
   CalculatorSubtract = "CalculatorSubtract",
   // (undocumented)
@@ -3756,6 +3766,10 @@ enum IconNames {
   // (undocumented)
   ClearNight = "ClearNight",
   // (undocumented)
+  ClipboardList = "ClipboardList",
+  // (undocumented)
+  ClipboardListMirrored = "ClipboardListMirrored",
+  // (undocumented)
   ClipboardSolid = "ClipboardSolid",
   // (undocumented)
   Clock = "Clock",
@@ -3816,6 +3830,8 @@ enum IconNames {
   // (undocumented)
   ColumnVerticalSection = "ColumnVerticalSection",
   // (undocumented)
+  ColumnVerticalSectionEdit = "ColumnVerticalSectionEdit",
+  // (undocumented)
   Combine = "Combine",
   // (undocumented)
   Combobox = "Combobox",
@@ -3823,6 +3839,8 @@ enum IconNames {
   CommandPrompt = "CommandPrompt",
   // (undocumented)
   Comment = "Comment",
+  // (undocumented)
+  CommentActive = "CommentActive",
   // (undocumented)
   CommentAdd = "CommentAdd",
   // (undocumented)
@@ -3839,6 +3857,8 @@ enum IconNames {
   CompanyDirectory = "CompanyDirectory",
   // (undocumented)
   CompanyDirectoryMirrored = "CompanyDirectoryMirrored",
+  // (undocumented)
+  Compare = "Compare",
   // (undocumented)
   CompassNW = "CompassNW",
   // (undocumented)
@@ -3932,6 +3952,8 @@ enum IconNames {
   // (undocumented)
   Dataflows = "Dataflows",
   // (undocumented)
+  DataManagementSettings = "DataManagementSettings",
+  // (undocumented)
   DateTime = "DateTime",
   // (undocumented)
   DateTime2 = "DateTime2",
@@ -3959,6 +3981,8 @@ enum IconNames {
   DefaultRatio = "DefaultRatio",
   // (undocumented)
   DefectSolid = "DefectSolid",
+  // (undocumented)
+  DefenderTVM = "DefenderTVM",
   // (undocumented)
   Delete = "Delete",
   // (undocumented)
@@ -4260,6 +4284,8 @@ enum IconNames {
   // (undocumented)
   FabricFolder = "FabricFolder",
   // (undocumented)
+  FabricFolderConfirm = "FabricFolderConfirm",
+  // (undocumented)
   FabricFolderFill = "FabricFolderFill",
   // (undocumented)
   FabricFolderSearch = "FabricFolderSearch",
@@ -4496,6 +4522,8 @@ enum IconNames {
   // (undocumented)
   GenericScanFilled = "GenericScanFilled",
   // (undocumented)
+  GIF = "GIF",
+  // (undocumented)
   Giftbox = "Giftbox",
   // (undocumented)
   GiftboxOpen = "GiftboxOpen",
@@ -4608,6 +4636,8 @@ enum IconNames {
   // (undocumented)
   Hide2 = "Hide2",
   // (undocumented)
+  Hide3 = "Hide3",
+  // (undocumented)
   Highlight = "Highlight",
   // (undocumented)
   HighlightMappedShapes = "HighlightMappedShapes",
@@ -4623,6 +4653,8 @@ enum IconNames {
   HomeGroup = "HomeGroup",
   // (undocumented)
   HomeSolid = "HomeSolid",
+  // (undocumented)
+  HomeVerify = "HomeVerify",
   // (undocumented)
   HorizontalDistributeCenter = "HorizontalDistributeCenter",
   // (undocumented)
@@ -4658,6 +4690,8 @@ enum IconNames {
   // (undocumented)
   IncidentTriangle = "IncidentTriangle",
   // (undocumented)
+  IncomingCall = "IncomingCall",
+  // (undocumented)
   IncreaseIndentArrow = "IncreaseIndentArrow",
   // (undocumented)
   IncreaseIndentArrowMirrored = "IncreaseIndentArrowMirrored",
@@ -4672,7 +4706,11 @@ enum IconNames {
   // (undocumented)
   Info2 = "Info2",
   // (undocumented)
+  InformationBarriers = "InformationBarriers",
+  // (undocumented)
   InfoSolid = "InfoSolid",
+  // (undocumented)
+  InkingTool = "InkingTool",
   // (undocumented)
   InsertColumnsLeft = "InsertColumnsLeft",
   // (undocumented)
@@ -4687,6 +4725,8 @@ enum IconNames {
   InsertTextBox = "InsertTextBox",
   // (undocumented)
   InstallToDrive = "InstallToDrive",
+  // (undocumented)
+  InternalInvestigation = "InternalInvestigation",
   // (undocumented)
   InternetSharing = "InternetSharing",
   // (undocumented)
@@ -4856,6 +4896,8 @@ enum IconNames {
   // (undocumented)
   MapPinSolid = "MapPinSolid",
   // (undocumented)
+  MarkAsProtected = "MarkAsProtected",
+  // (undocumented)
   MarkDownLanguage = "MarkDownLanguage",
   // (undocumented)
   Market = "Market",
@@ -4867,6 +4909,8 @@ enum IconNames {
   MaximumValue = "MaximumValue",
   // (undocumented)
   Medal = "Medal",
+  // (undocumented)
+  MedalSolid = "MedalSolid",
   // (undocumented)
   Media = "Media",
   // (undocumented)
@@ -4895,6 +4939,12 @@ enum IconNames {
   MicrosoftFlowLogo = "MicrosoftFlowLogo",
   // (undocumented)
   MicrosoftStaffhubLogo = "MicrosoftStaffhubLogo",
+  // (undocumented)
+  MicrosoftTranslatorLogo = "MicrosoftTranslatorLogo",
+  // (undocumented)
+  MicrosoftTranslatorLogoBlue = "MicrosoftTranslatorLogoBlue",
+  // (undocumented)
+  MicrosoftTranslatorLogoGreen = "MicrosoftTranslatorLogoGreen",
   // (undocumented)
   MiniContract = "MiniContract",
   // (undocumented)
@@ -5082,6 +5132,8 @@ enum IconNames {
   // (undocumented)
   OpenFolderHorizontal = "OpenFolderHorizontal",
   // (undocumented)
+  OpenInNewTab = "OpenInNewTab",
+  // (undocumented)
   OpenInNewWindow = "OpenInNewWindow",
   // (undocumented)
   OpenPane = "OpenPane",
@@ -5179,6 +5231,8 @@ enum IconNames {
   PartyLeader = "PartyLeader",
   // (undocumented)
   PassiveAuthentication = "PassiveAuthentication",
+  // (undocumented)
+  PasswordField = "PasswordField",
   // (undocumented)
   Paste = "Paste",
   // (undocumented)
@@ -5538,6 +5592,8 @@ enum IconNames {
   // (undocumented)
   RepeatAll = "RepeatAll",
   // (undocumented)
+  RepeatOne = "RepeatOne",
+  // (undocumented)
   Reply = "Reply",
   // (undocumented)
   ReplyAll = "ReplyAll",
@@ -5564,7 +5620,11 @@ enum IconNames {
   // (undocumented)
   RepoSolid = "RepoSolid",
   // (undocumented)
+  ReservationOrders = "ReservationOrders",
+  // (undocumented)
   ResponsesMenu = "ResponsesMenu",
+  // (undocumented)
+  ReturnKey = "ReturnKey",
   // (undocumented)
   ReturnToSession = "ReturnToSession",
   // (undocumented)
@@ -5594,6 +5654,8 @@ enum IconNames {
   // (undocumented)
   RingerRemove = "RingerRemove",
   // (undocumented)
+  RingerSolid = "RingerSolid",
+  // (undocumented)
   Robot = "Robot",
   // (undocumented)
   Rocket = "Rocket",
@@ -5601,6 +5663,10 @@ enum IconNames {
   Room = "Room",
   // (undocumented)
   Rotate = "Rotate",
+  // (undocumented)
+  Rotate90Clockwise = "Rotate90Clockwise",
+  // (undocumented)
+  Rotate90CounterClockwise = "Rotate90CounterClockwise",
   // (undocumented)
   RowsChild = "RowsChild",
   // (undocumented)
@@ -5688,6 +5754,8 @@ enum IconNames {
   // (undocumented)
   Settings = "Settings",
   // (undocumented)
+  ShakeDevice = "ShakeDevice",
+  // (undocumented)
   Shapes = "Shapes",
   // (undocumented)
   Share = "Share",
@@ -5725,6 +5793,8 @@ enum IconNames {
   SidePanel = "SidePanel",
   // (undocumented)
   SidePanelMirrored = "SidePanelMirrored",
+  // (undocumented)
+  Signin = "Signin",
   // (undocumented)
   SignOut = "SignOut",
   // (undocumented)
@@ -5787,6 +5857,8 @@ enum IconNames {
   SliderThumb = "SliderThumb",
   // (undocumented)
   Slideshow = "Slideshow",
+  // (undocumented)
+  SmartGlassRemote = "SmartGlassRemote",
   // (undocumented)
   SnapToGrid = "SnapToGrid",
   // (undocumented)
@@ -6262,6 +6334,8 @@ enum IconNames {
   // (undocumented)
   Upload = "Upload",
   // (undocumented)
+  USB = "USB",
+  // (undocumented)
   UserEvent = "UserEvent",
   // (undocumented)
   UserFollowed = "UserFollowed",
@@ -6287,6 +6361,8 @@ enum IconNames {
   VennDiagram = "VennDiagram",
   // (undocumented)
   VerifiedBrand = "VerifiedBrand",
+  // (undocumented)
+  VerifiedBrandSolid = "VerifiedBrandSolid",
   // (undocumented)
   VersionControlPush = "VersionControlPush",
   // (undocumented)
@@ -6388,11 +6464,15 @@ enum IconNames {
   // (undocumented)
   WarningSolid = "WarningSolid",
   // (undocumented)
+  WavingHand = "WavingHand",
+  // (undocumented)
   WebComponents = "WebComponents",
   // (undocumented)
   WebPublish = "WebPublish",
   // (undocumented)
   Website = "Website",
+  // (undocumented)
+  WebTemplate = "WebTemplate",
   // (undocumented)
   Weights = "Weights",
   // (undocumented)
@@ -6821,6 +6901,12 @@ interface IDeclaredEventsByName {
 }
 
 // @public
+interface IDefaultSlotProps<TSlots> {
+  // (undocumented)
+  _defaultStyles: IComponentStyles<TSlots>;
+}
+
+// @public
 interface IDelayedRenderProps extends React.Props<{}> {
   delay?: number;
 }
@@ -6860,6 +6946,7 @@ interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBas
   ariaLabel?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
+  ariaLabelForToggleAllGroupsButton?: string;
   className?: string;
   collapseAllVisibility?: CollapseAllVisibility;
   columnReorderOptions?: IColumnReorderOptions;
@@ -7010,6 +7097,9 @@ interface IDetailsRow {
 
 // @public (undocumented)
 interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+  cellsByColumn?: {
+    [columnKey: string]: React.ReactNode;
+  }
   checkboxCellClassName?: string;
   checkButtonAriaLabel?: string;
   className?: string;
@@ -7683,7 +7773,7 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   onDismiss?: () => void;
   onRenderCaretDown?: IRenderFunction<IDropdownProps>;
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
-  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
+  onRenderTitle?: IRenderFunction<IDropdownOption[]>;
   options: IDropdownOption[];
   // @deprecated
   placeHolder?: string;
@@ -7930,6 +8020,11 @@ interface IFacepileStyles {
   root: IStyle;
   // (undocumented)
   screenReaderOnly: IStyle;
+}
+
+// @public
+interface IFactoryOptions<TProps> {
+  defaultProp?: keyof TProps | 'children';
 }
 
 // @public
@@ -9034,34 +9129,6 @@ interface INavStyles {
 }
 
 // @public
-interface INeutralColors {
-  black: string;
-  gray10: string;
-  gray100: string;
-  gray110: string;
-  gray120: string;
-  gray130: string;
-  gray140: string;
-  gray150: string;
-  gray160: string;
-  gray170: string;
-  gray180: string;
-  gray190: string;
-  gray20: string;
-  gray200: string;
-  gray210: string;
-  gray220: string;
-  gray30: string;
-  gray40: string;
-  gray50: string;
-  gray60: string;
-  gray70: string;
-  gray80: string;
-  gray90: string;
-  white: string;
-}
-
-// @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
 // @public
@@ -9721,6 +9788,12 @@ interface IPositioningContainerState {
   positions?: IPositionedData;
 }
 
+// @public
+interface IProcessedSlotProps {
+  // (undocumented)
+  className?: string;
+}
+
 // @public (undocumented)
 interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   ariaValueText?: string;
@@ -10352,44 +10425,6 @@ interface ISerializableObject {
   toString?: () => string;
 }
 
-// @public
-interface ISharedColors {
-  blue10: string;
-  blueMagenta10: string;
-  blueMagenta20: string;
-  blueMagenta30: string;
-  blueMagenta40: string;
-  cyan10: string;
-  cyan20: string;
-  cyan30: string;
-  cyan40: string;
-  cyanBlue10: string;
-  cyanBlue20: string;
-  gray10: string;
-  gray20: string;
-  gray30: string;
-  gray40: string;
-  green10: string;
-  green20: string;
-  greenCyan10: string;
-  magenta10: string;
-  magenta20: string;
-  magentaPink10: string;
-  magentaPink20: string;
-  orange10: string;
-  orange20: string;
-  orange30: string;
-  orangeYellow10: string;
-  orangeYellow20: string;
-  pinkRed10: string;
-  red10: string;
-  red20: string;
-  redOrange10: string;
-  redOrange20: string;
-  yellow10: string;
-  yellowGreen10: string;
-}
-
 // @public (undocumented)
 interface IShimmer {
 }
@@ -10609,6 +10644,12 @@ interface ISliderStyles {
 }
 
 // @public
+interface ISlotCreator<TProps> {
+  // (undocumented)
+  create?: ISlotFactory<TProps>;
+}
+
+// @public
 export function isMac(reset?: boolean): boolean;
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -10653,7 +10694,7 @@ interface ISpinButtonProps {
   incrementButtonAriaLabel?: string;
   incrementButtonIcon?: IIconProps;
   keytipProps?: IKeytipProps;
-  label: string;
+  label?: string;
   // (undocumented)
   labelPosition?: Position;
   max?: number;
@@ -10809,6 +10850,18 @@ interface IStickyState {
   isStickyBottom: boolean;
   // (undocumented)
   isStickyTop: boolean;
+}
+
+// @public
+interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
+  // (undocumented)
+  className?: string;
+  // (undocumented)
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
+  // (undocumented)
+  theme?: ITheme;
+  // (undocumented)
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
 // @public
@@ -11275,6 +11328,14 @@ interface ITheme extends IScheme {
 }
 
 // @public (undocumented)
+interface IThemeProviderProps {
+  // (undocumented)
+  scheme?: ISchemeNames;
+  // (undocumented)
+  theme?: ITheme;
+}
+
+// @public (undocumented)
 interface IThemeRules {
   // (undocumented)
   [key: string]: IThemeSlotRule;
@@ -11354,6 +11415,10 @@ interface IToggleStyles {
   root: IStyle;
   text: IStyle;
   thumb: IStyle;
+}
+
+// @public
+interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {
 }
 
 // @public (undocumented)
@@ -11589,7 +11654,7 @@ class ListPeoplePickerBase extends MemberListPeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
@@ -11727,7 +11792,7 @@ class NormalPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
@@ -12971,6 +13036,9 @@ export function warnDeprecations<P>(componentName: string, props: P, deprecation
 // @public
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
 
+// @public
+export function withSlots<P>(type: ISlot<P> | React.FunctionComponent<P> | string, props?: React.Attributes & P | null, ...children: React.ReactNode[]): React.ReactElement<P> | JSX.Element | null;
+
 // @public (undocumented)
 module ZIndexes {
   // (undocumented)
@@ -13052,6 +13120,34 @@ module ZIndexes {
 // WARNING: Unsupported export: IBaseFloatingPickerSuggestionProps
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
+// WARNING: Unsupported export: IPropsWithChildren
+// WARNING: Unsupported export: IComponentStyles
+// WARNING: Unsupported export: IStylesFunction
+// WARNING: Unsupported export: IStylesFunctionOrObject
+// WARNING: Unsupported export: IToken
+// WARNING: Unsupported export: ITokenFunction
+// WARNING: Unsupported export: ITokenFunctionOrObject
+// WARNING: Unsupported export: ITokenBase
+// WARNING: Unsupported export: ICustomizationProps
+// WARNING: Unsupported export: IStateComponentProps
+// WARNING: Unsupported export: IStateComponentType
+// WARNING: Unsupported export: IViewComponent
+// WARNING: Unsupported export: IViewRenderer
+// WARNING: Unsupported export: IHTMLSlot
+// WARNING: Unsupported export: IHTMLElementSlot
+// WARNING: Unsupported export: ISlottableComponentType
+// WARNING: Unsupported export: ISlottableReactType
+// WARNING: Unsupported export: ISlotDefinition
+// WARNING: Unsupported export: ISlot
+// WARNING: Unsupported export: ISlotFactory
+// WARNING: Unsupported export: ISlots
+// WARNING: Unsupported export: ISlotProps
+// WARNING: Unsupported export: ISlotProp
+// WARNING: Unsupported export: ISlotPropValue
+// WARNING: Unsupported export: ISlotPropRenderFunction
+// WARNING: Unsupported export: ISlotRenderer
+// WARNING: Unsupported export: ISlotRender
+// WARNING: Unsupported export: ThemeProvider
 // WARNING: Unsupported export: Grid
 // WARNING: Unsupported export: IGroupHeaderStyleProps
 // WARNING: Unsupported export: IGroupFooterStyleProps

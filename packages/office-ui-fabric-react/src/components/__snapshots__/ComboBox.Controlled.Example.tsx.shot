@@ -518,7 +518,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
         role="combobox"
         spellCheck={false}
         type="text"
-        value="Option C"
+        value="Option C, Option D"
       />
       <button
         aria-hidden={true}

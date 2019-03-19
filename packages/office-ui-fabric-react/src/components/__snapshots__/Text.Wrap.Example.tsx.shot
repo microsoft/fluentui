@@ -68,9 +68,11 @@ exports[`Component Examples renders Text.Wrap.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
-            font-size: inherit;
-            font-weight: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            webkit-font-smoothing: antialiased;
           }
     >
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -122,11 +124,13 @@ exports[`Component Examples renders Text.Wrap.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
-            font-size: inherit;
-            font-weight: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
             overflow: hidden;
             text-overflow: ellipsis;
+            webkit-font-smoothing: antialiased;
             white-space: nowrap;
           }
     >

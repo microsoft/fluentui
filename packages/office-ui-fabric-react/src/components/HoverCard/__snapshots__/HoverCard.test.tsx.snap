@@ -137,9 +137,22 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           }
         >
           <div
+            onBlur={[Function]}
+            onFocus={[Function]}
             onFocusCapture={[Function]}
-            onKeyDown={[Function]}
           >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
             <div
               onKeyDown={[Function]}
             >
@@ -156,6 +169,18 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>
@@ -299,9 +324,22 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           }
         >
           <div
+            onBlur={[Function]}
+            onFocus={[Function]}
             onFocusCapture={[Function]}
-            onKeyDown={[Function]}
           >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
             <div
               onKeyDown={[Function]}
             >
@@ -316,6 +354,18 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
                 TEST
               </div>
             </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>

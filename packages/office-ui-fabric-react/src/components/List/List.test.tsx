@@ -81,6 +81,38 @@ describe('List', () => {
 
       expect(firstRow.getDOMNode().getAttribute('role')).toEqual('listitem');
     });
+
+    it('renders rows for a sparse array containing items that are primitive values', done => {
+      const wrapper = mount(<List />);
+
+      const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
+        <div className="cell" key={index}>
+          {item}
+        </div>
+      );
+
+      wrapper.setProps({ items: [, , 'foo', 'bar'], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+
+      const rows = wrapper.find('.cell');
+
+      expect(rows).toHaveLength(4);
+    });
+
+    it('renders rows for a sparse array of items that are undefined', done => {
+      const wrapper = mount(<List />);
+
+      const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
+        <div className="cell" key={index}>
+          {item}
+        </div>
+      );
+
+      wrapper.setProps({ items: [, , , ,], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+
+      const rows = wrapper.find('.cell');
+
+      expect(rows).toHaveLength(4);
+    });
   });
 
   describe('if provided', () => {

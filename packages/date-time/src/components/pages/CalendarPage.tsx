@@ -6,9 +6,9 @@ import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Exam
 import { addMonths, addYears, addDays } from '../../utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarButtonExampleCodepen = require('!raw-loader!@uifabric/date-time/lib/codepen/components/Calendar/Calendar.Button.Example.Codepen.txt') as string;
+const CalendarButtonExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineExampleCodepen = require('!raw-loader!@uifabric/date-time/lib/codepen/components/Calendar/Calendar.Inline.Example.Codepen.txt') as string;
+const CalendarInlineExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 

@@ -238,10 +238,23 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 @media (min-width: 480px){& {
                   width: 340px;
                 }
+            onBlur={[Function]}
+            onFocus={[Function]}
             onFocusCapture={[Function]}
-            onKeyDown={[Function]}
             style={Object {}}
           >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
             <div
               className=
                   ms-Panel-commands
@@ -479,6 +492,18 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 </div>
               </div>
             </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>

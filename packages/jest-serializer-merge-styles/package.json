@@ -23,7 +23,6 @@
   "disabledTasks": [
     "copy",
     "sass",
-    "build-codepen-examples",
     "verify-api-extractor"
   ],
   "devDependencies": {
