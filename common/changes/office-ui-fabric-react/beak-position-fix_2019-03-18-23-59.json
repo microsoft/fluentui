@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "position anchoring was only applied to the Callout box itself but not the beak. Dynamically sized callouts would grow correctly, but the beak would be anchored to the incorrect edge, causing it to move away from the target. This update re-anchors the beak to the correct edge so dynamically sized Callouts do not change the beak position.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "anhw@microsoft.com"
+}
