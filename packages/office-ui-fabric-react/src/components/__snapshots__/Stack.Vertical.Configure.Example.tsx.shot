@@ -364,17 +364,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   border-color: #323130;
                 }
                 &:hover .ms-Checkbox-checkmark {
-                  color: #a19f9d;
+                  color: #605e5c;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
                   color: Highlight;
                 }
                 &:hover .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
                 &:focus .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
           >
             <input
@@ -430,9 +430,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #605e5c;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -503,17 +502,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   border-color: #323130;
                 }
                 &:hover .ms-Checkbox-checkmark {
-                  color: #a19f9d;
+                  color: #605e5c;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
                   color: Highlight;
                 }
                 &:hover .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
                 &:focus .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
           >
             <input
@@ -569,9 +568,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #605e5c;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -642,17 +640,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   border-color: #323130;
                 }
                 &:hover .ms-Checkbox-checkmark {
-                  color: #a19f9d;
+                  color: #605e5c;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
                   color: Highlight;
                 }
                 &:hover .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
                 &:focus .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
           >
             <input
@@ -708,9 +706,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #605e5c;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -780,17 +777,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   border-color: #323130;
                 }
                 &:hover .ms-Checkbox-checkmark {
-                  color: #a19f9d;
+                  color: #605e5c;
                   opacity: 1;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
                   color: Highlight;
                 }
                 &:hover .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
                 &:focus .ms-Checkbox-text {
-                  color: #323130;
+                  color: #201f1e;
                 }
           >
             <input
@@ -846,9 +843,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     ms-Checkbox-checkbox
                     {
                       align-items: center;
-                      border-color: #605e5c;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 2px;
+                      border: 1px solid #323130;
                       box-sizing: border-box;
                       display: flex;
                       flex-shrink: 0;
@@ -1160,12 +1156,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 position: relative;
               }
               &:hover .ms-Checkbox-checkbox {
-                background: #106ebe;
-                border-color: #106ebe;
+                background: #005a9e;
+                border-color: #005a9e;
               }
               &:focus .ms-Checkbox-checkbox {
-                background: #106ebe;
-                border-color: #106ebe;
+                background: #005a9e;
+                border-color: #005a9e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
                 background: Window;
@@ -1184,10 +1180,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 color: Highlight;
               }
               &:hover .ms-Checkbox-text {
-                color: #323130;
+                color: #201f1e;
               }
               &:focus .ms-Checkbox-text {
-                color: #323130;
+                color: #201f1e;
               }
         >
           <input
@@ -1246,8 +1242,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     align-items: center;
                     background: #0078d4;
                     border-color: #0078d4;
-                    border-style: solid;
-                    border-width: 1px;
+                    border-radius: 2px;
+                    border: 1px solid #323130;
                     box-sizing: border-box;
                     display: flex;
                     flex-shrink: 0;
@@ -2116,17 +2112,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     border-color: #323130;
                   }
                   &:hover .ms-Checkbox-checkmark {
-                    color: #a19f9d;
+                    color: #605e5c;
                     opacity: 1;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
                     color: Highlight;
                   }
                   &:hover .ms-Checkbox-text {
-                    color: #323130;
+                    color: #201f1e;
                   }
                   &:focus .ms-Checkbox-text {
-                    color: #323130;
+                    color: #201f1e;
                   }
             >
               <input
@@ -2182,9 +2178,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Checkbox-checkbox
                       {
                         align-items: center;
-                        border-color: #605e5c;
-                        border-style: solid;
-                        border-width: 1px;
+                        border-radius: 2px;
+                        border: 1px solid #323130;
                         box-sizing: border-box;
                         display: flex;
                         flex-shrink: 0;
