@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { applyRegisteredMigrations, registerMigration } from './migration';
 
-if (process.argv.length < 2) {
+if (process.argv.length <= 2) {
   console.error('Please specify a target version (e.g. 7)');
   process.exit(1);
 }
