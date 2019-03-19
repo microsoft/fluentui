@@ -5,7 +5,7 @@ import { FluentCustomizations } from '../../../../packages/fluent-theme/src/Flue
 import { Customizer } from 'office-ui-fabric-react';
 
 export const FabricDecorator = (story: RenderFunction) => (
-  <Customizer settings={{ ...FluentCustomizations }}>
+  <Customizer {...FluentCustomizations}>
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
         {story()}
@@ -15,7 +15,7 @@ export const FabricDecorator = (story: RenderFunction) => (
 );
 
 export const FabricDecoratorTall = (story: RenderFunction) => (
-  <Customizer settings={{ ...FluentCustomizations }}>
+  <Customizer {...FluentCustomizations}>
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
         {story()}
@@ -25,7 +25,7 @@ export const FabricDecoratorTall = (story: RenderFunction) => (
 );
 
 export const FabricDecoratorTallFixedWidth = (story: RenderFunction) => (
-  <Customizer settings={{ ...FluentCustomizations }}>
+  <Customizer {...FluentCustomizations}>
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
         {story()}
@@ -35,7 +35,7 @@ export const FabricDecoratorTallFixedWidth = (story: RenderFunction) => (
 );
 
 export const FabricDecoratorFixedWidth = (story: RenderFunction) => (
-  <Customizer settings={{ ...FluentCustomizations }}>
+  <Customizer {...FluentCustomizations}>
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
         {story()}
@@ -45,7 +45,7 @@ export const FabricDecoratorFixedWidth = (story: RenderFunction) => (
 );
 
 export const FabricDecoratorFullWidth = (story: RenderFunction) => (
-  <Customizer settings={{ ...FluentCustomizations }}>
+  <Customizer {...FluentCustomizations}>
     <div style={{ display: 'flex' }}>
       <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
         {story()}
