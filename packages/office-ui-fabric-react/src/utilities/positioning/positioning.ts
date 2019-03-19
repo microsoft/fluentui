@@ -415,7 +415,7 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
 }
 
 /**
- * Retreive the final value for the return edge of elementRectangle.
+ * Retrieve the final value for the return edge of elementRectangle.
  * If the elementRectangle is closer to one side of the bounds versus the other, the return edge is flipped to grow inward.
  *
  * @param elementRectangle
