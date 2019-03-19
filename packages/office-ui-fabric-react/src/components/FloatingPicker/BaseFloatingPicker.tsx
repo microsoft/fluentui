@@ -173,7 +173,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
-          ref={this._resolveRef('suggestionsControl')}
+          componentRef={this._resolveRef('suggestionsControl')}
           completeSuggestion={this.completeSuggestion}
           shouldLoopSelection={false}
           {...this.props.pickerSuggestionsProps}
