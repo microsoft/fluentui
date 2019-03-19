@@ -1,13 +1,42 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { Dropdown, IDropdownOption, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 import * as stylesImport from './HomePage.module.scss';
+import { getParameterByName } from '../../utilities/location';
 const styles: any = stylesImport;
 
 const corePackageData = require('office-ui-fabric-core/package.json');
 const reactPackageData = require('office-ui-fabric-react/package.json');
 
-export class HomePage extends React.Component<any, any> {
+// Update as new Fabric versions are released
+const fabricVersionOptions: IDropdownOption[] = [{ key: 'A', text: 'Fabric 6', data: '6' }, { key: 'B', text: 'Fabric 5', data: '5' }];
+
+export interface IHomepageState {
+  fabricVer: string;
+}
+
+export class HomePage extends React.Component<any, IHomepageState> {
+  constructor(props: {}) {
+    super(props);
+    const version = getParameterByName('fabricVer', window.location.href);
+    this.state = {
+      fabricVer: !!version ? version : fabricVersionOptions[0].data
+    };
+  }
+
+  public componentDidUpdate(prevProps: any, prevState: IHomepageState): void {
+    if (prevState.fabricVer !== this.state.fabricVer) {
+      window.location.href = this._updateURLParameter(window.location.href, 'fabricVer', this.state.fabricVer);
+    }
+  }
+
   public render(): JSX.Element {
+    const selectedOption = fabricVersionOptions.filter(option => {
+      return option.data === this.state.fabricVer;
+    });
+
+    const selectedKey = selectedOption.length ? selectedOption[0].key : undefined;
+
     return (
       <div>
         <div className={styles.hero}>
@@ -21,6 +50,14 @@ export class HomePage extends React.Component<any, any> {
           <span className={styles.version}>
             Fabric Core {corePackageData.version} and Fabric React {reactPackageData.version}
           </span>
+          <div className={styles.dropdownLabel}>View Fabric version</div>
+          <Dropdown
+            className={styles.dropdown}
+            ariaLabel="Fabric version"
+            options={fabricVersionOptions}
+            selectedKey={selectedKey}
+            onChange={this._setFabricVersion}
+          />
         </div>
 
         <div className={styles.flavors}>
@@ -32,9 +69,7 @@ export class HomePage extends React.Component<any, any> {
               alt="React logo"
             />
             <span className={styles.flavorTitle}>Built with React</span>
-            <span className={styles.flavorDescription}>
-              Fabric&rsquo;s robust, up-to-date components are built with React
-            </span>
+            <span className={styles.flavorDescription}>Fabric&rsquo;s robust, up-to-date components are built with React</span>
             <a href="#/components" className={styles.button}>
               See components
             </a>
@@ -59,8 +94,7 @@ export class HomePage extends React.Component<any, any> {
           <div>
             <span className={styles.productTitle}>SharePoint</span>
             <span className={styles.productDescription}>
-              New SharePoint experiences are built with Fabric and the SharePoint Framework comes with it baked in to
-              make things simple.{' '}
+              New SharePoint experiences are built with Fabric and the SharePoint Framework comes with it baked in to make things simple.{' '}
               <a
                 className={styles.homePageLink}
                 href="https://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components"
@@ -82,8 +116,8 @@ export class HomePage extends React.Component<any, any> {
           <div>
             <span className={styles.productTitle}>Office Add-ins</span>
             <span className={styles.productDescription}>
-              Fabric is the official UX design framework for Office Add-ins. With Fabric, add-ins blend seamlessly with
-              Word, Excel, PowerPoint, and Outlook.{' '}
+              Fabric is the official UX design framework for Office Add-ins. With Fabric, add-ins blend seamlessly with Word, Excel,
+              PowerPoint, and Outlook.{' '}
               <a className={styles.homePageLink} href="http://dev.office.com/docs/add-ins/design/add-in-design">
                 Learn more
               </a>
@@ -101,19 +135,16 @@ export class HomePage extends React.Component<any, any> {
         <div className={styles.featured}>
           <span className={styles.featuredTitle}>Highlights</span>
           <span className={styles.featuredDescription}>
-            Fabric offers a variety of UI elements to help you create an experience that delights users and complements
-            Office 365.
+            Fabric offers a variety of UI elements to help you create an experience that delights users and complements Office 365.
           </span>
           <ul className={styles.featureList} aria-label="List of highlighted features">
             <li>
               <a href="#/styles/icons">
                 <img
-                  src={
-                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-icons.svg'
-                  }
+                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-icons.svg'}
                   width="240"
                   height="112"
-                  alt="Illustrations of <icons className=&quot;&quot;></icons>"
+                  alt='Illustrations of <icons className=""></icons>'
                 />
                 <span>Icons</span>
               </a>
@@ -121,9 +152,7 @@ export class HomePage extends React.Component<any, any> {
             <li>
               <a href="#/styles/typography">
                 <img
-                  src={
-                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-typography.svg'
-                  }
+                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-typography.svg'}
                   width="240"
                   height="112"
                   alt="Illustration of different font weights."
@@ -134,9 +163,7 @@ export class HomePage extends React.Component<any, any> {
             <li>
               <a href="#/styles/brand-icons">
                 <img
-                  src={
-                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-brand.svg'
-                  }
+                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-brand.svg'}
                   width="240"
                   height="112"
                   alt="Word, Excel, OneNote, PowerPoint icons."
@@ -147,9 +174,7 @@ export class HomePage extends React.Component<any, any> {
             <li>
               <a href="#/components/button">
                 <img
-                  src={
-                    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-buttons.svg'
-                  }
+                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-buttons.svg'}
                   width="240"
                   height="112"
                   alt="Illustrated representation of buttons."
@@ -159,19 +184,19 @@ export class HomePage extends React.Component<any, any> {
             </li>
           </ul>
           <span className={styles.trademark}>
-            All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons,
-            is subject to the{' '}
+            All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons, is subject to the{' '}
             <a
               className={styles.homePageLink}
               href="https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf"
             >
               assets license agreement
-            </a>.
+            </a>
+            .
           </span>
           <span className={styles.featuredTitle}>Design Toolkit</span>
           <span className={styles.featuredDescription} id={styles.toolkitDescription}>
-            The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you
-            to create seamless, beautiful Office experiences.{' '}
+            The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless,
+            beautiful Office experiences.{' '}
             <a className={styles.homePageLink} href="#/resources">
               Learn more
             </a>
@@ -180,4 +205,28 @@ export class HomePage extends React.Component<any, any> {
       </div>
     );
   }
+
+  private _updateURLParameter(url: string, param: string, paramVal: string) {
+    let newAdditionalURL = '';
+    let tempArray = url.split('?');
+    const baseURL = tempArray[0];
+    const additionalURL = tempArray[1];
+    let temp = '';
+    if (additionalURL) {
+      tempArray = additionalURL.split('&');
+      for (let i = 0; i < tempArray.length; i++) {
+        if (tempArray[i].split('=')[0] !== param) {
+          newAdditionalURL += temp + tempArray[i];
+          temp = '&';
+        }
+      }
+    }
+
+    let rowsText = temp + '' + param + '=' + paramVal;
+    return baseURL + '?' + newAdditionalURL + rowsText;
+  }
+
+  private _setFabricVersion = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+    this.setState({ fabricVer: item.data });
+  };
 }

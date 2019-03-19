@@ -56,6 +56,18 @@
   text-align: center;
 }
 
+.dropdownLabel {
+  font-size: $ms-font-size-m;
+  color: $ms-color-white;
+  margin-top: 22px;
+  margin-bottom: 4px;
+}
+
+.dropdown {
+  font-size: $ms-font-size-m;
+  width: 142px;
+}
+
 .primaryButton {
   @include ghostButton($ms-color-white, $color-home-darker);
   background-color: $ms-color-white;
