@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "\"have added the tooltip for the refresh icon and close icon in the detail panel with pivot\"",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "v-sisom@microsoft.com"
+}
