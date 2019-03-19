@@ -35,14 +35,15 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
 }
 
+export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {}
 
 /**
  * Standard People Picker.
  */
+export class SelectedPeopleList extends BasePeopleSelectedItemsList {
   // tslint:disable-next-line:no-any
   public static defaultProps: any = {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />
-  };
   };
 
   protected renderItems = (): JSX.Element[] => {
