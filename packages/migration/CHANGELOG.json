@@ -1,4 +1,19 @@
 {
   "name": "@uifabric/migration",
-  "entries": []
+  "entries": [
+    {
+      "version": "0.1.1",
+      "tag": "@uifabric/migration_v0.1.1",
+      "date": "Tue, 19 Mar 2019 18:05:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release, under construction",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "7a3bb677a144c1be006c7e7c7afe8ed9b8c353ae"
+          }
+        ]
+      }
+    }
+  ]
 }
