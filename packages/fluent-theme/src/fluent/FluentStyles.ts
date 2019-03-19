@@ -123,7 +123,7 @@ export const FluentStyles: any = {
   Link: {
     styles: LinkStyles
   },
-  ListPeoplePicker: {
+  ListPeoplePickerBase: {
     styles: BasePickerStyles
   },
   Modal: {

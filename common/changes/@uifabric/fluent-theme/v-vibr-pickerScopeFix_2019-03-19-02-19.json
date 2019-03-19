@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "v-vibr@microsoft.com"
+}
