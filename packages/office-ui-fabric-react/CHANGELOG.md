@@ -1,6 +1,32 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:07 GMT and should not be manually modified.
+
+## 6.157.0
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Minor changes
+
+- DetailsHeader: Add ariaLabelForToggleAllGroupsButton to IDetailsHeaderProps
+- Add new icons to OUIFR API
+- Export Foundation package.
+- SpinButton: label prop should be marked as optional
+- Rating: unchecked stars should be unfilled.
+
+### Patches
+
+- Popup: If framed, set focus to frame's activeElement on dismiss
+- Use codepen loader in examples
+- For multiSelectComboBox, if allowFreeForm is true, currentPendingValue should get added to option and be selected onBlur
+- Nav: Fix selection state to only check URL if state.selectedKey is undefined
+- Fix combobox behaviour: multiple selections are now correctly shown in dropdown
+- TeachingBubble examples: separate onDismiss into onDismiss and onShow
+- List: Remove duplicate page rows iteration and add tests for SparseArray scenarios
+- Fix color contrast ratio of unchecked Rating stars
+- Use typeof check on process before checking process.env.NODE_ENV
+- Turn IBasePickerSuggestionsProps into a Pick<> type
+- Drop space from DetailsList header aria-labeledby
+- HoverCard: fixes the native event listeners assignment when the target prop is updated.
 
 ## 6.156.0
 Wed, 13 Mar 2019 00:42:29 GMT

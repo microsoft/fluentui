@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/webpack-utils",
-  "version": "0.7.4",
+  "version": "0.8.0",
   "description": "Office UI Fabric utilities for Webpack bundler.",
   "repository": {
     "type": "git",

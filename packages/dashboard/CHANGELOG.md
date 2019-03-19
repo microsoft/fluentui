@@ -1,6 +1,20 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 0.56.0
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Dashboard Card Header ellipsis border issue resolved.
+
+## 0.55.2
+Mon, 18 Mar 2019 17:04:23 GMT
+
+### Patches
+
+- DetailPanel: Enable overflow handling on Tiles
 
 ## 0.55.1
 Wed, 13 Mar 2019 00:42:29 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 6.12.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add query parameter to change Fabric version
 
 ## 6.12.0
 Tue, 05 Mar 2019 04:25:07 GMT

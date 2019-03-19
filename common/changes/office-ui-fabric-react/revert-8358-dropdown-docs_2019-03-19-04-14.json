@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Use codepen loader in examples",
-      "type": "patch"
+      "comment": "Dropdown: Revert documentation updates in #8358",
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "jagore@microsoft.com"
 }
