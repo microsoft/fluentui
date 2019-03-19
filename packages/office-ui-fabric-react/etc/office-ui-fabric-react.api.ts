@@ -3071,7 +3071,7 @@ interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyl
 }
 
 // @public (undocumented)
-class IconBase extends BaseComponent<IIconProps, IIconState> {
+class IconBase extends React.PureComponent<IIconProps, IIconState> {
   constructor(props: IIconProps);
   // (undocumented)
   render(): JSX.Element;
@@ -8828,7 +8828,7 @@ interface IListState {
 }
 
 // @public (undocumented)
-class ImageBase extends BaseComponent<IImageProps, IImageState> {
+class ImageBase extends React.Component<IImageProps, IImageState> {
   constructor(props: IImageProps);
   // (undocumented)
   componentDidUpdate(prevProps: IImageProps, prevState: IImageState): void;
