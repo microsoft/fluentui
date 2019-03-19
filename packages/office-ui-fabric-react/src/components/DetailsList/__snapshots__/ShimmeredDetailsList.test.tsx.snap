@@ -429,7 +429,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -571,7 +571,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -713,7 +713,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -855,7 +855,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -997,7 +997,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -1139,7 +1139,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -1281,7 +1281,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -1423,7 +1423,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -1565,7 +1565,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
@@ -1707,7 +1707,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 {
                                   animation-delay: 4.5s;
                                   animation-direction: normal;
-                                  animation-duration: 1.5s;
+                                  animation-duration: 2s;
                                   animation-iteration-count: infinite;
                                   animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
                                   animation-timing-function: ease-in-out;
