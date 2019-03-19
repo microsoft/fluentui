@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.2",
+      "tag": "@uifabric/fluent-theme_v0.16.2",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: fixes bug were the styles for TeachingBubbleContent were not applied properly when not used directly.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "2db50f202254e0222e7c7979154162a46df45f21"
+          },
+          {
+            "comment": "Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c55e05bd509fa16a87d31cec0627a101507c84a0"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.1",
       "tag": "@uifabric/fluent-theme_v0.16.1",
       "date": "Fri, 15 Mar 2019 12:34:06 GMT",

@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.64.1",
+      "tag": "@uifabric/experiments_v6.64.1",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix a bug in the tooltip of last page button in pagination component, experiment package",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "fbc1b3cb28a8cc1259e568327a1d9b3d57fc35a9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.16.1 <1.0.0` to `>=0.16.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.64.0",
       "tag": "@uifabric/experiments_v6.64.0",
       "date": "Fri, 15 Mar 2019 12:34:06 GMT",

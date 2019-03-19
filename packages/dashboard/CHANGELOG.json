@@ -2,6 +2,28 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.56.0",
+      "tag": "@uifabric/dashboard_v0.56.0",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dashboard Card Header ellipsis border issue resolved.",
+            "author": "ndlganeshu <ndlganeswararao@gmail.com>",
+            "commit": "bdb80cba72903fa3ae020826fd44cae99b94cd27"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.64.0 <7.0.0` to `>=6.64.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.16.1 <1.0.0` to `>=0.16.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.55.2",
       "tag": "@uifabric/dashboard_v0.55.2",
       "date": "Mon, 18 Mar 2019 17:04:23 GMT",
