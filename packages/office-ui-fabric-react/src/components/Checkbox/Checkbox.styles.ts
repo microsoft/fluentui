@@ -1,6 +1,14 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { FontSizes, HighContrastSelector } from '../../Styling';
+import { FontSizes, HighContrastSelector, getGlobalClassNames } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+
+const GlobalClassNames = {
+  root: 'ms-Checkbox',
+  label: 'ms-Checkbox-label',
+  checkbox: 'ms-Checkbox-checkbox',
+  checkmark: 'ms-Checkbox-checkmark',
+  text: 'ms-Checkbox-text'
+};
 
 const MS_CHECKBOX_LABEL_SIZE = '20px';
 const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
@@ -8,25 +16,30 @@ const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
 export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const { className, theme, reversed, checked, disabled, isUsingCustomLabelRender } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, effects, palette } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
-  const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
-  const checkmarkFontColorHovered = semanticColors.inputBorder;
-  const checkboxBorderColor = semanticColors.smallInputBorder;
+  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBorder
+  const checkmarkFontColorHovered = palette.neutralSecondary;
+  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.smallInputBorder
+  const checkboxBorderColor = palette.neutralPrimary;
   const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
   const checkboxBorderColorDisabled = semanticColors.disabledBodySubtext;
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
-  const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxHoveredTextColor = semanticColors.bodyText;
+  // TODO: after updating the semanticColors slots mapping following 2 tokens need to be semanticColors.inputBackgroundCheckedHovered
+  const checkboxBackgroundCheckedHovered = palette.themeDark;
+  const checkboxBorderColorCheckedHovered = palette.themeDark;
+  const checkboxHoveredTextColor = semanticColors.inputTextHovered;
   const checkboxBackgroundDisabledChecked = semanticColors.disabledBodySubtext;
   const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
   return {
     root: [
-      'ms-Checkbox',
+      classNames.root,
       {
         position: 'relative',
         display: 'flex'
@@ -119,7 +132,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       }
     ],
     label: [
-      'ms-Checkbox-label',
+      classNames.label,
       theme.fonts.medium,
       {
         display: 'flex',
@@ -148,7 +161,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       }
     ],
     checkbox: [
-      'ms-Checkbox-checkbox',
+      classNames.checkbox,
       {
         display: 'flex',
         flexShrink: 0,
@@ -156,9 +169,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         justifyContent: 'center',
         height: MS_CHECKBOX_LABEL_SIZE,
         width: MS_CHECKBOX_LABEL_SIZE,
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: checkboxBorderColor,
+        border: `1px solid ${checkboxBorderColor}`,
+        borderRadius: effects.roundedCorner2,
         boxSizing: 'border-box',
         transitionProperty: 'background, border, border-color',
         transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
@@ -204,10 +216,10 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         }
     ],
     checkmark: [
-      'ms-Checkbox-checkmark',
+      classNames.checkmark,
       {
         opacity: checked ? '1' : '0',
-        color: checked && disabled ? checkmarkFontColorCheckedDisabled : checkmarkFontColor,
+        color: checkmarkFontColor,
         selectors: {
           [HighContrastSelector]: {
             color: disabled ? 'InactiveBorder' : 'Window',
@@ -217,7 +229,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       }
     ],
     text: [
-      'ms-Checkbox-text',
+      classNames.text,
       {
         color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
         fontSize: FontSizes.medium,
