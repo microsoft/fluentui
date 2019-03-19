@@ -108,6 +108,6 @@ export const ListPeoplePicker = styled<IPeoplePickerProps, IBasePickerStyleProps
   getStyles,
   undefined,
   {
-    scope: 'ListPeoplePicker'
+    scope: 'ListPeoplePickerBase'
   }
 );
