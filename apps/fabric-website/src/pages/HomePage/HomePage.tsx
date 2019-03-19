@@ -1,26 +1,36 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 import * as stylesImport from './HomePage.module.scss';
 import { getParameterByName } from '../../utilities/location';
+import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 const styles: any = stylesImport;
 
 const corePackageData = require('office-ui-fabric-core/package.json');
 const reactPackageData = require('office-ui-fabric-react/package.json');
 
+const versionLinkId = getId('versionLink');
+
 // Update as new Fabric versions are released
-const fabricVersionOptions: IDropdownOption[] = [{ key: 'A', text: 'Fabric 6', data: '6' }, { key: 'B', text: 'Fabric 5', data: '5' }];
+const fabricVersionOptions: IContextualMenuItem[] = [{ key: 'A', text: 'Fabric 6', data: '6' }, { key: 'B', text: 'Fabric 5', data: '5' }];
 
 export interface IHomepageState {
   fabricVer: string;
+  isVersionMenuOpen: boolean;
 }
 
 export class HomePage extends React.Component<any, IHomepageState> {
+  private _linkButton: HTMLElement;
+
   constructor(props: {}) {
     super(props);
     const version = getParameterByName('fabricVer', window.location.href);
+
     this.state = {
-      fabricVer: !!version ? version : fabricVersionOptions[0].data
+      fabricVer: !!version ? version : fabricVersionOptions[0].data,
+      isVersionMenuOpen: false
     };
   }
 
@@ -48,16 +58,23 @@ export class HomePage extends React.Component<any, IHomepageState> {
             Get started
           </a>
           <span className={styles.version}>
-            Fabric Core {corePackageData.version} and Fabric React {reactPackageData.version}
+            Fabric Core {corePackageData.version} and&nbsp;
+            <ActionButton
+              className={styles.versionLink}
+              allowDisabledFocus={true}
+              menuProps={{
+                gapSpace: 3,
+                beakWidth: 8,
+                isBeakVisible: true,
+                shouldFocusOnMount: true,
+                items: fabricVersionOptions,
+                directionalHint: DirectionalHint.bottomAutoEdge,
+                onItemClick: this._onVersionMenuClick
+              }}
+            >
+              <span className={styles.versionText}>Fabric React {reactPackageData.version}</span>
+            </ActionButton>
           </span>
-          <div className={styles.dropdownLabel}>View Fabric version</div>
-          <Dropdown
-            className={styles.dropdown}
-            ariaLabel="Fabric version"
-            options={fabricVersionOptions}
-            selectedKey={selectedKey}
-            onChange={this._setFabricVersion}
-          />
         </div>
 
         <div className={styles.flavors}>
@@ -226,7 +243,7 @@ export class HomePage extends React.Component<any, IHomepageState> {
     return baseURL + '?' + newAdditionalURL + rowsText;
   }
 
-  private _setFabricVersion = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+  private _onVersionMenuClick = (event, item: IContextualMenuItem): void => {
     this.setState({ fabricVer: item.data });
   };
 }
