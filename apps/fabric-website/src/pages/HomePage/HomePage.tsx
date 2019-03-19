@@ -41,12 +41,6 @@ export class HomePage extends React.Component<any, IHomepageState> {
   }
 
   public render(): JSX.Element {
-    const selectedOption = fabricVersionOptions.filter(option => {
-      return option.data === this.state.fabricVer;
-    });
-
-    const selectedKey = selectedOption.length ? selectedOption[0].key : undefined;
-
     return (
       <div>
         <div className={styles.hero}>
