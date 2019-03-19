@@ -1,11 +1,19 @@
-/* tslint:disable */
-import * as React from 'react';
-/* tslint:enable */
-import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
-import { Image } from '../Image/Image';
-import { ImageLoadState } from '../Image/Image.types';
-import { getNativeProps, htmlElementProperties, BaseComponent, classNamesFunction } from '../../Utilities';
-import { getIcon } from '../../Styling';
+import * as React from "react";
+
+import {
+  IIconProps,
+  IconType,
+  IIconStyleProps,
+  IIconStyles
+} from "./Icon.types";
+import { Image } from "../Image/Image";
+import { ImageLoadState } from "../Image/Image.types";
+import {
+  getNativeProps,
+  htmlElementProperties,
+  classNamesFunction
+} from "../../Utilities";
+import { getIcon } from "../../Styling";
 
 export interface IIconState {
   imageLoadError: boolean;
@@ -13,7 +21,7 @@ export interface IIconState {
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
 
-export class IconBase extends BaseComponent<IIconProps, IIconState> {
+export class IconBase extends React.PureComponent<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
@@ -22,9 +30,18 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
   }
 
   public render() {
-    const { ariaLabel, className, styles, iconName, imageErrorAs, theme } = this.props;
-    const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
-    const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
+    const {
+      ariaLabel,
+      className,
+      styles,
+      iconName,
+      imageErrorAs,
+      theme
+    } = this.props;
+    const isPlaceholder = typeof iconName === "string" && iconName.length === 0;
+    const isImage =
+      this.props.iconType === IconType.image ||
+      this.props.iconType === IconType.Image;
     const { iconClassName, children } = this._getIconContent(iconName);
 
     const classNames = getClassNames(styles, {
@@ -37,20 +54,28 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
 
     const containerProps = ariaLabel
       ? {
-          'aria-label': ariaLabel
+          "aria-label": ariaLabel
         }
       : {
-          role: 'presentation'
+          role: "presentation"
         };
 
-    const RootType = isImage ? 'div' : 'i';
+    const RootType = isImage ? "div" : "i";
     const nativeProps = getNativeProps(this.props, htmlElementProperties);
     const { imageLoadError } = this.state;
-    const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
+    const imageProps = {
+      ...this.props.imageProps,
+      onLoadingStateChange: this.onImageLoadingStateChange
+    };
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
     return (
-      <RootType data-icon-name={iconName} {...nativeProps} {...containerProps} className={classNames.root}>
+      <RootType
+        data-icon-name={iconName}
+        {...nativeProps}
+        {...containerProps}
+        className={classNames.root}
+      >
         {isImage ? <ImageType {...imageProps} /> : children}
       </RootType>
     );
