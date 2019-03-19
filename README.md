@@ -112,7 +112,7 @@ For info about testing, see our [testing documentation](https://github.com/Offic
 
 ### Advanced building tips
 
-The repo contains many packages, each which may have dependencies on each other. You can use Rush to build projects in the correct order, if you have it globally installed.
+The repo contains many packages, each which may have dependencies on each other. You can use [Rush](https://rushjs.io/) to build projects in the correct order, if you have it globally installed.
 
 ```bash
 npm install -g @microsoft/rush
