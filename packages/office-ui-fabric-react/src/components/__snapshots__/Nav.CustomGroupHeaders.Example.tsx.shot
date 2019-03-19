@@ -184,6 +184,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -352,6 +353,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon

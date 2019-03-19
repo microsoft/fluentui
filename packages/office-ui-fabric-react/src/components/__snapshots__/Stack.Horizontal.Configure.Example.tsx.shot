@@ -446,6 +446,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -584,6 +585,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -782,6 +784,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -920,6 +923,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -3049,6 +3053,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -3275,6 +3280,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -3413,6 +3419,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
                   {

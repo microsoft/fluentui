@@ -28,7 +28,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
           }
     >
       <i
-        aria-hidden="true"
+        aria-hidden={true}
         className=
 
             {
@@ -274,6 +274,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -401,6 +402,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

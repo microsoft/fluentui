@@ -124,6 +124,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Checkbox-checkmark
               {
