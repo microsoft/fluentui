@@ -9,11 +9,11 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
+          background-color: #f3f2f1;
           border-radius: 0px;
-          border: 1px solid transparent;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -40,7 +40,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           bottom: 0px;
           content: "";
           left: 0px;
-          outline: 1px solid #666666;
+          outline: 1px solid #605e5c;
           position: absolute;
           right: 0px;
           top: 0px;
@@ -60,16 +60,16 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           top: 0px;
         }
         &:hover {
-          background-color: #eaeaea;
-          color: #212121;
+          background-color: #edebe9;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          background-color: #c8c8c8;
-          color: #212121;
+          background-color: #c8c6c4;
+          color: #201f1e;
         }
     data-is-focusable={true}
     onClick={[Function]}
@@ -126,7 +126,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -238,10 +238,23 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 @media (min-width: 480px){& {
                   width: 340px;
                 }
+            onBlur={[Function]}
+            onFocus={[Function]}
             onFocusCapture={[Function]}
-            onKeyDown={[Function]}
             style={Object {}}
           >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
             <div
               className=
                   ms-Panel-commands
@@ -274,7 +287,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         border-radius: 0px;
                         border: none;
                         box-sizing: border-box;
-                        color: #666666;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -301,7 +314,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         bottom: 0px;
                         content: "";
                         left: 0px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 0px;
                         top: 0px;
@@ -321,7 +334,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         top: 0px;
                       }
                       &:hover {
-                        color: #333333;
+                        color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -427,7 +440,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 21px;
                         font-weight: 100;
@@ -479,6 +492,18 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 </div>
               </div>
             </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>

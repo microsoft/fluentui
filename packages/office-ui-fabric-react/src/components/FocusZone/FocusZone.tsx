@@ -84,7 +84,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     // Manage componentRef resolution.
     initializeComponentRef(this);
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
       warnDeprecations('FocusZone', props, {
         rootProps: undefined,
         allowTabKey: 'handleTabKey',
@@ -121,7 +121,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       }
 
       if (!this._isInnerZone) {
-        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
+        this._disposables.push(on(windowElement!, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
       }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.

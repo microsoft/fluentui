@@ -29,7 +29,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -56,7 +56,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
       className=
 
           {
-            border-color: #a6a6a6;
+            border-color: #a19f9d;
             border-style: solid;
             border-width: 1px;
             box-sizing: border-box;
@@ -65,7 +65,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
             min-width: 86px;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
             outline: 2px dashed transparent;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -86,7 +86,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               border-style: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: text;
               display: block;
               float: left;
@@ -160,7 +160,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -187,7 +187,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -207,8 +207,8 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -216,7 +216,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               }
               &:active {
                 background-color: green;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 background-color: Highlight;
@@ -287,7 +287,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -314,7 +314,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 bottom: 0px;
                 content: "";
                 left: 0px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 0px;
                 top: 0px;
@@ -334,8 +334,8 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -343,7 +343,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               }
               &:active {
                 background-color: red;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 background-color: Highlight;

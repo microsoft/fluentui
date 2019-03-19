@@ -192,21 +192,28 @@ const getDetailTileStyles = (): IDetailTileStyles => {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       lineHeight: 20,
-      paddingBottom: 2
+      paddingBottom: 2,
+      textOverflow: 'ellipsis',
+      overflowWrap: 'break-word'
     },
     message: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       lineHeight: 20,
       color: 'rgba(0, 0, 0, 0.6)',
-      paddingBottom: 2
+      paddingBottom: 2,
+      textOverflow: 'ellipsis',
+      overflowWrap: 'break-word'
     },
     action: {
       fontSize: FontSizes.small,
       lineHeight: 20,
+      textOverflow: 'ellipsis',
+      overflowWrap: 'break-word',
       selectors: {
         '.ms-Link': {
-          height: 20
+          height: 20,
+          maxWidth: '100%'
         }
       }
     }

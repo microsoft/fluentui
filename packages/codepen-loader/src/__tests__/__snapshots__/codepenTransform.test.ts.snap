@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`codepen transform handles examples importing exampleData 1`] = `
+"const { IGroup, Fabric } = window.Fabric;
+
+const FakeExampleDataExample = () => {
+  return <div>hi</div>;
+};
+
+const LOREM_IPSUM = (
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +
+  'labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' +
+  'aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
+  'eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt ' +
+  'mollit anim id est laborum'
+).split(' ');
+
+const DATA = {
+  color: ['red', 'blue', 'green', 'yellow'],
+  shape: ['circle', 'square', 'triangle'],
+  location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
+};
+
+interface IExampleItem {
+  thumbnail: string;
+  key: string;
+  name: string;
+  description: string;
+  color: string;
+  shape: string;
+  location: string;
+  width: number;
+  height: number;
+}
+
+function createListItems(count: number, startIndex: number = 0): IExampleItem[] {
+  return Array.apply(null, Array(count)).map((item: number, index: number) => {
+    const size = 150 + Math.round(Math.random() * 100);
+
+    return {
+      thumbnail: \`//placehold.it/\${size}x\${size}\`,
+      key: 'item-' + (index + startIndex) + ' ' + lorem(4),
+      name: lorem(5),
+      description: lorem(10 + Math.round(Math.random() * 50)),
+      color: _randWord(DATA.color),
+      shape: _randWord(DATA.shape),
+      location: _randWord(DATA.location),
+      width: size,
+      height: size
+    };
+  });
+}
+
+function createGroups(
+  groupCount: number,
+  groupDepth: number,
+  startIndex: number,
+  itemsPerGroup: number,
+  level: number = 0,
+  key: string = '',
+  isCollapsed?: boolean
+): IGroup[] {
+  if (key !== '') {
+    key = key + '-';
+  }
+  const count = Math.pow(itemsPerGroup, groupDepth);
+  return Array.apply(null, Array(groupCount)).map((value: number, index: number) => {
+    return {
+      count: count,
+      key: 'group' + key + index,
+      name: 'group ' + key + index,
+      startIndex: index * count + startIndex,
+      level: level,
+      isCollapsed: isCollapsed,
+      children:
+        groupDepth > 1
+          ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index)
+          : []
+    };
+  });
+}
+
+function lorem(wordCount: number): string {
+  return Array.apply(null, Array(wordCount))
+    .map((item: number, idx: number) => {
+      return LOREM_IPSUM[idx % LOREM_IPSUM.length];
+    })
+    .join(' ');
+}
+
+function isGroupable(key: string): boolean {
+  return key === 'color' || key === 'shape' || key === 'location';
+}
+
+function _randWord(array: string[]): string {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
+}
+
+ReactDOM.render(<FakeExampleDataExample />, document.getElementById('content'));
+"
+`;
+
+exports[`codepen transform handles examples with class components 1`] = `
+"const { SpinButton, Fabric } = window.Fabric;
+
+class SpinButtonBasicExample extends React.Component<any, any> {
+  public render(): JSX.Element {
+    return (
+      <div style={{ width: '400px' }}>
+        <SpinButton
+          defaultValue=\\"0\\"
+          label={'Basic SpinButton:'}
+          min={0}
+          max={100}
+          step={1}
+          iconProps={{ iconName: 'IncreaseIndentLegacy' }}
+          incrementButtonAriaLabel={'Increase value by 1'}
+          decrementButtonAriaLabel={'Decrease value by 1'}
+        />
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<SpinButtonBasicExample />, document.getElementById('content'));
+"
+`;
+
+exports[`codepen transform handles examples with function components 1`] = `
+"const { Label, Fabric } = window.Fabric;
+
+const LabelBasicExample = () => {
+  return (
+    <div>
+      <Label>I'm a Label</Label>
+    </div>
+  );
+};
+
+ReactDOM.render(<LabelBasicExample />, document.getElementById('content'));
+"
+`;

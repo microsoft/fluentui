@@ -34,7 +34,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
           {
             align-items: stretch;
             background: #ffffff;
-            border: 1px solid #a6a6a6;
+            border: 1px solid #a19f9d;
             box-shadow: none;
             box-sizing: border-box;
             cursor: text;
@@ -52,7 +52,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
             position: relative;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -63,8 +63,8 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
             ms-TextField-prefix
             {
               align-items: center;
-              background: #f4f4f4;
-              color: #666666;
+              background: #f3f2f1;
+              color: #605e5c;
               display: flex;
               line-height: 1px;
               padding-bottom: 0;
@@ -97,7 +97,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
               border: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -123,7 +123,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -132,7 +132,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
             &:-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;

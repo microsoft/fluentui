@@ -56,17 +56,19 @@ export function getLastFocusable(
  * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues forward.  Typical use passes rootElement.firstChild.
  * @param includeElementsInFocusZones - true if traversal should go into FocusZone descendants.
+ * @param checkNode - Include currentElement in search when true. Defaults to true.
  * @public
  */
 export function getFirstTabbable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean
+  includeElementsInFocusZones?: boolean,
+  checkNode: boolean = true
 ): HTMLElement | null {
   return getNextElement(
     rootElement,
     currentElement,
-    true /*checkNode*/,
+    checkNode,
     false /*suppressParentTraversal*/,
     false /*suppressChildTraversal*/,
     includeElementsInFocusZones,
@@ -82,17 +84,19 @@ export function getFirstTabbable(
  * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues in reverse.  Typical use passes rootElement.lastChild.
  * @param includeElementsInFocusZones - true if traversal should go into FocusZone descendants.
+ * @param checkNode - Include currentElement in search when true. Defaults to true.
  * @public
  */
 export function getLastTabbable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean
+  includeElementsInFocusZones?: boolean,
+  checkNode: boolean = true
 ): HTMLElement | null {
   return getPreviousElement(
     rootElement,
     currentElement,
-    true /*checkNode*/,
+    checkNode,
     false /*suppressParentTraversal*/,
     true /*traverseChildren*/,
     includeElementsInFocusZones,
@@ -204,7 +208,7 @@ export function getPreviousElement(
   }
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
+  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement, tabbable)) {
     return currentElement;
   }
 
@@ -246,6 +250,7 @@ export function getPreviousElement(
  * If tabbable is true, the element must have tabIndex != -1.
  *
  * @public
+ * @param checkNode - Include currentElement in search when true.
  */
 export function getNextElement(
   rootElement: HTMLElement,

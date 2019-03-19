@@ -210,12 +210,12 @@ export interface IImageStyleProps {
   isNotImageFit?: boolean;
 
   /**
-   * Image width valye
+   * Image width value
    */
   width?: number | string;
 
   /**
-   * Image height valye
+   * Image height value
    */
   height?: number | string;
 }

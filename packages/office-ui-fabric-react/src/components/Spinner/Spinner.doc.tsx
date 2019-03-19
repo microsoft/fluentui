@@ -5,7 +5,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { SpinnerStatus } from './Spinner.checklist';
 
 const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
-const SpinnerBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Spinner/Spinner.Basic.Example.Codepen.txt') as string;
+const SpinnerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
 
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',

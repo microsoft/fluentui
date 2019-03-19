@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+
+## 6.12.2
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- FeedbackList: Iterate Github issues collection directly to avoid total_count disparity
 
 ## 6.12.1
 Wed, 06 Mar 2019 13:27:18 GMT

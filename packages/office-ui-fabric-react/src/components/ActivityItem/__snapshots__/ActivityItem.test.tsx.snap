@@ -9,7 +9,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: center;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -165,7 +165,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: center;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -263,7 +263,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         animation-iteration-count: 1;
         animation-name: keyframes from{opacity:0;}to{opacity:1;};
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -441,7 +441,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: center;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -752,7 +752,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: flex-start;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -861,7 +861,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
       className=
           ms-ActivityItem-commentText
           {
-            color: #333333;
+            color: #323130;
           }
     >
       <span>
@@ -874,7 +874,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #666666;
+            color: #605e5c;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 10px;
             font-weight: 400;
@@ -895,7 +895,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: flex-start;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -956,7 +956,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
       className=
           ms-ActivityItem-commentText
           {
-            color: #333333;
+            color: #323130;
           }
     >
       <span>
@@ -969,7 +969,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #666666;
+            color: #605e5c;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 10px;
             font-weight: 400;
@@ -990,7 +990,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: flex-start;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -1312,7 +1312,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
       className=
           ms-ActivityItem-commentText
           {
-            color: #333333;
+            color: #323130;
           }
     >
       <span>
@@ -1325,7 +1325,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #666666;
+            color: #605e5c;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 10px;
             font-weight: 400;

@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "6.5.0",
+      "tag": "@uifabric/icons_v6.5.0",
+      "date": "Fri, 15 Mar 2019 12:34:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new icons",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "b97706feb6c1e220399aadeb6f201661156a7f53"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.0",
       "tag": "@uifabric/icons_v6.4.0",
       "date": "Mon, 18 Feb 2019 13:38:30 GMT",

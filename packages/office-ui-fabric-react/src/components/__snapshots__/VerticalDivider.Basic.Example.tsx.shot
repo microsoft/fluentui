@@ -46,7 +46,7 @@ exports[`Component Examples renders VerticalDivider.Basic.Example.tsx correctly 
       className=
 
           {
-            background-color: #c8c8c8;
+            background-color: #c8c6c4;
             height: 100%;
             width: 1px;
           }
