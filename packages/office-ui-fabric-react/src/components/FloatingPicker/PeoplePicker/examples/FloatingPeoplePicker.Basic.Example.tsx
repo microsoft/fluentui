@@ -6,7 +6,7 @@ import { IBaseFloatingPicker, FloatingPeoplePicker } from 'office-ui-fabric-reac
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { SuggestionsControl } from '../../Suggestions/SuggestionsControl';
 import { IExtendedPersonaProps } from 'office-ui-fabric-react/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
-import { IBaseFloatingPickerSuggestionProps } from '../../BaseFloatingPicker.types';
+import { BaseFloatingPickerSuggestionProps } from '../../BaseFloatingPicker.types';
 // Helper imports to generate data for this particular examples. Not exported by any package.
 import { people, mru } from '../../../ExtendedPicker/examples/PeopleExampleData';
 
@@ -61,7 +61,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
     }
   };
 
-  private _renderSuggestionsControl = (props: IBaseFloatingPickerSuggestionProps<IExtendedPersonaProps>): JSX.Element => {
+  private _renderSuggestionsControl = (props: BaseFloatingPickerSuggestionProps<IExtendedPersonaProps>): JSX.Element => {
     return (
       <SuggestionsControl
         {...props}

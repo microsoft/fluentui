@@ -86,7 +86,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * How to render the Suggestions control used by this floating picker.
    */
-  onRenderSuggestionControl?: React.ComponentType<IBaseFloatingPickerSuggestionProps<T>>;
+  onRenderSuggestionControl?: React.ComponentType<BaseFloatingPickerSuggestionProps<T>>;
   /**
    * The properties that will get passed to the Suggestions component.
    *
@@ -150,10 +150,18 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
 }
 
 /**
+ *  @deprecated prefer setting props on onRenderSuggestionControl
+ */
+export type IBaseFloatingPickerSuggestionProps<T = any> = Pick<
+  ISuggestionsControlProps<T>,
+  'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
+>;
+
+/**
  * Props which are passed on to the inner Suggestions component by
  * BaseFloatingPicker.
  */
-export type IBaseFloatingPickerSuggestionProps<T> = Pick<
+export type BaseFloatingPickerSuggestionProps<T = any> = Pick<
   ISuggestionsControlProps<T>,
   | 'onSuggestionClick'
   | 'onSuggestionRemove'

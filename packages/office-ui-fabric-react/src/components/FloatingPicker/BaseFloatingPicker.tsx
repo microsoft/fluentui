@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
 import { BaseComponent, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { IBaseFloatingPicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
+import { IBaseFloatingPicker, IBaseFloatingPickerProps, BaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
@@ -151,7 +151,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
   protected renderSuggestions(): JSX.Element | null {
     // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
     // when using `|| SuggestionsControl`
-    let TypedSuggestionsControl: React.ComponentType<IBaseFloatingPickerSuggestionProps<TItem>> | undefined = this.props
+    let TypedSuggestionsControl: React.ComponentType<BaseFloatingPickerSuggestionProps<TItem>> | undefined = this.props
       .onRenderSuggestionControl;
     if (TypedSuggestionsControl === undefined) {
       TypedSuggestionsControl = SuggestionsControl;
