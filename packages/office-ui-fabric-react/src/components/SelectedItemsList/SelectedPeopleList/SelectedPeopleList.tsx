@@ -35,27 +35,14 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
 }
 
-export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {}
 
 /**
  * Standard People Picker.
  */
-export class SelectedPeopleList extends BasePeopleSelectedItemsList {
   // tslint:disable-next-line:no-any
   public static defaultProps: any = {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />
   };
-
-  public replaceItem = (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]): void => {
-    const { items } = this.state;
-    const index: number = items.indexOf(itemToReplace);
-    if (index > -1) {
-      const newItems = items
-        .slice(0, index)
-        .concat(itemsToReplaceWith)
-        .concat(items.slice(index + 1));
-      this.updateItems(newItems);
-    }
   };
 
   protected renderItems = (): JSX.Element[] => {

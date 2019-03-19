@@ -72,6 +72,18 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     this.removeItemAt(index);
   };
 
+  public replaceItem = (itemToReplace: T, itemsToReplaceWith: T[]): void => {
+    const { items } = this.state;
+    const index: number = items.indexOf(itemToReplace);
+    if (index > -1) {
+      const newItems = items
+        .slice(0, index)
+        .concat(itemsToReplaceWith)
+        .concat(items.slice(index + 1));
+      this.updateItems(newItems);
+    }
+  };
+
   // tslint:disable-next-line:no-any
   public removeItems = (itemsToRemove: any[]): void => {
     const { items } = this.state;
