@@ -1,19 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import {
-  IIconProps,
-  IconType,
-  IIconStyleProps,
-  IIconStyles
-} from "./Icon.types";
-import { Image } from "../Image/Image";
-import { ImageLoadState } from "../Image/Image.types";
-import {
-  getNativeProps,
-  htmlElementProperties,
-  classNamesFunction
-} from "../../Utilities";
-import { getIcon } from "../../Styling";
+import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
+import { Image } from '../Image/Image';
+import { ImageLoadState } from '../Image/Image.types';
+import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
+import { getIcon } from '../../Styling';
 
 export interface IIconState {
   imageLoadError: boolean;
@@ -30,18 +21,9 @@ export class IconBase extends React.PureComponent<IIconProps, IIconState> {
   }
 
   public render() {
-    const {
-      ariaLabel,
-      className,
-      styles,
-      iconName,
-      imageErrorAs,
-      theme
-    } = this.props;
-    const isPlaceholder = typeof iconName === "string" && iconName.length === 0;
-    const isImage =
-      this.props.iconType === IconType.image ||
-      this.props.iconType === IconType.Image;
+    const { ariaLabel, className, styles, iconName, imageErrorAs, theme } = this.props;
+    const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
+    const isImage = this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
     const { iconClassName, children } = this._getIconContent(iconName);
 
     const classNames = getClassNames(styles, {
@@ -54,13 +36,13 @@ export class IconBase extends React.PureComponent<IIconProps, IIconState> {
 
     const containerProps = ariaLabel
       ? {
-          "aria-label": ariaLabel
+          'aria-label': ariaLabel
         }
       : {
-          role: "presentation"
+          role: 'presentation'
         };
 
-    const RootType = isImage ? "div" : "i";
+    const RootType = isImage ? 'div' : 'i';
     const nativeProps = getNativeProps(this.props, htmlElementProperties);
     const { imageLoadError } = this.state;
     const imageProps = {
@@ -70,12 +52,7 @@ export class IconBase extends React.PureComponent<IIconProps, IIconState> {
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
     return (
-      <RootType
-        data-icon-name={iconName}
-        {...nativeProps}
-        {...containerProps}
-        className={classNames.root}
-      >
+      <RootType data-icon-name={iconName} {...nativeProps} {...containerProps} className={classNames.root}>
         {isImage ? <ImageType {...imageProps} /> : children}
       </RootType>
     );
