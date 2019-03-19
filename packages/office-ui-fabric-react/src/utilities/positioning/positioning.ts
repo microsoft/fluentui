@@ -421,7 +421,6 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
  * @param elementRectangle
  * @param targetEdge
  * @param bounds
- * @param alignmentEdge
  */
 function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleEdge, bounds?: Rectangle): RectangleEdge {
   if (
@@ -791,6 +790,7 @@ function _positionCallout(
 /* tslint:disable:variable-name */
 export const __positioningTestPackage = {
   _finalizePositionData,
+  _finalizeBeakPosition,
   _calculateActualBeakWidthInPixels,
   _positionElementWithinBounds,
   _positionBeak,
