@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.157.1",
+      "tag": "office-ui-fabric-react_v6.157.1",
+      "date": "Tue, 19 Mar 2019 18:05:11 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Dropdown: Revert documentation updates in #8358",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "a15b824151aaa1e54612adb4430104d4c182e2d8"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix typing on BaseSelectedItemList.removeItem",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "ccf09b492a5c589e1ff187d82ae6253807d4df59"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.157.0",
       "tag": "office-ui-fabric-react_v6.157.0",
       "date": "Fri, 15 Mar 2019 12:34:07 GMT",

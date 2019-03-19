@@ -71,7 +71,7 @@ Breadcrumb/ @jdhuntington
 Button/ @khmakoto
 Calendar/ @OfficeDev/uifabric-calendar
 Callout/ @joschect
-Card/  @khmakoto
+react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
 ChoiceGroup/ @srideshpande
@@ -138,7 +138,7 @@ Tooltip/ @micahgodbolt
 Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
-Card/docs/  @khmakoto
+react-cards/Card/docs/  @khmakoto
 # Check/docs/
 # Checkbox/docs/
 ChoiceGroup/docs/   @srideshpande

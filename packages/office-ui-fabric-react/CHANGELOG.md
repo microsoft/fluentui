@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 Mar 2019 12:34:07 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Mar 2019 18:05:11 GMT and should not be manually modified.
+
+## 6.157.1
+Tue, 19 Mar 2019 18:05:11 GMT
+
+### Patches
+
+- Fix typing on BaseSelectedItemList.removeItem
 
 ## 6.157.0
 Fri, 15 Mar 2019 12:34:07 GMT

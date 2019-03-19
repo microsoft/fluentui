@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/migration",
+      "comment": "Migration: fixed the bin script's shebang to point to the right \"env\" executable",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "kchau@microsoft.com"
+}

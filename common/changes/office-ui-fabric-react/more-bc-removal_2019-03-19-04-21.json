@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "type": "none"
+      "comment": "Icon: remove BaseComponent dependency.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }
