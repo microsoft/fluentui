@@ -8,6 +8,8 @@
 
 Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 
+**Fabric 7 (the next major version of Fabric) is under development.** Roadmap, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
+
 ## Who uses UI Fabric?
 
 ![image](https://user-images.githubusercontent.com/785361/50458071-45b58d00-0915-11e9-90c0-ad8789c99db5.png)
