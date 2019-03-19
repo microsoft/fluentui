@@ -22,8 +22,6 @@ export interface IHomepageState {
 }
 
 export class HomePage extends React.Component<any, IHomepageState> {
-  private _linkButton: HTMLElement;
-
   constructor(props: {}) {
     super(props);
     const version = getParameterByName('fabricVer', window.location.href);
