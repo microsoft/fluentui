@@ -93,7 +93,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                       0 0 / 90% 100%
                       no-repeat`,
         transform: `translate3d(-${BACKGROUND_OFF_SCREEN_POSITION}, 0, 0)`,
-        animationDuration: '1.5s',
+        animationDuration: '2s',
         animationDelay: '4.5s',
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',
