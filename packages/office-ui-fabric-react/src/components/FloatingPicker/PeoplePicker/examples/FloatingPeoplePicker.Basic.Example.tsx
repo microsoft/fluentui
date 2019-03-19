@@ -2,8 +2,11 @@ import * as React from 'react';
 
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SuggestionsStore } from '../../Suggestions/SuggestionsStore';
-import { IBaseFloatingPicker, IBaseFloatingPickerSuggestionProps, FloatingPeoplePicker } from 'office-ui-fabric-react/lib/FloatingPicker';
+import { IBaseFloatingPicker, FloatingPeoplePicker } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { SuggestionsControl } from '../../Suggestions/SuggestionsControl';
+import { IExtendedPersonaProps } from 'office-ui-fabric-react/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
+import { IBaseFloatingPickerSuggestionProps } from '../../BaseFloatingPicker.types';
 // Helper imports to generate data for this particular examples. Not exported by any package.
 import { people, mru } from '../../../ExtendedPicker/examples/PeopleExampleData';
 
@@ -58,28 +61,33 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
     }
   };
 
-  private _renderFloatingPicker(): JSX.Element {
-    const suggestionProps: IBaseFloatingPickerSuggestionProps = {
-      footerItemsProps: [
-        {
-          renderItem: () => {
-            return <div>Showing {this._picker.suggestions.length} results</div>;
-          },
-          shouldShow: () => {
-            return this._picker.suggestions.length > 0;
+  private _renderSuggestionsControl = (props: IBaseFloatingPickerSuggestionProps<IExtendedPersonaProps>): JSX.Element => {
+    return (
+      <SuggestionsControl
+        {...props}
+        footerItemsProps={[
+          {
+            renderItem: () => {
+              return <div>Showing {this._picker.suggestions.length} results</div>;
+            },
+            shouldShow: () => {
+              return this._picker.suggestions.length > 0;
+            }
           }
-        }
-      ]
-    };
+        ]}
+      />
+    );
+  };
 
+  private _renderFloatingPicker(): JSX.Element {
     return (
       <FloatingPeoplePicker
         suggestionsStore={new SuggestionsStore<IPersonaProps>()}
         onResolveSuggestions={this._onFilterChanged}
         getTextFromItem={this._getTextFromItem}
-        pickerSuggestionsProps={suggestionProps}
         key={'normal'}
         onRemoveSuggestion={this._onRemoveSuggestion}
+        onRenderSuggestionControl={this._renderSuggestionsControl}
         onValidateInput={this._validateInput}
         componentRef={this._setComponentRef}
         onChange={this._onPickerChange}

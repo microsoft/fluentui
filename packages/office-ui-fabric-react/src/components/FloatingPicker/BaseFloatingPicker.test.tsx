@@ -43,14 +43,11 @@ export interface ISimple {
   name: string;
 }
 
-export type TypedBaseFloatingPicker = BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
+export type TypedBaseFloatingPicker = BaseFloatingPicker<ISimple>;
 
 describe('Pickers', () => {
   describe('BaseFloatingPicker', () => {
-    const BaseFloatingPickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>) => BaseFloatingPicker<
-      ISimple,
-      IBaseFloatingPickerProps<ISimple>
-    >;
+    const BaseFloatingPickerWithType: new (props: IBaseFloatingPickerProps<ISimple>) => BaseFloatingPicker<ISimple> = BaseFloatingPicker;
 
     it('renders BaseFloatingPicker correctly', () => {
       const component = renderer.create(

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
 import { BaseComponent, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
+import { IBaseFloatingPicker, IBaseFloatingPickerProps, IBaseFloatingPickerSuggestionProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
@@ -16,19 +16,21 @@ export interface IBaseFloatingPickerState {
   didBind: boolean;
 }
 
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState>
+// TODO the TProps here is not needed when bidning in a renderProp.
+export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<TItem> = IBaseFloatingPickerProps<TItem>>
+  extends BaseComponent<TProps, IBaseFloatingPickerState>
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
   protected root = React.createRef<HTMLDivElement>();
-  protected suggestionStore: SuggestionsStore<T>;
-  protected suggestionsControl: SuggestionsControl<T>;
-  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> = SuggestionsControl as new (
-    props: ISuggestionsControlProps<T>
-  ) => SuggestionsControl<T>;
-  protected currentPromise: PromiseLike<T[]>;
+  protected suggestionStore: SuggestionsStore<TItem>;
+  protected suggestionsControl: SuggestionsControl<TItem>;
+  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<TItem>) => SuggestionsControl<
+    TItem
+  > = SuggestionsControl as new (props: ISuggestionsControlProps<TItem>) => SuggestionsControl<TItem>;
+  protected currentPromise: PromiseLike<TItem[]>;
 
-  constructor(basePickerProps: P) {
+  constructor(basePickerProps: TProps) {
     super(basePickerProps);
 
     this.suggestionStore = basePickerProps.suggestionsStore;
@@ -117,7 +119,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this._unbindFromInputElement();
   }
 
-  public componentWillReceiveProps(newProps: P): void {
+  public componentWillReceiveProps(newProps: TProps): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
     }
@@ -129,7 +131,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   };
 
-  public updateSuggestions(suggestions: T[], forceUpdate: boolean = false): void {
+  public updateSuggestions(suggestions: TItem[], forceUpdate: boolean = false): void {
     this.suggestionStore.updateSuggestions(suggestions);
 
     if (forceUpdate) {
@@ -147,7 +149,14 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestionsControl = this.SuggestionsControlOfProperType;
+    // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
+    // when using `|| SuggestionsControl`
+    let TypedSuggestionsControl: React.ComponentType<IBaseFloatingPickerSuggestionProps<TItem>> | undefined = this.props
+      .onRenderSuggestionControl;
+    if (TypedSuggestionsControl === undefined) {
+      TypedSuggestionsControl = SuggestionsControl;
+    }
+
     return this.state.suggestionsVisible ? (
       <Callout
         className={styles.callout}
@@ -187,17 +196,17 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected updateSuggestionWithZeroState(): void {
     if (this.props.onZeroQuerySuggestion) {
-      const onEmptyInputFocus = this.props.onZeroQuerySuggestion as (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
-      const suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.props.selectedItems);
+      const onEmptyInputFocus = this.props.onZeroQuerySuggestion as (selectedItems?: TItem[]) => TItem[] | PromiseLike<TItem[]>;
+      const suggestions: TItem[] | PromiseLike<TItem[]> = onEmptyInputFocus(this.props.selectedItems);
       this.updateSuggestionsList(suggestions);
     } else {
       this.hidePicker();
     }
   }
 
-  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void {
-    const suggestionsArray: T[] = suggestions as T[];
-    const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
+  protected updateSuggestionsList(suggestions: TItem[] | PromiseLike<TItem[]>): void {
+    const suggestionsArray: TItem[] = suggestions as TItem[];
+    const suggestionsPromiseLike: PromiseLike<TItem[]> = suggestions as PromiseLike<TItem[]>;
 
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
@@ -205,8 +214,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
-      promise.then((newSuggestions: T[]) => {
+      const promise: PromiseLike<TItem[]> = (this.currentPromise = suggestionsPromiseLike);
+      promise.then((newSuggestions: TItem[]) => {
         if (promise === this.currentPromise) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
@@ -214,20 +223,20 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     }
   }
 
-  protected onChange(item: T): void {
+  protected onChange(item: TItem): void {
     if (this.props.onChange) {
-      (this.props.onChange as ((items: T) => void))(item);
+      (this.props.onChange as ((items: TItem) => void))(item);
     }
   }
 
-  protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
+  protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: TItem, index: number): void => {
     this.onChange(item);
     this._updateSuggestionsVisible(false /*shouldShow*/);
   };
 
-  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
+  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: TItem, index: number): void => {
     if (this.props.onRemoveSuggestion) {
-      (this.props.onRemoveSuggestion as ((item: T) => void))(item);
+      (this.props.onRemoveSuggestion as ((item: TItem) => void))(item);
     }
 
     if (this.suggestionsControl) {
@@ -268,7 +277,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           this.suggestionsControl.currentSuggestion &&
           ev.shiftKey
         ) {
-          (this.props.onRemoveSuggestion as ((item: T) => void))(this.suggestionsControl.currentSuggestion!.item);
+          (this.props.onRemoveSuggestion as ((item: TItem) => void))(this.suggestionsControl.currentSuggestion!.item);
 
           this.suggestionsControl.removeSuggestion();
           this.forceUpdate();
@@ -304,7 +313,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   private _onResolveSuggestions(updatedValue: string): void {
-    const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
+    const suggestions: TItem[] | PromiseLike<TItem[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
 
     this._updateSuggestionsVisible(true /*shouldShow*/);
     if (suggestions !== null) {
@@ -314,10 +323,10 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   private _onValidateInput = (): void => {
     if (this.state.queryString && this.props.onValidateInput && this.props.createGenericItem) {
-      const itemToConvert: ISuggestionModel<T> = (this.props.createGenericItem as ((
+      const itemToConvert: ISuggestionModel<TItem> = (this.props.createGenericItem as ((
         input: string,
         isValid: boolean
-      ) => ISuggestionModel<T>))(
+      ) => ISuggestionModel<TItem>))(
         this.state.queryString,
         (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
       );

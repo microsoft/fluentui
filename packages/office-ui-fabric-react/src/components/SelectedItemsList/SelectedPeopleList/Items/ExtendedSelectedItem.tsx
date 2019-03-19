@@ -13,6 +13,9 @@ export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
+/**
+ * A selected persona with support for item removal and expansion.
+ */
 export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   protected persona = React.createRef<HTMLDivElement>();
 

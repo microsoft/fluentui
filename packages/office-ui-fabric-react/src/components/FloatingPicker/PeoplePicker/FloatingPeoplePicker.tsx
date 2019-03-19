@@ -8,9 +8,9 @@ import { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../Pickers'
 
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {}
 
-export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, IPeopleFloatingPickerProps> {}
+export class BaseFloatingPeoplePicker<T extends IPersonaProps = IPersonaProps> extends BaseFloatingPicker<T> {}
 
-export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
+export class FloatingPeoplePicker<T extends IPersonaProps = IPersonaProps> extends BaseFloatingPeoplePicker<T> {
   // tslint:disable-next-line:no-any
   public static defaultProps: any = {
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
