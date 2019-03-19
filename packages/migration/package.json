@@ -4,7 +4,7 @@
   "description": "Migration scripts for UI Fabric",
   "main": "lib/index.js",
   "bin": {
-    "migrate": "bin/migrate.js"
+    "migrate": "./bin/migrate.js"
   },
   "typings": "lib/index.d.ts",
   "repository": {
