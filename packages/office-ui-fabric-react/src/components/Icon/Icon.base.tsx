@@ -40,7 +40,8 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
           'aria-label': ariaLabel
         }
       : {
-          role: 'presentation'
+          role: 'presentation',
+          'aria-hidden': true
         };
 
     const RootType = isImage ? 'div' : 'i';
