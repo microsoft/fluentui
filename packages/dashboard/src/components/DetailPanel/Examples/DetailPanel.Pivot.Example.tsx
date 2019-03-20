@@ -95,6 +95,8 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           onPivotLinkClick={(key: string) => {
             console.log(key);
           }}
+          refreshTooltip={'Refresh'}
+          closeTooltip={'close'}
         />
       );
     } else {
