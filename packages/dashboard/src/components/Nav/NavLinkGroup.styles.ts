@@ -1,41 +1,48 @@
 import { AnimationClassNames } from 'office-ui-fabric-react';
 import { INavLinkGroupStyleProps, INavLinkGroupStyles } from './NavLinkGroup.types';
-import { navBackgroundColor } from './Nav.styles';
 
 export const getStyles = (props: INavLinkGroupStyleProps): INavLinkGroupStyles => {
-  const { isNavCollapsed, isExpanded } = props;
+  const { isNavCollapsed /**isExpanded */ } = props;
   return {
-    nestedNavMenu: [
+    /**fix what elements slide down/fade, should be the nested nav
+check that adjecent selector works as expected
+clean up other code
+sort out extensibility */
+    navMenuContainer: [
       {
-        display: isNavCollapsed || !isExpanded ? 'none' : 'flex',
-        flexDirection: 'column',
-        padding: 0
+        display: 'flex'
       },
-      AnimationClassNames.slideDownIn20
+      isNavCollapsed ? AnimationClassNames.fadeIn400 : AnimationClassNames.slideDownIn20,
+      isNavCollapsed && {
+        selectors: {
+          '& a:hover + $nestedNavMenuWhenNavCollapsed, & a:focus + $nestedNavMenuWhenNavCollapsed': {
+            display: 'flex'
+          }
+        }
+      }
     ],
     // we should hover here to show the child menu
     // display none when collapsed and not expanded
     // change to position absolute on hover in the collapsed hover state
     // position can be normal otherwise
-    nestedNavMenuWhenNavCollapsed: [
+    /**nestedNavMenu: [
       {
-        display: 'none',
-        flexDirection: 'row',
+        flexDirection: ,
         flexWrap: 'wrap',
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        width: '278px',
         justifyContent: 'flex-end',
         selectors: {
+          ':hover': {
+            position: 'absolute',
+            width: '278px',
+            top: '0'
+          },
           '> a': {
             zIndex: 1,
             backgroundColor: navBackgroundColor
           }
         }
-      },
-      AnimationClassNames.fadeIn400
-    ],
+      }
+    ], */
     nestedNavLinksWrapper: {
       boxShadow: '0 1.2px 3.6px rgba(0, 0, 0, 0.09), 0 6.4px 14.4px rgba(0, 0, 0, 0.11)',
       width: '230px',
@@ -48,9 +55,10 @@ export const getStyles = (props: INavLinkGroupStyleProps): INavLinkGroupStyles =
         }
       }
     },
-    nestedNavLinksWhenNavCollapsed: [
+    nestedNavLinks: [
       {
-        padding: 0
+        padding: 0,
+        flexDirection: 'column'
       },
       AnimationClassNames.slideRightIn10
     ]

@@ -63,8 +63,7 @@ export interface INavLinkGroupStyles {
   /**
    * NavLinkGroup
    */
-  nestedNavMenu: IStyle;
-  nestedNavMenuWhenNavCollapsed: IStyle;
+  navMenuContainer: IStyle;
   nestedNavLinksWrapper: IStyle;
-  nestedNavLinksWhenNavCollapsed: IStyle;
+  nestedNavLinks: IStyle;
 }

@@ -37,10 +37,6 @@ export interface INavGroupProps {
   navRef: React.RefObject<HTMLDivElement>;
 }
 
-export interface INavGroupStyleProps {
-  isNavCollapsed: boolean;
-}
-
 export interface INavGroupStyles {
   navGroupDivider: IStyle;
   navGroupTitle: IStyle;

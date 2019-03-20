@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, Icon, anchorProperties, getNativeProps } from 'office-ui-fabric-react';
+import { classNamesFunction, Icon, anchorProperties, getNativeProps, mergeStyles } from 'office-ui-fabric-react';
 import { INavLinkStyles, INavLinkProps } from './NavLink.types';
 import { getStyles } from './NavLink.styles';
 
@@ -17,6 +17,7 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   public render(): JSX.Element {
     const { name, hasNestedMenu, isNested, target, isNavCollapsed, isExpanded, isSelected, hasSelectedNestedLink } = this.props;
     const classNames = getClassNames(getStyles, { isNavCollapsed, hasNestedMenu, isExpanded, isSelected, hasSelectedNestedLink, isNested });
+    const { className, ...nativeProps } = getNativeProps(this.props, anchorProperties);
 
     let iconName = undefined;
     if (hasNestedMenu) {
@@ -26,14 +27,14 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
     }
     return (
       <a
-        {...getNativeProps(this.props, anchorProperties)}
+        {...nativeProps}
         id={this.props.id}
         href={this.props.href}
         target={this.props.target}
         onClick={this.props.onClick}
         onMouseEnter={this._getLinkPosition}
         role={this.props.role}
-        className={classNames.root}
+        className={mergeStyles(classNames.root, className)}
         ref={this.navLinkRef}
       >
         <div className={classNames.iconContainer} aria-hidden="true">

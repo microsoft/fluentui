@@ -1,13 +1,12 @@
 import { DefaultPalette, FontWeights } from 'office-ui-fabric-react';
-import { INavGroupStyleProps, INavGroupStyles } from './NavGroup.types';
+import { INavGroupStyles } from './NavGroup.types';
 import { navItemHeight } from './Nav.styles';
 
 // NavGroup
 const navDividerHeight = 21;
 const navDividerColor = 'rgba(0,0,0,.2)';
 
-export const getStyles = (props: INavGroupStyleProps): INavGroupStyles => {
-  const { isNavCollapsed } = props;
+export const getStyles = (): INavGroupStyles => {
   return {
     navGroupDivider: {
       display: 'block',
@@ -35,18 +34,9 @@ export const getStyles = (props: INavGroupStyleProps): INavGroupStyles => {
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap'
     },
-    navItem: [
-      {
-        margin: '0px',
-        padding: '0px'
-      },
-      isNavCollapsed && {
-        selectors: {
-          ':hover $nestedNavMenuWhenNavCollapsed, :focus $nestedNavMenuWhenNavCollapsed': {
-            display: 'flex'
-          }
-        }
-      }
-    ]
+    navItem: {
+      margin: '0px',
+      padding: '0px'
+    }
   };
 };

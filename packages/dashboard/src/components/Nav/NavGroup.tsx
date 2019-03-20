@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { INavGroupProps, INavGroupStyles, INavGroupStyleProps } from './NavGroup.types';
+import { INavGroupProps, INavGroupStyles } from './NavGroup.types';
 import { NavLink } from './NavLink';
 import { NavLinkGroup } from './NavLinkGroup';
 import { getStyles } from './NavGroup.styles';
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
-const getClassNames = classNamesFunction<INavGroupStyleProps, INavGroupStyles>();
+const getClassNames = classNamesFunction<{}, INavGroupStyles>();
 
 export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
   constructor(props: INavGroupProps) {

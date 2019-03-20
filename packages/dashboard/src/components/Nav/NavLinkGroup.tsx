@@ -29,7 +29,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
     const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed });
 
     return (
-      <>
+      <div className={classNames.navMenuContainer} ref={this.navLinkGroupRef}>
         <NavLink
           isNavCollapsed={isNavCollapsed}
           id={link.name}
@@ -37,9 +37,10 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
           href={link.href}
           target={link.target}
           onClick={this._onLinkClicked}
-          aria-expanded={isNavCollapsed}
           data-value={link.name}
           aria-label={link.ariaLabel ? link.ariaLabel : link.name}
+          aria-expanded={isExpanded}
+          aria-haspopup={!!link.links}
           primaryIconName={link.icon}
           isSelected={hasSelectedNestedLink}
           hasSelectedNestedLink={hasSelectedNestedLink}
@@ -52,11 +53,11 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
         {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
             so those elements need to be separated. This one has the shadow.
         */}
-        <div className={classNames.nestedNavLinksWrapper}>
-          {/* This one has the blur. */}
-          <ul className={classNames.nestedNavLinksWhenNavCollapsed}>
-            {link.links &&
-              link.links.map((nestedLink: INavLink, linkIndex: number) => {
+        {link.links && (
+          <div className={classNames.nestedNavLinksWrapper} role="none">
+            {/* This one has the blur. */}
+            <ul className={classNames.nestedNavLinks} role="menu">
+              {link.links.map((nestedLink: INavLink, linkIndex: number) => {
                 return (
                   <li role="none" key={linkIndex}>
                     <NavLink
@@ -79,9 +80,10 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
                   </li>
                 );
               })}
-          </ul>
-        </div>
-      </>
+            </ul>
+          </div>
+        )}
+      </div>
     );
   }
 
