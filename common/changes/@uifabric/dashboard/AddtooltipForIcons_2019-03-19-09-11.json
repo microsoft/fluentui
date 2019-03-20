@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/dashboard",
       "comment": "Add title native tool-tip for the refresh icon and close icon in DetailPanel with pivot",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/dashboard",
