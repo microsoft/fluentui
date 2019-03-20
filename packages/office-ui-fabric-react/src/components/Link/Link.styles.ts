@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
