@@ -450,6 +450,8 @@ class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends
   // (undocumented)
   protected renderItems: () => JSX.Element[];
   // (undocumented)
+  replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
+  // (undocumented)
   protected root: HTMLElement;
   // (undocumented)
   protected selection: Selection;
@@ -12262,8 +12264,6 @@ class SelectedPeopleList extends BasePeopleSelectedItemsList {
   static defaultProps: any;
   // (undocumented)
   protected renderItems: () => JSX.Element[];
-  // (undocumented)
-  replaceItem: (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]) => void;
 }
 
 // @public (undocumented)
