@@ -15,17 +15,19 @@ export class ThemingDesigner extends React.Component {
   render() {
     return (
       <div className={styles.app}>
-        <div className={styles.sidebar}>
-          <ThemingDesignerColorPicker />
-        </div>
-        <div>
-          <Stack className={styles.main} gap={10}>
-            <Samples />
-            <AccChecker />
-            <Palette />
-            <SemanticSlots />
-          </Stack>
-        </div>
+        <Stack horizontal gap={20}>
+          <div className={styles.sidebar}>
+            <ThemingDesignerColorPicker primaryColor="#00ff00" textColor="#323130" backgroundColor="#FFFFFF" />
+          </div>
+          <div>
+            <Stack className={styles.main} gap={10}>
+              <Samples />
+              <AccChecker />
+              <Palette />
+              <SemanticSlots />
+            </Stack>
+          </div>
+        </Stack>
       </div>
     );
   }

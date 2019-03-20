@@ -5,21 +5,32 @@ import { Card } from '@uifabric/react-cards';
 import { Dropdown } from '../../../../packages/office-ui-fabric-react/lib/Dropdown';
 import { Text } from '../../../../packages/office-ui-fabric-react/lib/Text';
 import { TextField } from '../../../../packages/office-ui-fabric-react/lib/TextField';
-//import { IColorCellProps, ColorPickerGridCell, SwatchColorPicker } from '../../../../packages/office-ui-fabric-react/lib/SwatchColorPicker';
 
-//const DEFAULT_OPTIONS: IColorCellProps[] = [{ id: 'primary', label: 'green', color: '#00ff00' }];
-//<ColorPickerGridCell selected={false} item={DEFAULT_OPTIONS} color={'#ffa500'} label={'orange'} circle={true} />
 const styles: any = stylesImport;
 
-export class ThemingDesignerColorPicker extends React.Component {
-  constructor(props: any) {
+interface IThemingDesignerColorPickerProps {
+  primaryColor: string;
+  textColor: string;
+  backgroundColor: string;
+}
+
+interface IThemingDesignerColorPickerState {
+  primaryColor: string;
+  textColor: string;
+  backgroundColor: string;
+}
+export class ThemingDesignerColorPicker extends React.Component<IThemingDesignerColorPickerProps, IThemingDesignerColorPickerState> {
+  constructor(props: IThemingDesignerColorPickerProps) {
     super(props);
 
     this.state = {
-      primaryColor: undefined,
-      textColor: undefined,
-      backgroundColor: undefined
+      primaryColor: '#0078d4',
+      textColor: '#323130',
+      backgroundColor: '#ffffff'
     };
+
+    this.handlePrimaryColorChange = this.handlePrimaryColorChange.bind(this);
+    this.handleTextColorChange = this.handleTextColorChange.bind(this);
   }
   public render(): JSX.Element {
     return (
@@ -38,22 +49,22 @@ export class ThemingDesignerColorPicker extends React.Component {
             <Stack horizontal disableShrink gap={5}>
               <Text>Primary color</Text>
               <div className={styles.colorpicker}>
-                <TextField className={styles.textinput} id="text-box" value={'#00ff00'} onChange={this._updatePrimaryColor} />
-                <div className={styles.colorinputprimary} id="color-primary-box" />
+                <TextField className={styles.textinput} value={this.state.primaryColor} onChange={() => this.handlePrimaryColorChange} />
+                <div className={styles.colorinputprimary} background-color={this.state.primaryColor} />
               </div>
             </Stack>
             <Stack horizontal disableShrink gap={5}>
               <Text>Text color</Text>
               <div className={styles.colorpicker}>
-                <TextField className={styles.textinput} id="text-box" value={'#323130'} onChange={this._updateTextColor} />
-                <div className={styles.colorinputtext} id="color-text-box" background-color="#323130;" />
+                <TextField className={styles.textinput} value={this.state.textColor} onChange={this.handleTextColorChange} />
+                <div className={styles.colorinputtext} id="color-text-box" background-color={this.state.textColor} />
               </div>
             </Stack>
             <Stack horizontal disableShrink gap={5}>
               <Text>Background color</Text>
               <div className={styles.colorpicker}>
-                <TextField className={styles.textinput} id="text-box" value={'#FFFFFF'} onChange={this._updateBackgroundColor} />
-                <div className={styles.colorinputbackground} id="color-background-box" background-color="#FFFFFF;" />
+                <TextField className={styles.textinput} value={this.state.backgroundColor} onChange={this._updateBackgroundColor} />
+                <div className={styles.colorinputbackground} id="color-background-box" background-color={this.state.backgroundColor} />
               </div>
             </Stack>
           </Stack>
@@ -61,20 +72,34 @@ export class ThemingDesignerColorPicker extends React.Component {
       </>
     );
   }
-  private _updatePrimaryColor = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
-    const colorBox = document.getElementById('color-primary-box');
-    if (colorBox) {
-      let currentcolor = colorBox.style.backgroundColor;
-      colorBox.style.backgroundColor = newValue ? newValue : currentcolor;
+  // private _updatePrimaryColor = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
+  //   const colorBox = document.getElementById('color-primary-box');
+  //   if (colorBox) {
+  //     let currentcolor = colorBox.style.backgroundColor;
+  //     colorBox.style.backgroundColor = newValue ? newValue : currentcolor;
+  //   }
+  // };
+  handlePrimaryColorChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newColor: string | undefined): void => {
+    console.log('INSIDE handlePrimaryColorChange');
+    if (newColor && newColor !== this.state.primaryColor) {
+      console.log('GOT INSIDE NEWCOLOR NOT NULL');
+      this.setState({
+        primaryColor: newColor
+      });
     }
   };
-  // private _updatePrimaryColor() {
-  //   const colorSquare = document.getElementById('color-primary-box');
-  //   const colorText = document.getElementById('text-box');
-  //   this.setState((prevState, props) => {
-  //     return { primaryColor: colorText.value }
-  //   })
-  // }
+
+  handleTextColorChange(event: any) {
+    this.setState({ textColor: event.target.value });
+  }
+
+  private _onTextColorChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newColor: string | undefined): void => {
+    if (newColor && newColor !== this.state.textColor) {
+      this.setState({
+        textColor: newColor
+      });
+    }
+  };
   private _updateTextColor = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
     const colorBox = document.getElementById('color-text-box');
     if (colorBox) {
