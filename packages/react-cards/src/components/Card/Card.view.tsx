@@ -7,25 +7,24 @@ import { ICardComponent, ICardProps, ICardSlots } from './Card.types';
 
 export const CardView: ICardComponent['view'] = props => {
   const Slots = getSlots<ICardProps, ICardSlots>(props, {
-    root: 'div',
-    stack: Stack
+    root: Stack
   });
 
-  const { tokens, compact, ...rest } = props;
+  const { styles, tokens, compact, ...rest } = props;
+  console.log(styles);
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
   return (
-    <Slots.root {...nativeProps}>
-      <Slots.stack
-        horizontal={compact}
-        tokens={{ childrenGap: 12 }}
-        verticalFill
-        verticalAlign="space-between"
-        horizontalAlign="space-between"
-      >
-        {props.children}
-      </Slots.stack>
+    <Slots.root
+      {...nativeProps}
+      horizontal={compact}
+      tokens={tokens}
+      verticalFill
+      verticalAlign="space-between"
+      horizontalAlign="space-between"
+    >
+      {props.children}
     </Slots.root>
   );
 };

@@ -1,6 +1,6 @@
 import { IBaseProps } from '@uifabric/utilities';
 import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
-import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '@uifabric/foundation';
+import { IComponent, IComponentStyles, IStyleableComponentProps } from '@uifabric/foundation';
 
 export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
 
@@ -14,14 +14,9 @@ export interface ICard {}
 
 export interface ICardSlots {
   /**
-   * Defines root slot of the component.
+   * Defines root slot of the component for managing the layout of the Card.
    */
-  root?: IHTMLSlot;
-
-  /**
-   * Defines a stack slot for managing the layout of the Card.
-   */
-  stack?: IStackSlot;
+  root?: IStackSlot;
 }
 
 export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard> {
@@ -41,6 +36,7 @@ export interface ICardTokens extends IStackTokens {
   boxShadow?: string;
   boxShadowHovered?: string;
   height?: number | string;
+  minHeight?: number | string;
   minWidth?: number | string;
   maxWidth?: number | string;
   padding?: number | string;

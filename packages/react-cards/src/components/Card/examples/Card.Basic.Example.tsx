@@ -34,7 +34,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Text>Basic card</Text>
         </Card>
 
-        <Card tokens={{ width: '220px' }} onClick={alertClicked}>
+        <Card tokens={{ width: '220px', childrenGap: 28 }} onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           <Card.Item tokens={{ margin: '0 -13px' }}>
             <Image

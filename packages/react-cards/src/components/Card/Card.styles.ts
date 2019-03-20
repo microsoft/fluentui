@@ -10,13 +10,15 @@ const GlobalClassNames = {
 const baseTokens: ICardComponent['tokens'] = {
   boxShadow: Depths.depth4,
   childrenGap: 12,
-  height: '348px',
+  height: 'inherit',
+  minHeight: '348px',
   minWidth: '212px',
   maxWidth: '286px',
   padding: 12
 };
 
 const compactTokens: ICardComponent['tokens'] = {
+  height: 'auto',
   minWidth: '300px',
   maxWidth: '500px'
 };
@@ -39,6 +41,7 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
       classNames.root,
       {
         boxShadow: tokens.boxShadow,
+        height: tokens.height,
         padding: tokens.padding,
         width: tokens.width,
         minWidth: tokens.minWidth,
@@ -51,8 +54,6 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
           }
         }
       }
-    ],
-
-    stack: [classNames.stack]
+    ]
   };
 };
