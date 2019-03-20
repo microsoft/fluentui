@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, IClassNames, getRTL } from '../../Utilities';
+import { classNamesFunction, IClassNames, getRTL } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
@@ -15,7 +15,7 @@ export interface IGroupHeaderState {
   isLoadingVisible: boolean;
 }
 
-export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHeaderState> {
+export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
   public static defaultProps: IGroupHeaderProps = {
     expandButtonProps: { 'aria-label': 'expand collapse group' }
   };

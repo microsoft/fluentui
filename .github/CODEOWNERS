@@ -71,6 +71,7 @@ Breadcrumb/ @jdhuntington
 Button/ @khmakoto
 Calendar/ @OfficeDev/uifabric-calendar
 Callout/ @joschect
+react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
 ChoiceGroup/ @srideshpande
@@ -82,7 +83,7 @@ ContextualMenu/ @joschect
 DatePicker/ @OfficeDev/uifabric-calendar
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
-DocumentCard/ @yiminwu @mikewheaton
+DocumentCard/ @yiminwu
 Dropdown/ @JasonGore
 Fabric/ @dzearing
 FacePile/ @markionium
@@ -128,7 +129,6 @@ Theme/ @JasonGore
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
-experiments/src/components/Card/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/ @micahgodbolt
 
@@ -138,6 +138,7 @@ Tooltip/ @micahgodbolt
 Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
+react-cards/Card/docs/  @khmakoto
 # Check/docs/
 # Checkbox/docs/
 ChoiceGroup/docs/   @srideshpande
@@ -148,7 +149,7 @@ ContextualMenu/docs/  @joschect
 DatePicker/docs/   @OfficeDev/uifabric-calendar
 DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
-DocumentCard/docs/ @yiminwu @mikewheaton
+DocumentCard/docs/ @yiminwu
 # Dropdown/docs/
 # Fabric/docs/
 # FacePile/docs/
@@ -160,7 +161,7 @@ HoverCard/docs/   @atneik @Jahnp @Vitalius1
 # Image/docs/
 # Label/docs/
 Layer/docs/  @ThomasMichon
-# Link/docs/
+Link/docs/  @khmakoto
 List/docs/ @KevinTCoughlin
 # MarqueeSelection/docs/
 # MessageBar/docs/

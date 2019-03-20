@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "type": "none"
+      "comment": "Improve TextField example accessibility",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "jdh@microsoft.com"
 }

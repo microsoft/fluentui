@@ -46,18 +46,6 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />
   };
 
-  public replaceItem = (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]): void => {
-    const { items } = this.state;
-    const index: number = items.indexOf(itemToReplace);
-    if (index > -1) {
-      const newItems = items
-        .slice(0, index)
-        .concat(itemsToReplaceWith)
-        .concat(items.slice(index + 1));
-      this.updateItems(newItems);
-    }
-  };
-
   protected renderItems = (): JSX.Element[] => {
     const { items } = this.state;
     // tslint:disable-next-line:no-any
@@ -138,7 +126,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         key: 'Remove',
         text: this.props.removeMenuItemText,
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          this.removeItem(menuItem.data as ISelectedItemProps<IExtendedPersonaProps>);
+          this.removeItem(menuItem.data as IExtendedPersonaProps);
         },
         data: item
       });
