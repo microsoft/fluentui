@@ -65,7 +65,7 @@
       fabricVersion = Number(fabricVersion);
 
       var prefixVer = fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ?
-        `v${fabricVersion}-` :
+        'v' + fabricVersion :
         '';
 
       var configPrefix = isProduction ? 'fabric-website-' + prefixVer + 'prod' : 'fabric-website-' + prefixVer + 'df';
