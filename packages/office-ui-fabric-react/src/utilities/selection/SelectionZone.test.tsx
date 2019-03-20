@@ -26,11 +26,10 @@ let _surface3: Element;
 let _onItemInvokeCalled: number;
 let _lastItemInvoked: any;
 
-function _initializeSelection(selectionMode = SelectionMode.multiple, hostDocument: Document = document): Element {
+function _initializeSelection(selectionMode = SelectionMode.multiple): void {
   _selection = new Selection();
   _selection.setItems([{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }]);
-  const hostElement = hostDocument.createElement('div');
-  _selectionZone = ReactDOM.render(
+  _selectionZone = ReactTestUtils.renderIntoDocument(
     <SelectionZone
       selection={_selection}
       selectionMode={selectionMode}
@@ -74,8 +73,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple, hostDocume
       </div>
 
       <div id="surface3" data-selection-index="3" />
-    </SelectionZone>,
-    hostElement
+    </SelectionZone>
   );
 
   _componentElement = ReactDOM.findDOMNode(_selectionZone) as Element;
@@ -92,8 +90,6 @@ function _initializeSelection(selectionMode = SelectionMode.multiple, hostDocume
 
   _onItemInvokeCalled = 0;
   _lastItemInvoked = undefined;
-
-  return hostElement;
 }
 
 describe('SelectionZone', () => {
@@ -240,6 +236,25 @@ describe('SelectionZone', () => {
     expect(_selection.isIndexSelected(2)).toEqual(false);
   });
 
+  it('can remove selection if you click on dead space', () => {
+    _selection.setAllSelected(true);
+
+    // Raise real browser event.
+    document.documentElement.click();
+
+    expect(_selection.getSelectedCount()).toEqual(0);
+  });
+
+  it('can remove selection after the first click event rebinding', () => {
+    _selection.setAllSelected(true);
+
+    _simulateClick(_toggle0);
+    // Raise real browser event.
+    document.documentElement.click();
+
+    expect(_selection.getSelectedCount()).toEqual(0);
+  });
+
   it('does not select an item on mousedown of the surface with no modifiers', () => {
     ReactTestUtils.Simulate.mouseDown(_invoke0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
@@ -259,80 +274,6 @@ describe('SelectionZone', () => {
   it('selects an item when a button is clicked that has data-selection-select', () => {
     ReactTestUtils.Simulate.keyDown(_select1, { which: KeyCodes.enter });
     expect(_selection.isIndexSelected(1)).toEqual(true);
-  });
-});
-
-describe('SelectionZone', () => {
-  class RafLifecycle {
-    public animationId: number = 0;
-    public queuedAnimationFrameCallbacks: { [key: number]: () => void } = {};
-
-    public consumeAnimationFrames = () => {
-      for (const callbackId in this.queuedAnimationFrameCallbacks) {
-        if (this.queuedAnimationFrameCallbacks[callbackId]) {
-          this.queuedAnimationFrameCallbacks[callbackId]();
-        }
-      }
-      this.queuedAnimationFrameCallbacks = {};
-    };
-
-    public bindToWindow(window: Window) {
-      jest.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
-        this.queuedAnimationFrameCallbacks[++this.animationId] = cb;
-        return this.animationId;
-      });
-      jest.spyOn(window, 'cancelAnimationFrame').mockImplementation(cb => {
-        delete this.queuedAnimationFrameCallbacks[cb];
-      });
-    }
-  }
-
-  const globalWindowRafs: RafLifecycle = new RafLifecycle();
-
-  beforeEach(() => {
-    globalWindowRafs.bindToWindow(window);
-  });
-
-  it('can remove selection if you click on dead space on a frame after the component mounted', () => {
-    _initializeSelection();
-    _selection.setAllSelected(true);
-    globalWindowRafs.consumeAnimationFrames();
-
-    // Raise real browser event.
-    document.documentElement.click();
-
-    expect(_selection.getSelectedCount()).toEqual(0);
-  });
-
-  it('does nothing if you click on dead space on the same frame the component mounted', () => {
-    _initializeSelection();
-    _selection.setAllSelected(true);
-
-    // Raise real browser event.
-    document.documentElement.click();
-
-    globalWindowRafs.consumeAnimationFrames();
-
-    expect(_selection.getSelectedCount()).not.toEqual(0);
-  });
-
-  it('does not throw if you unmount the component in the same frame it is mounted', () => {
-    const host = _initializeSelection();
-    ReactDOM.unmountComponentAtNode(host);
-
-    expect(() => {
-      globalWindowRafs.consumeAnimationFrames();
-    }).not.toThrow();
-  });
-
-  it('does not leak events if you unmount the component in the same frame it is mounted', () => {
-    const host = _initializeSelection();
-    ReactDOM.unmountComponentAtNode(host);
-
-    globalWindowRafs.consumeAnimationFrames();
-
-    const eventListenerRecords = _selectionZone._events._eventRecords;
-    expect(eventListenerRecords).toEqual([]);
   });
 });
 
