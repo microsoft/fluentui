@@ -81,7 +81,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     alignItems: 'center',
     padding: '0 10px',
     lineHeight: 1,
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    flexShrink: 0
   };
 
   return {
