@@ -8,7 +8,7 @@ setOptions({
   name: 'Fabric'
 });
 
-const req = require.context('../src/stories', true, /\Button.stories\.tsx$/);
+const req = require.context('../src/stories', true, /\.stories\.tsx$/);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));
