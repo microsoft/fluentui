@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 15 Mar 2019 12:34:06 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 6.64.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- fix a bug in the tooltip of last page button in pagination component, experiment package
 
 ## 6.64.0
 Fri, 15 Mar 2019 12:34:06 GMT

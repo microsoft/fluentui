@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 15 Mar 2019 12:34:06 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 0.16.2
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- TeachingBubble: fixes bug were the styles for TeachingBubbleContent were not applied properly when not used directly.
+- Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.
 
 ## 0.16.1
 Fri, 15 Mar 2019 12:34:06 GMT

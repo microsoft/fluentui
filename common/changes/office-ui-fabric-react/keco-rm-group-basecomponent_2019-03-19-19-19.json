@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Update readme to include focus comments",
+      "comment": "GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "keco@microsoft.com"
 }

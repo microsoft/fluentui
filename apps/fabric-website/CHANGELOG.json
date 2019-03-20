@@ -2,6 +2,39 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.12.2",
+      "tag": "@uifabric/fabric-website_v6.12.2",
+      "date": "Wed, 20 Mar 2019 12:34:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove template literal in fabric-website/index",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "913798e5ac0e463b30bd3f98675a4f699114c85f"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.1",
+      "tag": "@uifabric/fabric-website_v6.12.1",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add query parameter to change Fabric version",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "36bf0d3962d2f8993afefd86005afff54f555993"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.64.0 <7.0.0` to `>=6.64.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.0",
       "tag": "@uifabric/fabric-website_v6.12.0",
       "date": "Tue, 05 Mar 2019 04:25:07 GMT",
