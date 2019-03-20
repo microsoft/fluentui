@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.157.2",
+      "tag": "office-ui-fabric-react_v6.157.2",
+      "date": "Wed, 20 Mar 2019 03:15:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Fix beak position for dynamically sized callouts.",
+            "author": "andrewhwng <47833548+andrewhwng@users.noreply.github.com>",
+            "commit": "026100605f90de9d632e73aa98853ec2cc3d5158"
+          },
+          {
+            "comment": "ComboBox: if `options` are null, make sure the code doesn't crash.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "dc1e3676659472bcd175fc87629f7854c9f8827f"
+          },
+          {
+            "comment": "Icon: remove BaseComponent dependency.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "151349375ac67b8d9ec07bd8b8614f9e5e3203c9"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.157.1",
       "tag": "office-ui-fabric-react_v6.157.1",
       "date": "Tue, 19 Mar 2019 18:05:11 GMT",

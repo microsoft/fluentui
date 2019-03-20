@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 19 Mar 2019 18:05:11 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Mar 2019 03:15:21 GMT and should not be manually modified.
+
+## 6.157.2
+Wed, 20 Mar 2019 03:15:21 GMT
+
+### Patches
+
+- Callout: Fix beak position for dynamically sized callouts.
+- ComboBox: if `options` are null, make sure the code doesn't crash.
+- Icon: remove BaseComponent dependency.
 
 ## 6.157.1
 Tue, 19 Mar 2019 18:05:11 GMT
