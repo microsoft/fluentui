@@ -158,8 +158,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -322,8 +320,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -486,8 +482,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -650,8 +644,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -814,8 +806,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -979,8 +969,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -1211,8 +1199,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -1367,8 +1353,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -1523,8 +1507,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -1679,8 +1661,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -1835,8 +1815,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -1992,8 +1970,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -2384,8 +2360,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -2530,8 +2504,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
@@ -2677,8 +2649,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                         text-decoration: underline;
                       }
                       &:focus {
