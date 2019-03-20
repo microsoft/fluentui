@@ -16,6 +16,7 @@ import { CheckboxVisibility } from 'office-ui-fabric-react';
 import { getStyles } from './GridList.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IGridListProps, IGridListStyles>();
 const classNames = getClassNames(getStyles({}));
@@ -71,6 +72,7 @@ export class GridList extends React.Component<IGridListProps> {
       cell = row.c3;
     }
     const customColorCss = getClassNames(getStyles({ iconColor: cell.iconColor, textColor: cell.textColor, boldText: cell.boldText }));
+    const customTextClasses = row.isClickable ? mergeStyles(customColorCss.text, classNames.cursonPointer) : customColorCss.text;
     switch (column.key) {
       case 'facepile':
         return (
@@ -83,7 +85,7 @@ export class GridList extends React.Component<IGridListProps> {
         );
       case 'icon':
         return (
-          <div data-selection-invoke={row.isClickable}>
+          <div data-selection-invoke={row.isClickable} className={row.isClickable ? classNames.cursonPointer : ''}>
             <span className={customColorCss.imageAlignment}>
               <Icon iconName={cell.iconName} />
             </span>
@@ -92,7 +94,7 @@ export class GridList extends React.Component<IGridListProps> {
         );
       case 'textOnly':
         return (
-          <span className={customColorCss.text} data-selection-invoke={row.isClickable}>
+          <span className={customTextClasses} data-selection-invoke={row.isClickable}>
             {cell.content}
           </span>
         );

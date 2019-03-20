@@ -1,27 +1,21 @@
 /* tslint:disable */
 import * as React from 'react';
-import { css } from '../../../Utilities';
 /* tslint:enable */
+import { styled } from '../../../Utilities';
 import { BasePicker } from '../BasePicker';
-import { IBasePickerProps } from '../BasePicker.types';
-import { TagItem, ITagItemProps } from './TagItem';
-import * as stylesImport from './TagItem.scss';
-const styles: any = stylesImport;
+import { IBasePickerStyleProps, IBasePickerStyles } from '../BasePicker.types';
+import { getStyles } from '../BasePicker.styles';
+import { TagItem } from './TagItem';
+import { TagItemSuggestion } from './TagItemSuggestion';
+import { ITagPickerProps, ITag, ITagItemProps } from './TagPicker.types';
 
-export interface ITag {
-  key: string;
-  name: string;
-}
-
-export interface ITagPickerProps extends IBasePickerProps<ITag> {}
-
-export class TagPicker extends BasePicker<ITag, ITagPickerProps> {
-  protected static defaultProps = {
-    onRenderItem: (props: ITagItemProps) => {
-      return <TagItem {...props}>{props.item.name}</TagItem>;
-    },
-    onRenderSuggestionsItem: (props: ITag) => (
-      <div className={css('ms-TagItem-TextOverflow', styles.tagItemTextOverflow)}> {props.name} </div>
-    )
+export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
+  public static defaultProps = {
+    onRenderItem: (props: ITagItemProps) => <TagItem {...props}>{props.item.name}</TagItem>,
+    onRenderSuggestionsItem: (props: ITag) => <TagItemSuggestion>{props.name}</TagItemSuggestion>
   };
 }
+
+export const TagPicker = styled<ITagPickerProps, IBasePickerStyleProps, IBasePickerStyles>(TagPickerBase, getStyles, undefined, {
+  scope: 'TagPicker'
+});

@@ -1,6 +1,34 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:06 GMT and should not be manually modified.
+
+## 0.7.2
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Patches
+
+- TSDoc fixes.
+
+## 0.7.1
+Mon, 04 Feb 2019 13:36:12 GMT
+
+### Patches
+
+- Optimize React hierarchy by naming Unknowns and removing view layers.
+
+## 0.7.0
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Minor changes
+
+- Promote Slots and Tokens implementation of Foundation.
+
+## 0.6.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- Add styling and utilities packages as dependencies and remove corresponding type injection.
 
 ## 0.5.7
 Wed, 31 Oct 2018 12:32:41 GMT

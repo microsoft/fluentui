@@ -6,7 +6,7 @@ import { IDragDropHelper } from '../../utilities/dragdrop/index';
 import { ICellStyleProps } from './DetailsRow.types';
 import { ITheme, IStyle } from '../../Styling';
 
-export interface IDetailsColumnProps extends React.Props<DetailsColumnBase> {
+export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumnBase> {
   theme?: ITheme;
   styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
   componentRef?: () => void;
@@ -33,6 +33,8 @@ export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme
   isPadded?: boolean;
   isIconOnly?: boolean;
   iconClassName?: string;
+  transitionDurationDrag?: number;
+  transitionDurationDrop?: number;
 };
 
 export interface IDetailsColumnStyles {
@@ -47,5 +49,7 @@ export interface IDetailsColumnStyles {
   sortIcon: IStyle;
   filterChevron: IStyle;
   borderAfterDropping: IStyle;
+  noBorderAfterDropping: IStyle;
   borderWhileDragging: IStyle;
+  noBorderWhileDragging: IStyle;
 }

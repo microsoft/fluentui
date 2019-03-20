@@ -5,6 +5,9 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
+export function appendFunction(parent: any, ...functions: (any)[]): () => void;
+
+// @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
@@ -74,10 +77,10 @@ class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.C
   protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<TProps>): void;
   readonly className: string;
   componentDidMount(): void;
-  componentWillReceiveProps(newProps: Readonly<TProps>, newContext: any): void;
+  componentDidUpdate(prevProps: TProps, prevState: TState): void;
   componentWillUnmount(): void;
   // @deprecated (undocumented)
-  static onError: ((errorMessage?: string, ex?: any) => void);
+  static onError: (errorMessage?: string, ex?: any) => void;
 }
 
 // @public
@@ -101,9 +104,9 @@ export function customizable(scope: string, fields: string[], concatStyles?: boo
 // @public (undocumented)
 class Customizations {
   // (undocumented)
-  static applyScopedSettings(scopeName: string, settings: Settings): void;
+  static applyScopedSettings(scopeName: string, settings: ISettings): void;
   // (undocumented)
-  static applySettings(settings: Settings): void;
+  static applySettings(settings: ISettings): void;
   // (undocumented)
   static getSettings(properties: string[], scopeName?: string, localSettings?: ICustomizations): any;
   // (undocumented)
@@ -164,8 +167,8 @@ class EventGroup {
   // (undocumented)
   static isObserved(target: any, eventName: string): boolean;
   // (undocumented)
-  off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void;
-  on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void;
+  off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+  on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
   onAll(target: any, events: {
           [key: string]: (args?: any) => void;
       }, useCapture?: boolean): void;
@@ -173,6 +176,11 @@ class EventGroup {
   // (undocumented)
   static stopPropagation(event: any): void;
 }
+
+// @public
+export function extendComponent<T extends React.Component>(parent: T, methods: {
+    [key in keyof T]?: T[key];
+}): void;
 
 // @public
 class FabricPerformance {
@@ -227,10 +235,16 @@ export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
 
 // @public
+export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
+
+// @public
 export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+
+// @public
+export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
 
 // @public
 export function getId(prefix?: string): string;
@@ -245,7 +259,7 @@ export function getLanguage(): string | null;
 export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
@@ -347,11 +361,13 @@ interface ICustomizableProps {
 // @public (undocumented)
 interface ICustomizations {
   // (undocumented)
+  inCustomizerContext?: boolean;
+  // (undocumented)
   scopedSettings: {
-    [key: string]: Settings;
+    [key: string]: ISettings;
   }
   // (undocumented)
-  settings: Settings;
+  settings: ISettings;
 }
 
 // @public (undocumented)
@@ -403,11 +419,11 @@ interface IEventRecord {
   // (undocumented)
   objectCallback?: (args?: any) => void;
   // (undocumented)
+  options?: boolean | AddEventListenerOptions;
+  // (undocumented)
   parent: any;
   // (undocumented)
   target: any;
-  // (undocumented)
-  useCapture: boolean;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -433,6 +449,9 @@ interface IFitContentToBoundsOptions {
   maxScale?: number;
   mode: FitMode;
 }
+
+// @public
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
 // @public
 export function initializeFocusRects(window?: Window): void;
@@ -536,205 +555,18 @@ interface ISize {
 }
 
 // @public
-enum KeyCodes {
-  // (undocumented)
-  a = 65,
-  // (undocumented)
-  add = 107,
-  // (undocumented)
-  alt = 18,
-  // (undocumented)
-  b = 66,
-  // (undocumented)
-  backSlash = 220,
-  // (undocumented)
-  backspace = 8,
-  // (undocumented)
-  c = 67,
-  // (undocumented)
-  capslock = 20,
-  // (undocumented)
-  closeBracket = 221,
-  // (undocumented)
-  comma = 188,
-  // (undocumented)
-  ctrl = 17,
-  // (undocumented)
-  d = 68,
-  // (undocumented)
-  dash = 189,
-  // (undocumented)
-  decimalPoint = 110,
-  // (undocumented)
-  del = 46,
-  // (undocumented)
-  divide = 111,
-  // (undocumented)
-  down = 40,
-  // (undocumented)
-  e = 69,
-  // (undocumented)
-  eight = 56,
-  // (undocumented)
-  eight_numpad = 104,
-  // (undocumented)
-  end = 35,
-  // (undocumented)
-  enter = 13,
-  // (undocumented)
-  equalSign = 187,
-  // (undocumented)
-  escape = 27,
-  // (undocumented)
-  f = 70,
-  // (undocumented)
-  f1 = 112,
-  // (undocumented)
-  f10 = 121,
-  // (undocumented)
-  f11 = 122,
-  // (undocumented)
-  f12 = 123,
-  // (undocumented)
-  f2 = 113,
-  // (undocumented)
-  f3 = 114,
-  // (undocumented)
-  f4 = 115,
-  // (undocumented)
-  f5 = 116,
-  // (undocumented)
-  f6 = 117,
-  // (undocumented)
-  f7 = 118,
-  // (undocumented)
-  f8 = 119,
-  // (undocumented)
-  f9 = 120,
-  // (undocumented)
-  five = 53,
-  // (undocumented)
-  five_numpad = 101,
-  // (undocumented)
-  forwardSlash = 191,
-  // (undocumented)
-  four = 52,
-  // (undocumented)
-  four_numpad = 100,
-  // (undocumented)
-  g = 71,
-  // (undocumented)
-  graveAccent = 192,
-  // (undocumented)
-  h = 72,
-  // (undocumented)
-  home = 36,
-  // (undocumented)
-  i = 73,
-  // (undocumented)
-  insert = 45,
-  // (undocumented)
-  j = 74,
-  // (undocumented)
-  k = 75,
-  // (undocumented)
-  l = 76,
-  // (undocumented)
-  left = 37,
-  // (undocumented)
-  leftWindow = 91,
-  // (undocumented)
-  m = 77,
-  // (undocumented)
-  multiply = 106,
-  // (undocumented)
-  n = 78,
-  // (undocumented)
-  nine = 57,
-  // (undocumented)
-  nine_numpad = 105,
-  // (undocumented)
-  numlock = 144,
-  // (undocumented)
-  o = 79,
-  // (undocumented)
-  one = 49,
-  // (undocumented)
-  one_numpad = 97,
-  // (undocumented)
-  openBracket = 219,
-  // (undocumented)
-  p = 80,
-  // (undocumented)
-  pageDown = 34,
-  // (undocumented)
-  pageUp = 33,
-  // (undocumented)
-  pauseBreak = 19,
-  // (undocumented)
-  period = 190,
-  // (undocumented)
-  q = 81,
-  // (undocumented)
-  r = 82,
-  // (undocumented)
-  right = 39,
-  // (undocumented)
-  rightWindow = 92,
-  // (undocumented)
-  s = 83,
-  // (undocumented)
-  scrollLock = 145,
-  // (undocumented)
-  select = 93,
-  // (undocumented)
-  semicolon = 186,
-  // (undocumented)
-  seven = 55,
-  // (undocumented)
-  seven_numpad = 103,
-  // (undocumented)
-  shift = 16,
-  // (undocumented)
-  singleQuote = 222,
-  // (undocumented)
-  six = 54,
-  // (undocumented)
-  six_numpad = 102,
-  // (undocumented)
-  space = 32,
-  // (undocumented)
-  subtract = 109,
-  // (undocumented)
-  t = 84,
-  // (undocumented)
-  tab = 9,
-  // (undocumented)
-  three = 51,
-  // (undocumented)
-  three_numpad = 99,
-  // (undocumented)
-  two = 50,
-  // (undocumented)
-  two_numpad = 98,
-  // (undocumented)
-  u = 85,
-  // (undocumented)
-  up = 38,
-  // (undocumented)
-  v = 86,
-  // (undocumented)
-  w = 87,
-  // (undocumented)
-  x = 88,
-  // (undocumented)
-  y = 89,
-  // (undocumented)
-  z = 90,
-  // (undocumented)
-  zero = 48,
-  // (undocumented)
-  zero_numpad = 96
+export function isMac(reset?: boolean): boolean;
+
+// @public
+export function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement;
+
+// @public
+interface IVirtualElement extends HTMLElement {
+  // (undocumented)
+  _virtual: {
+    children: IVirtualElement[];
+    parent?: IVirtualElement;
+  }
 }
 
 // @public (undocumented)
@@ -758,11 +590,17 @@ export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)
 // @public
 export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
 
+// @public (undocumented)
+export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
+
 // @public
-export function mergeSettings(oldSettings?: Settings, newSettings?: Settings | SettingsFunction): Settings;
+export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
 export function nullRender(): JSX.Element | null;
+
+// @public (undocumented)
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
@@ -770,8 +608,11 @@ export function portalContainsElement(target: HTMLElement, parent?: HTMLElement)
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
+
+// @public
+export function raiseClick(target: Element): void;
 
 // @public
 class Rectangle {
@@ -833,7 +674,7 @@ export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): (props: TComponentProps) => JSX.Element;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
 
 // @public
 export function toMatrix<T>(items: T[], columnCount: number): T[][];
@@ -858,17 +699,21 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 
 // WARNING: Unsupported export: IStyleFunctionOrObject
 // WARNING: Unsupported export: ICancelable
-// WARNING: Unsupported export: Settings
-// WARNING: Unsupported export: SettingsFunction
-// WARNING: Unsupported export: CustomizerContext
-// WARNING: Unsupported export: ICustomizerProps
 // WARNING: Unsupported export: IClassNames
 // WARNING: Unsupported export: IComponentAsProps
 // WARNING: Unsupported export: IComponentAs
 // WARNING: Unsupported export: IStyleFunction
+// WARNING: Unsupported export: KeyCodes
+// WARNING: Unsupported export: KeyCodes
 // WARNING: Unsupported export: IRefObject
 // WARNING: Unsupported export: RefObject
 // WARNING: Unsupported export: ICssInput
+// WARNING: Unsupported export: ISettings
+// WARNING: Unsupported export: ISettingsFunction
+// WARNING: Unsupported export: Settings
+// WARNING: Unsupported export: SettingsFunction
+// WARNING: Unsupported export: ICustomizerProps
+// WARNING: Unsupported export: CustomizerContext
 // WARNING: Unsupported export: DATA_PORTAL_ATTRIBUTE
 // WARNING: Unsupported export: IsFocusVisibleClassName
 // WARNING: Unsupported export: FitMode

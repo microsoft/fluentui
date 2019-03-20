@@ -2,15 +2,17 @@ import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import {
   RecommendationBasicExample,
-  RecommendationDlpExample,
+  RecommendationAutoFontExample,
+  RecommendationCustomDataVizExample,
   RecommendationPasswordSettingsExample,
-  RecommendationMultiStackedBarChartExample
+  RecommendationMultiStackedBarChartExample,
+  RecommendationStackedBarChartExample
 } from './examples/index';
 const RecommendationExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.Basic.Example.tsx') as string;
-
-const DlpRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.DLP.Example.tsx') as string;
-const DlpStackedBarChartCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.MultiStackedBarChart.Example.tsx') as string;
-
+const RecommendationAutoFontExampleCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.AutoFont.Example.tsx') as string;
+const DlpRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.CustomDataViz.Example.tsx') as string;
+const DlpMultiStackedBarChartCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.MultiStackedBarChart.Example.tsx') as string;
+const DlpStackedBarChartCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.StackedBarChart.Example.tsx') as string;
 const PasswordSettingsRecommendationCode = require('!raw-loader!@uifabric/dashboard/src/components/Recommendation/examples/Recommendation.PasswordSettings.Example.tsx') as string;
 
 export class RecommendationPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -24,11 +26,17 @@ export class RecommendationPage extends React.Component<IComponentDemoPageProps,
             <ExampleCard title="Basic Recommendation Card" code={RecommendationExampleCode}>
               <RecommendationBasicExample />
             </ExampleCard>
-            <ExampleCard title="DLP Recommendation Card (Data Visualization Example)" code={DlpRecommendationCode}>
-              <RecommendationDlpExample />
+            <ExampleCard title="AutoFont Adjusting Recommendation Card" code={RecommendationAutoFontExampleCode}>
+              <RecommendationAutoFontExample />
             </ExampleCard>
-            <ExampleCard title="DLP Recommendation Card (StackedBarChart Example)" code={DlpStackedBarChartCode}>
+            <ExampleCard title="Custom DataViz Recommendation Card" code={DlpRecommendationCode}>
+              <RecommendationCustomDataVizExample />
+            </ExampleCard>
+            <ExampleCard title="DLP Recommendation Card (MultiStackedBarChart Example)" code={DlpMultiStackedBarChartCode}>
               <RecommendationMultiStackedBarChartExample />
+            </ExampleCard>
+            <ExampleCard title="MIP Recommendation Card (StackedBarChart Example)" code={DlpStackedBarChartCode}>
+              <RecommendationStackedBarChartExample />
             </ExampleCard>
             <ExampleCard
               title="Password Settings Recommendation Card (Image Illustration Example)"

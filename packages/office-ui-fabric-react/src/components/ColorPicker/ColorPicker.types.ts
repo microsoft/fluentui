@@ -2,7 +2,10 @@ import { ITheme, IStyle } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IColor } from '../../utilities/color/colors';
 
-export interface IColorPicker {}
+export interface IColorPicker {
+  /** The currently selected color. */
+  color: IColor;
+}
 
 export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
@@ -11,40 +14,49 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   componentRef?: IRefObject<IColorPicker>;
 
   /**
-   * CSS-compatible string to describe the initial color.
+   * Object or CSS-compatible string to describe the color.
    */
-  color: string;
+  color: IColor | string;
 
   /**
-   * Callback issued when the user changes the color.
+   * Callback for when the user changes the color.
+   * (To preserve existing behavior, this is also called when the color changes via props.)
+   *
+   * @deprecated Use `onChange` instead.
    */
   onColorChanged?: (color: string, colorObject: IColor) => void;
 
   /**
-   * The setting of whether to hide the alpha control slider.
+   * Callback for when the user changes the color.
+   * (Not called when the color is changed via props.)
+   */
+  onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+
+  /**
+   * Whether to hide the alpha control slider.
    */
   alphaSliderHidden?: boolean;
 
   /**
-   * Label for the hex textfield.
+   * Label for the hex text field.
    * @defaultvalue Hex
    */
   hexLabel?: string;
 
   /**
-   * Label for the red textfield.
+   * Label for the red text field.
    * @defaultvalue Red
    */
   redLabel?: string;
 
   /**
-   * Label for the green textfield.
+   * Label for the green text field.
    * @defaultvalue Green
    */
   greenLabel?: string;
 
   /**
-   * Label for the blue textfield.
+   * Label for the blue text field.
    * @defaultvalue Blue
    */
   blueLabel?: string;

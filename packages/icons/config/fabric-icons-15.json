@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-15",
+  "fontFamilyName": "FabricMDL2Icons-15",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "TagUnknown12",
+      "unicode": "F6E1"
+    },
+    {
+      "name": "TagUnknown12Mirror",
+      "unicode": "F6E2"
+    },
+    {
+      "name": "Link12",
+      "unicode": "F6E3"
+    },
+    {
+      "name": "Presentation",
+      "unicode": "F6E4"
+    },
+    {
+      "name": "Presentation12",
+      "unicode": "F6E5"
+    },
+    {
+      "name": "Lock12",
+      "unicode": "F6E6"
+    },
+    {
+      "name": "BuildDefinition",
+      "unicode": "F6E9"
+    },
+    {
+      "name": "ReleaseDefinition",
+      "unicode": "F6EA"
+    },
+    {
+      "name": "SaveTemplate",
+      "unicode": "F6EC"
+    },
+    {
+      "name": "UserGauge",
+      "unicode": "F6ED"
+    },
+    {
+      "name": "BlockedSiteSolid12",
+      "unicode": "F70A"
+    },
+    {
+      "name": "TagSolid",
+      "unicode": "F70E"
+    },
+    {
+      "name": "OfficeChat",
+      "unicode": "F70F"
+    },
+    {
+      "name": "OfficeChatSolid",
+      "unicode": "F710"
+    },
+    {
+      "name": "MailSchedule",
+      "unicode": "F72E"
+    },
+    {
+      "name": "WarningSolid",
+      "unicode": "F736"
+    },
+    {
+      "name": "Blocked2Solid",
+      "unicode": "F737"
+    },
+    {
+      "name": "SkypeCircleArrow",
+      "unicode": "F747"
+    },
+    {
+      "name": "SkypeArrow",
+      "unicode": "F748"
+    },
+    {
+      "name": "SyncStatus",
+      "unicode": "F751"
+    },
+    {
+      "name": "SyncStatusSolid",
+      "unicode": "F752"
+    },
+    {
+      "name": "ProjectDocument",
+      "unicode": "F759"
+    },
+    {
+      "name": "ToDoLogoOutline",
+      "unicode": "F75B"
+    },
+    {
+      "name": "VisioOnlineLogoFill32",
+      "unicode": "F75F"
+    },
+    {
+      "name": "VisioOnlineLogo32",
+      "unicode": "F760"
+    },
+    {
+      "name": "VisioOnlineLogoCloud32",
+      "unicode": "F761"
+    },
+    {
+      "name": "VisioDiagramSync",
+      "unicode": "F762"
+    },
+    {
+      "name": "Event12",
+      "unicode": "F763"
+    },
+    {
+      "name": "EventDateMissed12",
+      "unicode": "F764"
+    },
+    {
+      "name": "UserOptional",
+      "unicode": "F767"
+    },
+    {
+      "name": "ResponsesMenu",
+      "unicode": "F768"
+    },
+    {
+      "name": "DoubleDownArrow",
+      "unicode": "F769"
+    },
+    {
+      "name": "DistributeDown",
+      "unicode": "F76A"
+    },
+    {
+      "name": "BookmarkReport",
+      "unicode": "F76B"
+    },
+    {
+      "name": "FilterSettings",
+      "unicode": "F76C"
+    },
+    {
+      "name": "GripperDotsVertical",
+      "unicode": "F772"
+    },
+    {
+      "name": "MailAttached",
+      "unicode": "F774"
+    },
+    {
+      "name": "AddIn",
+      "unicode": "F775"
+    },
+    {
+      "name": "LinkedDatabase",
+      "unicode": "F779"
+    },
+    {
+      "name": "PromotedDatabase",
+      "unicode": "F77D"
+    },
+    {
+      "name": "BarChartVerticalFilter",
+      "unicode": "F77E"
+    },
+    {
+      "name": "BarChartVerticalFilterSolid",
+      "unicode": "F77F"
+    },
+    {
+      "name": "ShowTimeAs",
+      "unicode": "F787"
+    },
+    {
+      "name": "FileRequest",
+      "unicode": "F789"
+    },
+    {
+      "name": "WorkItemAlert",
+      "unicode": "F78F"
+    },
+    {
+      "name": "PowerBILogo16",
+      "unicode": "F790"
+    },
+    {
+      "name": "PowerBILogoBackplate16",
+      "unicode": "F791"
+    },
+    {
+      "name": "BulletedListText",
+      "unicode": "F792"
+    },
+    {
+      "name": "BulletedListBullet",
+      "unicode": "F793"
+    },
+    {
+      "name": "BulletedListTextMirrored",
+      "unicode": "F794"
+    },
+    {
+      "name": "BulletedListBulletMirrored",
+      "unicode": "F795"
+    },
+    {
+      "name": "NumberedListText",
+      "unicode": "F796"
+    },
+    {
+      "name": "NumberedListNumber",
+      "unicode": "F797"
+    },
+    {
+      "name": "NumberedListTextMirrored",
+      "unicode": "F798"
+    },
+    {
+      "name": "NumberedListNumberMirrored",
+      "unicode": "F799"
+    },
+    {
+      "name": "RemoveLinkChain",
+      "unicode": "F79A"
+    },
+    {
+      "name": "RemoveLinkX",
+      "unicode": "F79B"
+    },
+    {
+      "name": "FabricTextHighlight",
+      "unicode": "F79C"
+    },
+    {
+      "name": "ClearFormattingA",
+      "unicode": "F79D"
+    },
+    {
+      "name": "ClearFormattingEraser",
+      "unicode": "F79E"
+    },
+    {
+      "name": "Photo2Fill",
+      "unicode": "F79F"
+    },
+    {
+      "name": "IncreaseIndentText",
+      "unicode": "F7A0"
+    },
+    {
+      "name": "IncreaseIndentArrow",
+      "unicode": "F7A1"
+    },
+    {
+      "name": "DecreaseIndentText",
+      "unicode": "F7A2"
+    },
+    {
+      "name": "DecreaseIndentArrow",
+      "unicode": "F7A3"
+    },
+    {
+      "name": "IncreaseIndentTextMirrored",
+      "unicode": "F7A4"
+    },
+    {
+      "name": "IncreaseIndentArrowMirrored",
+      "unicode": "F7A5"
+    },
+    {
+      "name": "DecreaseIndentTextMirrored",
+      "unicode": "F7A6"
+    },
+    {
+      "name": "DecreaseIndentArrowMirrored",
+      "unicode": "F7A7"
+    },
+    {
+      "name": "CheckListText",
+      "unicode": "F7A8"
+    },
+    {
+      "name": "CheckListCheck",
+      "unicode": "F7A9"
+    },
+    {
+      "name": "CheckListTextMirrored",
+      "unicode": "F7AA"
+    },
+    {
+      "name": "CheckListCheckMirrored",
+      "unicode": "F7AB"
+    },
+    {
+      "name": "NumberSymbol",
+      "unicode": "F7AC"
+    },
+    {
+      "name": "Coupon",
+      "unicode": "F7BC"
+    },
+    {
+      "name": "VerifiedBrand",
+      "unicode": "F7BD"
+    },
+    {
+      "name": "ReleaseGate",
+      "unicode": "F7BE"
+    },
+    {
+      "name": "ReleaseGateCheck",
+      "unicode": "F7BF"
+    },
+    {
+      "name": "ReleaseGateError",
+      "unicode": "F7C0"
+    },
+    {
+      "name": "M365InvoicingLogo",
+      "unicode": "F7C1"
+    },
+    {
+      "name": "FabricTextHighlightComposite",
+      "unicode": "F7DA"
+    },
+    {
+      "name": "Dataflows",
+      "unicode": "F7DD"
+    },
+    {
+      "name": "GenericScanFilled",
+      "unicode": "F7DE"
+    },
+    {
+      "name": "DiagnosticDataBarTooltip",
+      "unicode": "F7DF"
+    },
+    {
+      "name": "SaveToMobile",
+      "unicode": "F7E0"
+    },
+    {
+      "name": "Orientation2",
+      "unicode": "F7E1"
+    },
+    {
+      "name": "ScreenCast",
+      "unicode": "F7E2"
+    },
+    {
+      "name": "ShowGrid",
+      "unicode": "F7E3"
+    },
+    {
+      "name": "SnapToGrid",
+      "unicode": "F7E4"
+    },
+    {
+      "name": "ContactList",
+      "unicode": "F7E5"
+    },
+    {
+      "name": "NewMail",
+      "unicode": "F7EA"
+    },
+    {
+      "name": "EyeShadow",
+      "unicode": "F7EB"
+    },
+    {
+      "name": "CampaignTemplate",
+      "unicode": "F811"
+    },
+    {
+      "name": "ChartTemplate",
+      "unicode": "F812"
+    },
+    {
+      "name": "PageListFilter",
+      "unicode": "F813"
+    },
+    {
+      "name": "SecondaryNav",
+      "unicode": "F814"
+    },
+    {
+      "name": "ColumnVerticalSection",
+      "unicode": "F81E"
+    },
+    {
+      "name": "SkypeCircleSlash",
+      "unicode": "F825"
+    },
+    {
+      "name": "SkypeSlash",
+      "unicode": "F826"
+    },
+    {
+      "name": "CustomizeToolbar",
+      "unicode": "F828"
+    }
+  ]
+}

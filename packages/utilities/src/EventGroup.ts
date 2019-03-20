@@ -14,7 +14,7 @@ export interface IEventRecord {
   callback: (args?: any) => void;
   elementCallback?: (...args: any[]) => void;
   objectCallback?: (args?: any) => void;
-  useCapture: boolean;
+  options?: boolean | AddEventListenerOptions;
 }
 // tslint:enable:no-any
 
@@ -186,12 +186,12 @@ export class EventGroup {
    * of this instance of EventGroup.
    */
   // tslint:disable-next-line:no-any
-  public on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void {
+  public on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void {
     if (eventName.indexOf(',') > -1) {
       let events = eventName.split(/[ ,]+/);
 
       for (let i = 0; i < events.length; i++) {
-        this.on(target, events[i], callback, useCapture);
+        this.on(target, events[i], callback, options);
       }
     } else {
       let parent = this._parent;
@@ -200,7 +200,7 @@ export class EventGroup {
         eventName: eventName,
         parent: parent,
         callback: callback,
-        useCapture: useCapture || false
+        options
       };
 
       // Initialize and wire up the record on the target, so that it can call the callback if the event fires.
@@ -248,7 +248,7 @@ export class EventGroup {
 
         if (target.addEventListener) {
           /* tslint:disable:ban-native-functions */
-          (<EventTarget>target).addEventListener(eventName, processElementEvent, useCapture);
+          (<EventTarget>target).addEventListener(eventName, processElementEvent, options);
           /* tslint:enable:ban-native-functions */
         } else if (target.attachEvent) {
           // IE8
@@ -273,14 +273,14 @@ export class EventGroup {
   }
 
   // tslint:disable-next-line:no-any
-  public off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void {
+  public off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void {
     for (let i = 0; i < this._eventRecords.length; i++) {
       let eventRecord = this._eventRecords[i];
       if (
         (!target || target === eventRecord.target) &&
         (!eventName || eventName === eventRecord.eventName) &&
         (!callback || callback === eventRecord.callback) &&
-        (typeof useCapture !== 'boolean' || useCapture === eventRecord.useCapture)
+        (typeof options !== 'boolean' || options === eventRecord.options)
       ) {
         let events = <IEventRecordsByName>eventRecord.target.__events__;
         let targetArrayLookup = events[eventRecord.eventName];
@@ -303,7 +303,7 @@ export class EventGroup {
 
         if (eventRecord.elementCallback) {
           if (eventRecord.target.removeEventListener) {
-            eventRecord.target.removeEventListener(eventRecord.eventName, eventRecord.elementCallback, eventRecord.useCapture);
+            eventRecord.target.removeEventListener(eventRecord.eventName, eventRecord.elementCallback, eventRecord.options);
           } else if (eventRecord.target.detachEvent) {
             // IE8
             eventRecord.target.detachEvent('on' + eventRecord.eventName, eventRecord.elementCallback);

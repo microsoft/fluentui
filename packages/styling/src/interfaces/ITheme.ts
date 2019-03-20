@@ -1,8 +1,9 @@
 import { IPalette } from './IPalette';
 import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
-import { ITypography, IPartialTypography } from './ITypography';
 import { ISpacing } from './ISpacing';
+import { IEffects } from './IEffects';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 /**
  * @internal
@@ -30,19 +31,13 @@ export interface IScheme {
 
   /**
    * @internal
-   * The typography property is still in an experimental phase. The intent is to have it
-   * eventually replace IFontStyles in a future release, but it is still undergoing review.
-   * Avoid using it until it is finalized.
-   */
-  typography: ITypography;
-
-  /**
-   * @internal
    * The spacing property is still in an experimental phase. The intent is to have it
    * be used for padding and margin sizes in a future release, but it is still undergoing review.
    * Avoid using it until it is finalized.
    */
   spacing: ISpacing;
+
+  effects: IEffects;
 }
 
 export interface ITheme extends IScheme {
@@ -56,9 +51,18 @@ export interface ITheme extends IScheme {
 }
 
 export type IPartialTheme = {
-  [P in keyof Pick<
-    ITheme,
-    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes'
-  >]?: Partial<ITheme[P]>
-} &
-  { [P in keyof Pick<ITheme, 'typography'>]?: IPartialTypography };
+  palette?: Partial<IPalette>;
+  fonts?: Partial<IFontStyles>;
+
+  /**
+   * Use this property to specify font property defaults.
+   */
+  defaultFontStyle?: IRawStyle;
+
+  semanticColors?: Partial<ISemanticColors>;
+  isInverted?: boolean;
+  disableGlobalClassNames?: boolean;
+  spacing?: Partial<ISpacing>;
+  effects?: Partial<IEffects>;
+  schemes?: { [P in ISchemeNames]?: IScheme };
+};

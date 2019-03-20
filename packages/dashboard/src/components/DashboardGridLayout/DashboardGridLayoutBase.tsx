@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breakpoints, Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout-fabric';
 import {
   IDashboardGridLayoutProps,
   IDashboardGridLayoutStyles,
@@ -11,7 +11,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { CardSizeToWidthHeight, updateLayoutsFromLayout } from '../../utilities/DashboardGridLayoutUtils';
 
 // These require the style-loader and css-loader rules from webpack
-require('react-grid-layout/css/styles.css');
+require('react-grid-layout-fabric/css/styles.css');
 require('react-resizable/css/styles.css');
 require('./DashboardGridLayout.css');
 
@@ -44,83 +44,75 @@ export class DashboardGridLayoutBase extends React.Component<IDashboardGridLayou
     margin: [24, 24]
   };
 
-  constructor(props: IDashboardGridLayoutBaseProps) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IDashboardGridLayoutProps, IDashboardGridLayoutStyles>();
     const classNames = getClassNames(getStyles!, {});
 
     return (
-      <ResponsiveReactGridLayout
-        isDraggable={this.props.isDraggable || true}
-        breakpoints={this.props.breakpoints}
-        cols={this.props.cols}
-        className={classNames.root}
-        margin={this.props.margin}
-        containerPadding={[0, 0]}
-        isResizable={this.props.isResizable || false}
-        rowHeight={this.props.rowHeight}
-        layouts={this._createLayout()}
-        verticalCompact={true}
-        onLayoutChange={this._onLayoutChanged}
-        onDrag={this.props.onDrag}
-        onDragStart={this.props.onDragStart}
-        onDragStop={this.props.onDragStop}
-        onBreakpointChange={this.props.onBreakPointChange}
-        dragApiRef={this.props.dragApi}
-        onWidthChange={this.props.onWidthChange}
-        {...this.props}
-      >
-        {this.props.children}
-      </ResponsiveReactGridLayout>
+      <div dir="ltr" role={this.props.role ? this.props.role : 'region'} aria-labelledby={this.props.DGLAriaLabelledby}>
+        <ResponsiveReactGridLayout
+          isDraggable={this.props.isDraggable || true}
+          breakpoints={this.props.breakpoints}
+          cols={this.props.cols}
+          className={classNames.root}
+          margin={this.props.margin}
+          containerPadding={[0, 0]}
+          isResizable={this.props.isResizable || false}
+          rowHeight={this.props.rowHeight}
+          layouts={_createLayout(this.props, this.props.layout)}
+          verticalCompact={true}
+          onDrag={this.props.onDrag}
+          onDragStart={this.props.onDragStart}
+          onDragStop={this.props.onDragStop}
+          onBreakpointChange={this.props.onBreakPointChange}
+          dragApiRef={this.props.dragApi}
+          onWidthChange={this.props.onWidthChange}
+          {...this.props}
+        >
+          {this.props.children}
+        </ResponsiveReactGridLayout>
+      </div>
     );
   }
+}
 
-  private _onLayoutChanged = (currentLayout: Layout[], allLayouts: Layouts) => {
-    if (this.props.onLayoutChange) {
-      this.props.onLayoutChange(currentLayout, allLayouts);
-    }
+function _createLayoutFromProp(props: IDashboardGridLayoutBaseProps, layoutProp: IDashboardCardLayout): Layout {
+  const { isResizable = true } = layoutProp;
+  return {
+    i: layoutProp.i,
+    x: layoutProp.x,
+    y: layoutProp.y,
+    w: props.cardSizeToRGLWidthHeight![layoutProp.size].w,
+    h: props.cardSizeToRGLWidthHeight![layoutProp.size].h,
+    static: !!layoutProp.static,
+    isDraggable: !layoutProp.disableDrag,
+    isResizable: isResizable
   };
+}
 
-  private _createLayoutFromProp(layoutProp: IDashboardCardLayout): Layout {
-    return {
-      i: layoutProp.i,
-      x: layoutProp.x,
-      y: layoutProp.y,
-      w: this.props.cardSizeToRGLWidthHeight![layoutProp.size].w,
-      h: this.props.cardSizeToRGLWidthHeight![layoutProp.size].h,
-      static: layoutProp.static === undefined ? false : layoutProp.static,
-      isDraggable: layoutProp.disableDrag === undefined ? true : !layoutProp.disableDrag,
-      isResizable: layoutProp.isResizable === undefined ? true : layoutProp.isResizable
-    };
+/**
+ * Default function to create RGL layout from dashboard layout.
+ * If props.createRGLLayouts is provided, use the function in prop instead
+ */
+function _createLayout(props: IDashboardGridLayoutBaseProps, layoutFromProps?: DashboardGridBreakpointLayouts): Layouts {
+  if (props.createRGLLayouts) {
+    // if the function to create layout is provided, use it; otherwise, use the default function to convert dashboard layout to RGL layout
+    return props.createRGLLayouts(layoutFromProps!);
   }
 
-  /**
-   * Default function to create RGL layout from dashboard layout.
-   * If this.props.createRGLLayouts is provided, use the function in prop instead
-   */
-  private _createLayout(): Layouts {
-    if (this.props.createRGLLayouts) {
-      // if the function to create layout is provided, use it; otherwise, use the default function to convert dashboard layout to RGL layout
-      return this.props.createRGLLayouts(this.props.layout!);
-    }
-
-    const layouts: Layouts = {};
-    if (this.props.layout) {
-      for (const [key, value] of Object.entries(this.props.layout)) {
-        if (value === undefined) {
-          continue;
-        }
-        const layout: Layout[] = [];
-        for (let i = 0; i < value.length; i++) {
-          layout.push(this._createLayoutFromProp(value[i]));
-        }
-        updateLayoutsFromLayout(layouts, layout, key as Breakpoints);
+  const layouts: Layouts = {};
+  if (layoutFromProps) {
+    for (const [key, value] of Object.entries(layoutFromProps)) {
+      if (value === undefined) {
+        continue;
       }
+      const layout: Layout[] = [];
+      for (let i = 0; i < value.length; i++) {
+        layout.push(_createLayoutFromProp(props, value[i]));
+      }
+      updateLayoutsFromLayout(layouts, layout, key as Breakpoints);
     }
-
-    return layouts;
   }
+
+  return layouts;
 }

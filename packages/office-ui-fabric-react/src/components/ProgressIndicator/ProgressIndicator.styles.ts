@@ -37,6 +37,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
 
   const marginBetweenText = 8;
   const textHeight = 18;
+  const progressTrackColor = palette.neutralLight;
 
   return {
     root: [
@@ -84,7 +85,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
         position: 'absolute',
         width: '100%',
         height: barHeight,
-        backgroundColor: palette.neutralLight,
+        backgroundColor: progressTrackColor,
 
         selectors: {
           [HighContrastSelector]: {
@@ -113,7 +114,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
         ? ({
             position: 'absolute',
             minWidth: '33%',
-            background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
+            background: `linear-gradient(to right, ${progressTrackColor} 0%, ${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
             animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`
           } as IRawStyle)
         : ({

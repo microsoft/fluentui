@@ -5,6 +5,10 @@ import { getStyles } from './DetailsRow.styles';
 
 export { IDetailsRowProps, IDetailsRowBaseProps };
 
-export const DetailsRow = styled<IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles>(DetailsRowBase, getStyles, undefined, {
+export const DetailsRow: React.StatelessComponent<IDetailsRowBaseProps> = styled<
+  IDetailsRowBaseProps,
+  IDetailsRowStyleProps,
+  IDetailsRowStyles
+>(DetailsRowBase, getStyles, undefined, {
   scope: 'DetailsRow'
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, KeyCodes } from '../../Utilities';
+import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -18,7 +18,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     }
   };
 
-  public rootElement = createRef<HTMLDivElement>();
+  public rootElement = React.createRef<HTMLDivElement>();
 
   constructor(props: ITeachingBubbleProps) {
     super(props);

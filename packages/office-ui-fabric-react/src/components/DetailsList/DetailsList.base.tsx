@@ -1,15 +1,6 @@
 import * as React from 'react';
 
-import {
-  BaseComponent,
-  KeyCodes,
-  assign,
-  elementContains,
-  getRTLSafeKeyCode,
-  IRenderFunction,
-  createRef,
-  classNamesFunction
-} from '../../Utilities';
+import { BaseComponent, KeyCodes, assign, elementContains, getRTLSafeKeyCode, IRenderFunction, classNamesFunction } from '../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -30,14 +21,16 @@ import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ISelectionZone, IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
+import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { IList, List, IListProps, ScrollToMode } from '../../List';
+import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+// For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
+import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -54,7 +47,6 @@ export interface IDetailsListState {
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
 const CHECKBOX_WIDTH = 40;
-const GROUP_EXPAND_WIDTH = 36;
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
@@ -70,20 +62,21 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    enableShimmer: false
+    enableShimmer: false,
+    compact: false
   };
 
   // References
-  private _root = createRef<HTMLDivElement>();
-  private _header = createRef<IDetailsHeader>();
-  private _groupedList = createRef<IGroupedList>();
-  private _list = createRef<IList>();
-  private _focusZone = createRef<IFocusZone>();
-  private _selectionZone = createRef<ISelectionZone>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _header = React.createRef<IDetailsHeader>();
+  private _groupedList = React.createRef<IGroupedList>();
+  private _list = React.createRef<List>();
+  private _focusZone = React.createRef<IFocusZone>();
+  private _selectionZone = React.createRef<SelectionZone>();
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRowBase };
-  private _dragDropHelper: DragDropHelper | null;
+  private _dragDropHelper: DragDropHelper | undefined;
   private _initialFocusedIndex: number | undefined;
   private _pendingForceUpdate: boolean;
 
@@ -131,7 +124,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
           selection: this._selection,
           minimumPixelsForDrag: props.minimumPixelsForDrag
         })
-      : null;
+      : undefined;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
@@ -169,11 +162,12 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   public componentWillUnmount(): void {
     if (this._dragDropHelper) {
+      // TODO If the DragDropHelper was passed via props, this will dispose it, which is incorrect behavior.
       this._dragDropHelper.dispose();
     }
   }
 
-  public componentDidUpdate(prevProps: any, prevState: any) {
+  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
     if (this._initialFocusedIndex !== undefined) {
       const item = this.props.items[this._initialFocusedIndex];
       if (item) {
@@ -204,14 +198,22 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         this._initialFocusedIndex = index;
       }
     }
-
     if (this.props.onDidUpdate) {
       this.props.onDidUpdate(this);
     }
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode = this._selection.mode, columns, viewport, compact } = this.props;
+    const {
+      checkboxVisibility,
+      items,
+      setKey,
+      selectionMode = this._selection.mode,
+      columns,
+      viewport,
+      compact,
+      dragDropEvents
+    } = this.props;
     const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
 
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
@@ -253,6 +255,17 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
         isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
       });
+    }
+
+    if (newProps.dragDropEvents !== dragDropEvents) {
+      this._dragDropHelper && this._dragDropHelper.dispose();
+      this._dragDropHelper = newProps.dragDropEvents
+        ? new DragDropHelper({
+            selection: this._selection,
+            minimumPixelsForDrag: newProps.minimumPixelsForDrag
+          })
+        : undefined;
+      shouldForceUpdates = true;
     }
 
     if (shouldForceUpdates) {
@@ -357,13 +370,14 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         selection={selection}
         selectionMode={checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none}
         dragDropEvents={dragDropEvents}
-        dragDropHelper={dragDropHelper as DragDropHelper}
+        dragDropHelper={dragDropHelper}
         eventsToRegister={rowElementEventMap}
         listProps={additionalListProps}
         onGroupExpandStateChanged={this._onGroupExpandStateChanged}
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}
         getGroupHeight={getGroupHeight}
+        compact={compact}
       />
     ) : (
       <List
@@ -470,7 +484,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     this._forceListUpdates();
   }
 
-  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
     return <DetailsRow {...props} />;
   };
 
@@ -490,7 +504,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
     return (item: any, itemIndex: number): React.ReactNode => {
-      return this._onRenderCell(nestingDepth, item, itemIndex as number);
+      return this._onRenderCell(nestingDepth, item, itemIndex);
     };
   };
 
@@ -523,7 +537,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       item: item,
       itemIndex: index,
       compact: compact,
-      columns: columns as IColumn[],
+      columns: columns,
       groupNestingDepth: nestingDepth,
       selectionMode: selectionMode,
       selection: selection,
@@ -532,7 +546,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onRenderItemColumn: onRenderItemColumn,
       eventsToRegister: eventsToRegister,
       dragDropEvents: dragDropEvents,
-      dragDropHelper: dragDropHelper!,
+      dragDropHelper: dragDropHelper,
       viewport: viewport,
       checkboxVisibility: checkboxVisibility,
       collapseAllVisibility: collapseAllVisibility,
@@ -806,9 +820,10 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      if (column.calculatedWidth! - minWidth >= overflowWidth || !column.isCollapsable) {
+      if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsable || column.isCollapsible)) {
+        const originalWidth = column.calculatedWidth!;
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
-        totalWidth = availableWidth;
+        totalWidth -= originalWidth - column.calculatedWidth;
       } else {
         totalWidth -= getPaddedWidth(column, false, props);
         adjustedColumns.splice(lastIndex, 1);
@@ -861,7 +876,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   private _getColumnOverride(key: string): IColumn {
-    return (this._columnOverrides[key] = this._columnOverrides[key] || ({} as IColumn));
+    return (this._columnOverrides[key] = this._columnOverrides[key] || {});
   }
 
   /**
@@ -1030,9 +1045,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         }
       : undefined;
 
-    const groupProps = detailsGroupProps as IGroupRenderProps;
     return {
-      ...groupProps,
+      ...detailsGroupProps,
       onRenderFooter,
       onRenderHeader
     };
@@ -1042,7 +1056,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 export function buildColumns(
   items: any[],
   canResizeColumns?: boolean,
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any,
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void,
   sortedColumnKey?: string,
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
@@ -1062,6 +1076,7 @@ export function buildColumns(
           minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
           isCollapsable: !!columns.length,
+          isCollapsible: !!columns.length,
           isMultiline: isMultiline === undefined ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,

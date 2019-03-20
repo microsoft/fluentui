@@ -138,6 +138,12 @@ export interface ICheckboxStyles {
   root?: IStyle;
 
   /**
+   * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
+   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
+   */
+  input?: IStyle;
+
+  /**
    * Style for the label part (contains the customized checkbox + text) when enabled.
    */
   label?: IStyle;

@@ -66,6 +66,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -142,6 +143,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -236,7 +238,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -266,7 +267,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {

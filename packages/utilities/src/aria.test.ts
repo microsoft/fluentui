@@ -69,7 +69,7 @@ describe('aria utils tests', () => {
         cases: [
           {
             args: ['arg1', 'arg2'],
-            expected: 'arg1arg2'
+            expected: 'arg1 arg2'
           },
           {
             args: ['arg1', undefined],
@@ -84,8 +84,16 @@ describe('aria utils tests', () => {
             expected: 'arg1'
           },
           {
-            args: ['', 'arg1 ', 'arg2 '],
-            expected: 'arg1 arg2 '
+            args: ['', 'arg1', 'arg2 '],
+            expected: 'arg1 arg2'
+          },
+          {
+            args: ['', ''],
+            expected: undefined
+          },
+          {
+            args: [' ', ' '],
+            expected: undefined
           }
         ]
       }

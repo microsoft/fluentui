@@ -1,6 +1,98 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 31 Oct 2018 12:32:41 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2019 12:33:47 GMT and should not be manually modified.
+
+## 6.45.0
+Wed, 13 Mar 2019 12:33:47 GMT
+
+### Minor changes
+
+- Reverting sideEffects opt out. We are trying to reduce bundle size, but a number of reports have indicated that sideEffects aren't working correctly for them. We will revert until we remove all side effects.
+
+## 6.44.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Adding theme.js to sideEffects list to prevent webpack from treeshaking it out.
+
+## 6.44.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add yellowDark to IPalette
+
+## 6.43.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- The package side-effects flag has been removed, allowing for tree shaking to do its magic much better.
+
+## 6.42.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- IEffects: changes types of the `elevation` and `roundedCorner2` properties to `string` to allow a more flexible way to provide values.
+
+## 6.41.0
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Minor changes
+
+- theming: add loadFonts function and register font variables
+
+### Patches
+
+- fix createTheme so that it cannot mutate DefaultFontStyles
+
+## 6.40.0
+Thu, 10 Jan 2019 04:58:48 GMT
+
+### Minor changes
+
+- ITheme: add defaultFontStyles property
+
+## 6.39.0
+Thu, 13 Dec 2018 13:37:01 GMT
+
+### Minor changes
+
+- ITheme: remove ITypography
+
+## 6.38.0
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Minor changes
+
+- Extend theming to incorporate shadows and rounded corners
+
+### Patches
+
+- Add missing API file update
+
+## 6.37.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- semantic slot value updates
+
+## 6.35.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+
+## 6.34.1
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Patches
+
+- Icon: warnings from duplicate registrations are now throttled into a single message.
 
 ## 6.34.0
 Wed, 31 Oct 2018 12:32:41 GMT

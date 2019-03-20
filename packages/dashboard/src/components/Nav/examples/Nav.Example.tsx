@@ -10,7 +10,9 @@ export class NavExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const navLinkGroups: ICustomNavLinkGroup[] = [
       {
-        links: [{ name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key' }],
+        links: [
+          { name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key', title: 'Collapse navigation' }
+        ],
         groupType: NavGroupType.ToggleGroup
       },
       {

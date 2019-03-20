@@ -1,5 +1,5 @@
 import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, keyframes, IStyle } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle } from '../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
 
@@ -33,7 +33,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     isIconVisible,
     isPadded,
     isIconOnly,
-    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+    transitionDurationDrag,
+    transitionDurationDrop
   } = props;
 
   const { semanticColors, palette } = theme;
@@ -47,25 +49,27 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     resizerColor: palette.neutralTertiaryAlt
   };
 
-  const fadeOut: string = keyframes({
-    from: {
-      borderColor: palette.themePrimary
-    },
-    to: {
-      borderColor: 'transparent'
-    }
-  });
-
   const nearIconStyle: IStyle = {
     color: colors.iconForegroundColor,
     opacity: 1,
     paddingLeft: 8
   };
 
+  const borderWhileDragging: IStyle = [
+    {
+      outline: `1px solid ${palette.themePrimary}`
+    }
+  ];
+
+  const borderAfterDragOrDrop: IStyle = [
+    {
+      outlineColor: 'transparent'
+    }
+  ];
+
   return {
     root: [
       getCellStyles(props),
-      headerClassName,
       theme.fonts.small,
       isActionable && [
         classNames.isActionable,
@@ -97,7 +101,8 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
             display: 'block'
           }
         }
-      }
+      },
+      headerClassName
     ],
 
     gripperBarVerticalStyle: [
@@ -188,24 +193,12 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     accessibleLabel: [hiddenContentStyle],
 
-    borderAfterDropping: [
-      {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary,
-        left: -1,
-        lineHeight: 31,
-        animation: `${fadeOut} 1.5s forwards`
-      }
-    ],
+    borderWhileDragging: borderWhileDragging,
 
-    borderWhileDragging: [
-      {
-        borderStyle: 'solid',
-        borderWidth: 1,
-        borderColor: palette.themePrimary,
-        animation: `${fadeOut} 0.2s forwards`
-      }
-    ]
+    noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `outline ${transitionDurationDrag}ms ease` }],
+
+    borderAfterDropping: [borderWhileDragging],
+
+    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `outline  ${transitionDurationDrop}ms ease` }]
   };
 };

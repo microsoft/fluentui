@@ -2,6 +2,44 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.14.0",
+      "tag": "@uifabric/variants_v6.14.0",
+      "date": "Tue, 04 Dec 2018 13:36:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DevExp: const enums are replaced with constants, this allows the use of isolatedModules mode of compilation",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "9b61cb962038f6d085e53058c7b806ceefea6a58"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.0 <7.0.0` to `>=6.110.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/variants_v6.13.0",
+      "date": "Thu, 29 Nov 2018 19:34:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "semantic slot value updates",
+            "author": "Jessica Bennett Clark <v-jescla@microsoft.com>",
+            "commit": "3f75dd975a669b877023aaf45dd1c711c85f0e59"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.106.3 <7.0.0` to `>=6.108.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.0",
       "tag": "@uifabric/variants_v6.12.0",
       "date": "Mon, 22 Oct 2018 12:29:57 GMT",

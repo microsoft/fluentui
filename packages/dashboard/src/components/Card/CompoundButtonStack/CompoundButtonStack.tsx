@@ -26,7 +26,10 @@ export class CompoundButtonStack extends React.Component<ICompoundButtonStackPro
             key={index}
             secondaryText={action.description}
             primary={action.primary}
-            ariaLabel={action.title}
+            ariaLabel={action.ariaLabel}
+            ariaDescription={action.ariaDescription}
+            ariaHidden={action.ariaHidden}
+            title={action.title}
             text={action.title}
             onClick={action.action}
             styles={customStyles}

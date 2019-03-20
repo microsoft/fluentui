@@ -5,7 +5,7 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { MessageBarStatus } from './MessageBar.checklist';
 
 const MessageBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
-const MessageBarBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/MessageBar/MessageBar.Basic.Example.Codepen.txt') as string;
+const MessageBarBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
 
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',

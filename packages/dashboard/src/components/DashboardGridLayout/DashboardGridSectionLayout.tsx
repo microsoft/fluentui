@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breakpoints, Layout, Layouts } from 'react-grid-layout';
+import { Breakpoints, Layout, Layouts } from 'react-grid-layout-fabric';
 import {
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,
@@ -168,7 +168,6 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
         }
       });
     }
-
     return result;
   }
 
@@ -181,7 +180,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
       });
       cardsOfSection.forEach((card: ICard) => {
         result.push(
-          <div key={card.id}>
+          <div key={card.id} id={card.id + 'dglCard'}>
             <Card
               key={card.id}
               cardFrameContent={card.cardFrameContent}
@@ -189,6 +188,7 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
               actions={card.actions}
               cardContentList={card.cardContentList}
               cardSize={card.cardSize}
+              loading={card.loading}
             />
           </div>
         );

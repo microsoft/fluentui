@@ -1,13 +1,12 @@
 language: node_js
 node_js:
-  - '8'
+  - '10'
 script:
   - node common/scripts/install-run-rush.js install --bypass-policy
   - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
     then npm run checkchange;
     fi
   - npm run buildci
-  - npm run bundlesize
   - npm run vrtest
   - npm run check-for-changed-files
 # after_success:

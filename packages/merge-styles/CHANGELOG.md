@@ -1,6 +1,56 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 26 Oct 2018 12:32:35 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Mar 2019 13:32:10 GMT and should not be manually modified.
+
+## 6.16.1
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Patches
+
+- Fix selector in a mergeStyleSets Readme example
+
+## 6.16.0
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Minor changes
+
+- Some references to "process" have been removed to help with tree shaking.
+
+## 6.15.2
+Wed, 30 Jan 2019 13:36:21 GMT
+
+### Patches
+
+- Fix bug where multiple selectors in :global() would not be processed correctly
+
+## 6.15.1
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- Allow :global to be used in more scenarios than just ":global(selector)"
+- Use CSS object-fit in the Image component in capable browsers
+
+## 6.15.0
+Thu, 15 Nov 2018 13:36:22 GMT
+
+### Minor changes
+
+- DevExp: get rid of const enum so the library is compatible with Typescript's isolatedModule compilation mode
+
+## 6.14.0
+Tue, 13 Nov 2018 13:30:53 GMT
+
+### Minor changes
+
+- `strokeLinecap` added to IRawStyles.
+
+## 6.13.0
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Minor changes
+
+- Fixes #6975: adds ability for mergestyles to handle commas in selectors
 
 ## 6.11.0
 Fri, 26 Oct 2018 12:32:35 GMT

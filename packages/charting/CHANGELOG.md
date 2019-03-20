@@ -1,6 +1,55 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 02 Nov 2018 18:11:37 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+
+## 0.28.8
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.28.7
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add saparator 2px for data segments
+
+## 0.28.6
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- office ui fabric charting package, legend related changes 
+
+## 0.28.5
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Basic conversions from componentWillReceiveProps to getDerivedStateFromProps
+
+## 0.28.4
+Wed, 14 Nov 2018 13:34:01 GMT
+
+### Patches
+
+- Add empty bar for use case, changes to handle Nan cases and infinity case
+
+## 0.28.3
+Fri, 09 Nov 2018 13:32:57 GMT
+
+### Patches
+
+- Make change to multistacked bar chart's hideDenominator prop
+
+## 0.28.2
+Thu, 08 Nov 2018 04:17:34 GMT
+
+### Patches
+
+- Update to line chart to re-render on prop updates and addition of new prop to stacked and multistacked bar chart
 
 ## 0.28.0
 Fri, 02 Nov 2018 18:11:37 GMT

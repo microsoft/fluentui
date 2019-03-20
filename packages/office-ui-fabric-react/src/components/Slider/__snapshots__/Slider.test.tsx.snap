@@ -52,7 +52,8 @@ exports[`Slider renders correctly 1`] = `
           flex-wrap: nowrap;
         }
   >
-    <button
+    <div
+      aria-disabled={false}
       aria-label="I am a slider"
       aria-valuemax={10}
       aria-valuemin={0}
@@ -62,8 +63,10 @@ exports[`Slider renders correctly 1`] = `
           ms-Slider-showValue
           ms-Slider-showTransitions
           {
+            align-items: center;
             background: transparent;
             border: none;
+            display: flex;
             flex-grow: 1;
             height: 28px;
             line-height: 28px;
@@ -140,13 +143,13 @@ exports[`Slider renders correctly 1`] = `
             transition: left 0.367s cubic-bezier(.1,.9,.2,1);
             width: 16px;
           }
-      disabled={false}
+      data-is-focusable={true}
       id="Slider0"
       onKeyDown={[Function]}
       onMouseDown={[Function]}
       onTouchStart={[Function]}
       role="slider"
-      type="button"
+      tabIndex={0}
     >
       <div
         className=
@@ -208,7 +211,7 @@ exports[`Slider renders correctly 1`] = `
           }
         />
       </div>
-    </button>
+    </div>
     <label
       className=
           ms-Label

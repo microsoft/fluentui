@@ -17,6 +17,8 @@ export class SpinButtonBasicWithEndPositionExample extends React.Component<any, 
           // tslint:disable:jsx-no-lambda
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}
+          incrementButtonAriaLabel={'Increase value by 1'}
+          decrementButtonAriaLabel={'Decrease value by 1'}
         />
       </div>
     );

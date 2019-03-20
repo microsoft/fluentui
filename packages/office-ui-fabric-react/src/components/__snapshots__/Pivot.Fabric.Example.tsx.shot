@@ -99,7 +99,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #333333;
+                color: #212121;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -252,7 +252,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #333333;
+                color: #212121;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -401,7 +401,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #333333;
+                color: #212121;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -602,7 +602,6 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     color: #212121;
                   }
               data-is-focusable={true}
-              id="toggleCallout"
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -640,7 +639,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__11"
+                    id="id__13"
                   >
                     Show callout
                   </div>
@@ -754,7 +753,95 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     }
                   }
                   tabIndex={-1}
-                />
+                >
+                  <div
+                    aria-describedby="callout-description12"
+                    aria-labelledby="callout-label11"
+                    className=
+                        ms-Callout-main
+                        {
+                          background-color: #ffffff;
+                          overflow-x: hidden;
+                          overflow-y: auto;
+                          position: relative;
+                        }
+                    onKeyDown={[Function]}
+                    role="alertdialog"
+                    style={
+                      Object {
+                        "maxHeight": 750,
+                        "outline": "none",
+                        "overflowY": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="ms-CalloutExample-header"
+                    >
+                      <p
+                        className="ms-CalloutExample-title"
+                        id="callout-label11"
+                      >
+                        All of your favorite people
+                      </p>
+                    </div>
+                    <div
+                      className="ms-CalloutExample-inner"
+                    >
+                      <div
+                        className="ms-CalloutExample-content"
+                      >
+                        <p
+                          className="ms-CalloutExample-subText"
+                          id="callout-description12"
+                        >
+                          Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                        </p>
+                      </div>
+                      <div
+                        className="ms-CalloutExample-actions"
+                      >
+                        <a
+                          className=
+                              ms-Link
+                              ms-CalloutExample-link
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #0078d4;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: inherit;
+                                font-weight: inherit;
+                                outline: none;
+                                text-decoration: none;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus {
+                                box-shadow: 0 0 0 1px #666666 inset;
+                              }
+                              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                                outline: 1px solid WindowText;
+                              }
+                              @media screen and (-ms-high-contrast: active){& {
+                                border-bottom: none;
+                              }
+                              &:active, &:hover, &:active:hover {
+                                color: #004578;
+                              }
+                              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                                text-decoration: underline;
+                              }
+                              &:focus {
+                                color: #0078d4;
+                              }
+                          href="http://microsoft.com"
+                          onClick={[Function]}
+                        >
+                          Go to microsoft
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </span>

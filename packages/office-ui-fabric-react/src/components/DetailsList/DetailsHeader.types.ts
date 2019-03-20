@@ -13,7 +13,7 @@ export interface IDetailsHeader {
   focus: () => boolean;
 }
 
-export interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>, IDetailsItemProps {
+export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   /** Theme from the Higher Order Component */
   theme?: ITheme;
 
@@ -55,6 +55,9 @@ export interface IDetailsHeaderBaseProps extends React.Props<DetailsHeaderBase>,
 
   /** ariaLabel for the entire header */
   ariaLabel?: string;
+
+  /** ariaLabel for expand/collapse group button */
+  ariaLabelForToggleAllGroupsButton?: string;
 
   /** ariaLabel for the header checkbox that selects or deselects everything */
   ariaLabelForSelectAllCheckbox?: string;

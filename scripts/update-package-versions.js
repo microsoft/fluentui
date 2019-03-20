@@ -9,8 +9,13 @@
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
+const readConfig = require('./read-config');
 
-const rushPackages = JSON.parse(fs.readFileSync('../rush.json', 'utf8'));
+const rushPackages = readConfig('rush.json');
+if (!rushPackages) {
+  console.error('Could not find rush.json');
+  return;
+}
 const newVersion = process.argv[2];
 const newDep = process.argv[3] || newVersion;
 
@@ -24,7 +29,7 @@ for (const package of rushPackages.projects) {
 
   function updateDependencies(deps) {
     for (const dependency in deps) {
-      if (rushPackages.projects.find((pkg) => pkg.packageName === dependency)) {
+      if (rushPackages.projects.find(pkg => pkg.packageName === dependency)) {
         console.log(`  Updating deps ${dependency}`);
 
         deps[dependency] = newDep;

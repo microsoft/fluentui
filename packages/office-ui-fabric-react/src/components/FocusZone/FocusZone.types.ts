@@ -41,7 +41,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Defines which arrows to react to.
-   * @defaultvalue FocusZoneDirection.bidriectional
+   * @defaultvalue FocusZoneDirection.bidirectional
    */
   direction?: FocusZoneDirection;
 
@@ -58,8 +58,14 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Element type the root element will use. Default is "div".
+   * @deprecated Use 'as' instead.
    */
   elementType?: keyof React.ReactHTML;
+
+  /**
+   * A component that should be used as the root element of the FocusZone component.
+   */
+  as?: React.ReactType;
 
   /**
    * If set, will cycle to the beginning of the targets once the user navigates to the
@@ -147,16 +153,18 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   onFocusNotification?: () => void;
 }
 
-export const enum FocusZoneTabbableElements {
+export const FocusZoneTabbableElements = {
   /** Tabbing is not allowed */
-  none = 0,
+  none: 0 as 0,
 
   /** All tabbing action is allowed */
-  all = 1,
+  all: 1 as 1,
 
   /** Tabbing is allowed only on input elements */
-  inputOnly = 2
-}
+  inputOnly: 2 as 2
+};
+
+export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
 export enum FocusZoneDirection {
   /** Only react to up/down arrows. */

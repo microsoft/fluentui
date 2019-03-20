@@ -37,7 +37,7 @@ export interface ITileCell<TItem> {
   aspectRatio: number;
   grid: ITileGrid;
   isPlaceholder?: boolean;
-  onRender(content: TItem, finalSize: { width: number; height: number }): React.ReactNode | React.ReactNode[];
+  onRender(content: TItem, finalSize: { width: number; height: number }): React.ReactNode;
 }
 
 interface IRowData {

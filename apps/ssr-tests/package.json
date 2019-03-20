@@ -8,7 +8,7 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "_webpack": "node ../../scripts/build.js webpack",
+    "_webpack": "node ../../scripts/just.js webpack",
     "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
     "_test": "npm run _webpack && npm run _mocha",
     "build": "npm run _test",
@@ -17,20 +17,21 @@
   },
   "license": "MIT",
   "disabledTasks": [
-    "api-extractor"
+    "verify-api-extractor"
   ],
   "devDependencies": {
-    "@microsoft/load-themed-styles": "^1.7.13",
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/fabric-website-resources": ">=6.9.8 <7.0.0",
+    "@microsoft/load-themed-styles": "^1.7.13",
+    "@uifabric/fabric-website-resources": ">=6.13.0 <7.0.0",
+    "@uifabric/prettier-rules": ">=1.0.1 <2.0.0",
     "mocha": "^3.3.0",
-    "office-ui-fabric-react": ">=6.100.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.157.3 <7.0.0",
     "raw-loader": "^0.5.1",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
-    "webpack": "^4.7.0"
+    "webpack": "4.29.5"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",

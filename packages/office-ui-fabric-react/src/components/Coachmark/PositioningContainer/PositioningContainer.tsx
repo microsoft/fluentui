@@ -14,8 +14,7 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument,
-  createRef
+  getDocument
 } from '../../../Utilities';
 
 import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
@@ -62,10 +61,10 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
   /**
    * The primary positioned div.
    */
-  private _positionedHost = createRef<HTMLDivElement>();
+  private _positionedHost = React.createRef<HTMLDivElement>();
 
   // @TODO rename to reflect the name of this class
-  private _contentHost = createRef<HTMLDivElement>();
+  private _contentHost = React.createRef<HTMLDivElement>();
 
   /**
    * Stores an instance of Window, used to check

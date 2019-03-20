@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps, createRef } from '../../../Utilities';
+import { buttonProperties, getNativeProps } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
-  private _btn = createRef<HTMLButtonElement>();
+  private _btn = React.createRef<HTMLButtonElement>();
 
   public render() {
     const {
@@ -86,7 +86,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
               item={item}
               classNames={classNames}
               index={index}
-              onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
+              onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}
               hasIcons={hasIcons}
               openSubMenu={openSubMenu}
               dismissSubMenu={dismissSubMenu}

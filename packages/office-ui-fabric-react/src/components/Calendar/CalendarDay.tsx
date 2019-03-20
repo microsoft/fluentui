@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -31,7 +31,7 @@ export interface IDayInfo {
   isToday: boolean;
   isSelected: boolean;
   isInBounds: boolean;
-  onSelected: () => void;
+  onSelected: (ev: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface ICalendarDay {
@@ -39,7 +39,7 @@ export interface ICalendarDay {
 }
 
 export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
-  componentRef?: (c: ICalendarDay) => void;
+  componentRef?: IRefObject<ICalendarDay>;
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;
@@ -58,6 +58,7 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
+  restrictedDates?: Date[];
   workWeekDays?: DayOfWeek[];
   showCloseButton?: boolean;
   allFocusable?: boolean;
@@ -172,6 +173,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={leftNavigationIcon} />
               </button>
@@ -190,6 +192,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={rightNavigationIcon} />
               </button>
@@ -200,6 +203,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   onKeyDown={this._onCloseButtonKeyDown}
                   aria-label={strings.closeButtonAriaLabel}
                   role="button"
+                  type="button"
                 >
                   <Icon iconName={closeNavigationIcon} />
                 </button>
@@ -222,7 +226,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 {strings.shortDays.map((val, index) => (
                   <th
                     className={css('ms-DatePicker-weekday', styles.weekday)}
-                    role="gridcell"
+                    role="columnheader"
                     scope="col"
                     key={index}
                     title={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
@@ -240,34 +244,33 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             >
               {weeks!.map((week, weekIndex) => (
                 <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
-                  {showWeekNumbers &&
-                    weekNumbers && (
-                      <th
-                        className={css('ms-DatePicker-weekNumbers', 'ms-DatePicker-weekday', styles.weekday, styles.weekNumbers)}
-                        key={weekIndex}
-                        title={
-                          weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
-                        }
-                        aria-label={
-                          weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
-                        }
-                        scope="row"
+                  {showWeekNumbers && weekNumbers && (
+                    <th
+                      className={css('ms-DatePicker-weekNumbers', 'ms-DatePicker-weekday', styles.weekday, styles.weekNumbers)}
+                      key={weekIndex}
+                      title={
+                        weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
+                      }
+                      aria-label={
+                        weekNumbers && strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex])
+                      }
+                      scope="row"
+                    >
+                      <div
+                        className={css('ms-DatePicker-day', styles.day, {
+                          ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumbers[weekIndex]
+                        })}
                       >
-                        <div
-                          className={css('ms-DatePicker-day', styles.day, {
-                            ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]:
-                              selectedDateWeekNumber === weekNumbers[weekIndex]
-                          })}
-                        >
-                          <span>{weekNumbers[weekIndex]}</span>
-                        </div>
-                      </th>
-                    )}
+                        <span>{weekNumbers[weekIndex]}</span>
+                      </div>
+                    </th>
+                  )}
                   {week.map((day, dayIndex) => {
                     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
                     return (
                       <td
                         key={day.key}
+                        onClick={day.isInBounds ? day.onSelected : undefined}
                         className={css(
                           styles.dayWrapper,
                           'ms-DatePicker-day',
@@ -279,7 +282,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]:
                               day.isSelected && dateRangeType === DateRangeType.Day,
                             ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInBounds && day.isInMonth,
-                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth
+                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth,
+                            [styles.daySelection]: dateRangeType === DateRangeType.Day,
+                            [styles.weekSelection]: dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek,
+                            [styles.monthSelection]: dateRangeType === DateRangeType.Month
                           }
                         )}
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
@@ -307,13 +313,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                       >
                         <button
                           key={day.key + 'button'}
+                          onClick={day.isInBounds ? day.onSelected : undefined}
                           className={css(styles.day, 'ms-DatePicker-day-button', {
                             ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday
                           })}
-                          role={'button'}
+                          role="gridcell"
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
-                          onClick={day.isInBounds ? day.onSelected : undefined}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
@@ -321,6 +327,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
+                          type="button"
                         >
                           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
                         </button>
@@ -409,6 +416,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               style = getRTL() ? style.concat(styles.bottomLeftCornerDate + ' ') : style.concat(styles.bottomRightCornerDate + ' ');
             }
 
+            if (!above) {
+              style = style.concat(styles.topDate + ' ');
+            }
+
+            if (!below) {
+              style = style.concat(styles.bottomDate + ' ');
+            }
+
+            if (!right) {
+              style = style.concat(styles.rightDate + ' ');
+            }
+
+            if (!left) {
+              style = style.concat(styles.leftdate + ' ');
+            }
+
             weekCornersStyled[weekIndex + '_' + dayIndex] = style;
           });
         });
@@ -416,10 +439,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       case DateRangeType.Week:
       case DateRangeType.WorkWeek:
         weeks.forEach((week: IDayInfo[], weekIndex: number) => {
+          const minIndex = findIndex(week, (item: IDayInfo) => {
+            return item.isInBounds;
+          });
+          const maxIndex = this._findLastIndex(week, (item: IDayInfo) => {
+            return item.isInBounds;
+          });
+
           const leftStyle = styles.topLeftCornerDate + ' ' + styles.bottomLeftCornerDate;
           const rightStyle = styles.topRightCornerDate + ' ' + styles.bottomRightCornerDate;
-          weekCornersStyled[weekIndex + '_' + 0] = getRTL() ? rightStyle : leftStyle;
-          weekCornersStyled[weekIndex + '_' + (DAYS_IN_WEEK - 1)] = getRTL() ? leftStyle : rightStyle;
+          weekCornersStyled[weekIndex + '_' + minIndex] = getRTL() ? rightStyle : leftStyle;
+          weekCornersStyled[weekIndex + '_' + maxIndex] = getRTL() ? leftStyle : rightStyle;
         });
         break;
     }
@@ -466,7 +496,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   private _onDayKeyDown = (originalDate: Date, weekIndex: number, dayIndex: number): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
-        this._onSelectDate(originalDate);
+        this._onSelectDate(originalDate, ev);
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }
@@ -622,7 +652,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _onSelectDate = (selectedDate: Date): void => {
+  private _onSelectDate = (selectedDate: Date, ev: React.SyntheticEvent<HTMLElement>): void => {
     const {
       onSelectDate,
       dateRangeType,
@@ -634,10 +664,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       workWeekDays
     } = this.props;
 
+    if (ev) {
+      ev.stopPropagation();
+    }
+
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
     if (dateRangeType !== DateRangeType.Day) {
       dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
     }
+    dateRange = dateRange.filter(d => {
+      return !this._getIsRestrictedDate(d);
+    });
 
     if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
@@ -748,7 +785,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: (minDate ? compareDatePart(minDate, date) < 1 : true) && (maxDate ? compareDatePart(date, maxDate) < 1 : true)
+          isInBounds:
+            (minDate ? compareDatePart(minDate, date) < 1 : true) &&
+            (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
+            !this._getIsRestrictedDate(date)
         };
 
         week.push(dayInfo);
@@ -770,6 +810,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return weeks;
   }
 
+  private _getIsRestrictedDate(date: Date): boolean {
+    const { restrictedDates } = this.props;
+    if (!restrictedDates) {
+      return false;
+    }
+    const restrictedDate = restrictedDates.find(rd => {
+      return compareDates(rd, date);
+    });
+    return restrictedDate ? true : false;
+  }
+
   private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
     let boundedDateRange = [...dateRange];
     if (minDate) {
@@ -779,5 +830,24 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       boundedDateRange = boundedDateRange.filter(date => compareDatePart(date, maxDate as Date) <= 0);
     }
     return boundedDateRange;
+  }
+
+  /**
+   * Returns the index of the last element in the array where the predicate is true, and -1
+   * otherwise
+   * @param items Array of items to be iterated over using the predicate
+   * @param predicate find calls predicate once for each element of the array, in descending
+   * order, until it finds one where predicate returns true if such an element is found.
+   */
+  private _findLastIndex<T>(items: T[], predicate: (item: T) => boolean): number {
+    for (let i = items.length - 1; i >= 0; i--) {
+      const item = items[i];
+
+      if (predicate(item)) {
+        return i;
+      }
+    }
+
+    return -1;
   }
 }

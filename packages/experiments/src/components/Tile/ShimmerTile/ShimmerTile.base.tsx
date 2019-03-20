@@ -7,20 +7,20 @@ import { ShimmerGap } from '../../Shimmer/ShimmerGap/ShimmerGap';
 import { ShimmerElementsGroup } from '../../Shimmer/ShimmerElementsGroup/ShimmerElementsGroup';
 import { ShimmerElementType as ElemType } from '../../Shimmer/Shimmer.types';
 
-const enum ShimmerTileLayoutValues {
-  largeSquareWidth = 96,
-  largeSquareHeight = 96,
-  largeNameWidth = 144,
-  largeNameHeight = 7,
-  largeActivityWidth = 96,
-  largeActivityHeight = 7,
-  smallSquareWidth = 62,
-  smallSquareHeight = 61,
-  smallNameWidth = 106,
-  smallNameHeight = 5,
-  smallActivityWidth = 62,
-  smallActivityHeight = 5
-}
+const ShimmerTileLayoutValues = {
+  largeSquareWidth: 96,
+  largeSquareHeight: 96,
+  largeNameWidth: 144,
+  largeNameHeight: 7,
+  largeActivityWidth: 96,
+  largeActivityHeight: 7,
+  smallSquareWidth: 62,
+  smallSquareHeight: 61,
+  smallNameWidth: 106,
+  smallNameHeight: 5,
+  smallActivityWidth: 62,
+  smallActivityHeight: 5
+};
 
 const PLACEHOLDER_SIZES: {
   [P in TileSize]: {

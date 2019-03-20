@@ -7,8 +7,7 @@ import {
   getParent,
   getDocument,
   getWindow,
-  isElementTabbable,
-  createRef
+  isElementTabbable
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
 
@@ -38,7 +37,7 @@ export interface ISelectionZone {
   ignoreNextFocus: () => void;
 }
 
-export interface ISelectionZoneProps extends React.Props<SelectionZone> {
+export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   componentRef?: () => void;
   selection: ISelection;
   /**
@@ -61,7 +60,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     selectionMode: SelectionMode.multiple
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;

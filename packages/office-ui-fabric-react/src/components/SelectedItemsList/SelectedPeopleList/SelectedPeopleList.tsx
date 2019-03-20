@@ -31,7 +31,7 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
   copyMenuItemText?: string;
   editMenuItemText?: string;
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
-  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IPersonaProps>) => JSX.Element;
+  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
 }
 
@@ -138,7 +138,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         key: 'Remove',
         text: this.props.removeMenuItemText,
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          this.removeItem(menuItem.data as ISelectedItemProps<IExtendedPersonaProps>);
+          this.removeItem(menuItem.data as IExtendedPersonaProps);
         },
         data: item
       });

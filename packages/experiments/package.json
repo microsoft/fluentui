@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "6.40.3",
+  "version": "6.64.1",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,12 +14,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js",
-    "code-style": "node ../../scripts/code-style.js",
-    "start": "node ../../scripts/start.js",
-    "start-test": "node ../../scripts/start-test.js",
-    "update-snapshots": "node ../../scripts/build.js jest -u"
+    "build": "node ../../scripts/just.js build",
+    "just": "node ../../scripts/just.js",
+    "clean": "node ../../scripts/just.js clean",
+    "code-style": "node ../../scripts/just.js code-style",
+    "start": "node ../../scripts/just.js dev",
+    "start-test": "node ../../scripts/just.js jest-watch",
+    "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "devDependencies": {
     "@types/deep-assign": "^0.1.1",
@@ -27,6 +28,7 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
     "@types/jest": "23.0.0",
+    "@types/prop-types": "15.5.3",
     "@types/react": "16.3.16",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "16.0.5",
@@ -34,32 +36,36 @@
     "@types/resemblejs": "~1.3.28",
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": ">=6.9.2 <7.0.0",
-    "@uifabric/jest-serializer-merge-styles": ">=6.0.6 <7.0.0",
-    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
-    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0",
+    "@uifabric/example-app-base": ">=6.12.2 <7.0.0",
+    "@uifabric/jest-serializer-merge-styles": ">=6.0.7 <7.0.0",
+    "@uifabric/prettier-rules": ">=1.0.1 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.1 <2.0.0",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
     "react-highlight": "0.10.0",
-    "react-test-renderer": "^16.2.0",
+    "react-test-renderer": "^16.3.0",
     "sinon": "^4.1.3"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/charting": "^0.28.0",
-    "@uifabric/file-type-icons": ">=6.2.0 <7.0.0",
-    "@uifabric/fluent-theme": ">=0.3.0 <1.0.0",
-    "@uifabric/foundation": ">=0.5.7 <1.0.0",
-    "@uifabric/icons": ">=6.1.2 <7.0.0",
-    "@uifabric/theme-samples": ">=0.1.2 <1.0.0",
-    "@uifabric/variants": ">=6.12.0 <7.0.0",
+    "@uifabric/azure-themes": ">=0.1.5 <1.0.0",
+    "@uifabric/charting": "^0.28.8",
+    "@uifabric/file-type-icons": ">=6.4.3 <7.0.0",
+    "@uifabric/fluent-theme": ">=0.16.2 <1.0.0",
+    "@uifabric/foundation": ">=0.7.2 <1.0.0",
+    "@uifabric/icons": ">=6.5.0 <7.0.0",
+    "@uifabric/theme-samples": ">=0.1.4 <1.0.0",
+    "@uifabric/variants": ">=6.14.0 <7.0.0",
     "@uifabric/set-version": ">=1.1.3 <2.0.0",
-    "@uifabric/merge-styles": ">=6.11.0 <7.0.0",
+    "@uifabric/merge-styles": ">=6.16.1 <7.0.0",
+    "@uifabric/styling": ">=6.45.0 <7.0.0",
+    "@uifabric/utilities": ">=6.35.1 <7.0.0",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": ">=6.100.0 <7.0.0",
+    "office-ui-fabric-react": ">=6.157.3 <7.0.0",
+    "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
@@ -67,7 +73,6 @@
     "react-dom": ">=16.3.2-0 <17.0.0"
   },
   "disabledTasks": [
-    "build-codepen-examples",
-    "api-extractor"
+    "verify-api-extractor"
   ]
 }

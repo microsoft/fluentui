@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { Stack } from 'office-ui-fabric-react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
-import { HorizontalStack } from '@uifabric/experiments/lib/Stack';
 
 export interface ICollapsibleSectionControlledExampleState {
   collapsed: boolean;
@@ -28,7 +28,7 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
             component's output when the controlled prop has a value passed in automatically. As a result, clicking on the titles in this
             example does not affect collapsed state, only clicking on the Toggle button does.
           </p>
-          <HorizontalStack gap={20} verticalAlign="center">
+          <Stack horizontal gap={20} verticalAlign="center">
             <DefaultButton
               text="Toggle"
               onClick={() => {
@@ -36,10 +36,10 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
               }}
             />
             <p>Number of title clicks: {this.state.clicks}</p>
-          </HorizontalStack>
+          </Stack>
           <CollapsibleSection
             collapsed={this.state.collapsed}
-            titleProps={{
+            title={{
               text: `Title 1`,
               onClick: () => {
                 this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
@@ -50,7 +50,7 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
           </CollapsibleSection>
           <CollapsibleSection
             collapsed={this.state.collapsed}
-            titleProps={{
+            title={{
               text: `Title 2`,
               onClick: () => {
                 this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));

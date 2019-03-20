@@ -83,6 +83,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   setAriaDescribedBy?: boolean;
 
   /**
+   * Callback when visible card is expanded.
+   */
+  onCardExpand?: () => void;
+
+  /**
    * Set to true to set focus on the first focusable element in the card. Works in pair with the 'trapFocus' prop.
    * @defaultvalue false
    */

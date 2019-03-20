@@ -8,8 +8,7 @@ import {
   getParent,
   divProperties,
   getNativeProps,
-  IRenderFunction,
-  createRef
+  IRenderFunction
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
@@ -83,7 +82,7 @@ const _measureScrollRect = _measurePageRect;
 export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item: any, index: number, containsFocus: boolean) => <div>{(item && item.name) || ''}</div>,
+    onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
@@ -92,8 +91,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     [key: string]: React.ReactInstance;
   };
 
-  private _root = createRef<HTMLDivElement>();
-  private _surface = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
+  private _surface = React.createRef<HTMLDivElement>();
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -448,15 +447,17 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { onRenderCell, role } = this.props;
 
     const {
-      page: { items, startIndex },
+      page: { items = [], startIndex },
       ...divProps
     } = pageProps;
 
     // only assign list item role if no role is assigned
     const cellRole = role === undefined ? 'listitem' : 'presentation';
+    const cells: React.ReactNode[] = [];
 
-    const cells = (items || []).map((item: any, offset: number) => {
-      const index = startIndex + offset;
+    for (let i = 0; i < items.length; i++) {
+      const index = startIndex + i;
+      const item = items[i];
 
       let itemKey = this.props.getKey ? this.props.getKey(item, index) : item && item.key;
 
@@ -464,12 +465,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         itemKey = index;
       }
 
-      return (
+      cells.push(
         <div role={cellRole} className={css('ms-List-cell')} key={itemKey} data-list-index={index} data-automationid="ListCell">
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
-    });
+    }
 
     return <div {...divProps}>{cells}</div>;
   };
@@ -756,8 +757,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       const isPageRendered = findIndex(this.state.pages as IPage[], (page: IPage) => !!page.items && page.startIndex === itemIndex) > -1;
       const isPageInAllowedRange = !allowedRect || (pageBottom >= allowedRect.top && pageTop <= allowedRect.bottom!);
-      const isPageInRequiredRange =
-        !this._requiredRect || (pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!);
+      const isPageInRequiredRange = !this._requiredRect || (pageBottom >= this._requiredRect.top && pageTop <= this._requiredRect.bottom!);
       const isPageVisible = (!isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered))) || !shouldVirtualize;
       const isPageFocused = focusedIndex >= itemIndex && focusedIndex < itemIndex + itemsPerPage;
       const isFirstPage = itemIndex === startIndex;
@@ -880,8 +880,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     items: any[] | undefined,
     startIndex: number = -1,
     count: number = items ? items.length : 0,
-    style: any = {},
-    data: any = undefined,
+    style: React.CSSProperties = {},
+    data?: any,
     isSpacer?: boolean
   ): IPage {
     pageKey = pageKey || PAGE_KEY_PREFIX + startIndex;
@@ -890,19 +890,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return cachedPage.page;
     }
 
-    // Fill undefined cells because array.map will ignore undefined cells.
-    if (items) {
-      for (let i = 0; i < items.length; i++) {
-        items[i] = items[i] || undefined;
-      }
-    }
-
     return {
       key: pageKey,
       startIndex: startIndex,
       itemCount: count,
       items: items,
-      style: style || {},
+      style: style,
       top: 0,
       height: 0,
       data: data,

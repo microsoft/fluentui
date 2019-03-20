@@ -1,7 +1,12 @@
 {
-  "extends": ["tslint-react"],
+  "extends": [
+    "tslint-react"
+  ],
   "linterOptions": {
-    "exclude": ["temp/*.ts", "etc/*.ts"]
+    "exclude": [
+      "temp/*.ts",
+      "etc/*.ts"
+    ]
   },
   "rules": {
     "deprecation": true,
@@ -19,7 +24,9 @@
       "when": "always"
     },
     "jsx-no-bind": true,
-    "jsx-boolean-value": ["never"],
+    "jsx-boolean-value": [
+      "never"
+    ],
     "jsx-equals-spacing": "never",
     "jsx-key": true,
     "jsx-no-lambda": true,
@@ -27,10 +34,18 @@
     "jsx-wrap-multiline": false,
     "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
-    "jsx-ban-props": [true, ["style", "Use className and provide css rules instead of using inline styles."]],
+    "jsx-ban-props": [
+      true,
+      [
+        "style",
+        "Use className and provide css rules instead of using inline styles."
+      ]
+    ],
     "no-duplicate-variable": true,
     "use-isnan": true,
-    "triple-equals": [true],
+    "triple-equals": [
+      true
+    ],
     "max-line-length": [
       true,
       {
@@ -40,23 +55,54 @@
     ],
     "no-arg": true,
     "radix": true,
-    "typedef": [true, "call-signature", "parameter", "arrow-parameter", "property-declaration"],
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration"
+    ],
     "prefer-const": true,
-    "quotemark": [true, "single", "jsx-double", "avoid-escape"],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double",
+      "avoid-escape"
+    ],
     "no-inferrable-types": false,
     "no-null-keyword": false,
     "export-name": false,
-    "trailing-comma": [false],
-    "whitespace": [false],
+    "trailing-comma": [
+      false
+    ],
+    "whitespace": [
+      false
+    ],
     "no-switch-case-fall-through": false,
-    "variable-name": [true, "check-format", "allow-leading-underscore", "allow-pascal-case", "ban-keywords"],
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case",
+      "ban-keywords"
+    ],
     "class-name": true,
-    "comment-format": [true, "check-space"],
+    "comment-format": [
+      true,
+      "check-space"
+    ],
     "curly": true,
     "eofline": false,
     "forin": true,
-    "indent": [true, "spaces", 2],
-    "interface-name": [true, "always-prefix"],
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "interface-name": [
+      true,
+      "always-prefix"
+    ],
     "label-position": true,
     "member-access": true,
     "member-ordering": [
@@ -85,7 +131,14 @@
     "no-any": true,
     "no-bitwise": true,
     "no-consecutive-blank-lines": true,
-    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
     "no-constant-condition": true,
     "no-construct": true,
     "no-debugger": true,
@@ -105,8 +158,18 @@
     "no-with-statement": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
-    "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
-    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
+    ],
     "typedef-whitespace": [
       true,
       {
@@ -117,6 +180,7 @@
         "variable-declaration": "nospace"
       }
     ],
-    "use-named-parameter": true
+    "use-named-parameter": true,
+    "react-a11y-tabindex-no-positive": true
   }
 }

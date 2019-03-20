@@ -44,6 +44,22 @@ export enum ChecklistStatus {
   good = 'Good'
 }
 
+export interface IExample {
+  /** Title of the example */
+  title: string;
+
+  /** Raw source code of the example */
+  code: string;
+
+  /** Working example of the example */
+  view: JSX.Element;
+
+  isScrollable?: boolean;
+
+  /** JS String for codepen of the example */
+  codepenJS?: string;
+}
+
 export interface IDocPageProps {
   /** Title that goes into the header */
   title: string;
@@ -61,21 +77,7 @@ export interface IDocPageProps {
   exampleKnobs?: JSX.Element;
 
   /** Array of examples, displayed in the order defined */
-  examples?: {
-    /** Title of the example */
-    title: string;
-
-    /** Raw source code of the example */
-    code: string;
-
-    /** Working example of the example */
-    view: JSX.Element;
-
-    isScrollable?: boolean;
-
-    /** JS String for codepen of the example */
-    codepenJS?: string;
-  }[];
+  examples?: IExample[];
 
   /** Array of implementation examples, displayed in the order defined */
   implementationExamples?: {

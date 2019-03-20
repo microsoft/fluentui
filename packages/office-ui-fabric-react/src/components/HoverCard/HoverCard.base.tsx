@@ -22,7 +22,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     expandedCardOpenDelay: 1500,
     instantOpenOnClick: false,
     setInitialFocus: false,
-    openHotKey: KeyCodes.c,
+    openHotKey: KeyCodes.c as KeyCodes,
     type: HoverCardType.expanding
   };
 
@@ -32,11 +32,17 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget | null;
 
+  private _nativeDismissEvent: (ev?: any) => void;
+  private _childDismissEvent: (ev?: any) => void;
+
   private _classNames: { [key in keyof IHoverCardStyles]: string };
 
   // Constructor
   constructor(props: IHoverCardProps) {
     super(props);
+
+    this._nativeDismissEvent = this._cardDismiss.bind(this, true);
+    this._childDismissEvent = this._cardDismiss.bind(this, false);
 
     this.state = {
       isHoverCardVisible: false,
@@ -46,31 +52,25 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   }
 
   public componentDidMount(): void {
-    const target = this._getTargetElement();
-
-    this._events.on(target, 'mouseenter', this._cardOpen);
-    this._events.on(target, 'mouseleave', this._cardDismiss);
-    if (this.props.trapFocus) {
-      this._events.on(target, 'keydown', this._cardOpen);
-    } else {
-      this._events.on(target, 'focus', this._cardOpen);
-      this._events.on(target, 'blur', this._cardDismiss);
-    }
-    if (this.props.instantOpenOnClick) {
-      this._events.on(target, 'click', this._instantOpenAsExpanded);
-    } else {
-      this._events.on(target, 'mousedown', this._cardDismiss);
-      this._events.on(target, 'keydown', this._cardDismiss);
-    }
+    this._setEventListeners();
   }
 
   public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState) {
+    if (prevProps.target !== this.props.target) {
+      this._events.off();
+      this._setEventListeners();
+    }
     if (prevState.isHoverCardVisible !== this.state.isHoverCardVisible) {
       if (this.state.isHoverCardVisible) {
         this._async.setTimeout(() => {
-          this.setState({
-            mode: ExpandingCardMode.expanded
-          });
+          this.setState(
+            {
+              mode: ExpandingCardMode.expanded
+            },
+            () => {
+              this.props.onCardExpand && this.props.onCardExpand();
+            }
+          );
         }, this.props.expandedCardOpenDelay!);
         this.props.onCardVisible && this.props.onCardVisible();
       } else {
@@ -113,7 +113,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
       targetElement: this._getTargetElement(),
       onEnter: this._cardOpen,
-      onLeave: this._executeCardDismiss
+      onLeave: this._childDismissEvent
     };
 
     const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
@@ -182,14 +182,34 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     }, this.props.cardOpenDelay!);
   };
 
-  // Hide HoverCard
-  private _cardDismiss = (ev: MouseEvent) => {
-    if (ev.type === 'keydown' && ev.which !== KeyCodes.escape) {
-      return;
-    }
+  /**
+   * Hide HoverCard
+   * How we dismiss the card depends on where the callback is coming from.
+   * This is provided by the `isNativeEvent` argument.
+   *  true: Event is coming from event listeners set up in componentDidMount.
+   *  false: Event is coming from the `onLeave` prop from the HoverCard component.
+   */
+  private _cardDismiss = (isNativeEvent: boolean, ev: MouseEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
+    if (isNativeEvent) {
+      // We expect these to be MouseEvents, If not, return.
+      if (!(ev instanceof MouseEvent)) {
+        return;
+      }
 
-    // Dismiss if not sticky and currentTarget is the same element that mouse last entered
-    if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
+      if (ev.type === 'keydown' && ev.which !== KeyCodes.escape) {
+        return;
+      }
+
+      // Dismiss if not sticky and currentTarget is the same element that mouse last entered
+      if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
+        this._executeCardDismiss();
+      }
+    } else {
+      // If this is a mouseleave event and the component is sticky, do not dismiss.
+      if (this.props.sticky && !(ev instanceof MouseEvent) && ev.nativeEvent instanceof MouseEvent && ev.type === 'mouseleave') {
+        return;
+      }
+
       this._executeCardDismiss();
     }
   };
@@ -219,5 +239,26 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
       return prevState;
     });
+  };
+
+  private _setEventListeners = (): void => {
+    const { trapFocus, instantOpenOnClick } = this.props;
+    const target = this._getTargetElement();
+    const nativeEventDismiss = this._nativeDismissEvent;
+
+    this._events.on(target, 'mouseenter', this._cardOpen);
+    this._events.on(target, 'mouseleave', nativeEventDismiss);
+    if (trapFocus) {
+      this._events.on(target, 'keydown', this._cardOpen);
+    } else {
+      this._events.on(target, 'focus', this._cardOpen);
+      this._events.on(target, 'blur', nativeEventDismiss);
+    }
+    if (instantOpenOnClick) {
+      this._events.on(target, 'click', this._instantOpenAsExpanded);
+    } else {
+      this._events.on(target, 'mousedown', nativeEventDismiss);
+      this._events.on(target, 'keydown', nativeEventDismiss);
+    }
   };
 }

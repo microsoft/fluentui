@@ -3,7 +3,7 @@ import { AnimationClassNames, FontSizes, HighContrastSelector, IStyle, getFocusS
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
-  compact: 'ms-DetailsList--Compact',
+  compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
@@ -21,10 +21,15 @@ export const DEFAULT_CELL_STYLE_PROPS: ICellStyleProps = {
   cellExtraRightPadding: 24
 };
 
+// Source of default row heights to share.
+export const DEFAULT_ROW_HEIGHTS = {
+  rowHeight: 42,
+  compactRowHeight: 32
+};
+
 // Constant values
 let values = {
-  rowHeight: 42,
-  compactRowHeight: 32,
+  ...DEFAULT_ROW_HEIGHTS,
   rowVerticalPadding: 11,
   compactRowVerticalPadding: 6,
   rowShimmerLineHeight: 7,
@@ -56,17 +61,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS
   } = props;
 
-  const {
-    neutralPrimary,
-    white,
-    neutralSecondary,
-    neutralLighter,
-    neutralLight,
-    neutralDark,
-    neutralQuaternaryAlt,
-    black,
-    themePrimary
-  } = theme.palette;
+  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt, black } = theme.palette;
+  const { focusBorder } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -99,7 +95,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const shimmerRightBorderStyle = `${cellStyleProps.cellRightPadding * 4}px solid ${colors.defaultBackgroundColor}`;
   const shimmerLeftBorderStyle = `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackgroundColor}`;
   const selectedStyles: IStyle = [
-    getFocusStyle(theme, -1, undefined, undefined, themePrimary, white),
+    getFocusStyle(theme, -1, undefined, undefined, focusBorder, white),
     classNames.isSelected,
     {
       color: colors.selectedMetaTextColor,
@@ -292,7 +288,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       droppingClassName,
       theme.fonts.small,
       isCheckVisible && classNames.isCheckVisible,
-      getFocusStyle(theme, 0, undefined, undefined, isSelected ? neutralSecondary : themePrimary, white),
+      getFocusStyle(theme, 0, undefined, undefined, focusBorder, white),
       {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackgroundColor,

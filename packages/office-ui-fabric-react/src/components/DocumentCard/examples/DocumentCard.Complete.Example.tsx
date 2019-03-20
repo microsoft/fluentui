@@ -3,6 +3,8 @@ import {
   DocumentCard,
   DocumentCardActions,
   DocumentCardActivity,
+  DocumentCardDetails,
+  DocumentCardImage,
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle,
@@ -160,7 +162,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
             <DocumentCardTitle
-              title="Conversation about anual report a very long long name, Title should be truncated on the long name."
+              title="Conversation about annual report a very long long name, Title should be truncated on the long name."
               shouldTruncate={true}
             />
             <DocumentCardTitle
@@ -184,7 +186,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         <DocumentCard onClickHref="http://bing.com">
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
-            <DocumentCardTitle title="Conversation about anual Report" />
+            <DocumentCardTitle title="Conversation about annual Report" />
             <DocumentCardTitle title="This is the email content preview, help." showAsSecondaryTitle={true} />
             <DocumentCardStatus statusIcon="attach" status=" 3 Attachments" />
           </div>
@@ -201,7 +203,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         <DocumentCard onClickHref="http://bing.com">
           <DocumentCardLogo {...logoProps} />
           <div className="ms-ConversationTile-TitlePreviewArea">
-            <DocumentCardTitle title="Conversation about anual report" shouldTruncate={true} />
+            <DocumentCardTitle title="Conversation about annual report" shouldTruncate={true} />
             <DocumentCardTitle
               title="This is the email content preview, please feel free to give!"
               shouldTruncate={true}
@@ -220,13 +222,50 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         <p />
         <DocumentCard onClickHref="http://bing.com">
           <DocumentCardPreview {...previewPropsUsingIcon} />
-          <div className="ms-DocumentCard-details">
+          <DocumentCardDetails>
             <DocumentCardTitle title="View and share files" shouldTruncate={true} />
             <DocumentCardActivity
               activity="Created a few minutes ago"
               people={[{ name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }]}
             />
-          </div>
+          </DocumentCardDetails>
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref="http://bing.com">
+          <DocumentCardImage
+            height={100}
+            imageFit={ImageFit.cover}
+            iconProps={{ iconName: 'OneNoteLogo', styles: { root: { color: '#813a7c' } } }}
+            imageSrc={TestImages.documentPreviewTwo}
+          />
+          <DocumentCardDetails>
+            <DocumentCardTitle title="How to make good design" shouldTruncate={true} />
+          </DocumentCardDetails>
+          <DocumentCardActivity
+            activity="Modified March 13, 2018"
+            people={[
+              { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
+              { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' }
+            ]}
+          />
+        </DocumentCard>
+        <p />
+        <DocumentCard onClickHref="http://bing.com">
+          <DocumentCardImage
+            height={150}
+            imageFit={ImageFit.cover}
+            iconProps={{
+              iconName: 'OneNoteLogo',
+              styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } }
+            }}
+          />
+          <DocumentCardDetails>
+            <DocumentCardTitle title="How to make good design without an image" shouldTruncate={true} />
+          </DocumentCardDetails>
+          <DocumentCardActivity
+            activity="Modified January 1, 2019"
+            people={[{ name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' }]}
+          />
         </DocumentCard>
       </div>
     );

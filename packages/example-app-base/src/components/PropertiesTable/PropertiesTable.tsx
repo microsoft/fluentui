@@ -69,7 +69,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     fieldName: 'name',
     minWidth: 150,
     maxWidth: 250,
-    isCollapsable: false,
+    isCollapsible: false,
     isRowHeader: true,
     isResizable: true,
     onRender: createRenderCell('name')
@@ -80,7 +80,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     fieldName: 'type',
     minWidth: 130,
     maxWidth: 150,
-    isCollapsable: false,
+    isCollapsible: false,
     isResizable: true,
     isMultiline: true,
     onRender: createRenderCell('type')
@@ -91,7 +91,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     fieldName: 'defaultValue',
     minWidth: 130,
     maxWidth: 150,
-    isCollapsable: false,
+    isCollapsible: false,
     isResizable: true,
     isMultiline: true,
     onRender: createRenderCell('defaultValue')
@@ -102,7 +102,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     fieldName: 'description',
     minWidth: 300,
     maxWidth: 400,
-    isCollapsable: false,
+    isCollapsible: false,
     isResizable: true,
     isMultiline: true,
     onRender: createRenderCell('description')
@@ -116,7 +116,7 @@ const ENUM_COLUMNS: IColumn[] = [
     fieldName: 'name',
     minWidth: 150,
     maxWidth: 250,
-    isCollapsable: false,
+    isCollapsible: false,
     isRowHeader: true,
     isResizable: true,
     onRender: createRenderCell('name')
@@ -127,7 +127,7 @@ const ENUM_COLUMNS: IColumn[] = [
     fieldName: 'description',
     minWidth: 300,
     maxWidth: 400,
-    isCollapsable: false,
+    isCollapsible: false,
     isResizable: true,
     onRender: createRenderCell('description')
   }
@@ -142,17 +142,16 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     super(props);
 
     let properties = (props.properties as IInterfaceProperty[])
-      .sort(
-        (a: IInterfaceProperty, b: IInterfaceProperty) =>
-          a.interfacePropertyType < b.interfacePropertyType
-            ? -1
-            : a.interfacePropertyType > b.interfacePropertyType
-              ? 1
-              : a.name < b.name
-                ? -1
-                : a.name > b.name
-                  ? 1
-                  : 0
+      .sort((a: IInterfaceProperty, b: IInterfaceProperty) =>
+        a.interfacePropertyType < b.interfacePropertyType
+          ? -1
+          : a.interfacePropertyType > b.interfacePropertyType
+          ? 1
+          : a.name < b.name
+          ? -1
+          : a.name > b.name
+          ? 1
+          : 0
       )
       .map((prop: IInterfaceProperty, index: number) => assign({}, prop, { key: index }));
 

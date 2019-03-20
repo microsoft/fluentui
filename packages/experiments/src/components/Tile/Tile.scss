@@ -87,13 +87,18 @@
 }
 
 .link {
+  border: none;
+  background: transparent;
+
   @include focus-clear();
 
   position: absolute;
+  padding: 0;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+  width: 100%;
   text-decoration: none;
   color: inherit;
   overflow: hidden;

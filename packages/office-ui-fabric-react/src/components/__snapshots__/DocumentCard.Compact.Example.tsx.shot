@@ -3,31 +3,121 @@
 exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1`] = `
 <div>
   <div
-    className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    className=
+        ms-DocumentCard
+        ms-DocumentCard--actionable
+        ms-DocumentCard--compact
+        {
+          -webkit-font-smoothing: antialiased;
+          background-color: #ffffff;
+          border: 1px solid #eaeaea;
+          box-sizing: border-box;
+          display: flex;
+          height: 109px;
+          max-width: 480px;
+          min-width: 206px;
+          position: relative;
+          user-select: none;
+        }
+        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
+          padding-top: 4px;
+        }
+        &:hover {
+          border-color: #c8c8c8;
+          cursor: pointer;
+        }
+        &:hover:after {
+          border: 1px solid #c8c8c8;
+          bottom: 0px;
+          content: " ";
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        & .ms-DocumentCardPreview {
+          border-bottom: 0px;
+          border-right: 1px solid #eaeaea;
+          max-height: 106px;
+          max-width: 144px;
+        }
+        & .ms-DocumentCardPreview-icon {
+          max-height: 32px;
+          max-width: 32px;
+        }
+        & .ms-DocumentCardActivity {
+          padding-bottom: 12px;
+        }
+        & .ms-DocumentCardTitle {
+          font-size: 15px;
+          line-height: 16px;
+          padding-bottom: 12px 16px 8px 16px;
+        }
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
   >
     <div
-      className="ms-DocumentCardPreview is-fileList undefined"
+      className=
+          ms-DocumentCardPreview
+          {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            overflow: hidden;
+            position: relative;
+          }
     >
       <div>
         <ul
-          className="ms-DocumentCardPreview-fileList"
+          className=
+
+              {
+                list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 16px;
+              }
+              & li {
+                height: 16px;
+                line-height: 16px;
+                margin-bottom: 8px;
+                overflow: hidden;
+                padding-left: 24px;
+                position: relative;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              & a {
+                color: #212121;
+                font-size: 12px;
+                text-decoration: none;
+              }
+              & a:hover {
+                color: #0078d4;
+              }
         >
           <li>
             <div
               className=
                   ms-Image
-                  ms-DocumentCardPreview-fileListIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    left: 0px;
                     overflow: hidden;
+                    position: absolute;
+                    top: 0px;
                   }
               style={
                 Object {
@@ -63,13 +153,19 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px #666666 inset;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -90,14 +186,16 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             <div
               className=
                   ms-Image
-                  ms-DocumentCardPreview-fileListIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    left: 0px;
                     overflow: hidden;
+                    position: absolute;
+                    top: 0px;
                   }
               style={
                 Object {
@@ -133,13 +231,19 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px #666666 inset;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -160,14 +264,16 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             <div
               className=
                   ms-Image
-                  ms-DocumentCardPreview-fileListIcon
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    left: 0px;
                     overflow: hidden;
+                    position: absolute;
+                    top: 0px;
                   }
               style={
                 Object {
@@ -203,13 +309,19 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     -webkit-font-smoothing: antialiased;
                     color: #0078d4;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: inherit;
+                    font-weight: inherit;
                     outline: none;
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid #666666;
+                    box-shadow: 0 0 0 1px #666666 inset;
+                  }
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                    outline: 1px solid WindowText;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-bottom: none;
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
@@ -228,29 +340,96 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           </li>
         </ul>
         <span
-          className="ms-DocumentCardPreview-fileListMore"
+          className=
+
+              {
+                display: block;
+                font-size: 12px;
+                padding-bottom: 8px;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0px;
+              }
         >
           +1 more
         </span>
       </div>
     </div>
     <div
-      className="ms-DocumentCard-details"
+      className=
+          ms-DocumentCardDetails
+          {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            overflow: hidden;
+          }
     >
       <div
-        className="ms-DocumentCardTitle"
+        className=
+            ms-DocumentCardTitle
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 17px;
+              font-weight: 300;
+              height: 38px;
+              line-height: 21px;
+              overflow: hidden;
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              word-wrap: break-word;
+            }
         title="4 files were uploaded"
       >
         4 files were uploaded
       </div>
       <div
-        className="ms-DocumentCardActivity"
+        className=
+            ms-DocumentCardActivity
+            {
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              position: relative;
+            }
       >
         <div
-          className="ms-DocumentCardActivity-avatars"
+          className=
+              ms-DocumentCardActivity-avatars
+              {
+                height: 32px;
+                margin-left: -2px;
+              }
         >
           <div
-            className="ms-DocumentCardActivity-avatar"
+            className=
+                ms-DocumentCardActivity-avatar
+                {
+                  display: inline-block;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  vertical-align: top;
+                  width: 32px;
+                }
+                &:after {
+                  border-radius: 50%;
+                  border: 2px solid #ffffff;
+                  bottom: -1px;
+                  content: " ";
+                  left: -1px;
+                  position: absolute;
+                  right: -1px;
+                  top: -1px;
+                }
           >
             <div
               className=
@@ -315,8 +494,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         is-fadeIn
                         {
                           display: block;
-                          height: auto;
+                          height: 100%;
                           left: 50% /* @noflip */;
+                          object-fit: cover;
                           opacity: 0;
                           position: absolute;
                           top: 50%;
@@ -333,15 +513,46 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-DocumentCardActivity-details"
+          className=
+              ms-DocumentCardActivity-details
+              {
+                height: 32px;
+                left: 56px;
+                position: absolute;
+                top: 8px;
+                width: calc(100% - 72px);
+              }
         >
           <span
-            className="ms-DocumentCardActivity-name"
+            className=
+                ms-DocumentCardActivity-name
+                {
+                  color: #333333;
+                  display: block;
+                  font-size: 12px;
+                  font-weight: 600;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Kat Larrson
           </span>
           <span
-            className="ms-DocumentCardActivity-activity"
+            className=
+                ms-DocumentCardActivity-activity
+                {
+                  color: #666666;
+                  display: block;
+                  font-size: 12px;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Created a few minutes ago
           </span>
@@ -351,14 +562,72 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
   </div>
   <p />
   <div
-    className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    className=
+        ms-DocumentCard
+        ms-DocumentCard--actionable
+        ms-DocumentCard--compact
+        {
+          -webkit-font-smoothing: antialiased;
+          background-color: #ffffff;
+          border: 1px solid #eaeaea;
+          box-sizing: border-box;
+          display: flex;
+          height: 109px;
+          max-width: 480px;
+          min-width: 206px;
+          position: relative;
+          user-select: none;
+        }
+        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
+          padding-top: 4px;
+        }
+        &:hover {
+          border-color: #c8c8c8;
+          cursor: pointer;
+        }
+        &:hover:after {
+          border: 1px solid #c8c8c8;
+          bottom: 0px;
+          content: " ";
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        & .ms-DocumentCardPreview {
+          border-bottom: 0px;
+          border-right: 1px solid #eaeaea;
+          max-height: 106px;
+          max-width: 144px;
+        }
+        & .ms-DocumentCardPreview-icon {
+          max-height: 32px;
+          max-width: 32px;
+        }
+        & .ms-DocumentCardActivity {
+          padding-bottom: 12px;
+        }
+        & .ms-DocumentCardTitle {
+          font-size: 15px;
+          line-height: 16px;
+          padding-bottom: 12px 16px 8px 16px;
+        }
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
   >
     <div
-      className="ms-DocumentCardPreview"
+      className=
+          ms-DocumentCardPreview
+          {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #eaeaea;
+            overflow: hidden;
+            position: relative;
+          }
     >
       <div>
         <div
@@ -405,10 +674,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                bottom: 10px;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
+                left: 10px;
                 overflow: hidden;
+                position: absolute;
               }
           style={
             Object {
@@ -437,22 +709,80 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-DocumentCard-details"
+      className=
+          ms-DocumentCardDetails
+          {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            overflow: hidden;
+          }
     >
       <div
-        className="ms-DocumentCardTitle"
+        className=
+            ms-DocumentCardTitle
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 17px;
+              font-weight: 300;
+              height: 38px;
+              line-height: 21px;
+              overflow: hidden;
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              word-wrap: break-word;
+            }
         title="Revenue stream proposal fiscal year 2016 version02.pptx"
       >
         Revenue stream proposal fiscal year 2016 version02.pptx
       </div>
       <div
-        className="ms-DocumentCardActivity"
+        className=
+            ms-DocumentCardActivity
+            {
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              position: relative;
+            }
       >
         <div
-          className="ms-DocumentCardActivity-avatars"
+          className=
+              ms-DocumentCardActivity-avatars
+              {
+                height: 32px;
+                margin-left: -2px;
+              }
         >
           <div
-            className="ms-DocumentCardActivity-avatar"
+            className=
+                ms-DocumentCardActivity-avatar
+                {
+                  display: inline-block;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  vertical-align: top;
+                  width: 32px;
+                }
+                &:after {
+                  border-radius: 50%;
+                  border: 2px solid #ffffff;
+                  bottom: -1px;
+                  content: " ";
+                  left: -1px;
+                  position: absolute;
+                  right: -1px;
+                  top: -1px;
+                }
           >
             <div
               className=
@@ -517,8 +847,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         is-fadeIn
                         {
                           display: block;
-                          height: auto;
+                          height: 100%;
                           left: 50% /* @noflip */;
+                          object-fit: cover;
                           opacity: 0;
                           position: absolute;
                           top: 50%;
@@ -535,15 +866,46 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-DocumentCardActivity-details"
+          className=
+              ms-DocumentCardActivity-details
+              {
+                height: 32px;
+                left: 56px;
+                position: absolute;
+                top: 8px;
+                width: calc(100% - 72px);
+              }
         >
           <span
-            className="ms-DocumentCardActivity-name"
+            className=
+                ms-DocumentCardActivity-name
+                {
+                  color: #333333;
+                  display: block;
+                  font-size: 12px;
+                  font-weight: 600;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Kat Larrson
           </span>
           <span
-            className="ms-DocumentCardActivity-activity"
+            className=
+                ms-DocumentCardActivity-activity
+                {
+                  color: #666666;
+                  display: block;
+                  font-size: 12px;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Created a few minutes ago
           </span>
@@ -553,17 +915,82 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
   </div>
   <p />
   <div
-    className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    className=
+        ms-DocumentCard
+        ms-DocumentCard--actionable
+        ms-DocumentCard--compact
+        {
+          -webkit-font-smoothing: antialiased;
+          background-color: #ffffff;
+          border: 1px solid #eaeaea;
+          box-sizing: border-box;
+          display: flex;
+          height: 109px;
+          max-width: 480px;
+          min-width: 206px;
+          position: relative;
+          user-select: none;
+        }
+        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
+          padding-top: 4px;
+        }
+        &:hover {
+          border-color: #c8c8c8;
+          cursor: pointer;
+        }
+        &:hover:after {
+          border: 1px solid #c8c8c8;
+          bottom: 0px;
+          content: " ";
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        & .ms-DocumentCardPreview {
+          border-bottom: 0px;
+          border-right: 1px solid #eaeaea;
+          max-height: 106px;
+          max-width: 144px;
+        }
+        & .ms-DocumentCardPreview-icon {
+          max-height: 32px;
+          max-width: 32px;
+        }
+        & .ms-DocumentCardActivity {
+          padding-bottom: 12px;
+        }
+        & .ms-DocumentCardTitle {
+          font-size: 15px;
+          line-height: 16px;
+          padding-bottom: 12px 16px 8px 16px;
+        }
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
   >
     <div
-      className="ms-DocumentCardPreview"
+      className=
+          ms-DocumentCardPreview
+          {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #eaeaea;
+            overflow: hidden;
+            position: relative;
+          }
     >
       <div
-        className="ms-DocumentCardPreview-iconContainer"
+        className=
+            ms-DocumentCardPreview-iconContainer
+            {
+              align-items: center;
+              display: flex;
+              height: 100%;
+              justify-content: center;
+            }
         style={
           Object {
             "height": undefined,
@@ -572,7 +999,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -594,22 +1020,80 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-DocumentCard-details"
+      className=
+          ms-DocumentCardDetails
+          {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            overflow: hidden;
+          }
     >
       <div
-        className="ms-DocumentCardTitle"
+        className=
+            ms-DocumentCardTitle
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 17px;
+              font-weight: 300;
+              height: 38px;
+              line-height: 21px;
+              overflow: hidden;
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              word-wrap: break-word;
+            }
         title="View and share files"
       >
         View and share files
       </div>
       <div
-        className="ms-DocumentCardActivity"
+        className=
+            ms-DocumentCardActivity
+            {
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              position: relative;
+            }
       >
         <div
-          className="ms-DocumentCardActivity-avatars"
+          className=
+              ms-DocumentCardActivity-avatars
+              {
+                height: 32px;
+                margin-left: -2px;
+              }
         >
           <div
-            className="ms-DocumentCardActivity-avatar"
+            className=
+                ms-DocumentCardActivity-avatar
+                {
+                  display: inline-block;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  vertical-align: top;
+                  width: 32px;
+                }
+                &:after {
+                  border-radius: 50%;
+                  border: 2px solid #ffffff;
+                  bottom: -1px;
+                  content: " ";
+                  left: -1px;
+                  position: absolute;
+                  right: -1px;
+                  top: -1px;
+                }
           >
             <div
               className=
@@ -674,8 +1158,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         is-fadeIn
                         {
                           display: block;
-                          height: auto;
+                          height: 100%;
                           left: 50% /* @noflip */;
+                          object-fit: cover;
                           opacity: 0;
                           position: absolute;
                           top: 50%;
@@ -692,15 +1177,46 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-DocumentCardActivity-details"
+          className=
+              ms-DocumentCardActivity-details
+              {
+                height: 32px;
+                left: 56px;
+                position: absolute;
+                top: 8px;
+                width: calc(100% - 72px);
+              }
         >
           <span
-            className="ms-DocumentCardActivity-name"
+            className=
+                ms-DocumentCardActivity-name
+                {
+                  color: #333333;
+                  display: block;
+                  font-size: 12px;
+                  font-weight: 600;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Kat Larrson
           </span>
           <span
-            className="ms-DocumentCardActivity-activity"
+            className=
+                ms-DocumentCardActivity-activity
+                {
+                  color: #666666;
+                  display: block;
+                  font-size: 12px;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Created a few minutes ago
           </span>
@@ -710,17 +1226,83 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
   </div>
   <p />
   <div
-    className="ms-DocumentCard ms-DocumentCard--actionable undefined ms-DocumentCard--compact undefined"
+    className=
+        ms-DocumentCard
+        ms-DocumentCard--actionable
+        ms-DocumentCard--compact
+        {
+          -webkit-font-smoothing: antialiased;
+          background-color: #ffffff;
+          border: 1px solid #eaeaea;
+          box-sizing: border-box;
+          display: flex;
+          height: 109px;
+          max-width: 480px;
+          min-width: 206px;
+          position: relative;
+          user-select: none;
+        }
+        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
+          padding-top: 4px;
+        }
+        &:hover {
+          border-color: #c8c8c8;
+          cursor: pointer;
+        }
+        &:hover:after {
+          border: 1px solid #c8c8c8;
+          bottom: 0px;
+          content: " ";
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        & .ms-DocumentCardPreview {
+          border-bottom: 0px;
+          border-right: 1px solid #eaeaea;
+          max-height: 106px;
+          max-width: 144px;
+        }
+        & .ms-DocumentCardPreview-icon {
+          max-height: 32px;
+          max-width: 32px;
+        }
+        & .ms-DocumentCardActivity {
+          padding-bottom: 12px;
+        }
+        & .ms-DocumentCardTitle {
+          font-size: 15px;
+          line-height: 16px;
+          padding-bottom: 12px 16px 8px 16px;
+        }
+    data-is-focusable={true}
     onClick={[Function]}
     onKeyDown={[Function]}
     role="link"
     tabIndex={0}
   >
     <div
-      className="ms-DocumentCardPreview"
+      className=
+          ms-DocumentCardPreview
+          {
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #eaeaea;
+            overflow: hidden;
+            position: relative;
+          }
     >
       <div
-        className="ms-DocumentCardPreview-iconContainer2"
+        className=
+            ms-DocumentCardPreview-iconContainer
+            ms-DocumentCardPreview-iconContainer2
+            {
+              align-items: center;
+              display: flex;
+              height: 100%;
+              justify-content: center;
+            }
         style={
           Object {
             "height": undefined,
@@ -729,7 +1311,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
@@ -737,7 +1318,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 color: #0078d7;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-8";
+                font-family: "FabricMDL2Icons-9";
                 font-size: 42px;
                 font-style: normal;
                 font-weight: normal;
@@ -751,22 +1332,80 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       </div>
     </div>
     <div
-      className="ms-DocumentCard-details"
+      className=
+          ms-DocumentCardDetails
+          {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            overflow: hidden;
+          }
     >
       <div
-        className="ms-DocumentCardTitle"
-        title="Conversation about anual report from SharePoint conference"
+        className=
+            ms-DocumentCardTitle
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 17px;
+              font-weight: 300;
+              height: 38px;
+              line-height: 21px;
+              overflow: hidden;
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              word-wrap: break-word;
+            }
+        title="Conversation about annual from SharePoint conference"
       >
-        Conversation about anual report from SharePoint conference
+        Conversation about annual from SharePoint conference
       </div>
       <div
-        className="ms-DocumentCardActivity"
+        className=
+            ms-DocumentCardActivity
+            {
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 8px;
+              position: relative;
+            }
       >
         <div
-          className="ms-DocumentCardActivity-avatars"
+          className=
+              ms-DocumentCardActivity-avatars
+              {
+                height: 32px;
+                margin-left: -2px;
+              }
         >
           <div
-            className="ms-DocumentCardActivity-avatar"
+            className=
+                ms-DocumentCardActivity-avatar
+                {
+                  display: inline-block;
+                  height: 32px;
+                  position: relative;
+                  text-align: center;
+                  vertical-align: top;
+                  width: 32px;
+                }
+                &:after {
+                  border-radius: 50%;
+                  border: 2px solid #ffffff;
+                  bottom: -1px;
+                  content: " ";
+                  left: -1px;
+                  position: absolute;
+                  right: -1px;
+                  top: -1px;
+                }
           >
             <div
               className=
@@ -831,8 +1470,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         is-fadeIn
                         {
                           display: block;
-                          height: auto;
+                          height: 100%;
                           left: 50% /* @noflip */;
+                          object-fit: cover;
                           opacity: 0;
                           position: absolute;
                           top: 50%;
@@ -849,15 +1489,46 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           </div>
         </div>
         <div
-          className="ms-DocumentCardActivity-details"
+          className=
+              ms-DocumentCardActivity-details
+              {
+                height: 32px;
+                left: 56px;
+                position: absolute;
+                top: 8px;
+                width: calc(100% - 72px);
+              }
         >
           <span
-            className="ms-DocumentCardActivity-name"
+            className=
+                ms-DocumentCardActivity-name
+                {
+                  color: #333333;
+                  display: block;
+                  font-size: 12px;
+                  font-weight: 600;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Kat Larrson
           </span>
           <span
-            className="ms-DocumentCardActivity-activity"
+            className=
+                ms-DocumentCardActivity-activity
+                {
+                  color: #666666;
+                  display: block;
+                  font-size: 12px;
+                  height: 15px;
+                  line-height: 15px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
           >
             Sent a few minutes ago
           </span>

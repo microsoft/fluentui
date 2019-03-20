@@ -51,10 +51,24 @@ export class IconsPage extends React.Component<any, any> {
           <p>You can use Fabric's icons in a few ways, depending on if you're using Fabric React or Fabric Core.</p>
 
           <h3>Fabric Core</h3>
+          <p>
+            Begin by referencing the styles by adding this to the <code>head</code> element:
+          </p>
         </div>
 
         <CodeBlock language="html" isLightTheme={true}>
           {`<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css">`}
+        </CodeBlock>
+
+        <div className={pageStyles.u_maxTextWidth}>
+          <p>
+            Next, set the <code>dir</code> attribute on the html tag to indicate the reading direction for the page. This will select the
+            appropriate icon for the user's reading direction.
+          </p>
+        </div>
+
+        <CodeBlock language="html" isLightTheme={true}>
+          {`<html dir="ltr">`}
         </CodeBlock>
 
         <div className={pageStyles.u_maxTextWidth}>
@@ -154,11 +168,11 @@ ReactDOM.render(<MyIconButton />, document.body.firstChild);
           <h3>Fabric Icons tool</h3>
 
           <p>
-            The Fabric Icons tool, <a href="https://aka.ms/uifabric-icons">https://aka.ms/uifabric-icons</a>, lets you search and browse all
-            of Fabric's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are
+            The Fabric Icons tool, <a href="https://aka.ms/uifabric-icons">{'https://aka.ms/uifabric-icons'}</a>, lets you search and browse
+            all of Fabric's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are
             drop-in replacements for the default Fabric Core and Fabric React icon sets. In addition, the Fabric Icons tool is updated with
             new icons several times a month, whereas the default Fabric set is updated only occasionally. You can see detailed docs for the
-            tool at <a href="https://aka.ms/uifabric-icons?help">https://aka.ms/uifabric-icons?help</a>.
+            tool at <a href="https://aka.ms/uifabric-icons?help">{'https://aka.ms/uifabric-icons?help'}</a>.
           </p>
         </div>
 

@@ -4,7 +4,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
 import { SignalField, Signal, NewSignal, SharedSignal, MentionSignal } from '../../signals/Signals';
-import { lorem } from '@uifabric/example-app-base/lib/utilities/data';
+import { lorem } from '@uifabric/example-app-base';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 const ITEMS: { name: string; activity: string }[] = [

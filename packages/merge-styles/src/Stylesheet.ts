@@ -1,28 +1,23 @@
-// tslint:disable-next-line:no-any
-declare const process: { [key: string]: any };
-
 import { IStyle } from './IStyle';
-/**
- * Injection mode for the stylesheet.
- *
- * @public
- */
-export const enum InjectionMode {
+
+export const InjectionMode = {
   /**
    * Avoids style injection, use getRules() to read the styles.
    */
-  none = 0,
+  none: 0 as 0,
 
   /**
    * Inserts rules using the insertRule api.
    */
-  insertNode = 1,
+  insertNode: 1 as 1,
 
   /**
    * Appends rules using appendChild.
    */
-  appendChild = 2
-}
+  appendChild: 2 as 2
+};
+
+export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
 
 /**
  * Stylesheet config.
@@ -84,7 +79,7 @@ export class Stylesheet {
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const global: any = typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
+    const global: any = typeof window !== 'undefined' ? window : _fileScopedGlobal;
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
@@ -262,9 +257,9 @@ export class Stylesheet {
     styleElement.type = 'text/css';
 
     if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
-      document.head.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
+      document.head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
     } else {
-      document.head.appendChild(styleElement);
+      document.head!.appendChild(styleElement);
     }
     this._lastStyleElement = styleElement;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { classNamesFunction, createRef, BaseComponent, KeyCodes } from '../../Utilities';
+import { classNamesFunction, BaseComponent, KeyCodes } from '../../Utilities';
 import { ExpandingCardMode, IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 import { CardCallout } from './CardCallout/CardCallout';
 
@@ -19,7 +19,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
   };
 
   private _classNames: { [key in keyof IExpandingCardStyles]: string };
-  private _expandedElem = createRef<HTMLDivElement>();
+  private _expandedElem = React.createRef<HTMLDivElement>();
 
   constructor(props: IExpandingCardProps) {
     super(props);

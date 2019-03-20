@@ -34,17 +34,15 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Customdrop1"
-      id="Customdrop1-label"
+      htmlFor="Dropdown0"
+      id="Dropdown0-label"
     >
       Custom example:
     </label>
     <div
-      aria-activedescendant="Customdrop1-option"
-      aria-describedby="Customdrop1-option"
+      aria-describedby="Dropdown0-option"
       aria-expanded="false"
       aria-label="Custom dropdown example"
-      aria-labelledby="Customdrop1-label"
       className=
           ms-Dropdown
           {
@@ -131,12 +129,13 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
             border-color: #a80000;
           }
       data-is-focusable={true}
-      id="Customdrop1"
+      id="Dropdown0"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
+      placeholder="Select an Option"
       role="listbox"
       tabIndex={0}
     >
@@ -173,21 +172,21 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Customdrop1-option"
+        id="Dropdown0-option"
         role="option"
       >
         <div
           className="dropdownExample-placeholder"
         >
           <i
-            aria-hidden={true}
+            aria-hidden="true"
             className=
 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-4";
+                  font-family: "FabricMDL2Icons-5";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -211,6 +210,7 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
         className=
             ms-Dropdown-caretDownWrapper
             {
+              cursor: pointer;
               height: 32px;
               line-height: 30px;
               position: absolute;
@@ -219,14 +219,13 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
             }
       >
         <i
-          aria-hidden={true}
           className=
 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-3";
+                font-family: "FabricMDL2Icons-4";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;

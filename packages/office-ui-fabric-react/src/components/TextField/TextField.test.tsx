@@ -1,18 +1,18 @@
 import { Promise } from 'es6-promise';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { createRef, resetIds } from '../../Utilities';
+import { resetIds } from '../../Utilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
 import { ITextFieldStyles, ITextField } from './TextField.types';
+import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
 
 describe('TextField', () => {
-  const textFieldRef = createRef<TextFieldBase>();
+  const textFieldRef = React.createRef<TextFieldBase>();
 
   beforeEach(() => {
     resetIds();
@@ -22,17 +22,14 @@ describe('TextField', () => {
     jest.useRealTimers();
   });
 
-  function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-    const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    return renderedDOM as HTMLElement;
-  }
-
-  function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
-    const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: ReactTestUtils.SyntheticEventData = { target };
-
-    return event;
+  /**
+   * Mounts the element attached to a child of document.body. This is primarily for tests involving
+   * event handlers (which don't work right unless the element is attached).
+   */
+  function mountAttached(element: React.ReactElement<any>) {
+    const parent = document.createElement('div');
+    document.body.appendChild(parent);
+    return mount(element, { attachTo: parent });
   }
 
   function delay(millisecond: number): Promise<void> {
@@ -225,13 +222,15 @@ describe('TextField', () => {
         return value.length > 3 ? errorMessage : '';
       }
 
-      const textField = mount(<TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />);
+      const textField = mount(
+        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />
+      );
 
       const inputDOM = textField.getDOMNode().querySelector('input');
       ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
       // The value is delayed to validate, so it must to query error message after a while.
-      return delay(250).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
     });
 
     it('should render error message when onGetErrorMessage returns a Promise<string>', () => {
@@ -239,13 +238,15 @@ describe('TextField', () => {
         return Promise.resolve(value.length > 3 ? errorMessage : '');
       }
 
-      const textField = mount(<TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} />);
+      const textField = mount(
+        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />
+      );
 
       const inputDOM = textField.getDOMNode().querySelector('input');
       ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
       // The value is delayed to validate, so it must to query error message after a while.
-      return delay(250).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
+      return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
     });
 
     it('should render error message on first render when onGetErrorMessage returns a string', () => {
@@ -619,7 +620,7 @@ describe('TextField', () => {
 
     textField.focus();
 
-    expect(inputEl).toBe(document.activeElement);
+    expect(document.activeElement).toBe(inputEl);
   });
 
   it('blurs the input via ITextField blur', () => {
@@ -628,9 +629,71 @@ describe('TextField', () => {
     const inputEl = wrapper.find('input').getDOMNode();
 
     textField.focus();
-    expect(inputEl).toBe(document.activeElement);
+    expect(document.activeElement).toBe(inputEl);
 
     textField.blur();
     expect(document.activeElement).toBe(document.body);
+  });
+
+  it('can switch from single to multi line and back', () => {
+    // start as single line
+    const wrapper = mount(<TextField componentRef={textFieldRef} />);
+    let input = wrapper.getDOMNode().querySelector('input');
+    expect(input).toBeTruthy();
+
+    // switch to multiline
+    wrapper.setProps({ multiline: true });
+    const textarea = wrapper.getDOMNode().querySelector('textarea');
+    expect(textarea).toBeTruthy();
+
+    // switch back
+    wrapper.setProps({ multiline: false });
+    input = wrapper.getDOMNode().querySelector('input');
+    expect(input).toBeTruthy();
+  });
+
+  it('maintains focus when switching single to multi line and back', () => {
+    const wrapper = mountAttached(<TextField componentRef={textFieldRef} />);
+    const textField = textFieldRef.current as ITextField;
+    // focus input
+    textField.focus();
+    let input = wrapper.find('input').getDOMNode();
+    expect(document.activeElement).toBe(input);
+
+    // switch to multiline
+    wrapper.setProps({ multiline: true });
+    // verify still focused
+    const textarea = wrapper.find('textarea').getDOMNode();
+    expect(document.activeElement).toBe(textarea);
+
+    // back to single line
+    wrapper.setProps({ multiline: false });
+    // verify still focused
+    input = wrapper.find('input').getDOMNode();
+    expect(document.activeElement).toBe(input);
+  });
+
+  it('maintains selection when switching single to multi line and back', () => {
+    const start = 1;
+    const end = 3;
+    const wrapper = mountAttached(<TextField componentRef={textFieldRef} defaultValue="some text" />);
+    const textField = textFieldRef.current as ITextField;
+    // select
+    textField.focus();
+    textField.setSelectionRange(start, end);
+    expect(textField.selectionStart).toBe(start);
+    expect(textField.selectionEnd).toBe(end);
+
+    // switch to multiline
+    wrapper.setProps({ multiline: true });
+    // verify still selected
+    expect(textField.selectionStart).toBe(start);
+    expect(textField.selectionEnd).toBe(end);
+
+    // back to single line
+    wrapper.setProps({ multiline: false });
+    // verify still selected
+    expect(textField.selectionStart).toBe(start);
+    expect(textField.selectionEnd).toBe(end);
   });
 });

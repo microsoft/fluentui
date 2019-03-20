@@ -5,16 +5,17 @@ import { getStyles } from './GroupSpacer.styles';
 
 const getClassNames = classNamesFunction<IGroupSpacerStyleProps, IGroupSpacerStyles>();
 
-const SPACER_WIDTH = 36;
+export const SPACER_WIDTH = 32;
 
 export const GroupSpacer = styled<IGroupSpacerProps, IGroupSpacerStyleProps, IGroupSpacerStyles>(
   (props: IGroupSpacerProps) => {
     const { count, styles, theme, indentWidth = SPACER_WIDTH } = props;
     const classNames = getClassNames(styles, {
-      theme: theme!
+      theme: theme!,
+      width: count * indentWidth
     });
 
-    return count > 0 ? <span className={classNames.root} style={{ width: count * indentWidth }} /> : null;
+    return count > 0 ? <span className={classNames.root} /> : null;
   },
   getStyles,
   undefined,

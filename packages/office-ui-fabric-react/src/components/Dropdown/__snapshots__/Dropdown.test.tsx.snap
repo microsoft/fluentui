@@ -140,6 +140,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
       className=
           ms-Dropdown-caretDownWrapper
           {
+            cursor: pointer;
             height: 32px;
             line-height: 30px;
             position: absolute;
@@ -148,7 +149,6 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
         className=
             ms-Dropdown-caretDown
             {
@@ -180,7 +180,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
 
 >
   <div
-    aria-activedescendant="Dropdown0-option"
     aria-describedby="Dropdown0-option"
     aria-expanded="false"
     className=
@@ -317,6 +316,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
       className=
           ms-Dropdown-caretDownWrapper
           {
+            cursor: pointer;
             height: 32px;
             line-height: 30px;
             position: absolute;
@@ -325,7 +325,6 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
           }
     >
       <i
-        aria-hidden={true}
         className=
             ms-Dropdown-caretDown
             {

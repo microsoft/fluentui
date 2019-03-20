@@ -1311,6 +1311,13 @@ export interface IRawStyleBase extends IRawFontStyle {
   mixBlendMode?: ICSSRule | IMixBlendModes;
 
   /**
+   * The ‘object-fit’ property specifies how the contents of a replaced element should
+   * be fitted to the box established by its used height and width.
+   * See CSS 3 object-fit property https://www.w3.org/TR/css3-images/#the-object-fit
+   */
+  objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
+
+  /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
    */
@@ -1641,6 +1648,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#Stroke
    */
   stroke?: ICSSRule | string;
+
+  /**
+   * SVG: The stroke-linecap attribute defines the shape to be used at the end of open subpaths when they are stroked.
+   * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#LineCaps
+   */
+  strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
 
   /**
    * SVG: Specifies the opacity of the outline on the current object.

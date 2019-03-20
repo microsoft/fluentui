@@ -14,7 +14,7 @@ export interface IButtonClassNames {
   screenReaderText?: string;
 }
 
-const GlobalClassNames = {
+export const ButtonGlobalClassNames = {
   msButton: 'ms-Button',
   msButtonIcon: 'ms-Button-icon',
   msButtonMenuIcon: 'ms-Button-menuIcon',
@@ -38,7 +38,7 @@ export const getBaseButtonClassNames = memoizeFunction(
     expanded: boolean,
     isSplit: boolean | undefined
   ): IButtonClassNames => {
-    const classNames = getGlobalClassNames(GlobalClassNames, theme || {});
+    const classNames = getGlobalClassNames(ButtonGlobalClassNames, theme || {});
 
     const isExpanded = expanded && !isSplit;
     return mergeStyleSets({

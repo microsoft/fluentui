@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  createRef,
-  getNativeProps,
-  divProperties,
-  classNamesFunction,
-  getWindow,
-  isDirectionalKeyCode
-} from '../../Utilities';
+import { BaseComponent, getNativeProps, divProperties, classNamesFunction, getWindow, isDirectionalKeyCode } from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
@@ -19,7 +11,7 @@ export class FabricBase extends BaseComponent<
     isFocusVisible: boolean;
   }
 > {
-  private _rootElement = createRef<HTMLDivElement>();
+  private _rootElement = React.createRef<HTMLDivElement>();
 
   constructor(props: IFabricProps) {
     super(props);
@@ -37,7 +29,7 @@ export class FabricBase extends BaseComponent<
   }
 
   public componentDidMount(): void {
-    const win = getWindow(this._rootElement.value);
+    const win = getWindow(this._rootElement.current);
 
     if (win) {
       this._events.on(win, 'mousedown', this._onMouseDown, true);

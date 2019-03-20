@@ -2,6 +2,20 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.7",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.7",
+      "date": "Tue, 15 Jan 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Keyframes no longer cause merge-styles jest serialization to throw an exception.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "03a1910fa97b1caadd3b8178e59ffe349a39b99a"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.6",
       "tag": "@uifabric/jest-serializer-merge-styles_v6.0.6",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

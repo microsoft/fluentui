@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
@@ -22,6 +21,7 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
     return (
       <div>
         <ChoiceGroup
+          className="defaultChoiceGroup"
           defaultSelectedKey="B"
           options={[
             {

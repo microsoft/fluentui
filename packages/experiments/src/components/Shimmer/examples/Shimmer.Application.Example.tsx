@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from '@uifabric/example-app-base/lib/utilities/data';
+import { createListItems } from '@uifabric/example-app-base';
 import { IColumn, DetailsList, buildColumns, SelectionMode, Toggle, IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react';
 import { Shimmer } from '@uifabric/experiments/lib/Shimmer';
 import './Shimmer.Example.scss';

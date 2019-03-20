@@ -1,6 +1,35 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 15 Oct 2018 12:29:12 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Mar 2019 12:31:43 GMT and should not be manually modified.
+
+## 6.4.3
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
+
+## 6.4.2
+Fri, 01 Mar 2019 13:33:08 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+
+## 6.4.1
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Patches
+
+- Recognize additional file extensions
+
+## 6.4.0
+Thu, 29 Nov 2018 19:34:12 GMT
+
+### Minor changes
+
+- Updated filetype icon mappings to include missing files (figma, powerpoint slide, etc) and entries for new supported non-file items (sp news, sway)
 
 ## 6.2.0
 Mon, 15 Oct 2018 12:29:12 GMT

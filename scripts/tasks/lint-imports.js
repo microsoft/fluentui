@@ -1,37 +1,30 @@
-const importKeywordRegex = /^import/gm;
 const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
 const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
 const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
-module.exports = function(options) {
+
+module.exports = function() {
   const path = require('path');
   const fs = require('fs');
   const chalk = require('chalk');
+  const findConfig = require('../find-config');
+  const readConfig = require('../read-config');
+
   const sourcePath = path.resolve(process.cwd(), 'src');
   const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
-  const rushJsonPath = findRushJson(process.cwd());
+  const rushJsonPath = findConfig('rush.json');
   const rootFolder = path.dirname(rushJsonPath);
-  if (!rushJsonPath) {
-    throw new Error('lint-import: unable to find rush.json');
+  const rush = readConfig(rushJsonPath);
+  if (!rush) {
+    throw new Error('lint-imports: unable to find rush.json');
   }
 
-  const rush = JSON.parse(fs.readFileSync(rushJsonPath, 'utf8'));
   const rushPackages = rush.projects.map(project => project.packageName);
 
   const currentRushPackage = rush.projects.find(project => {
     return path.normalize(project.projectFolder) === path.normalize(path.relative(rootFolder, process.cwd()));
   }).packageName;
-  // TestCode
-  return lintSource();
 
-  function findRushJson(curDir) {
-    const potentialRushPath = path.resolve(curDir, 'rush.json');
-    if (fs.existsSync(potentialRushPath)) {
-      return potentialRushPath;
-    }
-    const parentFolder = path.dirname(curDir);
-    if (parentFolder === curDir) return undefined;
-    return findRushJson(parentFolder);
-  }
+  return lintSource();
 
   function lintSource() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);

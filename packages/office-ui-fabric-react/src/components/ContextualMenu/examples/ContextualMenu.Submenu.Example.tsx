@@ -19,9 +19,20 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
   public render(): JSX.Element {
     return (
       <div>
-        <TextField value={String(this.state.hoverDelay)} label="Hover delay (ms)" type="number" onChange={this._onHoverDelayChanged} />
+        <TextField
+          value={String(this.state.hoverDelay)}
+          label="Hover delay (ms)"
+          type="number"
+          onChange={this._onHoverDelayChanged}
+          styles={{
+            subComponentStyles: {
+              label: { root: { display: 'inline-block', marginRight: '10px' } }
+            },
+            fieldGroup: { display: 'inline-flex', maxWidth: '100px' },
+            wrapper: { display: 'block', marginBottom: '10px' }
+          }}
+        />
         <DefaultButton
-          id="ContextualMenuButton2"
           text="Click for ContextualMenu"
           menuProps={{
             shouldFocusOnMount: true,
@@ -82,7 +93,6 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
               },
               {
                 key: 'shareSplit',
-                onClick: () => alert('Split buttons!'),
                 split: true,
                 'aria-roledescription': 'split button',
                 subMenuProps: {
@@ -126,7 +136,7 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
 
   private _onHoverDelayChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string) => {
     this.setState({
-      hoverDelay: +newValue
+      hoverDelay: Number(newValue) || 0
     });
   };
 }

@@ -5,7 +5,7 @@ import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStylePr
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { classNamesFunction, createRef } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 
@@ -40,8 +40,8 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     overflowItems: []
   };
 
-  private _overflowSet = createRef<IOverflowSet>();
-  private _resizeGroup = createRef<IResizeGroup>();
+  private _overflowSet = React.createRef<IOverflowSet>();
+  private _resizeGroup = React.createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
 
   public render(): JSX.Element {
@@ -216,15 +216,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems = [movedItem, ...overflowItems];
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
-      data.primaryItems = primaryItems;
-      data.overflowItems = overflowItems;
-      cacheKey = this._computeCacheKey(data);
+      const newData = { ...data, primaryItems, overflowItems };
+      cacheKey = this._computeCacheKey(newData);
 
       if (onDataReduced) {
         onDataReduced(movedItem);
       }
 
-      return { ...data, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;
@@ -244,15 +244,15 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       // if shiftOnReduce, movedItem goes first, otherwise, last.
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
-      data.primaryItems = primaryItems;
-      data.overflowItems = overflowItems;
-      cacheKey = this._computeCacheKey(data);
+      const newData = { ...data, primaryItems, overflowItems };
+      cacheKey = this._computeCacheKey(newData);
 
       if (onDataGrown) {
         onDataGrown(movedItem);
       }
 
-      return { ...data, cacheKey };
+      newData.cacheKey = cacheKey;
+      return newData;
     }
 
     return undefined;

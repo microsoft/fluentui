@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorRectangle renders correctly 1`] = `
+<div
+  className=
+      ms-ColorPicker-colorRect
+      {
+        margin-bottom: 10px;
+        position: relative;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
+      }
+  onMouseDown={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#0080ff",
+      "minHeight": 220,
+      "minWidth": 220,
+    }
+  }
+>
+  <div
+    className=
+        ms-ColorPicker-light
+        {
+          background: linear-gradient(to right, white 0%, transparent 100%);
+          bottom: 0px;
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+  />
+  <div
+    className=
+        ms-ColorPicker-dark
+        {
+          background: linear-gradient(to bottom, transparent 0, #000 100%);
+          bottom: 0px;
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+  />
+  <div
+    className=
+        ms-ColorPicker-thumb
+        {
+          background: white;
+          border-radius: 50%;
+          border: 1px solid rgba(255,255,255,.8);
+          box-shadow: 0 0 15px -5px black;
+          height: 20px;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          width: 20px;
+        }
+    style={
+      Object {
+        "backgroundColor": "#abcdef",
+        "left": "28%",
+        "top": "6%",
+      }
+    }
+  />
+</div>
+`;

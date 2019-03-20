@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
@@ -37,11 +37,6 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
    * Theme (provided through customization.)
    */
   theme?: ITheme;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 
   /**
    * If true, it specifies that an option must be selected in the ChoiceGroup before submitting the form

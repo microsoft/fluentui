@@ -12,11 +12,11 @@ import {
   ISchemeNames,
   ITheme
 } from 'office-ui-fabric-react';
-import { IThemeProviders, IThemeProviderProps, themeProvider } from '@uifabric/foundation';
+import { IThemeProviderProps, ThemeProvider } from '@uifabric/foundation';
 import './ExampleCard.scss';
 import { ExampleCardComponent, IExampleCardComponent } from './ExampleCardComponent';
 import { Highlight } from '../Highlight/Highlight';
-import { AppCustomizationsContext, IAppCustomizations } from '../../utilities/customizations';
+import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 
 export interface IExampleCardProps {
@@ -47,26 +47,16 @@ export interface IExampleCardState {
 }
 
 const _schemes: ISchemeNames[] = ['default', 'strong', 'soft', 'neutral'];
-
-// TODO: once Foundation is promoted and in OUFR, ThemeProvider can be imported directly from OUFR
-//        and themeProviders/ThemeProvider can be removed here
-const themeProviders: IThemeProviders<ICustomizerContext, ITheme, ISchemeNames, ICustomizerProps> = {
-  getThemedContext,
-  CustomizerComponent: Customizer
-};
-
-export const ThemeProvider: React.StatelessComponent<IThemeProviderProps<ISchemeNames, ITheme>> = themeProvider<
-  ICustomizerContext,
-  ITheme,
-  ISchemeNames,
-  ICustomizerProps
-  >(themeProviders);
+const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: number) => ({
+  key: index,
+  text: 'Scheme: ' + item
+}));
 
 // tslint:disable-next-line:typedef
-const regionStyles: IExampleCardComponent['styles'] = props => ({
+const regionStyles: IExampleCardComponent['styles'] = (props, theme) => ({
   root: {
-    backgroundColor: props.theme.semanticColors.bodyBackground,
-    color: props.theme.semanticColors.bodyText
+    backgroundColor: theme.semanticColors.bodyBackground,
+    color: theme.semanticColors.bodyText
   }
 });
 
@@ -87,6 +77,9 @@ const dropdownStyles: Partial<IDropdownStyles> = {
 };
 
 export class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
+  private _themeCustomizations: IExampleCardCustomizations[] | undefined;
+  private _themeOptions: IDropdownOption[];
+
   constructor(props: IExampleCardProps) {
     super(props);
 
@@ -112,6 +105,16 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           const activeCustomizations =
             exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
+          if (exampleCardCustomizations !== this._themeCustomizations) {
+            this._themeCustomizations = exampleCardCustomizations;
+            this._themeOptions = exampleCardCustomizations
+              ? exampleCardCustomizations.map((item: IExampleCardCustomizations, index: number) => ({
+                  key: index,
+                  text: 'Theme: ' + item.title
+                }))
+              : [];
+          }
+
           const exampleCardContent = (
             <div
               className={css('ExampleCard-example', {
@@ -131,29 +134,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
                 <div className="ExampleCard-toggleButtons">
                   {codepenJS && <CodepenComponent jsContent={codepenJS} />}
                   {exampleCardCustomizations && (
-                    <Dropdown
-                      defaultSelectedKey={0}
-                      onChange={this._onThemeChange}
-                      // tslint:disable-next-line:no-any
-                      options={exampleCardCustomizations.map((item: any, index: number) => ({
-                        key: index,
-                        text: 'Theme: ' + item.title
-                      }))}
-                      styles={dropdownStyles}
-                    />
+                    <Dropdown defaultSelectedKey={0} onChange={this._onThemeChange} options={this._themeOptions} styles={dropdownStyles} />
                   )}
 
                   {exampleCardCustomizations && (
-                    <Dropdown
-                      defaultSelectedKey={0}
-                      onChange={this._onSchemeChange}
-                      // tslint:disable-next-line:no-any
-                      options={_schemes.map((item: any, index: number) => ({
-                        key: index,
-                        text: 'Scheme: ' + item
-                      }))}
-                      styles={dropdownStyles}
-                    />
+                    <Dropdown defaultSelectedKey={0} onChange={this._onSchemeChange} options={_schemeOptions} styles={dropdownStyles} />
                   )}
 
                   {code && (
@@ -171,18 +156,20 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               <div className="ExampleCard-code">{isCodeVisible && <Highlight>{code}</Highlight>}</div>
 
               {activeCustomizations ? (
-                <ThemeProvider scheme={_schemes[schemeIndex]}>
-                  <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
-                </ThemeProvider>
+                <Customizer {...activeCustomizations}>
+                  <ThemeProvider scheme={_schemes[schemeIndex]}>
+                    <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
+                  </ThemeProvider>
+                </Customizer>
               ) : (
-                  exampleCardContent
-                )}
+                exampleCardContent
+              )}
 
               {this._getDosAndDonts()}
             </div>
           );
 
-          return activeCustomizations ? <Customizer {...activeCustomizations}>{exampleCard}</Customizer> : exampleCard;
+          return exampleCard;
         }}
       </AppCustomizationsContext.Consumer>
     );

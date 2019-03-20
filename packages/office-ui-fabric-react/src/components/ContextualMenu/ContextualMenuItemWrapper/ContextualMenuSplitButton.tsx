@@ -128,7 +128,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           item={itemProps}
           classNames={classNames}
           index={index}
-          onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick.bind(this, item) : undefined}
+          onCheckmarkClick={hasCheckmarks && onItemClick ? onItemClick : undefined}
           hasIcons={hasIcons}
           {...itemComponentProps}
         />

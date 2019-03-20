@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BaseComponent, IDisposable, assign, css, shallowCompare, getNativeProps, divProperties, createRef } from '../../Utilities';
+import { BaseComponent, IDisposable, assign, css, shallowCompare, getNativeProps, divProperties } from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -38,8 +38,8 @@ const NO_COLUMNS: IColumn[] = [];
 
 export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetailsRowState> {
   private _root: HTMLElement | undefined;
-  private _cellMeasurer = createRef<HTMLSpanElement>();
-  private _focusZone = createRef<IFocusZone>();
+  private _cellMeasurer = React.createRef<HTMLSpanElement>();
+  private _focusZone = React.createRef<IFocusZone>();
   private _droppingClassNames: string;
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
@@ -174,7 +174,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       shimmer,
       compact,
       theme,
-      styles
+      styles,
+      cellsByColumn
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -201,6 +202,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     const rowFields = (
       <RowFields
         rowClassNames={classNames}
+        cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
         itemIndex={itemIndex}

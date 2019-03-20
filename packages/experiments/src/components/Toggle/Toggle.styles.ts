@@ -1,30 +1,100 @@
-import { IToggleComponent } from './Toggle.types';
-import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { IToggleComponent, IToggleStylesReturnType, IToggleTokenReturnType } from './Toggle.types';
+import { getFocusStyle, getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Toggle',
   label: 'ms-Toggle-label',
   container: 'ms-Toggle-innerContainer',
   pill: 'ms-Toggle-background',
-  thumb: 'ms-Toggle-thumb'
+  thumb: 'ms-Toggle-thumb',
+  text: 'ms-Toggle-stateText'
 };
 
-export const ToggleStyles: IToggleComponent['styles'] = props => {
-  const { theme, className, disabled, checked } = props;
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+const toggleEnabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
   const { semanticColors } = theme;
-  const pillUncheckedBackground = semanticColors.bodyBackground;
-  const pillCheckedBackground = semanticColors.inputBackgroundChecked;
-  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
-  const pillCheckedDisabledBackground = semanticColors.disabledBodyText;
-  const thumbBackground = semanticColors.inputBorderHovered;
-  const thumbCheckedBackground = semanticColors.inputForegroundChecked;
-  const thumbDisabledBackground = semanticColors.disabledBodyText;
-  const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
-  const pillBorderColor = semanticColors.smallInputBorder;
-  const pillBorderHoveredColor = semanticColors.inputBorderHovered;
-  const pillBorderDisabledColor = semanticColors.disabledBodyText;
-  const textDisabledColor = semanticColors.disabledText;
+  return {
+    pillBackground: semanticColors.bodyBackground,
+    pillBorderColor: semanticColors.smallInputBorder,
+    pillHoveredBorderColor: semanticColors.inputBorderHovered,
+    pillHighContrastBorderColor: 'Highlight',
+    pillHighContrastHoveredBorderColor: 'Highlight',
+
+    thumbBackground: semanticColors.inputBorderHovered
+  };
+};
+
+const toggleDisabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    pillBackground: semanticColors.bodyBackground,
+    pillBorderColor: semanticColors.disabledBodySubtext,
+
+    thumbBackground: semanticColors.disabledBodySubtext,
+
+    textColor: semanticColors.disabledText,
+    textHighContrastColor: 'GrayText'
+  };
+};
+
+const toggleCheckedVariables: IToggleComponent['tokens'] = {
+  pillBorderColor: 'transparent',
+  pillJustifyContent: 'flex-end'
+};
+
+const toggleCheckedEnabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    pillBackground: semanticColors.inputBackgroundChecked,
+    pillHoveredBackground: semanticColors.inputBackgroundCheckedHovered,
+    pillHoveredBorderColor: 'transparent',
+    pillHighContrastBackground: 'WindowText',
+    pillHighContrastHoveredBackground: 'Highlight',
+    pillHighContrastHoveredBorderColor: 'transparent',
+
+    thumbBackground: semanticColors.inputForegroundChecked,
+    thumbHighContrastBackground: 'Window',
+    thumbHighContrastBorderColor: 'Window'
+  };
+};
+
+const toggleCheckedDisabledTokens: IToggleComponent['tokens'] = (props, theme): IToggleTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    pillBackground: semanticColors.disabledBodySubtext,
+    thumbBackground: semanticColors.disabledBackground
+  };
+};
+
+export const ToggleTokens: IToggleComponent['tokens'] = (props): IToggleTokenReturnType => [
+  props.checked && toggleCheckedVariables,
+  props.disabled && [toggleDisabledTokens, props.checked && toggleCheckedDisabledTokens],
+  !props.disabled && [toggleEnabledTokens, props.checked && toggleCheckedEnabledTokens]
+];
+
+export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): IToggleStylesReturnType => {
+  const { className, disabled, checked } = props;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const textStyles: IStyle = [
+    classNames.text,
+    {
+      selectors: {
+        // Workaround: make rules more sepecific than Label rules.
+        '&&': {
+          color: tokens.textColor,
+          padding: '0',
+          margin: '0 10px',
+          userSelect: 'none',
+          selectors: {
+            [HighContrastSelector]: {
+              color: tokens.textHighContrastColor
+            }
+          }
+        }
+      }
+    }
+  ];
 
   return {
     root: [
@@ -38,19 +108,17 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
       },
       className
     ],
-
     label: [
       classNames.label,
-      disabled && {
-        color: textDisabledColor,
+      {
+        color: tokens.textColor,
         selectors: {
           [HighContrastSelector]: {
-            color: 'GrayText'
+            color: tokens.textHighContrastColor
           }
         }
       }
     ],
-
     container: [
       classNames.container,
       {
@@ -58,7 +126,6 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
         position: 'relative'
       }
     ],
-
     pill: [
       classNames.pill,
       getFocusStyle(theme, -3),
@@ -71,88 +138,47 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
         transition: 'all 0.1s ease',
         borderWidth: '1px',
         borderStyle: 'solid',
-        background: pillUncheckedBackground,
-        borderColor: pillBorderColor,
+        background: tokens.pillBackground,
+        borderColor: tokens.pillBorderColor,
+        justifyContent: tokens.pillJustifyContent,
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 .2em'
-      },
-      !disabled && [
-        !checked && {
-          selectors: {
-            ':hover': [
-              {
-                borderColor: pillBorderHoveredColor
-              }
-            ],
-            ':hover .ms-Toggle-thumb': [
-              {
-                selectors: {
-                  [HighContrastSelector]: {
-                    borderColor: 'Highlight'
-                  }
+        padding: '0 .2em',
+        selectors: {
+          ':hover': [
+            {
+              backgroundColor: tokens.pillHoveredBackground,
+              borderColor: tokens.pillHoveredBorderColor,
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: tokens.pillHighContrastHoveredBackground
                 }
-              }
-            ]
-          }
-        },
-        checked && [
-          {
-            background: pillCheckedBackground,
-            borderColor: 'transparent',
-            justifyContent: 'flex-end'
-          },
-          {
-            selectors: {
-              ':hover': [
-                {
-                  backgroundColor: pillCheckedHoveredBackground,
-                  borderColor: 'transparent',
-                  selectors: {
-                    [HighContrastSelector]: {
-                      backgroundColor: 'Highlight'
-                    }
-                  }
-                }
-              ],
-              [HighContrastSelector]: {
-                backgroundColor: 'WindowText'
               }
             }
-          }
-        ]
-      ],
-      disabled && [
-        {
-          cursor: 'default'
-        },
-        !checked && [
-          {
-            borderColor: pillBorderDisabledColor
-          }
-        ],
-        checked && [
-          {
-            backgroundColor: pillCheckedDisabledBackground,
-            borderColor: 'transparent',
-            justifyContent: 'flex-end'
-          }
-        ]
-      ],
-      !disabled && {
-        selectors: {
+          ],
+          ':hover .ms-Toggle-thumb': [
+            {
+              selectors: {
+                [HighContrastSelector]: {
+                  borderColor: tokens.pillHighContrastHoveredBorderColor
+                }
+              }
+            }
+          ],
+          [HighContrastSelector]: {
+            backgroundColor: tokens.pillHighContrastBackground
+          },
           '&:hover': {
             selectors: {
               [HighContrastSelector]: {
-                borderColor: 'Highlight'
+                borderColor: tokens.pillHighContrastBorderColor
               }
             }
           }
         }
       }
     ],
-
     thumb: [
       classNames.thumb,
       {
@@ -160,63 +186,20 @@ export const ToggleStyles: IToggleComponent['styles'] = props => {
         height: '.5em',
         borderRadius: '.5em',
         transition: 'all 0.1s ease',
-        backgroundColor: thumbBackground,
+        backgroundColor: tokens.thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
         borderColor: 'transparent',
         borderWidth: '.28em',
         borderStyle: 'solid',
-        boxSizing: 'border-box'
-      },
-      !disabled &&
-        checked && [
-          {
-            backgroundColor: thumbCheckedBackground,
-            selectors: {
-              [HighContrastSelector]: {
-                backgroundColor: 'Window',
-                borderColor: 'Window'
-              }
-            }
-          }
-        ],
-      disabled && [
-        !checked && [
-          {
-            backgroundColor: thumbDisabledBackground
-          }
-        ],
-        checked && [
-          {
-            backgroundColor: thumbCheckedDisabledBackground
-          }
-        ]
-      ]
-    ],
-
-    text: [
-      'ms-Toggle-stateText',
-      {
+        boxSizing: 'border-box',
         selectors: {
-          // Workaround: make rules more sepecific than Label rules.
-          '&&': {
-            padding: '0',
-            margin: '0 10px',
-            userSelect: 'none'
-          }
-        }
-      },
-      disabled && {
-        selectors: {
-          '&&': {
-            color: textDisabledColor,
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'GrayText'
-              }
-            }
+          [HighContrastSelector]: {
+            backgroundColor: tokens.thumbHighContrastBackground,
+            borderColor: tokens.thumbHighContrastBorderColor
           }
         }
       }
-    ]
+    ],
+    text: textStyles
   };
 };

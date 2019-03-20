@@ -7,7 +7,8 @@ import {
   CollapsibleSection,
   CollapsibleSectionTitle,
   ICollapsibleSectionTitleComponent,
-  ICollapsibleSectionTitleStyles
+  ICollapsibleSectionTitleStyles,
+  ICollapsibleSectionTitleStylesReturnType
 } from '@uifabric/experiments';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
@@ -45,8 +46,7 @@ const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
   }
 };
 
-const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
-  const { theme } = props;
+const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => {
   return {
     root: [
       {
@@ -121,8 +121,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       return (
         <li key={categoryIndex} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
-            titleAs={CollapsibleSectionTitle}
-            titleProps={{ text: page.title, styles: getTitleStyles }}
+            title={{ text: page.title, styles: getTitleStyles }}
             styles={{ body: [{ marginLeft: '28px' }] }}
             defaultCollapsed={!_hasActiveChild(page)}
           >
@@ -155,8 +154,8 @@ export class Nav extends React.Component<INavProps, INavState> {
       page.pages && title === 'Components' && !this.state.filterState
         ? this._renderSortedLinks(page.pages, title)
         : page.pages
-          ? this._renderLinkList(page.pages, true, title)
-          : null;
+        ? this._renderLinkList(page.pages, true, title)
+        : null;
     const { searchQuery } = this.state;
     const text = page.title;
     let linkText = <>{text}</>;
@@ -193,12 +192,11 @@ export class Nav extends React.Component<INavProps, INavState> {
           )}
           key={linkIndex}
         >
-          {!page.isUhfLink &&
-            (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
-              <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
-                {linkText}
-              </a>
-            )}
+          {!page.isUhfLink && (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
+            <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
+              {linkText}
+            </a>
+          )}
           {childLinks}
         </li>
       </>

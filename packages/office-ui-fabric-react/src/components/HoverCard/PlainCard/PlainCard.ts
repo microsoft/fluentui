@@ -3,6 +3,11 @@ import { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './Plain
 import { getStyles } from './PlainCard.styles';
 import { PlainCardBase } from './PlainCard.base';
 
-export const PlainCard = styled<IPlainCardProps, IPlainCardStyleProps, IPlainCardStyles>(PlainCardBase, getStyles, undefined, {
-  scope: 'PlainCard'
-});
+export const PlainCard: React.StatelessComponent<IPlainCardProps> = styled<IPlainCardProps, IPlainCardStyleProps, IPlainCardStyles>(
+  PlainCardBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'PlainCard'
+  }
+);

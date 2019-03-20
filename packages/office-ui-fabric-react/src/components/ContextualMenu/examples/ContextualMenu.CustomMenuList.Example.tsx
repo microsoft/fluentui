@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
@@ -79,7 +78,6 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuWithCustomMenuListExample"
           text="Click for ContextualMenu"
           menuProps={{
             onRenderMenuList: this._renderMenuList,

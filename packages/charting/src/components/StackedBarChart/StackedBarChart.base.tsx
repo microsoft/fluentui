@@ -79,7 +79,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           {showRatio && (
             <div>
-              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data}</span>
+              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data ? data!.chartData![0].data : 0}</span>
               {!hideDenominator && (
                 <span>
                   /<span className={this._classNames.ratioDenominator}>{total}</span>

@@ -1,4 +1,8 @@
-import { IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+// Shared code for creating example data.
+// This file is not included in the main office-ui-fabric-react bundle.
+// If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
+
+import { IGroup } from '../DetailsList';
 
 const LOREM_IPSUM = (
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +
@@ -14,8 +18,19 @@ const DATA = {
   location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
 };
 
-// tslint:disable-next-line:no-any
-export function createListItems(count: number, startIndex: number = 0): any {
+export interface IExampleItem {
+  thumbnail: string;
+  key: string;
+  name: string;
+  description: string;
+  color: string;
+  shape: string;
+  location: string;
+  width: number;
+  height: number;
+}
+
+export function createListItems(count: number, startIndex: number = 0): IExampleItem[] {
   return Array.apply(null, Array(count)).map((item: number, index: number) => {
     const size = 150 + Math.round(Math.random() * 100);
 
@@ -39,7 +54,8 @@ export function createGroups(
   startIndex: number,
   itemsPerGroup: number,
   level: number = 0,
-  key: string = ''
+  key: string = '',
+  isCollapsed?: boolean
 ): IGroup[] {
   if (key !== '') {
     key = key + '-';
@@ -52,6 +68,7 @@ export function createGroups(
       name: 'group ' + key + index,
       startIndex: index * count + startIndex,
       level: level,
+      isCollapsed: isCollapsed,
       children:
         groupDepth > 1 ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) : []
     };
@@ -60,7 +77,9 @@ export function createGroups(
 
 export function lorem(wordCount: number): string {
   return Array.apply(null, Array(wordCount))
-    .map((item: number) => _randWord(LOREM_IPSUM))
+    .map((item: number, idx: number) => {
+      return LOREM_IPSUM[idx % LOREM_IPSUM.length];
+    })
     .join(' ');
 }
 

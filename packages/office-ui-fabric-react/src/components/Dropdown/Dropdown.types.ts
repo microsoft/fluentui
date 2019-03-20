@@ -6,6 +6,7 @@ import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IKeytipProps } from '../../Keytip';
 import { ILabelStyleProps } from '../../Label';
 import { RectangleEdge } from '../../utilities/positioning';
+import { IPanelStyleProps } from '../Panel/Panel.types';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -16,11 +17,13 @@ export interface IDropdown {
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
+   * @deprecated Use `placeholder`
    */
   placeHolder?: string;
 
   /**
-   * Options for the dropdown.
+   * Options for the dropdown. If using `defaultSelectedKey` or `defaultSelectedKeys`, options must be
+   * pure for correct behavior.
    */
   options: IDropdownOption[];
 
@@ -47,7 +50,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Optional custom renderer for selected option displayed in input
    */
-  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
+  onRenderTitle?: IRenderFunction<IDropdownOption[]>;
 
   /**
    * Optional custom renderer for chevron icon
@@ -60,6 +63,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
    */
   dropdownWidth?: number;
 
+  /**
+   * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
+   * ResponsiveMode.Large would, for instance, disable the behavior where Dropdown options
+   * get rendered into a Panel while ResponsiveMode.Small would result in the Dropdown
+   * options always getting rendered in a Panel.
+   */
   responsiveMode?: ResponsiveMode;
 
   /**
@@ -68,15 +77,17 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   multiSelect?: boolean;
 
   /**
-   * Keys that will be initially used to set selected items.
+   * Keys that will be initially used to set selected items. This prop is used for `multiSelect`
+   * scenarios. In other cases, `defaultSelectedKey` should be used.
    */
   defaultSelectedKeys?: string[] | number[];
 
   /**
    * Keys of the selected items. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
+   * Passing null in will clear the selection.
    */
-  selectedKeys?: string[] | number[];
+  selectedKeys?: string[] | number[] | null;
 
   /**
    * When multiple items are selected, this still will be used to separate values in
@@ -142,13 +153,13 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
   isRenderingPlaceholder: boolean;
 
   /**
-   * Optional custom classname for the panel that displays in small viewports, hosting the Dropdown options.
+   * Optional custom className for the panel that displays in small viewports, hosting the Dropdown options.
    * This is primarily provided for backwards compatibility.
    */
   panelClassName?: string;
 
   /**
-   * Optional custom classname for the callout that displays in larger viewports, hosting the Dropdown options.
+   * Optional custom className for the callout that displays in larger viewports, hosting the Dropdown options.
    * This is primarily provided for backwards compatibility.
    */
   calloutClassName?: string;
@@ -208,7 +219,7 @@ export interface IDropdownStyles {
    */
   dropdownOptionText: IStyle;
 
-  /** Refers to the dropdown seperator. */
+  /** Refers to the dropdown separator. */
   dropdownDivider: IStyle;
 
   /** Refers to the individual dropdown items that are being rendered as a header. */
@@ -229,7 +240,8 @@ export interface IDropdownStyles {
 
 export interface IDropdownSubComponentStyles {
   /** Refers to the panel that hosts the Dropdown options in small viewports. */
-  // panel: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>; // #5689: this relies on Panel supporting JS styling.
+  panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
+  // #5690: replace any with ILabelStyles in TS 2.9
 
   /** Refers to the primary label for the Dropdown. */
   label: IStyleFunctionOrObject<ILabelStyleProps, any>;

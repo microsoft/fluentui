@@ -28,7 +28,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
           }
     >
       <i
-        aria-hidden={true}
+        aria-hidden="true"
         className=
 
             {
@@ -36,7 +36,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               -webkit-font-smoothing: antialiased;
               color: #a6a6a6;
               display: inline-block;
-              font-family: "FabricMDL2Icons-0";
+              font-family: "FabricMDL2Icons-16";
               font-size: 20px;
               font-style: normal;
               font-weight: normal;
@@ -185,6 +185,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
       >
         <button
           aria-disabled={true}
+          aria-label="Increase value by 1"
           checked={false}
           className=
               ms-Button
@@ -281,7 +282,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -313,6 +313,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
         </button>
         <button
           aria-disabled={true}
+          aria-label="Decrease value by 1"
           checked={false}
           className=
               ms-Button
@@ -409,7 +410,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

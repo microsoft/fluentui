@@ -7,7 +7,7 @@ export const getCustomSplitButtonStyles = memoizeFunction(
     return {
       splitButtonMenuButton: { backgroundColor: 'white', width: '10px' },
       splitButtonMenuIcon: { fontSize: '7px' },
-      splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 12 },
+      splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 17 },
       splitButtonContainer: {
         selectors: {
           [HighContrastSelector]: {

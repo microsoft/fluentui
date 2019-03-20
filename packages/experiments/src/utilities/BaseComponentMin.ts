@@ -16,6 +16,8 @@ export interface IBaseProps<T = any> {
  *
  * @public
  */
+// TODO: rename, BaseComponentMin is ambiguous. BaseComponent? BaseComponentRef?
+// TODO: will probably need lifecycle deprecation changes before promotion similar to BaseComponent
 export class BaseComponentMin<TComponentProps extends IBaseProps = {}, TState = {}> extends React.Component<TComponentProps, TState> {
   /**
    * Controls whether the componentRef prop will be resolved by this component instance. If you are

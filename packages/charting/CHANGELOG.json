@@ -2,6 +2,142 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.8",
+      "tag": "@uifabric/charting_v0.28.8",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add type annotations based on update to \"styled\"",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.150.1 <7.0.0` to `>=6.151.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.7",
+      "tag": "@uifabric/charting_v0.28.7",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add saparator 2px for data segments",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "281d71ef07fe22d39d679d7311448455f76326d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.6",
+      "tag": "@uifabric/charting_v0.28.6",
+      "date": "Wed, 06 Feb 2019 13:38:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "office ui fabric charting package, legend related changes ",
+            "author": "dkishmareishvili <dkishmareishvili@gmail.com>",
+            "commit": "f8f23e10e9fa0c9b92111e108bb2957fab82ada1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.134.0 <7.0.0` to `>=6.135.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.5",
+      "tag": "@uifabric/charting_v0.28.5",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Basic conversions from componentWillReceiveProps to getDerivedStateFromProps",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.4",
+      "tag": "@uifabric/charting_v0.28.4",
+      "date": "Wed, 14 Nov 2018 13:34:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add empty bar for use case, changes to handle Nan cases and infinity case",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "183aa25155ba15ad1b99e3beeffd617f818014bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.103.0 <7.0.0` to `>=6.103.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.3",
+      "tag": "@uifabric/charting_v0.28.3",
+      "date": "Fri, 09 Nov 2018 13:32:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make change to multistacked bar chart's hideDenominator prop",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "1b32a57f0135257d9df873409df2c86435457829"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.2 <7.0.0` to `>=6.101.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.2",
+      "tag": "@uifabric/charting_v0.28.2",
+      "date": "Thu, 08 Nov 2018 04:17:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update to line chart to re-render on prop updates and addition of new prop to stacked and multistacked bar chart",
+            "author": "kartik nuli <nulikarthik@gmail.com>",
+            "commit": "dd4dc1df273e8b93f2411446225fb4fc39b5dd1a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.100.0 <7.0.0` to `>=6.100.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.0",
       "tag": "@uifabric/charting_v0.28.0",
       "date": "Fri, 02 Nov 2018 18:11:37 GMT",

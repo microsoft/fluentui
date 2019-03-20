@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DashboardGridLayout } from '../DashboardGridLayout';
-import { Layout, Layouts } from 'react-grid-layout';
+import { Layout, Layouts } from 'react-grid-layout-fabric';
 import { CardSize, DashboardGridBreakpointLayouts } from '@uifabric/dashboard';
 import * as exampleStyles from './DashboardGridLayout.Example.scss';
 

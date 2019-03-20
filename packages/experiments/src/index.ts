@@ -1,16 +1,22 @@
+export * from './Button';
 export * from './Chiclet';
 export * from './CollapsibleSection';
 export * from './CommandBar';
 export * from './FolderCover';
-export * from './Form';
 export * from './LayoutGroup';
+export * from './MenuButton';
+export * from './Pagination';
+export * from './Persona';
+export * from './PersonaCoin';
 export * from './Shimmer';
 export * from './Sidebar';
-export * from './Stack';
+export * from './Signals';
+export * from './SplitMenuButton';
 export * from './StaticList';
 export * from './Text';
 export * from './Tile';
 export * from './TilesList';
+export * from './Toggle';
 export * from './VirtualizedList';
 
 import './version';

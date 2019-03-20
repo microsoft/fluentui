@@ -5,6 +5,7 @@ import { getStyles } from './CardFrame.styles';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export class CardFrame extends React.Component<ICardFrameProps, {}> {
   constructor(props: ICardFrameProps) {
@@ -13,7 +14,16 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
 
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<ICardFrameProps, ICardFrameStyles>();
-    const { fontFamily, fontSize, cardTitle, seperatorColor, titleTextColor, disableDrag } = this.props;
+    const {
+      fontFamily,
+      fontSize,
+      cardTitle,
+      seperatorColor,
+      titleTextColor,
+      disableDrag,
+      cardFrameMenuAriaLabel,
+      cardFrameMenuTitle
+    } = this.props;
     const classNames = getClassNames(getStyles, {
       cardTitle,
       fontFamily,
@@ -47,9 +57,9 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
               onMouseDown={this._onLinkMouseDown}
               styles={{
                 root: {
-                  fontFamily: 'Segoe UI',
-                  fontWeight: '600',
-                  fontSize: '14px !important',
+                  fontFamily: DefaultFontStyles.medium.fontFamily,
+                  fontWeight: DefaultFontStyles.tiny.fontWeight,
+                  fontSize: DefaultFontStyles.medium.fontSize,
                   lineHeight: '19px',
                   selectors: {
                     ':hover': {
@@ -65,6 +75,8 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
               target={target}
               disabled={href === '#'}
               onClick={this._handleTitleClick}
+              title={cardTitle}
+              aria-label={cardTitle}
             >
               {cardTitle}
             </Link>
@@ -74,7 +86,8 @@ export class CardFrame extends React.Component<ICardFrameProps, {}> {
               className={classNames.ellipsisButtonStyle}
               menuIconProps={{ iconName: 'More' }}
               split={false}
-              aria-label={'More'}
+              ariaLabel={cardFrameMenuAriaLabel}
+              title={cardFrameMenuTitle}
               menuProps={{
                 calloutProps: {
                   styles: {

@@ -6,11 +6,10 @@ import {
   getId,
   assign,
   hasOverflow,
-  createRef,
   portalContainsElement,
   classNamesFunction
 } from '../../Utilities';
-import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps } from './TooltipHost.types';
+import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
 
@@ -20,13 +19,15 @@ export interface ITooltipHostState {
 
 const getClassNames = classNamesFunction<ITooltipHostStyleProps, ITooltipHostStyles>();
 
-export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
+export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
   public static defaultProps = {
     delay: TooltipDelay.medium
   };
 
+  private static _currentVisibleTooltip: ITooltipHost | undefined;
+
   // The wrapping div that gets the hover events
-  private _tooltipHost = createRef<HTMLDivElement>();
+  private _tooltipHost = React.createRef<HTMLDivElement>();
   private _classNames: { [key in keyof ITooltipHostStyles]: string };
 
   // The ID of the setTimeout that will eventually close the tooltip if the
@@ -103,6 +104,20 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     );
   }
 
+  public componentWillUnmount(): void {
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip === this) {
+      TooltipHostBase._currentVisibleTooltip = undefined;
+    }
+  }
+
+  public show = (): void => {
+    this._toggleTooltip(true);
+  };
+
+  public dismiss = (): void => {
+    this._hideTooltip();
+  };
+
   private _getTargetElement(): HTMLElement | undefined {
     if (!this._tooltipHost.current) {
       return undefined;
@@ -128,6 +143,11 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
   // Show Tooltip
   private _onTooltipMouseEnter = (ev: any): void => {
     const { overflowMode } = this.props;
+
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
+      TooltipHostBase._currentVisibleTooltip.dismiss();
+    }
+    TooltipHostBase._currentVisibleTooltip = this;
 
     if (overflowMode !== undefined) {
       const overflowElement = this._getTargetElement();
@@ -155,6 +175,9 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
       }, this.props.closeDelay);
     } else {
       this._toggleTooltip(false);
+    }
+    if (TooltipHostBase._currentVisibleTooltip === this) {
+      TooltipHostBase._currentVisibleTooltip = undefined;
     }
   };
 

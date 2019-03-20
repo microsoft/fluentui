@@ -3,6 +3,7 @@ import { ModalBase } from './Modal.base';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
+import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 export interface IModal {
@@ -12,7 +13,7 @@ export interface IModal {
   focus: () => void;
 }
 
-export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -52,10 +53,22 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   onDismissed?: () => any;
 
   /**
+   * Props to be passed through to Layer
+   */
+  layerProps?: ILayerProps;
+
+  /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
    * @defaultvalue false
    */
   isBlocking?: boolean;
+
+  /**
+   * Whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).
+   * if true: isBlocking is ignored, there will be no overlay (isDarkOverlay is ignored),
+   * isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false
+   */
+  isModeless?: boolean;
 
   /**
    * Optional class name to be added to the root class
@@ -74,6 +87,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * A callback function for when the Modal content is mounted on the overlay layer
+   * @deprecated Use layerProps.onLayerDidMount instead
    */
   onLayerDidMount?: () => void;
 
@@ -95,7 +109,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 }
 
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed'> & {
+  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
@@ -110,4 +124,5 @@ export interface IModalStyles {
   root: IStyle;
   main: IStyle;
   scrollableContent: IStyle;
+  layer: IStyle;
 }

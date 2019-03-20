@@ -7,12 +7,15 @@ import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { NavByKeysExample } from './examples/Nav.ByKeys.Example';
 import { NavStatus } from './Nav.checklist';
 import { NavCustomGroupHeadersExample } from 'office-ui-fabric-react/lib/components/Nav/examples/Nav.CustomGroupHeaders.Example';
+import { NavDisabledItemsExample } from './examples/Nav.DisabledItems.Example';
 
 const NavBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.Basic.Example.tsx') as string;
 const NavFabricDemoAppExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.FabricDemoApp.Example.tsx') as string;
 const NavNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.Nested.Example.tsx') as string;
 const NavByKeysExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.ByKeys.Example.tsx') as string;
 const NavCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.CustomGroupHeaders.Example.tsx') as string;
+
+const NavDisabledItemsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.DisabledItems.Example.tsx') as string;
 
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
@@ -39,6 +42,11 @@ export const NavPageProps: IDocPageProps = {
       title: 'Nav bar menu with group custom header',
       code: NavCustomGroupHeadersExampleCode,
       view: <NavCustomGroupHeadersExample />
+    },
+    {
+      title: 'Nav bar with disabled items',
+      code: NavDisabledItemsExampleCode,
+      view: <NavDisabledItemsExample />
     },
     {
       title: 'Nav bar of links each with unique keys and empty urls',

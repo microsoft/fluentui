@@ -3,11 +3,10 @@ import { IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } f
 import { getStyles } from './ExpandingCard.styles';
 import { ExpandingCardBase } from './ExpandingCard.base';
 
-export const ExpandingCard = styled<IExpandingCardProps, IExpandingCardStyleProps, IExpandingCardStyles>(
-  ExpandingCardBase,
-  getStyles,
-  undefined,
-  {
-    scope: 'ExpandingCard'
-  }
-);
+export const ExpandingCard: React.StatelessComponent<IExpandingCardProps> = styled<
+  IExpandingCardProps,
+  IExpandingCardStyleProps,
+  IExpandingCardStyles
+>(ExpandingCardBase, getStyles, undefined, {
+  scope: 'ExpandingCard'
+});

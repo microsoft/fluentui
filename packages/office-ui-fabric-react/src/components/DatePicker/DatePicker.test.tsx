@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
@@ -34,10 +35,75 @@ describe('DatePicker', () => {
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
+  // if isDatePickerShown is not set, the DatePicker should not
+  // be rendered and therefore aria-owns should not exist
+  it('should not render DatePicker when isDatePickerShown is not set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: false });
+
+    expect(datePicker.getDOMNode().getAttribute('aria-owns')).toBeNull();
+  });
+
+  // if isDatePickerShown is set, the DatePicker should be rendered
+  // and aria-owns should exist
+  it('should render DatePicker when isDatePickerShown is set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+
+    expect(
+      datePicker
+        .find('[aria-owns]')
+        .getDOMNode()
+        .getAttribute('aria-owns')
+    ).toBeDefined();
+  });
+
+  // if isDatePickerShown is set, the DatePicker should be rendered
+  // and the calloutId should exist in the DOM
+  it('should render DatePicker and calloutId must exist in the DOM when isDatePickerShown is set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+
+    const calloutId = datePicker
+      .find('[aria-owns]')
+      .getDOMNode()
+      .getAttribute('aria-owns');
+
+    expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
+  });
+
   it('should not open DatePicker when disabled, with label', () => {
     const wrapper = mount(<DatePickerBase disabled label="label" />);
     wrapper.find('i').simulate('click');
     expect(wrapper.state('isDatePickerShown')).toBe(false);
+  });
+
+  it('should call onSelectDate even when required input is empty when allowTextInput is true', () => {
+    const onSelectDate = jest.fn();
+    const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} onSelectDate={onSelectDate} />);
+    const textField = datePicker.find('input');
+
+    expect(textField).toBeDefined();
+
+    textField.simulate('change', { target: { value: 'Jan 1 2030' } }).simulate('blur');
+    textField.simulate('change', { target: { value: '' } }).simulate('blur');
+
+    expect(onSelectDate).toHaveBeenCalledTimes(2);
+
+    datePicker.unmount();
+  });
+
+  // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
+  it.skip('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+    const onSelectDate = jest.fn();
+    const datePicker = mount(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
+
+    datePicker.setState({ isDatePickerShown: true });
+    ReactTestUtils.Simulate.click(document.querySelector('.ms-DatePicker-day--today') as HTMLButtonElement);
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+
+    datePicker.unmount();
   });
 
   it('should set "Calendar" as the Callout\'s aria-label', () => {

@@ -6,7 +6,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
 
       {
         flex-grow: 1;
-        overflow-y: auto;
+        overflow-y: hidden;
       }
 >
   <div

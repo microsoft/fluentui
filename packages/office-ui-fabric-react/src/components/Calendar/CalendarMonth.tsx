@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getRTL } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import {
@@ -21,7 +21,7 @@ export interface ICalendarMonth {
 }
 
 export interface ICalendarMonthProps extends React.ClassAttributes<CalendarMonth> {
-  componentRef?: (c: ICalendarMonth) => void;
+  componentRef?: IRefObject<ICalendarMonth>;
   navigatedDate: Date;
   selectedDate: Date;
   strings: ICalendarStrings;
@@ -91,14 +91,17 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
     } = this.props;
 
     if (this.state.isYearPickerVisible) {
+      // default the year picker to the current navigated date
+      const currentSelectedDate = navigatedDate ? navigatedDate.getFullYear() : undefined;
       return (
         <CalendarYear
+          key={'calendarYear_' + (currentSelectedDate && currentSelectedDate.toString())}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
           navigationIcons={navigationIcons}
           onHeaderSelect={this._onYearPickerHeaderSelect}
-          selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
+          selectedYear={currentSelectedDate}
           onRenderYear={this._onRenderYear}
           strings={{
             rangeAriaLabel: this._yearRangeToString
@@ -149,6 +152,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
               </button>
@@ -165,6 +169,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
               </button>
@@ -201,6 +206,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     aria-selected={isCurrentMonth || isNavigatedMonth}
                     data-is-focusable={isInBounds ? true : undefined}
                     ref={isNavigatedMonth ? 'navigatedMonth' : undefined}
+                    type="button"
                   >
                     {month}
                   </button>

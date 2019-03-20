@@ -214,45 +214,21 @@ module IconFontSizes {
 
 }
 
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
+interface IEffects {
+  elevation16: string;
+  elevation4: string;
+  elevation64: string;
+  elevation8: string;
+  roundedCorner2: string;
+}
+
 // @public
 interface IFontFace extends IRawFontStyle {
   fontFeatureSettings?: string;
   src?: string;
   unicodeRange?: ICSSRule | string;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontFamilies {
-  // (undocumented)
-  default: string;
-  // (undocumented)
-  monospace: string;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontSizes {
-  // (undocumented)
-  large: string;
-  // (undocumented)
-  medium: string;
-  // (undocumented)
-  mediumPlus: string;
-  // (undocumented)
-  mega: string;
-  // (undocumented)
-  mini: string;
-  // (undocumented)
-  small: string;
-  // (undocumented)
-  smallPlus: string;
-  // (undocumented)
-  xLarge: string;
-  // (undocumented)
-  xSmall: string;
-  // (undocumented)
-  xxLarge: string;
 }
 
 // @public
@@ -281,59 +257,6 @@ interface IFontStyles {
   xxLarge: IRawStyle;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariant {
-  // (undocumented)
-  color?: keyof ISemanticTextColors;
-  // (undocumented)
-  disabledColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  family: keyof IFontFamilies | string;
-  // (undocumented)
-  hoverColor?: keyof ISemanticTextColors;
-  // (undocumented)
-  size: keyof IFontSizes | number | string;
-  // (undocumented)
-  weight: keyof IFontWeights | number;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontVariants {
-  // (undocumented)
-  caption: Partial<IFontVariant>;
-  // (undocumented)
-  default: Partial<IFontVariant>;
-  // (undocumented)
-  h1: Partial<IFontVariant>;
-  // (undocumented)
-  h2: Partial<IFontVariant>;
-  // (undocumented)
-  h3: Partial<IFontVariant>;
-  // (undocumented)
-  h4: Partial<IFontVariant>;
-  // (undocumented)
-  h5: Partial<IFontVariant>;
-  // (undocumented)
-  link: Partial<IFontVariant>;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IFontWeights {
-  // (undocumented)
-  bold: IFontWeight;
-  // (undocumented)
-  default: IFontWeight;
-  // (undocumented)
-  light: IFontWeight;
-  // (undocumented)
-  regular: IFontWeight;
-  // (undocumented)
-  semibold: IFontWeight;
-}
-
 // @public (undocumented)
 interface IIconOptions {
   disableWarnings: boolean;
@@ -359,13 +282,6 @@ interface IIconSubset {
   }
   // (undocumented)
   style?: IRawStyle;
-}
-
-// @public
-enum InjectionMode {
-  appendChild = 2,
-  insertNode = 1,
-  none = 0
 }
 
 // @public
@@ -418,6 +334,7 @@ interface IPalette {
   white: string;
   whiteTranslucent40: string;
   yellow: string;
+  yellowDark: string;
   yellowLight: string;
 }
 
@@ -433,6 +350,8 @@ interface IRawStyle extends IRawStyleBase {
 interface IScheme {
   disableGlobalClassNames: boolean;
   // (undocumented)
+  effects: IEffects;
+  // (undocumented)
   fonts: IFontStyles;
   // (undocumented)
   isInverted: boolean;
@@ -443,13 +362,11 @@ interface IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
   spacing: ISpacing;
-  // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-  // @internal
-  typography: ITypography;
 }
 
 // @public
 interface ISemanticColors extends ISemanticTextColors {
+  accentButtonBackground: string;
   blockingBackground: string;
   bodyBackground: string;
   bodyDivider: string;
@@ -507,6 +424,7 @@ interface ISemanticColors extends ISemanticTextColors {
 
 // @public (undocumented)
 interface ISemanticTextColors {
+  accentButtonText: string;
   actionLink: string;
   actionLinkHovered: string;
   bodySubtext: string;
@@ -518,11 +436,14 @@ interface ISemanticTextColors {
   buttonTextDisabled: string;
   buttonTextHovered: string;
   buttonTextPressed: string;
+  disabledBodySubtext: string;
   disabledBodyText: string;
   disabledSubtext: string;
   disabledText: string;
   errorText: string;
   inputPlaceholderText: string;
+  inputText: string;
+  inputTextHovered: string;
   link: string;
   linkHovered: string;
   listText: string;
@@ -565,19 +486,6 @@ interface ITheme extends IScheme {
   schemes?: {
           [P in ISchemeNames]?: IScheme;
       };
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface ITypography {
-  // (undocumented)
-  families: IFontFamilies;
-  // (undocumented)
-  sizes: IFontSizes;
-  // (undocumented)
-  variants: IFontVariants;
-  // (undocumented)
-  weights: IFontWeights;
 }
 
 // @public
@@ -689,4 +597,6 @@ module ZIndexes {
 // WARNING: Unsupported export: IStyle
 // WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IProcessedStyleSet
+// WARNING: Unsupported export: InjectionMode
+// WARNING: Unsupported export: InjectionMode
 // (No @packagedocumentation comment for this package)

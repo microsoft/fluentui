@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import { BaseComponent, IRenderFunction, createRef, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, IRenderFunction, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
@@ -12,6 +12,9 @@ import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.t
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
 const getClassNames = classNamesFunction<IDetailsColumnStyleProps, IDetailsColumnStyles>();
+const TRANSITION_DURATION_DRAG = 200; // ms
+const TRANSITION_DURATION_DROP = 1500; // ms
+const CLASSNAME_ADD_INTERVAL = 20; // ms
 
 export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   private _root: any;
@@ -21,7 +24,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   constructor(props: IDetailsColumnProps) {
     super(props);
 
-    this._root = createRef();
+    this._root = React.createRef();
     this._onDragStart = this._onDragStart.bind(this);
     this._onDragEnd = this._onDragEnd.bind(this);
     this._onRootMouseDown = this._onRootMouseDown.bind(this);
@@ -41,7 +44,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       isIconVisible: column.isSorted || column.isGrouped || column.isFiltered,
       isPadded: column.isPadded,
       isIconOnly: column.isIconOnly,
-      cellStyleProps
+      cellStyleProps,
+      transitionDurationDrag: TRANSITION_DURATION_DRAG,
+      transitionDurationDrop: TRANSITION_DURATION_DROP
     });
 
     const classNames = this._classNames;
@@ -78,7 +83,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                 <span
                   id={`${parentId}-${column.key}`}
                   aria-label={column.isIconOnly ? column.name : undefined}
-                  aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name `}
+                  aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name`}
                   className={classNames.cellTitle}
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                   role={
@@ -88,11 +93,14 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                       : undefined
                   }
                   aria-describedby={
-                    this.props.onRenderColumnHeaderTooltip || this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
+                    !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
                   }
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
+                  aria-expanded={
+                    column.columnActionsMode === ColumnActionsMode.hasDropdown ? (column.isMenuOpen ? true : false) : undefined
+                  }
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
                     {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}
@@ -106,8 +114,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
                   {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
 
-                  {column.columnActionsMode === ColumnActionsMode.hasDropdown &&
-                    !column.isIconOnly && <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />}
+                  {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
+                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                  )}
                 </span>
               )
             },
@@ -125,7 +134,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       delete this._dragDropSubscription;
     }
 
-    if (this.props.dragDropHelper && this.props.isDraggable!) {
+    if (this.props.dragDropHelper && this.props.isDraggable) {
       this._dragDropSubscription = this.props.dragDropHelper.subscribe(
         this._root.current as HTMLElement,
         this._events,
@@ -139,14 +148,22 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     const classNames = this._classNames;
 
     if (this.props.isDropped) {
-      if (this._root!.current!) {
-        this._root!.current!.classList!.add(classNames.borderAfterDropping);
+      if (this._root.current) {
+        this._root.current.classList.add(classNames.borderAfterDropping);
+
+        this._async.setTimeout(() => {
+          if (this._root.current) {
+            this._root.current.classList.add(classNames.noBorderAfterDropping);
+          }
+        }, CLASSNAME_ADD_INTERVAL);
       }
-      setTimeout(() => {
-        if (this._root!.current!) {
-          this._root!.current!.classList!.remove(classNames.borderAfterDropping);
+
+      this._async.setTimeout(() => {
+        if (this._root.current) {
+          this._root.current.classList.remove(classNames.borderAfterDropping);
+          this._root.current.classList.remove(classNames.noBorderAfterDropping);
         }
-      }, 1500);
+      }, TRANSITION_DURATION_DROP + CLASSNAME_ADD_INTERVAL);
     }
   }
 
@@ -158,9 +175,9 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   }
 
   public componentDidUpdate(): void {
-    if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable!) {
+    if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable) {
       this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-        this._root.value as HTMLElement,
+        this._root.current as HTMLElement,
         this._events,
         this._getColumnDragDropOptions()
       );
@@ -168,7 +185,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       // We need to use native on this to avoid MarqueeSelection from handling the event before us.
       this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
     }
-    if (this._dragDropSubscription && !this.props.isDraggable!) {
+    if (this._dragDropSubscription && !this.props.isDraggable) {
       this._dragDropSubscription.dispose();
       this._events.off(this._root.current, 'mousedown');
       delete this._dragDropSubscription;
@@ -244,6 +261,11 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     if (itemIndex) {
       this._updateHeaderDragInfo(itemIndex);
       this._root.current.classList.add(classNames.borderWhileDragging);
+      this._async.setTimeout(() => {
+        if (this._root.current) {
+          this._root.current.classList.add(classNames.noBorderWhileDragging);
+        }
+      }, CLASSNAME_ADD_INTERVAL);
     }
   }
 
@@ -253,6 +275,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       this._updateHeaderDragInfo(-1, event);
     }
     this._root.current.classList.remove(classNames.borderWhileDragging);
+    this._root.current.classList.remove(classNames.noBorderWhileDragging);
   }
 
   private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent) {

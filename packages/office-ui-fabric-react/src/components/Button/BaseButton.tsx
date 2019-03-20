@@ -37,10 +37,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private get _isExpanded(): boolean {
+    const { menuProps } = this.state;
     if (this.props.persistMenu) {
-      return !this.state.menuProps!.hidden;
+      return !!menuProps && !menuProps.hidden;
     }
-    return !!this.state.menuProps;
+    return !!menuProps;
   }
 
   public static defaultProps: Partial<IBaseButtonProps> = {
@@ -73,8 +74,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._ariaDescriptionId = getId();
     let menuProps = null;
     if (props.persistMenu && props.menuProps) {
-      menuProps = props.menuProps;
-      menuProps.hidden = true;
+      // Clone props so we don't mutate them.
+      menuProps = { ...props.menuProps, hidden: true };
     }
     this.state = {
       menuProps: menuProps
@@ -102,7 +103,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       getClassNames
     } = this.props;
 
-    const { menuProps } = this.state;
     // Button is disabled if the whole button (in case of splitbutton is disabled) or if the primary action is disabled
     const isPrimaryButtonDisabled = disabled || primaryDisabled;
 
@@ -115,7 +115,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          this._isMenuExpanded(),
           this.props.split,
           !!allowDisabledFocus
         )
@@ -128,7 +128,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          !!menuProps,
+          this._isMenuExpanded(),
           this.props.split
         );
 
@@ -222,9 +222,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
-    // If Button's menu was closed, run onAfterMenuDismiss
-    if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
-      this.props.onAfterMenuDismiss();
+    // If Button's menu was closed, run onAfterMenuDismiss. If the menu is being persisted
+    // this condition is tested by checking on a change on the menuProps hidden value.
+    if (this.props.onAfterMenuDismiss && prevState.menuProps) {
+      if (!this.state.menuProps || (this.props.persistMenu && !prevState.menuProps.hidden && this.state.menuProps.hidden)) {
+        this.props.onAfterMenuDismiss();
+      }
     }
   }
 
@@ -359,6 +362,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
   }
 
+  private _isMenuExpanded(): boolean {
+    const { menuProps } = this.state;
+    return !!menuProps && !menuProps.hidden;
+  }
+
   private _onRenderChildren = (): JSX.Element | null => {
     const { children } = this.props;
 
@@ -420,6 +428,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         {...menuProps}
         shouldFocusOnContainer={this.state.menuProps ? this.state.menuProps.shouldFocusOnContainer : undefined}
         shouldFocusOnMount={this.state.menuProps ? this.state.menuProps.shouldFocusOnMount : undefined}
+        hidden={this.state.menuProps ? this.state.menuProps.hidden : undefined}
         className={css('ms-BaseButton-menuhost', menuProps.className)}
         target={this._isSplitButton ? this._splitButtonContainer.current : this._buttonElement.current}
         onDismiss={onDismiss}
@@ -430,8 +439,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _dismissMenu = (): void => {
     let menuProps = null;
     if (this.props.persistMenu && this.state.menuProps) {
-      menuProps = this.state.menuProps;
-      menuProps.hidden = true;
+      // Create a new object to trigger componentDidUpdate
+      menuProps = { ...this.state.menuProps, hidden: true };
     }
     this.setState({ menuProps: menuProps });
   };
@@ -721,8 +730,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (!ev.defaultPrevented) {
       // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
       // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-      // between a real click event and a keypress event.
-      const shouldFocusOnContainer = ev.nativeEvent.detail !== 0;
+      // between a real click event and a keypress event (detail should be the number of mouse clicks).
+      // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
+      // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
+      // and "" for pressing "Enter" with Narrator on.
+      const shouldFocusOnContainer = ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse';
       this._onToggleMenu(shouldFocusOnContainer);
       ev.preventDefault();
       ev.stopPropagation();
