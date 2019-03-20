@@ -2,6 +2,20 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "version": "0.1.2",
+      "tag": "@uifabric/migration_v0.1.2",
+      "date": "Wed, 20 Mar 2019 03:15:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Migration: fixed the bin script's shebang to point to the right \"env\" executable",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "693183132f82cf336b4e8f8fa00f56050882dcfc"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.1",
       "tag": "@uifabric/migration_v0.1.1",
       "date": "Tue, 19 Mar 2019 18:05:11 GMT",
