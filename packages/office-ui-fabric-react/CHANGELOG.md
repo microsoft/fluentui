@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Mar 2019 03:15:21 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Mar 2019 16:14:56 GMT and should not be manually modified.
+
+## 6.157.3
+Wed, 20 Mar 2019 16:14:56 GMT
+
+### Patches
+
+- FocusTrapZone: Make sure to call passed in focus and blur handlers
 
 ## 6.157.2
 Wed, 20 Mar 2019 03:15:21 GMT

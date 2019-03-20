@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.157.3",
+      "tag": "office-ui-fabric-react_v6.157.3",
+      "date": "Wed, 20 Mar 2019 16:14:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusTrapZone: Make sure to call passed in focus and blur handlers",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "d0dc6be1cd00dfdbb181ca8ac3b7cb48f11518ed"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.157.2",
       "tag": "office-ui-fabric-react_v6.157.2",
       "date": "Wed, 20 Mar 2019 03:15:21 GMT",
