@@ -102,11 +102,19 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
   const circleCheckedHoveredBorderColor = palette.themeDark;
   const circleDisabledBorderColor = semanticColors.disabledBodySubtext;
   const circleBackgroundColor = semanticColors.bodyBackground;
+  const dotUncheckedHoveredColor = palette.neutralSecondary;
   const dotCheckedColor = semanticColors.inputBackgroundChecked;
+  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
+  const dotCheckedHoveredColor = palette.themeDark;
   const dotDisabledColor = semanticColors.disabledBodySubtext;
   // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.bodyTextChecked
   const labelHoverFocusColor = palette.neutralDark;
   const focusBorderColor = semanticColors.focusBorder;
+  const iconOrImageChoiceBorderUncheckedHoveredColor = semanticColors.inputBorderHovered;
+  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
+  const iconOrImageChoiceBorderCheckedColor = semanticColors.inputBackgroundChecked;
+  const iconOrImageChoiceBorderCheckedHoveredColor = palette.themeDark;
+  const iconOrImageChoiceBackgroundColor = palette.neutralLighter;
 
   const fieldHoverOrFocusProperties = {
     selectors: {
@@ -126,21 +134,21 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
             top: 5,
             width: 10,
             height: 10,
-            backgroundColor: palette.neutralSecondary
+            backgroundColor: dotUncheckedHoveredColor
           },
         checked && {
-          borderColor: palette.themeDark
+          borderColor: dotCheckedHoveredColor
         }
       ]
     }
   };
 
   const enabledFieldWithImageHoverOrFocusProperties = {
-    borderColor: checked ? palette.themeDark : palette.neutralTertiaryAlt,
+    borderColor: checked ? iconOrImageChoiceBorderCheckedHoveredColor : iconOrImageChoiceBorderUncheckedHoveredColor,
     selectors: {
       ':before': {
         opacity: 1,
-        borderColor: checked ? palette.themeDark : semanticColors.inputBorderHovered
+        borderColor: checked ? circleCheckedHoveredBorderColor : circleHoveredBorderColor
       }
     }
   };
@@ -262,7 +270,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         fontSize: 0,
         margin: '0 4px 4px 0',
         paddingLeft: 0,
-        backgroundColor: palette.neutralLighter,
+        backgroundColor: iconOrImageChoiceBackgroundColor,
         height: '100%'
       }
     ],
@@ -320,7 +328,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         flexDirection: 'column'
       },
       checked && {
-        borderColor: palette.themePrimary
+        borderColor: iconOrImageChoiceBorderCheckedColor
       },
       (hasIcon || hasImage) &&
         !disabled && {
@@ -342,7 +350,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       },
       checked &&
         disabled && {
-          borderColor: palette.neutralLighter
+          borderColor: iconOrImageChoiceBackgroundColor
         }
     ],
     innerField: [
