@@ -7237,7 +7237,7 @@ interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
   subText?: string;
   subTextId?: string;
   theme?: ITheme;
-  title?: string;
+  title?: string | JSX.Element;
   titleId?: string;
   topButtonsProps?: IButtonProps[];
   type?: DialogType;
@@ -7338,7 +7338,7 @@ interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiv
   subText?: string;
   theme?: ITheme;
   // @deprecated
-  title?: string;
+  title?: string | JSX.Element;
   // @deprecated
   topButtonsProps?: IButtonProps[];
   // @deprecated
