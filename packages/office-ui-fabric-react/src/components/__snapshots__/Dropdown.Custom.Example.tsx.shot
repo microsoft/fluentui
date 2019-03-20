@@ -179,7 +179,7 @@ exports[`Component Examples renders Dropdown.Custom.Example.tsx correctly 1`] = 
           className="dropdownExample-placeholder"
         >
           <i
-            aria-hidden={true}
+            aria-hidden="true"
             className=
 
                 {

@@ -83,7 +83,7 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                     type="button"
                   >
                     <i
-                      aria-hidden={true}
+                      aria-hidden={false}
                       className=
 
                           {

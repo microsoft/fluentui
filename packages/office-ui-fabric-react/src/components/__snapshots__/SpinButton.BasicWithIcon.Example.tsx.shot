@@ -28,7 +28,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
           }
     >
       <i
-        aria-hidden={true}
+        aria-hidden="true"
         className=
 
             {
