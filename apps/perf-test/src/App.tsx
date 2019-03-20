@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {
+  createTheme,
   Dropdown,
   BaseButton,
   PrimaryButton,
@@ -9,12 +9,13 @@ import {
   DetailsRow,
   DetailsRowBase,
   IColumn,
+  IDropdownOption,
   Toggle,
   Text,
   Selection,
   SelectionMode
 } from 'office-ui-fabric-react';
-import { Button as NewButton } from '@uifabric/experiments';
+import { Button as NewButton, Toggle as NewToggle } from '@uifabric/experiments';
 
 import { useTimer } from './useTimer';
 
@@ -38,24 +39,40 @@ const Columns: IColumn[] = [
 const selection = new Selection();
 selection.setItems(Items);
 
-const Scenarios = [
-  { key: 'pributton', timing: [], text: 'PrimaryButton', content: <PrimaryButton text="I am a button" /> },
-  { key: 'basebutton', timing: [], text: 'BaseButton', content: <BaseButton text="I am a button" /> },
-  { key: 'newbutton', timing: [], text: 'NewButton', content: <NewButton>I am a button</NewButton> },
-  { key: 'button', timing: [], text: 'button', content: <button>I am a button</button> },
+const defaultTheme = createTheme({});
+
+const Scenarios: IDropdownOption[] = [
+  { key: 'pributton', text: 'PrimaryButton', data: { timing: [], content: <PrimaryButton text="I am a button" /> } },
+  { key: 'basebutton', text: 'BaseButton', data: { timing: [], content: <BaseButton text="I am a button" /> } },
+  { key: 'newbutton', text: 'NewButton', data: { timing: [], content: <NewButton>I am a button</NewButton> } },
+  { key: 'button', text: 'button', data: { timing: [], content: <button>I am a button</button> } },
   {
     key: 'rowsnostyles',
-    timing: [] as number[],
     text: 'DetailsRows without styles',
-    content: <DetailsRowBase itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />
+    data: {
+      timing: [] as number[],
+      content: (
+        <DetailsRowBase
+          theme={defaultTheme}
+          itemIndex={0}
+          item={Items[0]}
+          columns={Columns}
+          selection={selection}
+          selectionMode={SelectionMode.single}
+        />
+      )
+    }
   },
   {
     key: 'rows',
-    timing: [] as number[],
     text: 'DetailsRows',
-    content: <DetailsRow itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />
+    data: {
+      timing: [] as number[],
+      content: <DetailsRow itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />
+    }
   },
-  { key: 'toggles', timing: [], text: 'Toggles', content: <Toggle checked /> }
+  { key: 'toggles', text: 'Toggles', data: { timing: [], content: <Toggle checked /> } },
+  { key: 'newtoggles', text: 'NewToggle', data: { timing: [], content: <NewToggle checked /> } }
 ];
 const DefaultScenarioIndex = 4;
 
@@ -70,21 +87,30 @@ export const App = () => {
 
   if (duration && duration != _lastDuration) {
     _lastDuration = duration;
-    scenario.timing.push(duration);
+    scenario.data.timing.push(duration);
   }
   return (
     <div>
       <Stack gap={20} style={{ maxWidth: 300 }}>
-        <Dropdown label="Scenario" options={Scenarios} selectedKey={scenario.key} onChange={(ev, scenario) => setScenario(scenario)} />
+        <Dropdown
+          label="Scenario"
+          options={Scenarios}
+          selectedKey={scenario.key}
+          onChange={(ev, option) => {
+            if (option) {
+              setScenario(option);
+            }
+          }}
+        />
         <TextField label="Count" value={String(count)} type="number" onChange={(ev, value) => setCount(Number(value))} />
         <PrimaryButton text="Run test" onClick={() => setIsRunning(true)} />
         {duration && (
           <Text variant="medium">
-            Average time: {average(scenario.timing)}ms, Last time: {Math.round(duration) + 'ms'}
+            Average time: {average(scenario.data.timing)}ms, Last time: {Math.round(duration) + 'ms'}
           </Text>
         )}
       </Stack>
-      <div>{isVisible && Array.from({ length: count }, () => <div>{scenario.content}</div>)}</div>
+      <div>{isVisible && Array.from({ length: count }, () => <div>{scenario.data.content}</div>)}</div>
     </div>
   );
 };
