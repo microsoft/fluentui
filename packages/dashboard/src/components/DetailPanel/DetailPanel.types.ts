@@ -145,6 +145,14 @@ export interface IDetailPanelBaseProps {
    * Reject with @type {IDetailPanelErrorResult} to set the error state message bar
    */
   onRefresh?: FunctionCallback<void>;
+  /**
+   * tooltip for refresh icon
+   */
+  refreshTooltip?: string;
+  /**
+   * tooltip for close icon
+   */
+  closeTooltip?: string;
 
   /**
    * Call back on getting the customized loading animation to override the default
@@ -284,6 +292,14 @@ export interface IBaseContainerProps extends IBaseContainerExtendProps {
    * Footer to display if any
    */
   actionBar?: IDetailPanelActionBarProps;
+  /**
+   * tooltip for refresh icon
+   */
+  refreshTooltip?: string;
+  /**
+   * tooltip for close icon
+   */
+  closeTooltip?: string;
 
   /**
    * On dismiss the detail panel

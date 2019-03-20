@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Mar 2019 12:34:45 GMT and should not be manually modified.
+
+## 6.12.2
+Wed, 20 Mar 2019 12:34:45 GMT
+
+### Patches
+
+- Remove template literal in fabric-website/index
 
 ## 6.12.1
 Tue, 19 Mar 2019 12:36:45 GMT
