@@ -10,8 +10,6 @@ export const hasUHF: boolean =
  */
 export const isLocal: boolean = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
 
-// Todo: Move URL Utilities here (see BlogPost.tsx and index.html)
-
 /**
  * Get URL parameters by name
  * @param name - Name of the URL parameter to look for
