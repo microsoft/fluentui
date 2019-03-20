@@ -1078,7 +1078,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Slider-active
 
                       {
-                        background: #c8c6c4;
+                        background: #a19f9d;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
