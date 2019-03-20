@@ -127,10 +127,18 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _onRootFocus = (ev: React.FocusEvent<HTMLDivElement>) => {
+    if (this.props.onFocus) {
+      this.props.onFocus(ev);
+    }
+
     this._hasFocus = true;
   };
 
   private _onRootBlur = (ev: React.FocusEvent<HTMLDivElement>) => {
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
+
     let relatedTarget = ev.relatedTarget;
     if (ev.relatedTarget === null) {
       // In IE11, due to lack of support, event.relatedTarget is always
