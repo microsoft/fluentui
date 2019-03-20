@@ -82,7 +82,7 @@ const _measureScrollRect = _measurePageRect;
 export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item: any, index: number, containsFocus: boolean) => <div>{(item && item.name) || ''}</div>,
+    onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
@@ -447,15 +447,17 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { onRenderCell, role } = this.props;
 
     const {
-      page: { items, startIndex },
+      page: { items = [], startIndex },
       ...divProps
     } = pageProps;
 
     // only assign list item role if no role is assigned
     const cellRole = role === undefined ? 'listitem' : 'presentation';
+    const cells: React.ReactNode[] = [];
 
-    const cells = (items || []).map((item: any, offset: number) => {
-      const index = startIndex + offset;
+    for (let i = 0; i < items.length; i++) {
+      const index = startIndex + i;
+      const item = items[i];
 
       let itemKey = this.props.getKey ? this.props.getKey(item, index) : item && item.key;
 
@@ -463,12 +465,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         itemKey = index;
       }
 
-      return (
+      cells.push(
         <div role={cellRole} className={css('ms-List-cell')} key={itemKey} data-list-index={index} data-automationid="ListCell">
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
-    });
+    }
 
     return <div {...divProps}>{cells}</div>;
   };
@@ -886,13 +888,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const cachedPage = this._pageCache[pageKey];
     if (cachedPage && cachedPage.page) {
       return cachedPage.page;
-    }
-
-    // Fill undefined cells because array.map will ignore undefined cells.
-    if (items) {
-      for (let i = 0; i < items.length; i++) {
-        items[i] = items[i] || undefined;
-      }
     }
 
     return {

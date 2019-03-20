@@ -778,6 +778,12 @@ export function correctRGB(color: IRGB): IRGB;
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
 
+// @public
+export function createComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics;
+
+// @public
+export function createFactory<TProps>(ComponentType: React.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps>;
+
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
@@ -1447,6 +1453,9 @@ export function getScrollbarWidth(): number;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public
+export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(userProps: TProps, slots: ISlotDefinition<Required<TSlots>>): ISlots<Required<TSlots>>;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -3047,6 +3056,18 @@ interface ICommandBarStyles {
   root?: IStyle;
   // (undocumented)
   secondarySet?: IStyle;
+}
+
+// @public
+interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
+  displayName: string;
+  factoryOptions?: IFactoryOptions<TComponentProps>;
+  fields?: string[];
+  state?: IStateComponentType<TComponentProps, TViewProps>;
+  statics?: TStatics;
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
+  view: IViewComponent<TViewProps>;
 }
 
 // @public (undocumented)
@@ -6879,6 +6900,12 @@ interface IDeclaredEventsByName {
 }
 
 // @public
+interface IDefaultSlotProps<TSlots> {
+  // (undocumented)
+  _defaultStyles: IComponentStyles<TSlots>;
+}
+
+// @public
 interface IDelayedRenderProps extends React.Props<{}> {
   delay?: number;
 }
@@ -7992,6 +8019,11 @@ interface IFacepileStyles {
   root: IStyle;
   // (undocumented)
   screenReaderOnly: IStyle;
+}
+
+// @public
+interface IFactoryOptions<TProps> {
+  defaultProp?: keyof TProps | 'children';
 }
 
 // @public
@@ -9755,6 +9787,12 @@ interface IPositioningContainerState {
   positions?: IPositionedData;
 }
 
+// @public
+interface IProcessedSlotProps {
+  // (undocumented)
+  className?: string;
+}
+
 // @public (undocumented)
 interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   ariaValueText?: string;
@@ -10605,6 +10643,12 @@ interface ISliderStyles {
 }
 
 // @public
+interface ISlotCreator<TProps> {
+  // (undocumented)
+  create?: ISlotFactory<TProps>;
+}
+
+// @public
 export function isMac(reset?: boolean): boolean;
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -10810,6 +10854,18 @@ interface IStickyState {
   isStickyBottom: boolean;
   // (undocumented)
   isStickyTop: boolean;
+}
+
+// @public
+interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
+  // (undocumented)
+  className?: string;
+  // (undocumented)
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
+  // (undocumented)
+  theme?: ITheme;
+  // (undocumented)
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
 // @public
@@ -11276,6 +11332,14 @@ interface ITheme extends IScheme {
 }
 
 // @public (undocumented)
+interface IThemeProviderProps {
+  // (undocumented)
+  scheme?: ISchemeNames;
+  // (undocumented)
+  theme?: ITheme;
+}
+
+// @public (undocumented)
 interface IThemeRules {
   // (undocumented)
   [key: string]: IThemeSlotRule;
@@ -11355,6 +11419,10 @@ interface IToggleStyles {
   root: IStyle;
   text: IStyle;
   thumb: IStyle;
+}
+
+// @public
+interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {
 }
 
 // @public (undocumented)
@@ -12974,6 +13042,9 @@ export function warnDeprecations<P>(componentName: string, props: P, deprecation
 // @public
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
 
+// @public
+export function withSlots<P>(type: ISlot<P> | React.SFC<P> | string, props?: React.Attributes & P | null, ...children: React.ReactNode[]): React.ReactElement<P> | JSX.Element | null;
+
 // @public (undocumented)
 module ZIndexes {
   // (undocumented)
@@ -13055,6 +13126,34 @@ module ZIndexes {
 // WARNING: Unsupported export: IBaseFloatingPickerSuggestionProps
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
+// WARNING: Unsupported export: IPropsWithChildren
+// WARNING: Unsupported export: IComponentStyles
+// WARNING: Unsupported export: IStylesFunction
+// WARNING: Unsupported export: IStylesFunctionOrObject
+// WARNING: Unsupported export: IToken
+// WARNING: Unsupported export: ITokenFunction
+// WARNING: Unsupported export: ITokenFunctionOrObject
+// WARNING: Unsupported export: ITokenBase
+// WARNING: Unsupported export: ICustomizationProps
+// WARNING: Unsupported export: IStateComponentProps
+// WARNING: Unsupported export: IStateComponentType
+// WARNING: Unsupported export: IViewComponent
+// WARNING: Unsupported export: IViewRenderer
+// WARNING: Unsupported export: IHTMLSlot
+// WARNING: Unsupported export: IHTMLElementSlot
+// WARNING: Unsupported export: ISlottableComponentType
+// WARNING: Unsupported export: ISlottableReactType
+// WARNING: Unsupported export: ISlotDefinition
+// WARNING: Unsupported export: ISlot
+// WARNING: Unsupported export: ISlotFactory
+// WARNING: Unsupported export: ISlots
+// WARNING: Unsupported export: ISlotProps
+// WARNING: Unsupported export: ISlotProp
+// WARNING: Unsupported export: ISlotPropValue
+// WARNING: Unsupported export: ISlotPropRenderFunction
+// WARNING: Unsupported export: ISlotRenderer
+// WARNING: Unsupported export: ISlotRender
+// WARNING: Unsupported export: ThemeProvider
 // WARNING: Unsupported export: Grid
 // WARNING: Unsupported export: IGroupHeaderStyleProps
 // WARNING: Unsupported export: IGroupFooterStyleProps

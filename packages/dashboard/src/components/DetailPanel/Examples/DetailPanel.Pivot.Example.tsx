@@ -165,6 +165,14 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
         onAction: () => {
           alert('Expiration');
         }
+      } as IDetailInfoTileProps,
+      {
+        title: 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
+        message: <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>,
+        actionText: 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC',
+        onAction: () => {
+          alert('Expiration');
+        }
       } as IDetailInfoTileProps
     ];
   }

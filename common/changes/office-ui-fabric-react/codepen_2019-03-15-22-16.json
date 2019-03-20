@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "Turn IBasePickerSuggestionsProps into a Pick<> type",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mhuan13@gmail.com"
+  "email": "elcraig@microsoft.com"
 }
