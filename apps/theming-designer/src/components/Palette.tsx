@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-import { Text } from 'office-ui-fabric-react/lib/Text';
 import {
   ThemeGenerator,
   themeRulesStandardCreator,
@@ -17,8 +16,8 @@ export interface IPalette {
 export class Palette extends React.Component<{}, IPalette> {
   render() {
     return (
-      <Card styles={{ root: { width: '800px', height: '600px' } }}>
-        <Text>Fabric Palette</Text>
+      <Card styles={{ root: { width: '800px', height: 'auto' } }}>
+        <h1>Fabric Palette</h1>
         <table>
           <tr>
             <th text-align="left">PRIMARY</th>

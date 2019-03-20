@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as stylesImport from './app.scss';
 import { ThemingDesignerColorPicker } from './ThemingDesignerColorPicker';
 import { Palette } from './Palette';
+
 import { AccChecker } from './AccChecker';
 import { SemanticSlots } from './SemanticSlots';
 import { Samples } from './Samples';

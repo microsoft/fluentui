@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as stylesImport from './app.scss';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Card } from '@uifabric/react-cards';
 import { Dropdown } from '../../../../packages/office-ui-fabric-react/lib/Dropdown';
 import { Text } from '../../../../packages/office-ui-fabric-react/lib/Text';
 import { TextField } from '../../../../packages/office-ui-fabric-react/lib/TextField';
-import { IColorCellProps, ColorPickerGridCell, SwatchColorPicker } from '../../../../packages/office-ui-fabric-react/lib/SwatchColorPicker';
+//import { IColorCellProps, ColorPickerGridCell, SwatchColorPicker } from '../../../../packages/office-ui-fabric-react/lib/SwatchColorPicker';
 
 //const DEFAULT_OPTIONS: IColorCellProps[] = [{ id: 'primary', label: 'green', color: '#00ff00' }];
 //<ColorPickerGridCell selected={false} item={DEFAULT_OPTIONS} color={'#ffa500'} label={'orange'} circle={true} />
@@ -23,38 +24,40 @@ export class ThemingDesignerColorPicker extends React.Component {
   public render(): JSX.Element {
     return (
       <>
-        <h1>Color</h1>
-        <span>Presets</span>
-        <Stack gap={15} padding={10}>
-          <Dropdown
-            placeholder="Select an Option"
-            label="Theme dropdown"
-            ariaLabel="Theme dropdown"
-            options={[{ key: 'light', text: 'Light theme' }, { key: 'dark', text: 'Dark theme' }]}
-          />
-          <span />
-          <Stack horizontal disableShrink gap={5}>
-            <Text>Primary color</Text>
-            <div className={styles.colorpicker}>
-              <TextField className={styles.textinput} id="text-box" value={'#00ff00'} onChange={this._updatePrimaryColor} />
-              <div className={styles.colorinputprimary} id="color-primary-box" />
-            </div>
+        <Card styles={{ root: { width: 'auto', height: 'auto' } }}>
+          <h1>Color</h1>
+          <span>Presets</span>
+          <Stack gap={15} padding={10}>
+            <Dropdown
+              placeholder="Select an Option"
+              label="Theme dropdown"
+              ariaLabel="Theme dropdown"
+              options={[{ key: 'light', text: 'Light theme' }, { key: 'dark', text: 'Dark theme' }]}
+            />
+            <span />
+            <Stack horizontal disableShrink gap={5}>
+              <Text>Primary color</Text>
+              <div className={styles.colorpicker}>
+                <TextField className={styles.textinput} id="text-box" value={'#00ff00'} onChange={this._updatePrimaryColor} />
+                <div className={styles.colorinputprimary} id="color-primary-box" />
+              </div>
+            </Stack>
+            <Stack horizontal disableShrink gap={5}>
+              <Text>Text color</Text>
+              <div className={styles.colorpicker}>
+                <TextField className={styles.textinput} id="text-box" value={'#323130'} onChange={this._updateTextColor} />
+                <div className={styles.colorinputtext} id="color-text-box" background-color="#323130;" />
+              </div>
+            </Stack>
+            <Stack horizontal disableShrink gap={5}>
+              <Text>Background color</Text>
+              <div className={styles.colorpicker}>
+                <TextField className={styles.textinput} id="text-box" value={'#FFFFFF'} onChange={this._updateBackgroundColor} />
+                <div className={styles.colorinputbackground} id="color-background-box" background-color="#FFFFFF;" />
+              </div>
+            </Stack>
           </Stack>
-          <Stack horizontal disableShrink gap={5}>
-            <Text>Text color</Text>
-            <div className={styles.colorpicker}>
-              <TextField className={styles.textinput} id="text-box" value={'#323130'} onChange={this._updateTextColor} />
-              <div className={styles.colorinputtext} id="color-text-box" background-color="#323130;" />
-            </div>
-          </Stack>
-          <Stack horizontal disableShrink gap={5}>
-            <Text>Background color</Text>
-            <div className={styles.colorpicker}>
-              <TextField className={styles.textinput} id="text-box" value={'#FFFFFF'} onChange={this._updateBackgroundColor} />
-              <div className={styles.colorinputbackground} id="color-background-box" background-color="#FFFFFF;" />
-            </div>
-          </Stack>
-        </Stack>
+        </Card>
       </>
     );
   }
