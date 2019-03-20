@@ -1,3 +1,17 @@
+---
+topic: sample
+products:
+- Office 365
+languages:
+- TypeScript
+extensions:
+  contentType: sdks
+  technologies:
+  - Office UI Fabric
+  platforms:
+  - React
+  createdDate: 6/6/2016 8:03:44 AM
+---
 # [Office UI Fabric React](http://dev.office.com/fabric)
 
 **The React-based front-end framework for building experiences for Office and Office 365.**
