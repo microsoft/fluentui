@@ -194,7 +194,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 role="button"
                 type="button"
               >
-                <Icon iconName={rightNavigationIcon} />
+                <Icon iconName={rightNavigationIcon} aria-hidden={false} />
               </button>
               {showCloseButton && (
                 <button
@@ -205,7 +205,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   role="button"
                   type="button"
                 >
-                  <Icon iconName={closeNavigationIcon} />
+                  <Icon iconName={closeNavigationIcon} aria-hidden={false} />
                 </button>
               )}
             </div>

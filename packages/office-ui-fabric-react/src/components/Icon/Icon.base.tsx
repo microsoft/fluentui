@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
 import { Image } from '../Image/Image';
-import { ImageLoadState } from '../Image/Image.types';
+import { ImageLoadState, IImageProps } from '../Image/Image.types';
 import { getNativeProps, htmlElementProperties, BaseComponent, classNamesFunction } from '../../Utilities';
 import { getIcon } from '../../Styling';
 
@@ -35,23 +35,23 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
       isPlaceholder
     });
 
+    const RootType = isImage ? 'div' : 'i';
+    const nativeProps = getNativeProps(this.props, htmlElementProperties);
+    const { imageLoadError } = this.state;
+    const imageProps: IImageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
+    const ImageType = (imageLoadError && imageErrorAs) || Image;
+
     const containerProps = ariaLabel
       ? {
           'aria-label': ariaLabel
         }
       : {
           role: 'presentation',
-          'aria-hidden': true
+          'aria-hidden': imageProps.alt || imageProps['aria-labelledby'] ? false : true
         };
 
-    const RootType = isImage ? 'div' : 'i';
-    const nativeProps = getNativeProps(this.props, htmlElementProperties);
-    const { imageLoadError } = this.state;
-    const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
-    const ImageType = (imageLoadError && imageErrorAs) || Image;
-
     return (
-      <RootType data-icon-name={iconName} {...nativeProps} {...containerProps} className={classNames.root}>
+      <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
         {isImage ? <ImageType {...imageProps} /> : children}
       </RootType>
     );
