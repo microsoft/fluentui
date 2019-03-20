@@ -11,7 +11,6 @@ export const CardView: ICardComponent['view'] = props => {
   });
 
   const { styles, tokens, compact, ...rest } = props;
-  console.log(styles);
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
 
