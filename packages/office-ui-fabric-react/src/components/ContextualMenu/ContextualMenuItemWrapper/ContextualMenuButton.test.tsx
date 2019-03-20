@@ -48,9 +48,9 @@ describe('ContextualMenuButton', () => {
     });
 
     it('does not update when props values do not change', () => {
-      let reactCalls: number = 0;
+      const renderMock = jest.fn();
       jest.spyOn(ContextualMenuButton.prototype, 'render').mockImplementation(() => {
-        reactCalls += 1;
+        renderMock();
         return null;
       });
       const props = {
@@ -66,13 +66,13 @@ describe('ContextualMenuButton', () => {
         />
       );
       component.setProps({ ...props });
-      expect(reactCalls).toEqual(1);
+      expect(renderMock).toHaveBeenCalledTimes(1);
     });
 
     it('does update when props values do change', () => {
-      let reactCalls: number = 0;
+      const renderMock = jest.fn();
       jest.spyOn(ContextualMenuButton.prototype, 'render').mockImplementation(() => {
-        reactCalls += 1;
+        renderMock();
         return null;
       });
       const props = {
@@ -88,7 +88,7 @@ describe('ContextualMenuButton', () => {
         />
       );
       component.setProps({ ...props, index: 1 });
-      expect(reactCalls).toEqual(2);
+      expect(renderMock).toHaveBeenCalledTimes(2);
     });
   });
 });
