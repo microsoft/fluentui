@@ -39,19 +39,30 @@ const MediumScreenSelector = getScreenSelector(ScreenWidthMinMedium, ScreenWidth
 
 export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   const { className, theme } = props;
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
+  // Tokens
+  const itemBackgroundHoveredColor = semanticColors.menuItemBackgroundHovered;
+  const itemBackgroundPressedColor = semanticColors.menuItemBackgroundPressed;
+  const itemTextColor = palette.neutralSecondary;
+  const itemTextFontWeight = FontWeights.regular;
+  const itemTextHoveredOrPressedColor = palette.neutralPrimary;
+  const itemLastChildTextColor = palette.neutralPrimary;
+  const itemLastChildTextFontWeight = FontWeights.semibold;
+  const chevronButtonColor = palette.neutralSecondary;
+  const overflowButtonColor = palette.neutralSecondary;
+
   const lastChildItemStyles: IRawStyle = {
-    fontWeight: FontWeights.semibold,
-    color: palette.neutralPrimary
+    fontWeight: itemLastChildTextFontWeight,
+    color: itemLastChildTextColor
   };
 
   const itemStateSelectors = {
     ':hover': {
-      color: palette.neutralPrimary,
-      backgroundColor: theme.semanticColors.menuItemBackgroundHovered,
+      color: itemTextHoveredOrPressedColor,
+      backgroundColor: itemBackgroundHoveredColor,
       cursor: 'pointer',
       selectors: {
         [HighContrastSelector]: {
@@ -60,12 +71,12 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       }
     },
     ':active': {
-      backgroundColor: palette.neutralLight,
-      color: theme.palette.neutralPrimary
+      backgroundColor: itemBackgroundPressedColor,
+      color: itemTextHoveredOrPressedColor
     },
     '&:active:hover': {
-      color: palette.neutralPrimary,
-      backgroundColor: palette.neutralLight
+      color: itemTextHoveredOrPressedColor,
+      backgroundColor: itemBackgroundPressedColor
     },
     '&:active, &:hover, &:active:hover': {
       textDecoration: 'none'
@@ -73,11 +84,11 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   };
 
   const commonItemStyles: IRawStyle = {
-    color: palette.neutralSecondary,
+    color: itemTextColor,
     padding: '0 8px',
     lineHeight: itemLineHeight,
     fontSize: itemFontSize,
-    fontWeight: FontWeights.regular
+    fontWeight: itemTextFontWeight
   };
 
   return {
@@ -120,7 +131,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
     chevron: [
       classNames.chevron,
       {
-        color: theme.palette.neutralSecondary,
+        color: chevronButtonColor,
         fontSize: theme.fonts.small.fontSize,
         selectors: {
           [HighContrastSelector]: {
@@ -152,7 +163,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       SingleLineTextStyle,
       {
         fontSize: overflowButtonFontSize,
-        color: palette.neutralSecondary,
+        color: overflowButtonColor,
         height: '100%',
         cursor: 'pointer',
         selectors: {
@@ -175,7 +186,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         ...commonItemStyles,
         selectors: {
           ':focus': {
-            color: theme.palette.neutralSecondary
+            color: itemTextColor
           },
           [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `none`
