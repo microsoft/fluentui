@@ -405,7 +405,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -427,11 +431,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -445,7 +448,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -547,7 +550,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -569,11 +576,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -587,7 +593,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -689,7 +695,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -711,11 +721,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -729,7 +738,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -831,7 +840,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -853,11 +866,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -871,7 +883,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -973,7 +985,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -995,11 +1011,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -1013,7 +1028,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -1115,7 +1130,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -1137,11 +1156,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -1155,7 +1173,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -1257,7 +1275,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -1279,11 +1301,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -1297,7 +1318,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -1399,7 +1420,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -1421,11 +1446,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -1439,7 +1463,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -1541,7 +1565,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -1563,11 +1591,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -1581,7 +1608,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />
@@ -1683,7 +1710,11 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                 background-color: #f3f2f1;
                                 overflow: hidden;
                                 position: relative;
+                                transform: translateZ(0);
                                 transition: opacity 200ms;
+                              }
+                              & > * {
+                                transform: translateZ(0);
                               }
                               @media screen and (-ms-high-contrast: active){& {
                                 background: WindowText
@@ -1705,11 +1736,10 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             className=
                                 ms-Shimmer-shimmerGradient
                                 {
-                                  animation-delay: 4.5s;
                                   animation-direction: normal;
                                   animation-duration: 2s;
                                   animation-iteration-count: infinite;
-                                  animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                                  animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                   animation-timing-function: ease-in-out;
                                   background: #f3f2f1
                                                       linear-gradient(
@@ -1723,7 +1753,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                   left: 0px;
                                   position: absolute;
                                   top: 0px;
-                                  transform: translate3d(-100%, 0, 0);
+                                  transform: translateX(-100%);
                                   width: 100%;
                                 }
                           />

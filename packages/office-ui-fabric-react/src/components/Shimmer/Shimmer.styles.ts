@@ -13,19 +13,19 @@ const BACKGROUND_OFF_SCREEN_POSITION = '100%';
 
 const shimmerAnimation: string = keyframes({
   '0%': {
-    transform: `translate3d(-${BACKGROUND_OFF_SCREEN_POSITION}, 0, 0)`
+    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`
   },
   '100%': {
-    transform: `translate3d(${BACKGROUND_OFF_SCREEN_POSITION}, 0, 0)`
+    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`
   }
 });
 
 const shimmerAnimationRTL: string = keyframes({
   '100%': {
-    transform: `translate3d(-${BACKGROUND_OFF_SCREEN_POSITION}, 0, 0)`
+    transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`
   },
   '0%': {
-    transform: `translate3d(${BACKGROUND_OFF_SCREEN_POSITION}, 0, 0)`
+    transform: `translateX(${BACKGROUND_OFF_SCREEN_POSITION})`
   }
 });
 
@@ -52,9 +52,13 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
       {
         position: 'relative',
         overflow: 'hidden',
+        transform: 'translateZ(0)',
         backgroundColor: shimmerColor || palette.neutralLighter,
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
+          '> *': {
+            transform: 'translateZ(0)'
+          },
           [HighContrastSelector]: {
             background: `WindowText
                         linear-gradient(
@@ -92,9 +96,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                         ${shimmerColor || palette.neutralLighter} 100%)
                       0 0 / 90% 100%
                       no-repeat`,
-        transform: `translate3d(-${BACKGROUND_OFF_SCREEN_POSITION}, 0, 0)`,
+        transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
         animationDuration: '2s',
-        animationDelay: '4.5s',
         animationTimingFunction: 'ease-in-out',
         animationDirection: 'normal',
         animationIterationCount: 'infinite',

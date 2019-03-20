@@ -79,7 +79,11 @@ Array [
               background-color: #71afe5;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -101,11 +105,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background: #71afe5
                                     linear-gradient(
@@ -119,7 +122,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
@@ -744,7 +747,11 @@ Array [
               background-color: #71afe5;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -766,11 +773,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background: #71afe5
                                     linear-gradient(
@@ -784,7 +790,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
@@ -1182,7 +1188,11 @@ Array [
               background-color: #7AAFE7;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -1204,11 +1214,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background: #7AAFE7
                                     linear-gradient(
@@ -1222,7 +1231,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
@@ -1612,7 +1621,11 @@ Array [
               background-color: #deecf9;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -1634,11 +1647,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background-color: #deecf9;
                 background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
@@ -1654,7 +1666,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
@@ -1797,7 +1809,11 @@ Array [
               background-color: #deecf9;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -1819,11 +1835,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background-color: #deecf9;
                 background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
@@ -1839,7 +1854,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
@@ -1982,7 +1997,11 @@ Array [
               background-color: #deecf9;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -2004,11 +2023,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background-color: #deecf9;
                 background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
@@ -2024,7 +2042,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
@@ -2167,7 +2185,11 @@ Array [
               background-color: #deecf9;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -2189,11 +2211,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background-color: #deecf9;
                 background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
@@ -2209,7 +2230,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
@@ -2352,7 +2373,11 @@ Array [
               background-color: #deecf9;
               overflow: hidden;
               position: relative;
+              transform: translateZ(0);
               transition: opacity 200ms;
+            }
+            & > * {
+              transform: translateZ(0);
             }
             @media screen and (-ms-high-contrast: active){& {
               background: WindowText
@@ -2374,11 +2399,10 @@ Array [
           className=
               ms-Shimmer-shimmerGradient
               {
-                animation-delay: 4.5s;
                 animation-direction: normal;
                 animation-duration: 2s;
                 animation-iteration-count: infinite;
-                animation-name: keyframes 0%{transform:translate3d(-100%, 0, 0);}100%{transform:translate3d(100%, 0, 0);};
+                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                 animation-timing-function: ease-in-out;
                 background-color: #deecf9;
                 background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%);
@@ -2394,7 +2418,7 @@ Array [
                 left: 0px;
                 position: absolute;
                 top: 0px;
-                transform: translate3d(-100%, 0, 0);
+                transform: translateX(-100%);
                 width: 100%;
               }
         />
