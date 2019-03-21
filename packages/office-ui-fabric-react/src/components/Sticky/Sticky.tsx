@@ -218,7 +218,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         width = 0;
       if (this.nonStickyContent) {
         height = this.nonStickyContent.offsetHeight;
-        width = this.nonStickyContent.scrollWidth;
+        width = this.nonStickyContent.offsetWidth;
       }
       return {
         height: height,
