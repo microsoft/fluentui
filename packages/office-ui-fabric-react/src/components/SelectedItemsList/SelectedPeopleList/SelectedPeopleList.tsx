@@ -74,7 +74,6 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       index,
       key: item.key ? item.key : index,
       selected: this.selection.isIndexSelected(index),
-      // TODO removeItem is incorrectly typed. Remove this cast in the fix.
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
