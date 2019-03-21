@@ -1,6 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Wed, 20 Mar 2019 03:15:21 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Mar 2019 17:21:42 GMT and should not be manually modified.
+
+## 0.1.3
+Thu, 21 Mar 2019 17:21:42 GMT
+
+### Patches
+
+- migration: the bin directory was being ignored, this change makes sure the npm publish step will include the bin scripts
 
 ## 0.1.2
 Wed, 20 Mar 2019 03:15:21 GMT

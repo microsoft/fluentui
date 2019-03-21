@@ -2,6 +2,20 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.57.1",
+      "tag": "@uifabric/dashboard_v0.57.1",
+      "date": "Thu, 21 Mar 2019 17:21:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue with add card from panel using drag and drop",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "e52018e8c51879b5fe4396e47c5e53d26f94965b"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.57.0",
       "tag": "@uifabric/dashboard_v0.57.0",
       "date": "Thu, 21 Mar 2019 12:36:30 GMT",

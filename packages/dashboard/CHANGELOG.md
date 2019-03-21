@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 21 Mar 2019 12:36:30 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Mar 2019 17:21:42 GMT and should not be manually modified.
+
+## 0.57.1
+Thu, 21 Mar 2019 17:21:42 GMT
+
+### Patches
+
+- Fix issue with add card from panel using drag and drop
 
 ## 0.57.0
 Thu, 21 Mar 2019 12:36:30 GMT
