@@ -12,7 +12,7 @@ export class GroupFooterBase extends BaseComponent<IGroupFooterProps, {}> {
     if (group && footerText) {
       return (
         <div className={classNames.root}>
-          <GroupSpacer indentWidth={indentWidth} count={groupLevel!} />
+          {groupLevel! > 0 ? <GroupSpacer indentWidth={indentWidth} count={groupLevel!} /> : null}
           {footerText}
         </div>
       );

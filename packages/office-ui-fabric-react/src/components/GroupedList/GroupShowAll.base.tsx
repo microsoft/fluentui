@@ -19,7 +19,7 @@ export class GroupShowAllBase extends BaseComponent<IGroupShowAllProps, {}> {
     if (group) {
       return (
         <div className={classNames.root}>
-          <GroupSpacer count={groupLevel!} />
+          {groupLevel! > 0 ? <GroupSpacer count={groupLevel!} /> : null}
           <Link onClick={this._onSummarizeClick}>{showAllLinkText}</Link>
         </div>
       );
