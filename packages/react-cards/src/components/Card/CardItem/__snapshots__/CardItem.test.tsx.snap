@@ -7,6 +7,7 @@ exports[`Card Item renders correctly 1`] = `
       ms-Card
       {
         align-items: space-between;
+        border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
         display: flex;
@@ -59,6 +60,7 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
       ms-Card
       {
         align-items: space-between;
+        border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
         display: flex;
