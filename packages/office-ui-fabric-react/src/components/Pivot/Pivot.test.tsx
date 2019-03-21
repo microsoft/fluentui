@@ -22,6 +22,17 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('supports JSX expressions', () => {
+    const component = renderer.create(
+      <Pivot>
+        <PivotItem headerText="Test Link 1" />
+        {false && <PivotItem headerText="" />}
+      </Pivot>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders large link Pivot correctly', () => {
     const component = renderer.create(
       <Pivot linkSize={PivotLinkSize.large}>
