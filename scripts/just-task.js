@@ -56,26 +56,28 @@ task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().pr
 
 task(
   'build',
-  series(
-    'clean',
-    'copy',
-    'sass',
-    parallel(
-      condition('tslint', () => !argv().min && !argv().prdeploy),
-      condition('jest', () => !argv().min && !argv().prdeploy),
-      series(
-        argv().commonjs ? 'ts:commonjs-only' : 'ts',
-        condition('lint-imports', () => !argv().min && !argv().prdeploy),
-        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
+  condition(
+    series(
+      'clean',
+      'copy',
+      'sass',
+      parallel(
+        condition('tslint', () => !argv().min && !argv().prdeploy),
+        condition('jest', () => !argv().min && !argv().prdeploy),
+        series(
+          argv().commonjs ? 'ts:commonjs-only' : 'ts',
+          condition('lint-imports', () => !argv().min && !argv().prdeploy),
+          parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
+        )
       )
-    )
+    ),
+    ignoreNpmInstallBuildInCI
   )
 );
 
 // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
-task('build-jest-serializer-merge-styles', series('ts', 'jest'));
-
-task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
+task('build-jest-serializer-merge-styles', condition(series('ts', 'jest'), ignoreNpmInstallBuildInCI));
+task('build-commonjs-only', condition(series('clean', 'ts:commonjs-only'), ignoreNpmInstallBuildInCI));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
 task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
@@ -113,4 +115,8 @@ function registerTask(name, taskFunction) {
         }
       : taskFunction
   );
+}
+
+function ignoreNpmInstallBuildInCI() {
+  return !argv().min && !process.env.TRAVIS;
 }
