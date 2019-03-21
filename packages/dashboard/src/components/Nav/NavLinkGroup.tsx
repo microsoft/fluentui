@@ -27,9 +27,8 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
     const { link, isNavCollapsed } = this.props;
     const { hasSelectedNestedLink, isExpanded } = this.state;
     const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed });
-
     return (
-      <div className={classNames.navMenuContainer} ref={this.navLinkGroupRef}>
+      <div className={classNames.navMenuContainer}>
         <NavLink
           isNavCollapsed={isNavCollapsed}
           id={link.name}
@@ -48,13 +47,13 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
           isNested={false}
           isExpanded={isExpanded}
           role="menuitem"
-          offsetUpdated={this._offsetUpdated}
+          {...isNavCollapsed && link.links && { offsetUpdated: this._offsetUpdated }}
         />
         {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
             so those elements need to be separated. This one has the shadow.
         */}
         {link.links && (
-          <div className={classNames.nestedNavLinksWrapper} role="none">
+          <div className={classNames.nestedNavLinksWrapper} role="none" ref={this.navLinkGroupRef}>
             {/* This one has the blur. */}
             <ul className={classNames.nestedNavLinks} role="menu">
               {link.links.map((nestedLink: INavLink, linkIndex: number) => {
