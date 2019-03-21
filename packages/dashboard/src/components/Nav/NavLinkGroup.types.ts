@@ -63,6 +63,7 @@ export interface INavLinkGroupStyles {
   /**
    * NavLinkGroup
    */
+  root: IStyle;
   navMenuContainer: IStyle;
   nestedNavLinksWrapper: IStyle;
   nestedNavLinks: IStyle;

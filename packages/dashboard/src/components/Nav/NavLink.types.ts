@@ -40,8 +40,6 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * Pays attention to Nav collapsed state to render the right selected indicator and nested menu
    */
   isNavCollapsed?: boolean;
-
-  offsetUpdated?: (offset: number) => void;
 }
 
 export interface INavLinkStyles {

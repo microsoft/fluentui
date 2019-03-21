@@ -11,7 +11,6 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   constructor(props: INavLinkProps) {
     super(props);
     this.navLinkRef = React.createRef<HTMLAnchorElement>();
-    this._getLinkPosition = this._getLinkPosition.bind(this);
   }
 
   public render(): JSX.Element {
@@ -32,7 +31,6 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
         href={this.props.href}
         target={this.props.target}
         onClick={this.props.onClick}
-        onMouseEnter={this._getLinkPosition}
         role={this.props.role}
         className={mergeStyles(classNames.root, className)}
         ref={this.navLinkRef}
@@ -46,11 +44,5 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
         {!(isNavCollapsed && !isNested) && <Icon iconName={iconName} className={classNames.secondaryIcon} aria-hidden="true" />}
       </a>
     );
-  }
-
-  private _getLinkPosition(ev: React.MouseEvent<HTMLElement>): void {
-    if (this.navLinkRef.current && this.props.offsetUpdated) {
-      this.props.offsetUpdated(this.navLinkRef.current.offsetTop);
-    }
   }
 }

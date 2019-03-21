@@ -9,6 +9,7 @@ const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupS
 
 export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLinkGroupStates> {
   private navLinkGroupRef: React.RefObject<HTMLDivElement>;
+  private navRootRef: React.RefObject<HTMLDivElement>;
   private fireCollapseUpdate: boolean = false;
 
   constructor(props: INavLinkGroupProps) {
@@ -19,6 +20,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
       hasSelectedNestedLink: this.props.hasSelectedNestedLink
     };
     this.navLinkGroupRef = React.createRef<HTMLDivElement>();
+    this.navRootRef = React.createRef<HTMLDivElement>();
     this._onLinkClicked = this._onLinkClicked.bind(this);
     this._offsetUpdated = this._offsetUpdated.bind(this);
   }
@@ -28,60 +30,61 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
     const { hasSelectedNestedLink, isExpanded } = this.state;
     const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed });
     return (
-      <div className={classNames.navMenuContainer}>
-        <NavLink
-          isNavCollapsed={isNavCollapsed}
-          id={link.name}
-          name={link.name}
-          href={link.href}
-          target={link.target}
-          onClick={this._onLinkClicked}
-          data-value={link.name}
-          aria-label={link.ariaLabel ? link.ariaLabel : link.name}
-          aria-expanded={isExpanded}
-          aria-haspopup={!!link.links}
-          primaryIconName={link.icon}
-          isSelected={hasSelectedNestedLink}
-          hasSelectedNestedLink={hasSelectedNestedLink}
-          hasNestedMenu={true}
-          isNested={false}
-          isExpanded={isExpanded}
-          role="menuitem"
-          {...isNavCollapsed && link.links && { offsetUpdated: this._offsetUpdated }}
-        />
-        {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
+      <div className={classNames.root} {...isNavCollapsed && link.links && { onMouseEnter: this._offsetUpdated, ref: this.navRootRef }}>
+        <div className={classNames.navMenuContainer} ref={this.navLinkGroupRef}>
+          <NavLink
+            isNavCollapsed={isNavCollapsed}
+            id={link.name}
+            name={link.name}
+            href={link.href}
+            target={link.target}
+            onClick={this._onLinkClicked}
+            data-value={link.name}
+            aria-label={link.ariaLabel ? link.ariaLabel : link.name}
+            aria-expanded={isExpanded}
+            aria-haspopup={!!link.links}
+            primaryIconName={link.icon}
+            isSelected={hasSelectedNestedLink}
+            hasSelectedNestedLink={hasSelectedNestedLink}
+            hasNestedMenu={true}
+            isNested={false}
+            isExpanded={isExpanded}
+            role="menuitem"
+          />
+          {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
             so those elements need to be separated. This one has the shadow.
         */}
-        {link.links && (
-          <div className={classNames.nestedNavLinksWrapper} role="none" ref={this.navLinkGroupRef}>
-            {/* This one has the blur. */}
-            <ul className={classNames.nestedNavLinks} role="menu">
-              {link.links.map((nestedLink: INavLink, linkIndex: number) => {
-                return (
-                  <li role="none" key={linkIndex}>
-                    <NavLink
-                      key={linkIndex * 100}
-                      isNavCollapsed={isNavCollapsed}
-                      id={nestedLink.name}
-                      name={nestedLink.name}
-                      href={nestedLink.url}
-                      target={nestedLink.target}
-                      onClick={nestedLink.onClick}
-                      data-value={nestedLink.name}
-                      aria-label={nestedLink.ariaLabel ? nestedLink.ariaLabel : nestedLink.name}
-                      primaryIconName={nestedLink.icon}
-                      hasNestedMenu={false}
-                      hasSelectedNestedLink={false}
-                      isNested={true}
-                      isSelected={nestedLink.isSelected}
-                      role="menuitem"
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
+          {link.links && (
+            <div className={classNames.nestedNavLinksWrapper} role="none">
+              {/* This one has the blur. */}
+              <ul className={classNames.nestedNavLinks} role="menu">
+                {link.links.map((nestedLink: INavLink, linkIndex: number) => {
+                  return (
+                    <li role="none" key={linkIndex}>
+                      <NavLink
+                        key={linkIndex * 100}
+                        isNavCollapsed={isNavCollapsed}
+                        id={nestedLink.name}
+                        name={nestedLink.name}
+                        href={nestedLink.url}
+                        target={nestedLink.target}
+                        onClick={nestedLink.onClick}
+                        data-value={nestedLink.name}
+                        aria-label={nestedLink.ariaLabel ? nestedLink.ariaLabel : nestedLink.name}
+                        primaryIconName={nestedLink.icon}
+                        hasNestedMenu={false}
+                        hasSelectedNestedLink={false}
+                        isNested={true}
+                        isSelected={nestedLink.isSelected}
+                        role="menuitem"
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
@@ -102,9 +105,9 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
     ev.stopPropagation();
   }
 
-  private _offsetUpdated(offset: number): void {
-    if (this.navLinkGroupRef.current && this.props.navRef.current) {
-      this.navLinkGroupRef.current.style.top = offset - this.props.navRef.current.scrollTop + 'px';
+  private _offsetUpdated(ev: React.MouseEvent<HTMLElement>): void {
+    if (this.navRootRef.current && this.navLinkGroupRef.current && this.props.navRef.current) {
+      this.navLinkGroupRef.current.style.top = this.navRootRef.current.offsetTop - this.props.navRef.current.scrollTop + 'px';
     }
   }
 }

@@ -8,15 +8,15 @@ export const getStyles = (props: INavLinkGroupStyleProps): INavLinkGroupStyles =
 check that adjecent selector works as expected
 clean up other code
 sort out extensibility */
+    root: {},
     navMenuContainer: [
-      {
-        display: 'flex'
-      },
       isNavCollapsed ? AnimationClassNames.fadeIn400 : AnimationClassNames.slideDownIn20,
       isNavCollapsed && {
         selectors: {
-          '& a:hover + $nestedNavMenuWhenNavCollapsed, & a:focus + $nestedNavMenuWhenNavCollapsed': {
-            display: 'flex'
+          '& a:hover + $nestedNavLinksWrapper, & a:focus + $nestedNavLinksWrapper': {
+            display: 'flex',
+            backgroundColor: 'yellow',
+            position: 'absolute'
           }
         }
       }
@@ -47,13 +47,7 @@ sort out extensibility */
       boxShadow: '0 1.2px 3.6px rgba(0, 0, 0, 0.09), 0 6.4px 14.4px rgba(0, 0, 0, 0.11)',
       width: '230px',
       padding: '48px 0 0',
-      marginTop: '-48px',
-      backgroundColor: 'rgba(255,255,255,.95)',
-      selectors: {
-        '@supports((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)))': {
-          backgroundColor: 'rgba(255,255,255,.8)'
-        }
-      }
+      marginTop: '-48px'
     },
     nestedNavLinks: [
       {
