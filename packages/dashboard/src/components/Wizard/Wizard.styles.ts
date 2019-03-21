@@ -1,105 +1,13 @@
 import { IWizardStyles, IWizardStyleProps } from './Wizard.types';
-import { keyframes } from 'office-ui-fabric-react';
+import {
+  contentSlideUpOutAnimation,
+  contentSlideUpInAnimation,
+  contentSlideDownOutAnimation,
+  contentSlideDownInAnimation
+} from './Wizard.animation';
 
 export const subwayNavWidth = 303;
 export const subwayNavPadding = 48;
-export const wizardAnimationDurationMilliSec = 500;
-
-const slideUpOutKeyframes = keyframes({
-  '0%': {
-    opacity: 0.75,
-    transform: 'translateY(-100%)'
-  },
-  '15%': {
-    opacity: 0.6,
-    transform: 'translateY(-140%)'
-  },
-  '25%': {
-    opacity: 0.5,
-    transform: 'translateY(-140%)'
-  },
-  '45%': {
-    opacity: 0.4,
-    transform: 'translateY(-140%)'
-  },
-  '100%': {
-    opacity: 0,
-    transform: 'translateY(-200%)'
-  }
-});
-
-const slideUpInKeyframes = keyframes({
-  '0%': {
-    opacity: 0
-  },
-  '45%': {
-    opacity: 0
-  },
-  '75%': {
-    opacity: 0.4,
-    transform: 'translateY(35%)'
-  },
-  '85%': {
-    opacity: 0.5,
-    transform: 'translateY(35%)'
-  },
-  '95%': {
-    opacity: 0.7,
-    transform: 'translateY(35%)'
-  },
-  '100%': {
-    opacity: 0.9,
-    transform: 'translateY(0%)'
-  }
-});
-
-const slideDownOutKeyframes = keyframes({
-  '0%': {
-    opacity: 0.75,
-    transform: 'translateY(-100%)'
-  },
-  '15%': {
-    opacity: 0.6,
-    transform: 'translateY(-70%)'
-  },
-  '25%': {
-    opacity: 0.5,
-    transform: 'translateY(-70%)'
-  },
-  '45%': {
-    opacity: 0.4,
-    transform: 'translateY(-70%)'
-  },
-  '100%': {
-    opacity: 0,
-    transform: 'translateY(0%)'
-  }
-});
-
-const slideDownInKeyframes = keyframes({
-  '0%': {
-    opacity: 0
-  },
-  '50%': {
-    opacity: 0
-  },
-  '75%': {
-    opacity: 0.4,
-    transform: 'translateY(-65%)'
-  },
-  '85%': {
-    opacity: 0.5,
-    transform: 'translateY(-65%)'
-  },
-  '95%': {
-    opacity: 0.7,
-    transform: 'translateY(-65%)'
-  },
-  '100%': {
-    opacity: 0.9,
-    transform: 'translateY(0%)'
-  }
-});
 
 export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
   return {
@@ -133,47 +41,24 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
       flex: 1
     },
     stepSlideUpEnter: {
-      opacity: 0,
-      transform: 'translateY(50%)'
+      opacity: 0.1,
+      transform: 'translateY(790px)'
     },
-    stepSlideUpEnterActive: {
-      animation: slideUpInKeyframes,
-      animationDuration: `${wizardAnimationDurationMilliSec}ms`,
-      animationTimingFunction: 'ease-in-out'
-    },
+    stepSlideUpEnterActive: contentSlideUpInAnimation,
     stepSlideUpExit: {
-      opacity: 0,
-      transform: 'translateY(-100%)'
+      opacity: 1,
+      transform: 'translateY(0px)'
     },
-    stepSlideUpExitActive: {
-      animation: slideUpOutKeyframes,
-      animationDuration: `${wizardAnimationDurationMilliSec}ms`,
-      animationTimingFunction: 'ease-in-out'
-    },
-    stepSlideUpExitDone: {
-      opacity: 0
-    },
+    stepSlideUpExitActive: contentSlideUpOutAnimation,
     stepSlideDownEnter: {
       opacity: 0,
       transform: 'translateY(-150%)'
     },
-    stepSlideDownEnterActive: {
-      opacity: 1,
-      animation: slideDownInKeyframes,
-      animationDuration: `${wizardAnimationDurationMilliSec}ms`,
-      animationTimingFunction: 'ease-in-out'
-    },
+    stepSlideDownEnterActive: contentSlideDownInAnimation,
     stepSlideDownExit: {
       opacity: 0,
       transform: 'translateY(0%)'
     },
-    stepSlideDownExitActive: {
-      animation: slideDownOutKeyframes,
-      animationDuration: `${wizardAnimationDurationMilliSec}ms`,
-      animationTimingFunction: 'ease-in-out'
-    },
-    stepSlideDownExitDone: {
-      opacity: 0
-    }
+    stepSlideDownExitActive: contentSlideDownOutAnimation
   };
 };

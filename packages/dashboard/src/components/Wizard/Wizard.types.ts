@@ -107,8 +107,6 @@ export interface IWizardStyles {
 
   stepSlideUpExitActive: IStyle;
 
-  stepSlideUpExitDone: IStyle;
-
   stepSlideDownEnter: IStyle;
 
   stepSlideDownEnterActive: IStyle;
@@ -116,8 +114,6 @@ export interface IWizardStyles {
   stepSlideDownExit: IStyle;
 
   stepSlideDownExitActive: IStyle;
-
-  stepSlideDownExitDone: IStyle;
 }
 
 export interface IWizardStyleProps {

@@ -4,7 +4,7 @@ import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { wizardAnimationDurationMilliSec } from './Wizard.styles';
+import { wizardAnimationDurationMilliSec } from './Wizard.animation';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
@@ -59,16 +59,14 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
         enter: classNames.stepSlideUpEnter,
         enterActive: classNames.stepSlideUpEnterActive,
         exit: classNames.stepSlideUpExit,
-        exitActive: classNames.stepSlideUpExitActive,
-        exitDone: classNames.stepSlideUpExitDone
+        exitActive: classNames.stepSlideUpExitActive
       };
     } else {
       mainStepTransitionClass = {
         enter: classNames.stepSlideDownEnter,
         enterActive: classNames.stepSlideDownEnterActive,
         exit: classNames.stepSlideDownExit,
-        exitActive: classNames.stepSlideDownExitActive,
-        exitDone: classNames.stepSlideDownExitDone
+        exitActive: classNames.stepSlideDownExitActive
       };
     }
 
