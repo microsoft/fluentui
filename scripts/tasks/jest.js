@@ -6,7 +6,6 @@ const { jestTask } = require('just-scripts');
 exports.jest = () =>
   jestTask({
     ...(process.env.TRAVIS && { runInBand: true }),
-    ...(process.env.TRAVIS || argv().production ? { coverage: true } : undefined),
     ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined)
   });
 
