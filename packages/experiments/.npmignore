@@ -2,6 +2,8 @@
 *.nuspec
 *.yml
 *.test.*
+*.doc.*
+*.checklist.*
 .editorconfig
 .gitattributes
 .gitignore
