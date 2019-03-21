@@ -9,8 +9,8 @@ import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import Draggable, { DraggableData } from 'react-draggable';
 import { ContextualMenu } from '../../ContextualMenu';
-import { DirectionalHint } from '../Callout';
-import { Icon } from '../Icon';
+import { DirectionalHint } from '../Callout/index';
+import { Icon } from '../Icon/index';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -291,8 +291,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     });
 
     // Call the onDismiss callback
-    if (this.props.onDismiss) {
-      this.props.onDismiss();
+    if (this.props.onDismissed) {
+      this.props.onDismissed();
     }
   };
 
@@ -378,7 +378,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _onEnterKeyboardMoveMode = () => {
     this._lastSetX = this.state.x;
     this._lastSetY = this.state.y;
-
     this.setState({ isInKeyboardMoveMode: true, isModalMenuOpen: false });
   };
 

@@ -7354,6 +7354,10 @@ interface IDialogState {
   // (undocumented)
   id?: string;
   // (undocumented)
+  isInKeyboardMoveMode?: boolean;
+  // (undocumented)
+  isModalMenuOpen?: boolean;
+  // (undocumented)
   isOpen?: boolean;
   // (undocumented)
   isVisible?: boolean;
@@ -7361,6 +7365,10 @@ interface IDialogState {
   isVisibleClose?: boolean;
   // (undocumented)
   modalRectangleTop?: number;
+  // (undocumented)
+  x: number;
+  // (undocumented)
+  y: number;
 }
 
 // @public (undocumented)
@@ -8990,13 +8998,18 @@ interface IModal {
 // @public (undocumented)
 interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   className?: string;
+  closeMenuItemText?: string;
   componentRef?: IRefObject<IModal>;
   containerClassName?: string;
+  dragHandleSelector?: string;
   isBlocking?: boolean;
   isDarkOverlay?: boolean;
+  isDraggable?: boolean;
   isModeless?: boolean;
   isOpen?: boolean;
+  keyboardMoveIconProps?: IIconProps;
   layerProps?: ILayerProps;
+  moveMenuItemText?: string;
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
   onDismissed?: () => any;
   // @deprecated
@@ -9011,6 +9024,10 @@ interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveM
 
 // @public (undocumented)
 interface IModalStyles {
+  // (undocumented)
+  keyboardMoveIcon: IStyle;
+  // (undocumented)
+  keyboardMoveIconContainer: IStyle;
   // (undocumented)
   layer: IStyle;
   // (undocumented)

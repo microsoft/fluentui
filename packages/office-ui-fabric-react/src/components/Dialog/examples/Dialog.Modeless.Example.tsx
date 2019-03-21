@@ -26,7 +26,6 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
         </div>
         <Dialog
           hidden={hideDialog}
-          onDismiss={this._closeDialog}
           dialogContentProps={{
             type: DialogType.normal,
             title: 'All emails together',
@@ -35,7 +34,8 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
           modalProps={{
             containerClassName: 'ms-dialogMainOverride',
             isModeless: true,
-            isDraggable: isDraggable
+            isDraggable: isDraggable,
+            onDismissed: this._closeDialog
           }}
         >
           <DialogFooter>

@@ -5,7 +5,7 @@ import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../Icon';
+import { IIconProps } from '../Icon/index';
 
 export interface IModal {
   /**
@@ -115,7 +115,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 
   /**
    * Optional selector for the element where the drag can be initiated. If not supplied when
-   * @see isDraggable is true dragging can be initated by the whole contents of the modal
+   * isDraggable is true dragging can be initated by the whole contents of the modal
    */
   dragHandleSelector?: string;
 
