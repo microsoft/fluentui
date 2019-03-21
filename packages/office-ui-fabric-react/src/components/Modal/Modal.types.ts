@@ -5,6 +5,7 @@ import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IIconProps } from '../Icon';
 
 export interface IModal {
   /**
@@ -106,6 +107,34 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * when the content changes dynamically.
    */
   topOffsetFixed?: boolean;
+
+  /**
+   * Whether the modal content is draggable
+   */
+  isDraggable?: boolean;
+
+  /**
+   * Optional selector for the element where the drag can be initiated. If not supplied when
+   * @see isDraggable is true dragging can be initated by the whole contents of the modal
+   */
+  dragHandleSelector?: string;
+
+  /**
+   * IconProps for the icon used to indicate that the dialog is in keyboard move mode
+   */
+  keyboardMoveIconProps?: IIconProps;
+
+  /**
+   * The text to use for the modal move menu item,
+   * 'Move' by default
+   */
+  moveMenuItemText?: string;
+
+  /**
+   * The text to use for the modal close menu item,
+   * 'Close' by default
+   */
+  closeMenuItemText?: string;
 }
 
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
@@ -118,6 +147,8 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     hasBeenOpened?: boolean;
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
+    /** Whether this modal is draggable and using the default handler */
+    isDefaultDragHandle?: boolean;
   };
 
 export interface IModalStyles {
@@ -125,4 +156,6 @@ export interface IModalStyles {
   main: IStyle;
   scrollableContent: IStyle;
   layer: IStyle;
+  keyboardMoveIconContainer: IStyle;
+  keyboardMoveIcon: IStyle;
 }

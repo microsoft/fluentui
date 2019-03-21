@@ -4,14 +4,17 @@ import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './Modal.Example.scss';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface IModalBasicExampleState {
   showModal: boolean;
+  isDraggable: boolean;
 }
 
 export class ModalBasicExample extends React.Component<{}, IModalBasicExampleState> {
   public state: IModalBasicExampleState = {
-    showModal: false
+    showModal: false,
+    isDraggable: false
   };
   // Use getId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
@@ -21,6 +24,7 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
   public render(): JSX.Element {
     return (
       <div>
+        <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={this.state.isDraggable} />
         <DefaultButton secondaryText="Opens the Sample Modal" onClick={this._showModal} text="Open Modal" />
         <Modal
           titleAriaId={this._titleId}
@@ -29,6 +33,7 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
           onDismiss={this._closeModal}
           isBlocking={false}
           containerClassName="ms-modalExample-container"
+          isDraggable={this.state.isDraggable}
         >
           <div className="ms-modalExample-header">
             <span id={this._titleId}>Lorem Ipsum</span>
@@ -82,5 +87,9 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
 
   private _closeModal = (): void => {
     this.setState({ showModal: false });
+  };
+
+  private _toggleDraggable = (): void => {
+    this.setState({ isDraggable: !this.state.isDraggable });
   };
 }

@@ -4,14 +4,17 @@ import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './Modal.Example.scss';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface IModalModelessExampleState {
   showModal: boolean;
+  isDraggable: boolean;
 }
 
 export class ModalModelessExample extends React.Component<{}, IModalModelessExampleState> {
   public state: IModalModelessExampleState = {
-    showModal: false
+    showModal: false,
+    isDraggable: false
   };
   // Use getId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
@@ -19,15 +22,18 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
   private _subtitleId: string = getId('subText');
 
   public render(): JSX.Element {
+    const { showModal, isDraggable } = this.state;
     return (
       <div>
+        <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={isDraggable} disabled={showModal} />
         <DefaultButton secondaryText="Opens the Sample Modal" onClick={this._showModal} text="Open Modal" />
         <Modal
           titleAriaId={this._titleId}
           subtitleAriaId={this._subtitleId}
-          isOpen={this.state.showModal}
+          isOpen={showModal}
           onDismiss={this._closeModal}
           isModeless={true}
+          isDraggable={isDraggable}
           containerClassName="ms-modalStickyExample-container"
         >
           <div className="ms-modalExample-header">
@@ -56,5 +62,9 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
 
   private _closeModal = (): void => {
     this.setState({ showModal: false });
+  };
+
+  private _toggleDraggable = (): void => {
+    this.setState({ isDraggable: !this.state.isDraggable });
   };
 }

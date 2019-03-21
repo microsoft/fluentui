@@ -5,6 +5,7 @@ import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps } from '../../Modal';
 import { ILayerProps } from '../../Layer';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { getMergedDialogContentStyles } from './Dialog.styles';
 
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
 
@@ -94,10 +95,25 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       mergedLayerProps.onLayerDidMount = onLayerDidMount;
     }
 
+    let dialogDraggableClassName: string | undefined;
+    let dragHandleSelector: string | undefined;
+
+    // if we are draggable, make sure we are using the correct
+    // draggable classname and selectors
+    if (modalProps && modalProps.isDraggable) {
+      if (modalProps.dragHandleSelector) {
+        dragHandleSelector = modalProps.dragHandleSelector;
+      } else {
+        dialogDraggableClassName = 'ms-dialog-draggable-header';
+        dragHandleSelector = `.${dialogDraggableClassName}`;
+      }
+    }
+
     const mergedModalProps = {
       ...DefaultModalProps,
       ...modalProps,
-      layerProps: mergedLayerProps
+      layerProps: mergedLayerProps,
+      dragHandleSelector
     };
 
     const dialogContentProps: IDialogContentProps = {
@@ -113,6 +129,8 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       dialogDefaultMinWidth: minWidth,
       dialogDefaultMaxWidth: maxWidth
     });
+
+    const mergedDialogContentStyles = getMergedDialogContentStyles(dialogContentProps, dialogDraggableClassName);
 
     return (
       <Modal
@@ -144,6 +162,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
           onDismiss={onDismiss ? onDismiss : dialogContentProps!.onDismiss}
           className={contentClassName || dialogContentProps!.className}
           {...dialogContentProps}
+          styles={mergedDialogContentStyles}
         >
           {this.props.children}
         </DialogContent>

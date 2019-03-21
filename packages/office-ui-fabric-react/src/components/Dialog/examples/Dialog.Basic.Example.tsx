@@ -3,14 +3,17 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './Dialog.Basic.Example.scss';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface IDialogBasicExampleState {
   hideDialog: boolean;
+  isDraggable: boolean;
 }
 
 export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleState> {
   public state: IDialogBasicExampleState = {
-    hideDialog: true
+    hideDialog: true,
+    isDraggable: false
   };
   // Use getId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
@@ -18,9 +21,11 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
   private _subTextId: string = getId('subTextLabel');
 
   public render() {
+    const { hideDialog, isDraggable } = this.state;
     return (
       <div>
-        <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
+        <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={isDraggable} />
+        <DefaultButton className="asdf" secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
         <label id={this._labelId} className="screenReaderOnly">
           My sample Label
         </label>
@@ -29,7 +34,7 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
         </label>
 
         <Dialog
-          hidden={this.state.hideDialog}
+          hidden={hideDialog}
           onDismiss={this._closeDialog}
           dialogContentProps={{
             type: DialogType.normal,
@@ -40,7 +45,8 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
             titleAriaId: this._labelId,
             subtitleAriaId: this._subTextId,
             isBlocking: false,
-            containerClassName: 'ms-dialogMainOverride'
+            containerClassName: 'ms-dialogMainOverride',
+            isDraggable: isDraggable
           }}
         >
           <DialogFooter>
@@ -58,5 +64,9 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
 
   private _closeDialog = (): void => {
     this.setState({ hideDialog: true });
+  };
+
+  private _toggleDraggable = (): void => {
+    this.setState({ isDraggable: !this.state.isDraggable });
   };
 }

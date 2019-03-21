@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, allowScrollOnElement } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, allowScrollOnElement, KeyCodes } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
@@ -7,6 +7,10 @@ import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import Draggable, { DraggableData } from 'react-draggable';
+import { ContextualMenu } from '../../ContextualMenu';
+import { DirectionalHint } from '../Callout';
+import { Icon } from '../Icon';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -21,6 +25,10 @@ export interface IDialogState {
   id?: string;
   hasBeenOpened?: boolean;
   modalRectangleTop?: number;
+  isModalMenuOpen?: boolean;
+  isInKeyboardMoveMode?: boolean;
+  x: number;
+  y: number;
 }
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
@@ -32,12 +40,16 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     isDarkOverlay: true,
     isBlocking: false,
     className: '',
-    containerClassName: ''
+    containerClassName: '',
+    moveMenuItemText: 'Move',
+    closeMenuItemText: 'Close'
   };
 
   private _onModalCloseTimer: number;
   private _focusTrapZone = React.createRef<IFocusTrapZone>();
   private _scrollableContent: HTMLDivElement | null;
+  private _lastSetX: number;
+  private _lastSetY: number;
 
   constructor(props: IModalProps) {
     super(props);
@@ -45,8 +57,13 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
-      hasBeenOpened: props.isOpen
+      hasBeenOpened: props.isOpen,
+      x: 0,
+      y: 0
     };
+
+    this._lastSetX = 0;
+    this._lastSetY = 0;
 
     this._warnDeprecations({
       onLayerDidMount: 'layerProps.onLayerDidMount'
@@ -122,9 +139,14 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       theme,
       topOffsetFixed,
       onLayerDidMount,
-      isModeless
+      isModeless,
+      isDraggable,
+      dragHandleSelector,
+      keyboardMoveIconProps,
+      moveMenuItemText,
+      closeMenuItemText
     } = this.props;
-    const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
+    const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
     if (!isOpen) {
       return null;
@@ -140,7 +162,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       hasBeenOpened,
       modalRectangleTop,
       topOffsetFixed,
-      isModeless
+      isModeless,
+      isDefaultDragHandle: isDraggable && !dragHandleSelector
     });
 
     // if the modal is modeless, add the classname to correctly style the layer
@@ -158,6 +181,49 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       insertFirst: isModeless
     };
 
+    const modalContent = (
+      <FocusTrapZone
+        componentRef={this._focusTrapZone}
+        className={classNames.main}
+        elementToFocusOnDismiss={elementToFocusOnDismiss}
+        isClickableOutsideFocusTrap={isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking}
+        ignoreExternalFocusing={ignoreExternalFocusing}
+        forceFocusInsideTrap={forceFocusInsideTrap}
+        firstFocusableSelector={firstFocusableSelector}
+        focusPreviouslyFocusedInnerElement={true}
+        onKeyDown={isDraggable ? this._onDialogKeyDown : undefined}
+        onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
+      >
+        {isInKeyboardMoveMode && (
+          <div className={classNames.keyboardMoveIconContainer}>
+            {keyboardMoveIconProps ? <Icon {...keyboardMoveIconProps} /> : <Icon iconName="move" className={classNames.keyboardMoveIcon} />}
+          </div>
+        )}
+        <div ref={this._allowScrollOnModal} className={classNames.scrollableContent} data-is-scrollable={true}>
+          {isDraggable && this.state.isModalMenuOpen && (
+            <ContextualMenu
+              items={[
+                { key: 'move', text: moveMenuItemText, onClick: this._onEnterKeyboardMoveMode },
+                {
+                  key: 'close',
+                  text: closeMenuItemText,
+                  onClick: this._onModalClose
+                }
+              ]}
+              onDismiss={this._onModalContextMenuClose}
+              alignTargetEdge={true}
+              coverTarget={true}
+              directionalHint={DirectionalHint.topLeftEdge}
+              directionalHintFixed={true}
+              shouldFocusOnMount={true}
+              target={this._scrollableContent}
+            />
+          )}
+          {this.props.children}
+        </div>
+      </FocusTrapZone>
+    );
+
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
@@ -171,19 +237,19 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
           >
             <div className={classNames.root}>
               {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
-              <FocusTrapZone
-                componentRef={this._focusTrapZone}
-                className={classNames.main}
-                elementToFocusOnDismiss={elementToFocusOnDismiss}
-                isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
-                ignoreExternalFocusing={ignoreExternalFocusing}
-                forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
-                firstFocusableSelector={firstFocusableSelector}
-              >
-                <div ref={this._allowScrollOnModal} className={classNames.scrollableContent} data-is-scrollable={true}>
-                  {this.props.children}
-                </div>
-              </FocusTrapZone>
+              {isDraggable ? (
+                <Draggable
+                  handle={dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
+                  cancel="button"
+                  onStart={this._onDragStart}
+                  onStop={this._onDragStop}
+                  position={{ x: x, y: y }}
+                >
+                  {modalContent}
+                </Draggable>
+              ) : (
+                modalContent
+              )}
             </div>
           </Popup>
         </Layer>
@@ -208,15 +274,117 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     this._scrollableContent = elt;
   };
 
-  // Watch for completed animations and set the state
-  private _onModalClose(): void {
+  private _onModalContextMenuClose = (): void => {
+    this.setState({ isModalMenuOpen: false });
+  };
+
+  private _onModalClose = (): void => {
+    this._lastSetX = 0;
+    this._lastSetY = 0;
+
     this.setState({
-      isOpen: false
+      isModalMenuOpen: false,
+      isInKeyboardMoveMode: false,
+      isOpen: false,
+      x: 0,
+      y: 0
     });
 
     // Call the onDismiss callback
-    if (this.props.onDismissed) {
-      this.props.onDismissed();
+    if (this.props.onDismiss) {
+      this.props.onDismiss();
     }
-  }
+  };
+
+  /**
+   * On dragStop set focus back on the FocusTrapZone
+   * and return false so that Draggable's base stop logic still runs
+   */
+  private _onDragStop = (_: Event, ui: DraggableData): false => {
+    this.setState({ x: ui.x, y: ui.y });
+
+    this.focus();
+    return false;
+  };
+
+  private _onDragStart = (_: Event, ui: DraggableData): void => {
+    this.setState({ isModalMenuOpen: false, isInKeyboardMoveMode: false });
+  };
+
+  private _onDialogKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (event.altKey && event.ctrlKey && event.keyCode === KeyCodes.space) {
+      this.setState({ isModalMenuOpen: !this.state.isModalMenuOpen });
+      event.preventDefault();
+      return;
+    }
+
+    if (this.state.isModalMenuOpen && (event.altKey || event.keyCode === KeyCodes.escape)) {
+      this.setState({ isModalMenuOpen: false });
+    }
+
+    if (this.state.isInKeyboardMoveMode && (event.keyCode === KeyCodes.escape || event.keyCode === KeyCodes.enter)) {
+      this.setState({ isInKeyboardMoveMode: false });
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    if (this.state.isInKeyboardMoveMode) {
+      let handledEvent = true;
+      switch (event.keyCode) {
+        case KeyCodes.escape:
+          this.setState({ x: this._lastSetX, y: this._lastSetY });
+        case KeyCodes.enter: {
+          this._lastSetX = 0;
+          this._lastSetY = 0;
+          this.setState({ isInKeyboardMoveMode: false });
+          break;
+        }
+        case KeyCodes.up: {
+          this.setState({
+            y: this.state.y - (event.ctrlKey ? 1 : 10)
+          });
+          break;
+        }
+        case KeyCodes.down: {
+          this.setState({
+            y: this.state.y + (event.ctrlKey ? 1 : 10)
+          });
+          break;
+        }
+        case KeyCodes.left: {
+          this.setState({
+            x: this.state.x - (event.ctrlKey ? 1 : 10)
+          });
+          break;
+        }
+        case KeyCodes.right: {
+          this.setState({
+            x: this.state.x + (event.ctrlKey ? 1 : 10)
+          });
+          break;
+        }
+        default: {
+          handledEvent = false;
+        }
+      }
+
+      if (handledEvent) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }
+  };
+
+  private _onEnterKeyboardMoveMode = () => {
+    this._lastSetX = this.state.x;
+    this._lastSetY = this.state.y;
+
+    this.setState({ isInKeyboardMoveMode: true, isModalMenuOpen: false });
+  };
+
+  private _onExitKeyboardMoveMode = () => {
+    this._lastSetX = 0;
+    this._lastSetY = 0;
+    this.setState({ isInKeyboardMoveMode: false });
+  };
 }
