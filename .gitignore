@@ -62,7 +62,6 @@ drop/
 
 # Visual Studio Temp Project
 .vs/
-bin/
 *.sublime-project
 *.sublime-workspace
 .idea
