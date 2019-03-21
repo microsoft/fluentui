@@ -32,7 +32,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -56,6 +56,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
 
         {
           border-color: #a19f9d;
+          border-radius: 2px;
           border-style: solid;
           border-width: 1px;
           box-sizing: border-box;
@@ -82,6 +83,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       className=
           ms-spinButton-input
           {
+            border-radius: 2px 0 0 2px;
             border-style: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -99,12 +101,12 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 0;
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             text-overflow: ellipsis;
             user-select: text;
-            width: calc(100% - 14px);
+            width: calc(100% - 23px);
           }
           &::selection {
             background-color: #0078d4;
@@ -143,6 +145,38 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             padding-left: 0;
             padding-right: 0;
             padding-top: 0;
+          }
+          & .ms-DownButton {
+            border-radius: 0 0 2px 0;
+            color: #605e5c;
+            width: 23px;
+          }
+          & .ms-DownButton:hover {
+            background-color: #f3f2f1;
+            color: #605e5c;
+          }
+          & .ms-DownButton:active {
+            background-color: #edebe9;
+            color: #605e5c;
+          }
+          & .ms-DownButton .ms-Button-icon {
+            font-size: 8px;
+          }
+          & .ms-UpButton {
+            border-radius: 0 2px 0 0;
+            color: #605e5c;
+            width: 23px;
+          }
+          & .ms-UpButton:hover {
+            background-color: #f3f2f1;
+            color: #605e5c;
+          }
+          & .ms-UpButton:active {
+            background-color: #edebe9;
+            color: #605e5c;
+          }
+          & .ms-UpButton .ms-Button-icon {
+            font-size: 8px;
           }
     >
       <button
@@ -434,7 +468,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -458,6 +492,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
 
         {
           border-color: #a19f9d;
+          border-radius: 2px;
           border-style: solid;
           border-width: 1px;
           box-sizing: border-box;
@@ -485,6 +520,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
       className=
           ms-spinButton-input
           {
+            border-radius: 2px 0 0 2px;
             border-style: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -502,12 +538,12 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             outline: 0;
             overflow: hidden;
             padding-bottom: 0;
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             text-overflow: ellipsis;
             user-select: text;
-            width: calc(100% - 14px);
+            width: calc(100% - 23px);
           }
           &::selection {
             background-color: #0078d4;
@@ -546,6 +582,38 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             padding-left: 0;
             padding-right: 0;
             padding-top: 0;
+          }
+          & .ms-DownButton {
+            border-radius: 0 0 2px 0;
+            color: #605e5c;
+            width: 23px;
+          }
+          & .ms-DownButton:hover {
+            background-color: #f3f2f1;
+            color: #605e5c;
+          }
+          & .ms-DownButton:active {
+            background-color: #edebe9;
+            color: #605e5c;
+          }
+          & .ms-DownButton .ms-Button-icon {
+            font-size: 8px;
+          }
+          & .ms-UpButton {
+            border-radius: 0 2px 0 0;
+            color: #605e5c;
+            width: 23px;
+          }
+          & .ms-UpButton:hover {
+            background-color: #f3f2f1;
+            color: #605e5c;
+          }
+          & .ms-UpButton:active {
+            background-color: #edebe9;
+            color: #605e5c;
+          }
+          & .ms-UpButton .ms-Button-icon {
+            font-size: 8px;
           }
     >
       <button
