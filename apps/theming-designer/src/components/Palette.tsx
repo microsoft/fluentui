@@ -74,7 +74,7 @@ export class Palette extends React.Component<{}, IPalette> {
   }
 
   private _slotWidget = (slotRule: IThemeSlotRule): JSX.Element => {
-    console.log('HIIIIII + ', slotRule);
+    //console.log('HIIIIII + ', slotRule);
     return (
       <div key={slotRule.name} className="ms-themer-slot">
         {this._colorSquareSwatchWidget(slotRule)}
@@ -91,7 +91,7 @@ export class Palette extends React.Component<{}, IPalette> {
   };
 
   private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): JSX.Element {
-    console.log('HIIIIII222222 + ', slotRule);
+    //console.log('HIIIIII222222 + ', slotRule);
     if (slotRule.color) {
       return <div key={slotRule.name} className="ms-themer-swatch" style={{ backgroundColor: slotRule.color.str }} />;
     } else {

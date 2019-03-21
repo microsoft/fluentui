@@ -24,49 +24,48 @@ html {
   padding: 0;
 }
 
-.colorpicker {
-  position: relative;
-
-  .textinput {
-    padding-left: 20px;
-    margin: 0 0 15px 0;
-    max-width: 150px;
-  }
-
-  .colorinputprimary {
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    background-color: #0078d4;
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    border: 1px solid black;
-  }
-
-  .colorinputtext {
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    background-color: #323130;
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    border: 1px solid black;
-  }
-
-  .colorinputbackground {
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    background-color: #ffffff;
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    border: 1px solid black;
-  }
-  .textfieldexample {
-    padding: 20px;
-    max-width: 40%;
-  }
+.colorbox {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  border: 1px solid black;
 }
+
+// .colorpicker {
+//   position: relative;
+
+//   .textinput {
+//     padding-left: 20px;
+//     margin: 0 0 15px 0;
+//     max-width: 150px;
+//   }
+
+//   .colorinputtext {
+//     width: 10px;
+//     height: 10px;
+//     display: inline-block;
+//     background-color: #323130;
+//     position: absolute;
+//     left: 5px;
+//     top: 5px;
+//     border: 1px solid black;
+//   }
+
+//   .colorinputbackground {
+//     width: 10px;
+//     height: 10px;
+//     display: inline-block;
+//     background-color: #ffffff;
+//     position: absolute;
+//     left: 5px;
+//     top: 5px;
+//     border: 1px solid black;
+//   }
+//   .textfieldexample {
+//     padding: 20px;
+//     max-width: 40%;
+//   }
+// }
