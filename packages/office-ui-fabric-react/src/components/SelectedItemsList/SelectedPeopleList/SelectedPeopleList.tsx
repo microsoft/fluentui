@@ -94,9 +94,9 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         />
       );
     } else {
-      // This cast is here because we are guraranteed that onRenderItem is set
+      // This cast is here because we are guaranteed that onRenderItem is set
       // from static defaultProps
-      // TODO move this component to composition with required onRenderItem to remove
+      // TODO: Move this component to composition with required onRenderItem to remove
       // this cast.
       const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
       const renderedItem = onRenderItem(props);
