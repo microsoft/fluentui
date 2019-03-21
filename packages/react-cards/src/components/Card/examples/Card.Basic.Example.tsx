@@ -42,11 +42,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
         <Card onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           <Card.Item tokens={{ margin: '0 -13px' }}>
-            <Image
-              src="https://placehold.it/286x144"
-              alt="Example implementation of the property image fit using the center value on an image larger than the frame."
-              width="100%"
-            />
+            <Image src="https://placehold.it/286x144" width="100%" />
           </Card.Item>
           <Text className={styles.siteText}>Contoso</Text>
           <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
