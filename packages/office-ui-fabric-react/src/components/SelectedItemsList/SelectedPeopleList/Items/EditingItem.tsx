@@ -26,7 +26,7 @@ export interface IEditingItemProps<TItem> extends React.HTMLAttributes<any> {
    *
    * Not actually optional, since is what is needed to resolve the new item.
    */
-  onRenderFloatingPicker?: React.ComponentType<EditingItemFloatingPickerProps<IPersonaProps>>;
+  onRenderFloatingPicker?: React.ComponentType<EditingItemFloatingPickerProps<TItem>>;
 
   /**
    * Callback for when the editing item removes the item from the well
@@ -40,15 +40,18 @@ export interface IEditingItemProps<TItem> extends React.HTMLAttributes<any> {
    *
    * @deprecated Instead of using this prop, bind this yourself inyour onRenderFloatingPicker.
    */
-  floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
+  floatingPickerProps?: IBaseFloatingPickerProps<TItem>;
 
   /**
-   * Callback used by the EditingItem to populate the initial thing
-   *
-   * Not actually optional
+   * Callback used by the EditingItem to populate the initial value of the editing item
    */
-  getEditingItemText?: (item: IExtendedPersonaProps) => string;
+  getEditingItemText: (item: IExtendedPersonaProps) => string;
 }
+
+/**
+ * @deprecated Use IEditingItemProps
+ */
+export interface IEditingSelectedPeopleItemProps extends IEditingItemProps<IPersonaProps> {}
 
 export type EditingItemFloatingPickerProps<T> = Pick<
   IBaseFloatingPickerProps<T>,
@@ -59,7 +62,7 @@ export type EditingItemFloatingPickerProps<T> = Pick<
  * Wrapper around an item in a selection well that renders an item with a context menu for
  * replacing that item with another item.
  */
-export class EditingItem<TItem> extends React.PureComponent<IEditingItemProps<TItem>, IPeoplePickerItemState> {
+export class EditingItem<TItem = IPersonaProps> extends React.PureComponent<IEditingItemProps<TItem>, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
   private _editingFloatingPicker = React.createRef<FloatingPeoplePicker>();
 
@@ -70,7 +73,7 @@ export class EditingItem<TItem> extends React.PureComponent<IEditingItemProps<TI
 
   public componentDidMount(): void {
     // TODO remove this cast and make the item required in types.
-    const itemText: string = (this.props.getEditingItemText as (item: IExtendedPersonaProps) => string)(this.props.item);
+    const itemText: string = this.props.getEditingItemText(this.props.item);
 
     this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(itemText);
     this._editingInput.value = itemText;

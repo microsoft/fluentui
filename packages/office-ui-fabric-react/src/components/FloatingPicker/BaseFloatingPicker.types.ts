@@ -42,7 +42,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * The suggestions to show on zero query, return null if using as a controlled component
    */
-  onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
+  onZeroQuerySuggestion: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
 
   /**
    * The input element to listen on events
@@ -92,7 +92,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    *
    * @deprecated prefer binding properties on onRendersuggestionControl.
    */
-  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps<T>;
+  pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
 
   /**
    * A callback for when a persona is removed from the suggestion list
@@ -152,8 +152,8 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
 /**
  *  @deprecated prefer setting props on onRenderSuggestionControl
  */
-export type IBaseFloatingPickerSuggestionProps<T = any> = Pick<
-  ISuggestionsControlProps<T>,
+export type IBaseFloatingPickerSuggestionProps = Pick<
+  ISuggestionsControlProps<any>,
   'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
 >;
 

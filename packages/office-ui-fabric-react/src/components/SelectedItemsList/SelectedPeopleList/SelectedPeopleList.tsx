@@ -12,6 +12,7 @@ import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem, EditingItemFloatingPickerProps } from './Items/EditingItem';
 
 export interface IExtendedPersonaProps extends IPersonaProps {
+  key?: React.Key;
   isValid?: boolean;
   blockRecipientRemoval?: boolean;
   shouldBlockSelection?: boolean;
@@ -28,13 +29,13 @@ export interface ISelectedPeopleItemProps<TPersona extends IExtendedPersonaProps
 
 export interface ISelectedPeopleProps<TPersona extends IExtendedPersonaProps = IExtendedPersonaProps>
   extends IBaseSelectedItemsListProps<TPersona> {
-  onExpandGroup?: (item: IExtendedPersonaProps) => void;
+  onExpandGroup?: (item: TPersona) => void;
   removeMenuItemText?: string;
   copyMenuItemText?: string;
   editMenuItemText?: string;
-  getEditingItemText?: (item: IExtendedPersonaProps) => string;
+  getEditingItemText?: (item: TPersona) => string;
   onRenderFloatingPicker?: React.ComponentType<EditingItemFloatingPickerProps<TPersona>>;
-  floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
+  floatingPickerProps?: IBaseFloatingPickerProps<TPersona>;
 }
 
 export class BasePeopleSelectedItemsList<TPersona extends IExtendedPersonaProps = IExtendedPersonaProps> extends BaseSelectedItemsList<
@@ -72,7 +73,7 @@ export class SelectedPeopleList<TPersona extends IExtendedPersonaProps = IExtend
   };
 
   // tslint:disable-next-line:no-any
-  private _renderItem(item: any, index: number): JSX.Element {
+  private _renderItem(item: TPersona, index: number): JSX.Element {
     const { removeButtonAriaLabel } = this.props;
     const props = {
       item,
@@ -88,7 +89,7 @@ export class SelectedPeopleList<TPersona extends IExtendedPersonaProps = IExtend
     };
 
     const hasContextMenu = props.menuItems.length > 0;
-    if ((item as IExtendedPersonaProps).isEditing && hasContextMenu) {
+    if (item.isEditing && hasContextMenu && this.props.getEditingItemText) {
       return (
         <EditingItem
           {...props}

@@ -16,7 +16,8 @@ export interface IBaseFloatingPickerState {
   didBind: boolean;
 }
 
-// TODO the TProps here is not needed when bidning in a renderProp.
+// TODO the TProps here is not needed when binding in a renderProp.
+// Remove once the props is deprecated.
 export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<TItem> = IBaseFloatingPickerProps<TItem>>
   extends BaseComponent<TProps, IBaseFloatingPickerState>
   implements IBaseFloatingPicker {
@@ -25,9 +26,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
   protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<TItem>;
   protected suggestionsControl: SuggestionsControl<TItem>;
-  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<TItem>) => SuggestionsControl<
-    TItem
-  > = SuggestionsControl as new (props: ISuggestionsControlProps<TItem>) => SuggestionsControl<TItem>;
+  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<TItem>) => SuggestionsControl<TItem> = SuggestionsControl;
   protected currentPromise: PromiseLike<TItem[]>;
 
   constructor(basePickerProps: TProps) {
@@ -72,7 +71,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
       });
 
       if (this.props.onInputChanged) {
-        (this.props.onInputChanged as (filter: string) => void)(queryString);
+        this.props.onInputChanged(queryString);
       }
 
       this.updateValue(queryString);
@@ -196,25 +195,22 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
 
   protected updateSuggestionWithZeroState(): void {
     if (this.props.onZeroQuerySuggestion) {
-      const onEmptyInputFocus = this.props.onZeroQuerySuggestion as (selectedItems?: TItem[]) => TItem[] | PromiseLike<TItem[]>;
-      const suggestions: TItem[] | PromiseLike<TItem[]> = onEmptyInputFocus(this.props.selectedItems);
-      this.updateSuggestionsList(suggestions);
+      const onEmptyInputFocus = this.props.onZeroQuerySuggestion;
+      const suggestions: TItem[] | PromiseLike<TItem[]> | null = onEmptyInputFocus(this.props.selectedItems);
+      this.updateSuggestionsList(suggestions || []);
     } else {
       this.hidePicker();
     }
   }
 
   protected updateSuggestionsList(suggestions: TItem[] | PromiseLike<TItem[]>): void {
-    const suggestionsArray: TItem[] = suggestions as TItem[];
-    const suggestionsPromiseLike: PromiseLike<TItem[]> = suggestions as PromiseLike<TItem[]>;
-
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
-    if (Array.isArray(suggestionsArray)) {
-      this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
-    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
+    if (Array.isArray(suggestions)) {
+      this.updateSuggestions(suggestions, true /*forceUpdate*/);
+    } else if (suggestions && suggestions.then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<TItem[]> = (this.currentPromise = suggestionsPromiseLike);
+      const promise: PromiseLike<TItem[]> = (this.currentPromise = suggestions);
       promise.then((newSuggestions: TItem[]) => {
         if (promise === this.currentPromise) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
