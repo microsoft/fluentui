@@ -7928,6 +7928,8 @@ interface IExtendedPersonaProps extends IPersonaProps {
   // (undocumented)
   isValid: boolean;
   // (undocumented)
+  key?: React.Key;
+  // (undocumented)
   shouldBlockSelection?: boolean;
 }
 
