@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Text } from '@uifabric/experiments';
 import { Icon, Image, Stack } from 'office-ui-fabric-react';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { Card } from '../Card';
 
 const alertClicked = (): void => {
@@ -13,18 +13,23 @@ export class CardCompactExample extends React.Component<{}, {}> {
     const styles = mergeStyleSets({
       siteText: {
         color: '#025F52',
-        fontSize: 14,
-        fontWeight: 600
+        fontSize: 12,
+        fontWeight: FontWeights.semibold
       },
       descriptionText: {
-        color: '#33332D',
-        fontSize: 16,
-        fontWeight: 600
+        color: '#333333',
+        fontSize: 14,
+        fontWeight: FontWeights.regular
       },
       helpfulText: {
-        color: '#323130',
-        fontSize: 14,
-        fontWeight: 600
+        color: '#333333',
+        fontSize: 12,
+        fontWeight: FontWeights.regular
+      },
+      icon: {
+        color: '#0078D4',
+        fontSize: 16,
+        fontWeight: FontWeights.regular
       }
     });
 
@@ -36,10 +41,7 @@ export class CardCompactExample extends React.Component<{}, {}> {
 
         <Card compact={true} onClick={alertClicked}>
           <Card.Item tokens={{ margin: '-12px 0 -12px -12px' }}>
-            <Image
-              src="https://placehold.it/180x135"
-              alt="Example implementation of the property image fit using the center value on an image larger than the frame."
-            />
+            <Image src="https://placehold.it/180x135" />
           </Card.Item>
           <Stack gap={12}>
             <Text className={styles.siteText}>Contoso</Text>
@@ -47,12 +49,12 @@ export class CardCompactExample extends React.Component<{}, {}> {
             <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
           </Stack>
           <Stack gap={16} padding="0 0 0 12px" styles={{ root: { borderLeft: '1px solid #F3F2F1' } }}>
-            <Icon iconName="RedEye" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-            <Icon iconName="SingleBookmark" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
+            <Icon iconName="RedEye" className={styles.icon} />
+            <Icon iconName="SingleBookmark" className={styles.icon} />
             <Stack.Item grow={1}>
               <span />
             </Stack.Item>
-            <Icon iconName="MoreVertical" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
+            <Icon iconName="MoreVertical" className={styles.icon} />
           </Stack>
         </Card>
       </Stack>

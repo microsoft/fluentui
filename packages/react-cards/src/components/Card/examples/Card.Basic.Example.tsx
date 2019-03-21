@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Persona, Text } from '@uifabric/experiments';
 import { Icon, Image, Stack } from 'office-ui-fabric-react';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { Card } from '../Card';
 
 const alertClicked = (): void => {
@@ -13,18 +13,23 @@ export class CardBasicExample extends React.Component<{}, {}> {
     const styles = mergeStyleSets({
       siteText: {
         color: '#025F52',
-        fontSize: 14,
-        fontWeight: 600
+        fontSize: 12,
+        fontWeight: FontWeights.semibold
       },
       descriptionText: {
-        color: '#33332D',
-        fontSize: 16,
-        fontWeight: 600
+        color: '#333333',
+        fontSize: 14,
+        fontWeight: FontWeights.regular
       },
       helpfulText: {
-        color: '#323130',
-        fontSize: 14,
-        fontWeight: 600
+        color: '#333333',
+        fontSize: 12,
+        fontWeight: FontWeights.regular
+      },
+      icon: {
+        color: '#0078D4',
+        fontSize: 16,
+        fontWeight: FontWeights.regular
       }
     });
 
@@ -34,14 +39,13 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Text>Basic card</Text>
         </Card>
 
-        <Card tokens={{ width: '220px', childrenGap: 28 }} onClick={alertClicked}>
+        <Card onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           <Card.Item tokens={{ margin: '0 -13px' }}>
             <Image
-              src="https://placehold.it/250x120"
+              src="https://placehold.it/286x144"
               alt="Example implementation of the property image fit using the center value on an image larger than the frame."
               width="100%"
-              height="120px"
             />
           </Card.Item>
           <Text className={styles.siteText}>Contoso</Text>
@@ -49,12 +53,12 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
           <Card.Item>
             <Stack horizontal tokens={{ childrenGap: 16 }} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
-              <Icon iconName="RedEye" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
-              <Icon iconName="SingleBookmark" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
+              <Icon iconName="RedEye" className={styles.icon} />
+              <Icon iconName="SingleBookmark" className={styles.icon} />
               <Stack.Item grow={1}>
                 <span />
               </Stack.Item>
-              <Icon iconName="MoreVertical" styles={{ root: { color: '#0078D4', fontSize: 16 } }} />
+              <Icon iconName="MoreVertical" className={styles.icon} />
             </Stack>
           </Card.Item>
         </Card>

@@ -40,6 +40,7 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
     root: [
       classNames.root,
       {
+        borderRadius: '2px',
         boxShadow: tokens.boxShadow,
         height: tokens.height,
         padding: tokens.padding,
