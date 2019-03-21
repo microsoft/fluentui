@@ -331,7 +331,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         text-decoration: none;
                       }
                       &:focus {
-                        color: #605e5c;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -491,7 +491,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         text-decoration: none;
                       }
                       &:focus {
-                        color: #605e5c;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -652,7 +652,7 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         text-decoration: none;
                       }
                       &:focus {
-                        color: #605e5c;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
