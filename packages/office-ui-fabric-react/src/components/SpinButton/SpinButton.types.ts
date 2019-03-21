@@ -89,7 +89,7 @@ export interface ISpinButtonProps {
   /**
    * Descriptive label for the SpinButton.
    */
-  label: string;
+  label?: string;
 
   /**
    * @defaultvalue Left

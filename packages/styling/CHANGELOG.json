@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.45.0",
+      "tag": "@uifabric/styling_v6.45.0",
+      "date": "Wed, 13 Mar 2019 12:33:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Reverting sideEffects opt out. We are trying to reduce bundle size, but a number of reports have indicated that sideEffects aren't working correctly for them. We will revert until we remove all side effects.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "44ba04a1ebefb8fad4622c68bc8aa9c7de115df2"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.44.1",
       "tag": "@uifabric/styling_v6.44.1",
       "date": "Tue, 05 Mar 2019 17:33:41 GMT",

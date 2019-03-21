@@ -2,6 +2,78 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.64.1",
+      "tag": "@uifabric/experiments_v6.64.1",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix a bug in the tooltip of last page button in pagination component, experiment package",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "fbc1b3cb28a8cc1259e568327a1d9b3d57fc35a9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.16.1 <1.0.0` to `>=0.16.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.64.0",
+      "tag": "@uifabric/experiments_v6.64.0",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Separating MenuButton and SplitButton as variants to decouple ContextualMenu from Button.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4ba0a8146f789021ac1b3166ef446e56d742ee88"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.16.0 <1.0.0` to `>=0.16.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.1 <1.0.0` to `>=0.7.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.35.0 <7.0.0` to `>=6.35.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.156.0 <7.0.0` to `>=6.157.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.63.1",
+      "tag": "@uifabric/experiments_v6.63.1",
+      "date": "Wed, 13 Mar 2019 00:42:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots to reflect default change in Text",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "e4ab66c8976e0f6808ad90295b526b1a20ba1142"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.155.0 <7.0.0` to `>=6.156.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.1 <7.0.0` to `>=6.12.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.63.0",
       "tag": "@uifabric/experiments_v6.63.0",
       "date": "Thu, 07 Mar 2019 13:32:46 GMT",

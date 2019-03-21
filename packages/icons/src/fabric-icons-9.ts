@@ -15,9 +15,22 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-9"`,
-      src: `url('${baseUrl}fabric-icons-9-e5eafdb0.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-9-88060b8a.woff') format('woff')`
     },
     icons: {
+      Trophy2: '\uF1AE',
+      BucketColor: '\uF1B6',
+      BucketColorFill: '\uF1B7',
+      Taskboard: '\uF1C2',
+      SingleColumn: '\uF1D3',
+      DoubleColumn: '\uF1D4',
+      TripleColumn: '\uF1D5',
+      ColumnLeftTwoThirds: '\uF1D6',
+      ColumnRightTwoThirds: '\uF1D7',
+      AccessLogoFill: '\uF1DB',
+      AnalyticsLogo: '\uF1DE',
+      AnalyticsQuery: '\uF1DF',
+      NewAnalyticsQuery: '\uF1E0',
       AnalyticsReport: '\uF1E1',
       WordLogo: '\uF1E3',
       WordLogoFill: '\uF1E4',
@@ -82,6 +95,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       OfficeVideoLogoFill: '\uF283',
       ExchangeLogo: '\uF284',
       ExchangeLogoFill: '\uF285',
+      Signin: '\uF286',
       DocumentApproval: '\uF28B',
       CloneToDesktop: '\uF28C',
       InstallToDrive: '\uF28D',
@@ -103,21 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Deploy: '\uF29D',
       Redeploy: '\uF29E',
       ServerEnviroment: '\uF29F',
-      VisioDiagram: '\uF2A0',
-      HighlightMappedShapes: '\uF2A1',
-      TextCallout: '\uF2A2',
-      IconSetsFlag: '\uF2A4',
-      VisioLogo: '\uF2A7',
-      VisioLogoFill: '\uF2A8',
-      VisioDocument: '\uF2A9',
-      TimelineProgress: '\uF2AA',
-      TimelineDelivery: '\uF2AB',
-      Backlog: '\uF2AC',
-      TeamFavorite: '\uF2AD',
-      TaskGroup: '\uF2AE',
-      TaskGroupMirrored: '\uF2AF',
-      ScopeTemplate: '\uF2B0',
-      AssessmentGroupTemplate: '\uF2B1'
+      VisioDiagram: '\uF2A0'
     }
   };
 

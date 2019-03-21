@@ -7,9 +7,9 @@ import { CalendarStatus } from './Calendar.checklist';
 import { addMonths, addYears, addWeeks, addDays } from '../../utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarButtonExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Calendar/Calendar.Button.Example.Codepen.txt') as string;
+const CalendarButtonExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Calendar/Calendar.Inline.Example.Codepen.txt') as string;
+const CalendarInlineExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 

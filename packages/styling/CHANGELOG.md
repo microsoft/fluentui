@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 05 Mar 2019 17:33:41 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2019 12:33:47 GMT and should not be manually modified.
+
+## 6.45.0
+Wed, 13 Mar 2019 12:33:47 GMT
+
+### Minor changes
+
+- Reverting sideEffects opt out. We are trying to reduce bundle size, but a number of reports have indicated that sideEffects aren't working correctly for them. We will revert until we remove all side effects.
 
 ## 6.44.1
 Tue, 05 Mar 2019 17:33:41 GMT

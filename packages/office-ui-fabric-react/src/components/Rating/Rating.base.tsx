@@ -72,7 +72,18 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const id = this._id;
     const stars = [];
     const starIds = [];
-    const { disabled, getAriaLabel, styles, max, rating, readOnly, size, theme, icon, unselectedIcon = icon } = this.props;
+    const {
+      disabled,
+      getAriaLabel,
+      styles,
+      max,
+      rating,
+      readOnly,
+      size,
+      theme,
+      icon = 'FavoriteStarFill',
+      unselectedIcon = 'FavoriteStar'
+    } = this.props;
 
     this._classNames = getClassNames(styles!, {
       disabled,

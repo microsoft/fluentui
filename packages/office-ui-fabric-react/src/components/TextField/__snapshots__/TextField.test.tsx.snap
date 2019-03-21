@@ -608,7 +608,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -843,7 +843,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -1080,7 +1080,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {

@@ -71,6 +71,7 @@ Breadcrumb/ @jdhuntington
 Button/ @khmakoto
 Calendar/ @OfficeDev/uifabric-calendar
 Callout/ @joschect
+react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
 ChoiceGroup/ @srideshpande
@@ -82,7 +83,7 @@ ContextualMenu/ @joschect
 DatePicker/ @OfficeDev/uifabric-calendar
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
-DocumentCard/ @yiminwu @mikewheaton
+DocumentCard/ @yiminwu
 Dropdown/ @JasonGore
 Fabric/ @dzearing
 FacePile/ @markionium
@@ -90,7 +91,7 @@ FolderCover/ @ThomasMichon
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
 GroupedList/  @aditima @KevinTCoughlin
-HoverCard/   @atneik @Jahnp
+HoverCard/   @atneik @Jahnp @Vitalius1
 Icon/ @dzearing
 Image/ @dzearing
 Label/ @cliffkoh
@@ -115,6 +116,7 @@ ProgressIndicator/ @aneeshak
 Rating/ @jdhuntington
 ResizeGroup/ @micahgodbolt
 SearchBox/ @ecraig12345
+Shimmer/ @Vitalius1 @atneik
 Signals/ @ThomasMichon
 Slider/ @aneeshak
 SpinButton/ @aneeshack4
@@ -127,7 +129,6 @@ Theme/ @JasonGore
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
-experiments/src/components/Card/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/ @micahgodbolt
 
@@ -137,6 +138,7 @@ Tooltip/ @micahgodbolt
 Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
+react-cards/Card/docs/  @khmakoto
 # Check/docs/
 # Checkbox/docs/
 ChoiceGroup/docs/   @srideshpande
@@ -147,19 +149,19 @@ ContextualMenu/docs/  @joschect
 DatePicker/docs/   @OfficeDev/uifabric-calendar
 DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
-DocumentCard/docs/ @yiminwu @mikewheaton
+DocumentCard/docs/ @yiminwu
 # Dropdown/docs/
 # Fabric/docs/
 # FacePile/docs/
 # FocusTrapZone/docs/
 # FocusZone/docs/
 GroupedList/docs/  @aditima @KevinTCoughlin
-HoverCard/docs/   @atneik @Jahnp
+HoverCard/docs/   @atneik @Jahnp @Vitalius1
 # Icon/docs/
 # Image/docs/
 # Label/docs/
 Layer/docs/  @ThomasMichon
-# Link/docs/
+Link/docs/  @khmakoto
 List/docs/ @KevinTCoughlin
 # MarqueeSelection/docs/
 # MessageBar/docs/
@@ -176,6 +178,7 @@ pickers/docs/  @joschect
 # Rating/docs/
 ResizeGroup/docs/  @micahgodbolt
 # SearchBox/docs/
+Shimmer/docs/ @Vitalius1 @atneik
 # Slider/docs/
 # SpinButton/docs/
 # Spinner/docs/

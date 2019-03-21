@@ -46,12 +46,17 @@ module.exports = function generateVersionFiles() {
   packageJsons.forEach(packageJsonPath => {
     const versionFile = path.join(path.dirname(packageJsonPath), 'src/version.ts');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
-    let shouldGenerate = true;
+    const dependencies = packageJson.dependencies || {};
 
-    if (!fs.existsSync(path.dirname(versionFile)) || packageJsonPath.indexOf('set-version') > -1) {
+    if (
+      !fs.existsSync(path.dirname(versionFile)) ||
+      packageJsonPath.indexOf('set-version') > -1 ||
+      !dependencies['@uifabric/set-version']
+    ) {
       return;
     }
 
+    let shouldGenerate = true;
     if (fs.existsSync(versionFile) && process.argv.indexOf('-f') < 0) {
       const originVersionFileContent = fs.readFileSync(versionFile).toString();
       shouldGenerate = originVersionFileContent.indexOf(`${packageJson.name}@${packageJson.version}`) < 0;

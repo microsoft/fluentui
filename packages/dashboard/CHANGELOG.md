@@ -1,6 +1,50 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 07 Mar 2019 13:32:46 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 0.56.0
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Dashboard Card Header ellipsis border issue resolved.
+
+## 0.55.2
+Mon, 18 Mar 2019 17:04:23 GMT
+
+### Patches
+
+- DetailPanel: Enable overflow handling on Tiles
+
+## 0.55.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- DetailPanel: Update allow Message Banner to show inside or/and outside Pivot
+- Update dashboard dependency
+- DetailPanel: Fix ActionBar lifecylce in Pivot Item change outside, expose onPivotLinkClick
+
+## 0.55.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Fixed dashboard grid layout example for low resolution screen
+
+## 0.54.1
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Patches
+
+- DetailPanel: Enable use the currentL2Id on Panel load to load L2 page directly
+
+## 0.54.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Added props required for content animation in wizard, Moved util functions from exampls to main util file, Added util methods "getPrevStep, getParentStep, getStep", Animations in progress
 
 ## 0.53.1
 Thu, 07 Mar 2019 13:32:46 GMT
