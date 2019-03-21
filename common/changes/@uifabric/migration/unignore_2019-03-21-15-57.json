@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/migration",
+      "comment": "migration: the bin directory was being ignored, this change makes sure the npm publish step will include the bin scripts",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "kchau@microsoft.com"
+}
