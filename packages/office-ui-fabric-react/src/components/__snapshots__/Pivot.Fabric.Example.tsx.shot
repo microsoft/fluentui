@@ -768,7 +768,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     role="alertdialog"
                     style={
                       Object {
-                        "maxHeight": 750,
+                        "maxHeight": 752,
                         "outline": "none",
                         "overflowY": undefined,
                       }

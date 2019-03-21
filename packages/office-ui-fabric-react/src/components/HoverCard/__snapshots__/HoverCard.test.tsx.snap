@@ -129,7 +129,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           onKeyDown={[Function]}
           style={
             Object {
-              "maxHeight": 718,
+              "maxHeight": 720,
               "outline": "none",
               "overflowY": "hidden",
             }
@@ -315,7 +315,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           onKeyDown={[Function]}
           style={
             Object {
-              "maxHeight": 718,
+              "maxHeight": 720,
               "outline": "none",
               "overflowY": undefined,
             }

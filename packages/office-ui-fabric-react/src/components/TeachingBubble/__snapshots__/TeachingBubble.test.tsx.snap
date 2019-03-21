@@ -63,7 +63,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       onKeyDown={[Function]}
       style={
         Object {
-          "maxHeight": 750,
+          "maxHeight": 752,
           "outline": "none",
           "overflowY": "hidden",
         }

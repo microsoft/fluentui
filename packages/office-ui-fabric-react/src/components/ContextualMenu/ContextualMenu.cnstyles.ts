@@ -164,7 +164,13 @@ export const getMenuItemStyles = memoizeFunction(
         width: IconFontSizes.medium,
         margin: '0 4px',
         verticalAlign: 'middle',
-        flexShrink: '0'
+        flexShrink: '0',
+        selectors: {
+          [MediumScreenSelector]: {
+            fontSize: IconFontSizes.large,
+            width: IconFontSizes.large
+          }
+        }
       },
       iconColor: {
         color: semanticColors.menuIcon,

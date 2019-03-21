@@ -532,7 +532,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                   onScroll={[Function]}
                   style={
                     Object {
-                      "maxHeight": 750,
+                      "maxHeight": 752,
                       "outline": "none",
                       "overflowY": undefined,
                     }
@@ -731,6 +731,10 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                     @media screen and (-ms-high-contrast: active){$root:focus & {
                                       color: HighlightText;
                                     }
+                                    @media only screen and (min-width: 0px) and (max-width: 639px){& {
+                                      font-size: 20px;
+                                      width: 20px;
+                                    }
                                 data-icon-name="Mail"
                                 role="presentation"
                               >
@@ -895,6 +899,10 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                     }
                                     @media screen and (-ms-high-contrast: active){$root:focus & {
                                       color: HighlightText;
+                                    }
+                                    @media only screen and (min-width: 0px) and (max-width: 639px){& {
+                                      font-size: 20px;
+                                      width: 20px;
                                     }
                                 data-icon-name="Calendar"
                                 role="presentation"
