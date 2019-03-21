@@ -11,7 +11,11 @@ export function handleRedirects() {
 function redirectLegacyUrls(hash: string) {
   const redirectMap = {
     '#/customizations/themes': '#/components/customizations/themes',
-    '#/customizations/colors': '#/components/customizations/colors'
+    '#/customizations/colors': '#/components/customizations/colors',
+    '#/examples/announced/quickactions': '#/components/announced/quickactions',
+    '#/examples/announced/searchresults': '#/components/announced/searchresults',
+    '#/examples/announced/lazyloading': '#/components/announced/lazyloading',
+    '#/examples/announced/bulkoperations': '#/components/announced/bulkoperations'
   };
 
   Object.keys(redirectMap).forEach(old => {

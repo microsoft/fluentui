@@ -6,6 +6,7 @@ import { Wizard } from './Wizard';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { defaultPanelStyleSet, defaultWizardStyleSet, getPanelWizardStyles } from './PanelWizard.styles';
 import { getStepToShow } from './Wizard.utils';
+import { IWizardStepProps } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 
 const getClassNames = classNamesFunction<IPanelWizardStyleProps, IPanelWizardStyles>();
 
@@ -42,15 +43,22 @@ export class PanelWizardBase extends React.Component<IPanelWizardProps, {}> {
   }
 
   private _onRenderNavigationContent = (props: IPanelProps, defaultRender: IRenderFunction<IPanelProps>): JSX.Element => {
-    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
     const step = getStepToShow(this.props.wizardProps);
 
     return (
       <>
-        <div className={classNames.titleElementContainer}>{step.titleElement}</div>
+        {this._onRenderTitle(step)}
         {defaultRender(props)}
       </>
     );
+  };
+
+  private _onRenderTitle = (step: IWizardStepProps): React.ReactNode => {
+    const classNames = getClassNames(this.props.styles!, { theme: this.props.theme! });
+
+    if (step.titleElement) {
+      return <div className={classNames.titleElementContainer}>{step.titleElement}</div>;
+    }
   };
 
   private _onRenderFooter = (): JSX.Element => {
@@ -61,9 +69,8 @@ export class PanelWizardBase extends React.Component<IPanelWizardProps, {}> {
   };
 }
 
-export const PanelWizard: (props: IPanelWizardProps) => JSX.Element = styled<IPanelWizardProps, IPanelWizardStyleProps, IPanelWizardStyles>(
-  PanelWizardBase,
-  getPanelWizardStyles,
-  undefined,
-  { scope: 'PanelWizard' }
-);
+export const PanelWizard: React.StatelessComponent<IPanelWizardProps> = styled<
+  IPanelWizardProps,
+  IPanelWizardStyleProps,
+  IPanelWizardStyles
+>(PanelWizardBase, getPanelWizardStyles, undefined, { scope: 'PanelWizard' });

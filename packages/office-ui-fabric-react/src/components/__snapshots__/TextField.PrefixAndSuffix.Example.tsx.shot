@@ -8,8 +8,13 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
     className=
         ms-TextField
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -64,6 +69,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #666666;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -84,9 +90,12 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
         </div>
         <input
           aria-invalid={false}
+          aria-label="Example text field with https:// prefix and .com suffix"
           className=
               ms-TextField-field
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-radius: 0px;
@@ -94,7 +103,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #333333;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -115,11 +126,21 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 display: none;
               }
               &::placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #666666;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #666666;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           id="TextField0"
@@ -138,6 +159,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #666666;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -164,8 +186,13 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
         ms-TextField
         is-disabled
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -250,6 +277,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #a6a6a6;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -270,9 +298,12 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
         </div>
         <input
           aria-invalid={false}
+          aria-label="Example text field with https:// prefix and .com suffix"
           className=
               ms-TextField-field
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 background-color: transparent;
                 background: none;
                 border-color: transparent;
@@ -281,7 +312,9 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 box-shadow: none;
                 box-sizing: border-box;
                 color: #a6a6a6;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
+                font-weight: 400;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -302,11 +335,21 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 display: none;
               }
               &::placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #a6a6a6;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           disabled={true}
@@ -326,6 +369,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #a6a6a6;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;

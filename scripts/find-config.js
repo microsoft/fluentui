@@ -6,6 +6,9 @@
  * @returns The config file's path, or undefined if not found
  */
 function findConfig(configName, lookInCommon) {
+  if (!configName) {
+    return undefined;
+  }
   const fs = require('fs');
   const path = require('path');
   const rootPath = path.resolve('/');

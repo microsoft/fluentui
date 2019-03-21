@@ -33,7 +33,8 @@ export const getStyles = (props: ICardFrameProps): ICardFrameStyles => {
     },
     cardTitleEllipsisButton: {
       width: 40,
-      height: 40
+      height: 38,
+      padding: '2px'
     },
     cardTitle: {
       overflow: 'hidden',

@@ -6,7 +6,7 @@ import { RatingButtonControlledExample } from './examples/Rating.ButtonControlle
 import { RatingStatus } from './Rating.checklist';
 
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
-const RatingBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Rating/Rating.Basic.Example.Codepen.txt') as string;
+const RatingBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 const RatingButtonControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.ButtonControlled.Example.tsx') as string;
 
 export const RatingPageProps: IDocPageProps = {

@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';

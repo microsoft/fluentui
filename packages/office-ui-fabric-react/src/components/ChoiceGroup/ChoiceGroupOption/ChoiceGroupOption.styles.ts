@@ -146,7 +146,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     checked && {
       borderWidth: 1,
       borderStyle: 'solid',
-      borderColor: semanticColors.inputBackgroundChecked,
+      borderColor: disabled ? semanticColors.disabledText : semanticColors.inputBackgroundChecked,
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight'
@@ -178,7 +178,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     checked && {
       borderWidth: 5,
       borderStyle: 'solid',
-      borderColor: semanticColors.inputBackgroundChecked,
+      borderColor: disabled ? semanticColors.disabledText : semanticColors.inputBackgroundChecked,
       left: 5,
       top: 5,
       width: 10,
@@ -245,12 +245,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       {
         position: 'absolute',
         opacity: 0,
-        top: 8
-      },
-      (hasIcon || hasImage) && {
         top: 0,
         right: 0,
-        opacity: 0,
         width: '100%',
         height: '100%',
         margin: 0

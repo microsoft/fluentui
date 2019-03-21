@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import './Link.Example.scss';

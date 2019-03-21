@@ -7,16 +7,18 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Basic.Example.scss';
 
+export type IExampleItem = { name: string; thumbnail: string; description: string };
+
 export interface IListBasicExampleProps {
-  items: any[];
+  items: IExampleItem[];
 }
 
 export interface IListBasicExampleState {
   filterText?: string;
-  items?: any[];
+  items?: IExampleItem[];
 }
 
-export class ListBasicExample extends React.Component<IListBasicExampleProps, any> {
+export class ListBasicExample extends React.Component<IListBasicExampleProps, IListBasicExampleState> {
   constructor(props: IListBasicExampleProps) {
     super(props);
 
@@ -30,7 +32,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
 
   public render(): JSX.Element {
     const { items: originalItems } = this.props;
-    const { items } = this.state;
+    const { items = [] } = this.state;
     const resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
 
     return (
@@ -50,7 +52,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
     });
   }
 
-  private _onRenderCell(item: any, index: number | undefined): JSX.Element {
+  private _onRenderCell(item: IExampleItem, index: number | undefined): JSX.Element {
     return (
       <div className="ms-ListBasicExample-itemCell" data-is-focusable={true}>
         <Image className="ms-ListBasicExample-itemImage" src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />

@@ -6,6 +6,7 @@ export * from './components/SetupBanner/index';
 export * from './components/MultiCount/index';
 export * from './components/Section/index';
 export * from './components/SubwayNav/index';
+export * from './components/Wizard/index';
 export * from './utilities/index';
 
 import './version';

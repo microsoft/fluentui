@@ -17,7 +17,8 @@ export function getStyles(props: ITagItemSuggestionStyleProps): ITagItemSuggesti
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         maxWidth: '60vw',
-        padding: '6px 12px 7px'
+        padding: '6px 12px 7px',
+        whiteSpace: 'nowrap'
       },
       className
     ]

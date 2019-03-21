@@ -401,10 +401,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   /** Render text in dropdown input */
-  private _onRenderTitle = (item: IDropdownOption[]): JSX.Element => {
+  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
     const { multiSelectDelimiter = ', ' } = this.props;
 
-    const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
+    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
     return <span>{displayTxt}</span>;
   };
 
@@ -697,7 +697,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   /** Get all selected indexes for multi-select mode */
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
+  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | null | undefined): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);

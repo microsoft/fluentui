@@ -11,7 +11,8 @@
       "./src/common/_themeOverrides.scss",
       "./src/common/_legacyThemePalette.scss",
       "./src/common/_effects.scss",
-      "./src/common/_themeVariables.scss"
+      "./src/common/_themeVariables.scss",
+      "./src/common/ThemingSass.scss"
     ],
     "dist/css": [
       "office-ui-fabric-core/dist/css/**/*"

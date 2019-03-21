@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Stack } from '../Stack';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
