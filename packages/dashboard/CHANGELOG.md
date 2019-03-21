@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Mar 2019 12:36:30 GMT and should not be manually modified.
+
+## 0.57.0
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Minor changes
+
+- Add title native tool-tip for the refresh icon and close icon in DetailPanel with pivot
 
 ## 0.56.0
 Tue, 19 Mar 2019 12:36:45 GMT
