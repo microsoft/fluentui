@@ -183,14 +183,17 @@ export const getItemClassNames = memoizeFunction(
       ],
       iconColor: styles.iconColor,
       checkmarkIcon: [classNames.checkmarkIcon, knownIcon && styles.checkmarkIcon, styles.icon, iconClassName],
-      subMenuIcon: [classNames.subMenuIcon, styles.subMenuIcon, subMenuClassName],
+      subMenuIcon: [
+        classNames.subMenuIcon,
+        styles.subMenuIcon,
+        subMenuClassName,
+        expanded && { color: theme.palette.neutralPrimary },
+        disabled && [styles.iconDisabled]
+      ],
       label: [classNames.label, styles.label],
       secondaryText: [classNames.secondaryText, styles.secondaryText],
       splitContainer: [
         styles.splitButtonFlexContainer,
-        {
-          alignItems: 'flex-start'
-        },
         !disabled &&
           !checked && [
             {
