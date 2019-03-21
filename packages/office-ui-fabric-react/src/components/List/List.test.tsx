@@ -79,7 +79,7 @@ describe('List', () => {
 
       const listRoot = wrapper.find(List);
 
-      expect(listRoot.getDOMNode().getAttribute('role')).toEqual(null);
+      expect(listRoot.getDOMNode().getAttribute('role')).toBeNull();
     });
 
     it("sets the row elements' role to 'listitem'", done => {
