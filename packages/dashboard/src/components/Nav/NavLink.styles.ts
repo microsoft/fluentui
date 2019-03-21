@@ -23,6 +23,9 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
       alignItems: 'center',
       cursor: 'pointer',
       position: 'relative',
+      width: '100%',
+      background: 'transparent',
+      border: 'none',
       selectors: {
         ':hover': {
           backgroundColor: hasNestedMenu ? navItemWithChildBgColor : navItemHoverColor
