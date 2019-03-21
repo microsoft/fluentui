@@ -186,7 +186,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         ...commonItemStyles,
         selectors: {
           ':focus': {
-            color: itemTextColor
+            color: palette.neutralDark
           },
           [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `none`
