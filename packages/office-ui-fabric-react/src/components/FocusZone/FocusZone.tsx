@@ -52,8 +52,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     direction: FocusZoneDirection.bidirectional
   };
 
-  private static _allFocusZones = [];
-
   private _disposables: Function[] = [];
   private _root = React.createRef<HTMLElement>();
   private _id: string;
