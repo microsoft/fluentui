@@ -53,6 +53,7 @@ packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
+packages/migration/ @ecraig12345 @kenotron
 
 ### Fabric
 # common/
