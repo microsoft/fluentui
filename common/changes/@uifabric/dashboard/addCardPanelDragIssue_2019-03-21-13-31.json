@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Fix issue with add card from panel using drag and drop",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "v-ragor@microsoft.com"
+}
