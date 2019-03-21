@@ -119,9 +119,9 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   /**
    * Renders various types of Text (primaryText, secondaryText, etc)
    * based on the classNames passed
-   * @param classNames
-   * @param renderFunction
-   * @param defaultRenderFunction
+   * @param classNames - element className
+   * @param renderFunction - render function
+   * @param defaultRenderFunction - default render function
    */
   private _renderElement(
     classNames: string,
@@ -141,7 +141,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   /**
    * using closure to wrap the default render behavior
    * to make it independent of the type of text passed
-   * @param text
+   * @param text - text to render
    */
   private _onRenderText(text: string | undefined): IRenderFunction<IPersonaProps> | undefined {
     // return default render behaviour for valid text or undefined

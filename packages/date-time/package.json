@@ -19,7 +19,8 @@
     "clean": "node ../../scripts/just.js clean",
     "start": "node ../../scripts/just.js dev",
     "start-test": "node ../../scripts/just.js jest-watch",
-    "update-snapshots": "node ../../scripts/just.js jest -u"
+    "update-snapshots": "node ../../scripts/just.js jest -u",
+    "update-api": "node ../../scripts/update-api.js"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
