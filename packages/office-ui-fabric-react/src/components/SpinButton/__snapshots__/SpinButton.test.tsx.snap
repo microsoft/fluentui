@@ -15,8 +15,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     className=
 
         {
+          align-items: center;
           display: inline-flex;
           float: left;
+          height: 32px;
           margin-right: 10px;
         }
   >
@@ -32,16 +34,17 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
+            line-height: 20px;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 2px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 2px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
             pointer-events: none;
             word-wrap: break-word;
           }
@@ -55,10 +58,8 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     className=
 
         {
-          border-color: #a19f9d;
           border-radius: 2px;
-          border-style: solid;
-          border-width: 1px;
+          border: 1px solid #a19f9d;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -66,11 +67,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         }
         &:hover {
           border-color: #323130;
-          outline: 2px dashed transparent;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
-          outline: none;
         }
   >
     <input
@@ -90,15 +89,15 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             color: #323130;
             cursor: text;
             display: block;
-            float: left;
+            flex: 1;
             font-size: 14px;
             height: 100%;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             min-width: 72px;
-            outline: 0;
+            outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
             padding-left: 8px;
@@ -106,7 +105,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             padding-top: 0;
             text-overflow: ellipsis;
             user-select: text;
-            width: calc(100% - 23px);
+            white-space: nowrap;
           }
           &::selection {
             background-color: #0078d4;
@@ -134,49 +133,9 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
       className=
 
           {
-            box-sizing: border-box;
             cursor: default;
             display: block;
-            float: left;
-            font-size: 12px;
             height: 100%;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
-          }
-          & .ms-DownButton {
-            border-radius: 0 0 2px 0;
-            color: #605e5c;
-            width: 23px;
-          }
-          & .ms-DownButton:hover {
-            background-color: #f3f2f1;
-            color: #605e5c;
-          }
-          & .ms-DownButton:active {
-            background-color: #edebe9;
-            color: #605e5c;
-          }
-          & .ms-DownButton .ms-Button-icon {
-            font-size: 8px;
-          }
-          & .ms-UpButton {
-            border-radius: 0 2px 0 0;
-            color: #605e5c;
-            width: 23px;
-          }
-          & .ms-UpButton:hover {
-            background-color: #f3f2f1;
-            color: #605e5c;
-          }
-          & .ms-UpButton:active {
-            background-color: #edebe9;
-            color: #605e5c;
-          }
-          & .ms-UpButton .ms-Button-icon {
-            font-size: 8px;
           }
     >
       <button
@@ -192,7 +151,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
-              color: #323130;
+              color: #605e5c;
               cursor: default;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -200,16 +159,16 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-weight: 400;
               height: 50%;
               outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
               text-align: center;
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 14px;
+              width: 23px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -238,17 +197,23 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            &.ms-DownButton {
+              border-radius: 0 0 2px 0;
+            }
+            &.ms-UpButton {
+              border-radius: 0 2px 0 0;
+            }
             &:hover {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #f3f2f1;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c6c4;
-              color: #201f1e;
+              background-color: #edebe9;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
@@ -285,15 +250,15 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 6px;
+                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
                   height: 16px;
                   line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   speak: none;
                   text-align: center;
                   vertical-align: middle;
@@ -318,7 +283,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
-              color: #323130;
+              color: #605e5c;
               cursor: default;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -326,16 +291,16 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-weight: 400;
               height: 50%;
               outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
               text-align: center;
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 14px;
+              width: 23px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -364,17 +329,23 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            &.ms-DownButton {
+              border-radius: 0 0 2px 0;
+            }
+            &.ms-UpButton {
+              border-radius: 0 2px 0 0;
+            }
             &:hover {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #f3f2f1;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c6c4;
-              color: #201f1e;
+              background-color: #edebe9;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
@@ -411,15 +382,15 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 6px;
+                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
                   height: 16px;
                   line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   speak: none;
                   text-align: center;
                   vertical-align: middle;
@@ -451,8 +422,10 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
     className=
 
         {
+          align-items: center;
           display: inline-flex;
           float: left;
+          height: 32px;
           margin-right: 10px;
         }
   >
@@ -468,16 +441,17 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
+            line-height: 20px;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 2px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 2px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
             pointer-events: none;
             word-wrap: break-word;
           }
@@ -491,10 +465,8 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
     className=
 
         {
-          border-color: #a19f9d;
           border-radius: 2px;
-          border-style: solid;
-          border-width: 1px;
+          border: 1px solid #a19f9d;
           box-sizing: border-box;
           display: flex;
           height: 32px;
@@ -502,11 +474,9 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         }
         &:hover {
           border-color: #323130;
-          outline: 2px dashed transparent;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
-          outline: none;
         }
   >
     <input
@@ -527,15 +497,15 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             color: #323130;
             cursor: text;
             display: block;
-            float: left;
+            flex: 1;
             font-size: 14px;
             height: 100%;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             min-width: 72px;
-            outline: 0;
+            outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
             padding-left: 8px;
@@ -543,7 +513,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             padding-top: 0;
             text-overflow: ellipsis;
             user-select: text;
-            width: calc(100% - 23px);
+            white-space: nowrap;
           }
           &::selection {
             background-color: #0078d4;
@@ -571,49 +541,9 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
       className=
 
           {
-            box-sizing: border-box;
             cursor: default;
             display: block;
-            float: left;
-            font-size: 12px;
             height: 100%;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
-          }
-          & .ms-DownButton {
-            border-radius: 0 0 2px 0;
-            color: #605e5c;
-            width: 23px;
-          }
-          & .ms-DownButton:hover {
-            background-color: #f3f2f1;
-            color: #605e5c;
-          }
-          & .ms-DownButton:active {
-            background-color: #edebe9;
-            color: #605e5c;
-          }
-          & .ms-DownButton .ms-Button-icon {
-            font-size: 8px;
-          }
-          & .ms-UpButton {
-            border-radius: 0 2px 0 0;
-            color: #605e5c;
-            width: 23px;
-          }
-          & .ms-UpButton:hover {
-            background-color: #f3f2f1;
-            color: #605e5c;
-          }
-          & .ms-UpButton:active {
-            background-color: #edebe9;
-            color: #605e5c;
-          }
-          & .ms-UpButton .ms-Button-icon {
-            font-size: 8px;
           }
     >
       <button
@@ -629,7 +559,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
-              color: #323130;
+              color: #605e5c;
               cursor: default;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -637,16 +567,16 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-weight: 400;
               height: 50%;
               outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
               text-align: center;
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 14px;
+              width: 23px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -675,17 +605,23 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               position: relative;
               top: 0px;
             }
+            &.ms-DownButton {
+              border-radius: 0 0 2px 0;
+            }
+            &.ms-UpButton {
+              border-radius: 0 2px 0 0;
+            }
             &:hover {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #f3f2f1;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c6c4;
-              color: #201f1e;
+              background-color: #edebe9;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
@@ -722,15 +658,15 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 6px;
+                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
                   height: 16px;
                   line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   speak: none;
                   text-align: center;
                   vertical-align: middle;
@@ -755,7 +691,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               border-radius: 0px;
               border: none;
               box-sizing: border-box;
-              color: #323130;
+              color: #605e5c;
               cursor: default;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -763,16 +699,16 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-weight: 400;
               height: 50%;
               outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               position: relative;
               text-align: center;
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 14px;
+              width: 23px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -801,17 +737,23 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               position: relative;
               top: 0px;
             }
+            &.ms-DownButton {
+              border-radius: 0 0 2px 0;
+            }
+            &.ms-UpButton {
+              border-radius: 0 2px 0 0;
+            }
             &:hover {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #f3f2f1;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c6c4;
-              color: #201f1e;
+              background-color: #edebe9;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:active {
               background-color: Highlight;
@@ -848,15 +790,15 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 6px;
+                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
                   height: 16px;
                   line-height: 16px;
-                  margin-bottom: 0;
-                  margin-left: 0;
-                  margin-right: 0;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   speak: none;
                   text-align: center;
                   vertical-align: middle;
