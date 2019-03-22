@@ -113,7 +113,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
 
     if (root) {
-      const windowElement = root.ownerDocument!.defaultView!;
+      const windowElement = root.ownerDocument!.defaultView;
 
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
@@ -126,8 +126,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       }
 
       if (windowElement && _outerZones.size === 1) {
-        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
+        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true));
       }
+      this._disposables.push(on(root, 'blur', this._onBlur, true));
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
