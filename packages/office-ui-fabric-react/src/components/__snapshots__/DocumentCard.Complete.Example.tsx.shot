@@ -148,8 +148,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -226,8 +224,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -304,8 +300,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {

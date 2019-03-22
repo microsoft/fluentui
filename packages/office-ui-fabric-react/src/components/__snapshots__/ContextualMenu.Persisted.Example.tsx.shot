@@ -222,10 +222,8 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    border-color: #edebe9;
-                    border-style: solid;
-                    border-width: 1px;
-                    box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+                    border-radius: 2px;
+                    box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                     box-sizing: border-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -256,6 +254,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                     ms-Callout-main
                     {
                       background-color: #ffffff;
+                      border-radius: 2px;
                       overflow-x: hidden;
                       overflow-y: auto;
                       position: relative;
@@ -264,7 +263,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                 onScroll={[Function]}
                 style={
                   Object {
-                    "maxHeight": 750,
+                    "maxHeight": 752,
                     "outline": "none",
                     "overflowY": undefined,
                   }
@@ -356,8 +355,8 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -383,6 +382,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               }
                               &:hover {
                                 background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -400,7 +400,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f3f2f1;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -495,8 +495,8 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -522,6 +522,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               }
                               &:hover {
                                 background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -539,7 +540,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f3f2f1;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -622,8 +623,8 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -649,6 +650,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               }
                               &:hover {
                                 background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -666,7 +668,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f3f2f1;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -749,8 +751,8 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -776,6 +778,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               }
                               &:hover {
                                 background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -793,7 +796,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f3f2f1;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -878,9 +881,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
+                                  height: 36px;
                                   letter-spacing: normal;
-                                  line-height: 32px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -912,6 +915,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 }
                                 &:hover {
                                   background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -929,7 +933,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f3f2f1;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1015,9 +1019,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
+                                  height: 36px;
                                   letter-spacing: normal;
-                                  line-height: 32px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -1049,6 +1053,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 }
                                 &:hover {
                                   background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1066,7 +1071,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f3f2f1;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1154,9 +1159,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
+                                  height: 36px;
                                   letter-spacing: normal;
-                                  line-height: 32px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -1188,6 +1193,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 }
                                 &:hover {
                                   background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1205,7 +1211,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f3f2f1;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1293,8 +1299,8 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;

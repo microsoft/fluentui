@@ -27,7 +27,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -228,7 +228,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -491,10 +491,8 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      border-color: #edebe9;
-                      border-style: solid;
-                      border-width: 1px;
-                      box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+                      border-radius: 2px;
+                      box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                       box-sizing: border-box;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
@@ -525,6 +523,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                       ms-Callout-main
                       {
                         background-color: #ffffff;
+                        border-radius: 2px;
                         overflow-x: hidden;
                         overflow-y: auto;
                         position: relative;
@@ -533,7 +532,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                   onScroll={[Function]}
                   style={
                     Object {
-                      "maxHeight": 750,
+                      "maxHeight": 752,
                       "outline": "none",
                       "overflowY": undefined,
                     }
@@ -625,8 +624,8 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
-                                  line-height: 32px;
+                                  height: 36px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -652,6 +651,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                 }
                                 &:hover {
                                   background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -669,7 +669,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f3f2f1;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -709,17 +709,18 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       display: inline-block;
                                       flex-shrink: 0;
                                       font-family: "FabricMDL2Icons";
+                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
                                       margin-bottom: 0;
                                       margin-left: 4px;
                                       margin-right: 4px;
                                       margin-top: 0;
-                                      max-height: 32px;
+                                      max-height: 36px;
                                       min-height: 1px;
                                       speak: none;
                                       vertical-align: middle;
-                                      width: 14px;
+                                      width: 16px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
                                       color: inherit;
@@ -729,6 +730,10 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                     }
                                     @media screen and (-ms-high-contrast: active){$root:focus & {
                                       color: HighlightText;
+                                    }
+                                    @media only screen and (min-width: 0px) and (max-width: 639px){& {
+                                      font-size: 20px;
+                                      width: 20px;
                                     }
                                 data-icon-name="Mail"
                                 role="presentation"
@@ -788,8 +793,8 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
-                                  line-height: 32px;
+                                  height: 36px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -815,6 +820,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                 }
                                 &:hover {
                                   background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -832,7 +838,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f3f2f1;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -872,17 +878,18 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       display: inline-block;
                                       flex-shrink: 0;
                                       font-family: "FabricMDL2Icons";
+                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
                                       margin-bottom: 0;
                                       margin-left: 4px;
                                       margin-right: 4px;
                                       margin-top: 0;
-                                      max-height: 32px;
+                                      max-height: 36px;
                                       min-height: 1px;
                                       speak: none;
                                       vertical-align: middle;
-                                      width: 14px;
+                                      width: 16px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
                                       color: inherit;
@@ -892,6 +899,10 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                     }
                                     @media screen and (-ms-high-contrast: active){$root:focus & {
                                       color: HighlightText;
+                                    }
+                                    @media only screen and (min-width: 0px) and (max-width: 639px){& {
+                                      font-size: 20px;
+                                      width: 20px;
                                     }
                                 data-icon-name="Calendar"
                                 role="presentation"
