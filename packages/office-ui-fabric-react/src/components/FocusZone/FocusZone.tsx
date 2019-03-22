@@ -36,6 +36,7 @@ const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 const _allInstances: {
   [key: string]: FocusZone;
 } = {};
+const _outerZones: Set<FocusZone> = new Set();
 
 interface IPoint {
   left: number;
@@ -107,6 +108,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
     _allInstances[this._id] = this;
 
+    if (!this._isInnerZone) {
+      _outerZones.add(this);
+    }
+
     if (root) {
       const windowElement = root.ownerDocument!.defaultView;
 
@@ -120,9 +125,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
       }
 
-      if (!this._isInnerZone) {
-        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
+      if (windowElement && _outerZones.size === 1) {
+        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true));
       }
+      this._disposables.push(on(root, 'blur', this._onBlur, true));
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
@@ -156,6 +162,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   public componentWillUnmount() {
     delete _allInstances[this._id];
+
+    if (!this._isInnerZone) {
+      _outerZones.delete(this);
+    }
 
     // Dispose all events.
     this._disposables.forEach(d => d());
@@ -355,7 +365,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
     if (ev.which === KeyCodes.tab) {
-      this._updateTabIndexes();
+      _outerZones.forEach(zone => zone._updateTabIndexes());
     }
   };
 
