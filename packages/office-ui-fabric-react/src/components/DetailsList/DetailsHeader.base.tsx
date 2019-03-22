@@ -281,9 +281,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
-
-        {groupNestingDepth! > 1 ? <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} /> : null}
-
+        <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
         {columns.map((column: IColumn, columnIndex: number) => {
           const _isDraggable = columnReorderProps
             ? columnIndex >= frozenColumnCountFromStart && columnIndex < columns.length - frozenColumnCountFromEnd

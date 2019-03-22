@@ -109,7 +109,7 @@ export class GroupHeaderBase extends BaseComponent<IGroupHeaderProps, IGroupHead
             selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={indentWidth} count={1} />
           )}
 
-          {groupLevel! > 0 ? <GroupSpacer indentWidth={indentWidth} count={groupLevel!} /> : null}
+          <GroupSpacer indentWidth={indentWidth} count={groupLevel!} />
 
           <div className={this._classNames.dropIcon}>
             <Icon iconName="Tag" />

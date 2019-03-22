@@ -254,12 +254,10 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
           </div>
         )}
 
-        {groupNestingDepth! > (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) ? (
-          <GroupSpacer
-            indentWidth={indentWidth}
-            count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
-          />
-        ) : null}
+        <GroupSpacer
+          indentWidth={indentWidth}
+          count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
+        />
 
         {item && rowFields}
         {columnMeasureInfo && (
