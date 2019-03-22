@@ -115,6 +115,8 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   }
 
   private _setScrollLayout(): void {
+    // We need to call this from window resize so when the viewport is changed we can adjust whether we scroll or not
+    // use _async and _events to debounce resize events with RAF
     const shouldScroll = !!this.containerRef.current && this.containerRef.current.scrollHeight > this.containerRef.current.clientHeight;
     this.setState({ shouldScroll });
   }
