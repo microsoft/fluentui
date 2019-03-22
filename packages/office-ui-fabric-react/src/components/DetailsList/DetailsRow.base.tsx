@@ -254,7 +254,12 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
           </div>
         )}
 
-        {this._renderGroupSpacer()}
+        {groupNestingDepth! > (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) ? (
+          <GroupSpacer
+            indentWidth={indentWidth}
+            count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
+          />
+        ) : null}
 
         {item && rowFields}
         {columnMeasureInfo && (
@@ -305,13 +310,6 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
     return <DetailsRowCheck {...props} />;
-  }
-
-  private _renderGroupSpacer(): JSX.Element | null {
-    const { groupNestingDepth, indentWidth } = this.props;
-    const offset = this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0;
-
-    return groupNestingDepth! > offset ? <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - offset} /> : null;
   }
 
   private _getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionState {

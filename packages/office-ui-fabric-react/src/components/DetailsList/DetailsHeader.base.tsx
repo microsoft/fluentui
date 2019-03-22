@@ -282,7 +282,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
           </div>
         ) : null}
 
-        {this._renderGroupSpacer()}
+        {groupNestingDepth! > 1 ? <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} /> : null}
 
         {columns.map((column: IColumn, columnIndex: number) => {
           const _isDraggable = columnReorderProps
@@ -323,12 +323,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
     return Boolean(this._rootComponent.current && this._rootComponent.current.focus());
-  }
-
-  private _renderGroupSpacer(): JSX.Element | null {
-    const { groupNestingDepth, indentWidth } = this.props;
-
-    return groupNestingDepth! > 1 ? <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} /> : null;
   }
 
   private _getHeaderDragDropOptions(): IDragDropOptions {
