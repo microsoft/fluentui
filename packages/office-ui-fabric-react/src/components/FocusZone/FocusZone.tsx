@@ -309,11 +309,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
 
     if (newActiveElement && newActiveElement !== this._activeElement) {
-      this._activeElement = newActiveElement;
-
-      if (isImmediateDescendant) {
-        this._setFocusAlignment(this._activeElement);
+      if (isImmediateDescendant || !this._activeElement) {
+        this._setFocusAlignment(newActiveElement, true, true);
       }
+
+      this._activeElement = newActiveElement;
     }
 
     if (onActiveElementChanged) {
