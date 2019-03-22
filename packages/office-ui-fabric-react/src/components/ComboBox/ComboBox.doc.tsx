@@ -25,7 +25,7 @@ const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-re
 const ComboBoxCustomStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
 
 const ComboBoxRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Required.Example.tsx') as string;
-const ComboBoxRequiredExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ComboBox/ComboBox.Required.Example.Codepen.txt') as string;
+const ComboBoxRequiredExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Required.Example.tsx') as string;
 
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
