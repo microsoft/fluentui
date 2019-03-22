@@ -1002,23 +1002,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 {
                   align-items: center;
                   background: #ffffff;
-                  border-color: #605e5c;
-                  border-radius: 1em;
-                  border-style: solid;
-                  border-width: 1px;
+                  border-radius: 10px;
+                  border: 1px solid #605e5c;
                   box-sizing: border-box;
                   cursor: pointer;
                   display: flex;
                   font-size: 20px;
-                  height: 1em;
+                  height: 20px;
                   outline: transparent;
                   padding-bottom: 0;
-                  padding-left: .2em;
-                  padding-right: .2em;
+                  padding-left: 3px;
+                  padding-right: 3px;
                   padding-top: 0;
                   position: relative;
                   transition: all 0.1s ease;
-                  width: 2.2em;
+                  width: 40px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -1037,6 +1035,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 &:hover {
                   border-color: #323130;
                 }
+                &:hover .ms-Toggle-thumb {
+                  background-color: #201f1e;
+                }
                 @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                   border-color: Highlight;
                 }
@@ -1054,15 +1055,15 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               className=
                   ms-Toggle-thumb
                   {
-                    background-color: #323130;
+                    background-color: #605e5c;
                     border-color: transparent;
-                    border-radius: .5em;
+                    border-radius: 50%;
                     border-style: solid;
                     border-width: .28em;
                     box-sizing: border-box;
-                    height: .5em;
+                    height: 12px;
                     transition: all 0.1s ease;
-                    width: .5em;
+                    width: 12px;
                   }
             />
           </button>
@@ -1092,6 +1093,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   word-wrap: break-word;
                 }
                 && {
+                  font-weight: 400;
                   margin-bottom: 0;
                   margin-left: 8px;
                   margin-right: 8px;
