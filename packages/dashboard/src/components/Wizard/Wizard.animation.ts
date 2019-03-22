@@ -21,33 +21,33 @@ function _createAnimation(
   slideDelay: string
 ): IRawStyle {
   const retAnim = {
-    animation: `${fadeNam} ${fadeTime} ${fadeFunc} ${fadeDelay} 'forwards', ${slideNam} ${slideTime} ${slideFunc} ${slideDelay} 'forwards'`
+    animation: `${fadeNam} ${fadeTime} ${fadeFunc} ${fadeDelay} forwards, ${slideNam} ${slideTime} ${slideFunc} ${slideDelay} forwards`
   };
 
   return retAnim;
 }
 
-const SLIDE_UP_IN_790: string = _createSlideInY(790);
-const SLIDE_UP_OUT_480: string = _createSlideOutY(-480);
+const SLIDE_UP_IN: string = _createSlideInY(790);
+const SLIDE_UP_OUT: string = _createSlideOutY(-480);
 
-const SLIDE_DOWN_IN_790: string = _createSlideInY(-790);
-const SLIDE_DOWN_OUT_480: string = _createSlideOutY(480);
+const SLIDE_DOWN_IN: string = _createSlideInY(-480);
+const SLIDE_DOWN_OUT: string = _createSlideOutY(790);
 
 function _createSlideInY(fromY: number): string {
   return keyframes({
-    /*from: { transform: 'translateY(${fromY}px)' },
-    to: { transform: 'translateY(0)' }*/
-    from: { transform: `translate3d(0,${fromY}px,0)` },
-    to: { transform: `translate3d(0,0,0)` }
+    from: { transform: `translateY(${fromY}px)` },
+    to: { transform: `translateY(0)` }
+    /*from: { transform: `translate3d(0,${fromY}px,0)` },
+    to: { transform: `translate3d(0,0,0)` }*/
   });
 }
 
 function _createSlideOutY(toY: number): string {
   return keyframes({
-    /*from: { transform: 'translateY(0)' },
-    to: { transform: 'translateY(${toY}px)' }*/
-    from: { transform: `translate3d(0,0,0)` },
-    to: { transform: `translate3d(0,${toY}px,0)` }
+    from: { transform: `translateY(0)` },
+    to: { transform: `translateY(${toY}px)` }
+    /*from: { transform: `translate3d(0,0,0)` },
+    to: { transform: `translate3d(0,${toY}px,0)` }*/
   });
 }
 
@@ -61,7 +61,14 @@ const FADE_OUT: string = keyframes({
   to: { opacity: 0 }
 });
 
-export const wizardAnimationDurationMilliSec = 667;
+// Check why from 0x is not starting at correct position?
+// Hence using slideUpOutKeyframes instead of "SLIDE_UP_OUT"
+const slideUpOutKeyframes = keyframes({
+  from: { transform: `translateY(-790px)` },
+  to: { transform: `translateY(-1270px)` }
+});
+
+export const wizardAnimationDurationMilliSec = 667 + testTiming * 1000;
 
 const titleInAnimDuration = (0.667 + testTiming).toString() + 's';
 const titleDescInAnimDuration = (0.617 + testTiming).toString() + 's';
@@ -88,7 +95,7 @@ export const titleSlideUpOutAnimation = _createAnimation(
   fadeAnimDuration,
   fadeOutTimingFunction,
   animationOutDelay,
-  `${SLIDE_UP_OUT_480}`,
+  `${SLIDE_UP_OUT}`,
   titleOutAnimDuration,
   slideOutTimingFunction,
   animationOutDelay
@@ -99,7 +106,7 @@ export const titleSlideUpInAnimation = _createAnimation(
   fadeAnimDuration,
   fadeInTimingFunction,
   titleFadeInAnimDelay,
-  `${SLIDE_UP_IN_790}`,
+  `${SLIDE_UP_IN}`,
   titleInAnimDuration,
   slideInTimingFunction,
   titleInAnimDelay
@@ -110,7 +117,7 @@ export const titleSlideDownOutAnimation = _createAnimation(
   fadeAnimDuration,
   fadeOutTimingFunction,
   animationOutDelay,
-  `${SLIDE_DOWN_OUT_480}`,
+  `${SLIDE_DOWN_OUT}`,
   titleOutAnimDuration,
   slideOutTimingFunction,
   animationOutDelay
@@ -121,7 +128,7 @@ export const titleSlideDownInAnimation = _createAnimation(
   fadeAnimDuration,
   fadeInTimingFunction,
   titleFadeInAnimDelay,
-  `${SLIDE_DOWN_IN_790}`,
+  `${SLIDE_DOWN_IN}`,
   titleInAnimDuration,
   slideInTimingFunction,
   titleInAnimDelay
@@ -133,7 +140,7 @@ export const titleDescSlideUpOutAnimation = _createAnimation(
   fadeAnimDuration,
   fadeOutTimingFunction,
   animationOutDelay,
-  `${SLIDE_UP_OUT_480}`,
+  `${SLIDE_UP_OUT}`,
   titleDescOutAnimDuration,
   slideOutTimingFunction,
   animationOutDelay
@@ -144,7 +151,7 @@ export const titleDescSlideUpInAnimation = _createAnimation(
   fadeAnimDuration,
   fadeInTimingFunction,
   titleDescFadeInAnimDelay,
-  `${SLIDE_UP_IN_790}`,
+  `${SLIDE_UP_IN}`,
   titleDescInAnimDuration,
   slideInTimingFunction,
   titleDescInAnimDelay
@@ -155,7 +162,7 @@ export const titleDescSlideDownOutAnimation = _createAnimation(
   fadeAnimDuration,
   fadeOutTimingFunction,
   animationOutDelay,
-  `${SLIDE_DOWN_OUT_480}`,
+  `${SLIDE_DOWN_OUT}`,
   titleDescOutAnimDuration,
   slideOutTimingFunction,
   animationOutDelay
@@ -166,7 +173,7 @@ export const titleDescSlideDownInAnimation = _createAnimation(
   fadeAnimDuration,
   fadeInTimingFunction,
   titleDescFadeInAnimDelay,
-  `${SLIDE_DOWN_IN_790}`,
+  `${SLIDE_DOWN_IN}`,
   titleDescInAnimDuration,
   slideInTimingFunction,
   titleDescInAnimDelay
@@ -178,7 +185,7 @@ export const contentSlideUpOutAnimation = _createAnimation(
   fadeAnimDuration,
   fadeOutTimingFunction,
   animationOutDelay,
-  `${SLIDE_UP_OUT_480}`,
+  slideUpOutKeyframes, // `${SLIDE_UP_OUT}`,
   contentOutAnimDuration,
   slideOutTimingFunction,
   animationOutDelay
@@ -189,7 +196,7 @@ export const contentSlideUpInAnimation = _createAnimation(
   fadeAnimDuration,
   fadeInTimingFunction,
   contentFadeInAnimDelay,
-  `${SLIDE_UP_IN_790}`,
+  `${SLIDE_UP_IN}`,
   contentInAnimDuration,
   slideInTimingFunction,
   contentInAnimDelay
@@ -200,7 +207,7 @@ export const contentSlideDownOutAnimation = _createAnimation(
   fadeAnimDuration,
   fadeOutTimingFunction,
   animationOutDelay,
-  `${SLIDE_DOWN_OUT_480}`,
+  `${SLIDE_DOWN_OUT}`,
   contentOutAnimDuration,
   slideOutTimingFunction,
   animationOutDelay
@@ -211,7 +218,7 @@ export const contentSlideDownInAnimation = _createAnimation(
   fadeAnimDuration,
   fadeInTimingFunction,
   contentFadeInAnimDelay,
-  `${SLIDE_DOWN_IN_790}`,
+  `${SLIDE_DOWN_IN}`,
   contentInAnimDuration,
   slideInTimingFunction,
   contentInAnimDelay

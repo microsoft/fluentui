@@ -10,7 +10,7 @@ export const subwayNavWidth = 303;
 export const subwayNavPadding = 48;
 
 export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
-  return {
+  const retVal: IWizardStyles = {
     wizardContentNavContainer: {
       display: 'flex',
       flexDirection: 'row',
@@ -47,18 +47,20 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
     stepSlideUpEnterActive: contentSlideUpInAnimation,
     stepSlideUpExit: {
       opacity: 1,
-      transform: 'translateY(0px)'
+      transform: 'translateY(-790px)'
     },
     stepSlideUpExitActive: contentSlideUpOutAnimation,
     stepSlideDownEnter: {
-      opacity: 0,
-      transform: 'translateY(-150%)'
+      opacity: 0.1,
+      transform: 'translateY(-480px)'
     },
     stepSlideDownEnterActive: contentSlideDownInAnimation,
     stepSlideDownExit: {
       opacity: 0,
-      transform: 'translateY(0%)'
+      transform: 'translateY(0px)'
     },
     stepSlideDownExitActive: contentSlideDownOutAnimation
   };
+
+  return retVal;
 };
