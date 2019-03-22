@@ -1,7 +1,7 @@
 import { IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { ScreenWidthMinMedium, getGlobalClassNames, mergeStyleSets } from '../../Styling';
-import { IDialogContentStyles, IDialogContentProps } from './DialogContent.types';
-import { memoizeFunction } from '../../Utilities';
+import { IDialogContentStyles, IDialogContentStyleProps, IDialogContentProps } from './DialogContent.types';
+import { IStyleFunctionOrObject } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Dialog'
@@ -34,17 +34,29 @@ export const getStyles = (props: IDialogStyleProps): IDialogStyles => {
   };
 };
 
-export const getMergedDialogContentStyles = memoizeFunction(
-  (dialogContentProps?: IDialogContentProps, dialogDraggableClassName?: string): Partial<IDialogContentStyles> => {
-    const headerStyle = {
-      header: [
-        dialogDraggableClassName,
-        dialogDraggableClassName && {
-          cursor: 'move'
-        }
-      ]
-    };
+export const getMergedDialogContentStyles = (
+  dialogContentProps?: IDialogContentProps,
+  dialogDraggableClassName?: string
+): IStyleFunctionOrObject<IDialogContentStyleProps, IDialogContentStyles> => {
+  const headerStyle = {
+    header: [
+      dialogDraggableClassName,
+      dialogDraggableClassName && {
+        cursor: 'move'
+      }
+    ]
+  };
 
-    return dialogContentProps ? mergeStyleSets(dialogContentProps.styles, headerStyle) : headerStyle;
+  if (dialogContentProps && dialogContentProps.styles) {
+    if (typeof dialogContentProps.styles === 'function') {
+      const styles = dialogContentProps.styles;
+      return (props: IDialogContentStyleProps) => {
+        return mergeStyleSets(styles(props), headerStyle);
+      };
+    } else {
+      return mergeStyleSets(dialogContentProps.styles, headerStyle);
+    }
   }
-);
+
+  return headerStyle;
+};
