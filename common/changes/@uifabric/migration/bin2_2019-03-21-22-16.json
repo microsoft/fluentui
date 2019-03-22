@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/migration",
+      "comment": "migration: .gitignore apparently ignored all bin/ scripts and this actually makes the bin script part of the package",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "kchau@microsoft.com"
+}
