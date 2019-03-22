@@ -10,11 +10,13 @@ import {
   IDropdownOption,
   IDropdownStyles,
   ISchemeNames,
-  ITheme
+  IStackComponent,
+  ITheme,
+  IThemeProviderProps,
+  Stack,
+  ThemeProvider
 } from 'office-ui-fabric-react';
-import { IThemeProviderProps, ThemeProvider } from '@uifabric/foundation';
 import './ExampleCard.scss';
-import { ExampleCardComponent, IExampleCardComponent } from './ExampleCardComponent';
 import { Highlight } from '../Highlight/Highlight';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
@@ -53,7 +55,7 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
 }));
 
 // tslint:disable-next-line:typedef
-const regionStyles: IExampleCardComponent['styles'] = (props, theme) => ({
+const regionStyles: IStackComponent['styles'] = (props, theme) => ({
   root: {
     backgroundColor: theme.semanticColors.bodyBackground,
     color: theme.semanticColors.bodyText
@@ -158,7 +160,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               {activeCustomizations ? (
                 <Customizer {...activeCustomizations}>
                   <ThemeProvider scheme={_schemes[schemeIndex]}>
-                    <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
+                    <Stack styles={regionStyles}>{exampleCardContent}</Stack>
                   </ThemeProvider>
                 </Customizer>
               ) : (
