@@ -42,8 +42,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
               <li role="none" title={'NavToggle'}>
                 {/** TODO convert this to an actual checkbox and hook into changed event instead */}
                 <NavLink
-                  id={'NavToggle'}
-                  href={'#'}
                   onClick={this._onNavCollapseClicked}
                   data-hint={dataHint}
                   data-value={'NavToggle'}
@@ -72,8 +70,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                 <>
                   <li role="none" title={'Edit navigation'}>
                     <NavLink
-                      id={'EditNav'}
-                      href={'#'}
                       name={editString}
                       onClick={this._editClicked}
                       data-hint={'Edit navigation'}
@@ -86,8 +82,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                   {showMore && (
                     <li role="none" title={'Show more'}>
                       <NavLink
-                        id={'ShowMore'}
-                        href={'#'}
                         name={this.props.showMore ? showMoreString : showLessString}
                         onClick={this._toggleMore}
                         data-hint={'Show more'}

@@ -17,6 +17,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
 
     this.state = {
       isExpanded: this.props.isExpanded,
+      isKeyboardExpanded: false,
       hasSelectedNestedLink: this.props.hasSelectedNestedLink
     };
     this.navLinkGroupRef = React.createRef<HTMLDivElement>();
@@ -27,17 +28,14 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
 
   public render(): JSX.Element {
     const { link, isNavCollapsed } = this.props;
-    const { hasSelectedNestedLink, isExpanded } = this.state;
-    const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed });
+    const { hasSelectedNestedLink, isExpanded, isKeyboardExpanded } = this.state;
+    const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed, isKeyboardExpanded });
     return (
       <div className={classNames.root} {...isNavCollapsed && link.links && { onMouseEnter: this._offsetUpdated, ref: this.navRootRef }}>
         <div className={classNames.navMenuContainer} ref={this.navLinkGroupRef}>
           <NavLink
             isNavCollapsed={isNavCollapsed}
-            id={link.name}
             name={link.name}
-            href={link.href}
-            target={link.target}
             onClick={this._onLinkClicked}
             data-value={link.name}
             aria-label={link.ariaLabel ? link.ariaLabel : link.name}

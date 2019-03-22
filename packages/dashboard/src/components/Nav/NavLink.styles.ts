@@ -99,7 +99,8 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
         textOverflow: 'ellipsis',
         overflowX: 'hidden',
         whiteSpace: 'nowrap',
-        color: DefaultPalette.black
+        color: DefaultPalette.black,
+        textAlign: 'left'
       }
     ]
   };

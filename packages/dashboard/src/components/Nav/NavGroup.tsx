@@ -45,7 +45,6 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
               ) : (
                 <NavLink
                   isNavCollapsed={isNavCollapsed}
-                  id={link.name}
                   name={link.name}
                   href={link.url}
                   target={link.target}

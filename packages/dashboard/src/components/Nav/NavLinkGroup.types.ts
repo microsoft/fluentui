@@ -45,6 +45,11 @@ export interface INavLinkGroupStates {
    * Set to true when one of it's NavLink's is selected. This is used to manage when the selected indicator is visible or not.
    */
   hasSelectedNestedLink?: boolean;
+
+  /** Boolean to track whether or not a keyboard user has expanded the nav item
+   * while the nav itself is collapsed
+   */
+  isKeyboardExpanded: boolean;
 }
 
 export interface INavLinkGroupStyleProps {
@@ -57,6 +62,11 @@ export interface INavLinkGroupStyleProps {
    * Pays attention to the Nav expanded/collapsed state
    */
   isNavCollapsed?: boolean;
+
+  /** Boolean to track whether or not a keyboard user has expanded the nav item
+   * while the nav itself is collapsed
+   */
+  isKeyboardExpanded: boolean;
 }
 
 export interface INavLinkGroupStyles {

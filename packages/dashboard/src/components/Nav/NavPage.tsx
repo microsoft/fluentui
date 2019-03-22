@@ -16,8 +16,27 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/dashboard/src/components/Nav/Nav.types.ts')]}
-            renderOnly={['INavProps', 'INavState']}
+            sources={[
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Nav/Nav.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Nav/NavLink.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Nav/NavGroup.types.ts'),
+              require<string>('!raw-loader!@uifabric/dashboard/src/components/Nav/NavLinkGroup.types.ts')
+            ]}
+            renderOnly={[
+              'INavProps',
+              'INavState',
+              'INavStyleProps',
+              'INavStyles',
+              'INavGroupProps',
+              'INavGroupStyles',
+              'INavLinkProps',
+              'INavLinkStyles',
+              'INavLinkStyleProps',
+              'INavLinkGroupProps',
+              'INavLinkGroupStates',
+              'INavLinkGroupStyleProps',
+              'INavLinkGroupStyles'
+            ]}
           />
         }
         overview={<div />}
