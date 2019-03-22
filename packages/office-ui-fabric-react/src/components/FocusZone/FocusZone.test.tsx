@@ -766,6 +766,8 @@ describe('FocusZone', () => {
 
     // Focus the first button.
     ReactTestUtils.Simulate.focus(buttonB);
+    expect(buttonA.getAttribute('tabindex')).toBe('-1');
+    expect(buttonB.getAttribute('tabindex')).toBe('0');
     expect(lastFocusedElement).toBe(buttonB);
 
     // Pressing down should go to d.

@@ -308,12 +308,20 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       }
     }
 
+    const initialElementFocused = !this._activeElement;
+
+    // If the new active element is a child of this zone and received focus,
+    // update alignment an immediate descendant
     if (newActiveElement && newActiveElement !== this._activeElement) {
-      if (isImmediateDescendant || !this._activeElement) {
-        this._setFocusAlignment(newActiveElement, true, true);
+      if (isImmediateDescendant || initialElementFocused) {
+        this._setFocusAlignment(newActiveElement, initialElementFocused);
       }
 
       this._activeElement = newActiveElement;
+
+      if (initialElementFocused) {
+        this._updateTabIndexes();
+      }
     }
 
     if (onActiveElementChanged) {
