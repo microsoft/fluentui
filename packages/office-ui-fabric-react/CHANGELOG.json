@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.159.0",
+      "tag": "office-ui-fabric-react_v6.159.0",
+      "date": "Fri, 22 Mar 2019 02:41:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: Fixing typo is scss.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "a74b66a24a02715e3f2646ee6e030cbfcd6293e0"
+          },
+          {
+            "comment": "Add shouldComponentUpdate to ContextualMenuItems to ensure items are only updated when needed.",
+            "author": "David De La Brena <36862912+ddlbrena@users.noreply.github.com>",
+            "commit": "6ffcb9cce4912c787b7d43a6d95ddddc0e782b96"
+          },
+          {
+            "comment": "Pivot did not support PivotItems used in JSX-expressions (e.g. {this.state.something && <PivotItem ...>}. I fixed this functionality and added a simple test case.",
+            "author": "Sebastian Mattar <sebastian.mattar@gmail.com>",
+            "commit": "b83ea2f71e5f25575dcb49cc020c972ec74a98c8"
+          },
+          {
+            "comment": "Fix focus zone virtual parent focus restoration",
+            "author": "Dalimil Hajek <dalimilhajek@gmail.com>",
+            "commit": "e4155b751a1faab95ec60bf37dc8c87666497ee7"
+          },
+          {
+            "comment": "FocusZone: minor performance tweak to have a single capture keydown handler, rather than one per outer zone instance.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2e3ed4f9d1d22889a370c0b084b49a46edd56b56"
+          },
+          {
+            "comment": "Fixing componentURL to point to correct url.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "9c2d6ebab2dd271d5f3a13539593a99c3f1ef2dd"
+          },
+          {
+            "comment": "Popup: Revert change to find active element within iframe",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "71d310d914a3f9cccaec1797e7774be9700688e8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dialog: changing type of `title` prop to allow JSX to be injected.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "095aeea84006782f71ca41296ccc2c19cf1f87f0"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.158.0",
       "tag": "office-ui-fabric-react_v6.158.0",
       "date": "Thu, 21 Mar 2019 12:36:30 GMT",
