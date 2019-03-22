@@ -70,7 +70,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     autoAdjustHeight
   } = props;
 
-  const { semanticColors } = theme;
+  const { semanticColors, effects, palette } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -159,6 +159,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       normalize,
       {
         border: `1px solid ${semanticColors.inputBorder}`,
+        borderRadius: effects.roundedCorner2,
         background: semanticColors.inputBackground,
         cursor: 'text',
         height: 32,
@@ -266,7 +267,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         background: 'none',
         backgroundColor: 'transparent',
         color: semanticColors.inputText,
-        padding: '0 12px',
+        padding: '0 8px',
         width: '100%',
         minWidth: 0,
         textOverflow: 'ellipsis',
@@ -304,6 +305,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         lineHeight: 17,
         flexGrow: 1,
         paddingTop: 6,
+        paddingBottom: 6,
         overflow: 'auto',
         width: '100%'
       },

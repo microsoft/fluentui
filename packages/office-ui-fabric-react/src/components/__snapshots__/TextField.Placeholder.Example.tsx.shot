@@ -37,6 +37,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
             {
               align-items: stretch;
               background: #ffffff;
+              border-radius: 2px;
               border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
@@ -86,8 +87,8 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -164,6 +165,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
               background-color: #f3f2f1;
               background: #ffffff;
               border-color: #f3f2f1;
+              border-radius: 2px;
               border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
@@ -210,8 +212,8 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -287,6 +289,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
             {
               align-items: stretch;
               background: #ffffff;
+              border-radius: 2px;
               border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
@@ -345,8 +348,8 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -422,6 +425,7 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
               align-items: stretch;
               background: #ffffff;
               border-color: #a80000;
+              border-radius: 2px;
               border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
@@ -474,8 +478,8 @@ exports[`Component Examples renders TextField.Placeholder.Example.tsx correctly 
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;

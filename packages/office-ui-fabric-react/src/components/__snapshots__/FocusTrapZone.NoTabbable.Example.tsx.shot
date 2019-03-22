@@ -155,6 +155,7 @@ exports[`Component Examples renders FocusTrapZone.NoTabbable.Example.tsx correct
                 {
                   align-items: stretch;
                   background: #ffffff;
+                  border-radius: 2px;
                   border: 1px solid #a19f9d;
                   box-shadow: none;
                   box-sizing: border-box;
@@ -203,8 +204,8 @@ exports[`Component Examples renders FocusTrapZone.NoTabbable.Example.tsx correct
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
-                    padding-right: 12px;
+                    padding-left: 8px;
+                    padding-right: 8px;
                     padding-top: 0;
                     text-overflow: ellipsis;
                     width: 100%;
@@ -279,6 +280,7 @@ exports[`Component Examples renders FocusTrapZone.NoTabbable.Example.tsx correct
                 {
                   align-items: stretch;
                   background: #ffffff;
+                  border-radius: 2px;
                   border: 1px solid #a19f9d;
                   box-shadow: none;
                   box-sizing: border-box;
@@ -327,8 +329,8 @@ exports[`Component Examples renders FocusTrapZone.NoTabbable.Example.tsx correct
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
-                    padding-right: 12px;
+                    padding-left: 8px;
+                    padding-right: 8px;
                     padding-top: 0;
                     text-overflow: ellipsis;
                     width: 100%;
@@ -403,6 +405,7 @@ exports[`Component Examples renders FocusTrapZone.NoTabbable.Example.tsx correct
                 {
                   align-items: stretch;
                   background: #ffffff;
+                  border-radius: 2px;
                   border: 1px solid #a19f9d;
                   box-shadow: none;
                   box-sizing: border-box;
@@ -451,8 +454,8 @@ exports[`Component Examples renders FocusTrapZone.NoTabbable.Example.tsx correct
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
-                    padding-right: 12px;
+                    padding-left: 8px;
+                    padding-right: 8px;
                     padding-top: 0;
                     text-overflow: ellipsis;
                     width: 100%;
