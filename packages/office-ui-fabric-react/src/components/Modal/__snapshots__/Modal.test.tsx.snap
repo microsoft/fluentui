@@ -122,7 +122,8 @@ exports[`Modal renders Modal correctly 1`] = `
               test-containerClassName
               {
                 background-color: #ffffff;
-                box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                border-radius: 2px;
+                box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
                 box-sizing: border-box;
                 max-height: 100%;
                 outline: 3px solid transparent;
@@ -276,7 +277,8 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
               test-containerClassName
               {
                 background-color: #ffffff;
-                box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+                border-radius: 2px;
+                box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
                 box-sizing: border-box;
                 max-height: 100%;
                 outline: 3px solid transparent;
