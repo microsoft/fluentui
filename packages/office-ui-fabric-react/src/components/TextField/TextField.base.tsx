@@ -438,7 +438,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         onChange={this._onInputChange}
         className={this._classNames.field}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this.state.errorMessage}
+        aria-invalid={!!this._errorMessage}
         aria-label={this.props.ariaLabel}
         readOnly={this.props.readOnly}
         onFocus={this._onFocus}
@@ -462,7 +462,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         className={this._classNames.field}
         aria-label={this.props.ariaLabel}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this.state.errorMessage}
+        aria-invalid={!!this._errorMessage}
         readOnly={this.props.readOnly}
         onFocus={this._onFocus}
         onBlur={this._onBlur}

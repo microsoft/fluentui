@@ -2,6 +2,85 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.158.0",
+      "tag": "office-ui-fabric-react_v6.158.0",
+      "date": "Thu, 21 Mar 2019 12:36:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Breadcrumb: Update custom divider example to have aria-hidden on divider",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "509923099e0db41d6c71f9a37d3472c6b4f78d7e"
+          },
+          {
+            "comment": "GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "314917101de8017f2370b70e2e50ee721c40a5d1"
+          },
+          {
+            "comment": "Improve TextField example accessibility",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "525e518736b1b2923ba10b245c4df4c025c17bbf"
+          },
+          {
+            "comment": "TextField: Fixed flex bug in IE11",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "bac71b45ab5e605d4eb9fb23f41d2934b7dd1b35"
+          },
+          {
+            "comment": "move replaceItem from SelectedPeopleList to BaseSelectedItemsList",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "ef297a179ee39b7d11802ef89f05d5f1f1220305"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "SelectedPeopleList: Key wrapped selectedItem children when they are keyed",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "6ca972e3ca565ae2d255f612cfb87c086190ea76"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.157.3",
+      "tag": "office-ui-fabric-react_v6.157.3",
+      "date": "Wed, 20 Mar 2019 16:14:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusTrapZone: Make sure to call passed in focus and blur handlers",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "d0dc6be1cd00dfdbb181ca8ac3b7cb48f11518ed"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.157.2",
+      "tag": "office-ui-fabric-react_v6.157.2",
+      "date": "Wed, 20 Mar 2019 03:15:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Fix beak position for dynamically sized callouts.",
+            "author": "andrewhwng <47833548+andrewhwng@users.noreply.github.com>",
+            "commit": "026100605f90de9d632e73aa98853ec2cc3d5158"
+          },
+          {
+            "comment": "ComboBox: if `options` are null, make sure the code doesn't crash.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "dc1e3676659472bcd175fc87629f7854c9f8827f"
+          },
+          {
+            "comment": "Icon: remove BaseComponent dependency.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "151349375ac67b8d9ec07bd8b8614f9e5e3203c9"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.157.1",
       "tag": "office-ui-fabric-react_v6.157.1",
       "date": "Tue, 19 Mar 2019 18:05:11 GMT",

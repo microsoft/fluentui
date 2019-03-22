@@ -103,11 +103,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Prefix displayed before the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
   prefix?: string;
 
   /**
    * Suffix displayed after the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.
    */
   suffix?: string;
 

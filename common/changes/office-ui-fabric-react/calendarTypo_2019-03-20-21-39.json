@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Callout: Fix beak position for dynamically sized callouts.",
+      "comment": "Calendar: Fixing typo is scss.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "anhw@microsoft.com"
+  "email": "Humberto.Morimoto@microsoft.com"
 }

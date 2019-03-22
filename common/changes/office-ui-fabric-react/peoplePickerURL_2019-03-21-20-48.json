@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Icon: remove BaseComponent dependency.",
+      "comment": "Fixing componentURL to point to correct url.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "Humberto.Morimoto@microsoft.com"
 }

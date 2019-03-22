@@ -42,7 +42,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * The suggestions to show on zero query, return null if using as a controlled component
    */
-  onZeroQuerySuggestion: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
+  onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
 
   /**
    * The input element to listen on events

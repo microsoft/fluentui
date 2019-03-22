@@ -19,15 +19,17 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
   };
 
   const _renderNav = () => {
-    const { onBack, onDismiss, onRefresh } = props;
+    const { onBack, onDismiss, onRefresh, refreshTooltip, closeTooltip } = props;
     return (
       <div className={css.navBar}>
         <div className={css.navLeft}>
           {onBack && !_shouldHideOnLoading() && <IconButton iconProps={{ iconName: 'Back' }} onClick={onBack} />}
         </div>
         <div className={css.navRight}>
-          {onRefresh && !_shouldHideOnLoading() && <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} />}
-          <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} />
+          {onRefresh && !_shouldHideOnLoading() && (
+            <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} title={refreshTooltip} />
+          )}
+          <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} title={closeTooltip} />
         </div>
       </div>
     );

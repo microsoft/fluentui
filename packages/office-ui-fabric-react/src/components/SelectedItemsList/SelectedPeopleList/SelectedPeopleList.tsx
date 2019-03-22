@@ -49,32 +49,18 @@ export class BasePeopleSelectedItemsList<TPersona extends IExtendedPersonaProps 
 export class SelectedPeopleList<TPersona extends IExtendedPersonaProps = IExtendedPersonaProps> extends BasePeopleSelectedItemsList<
   TPersona
 > {
-  // tslint:disable-next-line:no-any
-  public static defaultProps: any = {
+  public static defaultProps: Partial<ISelectedPeopleProps<IExtendedPersonaProps>> = {
     onRenderItem: (props: ISelectedPeopleItemProps<IExtendedPersonaProps>) => <ExtendedSelectedItem {...props} />
-  };
-
-  public replaceItem = (itemToReplace: TPersona, itemsToReplaceWith: TPersona[]): void => {
-    const { items } = this.state;
-    const index: number = items.indexOf(itemToReplace);
-    if (index > -1) {
-      const newItems = items
-        .slice(0, index)
-        .concat(itemsToReplaceWith)
-        .concat(items.slice(index + 1));
-      this.updateItems(newItems);
-    }
   };
 
   protected renderItems = (): JSX.Element[] => {
     const { items } = this.state;
-    // tslint:disable-next-line:no-any
-    return items.map((item: any, index: number) => this._renderItem(item, index));
+    return items.map((item: TPersona, index: number) => this._renderItem(item, index));
   };
 
-  // tslint:disable-next-line:no-any
   private _renderItem(item: TPersona, index: number): JSX.Element {
     const { removeButtonAriaLabel } = this.props;
+    const expandGroup = this.props.onExpandGroup;
     const props = {
       item,
       index,
@@ -84,7 +70,7 @@ export class SelectedPeopleList<TPersona extends IExtendedPersonaProps = IExtend
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: TPersona) => this.copyItems([itemToCopy]),
-      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as (item: IExtendedPersonaProps) => void)(item) : undefined,
+      onExpandItem: expandGroup ? () => expandGroup(item) : undefined,
       menuItems: this._createMenuItems(item)
     };
 
@@ -100,12 +86,12 @@ export class SelectedPeopleList<TPersona extends IExtendedPersonaProps = IExtend
         />
       );
     } else {
-      // TODO we are casting here because we expect the key to be present in defaultProps.
-      // remove this cast.
-      const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps<TPersona>) => JSX.Element;
-      const renderedItem = onRenderItem(props);
+      // Assert onRenderItem is not null because it is provided in the defaultProps of this component.
+      // it's still possible that it could be null if a deriving component overrides defaultProps.
+      const renderedItem = (this.props.onRenderItem as NonNullable<ISelectedPeopleProps<IExtendedPersonaProps>['onRenderItem']>)(props);
       return hasContextMenu ? (
         <SelectedItemWithContextMenu
+          key={props.key}
           renderedItem={renderedItem}
           beginEditing={this._beginEditing}
           menuItems={this._createMenuItems(props.item)}
