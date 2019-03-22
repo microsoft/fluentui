@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 22 Mar 2019 02:41:51 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2019 12:34:41 GMT and should not be manually modified.
+
+## 6.159.1
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- ColorPicker: Showing picked color in high contrast mode.
+- List: Avoid setting role to list in case of empty list
 
 ## 6.159.0
 Fri, 22 Mar 2019 02:41:51 GMT
