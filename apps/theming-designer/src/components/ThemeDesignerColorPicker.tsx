@@ -2,37 +2,21 @@ import * as React from 'react';
 import { TextField } from '../../../../packages/office-ui-fabric-react/lib/TextField';
 import * as stylesImport from './app.scss';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from '../../../../packages/office-ui-fabric-react/lib/Text';
 
 const styles: any = stylesImport;
 
-interface IThemingDesignerColorPickerProps {
-  defaultValue: string;
-}
-
-interface IThemingDesignerColorPickerState {
-  value: string;
-}
-
-export class ThemeDesignerColorPicker extends React.Component<IThemingDesignerColorPickerProps, IThemingDesignerColorPickerState> {
-  constructor(props: IThemingDesignerColorPickerProps) {
-    super(props);
-    this.state = { value: this.props.defaultValue };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event: any) {
-    this.setState({ value: event.target.value });
-    console.log('GOT HERE');
-    console.log(this.state.value);
-  }
-
-  render() {
-    return (
-      <Stack horizontal disableShrink gap={20}>
-        <div className={styles.colorbox} style={{ backgroundColor: this.state.value }} />
-        <TextField value={this.state.value} onChange={this.handleChange} />
+export const ThemeDesignerColorPicker = (props: any) => {
+  const handleChange = (event: any, newVal: string | undefined) => {
+    props.onChange(newVal);
+  };
+  return (
+    <Stack horizontal gap={10}>
+      <Text>{props.label}</Text>
+      <Stack horizontal className={styles.colorpanel} gap={20}>
+        <div id="colorbox" className={styles.colorbox} style={{ backgroundColor: props.value }} />
+        <TextField value={props.value} onChange={handleChange} />
       </Stack>
-    );
-  }
-}
+    </Stack>
+  );
+};

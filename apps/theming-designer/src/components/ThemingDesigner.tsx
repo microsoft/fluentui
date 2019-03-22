@@ -18,7 +18,6 @@ export class ThemingDesigner extends React.Component {
       <div className={styles.app}>
         <Stack horizontal gap={20}>
           <div className={styles.sidebar}>
-            <ThemeDesignerColorPicker defaultValue="#ffa500" />
             <ColorPanel />
           </div>
           <div>
