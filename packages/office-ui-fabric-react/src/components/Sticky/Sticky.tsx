@@ -216,9 +216,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (isStickyTop || isStickyBottom) {
       let height = 0,
         width = 0;
-      if (this.nonStickyContent) {
-        height = this.nonStickyContent.offsetHeight;
-        width = this.nonStickyContent.offsetWidth;
+      if (this.nonStickyContent && this.nonStickyContent.firstElementChild) {
+        height = this.nonStickyContent.firstElementChild.clientHeight;
+        width = this.nonStickyContent.firstElementChild.clientWidth;
       }
       return {
         height: height,
