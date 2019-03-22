@@ -1,4 +1,5 @@
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/components/FocusZone/FocusZone.types';
 
 export interface IActionOverflowData {
   /**
@@ -71,4 +72,11 @@ export interface IActionBarProps {
    * Besides the compound button, other button types will need more information provided to screen reader.
    */
   actionBarOverflowButtonAriaDescription?: string;
+
+  /**
+   * Custom properties for OverflowSet's FocusZone.
+   * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
+   * Use one or the other.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
