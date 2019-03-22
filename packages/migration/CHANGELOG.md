@@ -1,6 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Fri, 22 Mar 2019 12:34:41 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2019 17:56:40 GMT and should not be manually modified.
+
+## 0.2.0
+Fri, 22 Mar 2019 17:56:40 GMT
+
+### Minor changes
+
+- migration: makes migration script match the name of the package
 
 ## 0.1.4
 Fri, 22 Mar 2019 12:34:41 GMT

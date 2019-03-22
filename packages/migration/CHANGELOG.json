@@ -2,6 +2,20 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@uifabric/migration_v0.2.0",
+      "date": "Fri, 22 Mar 2019 17:56:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "migration: makes migration script match the name of the package",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "211e49dcf93fd79083b0c821468b26d64b24a67f"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.4",
       "tag": "@uifabric/migration_v0.1.4",
       "date": "Fri, 22 Mar 2019 12:34:41 GMT",
