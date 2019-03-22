@@ -74,7 +74,7 @@ export interface INavLinkGroupStyles {
    * NavLinkGroup
    */
   root: IStyle;
-  navMenuContainer: IStyle;
+  nestedNav: IStyle;
   nestedNavLinksWrapper: IStyle;
   nestedNavLinks: IStyle;
 }

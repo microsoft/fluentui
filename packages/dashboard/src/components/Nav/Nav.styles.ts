@@ -15,8 +15,8 @@ document.body.removeChild(scrollDiv);
 // Nav
 const navFontSize = FontSizes.medium;
 export const navTextColor = DefaultPalette.black;
-const navWidth = 280 + scrollBarWidth;
-const navCollapsedWidth = 48 + scrollBarWidth;
+const navWidth = 280;
+export const navCollapsedWidth = 48;
 export const navBackgroundColor = '#E5E5E5';
 
 export const navItemHeight = 48;
@@ -50,7 +50,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     ],
     navContainer: [
       {
-        width: navWidth,
+        width: navWidth + scrollBarWidth,
         backgroundColor: navBackgroundColor,
         color: navTextColor,
         transitionProperty: 'width',
@@ -63,7 +63,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         height: '100%'
       },
       isNavCollapsed && {
-        width: navCollapsedWidth
+        width: navCollapsedWidth + scrollBarWidth
       },
       shouldScroll && {
         selectors: {

@@ -32,28 +32,36 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
     const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed, isKeyboardExpanded });
     return (
       <div className={classNames.root} {...isNavCollapsed && link.links && { onMouseEnter: this._offsetUpdated, ref: this.navRootRef }}>
-        <div className={classNames.navMenuContainer} ref={this.navLinkGroupRef}>
-          <NavLink
-            isNavCollapsed={isNavCollapsed}
-            name={link.name}
-            onClick={this._onLinkClicked}
-            data-value={link.name}
-            aria-label={link.ariaLabel ? link.ariaLabel : link.name}
-            aria-expanded={isExpanded}
-            aria-haspopup={!!link.links}
-            primaryIconName={link.icon}
-            isSelected={hasSelectedNestedLink}
-            hasSelectedNestedLink={hasSelectedNestedLink}
-            hasNestedMenu={true}
-            isNested={false}
-            isExpanded={isExpanded}
-            role="menuitem"
-          />
-          {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
+        <NavLink
+          isNavCollapsed={isNavCollapsed}
+          name={link.name}
+          onClick={this._onLinkClicked}
+          data-value={link.name}
+          aria-label={link.ariaLabel ? link.ariaLabel : link.name}
+          aria-expanded={isExpanded}
+          aria-haspopup={!!link.links}
+          primaryIconName={link.icon}
+          isSelected={hasSelectedNestedLink}
+          hasSelectedNestedLink={hasSelectedNestedLink}
+          hasNestedMenu={true}
+          isExpanded={isExpanded}
+          role="menuitem"
+        />
+        {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
             so those elements need to be separated. This one has the shadow.
         */}
-          {link.links && (
-            <div className={classNames.nestedNavLinksWrapper} role="none">
+        {link.links && (
+          <div className={classNames.nestedNav} role="none" {...isNavCollapsed && { ref: this.navLinkGroupRef }}>
+            {isNavCollapsed && (
+              <NavLink
+                isNavCollapsed={isNavCollapsed}
+                name={link.name}
+                data-is-focusable={false}
+                aria-hidden={true}
+                primaryIconName={link.icon}
+              />
+            )}
+            <div className={classNames.nestedNavLinksWrapper}>
               {/* This one has the blur. */}
               <ul className={classNames.nestedNavLinks} role="menu">
                 {link.links.map((nestedLink: INavLink, linkIndex: number) => {
@@ -81,8 +89,8 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
                 })}
               </ul>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }

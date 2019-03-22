@@ -31,14 +31,14 @@ export class NavLink extends React.PureComponent<INavLinkProps, {}> {
     );
 
     const rootStyle = mergeStyles(classNames.root, className);
-    return this.props.href ? (
-      <a {...nativeProps} className={rootStyle}>
-        {navContent}
-      </a>
-    ) : (
+    return this.props.onClick ? (
       <button {...nativeProps} className={rootStyle}>
         {navContent}
       </button>
+    ) : (
+      <a {...nativeProps} className={rootStyle}>
+        {navContent}
+      </a>
     );
   }
 }
