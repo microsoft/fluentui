@@ -16,10 +16,8 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
       className=
 
           {
-            align-items: center;
             display: inline-flex;
             float: left;
-            height: 32px;
             margin-right: 10px;
           }
     >
@@ -35,17 +33,16 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
-              line-height: 20px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               overflow-wrap: break-word;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
+              padding-bottom: 2px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 2px;
               pointer-events: none;
               word-wrap: break-word;
             }
@@ -59,8 +56,9 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
       className=
 
           {
-            border-radius: 2px;
-            border: 1px solid #a19f9d;
+            border-color: #a19f9d;
+            border-style: solid;
+            border-width: 1px;
             box-sizing: border-box;
             display: flex;
             height: 32px;
@@ -68,9 +66,11 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
           }
           &:hover {
             border-color: #323130;
+            outline: 2px dashed transparent;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
+            outline: none;
           }
     >
       <input
@@ -83,30 +83,29 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         className=
             ms-spinButton-input
             {
-              border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
               cursor: text;
               display: block;
-              flex: 1;
+              float: left;
               font-size: 14px;
               height: 100%;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
+              margin-bottom: 0;
+              margin-left: 0;
+              margin-right: 0;
+              margin-top: 0;
               min-width: 72px;
-              outline: 0px;
+              outline: 0;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 8px;
-              padding-right: 8px;
+              padding-left: 12px;
+              padding-right: 12px;
               padding-top: 0;
               text-overflow: ellipsis;
               user-select: text;
-              white-space: nowrap;
+              width: calc(100% - 14px);
             }
             &::selection {
               background-color: #0078d4;
@@ -134,9 +133,17 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         className=
 
             {
+              box-sizing: border-box;
               cursor: default;
               display: block;
+              float: left;
+              font-size: 12px;
               height: 100%;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
             }
       >
         <button
@@ -153,7 +160,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #605e5c;
+                color: #323130;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -161,16 +168,16 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 font-weight: 400;
                 height: 50%;
                 outline: none;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 0;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 23px;
+                width: 14px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -199,15 +206,9 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 position: relative;
                 top: 0px;
               }
-              &.ms-DownButton {
-                border-radius: 0 0 2px 0;
-              }
-              &.ms-UpButton {
-                border-radius: 0 2px 0 0;
-              }
               &:hover {
-                background-color: #f3f2f1;
-                color: #323130;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -215,7 +216,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               }
               &:active {
                 background-color: green;
-                color: #323130;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 background-color: Highlight;
@@ -252,15 +253,15 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
+                    font-size: 6px;
                     font-style: normal;
                     font-weight: normal;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
                     speak: none;
                     text-align: center;
                     vertical-align: middle;
@@ -286,7 +287,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
-                color: #605e5c;
+                color: #323130;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -294,16 +295,16 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 font-weight: 400;
                 height: 50%;
                 outline: none;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 0;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 23px;
+                width: 14px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -332,15 +333,9 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 position: relative;
                 top: 0px;
               }
-              &.ms-DownButton {
-                border-radius: 0 0 2px 0;
-              }
-              &.ms-UpButton {
-                border-radius: 0 2px 0 0;
-              }
               &:hover {
-                background-color: #f3f2f1;
-                color: #323130;
+                background-color: #edebe9;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -348,7 +343,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               }
               &:active {
                 background-color: red;
-                color: #323130;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 background-color: Highlight;
@@ -385,15 +380,15 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
+                    font-size: 6px;
                     font-style: normal;
                     font-weight: normal;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
                     speak: none;
                     text-align: center;
                     vertical-align: middle;

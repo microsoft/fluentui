@@ -105,7 +105,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -304,7 +304,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -961,7 +961,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -1078,7 +1078,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Slider-active
 
                       {
-                        background: #c8c6c4;
+                        background: #a19f9d;
                         transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                       }
                       @media screen and (-ms-high-contrast: active){& {
@@ -1126,7 +1126,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -1385,7 +1385,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -1584,7 +1584,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -1659,7 +1659,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -1886,7 +1886,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -2286,7 +2286,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         display: block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -2464,7 +2464,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -2663,7 +2663,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -2709,7 +2709,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -2908,7 +2908,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -2992,7 +2992,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -3191,7 +3191,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;
@@ -3237,7 +3237,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -3436,7 +3436,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     line-height: 1;
                     margin-bottom: 0;
                     margin-left: 8px;

@@ -22,10 +22,8 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
       className=
 
           {
-            align-items: center;
             display: inline-flex;
             float: left;
-            height: 32px;
             margin-right: 10px;
           }
     >
@@ -42,17 +40,16 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
-              line-height: 20px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               overflow-wrap: break-word;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
+              padding-bottom: 2px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 2px;
               pointer-events: none;
               word-wrap: break-word;
             }
@@ -71,8 +68,8 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
           {
             background-color: #f3f2f1;
             border-color: transparent;
-            border-radius: 2px;
-            border: 1px solid #a19f9d;
+            border-style: solid;
+            border-width: 1px;
             box-sizing: border-box;
             color: #a19f9d;
             cursor: default;
@@ -97,31 +94,30 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             {
               background-color: #f3f2f1;
               border-color: transparent;
-              border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
               box-sizing: border-box;
               color: #a19f9d;
               cursor: default;
               display: block;
-              flex: 1;
+              float: left;
               font-size: 14px;
               height: 100%;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
+              margin-bottom: 0;
+              margin-left: 0;
+              margin-right: 0;
+              margin-top: 0;
               min-width: 72px;
-              outline: 0px;
+              outline: 0;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 8px;
-              padding-right: 8px;
+              padding-left: 12px;
+              padding-right: 12px;
               padding-top: 0;
               pointer-events: none;
               text-overflow: ellipsis;
               user-select: text;
-              white-space: nowrap;
+              width: calc(100% - 14px);
             }
             @media screen and (-ms-high-contrast: active){& {
               color: GrayText;
@@ -145,10 +141,18 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             {
               background-color: #f3f2f1;
               border-color: transparent;
+              box-sizing: border-box;
               color: #a19f9d;
               cursor: default;
               display: block;
+              float: left;
+              font-size: 12px;
               height: 100%;
+              outline: none;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
               pointer-events: none;
             }
             @media screen and (-ms-high-contrast: active){& {
@@ -180,17 +184,17 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 height: 50%;
                 opacity: 0.5;
                 outline: transparent;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 0;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
                 pointer-events: none;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 23px;
+                width: 14px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -218,12 +222,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 left: 0px;
                 position: relative;
                 top: 0px;
-              }
-              &.ms-DownButton {
-                border-radius: 0 0 2px 0;
-              }
-              &.ms-UpButton {
-                border-radius: 0 2px 0 0;
               }
               &:hover {
                 outline: 0px;
@@ -269,15 +267,15 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
+                    font-size: 6px;
                     font-style: normal;
                     font-weight: normal;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
                     speak: none;
                     text-align: center;
                     vertical-align: middle;
@@ -314,17 +312,17 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 height: 50%;
                 opacity: 0.5;
                 outline: transparent;
-                padding-bottom: 0px;
-                padding-left: 0px;
-                padding-right: 0px;
-                padding-top: 0px;
+                padding-bottom: 0;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
                 pointer-events: none;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 23px;
+                width: 14px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -352,12 +350,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 left: 0px;
                 position: relative;
                 top: 0px;
-              }
-              &.ms-DownButton {
-                border-radius: 0 0 2px 0;
-              }
-              &.ms-UpButton {
-                border-radius: 0 2px 0 0;
               }
               &:hover {
                 outline: 0px;
@@ -403,15 +395,15 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 8px;
+                    font-size: 6px;
                     font-style: normal;
                     font-weight: normal;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    margin-bottom: 0;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0;
                     speak: none;
                     text-align: center;
                     vertical-align: middle;

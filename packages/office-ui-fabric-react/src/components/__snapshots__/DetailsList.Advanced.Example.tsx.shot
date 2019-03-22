@@ -4,7 +4,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
 <div
   className=
 
-      & .headerDivider-471:hover + .headerDividerBar-472 {
+      & .headerDivider-473:hover + .headerDividerBar-474 {
         display: inline;
       }
 >
