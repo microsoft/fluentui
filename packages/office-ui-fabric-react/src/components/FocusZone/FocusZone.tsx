@@ -268,7 +268,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
       // Only update the index path if we are not parked on the root.
       if (focusedElement !== root) {
-        const shouldRestoreFocus = elementContains(root, focusedElement);
+        const shouldRestoreFocus = elementContains(root, focusedElement, false);
 
         this._lastIndexPath = shouldRestoreFocus ? getElementIndexPath(root as HTMLElement, doc.activeElement as HTMLElement) : undefined;
       }
