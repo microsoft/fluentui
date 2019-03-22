@@ -8369,11 +8369,13 @@ interface IGroupShowAllStyles {
 interface IGroupSpacerProps {
   count: number;
   indentWidth?: number;
+  // @deprecated
   styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+  // @deprecated
   theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 interface IGroupSpacerStyles {
   // (undocumented)
   root: IStyle;
