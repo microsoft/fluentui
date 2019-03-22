@@ -1,47 +1,132 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-import { DefaultButton, PrimaryButton } from '../../../../packages/office-ui-fabric-react/lib/Button';
-import { TextFieldBasicExample } from './TextField.Basic.Example';
 import { SamplesCardHeader } from './SamplesCardHeader';
-import { Stack } from '../../../../packages/office-ui-fabric-react/lib/Stack';
+import {
+  ActionButton,
+  Checkbox,
+  DefaultButton,
+  Dropdown,
+  Link,
+  PrimaryButton,
+  Stack,
+  Text,
+  TextField,
+  Toggle
+} from '../../../../packages/office-ui-fabric-react/lib';
 
 export class Samples extends React.Component {
   render() {
     return (
       <Card styles={{ root: { width: '800px', height: 'auto' } }}>
         <h1>Samples</h1>
-        <Stack horizontal gap={100}>
-          <Stack>
+        <Stack horizontal gap={50}>
+          <Stack gap={10}>
             <SamplesCardHeader label="TEXT" />
-            <SamplesCardHeader label="MEMBER FEATURE STORY" />
+            <SamplesCardHeader size="tiny" label="MEMBER FEATURE STORY" />
+            <Text variant="xLarge">The Mystery of Color</Text>
+            <Stack>
+              <Text variant="tiny" block>
+                Contrast is the difference in
+              </Text>
+              <Text variant="tiny" block>
+                luminance or color that makes an{' '}
+              </Text>
+              <Text variant="tiny" block>
+                {' '}
+                object (or its representation in an{' '}
+              </Text>
+              <Text variant="tiny" block>
+                {' '}
+                image or display) distinguishable.{' '}
+              </Text>
+              <Text variant="tiny" block>
+                {' '}
+                In visual perception of the real{' '}
+              </Text>
+              <Text variant="tiny" block>
+                {' '}
+                world, contrast is determined{' '}
+              </Text>
+            </Stack>
           </Stack>
 
           <Stack gap={10}>
             <SamplesCardHeader label="LINKS" />
+            <Link href="http://dev.office.com/fabric/components/link">Title hyperlink</Link>
+            <Link disabled={true} href="http://dev.office.com/fabric/components/link">
+              Disabled link
+            </Link>
             <SamplesCardHeader label="BUTTONS" />
             <Stack horizontal>
               <PrimaryButton text="Primary" />
               <DefaultButton text="Standard" />
             </Stack>
             <SamplesCardHeader label="ACTION BUTTONS" />
+            <Stack horizontal gap={5}>
+              <ActionButton
+                data-automation-id="test"
+                iconProps={{ iconName: 'Add' }}
+                allowDisabledFocus={true}
+                disabled={false}
+                checked={true}
+              >
+                Action text
+              </ActionButton>
+              <ActionButton
+                data-automation-id="test"
+                iconProps={{ iconName: 'ChevronLeft' }}
+                allowDisabledFocus={true}
+                disabled={false}
+                checked={true}
+              />
+              <ActionButton
+                data-automation-id="test"
+                iconProps={{ iconName: 'Cancel' }}
+                allowDisabledFocus={true}
+                disabled={false}
+                checked={true}
+              />
+            </Stack>
           </Stack>
 
           <Stack gap={10}>
             <SamplesCardHeader label="TEXT FIELD" />
-            {/* <div style={{ display: 'flex', height: '300px' }}> */}
-            <TextFieldBasicExample />
-            {/* </div> */}
+            <TextField label="Label" />
+            <TextField label="Label" disabled={true} />
             <SamplesCardHeader label="TEXT FIELD - UNDERLINE" />
+            <TextField label="Label: " underlined />
             <SamplesCardHeader label="DROPDOWN MENU" />
+            <Dropdown
+              placeholder="Content"
+              label="Label"
+              ariaLabel="Content dropdown"
+              options={[{ key: 'content', text: 'Content' }, { key: 'morecontent', text: 'More content' }]}
+            />
           </Stack>
 
           <Stack gap={10}>
             <SamplesCardHeader label="TOGGLE" />
+            <Toggle
+              defaultChecked={true}
+              label="Enabled and checked"
+              onText="On"
+              offText="Off"
+              onFocus={() => console.log('onFocus called')}
+              onBlur={() => console.log('onBlur called')}
+              onChange={this._onToggleChange}
+            />
             <SamplesCardHeader label="CHECKBOX" />
+            <Checkbox label="Standard checkbox" onChange={() => this._onCheckboxChange} />
             <SamplesCardHeader label="RADIO BUTTON" />
           </Stack>
         </Stack>
       </Card>
     );
+  }
+  private _onToggleChange(ev: React.MouseEvent<HTMLElement>, checked: boolean | undefined) {
+    console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
+  }
+  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
+    console.log(`The option has been changed to ${isChecked}.`);
   }
 }

@@ -2,13 +2,10 @@ import * as React from 'react';
 import * as stylesImport from './app.scss';
 import { ColorPanel } from './ColorPanel';
 import { Palette } from './Palette';
-
 import { AccChecker } from './AccChecker';
 import { SemanticSlots } from './SemanticSlots';
 import { Samples } from './Samples';
-
 import { Stack } from '../../../../packages/office-ui-fabric-react/lib/Stack';
-import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
 
 const styles: any = stylesImport;
 

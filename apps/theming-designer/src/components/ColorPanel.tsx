@@ -35,6 +35,7 @@ export class ColorPanel extends React.Component<IColorPanelProps, IColorPanelSta
         <h1>Color</h1>
         <span>Presets</span>
         <Stack gap={30}>
+          {/* This Dropdown will allow the user to switch from light to dark theme on the whole app. */}
           {/* <Dropdown
             placeholder="Select an Option"
             label="Theme dropdown"

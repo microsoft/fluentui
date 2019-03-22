@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Text } from '../../../../packages/office-ui-fabric-react/lib/Text';
+import { Text, ITextProps } from '../../../../packages/office-ui-fabric-react/lib/Text';
 import './SamplesCardHeader.scss';
 
 interface ISamplesCardHeaderProps {
   label?: string;
+  size?: ITextProps['variant'];
 }
 
 export const SamplesCardHeader = (props: ISamplesCardHeaderProps) => {
-  return <Text className="samplescardheader">{props.label}</Text>;
+  return (
+    <Text variant={props.size} className="samplescardheader">
+      {props.label}
+    </Text>
+  );
 };
