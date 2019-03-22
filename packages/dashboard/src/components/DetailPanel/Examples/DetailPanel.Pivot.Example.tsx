@@ -95,6 +95,8 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           onPivotLinkClick={(key: string) => {
             console.log(key);
           }}
+          refreshTooltip={'Refresh'}
+          closeTooltip={'close'}
         />
       );
     } else {
@@ -162,6 +164,14 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
         title: 'Expiration',
         message: new Date().toLocaleDateString(),
         actionText: 'Detail',
+        onAction: () => {
+          alert('Expiration');
+        }
+      } as IDetailInfoTileProps,
+      {
+        title: 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB',
+        message: <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>,
+        actionText: 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC',
         onAction: () => {
           alert('Expiration');
         }

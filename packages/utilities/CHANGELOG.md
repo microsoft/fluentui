@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 12 Mar 2019 12:31:43 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:07 GMT and should not be manually modified.
+
+## 6.35.1
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Patches
+
+- Remove some unused variables and types from Customizer
+- Use typeof check on process before checking process.env.NODE_ENV
 
 ## 6.35.0
 Tue, 12 Mar 2019 12:31:43 GMT

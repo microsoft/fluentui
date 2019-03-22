@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
   <title>Office UI Fabric</title>
-  <link href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico" rel="shortcut icon"
+    type="image/x-icon" />
   <script src="https://cdn.optimizely.com/js/5703250400.js"></script>
   <style>
     body,
@@ -28,8 +29,9 @@
 <body>
   <div id="main">
     <div class="loading">
-      <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif"
-        alt="Loading" width="32" height="32" />
+      <img class="loadingImage"
+        src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif" alt="Loading"
+        width="32" height="32" />
     </div>
   </div>
 
@@ -43,6 +45,7 @@
     var productionParam = getParameterByName('isProduction');
     var noCompress = isLocal || getParameterByName('noCompress');
     var devhost = getParameterByName('devhost');
+    var fabricVersion = getParameterByName('fabricVer');
 
     var entryPointFilename = 'fabric-sitev5';
     var appPath = '';
@@ -57,7 +60,16 @@
 
     // If the site is hosted, load the flight config script for production or dogfood
     if (!isLocal) {
-      var configPrefix = isProduction ? 'fabric-website-prod' : 'fabric-website-df';
+      // Update as new fabric versions and its documentation are supported
+      var fabricVersions = [5, 6];
+      fabricVersion = Number(fabricVersion);
+
+      var prefixVer = fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ?
+        'v' + fabricVersion + '-' :
+        '';
+
+      var configPrefix = isProduction ? 'fabric-website-' + prefixVer + 'prod' : 'fabric-website-' + prefixVer + 'df';
+
       var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
       loadScripts(configScript, function () {

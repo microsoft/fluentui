@@ -72,6 +72,16 @@ describe('List', () => {
       expect(listRoot.getDOMNode().getAttribute('role')).toEqual('list');
     });
 
+    it("does not set the root element's role in case of an empty list", done => {
+      const wrapper = mount(<List items={mockData(0)} />);
+
+      wrapper.setProps({ items: mockData(0), onPagesUpdated: (pages: IPage[]) => done() });
+
+      const listRoot = wrapper.find(List);
+
+      expect(listRoot.getDOMNode().getAttribute('role')).toBeNull();
+    });
+
     it("sets the row elements' role to 'listitem'", done => {
       const wrapper = mount(<List items={mockData(100)} />);
 
@@ -80,6 +90,38 @@ describe('List', () => {
       const firstRow = wrapper.find('.ms-List-cell').first();
 
       expect(firstRow.getDOMNode().getAttribute('role')).toEqual('listitem');
+    });
+
+    it('renders rows for a sparse array containing items that are primitive values', done => {
+      const wrapper = mount(<List />);
+
+      const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
+        <div className="cell" key={index}>
+          {item}
+        </div>
+      );
+
+      wrapper.setProps({ items: [, , 'foo', 'bar'], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+
+      const rows = wrapper.find('.cell');
+
+      expect(rows).toHaveLength(4);
+    });
+
+    it('renders rows for a sparse array of items that are undefined', done => {
+      const wrapper = mount(<List />);
+
+      const onRenderCell = (item: any, index: number, isScrolling: boolean) => (
+        <div className="cell" key={index}>
+          {item}
+        </div>
+      );
+
+      wrapper.setProps({ items: [, , , ,], onRenderCell, onPagesUpdated: (pages: IPage[]) => done() });
+
+      const rows = wrapper.find('.cell');
+
+      expect(rows).toHaveLength(4);
     });
   });
 

@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.35.1",
+      "tag": "@uifabric/utilities_v6.35.1",
+      "date": "Fri, 15 Mar 2019 12:34:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove some unused variables and types from Customizer",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "3fc7cecfad646dcfde46a4244ffd9d570e11d085"
+          },
+          {
+            "comment": "Use typeof check on process before checking process.env.NODE_ENV",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "12513bd032a8ce7a6ef1e0257bd2ae99a0a00849"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.35.0",
       "tag": "@uifabric/utilities_v6.35.0",
       "date": "Tue, 12 Mar 2019 12:31:43 GMT",

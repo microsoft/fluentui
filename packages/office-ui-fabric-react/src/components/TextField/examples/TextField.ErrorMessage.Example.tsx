@@ -1,12 +1,21 @@
 import { Promise } from 'es6-promise';
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { NumberTextField } from './NumberTextField';
 import './TextField.Examples.scss';
 
-export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
+export class TextFieldErrorMessageExample extends React.Component<{}, { displayEnabled: boolean }> {
   public constructor(props: any) {
     super(props);
+    this.state = {
+      /*
+       * Screen readers will read all errors on a page as soon as they are present,
+       * making this demo potentially unpleasant when using a screen reader.
+       * Not rendering the controls by default makes for a more pleasant experience.
+       */
+      displayEnabled: false
+    };
 
     this._getErrorMessage = this._getErrorMessage.bind(this);
     this._getErrorMessagePromise = this._getErrorMessagePromise.bind(this);
@@ -15,6 +24,15 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div className="docs-TextFieldErrorExample">
+        <Toggle label="Show text fields" onChange={this._toggleErrors} />
+        {this.state.displayEnabled && this._renderFields()}
+      </div>
+    );
+  }
+
+  private _renderFields(): JSX.Element {
+    return (
+      <>
         <TextField
           label="TextField with a string-based validator. Hint: the length of the input string must be less than 3."
           onGetErrorMessage={this._getErrorMessage}
@@ -73,12 +91,16 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
         />
         <NumberTextField label="Number TextField with valid initial value" initialValue="100" />
         <NumberTextField label="Number TextField with invalid initial value" initialValue="Not a number" />
-      </div>
+      </>
     );
   }
 
+  private _toggleErrors = (_: any, displayEnabled: boolean) => {
+    this.setState({ displayEnabled });
+  };
+
   private _getErrorMessage(value: string): string {
-    return value.length < 3 ? '' : `The length of the input value should less than 3, actual is ${value.length}.`;
+    return value.length < 3 ? '' : `The length of the input value must be less than 3, actual length is ${value.length}.`;
   }
 
   private _getErrorMessagePromise(value: string): Promise<string> {
