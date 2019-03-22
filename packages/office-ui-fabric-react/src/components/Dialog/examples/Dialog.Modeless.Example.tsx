@@ -26,6 +26,7 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
         </div>
         <Dialog
           hidden={hideDialog}
+          onDismiss={this._closeDialog}
           dialogContentProps={{
             type: DialogType.normal,
             title: 'All emails together',
