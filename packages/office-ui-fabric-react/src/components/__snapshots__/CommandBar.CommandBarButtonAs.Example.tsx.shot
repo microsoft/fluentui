@@ -31,10 +31,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 40px;
+              height: 44px;
               padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
+              padding-left: 24px;
+              padding-right: 14px;
               padding-top: 0;
             }
         data-focuszone-id="FocusZone0"
@@ -1355,10 +1355,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 40px;
+              height: 44px;
               padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
+              padding-left: 24px;
+              padding-right: 14px;
               padding-top: 0;
             }
         data-focuszone-id="FocusZone0"
