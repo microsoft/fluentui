@@ -2014,7 +2014,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
     className=
         ms-Suggestions-container
         {
-          border-bottom: 1px solid #edebe9;
           max-height: 300px;
           overflow-x: hidden;
           overflow-y: auto;

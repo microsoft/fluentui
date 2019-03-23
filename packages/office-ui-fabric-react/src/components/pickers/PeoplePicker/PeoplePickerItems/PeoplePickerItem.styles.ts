@@ -127,6 +127,9 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           ':hover': {
             background: palette.neutralTertiaryAlt,
             color: palette.neutralDark
+          },
+          ':active': {
+            color: palette.white
           }
         }
       },
