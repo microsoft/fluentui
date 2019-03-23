@@ -22,9 +22,11 @@ export const getStyles = memoizeFunction(
         theme.fonts.medium,
         {
           minWidth: '40px',
-          backgroundColor: theme.palette.neutralLighter,
+          backgroundColor: 'transparent',
           color: theme.palette.neutralPrimary,
           padding: '0 4px',
+          border: 'none',
+          borderRadius: 0,
           selectors: {
             [HighContrastSelector]: {
               border: 'none'
@@ -79,7 +81,10 @@ export const getStyles = memoizeFunction(
       },
 
       splitButtonMenuButton: {
-        backgroundColor: theme.palette.neutralLighter,
+        backgroundColor: 'transparent',
+        border: 'none',
+        borderTopRightRadius: '0',
+        borderBottomRightRadius: '0',
         color: theme.palette.neutralPrimary,
         selectors: {
           ':hover': {
@@ -144,6 +149,6 @@ export const getStyles = memoizeFunction(
       }
     };
 
-    return concatStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
+    return concatStyleSets(baseButtonStyles, baseSplitButtonStyles, commandButtonStyles, customStyles)!;
   }
 );

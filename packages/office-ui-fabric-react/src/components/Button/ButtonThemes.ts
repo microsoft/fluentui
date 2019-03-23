@@ -2,7 +2,7 @@ import { IButtonStyles } from './Button.types';
 import { ITheme, HighContrastSelector } from '../../Styling';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
-  const { semanticColors: s, palette: p, effects } = theme;
+  const { semanticColors: s, palette: p } = theme;
 
   const buttonBackground = p.white;
   const buttonBackgroundPressed = s.buttonBackgroundPressed;

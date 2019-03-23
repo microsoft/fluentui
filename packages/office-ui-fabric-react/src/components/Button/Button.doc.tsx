@@ -8,7 +8,8 @@ import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
-import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
+import { ButtonSplitExample } from './examples/Button.Split.Example';
+import { ButtonSplitCustomExample } from './examples/Button.CustomSplit.Example';
 import { ButtonToggleExample } from './examples/Button.Toggle.Example';
 import { IDocPageProps, ChecklistStatus } from '../../common/DocPage.types';
 export { ChecklistStatus };
@@ -22,6 +23,7 @@ const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
+const ButtonCustomSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CustomSplit.Example.tsx') as string;
 const ButtonToggleExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
 
 export interface IButtonDocPageProps {
@@ -72,10 +74,7 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Action Button',
       code: ButtonActionExampleCode,
       view: <ButtonActionExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
-    }
-  ],
-
-  implementationExamples: [
+    },
     {
       title: 'Button Like Anchor',
       code: ButtonAnchorExampleCode,
@@ -88,7 +87,7 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
     },
     {
       title: 'Custom Split Button',
-      code: ButtonSplitExampleCode,
+      code: ButtonCustomSplitExampleCode,
       view: <ButtonSplitCustomExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
