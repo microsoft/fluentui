@@ -16,7 +16,7 @@ const GlobalClassNames = {
 export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles => {
   const { className, theme, isLargeHeader, isClose, hidden, isMultiline } = props;
 
-  const { palette, fonts } = theme;
+  const { palette, fonts, effects } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -40,7 +40,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         color: palette.neutralPrimary,
         lineHeight: '1.5',
         wordWrap: 'break-word',
-        fontWeight: FontWeights.semilight
+        fontWeight: FontWeights.regular
       }
     ],
 
@@ -75,7 +75,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
     inner: [
       classNames.inner,
       {
-        padding: isMultiline ? '0 20px 20px' : '0 28px 20px'
+        padding: '0 24px 24px'
       }
     ],
 
@@ -102,12 +102,15 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
 
     title: [
       classNames.title,
+      fonts.xLarge,
       {
         color: palette.neutralPrimary,
         margin: '0',
-        padding: '20px 36px 20px 28px'
+        padding: '16px 46px 24px 24px',
+        fontSize: 20, // TODO: after updating the type ramp this needs reevaluated
+        fontWeight: FontWeights.semibold,
+        lineHeight: 'normal'
       },
-      fonts.xLarge,
       isLargeHeader && [
         {
           color: palette.white,
@@ -127,11 +130,18 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         position: 'absolute',
         top: '0',
         right: '0',
-        padding: '12px 12px 0 0',
+        padding: '14px 14px 0 0',
 
         selectors: {
           '> *': {
             flex: '0 0 auto'
+          },
+          '.ms-Dialog-button': {
+            color: palette.neutralSecondary
+          },
+          '.ms-Dialog-button:hover': {
+            color: palette.neutralDark,
+            borderRadius: effects.roundedCorner2
           }
         }
       }
