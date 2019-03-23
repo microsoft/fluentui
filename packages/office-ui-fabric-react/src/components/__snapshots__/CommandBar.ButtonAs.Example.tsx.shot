@@ -77,9 +77,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f3f2f1;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid #8a8886;
+                      border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
@@ -104,14 +104,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
+                      left: 3px;
                       outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -263,9 +263,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f3f2f1;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid #8a8886;
+                      border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
@@ -290,14 +290,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
+                      left: 3px;
                       outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -422,9 +422,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f3f2f1;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid #8a8886;
+                      border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
@@ -449,14 +449,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
+                      left: 3px;
                       outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -580,9 +580,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f3f2f1;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid #8a8886;
+                      border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
@@ -607,14 +607,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
+                      left: 3px;
                       outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -742,9 +742,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f3f2f1;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid #8a8886;
+                      border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
@@ -768,14 +768,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
+                      left: 3px;
                       outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -887,9 +887,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f3f2f1;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid #8a8886;
+                      border: none;
                       box-sizing: border-box;
                       color: #323130;
                       cursor: pointer;
@@ -914,14 +914,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
+                      left: 3px;
                       outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1057,9 +1057,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        background-color: #f3f2f1;
+                        background-color: transparent;
                         border-radius: 0px;
-                        border: 1px solid #8a8886;
+                        border: none;
                         box-sizing: border-box;
                         color: #323130;
                         cursor: pointer;
@@ -1084,14 +1084,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 3px;
                         content: "";
-                        left: 0px;
+                        left: 3px;
                         outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 3px;
+                        top: 3px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1203,9 +1203,9 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        background-color: #f3f2f1;
+                        background-color: transparent;
                         border-radius: 0px;
-                        border: 1px solid #8a8886;
+                        border: none;
                         box-sizing: border-box;
                         color: #323130;
                         cursor: pointer;
@@ -1230,14 +1230,14 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 3px;
                         content: "";
-                        left: 0px;
+                        left: 3px;
                         outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 3px;
+                        top: 3px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

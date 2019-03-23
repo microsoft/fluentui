@@ -192,6 +192,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #f3f2f1;
+                border-color: #f3f2f1;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
@@ -220,14 +221,14 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
+                left: 2px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -256,7 +257,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                bordercolor: grayText;
+                border-color: grayText;
                 color: GrayText;
                 opacity: 1;
               }
@@ -326,6 +327,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #f3f2f1;
+                border-color: #f3f2f1;
                 border-radius: 0px;
                 border: none;
                 box-sizing: border-box;
@@ -354,14 +356,14 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
+                left: 2px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -390,7 +392,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 outline: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
-                bordercolor: grayText;
+                border-color: grayText;
                 color: GrayText;
                 opacity: 1;
               }

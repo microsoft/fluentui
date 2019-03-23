@@ -16,6 +16,7 @@ export const getStyles = memoizeFunction(
         height: '32px',
         backgroundColor: 'transparent',
         border: 'none',
+        borderRadius: 0,
         color: semanticColors.actionLink
       },
 

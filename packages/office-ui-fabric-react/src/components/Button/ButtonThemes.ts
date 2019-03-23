@@ -1,5 +1,6 @@
 import { IButtonStyles } from './Button.types';
 import { ITheme, HighContrastSelector } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   const { semanticColors: s, palette: p } = theme;
@@ -118,6 +119,14 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           color: 'Window',
           backgroundColor: 'WindowText',
           MsHighContrastAdjust: 'none'
+        },
+        [`.${IsFocusVisibleClassName} &:focus`]: {
+          selectors: {
+            ':after': {
+              outline: `none`,
+              borderColor: p.white
+            }
+          }
         }
       }
     },

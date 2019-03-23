@@ -316,8 +316,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               -webkit-font-smoothing: antialiased;
               background-color: #ffffff;
               border-color: #ffffff;
-              border-radius: 0px;
-              border: 1px solid #8a8886;
+              border-radius: 2px;
+              border: none;
               box-sizing: border-box;
               color: #ffffff;
               cursor: pointer;
@@ -343,14 +343,15 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border-color: #ffffff;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #605e5c;
+              left: 2px;
+              outline: none;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -458,7 +459,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               -webkit-font-smoothing: antialiased;
               background-color: #0078d4;
               border-color: #ffffff;
-              border-radius: 0px;
+              border-radius: 2px;
               border: 1px solid #8a8886;
               box-sizing: border-box;
               color: #323130;
@@ -485,14 +486,14 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
+              left: 2px;
               outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -509,7 +510,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #edebe9;
+              background-color: #f3f2f1;
               color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -617,14 +618,14 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
+          left: 2px;
           outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

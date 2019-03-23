@@ -8,25 +8,24 @@ const alertClicked = (): void => {
   alert('Clicked');
 };
 
-export const getCustomSplitButtonStyles = (): IButtonStyles => {
-  return {
-    splitButtonMenuButton: { backgroundColor: 'white', width: '10px', border: 'none' },
-    splitButtonMenuIcon: { fontSize: '7px' },
-    splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 17 },
-    splitButtonContainer: {
-      selectors: {
-        [HighContrastSelector]: {
-          border: 'none'
-        }
-      }
-    }
-  };
-};
-
 export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-    const customSplitButtonStyles = getCustomSplitButtonStyles();
+
+    const customSplitButtonStyles = (): IButtonStyles => {
+      return {
+        splitButtonMenuButton: { backgroundColor: 'white', width: '10px', border: 'none' },
+        splitButtonMenuIcon: { fontSize: '7px' },
+        splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 17 },
+        splitButtonContainer: {
+          selectors: {
+            [HighContrastSelector]: {
+              border: 'none'
+            }
+          }
+        }
+      };
+    };
 
     return (
       <div>
@@ -40,7 +39,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
           onClick={alertClicked}
           split={true}
           aria-roledescription={'split button'}
-          styles={customSplitButtonStyles}
+          styles={customSplitButtonStyles()}
           menuProps={{
             items: [
               {
