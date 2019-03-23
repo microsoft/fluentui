@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/dashboard",
+      "comment": "Implemented animation for wizard.  Dependence added to react-transition-group for dashboard package.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/dashboard",
+  "email": "ashasun@microsoft.com"
+}

@@ -37,6 +37,9 @@ export interface IWizardStepProps {
   // This property is used for animation
   isFirstSubStep?: boolean;
 
+  // This property is used for animation
+  index?: number;
+
   onClickStep?: (step: ISubwayNavNodeProps) => void;
 
   wizardContent?: IWizardContentProps;
@@ -87,17 +90,38 @@ export interface IWizardStyles {
 
   subwayNavSection: IStyle;
 
+  contentSectionContainer: IStyle;
+
   contentSection: IStyle;
 
   contentTitle: IStyle;
 
   content: IStyle;
+
+  // React transition classes
+  stepSlideUpEnter: IStyle;
+
+  stepSlideUpEnterActive: IStyle;
+
+  stepSlideUpExit: IStyle;
+
+  stepSlideUpExitActive: IStyle;
+
+  stepSlideDownEnter: IStyle;
+
+  stepSlideDownEnterActive: IStyle;
+
+  stepSlideDownExit: IStyle;
+
+  stepSlideDownExitActive: IStyle;
 }
 
 export interface IWizardStyleProps {
   isSubStep: boolean;
 
   isFirstSubStep: boolean;
+
+  clickedForward: boolean;
 
   theme: ITheme;
 }
