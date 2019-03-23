@@ -1,0 +1,38 @@
+{
+  "name": "@uifabric/migration",
+  "version": "0.2.0",
+  "description": "Migration scripts for UI Fabric",
+  "main": "lib/index.js",
+  "bin": {
+    "migration": "./bin/migration.js"
+  },
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node ../../scripts/just.js build-commonjs-only",
+    "clean": "node ../../scripts/just.js clean",
+    "start": "node ../../scripts/just.js dev",
+    "start-test": "node ../../scripts/just.js jest-watch",
+    "update-snapshots": "node ../../scripts/just.js jest -u"
+  },
+  "devDependencies": {
+    "@types/node": "^8.10.29",
+    "@types/jest": "23.0.0",
+    "@types/semver": "^5.5.0",
+    "@uifabric/prettier-rules": ">=1.0.1 <2.0.0",
+    "@uifabric/tslint-rules": ">=1.0.1 <2.0.0"
+  },
+  "dependencies": {
+    "semver": "^5.6.0",
+    "tslib": "^1.7.1",
+    "riceburn": "^1.2.0",
+    "typescript": "2.8.4"
+  },
+  "disabledTasks": [
+    "verify-api-extractor"
+  ]
+}

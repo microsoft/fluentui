@@ -50,7 +50,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Optional custom renderer for selected option displayed in input
    */
-  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
+  onRenderTitle?: IRenderFunction<IDropdownOption[]>;
 
   /**
    * Optional custom renderer for chevron icon
@@ -85,8 +85,9 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Keys of the selected items. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
+   * Passing null in will clear the selection.
    */
-  selectedKeys?: string[] | number[];
+  selectedKeys?: string[] | number[] | null;
 
   /**
    * When multiple items are selected, this still will be used to separate values in

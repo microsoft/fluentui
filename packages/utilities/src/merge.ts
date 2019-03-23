@@ -28,7 +28,8 @@ function _merge<T>(target: T, source: T, circularReferences: any[] = []): T {
       if (typeof value === 'object') {
         const isCircularReference = circularReferences.indexOf(value) > -1;
 
-        target[name] = isCircularReference ? value : _merge(target[name] || {}, value, circularReferences);
+        // tslint:disable-next-line:no-any
+        (target as any)[name] = isCircularReference ? value : _merge(target[name] || {}, value, circularReferences);
       } else {
         target[name] = value;
       }

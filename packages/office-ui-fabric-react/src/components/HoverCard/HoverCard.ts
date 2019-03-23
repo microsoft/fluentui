@@ -3,6 +3,11 @@ import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './Hover
 import { getStyles } from './HoverCard.styles';
 import { HoverCardBase } from './HoverCard.base';
 
-export const HoverCard = styled<IHoverCardProps, IHoverCardStyleProps, IHoverCardStyles>(HoverCardBase, getStyles, undefined, {
-  scope: 'HoverCard'
-});
+export const HoverCard: React.StatelessComponent<IHoverCardProps> = styled<IHoverCardProps, IHoverCardStyleProps, IHoverCardStyles>(
+  HoverCardBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'HoverCard'
+  }
+);

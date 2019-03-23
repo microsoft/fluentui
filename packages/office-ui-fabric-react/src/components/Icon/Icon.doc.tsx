@@ -8,7 +8,7 @@ import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
 import { IconStatus } from './Icon.checklist';
 
 const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
-const IconBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Icon/Icon.Basic.Example.Codepen.txt') as string;
+const IconBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
 const IconSvgExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Svg.Example.tsx') as string;
 const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Color.Example.tsx') as string;
 const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;

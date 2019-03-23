@@ -29,7 +29,8 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       id,
       styles,
       name,
-      onRenderField = this._onRenderField
+      onRenderField = this._onRenderField,
+      ...rest
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -42,7 +43,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       focused
     });
 
-    const { className, ...nativeProps } = getNativeProps<{ className: string }>(this.props, inputProperties);
+    const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);
 
     return (
       <div className={this._classNames.root}>

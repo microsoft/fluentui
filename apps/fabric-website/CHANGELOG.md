@@ -1,6 +1,56 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 15 Feb 2019 17:41:16 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2019 02:41:50 GMT and should not be manually modified.
+
+## 6.12.3
+Fri, 22 Mar 2019 02:41:50 GMT
+
+### Patches
+
+- Add missing hypen for prefixVer
+
+## 6.12.2
+Wed, 20 Mar 2019 12:34:45 GMT
+
+### Patches
+
+- Remove template literal in fabric-website/index
+
+## 6.12.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add query parameter to change Fabric version
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages and values to redirect map for Announced links
+
+## 6.11.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.10.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.10.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Icon Page: updated directions for adding dir tag
+- Fix usage of 'ms-text-align'
 
 ## 6.10.0
 Fri, 15 Feb 2019 17:41:16 GMT

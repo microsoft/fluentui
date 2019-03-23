@@ -67,7 +67,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button
@@ -876,6 +876,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 }
           >
             <button
+              aria-label="Sort"
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1044,6 +1045,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Grid view"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1189,6 +1191,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Info"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1388,7 +1391,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button
@@ -2105,9 +2108,22 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 id="coachmark-desc1"
                               />
                               <div
+                                onBlur={[Function]}
+                                onFocus={[Function]}
                                 onFocusCapture={[Function]}
-                                onKeyDown={[Function]}
                               >
+                                <div
+                                  aria-hidden={true}
+                                  data-is-visible={true}
+                                  onFocus={[Function]}
+                                  style={
+                                    Object {
+                                      "pointerEvents": "none",
+                                      "position": "fixed",
+                                    }
+                                  }
+                                  tabIndex={0}
+                                />
                                 <div
                                   className=
 
@@ -2333,6 +2349,18 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     </div>
                                   </div>
                                 </div>
+                                <div
+                                  aria-hidden={true}
+                                  data-is-visible={true}
+                                  onFocus={[Function]}
+                                  style={
+                                    Object {
+                                      "pointerEvents": "none",
+                                      "position": "fixed",
+                                    }
+                                  }
+                                  tabIndex={0}
+                                />
                               </div>
                             </div>
                           </div>
@@ -2658,6 +2686,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 }
           >
             <button
+              aria-label="Sort"
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2826,6 +2855,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Grid view"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -2971,6 +3001,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Info"
                 className=
                     ms-Button
                     ms-Button--commandBar

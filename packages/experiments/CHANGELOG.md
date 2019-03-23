@@ -1,6 +1,108 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 20 Feb 2019 21:57:24 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Mar 2019 12:36:30 GMT and should not be manually modified.
+
+## 6.64.2
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Patches
+
+- Toggle: Fix invalid references to this object.
+
+## 6.64.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- fix a bug in the tooltip of last page button in pagination component, experiment package
+
+## 6.64.0
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Minor changes
+
+- Button: Separating MenuButton and SplitButton as variants to decouple ContextualMenu from Button.
+
+## 6.63.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- update snapshots to reflect default change in Text
+
+## 6.63.0
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Minor changes
+
+- Removing Card component from experiments package.
+
+### Patches
+
+- folder cover ux cleaned up
+- Signals: changes icon color of `follow` signal.
+
+## 6.62.2
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Patches
+
+- Clean up a few imports.
+
+## 6.62.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 6.62.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- remove Announced
+
+### Patches
+
+- add yellowDark as required
+
+## 6.61.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- Card: Exporting Card from experiments.
+
+## 6.60.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- move Text component from experiments -> OUFR
+
+## 6.59.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Stack: Making doc block in `Stack.ts` in the `experiments` package so that @deprecated is recognized.
+
+## 6.59.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Button: Fixing focus outline and border on circular buttons.
+- Fix RTL handling in SignalsField
+
+## 6.59.0
+Thu, 21 Feb 2019 13:32:08 GMT
+
+### Minor changes
+
+- Button: Adding split property to get Split Buttons.
+- Fluent folder: positioned signal-icon on the right
 
 ## 6.58.0
 Wed, 20 Feb 2019 21:57:24 GMT

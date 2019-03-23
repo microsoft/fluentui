@@ -55,6 +55,7 @@ export class Card extends React.Component<ICardProps, ICardState> {
           cardFrameMenuAriaLabel={cardFrameContent.cardFrameMenuAriaLabel}
         >
           <Layout
+            focusZoneProps={this.props.focusZoneProps}
             header={header}
             contentArea={cardContentList}
             cardSize={this.state.cardSize}

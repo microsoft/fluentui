@@ -28,19 +28,19 @@ export interface ISuggestionsControlState<T> {
 
 export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
   public render(): JSX.Element {
-    const { renderItem, onExecute, isSelected, id } = this.props;
+    const { renderItem, onExecute, isSelected, id, className } = this.props;
     return onExecute ? (
       <div
         id={id}
         onClick={onExecute}
-        className={css('ms-Suggestions-sectionButton', styles.actionButton, {
+        className={css('ms-Suggestions-sectionButton', className, styles.actionButton, {
           ['is-selected ' + styles.buttonSelected]: isSelected
         })}
       >
         {renderItem()}
       </div>
     ) : (
-      <div id={id} className={css('ms-Suggestions-section', styles.suggestionsTitle)}>
+      <div id={id} className={css('ms-Suggestions-section', className, styles.suggestionsTitle)}>
         {renderItem()}
       </div>
     );

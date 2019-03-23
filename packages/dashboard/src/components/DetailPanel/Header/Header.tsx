@@ -49,12 +49,15 @@ const header: React.SFC<DetailPanelHeaderProps> = (props: DetailPanelHeaderProps
   };
 
   const _renderElement = () => {
-    const { title, personaHeader } = props;
+    const { title, personaHeader, imageAlt, imageInitials, imageUrl } = props;
 
     if (personaHeader) {
       return (
         <div className={css.personaMode}>
           <Persona
+            imageAlt={imageAlt}
+            imageUrl={imageUrl}
+            imageInitials={imageInitials}
             size={PersonaSize.size100}
             primaryText={title}
             onRenderSecondaryText={_onRenderAction}

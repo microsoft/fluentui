@@ -15,9 +15,15 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-0721c5c2.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-4-15a649f8.woff') format('woff')`
     },
     icons: {
+      Wines: '\uEABF',
+      Articles: '\uEAC1',
+      Cycling: '\uEAC7',
+      DietPlanNotebook: '\uEAC8',
+      Pill: '\uEACB',
+      ExerciseTracker: '\uEACC',
       HandsFree: '\uEAD0',
       Medical: '\uEAD4',
       Running: '\uEADA',
@@ -111,13 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Documentation: '\uEC17',
       Badge: '\uEC1B',
       Giftbox: '\uEC1F',
-      VisualStudioLogo: '\uEC22',
-      HomeGroup: '\uEC26',
-      ExcelLogoInverse: '\uEC28',
-      WordLogoInverse: '\uEC29',
-      PowerPointLogoInverse: '\uEC2A',
-      Cafe: '\uEC32',
-      SpeedHigh: '\uEC4A'
+      VisualStudioLogo: '\uEC22'
     }
   };
 

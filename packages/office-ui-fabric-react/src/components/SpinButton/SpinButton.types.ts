@@ -67,6 +67,11 @@ export interface ISpinButtonProps {
   ariaLabel?: string;
 
   /**
+   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * A title for the SpinButton used for a more descriptive name that's also visible on its tooltip.
    */
   title?: string;
@@ -84,7 +89,7 @@ export interface ISpinButtonProps {
   /**
    * Descriptive label for the SpinButton.
    */
-  label: string;
+  label?: string;
 
   /**
    * @defaultvalue Left

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Mar 2019 12:36:29 GMT and should not be manually modified.
+
+## 0.28.9
+Thu, 21 Mar 2019 12:36:29 GMT
+
+### Patches
+
+- "added the background color and opacity for legends in the high contrast mode "
+
+## 0.28.8
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
 
 ## 0.28.7
 Thu, 14 Feb 2019 13:34:54 GMT

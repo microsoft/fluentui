@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
-import { Customizations } from './Customizations';
-import { CustomizerContext, ICustomizerContext } from './Customizer';
+import { Customizations } from './customizations/Customizations';
+import { CustomizerContext, ICustomizerContext } from './customizations/CustomizerContext';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -47,7 +47,7 @@ export function styled<
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps
-): (props: TComponentProps) => JSX.Element {
+): React.StatelessComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 
   const { scope, fields = DefaultFields } = customizable;

@@ -1,6 +1,34 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 12 Feb 2019 13:36:42 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:06 GMT and should not be manually modified.
+
+## 0.3.3
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Patches
+
+- Use codepen loader in examples
+
+## 0.3.2
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Patches
+
+- updating calendaryear to work when react version upgrades
+
+## 0.3.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.3.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- cherry picking restricted dates functionality to date-time package calendar
 
 ## 0.2.2
 Tue, 12 Feb 2019 13:36:42 GMT

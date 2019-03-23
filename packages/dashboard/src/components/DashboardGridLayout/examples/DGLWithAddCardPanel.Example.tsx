@@ -10,6 +10,7 @@ import {
   IAddCardPanelProps,
   DraggingAnimationType
 } from '@uifabric/dashboard';
+import { ISection } from '../../../index';
 
 const cardFrameContent = {
   cardTitle: 'Small Card',
@@ -159,6 +160,20 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
     };
   }
   public render(): JSX.Element {
+    const cardIds: string[] = [];
+    cardsVisibleInAddCardPanel.forEach((card: IDGLCard) => {
+      cardIds.push(card.id);
+    });
+    cardsVisibleInLayout.forEach((card: IDGLCard) => {
+      cardIds.push(card.id);
+    });
+
+    const sections: ISection = {
+      cardIds: cardIds,
+      id: 'section0',
+      title: 'First section'
+    };
+
     return (
       <>
         <button
@@ -171,12 +186,16 @@ export class DGLWithAddCardPanelExample extends React.Component<{}, IDGLWithAddC
         </button>
         <DashboardGridLayoutWithAddCardPanel
           layout={{
-            lg: [{ i: 'first', x: 0, y: 1, size: CardSize.small }, { i: 'fifth', x: 1, y: 1, size: CardSize.small }]
+            lg: [
+              { i: 'section0', y: 0, x: 0, size: CardSize.section },
+              { i: 'first', x: 0, y: 1, size: CardSize.small },
+              { i: 'fifth', x: 1, y: 1, size: CardSize.small }
+            ]
           }}
+          sections={[sections]}
           addCardPanelCards={cardsVisibleInAddCardPanel}
           dashboardCards={cardsVisibleInLayout}
           isOpen={this.state.isOpen}
-          sectionTitle={'First section'}
           addCardPanelProps={addCardPanelProps}
           onLayoutChange={this._onLayoutChange}
           onPanelDismiss={this._onPanelDismiss}
