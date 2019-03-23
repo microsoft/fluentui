@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.9",
+      "tag": "@uifabric/charting_v0.28.9",
+      "date": "Thu, 21 Mar 2019 12:36:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "\"added the background color and opacity for legends in the high contrast mode \"",
+            "author": "shivasai09 <33802398+shivasai09@users.noreply.github.com>",
+            "commit": "62077c018f111a8223b2b1cc51327a8118deda72"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.157.3 <7.0.0` to `>=6.158.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.8",
       "tag": "@uifabric/charting_v0.28.8",
       "date": "Tue, 05 Mar 2019 17:33:41 GMT",

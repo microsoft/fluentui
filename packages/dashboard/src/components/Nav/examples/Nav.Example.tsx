@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ICustomNavLinkGroup, NavGroupType } from '../Nav.types';
-import { NavToggler } from '../NavToggler';
+import { INavLinkGroup, mergeStyles } from 'office-ui-fabric-react';
+import { Nav } from '../Nav';
 
 export class NavExample extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -8,108 +8,93 @@ export class NavExample extends React.Component<{}, {}> {
   }
 
   public render(): JSX.Element {
-    const navLinkGroups: ICustomNavLinkGroup[] = [
+    const navLinkGroups: INavLinkGroup[] = [
       {
-        links: [
-          { name: 'Collapsed', alternateText: 'Expanded', url: '#', icon: 'GlobalNavButton', key: 'key', title: 'Collapse navigation' }
-        ],
-        groupType: NavGroupType.ToggleGroup
-      },
-      {
-        name: 'default group',
         links: [
           {
-            name: 'Home - no action supported',
+            name: 'Home',
+            url: 'http://example.com',
+            isExpanded: false,
+            icon: 'Home'
+          },
+          {
+            name: 'Users',
             url: 'http://example.com',
             isExpanded: true,
-            icon: 'Home',
-            key: 'key1',
+            icon: 'Contact',
             links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key2' },
+              { name: 'Active users', url: 'http://msn.com', isSelected: true },
               {
-                name: 'News - test with long name to show ellipse',
+                name: 'Contacts - test with long name to show ellipse',
                 url: 'http://msn.com',
-                target: '_blank',
-                key: 'key3'
+                target: '_blank'
+              },
+              { name: 'Guest users', url: '#/examples/nav' },
+              { name: 'Deleted users', url: '#/examples/nav' }
+            ]
+          },
+          { name: 'Groups', url: '#/examples/nav', icon: 'Group', isHidden: true },
+          { name: 'Resources', url: '#/examples/nav', target: '_blank', icon: 'Devices4' },
+          {
+            name: 'Billing - test with long name to show ellipse',
+            url: 'http://msn.com',
+            target: '_blank',
+            icon: 'PaymentCard'
+          },
+          {
+            name: 'Support',
+            url: 'http://example.com',
+            isExpanded: false,
+            icon: 'Headset',
+            links: [
+              { name: 'Chat', url: 'http://msn.com' },
+              {
+                name: 'Email - test with long name to show ellipse',
+                url: 'http://msn.com',
+                target: '_blank'
               }
             ]
           },
-          { name: 'Documents', url: 'http://example.com', key: 'key4', icon: 'Document', isHidden: true },
-          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key5', icon: 'Page' },
+          { name: 'Settings', url: 'http://example.com', icon: 'Settings' },
+          { name: 'Setup', url: 'http://msn.com', target: '_blank', icon: 'Repair' },
+          { name: 'Reports', url: 'http://example.com', icon: 'Chart' },
+          { name: 'Health', url: 'http://msn.com', target: '_blank', icon: 'Health' }
+        ]
+      },
+      {
+        name: 'Other admin centers',
+        links: [
           {
-            name: 'Notebook - test with long name to show ellipse',
-            url: 'http://msn.com',
-            target: '_blank',
-            key: 'key6',
-            icon: 'DietPlanNotebook'
-          },
-          {
-            name: 'Test nodes - test nodes',
+            name: 'Other admin centers',
             url: 'http://example.com',
             isExpanded: false,
             icon: 'Home',
-            key: 'key17',
             links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key18' },
-              {
-                name: 'News - test with long name to show ellipse',
-                url: 'http://msn.com',
-                target: '_blank',
-                key: 'key19'
-              }
+              { name: 'Security Center', url: 'http://msn.com', target: '_blank' },
+              { name: 'Device Management', url: 'http://msn.com', target: '_blank' },
+              { name: 'Azure Active Directory', url: 'http://msn.com', target: '_blank' },
+              { name: 'Exchange', url: 'http://msn.com', target: '_blank' },
+              { name: 'SharePoint', url: 'http://msn.com', target: '_blank' }
             ]
           }
-        ],
-        groupType: NavGroupType.MenuGroup
-      },
-      {
-        name: 'named menu group',
-        links: [
-          {
-            name: 'Home - no action supported',
-            url: 'http://example.com',
-            isExpanded: false,
-            icon: 'Home',
-            key: 'key7',
-            links: [
-              { name: 'Activity', url: 'http://msn.com', key: 'key8' },
-              {
-                name: 'News - test with long name to show ellipse',
-                url: 'http://msn.com',
-                target: '_blank',
-                key: 'key9'
-              }
-            ]
-          },
-          { name: 'Documents', url: 'http://example.com', key: 'key10', icon: 'Document' },
-          { name: 'Pages', url: 'http://msn.com', target: '_blank', key: 'key11', icon: 'Page' },
-          {
-            name: 'Notebook - test with long name to show ellipse',
-            url: 'http://msn.com',
-            target: '_blank',
-            key: 'key12',
-            icon: 'DietPlanNotebook'
-          }
-        ],
-        groupType: NavGroupType.MenuGroup
-      },
-      {
-        links: [
-          { name: 'Edit', url: '#', onClick: this._onEditClick, icon: 'Edit', key: 'key13' },
-          { name: 'Show less', alternateText: 'Show more', url: '#', isShowMoreLink: true, icon: 'More', key: 'key14' }
-        ],
-        groupType: NavGroupType.CustomizationGroup
+        ]
       }
     ];
-
+    const mainStyle = mergeStyles({ display: 'flex', height: '800px' });
+    const contentStyle = mergeStyles({ flex: '1 1 auto', padding: '24px', backgroundColor: 'pink' });
     return (
-      <div>
-        <NavToggler groups={navLinkGroups} dataHint="LeftNav" enableCustomization={true} selectedKey="key3" />
+      <div className={mainStyle}>
+        <Nav
+          groups={navLinkGroups}
+          dataHint="PrimaryNavigation"
+          enableCustomization={true}
+          showMore={true}
+          editString={'Edit navigation'}
+          showMoreString={'Show more'}
+          showLessString={'Show less'}
+        />
+        <div className={contentStyle}>Content Here</div>
       </div>
     );
-  }
-
-  private _onEditClick(): void {
-    alert('open edit nav view / flyout');
   }
 }
