@@ -26,7 +26,8 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
     },
     contentSectionContainer: {
       flex: 1,
-      overflowY: 'auto'
+      overflowY: 'auto',
+      position: 'relative'
     },
     contentSection: {
       flex: 1,
@@ -34,7 +35,9 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
       paddingLeft: `${subwayNavPadding}px`,
       paddingBottom: `${subwayNavPadding}px`,
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      position: 'absolute',
+      top: 0
     },
     contentTitle: {},
     content: {

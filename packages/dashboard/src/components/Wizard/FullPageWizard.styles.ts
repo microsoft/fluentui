@@ -1,9 +1,9 @@
-import { IFullParentWizardStyles, IFullParentWizardStyleProps } from './FullParentWizard.types';
+import { IFullPageWizardStyles, IFullPageWizardStyleProps } from './FullPageWizard.types';
 import { subwayNavWidth, subwayNavPadding } from './Wizard.styles';
 import { ITheme } from 'office-ui-fabric-react';
 import { IWizardStyles } from './Wizard.types';
 
-export const getFullParentWizardStyles = (props: IFullParentWizardStyleProps): IFullParentWizardStyles => {
+export const getFullPageWizardStyles = (props: IFullPageWizardStyleProps): IFullPageWizardStyles => {
   return {
     parentContainer: {
       height: '100%',

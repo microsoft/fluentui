@@ -3,7 +3,7 @@ import { ISubwayNavNodeProps, SubwayNavNodeState } from '@uifabric/dashboard';
 import { IWizardStepProps } from '@uifabric/dashboard/lib/components/Wizard/Wizard.types';
 import { getNextStep, getPrevStep } from '../Wizard.utils';
 import { setSubwayState } from '../Wizard.utils';
-import { Label, PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 export interface IWizardExampleBaseState {
@@ -13,8 +13,7 @@ export interface IWizardExampleBaseState {
 export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.Component<{}, T> {
   protected steps: IWizardStepProps[] = [];
 
-  protected getTestSteps = (withTitle: boolean): IWizardStepProps[] => {
-    const testHeader = <Label>Wizard Title</Label>;
+  protected getTestSteps = (): IWizardStepProps[] => {
     const testFooter = (
       <>
         <DefaultButton onClick={this._goToPrevStep}>Back</DefaultButton>
@@ -29,7 +28,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         label: 'Step 0',
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.Current,
-        titleElement: withTitle ? testHeader : undefined,
         footerElement: testFooter,
         wizardContent: {
           contentTitleElement: this._getContentTitleElement('Step 0'),
@@ -42,7 +40,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.NotStarted,
         footerElement: testFooter,
-        titleElement: withTitle ? testHeader : undefined,
         subSteps: [
           {
             id: '1-0',
@@ -50,7 +47,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             onClickStep: this._handleClickStep,
             state: SubwayNavNodeState.NotStarted,
             footerElement: testFooter,
-            titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
               contentTitleElement: this._getContentTitleElement('Step 1, Sub step 0'),
               content: this._getContentForStep2('Step 1, Sub step 0')
@@ -62,7 +58,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             onClickStep: this._handleClickStep,
             state: SubwayNavNodeState.NotStarted,
             footerElement: testFooter,
-            titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
               contentTitleElement: this._getContentTitleElement('Step 1, Sub step 1'),
               content: this._getContentForStep1('Step 1, Sub step 1')
@@ -74,7 +69,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
             onClickStep: this._handleClickStep,
             state: SubwayNavNodeState.NotStarted,
             footerElement: testFooter,
-            titleElement: withTitle ? testHeader : undefined,
             wizardContent: {
               contentTitleElement: this._getContentTitleElement('Step 1, Sub step 2'),
               content: this._getContentForStep2('Step 1, Sub step 2')
@@ -88,7 +82,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.NotStarted,
         footerElement: testFooter,
-        titleElement: withTitle ? testHeader : undefined,
         wizardContent: {
           contentTitleElement: this._getContentTitleElement('Step 2'),
           content: this._getContentForStep1('Step 2')
@@ -100,7 +93,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.NotStarted,
         footerElement: testFooter,
-        titleElement: withTitle ? testHeader : undefined,
         wizardContent: {
           contentTitleElement: this._getContentTitleElement('Step 3'),
           content: this._getContentForStep2('Step 3')
@@ -110,7 +102,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
   };
 
   protected getWizCompleteTestSteps = (): IWizardStepProps[] => {
-    const testHeader = <Label>Wizard Complete Test</Label>;
     const testFooter = (
       <>
         <DefaultButton>Back</DefaultButton>
@@ -125,7 +116,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         label: 'Step 0',
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.WizardComplete,
-        titleElement: testHeader,
         footerElement: testFooter,
         wizardContent: {
           content: this._getContentForStep1('Step 0')
@@ -137,7 +127,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.WizardComplete,
         footerElement: testFooter,
-        titleElement: testHeader,
         wizardContent: {
           content: this._getContentForStep2('Step 1')
         }
@@ -148,7 +137,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.WizardComplete,
         footerElement: testFooter,
-        titleElement: testHeader,
         wizardContent: {
           content: this._getContentForStep1('Step 2')
         }
@@ -159,7 +147,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
         onClickStep: this._handleClickStep,
         state: SubwayNavNodeState.WizardComplete,
         footerElement: testFooter,
-        titleElement: testHeader,
         wizardContent: {
           content: this._getContentForStep2('Step 3')
         }
@@ -168,7 +155,6 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
   };
 
   protected getWizCompleteStep = (titleStr: string): IWizardStepProps => {
-    const testHeader = <Label>Wizard Complete</Label>;
     const testFooter = (
       <>
         <PrimaryButton>Go back to Admin center</PrimaryButton>
@@ -186,8 +172,7 @@ export class WizardExampleBase<T extends IWizardExampleBaseState> extends React.
           </div>
         )
       },
-      footerElement: testFooter,
-      titleElement: testHeader
+      footerElement: testFooter
     };
   };
 

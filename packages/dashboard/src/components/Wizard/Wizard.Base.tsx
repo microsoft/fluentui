@@ -3,7 +3,7 @@ import { IWizardProps, IWizardStyles, IWizardStyleProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition, TransitionGroup, Transition, TransitionStatus } from 'react-transition-group';
 import { wizardAnimationDurationMilliSec } from './Wizard.animation';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
@@ -76,7 +76,19 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
         <div className={classNames.contentSectionContainer}>
-          <TransitionGroup childFactory={childFactoryCreator(mainStepTransitionClass)}>
+          <TransitionGroup childFactory={childFactoryCreator(mainStepTransitionClass)} component={null}>
+            <Transition timeout={500} key={contentAnimKey + '0'}>
+              {(state: TransitionStatus) => {
+                console.log(state);
+                if (state === 'entering') {
+                  return <div>entering</div>;
+                } else if (state === 'exiting') {
+                  return <>exiting</>;
+                } else {
+                  return <>resting</>;
+                }
+              }}
+            </Transition>
             <CSSTransition
               key={contentAnimKey}
               className={classNames.contentSection}

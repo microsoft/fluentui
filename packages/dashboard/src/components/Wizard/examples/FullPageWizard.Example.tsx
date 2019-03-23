@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { WizardExampleBase, IWizardExampleBaseState } from './WizardExample.Base';
-import { FullParentWizard } from '../FullParentWizard';
+import { FullPageWizard } from '../FullPageWizard';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassName = classNamesFunction<{}, { containerHeight: IStyle }>();
 
-export class FullParentWizardExample extends WizardExampleBase<IWizardExampleBaseState> {
+export class FullPageWizardExample extends WizardExampleBase<IWizardExampleBaseState> {
   constructor(props: {}) {
     super(props);
-    const steps = this.getTestSteps(true);
+    const steps = this.getTestSteps();
     this.state = {
       steps: steps,
       currentStepId: steps[0].id
@@ -21,7 +21,7 @@ export class FullParentWizardExample extends WizardExampleBase<IWizardExampleBas
     const classNames = getClassName({ containerHeight });
     return (
       <div className={`ms-WizardExample ${classNames.containerHeight}`}>
-        <FullParentWizard wizardProps={{ steps: this.state.steps }} />
+        <FullPageWizard wizardProps={{ steps: this.state.steps }} title="Full Page Wizard" />
       </div>
     );
   }

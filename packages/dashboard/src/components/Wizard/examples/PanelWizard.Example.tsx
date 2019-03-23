@@ -10,7 +10,7 @@ export interface IPanelWizardExampleState extends IWizardExampleBaseState {
 export class PanelWizardExample extends WizardExampleBase<IPanelWizardExampleState> {
   constructor(props: {}) {
     super(props);
-    const steps = this.getTestSteps(true);
+    const steps = this.getTestSteps();
     this.state = {
       steps: steps,
       currentStepId: steps[0].id,
@@ -27,7 +27,8 @@ export class PanelWizardExample extends WizardExampleBase<IPanelWizardExampleSta
           }}
           panelProps={{
             onDismiss: this._hidePanel,
-            isOpen: this.state.showPanel
+            isOpen: this.state.showPanel,
+            headerText: 'Panel Wizard Header Text'
           }}
         />
       </div>
