@@ -25,7 +25,7 @@ const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const PAGE_KEY_PREFIX = 'page-';
 const SPACER_KEY_PREFIX = 'spacer-';
 
-export interface IListState<T> {
+export interface IListState<T = any> {
   pages?: IPage<T>[];
 
   /** The last versionstamp for  */
@@ -79,7 +79,7 @@ const _measureScrollRect = _measurePageRect;
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
  * number, which we associate with cached measurements and use to determine if a remeasure should occur.
  */
-export class List<T> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
   public static defaultProps = {
     startIndex: 0,
     onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
