@@ -70,7 +70,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     autoAdjustHeight
   } = props;
 
-  const { semanticColors, effects, palette } = theme;
+  const { semanticColors, effects } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
