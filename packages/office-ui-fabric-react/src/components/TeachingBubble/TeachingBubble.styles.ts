@@ -88,7 +88,6 @@ const rootStyle = (isWide?: boolean): IStyle[] => {
       maxWidth: 364,
       border: 0,
       outline: 'transparent',
-      boxShadow: 'none !important',
       width: 'calc(100% + 1px)',
       animationName: `${bounceAnimation}, ${opacityFadeIn}`,
       animationDuration: '2000ms',
@@ -96,7 +95,7 @@ const rootStyle = (isWide?: boolean): IStyle[] => {
       animationFillMode: 'both'
     },
     isWide && {
-      maxWidth: '456px'
+      maxWidth: 456
     }
   ];
 };
@@ -110,26 +109,13 @@ const headerStyle = (
     return [classNames.headerIsCondensed];
   }
 
-  if (hasSmallHeadline) {
-    return [
-      classNames.headerIsSmall,
-      {
-        selectors: {
-          ':not(:last-child)': {
-            marginBottom: '14px'
-          }
-        }
-      }
-    ];
-  }
-
-  // Large headline is default
   return [
-    classNames.headerIsLarge,
+    hasSmallHeadline && classNames.headerIsSmall,
+    !hasSmallHeadline && classNames.headerIsLarge,
     {
       selectors: {
         ':not(:last-child)': {
-          marginBottom: '14px'
+          marginBottom: 14
         }
       }
     }
@@ -157,7 +143,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       {
         selectors: {
           ':not(:last-child)': {
-            marginBottom: '20px'
+            marginBottom: 20
           }
         }
       }
@@ -165,10 +151,10 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     bodyContent: [
       classNames.bodyContent,
       {
-        padding: '20px'
+        padding: 20
       },
       isWide && {
-        maxWidth: '302px'
+        maxWidth: 302
       }
     ],
     closeButton: [
@@ -182,6 +168,10 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           ':hover': {
             background: 'transparent'
+          },
+          ':active': {
+            background: palette.themeDarkAlt,
+            color: palette.neutralDark
           }
         }
       }
@@ -200,7 +190,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.button}:not(:first-child)`]: {
-            marginLeft: '20px'
+            marginLeft: 16
           }
         }
       }
@@ -211,7 +201,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       (hasCondensedHeadline || hasSmallHeadline) && [
         DefaultFontStyles.medium,
         {
-          marginRight: '10px',
+          marginRight: 10,
           fontWeight: FontWeights.semibold
         }
       ]
@@ -220,12 +210,12 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.headline,
       {
         margin: 0,
-        color: palette.white
+        color: palette.white,
+        fontWeight: FontWeights.semibold
       },
       hasLargeHeadline && [
-        DefaultFontStyles.xxLarge,
         {
-          fontWeight: FontWeights.light
+          fontSize: 20 // TODO: reevaluate after type ramp changes for fluent
         }
       ]
     ],
@@ -235,8 +225,8 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       isWide && {
         display: 'flex',
         alignItems: 'center',
-        paddingLeft: '20px',
-        maxWidth: '154px'
+        paddingLeft: 20,
+        maxWidth: 154
       }
     ],
     primaryButton: [
