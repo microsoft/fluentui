@@ -3,7 +3,7 @@
     "target": "es5",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": ["es2017", "dom"],
+    "lib": ["es2017"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,

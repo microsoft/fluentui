@@ -347,7 +347,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   };
 
   private _onItemSelected = (item: IPersonaProps): Promise<IPersonaProps> => {
-    const processedItem = Object.assign({}, item);
+    const processedItem = { ...item };
     processedItem.text = `${item.text} (selected)`;
     return new Promise<IPersonaProps>((resolve, reject) => setTimeout(() => resolve(processedItem), 250));
   };
