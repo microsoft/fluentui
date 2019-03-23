@@ -35,6 +35,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
         className=
             ms-ColorPicker-colorRect
             {
+              border-radius: 2px;
+              border: 1px solid #f3f2f1;
               margin-bottom: 10px;
               position: relative;
             }
@@ -80,8 +82,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               {
                 background: white;
                 border-radius: 50%;
-                border: 1px solid rgba(255,255,255,.8);
-                box-shadow: 0 0 15px -5px black;
+                border: 1px solid #a19f9d;
+                box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 height: 20px;
                 position: absolute;
                 transform: translate(-50%, -50%);
@@ -101,10 +103,11 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
             ms-ColorPicker-slider
             is-hue
             {
+              border-radius: 2px;
               border: 1px solid #edebe9;
               box-sizing: border-box;
               height: 20px;
-              margin-bottom: 5px;
+              margin-bottom: 8px;
               position: relative;
             }
         onMouseDown={[Function]}
@@ -133,8 +136,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               {
                 background: white;
                 border-radius: 50%;
-                border: 1px solid rgba(255,255,255,.8);
-                box-shadow: 0 0 15px -5px black;
+                border: 1px solid #a19f9d;
+                box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 height: 20px;
                 position: absolute;
                 top: 50%;
@@ -153,10 +156,11 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
             ms-ColorPicker-slider
             is-alpha
             {
+              border-radius: 2px;
               border: 1px solid #edebe9;
               box-sizing: border-box;
               height: 20px;
-              margin-bottom: 5px;
+              margin-bottom: 8px;
               position: relative;
             }
         onMouseDown={[Function]}
@@ -190,8 +194,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               {
                 background: white;
                 border-radius: 50%;
-                border: 1px solid rgba(255,255,255,.8);
-                box-shadow: 0 0 15px -5px black;
+                border: 1px solid #a19f9d;
+                box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                 height: 20px;
                 position: absolute;
                 top: 50%;
@@ -214,6 +218,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               table-layout: fixed;
               width: 100%;
             }
+            & tbody td:last-of-type .ms-ColorPicker-input {
+              padding-right: 0px;
+            }
       >
         <thead>
           <tr
@@ -225,6 +232,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
+                }
+                & td {
+                  padding-bottom: 4px;
                 }
           >
             <td
@@ -279,7 +289,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 100%;
                     }
                     &.ms-TextField {
-                      padding-right: 2px;
+                      padding-right: 4px;
                     }
                     & .ms-TextField-field {
                       min-width: auto;
@@ -426,7 +436,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 100%;
                     }
                     &.ms-TextField {
-                      padding-right: 2px;
+                      padding-right: 4px;
                     }
                     & .ms-TextField-field {
                       min-width: auto;
@@ -573,7 +583,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 100%;
                     }
                     &.ms-TextField {
-                      padding-right: 2px;
+                      padding-right: 4px;
                     }
                     & .ms-TextField-field {
                       min-width: auto;
@@ -720,7 +730,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 100%;
                     }
                     &.ms-TextField {
-                      padding-right: 2px;
+                      padding-right: 4px;
                     }
                     & .ms-TextField-field {
                       min-width: auto;
@@ -867,7 +877,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       width: 100%;
                     }
                     &.ms-TextField {
-                      padding-right: 2px;
+                      padding-right: 4px;
                     }
                     & .ms-TextField-field {
                       min-width: auto;
