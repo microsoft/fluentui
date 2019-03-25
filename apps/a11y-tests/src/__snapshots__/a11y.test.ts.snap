@@ -1,0 +1,1180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Axe tests for components runs Axe on Button: violations 1`] = `
+Array [
+  Object {
+    "description": "Ensures ARIA attributes are allowed for an element's role",
+    "help": "Elements must only use allowed ARIA attributes",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/aria-allowed-attr?application=axe-puppeteer",
+    "id": "aria-allowed-attr",
+    "impact": "critical",
+    "nodes": Array [
+      Object {
+        "all": Array [],
+        "any": Array [],
+        "failureSummary": "Fix all of the following:
+  ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+        "html": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-121\\" tabindex=\\"0\\">",
+        "impact": "critical",
+        "none": Array [
+          Object {
+            "data": Array [
+              "aria-roledescription",
+            ],
+            "id": "aria-unsupported-attr",
+            "impact": "critical",
+            "message": "ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          "div:nth-child(1) > .css-121[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [],
+        "failureSummary": "Fix all of the following:
+  ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+        "html": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-121\\" tabindex=\\"0\\">",
+        "impact": "critical",
+        "none": Array [
+          Object {
+            "data": Array [
+              "aria-roledescription",
+            ],
+            "id": "aria-unsupported-attr",
+            "impact": "critical",
+            "message": "ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          "div:nth-child(2) > .css-121[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [],
+        "failureSummary": "Fix all of the following:
+  ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+        "html": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-121\\" tabindex=\\"0\\">",
+        "impact": "critical",
+        "none": Array [
+          Object {
+            "data": Array [
+              "aria-roledescription",
+            ],
+            "id": "aria-unsupported-attr",
+            "impact": "critical",
+            "message": "ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          "div:nth-child(3) > .css-121[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [],
+        "failureSummary": "Fix all of the following:
+  ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+        "html": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-146\\" tabindex=\\"0\\">",
+        "impact": "critical",
+        "none": Array [
+          Object {
+            "data": Array [
+              "aria-roledescription",
+            ],
+            "id": "aria-unsupported-attr",
+            "impact": "critical",
+            "message": "ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          ".css-146",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [],
+        "failureSummary": "Fix all of the following:
+  ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+        "html": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-154\\" tabindex=\\"0\\">",
+        "impact": "critical",
+        "none": Array [
+          Object {
+            "data": Array [
+              "aria-roledescription",
+            ],
+            "id": "aria-unsupported-attr",
+            "impact": "critical",
+            "message": "ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          ".css-154",
+        ],
+      },
+    ],
+    "tags": Array [
+      "cat.aria",
+      "wcag2a",
+      "wcag412",
+    ],
+  },
+  Object {
+    "description": "Ensures buttons have discernible text",
+    "help": "Buttons must have discernible text",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/button-name?application=axe-puppeteer",
+    "id": "button-name",
+    "impact": "critical",
+    "nodes": Array [
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "non-empty-if-present",
+            "impact": "critical",
+            "message": "Element has a value attribute and the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-value",
+            "impact": "critical",
+            "message": "Element has no value attribute or the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": "",
+            "id": "button-has-visible-text",
+            "impact": "critical",
+            "message": "Element does not have inner text that is visible to screen readers",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-presentation",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"presentation\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-none",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"none\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  Element has a value attribute and the value attribute is empty
+  Element has no value attribute or the value attribute is empty
+  Element does not have inner text that is visible to screen readers
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element's default semantics were not overridden with role=\\"presentation\\"
+  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute or the title attribute is empty",
+        "html": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-137\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "div:nth-child(2) > .css-121[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"] > span > .root-137[aria-haspopup=\\"true\\"][data-is-focusable=\\"false\\"]",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "non-empty-if-present",
+            "impact": "critical",
+            "message": "Element has a value attribute and the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-value",
+            "impact": "critical",
+            "message": "Element has no value attribute or the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": "",
+            "id": "button-has-visible-text",
+            "impact": "critical",
+            "message": "Element does not have inner text that is visible to screen readers",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-presentation",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"presentation\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-none",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"none\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  Element has a value attribute and the value attribute is empty
+  Element has no value attribute or the value attribute is empty
+  Element does not have inner text that is visible to screen readers
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element's default semantics were not overridden with role=\\"presentation\\"
+  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute or the title attribute is empty",
+        "html": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-137\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "div:nth-child(3) > .css-121[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"] > span > .root-137[aria-haspopup=\\"true\\"][data-is-focusable=\\"false\\"]",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "non-empty-if-present",
+            "impact": "critical",
+            "message": "Element has a value attribute and the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-value",
+            "impact": "critical",
+            "message": "Element has no value attribute or the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": "",
+            "id": "button-has-visible-text",
+            "impact": "critical",
+            "message": "Element does not have inner text that is visible to screen readers",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-presentation",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"presentation\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-none",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"none\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  Element has a value attribute and the value attribute is empty
+  Element has no value attribute or the value attribute is empty
+  Element does not have inner text that is visible to screen readers
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element's default semantics were not overridden with role=\\"presentation\\"
+  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute or the title attribute is empty",
+        "html": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button is-disabled root-148\\" aria-disabled=\\"true\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          ".root-148",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "non-empty-if-present",
+            "impact": "critical",
+            "message": "Element has a value attribute and the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-value",
+            "impact": "critical",
+            "message": "Element has no value attribute or the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": "",
+            "id": "button-has-visible-text",
+            "impact": "critical",
+            "message": "Element does not have inner text that is visible to screen readers",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-presentation",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"presentation\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-none",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"none\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  Element has a value attribute and the value attribute is empty
+  Element has no value attribute or the value attribute is empty
+  Element does not have inner text that is visible to screen readers
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element's default semantics were not overridden with role=\\"presentation\\"
+  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute or the title attribute is empty",
+        "html": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-125\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          ".root-125",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "non-empty-if-present",
+            "impact": "critical",
+            "message": "Element has a value attribute and the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-value",
+            "impact": "critical",
+            "message": "Element has no value attribute or the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": "",
+            "id": "button-has-visible-text",
+            "impact": "critical",
+            "message": "Element does not have inner text that is visible to screen readers",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-presentation",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"presentation\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-none",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"none\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix all of the following:
+  Element is in tab order and does not have accessible text
+
+Fix any of the following:
+  Element has a value attribute and the value attribute is empty
+  Element has no value attribute or the value attribute is empty
+  Element does not have inner text that is visible to screen readers
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element's default semantics were not overridden with role=\\"presentation\\"
+  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute or the title attribute is empty",
+        "html": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-154\\" tabindex=\\"0\\">",
+        "impact": "critical",
+        "none": Array [
+          Object {
+            "data": null,
+            "id": "focusable-no-name",
+            "impact": "serious",
+            "message": "Element is in tab order and does not have accessible text",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          ".css-154",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "non-empty-if-present",
+            "impact": "critical",
+            "message": "Element has a value attribute and the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-value",
+            "impact": "critical",
+            "message": "Element has no value attribute or the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": "",
+            "id": "button-has-visible-text",
+            "impact": "critical",
+            "message": "Element does not have inner text that is visible to screen readers",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-presentation",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"presentation\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-none",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"none\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  Element has a value attribute and the value attribute is empty
+  Element has no value attribute or the value attribute is empty
+  Element does not have inner text that is visible to screen readers
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element's default semantics were not overridden with role=\\"presentation\\"
+  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute or the title attribute is empty",
+        "html": "<button type=\\"button\\" data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" class=\\"ms-Button ms-Button--icon root-61\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          ".ms-Button--icon.root-61[aria-roledescription=\\"split\\\\ button\\"]",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "non-empty-if-present",
+            "impact": "critical",
+            "message": "Element has a value attribute and the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-value",
+            "impact": "critical",
+            "message": "Element has no value attribute or the value attribute is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": "",
+            "id": "button-has-visible-text",
+            "impact": "critical",
+            "message": "Element does not have inner text that is visible to screen readers",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-presentation",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"presentation\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "role-none",
+            "impact": "minor",
+            "message": "Element's default semantics were not overridden with role=\\"none\\"",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  Element has a value attribute and the value attribute is empty
+  Element has no value attribute or the value attribute is empty
+  Element does not have inner text that is visible to screen readers
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element's default semantics were not overridden with role=\\"presentation\\"
+  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute or the title attribute is empty",
+        "html": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-157\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          ".root-157",
+        ],
+      },
+    ],
+    "tags": Array [
+      "cat.name-role-value",
+      "wcag2a",
+      "wcag412",
+      "section508",
+      "section508.22.a",
+    ],
+  },
+]
+`;
+
+exports[`Axe tests for components runs Axe on TextField: violations 1`] = `
+Array [
+  Object {
+    "description": "Ensures that every form element is not solely labeled using the title or aria-describedby attributes",
+    "help": "Form elements should have a visible label",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/label-title-only?application=axe-puppeteer",
+    "id": "label-title-only",
+    "impact": "serious",
+    "nodes": Array [
+      Object {
+        "all": Array [],
+        "any": Array [],
+        "failureSummary": "Fix all of the following:
+  Only title used to generate label for form element",
+        "html": "<input type=\\"text\\" id=\\"TextField47\\" placeholder=\\"I have an error message.\\" class=\\"ms-TextField-field field-102\\" aria-describedby=\\"TextFieldDescription48\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "serious",
+        "none": Array [
+          Object {
+            "data": null,
+            "id": "title-only",
+            "impact": "serious",
+            "message": "Only title used to generate label for form element",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          "#TextField47",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [],
+        "failureSummary": "Fix all of the following:
+  Only title used to generate label for form element",
+        "html": "<input type=\\"text\\" id=\\"TextField147\\" class=\\"ms-TextField-field field-102\\" aria-describedby=\\"TextFieldDescription148\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "serious",
+        "none": Array [
+          Object {
+            "data": null,
+            "id": "title-only",
+            "impact": "serious",
+            "message": "Only title used to generate label for form element",
+            "relatedNodes": Array [],
+          },
+        ],
+        "target": Array [
+          "#TextField147",
+        ],
+      },
+    ],
+    "tags": Array [
+      "cat.forms",
+      "best-practice",
+    ],
+  },
+  Object {
+    "description": "Ensures every form element has a label",
+    "help": "Form elements must have labels",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/label?application=axe-puppeteer",
+    "id": "label",
+    "impact": "critical",
+    "nodes": Array [
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField43\\" disabled=\\"\\" placeholder=\\"I am disabled. \\" class=\\"ms-TextField-field field-110\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField43",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField45\\" required=\\"\\" placeholder=\\"I am required.\\" class=\\"ms-TextField-field field-102\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField45",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField47\\" placeholder=\\"I have an error message.\\" class=\\"ms-TextField-field field-102\\" aria-describedby=\\"TextFieldDescription48\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField47",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField109\\" class=\\"ms-TextField-field field-102\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField109",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField116\\" class=\\"ms-TextField-field field-102\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField116",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField123\\" class=\\"ms-TextField-field field-102\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField123",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField137\\" class=\\"ms-TextField-field field-102\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField137",
+        ],
+      },
+      Object {
+        "all": Array [],
+        "any": Array [
+          Object {
+            "data": null,
+            "id": "aria-label",
+            "impact": "serious",
+            "message": "aria-label attribute does not exist or is empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "aria-labelledby",
+            "impact": "serious",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "implicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an implicit (wrapped) <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "explicit-label",
+            "impact": "critical",
+            "message": "Form element does not have an explicit <label>",
+            "relatedNodes": Array [],
+          },
+          Object {
+            "data": null,
+            "id": "non-empty-title",
+            "impact": "serious",
+            "message": "Element has no title attribute or the title attribute is empty",
+            "relatedNodes": Array [],
+          },
+        ],
+        "failureSummary": "Fix any of the following:
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Form element does not have an implicit (wrapped) <label>
+  Form element does not have an explicit <label>
+  Element has no title attribute or the title attribute is empty",
+        "html": "<input type=\\"text\\" id=\\"TextField147\\" class=\\"ms-TextField-field field-102\\" aria-describedby=\\"TextFieldDescription148\\" aria-invalid=\\"false\\" value=\\"\\">",
+        "impact": "critical",
+        "none": Array [],
+        "target": Array [
+          "#TextField147",
+        ],
+      },
+    ],
+    "tags": Array [
+      "cat.forms",
+      "wcag2a",
+      "wcag332",
+      "wcag131",
+      "section508",
+      "section508.22.n",
+    ],
+  },
+]
+`;
