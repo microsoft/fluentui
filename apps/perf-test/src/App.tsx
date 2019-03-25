@@ -1,120 +1,66 @@
 import * as React from 'react';
-import {
-  createTheme,
-  Dropdown,
-  BaseButton,
-  PrimaryButton,
-  Stack,
-  TextField,
-  DetailsRow,
-  DetailsRowBase,
-  IColumn,
-  IDropdownOption,
-  Toggle,
-  Text,
-  Selection,
-  SelectionMode
-} from 'office-ui-fabric-react';
-import { Button as NewButton, Toggle as NewToggle } from '@uifabric/experiments';
-
+import { Dropdown, PrimaryButton, Stack, TextField, Text } from 'office-ui-fabric-react';
+import { Measurer, MeasurerTimings } from './Measurer';
 import { useTimer } from './useTimer';
+import { Scenarios } from './Scenarios';
 
 // tslint:disable
 
-const Items = Array.from({ length: 10 }, (n, i) => ({
-  key: `Item ${i}`,
-  name: `Item ${i}`,
-  modified: new Date().toString(),
-  shared: 'Private',
-  size: `${Math.round(Math.random() * 1000) / 10}KB`
-}));
-
-const Columns: IColumn[] = [
-  { key: 'a', name: 'Name', fieldName: 'name', minWidth: 200, maxWidth: 400 },
-  { key: 'b', name: 'Last modified', fieldName: 'modified', minWidth: 200, maxWidth: 400 },
-  { key: 'c', name: 'Shared', fieldName: 'shared', minWidth: 300, maxWidth: 300 },
-  { key: 'c', name: 'Size', fieldName: 'size', minWidth: 300, maxWidth: 300 }
-];
-
-const selection = new Selection();
-selection.setItems(Items);
-
-const defaultTheme = createTheme({});
-
-const Scenarios: IDropdownOption[] = [
-  { key: 'pributton', text: 'PrimaryButton', data: { timing: [], content: <PrimaryButton text="I am a button" /> } },
-  { key: 'basebutton', text: 'BaseButton', data: { timing: [], content: <BaseButton text="I am a button" /> } },
-  { key: 'newbutton', text: 'NewButton', data: { timing: [], content: <NewButton>I am a button</NewButton> } },
-  { key: 'button', text: 'button', data: { timing: [], content: <button>I am a button</button> } },
-  {
-    key: 'rowsnostyles',
-    text: 'DetailsRows without styles',
-    data: {
-      timing: [] as number[],
-      content: (
-        <DetailsRowBase
-          theme={defaultTheme}
-          itemIndex={0}
-          item={Items[0]}
-          columns={Columns}
-          selection={selection}
-          selectionMode={SelectionMode.single}
-        />
-      )
-    }
-  },
-  {
-    key: 'rows',
-    text: 'DetailsRows',
-    data: {
-      timing: [] as number[],
-      content: <DetailsRow itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />
-    }
-  },
-  { key: 'toggles', text: 'Toggles', data: { timing: [], content: <Toggle checked /> } },
-  { key: 'newtoggles', text: 'NewToggle', data: { timing: [], content: <NewToggle checked /> } }
-];
-const DefaultScenarioIndex = 4;
-
-let _lastDuration = 0;
-
-localStorage.getItem('toggles') || 4;
-
 export const App = () => {
-  let [scenario, setScenario] = React.useState(Scenarios[DefaultScenarioIndex]);
-  let [count, setCount] = React.useState(1000);
-  const { duration, isVisible, setIsRunning } = useTimer();
+  const [itemsVisible, setItemsVisible] = React.useState(false);
+  const [timingsVisible, setTimingsVisible] = React.useState(false);
+  const [scenario, setScenario] = React.useState(Scenarios[0]);
+  const [count, setCount] = React.useState(100);
+  const [iterations, setIterations] = React.useState(1);
 
-  if (duration && duration != _lastDuration) {
-    _lastDuration = duration;
-    scenario.data.timing.push(duration);
-  }
+  React.useEffect(() => {
+    setTimingsVisible(itemsVisible);
+  }, [itemsVisible]);
+
   return (
     <div>
-      <Stack gap={20} style={{ maxWidth: 300 }}>
-        <Dropdown
-          label="Scenario"
-          options={Scenarios}
-          selectedKey={scenario.key}
-          onChange={(ev, option) => {
-            if (option) {
-              setScenario(option);
-            }
-          }}
-        />
-        <TextField label="Count" value={String(count)} type="number" onChange={(ev, value) => setCount(Number(value))} />
-        <PrimaryButton text="Run test" onClick={() => setIsRunning(true)} />
-        {duration && (
-          <Text variant="medium">
-            Average time: {average(scenario.data.timing)}ms, Last time: {Math.round(duration) + 'ms'}
-          </Text>
-        )}
+      <Stack horizontal gap={20} style={{ marginBottom: 20 }}>
+        <Stack gap={20} style={{ width: 300 }}>
+          <Dropdown
+            label="Scenario"
+            options={Scenarios}
+            selectedKey={scenario.key}
+            onChange={(ev, option) => {
+              setItemsVisible(false);
+              if (option) {
+                setScenario(option);
+              }
+            }}
+          />
+          <TextField
+            label="Component count"
+            value={String(count)}
+            type="number"
+            onChange={(ev, value) => {
+              setItemsVisible(false);
+              setCount(Number(value));
+            }}
+          />
+          <TextField
+            label="Iterations"
+            value={String(iterations)}
+            type="number"
+            onChange={(ev, value) => {
+              setItemsVisible(false);
+              setIterations(Number(value));
+            }}
+          />
+          <PrimaryButton text={itemsVisible ? 'Reset' : 'Run test'} onClick={() => setItemsVisible(!itemsVisible)} />
+        </Stack>
+        {timingsVisible && <MeasurerTimings />}
       </Stack>
-      <div>{isVisible && Array.from({ length: count }, () => <div>{scenario.data.content}</div>)}</div>
+      {itemsVisible && (
+        <div>
+          {Array.from({ length: count }, () => (
+            <Measurer>{scenario.data.content}</Measurer>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
-
-function average(timings: number[]) {
-  return timings.length ? Math.round(timings.reduce((prev, current) => current + prev, 0) / timings.length) : 0;
-}
