@@ -46,6 +46,42 @@ describe('ContextualMenuButton', () => {
       expect(onClickMock).toHaveBeenCalledTimes(1);
       expect(onClickMock).toHaveBeenCalledWith(menuItem, expect.objectContaining(mockEvent));
     });
+
+    it('does not update when props values do not change', () => {
+      const renderMock = jest.spyOn(ContextualMenuButton.prototype, 'render');
+      const props = {
+        item: menuItem,
+        classNames: menuClassNames,
+        index: 0,
+        focusableElementIndex: 0,
+        totalItemCount: 1
+      };
+      const component = mount(<ContextualMenuButton {...props} />);
+
+      component.setProps({ ...props });
+
+      expect(renderMock).toHaveBeenCalledTimes(1);
+
+      renderMock.mockRestore();
+    });
+
+    it('does update when props values do change', () => {
+      const renderMock = jest.spyOn(ContextualMenuButton.prototype, 'render');
+      const props = {
+        item: menuItem,
+        classNames: menuClassNames,
+        index: 0,
+        focusableElementIndex: 0,
+        totalItemCount: 1
+      };
+      const component = mount(<ContextualMenuButton {...props} />);
+
+      component.setProps({ ...props, index: 1 });
+
+      expect(renderMock).toHaveBeenCalledTimes(2);
+
+      renderMock.mockRestore();
+    });
   });
 });
 

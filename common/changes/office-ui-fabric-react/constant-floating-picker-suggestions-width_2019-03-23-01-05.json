@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent",
+      "comment": "FloatingPicker: Change width to min-width for Suggestions",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "afhassan@microsoft.com"
 }

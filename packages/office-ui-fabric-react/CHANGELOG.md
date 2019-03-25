@@ -1,6 +1,57 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Mar 2019 16:14:56 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Mar 2019 12:33:48 GMT and should not be manually modified.
+
+## 6.160.0
+Mon, 25 Mar 2019 12:33:48 GMT
+
+### Minor changes
+
+- GroupSpacer: Reduce render calls by refactoring styled HOC to React.SFC
+
+### Patches
+
+- FocusZone: focus alignment is now reset when first receiving focus (programatically or via `defaultActiveElement`.
+
+## 6.159.1
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- ColorPicker: Showing picked color in high contrast mode.
+- List: Avoid setting role to list in case of empty list
+
+## 6.159.0
+Fri, 22 Mar 2019 02:41:51 GMT
+
+### Minor changes
+
+- Dialog: changing type of `title` prop to allow JSX to be injected.
+
+### Patches
+
+- Calendar: Fixing typo is scss.
+- Add shouldComponentUpdate to ContextualMenuItems to ensure items are only updated when needed.
+- Pivot did not support PivotItems used in JSX-expressions (e.g. {this.state.something && <PivotItem ...>}. I fixed this functionality and added a simple test case.
+- Fix focus zone virtual parent focus restoration
+- FocusZone: minor performance tweak to have a single capture keydown handler, rather than one per outer zone instance.
+- Fixing componentURL to point to correct url.
+- Popup: Revert change to find active element within iframe
+
+## 6.158.0
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Minor changes
+
+- SelectedPeopleList: Key wrapped selectedItem children when they are keyed
+
+### Patches
+
+- Breadcrumb: Update custom divider example to have aria-hidden on divider
+- GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent
+- Improve TextField example accessibility
+- TextField: Fixed flex bug in IE11
+- move replaceItem from SelectedPeopleList to BaseSelectedItemsList
 
 ## 6.157.3
 Wed, 20 Mar 2019 16:14:56 GMT

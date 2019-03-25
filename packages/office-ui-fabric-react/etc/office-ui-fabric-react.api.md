@@ -386,6 +386,8 @@ declare class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     // (undocumented)
     protected renderItems: () => JSX.Element[];
     // (undocumented)
+    replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
+    // (undocumented)
     protected root: HTMLElement;
     // (undocumented)
     protected selection: Selection;
@@ -1314,7 +1316,7 @@ declare const groupOne: IExtendedPersonaProps[];
 declare const GroupShowAll: React_2.StatelessComponent<IGroupShowAllProps>;
 
 // @public (undocumented)
-declare const GroupSpacer: React.StatelessComponent<IGroupSpacerProps>;
+declare const GroupSpacer: React.SFC<IGroupSpacerProps>;
 
 // @public (undocumented)
 declare const groupTwo: IExtendedPersonaProps[];
@@ -3442,7 +3444,7 @@ interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
     subText?: string;
     subTextId?: string;
     theme?: ITheme;
-    title?: string;
+    title?: string | JSX.Element;
     titleId?: string;
     topButtonsProps?: IButtonProps[];
     type?: DialogType;
@@ -3545,7 +3547,7 @@ interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiv
     subText?: string;
     theme?: ITheme;
     // @deprecated
-    title?: string;
+    title?: string | JSX.Element;
     // @deprecated
     topButtonsProps?: IButtonProps[];
     // @deprecated
@@ -4098,6 +4100,8 @@ interface IExtendedPersonaProps extends IPersonaProps {
     // (undocumented)
     isValid: boolean;
     // (undocumented)
+    key?: React.Key;
+    // (undocumented)
     shouldBlockSelection?: boolean;
 }
 
@@ -4515,16 +4519,18 @@ interface IGroupShowAllStyles {
 interface IGroupSpacerProps {
     count: number;
     indentWidth?: number;
+    // @deprecated
     styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+    // @deprecated
     theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 declare type IGroupSpacerStyleProps = Required<Pick<IGroupSpacerProps, 'theme'>> & {
     width?: number;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 interface IGroupSpacerStyles {
     // (undocumented)
     root: IStyle;
@@ -8246,8 +8252,6 @@ declare class SelectedPeopleList extends BasePeopleSelectedItemsList {
     static defaultProps: any;
     // (undocumented)
     protected renderItems: () => JSX.Element[];
-    // (undocumented)
-    replaceItem: (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]) => void;
 }
 
 // @public (undocumented)
