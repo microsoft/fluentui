@@ -12,6 +12,7 @@ import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
+import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
@@ -189,6 +190,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * An override to render the details footer.
    */
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
+
+  /**
+   * If provided, can be used to render a custom checkbox
+   */
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;

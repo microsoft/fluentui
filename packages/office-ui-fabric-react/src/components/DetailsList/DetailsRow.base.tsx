@@ -159,6 +159,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       item,
       itemIndex,
       onRenderCheck = this._onRenderCheck,
+      onRenderDetailsCheckbox,
       onRenderItemColumn,
       selectionMode,
       viewport,
@@ -249,7 +250,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
               compact,
               className: classNames.check,
               theme,
-              isVisible: checkboxVisibility === CheckboxVisibility.always
+              isVisible: checkboxVisibility === CheckboxVisibility.always,
+              onRenderDetailsCheckbox: onRenderDetailsCheckbox
             })}
           </div>
         )}

@@ -7,6 +7,7 @@ import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/index';
+import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
 export interface IDetailsHeader {
   /** sets focus into the header */
@@ -79,6 +80,9 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
 
   /** Overriding class name */
   className?: string;
+
+  /** If provided, can be used to render a custom checkbox */
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
 }
 
 export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
