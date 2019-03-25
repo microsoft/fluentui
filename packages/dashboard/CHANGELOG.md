@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Thu, 21 Mar 2019 17:21:42 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Mar 2019 12:33:48 GMT and should not be manually modified.
+
+## 0.57.2
+Mon, 25 Mar 2019 12:33:48 GMT
+
+### Patches
+
+- expose FocuseZone component props in dashboard Card component
 
 ## 0.57.1
 Thu, 21 Mar 2019 17:21:42 GMT
