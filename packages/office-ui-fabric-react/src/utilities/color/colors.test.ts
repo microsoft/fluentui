@@ -150,11 +150,9 @@ describe('color utilities', () => {
       expect(cssColor(null as any)).toBeUndefined();
       expect(cssColor('')).toBeUndefined();
       expect(cssColor('000')).toBeUndefined(); // missing #
-      expect(cssColor('#0000')).toBeUndefined(); // wrong length
       expect(cssColor('#00000')).toBeUndefined(); // wrong length
       expect(cssColor('000000')).toBeUndefined(); // missing #
       expect(cssColor('#qwerty')).toBeUndefined(); // invalid chars
-      expect(cssColor('')).toBeUndefined();
     });
 
     it('handles valid hex input', () => {
