@@ -27,6 +27,9 @@ class AnnouncedBase extends React.Component<IAnnouncedProps> {
 }
 
 // @public
+export function appendFunction(parent: any, ...functions: (any)[]): () => void;
+
+// @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
@@ -408,7 +411,7 @@ class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T
 }
 
 // @public (undocumented)
-class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState>, implements IBaseSelectedItemsList<T> {
+class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>>, implements IBaseSelectedItemsList<T> {
   constructor(basePickerProps: P);
   // (undocumented)
   addItems: (items: T[]) => void;
@@ -435,7 +438,7 @@ class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends
   // (undocumented)
   protected onSelectionChanged: () => void;
   // (undocumented)
-  removeItem: (item: ISelectedItemProps<T>) => void;
+  removeItem: (item: T) => void;
   // (undocumented)
   removeItemAt: (index: number) => void;
   // (undocumented)
@@ -446,6 +449,8 @@ class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends
   render(): any;
   // (undocumented)
   protected renderItems: () => JSX.Element[];
+  // (undocumented)
+  replaceItem: (itemToReplace: T, itemsToReplaceWith: T[]) => void;
   // (undocumented)
   protected root: HTMLElement;
   // (undocumented)
@@ -703,7 +708,7 @@ class CompactPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
@@ -774,6 +779,12 @@ export function correctRGB(color: IRGB): IRGB;
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
+
+// @public
+export function createComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics;
+
+// @public
+export function createFactory<TProps>(ComponentType: React.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps>;
 
 // @public (undocumented)
 export function createFontStyles(localeCode: string | null): IFontStyles;
@@ -1091,6 +1102,11 @@ enum ExpandingCardMode {
   expanded = 1
 }
 
+// @public
+export function extendComponent<T extends React.Component>(parent: T, methods: {
+    [key in keyof T]?: T[key];
+}): void;
+
 // @public (undocumented)
 class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 }
@@ -1250,7 +1266,7 @@ class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements I
 }
 
 // @public (undocumented)
-class FocusZone extends BaseComponent<IFocusZoneProps, {}>, implements IFocusZone {
+class FocusZone extends React.Component<IFocusZoneProps, {}>, implements IFocusZone {
   constructor(props: IFocusZoneProps);
   // (undocumented)
   componentDidMount(): void;
@@ -1372,7 +1388,7 @@ export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColo
 export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
@@ -1405,7 +1421,7 @@ export function getLanguage(): string | null;
 export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
@@ -1439,6 +1455,9 @@ export function getScrollbarWidth(): number;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public
+export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(userProps: TProps, slots: ISlotDefinition<Required<TSlots>>): ISlots<Required<TSlots>>;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -1948,25 +1967,8 @@ interface IBasePickerStyles {
   text: IStyle;
 }
 
-// @public (undocumented)
-interface IBasePickerSuggestionsProps {
-  className?: string;
-  forceResolveText?: string;
-  loadingText?: string;
-  mostRecentlyUsedHeaderText?: string;
-  noResultsFoundText?: string;
-  onRenderNoResultFound?: IRenderFunction<void>;
-  resultsFooter?: () => JSX.Element;
-  resultsFooterFull?: () => JSX.Element;
-  resultsMaximumNumber?: number;
-  searchForMoreText?: string;
-  searchingText?: string;
-  showRemoveButtons?: boolean;
-  suggestionsAvailableAlertText?: string;
-  suggestionsClassName?: string;
-  suggestionsContainerAriaLabel?: string;
-  suggestionsHeaderText?: string;
-  suggestionsItemClassName?: string;
+// @public
+interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
 }
 
 // @public
@@ -2002,9 +2004,9 @@ interface IBaseSelectedItemsListProps<T> extends React.ClassAttributes<any> {
 }
 
 // @public (undocumented)
-interface IBaseSelectedItemsListState {
+interface IBaseSelectedItemsListState<T = any> {
   // (undocumented)
-  items?: any;
+  items: T[];
 }
 
 // @public (undocumented)
@@ -2576,7 +2578,7 @@ interface IChoiceGroupStyles {
   root?: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ICircle extends IShimmerElement {
   height?: number;
 }
@@ -2951,6 +2953,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
   onScrollToItem?: (itemIndex: number) => void;
   options: IComboBoxOption[];
+  persistMenu?: boolean;
   scrollSelectedToTop?: boolean;
   styles?: Partial<IComboBoxStyles>;
   text?: string;
@@ -3057,8 +3060,20 @@ interface ICommandBarStyles {
   secondarySet?: IStyle;
 }
 
+// @public
+interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
+  displayName: string;
+  factoryOptions?: IFactoryOptions<TComponentProps>;
+  fields?: string[];
+  state?: IStateComponentType<TComponentProps, TViewProps>;
+  statics?: TStatics;
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
+  view: IViewComponent<TViewProps>;
+}
+
 // @public (undocumented)
-class IconBase extends BaseComponent<IIconProps, IIconState> {
+class IconBase extends React.PureComponent<IIconProps, IIconState> {
   constructor(props: IIconProps);
   // (undocumented)
   render(): JSX.Element;
@@ -3100,6 +3115,8 @@ enum IconNames {
   // (undocumented)
   AccessLogoFill = "AccessLogoFill",
   // (undocumented)
+  AccountBrowser = "AccountBrowser",
+  // (undocumented)
   AccountManagement = "AccountManagement",
   // (undocumented)
   Accounts = "Accounts",
@@ -3124,6 +3141,8 @@ enum IconNames {
   // (undocumented)
   AddGroup = "AddGroup",
   // (undocumented)
+  AddHome = "AddHome",
+  // (undocumented)
   AddIn = "AddIn",
   // (undocumented)
   AddNotes = "AddNotes",
@@ -3131,6 +3150,8 @@ enum IconNames {
   AddOnlineMeeting = "AddOnlineMeeting",
   // (undocumented)
   AddPhone = "AddPhone",
+  // (undocumented)
+  AddReaction = "AddReaction",
   // (undocumented)
   AddTo = "AddTo",
   // (undocumented)
@@ -3218,6 +3239,14 @@ enum IconNames {
   // (undocumented)
   AppIconDefaultList = "AppIconDefaultList",
   // (undocumented)
+  AppleTVMenu = "AppleTVMenu",
+  // (undocumented)
+  AppleTVMicrophone = "AppleTVMicrophone",
+  // (undocumented)
+  AppleTVMonitor = "AppleTVMonitor",
+  // (undocumented)
+  AppleTVPlay = "AppleTVPlay",
+  // (undocumented)
   Archive = "Archive",
   // (undocumented)
   AreaChart = "AreaChart",
@@ -3275,6 +3304,8 @@ enum IconNames {
   Attach = "Attach",
   // (undocumented)
   AustralianRules = "AustralianRules",
+  // (undocumented)
+  AuthenticatorApp = "AuthenticatorApp",
   // (undocumented)
   AutoEnhanceOff = "AutoEnhanceOff",
   // (undocumented)
@@ -3493,6 +3524,8 @@ enum IconNames {
   CalculatorMultiply = "CalculatorMultiply",
   // (undocumented)
   CalculatorNotEqualTo = "CalculatorNotEqualTo",
+  // (undocumented)
+  CalculatorPercentage = "CalculatorPercentage",
   // (undocumented)
   CalculatorSubtract = "CalculatorSubtract",
   // (undocumented)
@@ -3734,6 +3767,10 @@ enum IconNames {
   // (undocumented)
   ClearNight = "ClearNight",
   // (undocumented)
+  ClipboardList = "ClipboardList",
+  // (undocumented)
+  ClipboardListMirrored = "ClipboardListMirrored",
+  // (undocumented)
   ClipboardSolid = "ClipboardSolid",
   // (undocumented)
   Clock = "Clock",
@@ -3794,6 +3831,8 @@ enum IconNames {
   // (undocumented)
   ColumnVerticalSection = "ColumnVerticalSection",
   // (undocumented)
+  ColumnVerticalSectionEdit = "ColumnVerticalSectionEdit",
+  // (undocumented)
   Combine = "Combine",
   // (undocumented)
   Combobox = "Combobox",
@@ -3801,6 +3840,8 @@ enum IconNames {
   CommandPrompt = "CommandPrompt",
   // (undocumented)
   Comment = "Comment",
+  // (undocumented)
+  CommentActive = "CommentActive",
   // (undocumented)
   CommentAdd = "CommentAdd",
   // (undocumented)
@@ -3817,6 +3858,8 @@ enum IconNames {
   CompanyDirectory = "CompanyDirectory",
   // (undocumented)
   CompanyDirectoryMirrored = "CompanyDirectoryMirrored",
+  // (undocumented)
+  Compare = "Compare",
   // (undocumented)
   CompassNW = "CompassNW",
   // (undocumented)
@@ -3910,6 +3953,8 @@ enum IconNames {
   // (undocumented)
   Dataflows = "Dataflows",
   // (undocumented)
+  DataManagementSettings = "DataManagementSettings",
+  // (undocumented)
   DateTime = "DateTime",
   // (undocumented)
   DateTime2 = "DateTime2",
@@ -3937,6 +3982,8 @@ enum IconNames {
   DefaultRatio = "DefaultRatio",
   // (undocumented)
   DefectSolid = "DefectSolid",
+  // (undocumented)
+  DefenderTVM = "DefenderTVM",
   // (undocumented)
   Delete = "Delete",
   // (undocumented)
@@ -4238,6 +4285,8 @@ enum IconNames {
   // (undocumented)
   FabricFolder = "FabricFolder",
   // (undocumented)
+  FabricFolderConfirm = "FabricFolderConfirm",
+  // (undocumented)
   FabricFolderFill = "FabricFolderFill",
   // (undocumented)
   FabricFolderSearch = "FabricFolderSearch",
@@ -4474,6 +4523,8 @@ enum IconNames {
   // (undocumented)
   GenericScanFilled = "GenericScanFilled",
   // (undocumented)
+  GIF = "GIF",
+  // (undocumented)
   Giftbox = "Giftbox",
   // (undocumented)
   GiftboxOpen = "GiftboxOpen",
@@ -4586,6 +4637,8 @@ enum IconNames {
   // (undocumented)
   Hide2 = "Hide2",
   // (undocumented)
+  Hide3 = "Hide3",
+  // (undocumented)
   Highlight = "Highlight",
   // (undocumented)
   HighlightMappedShapes = "HighlightMappedShapes",
@@ -4601,6 +4654,8 @@ enum IconNames {
   HomeGroup = "HomeGroup",
   // (undocumented)
   HomeSolid = "HomeSolid",
+  // (undocumented)
+  HomeVerify = "HomeVerify",
   // (undocumented)
   HorizontalDistributeCenter = "HorizontalDistributeCenter",
   // (undocumented)
@@ -4636,6 +4691,8 @@ enum IconNames {
   // (undocumented)
   IncidentTriangle = "IncidentTriangle",
   // (undocumented)
+  IncomingCall = "IncomingCall",
+  // (undocumented)
   IncreaseIndentArrow = "IncreaseIndentArrow",
   // (undocumented)
   IncreaseIndentArrowMirrored = "IncreaseIndentArrowMirrored",
@@ -4650,7 +4707,11 @@ enum IconNames {
   // (undocumented)
   Info2 = "Info2",
   // (undocumented)
+  InformationBarriers = "InformationBarriers",
+  // (undocumented)
   InfoSolid = "InfoSolid",
+  // (undocumented)
+  InkingTool = "InkingTool",
   // (undocumented)
   InsertColumnsLeft = "InsertColumnsLeft",
   // (undocumented)
@@ -4665,6 +4726,8 @@ enum IconNames {
   InsertTextBox = "InsertTextBox",
   // (undocumented)
   InstallToDrive = "InstallToDrive",
+  // (undocumented)
+  InternalInvestigation = "InternalInvestigation",
   // (undocumented)
   InternetSharing = "InternetSharing",
   // (undocumented)
@@ -4834,6 +4897,8 @@ enum IconNames {
   // (undocumented)
   MapPinSolid = "MapPinSolid",
   // (undocumented)
+  MarkAsProtected = "MarkAsProtected",
+  // (undocumented)
   MarkDownLanguage = "MarkDownLanguage",
   // (undocumented)
   Market = "Market",
@@ -4845,6 +4910,8 @@ enum IconNames {
   MaximumValue = "MaximumValue",
   // (undocumented)
   Medal = "Medal",
+  // (undocumented)
+  MedalSolid = "MedalSolid",
   // (undocumented)
   Media = "Media",
   // (undocumented)
@@ -4873,6 +4940,12 @@ enum IconNames {
   MicrosoftFlowLogo = "MicrosoftFlowLogo",
   // (undocumented)
   MicrosoftStaffhubLogo = "MicrosoftStaffhubLogo",
+  // (undocumented)
+  MicrosoftTranslatorLogo = "MicrosoftTranslatorLogo",
+  // (undocumented)
+  MicrosoftTranslatorLogoBlue = "MicrosoftTranslatorLogoBlue",
+  // (undocumented)
+  MicrosoftTranslatorLogoGreen = "MicrosoftTranslatorLogoGreen",
   // (undocumented)
   MiniContract = "MiniContract",
   // (undocumented)
@@ -5060,6 +5133,8 @@ enum IconNames {
   // (undocumented)
   OpenFolderHorizontal = "OpenFolderHorizontal",
   // (undocumented)
+  OpenInNewTab = "OpenInNewTab",
+  // (undocumented)
   OpenInNewWindow = "OpenInNewWindow",
   // (undocumented)
   OpenPane = "OpenPane",
@@ -5157,6 +5232,8 @@ enum IconNames {
   PartyLeader = "PartyLeader",
   // (undocumented)
   PassiveAuthentication = "PassiveAuthentication",
+  // (undocumented)
+  PasswordField = "PasswordField",
   // (undocumented)
   Paste = "Paste",
   // (undocumented)
@@ -5516,6 +5593,8 @@ enum IconNames {
   // (undocumented)
   RepeatAll = "RepeatAll",
   // (undocumented)
+  RepeatOne = "RepeatOne",
+  // (undocumented)
   Reply = "Reply",
   // (undocumented)
   ReplyAll = "ReplyAll",
@@ -5542,7 +5621,11 @@ enum IconNames {
   // (undocumented)
   RepoSolid = "RepoSolid",
   // (undocumented)
+  ReservationOrders = "ReservationOrders",
+  // (undocumented)
   ResponsesMenu = "ResponsesMenu",
+  // (undocumented)
+  ReturnKey = "ReturnKey",
   // (undocumented)
   ReturnToSession = "ReturnToSession",
   // (undocumented)
@@ -5572,6 +5655,8 @@ enum IconNames {
   // (undocumented)
   RingerRemove = "RingerRemove",
   // (undocumented)
+  RingerSolid = "RingerSolid",
+  // (undocumented)
   Robot = "Robot",
   // (undocumented)
   Rocket = "Rocket",
@@ -5579,6 +5664,10 @@ enum IconNames {
   Room = "Room",
   // (undocumented)
   Rotate = "Rotate",
+  // (undocumented)
+  Rotate90Clockwise = "Rotate90Clockwise",
+  // (undocumented)
+  Rotate90CounterClockwise = "Rotate90CounterClockwise",
   // (undocumented)
   RowsChild = "RowsChild",
   // (undocumented)
@@ -5666,6 +5755,8 @@ enum IconNames {
   // (undocumented)
   Settings = "Settings",
   // (undocumented)
+  ShakeDevice = "ShakeDevice",
+  // (undocumented)
   Shapes = "Shapes",
   // (undocumented)
   Share = "Share",
@@ -5703,6 +5794,8 @@ enum IconNames {
   SidePanel = "SidePanel",
   // (undocumented)
   SidePanelMirrored = "SidePanelMirrored",
+  // (undocumented)
+  Signin = "Signin",
   // (undocumented)
   SignOut = "SignOut",
   // (undocumented)
@@ -5765,6 +5858,8 @@ enum IconNames {
   SliderThumb = "SliderThumb",
   // (undocumented)
   Slideshow = "Slideshow",
+  // (undocumented)
+  SmartGlassRemote = "SmartGlassRemote",
   // (undocumented)
   SnapToGrid = "SnapToGrid",
   // (undocumented)
@@ -6240,6 +6335,8 @@ enum IconNames {
   // (undocumented)
   Upload = "Upload",
   // (undocumented)
+  USB = "USB",
+  // (undocumented)
   UserEvent = "UserEvent",
   // (undocumented)
   UserFollowed = "UserFollowed",
@@ -6265,6 +6362,8 @@ enum IconNames {
   VennDiagram = "VennDiagram",
   // (undocumented)
   VerifiedBrand = "VerifiedBrand",
+  // (undocumented)
+  VerifiedBrandSolid = "VerifiedBrandSolid",
   // (undocumented)
   VersionControlPush = "VersionControlPush",
   // (undocumented)
@@ -6366,11 +6465,15 @@ enum IconNames {
   // (undocumented)
   WarningSolid = "WarningSolid",
   // (undocumented)
+  WavingHand = "WavingHand",
+  // (undocumented)
   WebComponents = "WebComponents",
   // (undocumented)
   WebPublish = "WebPublish",
   // (undocumented)
   Website = "Website",
+  // (undocumented)
+  WebTemplate = "WebTemplate",
   // (undocumented)
   Weights = "Weights",
   // (undocumented)
@@ -6799,6 +6902,12 @@ interface IDeclaredEventsByName {
 }
 
 // @public
+interface IDefaultSlotProps<TSlots> {
+  // (undocumented)
+  _defaultStyles: IComponentStyles<TSlots>;
+}
+
+// @public
 interface IDelayedRenderProps extends React.Props<{}> {
   delay?: number;
 }
@@ -6838,6 +6947,7 @@ interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBas
   ariaLabel?: string;
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
+  ariaLabelForToggleAllGroupsButton?: string;
   className?: string;
   collapseAllVisibility?: CollapseAllVisibility;
   columnReorderOptions?: IColumnReorderOptions;
@@ -6988,6 +7098,9 @@ interface IDetailsRow {
 
 // @public (undocumented)
 interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+  cellsByColumn?: {
+    [columnKey: string]: React.ReactNode;
+  }
   checkboxCellClassName?: string;
   checkButtonAriaLabel?: string;
   className?: string;
@@ -7126,7 +7239,7 @@ interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
   subText?: string;
   subTextId?: string;
   theme?: ITheme;
-  title?: string;
+  title?: string | JSX.Element;
   titleId?: string;
   topButtonsProps?: IButtonProps[];
   type?: DialogType;
@@ -7227,7 +7340,7 @@ interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiv
   subText?: string;
   theme?: ITheme;
   // @deprecated
-  title?: string;
+  title?: string | JSX.Element;
   // @deprecated
   topButtonsProps?: IButtonProps[];
   // @deprecated
@@ -7661,7 +7774,7 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   onDismiss?: () => void;
   onRenderCaretDown?: IRenderFunction<IDropdownProps>;
   onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
-  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
+  onRenderTitle?: IRenderFunction<IDropdownOption[]>;
   options: IDropdownOption[];
   // @deprecated
   placeHolder?: string;
@@ -7815,6 +7928,8 @@ interface IExtendedPersonaProps extends IPersonaProps {
   // (undocumented)
   isValid: boolean;
   // (undocumented)
+  key?: React.Key;
+  // (undocumented)
   shouldBlockSelection?: boolean;
 }
 
@@ -7911,6 +8026,11 @@ interface IFacepileStyles {
 }
 
 // @public
+interface IFactoryOptions<TProps> {
+  defaultProp?: keyof TProps | 'children';
+}
+
+// @public
 interface IFitContentToBoundsOptions {
   boundsSize: ISize;
   contentSize: ISize;
@@ -7954,6 +8074,7 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   allowTabKey?: boolean;
   ariaDescribedBy?: string;
   ariaLabelledBy?: string;
+  as?: React.ReactType;
   checkForNoWrap?: boolean;
   className?: string;
   componentRef?: IRefObject<IFocusZone>;
@@ -7961,6 +8082,7 @@ interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> 
   direction?: FocusZoneDirection;
   disabled?: boolean;
   doNotAllowFocusEventToPropagate?: boolean;
+  // @deprecated
   elementType?: keyof React.ReactHTML;
   handleTabKey?: FocusZoneTabbableElements;
   isCircularNavigation?: boolean;
@@ -8006,7 +8128,7 @@ interface IFontStyles {
   xxLarge: IRawStyle;
 }
 
-// @public (undocumented)
+// @public
 interface IGap extends IShimmerElement {
   height?: number;
   width?: number | string;
@@ -8251,11 +8373,13 @@ interface IGroupShowAllStyles {
 interface IGroupSpacerProps {
   count: number;
   indentWidth?: number;
+  // @deprecated
   styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
+  // @deprecated
   theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 interface IGroupSpacerStyles {
   // (undocumented)
   root: IStyle;
@@ -8590,7 +8714,7 @@ interface ILayerStyles {
   root?: IStyle;
 }
 
-// @public (undocumented)
+// @public
 interface ILine extends IShimmerElement {
   height?: number;
   width?: number | string;
@@ -8710,7 +8834,7 @@ interface IListState {
 }
 
 // @public (undocumented)
-class ImageBase extends BaseComponent<IImageProps, IImageState> {
+class ImageBase extends React.Component<IImageProps, IImageState> {
   constructor(props: IImageProps);
   // (undocumented)
   componentDidUpdate(prevProps: IImageProps, prevState: IImageState): void;
@@ -9010,6 +9134,9 @@ interface INavStyles {
 }
 
 // @public
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
+
+// @public
 export function initializeFocusRects(window?: Window): void;
 
 // @public (undocumented)
@@ -9173,6 +9300,7 @@ interface IPalette {
   white: string;
   whiteTranslucent40: string;
   yellow: string;
+  yellowDark: string;
   yellowLight: string;
 }
 
@@ -9554,8 +9682,6 @@ interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttrib
 // @public (undocumented)
 interface IPivotState {
   // (undocumented)
-  links: IPivotItemProps[];
-  // (undocumented)
   selectedKey: string | undefined;
 }
 
@@ -9667,10 +9793,10 @@ interface IPositioningContainerState {
   positions?: IPositionedData;
 }
 
-// @public (undocumented)
-interface IProgressIndicator {
+// @public
+interface IProcessedSlotProps {
   // (undocumented)
-  focus: () => void;
+  className?: string;
 }
 
 // @public (undocumented)
@@ -9678,7 +9804,6 @@ interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicato
   ariaValueText?: string;
   barHeight?: number;
   className?: string;
-  componentRef?: IRefObject<IProgressIndicator>;
   description?: React.ReactNode;
   label?: React.ReactNode;
   onRenderProgress?: IRenderFunction<IProgressIndicatorProps>;
@@ -10330,6 +10455,13 @@ interface IShimmerCircleStyles {
 }
 
 // @public
+interface IShimmerColors {
+  background?: string;
+  shimmer?: string;
+  shimmerWave?: string;
+}
+
+// @public
 interface IShimmerElement {
   height?: number;
   type: ShimmerElementType;
@@ -10343,6 +10475,7 @@ interface IShimmerElementsGroup {
 
 // @public
 interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement> {
+  backgroundColor?: string;
   componentRef?: IRefObject<IShimmerElementsGroup>;
   flexWrap?: boolean;
   rowHeight?: number;
@@ -10352,17 +10485,14 @@ interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement
   width?: string;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerElementsGroupStyleProps {
-  // (undocumented)
   flexWrap?: boolean;
-  // (undocumented)
   theme: ITheme;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerElementsGroupStyles {
-  // (undocumented)
   root?: IStyle;
 }
 
@@ -10417,6 +10547,7 @@ interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: IRefObject<IShimmer>;
   customElementsGroup?: React.ReactNode;
   isDataLoaded?: boolean;
+  shimmerColors?: IShimmerColors;
   shimmerElements?: IShimmerElement[];
   styles?: IStyleFunctionOrObject<IShimmerStyleProps, IShimmerStyles>;
   theme?: ITheme;
@@ -10428,27 +10559,21 @@ interface IShimmerState {
   contentLoaded?: boolean;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerStyleProps {
-  // (undocumented)
   className?: string;
-  // (undocumented)
   isDataLoaded?: boolean;
-  // (undocumented)
+  shimmerColor?: string;
+  shimmerWaveColor?: string;
   theme: ITheme;
-  // (undocumented)
   transitionAnimationInterval?: number;
 }
 
-// @public (undocumented)
+// @public
 interface IShimmerStyles {
-  // (undocumented)
   dataWrapper?: IStyle;
-  // (undocumented)
   root?: IStyle;
-  // (undocumented)
   screenReaderText?: IStyle;
-  // (undocumented)
   shimmerWrapper?: IStyle;
 }
 
@@ -10524,6 +10649,12 @@ interface ISliderStyles {
 }
 
 // @public
+interface ISlotCreator<TProps> {
+  // (undocumented)
+  create?: ISlotFactory<TProps>;
+}
+
+// @public
 export function isMac(reset?: boolean): boolean;
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -10568,7 +10699,7 @@ interface ISpinButtonProps {
   incrementButtonAriaLabel?: string;
   incrementButtonIcon?: IIconProps;
   keytipProps?: IKeytipProps;
-  label: string;
+  label?: string;
   // (undocumented)
   labelPosition?: Position;
   max?: number;
@@ -10724,6 +10855,18 @@ interface IStickyState {
   isStickyBottom: boolean;
   // (undocumented)
   isStickyTop: boolean;
+}
+
+// @public
+interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
+  // (undocumented)
+  className?: string;
+  // (undocumented)
+  styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
+  // (undocumented)
+  theme?: ITheme;
+  // (undocumented)
+  tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
 // @public
@@ -11190,6 +11333,14 @@ interface ITheme extends IScheme {
 }
 
 // @public (undocumented)
+interface IThemeProviderProps {
+  // (undocumented)
+  scheme?: ISchemeNames;
+  // (undocumented)
+  theme?: ITheme;
+}
+
+// @public (undocumented)
 interface IThemeRules {
   // (undocumented)
   [key: string]: IThemeSlotRule;
@@ -11269,6 +11420,10 @@ interface IToggleStyles {
   root: IStyle;
   text: IStyle;
   thumb: IStyle;
+}
+
+// @public
+interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {
 }
 
 // @public (undocumented)
@@ -11504,7 +11659,7 @@ class ListPeoplePickerBase extends MemberListPeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
@@ -11642,12 +11797,15 @@ class NormalPeoplePickerBase extends BasePeoplePicker {
   static defaultProps: {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
-    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps | undefined) => JSX.Element;
+    onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
   }
 }
 
 // @public
 export function nullRender(): JSX.Element | null;
+
+// @public (undocumented)
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public (undocumented)
 enum OpenCardMode {
@@ -11840,8 +11998,6 @@ enum PersonaSize {
 // @public
 class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
   constructor(props: IPivotProps);
-  // (undocumented)
-  componentWillReceiveProps(nextProps: IPivotProps): void;
   focus(): void;
   // (undocumented)
   render(): JSX.Element;
@@ -11934,8 +12090,7 @@ class PrimaryButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public
-class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
-  constructor(props: IProgressIndicatorProps);
+class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}> {
   // (undocumented)
   static defaultProps: {
     description: string;
@@ -11948,6 +12103,9 @@ class ProgressIndicatorBase extends BaseComponent<IProgressIndicatorProps, {}> {
 
 // @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
+
+// @public
+export function raiseClick(target: Element): void;
 
 // @public (undocumented)
 class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
@@ -12110,8 +12268,6 @@ class SelectedPeopleList extends BasePeopleSelectedItemsList {
   static defaultProps: any;
   // (undocumented)
   protected renderItems: () => JSX.Element[];
-  // (undocumented)
-  replaceItem: (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]) => void;
 }
 
 // @public (undocumented)
@@ -12293,7 +12449,7 @@ class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps,
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 enum ShimmerElementsDefaultHeights {
   circle = 24,
   gap = 16,
@@ -12309,7 +12465,7 @@ class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps,
   render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 enum ShimmerElementType {
   circle = 2,
   gap = 3,
@@ -12440,7 +12596,7 @@ enum StickyPositionType {
 }
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): (props: TComponentProps) => JSX.Element;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
 
 // @public
 class Stylesheet {
@@ -12885,6 +13041,9 @@ export function warnDeprecations<P>(componentName: string, props: P, deprecation
 // @public
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
 
+// @public
+export function withSlots<P>(type: ISlot<P> | React.SFC<P> | string, props?: React.Attributes & P | null, ...children: React.ReactNode[]): React.ReactElement<P> | JSX.Element | null;
+
 // @public (undocumented)
 module ZIndexes {
   // (undocumented)
@@ -12966,6 +13125,34 @@ module ZIndexes {
 // WARNING: Unsupported export: IBaseFloatingPickerSuggestionProps
 // WARNING: Unsupported export: FocusZoneTabbableElements
 // WARNING: Unsupported export: FocusZoneTabbableElements
+// WARNING: Unsupported export: IPropsWithChildren
+// WARNING: Unsupported export: IComponentStyles
+// WARNING: Unsupported export: IStylesFunction
+// WARNING: Unsupported export: IStylesFunctionOrObject
+// WARNING: Unsupported export: IToken
+// WARNING: Unsupported export: ITokenFunction
+// WARNING: Unsupported export: ITokenFunctionOrObject
+// WARNING: Unsupported export: ITokenBase
+// WARNING: Unsupported export: ICustomizationProps
+// WARNING: Unsupported export: IStateComponentProps
+// WARNING: Unsupported export: IStateComponentType
+// WARNING: Unsupported export: IViewComponent
+// WARNING: Unsupported export: IViewRenderer
+// WARNING: Unsupported export: IHTMLSlot
+// WARNING: Unsupported export: IHTMLElementSlot
+// WARNING: Unsupported export: ISlottableComponentType
+// WARNING: Unsupported export: ISlottableReactType
+// WARNING: Unsupported export: ISlotDefinition
+// WARNING: Unsupported export: ISlot
+// WARNING: Unsupported export: ISlotFactory
+// WARNING: Unsupported export: ISlots
+// WARNING: Unsupported export: ISlotProps
+// WARNING: Unsupported export: ISlotProp
+// WARNING: Unsupported export: ISlotPropValue
+// WARNING: Unsupported export: ISlotPropRenderFunction
+// WARNING: Unsupported export: ISlotRenderer
+// WARNING: Unsupported export: ISlotRender
+// WARNING: Unsupported export: ThemeProvider
 // WARNING: Unsupported export: Grid
 // WARNING: Unsupported export: IGroupHeaderStyleProps
 // WARNING: Unsupported export: IGroupFooterStyleProps

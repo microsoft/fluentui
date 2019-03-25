@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.16.1",
+      "tag": "@uifabric/merge-styles_v6.16.1",
+      "date": "Fri, 08 Mar 2019 13:32:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix selector in a mergeStyleSets Readme example",
+            "author": "Ivan <ivan.dijan@gmail.com>",
+            "commit": "69a0b2bb065c894aae430001cd92eee3e17b9630"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.0",
       "tag": "@uifabric/merge-styles_v6.16.0",
       "date": "Fri, 01 Mar 2019 13:33:08 GMT",

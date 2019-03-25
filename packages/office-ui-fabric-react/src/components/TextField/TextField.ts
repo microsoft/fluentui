@@ -4,6 +4,11 @@ import { ITextFieldProps, ITextFieldStyles, ITextFieldStyleProps } from './TextF
 import { getStyles } from './TextField.styles';
 export { ITextField } from './TextField.types';
 
-export const TextField = styled<ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles>(TextFieldBase, getStyles, undefined, {
-  scope: 'TextField'
-});
+export const TextField: React.StatelessComponent<ITextFieldProps> = styled<ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles>(
+  TextFieldBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'TextField'
+  }
+);

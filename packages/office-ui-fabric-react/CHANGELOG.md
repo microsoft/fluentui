@@ -1,6 +1,193 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Mar 2019 13:29:58 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Mar 2019 12:34:41 GMT and should not be manually modified.
+
+## 6.159.1
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- ColorPicker: Showing picked color in high contrast mode.
+- List: Avoid setting role to list in case of empty list
+
+## 6.159.0
+Fri, 22 Mar 2019 02:41:51 GMT
+
+### Minor changes
+
+- Dialog: changing type of `title` prop to allow JSX to be injected.
+
+### Patches
+
+- Calendar: Fixing typo is scss.
+- Add shouldComponentUpdate to ContextualMenuItems to ensure items are only updated when needed.
+- Pivot did not support PivotItems used in JSX-expressions (e.g. {this.state.something && <PivotItem ...>}. I fixed this functionality and added a simple test case.
+- Fix focus zone virtual parent focus restoration
+- FocusZone: minor performance tweak to have a single capture keydown handler, rather than one per outer zone instance.
+- Fixing componentURL to point to correct url.
+- Popup: Revert change to find active element within iframe
+
+## 6.158.0
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Minor changes
+
+- SelectedPeopleList: Key wrapped selectedItem children when they are keyed
+
+### Patches
+
+- Breadcrumb: Update custom divider example to have aria-hidden on divider
+- GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent
+- Improve TextField example accessibility
+- TextField: Fixed flex bug in IE11
+- move replaceItem from SelectedPeopleList to BaseSelectedItemsList
+
+## 6.157.3
+Wed, 20 Mar 2019 16:14:56 GMT
+
+### Patches
+
+- FocusTrapZone: Make sure to call passed in focus and blur handlers
+
+## 6.157.2
+Wed, 20 Mar 2019 03:15:21 GMT
+
+### Patches
+
+- Callout: Fix beak position for dynamically sized callouts.
+- ComboBox: if `options` are null, make sure the code doesn't crash.
+- Icon: remove BaseComponent dependency.
+
+## 6.157.1
+Tue, 19 Mar 2019 18:05:11 GMT
+
+### Patches
+
+- Fix typing on BaseSelectedItemList.removeItem
+
+## 6.157.0
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Minor changes
+
+- DetailsHeader: Add ariaLabelForToggleAllGroupsButton to IDetailsHeaderProps
+- Add new icons to OUIFR API
+- Export Foundation package.
+- SpinButton: label prop should be marked as optional
+- Rating: unchecked stars should be unfilled.
+
+### Patches
+
+- Popup: If framed, set focus to frame's activeElement on dismiss
+- Use codepen loader in examples
+- For multiSelectComboBox, if allowFreeForm is true, currentPendingValue should get added to option and be selected onBlur
+- Nav: Fix selection state to only check URL if state.selectedKey is undefined
+- Fix combobox behaviour: multiple selections are now correctly shown in dropdown
+- TeachingBubble examples: separate onDismiss into onDismiss and onShow
+- List: Remove duplicate page rows iteration and add tests for SparseArray scenarios
+- Fix color contrast ratio of unchecked Rating stars
+- Use typeof check on process before checking process.env.NODE_ENV
+- Turn IBasePickerSuggestionsProps into a Pick<> type
+- Drop space from DetailsList header aria-labeledby
+- HoverCard: fixes the native event listeners assignment when the target prop is updated.
+
+## 6.156.0
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Minor changes
+
+- Text: default to fonts.medium
+- Dropdown: Type onRenderTitle as Array<IDropdownOption> only
+
+### Patches
+
+- BaseButton: Correctly clone props instead of mutating them
+
+## 6.155.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Provide a way to pass cell contents directly to DetailsRow
+- FocusTrapZone: Refactor trapping behavior to fix multiple outstanding issues.
+
+### Patches
+
+- Fix overflow calculation for non-collapsible columns
+- FocusTrapZone: Fix for zones that have zero tabbable elements.
+- updating calendaryear to work when react version upgrades
+- DetailsHeader: remove duplicate IDetailsHeaderState
+- Panel: fixes regression when no custom navigation renderer provided and `hasCloseButton` prop is set to false there should not be an empty div rendered occupying the space.
+
+## 6.154.0
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Minor changes
+
+- Shimmer: adds new props `shimmerColors` to Shimmer and `backgroundColor` to ShimmerElementsGroup to allow easy customization of Shimmer colors when placed on elements with background colors other than white.
+
+## 6.153.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Expose persistMenu in combobox similar to baseButton
+- SpinButton: Stateful example should restrict input value to range.
+
+### Patches
+
+- List: Revert remove usage of string refs for List pages #7704
+
+## 6.152.1
+Thu, 07 Mar 2019 13:32:47 GMT
+
+### Patches
+
+- Remove console log in Tooltip absolute position example
+- Pivot - remove deprecated lifecycle method, and deterministically render selected PivotItem. Will change behavior of Pivot instances that specified `selectedKey` but use in an uncontrolled fashion. 
+- Suggestions: set className on Suggestion header/footer
+- SwatchColorPicker: updates the styles so that they align to the toolkit specs.
+
+## 6.152.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- BaseButton does not call onAfterMenuDismiss when persistMenu is true
+- Change FocusZone to use the as pattern
+
+### Patches
+
+- Tooltip: Add absolute position example to documentation
+- FocusZone: removing dependency on BaseComponent, slicing about 3k gzipped off the payload.
+
+## 6.151.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Update version of 'styled', add type annotations to usages of 'styled'.
+
+## 6.150.1
+Tue, 05 Mar 2019 13:30:24 GMT
+
+### Patches
+
+- DetailsRowFields: Inherit from React.Component instead of BaseComponent"
+
+## 6.150.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced component
+- Breadcrumb: Add native props support
+- Export all theme variables in one file, and emit basic font token mixins
+
+### Patches
+
+- CommandBar: Adding aria-label to Grid View and Information Buttons in examples.
+- ChoiceGroup: Fix disabled selected styles
 
 ## 6.149.0
 Mon, 04 Mar 2019 13:29:58 GMT

@@ -1,6 +1,17 @@
 # Change Log - @uifabric/webpack-utils
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2019 12:34:07 GMT and should not be manually modified.
+
+## 0.8.0
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Minor changes
+
+- Add index file
+
+### Patches
+
+- Remove unneeded version file
 
 ## 0.7.4
 Mon, 08 Oct 2018 12:24:15 GMT

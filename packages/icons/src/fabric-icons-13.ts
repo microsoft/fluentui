@@ -15,9 +15,23 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-13"`,
-      src: `url('${baseUrl}fabric-icons-13-3151b011.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-13-0b48c801.woff') format('woff')`
     },
     icons: {
+      ClassNotebookLogo32: '\uF486',
+      ClassNotebookLogoFill32: '\uF487',
+      ClassNotebookLogo16: '\uF488',
+      ClassNotebookLogoFill16: '\uF489',
+      ClassNotebookLogoInverse32: '\uF48A',
+      ClassNotebookLogoInverse16: '\uF48B',
+      StaffNotebookLogo32: '\uF48C',
+      StaffNotebookLogoFill32: '\uF48D',
+      StaffNotebookLogo16: '\uF48E',
+      StaffNotebookLogoFill16: '\uF48F',
+      StaffNotebookLogoInverted32: '\uF490',
+      StaffNotebookLogoInverted16: '\uF491',
+      KaizalaLogo: '\uF492',
+      TaskLogo: '\uF493',
       ProtectionCenterLogo32: '\uF494',
       GallatinLogo: '\uF496',
       Globe2: '\uF49A',
@@ -31,6 +45,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Chopsticks: '\uF4A2',
       SyncOccurence: '\uF4A3',
       UnsyncOccurence: '\uF4A4',
+      GIF: '\uF4A9',
       PrimaryCalendar: '\uF4AE',
       SearchCalendar: '\uF4AF',
       VideoOff: '\uF4B0',
@@ -102,22 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       PaddingLeft: '\uF51B',
       PaddingRight: '\uF51C',
       NavigationFlipper: '\uF51D',
-      AlignJustify: '\uF51E',
-      TextOverflow: '\uF51F',
-      VisualsFolder: '\uF520',
-      VisualsStore: '\uF521',
-      PictureCenter: '\uF522',
-      PictureFill: '\uF523',
-      PicturePosition: '\uF524',
-      PictureStretch: '\uF525',
-      PictureTile: '\uF526',
-      Slider: '\uF527',
-      SliderHandleSize: '\uF528',
-      DefaultRatio: '\uF529',
-      NumberSequence: '\uF52A',
-      GUID: '\uF52B',
-      ReportAdd: '\uF52C',
-      DashboardAdd: '\uF52D'
+      AlignJustify: '\uF51E'
     }
   };
 

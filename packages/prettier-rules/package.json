@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/prettier-rules",
-  "version": "1.0.0",
-  "description": "Shared Prettier rules",
+  "version": "1.0.1",
+  "description": "Shared Prettier rules for UI Fabric projects",
   "main": "prettier.config.js",
   "scripts": {
     "clean": "",

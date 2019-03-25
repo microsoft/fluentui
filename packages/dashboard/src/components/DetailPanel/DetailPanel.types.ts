@@ -77,6 +77,21 @@ export interface IDetailPanelHeaderProps {
    * Status string
    */
   status?: string;
+
+  /**
+   * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
+   */
+  imageUrl?: string;
+  /**
+   * Alt text for the image to use. Defaults to an empty string.
+   */
+  imageAlt?: string;
+
+  /**
+   * The user's initials to display in the image area when there is no image.
+   * @defaultvalue [Derived from title]
+   */
+  imageInitials?: string;
 }
 
 export interface IDetailPanelLoadingProps {
@@ -106,6 +121,11 @@ export interface IDetailPanelMessageBannerProps {
    * On dismiss action callback
    */
   onDismissAction?: FunctionCallback<void>;
+
+  /**
+   * force this message show on global
+   */
+  forceGlobal?: boolean;
 }
 
 export interface IDetailPanelBaseProps {
@@ -125,6 +145,14 @@ export interface IDetailPanelBaseProps {
    * Reject with @type {IDetailPanelErrorResult} to set the error state message bar
    */
   onRefresh?: FunctionCallback<void>;
+  /**
+   * tooltip for refresh icon
+   */
+  refreshTooltip?: string;
+  /**
+   * tooltip for close icon
+   */
+  closeTooltip?: string;
 
   /**
    * Call back on getting the customized loading animation to override the default
@@ -136,7 +164,7 @@ export interface IDetailPanelBaseProps {
   /**
    * Main content header props
    */
-  mainHeader: IDetailPanelHeaderProps;
+  mainHeader: IDetailPanelHeaderProps | JSX.Element;
 
   /**
    * Content to display in the main area
@@ -156,9 +184,14 @@ export interface IDetailPanelBaseProps {
   currentL2Id?: string | number;
 
   /**
+   * Set the global message bar
+   */
+  globalMessageBanner?: IDetailPanelMessageBannerProps;
+
+  /**
    * On Get the L2 header props
    */
-  onGetL2Header?: (l2Id: string | number) => IDetailPanelHeaderProps;
+  onGetL2Header?: (l2Id: string | number) => IDetailPanelHeaderProps | JSX.Element;
 
   /**
    * On Get the L2 content element call back
@@ -180,6 +213,11 @@ export interface IDetailPanelBaseProps {
    * Callback on close the detail panel
    */
   onDetailPanelDimiss?: () => void;
+
+  /**
+   * On pivot link click
+   */
+  onPivotLinkClick?: (key: string) => void;
 }
 
 export interface IBaseContainerExtendProps {
@@ -223,12 +261,17 @@ export interface IBaseContainerProps extends IBaseContainerExtendProps {
   /**
    * Main content header props
    */
-  header?: IDetailPanelHeaderProps;
+  header?: IDetailPanelHeaderProps | JSX.Element;
 
   /**
    * Message banner settings
    */
   messageBanner?: IDetailPanelMessageBannerProps;
+
+  /**
+   * Set the global message bar
+   */
+  globalMessageBanner?: IDetailPanelMessageBannerProps;
 
   /**
    * Loading element
@@ -249,6 +292,14 @@ export interface IBaseContainerProps extends IBaseContainerExtendProps {
    * Footer to display if any
    */
   actionBar?: IDetailPanelActionBarProps;
+  /**
+   * tooltip for refresh icon
+   */
+  refreshTooltip?: string;
+  /**
+   * tooltip for close icon
+   */
+  closeTooltip?: string;
 
   /**
    * On dismiss the detail panel
@@ -401,6 +452,11 @@ export interface IDetailPanelPivotItemProps {
    * Action bar setting for current pivot item
    */
   actionBar?: IDetailPanelActionBarProps;
+
+  /**
+   * Message banner show inside pivot item
+   */
+  messageBanner?: IDetailPanelMessageBannerProps;
 }
 
 export interface IDetailPanelPivotBodyItem extends IDetailPanelPivotItemProps {
@@ -425,6 +481,11 @@ export interface IDetailPanelPivotBodyProps {
    * Pivot items
    */
   items: IDetailPanelPivotBodyItem[];
+
+  /**
+   * Message banner show inside pivot item
+   */
+  messageBanner?: IDetailPanelMessageBannerProps;
 }
 
 export interface IDetailPanelConfirmationStatusText {

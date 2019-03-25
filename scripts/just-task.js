@@ -12,7 +12,6 @@ const { ts } = require('./tasks/ts');
 const { tslint } = require('./tasks/tslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
-const buildCodepenExamples = require('./tasks/build-codepen-examples');
 const lintImports = require('./tasks/lint-imports');
 const prettier = require('./tasks/prettier');
 const bundleSizeCollect = require('./tasks/bundle-size-collect');
@@ -30,6 +29,9 @@ option('prdeploy');
 
 option('webpackConfig', { alias: 'w' });
 
+// Build only commonjs (not other TS variants) but still run other tasks
+option('commonjs');
+
 registerTask('clean', clean);
 registerTask('copy', copy);
 registerTask('jest', jest);
@@ -44,7 +46,6 @@ registerTask('webpack', webpack);
 registerTask('webpack-dev-server', webpackDevServer);
 registerTask('verify-api-extractor', verifyApiExtractor);
 registerTask('update-api-extractor', updateApiExtractor);
-registerTask('build-codepen-examples', buildCodepenExamples);
 registerTask('lint-imports', lintImports);
 registerTask('prettier', prettier);
 registerTask('bundle-size-collect', bundleSizeCollect);
@@ -63,8 +64,7 @@ task(
       condition('tslint', () => !argv().min && !argv().prdeploy),
       condition('jest', () => !argv().min && !argv().prdeploy),
       series(
-        'ts',
-        'build-codepen-examples',
+        argv().commonjs ? 'ts:commonjs-only' : 'ts',
         condition('lint-imports', () => !argv().min && !argv().prdeploy),
         parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
       )
@@ -78,7 +78,7 @@ task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
-task('dev', series('clean', 'copy', 'sass', 'build-codepen-examples', 'webpack-dev-server'));
+task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
 // Utility functions
 

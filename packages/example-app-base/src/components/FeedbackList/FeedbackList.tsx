@@ -46,22 +46,24 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
   }
 
   public async getIssues(url: string): Promise<IListItem[]> {
-    let issueList: IListItem[] = [];
-
     const response = await fetch(url);
     const responseText = await response.text();
 
     const myObj = JSON.parse(responseText);
-    for (let i = 0; i < myObj.total_count; i++) {
-      let dateCreated = new Date(myObj.items[i].created_at);
-      let openedOn = relativeDates(dateCreated, new Date());
-      issueList.push({
-        issueTitle: myObj.items[i].title,
-        issueNum: myObj.items[i].number,
+    const { items = [] } = myObj;
+
+    // Intentionally render the first 30 issues until pagination support is added for
+    // https://github.com/OfficeDev/office-ui-fabric-react/issues/8284
+    return items.map((item: { created_at: string; title: string; number: number }) => {
+      const dateCreated = new Date(item.created_at);
+      const openedOn = relativeDates(dateCreated, new Date());
+
+      return {
+        issueTitle: item.title,
+        issueNum: item.number,
         issueCreated: openedOn
-      });
-    }
-    return issueList;
+      };
+    });
   }
 
   public render(): JSX.Element | null {

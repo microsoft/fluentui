@@ -5,6 +5,9 @@ export function addDirectionalKeyCode(which: number): void;
 export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
+export function appendFunction(parent: any, ...functions: (any)[]): () => void;
+
+// @public
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
@@ -175,6 +178,11 @@ class EventGroup {
 }
 
 // @public
+export function extendComponent<T extends React.Component>(parent: T, methods: {
+    [key in keyof T]?: T[key];
+}): void;
+
+// @public
 class FabricPerformance {
   static measure(name: string, func: () => void): void;
   // (undocumented)
@@ -233,7 +241,7 @@ export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLEle
 export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
@@ -251,7 +259,7 @@ export function getLanguage(): string | null;
 export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
@@ -443,6 +451,9 @@ interface IFitContentToBoundsOptions {
 }
 
 // @public
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
+
+// @public
 export function initializeFocusRects(window?: Window): void;
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -588,6 +599,9 @@ export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings |
 // @public
 export function nullRender(): JSX.Element | null;
 
+// @public (undocumented)
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
+
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
 
@@ -596,6 +610,9 @@ export function precisionRound(value: number, precision: number, base?: number):
 
 // @public @deprecated (undocumented)
 export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
+
+// @public
+export function raiseClick(target: Element): void;
 
 // @public
 class Rectangle {
@@ -657,7 +674,7 @@ export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): (props: TComponentProps) => JSX.Element;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
 
 // @public
 export function toMatrix<T>(items: T[], columnCount: number): T[][];
