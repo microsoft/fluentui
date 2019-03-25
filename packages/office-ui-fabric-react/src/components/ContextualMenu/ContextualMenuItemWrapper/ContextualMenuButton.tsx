@@ -35,14 +35,14 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     const itemHasSubmenu = hasSubmenu(item);
     const { itemProps, ariaLabel } = item;
 
-    const buttonNativeProperties = getNativeProps<React.AllHTMLAttributes<HTMLButtonElement>>(item, buttonProperties);
+    const buttonNativeProperties = getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(item, buttonProperties);
     // Do not add the disabled attribute to the button so that it is focusable
     delete buttonNativeProperties.disabled;
 
     const itemButtonProperties = {
       className: classNames.root,
       onClick: this._onItemClick,
-      onKeyDown: itemHasSubmenu ? this._onItemKeyDown : null,
+      onKeyDown: itemHasSubmenu ? this._onItemKeyDown : undefined,
       onMouseEnter: this._onItemMouseEnter,
       onMouseLeave: this._onItemMouseLeave,
       onMouseDown: (ev: React.MouseEvent<HTMLButtonElement>) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
