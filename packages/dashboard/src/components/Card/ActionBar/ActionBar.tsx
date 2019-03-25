@@ -48,6 +48,7 @@ export class ActionBar extends React.Component<IActionBarProps, {}> {
   private _onRenderData = (data: IOverflowSetItemProps): JSX.Element => {
     return (
       <OverflowSet
+        focusZoneProps={this.props.focusZoneProps}
         items={data.primary}
         overflowItems={data.overflow}
         onRenderItem={this._renderButton}

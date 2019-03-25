@@ -21,7 +21,6 @@ export class TextFieldMultilineExample extends React.Component<any, IState> {
         <TextField label="Standard" multiline rows={4} />
         <TextField label="Disabled" multiline rows={4} disabled={true} value={this._lorem} />
         <TextField label="Required" multiline rows={4} required={true} />
-        <TextField label="With error message" multiline rows={4} errorMessage="This is an error message." />
         <TextField label="Non-resizable" multiline resizable={false} />
         <TextField label="With auto adjusting height" multiline autoAdjustHeight />
         <TextField

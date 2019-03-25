@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix typing on BaseSelectedItemList.removeItem",
+      "comment": "FloatingPicker: Change width to min-width for Suggestions",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mhuan13@gmail.com"
+  "email": "afhassan@microsoft.com"
 }
