@@ -105,7 +105,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   ) {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem, onItemClick } = this.props;
 
-    const itemProps = {
+    const itemProps: IContextualMenuItem = {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
       name: item.name,
@@ -117,7 +117,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       iconProps: item.iconProps,
       'data-is-focusable': false,
       'aria-hidden': true
-    } as IContextualMenuItem;
+    };
 
     const { itemProps: itemComponentProps } = item;
 
@@ -151,7 +151,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       dismissMenu
     } = this.props;
 
-    const itemProps = {
+    const itemProps: IContextualMenuItem = {
       onClick: this._onIconItemClick,
       disabled: isItemDisabled(item),
       className: classNames.splitMenu,
@@ -159,12 +159,12 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       submenuIconProps: item.submenuIconProps,
       split: true,
       key: item.key
-    } as IContextualMenuItem;
+    };
 
-    const buttonProps = assign({}, getNativeProps(itemProps, buttonProperties), {
+    const buttonProps = assign({}, getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(itemProps, buttonProperties), {
       onMouseEnter: this._onItemMouseEnterIcon,
       onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
-      onMouseDown: (ev: any) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
+      onMouseDown: (ev: React.MouseEvent<HTMLButtonElement>) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
       onMouseMove: this._onItemMouseMoveIcon,
       'data-is-focusable': false,
       'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target'],
