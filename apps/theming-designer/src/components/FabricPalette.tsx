@@ -1,20 +1,15 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-import {
-  ThemeGenerator,
-  themeRulesStandardCreator,
-  BaseSlots,
-  FabricSlots,
-  IThemeSlotRule,
-  IThemeRules
-} from 'office-ui-fabric-react/lib/ThemeGenerator';
+//import { mergeStyles } from '@uifabric/merge-styles';
+import { FabricSlots, IThemeSlotRule, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { IPalette, ISemanticColors, loadTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IPalette {
-  themeRules: IThemeRules;
+export interface FabricPaletteProps {
+  theme: ITheme;
 }
 
-export class Palette extends React.Component<{}, IPalette> {
-  render() {
+export class FabricPalette extends React.Component<FabricPaletteProps, {}> {
+  public render() {
     return (
       <Card styles={{ root: { width: '800px', height: 'auto' } }}>
         <h1>Fabric Palette</h1>
@@ -27,7 +22,7 @@ export class Palette extends React.Component<{}, IPalette> {
             <th>BACKGROUND</th>
             <th>HEX</th>
           </tr>
-          <tr>
+          {/* <tr>
             <td>{this._fabricSlotWidget(FabricSlots.themeDarker)}</td>
             <td>{'#004578'}</td>
             <td>{this._fabricSlotWidget(FabricSlots.black)}</td>
@@ -58,42 +53,33 @@ export class Palette extends React.Component<{}, IPalette> {
           </tr>
           <tr>
             <td>{this._fabricSlotWidget(FabricSlots.themeLighterAlt)}</td>
-          </tr>
+          </tr> */}
         </table>
       </Card>
     );
   }
 
-  constructor(props: {}) {
-    super(props);
-    const themeRules = themeRulesStandardCreator();
-    // ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
-    this.state = {
-      themeRules: themeRules
-    };
-  }
+  // private _slotWidget = (slotRule: IThemeSlotRule): JSX.Element => {
+  //   return (
+  //     <div key={slotRule.name} className="ms-themer-slot">
+  //       {this._colorSquareSwatchWidget(slotRule)}
+  //       <div>
+  //         <div>{slotRule.name}</div>
+  //         {!slotRule.isCustomized ? <div>Inherits from: {slotRule.inherits!.name}</div> : <div>Customized</div>}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
-  private _slotWidget = (slotRule: IThemeSlotRule): JSX.Element => {
-    //console.log('HIIIIII + ', slotRule);
-    return (
-      <div key={slotRule.name} className="ms-themer-slot">
-        {this._colorSquareSwatchWidget(slotRule)}
-        <div>
-          <div>{slotRule.name}</div>
-          {!slotRule.isCustomized ? <div>Inherits from: {slotRule.inherits!.name}</div> : <div>Customized</div>}
-        </div>
-      </div>
-    );
-  };
-
-  private _fabricSlotWidget = (fabricSlot: FabricSlots): JSX.Element => {
-    return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
-  };
+  // private _fabricSlotWidget = (fabricSlot: FabricSlots): JSX.Element => {
+  //   return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
+  // };
 
   private _colorSquareSwatchWidget(slotRule: IThemeSlotRule): JSX.Element {
-    //console.log('HIIIIII222222 + ', slotRule);
     if (slotRule.color) {
-      return <div key={slotRule.name} className="ms-themer-swatch" style={{ backgroundColor: slotRule.color.str }} />;
+      // const colorSquareBkgColor = mergeStyles({ backgroundColor: slotRule.color.str });
+      // return <div key={slotRule.name} className={colorSquareBkgColor} />;
+      return <div key={slotRule.name} className="ms-themer-swatch" style={{ backgroundColor: slotRule.color!.str }} />;
     } else {
       return <div className="Element" />;
     }

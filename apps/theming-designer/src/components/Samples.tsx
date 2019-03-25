@@ -15,7 +15,7 @@ import {
 } from '../../../../packages/office-ui-fabric-react/lib';
 
 export class Samples extends React.Component {
-  render() {
+  public render() {
     return (
       <Card styles={{ root: { width: '800px', height: 'auto' } }}>
         <h1>Samples</h1>
@@ -111,12 +111,12 @@ export class Samples extends React.Component {
               label="Enabled and checked"
               onText="On"
               offText="Off"
-              onFocus={() => console.log('onFocus called')}
-              onBlur={() => console.log('onBlur called')}
+              // onFocus={() => console.log('onFocus called')}
+              // onBlur={() => console.log('onBlur called')}
               onChange={this._onToggleChange}
             />
             <SamplesCardHeader label="CHECKBOX" />
-            <Checkbox label="Standard checkbox" onChange={() => this._onCheckboxChange} />
+            <Checkbox label="Standard checkbox" onChange={this._onCheckboxChange} />
             <SamplesCardHeader label="RADIO BUTTON" />
           </Stack>
         </Stack>
@@ -126,7 +126,7 @@ export class Samples extends React.Component {
   private _onToggleChange(ev: React.MouseEvent<HTMLElement>, checked: boolean | undefined) {
     console.log('toggle is ' + (checked ? 'checked' : 'not checked'));
   }
-  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
-    console.log(`The option has been changed to ${isChecked}.`);
+  private _onCheckboxChange(ev?: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked?: boolean | undefined) {
+    console.log(`The option has been changed to ${checked}.`);
   }
 }

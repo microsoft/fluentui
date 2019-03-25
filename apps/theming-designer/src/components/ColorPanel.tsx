@@ -29,6 +29,15 @@ export class ColorPanel extends React.Component<IColorPanelProps, IColorPanelSta
       backgroundColor: '#323130'
     };
   }
+  public handlePrimaryColorChange = (event: any, newVal: string | undefined) => {
+    this.setState({ primaryColor: newVal });
+  };
+  public handleTextColorChange = (event: any, newVal: string | undefined) => {
+    this.setState({ textColor: newVal });
+  };
+  public handleBackgroundColorChange = (event: any, newVal: string | undefined) => {
+    this.setState({ backgroundColor: newVal });
+  };
   public render(): JSX.Element {
     return (
       <Card styles={{ root: { width: '300px', height: 'auto' } }}>
@@ -42,20 +51,12 @@ export class ColorPanel extends React.Component<IColorPanelProps, IColorPanelSta
             ariaLabel="Theme dropdown"
             options={[{ key: 'light', text: 'Light theme' }, { key: 'dark', text: 'Dark theme' }]}
           /> */}
-          <ThemeDesignerColorPicker
-            label={'Primary Color'}
-            value={this.state.primaryColor}
-            onChange={(v: string) => this.setState({ primaryColor: v })}
-          />
-          <ThemeDesignerColorPicker
-            label={'Text Color'}
-            value={this.state.textColor}
-            onChange={(v: string) => this.setState({ textColor: v })}
-          />
+          <ThemeDesignerColorPicker label={'Primary Color'} value={this.state.primaryColor} onChange={this.handlePrimaryColorChange} />
+          <ThemeDesignerColorPicker label={'Text Color'} value={this.state.textColor} onChange={this.handleTextColorChange} />
           <ThemeDesignerColorPicker
             label={'Background Color'}
             value={this.state.backgroundColor}
-            onChange={(v: string) => this.setState({ backgroundColor: v })}
+            onChange={this.handleBackgroundColorChange}
           />
         </Stack>
       </Card>

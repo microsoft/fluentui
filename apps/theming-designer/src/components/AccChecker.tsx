@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-//import { ColorsPage } from '@uifabric/fabric-website-resources/lib/components/pages/ColorsPage';
+// import { ColorsPage } from '@uifabric/fabric-website-resources/lib/components/pages/ColorsPage';
 
 export class AccChecker extends React.Component {
-  render() {
+  public render() {
     return (
       <Card styles={{ root: { width: '800px' } }}>
         <h1>Accessibility Checker</h1>
