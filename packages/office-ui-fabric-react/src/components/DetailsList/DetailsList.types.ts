@@ -13,6 +13,7 @@ import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import { IGroupHeaderCheckboxProps } from '../GroupedList/GroupHeader.types';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
@@ -194,7 +195,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * If provided, can be used to render a custom checkbox
    */
-  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+  onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
@@ -641,3 +642,5 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 }
 
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps, IGroupHeaderCheckboxProps {}

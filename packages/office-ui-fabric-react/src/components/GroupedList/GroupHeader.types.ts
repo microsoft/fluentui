@@ -1,4 +1,4 @@
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { IStyle } from '../../Styling';
 
@@ -18,6 +18,9 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
 
   /** Native props for the GroupHeader select all button */
   selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /** If provided, can be used to render a custom checkbox */
+  onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
 }
 
 export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> &
@@ -38,4 +41,8 @@ export interface IGroupHeaderStyles {
   expand: IStyle;
   expandIsCollapsed: IStyle;
   title: IStyle;
+}
+
+export interface IGroupHeaderCheckboxProps {
+  checked: boolean;
 }
