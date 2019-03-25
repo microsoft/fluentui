@@ -55,7 +55,7 @@ function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
   for (let [package, files] of fileEntries) {
     const tslintConfig = path.join(path.resolve(__dirname, '..', '..'), package, 'tslint.json');
     let filteredFiles = files.filter(f => {
-      return !f.endsWith('.api.ts');
+      return !f.endsWith('.api.md');
     });
 
     if (filteredFiles.length === 0) {

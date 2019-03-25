@@ -884,8 +884,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
    * which will measure the column cells of all the active rows and resize the
    * column to the max cell width.
    *
-   * @param column - (double clicked column definition)
-   * @param columnIndex - (double clicked column index)
+   * @param column - double clicked column definition
+   * @param columnIndex - double clicked column index
    * TODO: min width 100 should be changed to const value and should be consistent with the
    * value used on _onSizerMove method in DetailsHeader
    */
