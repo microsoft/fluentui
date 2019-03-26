@@ -13,8 +13,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "outDir": "lib",
-    "lib": ["es2017", "dom"],
-    "types": ["webpack-env", "jest"]
+    "lib": ["es5", "dom"],
+    "types": ["webpack-env", "jest", "es6-promise"]
   },
   "include": ["src"]
 }

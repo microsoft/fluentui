@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Remove IE 11-incompatible constructs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "elcraig@microsoft.com"
+}

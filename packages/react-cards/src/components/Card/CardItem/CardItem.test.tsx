@@ -9,7 +9,7 @@ import { CardItemStyles } from './CardItem.styles';
 import { ICardItemProps, ICardItemTokens, ICardItemStyles } from './CardItem.types';
 
 import { IStylesFunction } from '@uifabric/foundation';
-import { createTheme } from 'office-ui-fabric-react';
+import { createTheme, find } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({});
 
@@ -67,9 +67,9 @@ describe('Card Item', () => {
     expect(cardStyles).toBeInstanceOf(Array);
     expect(cardItemStylesArray).toBeInstanceOf(Array);
 
-    const cardPadding = (cardStyles as Array<any>).find(style => style.padding).padding;
+    const cardPadding = find(cardStyles as Array<any>, style => style.padding).padding;
 
-    const cardItemStyles = (cardItemStylesArray as Array<any>).find(style => style.marginLeft || style.marginRight);
+    const cardItemStyles = find(cardItemStylesArray as Array<any>, style => style.marginLeft || style.marginRight);
     const cardItemMarginLeft = cardItemStyles.marginLeft;
     const cardItemMarginRight = cardItemStyles.marginRight;
 
