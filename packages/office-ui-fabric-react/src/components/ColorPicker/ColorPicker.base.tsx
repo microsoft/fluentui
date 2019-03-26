@@ -4,7 +4,12 @@ import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPi
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
-import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH } from '../../utilities/color/colors';
+import { IColor } from '../../utilities/color/interfaces';
+import { MAX_COLOR_HUE } from '../../utilities/color/consts';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
+import { getColorFromRGBA } from '../../utilities/color/getColorFromRGBA';
+import { updateA } from '../../utilities/color/updateA';
+import { updateH } from '../../utilities/color/updateH';
 
 type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 

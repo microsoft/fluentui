@@ -11,7 +11,7 @@ export interface IPropertiesTableSetState {
 export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps, IPropertiesTableSetState> {
   constructor(props: IPropertiesTableSetProps) {
     super(props);
-    let { componentName, componentPath, sources } = props;
+    const { componentName, componentPath, sources } = props;
     let src: string;
     let properties: IProperty[] = [];
 
