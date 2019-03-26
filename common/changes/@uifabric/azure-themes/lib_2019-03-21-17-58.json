@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/react-cards",
+      "packageName": "@uifabric/azure-themes",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/react-cards",
+  "packageName": "@uifabric/azure-themes",
   "email": "elcraig@microsoft.com"
 }

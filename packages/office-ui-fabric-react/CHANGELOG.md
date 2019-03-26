@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 25 Mar 2019 12:33:48 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Mar 2019 12:32:51 GMT and should not be manually modified.
+
+## 6.161.0
+Tue, 26 Mar 2019 12:32:51 GMT
+
+### Minor changes
+
+- Remove IE 11-incompatible constructs
+
+### Patches
+
+- FloatingPicker: Change width to min-width for Suggestions
+- ContextualMenu: Improve typings and remove unnecessary casts
 
 ## 6.160.0
 Mon, 25 Mar 2019 12:33:48 GMT

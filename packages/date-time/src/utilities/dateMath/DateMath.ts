@@ -189,7 +189,7 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
     if (dateRangeType !== DateRangeType.WorkWeek) {
       // push all days not in work week view
       datesArray.push(nextDate);
-    } else if (workWeekDays.includes(nextDate.getDay())) {
+    } else if (workWeekDays.indexOf(nextDate.getDay()) !== -1) {
       datesArray.push(nextDate);
     }
     nextDate = addDays(nextDate, 1);

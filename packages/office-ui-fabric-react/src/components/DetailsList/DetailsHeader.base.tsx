@@ -97,11 +97,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     this._onRootRef = this._onRootRef.bind(this);
     this._isEventOnHeader = this._isEventOnHeader.bind(this);
     this._onDropIndexInfo = {
-      sourceIndex: Number.MIN_SAFE_INTEGER,
-      targetIndex: Number.MIN_SAFE_INTEGER
+      sourceIndex: -1,
+      targetIndex: -1
     };
     this._id = getId('header');
-    this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
+    this._currentDropHintIndex = -1;
   }
 
   public componentDidMount(): void {
@@ -136,8 +136,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const { columns = NO_COLUMNS } = this.props;
       if (previousColumns[this._onDropIndexInfo.sourceIndex].key === columns[this._onDropIndexInfo.targetIndex].key) {
         this._onDropIndexInfo = {
-          sourceIndex: Number.MIN_SAFE_INTEGER,
-          targetIndex: Number.MIN_SAFE_INTEGER
+          sourceIndex: -1,
+          targetIndex: -1
         };
       }
     }
@@ -347,7 +347,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   }
 
   private _isValidCurrentDropHintIndex() {
-    return this._currentDropHintIndex! >= 0;
+    return this._currentDropHintIndex >= 0;
   }
 
   private _onDragOver(item: any, event: DragEvent): void {
@@ -363,15 +363,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     // Target index will not get changed if draggeditem is after target item.
     if (this._draggedColumnIndex >= 0 && event) {
       const targetIndex =
-        this._draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
-      let isValidDrop = false;
+        this._draggedColumnIndex > this._currentDropHintIndex ? this._currentDropHintIndex : this._currentDropHintIndex - 1;
+      const isValidDrop = this._isValidCurrentDropHintIndex();
       event.stopPropagation();
-      if (this._isValidCurrentDropHintIndex()) {
-        isValidDrop = true;
+      if (isValidDrop) {
         this._onDropIndexInfo.sourceIndex = this._draggedColumnIndex;
         this._onDropIndexInfo.targetIndex = targetIndex;
-      }
-      if (isValidDrop) {
+
         if (columnReorderProps && columnReorderProps.onColumnDrop) {
           const dragDropDetails: IColumnDragDropDetails = {
             draggedIndex: this._draggedColumnIndex,
@@ -422,7 +420,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   private _resetDropHints(): void {
     if (this._currentDropHintIndex >= 0) {
       this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'none');
-      this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
+      this._currentDropHintIndex = -1;
     }
   }
 
@@ -494,7 +492,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const clientRect = this._rootElement.getBoundingClientRect();
       const headerOriginX = clientRect.left;
       const eventXRelativePosition = clientX - headerOriginX;
-      const currentDropHintIndex = this._currentDropHintIndex!;
+      const currentDropHintIndex = this._currentDropHintIndex;
       if (this._isValidCurrentDropHintIndex()) {
         if (
           this._liesBetween(
