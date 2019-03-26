@@ -9,7 +9,7 @@ import { wizardAnimationDurationMilliSec } from './Wizard.animation';
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
 /** Component for Wizard Base */
-export class WizardBase extends React.PureComponent<IWizardProps, {}> {
+export class WizardBase extends React.Component<IWizardProps, {}> {
   private lastStepIndexShown: number;
 
   constructor(props: IWizardProps) {
