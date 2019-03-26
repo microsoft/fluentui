@@ -4,16 +4,11 @@ import {
   css,
   Customizer,
   Dropdown,
-  getThemedContext,
-  ICustomizerContext,
-  ICustomizerProps,
   IDropdownOption,
   IDropdownStyles,
   ISchemeNames,
-  IStackComponent,
-  ITheme,
-  IThemeProviderProps,
   Stack,
+  IStackComponent,
   ThemeProvider
 } from 'office-ui-fabric-react';
 import './ExampleCard.scss';
@@ -54,7 +49,6 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
   text: 'Scheme: ' + item
 }));
 
-// tslint:disable-next-line:typedef
 const regionStyles: IStackComponent['styles'] = (props, theme) => ({
   root: {
     backgroundColor: theme.semanticColors.bodyBackground,
@@ -90,15 +84,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
       schemeIndex: 0,
       themeIndex: 0
     };
-
-    this._onToggleCodeClick = this._onToggleCodeClick.bind(this);
   }
 
   public render(): JSX.Element {
     const { title, code, children, isRightAligned = false, isScrollable = true, codepenJS } = this.props;
     const { isCodeVisible, schemeIndex, themeIndex } = this.state;
-
-    const rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -130,7 +120,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           );
 
           const exampleCard = (
-            <div className={rootClass}>
+            <div className={css('ExampleCard', this.state.isCodeVisible && 'is-codeVisible')}>
               <div className="ExampleCard-header">
                 <span className="ExampleCard-title">{title}</span>
                 <div className="ExampleCard-toggleButtons">
@@ -202,9 +192,9 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     this.setState({ themeIndex: value.key as number });
   };
 
-  private _onToggleCodeClick(): void {
+  private _onToggleCodeClick = () => {
     this.setState({
       isCodeVisible: !this.state.isCodeVisible
     });
-  }
+  };
 }

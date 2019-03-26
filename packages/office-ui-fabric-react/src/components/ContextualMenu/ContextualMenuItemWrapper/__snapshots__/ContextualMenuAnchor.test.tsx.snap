@@ -8,7 +8,6 @@ exports[`ContextualMenuButton creates a normal button renders the contextual men
     aria-setsize={1}
     className="root"
     onClick={[Function]}
-    onKeyDown={null}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     onMouseMove={[Function]}
