@@ -4,7 +4,6 @@ const COMMAND_BAR_HEIGHT = 44;
 
 export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
   const { className, theme } = props;
-  const { palette } = theme;
 
   return {
     root: [
