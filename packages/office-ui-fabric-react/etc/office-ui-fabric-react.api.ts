@@ -6919,6 +6919,12 @@ interface IDelayedRenderState {
 }
 
 // @public (undocumented)
+interface IDetailsCheckboxProps {
+  // (undocumented)
+  checked: boolean;
+}
+
+// @public (undocumented)
 interface IDetailsFooterBaseProps extends IDetailsItemProps {
 }
 
@@ -6962,6 +6968,7 @@ interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBas
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
   onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   selectAllVisibility?: SelectAllVisibility;
   styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
@@ -6992,6 +6999,10 @@ interface IDetailsList extends IList {
   focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
   forceUpdate: () => void;
   getStartItemIndexInView: () => number;
+}
+
+// @public (undocumented)
+interface IDetailsListCheckboxProps extends IDetailsCheckboxProps, IGroupHeaderCheckboxProps {
 }
 
 // @public (undocumented)
@@ -7035,6 +7046,7 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   onDidUpdate?: (detailsList?: DetailsListBase) => void;
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
+  onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
@@ -7119,6 +7131,7 @@ interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColu
   itemIndex: number;
   onDidMount?: (row?: DetailsRowBase) => void;
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
   onWillUnmount?: (row?: DetailsRowBase) => void;
   rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
   shimmer?: boolean;
@@ -7138,6 +7151,7 @@ interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
   // @deprecated
   isSelected?: boolean;
   isVisible?: boolean;
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
   selected?: boolean;
   styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
   theme?: ITheme;
@@ -8318,6 +8332,7 @@ interface IGroupFooterStyles {
 interface IGroupHeaderProps extends IGroupDividerProps {
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
   groupedListId?: string;
+  onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
   selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
   styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
 }
