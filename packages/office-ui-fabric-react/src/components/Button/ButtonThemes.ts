@@ -189,7 +189,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: p.themeLighter
+      backgroundColor: p.neutralTertiaryAlt
     },
 
     splitButtonMenuButton: {

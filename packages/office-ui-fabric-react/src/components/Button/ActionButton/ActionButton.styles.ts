@@ -46,7 +46,8 @@ export const getStyles = memoizeFunction(
 
       rootDisabled: {
         color: theme.palette.neutralTertiary,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        border: 'none'
       },
 
       rootChecked: {
