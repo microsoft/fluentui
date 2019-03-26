@@ -47,7 +47,7 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
       opacity: 0.1,
       transform: 'translateY(790px)'
     },
-    stepSlideUpEnterActive: { ...contentSlideUpInAnimation, transform: 'translateY(790px)' },
+    stepSlideUpEnterActive: { ...contentSlideUpInAnimation, transform: 'translateY(790px)', opacity: 0 },
     stepSlideUpExit: {
       opacity: 1,
       transform: 'translateY(-790px)'

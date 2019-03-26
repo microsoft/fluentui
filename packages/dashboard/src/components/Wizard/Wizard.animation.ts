@@ -42,18 +42,15 @@ function _createSlideInY(fromY: number): string {
 
 function _createSlideOutY(toY: number): string {
   return keyframes({
-    from: { transform: `translateY(0px)` },
     to: { transform: `translateY(${toY}px)` }
   });
 }
 
 const FADE_IN: string = keyframes({
-  from: { opacity: 0 },
   to: { opacity: 1 }
 });
 
 const FADE_OUT: string = keyframes({
-  from: { opacity: 1 },
   to: { opacity: 0 }
 });
 
