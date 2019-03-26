@@ -2,18 +2,8 @@ import { AxePuppeteer } from 'axe-puppeteer';
 import * as puppeteer from 'puppeteer';
 
 const OUFR_EXAMPLES_ROOT = 'https://fabricweb.z5.web.core.windows.net/oufr/6.87.0/';
-const COMPONENTS = [
-  {
-    name: 'Button',
-    url: '#/examples/button'
-  },
-  {
-    name: 'TextField',
-    url: '#/examples/textfield'
-  }
-];
 
-async function getAxeReport(subUrl: string) {
+export async function getAxeReport(subUrl: string) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setBypassCSP(true);
@@ -26,12 +16,3 @@ async function getAxeReport(subUrl: string) {
 
   return report;
 }
-
-describe('Axe tests for components', () => {
-  COMPONENTS.forEach(component => {
-    it(`runs Axe on ${component.name}`, async () => {
-      const report = await getAxeReport(component.url);
-      expect(report.violations).toMatchSnapshot('violations');
-    });
-  });
-});
