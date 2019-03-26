@@ -3,20 +3,13 @@ import { IWizardProps, IWizardStyles, IWizardStyleProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
-import { CSSTransition, TransitionGroup, Transition, TransitionStatus } from 'react-transition-group';
+import { TransitionGroup, Transition, TransitionStatus } from 'react-transition-group';
 import { wizardAnimationDurationMilliSec } from './Wizard.animation';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
-// This returns a childFactory to provide to TransitionGroup
-// tslint:disable:no-any
-const childFactoryCreator = (classNames: any) => (child: any) =>
-  React.cloneElement(child, {
-    classNames
-  });
-
 /** Component for Wizard Base */
-export class WizardBase extends React.Component<IWizardProps, {}> {
+export class WizardBase extends React.PureComponent<IWizardProps, { hideScroll: boolean }> {
   private lastStepIndexShown: number;
 
   constructor(props: IWizardProps) {
@@ -24,6 +17,9 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
 
     const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
     this.lastStepIndexShown = wizardStepProps.index!;
+    this.state = {
+      hideScroll: false
+    };
   }
 
   public render(): React.ReactNode {
@@ -52,58 +48,40 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
     const contentSectionKey = 'contentSection-' + wizardStepProps.id;
     const contentTitleKey = 'contentTitle-' + wizardStepProps.id;
     const contentKey = 'content-' + wizardStepProps.id;
-
-    let mainStepTransitionClass;
-    if (wizardStyleProps.clickedForward) {
-      mainStepTransitionClass = {
-        enter: classNames.stepSlideUpEnter,
-        enterActive: classNames.stepSlideUpEnterActive,
-        exit: classNames.stepSlideUpExit,
-        exitActive: classNames.stepSlideUpExitActive
-      };
-    } else {
-      mainStepTransitionClass = {
-        enter: classNames.stepSlideDownEnter,
-        enterActive: classNames.stepSlideDownEnterActive,
-        exit: classNames.stepSlideDownExit,
-        exitActive: classNames.stepSlideDownExitActive
-      };
-    }
-
+    let animationToApply: string;
     return (
       <div className={classNames.wizardContentNavContainer}>
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
-        <div className={classNames.contentSectionContainer}>
-          <TransitionGroup childFactory={childFactoryCreator(mainStepTransitionClass)} component={null}>
-            <Transition timeout={500} key={contentAnimKey + '0'}>
+        <div className={classNames.contentSectionContainer} {...this.state.hideScroll && { style: { overflow: 'hidden' } }}>
+          <TransitionGroup component={null}>
+            <Transition timeout={wizardAnimationDurationMilliSec} key={contentAnimKey}>
               {(state: TransitionStatus) => {
-                console.log(state);
-                if (state === 'entering') {
-                  return <div>entering</div>;
-                } else if (state === 'exiting') {
-                  return <>exiting</>;
-                } else {
-                  return <>resting</>;
+                if (state === 'entering' || state === 'exiting') {
+                  animationToApply = state === 'entering' ? classNames.stepSlideUpEnterActive : classNames.stepSlideUpExitActive;
+                  console.log(animationToApply);
+                  if (!this.state.hideScroll) {
+                    this.setState({ hideScroll: true });
+                  }
+                } else if (state === 'exited') {
+                  if (this.state.hideScroll) {
+                    this.setState({ hideScroll: false });
+                  }
                 }
+                return (
+                  <div key={contentSectionKey} className={classNames.contentSection + ` ${animationToApply}`}>
+                    {state}
+                    <div key={contentTitleKey} className={classNames.contentTitle}>
+                      {wizardStepProps.wizardContent!.contentTitleElement}
+                    </div>
+                    <div key={contentKey} className={classNames.content}>
+                      {wizardStepProps.wizardContent!.content}
+                    </div>
+                  </div>
+                );
               }}
             </Transition>
-            <CSSTransition
-              key={contentAnimKey}
-              className={classNames.contentSection}
-              classNames={mainStepTransitionClass}
-              timeout={wizardAnimationDurationMilliSec}
-            >
-              <div key={contentSectionKey}>
-                <div key={contentTitleKey} className={classNames.contentTitle}>
-                  {wizardStepProps.wizardContent!.contentTitleElement}
-                </div>
-                <div key={contentKey} className={classNames.content}>
-                  {wizardStepProps.wizardContent!.content}
-                </div>
-              </div>
-            </CSSTransition>
           </TransitionGroup>
         </div>
       </div>
