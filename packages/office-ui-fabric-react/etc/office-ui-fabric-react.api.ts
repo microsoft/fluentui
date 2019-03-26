@@ -546,7 +546,7 @@ class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
 // @public (undocumented)
-class CheckBase extends BaseComponent<ICheckProps, {}> {
+class CheckBase extends React.PureComponent<ICheckProps, {}> {
   // (undocumented)
   static defaultProps: ICheckProps;
   // (undocumented)
@@ -556,7 +556,7 @@ class CheckBase extends BaseComponent<ICheckProps, {}> {
 }
 
 // @public (undocumented)
-class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState>, implements ICheckbox {
+class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState>, implements ICheckbox {
   constructor(props: ICheckboxProps, context?: any);
   // (undocumented)
   readonly checked: boolean;
@@ -577,7 +577,7 @@ enum CheckboxVisibility {
 }
 
 // @public (undocumented)
-class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
+class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
   readonly checkedOption: IChoiceGroupOption | undefined;
   // (undocumented)
@@ -971,7 +971,7 @@ class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetailsRowStat
 }
 
 // @public (undocumented)
-class DialogBase extends BaseComponent<IDialogProps, {}> {
+class DialogBase extends React.Component<IDialogProps, {}> {
   constructor(props: IDialogProps);
   // (undocumented)
   static defaultProps: IDialogProps;
@@ -11670,7 +11670,7 @@ export function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
 
 // @public (undocumented)
-class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState>, implements ITextField {
+class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState>, implements ITextField {
   constructor(props: ITextFieldProps);
   protected _skipComponentRefResolution: boolean;
   // (undocumented)
@@ -12879,7 +12879,7 @@ class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITea
 }
 
 // @public (undocumented)
-class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState>, implements ITextField {
+class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState>, implements ITextField {
   constructor(props: ITextFieldProps);
   blur(): void;
   // (undocumented)
