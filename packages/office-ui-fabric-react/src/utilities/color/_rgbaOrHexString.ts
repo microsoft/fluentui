@@ -1,6 +1,7 @@
 import { MAX_COLOR_ALPHA } from './consts';
 
 /**
+ * @internal
  * Get a CSS color string from some color components.
  * If `a` is specified and not 100, returns an `rgba()` string.
  * Otherwise returns `hex` prefixed with #.
