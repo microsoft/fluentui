@@ -592,6 +592,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -612,7 +613,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -682,6 +683,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -828,6 +830,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -848,7 +851,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -918,6 +921,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -1066,6 +1070,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -1086,7 +1091,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -1156,6 +1161,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;

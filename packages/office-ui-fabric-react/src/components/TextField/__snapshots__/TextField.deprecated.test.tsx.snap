@@ -67,6 +67,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;

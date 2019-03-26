@@ -15,20 +15,11 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es5", "dom"],
     "paths": {
-      "@uifabric/fluent-theme/lib/*": [
-        "./src/*"
-      ],
-      "@uifabric/fluent-theme": [
-        "./src"
-      ]
+      "@uifabric/fluent-theme/lib/*": ["./src/*"],
+      "@uifabric/fluent-theme": ["./src"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

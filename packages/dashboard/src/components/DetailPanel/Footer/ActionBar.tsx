@@ -54,7 +54,7 @@ const actionBar: React.FunctionComponent<DetailPanelActionBarProps> = (props: De
       .catch((err: IDetailPanelErrorResult) => {
         if (err) {
           // set message banner
-          const messageBannerSetting = Object.assign({}, err.messageBannerSetting);
+          const messageBannerSetting = { ...err.messageBannerSetting };
           if (messageBannerSetting.messageType === undefined) {
             messageBannerSetting.messageType = MessageBarType.error;
           }

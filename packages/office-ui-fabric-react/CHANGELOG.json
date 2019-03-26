@@ -2,6 +2,164 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.161.0",
+      "tag": "office-ui-fabric-react_v6.161.0",
+      "date": "Tue, 26 Mar 2019 12:32:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FloatingPicker: Change width to min-width for Suggestions",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "ae66c05a20ddf23c37fd92a1d3528815e15cc45c"
+          },
+          {
+            "comment": "ContextualMenu: Improve typings and remove unnecessary casts",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "f771113af8dd5a70a3d023616a707b7b2a3620e3"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Remove IE 11-incompatible constructs",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "91c57199029cb06ab7dce676a00f35bdd5537d1f"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.160.0",
+      "tag": "office-ui-fabric-react_v6.160.0",
+      "date": "Mon, 25 Mar 2019 12:33:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: focus alignment is now reset when first receiving focus (programatically or via `defaultActiveElement`.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6fc1ee4b638b772f0ecab2cfd6dd7a2b0676a1fc"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "GroupSpacer: Reduce render calls by refactoring styled HOC to React.SFC",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "03b32b4d254b83d7b808d09bacc062f3aa64f01f"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.159.1",
+      "tag": "office-ui-fabric-react_v6.159.1",
+      "date": "Fri, 22 Mar 2019 12:34:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ColorPicker: Showing picked color in high contrast mode.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "e65b3810ae2e9e7e8694ce675a13556e4bc52f0f"
+          },
+          {
+            "comment": "List: Avoid setting role to list in case of empty list",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "cceaac25065de3d47746a4cb48dc90a65d9be525"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.159.0",
+      "tag": "office-ui-fabric-react_v6.159.0",
+      "date": "Fri, 22 Mar 2019 02:41:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Calendar: Fixing typo is scss.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "a74b66a24a02715e3f2646ee6e030cbfcd6293e0"
+          },
+          {
+            "comment": "Add shouldComponentUpdate to ContextualMenuItems to ensure items are only updated when needed.",
+            "author": "David De La Brena <36862912+ddlbrena@users.noreply.github.com>",
+            "commit": "6ffcb9cce4912c787b7d43a6d95ddddc0e782b96"
+          },
+          {
+            "comment": "Pivot did not support PivotItems used in JSX-expressions (e.g. {this.state.something && <PivotItem ...>}. I fixed this functionality and added a simple test case.",
+            "author": "Sebastian Mattar <sebastian.mattar@gmail.com>",
+            "commit": "b83ea2f71e5f25575dcb49cc020c972ec74a98c8"
+          },
+          {
+            "comment": "Fix focus zone virtual parent focus restoration",
+            "author": "Dalimil Hajek <dalimilhajek@gmail.com>",
+            "commit": "e4155b751a1faab95ec60bf37dc8c87666497ee7"
+          },
+          {
+            "comment": "FocusZone: minor performance tweak to have a single capture keydown handler, rather than one per outer zone instance.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2e3ed4f9d1d22889a370c0b084b49a46edd56b56"
+          },
+          {
+            "comment": "Fixing componentURL to point to correct url.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "9c2d6ebab2dd271d5f3a13539593a99c3f1ef2dd"
+          },
+          {
+            "comment": "Popup: Revert change to find active element within iframe",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "71d310d914a3f9cccaec1797e7774be9700688e8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dialog: changing type of `title` prop to allow JSX to be injected.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "095aeea84006782f71ca41296ccc2c19cf1f87f0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.158.0",
+      "tag": "office-ui-fabric-react_v6.158.0",
+      "date": "Thu, 21 Mar 2019 12:36:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Breadcrumb: Update custom divider example to have aria-hidden on divider",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "509923099e0db41d6c71f9a37d3472c6b4f78d7e"
+          },
+          {
+            "comment": "GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "314917101de8017f2370b70e2e50ee721c40a5d1"
+          },
+          {
+            "comment": "Improve TextField example accessibility",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "525e518736b1b2923ba10b245c4df4c025c17bbf"
+          },
+          {
+            "comment": "TextField: Fixed flex bug in IE11",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "bac71b45ab5e605d4eb9fb23f41d2934b7dd1b35"
+          },
+          {
+            "comment": "move replaceItem from SelectedPeopleList to BaseSelectedItemsList",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "ef297a179ee39b7d11802ef89f05d5f1f1220305"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "SelectedPeopleList: Key wrapped selectedItem children when they are keyed",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "6ca972e3ca565ae2d255f612cfb87c086190ea76"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.157.3",
       "tag": "office-ui-fabric-react_v6.157.3",
       "date": "Wed, 20 Mar 2019 16:14:56 GMT",
