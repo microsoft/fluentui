@@ -142,12 +142,26 @@ storiesOf('DocumentCard', module)
       {story()}
     </Screener>
   )
-  .addStory('Compact', () => (
+  .addStory('Compact with preview list', () => (
     <Fabric>
       <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
         <DocumentCardPreview {...previewPropsCompact} />
         <DocumentCardDetails>
           <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+          {docActivity}
+        </DocumentCardDetails>
+      </DocumentCard>
+    </Fabric>
+  ))
+  .addStory('Compact with preview image', () => (
+    <Fabric>
+      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
+        <DocumentCardDetails>
+          <DocumentCardTitle
+            title="Revenue stream proposal fiscal year 2016 version02.pptx"
+            shouldTruncate={true}
+          />
           {docActivity}
         </DocumentCardDetails>
       </DocumentCard>

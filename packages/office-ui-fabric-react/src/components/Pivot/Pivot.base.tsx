@@ -208,6 +208,11 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     };
 
     React.Children.map(props.children, (child: any, index: number) => {
+      // skip empty JSX expressions
+      if (!child) {
+        return;
+      }
+
       if (typeof child === 'object' && child.type === PivotItemType) {
         const pivotItem = child as PivotItem;
         const { linkText, ...pivotItemProps } = pivotItem.props;

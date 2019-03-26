@@ -53,7 +53,10 @@ export function styled<
   const { scope, fields = DefaultFields } = customizable;
 
   class Wrapped extends React.Component<TComponentProps, {}> {
-    public static displayName = `Styled${Component.displayName || Component.name}`;
+    // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
+    // able to drop IE 11 support and compile with ES6 libs
+    // tslint:disable-next-line:no-any
+    public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
 

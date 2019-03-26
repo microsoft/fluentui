@@ -24,7 +24,7 @@ const renderCell = (text: string) => {
   // so this regex will match backtick sequences that span multiple lines.
   const regex = new RegExp('`[^`]*`', 'g');
   let regexResult: RegExpExecArray | null;
-  let codeBlocks: { index: number; text: string }[] = [];
+  const codeBlocks: { index: number; text: string }[] = [];
   while ((regexResult = regex.exec(text)) !== null) {
     codeBlocks.push({
       index: regexResult.index,
@@ -60,7 +60,8 @@ const renderCell = (text: string) => {
 };
 
 const createRenderCell = (propertyName: keyof IInterfaceProperty | keyof IEnumProperty) => (item: IInterfaceProperty | IEnumProperty) =>
-  renderCell(item[propertyName]);
+  // tslint:disable-next-line:no-any
+  renderCell((item as any)[propertyName]);
 
 const DEFAULT_COLUMNS: IColumn[] = [
   {
@@ -141,7 +142,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   constructor(props: IPropertiesTableProps) {
     super(props);
 
-    let properties = (props.properties as IInterfaceProperty[])
+    const properties = (props.properties as IInterfaceProperty[])
       .sort((a: IInterfaceProperty, b: IInterfaceProperty) =>
         a.interfacePropertyType < b.interfacePropertyType
           ? -1
@@ -169,8 +170,8 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   }
 
   public render(): JSX.Element | null {
-    let { title } = this.props;
-    let { properties, isEnum, groups } = this.state;
+    const { title } = this.props;
+    const { properties, isEnum, groups } = this.state;
 
     if (properties.length === 0) {
       return null;
@@ -191,7 +192,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   }
 
   private _getGroups(props: IInterfaceProperty[]): IGroup[] {
-    let groups: IGroup[] = [];
+    const groups: IGroup[] = [];
     let index = 0;
 
     index = this._tryAddGroup(props, InterfacePropertyType.required, 'Required members', index, groups);
@@ -211,7 +212,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     let group: IGroup | undefined = undefined;
 
     while (index < props.length) {
-      let prop = props[index];
+      const prop = props[index];
 
       if (prop.interfacePropertyType !== typeToCompare) {
         break;
