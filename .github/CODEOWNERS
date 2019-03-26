@@ -29,6 +29,9 @@ LICENSE @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
 
+#### Deprecated API Files
+*.api.ts @natalieethell
+
 #### Apps
 # component-demo/
 fabric-website/ @jordandrako
