@@ -227,7 +227,18 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   }
 
   private _renderGoToTodayButton = (classes: IProcessedStyleSet<ICalendarStyles>) => {
-    const { showGoToToday, strings } = this.props;
+    const { showGoToToday, strings, today } = this.props;
+    const { navigatedDayDate, navigatedMonthDate } = this.state;
+    let goTodayEnabled = showGoToToday;
+
+    if (goTodayEnabled && navigatedDayDate && navigatedMonthDate && today) {
+      goTodayEnabled =
+        navigatedDayDate.getFullYear() !== today.getFullYear() ||
+        navigatedDayDate.getMonth() !== today.getMonth() ||
+        navigatedMonthDate.getFullYear() !== today.getFullYear() ||
+        navigatedMonthDate.getMonth() !== today.getMonth();
+    }
+
     return (
       showGoToToday && (
         <button
@@ -235,6 +246,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
           onClick={this._onGotoToday}
           onKeyDown={this._onButtonKeyDown(this._onGotoToday)}
           type="button"
+          disabled={!goTodayEnabled}
         >
           {strings!.goToToday}
         </button>
@@ -303,6 +315,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   private _onGotoToday = (): void => {
     const { today } = this.props;
     this._navigateDayPickerDay(today!);
+    this.focus();
   };
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {

@@ -17,6 +17,7 @@ import { ICalendarIconStrings } from '../Calendar.types';
 const getClassNames = classNamesFunction<ICalendarYearStyleProps, ICalendarYearStyles>();
 
 const CELL_COUNT = 12;
+const CELLS_PER_ROW = 4;
 
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: undefined,
@@ -89,6 +90,7 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
         aria-label={String(year)}
         aria-selected={selected}
         ref={this._onButtonRef}
+        aria-readonly={true} // prevent grid from being "editable"
       >
         {this._onRenderYear()}
       </button>
@@ -141,17 +143,26 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
     });
 
     let year = fromYear;
-    const cells = [];
+    const cells: React.ReactNode[][] = [];
 
-    while (year <= toYear) {
-      cells.push(this._renderCell(year));
-      year++;
+    for (let i = 0; i < (toYear - fromYear + 1) / CELLS_PER_ROW; i++) {
+      cells.push([]);
+      for (let j = 0; j < CELLS_PER_ROW; j++) {
+        cells[i].push(this._renderCell(year));
+        year++;
+      }
     }
 
     return (
       <FocusZone>
         <div className={classNames.gridContainer} role="grid">
-          <div role="row">{cells}</div>
+          {cells.map((cellRow: React.ReactNode[], index: number) => {
+            return (
+              <div key={'yearPickerRow_' + index} role="row">
+                {...cellRow}
+              </div>
+            );
+          })}
         </div>
       </FocusZone>
     );
