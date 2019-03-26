@@ -41,7 +41,6 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
 
 // @public (undocumented)
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
-    // (undocumented)
     constructor(props: IActivityItemProps);
     // (undocumented)
     render(): JSX.Element;
@@ -65,7 +64,6 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
 
 // @public (undocumented)
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
-    // (undocumented)
     constructor(props: IAutofillProps);
     // (undocumented)
     clear(): void;
@@ -101,7 +99,6 @@ export class BaseAutoFill extends Autofill {
 
 // @public (undocumented)
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
-    // (undocumented)
     constructor(props: IBaseButtonProps, rootClassName: string);
     // (undocumented)
     componentDidMount(): void;
@@ -125,7 +122,6 @@ export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, 
 
 // @public (undocumented)
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
-    // (undocumented)
     constructor(basePickerProps: P);
     // (undocumented)
     protected canAddItems(): boolean;
@@ -189,7 +185,6 @@ export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, 
 
 // @public (undocumented)
 export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
-    // (undocumented)
     constructor(basePickerProps: P);
     // (undocumented)
     completeSuggestion: () => void;
@@ -263,7 +258,6 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 
 // @public (undocumented)
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
-    // (undocumented)
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -375,7 +369,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 
 // @public (undocumented)
 export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
-    // (undocumented)
     constructor(basePickerProps: P);
     // (undocumented)
     addItems: (items: T[]) => void;
@@ -439,7 +432,6 @@ export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps>;
 
 // @public (undocumented)
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
-    // (undocumented)
     constructor(props: IBreadcrumbProps);
     // (undocumented)
     componentWillReceiveProps(nextProps: IBreadcrumbProps): void;
@@ -455,7 +447,6 @@ export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnC
 
 // @public @deprecated
 export class Button extends BaseComponent<IButtonProps, {}> {
-    // (undocumented)
     constructor(props: IButtonProps);
     // (undocumented)
     render(): JSX.Element;
@@ -482,7 +473,6 @@ export enum ButtonType {
 
 // @public (undocumented)
 export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
-    // (undocumented)
     constructor(props: ICalendarProps);
     // (undocumented)
     componentDidUpdate(): void;
@@ -500,7 +490,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 // 
 // @public (undocumented)
 export class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
-    // (undocumented)
     constructor(props: ICalloutProps);
     // (undocumented)
     render(): JSX.Element;
@@ -551,7 +540,6 @@ export const ChoiceGroup: React_2.StatelessComponent<IChoiceGroupProps>;
 
 // @public (undocumented)
 export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
-    // (undocumented)
     constructor(props: IChoiceGroupProps);
     readonly checkedOption: IChoiceGroupOption | undefined;
     // (undocumented)
@@ -578,7 +566,6 @@ export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
 export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
-    // (undocumented)
     constructor(props: ICoachmarkProps);
     // (undocumented)
     componentDidMount(): void;
@@ -609,7 +596,6 @@ export const ColorPicker: React_2.StatelessComponent<IColorPickerProps>;
 
 // @public (undocumented)
 export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
-    // (undocumented)
     constructor(props: IColorPickerProps);
     // (undocumented)
     readonly color: IColor;
@@ -654,7 +640,6 @@ export enum ColumnDragEndLocation {
 
 // @public (undocumented)
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
-    // (undocumented)
     constructor(props: IComboBoxProps);
     // (undocumented)
     componentDidMount(): void;
@@ -667,6 +652,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // (undocumented)
     static defaultProps: IComboBoxProps;
     dismissMenu: () => void;
+    // Warning: (ae-unresolved-inheritdoc-base) The `@inheritDoc` tag needs a TSDoc declaration reference; signature matching is not supported yet
+    // 
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
@@ -728,7 +715,6 @@ export const ContextualMenu: React_2.StatelessComponent<IContextualMenuProps>;
 
 // @public (undocumented)
 export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
-    // (undocumented)
     constructor(props: IContextualMenuProps);
     // (undocumented)
     componentDidMount(): void;
@@ -795,7 +781,6 @@ export const DatePicker: React_2.StatelessComponent<IDatePickerProps>;
 
 // @public (undocumented)
 export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
-    // (undocumented)
     constructor(props: IDatePickerProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
@@ -859,7 +844,6 @@ export const DetailsList: React_2.StatelessComponent<IDetailsListProps>;
 
 // @public (undocumented)
 export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
-    // (undocumented)
     constructor(props: IDetailsListProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
@@ -904,7 +888,6 @@ export const DetailsRow: React_2.StatelessComponent<IDetailsRowBaseProps>;
 
 // @public (undocumented)
 export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetailsRowState> {
-    // (undocumented)
     constructor(props: IDetailsRowBaseProps);
     // (undocumented)
     componentDidMount(): void;
@@ -933,7 +916,6 @@ export const Dialog: React_2.StatelessComponent<IDialogProps>;
 
 // @public (undocumented)
 export class DialogBase extends BaseComponent<IDialogProps, {}> {
-    // (undocumented)
     constructor(props: IDialogProps);
     // (undocumented)
     static defaultProps: IDialogProps;
@@ -946,7 +928,6 @@ export const DialogContent: React_2.StatelessComponent<IDialogContentProps>;
 
 // @public (undocumented)
 export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
-    // (undocumented)
     constructor(props: IDialogContentProps);
     // (undocumented)
     static defaultProps: IDialogContentProps;
@@ -1032,7 +1013,6 @@ export const Dropdown: React_2.StatelessComponent<IDropdownProps>;
 
 // @public (undocumented)
 export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdownState> {
-    // (undocumented)
     constructor(props: IDropdownProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void;
@@ -1061,7 +1041,6 @@ export const ExpandingCard: React_2.StatelessComponent<IExpandingCardProps>;
 
 // @public (undocumented)
 export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
-    // (undocumented)
     constructor(props: IExpandingCardProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1089,7 +1068,6 @@ export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 
 // @public (undocumented)
 export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
-    // (undocumented)
     constructor(props: ISelectedPeopleItemProps);
     // (undocumented)
     protected persona: React.RefObject<HTMLDivElement>;
@@ -1104,7 +1082,6 @@ export const Fabric: React_2.StatelessComponent<IFabricProps>;
 export class FabricBase extends BaseComponent<IFabricProps, {
     isFocusVisible: boolean;
 }> {
-    // (undocumented)
     constructor(props: IFabricProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1165,7 +1142,6 @@ export const Facepile: React_2.StatelessComponent<IFacepileProps>;
 
 // @public
 export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
-    // (undocumented)
     constructor(props: IFacepileProps);
     // (undocumented)
     static defaultProps: IFacepileProps;
@@ -1212,7 +1188,6 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
 // @public (undocumented)
 export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
-    // (undocumented)
     constructor(props: IFocusZoneProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1304,7 +1279,6 @@ export const GroupedList: React_2.StatelessComponent<IGroupedListProps>;
 
 // @public (undocumented)
 export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
-    // (undocumented)
     constructor(props: IGroupedListProps);
     // (undocumented)
     componentWillReceiveProps(newProps: IGroupedListProps): void;
@@ -1354,7 +1328,6 @@ export const HoverCard: React_2.StatelessComponent<IHoverCardProps>;
 
 // @public (undocumented)
 export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
-    // (undocumented)
     constructor(props: IHoverCardProps);
     // (undocumented)
     componentDidMount(): void;
@@ -2765,7 +2738,6 @@ export const Icon: React_2.StatelessComponent<IIconProps>;
 
 // @public (undocumented)
 export class IconBase extends React.PureComponent<IIconProps, IIconState> {
-    // (undocumented)
     constructor(props: IIconProps);
     // (undocumented)
     render(): JSX.Element;
@@ -4958,21 +4930,21 @@ export interface IList {
 }
 
 // @public (undocumented)
-export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
+export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IList>;
     getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
-    getKey?: (item: any, index?: number) => string;
+    getKey?: (item: T, index?: number) => string;
     getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
     getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
-    getPageStyle?: (page: IPage) => any;
-    items?: any[];
-    onPageAdded?: (page: IPage) => void;
-    onPageRemoved?: (page: IPage) => void;
-    onPagesUpdated?: (pages: IPage[]) => void;
-    onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
-    onRenderPage?: (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) => React.ReactNode;
-    onShouldVirtualize?: (props: IListProps) => boolean;
+    getPageStyle?: (page: IPage<T>) => any;
+    items?: T[];
+    onPageAdded?: (page: IPage<T>) => void;
+    onPageRemoved?: (page: IPage<T>) => void;
+    onPagesUpdated?: (pages: IPage<T>[]) => void;
+    onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
+    onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
+    onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
     renderedWindowsAhead?: number;
     renderedWindowsBehind?: number;
@@ -4982,12 +4954,12 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 }
 
 // @public (undocumented)
-export interface IListState {
+export interface IListState<T = any> {
     // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
     // (undocumented)
-    pages?: IPage[];
+    pages?: IPage<T>[];
 }
 
 // @public (undocumented)
@@ -4995,7 +4967,6 @@ export const Image: React_2.StatelessComponent<IImageProps>;
 
 // @public (undocumented)
 export class ImageBase extends React.Component<IImageProps, IImageState> {
-    // (undocumented)
     constructor(props: IImageProps);
     // (undocumented)
     componentDidUpdate(prevProps: IImageProps, prevState: IImageState): void;
@@ -5376,7 +5347,7 @@ export interface IOverlayStyles {
 }
 
 // @public (undocumented)
-export interface IPage {
+export interface IPage<T = any> {
     // (undocumented)
     data?: any;
     // (undocumented)
@@ -5386,7 +5357,7 @@ export interface IPage {
     // (undocumented)
     itemCount: number;
     // (undocumented)
-    items: any[] | undefined;
+    items: T[] | undefined;
     // (undocumented)
     key: string;
     // (undocumented)
@@ -5398,8 +5369,8 @@ export interface IPage {
 }
 
 // @public (undocumented)
-export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
-    page: IPage;
+export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
+    page: IPage<T>;
     role?: string;
 }
 
@@ -7497,7 +7468,6 @@ export const KeytipLayer: React_2.StatelessComponent<IKeytipLayerProps>;
 
 // @public
 export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
-    // (undocumented)
     constructor(props: IKeytipLayerProps, context: any);
     // (undocumented)
     componentDidMount(): void;
@@ -7532,7 +7502,6 @@ export const Layer: React_2.StatelessComponent<ILayerProps>;
 
 // @public (undocumented)
 export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
-    // (undocumented)
     constructor(props: ILayerProps);
     // (undocumented)
     componentDidMount(): void;
@@ -7576,13 +7545,12 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 }
 
 // @public
-export class List extends BaseComponent<IListProps, IListState> implements IList {
-    // (undocumented)
-    constructor(props: IListProps);
+export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+    constructor(props: IListProps<T>);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentWillReceiveProps(newProps: IListProps): void;
+    componentWillReceiveProps(newProps: IListProps<T>): void;
     // (undocumented)
     static defaultProps: {
         startIndex: number;
@@ -7602,7 +7570,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     render(): JSX.Element;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
-    shouldComponentUpdate(newProps: IListProps, newState: IListState): boolean;
+    shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
     }
 
 // @public (undocumented)
@@ -7622,7 +7590,6 @@ export const MarqueeSelection: React_2.StatelessComponent<IMarqueeSelectionProps
 
 // @public (undocumented)
 export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
-    // (undocumented)
     constructor(props: ITextFieldProps);
     // (undocumented)
     blur(): void;
@@ -7682,7 +7649,6 @@ export const MessageBar: React_2.StatelessComponent<IMessageBarProps>;
 
 // @public (undocumented)
 export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarState> {
-    // (undocumented)
     constructor(props: IMessageBarProps);
     // (undocumented)
     static defaultProps: IMessageBarProps;
@@ -7713,7 +7679,6 @@ export const Modal: React_2.StatelessComponent<IModalProps>;
 
 // @public (undocumented)
 export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
-    // (undocumented)
     constructor(props: IModalProps);
     // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
@@ -7735,7 +7700,6 @@ export const Nav: React_2.StatelessComponent<INavProps>;
 
 // @public (undocumented)
 export class NavBase extends BaseComponent<INavProps, INavState> implements INav {
-    // (undocumented)
     constructor(props: INavProps);
     // (undocumented)
     componentWillReceiveProps(newProps: INavProps): void;
@@ -7784,7 +7748,6 @@ export const OverflowSet: React_2.StatelessComponent<IOverflowSetProps>;
 
 // @public (undocumented)
 export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
-    // (undocumented)
     constructor(props: IOverflowSetProps);
     // (undocumented)
     componentDidMount(): void;
@@ -7853,7 +7816,6 @@ export const Persona: React_2.StatelessComponent<IPersonaProps>;
 
 // @public
 export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
-    // (undocumented)
     constructor(props: IPersonaProps);
     // (undocumented)
     static defaultProps: IPersonaProps;
@@ -7866,7 +7828,6 @@ export const PersonaCoin: React_2.StatelessComponent<IPersonaCoinProps>;
 
 // @public
 export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaState> {
-    // (undocumented)
     constructor(props: IPersonaCoinProps);
     // (undocumented)
     componentWillReceiveProps(nextProps: IPersonaCoinProps): void;
@@ -8008,7 +7969,6 @@ export const Pivot: React_2.StatelessComponent<IPivotProps>;
 
 // @public
 export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
-    // (undocumented)
     constructor(props: IPivotProps);
     focus(): void;
     // (undocumented)
@@ -8017,7 +7977,6 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
 
 // @public (undocumented)
 export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
-    // (undocumented)
     constructor(props: IPivotItemProps);
     // (undocumented)
     render(): JSX.Element;
@@ -8046,7 +8005,6 @@ export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
 
 // @public
 export class Popup extends BaseComponent<IPopupProps, IPopupState> {
-    // (undocumented)
     constructor(props: IPopupProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8066,7 +8024,6 @@ export class Popup extends BaseComponent<IPopupProps, IPopupState> {
 
 // @public (undocumented)
 export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
-    // (undocumented)
     constructor(props: IPositioningContainerProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8131,7 +8088,6 @@ export const Rating: React_2.StatelessComponent<IRatingProps>;
 
 // @public (undocumented)
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
-    // (undocumented)
     constructor(props: IRatingProps);
     // (undocumented)
     componentWillReceiveProps(nextProps: IRatingProps): void;
@@ -8154,7 +8110,6 @@ export const ResizeGroup: typeof ResizeGroupBase;
 
 // @public (undocumented)
 export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
-    // (undocumented)
     constructor(props: IResizeGroupProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8179,7 +8134,6 @@ export const ScrollablePane: React_2.StatelessComponent<IScrollablePaneProps>;
 
 // @public (undocumented)
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
-    // (undocumented)
     constructor(props: IScrollablePaneProps);
     // (undocumented)
     addSticky: (sticky: Sticky) => void;
@@ -8252,7 +8206,6 @@ export const SearchBox: React_2.StatelessComponent<ISearchBoxProps>;
 
 // @public (undocumented)
 export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
-    // (undocumented)
     constructor(props: ISearchBoxProps);
     // (undocumented)
     componentWillReceiveProps(newProps: ISearchBoxProps): void;
@@ -8288,7 +8241,6 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
 
 // @public (undocumented)
 export class Selection implements ISelection {
-    // (undocumented)
     constructor(options?: ISelectionOptions);
     // (undocumented)
     canSelectItem(item: IObjectWithKey, index?: number): boolean;
@@ -8416,7 +8368,6 @@ export const Shimmer: React_2.StatelessComponent<IShimmerProps>;
 
 // @public (undocumented)
 export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
-    // (undocumented)
     constructor(props: IShimmerProps);
     // (undocumented)
     componentWillReceiveProps(nextProps: IShimmerProps): void;
@@ -8431,7 +8382,6 @@ export const ShimmerCircle: React_2.StatelessComponent<IShimmerCircleProps>;
 
 // @public (undocumented)
 export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
-    // (undocumented)
     constructor(props: IShimmerCircleProps);
     // (undocumented)
     render(): JSX.Element;
@@ -8444,7 +8394,6 @@ export const ShimmeredDetailsList: React_2.StatelessComponent<IShimmeredDetailsL
 
 // @public (undocumented)
 export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps, {}> {
-    // (undocumented)
     constructor(props: IShimmeredDetailsListProps);
     // (undocumented)
     render(): JSX.Element;
@@ -8462,7 +8411,6 @@ export const ShimmerElementsGroup: React_2.StatelessComponent<IShimmerElementsGr
 
 // @public (undocumented)
 export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
-    // (undocumented)
     constructor(props: IShimmerElementsGroupProps);
     // (undocumented)
     static defaultProps: IShimmerElementsGroupProps;
@@ -8482,7 +8430,6 @@ export const ShimmerGap: React_2.StatelessComponent<IShimmerGapProps>;
 
 // @public (undocumented)
 export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
-    // (undocumented)
     constructor(props: IShimmerGapProps);
     // (undocumented)
     render(): JSX.Element;
@@ -8493,7 +8440,6 @@ export const ShimmerLine: React_2.StatelessComponent<IShimmerLineProps>;
 
 // @public (undocumented)
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
-    // (undocumented)
     constructor(props: IShimmerLineProps);
     // (undocumented)
     render(): JSX.Element;
@@ -8522,7 +8468,6 @@ export const Slider: React_2.StatelessComponent<ISliderProps>;
 
 // @public (undocumented)
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
-    // (undocumented)
     constructor(props: ISliderProps);
     componentWillReceiveProps(newProps: ISliderProps): void;
     // (undocumented)
@@ -8537,7 +8482,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
 // @public (undocumented)
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-    // (undocumented)
     constructor(props: ISpinButtonProps);
     componentWillReceiveProps(newProps: ISpinButtonProps): void;
     // (undocumented)
@@ -8589,7 +8533,6 @@ export const StackItem: React.StatelessComponent<IStackItemProps>;
 
 // @public (undocumented)
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
-    // (undocumented)
     constructor(props: IStickyProps);
     // (undocumented)
     addSticky(stickyContent: HTMLDivElement): void;
@@ -8662,7 +8605,6 @@ export enum SuggestionItemType {
 
 // @public (undocumented)
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
-    // (undocumented)
     constructor(suggestionsProps: ISuggestionsProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -8695,7 +8637,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
 // @public
 export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
-    // (undocumented)
     constructor(suggestionsProps: ISuggestionsControlProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -8747,7 +8688,6 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
 // @public (undocumented)
 export class SuggestionsController<T> {
-    // (undocumented)
     constructor();
     // (undocumented)
     convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[];
@@ -8781,7 +8721,6 @@ export class SuggestionsController<T> {
 
 // @public
 export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
-    // (undocumented)
     constructor(suggestionsProps: ISuggestionsCoreProps<T>);
     // (undocumented)
     componentDidUpdate(): void;
@@ -8827,7 +8766,6 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 // @public (undocumented)
 export class SuggestionsStore<T> {
-    // (undocumented)
     constructor();
     // (undocumented)
     convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[];
@@ -8848,7 +8786,6 @@ export const SwatchColorPicker: React_2.StatelessComponent<ISwatchColorPickerPro
 
 // @public (undocumented)
 export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
-    // (undocumented)
     constructor(props: ISwatchColorPickerProps);
     // (undocumented)
     componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
@@ -8889,7 +8826,6 @@ export const TeachingBubble: React_2.StatelessComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
 export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
-    // (undocumented)
     constructor(props: ITeachingBubbleProps);
     // (undocumented)
     static defaultProps: {
@@ -8914,7 +8850,6 @@ export const TeachingBubbleContent: React_2.StatelessComponent<ITeachingBubblePr
 
 // @public (undocumented)
 export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
-    // (undocumented)
     constructor(props: ITeachingBubbleProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8945,7 +8880,6 @@ export const TextField: React_2.StatelessComponent<ITextFieldProps>;
 
 // @public (undocumented)
 export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
-    // (undocumented)
     constructor(props: ITextFieldProps);
     blur(): void;
     // (undocumented)
@@ -9000,7 +8934,6 @@ export const Toggle: React.StatelessComponent<IToggleProps>;
 
 // @public (undocumented)
 export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
-    // (undocumented)
     constructor(props: IToggleProps);
     readonly checked: boolean;
     // (undocumented)
@@ -9037,7 +8970,6 @@ export const TooltipHost: React_2.StatelessComponent<ITooltipHostProps>;
 
 // @public (undocumented)
 export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
-    // (undocumented)
     constructor(props: ITooltipHostProps);
     // (undocumented)
     componentWillUnmount(): void;
