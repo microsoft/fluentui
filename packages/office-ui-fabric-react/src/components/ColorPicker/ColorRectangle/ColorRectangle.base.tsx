@@ -116,7 +116,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
 
 /**
  * Exported for testing only.
- * @private
+ * @internal
  */
 export function _getNewColor(ev: React.MouseEvent<HTMLElement>, prevColor: IColor, root: HTMLElement): IColor | undefined {
   const rectSize = root.getBoundingClientRect();
