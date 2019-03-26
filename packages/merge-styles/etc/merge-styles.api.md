@@ -141,7 +141,6 @@ export function setRTL(isRTL: boolean): void;
 
 // @public
 export class Stylesheet {
-    // (undocumented)
     constructor(config?: IStyleSheetConfig);
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
