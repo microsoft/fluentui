@@ -67,14 +67,13 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
   }
 
   public render(): JSX.Element | null {
-    let { openIssues, closedIssues } = this.state;
+    const { openIssues, closedIssues } = this.state;
 
-    let submitButton = (
+    const submitButton = (
       <div>
         <PrimaryButton
           href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
           target="_blank"
-          primary={true}
           className="FeedbackList-button"
         >
           Submit GitHub Issue
