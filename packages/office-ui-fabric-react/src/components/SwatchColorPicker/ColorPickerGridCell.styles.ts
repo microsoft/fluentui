@@ -1,5 +1,5 @@
 import { IsFocusVisibleClassName } from '../../Utilities';
-import { HighContrastSelector } from '../../Styling';
+import { HighContrastSelector, getFocusStyle } from '../../Styling';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 // Size breakpoint when the default border width changes from 2px to 4px.
@@ -8,6 +8,15 @@ const LARGE_BORDER = 4;
 const SMALL_BORDER = 2;
 const DIVIDING_PADDING = 2;
 const DEFAULT_CELL_SIZE = 20;
+
+const cellHighContrastFocus = {
+  left: -2,
+  top: -2,
+  bottom: -2,
+  right: -2,
+  border: 'none',
+  outlineColor: 'ButtonText'
+};
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
   const { theme, disabled, selected, circle, isWhite, height = DEFAULT_CELL_SIZE, width = DEFAULT_CELL_SIZE, borderWidth } = props;
@@ -19,6 +28,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
   return {
     // this is a button that wraps the color
     colorCell: [
+      getFocusStyle(theme, -1, 'relative', cellHighContrastFocus),
       {
         backgroundColor: semanticColors.bodyBackground,
         padding: 0,
@@ -27,6 +37,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         display: 'inline-block',
         cursor: 'pointer',
         userSelect: 'none',
+        borderRadius: 0,
         border: 'none',
         height: height,
         width: width
