@@ -47,7 +47,7 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     rootCheckedHovered: {
-      backgroundColor: p.neutralLight,
+      backgroundColor: buttonBackgroundPressed,
       color: buttonTextCheckedHovered
     },
 
@@ -89,11 +89,21 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuButtonChecked: {
-      backgroundColor: p.themePrimary
+      backgroundColor: p.neutralQuaternaryAlt,
+      selectors: {
+        ':hover': {
+          backgroundColor: p.neutralQuaternaryAlt
+        }
+      }
     },
 
     splitButtonMenuButtonExpanded: {
-      backgroundColor: p.neutralLight
+      backgroundColor: p.neutralQuaternaryAlt,
+      selectors: {
+        ':hover': {
+          backgroundColor: p.neutralQuaternaryAlt
+        }
+      }
     },
 
     splitButtonMenuIcon: {
@@ -165,7 +175,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootCheckedHovered: {
-      backgroundColor: p.themePrimary,
+      backgroundColor: p.themeDark,
       color: p.white
     },
 
@@ -197,7 +207,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       color: p.white,
       selectors: {
         ':hover': {
-          backgroundColor: p.themeDark,
+          backgroundColor: p.themeDarkAlt,
           selectors: {
             [HighContrastSelector]: {
               color: 'Highlight'
@@ -217,11 +227,21 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuButtonChecked: {
-      backgroundColor: p.themeDark
+      backgroundColor: p.themeDark,
+      selectors: {
+        ':hover': {
+          backgroundColor: p.themeDark
+        }
+      }
     },
 
     splitButtonMenuButtonExpanded: {
-      backgroundColor: p.themeDark
+      backgroundColor: p.themeDark,
+      selectors: {
+        ':hover': {
+          backgroundColor: p.themeDark
+        }
+      }
     },
 
     splitButtonMenuIcon: {
