@@ -102,4 +102,23 @@ describe('DetailsRow', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders details list row with custom checkbox render', () => {
+    const onRenderCheckboxMock = jest.fn();
+
+    renderer.create(
+      <DetailsRow
+        item={mockProps.items[0]}
+        itemIndex={0}
+        columns={_columns}
+        checkboxVisibility={CheckboxVisibility.always}
+        selectionMode={SelectionMode.single}
+        selection={new Selection()}
+        onRenderDetailsCheckbox={onRenderCheckboxMock}
+      />
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
+    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false });
+  });
 });

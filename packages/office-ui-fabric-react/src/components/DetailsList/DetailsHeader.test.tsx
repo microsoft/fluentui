@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
 import { IDetailsHeader, IDropHintDetails, SelectAllVisibility } from './DetailsHeader.types';
-import { DetailsListLayoutMode, IColumn, ColumnActionsMode } from './DetailsList.types';
+import { DetailsListLayoutMode, IColumn, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
@@ -721,5 +721,22 @@ describe('DetailsHeader', () => {
     );
 
     expect(component.find(`.${headerClassName}`).exists()).toBe(true);
+  });
+
+  it('renders details header with custom checkbox render', () => {
+    const onRenderCheckboxMock = jest.fn();
+
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        onRenderDetailsCheckbox={onRenderCheckboxMock}
+        checkboxVisibility={CheckboxVisibility.always}
+      />
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
+    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false });
   });
 });
