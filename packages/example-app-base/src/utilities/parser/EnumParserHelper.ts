@@ -29,7 +29,7 @@ export class EnumParserHelper extends BaseParser {
     let bank: string[] = [];
     let comment = '';
     let identifierName = '';
-    let returnResult: IEnumProperty[] = [];
+    const returnResult: IEnumProperty[] = [];
     let noClosingSymbolAsterixPrereq = false;
 
     this.eatUntil(/\{/);
@@ -59,7 +59,7 @@ export class EnumParserHelper extends BaseParser {
         case ParseState.comment:
           {
             // the initial * are always the first * of a comment, and will be treated as decorative
-            let asterisk = this.eatWhile('*');
+            const asterisk = this.eatWhile('*');
             if ((noClosingSymbolAsterixPrereq || asterisk.length > 0) && this.eat('/')) {
               // encountered closing comment tag
               comment = bank.join('').trim();
@@ -71,7 +71,7 @@ export class EnumParserHelper extends BaseParser {
 
             bank.push(this.eatUntil(/[\n\*]/));
             if (this.peek() === '*') {
-              let tmp = this.eatWhile('*');
+              const tmp = this.eatWhile('*');
               if (this.peek() !== '/') {
                 // encountered a line like "* This is a comment with asterisks in the middle **** like this."
                 bank.push(tmp);
@@ -86,7 +86,7 @@ export class EnumParserHelper extends BaseParser {
           break;
         case ParseState.declaration: {
           this.eatSpacesAndNewlines();
-          let tmp = this.eatUntil(/[=,\}]/);
+          const tmp = this.eatUntil(/[=,\}]/);
           if (this.eat('=')) {
             this.eatUntil(/[0-9]/);
             this.eatUntil(/[,\s]/);
