@@ -3,7 +3,7 @@ import { ColorRectangleBase } from './ColorRectangle.base';
 import { getStyles } from './ColorRectangle.styles';
 import { IColorRectangleProps, IColorRectangleStyles, IColorRectangleStyleProps } from './ColorRectangle.types';
 
-export const ColorRectangle: (props: IColorRectangleProps) => JSX.Element = styled<
+export const ColorRectangle: React.StatelessComponent<IColorRectangleProps> = styled<
   IColorRectangleProps,
   IColorRectangleStyleProps,
   IColorRectangleStyles

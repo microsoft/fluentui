@@ -3,9 +3,8 @@ import { IScrollablePaneProps, IScrollablePaneStyleProps, IScrollablePaneStyles 
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { getStyles } from './ScrollablePane.styles';
 
-export const ScrollablePane = styled<IScrollablePaneProps, IScrollablePaneStyleProps, IScrollablePaneStyles>(
-  ScrollablePaneBase,
-  getStyles,
-  undefined,
-  { scope: 'ScrollablePane' }
-);
+export const ScrollablePane: React.StatelessComponent<IScrollablePaneProps> = styled<
+  IScrollablePaneProps,
+  IScrollablePaneStyleProps,
+  IScrollablePaneStyles
+>(ScrollablePaneBase, getStyles, undefined, { scope: 'ScrollablePane' });

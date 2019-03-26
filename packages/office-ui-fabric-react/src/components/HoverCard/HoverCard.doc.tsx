@@ -10,9 +10,9 @@ const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/sr
 const HoverCardTargetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
 const HoverCardPlainCardExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.PlainCard.Example.tsx') as string;
 
-const HoverCardBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/HoverCard/HoverCard.Basic.Example.Codepen.txt') as string;
-const HoverCardTargetExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/HoverCard/HoverCard.Target.Example.Codepen.txt') as string;
-const HoverCardPlainCardExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/HoverCard/HoverCard.PlainCard.Example.Codepen.txt') as string;
+const HoverCardBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
+const HoverCardTargetExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Target.Example.tsx') as string;
+const HoverCardPlainCardExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.PlainCard.Example.tsx') as string;
 
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',

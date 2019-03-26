@@ -15,9 +15,23 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-12"`,
-      src: `url('${baseUrl}fabric-icons-12-2ceff391.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-12-d9534567.woff') format('woff')`
     },
     icons: {
+      WordLogoFill16: '\uF392',
+      PowerPointLogoInverse16: '\uF393',
+      PowerPointLogo16: '\uF394',
+      PowerPointLogoFill16: '\uF395',
+      ExcelLogoInverse16: '\uF396',
+      ExcelLogo16: '\uF397',
+      ExcelLogoFill16: '\uF398',
+      OneNoteLogoInverse16: '\uF399',
+      OneNoteLogo16: '\uF39A',
+      OneNoteLogoFill16: '\uF39B',
+      OutlookLogoInverse16: '\uF39C',
+      OutlookLogo16: '\uF39D',
+      OutlookLogoFill16: '\uF39E',
+      PublisherLogoInverse16: '\uF39F',
       PublisherLogo16: '\uF3A0',
       PublisherLogoFill16: '\uF3A1',
       VisioLogoInverse16: '\uF3A2',
@@ -103,21 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       SwayLogo32: '\uF482',
       SwayLogoFill32: '\uF483',
       SwayLogo16: '\uF484',
-      SwayLogoFill16: '\uF485',
-      ClassNotebookLogo32: '\uF486',
-      ClassNotebookLogoFill32: '\uF487',
-      ClassNotebookLogo16: '\uF488',
-      ClassNotebookLogoFill16: '\uF489',
-      ClassNotebookLogoInverse32: '\uF48A',
-      ClassNotebookLogoInverse16: '\uF48B',
-      StaffNotebookLogo32: '\uF48C',
-      StaffNotebookLogoFill32: '\uF48D',
-      StaffNotebookLogo16: '\uF48E',
-      StaffNotebookLogoFill16: '\uF48F',
-      StaffNotebookLogoInverted32: '\uF490',
-      StaffNotebookLogoInverted16: '\uF491',
-      KaizalaLogo: '\uF492',
-      TaskLogo: '\uF493'
+      SwayLogoFill16: '\uF485'
     }
   };
 

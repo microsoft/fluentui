@@ -82,7 +82,7 @@ const _measureScrollRect = _measurePageRect;
 export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item: any, index: number, containsFocus: boolean) => <div>{(item && item.name) || ''}</div>,
+    onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
@@ -93,7 +93,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
-  private _pageRefs: { [pageKey: string]: React.RefObject<HTMLDivElement> };
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -161,7 +160,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       leading: false
     });
 
-    this._pageRefs = {};
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
@@ -361,7 +359,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   public render(): JSX.Element {
-    const { className, role } = this.props;
+    const { className, role = 'list' } = this.props;
     const { pages = [] } = this.state;
     const pageElements: JSX.Element[] = [];
     const divProps = getNativeProps(this.props, divProperties);
@@ -371,7 +369,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
 
     return (
-      <div ref={this._root} {...divProps} role={role === undefined ? 'list' : role} className={css('ms-List', className)}>
+      <div ref={this._root} {...divProps} role={pageElements.length > 0 ? role : undefined} className={css('ms-List', className)}>
         <div ref={this._surface} className={css('ms-List-surface')} role="presentation">
           {pageElements}
         </div>
@@ -406,14 +404,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     const { onRenderPage = this._onRenderPage } = this.props;
 
-    this._pageRefs[page.key] = this._pageRefs[page.key] || React.createRef();
-
     const pageElement = onRenderPage(
       {
         page: page,
         className: css('ms-List-page'),
         key: page.key,
-        ref: this._pageRefs[page.key],
+        ref: page.key,
         style: pageStyle,
         role: 'presentation'
       },
@@ -451,15 +447,17 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { onRenderCell, role } = this.props;
 
     const {
-      page: { items, startIndex },
+      page: { items = [], startIndex },
       ...divProps
     } = pageProps;
 
     // only assign list item role if no role is assigned
     const cellRole = role === undefined ? 'listitem' : 'presentation';
+    const cells: React.ReactNode[] = [];
 
-    const cells = (items || []).map((item: any, offset: number) => {
-      const index = startIndex + offset;
+    for (let i = 0; i < items.length; i++) {
+      const index = startIndex + i;
+      const item = items[i];
 
       let itemKey = this.props.getKey ? this.props.getKey(item, index) : item && item.key;
 
@@ -467,12 +465,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         itemKey = index;
       }
 
-      return (
+      cells.push(
         <div role={cellRole} className={css('ms-List-cell')} key={itemKey} data-list-index={index} data-automationid="ListCell">
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );
-    });
+    }
 
     return <div {...divProps}>{cells}</div>;
   };
@@ -667,7 +665,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    */
   private _measurePage(page: IPage): boolean {
     let hasChangedHeight = false;
-    const pageElement = this._pageRefs[page.key].current;
+    const pageElement = this.refs[page.key] as HTMLElement;
     const cachedHeight = this._cachedPageHeights[page.startIndex];
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
@@ -882,8 +880,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     items: any[] | undefined,
     startIndex: number = -1,
     count: number = items ? items.length : 0,
-    style: any = {},
-    data: any = undefined,
+    style: React.CSSProperties = {},
+    data?: any,
     isSpacer?: boolean
   ): IPage {
     pageKey = pageKey || PAGE_KEY_PREFIX + startIndex;
@@ -892,19 +890,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       return cachedPage.page;
     }
 
-    // Fill undefined cells because array.map will ignore undefined cells.
-    if (items) {
-      for (let i = 0; i < items.length; i++) {
-        items[i] = items[i] || undefined;
-      }
-    }
-
     return {
       key: pageKey,
       startIndex: startIndex,
       itemCount: count,
       items: items,
-      style: style || {},
+      style: style,
       top: 0,
       height: 0,
       data: data,

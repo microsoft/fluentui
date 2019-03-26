@@ -1,5 +1,6 @@
 export * from './ActivityItem';
 export * from './Autofill';
+export * from './Announced';
 export * from './Breadcrumb';
 export * from './Button';
 export * from './Calendar';
@@ -26,6 +27,7 @@ export * from './Facepile';
 export * from './FloatingPicker';
 export * from './FocusTrapZone';
 export * from './FocusZone';
+export * from './Foundation';
 export * from './Grid';
 export * from './GroupedList';
 export * from './HoverCard';

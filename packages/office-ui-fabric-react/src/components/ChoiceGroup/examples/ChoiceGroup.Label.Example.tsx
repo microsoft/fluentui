@@ -1,6 +1,6 @@
-// @codepen
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
@@ -22,7 +22,9 @@ export class ChoiceGroupLabelExample extends React.Component<{}, IChoiceGroupLab
   public render() {
     return (
       <div>
-        <div id={this._labelId}>Custom label</div>
+        <Label id={this._labelId} required={true}>
+          Custom label
+        </Label>
         <ChoiceGroup
           defaultSelectedKey="B"
           options={[

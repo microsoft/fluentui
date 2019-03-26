@@ -50,7 +50,7 @@ export interface IPeoplePickerItemSelectedSubComponentStyles {
   persona: IStyleFunctionOrObject<IPersonaStyleProps, any>;
 
   /** Refers to the PersonaCoin in the Persona rendered within the PeoplePickerItemSelected */
-  personaCoin: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
+  personaCoin?: IStyleFunctionOrObject<IPersonaCoinStyleProps, any>;
 }
 
 /** PeoplePickerItemSuggestion props interface. Refers to the PeoplePicker items that are suggested for picking. */
@@ -82,6 +82,9 @@ export interface IPeoplePickerItemSuggestionStyles {
 
   /** Refers to the element wrapping the Persona of the suggested PeoplePicker item. */
   personaWrapper: IStyle;
+
+  /** SubComponent (Persona, PersonaCoin) styles. */
+  subComponentStyles: IPeoplePickerItemSelectedSubComponentStyles;
 }
 
 /**
