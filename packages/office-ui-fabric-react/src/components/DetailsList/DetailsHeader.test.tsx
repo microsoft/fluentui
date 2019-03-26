@@ -726,7 +726,7 @@ describe('DetailsHeader', () => {
   it('renders details header with custom checkbox render', () => {
     const onRenderCheckboxMock = jest.fn();
 
-    const component = mount(
+    mount(
       <DetailsHeader
         selection={_selection}
         selectionMode={SelectionMode.multiple}
