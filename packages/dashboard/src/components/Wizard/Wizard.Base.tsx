@@ -9,7 +9,7 @@ import { wizardAnimationDurationMilliSec } from './Wizard.animation';
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
 /** Component for Wizard Base */
-export class WizardBase extends React.PureComponent<IWizardProps, { hideScroll: boolean }> {
+export class WizardBase extends React.PureComponent<IWizardProps, {}> {
   private lastStepIndexShown: number;
 
   constructor(props: IWizardProps) {
@@ -17,9 +17,6 @@ export class WizardBase extends React.PureComponent<IWizardProps, { hideScroll: 
 
     const wizardStepProps = this.props.stepToShow ? this.props.stepToShow : getStepToShow(this.props);
     this.lastStepIndexShown = wizardStepProps.index!;
-    this.state = {
-      hideScroll: false
-    };
   }
 
   public render(): React.ReactNode {
@@ -54,23 +51,23 @@ export class WizardBase extends React.PureComponent<IWizardProps, { hideScroll: 
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
-        <div className={classNames.contentSectionContainer} {...this.state.hideScroll && { style: { overflow: 'hidden' } }}>
+        <div className={classNames.contentSectionContainer}>
           <TransitionGroup component={null}>
             <Transition timeout={wizardAnimationDurationMilliSec} key={contentAnimKey}>
               {(state: TransitionStatus) => {
+                let hideScroll;
                 if (state === 'entering' || state === 'exiting') {
                   animationToApply = state === 'entering' ? classNames.stepSlideUpEnterActive : classNames.stepSlideUpExitActive;
-                  console.log(animationToApply);
-                  if (!this.state.hideScroll) {
-                    this.setState({ hideScroll: true });
-                  }
+                  hideScroll = true;
                 } else if (state === 'exited') {
-                  if (this.state.hideScroll) {
-                    this.setState({ hideScroll: false });
-                  }
+                  hideScroll = false;
                 }
                 return (
-                  <div key={contentSectionKey} className={classNames.contentSection + ` ${animationToApply}`}>
+                  <div
+                    key={contentSectionKey}
+                    className={classNames.contentSection + ` ${animationToApply}`}
+                    {...hideScroll && { style: { overflow: 'hidden' } }}
+                  >
                     {state}
                     <div key={contentTitleKey} className={classNames.contentTitle}>
                       {wizardStepProps.wizardContent!.contentTitleElement}

@@ -26,23 +26,23 @@ export const getWizardStyles = (props: IWizardStyleProps): IWizardStyles => {
     },
     contentSectionContainer: {
       flex: 1,
-      overflowY: 'auto',
-      position: 'relative'
+      position: 'relative',
+      overflow: 'hidden'
     },
     contentSection: {
       flex: 1,
+      boxSizing: 'border-box',
       paddingTop: `37px`,
       paddingLeft: `${subwayNavPadding}px`,
       paddingBottom: `${subwayNavPadding}px`,
-      display: 'flex',
       flexDirection: 'column',
       position: 'absolute',
+      overflowY: 'auto',
+      height: '100%',
       top: 0
     },
     contentTitle: {},
-    content: {
-      flex: 1
-    },
+    content: {},
     stepSlideUpEnter: {
       opacity: 0.1,
       transform: 'translateY(790px)'
