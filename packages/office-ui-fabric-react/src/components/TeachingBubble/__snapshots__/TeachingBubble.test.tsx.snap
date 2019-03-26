@@ -590,7 +590,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: transparent;
-          border-radius: 0px;
+          border-radius: 2px;
           border: none;
           box-sizing: border-box;
           color: #ffffff;
@@ -642,15 +642,17 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           top: 0px;
         }
         &:hover {
+          background-color: #f3f2f1;
           background: transparent;
-          color: #201f1e;
+          color: #106ebe;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          color: #0078d4;
+          background-color: #edebe9;
+          color: #005a9e;
         }
     data-is-focusable={true}
     onClick={[Function]}

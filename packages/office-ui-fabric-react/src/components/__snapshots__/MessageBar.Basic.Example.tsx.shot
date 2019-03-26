@@ -394,10 +394,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -449,14 +449,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #323130;
@@ -751,10 +753,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -806,14 +808,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #323130;
@@ -908,10 +912,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -963,14 +967,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #323130;
@@ -2255,10 +2261,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -2310,14 +2316,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #323130;
@@ -2572,10 +2580,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #323130;
+              color: #0078d4;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -2627,14 +2635,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #201f1e;
+              background-color: #f3f2f1;
+              color: #106ebe;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              color: #0078d4;
+              background-color: #edebe9;
+              color: #005a9e;
             }
             & .ms-Button-icon {
               color: #323130;
@@ -3345,10 +3355,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3400,14 +3410,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #107c10;
@@ -3704,10 +3716,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3759,14 +3771,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #004b50;
@@ -3862,10 +3876,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -3917,14 +3931,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #004b50;
@@ -5215,10 +5231,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 flex-shrink: 0;
@@ -5270,14 +5286,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
               & .ms-Button-icon {
                 color: #323130;
@@ -5532,10 +5550,10 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: 1px solid #00188f;
               box-sizing: border-box;
-              color: #323130;
+              color: #0078d4;
               cursor: pointer;
               display: inline-block;
               flex-shrink: 0;
@@ -5587,14 +5605,16 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               top: 0px;
             }
             &:hover {
-              color: #201f1e;
+              background-color: #f3f2f1;
+              color: #106ebe;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              color: #0078d4;
+              background-color: #edebe9;
+              color: #005a9e;
             }
             & .ms-Button-icon {
               color: #323130;

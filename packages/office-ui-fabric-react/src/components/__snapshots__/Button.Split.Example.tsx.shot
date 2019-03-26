@@ -590,7 +590,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #005a9e;
+                background-color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
@@ -913,7 +913,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 width: 32px;
               }
               &:hover {
-                background-color: #005a9e;
+                background-color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;

@@ -466,7 +466,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
                       color: #605e5c;
@@ -1255,7 +1255,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
                       color: #605e5c;
@@ -1649,7 +1649,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
                       color: #605e5c;
@@ -1869,7 +1869,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
                       color: #605e5c;

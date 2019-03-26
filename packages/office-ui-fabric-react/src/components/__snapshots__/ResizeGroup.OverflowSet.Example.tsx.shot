@@ -109,14 +109,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -262,14 +262,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -415,14 +415,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -568,14 +568,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -721,14 +721,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -874,14 +874,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1027,14 +1027,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1180,14 +1180,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1333,14 +1333,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1486,14 +1486,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1639,14 +1639,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1792,14 +1792,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1945,14 +1945,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2098,14 +2098,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2251,14 +2251,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2404,14 +2404,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2557,14 +2557,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2710,14 +2710,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2863,14 +2863,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -3016,14 +3016,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}

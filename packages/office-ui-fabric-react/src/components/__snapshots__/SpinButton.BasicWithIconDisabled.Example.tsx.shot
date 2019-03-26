@@ -193,10 +193,10 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 -webkit-font-smoothing: antialiased;
                 background-color: #f3f2f1;
                 border-color: #f3f2f1;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #a19f9d;
+                color: #c8c6c4;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -328,10 +328,10 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 -webkit-font-smoothing: antialiased;
                 background-color: #f3f2f1;
                 border-color: #f3f2f1;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #a19f9d;
+                color: #c8c6c4;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;

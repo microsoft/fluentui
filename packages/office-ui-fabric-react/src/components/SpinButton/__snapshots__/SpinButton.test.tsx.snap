@@ -148,7 +148,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
@@ -280,7 +280,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
@@ -556,7 +556,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
@@ -688,7 +688,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;

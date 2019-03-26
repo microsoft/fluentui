@@ -668,10 +668,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -718,14 +718,16 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -805,10 +807,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -855,14 +857,16 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -942,10 +946,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #323130;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -992,14 +996,16 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #201f1e;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
           onClick={[Function]}

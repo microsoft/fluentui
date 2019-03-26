@@ -26,7 +26,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f3f2f1;
+              background-color: transparent;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -130,14 +130,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -315,14 +315,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-automation-id="uploadButton"
@@ -474,14 +474,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #edebe9;
+                      background-color: #f3f2f1;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #e1dfdd;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -632,14 +632,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -792,14 +792,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -938,14 +938,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1107,14 +1107,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #edebe9;
+                      background-color: #f3f2f1;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #e1dfdd;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -1253,14 +1253,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #edebe9;
+                      background-color: #f3f2f1;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #e1dfdd;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -1350,7 +1350,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f3f2f1;
+              background-color: transparent;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -1454,14 +1454,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1639,14 +1639,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-automation-id="uploadButton"
@@ -1798,14 +1798,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #edebe9;
+                      background-color: #f3f2f1;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #e1dfdd;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -2234,7 +2234,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               -moz-osx-font-smoothing: grayscale;
                                               -webkit-font-smoothing: antialiased;
                                               background-color: transparent;
-                                              border-radius: 0px;
+                                              border-radius: 2px;
                                               border: none;
                                               box-sizing: border-box;
                                               color: #ffffff;
@@ -2286,15 +2286,17 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               top: 0px;
                                             }
                                             &:hover {
+                                              background-color: #f3f2f1;
                                               background: transparent;
-                                              color: #201f1e;
+                                              color: #106ebe;
                                             }
                                             @media screen and (-ms-high-contrast: active){&:hover {
                                               border-color: Highlight;
                                               color: Highlight;
                                             }
                                             &:active {
-                                              color: #0078d4;
+                                              background-color: #edebe9;
+                                              color: #005a9e;
                                             }
                                         data-is-focusable={true}
                                         onClick={[Function]}
@@ -2442,14 +2444,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2602,14 +2604,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2748,14 +2750,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #edebe9;
+                    background-color: #f3f2f1;
                     color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #e1dfdd;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2917,14 +2919,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #edebe9;
+                      background-color: #f3f2f1;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #e1dfdd;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -3063,14 +3065,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #edebe9;
+                      background-color: #f3f2f1;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #e1dfdd;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
