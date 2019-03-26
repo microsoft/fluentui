@@ -74,7 +74,7 @@ export function cssColor(color: string): IRGB | undefined {
   document.body.appendChild(elem);
   const eComputedStyle = getComputedStyle(elem);
   const computedColor = eComputedStyle && eComputedStyle.backgroundColor!;
-  console.error('input: ' + color + '\neComputedStyle: ' + JSON.stringify(eComputedStyle, undefined, 2));
+  console.error('input: ' + color + '\ncomputed color: ' + eComputedStyle.backgroundColor);
   document.body.removeChild(elem);
   // computedColor is always an RGB string, except for invalid colors in IE/Edge which return 'transparent'
 
