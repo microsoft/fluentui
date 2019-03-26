@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../../Utilities';
-import { IColor, MAX_COLOR_SATURATION, MAX_COLOR_VALUE, getFullColorString, updateSV, clamp } from '../../../utilities/color/colors';
+import { IColor } from '../../../utilities/color/interfaces';
+import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
+import { getFullColorString } from '../../../utilities/color/getFullColorString';
+import { updateSV } from '../../../utilities/color/updateSV';
+import { clamp } from '../../../utilities/color/clamp';
 import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles, IColorRectangle } from './ColorRectangle.types';
 
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();
@@ -116,7 +120,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
 
 /**
  * Exported for testing only.
- * @private
+ * @internal
  */
 export function _getNewColor(ev: React.MouseEvent<HTMLElement>, prevColor: IColor, root: HTMLElement): IColor | undefined {
   const rectSize = root.getBoundingClientRect();

@@ -53,6 +53,7 @@ packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
+packages/migration/ @ecraig12345 @kenotron
 
 ### Fabric
 # common/
@@ -67,6 +68,7 @@ dateValues/   @OfficeDev/uifabric-calendar
 ## Components
 Accordion/ @JasonGore
 ActivityItem/ @jdhuntington
+Announced/ @natalieethell
 Breadcrumb/ @jdhuntington
 Button/ @khmakoto
 Calendar/ @OfficeDev/uifabric-calendar
@@ -124,6 +126,7 @@ Spinner/ @aneeshack4
 Stack/  @khmakoto @kkjeer
 SwatchColorPicker/ @ecraig12345
 TeachingBubble/ @micahgodbolt
+Text/ @natalieethell
 TextField/ @ecraig12345
 Theme/ @JasonGore
 Tile/ @ThomasMichon
@@ -134,6 +137,7 @@ Tooltip/ @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
+Announced/docs/ @natalieethell
 # Breadcrumb/docs/
 Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
@@ -185,6 +189,7 @@ Shimmer/docs/ @Vitalius1 @atneik
 Stack/docs/  @khmakoto
 # SwatchColorPicker/docs/
 TeachingBubble/docs/   @micahgodbolt
+Text/docs/ @natalieethell
 # TextField/docs/
 # Theme/docs/
 office-ui-fabric-react/src/components/Toggle/docs/  @phkuo

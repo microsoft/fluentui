@@ -11,7 +11,7 @@ import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
 const ReactDOM = require('react-dom');
 
 // Extend Jest Expect to allow us to map each component example to its own snapshot file.
-const snapshotsStateMap = new Map();
+const snapshotsStateMap = new Map<string, ISnapshotState>();
 const jestSnapshot = require('jest-snapshot');
 
 // jest-snapshot currently has no DefinitelyTyped or module defs so type the one object we care about for now here
@@ -21,6 +21,9 @@ interface ISnapshotState {
   matched: number;
   updated: number;
   added: number;
+  getUncheckedCount(): number;
+  removeUncheckedKeys(): void;
+  save(): void;
 }
 
 let globalSnapshotState: ISnapshotState;
@@ -46,10 +49,10 @@ expect.extend({
         updateSnapshot: globalSnapshotState._updateSnapshot
       });
       // and save it to the map for tracking
-      snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
+      snapshotsStateMap.set(absoluteSnapshotFile, snapshotState!);
     }
 
-    const newThis = Object.assign({}, this, { snapshotState });
+    const newThis = { ...this, snapshotState };
     const patchedToMatchSnapshot = jestSnapshot.toMatchSnapshot.bind(newThis);
 
     return patchedToMatchSnapshot(received);
@@ -171,7 +174,7 @@ describe('Component Examples', () => {
 
   files
     .filter((componentFile: string) => {
-      return excludedExampleFiles.find(excludedFile => componentFile.endsWith(excludedFile)) === undefined;
+      return !excludedExampleFiles.some(excludedFile => componentFile.indexOf('/' + excludedFile) !== -1);
     })
     .forEach((componentFile: string) => {
       const componentFileName = componentFile.substring(componentFile.lastIndexOf('/') + 1);

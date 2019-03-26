@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Mar 2019 12:36:30 GMT and should not be manually modified.
+
+## 6.64.2
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Patches
+
+- Toggle: Fix invalid references to this object.
 
 ## 6.64.1
 Tue, 19 Mar 2019 12:36:45 GMT

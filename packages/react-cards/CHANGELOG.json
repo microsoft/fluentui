@@ -2,6 +2,25 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.1.1",
+      "tag": "@uifabric/react-cards_v0.1.1",
+      "date": "Tue, 26 Mar 2019 12:32:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove IE 11-incompatible constructs",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "91c57199029cb06ab7dce676a00f35bdd5537d1f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.160.0 <7.0.0` to `>=6.161.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@uifabric/react-cards_v0.1.0",
       "date": "Fri, 08 Mar 2019 13:32:10 GMT",

@@ -69,6 +69,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #666666;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -158,6 +159,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #666666;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -275,6 +277,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #a6a6a6;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -366,6 +369,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 background: #f4f4f4;
                 color: #a6a6a6;
                 display: flex;
+                flex-shrink: 0;
                 line-height: 1px;
                 padding-bottom: 0;
                 padding-left: 10px;

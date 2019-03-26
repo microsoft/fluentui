@@ -227,10 +227,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Autofill should never be set to true if the value is composing. Once compositionEnd is called, then
    * it should be completed.
    * See https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent for more information on composition.
-   * @param newValue
-   * @param oldValue
-   * @param isComposing if true then the text is actively being composed and it has not completed.
-   * @param isComposed if the text is a composed text value.
+   * @param newValue - new input value
+   * @param oldValue - old input value
+   * @param isComposing - if true then the text is actively being composed and it has not completed.
+   * @param isComposed - if the text is a composed text value.
    */
   private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean): void {
     if (
@@ -253,7 +253,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   /**
    * Updates the current input value as well as getting a new display value.
-   * @param newValue The new value from the input
+   * @param newValue - The new value from the input
    */
   private _updateValue = (newValue: string) => {
     // Only proceed if the value is nonempty and is different from the old value
@@ -274,8 +274,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Returns a string that should be used as the display value.
    * It evaluates this based on whether or not the suggested value starts with the input value
    * and whether or not autofill is enabled.
-   * @param inputValue the value that the input currently has.
-   * @param suggestedDisplayValue the possible full value
+   * @param inputValue - the value that the input currently has.
+   * @param suggestedDisplayValue - the possible full value
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
