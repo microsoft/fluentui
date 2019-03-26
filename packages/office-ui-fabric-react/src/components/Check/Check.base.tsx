@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
 import { ICheckProps } from './Check.types';
 import { Icon } from '../../Icon';
 import { classNamesFunction } from '../../Utilities';
@@ -7,7 +6,7 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
-export class CheckBase extends BaseComponent<ICheckProps, {}> {
+export class CheckBase extends React.PureComponent<ICheckProps, {}> {
   public static defaultProps: ICheckProps = {
     checked: false
   };
