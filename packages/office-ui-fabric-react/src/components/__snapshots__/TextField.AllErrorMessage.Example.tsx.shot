@@ -95,7 +95,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       >
         <input
           aria-describedby="TextFieldDescription1"
-          aria-invalid={false}
+          aria-invalid={true}
           className=
               ms-TextField-field
               {
@@ -229,7 +229,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       >
         <input
           aria-describedby="TextFieldDescription3"
-          aria-invalid={false}
+          aria-invalid={true}
           className=
               ms-TextField-field
               {
@@ -409,7 +409,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       >
         <input
           aria-describedby="TextFieldDescription5"
-          aria-invalid={false}
+          aria-invalid={true}
           className=
               ms-TextField-field
               {
@@ -574,7 +574,7 @@ exports[`Component Examples renders TextField.AllErrorMessage.Example.tsx correc
       >
         <textarea
           aria-describedby="TextFieldDescription7"
-          aria-invalid={false}
+          aria-invalid={true}
           className=
               ms-TextField-field
               {

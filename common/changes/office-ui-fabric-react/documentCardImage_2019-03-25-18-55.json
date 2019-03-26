@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent",
+      "comment": "DocumentCard: Removing blank 1px line below preview images in compact layout.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "Humberto.Morimoto@microsoft.com"
 }
