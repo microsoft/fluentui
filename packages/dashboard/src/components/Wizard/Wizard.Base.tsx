@@ -68,7 +68,6 @@ export class WizardBase extends React.PureComponent<IWizardProps, {}> {
                     className={classNames.contentSection + ` ${animationToApply}`}
                     {...hideScroll && { style: { overflow: 'hidden' } }}
                   >
-                    {state}
                     <div key={contentTitleKey} className={classNames.contentTitle}>
                       {wizardStepProps.wizardContent!.contentTitleElement}
                     </div>
