@@ -13,7 +13,7 @@ export const ThemeDesignerColorPicker = (props: any) => {
   };
   // const colorSquareBkgColor = mergeStyles({ backgroundColor: props.value });
   return (
-    <Stack horizontal gap={10}>
+    <Stack horizontalAlign={'space-between'} gap={10}>
       <Text>{props.label}</Text>
       <Stack horizontal className={styles.colorpanel} gap={20}>
         <div id="colorbox" className={styles.colorbox} style={{ backgroundColor: props.value }} />

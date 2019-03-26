@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-//import { mergeStyles } from '@uifabric/merge-styles';
+// import { mergeStyles } from '@uifabric/merge-styles';
 import { FabricSlots, IThemeSlotRule, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { IPalette, ISemanticColors, loadTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 
-export interface FabricPaletteProps {
+export interface IFabricPaletteProps {
   theme: ITheme;
 }
 
-export class FabricPalette extends React.Component<FabricPaletteProps, {}> {
+export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
   public render() {
     return (
       <Card styles={{ root: { width: '800px', height: 'auto' } }}>

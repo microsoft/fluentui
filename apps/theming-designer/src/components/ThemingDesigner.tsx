@@ -16,9 +16,9 @@ export class ThemingDesigner extends React.Component<{}, { theme: ITheme }> {
     this.state = {
       theme: getTheme(true)
     };
-    console.log('HIIIIIIII' + this.state.theme);
+    console.log('HIIIIIIII', this.state.theme);
   }
-  public makeTheme() {}
+  // public makeTheme() {}
   public render() {
     return (
       <div className={styles.app}>

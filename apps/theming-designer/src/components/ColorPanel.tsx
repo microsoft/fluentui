@@ -7,13 +7,13 @@ import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
 
 const styles: any = stylesImport;
 
-interface IColorPanelProps {
+export interface IColorPanelProps {
   primaryColor?: string;
   textColor?: string;
   backgroundColor?: string;
 }
 
-interface IColorPanelState {
+export interface IColorPanelState {
   primaryColor?: string;
   textColor?: string;
   backgroundColor?: string;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, ITextProps } from '../../../../packages/office-ui-fabric-react/lib/Text';
 import './SamplesCardHeader.scss';
 
-interface ISamplesCardHeaderProps {
+export interface ISamplesCardHeaderProps {
   label?: string;
   size?: ITextProps['variant'];
 }
