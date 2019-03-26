@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { assign, buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues } from '../../../Utilities';
+import { buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
@@ -161,15 +161,18 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       key: item.key
     };
 
-    const buttonProps = assign({}, getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(itemProps, buttonProperties), {
-      onMouseEnter: this._onItemMouseEnterIcon,
-      onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
-      onMouseDown: (ev: React.MouseEvent<HTMLButtonElement>) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
-      onMouseMove: this._onItemMouseMoveIcon,
-      'data-is-focusable': false,
-      'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target'],
-      'aria-hidden': true
-    });
+    const buttonProps = {
+      ...getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(itemProps, buttonProperties),
+      ...{
+        onMouseEnter: this._onItemMouseEnterIcon,
+        onMouseLeave: onItemMouseLeave ? onItemMouseLeave.bind(this, item) : undefined,
+        onMouseDown: (ev: React.MouseEvent<HTMLButtonElement>) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
+        onMouseMove: this._onItemMouseMoveIcon,
+        'data-is-focusable': false,
+        'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target'],
+        'aria-hidden': true
+      }
+    };
 
     const { itemProps: itemComponentProps } = item;
 
