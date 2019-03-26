@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';

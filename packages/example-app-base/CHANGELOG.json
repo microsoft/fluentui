@@ -2,6 +2,44 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.12.3",
+      "tag": "@uifabric/example-app-base_v6.12.3",
+      "date": "Fri, 22 Mar 2019 12:34:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove ExampleCardComponent now that Stack has been promoted.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "69bd6070595f933a0a3c9278eff74fd13f5b8edd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.159.0 <7.0.0` to `>=6.159.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.2",
+      "tag": "@uifabric/example-app-base_v6.12.2",
+      "date": "Wed, 13 Mar 2019 00:42:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FeedbackList: Iterate Github issues collection directly to avoid total_count disparity",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "71fc9e64e058d23db7716aa9fb80bbb7a24e5c69"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.155.0 <7.0.0` to `>=6.156.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.1",
       "tag": "@uifabric/example-app-base_v6.12.1",
       "date": "Wed, 06 Mar 2019 13:27:18 GMT",

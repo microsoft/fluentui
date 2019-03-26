@@ -5,7 +5,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
   className="ms-RatingButtonControlledExample"
 >
   <div
-    aria-label=""
+    aria-label="Rating value is 0 of 5"
     className=
         ms-Rating-star
         ms-RatingStar-root
@@ -113,7 +113,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-1"
         >
-          
+          1 of 5 stars selected
         </span>
         <div
           className=
@@ -138,10 +138,10 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
           >
-            
+            
           </i>
           <i
             className=
@@ -166,7 +166,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 @media screen and (-ms-high-contrast: active){& {
                   color: Highlight;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
             style={
               Object {
@@ -174,7 +174,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
             }
           >
-            
+            
           </i>
         </div>
       </button>
@@ -250,7 +250,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-2"
         >
-          
+          2 of 5 stars selected
         </span>
         <div
           className=
@@ -275,10 +275,10 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
           >
-            
+            
           </i>
           <i
             className=
@@ -303,7 +303,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 @media screen and (-ms-high-contrast: active){& {
                   color: Highlight;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
             style={
               Object {
@@ -311,7 +311,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
             }
           >
-            
+            
           </i>
         </div>
       </button>
@@ -387,7 +387,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-3"
         >
-          
+          3 of 5 stars selected
         </span>
         <div
           className=
@@ -412,10 +412,10 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
           >
-            
+            
           </i>
           <i
             className=
@@ -440,7 +440,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 @media screen and (-ms-high-contrast: active){& {
                   color: Highlight;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
             style={
               Object {
@@ -448,7 +448,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
             }
           >
-            
+            
           </i>
         </div>
       </button>
@@ -524,7 +524,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-4"
         >
-          
+          4 of 5 stars selected
         </span>
         <div
           className=
@@ -549,10 +549,10 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
           >
-            
+            
           </i>
           <i
             className=
@@ -577,7 +577,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 @media screen and (-ms-high-contrast: active){& {
                   color: Highlight;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
             style={
               Object {
@@ -585,7 +585,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
             }
           >
-            
+            
           </i>
         </div>
       </button>
@@ -661,7 +661,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-5"
         >
-          
+          5 of 5 stars selected
         </span>
         <div
           className=
@@ -686,10 +686,10 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                   speak: none;
                   width: 100%;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
           >
-            
+            
           </i>
           <i
             className=
@@ -714,7 +714,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 @media screen and (-ms-high-contrast: active){& {
                   color: Highlight;
                 }
-            data-icon-name="FavoriteStarFill"
+            data-icon-name="FavoriteStar"
             role="presentation"
             style={
               Object {
@@ -722,7 +722,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
             }
           >
-            
+            
           </i>
         </div>
       </button>

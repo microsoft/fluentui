@@ -1,6 +1,34 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 07 Mar 2019 13:32:46 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Mar 2019 12:36:30 GMT and should not be manually modified.
+
+## 6.64.2
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Patches
+
+- Toggle: Fix invalid references to this object.
+
+## 6.64.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- fix a bug in the tooltip of last page button in pagination component, experiment package
+
+## 6.64.0
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Minor changes
+
+- Button: Separating MenuButton and SplitButton as variants to decouple ContextualMenu from Button.
+
+## 6.63.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- update snapshots to reflect default change in Text
 
 ## 6.63.0
 Thu, 07 Mar 2019 13:32:46 GMT

@@ -21,9 +21,7 @@
     "start-test": "node ../../scripts/just.js jest-watch",
     "update-api": "node ../../scripts/update-api.js"
   },
-  "disabledTasks": [
-    "build-codepen-examples"
-  ],
+  "disabledTasks": [],
   "devDependencies": {
     "@types/enzyme": "3.1.13",
     "@types/enzyme-adapter-react-16": "1.0.3",

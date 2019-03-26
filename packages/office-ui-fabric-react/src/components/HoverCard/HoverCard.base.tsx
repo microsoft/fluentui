@@ -32,11 +32,17 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget | null;
 
+  private _nativeDismissEvent: (ev?: any) => void;
+  private _childDismissEvent: (ev?: any) => void;
+
   private _classNames: { [key in keyof IHoverCardStyles]: string };
 
   // Constructor
   constructor(props: IHoverCardProps) {
     super(props);
+
+    this._nativeDismissEvent = this._cardDismiss.bind(this, true);
+    this._childDismissEvent = this._cardDismiss.bind(this, false);
 
     this.state = {
       isHoverCardVisible: false,
@@ -46,26 +52,14 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   }
 
   public componentDidMount(): void {
-    const target = this._getTargetElement();
-
-    const nativeEventDismiss = this._cardDismiss.bind(this, true);
-    this._events.on(target, 'mouseenter', this._cardOpen);
-    this._events.on(target, 'mouseleave', nativeEventDismiss);
-    if (this.props.trapFocus) {
-      this._events.on(target, 'keydown', this._cardOpen);
-    } else {
-      this._events.on(target, 'focus', this._cardOpen);
-      this._events.on(target, 'blur', nativeEventDismiss);
-    }
-    if (this.props.instantOpenOnClick) {
-      this._events.on(target, 'click', this._instantOpenAsExpanded);
-    } else {
-      this._events.on(target, 'mousedown', nativeEventDismiss);
-      this._events.on(target, 'keydown', nativeEventDismiss);
-    }
+    this._setEventListeners();
   }
 
   public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState) {
+    if (prevProps.target !== this.props.target) {
+      this._events.off();
+      this._setEventListeners();
+    }
     if (prevState.isHoverCardVisible !== this.state.isHoverCardVisible) {
       if (this.state.isHoverCardVisible) {
         this._async.setTimeout(() => {
@@ -119,7 +113,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
       targetElement: this._getTargetElement(),
       onEnter: this._cardOpen,
-      onLeave: this._cardDismiss.bind(this, false)
+      onLeave: this._childDismissEvent
     };
 
     const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
@@ -245,5 +239,26 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
       return prevState;
     });
+  };
+
+  private _setEventListeners = (): void => {
+    const { trapFocus, instantOpenOnClick } = this.props;
+    const target = this._getTargetElement();
+    const nativeEventDismiss = this._nativeDismissEvent;
+
+    this._events.on(target, 'mouseenter', this._cardOpen);
+    this._events.on(target, 'mouseleave', nativeEventDismiss);
+    if (trapFocus) {
+      this._events.on(target, 'keydown', this._cardOpen);
+    } else {
+      this._events.on(target, 'focus', this._cardOpen);
+      this._events.on(target, 'blur', nativeEventDismiss);
+    }
+    if (instantOpenOnClick) {
+      this._events.on(target, 'click', this._instantOpenAsExpanded);
+    } else {
+      this._events.on(target, 'mousedown', nativeEventDismiss);
+      this._events.on(target, 'keydown', nativeEventDismiss);
+    }
   };
 }

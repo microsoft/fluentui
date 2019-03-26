@@ -50,7 +50,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
 
   public getSnapshotBeforeUpdate(
     prevProps: Readonly<IDetailPanelBaseProps>,
-    _prevStates: Readonly<IMainBodyStates>
+    prevStates: Readonly<IMainBodyStates>
   ): IMainBodySnapshot | null {
     let snapshotUpdated = false;
     const snapshot = {} as IMainBodySnapshot;
@@ -60,6 +60,9 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
       snapshot.nextL2Id = this.props.currentL2Id;
       snapshotUpdated = true;
     } else if (!this.props.currentL2Id && !shallowCompare(this.props.mainContent, prevProps.mainContent)) {
+      snapshot.nextMainContent = this._getMainContent();
+      snapshotUpdated = true;
+    } else if (this.state.messageBanner !== prevStates.messageBanner) {
       snapshot.nextMainContent = this._getMainContent();
       snapshotUpdated = true;
     }
@@ -73,7 +76,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
 
   public render(): JSX.Element | null {
     const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar, confirmation } = this.state;
-    const { onRefresh, panelSetting } = this.props;
+    const { onRefresh, panelSetting, globalMessageBanner, refreshTooltip, closeTooltip } = this.props;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
@@ -92,6 +95,8 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
           actionBar={confirmation.actionBar}
           inlineLoading={inlineLoading}
           loadingElement={loadingElement}
+          refreshTooltip={refreshTooltip}
+          closeTooltip={closeTooltip}
         />
       );
     }
@@ -107,10 +112,13 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
         onSetConfirmationResult={this._setConfirmationResult}
         header={this._getCurrentHeader(false)}
         messageBanner={messageBanner}
+        globalMessageBanner={globalMessageBanner}
         mainContent={contentElement}
         actionBar={actionBar}
         loadingElement={loadingElement}
         inlineLoading={inlineLoading}
+        refreshTooltip={refreshTooltip}
+        closeTooltip={closeTooltip}
       />
     );
   }
@@ -139,7 +147,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
           .catch((err: IDetailPanelErrorResult) => {
             // set message bar
             if (err && err.messageBannerSetting) {
-              const messageBannerSetting = Object.assign({}, err.messageBannerSetting);
+              const messageBannerSetting = { ...err.messageBannerSetting };
               if (messageBannerSetting.messageType === undefined) {
                 messageBannerSetting.messageType = MessageBarType.error;
               }
@@ -184,14 +192,20 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
   }
 
   private _getMainContent = () => {
-    const { mainContent } = this.props;
+    const { mainContent, onPivotLinkClick } = this.props;
     if (mainContent) {
       if (_isReactComponent(mainContent)) {
         return mainContent;
       }
 
       return (
-        <DetailPanelPivotBody {...mainContent} onGetLoadingElement={this._getPageLoadingAnimation} onSetActionBar={this._setActionBar} />
+        <DetailPanelPivotBody
+          {...mainContent}
+          onGetLoadingElement={this._getPageLoadingAnimation}
+          onSetActionBar={this._setActionBar}
+          messageBanner={this.state && this.state.messageBanner}
+          onPivotLinkClick={onPivotLinkClick}
+        />
       );
     }
 

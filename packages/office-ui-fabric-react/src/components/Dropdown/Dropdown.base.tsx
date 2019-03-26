@@ -354,9 +354,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   /**
    * Finds the next valid Dropdown option and sets the selected index to it.
-   * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
-   * @param index Index of where the search should start
-   * @param selectedIndex The selectedIndex Dropdown's state
+   * @param stepValue - Value of how many items the function should traverse.  Should be -1 or 1.
+   * @param index - Index of where the search should start
+   * @param selectedIndex - The selectedIndex Dropdown's state
    * @returns The next valid dropdown option's index
    */
   private _moveIndex(event: React.FormEvent<HTMLDivElement>, stepValue: number, index: number, selectedIndex: number): number {
@@ -401,10 +401,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   /** Render text in dropdown input */
-  private _onRenderTitle = (item: IDropdownOption[]): JSX.Element => {
+  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
     const { multiSelectDelimiter = ', ' } = this.props;
 
-    const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
+    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
     return <span>{displayTxt}</span>;
   };
 

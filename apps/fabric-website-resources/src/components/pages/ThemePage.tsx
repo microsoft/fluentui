@@ -10,7 +10,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color/index';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 
 const getClassNames = classNamesFunction<IThemePageStyleProps, IThemePageStyles>();
 

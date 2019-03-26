@@ -12,6 +12,7 @@ import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem } from './Items/EditingItem';
 
 export interface IExtendedPersonaProps extends IPersonaProps {
+  key?: React.Key;
   isValid: boolean;
   blockRecipientRemoval?: boolean;
   shouldBlockSelection?: boolean;
@@ -46,27 +47,16 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     onRenderItem: (props: ISelectedPeopleItemProps) => <ExtendedSelectedItem {...props} />
   };
 
-  public replaceItem = (itemToReplace: IExtendedPersonaProps, itemsToReplaceWith: IExtendedPersonaProps[]): void => {
-    const { items } = this.state;
-    const index: number = items.indexOf(itemToReplace);
-    if (index > -1) {
-      const newItems = items
-        .slice(0, index)
-        .concat(itemsToReplaceWith)
-        .concat(items.slice(index + 1));
-      this.updateItems(newItems);
-    }
-  };
-
   protected renderItems = (): JSX.Element[] => {
     const { items } = this.state;
     // tslint:disable-next-line:no-any
-    return items.map((item: any, index: number) => this._renderItem(item, index));
+    return items.map((item: IExtendedPersonaProps, index: number) => this._renderItem(item, index));
   };
 
   // tslint:disable-next-line:no-any
-  private _renderItem(item: any, index: number): JSX.Element {
+  private _renderItem(item: IExtendedPersonaProps, index: number): JSX.Element {
     const { removeButtonAriaLabel } = this.props;
+    const expandGroup = this.props.onExpandGroup;
     const props = {
       item,
       index,
@@ -76,7 +66,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       onItemChange: this.onItemChange,
       removeButtonAriaLabel: removeButtonAriaLabel,
       onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
-      onExpandItem: this.props.onExpandGroup ? () => (this.props.onExpandGroup as (item: IExtendedPersonaProps) => void)(item) : undefined,
+      onExpandItem: expandGroup ? () => expandGroup(item) : undefined,
       menuItems: this._createMenuItems(item)
     };
 
@@ -92,10 +82,15 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         />
       );
     } else {
+      // This cast is here because we are guaranteed that onRenderItem is set
+      // from static defaultProps
+      // TODO: Move this component to composition with required onRenderItem to remove
+      // this cast.
       const onRenderItem = this.props.onRenderItem as (props: ISelectedPeopleItemProps) => JSX.Element;
       const renderedItem = onRenderItem(props);
       return hasContextMenu ? (
         <SelectedItemWithContextMenu
+          key={props.key}
           renderedItem={renderedItem}
           beginEditing={this._beginEditing}
           menuItems={this._createMenuItems(props.item)}
@@ -138,7 +133,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
         key: 'Remove',
         text: this.props.removeMenuItemText,
         onClick: (ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) => {
-          this.removeItem(menuItem.data as ISelectedItemProps<IExtendedPersonaProps>);
+          this.removeItem(menuItem.data as IExtendedPersonaProps);
         },
         data: item
       });

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { IDetailPanelBaseCommonAction, IBaseContainerProps } from './DetailPanel.types';
+import { IDetailPanelBaseCommonAction, IBaseContainerProps, IDetailPanelMessageBannerProps } from './DetailPanel.types';
 import { MessageBanner } from './Body/MessageBanner';
 import { ActionBar } from './Footer/ActionBar';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
@@ -19,15 +19,17 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
   };
 
   const _renderNav = () => {
-    const { onBack, onDismiss, onRefresh } = props;
+    const { onBack, onDismiss, onRefresh, refreshTooltip, closeTooltip } = props;
     return (
       <div className={css.navBar}>
         <div className={css.navLeft}>
           {onBack && !_shouldHideOnLoading() && <IconButton iconProps={{ iconName: 'Back' }} onClick={onBack} />}
         </div>
         <div className={css.navRight}>
-          {onRefresh && !_shouldHideOnLoading() && <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} />}
-          <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} />
+          {onRefresh && !_shouldHideOnLoading() && (
+            <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} title={refreshTooltip} />
+          )}
+          <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} title={closeTooltip} />
         </div>
       </div>
     );
@@ -52,9 +54,8 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
     return null;
   };
 
-  const _renderMessageBanner = () => {
-    const { messageBanner } = props;
-    if (messageBanner) {
+  const _renderMessageBanner = (messageBanner?: IDetailPanelMessageBannerProps, forceShow?: boolean) => {
+    if (messageBanner && (messageBanner.forceGlobal || forceShow)) {
       return (
         <div className={css.messageBar}>
           <MessageBanner {...messageBanner} />
@@ -93,7 +94,19 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
   };
 
   const _renderElement = () => {
-    const { loadingElement, inlineLoading, isOpen, type, customWidth, isBlocking, isLightDismiss, onLightDismiss, customStyle } = props;
+    const {
+      loadingElement,
+      inlineLoading,
+      isOpen,
+      type,
+      customWidth,
+      isBlocking,
+      isLightDismiss,
+      onLightDismiss,
+      customStyle,
+      messageBanner,
+      globalMessageBanner
+    } = props;
 
     const animation = isOpen ? AnimationClassNames.slideLeftIn400 : AnimationClassNames.slideRightOut400;
     const customClassName = mergeStyles(animation, customStyle);
@@ -114,7 +127,8 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
         <div className={css.content}>{loadingElement}</div>
         {(!loadingElement || (loadingElement && inlineLoading)) && (
           <>
-            {_renderMessageBanner()}
+            {_renderMessageBanner(globalMessageBanner, true)}
+            {_renderMessageBanner(messageBanner)}
             {_renderBody()}
           </>
         )}

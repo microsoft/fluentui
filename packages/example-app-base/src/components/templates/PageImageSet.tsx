@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IBaseProps, IClassNames, customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps, customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle, mergeStyleSets, IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 

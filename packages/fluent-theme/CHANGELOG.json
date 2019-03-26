@@ -2,6 +2,44 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.2",
+      "tag": "@uifabric/fluent-theme_v0.16.2",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: fixes bug were the styles for TeachingBubbleContent were not applied properly when not used directly.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "2db50f202254e0222e7c7979154162a46df45f21"
+          },
+          {
+            "comment": "Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c55e05bd509fa16a87d31cec0627a101507c84a0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.1",
+      "tag": "@uifabric/fluent-theme_v0.16.1",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Breadcrumb: fixed last-child styling",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "e64f3beede5328eb553dac20ced49170e1227892"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.156.0 <7.0.0` to `>=6.157.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.0",
       "tag": "@uifabric/fluent-theme_v0.16.0",
       "date": "Wed, 27 Feb 2019 01:28:58 GMT",

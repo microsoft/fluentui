@@ -27,11 +27,11 @@ import {
  * This function is a slot resolver that automatically evaluates slot functions to generate React elements.
  * A byproduct of this resolver is that it removes slots from the React hierarchy by bypassing React.createElement.
  *
- * To use this function on a per-file basis, put the following directive in a comment block: @jsx withSlots
- * Usage of this pragma also requires an import statement of SlotModule such as: import { withSlots } from '@uifabric/foundation';
- * Also, this directive must be the FIRST LINE in the file to work correctly.
+ * To use this function on a per-file basis, use the jsx directive targeting withSlots.
+ * This directive must be the FIRST LINE in the file to work correctly.
+ * Usage of this pragma also requires withSlots import statement.
  *
- * @see React.createElement
+ * See React.createElement
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function withSlots<P>(
@@ -71,8 +71,8 @@ export function withSlots<P>(
 
 /**
  * This function creates factories that render ouput depending on the user ISlotProp props passed in.
- * @param ComponentType Base component to render when not overridden by user props.
- * @param options Factory options, including defaultProp value for shorthand prop mapping.
+ * @param ComponentType - Base component to render when not overridden by user props.
+ * @param options - Factory options, including defaultProp value for shorthand prop mapping.
  * @returns ISlotFactory function used for rendering slots.
  */
 export function createFactory<TProps>(
@@ -118,8 +118,8 @@ const defaultFactory = memoizeFunction(type => createFactory(type));
 
 /**
  * This function generates slots that can be used in JSX given a definition of slots and their corresponding types.
- * @param userProps Props as pass to component.
- * @param slots Slot definition object defining the default slot component for each slot.
+ * @param userProps - Props as pass to component.
+ * @param slots - Slot definition object defining the default slot component for each slot.
  * @returns A set of created slots that components can render in JSX.
  */
 export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(

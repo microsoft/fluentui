@@ -29,6 +29,9 @@ LICENSE @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
 
+#### Deprecated API Files
+*.api.ts @natalieethell
+
 #### Apps
 # component-demo/
 fabric-website/ @jordandrako
@@ -53,6 +56,7 @@ packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
+packages/migration/ @ecraig12345 @kenotron
 
 ### Fabric
 # common/
@@ -67,10 +71,12 @@ dateValues/   @OfficeDev/uifabric-calendar
 ## Components
 Accordion/ @JasonGore
 ActivityItem/ @jdhuntington
+Announced/ @natalieethell
 Breadcrumb/ @jdhuntington
 Button/ @khmakoto
 Calendar/ @OfficeDev/uifabric-calendar
 Callout/ @joschect
+react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
 Checkbox/ @cliffkoh
 ChoiceGroup/ @srideshpande
@@ -82,7 +88,7 @@ ContextualMenu/ @joschect
 DatePicker/ @OfficeDev/uifabric-calendar
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
-DocumentCard/ @yiminwu @mikewheaton
+DocumentCard/ @yiminwu
 Dropdown/ @JasonGore
 Fabric/ @dzearing
 FacePile/ @markionium
@@ -123,21 +129,23 @@ Spinner/ @aneeshack4
 Stack/  @khmakoto @kkjeer
 SwatchColorPicker/ @ecraig12345
 TeachingBubble/ @micahgodbolt
+Text/ @natalieethell
 TextField/ @ecraig12345
 Theme/ @JasonGore
 Tile/ @ThomasMichon
 TileList/ @ThomasMichon
 office-ui-fabric-react/src/components/Toggle/  @phkuo
-experiments/src/components/Card/  @khmakoto
 experiments/src/components/Toggle/  @khmakoto @JasonGore
 Tooltip/ @micahgodbolt
 
 ## Docs
 # ActivityItem/docs/
+Announced/docs/ @natalieethell
 # Breadcrumb/docs/
 Button/docs/  @khmakoto
 Calendar/docs/   @OfficeDev/uifabric-calendar
 Callout/docs/  @joschect
+react-cards/Card/docs/  @khmakoto
 # Check/docs/
 # Checkbox/docs/
 ChoiceGroup/docs/   @srideshpande
@@ -148,7 +156,7 @@ ContextualMenu/docs/  @joschect
 DatePicker/docs/   @OfficeDev/uifabric-calendar
 DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
-DocumentCard/docs/ @yiminwu @mikewheaton
+DocumentCard/docs/ @yiminwu
 # Dropdown/docs/
 # Fabric/docs/
 # FacePile/docs/
@@ -160,7 +168,7 @@ HoverCard/docs/   @atneik @Jahnp @Vitalius1
 # Image/docs/
 # Label/docs/
 Layer/docs/  @ThomasMichon
-# Link/docs/
+Link/docs/  @khmakoto
 List/docs/ @KevinTCoughlin
 # MarqueeSelection/docs/
 # MessageBar/docs/
@@ -184,6 +192,7 @@ Shimmer/docs/ @Vitalius1 @atneik
 Stack/docs/  @khmakoto
 # SwatchColorPicker/docs/
 TeachingBubble/docs/   @micahgodbolt
+Text/docs/ @natalieethell
 # TextField/docs/
 # Theme/docs/
 office-ui-fabric-react/src/components/Toggle/docs/  @phkuo
