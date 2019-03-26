@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.160.0",
+      "tag": "office-ui-fabric-react_v6.160.0",
+      "date": "Mon, 25 Mar 2019 12:33:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: focus alignment is now reset when first receiving focus (programatically or via `defaultActiveElement`.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6fc1ee4b638b772f0ecab2cfd6dd7a2b0676a1fc"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "GroupSpacer: Reduce render calls by refactoring styled HOC to React.SFC",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "03b32b4d254b83d7b808d09bacc062f3aa64f01f"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.159.1",
       "tag": "office-ui-fabric-react_v6.159.1",
       "date": "Fri, 22 Mar 2019 12:34:41 GMT",

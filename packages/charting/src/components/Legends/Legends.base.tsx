@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { HoverCard, HoverCardType, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
@@ -154,7 +154,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
       if (this.state.selectedState) {
-        const selectedOverflowItem = legends.find((legend: ILegend) => legend.title === this.state.selectedLegend);
+        const selectedOverflowItem = find(legends, (legend: ILegend) => legend.title === this.state.selectedLegend);
         if (selectedOverflowItem) {
           this.setState({ selectedLegend: 'none', selectedState: false }, () => {
             if (selectedOverflowItem.action) {

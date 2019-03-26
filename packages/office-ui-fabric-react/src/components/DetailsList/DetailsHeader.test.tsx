@@ -529,11 +529,11 @@ describe('DetailsHeader', () => {
     // dragover b/w b&c and c&d -> dead zone b/w 370 and 810
     _RaiseEvent(detailsColSourceC, _DRAGOVER, 400);
     expect(header._draggedColumnIndex).toBe(2);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
 
     _RaiseEvent(detailsColTargetD, _DRAGOVER, 710);
     expect(header._draggedColumnIndex).toBe(2);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
 
     // dead zone : idx 2 and 3 -> no hint shown
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
@@ -694,7 +694,7 @@ describe('DetailsHeader', () => {
 
     // drop on source column itself -> drophintindex should not be set and hence target index not updated
     _RaiseEvent(detailsColTarget, _DROP, 500);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
     expect(_sourceIndex).toBe(2);
   });
 

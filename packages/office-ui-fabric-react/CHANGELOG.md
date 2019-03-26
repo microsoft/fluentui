@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 22 Mar 2019 12:34:41 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Mar 2019 12:33:48 GMT and should not be manually modified.
+
+## 6.160.0
+Mon, 25 Mar 2019 12:33:48 GMT
+
+### Minor changes
+
+- GroupSpacer: Reduce render calls by refactoring styled HOC to React.SFC
+
+### Patches
+
+- FocusZone: focus alignment is now reset when first receiving focus (programatically or via `defaultActiveElement`.
 
 ## 6.159.1
 Fri, 22 Mar 2019 12:34:41 GMT

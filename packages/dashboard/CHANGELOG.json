@@ -2,6 +2,25 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.57.2",
+      "tag": "@uifabric/dashboard_v0.57.2",
+      "date": "Mon, 25 Mar 2019 12:33:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "expose FocuseZone component props in dashboard Card component",
+            "author": "dkishmareishvili <dkishmareishvili@gmail.com>",
+            "commit": "bf2585097551cde9fc58faa5b07c884bd5733ce6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.159.1 <7.0.0` to `>=6.160.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.57.1",
       "tag": "@uifabric/dashboard_v0.57.1",
       "date": "Thu, 21 Mar 2019 17:21:42 GMT",
