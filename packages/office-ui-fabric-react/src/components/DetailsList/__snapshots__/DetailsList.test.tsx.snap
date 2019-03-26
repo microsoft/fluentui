@@ -5206,13 +5206,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className="ms-GroupSpacer"
-                                    style={
-                                      Object {
-                                        "display": "inline-block",
-                                        "width": 32,
-                                      }
-                                    }
+                                    className=
+                                        ms-GroupSpacer
+                                        {
+                                          -moz-osx-font-smoothing: grayscale;
+                                          -webkit-font-smoothing: antialiased;
+                                          display: inline-block;
+                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                          width: 32px;
+                                        }
                                   />
                                   <div
                                     className=
@@ -5396,13 +5400,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className="ms-GroupSpacer"
-                                    style={
-                                      Object {
-                                        "display": "inline-block",
-                                        "width": 32,
-                                      }
-                                    }
+                                    className=
+                                        ms-GroupSpacer
+                                        {
+                                          -moz-osx-font-smoothing: grayscale;
+                                          -webkit-font-smoothing: antialiased;
+                                          display: inline-block;
+                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                          width: 32px;
+                                        }
                                   />
                                   <div
                                     className=
@@ -5828,13 +5836,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className="ms-GroupSpacer"
-                                    style={
-                                      Object {
-                                        "display": "inline-block",
-                                        "width": 32,
-                                      }
-                                    }
+                                    className=
+                                        ms-GroupSpacer
+                                        {
+                                          -moz-osx-font-smoothing: grayscale;
+                                          -webkit-font-smoothing: antialiased;
+                                          display: inline-block;
+                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                          width: 32px;
+                                        }
                                   />
                                   <div
                                     className=
@@ -6018,13 +6030,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className="ms-GroupSpacer"
-                                    style={
-                                      Object {
-                                        "display": "inline-block",
-                                        "width": 32,
-                                      }
-                                    }
+                                    className=
+                                        ms-GroupSpacer
+                                        {
+                                          -moz-osx-font-smoothing: grayscale;
+                                          -webkit-font-smoothing: antialiased;
+                                          display: inline-block;
+                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                          width: 32px;
+                                        }
                                   />
                                   <div
                                     className=
@@ -6208,13 +6224,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className="ms-GroupSpacer"
-                                    style={
-                                      Object {
-                                        "display": "inline-block",
-                                        "width": 32,
-                                      }
-                                    }
+                                    className=
+                                        ms-GroupSpacer
+                                        {
+                                          -moz-osx-font-smoothing: grayscale;
+                                          -webkit-font-smoothing: antialiased;
+                                          display: inline-block;
+                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                          font-size: 14px;
+                                          font-weight: 400;
+                                          width: 32px;
+                                        }
                                   />
                                   <div
                                     className=

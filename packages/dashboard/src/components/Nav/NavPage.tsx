@@ -10,9 +10,11 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
         title=" Nav"
         componentName="NavToggler"
         exampleCards={
-          <ExampleCard title="Nav" isOptIn={true} code={NavExampleCode} isScrollable={false}>
-            <NavExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title="Nav" isOptIn={true} code={NavExampleCode}>
+              <NavExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet

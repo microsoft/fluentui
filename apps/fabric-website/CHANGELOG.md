@@ -1,13 +1,6 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 22 Mar 2019 02:41:50 GMT and should not be manually modified.
-
-## 6.12.3
-Fri, 22 Mar 2019 02:41:50 GMT
-
-### Patches
-
-- Add missing hypen for prefixVer
+This log was last generated on Wed, 20 Mar 2019 12:34:45 GMT and should not be manually modified.
 
 ## 6.12.2
 Wed, 20 Mar 2019 12:34:45 GMT

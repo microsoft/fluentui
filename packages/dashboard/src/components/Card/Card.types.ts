@@ -4,7 +4,6 @@ import { ICardContentDetails } from './Layout/Layout.types';
 import { IAction } from './ActionBar/ActionBar.types';
 import { ICardDropDownOption } from './CardFrame/CardFrame.types';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IFocusZoneProps } from 'office-ui-fabric-react/lib/components/FocusZone/FocusZone.types';
 
 /**
  * Card size that we want to build.
@@ -197,13 +196,6 @@ export interface ICardProps {
    * load animations for loading  dashboard card
    */
   loading?: boolean;
-
-  /**
-   * Custom properties for FocusZone (Layout -> ActionBar -> OverflowSet -> FocusZone).
-   * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
-   * Use one or the other.
-   */
-  focusZoneProps?: IFocusZoneProps;
 }
 
 export enum DraggingAnimationType {

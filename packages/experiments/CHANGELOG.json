@@ -2,28 +2,6 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
-      "version": "6.64.2",
-      "tag": "@uifabric/experiments_v6.64.2",
-      "date": "Thu, 21 Mar 2019 12:36:30 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Toggle: Fix invalid references to this object.",
-            "author": "Jason Gore <jagore@microsoft.com>",
-            "commit": "eb67bcfd042546ace4ef386cb1ba5c56245b53d0"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.8` to `^0.28.9`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.157.3 <7.0.0` to `>=6.158.0 <7.0.0`"
-          }
-        ]
-      }
-    },
-    {
       "version": "6.64.1",
       "tag": "@uifabric/experiments_v6.64.1",
       "date": "Tue, 19 Mar 2019 12:36:45 GMT",

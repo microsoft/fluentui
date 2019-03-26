@@ -1,2 +1,2 @@
-﻿export * from './Nav';
+﻿export * from './NavToggler';
 export * from './Nav.types';

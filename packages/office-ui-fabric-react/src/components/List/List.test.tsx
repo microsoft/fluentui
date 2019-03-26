@@ -72,16 +72,6 @@ describe('List', () => {
       expect(listRoot.getDOMNode().getAttribute('role')).toEqual('list');
     });
 
-    it("does not set the root element's role in case of an empty list", done => {
-      const wrapper = mount(<List items={mockData(0)} />);
-
-      wrapper.setProps({ items: mockData(0), onPagesUpdated: (pages: IPage[]) => done() });
-
-      const listRoot = wrapper.find(List);
-
-      expect(listRoot.getDOMNode().getAttribute('role')).toBeNull();
-    });
-
     it("sets the row elements' role to 'listitem'", done => {
       const wrapper = mount(<List items={mockData(100)} />);
 

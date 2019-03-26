@@ -36,7 +36,6 @@ const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 const _allInstances: {
   [key: string]: FocusZone;
 } = {};
-const _outerZones: Set<FocusZone> = new Set();
 
 interface IPoint {
   left: number;
@@ -108,10 +107,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
     _allInstances[this._id] = this;
 
-    if (!this._isInnerZone) {
-      _outerZones.add(this);
-    }
-
     if (root) {
       const windowElement = root.ownerDocument!.defaultView;
 
@@ -125,10 +120,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
       }
 
-      if (windowElement && _outerZones.size === 1) {
-        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true));
+      if (!this._isInnerZone) {
+        this._disposables.push(on(windowElement, 'keydown', this._onKeyDownCapture, true), on(root, 'blur', this._onBlur, true));
       }
-      this._disposables.push(on(root, 'blur', this._onBlur, true));
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
@@ -162,10 +156,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   public componentWillUnmount() {
     delete _allInstances[this._id];
-
-    if (!this._isInnerZone) {
-      _outerZones.delete(this);
-    }
 
     // Dispose all events.
     this._disposables.forEach(d => d());
@@ -278,7 +268,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
       // Only update the index path if we are not parked on the root.
       if (focusedElement !== root) {
-        const shouldRestoreFocus = elementContains(root, focusedElement, false);
+        const shouldRestoreFocus = elementContains(root, focusedElement);
 
         this._lastIndexPath = shouldRestoreFocus ? getElementIndexPath(root as HTMLElement, doc.activeElement as HTMLElement) : undefined;
       }
@@ -308,19 +298,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       }
     }
 
-    const initialElementFocused = !this._activeElement;
-
-    // If the new active element is a child of this zone and received focus,
-    // update alignment an immediate descendant
     if (newActiveElement && newActiveElement !== this._activeElement) {
-      if (isImmediateDescendant || initialElementFocused) {
-        this._setFocusAlignment(newActiveElement, initialElementFocused);
-      }
-
       this._activeElement = newActiveElement;
 
-      if (initialElementFocused) {
-        this._updateTabIndexes();
+      if (isImmediateDescendant) {
+        this._setFocusAlignment(this._activeElement);
       }
     }
 
@@ -373,7 +355,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
     if (ev.which === KeyCodes.tab) {
-      _outerZones.forEach(zone => zone._updateTabIndexes());
+      this._updateTabIndexes();
     }
   };
 

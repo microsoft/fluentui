@@ -234,7 +234,6 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
     return (
       <div className={className}>
         <ActionBar
-          focusZoneProps={this.props.focusZoneProps}
           actions={actions}
           actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
           actionBarOverflowButtonAriaLabel={actionBarOverflowButtonAriaLabel}

@@ -2,25 +2,6 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
-      "version": "6.12.3",
-      "tag": "@uifabric/fabric-website_v6.12.3",
-      "date": "Fri, 22 Mar 2019 02:41:50 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Add missing hypen for prefixVer",
-            "author": "Eddie Liu <leddie24@gmail.com>",
-            "commit": "f76f2b67696a0f727950bf193f0cfa6c6f97e16b"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.158.0 <7.0.0` to `>=6.159.0 <7.0.0`"
-          }
-        ]
-      }
-    },
-    {
       "version": "6.12.2",
       "tag": "@uifabric/fabric-website_v6.12.2",
       "date": "Wed, 20 Mar 2019 12:34:45 GMT",

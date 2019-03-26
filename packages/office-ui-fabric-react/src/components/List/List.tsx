@@ -359,7 +359,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   public render(): JSX.Element {
-    const { className, role = 'list' } = this.props;
+    const { className, role } = this.props;
     const { pages = [] } = this.state;
     const pageElements: JSX.Element[] = [];
     const divProps = getNativeProps(this.props, divProperties);
@@ -369,7 +369,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
 
     return (
-      <div ref={this._root} {...divProps} role={pageElements.length > 0 ? role : undefined} className={css('ms-List', className)}>
+      <div ref={this._root} {...divProps} role={role === undefined ? 'list' : role} className={css('ms-List', className)}>
         <div ref={this._surface} className={css('ms-List-surface')} role="presentation">
           {pageElements}
         </div>

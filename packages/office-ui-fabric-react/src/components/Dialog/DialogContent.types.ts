@@ -67,7 +67,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   /**
    * The title text to display at the top of the dialog.
    */
-  title?: string | JSX.Element;
+  title?: string;
 
   /**
    * Responsive mode passed in from decorator.

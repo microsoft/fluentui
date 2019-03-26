@@ -113,7 +113,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
    * The title text to display at the top of the dialog.
    * @deprecated Pass through via `dialogContentProps` instead.
    */
-  title?: string | JSX.Element;
+  title?: string;
 
   /**
    * The subtext to display in the dialog.

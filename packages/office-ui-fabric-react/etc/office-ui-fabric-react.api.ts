@@ -7239,7 +7239,7 @@ interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
   subText?: string;
   subTextId?: string;
   theme?: ITheme;
-  title?: string | JSX.Element;
+  title?: string;
   titleId?: string;
   topButtonsProps?: IButtonProps[];
   type?: DialogType;
@@ -7340,7 +7340,7 @@ interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiv
   subText?: string;
   theme?: ITheme;
   // @deprecated
-  title?: string | JSX.Element;
+  title?: string;
   // @deprecated
   topButtonsProps?: IButtonProps[];
   // @deprecated
@@ -7928,8 +7928,6 @@ interface IExtendedPersonaProps extends IPersonaProps {
   // (undocumented)
   isValid: boolean;
   // (undocumented)
-  key?: React.Key;
-  // (undocumented)
   shouldBlockSelection?: boolean;
 }
 
@@ -8373,13 +8371,11 @@ interface IGroupShowAllStyles {
 interface IGroupSpacerProps {
   count: number;
   indentWidth?: number;
-  // @deprecated
   styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
-  // @deprecated
   theme?: ITheme;
 }
 
-// @public @deprecated (undocumented)
+// @public (undocumented)
 interface IGroupSpacerStyles {
   // (undocumented)
   root: IStyle;

@@ -8,7 +8,7 @@ import { IToggleComponent, IToggleProps, IToggleSlots } from './Toggle.types';
 
 export const ToggleView: IToggleComponent['view'] = props => {
   const { as: RootType = 'div', label, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
-  const toggleNativeProps = getNativeProps(props, inputProperties, ['defaultChecked']);
+  const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
 
   const Slots = getSlots<IToggleProps, IToggleSlots>(props, {
     root: RootType,
@@ -19,13 +19,9 @@ export const ToggleView: IToggleComponent['view'] = props => {
     text: Label
   });
 
-  // TODO: need to fix this._id usage. should _id come from state?
-  // const id = this._id;
-  const id = undefined;
-
   return (
     <Slots.root>
-      <Slots.label htmlFor={id}>{label}</Slots.label>
+      <Slots.label htmlFor={this._id}>{label}</Slots.label>
       <Slots.container>
         <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
@@ -33,7 +29,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
               {...toggleNativeProps}
               {...keytipAttributes}
               disabled={disabled}
-              id={id}
+              id={this._id}
               type="button"
               role="switch" // ARIA 1.1 definition; "checkbox" in ARIA 1.0
               ref={toggleButtonRef}
