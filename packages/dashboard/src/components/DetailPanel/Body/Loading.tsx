@@ -31,7 +31,7 @@ const loading: React.SFC<IDetailPanelLoadingProps> = (props: IDetailPanelLoading
         {/* group 1 */}
         {title && <Shimmer shimmerElements={[{ type: ElemType.line }]} width="100%" />}
         {/* group 2 */}
-        {Array.from({ length: count }).map((_: number, i: number) => {
+        {Array.apply(null, Array(count)).map((_: number, i: number) => {
           return (
             <div className={css.shimmerGroup} key={i}>
               <Shimmer shimmerElements={[{ type: ElemType.line }]} width="100%" />

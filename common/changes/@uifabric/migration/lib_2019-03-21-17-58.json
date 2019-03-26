@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/migration",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "elcraig@microsoft.com"
+}

@@ -1952,7 +1952,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   /**
    * Get the styles for the current option.
-   * @param item Item props for the current option
+   * @param item - Item props for the current option
    */
   private _getCaretButtonStyles(): IButtonStyles {
     const { caretDownButtonStyles: customCaretDownButtonStyles } = this.props;
@@ -1961,7 +1961,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   /**
    * Get the styles for the current option.
-   * @param item Item props for the current option
+   * @param item - Item props for the current option
    */
   private _getCurrentOptionStyles(item: IComboBoxOption): Partial<IComboBoxOptionStyles> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;

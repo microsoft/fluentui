@@ -1,6 +1,6 @@
 import { ITheme, IStyle } from '../../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
-import { IColor } from '../../../utilities/color/colors';
+import { IColor } from '../../../utilities/color/interfaces';
 
 export interface IColorRectangle {
   /** Currently selected color. */
