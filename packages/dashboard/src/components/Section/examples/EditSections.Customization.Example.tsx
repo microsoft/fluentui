@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Layout, Layouts } from 'react-grid-layout-fabric';
 import { EditSections } from '../EditSections';
 import { CardSize, DashboardGridBreakpointLayouts, ISection, IDashboardCardLayout, CardSizeToWidthHeight } from '@uifabric/dashboard';
+import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IEditSectionsExampleState {
   saveButtonDisabled: boolean;
@@ -149,7 +150,7 @@ export class EditSectionsCustomizationExample extends React.Component<{}, IEditS
    * Example handler for onRenameSectionClick
    */
   private _onRenameSectionClick = (id: string): void => {
-    const index = this.state.sections.findIndex((section: ISection) => section.id === id);
+    const index = findIndex(this.state.sections, (section: ISection) => section.id === id);
     const newSections = JSON.parse(JSON.stringify(this.state.sections)); // deep clone
     newSections[index].isRenaming = true;
 
@@ -163,7 +164,7 @@ export class EditSectionsCustomizationExample extends React.Component<{}, IEditS
    * Example handler for onUpdateSectionTitle
    */
   private _onUpdateSectionTitle = (id: string, title: string) => {
-    const index = this.state.sections.findIndex((section: ISection) => section.id === id);
+    const index = findIndex(this.state.sections, (section: ISection) => section.id === id);
     const newSections = JSON.parse(JSON.stringify(this.state.sections)); // deep clone
     newSections[index].isRenaming = false;
     newSections[index].title = title;
@@ -190,7 +191,8 @@ export class EditSectionsCustomizationExample extends React.Component<{}, IEditS
   private _addLayoutForNewSection(id: string): DashboardGridBreakpointLayouts {
     const newLayout: DashboardGridBreakpointLayouts = JSON.parse(JSON.stringify(this.state.layout));
 
-    for (const [_, value] of Object.entries(newLayout)) {
+    for (const key of Object.keys(newLayout)) {
+      const value = newLayout[key as keyof DashboardGridBreakpointLayouts];
       if (value === undefined) {
         continue;
       }
@@ -234,7 +236,8 @@ export class EditSectionsCustomizationExample extends React.Component<{}, IEditS
 
   private _generateDashboardLayoutFromRGLLayout(allLayouts: Layouts): DashboardGridBreakpointLayouts {
     const newLayout: DashboardGridBreakpointLayouts = {};
-    for (const [breakPoint, value] of Object.entries(allLayouts)) {
+    for (const breakPoint of Object.keys(allLayouts)) {
+      const value = allLayouts[breakPoint as keyof DashboardGridBreakpointLayouts];
       if (value === undefined) {
         continue;
       }

@@ -783,9 +783,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   /**
    * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
    * if so, stops event propagation and dismisses menu(s).
-   * @param ev The keyboard event.
-   * @param shouldHandleKey Returns whether we should handle this keyboard event.
-   * @param dismissAllMenus If true, dismiss all menus. Otherwise, dismiss only the current menu.
+   * @param ev - The keyboard event.
+   * @param shouldHandleKey - Returns whether we should handle this keyboard event.
+   * @param dismissAllMenus - If true, dismiss all menus. Otherwise, dismiss only the current menu.
    * Only does anything if `shouldHandleKey` returns true.
    * @returns Whether the event was handled.
    */
@@ -1111,8 +1111,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   /**
    * Returns the item that mathes a given key if any.
-   * @param key The key of the item to match
-   * @param items The items to look for the key
+   * @param key - The key of the item to match
+   * @param items - The items to look for the key
    */
   private _findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
     for (const item of items) {

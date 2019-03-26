@@ -1,4 +1,5 @@
-import { IColor, getColorFromString } from '../../utilities/color/colors';
+import { IColor } from '../../utilities/color/interfaces';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { isValidShade, getShade, getBackgroundShade } from '../../utilities/color/shades';
 import { format } from '../../Utilities';
 

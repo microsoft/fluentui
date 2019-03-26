@@ -68,6 +68,10 @@ export interface ITilesGridSegment<TItem> {
    */
   minRowHeight: number;
   /**
+   * A maximum number of rows to fill, before 'hiding' all other items in the grid.
+   */
+  maxRowCount?: number;
+  /**
    * The maximum scale factor to use when stretching items to fill a row.
    */
   maxScaleFactor?: number;

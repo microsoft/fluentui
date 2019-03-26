@@ -371,7 +371,6 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
    *
    * when change to false, that means drag leave. we will remove the dropping class name from root element.
    *
-   * @private
    * @param newValue - New isDropping state value
    * @param event - The event trigger dropping state change which can be dragenter, dragleave etc
    */

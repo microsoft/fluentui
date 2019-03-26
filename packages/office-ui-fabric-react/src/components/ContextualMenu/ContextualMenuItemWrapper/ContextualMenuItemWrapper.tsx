@@ -3,7 +3,7 @@ import { BaseComponent, shallowCompare } from '../../../Utilities';
 import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 import { IContextualMenuItem } from '../../../ContextualMenu';
 
-export class ContextualMenuItemWrapper extends BaseComponent<IContextualMenuItemWrapperProps, {}> {
+export class ContextualMenuItemWrapper extends BaseComponent<IContextualMenuItemWrapperProps> {
   public shouldComponentUpdate(newProps: IContextualMenuItemWrapperProps): boolean {
     return !shallowCompare(newProps, this.props);
   }
