@@ -171,8 +171,8 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
 
   /**
    * Update the displayed color and call change handlers if appropriate.
-   * @param ev Event if call was triggered by an event (undefined if triggered by props change)
-   * @param newColor Updated color
+   * @param ev - Event if call was triggered by an event (undefined if triggered by props change)
+   * @param newColor - Updated color
    */
   private _updateColor(ev: React.SyntheticEvent<HTMLElement> | undefined, newColor: IColor | undefined): void {
     if (!newColor) {

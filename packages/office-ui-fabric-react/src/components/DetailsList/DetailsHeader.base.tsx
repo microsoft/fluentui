@@ -648,7 +648,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
    * double click on the column sizer will auto ajust column width
    * to fit the longest content among current rendered rows.
    *
-   * @private
    * @param {number} columnIndex (index of the column user double clicked)
    * @param {React.MouseEvent} ev (mouse double click event)
    */
@@ -775,8 +774,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
    * mouse move event handler in the header
    * it will set isSizing state to true when user clicked on the sizer and move the mouse.
    *
-   * @private
-   * @param {React.MouseEvent} ev (mouse move event)
+   * @param ev - mouse move event
    */
   private _onSizerMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const {
@@ -830,8 +828,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
    * clear the resize related state.
    * This is to ensure we can catch double click event
    *
-   * @private
-   * @param {React.MouseEvent} ev (mouse up event)
+   * @param ev - mouse up event
    */
   private _onSizerMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     const { columns = NO_COLUMNS, onColumnIsSizingChanged } = this.props;
