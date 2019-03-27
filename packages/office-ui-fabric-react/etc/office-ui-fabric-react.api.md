@@ -4930,21 +4930,21 @@ export interface IList {
 }
 
 // @public (undocumented)
-export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
+export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
     className?: string;
     componentRef?: IRefObject<IList>;
     getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
-    getKey?: (item: any, index?: number) => string;
+    getKey?: (item: T, index?: number) => string;
     getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
     getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
-    getPageStyle?: (page: IPage) => any;
-    items?: any[];
-    onPageAdded?: (page: IPage) => void;
-    onPageRemoved?: (page: IPage) => void;
-    onPagesUpdated?: (pages: IPage[]) => void;
-    onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
-    onRenderPage?: (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) => React.ReactNode;
-    onShouldVirtualize?: (props: IListProps) => boolean;
+    getPageStyle?: (page: IPage<T>) => any;
+    items?: T[];
+    onPageAdded?: (page: IPage<T>) => void;
+    onPageRemoved?: (page: IPage<T>) => void;
+    onPagesUpdated?: (pages: IPage<T>[]) => void;
+    onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
+    onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
+    onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
     renderedWindowsAhead?: number;
     renderedWindowsBehind?: number;
@@ -4954,12 +4954,12 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 }
 
 // @public (undocumented)
-export interface IListState {
+export interface IListState<T = any> {
     // (undocumented)
     isScrolling?: boolean;
     measureVersion?: number;
     // (undocumented)
-    pages?: IPage[];
+    pages?: IPage<T>[];
 }
 
 // @public (undocumented)
@@ -5347,7 +5347,7 @@ export interface IOverlayStyles {
 }
 
 // @public (undocumented)
-export interface IPage {
+export interface IPage<T = any> {
     // (undocumented)
     data?: any;
     // (undocumented)
@@ -5357,7 +5357,7 @@ export interface IPage {
     // (undocumented)
     itemCount: number;
     // (undocumented)
-    items: any[] | undefined;
+    items: T[] | undefined;
     // (undocumented)
     key: string;
     // (undocumented)
@@ -5369,8 +5369,8 @@ export interface IPage {
 }
 
 // @public (undocumented)
-export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
-    page: IPage;
+export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
+    page: IPage<T>;
     role?: string;
 }
 
@@ -7545,12 +7545,12 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 }
 
 // @public
-export class List extends BaseComponent<IListProps, IListState> implements IList {
-    constructor(props: IListProps);
+export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+    constructor(props: IListProps<T>);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentWillReceiveProps(newProps: IListProps): void;
+    componentWillReceiveProps(newProps: IListProps<T>): void;
     // (undocumented)
     static defaultProps: {
         startIndex: number;
@@ -7570,7 +7570,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     render(): JSX.Element;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
-    shouldComponentUpdate(newProps: IListProps, newState: IListState): boolean;
+    shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
     }
 
 // @public (undocumented)

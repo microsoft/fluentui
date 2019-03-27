@@ -43,7 +43,6 @@ export function assign(target: any, ...args: any[]): any;
 
 // @public
 export class Async {
-    // (undocumented)
     constructor(parent?: object, onError?: (e: any) => void);
     // (undocumented)
     cancelAnimationFrame(id: number): void;
@@ -78,7 +77,6 @@ export function autobind<T extends Function>(target: any, key: string, descripto
 
 // @public
 export class AutoScroll {
-    // (undocumented)
     constructor(element: HTMLElement);
     // (undocumented)
     dispose(): void;
@@ -173,7 +171,6 @@ export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
 // 
 // @public
 export class DelayedRender extends React_2.Component<IDelayedRenderProps, IDelayedRenderState> {
-    // (undocumented)
     constructor(props: IDelayedRenderProps);
     // (undocumented)
     componentDidMount(): void;
@@ -856,7 +853,6 @@ export function raiseClick(target: Element): void;
 
 // @public
 export class Rectangle {
-    // (undocumented)
     constructor(left?: number, right?: number, top?: number, bottom?: number);
     // (undocumented)
     bottom: number;

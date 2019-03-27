@@ -96,12 +96,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   constructor(props: IComponentPageProps) {
     super(props);
 
-    let doc = getDocument();
+    const doc = getDocument();
     this._baseUrl = doc ? document.location.href : '';
   }
 
   public render(): JSX.Element {
-    let { componentName, overview, className } = this.props;
+    const { componentName, className } = this.props;
 
     return (
       <div className={css('ComponentPage', className)}>
@@ -137,8 +137,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _navigationLinks(): JSX.Element {
-    let links: Array<JSX.Element> = [];
-    let { bestPractices, dos, donts } = this.props;
+    const links: Array<JSX.Element> = [];
+    const { bestPractices, dos, donts } = this.props;
 
     if (bestPractices && dos && donts) {
       links.push(
@@ -281,18 +281,19 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getDosAndDonts(): JSX.Element | undefined {
-    let dosAndDonts: Array<JSX.Element> = [];
+    const props = this.props;
+    const dosAndDonts: Array<JSX.Element> = [];
+
+    const practicesUrl = this._getURL('BestPractices', props.editBestPracticesUrl);
+    const dosUrl = this._getURL('Dos', props.editDosUrl);
+    const dontsUrl = this._getURL('Donts', props.editDontsUrl);
+
     if (this.props.bestPractices) {
       dosAndDonts.push(
         <div className="ComponentPage-usage" id="BestPractices" key="best-practices">
           <div className="ComponentPage-usageHeader">
             <h2 className="ComponentPage-subHeading">Best Practices</h2>
-            <EditSection
-              title={this.props.title}
-              section={'BestPractices'}
-              sectionContent={this.props.bestPractices}
-              url={this._getURL('BestPractices', this.props.editBestPracticesUrl)}
-            />
+            {practicesUrl && <EditSection title={this.props.title} section="BestPractices" url={practicesUrl} />}
           </div>
           {this.props.bestPractices}
         </div>
@@ -305,12 +306,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <div className="ComponentPage-doSection">
             <div className="ComponentPage-doSectionHeader">
               <h3>Do</h3>
-              <EditSection
-                title={this.props.title}
-                section={'Dos'}
-                sectionContent={this.props.dos}
-                url={this._getURL('Dos', this.props.editDosUrl)}
-              />
+              {dosUrl && <EditSection title={this.props.title} section="Dos" url={dosUrl} />}
             </div>
             <hr className="ComponentPage-doSectionLine" />
             {this.props.dos}
@@ -318,12 +314,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           <div className="ComponentPage-doSection ComponentPage-doSection--dont">
             <div className="ComponentPage-doSectionHeader">
               <h3>Don&rsquo;t</h3>
-              <EditSection
-                title={this.props.title}
-                section={'Donts'}
-                sectionContent={this.props.donts}
-                url={this._getURL('Donts', this.props.editDontsUrl)}
-              />
+              {dontsUrl && <EditSection title={this.props.title} section="Donts" url={dontsUrl} />}
             </div>
             <hr className="ComponentPage-doSectionLine" />
             {this.props.donts}
@@ -399,18 +390,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   private _getOverview(): JSX.Element | undefined {
     if (this.props.overview) {
+      const overviewUrl = this._getURL('Overview', this.props.editOverviewUrl);
       return (
         <div className="ComponentPage-overviewSection">
           <div className="ComponentPage-overviewSectionHeader">
             <h2 className="ComponentPage-subHeading" id="Overview">
               Overview
             </h2>
-            <EditSection
-              title={this.props.title}
-              section={'Overview'}
-              sectionContent={this.props.overview}
-              url={this._getURL('Overview', this.props.editOverviewUrl)}
-            />
+            {overviewUrl && <EditSection title={this.props.title} section="Overview" url={overviewUrl} />}
           </div>
           <div className="ComponentPage-overviewSectionContent">
             <div className="ComponentPage-overview">{this.props.overview}</div>
@@ -440,7 +427,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return undefined;
   }
 
-  private _getURL(section: string, url?: string): string {
+  private _getURL(section: string, url?: string): string | undefined {
     if (url) {
       return url;
     }
@@ -450,10 +437,10 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (this.props.componentUrl) {
       mdUrl = `${this.props.componentUrl}/docs/${componentName}${section}.md`;
       // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
-      if (mdUrl!.indexOf('/tree/') !== -1) {
-        mdUrl = mdUrl!.replace('/tree/', '/edit/');
-      } else if (mdUrl!.indexOf('/blob/') !== -1) {
-        mdUrl = mdUrl!.replace('/blob/', '/edit/');
+      if (mdUrl.indexOf('/tree/') !== -1) {
+        mdUrl = mdUrl.replace('/tree/', '/edit/');
+      } else if (mdUrl.indexOf('/blob/') !== -1) {
+        mdUrl = mdUrl.replace('/blob/', '/edit/');
       }
     }
     return mdUrl;

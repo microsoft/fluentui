@@ -2,6 +2,6 @@
   "extends": ["@uifabric/tslint-rules"],
   "rules": {
     "deprecation": false,
-    "prefer-const": false
+    "typedef": false
   }
 }

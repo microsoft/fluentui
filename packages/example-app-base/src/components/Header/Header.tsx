@@ -34,11 +34,6 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: IHeaderProps) {
     super(props);
 
-    this._onGearClick = this._onGearClick.bind(this);
-    this._onDismiss = this._onDismiss.bind(this);
-    this._onRTLToggled = this._onRTLToggled.bind(this);
-    this._onMenuClick = this._onMenuClick.bind(this);
-
     this._isRTLEnabled = getRTL();
     this.state = {
       contextMenu: undefined
@@ -46,22 +41,17 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   }
 
   public render(): JSX.Element {
-    let { title, sideLinks, responsiveMode } = this.props;
-    let { contextMenu } = this.state;
+    const { title, responsiveMode = ResponsiveMode.xLarge } = this.props;
+    const { contextMenu } = this.state;
+    const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
-    if (responsiveMode === undefined) {
-      responsiveMode = ResponsiveMode.large;
-    }
-
-    // In medium and below scenarios, hide the side links.
-    if (responsiveMode <= ResponsiveMode.large) {
-      sideLinks = [];
-    }
+    // For screen sizes large down, hide the side links.
+    const sideLinks = isLargeDown ? [] : this.props.sideLinks;
 
     return (
       <div>
         <div className="Header">
-          {responsiveMode <= ResponsiveMode.large && (
+          {isLargeDown && (
             <button className="Header-button" onClick={this._onMenuClick}>
               <Icon iconName="GlobalNavButton" />
             </button>
@@ -97,16 +87,16 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     );
   }
 
-  private _onMenuClick(ev: React.MouseEvent<HTMLElement>): void {
-    let { onIsMenuVisibleChanged, isMenuVisible } = this.props;
+  private _onMenuClick = () => {
+    const { onIsMenuVisibleChanged, isMenuVisible } = this.props;
 
     if (onIsMenuVisibleChanged) {
       onIsMenuVisibleChanged(!isMenuVisible);
     }
-  }
+  };
 
-  private _onGearClick(ev: React.MouseEvent<HTMLElement>): void {
-    let { contextMenu } = this.state;
+  private _onGearClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { contextMenu } = this.state;
 
     this.setState({
       contextMenu: contextMenu
@@ -116,7 +106,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             items: this._getOptionMenuItems()
           }
     });
-  }
+  };
 
   private _getOptionMenuItems(): IContextualMenuItem[] {
     return [
@@ -129,14 +119,14 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     ];
   }
 
-  private _onRTLToggled(ev: React.MouseEvent<HTMLElement>): void {
+  private _onRTLToggled = () => {
     setRTL(!this._isRTLEnabled, true);
     location.reload();
-  }
+  };
 
-  private _onDismiss(): void {
+  private _onDismiss = () => {
     this.setState({
       contextMenu: undefined
     });
-  }
+  };
 }
