@@ -1077,12 +1077,14 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
 export const Fabric: React_2.StatelessComponent<IFabricProps>;
 
 // @public (undocumented)
-export class FabricBase extends BaseComponent<IFabricProps, {
+export class FabricBase extends React.Component<IFabricProps, {
     isFocusVisible: boolean;
 }> {
     constructor(props: IFabricProps);
     // (undocumented)
     componentDidMount(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     render(): JSX.Element;
     }
@@ -7490,7 +7492,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
 export const Label: React_2.StatelessComponent<ILabelProps>;
 
 // @public (undocumented)
-export class LabelBase extends BaseComponent<ILabelProps, {}> {
+export class LabelBase extends React.Component<ILabelProps, {}> {
     // (undocumented)
     render(): JSX.Element;
 }
@@ -7499,7 +7501,7 @@ export class LabelBase extends BaseComponent<ILabelProps, {}> {
 export const Layer: React_2.StatelessComponent<ILayerProps>;
 
 // @public (undocumented)
-export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
+export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     constructor(props: ILayerProps);
     // (undocumented)
     componentDidMount(): void;
@@ -7520,7 +7522,7 @@ export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
-export class LayerHost extends BaseComponent<ILayerHostProps> {
+export class LayerHost extends React.Component<ILayerHostProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
