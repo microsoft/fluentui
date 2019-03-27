@@ -29,6 +29,7 @@ export interface ITileGrid {
   marginBottom: number;
   key: string;
   isPlaceholder?: boolean;
+  maxRowCount?: number;
 }
 
 export interface ITileCell<TItem> {
@@ -185,11 +186,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
 
-      const isPlaceholder = grid.isPlaceholder;
+      const { isPlaceholder, maxRowCount } = grid;
 
       const renderedCells: React.ReactNode[] = [];
 
       const width = data.pageWidths[page.startIndex + i];
+
+      let rowCount = 0;
+      let isAtMaxRowCount = false;
 
       for (; i < endIndex && cells[i].grid === grid; i++) {
         // For each cell in the current grid.
@@ -199,6 +203,15 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         const cellAsFirstRow = data.rows[index];
 
         if (cellAsFirstRow) {
+          if (cellAsFirstRow !== currentRow) {
+            rowCount++;
+          }
+
+          if (typeof maxRowCount === 'number' && rowCount > maxRowCount) {
+            isAtMaxRowCount = true;
+            break;
+          }
+
           currentRow = cellAsFirstRow;
         }
 
@@ -258,6 +271,12 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         } else {
           shimmerWrapperWidth = finalSize.width / 3;
           renderedCells.push(renderedCell());
+        }
+      }
+
+      if (isAtMaxRowCount) {
+        for (; i < endIndex && cells[i].grid === grid; i++) {
+          // Consume the rest of the grid.
         }
       }
 
@@ -349,6 +368,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       // For each cell at the start of a grid.
       const grid = cells[i].grid;
 
+      const { maxRowCount } = grid;
+
       rowWidth = 0;
       rowStart = i;
 
@@ -372,7 +393,15 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         continue;
       }
 
+      let rowCount = 0;
+      let isAtMaxRowCount = false;
+
       for (; i < endIndex && cells[i].grid === grid; i++) {
+        if (typeof maxRowCount === 'number' && rowCount >= maxRowCount) {
+          isAtMaxRowCount = true;
+          break;
+        }
+
         // For each cell in the current grid.
         const { aspectRatio } = cells[i];
 
@@ -399,14 +428,16 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           currentRow = startCells[i] = {
             scaleFactor: 1
           };
+
+          rowCount++;
         }
       }
 
-      if (cells[i] && cells[i].grid === grid) {
+      if (!cells[i] || cells[i].grid !== grid || isAtMaxRowCount) {
         // If the next cell is part of a different grid.
-        isAtGridEnd = false;
-      } else {
         currentRow.isLastRow = true;
+      } else {
+        isAtGridEnd = false;
       }
 
       if (rowWidth < boundsWidth) {
@@ -450,6 +481,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.
         extraCells = cells.slice(rowStart, i);
+      }
+
+      if (isAtMaxRowCount) {
+        while (i < cells.length && cells[i].grid === grid) {
+          // Consume the rest of the cells in the grid if the max row count has been achieved.
+          i++;
+        }
       }
     }
 
@@ -549,7 +587,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           maxScaleFactor: maxScaleFactor,
           marginTop: item.isPlaceholder ? 0 : marginTop,
           marginBottom: item.isPlaceholder ? 0 : marginBottom,
-          isPlaceholder: item.isPlaceholder
+          isPlaceholder: item.isPlaceholder,
+          maxRowCount: item.maxRowCount
         };
 
         for (const gridItem of item.items) {

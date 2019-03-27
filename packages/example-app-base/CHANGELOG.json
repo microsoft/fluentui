@@ -2,6 +2,49 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.12.4",
+      "tag": "@uifabric/example-app-base_v6.12.4",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable stricter lint and compiler options",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "33e51e9f992bb7d2c98cef484c66020c98e45563"
+          },
+          {
+            "comment": "ExampleCard: Remove dependency on styles from random example, and remove utility CSS classes",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "bbb924c6ca7e0379cfce4dba835fe4ee3e9326ea"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.3",
+      "tag": "@uifabric/example-app-base_v6.12.3",
+      "date": "Fri, 22 Mar 2019 12:34:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove ExampleCardComponent now that Stack has been promoted.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "69bd6070595f933a0a3c9278eff74fd13f5b8edd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.159.0 <7.0.0` to `>=6.159.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.2",
       "tag": "@uifabric/example-app-base_v6.12.2",
       "date": "Wed, 13 Mar 2019 00:42:29 GMT",

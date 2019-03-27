@@ -399,9 +399,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   /**
    * update groupIsDropping state based on the input value, which is used to change style during drag and drop
    *
-   * @private
-   * @param {boolean} newValue (new isDropping state value)
-   * @param {DragEvent} event (the event trigger dropping state change which can be dragenter, dragleave etc)
+   * @param newValue - new isDropping state value
+   * @param event - the event trigger dropping state change which can be dragenter, dragleave etc
    */
   private _updateDroppingState = (newIsDropping: boolean, event: DragEvent): void => {
     const { isDropping } = this.state;

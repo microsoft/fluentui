@@ -8,7 +8,7 @@ export const ExtendedPeoplePickerPageProps: IDocPageProps = {
   title: 'ExtendedPeoplePicker',
   componentName: 'ExtendedPeoplePicker',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ExtendedPeoplePicker',
+    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ExtendedPicker/PeoplePicker',
   examples: [
     {
       title: 'Extended People Picker',

@@ -62,15 +62,10 @@ drop/
 
 # Visual Studio Temp Project
 .vs/
-bin/
-*.suo
-*.csproj.user
-*.userosscache
 *.sublime-project
 *.sublime-workspace
 .idea
 /.settings/
-OneDrive.sln.ide/*
 
 # NPM Install Temp
 __temp/

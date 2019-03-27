@@ -2,7 +2,7 @@ package.json
 packages/*/package.json
 
 **/*.d.ts
-**/*.api.ts
+**/*.api.md
 
 **/lib/**/*.js
 **/lib-commonjs/**/*.js

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 20 Mar 2019 12:34:45 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- HomePage: Add ContextualMenu to enable switching documentation versions
+
+## 6.12.3
+Fri, 22 Mar 2019 02:41:50 GMT
+
+### Patches
+
+- Add missing hypen for prefixVer
 
 ## 6.12.2
 Wed, 20 Mar 2019 12:34:45 GMT
