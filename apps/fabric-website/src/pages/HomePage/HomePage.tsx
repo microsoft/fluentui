@@ -148,5 +148,5 @@ export class HomePage extends React.Component<any, IHomepageState> {
 
   private _onVersionMenuClick = (event, item: IContextualMenuItem): void => {
     this.setState({ fabricVer: item.data });
-  };
+  }
 }
