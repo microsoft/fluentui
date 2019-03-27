@@ -22,7 +22,7 @@
     "@types/webpack-env": "1.13.0",
     "@uifabric/prettier-rules": ">=1.0.1 <2.0.0",
     "@uifabric/tslint-rules": ">=1.0.1 <2.0.0",
-    "@uifabric/date-time": "0.3.3",
+    "@uifabric/date-time": "0.3.4",
     "awesome-typescript-loader": "^3.2.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
