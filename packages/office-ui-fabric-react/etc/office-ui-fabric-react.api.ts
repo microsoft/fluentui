@@ -33,9 +33,13 @@ export function appendFunction(parent: any, ...functions: (any)[]): () => void;
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
+export function asAsync<TProps>(
+  options: IAsAsyncOptions<TProps>
+): React.ComponentType<
+  TProps & {
     asyncPlaceholder?: React.ReactType;
-}>;
+  }
+>;
 
 // @public
 export function assertNever(x: never): never;
@@ -53,32 +57,44 @@ class Async {
   clearImmediate(id: number): void;
   clearInterval(id: number): void;
   clearTimeout(id: number): void;
-  debounce<T extends Function>(func: T, wait?: number, options?: {
-          leading?: boolean;
-          maxWait?: number;
-          trailing?: boolean;
-      }): ICancelable<T> & (() => void);
+  debounce<T extends Function>(
+    func: T,
+    wait?: number,
+    options?: {
+      leading?: boolean;
+      maxWait?: number;
+      trailing?: boolean;
+    }
+  ): ICancelable<T> & (() => void);
   dispose(): void;
   // (undocumented)
   requestAnimationFrame(callback: () => void): number;
   setImmediate(callback: () => void): number;
   setInterval(callback: () => void, duration: number): number;
   setTimeout(callback: () => void, duration: number): number;
-  throttle<T extends Function>(func: T, wait?: number, options?: {
-          leading?: boolean;
-          trailing?: boolean;
-      }): T | (() => void);
+  throttle<T extends Function>(
+    func: T,
+    wait?: number,
+    options?: {
+      leading?: boolean;
+      trailing?: boolean;
+    }
+  ): T | (() => void);
 }
 
 // @public @deprecated
-export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
-    configurable: boolean;
-    get(): T;
-    set(newValue: any): void;
+export function autobind<T extends Function>(
+  target: any,
+  key: string,
+  descriptor: TypedPropertyDescriptor<T>
+): {
+  configurable: boolean;
+  get(): T;
+  set(newValue: any): void;
 } | void;
 
 // @public (undocumented)
-class Autofill extends BaseComponent<IAutofillProps, IAutofillState>, implements IAutofill {
+class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
   constructor(props: IAutofillProps);
   // (undocumented)
   clear(): void;
@@ -91,7 +107,7 @@ class Autofill extends BaseComponent<IAutofillProps, IAutofillState>, implements
   // (undocumented)
   static defaultProps: {
     enableAutofillOnKeyPress: number[];
-  }
+  };
   // (undocumented)
   focus(): void;
   // (undocumented)
@@ -116,11 +132,10 @@ class AutoScroll {
 }
 
 // @public @deprecated (undocumented)
-class BaseAutoFill extends Autofill {
-}
+class BaseAutoFill extends Autofill {}
 
 // @public (undocumented)
-class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState>, implements IButton {
+class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
   constructor(props: IBaseButtonProps, rootClassName: string);
   // (undocumented)
   componentDidMount(): void;
@@ -160,11 +175,11 @@ class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.C
 }
 
 // @public (undocumented)
-class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {
-}
+class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, IExtendedPeoplePickerProps> {}
 
 // @public (undocumented)
-class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>, implements IBaseExtendedPicker<T> {
+class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
+  implements IBaseExtendedPicker<T> {
   constructor(basePickerProps: P);
   // (undocumented)
   protected _onSelectedItemsChanged: () => void;
@@ -223,11 +238,11 @@ class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseC
 }
 
 // @public (undocumented)
-class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, IPeopleFloatingPickerProps> {
-}
+class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, IPeopleFloatingPickerProps> {}
 
 // @public (undocumented)
-class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState>, implements IBaseFloatingPicker {
+class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState>
+  implements IBaseFloatingPicker {
   constructor(basePickerProps: P);
   // (undocumented)
   completeSuggestion: () => void;
@@ -292,15 +307,13 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
 }
 
 // @public (undocumented)
-class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {
-}
+class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {}
 
 // @public (undocumented)
-class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {
-}
+class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtendedPersonaProps, ISelectedPeopleProps> {}
 
 // @public (undocumented)
-class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState>, implements IBasePicker<T> {
+class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   constructor(basePickerProps: P);
   // (undocumented)
   protected _ariaMap: IPickerAriaIds;
@@ -411,7 +424,8 @@ class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T
 }
 
 // @public (undocumented)
-class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>>, implements IBaseSelectedItemsList<T> {
+class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>>
+  implements IBaseSelectedItemsList<T> {
   constructor(basePickerProps: P);
   // (undocumented)
   addItems: (items: T[]) => void;
@@ -483,12 +497,18 @@ class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
 }
 
 // @public
-export function buildClassMap<T>(styles: T): {
-    [key in keyof T]?: string;
-};
+export function buildClassMap<T>(styles: T): { [key in keyof T]?: string };
 
 // @public (undocumented)
-export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
+export function buildColumns(
+  items: any[],
+  canResizeColumns?: boolean,
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void,
+  sortedColumnKey?: string,
+  isSortedDescending?: boolean,
+  groupedColumnKey?: string,
+  isMultiline?: boolean
+): IColumn[];
 
 // @public @deprecated
 class Button extends BaseComponent<IButtonProps, {}> {
@@ -520,7 +540,7 @@ enum ButtonType {
 export function calculatePrecision(value: number | string): number;
 
 // @public (undocumented)
-class Calendar extends BaseComponent<ICalendarProps, ICalendarState>, implements ICalendar {
+class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
   constructor(props: ICalendarProps);
   // (undocumented)
   componentDidUpdate(): void;
@@ -556,7 +576,7 @@ class CheckBase extends BaseComponent<ICheckProps, {}> {
 }
 
 // @public (undocumented)
-class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState>, implements ICheckbox {
+class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   constructor(props: ICheckboxProps, context?: any);
   // (undocumented)
   readonly checked: boolean;
@@ -577,7 +597,7 @@ enum CheckboxVisibility {
 }
 
 // @public (undocumented)
-class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState>, implements IChoiceGroup {
+class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   constructor(props: IChoiceGroupProps);
   readonly checkedOption: IChoiceGroupOption | undefined;
   // (undocumented)
@@ -594,10 +614,13 @@ class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState
 export function clamp(value: number, max: number, min?: number): number;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (
+  getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
+  styleProps?: TStyleProps
+) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
-class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState>, implements ICoachmark {
+class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   constructor(props: ICoachmarkProps);
   // (undocumented)
   componentDidMount(): void;
@@ -624,7 +647,7 @@ enum CollapseAllVisibility {
 }
 
 // @public (undocumented)
-class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState>, implements IColorPicker {
+class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
   constructor(props: IColorPickerProps);
   // (undocumented)
   readonly color: IColor;
@@ -637,7 +660,7 @@ class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState
     greenLabel: string;
     hexLabel: string;
     redLabel: string;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
 }
@@ -685,7 +708,7 @@ class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 }
 
 // @public (undocumented)
-class CommandBarBase extends BaseComponent<ICommandBarProps, {}>, implements ICommandBar {
+class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   // (undocumented)
   static defaultProps: ICommandBarProps;
   // (undocumented)
@@ -709,7 +732,7 @@ class CompactPeoplePickerBase extends BasePeoplePicker {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
-  }
+  };
 }
 
 // @public (undocumented)
@@ -781,7 +804,13 @@ export function correctRGB(color: IRGB): IRGB;
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
 
 // @public
-export function createComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics;
+export function createComponent<
+  TComponentProps,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps = TComponentProps,
+  TStatics = {}
+>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics;
 
 // @public
 export function createFactory<TProps>(ComponentType: React.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps>;
@@ -790,8 +819,11 @@ export function createFactory<TProps>(ComponentType: React.ComponentType<TProps>
 export function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public (undocumented)
-export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & {
-    key: React.Key;
+export function createGenericItem(
+  name: string,
+  currentValidationState: ValidationState
+): IGenericItem & {
+  key: React.Key;
 };
 
 // @public (undocumented)
@@ -810,7 +842,11 @@ export function css(...args: ICssInput[]): string;
 export function cssColor(color: string): IRGB | undefined;
 
 // @public (undocumented)
-export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React.ComponentType<P>) => any;
+export function customizable(
+  scope: string,
+  fields: string[],
+  concatStyles?: boolean
+): <P>(ComposedComponent: React.ComponentType<P>) => any;
 
 // @public (undocumented)
 class Customizations {
@@ -839,7 +875,7 @@ class Customizer extends BaseComponent<ICustomizerProps> {
 }
 
 // @public (undocumented)
-class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState>, implements IDatePicker {
+class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
   constructor(props: IDatePickerProps);
   // (undocumented)
   componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
@@ -902,13 +938,13 @@ class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderS
   // (undocumented)
   static defaultProps: {
     delay: number;
-  }
+  };
   // (undocumented)
   render(): React.ReactElement<{}> | null;
 }
 
 // @public (undocumented)
-class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState>, implements IDetailsList {
+class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   constructor(props: IDetailsListProps);
   // (undocumented)
   protected _onRenderRow: (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps> | undefined) => JSX.Element;
@@ -929,9 +965,14 @@ class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState
     isHeaderVisible: boolean;
     layoutMode: DetailsListLayoutMode;
     selectionMode: SelectionMode;
-  }
+  };
   // (undocumented)
-  focusIndex(index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+  focusIndex(
+    index: number,
+    forceIntoFirstElement?: boolean,
+    measureItem?: (itemIndex: number) => number,
+    scrollToMode?: ScrollToMode
+  ): void;
   // (undocumented)
   forceUpdate(): void;
   // (undocumented)
@@ -1023,7 +1064,7 @@ class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdownState>
   // (undocumented)
   static defaultProps: {
     options: any[];
-  }
+  };
   // (undocumented)
   focus(shouldOpenOnFocus?: boolean): void;
   // (undocumented)
@@ -1071,9 +1112,13 @@ class EventGroup {
   // (undocumented)
   off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
   on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
-  onAll(target: any, events: {
-          [key: string]: (args?: any) => void;
-      }, useCapture?: boolean): void;
+  onAll(
+    target: any,
+    events: {
+      [key: string]: (args?: any) => void;
+    },
+    useCapture?: boolean
+  ): void;
   static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
   // (undocumented)
   static stopPropagation(event: any): void;
@@ -1091,7 +1136,7 @@ class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCar
     compactCardHeight: number;
     directionalHintFixed: boolean;
     expandedCardHeight: number;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
 }
@@ -1103,13 +1148,10 @@ enum ExpandingCardMode {
 }
 
 // @public
-export function extendComponent<T extends React.Component>(parent: T, methods: {
-    [key in keyof T]?: T[key];
-}): void;
+export function extendComponent<T extends React.Component>(parent: T, methods: { [key in keyof T]?: T[key] }): void;
 
 // @public (undocumented)
-class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
-}
+class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {}
 
 // @public (undocumented)
 class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
@@ -1121,9 +1163,12 @@ class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeop
 }
 
 // @public (undocumented)
-class FabricBase extends BaseComponent<IFabricProps, {
+class FabricBase extends BaseComponent<
+  IFabricProps,
+  {
     isFocusVisible: boolean;
-}> {
+  }
+> {
   constructor(props: IFabricProps);
   // (undocumented)
   componentDidMount(): void;
@@ -1196,7 +1241,7 @@ class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   // (undocumented)
   static defaultProps: IFacepileProps;
   // (undocumented)
-  protected onRenderAriaDescription(): "" | JSX.Element | undefined;
+  protected onRenderAriaDescription(): '' | JSX.Element | undefined;
   // (undocumented)
   render(): JSX.Element;
 }
@@ -1239,9 +1284,15 @@ class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 }
 
 // @public
-export function focusAsync(element: HTMLElement | {
-    focus: () => void;
-} | undefined | null): void;
+export function focusAsync(
+  element:
+    | HTMLElement
+    | {
+        focus: () => void;
+      }
+    | undefined
+    | null
+): void;
 
 // @public
 export function focusClear(): IRawStyle;
@@ -1250,7 +1301,7 @@ export function focusClear(): IRawStyle;
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public (undocumented)
-class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements IFocusTrapZone {
+class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
@@ -1266,7 +1317,7 @@ class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}>, implements I
 }
 
 // @public (undocumented)
-class FocusZone extends React.Component<IFocusZoneProps, {}>, implements IFocusZone {
+class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
   constructor(props: IFocusZoneProps);
   // (undocumented)
   componentDidMount(): void;
@@ -1293,7 +1344,7 @@ enum FocusZoneDirection {
 export function fontFace(font: IFontFace): void;
 
 // @public (undocumented)
-module FontSizes {
+namespace FontSizes {
   // (undocumented)
   icon: string;
 
@@ -1329,11 +1380,10 @@ module FontSizes {
 
   // (undocumented)
   xxLarge: string;
-
 }
 
 // @public (undocumented)
-module FontWeights {
+namespace FontWeights {
   // (undocumented)
   bold: IFontWeight;
 
@@ -1348,7 +1398,6 @@ module FontWeights {
 
   // (undocumented)
   semilight: IFontWeight;
-
 }
 
 // @public
@@ -1382,25 +1431,52 @@ export function getDocument(rootElement?: HTMLElement | null): Document | undefi
 export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
 
 // @public
-export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
+export function getFadedOverflowStyle(
+  theme: ITheme,
+  color?: keyof ISemanticColors | keyof IPalette,
+  direction?: 'horizontal' | 'vertical',
+  width?: string | number,
+  height?: string | number
+): IRawStyle;
 
 // @public
-export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstFocusable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean
+): HTMLElement | null;
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getFirstTabbable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean,
+  checkNode?: boolean
+): HTMLElement | null;
 
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
 
 // @public
-export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
+export function getFocusStyle(
+  theme: ITheme,
+  inset?: number,
+  position?: 'relative' | 'absolute',
+  highContrastStyle?: IRawStyle | undefined,
+  borderColor?: string,
+  outlineColor?: string,
+  isFocusedOnly?: boolean
+): IRawStyle;
 
 // @public
 export function getFullColorString(color: IColor): string;
 
 // @public
-export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>>;
+export function getGlobalClassNames<T>(
+  classNames: GlobalClassNames<T>,
+  theme: ITheme,
+  disableGlobalClassNames?: boolean
+): Partial<GlobalClassNames<T>>;
 
 // @public
 export function getIcon(name?: string): IIconRecord | undefined;
@@ -1418,22 +1494,49 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 export function getLanguage(): string | null;
 
 // @public
-export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastFocusable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean
+): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getLastTabbable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean,
+  checkNode?: boolean
+): HTMLElement | null;
 
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
 // @public
-export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getNextElement(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement | null,
+  checkNode?: boolean,
+  suppressParentTraversal?: boolean,
+  suppressChildTraversal?: boolean,
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean,
+  tabbable?: boolean
+): HTMLElement | null;
 
 // @public
 export function getParent(child: HTMLElement, allowVirtualParents?: boolean): HTMLElement | null;
 
 // @public
-export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getPreviousElement(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement | null,
+  checkNode?: boolean,
+  suppressParentTraversal?: boolean,
+  traverseChildren?: boolean,
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean,
+  tabbable?: boolean
+): HTMLElement | null;
 
 // @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
@@ -1457,7 +1560,10 @@ export function getScrollbarWidth(): number;
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public
-export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(userProps: TProps, slots: ISlotDefinition<Required<TSlots>>): ISlots<Required<TSlots>>;
+export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps, TSlots>>(
+  userProps: TProps,
+  slots: ISlotDefinition<Required<TSlots>>
+): ISlots<Required<TSlots>>;
 
 // @public (undocumented)
 export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined;
@@ -1493,24 +1599,23 @@ class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
   static defaultProps: {
     disabled: boolean;
     id: string;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
 }
 
 // @public (undocumented)
-class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState>, implements IGroupedList {
+class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
   constructor(props: IGroupedListProps);
   // (undocumented)
   componentWillReceiveProps(newProps: IGroupedListProps): void;
   // (undocumented)
   static defaultProps: {
     compact: boolean;
-    groupProps: {
-    }
+    groupProps: {};
     isHeaderVisible: boolean;
     selectionMode: SelectionMode;
-  }
+  };
   // (undocumented)
   forceUpdate(): void;
   // (undocumented)
@@ -1518,7 +1623,7 @@ class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState
   // (undocumented)
   refs: {
     [key: string]: React.ReactInstance;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
   // (undocumented)
@@ -1558,15 +1663,15 @@ class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
     openHotKey: number;
     setInitialFocus: boolean;
     type: HoverCardType;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
 }
 
 // @public (undocumented)
 enum HoverCardType {
-  expanding = "ExpandingCard",
-  plain = "PlainCard"
+  expanding = 'ExpandingCard',
+  plain = 'PlainCard'
 }
 
 // @public
@@ -1724,8 +1829,7 @@ interface IAnimationVariables {
 }
 
 // @public (undocumented)
-interface IAnnounced {
-}
+interface IAnnounced {}
 
 // @public (undocumented)
 interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
@@ -1778,12 +1882,10 @@ interface IAutofillState {
 }
 
 // @public @deprecated
-interface IBaseAutoFill extends IAutofill {
-}
+interface IBaseAutoFill extends IAutofill {}
 
 // @public @deprecated
-interface IBaseAutoFillProps extends IAutofillProps {
-}
+interface IBaseAutoFillProps extends IAutofillProps {}
 
 // @public (undocumented)
 interface IBaseButtonProps extends IButtonProps {
@@ -1872,9 +1974,13 @@ interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
   onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   resolveDelay?: number;
-  searchingText?: ((props: {
+  searchingText?:
+    | ((
+        props: {
           input: string;
-      }) => string) | string;
+        }
+      ) => string)
+    | string;
   selectedItems?: T[];
   showForceResolve?: () => boolean;
   suggestionItems?: T[];
@@ -1926,9 +2032,13 @@ interface IBasePickerProps<T> extends React.Props<any> {
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
   removeButtonAriaLabel?: string;
   resolveDelay?: number;
-  searchingText?: ((props: {
+  searchingText?:
+    | ((
+        props: {
           input: string;
-      }) => string) | string;
+        }
+      ) => string)
+    | string;
   selectedItems?: T[];
   styles?: IStyleFunctionOrObject<IBasePickerStyleProps, IBasePickerStyles>;
   theme?: ITheme;
@@ -1968,8 +2078,27 @@ interface IBasePickerStyles {
 }
 
 // @public
-interface IBasePickerSuggestionsProps<T = any> extends Pick<ISuggestionsProps<T>, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> {
-}
+interface IBasePickerSuggestionsProps<T = any>
+  extends Pick<
+    ISuggestionsProps<T>,
+    | 'onRenderNoResultFound'
+    | 'suggestionsHeaderText'
+    | 'mostRecentlyUsedHeaderText'
+    | 'noResultsFoundText'
+    | 'className'
+    | 'suggestionsClassName'
+    | 'suggestionsItemClassName'
+    | 'searchForMoreText'
+    | 'forceResolveText'
+    | 'loadingText'
+    | 'searchingText'
+    | 'resultsFooterFull'
+    | 'resultsFooter'
+    | 'resultsMaximumNumber'
+    | 'showRemoveButtons'
+    | 'suggestionsAvailableAlertText'
+    | 'suggestionsContainerAriaLabel'
+  > {}
 
 // @public
 interface IBaseProps<T = any> {
@@ -2101,8 +2230,24 @@ interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLB
   // @deprecated
   description?: IStyle;
   disabled?: boolean;
-  getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
-  getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
+  getClassNames?: (
+    theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined,
+    allowDisabledFocus: boolean
+  ) => IButtonClassNames;
+  getSplitButtonClassNames?: (
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    allowDisabledFocus: boolean
+  ) => ISplitButtonClassNames;
   href?: string;
   iconProps?: IIconProps;
   keytipProps?: IKeytipProps;
@@ -2274,8 +2419,7 @@ interface ICalendarStrings {
 }
 
 // @public (undocumented)
-interface ICallout {
-}
+interface ICallout {}
 
 // @public (undocumented)
 interface ICalloutContentStyleProps {
@@ -2471,7 +2615,7 @@ interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInpu
   imageSize?: {
     height: number;
     width: number;
-  }
+  };
   imageSrc?: string;
   key: string;
   labelId?: string;
@@ -2818,8 +2962,7 @@ interface IColorRectangleStyles {
 }
 
 // @public (undocumented)
-interface IColorSlider {
-}
+interface IColorSlider {}
 
 // @public (undocumented)
 interface IColorSliderProps extends IBaseProps<IColorSlider> {
@@ -2938,7 +3081,16 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   componentRef?: IRefObject<IComboBox>;
   dropdownMaxWidth?: number;
   dropdownWidth?: number;
-  getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
+  getClassNames?: (
+    theme: ITheme,
+    isOpen: boolean,
+    disabled: boolean,
+    required: boolean,
+    focused: boolean,
+    allowFreeForm: boolean,
+    hasErrorMessage: boolean,
+    className?: string
+  ) => IComboBoxClassNames;
   isButtonAriaHidden?: boolean;
   keytipProps?: IKeytipProps;
   multiSelect?: boolean;
@@ -3087,7 +3239,7 @@ class IconButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public (undocumented)
-module IconFontSizes {
+namespace IconFontSizes {
   // (undocumented)
   large: string;
 
@@ -3099,3452 +3251,3450 @@ module IconFontSizes {
 
   // (undocumented)
   xSmall: string;
-
 }
 
 // @public @deprecated (undocumented)
 enum IconNames {
   // (undocumented)
-  AADLogo = "AADLogo",
+  AADLogo = 'AADLogo',
   // (undocumented)
-  Accept = "Accept",
+  Accept = 'Accept',
   // (undocumented)
-  AccessibiltyChecker = "AccessibiltyChecker",
+  AccessibiltyChecker = 'AccessibiltyChecker',
   // (undocumented)
-  AccessLogo = "AccessLogo",
+  AccessLogo = 'AccessLogo',
   // (undocumented)
-  AccessLogoFill = "AccessLogoFill",
+  AccessLogoFill = 'AccessLogoFill',
   // (undocumented)
-  AccountBrowser = "AccountBrowser",
+  AccountBrowser = 'AccountBrowser',
   // (undocumented)
-  AccountManagement = "AccountManagement",
+  AccountManagement = 'AccountManagement',
   // (undocumented)
-  Accounts = "Accounts",
+  Accounts = 'Accounts',
   // (undocumented)
-  ActionCenter = "ActionCenter",
+  ActionCenter = 'ActionCenter',
   // (undocumented)
-  ActivateOrders = "ActivateOrders",
+  ActivateOrders = 'ActivateOrders',
   // (undocumented)
-  ActivityFeed = "ActivityFeed",
+  ActivityFeed = 'ActivityFeed',
   // (undocumented)
-  Add = "Add",
+  Add = 'Add',
   // (undocumented)
-  AddBookmark = "AddBookmark",
+  AddBookmark = 'AddBookmark',
   // (undocumented)
-  AddEvent = "AddEvent",
+  AddEvent = 'AddEvent',
   // (undocumented)
-  AddFavorite = "AddFavorite",
+  AddFavorite = 'AddFavorite',
   // (undocumented)
-  AddFavoriteFill = "AddFavoriteFill",
+  AddFavoriteFill = 'AddFavoriteFill',
   // (undocumented)
-  AddFriend = "AddFriend",
+  AddFriend = 'AddFriend',
   // (undocumented)
-  AddGroup = "AddGroup",
+  AddGroup = 'AddGroup',
   // (undocumented)
-  AddHome = "AddHome",
+  AddHome = 'AddHome',
   // (undocumented)
-  AddIn = "AddIn",
+  AddIn = 'AddIn',
   // (undocumented)
-  AddNotes = "AddNotes",
+  AddNotes = 'AddNotes',
   // (undocumented)
-  AddOnlineMeeting = "AddOnlineMeeting",
+  AddOnlineMeeting = 'AddOnlineMeeting',
   // (undocumented)
-  AddPhone = "AddPhone",
+  AddPhone = 'AddPhone',
   // (undocumented)
-  AddReaction = "AddReaction",
+  AddReaction = 'AddReaction',
   // (undocumented)
-  AddTo = "AddTo",
+  AddTo = 'AddTo',
   // (undocumented)
-  Admin = "Admin",
+  Admin = 'Admin',
   // (undocumented)
-  AdminALogo32 = "AdminALogo32",
+  AdminALogo32 = 'AdminALogo32',
   // (undocumented)
-  AdminALogoFill32 = "AdminALogoFill32",
+  AdminALogoFill32 = 'AdminALogoFill32',
   // (undocumented)
-  AdminALogoInverse32 = "AdminALogoInverse32",
+  AdminALogoInverse32 = 'AdminALogoInverse32',
   // (undocumented)
-  AdminCLogoInverse32 = "AdminCLogoInverse32",
+  AdminCLogoInverse32 = 'AdminCLogoInverse32',
   // (undocumented)
-  AdminDLogoInverse32 = "AdminDLogoInverse32",
+  AdminDLogoInverse32 = 'AdminDLogoInverse32',
   // (undocumented)
-  AdminELogoInverse32 = "AdminELogoInverse32",
+  AdminELogoInverse32 = 'AdminELogoInverse32',
   // (undocumented)
-  AdminLLogoInverse32 = "AdminLLogoInverse32",
+  AdminLLogoInverse32 = 'AdminLLogoInverse32',
   // (undocumented)
-  AdminMLogoInverse32 = "AdminMLogoInverse32",
+  AdminMLogoInverse32 = 'AdminMLogoInverse32',
   // (undocumented)
-  AdminOLogoInverse32 = "AdminOLogoInverse32",
+  AdminOLogoInverse32 = 'AdminOLogoInverse32',
   // (undocumented)
-  AdminPLogoInverse32 = "AdminPLogoInverse32",
+  AdminPLogoInverse32 = 'AdminPLogoInverse32',
   // (undocumented)
-  AdminSLogoInverse32 = "AdminSLogoInverse32",
+  AdminSLogoInverse32 = 'AdminSLogoInverse32',
   // (undocumented)
-  AdminYLogoInverse32 = "AdminYLogoInverse32",
+  AdminYLogoInverse32 = 'AdminYLogoInverse32',
   // (undocumented)
-  Airplane = "Airplane",
+  Airplane = 'Airplane',
   // (undocumented)
-  AirplaneSolid = "AirplaneSolid",
+  AirplaneSolid = 'AirplaneSolid',
   // (undocumented)
-  AirTickets = "AirTickets",
+  AirTickets = 'AirTickets',
   // (undocumented)
-  AlarmClock = "AlarmClock",
+  AlarmClock = 'AlarmClock',
   // (undocumented)
-  Album = "Album",
+  Album = 'Album',
   // (undocumented)
-  AlbumRemove = "AlbumRemove",
+  AlbumRemove = 'AlbumRemove',
   // (undocumented)
-  AlertSolid = "AlertSolid",
+  AlertSolid = 'AlertSolid',
   // (undocumented)
-  AlignCenter = "AlignCenter",
+  AlignCenter = 'AlignCenter',
   // (undocumented)
-  AlignHorizontalCenter = "AlignHorizontalCenter",
+  AlignHorizontalCenter = 'AlignHorizontalCenter',
   // (undocumented)
-  AlignHorizontalLeft = "AlignHorizontalLeft",
+  AlignHorizontalLeft = 'AlignHorizontalLeft',
   // (undocumented)
-  AlignHorizontalRight = "AlignHorizontalRight",
+  AlignHorizontalRight = 'AlignHorizontalRight',
   // (undocumented)
-  AlignJustify = "AlignJustify",
+  AlignJustify = 'AlignJustify',
   // (undocumented)
-  AlignLeft = "AlignLeft",
+  AlignLeft = 'AlignLeft',
   // (undocumented)
-  AlignRight = "AlignRight",
+  AlignRight = 'AlignRight',
   // (undocumented)
-  AlignVerticalBottom = "AlignVerticalBottom",
+  AlignVerticalBottom = 'AlignVerticalBottom',
   // (undocumented)
-  AlignVerticalCenter = "AlignVerticalCenter",
+  AlignVerticalCenter = 'AlignVerticalCenter',
   // (undocumented)
-  AlignVerticalTop = "AlignVerticalTop",
+  AlignVerticalTop = 'AlignVerticalTop',
   // (undocumented)
-  AllApps = "AllApps",
+  AllApps = 'AllApps',
   // (undocumented)
-  AllAppsMirrored = "AllAppsMirrored",
+  AllAppsMirrored = 'AllAppsMirrored',
   // (undocumented)
-  AllCurrency = "AllCurrency",
+  AllCurrency = 'AllCurrency',
   // (undocumented)
-  AnalyticsLogo = "AnalyticsLogo",
+  AnalyticsLogo = 'AnalyticsLogo',
   // (undocumented)
-  AnalyticsQuery = "AnalyticsQuery",
+  AnalyticsQuery = 'AnalyticsQuery',
   // (undocumented)
-  AnalyticsReport = "AnalyticsReport",
+  AnalyticsReport = 'AnalyticsReport',
   // (undocumented)
-  AnalyticsView = "AnalyticsView",
+  AnalyticsView = 'AnalyticsView',
   // (undocumented)
-  AnchorLock = "AnchorLock",
+  AnchorLock = 'AnchorLock',
   // (undocumented)
-  Annotation = "Annotation",
+  Annotation = 'Annotation',
   // (undocumented)
-  AppIconDefault = "AppIconDefault",
+  AppIconDefault = 'AppIconDefault',
   // (undocumented)
-  AppIconDefaultAdd = "AppIconDefaultAdd",
+  AppIconDefaultAdd = 'AppIconDefaultAdd',
   // (undocumented)
-  AppIconDefaultList = "AppIconDefaultList",
+  AppIconDefaultList = 'AppIconDefaultList',
   // (undocumented)
-  AppleTVMenu = "AppleTVMenu",
+  AppleTVMenu = 'AppleTVMenu',
   // (undocumented)
-  AppleTVMicrophone = "AppleTVMicrophone",
+  AppleTVMicrophone = 'AppleTVMicrophone',
   // (undocumented)
-  AppleTVMonitor = "AppleTVMonitor",
+  AppleTVMonitor = 'AppleTVMonitor',
   // (undocumented)
-  AppleTVPlay = "AppleTVPlay",
+  AppleTVPlay = 'AppleTVPlay',
   // (undocumented)
-  Archive = "Archive",
+  Archive = 'Archive',
   // (undocumented)
-  AreaChart = "AreaChart",
+  AreaChart = 'AreaChart',
   // (undocumented)
-  ArrangeBringForward = "ArrangeBringForward",
+  ArrangeBringForward = 'ArrangeBringForward',
   // (undocumented)
-  ArrangeBringToFront = "ArrangeBringToFront",
+  ArrangeBringToFront = 'ArrangeBringToFront',
   // (undocumented)
-  ArrangeByFrom = "ArrangeByFrom",
+  ArrangeByFrom = 'ArrangeByFrom',
   // (undocumented)
-  ArrangeSendBackward = "ArrangeSendBackward",
+  ArrangeSendBackward = 'ArrangeSendBackward',
   // (undocumented)
-  ArrangeSendToBack = "ArrangeSendToBack",
+  ArrangeSendToBack = 'ArrangeSendToBack',
   // (undocumented)
-  Arrivals = "Arrivals",
+  Arrivals = 'Arrivals',
   // (undocumented)
-  ArrowDownRight8 = "ArrowDownRight8",
+  ArrowDownRight8 = 'ArrowDownRight8',
   // (undocumented)
-  ArrowDownRightMirrored8 = "ArrowDownRightMirrored8",
+  ArrowDownRightMirrored8 = 'ArrowDownRightMirrored8',
   // (undocumented)
-  ArrowTallDownLeft = "ArrowTallDownLeft",
+  ArrowTallDownLeft = 'ArrowTallDownLeft',
   // (undocumented)
-  ArrowTallDownRight = "ArrowTallDownRight",
+  ArrowTallDownRight = 'ArrowTallDownRight',
   // (undocumented)
-  ArrowTallUpLeft = "ArrowTallUpLeft",
+  ArrowTallUpLeft = 'ArrowTallUpLeft',
   // (undocumented)
-  ArrowTallUpRight = "ArrowTallUpRight",
+  ArrowTallUpRight = 'ArrowTallUpRight',
   // (undocumented)
-  ArrowUpRight = "ArrowUpRight",
+  ArrowUpRight = 'ArrowUpRight',
   // (undocumented)
-  ArrowUpRight8 = "ArrowUpRight8",
+  ArrowUpRight8 = 'ArrowUpRight8',
   // (undocumented)
-  ArrowUpRightMirrored8 = "ArrowUpRightMirrored8",
+  ArrowUpRightMirrored8 = 'ArrowUpRightMirrored8',
   // (undocumented)
-  Articles = "Articles",
+  Articles = 'Articles',
   // (undocumented)
-  Ascending = "Ascending",
+  Ascending = 'Ascending',
   // (undocumented)
-  AspectRatio = "AspectRatio",
+  AspectRatio = 'AspectRatio',
   // (undocumented)
-  AssessmentGroup = "AssessmentGroup",
+  AssessmentGroup = 'AssessmentGroup',
   // (undocumented)
-  AssessmentGroupTemplate = "AssessmentGroupTemplate",
+  AssessmentGroupTemplate = 'AssessmentGroupTemplate',
   // (undocumented)
-  AssetLibrary = "AssetLibrary",
+  AssetLibrary = 'AssetLibrary',
   // (undocumented)
-  Assign = "Assign",
+  Assign = 'Assign',
   // (undocumented)
-  Asterisk = "Asterisk",
+  Asterisk = 'Asterisk',
   // (undocumented)
-  AsteriskSolid = "AsteriskSolid",
+  AsteriskSolid = 'AsteriskSolid',
   // (undocumented)
-  ATPLogo = "ATPLogo",
+  ATPLogo = 'ATPLogo',
   // (undocumented)
-  Attach = "Attach",
+  Attach = 'Attach',
   // (undocumented)
-  AustralianRules = "AustralianRules",
+  AustralianRules = 'AustralianRules',
   // (undocumented)
-  AuthenticatorApp = "AuthenticatorApp",
+  AuthenticatorApp = 'AuthenticatorApp',
   // (undocumented)
-  AutoEnhanceOff = "AutoEnhanceOff",
+  AutoEnhanceOff = 'AutoEnhanceOff',
   // (undocumented)
-  AutoEnhanceOn = "AutoEnhanceOn",
+  AutoEnhanceOn = 'AutoEnhanceOn',
   // (undocumented)
-  AutoFillTemplate = "AutoFillTemplate",
+  AutoFillTemplate = 'AutoFillTemplate',
   // (undocumented)
-  AutoHeight = "AutoHeight",
+  AutoHeight = 'AutoHeight',
   // (undocumented)
-  AutoRacing = "AutoRacing",
+  AutoRacing = 'AutoRacing',
   // (undocumented)
-  AwayStatus = "AwayStatus",
+  AwayStatus = 'AwayStatus',
   // (undocumented)
-  AzureAPIManagement = "AzureAPIManagement",
+  AzureAPIManagement = 'AzureAPIManagement',
   // (undocumented)
-  AzureKeyVault = "AzureKeyVault",
+  AzureKeyVault = 'AzureKeyVault',
   // (undocumented)
-  AzureLogo = "AzureLogo",
+  AzureLogo = 'AzureLogo',
   // (undocumented)
-  AzureServiceEndpoint = "AzureServiceEndpoint",
+  AzureServiceEndpoint = 'AzureServiceEndpoint',
   // (undocumented)
-  Back = "Back",
+  Back = 'Back',
   // (undocumented)
-  BackgroundColor = "BackgroundColor",
+  BackgroundColor = 'BackgroundColor',
   // (undocumented)
-  Backlog = "Backlog",
+  Backlog = 'Backlog',
   // (undocumented)
-  BacklogBoard = "BacklogBoard",
+  BacklogBoard = 'BacklogBoard',
   // (undocumented)
-  BacklogList = "BacklogList",
+  BacklogList = 'BacklogList',
   // (undocumented)
-  BackToWindow = "BackToWindow",
+  BackToWindow = 'BackToWindow',
   // (undocumented)
-  Badge = "Badge",
+  Badge = 'Badge',
   // (undocumented)
-  Balloons = "Balloons",
+  Balloons = 'Balloons',
   // (undocumented)
-  Bank = "Bank",
+  Bank = 'Bank',
   // (undocumented)
-  BankSolid = "BankSolid",
+  BankSolid = 'BankSolid',
   // (undocumented)
-  BarChart4 = "BarChart4",
+  BarChart4 = 'BarChart4',
   // (undocumented)
-  BarChartHorizontal = "BarChartHorizontal",
+  BarChartHorizontal = 'BarChartHorizontal',
   // (undocumented)
-  BarChartVertical = "BarChartVertical",
+  BarChartVertical = 'BarChartVertical',
   // (undocumented)
-  BarChartVerticalFill = "BarChartVerticalFill",
+  BarChartVerticalFill = 'BarChartVerticalFill',
   // (undocumented)
-  BarChartVerticalFilter = "BarChartVerticalFilter",
+  BarChartVerticalFilter = 'BarChartVerticalFilter',
   // (undocumented)
-  BarChartVerticalFilterSolid = "BarChartVerticalFilterSolid",
+  BarChartVerticalFilterSolid = 'BarChartVerticalFilterSolid',
   // (undocumented)
-  Baseball = "Baseball",
+  Baseball = 'Baseball',
   // (undocumented)
-  BeerMug = "BeerMug",
+  BeerMug = 'BeerMug',
   // (undocumented)
-  BIDashboard = "BIDashboard",
+  BIDashboard = 'BIDashboard',
   // (undocumented)
-  BidiLtr = "BidiLtr",
+  BidiLtr = 'BidiLtr',
   // (undocumented)
-  BidiRtl = "BidiRtl",
+  BidiRtl = 'BidiRtl',
   // (undocumented)
-  BingLogo = "BingLogo",
+  BingLogo = 'BingLogo',
   // (undocumented)
-  BirthdayCake = "BirthdayCake",
+  BirthdayCake = 'BirthdayCake',
   // (undocumented)
-  BlockContact = "BlockContact",
+  BlockContact = 'BlockContact',
   // (undocumented)
-  Blocked = "Blocked",
+  Blocked = 'Blocked',
   // (undocumented)
-  Blocked12 = "Blocked12",
+  Blocked12 = 'Blocked12',
   // (undocumented)
-  Blocked2 = "Blocked2",
+  Blocked2 = 'Blocked2',
   // (undocumented)
-  Blocked2Solid = "Blocked2Solid",
+  Blocked2Solid = 'Blocked2Solid',
   // (undocumented)
-  BlockedSite = "BlockedSite",
+  BlockedSite = 'BlockedSite',
   // (undocumented)
-  BlockedSiteSolid12 = "BlockedSiteSolid12",
+  BlockedSiteSolid12 = 'BlockedSiteSolid12',
   // (undocumented)
-  BlockedSolid = "BlockedSolid",
+  BlockedSolid = 'BlockedSolid',
   // (undocumented)
-  Blog = "Blog",
+  Blog = 'Blog',
   // (undocumented)
-  BlowingSnow = "BlowingSnow",
+  BlowingSnow = 'BlowingSnow',
   // (undocumented)
-  Blur = "Blur",
+  Blur = 'Blur',
   // (undocumented)
-  Boards = "Boards",
+  Boards = 'Boards',
   // (undocumented)
-  Bold = "Bold",
+  Bold = 'Bold',
   // (undocumented)
-  BookingsLogo = "BookingsLogo",
+  BookingsLogo = 'BookingsLogo',
   // (undocumented)
-  BookmarkReport = "BookmarkReport",
+  BookmarkReport = 'BookmarkReport',
   // (undocumented)
-  Bookmarks = "Bookmarks",
+  Bookmarks = 'Bookmarks',
   // (undocumented)
-  BookmarksMirrored = "BookmarksMirrored",
+  BookmarksMirrored = 'BookmarksMirrored',
   // (undocumented)
-  BorderDash = "BorderDash",
+  BorderDash = 'BorderDash',
   // (undocumented)
-  BorderDot = "BorderDot",
+  BorderDot = 'BorderDot',
   // (undocumented)
-  BoxAdditionSolid = "BoxAdditionSolid",
+  BoxAdditionSolid = 'BoxAdditionSolid',
   // (undocumented)
-  BoxCheckmarkSolid = "BoxCheckmarkSolid",
+  BoxCheckmarkSolid = 'BoxCheckmarkSolid',
   // (undocumented)
-  BoxMultiplySolid = "BoxMultiplySolid",
+  BoxMultiplySolid = 'BoxMultiplySolid',
   // (undocumented)
-  BoxPlaySolid = "BoxPlaySolid",
+  BoxPlaySolid = 'BoxPlaySolid',
   // (undocumented)
-  BoxSubtractSolid = "BoxSubtractSolid",
+  BoxSubtractSolid = 'BoxSubtractSolid',
   // (undocumented)
-  BranchCommit = "BranchCommit",
+  BranchCommit = 'BranchCommit',
   // (undocumented)
-  BranchCompare = "BranchCompare",
+  BranchCompare = 'BranchCompare',
   // (undocumented)
-  BranchFork = "BranchFork",
+  BranchFork = 'BranchFork',
   // (undocumented)
-  BranchFork2 = "BranchFork2",
+  BranchFork2 = 'BranchFork2',
   // (undocumented)
-  BranchLocked = "BranchLocked",
+  BranchLocked = 'BranchLocked',
   // (undocumented)
-  BranchMerge = "BranchMerge",
+  BranchMerge = 'BranchMerge',
   // (undocumented)
-  BranchPullRequest = "BranchPullRequest",
+  BranchPullRequest = 'BranchPullRequest',
   // (undocumented)
-  BranchSearch = "BranchSearch",
+  BranchSearch = 'BranchSearch',
   // (undocumented)
-  BranchShelveset = "BranchShelveset",
+  BranchShelveset = 'BranchShelveset',
   // (undocumented)
-  Breadcrumb = "Breadcrumb",
+  Breadcrumb = 'Breadcrumb',
   // (undocumented)
-  Breakfast = "Breakfast",
+  Breakfast = 'Breakfast',
   // (undocumented)
-  Brightness = "Brightness",
+  Brightness = 'Brightness',
   // (undocumented)
-  Broom = "Broom",
+  Broom = 'Broom',
   // (undocumented)
-  BrowserScreenShot = "BrowserScreenShot",
+  BrowserScreenShot = 'BrowserScreenShot',
   // (undocumented)
-  BrowserTab = "BrowserTab",
+  BrowserTab = 'BrowserTab',
   // (undocumented)
-  BrowserTabScreenshot = "BrowserTabScreenshot",
+  BrowserTabScreenshot = 'BrowserTabScreenshot',
   // (undocumented)
-  Brunch = "Brunch",
+  Brunch = 'Brunch',
   // (undocumented)
-  Brush = "Brush",
+  Brush = 'Brush',
   // (undocumented)
-  BucketColor = "BucketColor",
+  BucketColor = 'BucketColor',
   // (undocumented)
-  BucketColorFill = "BucketColorFill",
+  BucketColorFill = 'BucketColorFill',
   // (undocumented)
-  BufferTimeAfter = "BufferTimeAfter",
+  BufferTimeAfter = 'BufferTimeAfter',
   // (undocumented)
-  BufferTimeBefore = "BufferTimeBefore",
+  BufferTimeBefore = 'BufferTimeBefore',
   // (undocumented)
-  BufferTimeBoth = "BufferTimeBoth",
+  BufferTimeBoth = 'BufferTimeBoth',
   // (undocumented)
-  Bug = "Bug",
+  Bug = 'Bug',
   // (undocumented)
-  BugSolid = "BugSolid",
+  BugSolid = 'BugSolid',
   // (undocumented)
-  Build = "Build",
+  Build = 'Build',
   // (undocumented)
-  BuildDefinition = "BuildDefinition",
+  BuildDefinition = 'BuildDefinition',
   // (undocumented)
-  BuildIssue = "BuildIssue",
+  BuildIssue = 'BuildIssue',
   // (undocumented)
-  BuildQueue = "BuildQueue",
+  BuildQueue = 'BuildQueue',
   // (undocumented)
-  BuildQueueNew = "BuildQueueNew",
+  BuildQueueNew = 'BuildQueueNew',
   // (undocumented)
-  BulkUpload = "BulkUpload",
+  BulkUpload = 'BulkUpload',
   // (undocumented)
-  BulletedList = "BulletedList",
+  BulletedList = 'BulletedList',
   // (undocumented)
-  BulletedList2 = "BulletedList2",
+  BulletedList2 = 'BulletedList2',
   // (undocumented)
-  BulletedList2Mirrored = "BulletedList2Mirrored",
+  BulletedList2Mirrored = 'BulletedList2Mirrored',
   // (undocumented)
-  BulletedListBullet = "BulletedListBullet",
+  BulletedListBullet = 'BulletedListBullet',
   // (undocumented)
-  BulletedListBulletMirrored = "BulletedListBulletMirrored",
+  BulletedListBulletMirrored = 'BulletedListBulletMirrored',
   // (undocumented)
-  BulletedListMirrored = "BulletedListMirrored",
+  BulletedListMirrored = 'BulletedListMirrored',
   // (undocumented)
-  BulletedListText = "BulletedListText",
+  BulletedListText = 'BulletedListText',
   // (undocumented)
-  BulletedListTextMirrored = "BulletedListTextMirrored",
+  BulletedListTextMirrored = 'BulletedListTextMirrored',
   // (undocumented)
-  Bullseye = "Bullseye",
+  Bullseye = 'Bullseye',
   // (undocumented)
-  Bus = "Bus",
+  Bus = 'Bus',
   // (undocumented)
-  BusinessCenterLogo = "BusinessCenterLogo",
+  BusinessCenterLogo = 'BusinessCenterLogo',
   // (undocumented)
-  BusinessHoursSign = "BusinessHoursSign",
+  BusinessHoursSign = 'BusinessHoursSign',
   // (undocumented)
-  BusSolid = "BusSolid",
+  BusSolid = 'BusSolid',
   // (undocumented)
-  ButtonControl = "ButtonControl",
+  ButtonControl = 'ButtonControl',
   // (undocumented)
-  Cafe = "Cafe",
+  Cafe = 'Cafe',
   // (undocumented)
-  Cake = "Cake",
+  Cake = 'Cake',
   // (undocumented)
-  Calculator = "Calculator",
+  Calculator = 'Calculator',
   // (undocumented)
-  CalculatorAddition = "CalculatorAddition",
+  CalculatorAddition = 'CalculatorAddition',
   // (undocumented)
-  CalculatorEqualTo = "CalculatorEqualTo",
+  CalculatorEqualTo = 'CalculatorEqualTo',
   // (undocumented)
-  CalculatorMultiply = "CalculatorMultiply",
+  CalculatorMultiply = 'CalculatorMultiply',
   // (undocumented)
-  CalculatorNotEqualTo = "CalculatorNotEqualTo",
+  CalculatorNotEqualTo = 'CalculatorNotEqualTo',
   // (undocumented)
-  CalculatorPercentage = "CalculatorPercentage",
+  CalculatorPercentage = 'CalculatorPercentage',
   // (undocumented)
-  CalculatorSubtract = "CalculatorSubtract",
+  CalculatorSubtract = 'CalculatorSubtract',
   // (undocumented)
-  Calendar = "Calendar",
+  Calendar = 'Calendar',
   // (undocumented)
-  CalendarAgenda = "CalendarAgenda",
+  CalendarAgenda = 'CalendarAgenda',
   // (undocumented)
-  CalendarDay = "CalendarDay",
+  CalendarDay = 'CalendarDay',
   // (undocumented)
-  CalendarMirrored = "CalendarMirrored",
+  CalendarMirrored = 'CalendarMirrored',
   // (undocumented)
-  CalendarReply = "CalendarReply",
+  CalendarReply = 'CalendarReply',
   // (undocumented)
-  CalendarSettings = "CalendarSettings",
+  CalendarSettings = 'CalendarSettings',
   // (undocumented)
-  CalendarSettingsMirrored = "CalendarSettingsMirrored",
+  CalendarSettingsMirrored = 'CalendarSettingsMirrored',
   // (undocumented)
-  CalendarWeek = "CalendarWeek",
+  CalendarWeek = 'CalendarWeek',
   // (undocumented)
-  CalendarWorkWeek = "CalendarWorkWeek",
+  CalendarWorkWeek = 'CalendarWorkWeek',
   // (undocumented)
-  CaloriesAdd = "CaloriesAdd",
+  CaloriesAdd = 'CaloriesAdd',
   // (undocumented)
-  Camera = "Camera",
+  Camera = 'Camera',
   // (undocumented)
-  CampaignTemplate = "CampaignTemplate",
+  CampaignTemplate = 'CampaignTemplate',
   // (undocumented)
-  Cancel = "Cancel",
+  Cancel = 'Cancel',
   // (undocumented)
-  CannedChat = "CannedChat",
+  CannedChat = 'CannedChat',
   // (undocumented)
-  Car = "Car",
+  Car = 'Car',
   // (undocumented)
-  CaretBottomLeftCenter8 = "CaretBottomLeftCenter8",
+  CaretBottomLeftCenter8 = 'CaretBottomLeftCenter8',
   // (undocumented)
-  CaretBottomLeftSolid8 = "CaretBottomLeftSolid8",
+  CaretBottomLeftSolid8 = 'CaretBottomLeftSolid8',
   // (undocumented)
-  CaretBottomRightCenter8 = "CaretBottomRightCenter8",
+  CaretBottomRightCenter8 = 'CaretBottomRightCenter8',
   // (undocumented)
-  CaretBottomRightSolid8 = "CaretBottomRightSolid8",
+  CaretBottomRightSolid8 = 'CaretBottomRightSolid8',
   // (undocumented)
-  CaretDown8 = "CaretDown8",
+  CaretDown8 = 'CaretDown8',
   // (undocumented)
-  CaretDownSolid8 = "CaretDownSolid8",
+  CaretDownSolid8 = 'CaretDownSolid8',
   // (undocumented)
-  CaretHollow = "CaretHollow",
+  CaretHollow = 'CaretHollow',
   // (undocumented)
-  CaretHollowMirrored = "CaretHollowMirrored",
+  CaretHollowMirrored = 'CaretHollowMirrored',
   // (undocumented)
-  CaretLeft8 = "CaretLeft8",
+  CaretLeft8 = 'CaretLeft8',
   // (undocumented)
-  CaretLeftSolid8 = "CaretLeftSolid8",
+  CaretLeftSolid8 = 'CaretLeftSolid8',
   // (undocumented)
-  CaretRight = "CaretRight",
+  CaretRight = 'CaretRight',
   // (undocumented)
-  CaretRight8 = "CaretRight8",
+  CaretRight8 = 'CaretRight8',
   // (undocumented)
-  CaretRightSolid8 = "CaretRightSolid8",
+  CaretRightSolid8 = 'CaretRightSolid8',
   // (undocumented)
-  CaretSolid = "CaretSolid",
+  CaretSolid = 'CaretSolid',
   // (undocumented)
-  CaretSolid16 = "CaretSolid16",
+  CaretSolid16 = 'CaretSolid16',
   // (undocumented)
-  CaretSolidDown = "CaretSolidDown",
+  CaretSolidDown = 'CaretSolidDown',
   // (undocumented)
-  CaretSolidLeft = "CaretSolidLeft",
+  CaretSolidLeft = 'CaretSolidLeft',
   // (undocumented)
-  CaretSolidMirrored = "CaretSolidMirrored",
+  CaretSolidMirrored = 'CaretSolidMirrored',
   // (undocumented)
-  CaretSolidRight = "CaretSolidRight",
+  CaretSolidRight = 'CaretSolidRight',
   // (undocumented)
-  CaretSolidUp = "CaretSolidUp",
+  CaretSolidUp = 'CaretSolidUp',
   // (undocumented)
-  CaretTopLeftCenter8 = "CaretTopLeftCenter8",
+  CaretTopLeftCenter8 = 'CaretTopLeftCenter8',
   // (undocumented)
-  CaretTopLeftSolid8 = "CaretTopLeftSolid8",
+  CaretTopLeftSolid8 = 'CaretTopLeftSolid8',
   // (undocumented)
-  CaretTopRightCenter8 = "CaretTopRightCenter8",
+  CaretTopRightCenter8 = 'CaretTopRightCenter8',
   // (undocumented)
-  CaretTopRightSolid8 = "CaretTopRightSolid8",
+  CaretTopRightSolid8 = 'CaretTopRightSolid8',
   // (undocumented)
-  CaretUp8 = "CaretUp8",
+  CaretUp8 = 'CaretUp8',
   // (undocumented)
-  CaretUpSolid8 = "CaretUpSolid8",
+  CaretUpSolid8 = 'CaretUpSolid8',
   // (undocumented)
-  Cat = "Cat",
+  Cat = 'Cat',
   // (undocumented)
-  CellPhone = "CellPhone",
+  CellPhone = 'CellPhone',
   // (undocumented)
-  Certificate = "Certificate",
+  Certificate = 'Certificate',
   // (undocumented)
-  CertifiedDatabase = "CertifiedDatabase",
+  CertifiedDatabase = 'CertifiedDatabase',
   // (undocumented)
-  Chart = "Chart",
+  Chart = 'Chart',
   // (undocumented)
-  ChartSeries = "ChartSeries",
+  ChartSeries = 'ChartSeries',
   // (undocumented)
-  ChartTemplate = "ChartTemplate",
+  ChartTemplate = 'ChartTemplate',
   // (undocumented)
-  ChartXAngle = "ChartXAngle",
+  ChartXAngle = 'ChartXAngle',
   // (undocumented)
-  ChartYAngle = "ChartYAngle",
+  ChartYAngle = 'ChartYAngle',
   // (undocumented)
-  Chat = "Chat",
+  Chat = 'Chat',
   // (undocumented)
-  ChatInviteFriend = "ChatInviteFriend",
+  ChatInviteFriend = 'ChatInviteFriend',
   // (undocumented)
-  ChatSolid = "ChatSolid",
+  ChatSolid = 'ChatSolid',
   // (undocumented)
-  Checkbox = "Checkbox",
+  Checkbox = 'Checkbox',
   // (undocumented)
-  CheckboxComposite = "CheckboxComposite",
+  CheckboxComposite = 'CheckboxComposite',
   // (undocumented)
-  CheckboxCompositeReversed = "CheckboxCompositeReversed",
+  CheckboxCompositeReversed = 'CheckboxCompositeReversed',
   // (undocumented)
-  CheckboxFill = "CheckboxFill",
+  CheckboxFill = 'CheckboxFill',
   // (undocumented)
-  CheckboxIndeterminate = "CheckboxIndeterminate",
+  CheckboxIndeterminate = 'CheckboxIndeterminate',
   // (undocumented)
-  CheckedOutByOther12 = "CheckedOutByOther12",
+  CheckedOutByOther12 = 'CheckedOutByOther12',
   // (undocumented)
-  CheckedOutByYou12 = "CheckedOutByYou12",
+  CheckedOutByYou12 = 'CheckedOutByYou12',
   // (undocumented)
-  CheckList = "CheckList",
+  CheckList = 'CheckList',
   // (undocumented)
-  CheckListCheck = "CheckListCheck",
+  CheckListCheck = 'CheckListCheck',
   // (undocumented)
-  CheckListCheckMirrored = "CheckListCheckMirrored",
+  CheckListCheckMirrored = 'CheckListCheckMirrored',
   // (undocumented)
-  CheckListText = "CheckListText",
+  CheckListText = 'CheckListText',
   // (undocumented)
-  CheckListTextMirrored = "CheckListTextMirrored",
+  CheckListTextMirrored = 'CheckListTextMirrored',
   // (undocumented)
-  CheckMark = "CheckMark",
+  CheckMark = 'CheckMark',
   // (undocumented)
-  ChevronDown = "ChevronDown",
+  ChevronDown = 'ChevronDown',
   // (undocumented)
-  ChevronDownEnd6 = "ChevronDownEnd6",
+  ChevronDownEnd6 = 'ChevronDownEnd6',
   // (undocumented)
-  ChevronDownMed = "ChevronDownMed",
+  ChevronDownMed = 'ChevronDownMed',
   // (undocumented)
-  ChevronDownSmall = "ChevronDownSmall",
+  ChevronDownSmall = 'ChevronDownSmall',
   // (undocumented)
-  ChevronFold10 = "ChevronFold10",
+  ChevronFold10 = 'ChevronFold10',
   // (undocumented)
-  ChevronLeft = "ChevronLeft",
+  ChevronLeft = 'ChevronLeft',
   // (undocumented)
-  ChevronLeftEnd6 = "ChevronLeftEnd6",
+  ChevronLeftEnd6 = 'ChevronLeftEnd6',
   // (undocumented)
-  ChevronLeftMed = "ChevronLeftMed",
+  ChevronLeftMed = 'ChevronLeftMed',
   // (undocumented)
-  ChevronLeftSmall = "ChevronLeftSmall",
+  ChevronLeftSmall = 'ChevronLeftSmall',
   // (undocumented)
-  ChevronRight = "ChevronRight",
+  ChevronRight = 'ChevronRight',
   // (undocumented)
-  ChevronRightEnd6 = "ChevronRightEnd6",
+  ChevronRightEnd6 = 'ChevronRightEnd6',
   // (undocumented)
-  ChevronRightMed = "ChevronRightMed",
+  ChevronRightMed = 'ChevronRightMed',
   // (undocumented)
-  ChevronRightSmall = "ChevronRightSmall",
+  ChevronRightSmall = 'ChevronRightSmall',
   // (undocumented)
-  ChevronUnfold10 = "ChevronUnfold10",
+  ChevronUnfold10 = 'ChevronUnfold10',
   // (undocumented)
-  ChevronUp = "ChevronUp",
+  ChevronUp = 'ChevronUp',
   // (undocumented)
-  ChevronUpEnd6 = "ChevronUpEnd6",
+  ChevronUpEnd6 = 'ChevronUpEnd6',
   // (undocumented)
-  ChevronUpMed = "ChevronUpMed",
+  ChevronUpMed = 'ChevronUpMed',
   // (undocumented)
-  ChevronUpSmall = "ChevronUpSmall",
+  ChevronUpSmall = 'ChevronUpSmall',
   // (undocumented)
-  Childof = "Childof",
+  Childof = 'Childof',
   // (undocumented)
-  Chopsticks = "Chopsticks",
+  Chopsticks = 'Chopsticks',
   // (undocumented)
-  ChromeBack = "ChromeBack",
+  ChromeBack = 'ChromeBack',
   // (undocumented)
-  ChromeBackMirrored = "ChromeBackMirrored",
+  ChromeBackMirrored = 'ChromeBackMirrored',
   // (undocumented)
-  ChromeClose = "ChromeClose",
+  ChromeClose = 'ChromeClose',
   // (undocumented)
-  ChromeFullScreen = "ChromeFullScreen",
+  ChromeFullScreen = 'ChromeFullScreen',
   // (undocumented)
-  ChromeMinimize = "ChromeMinimize",
+  ChromeMinimize = 'ChromeMinimize',
   // (undocumented)
-  ChromeRestore = "ChromeRestore",
+  ChromeRestore = 'ChromeRestore',
   // (undocumented)
-  CircleAddition = "CircleAddition",
+  CircleAddition = 'CircleAddition',
   // (undocumented)
-  CircleAdditionSolid = "CircleAdditionSolid",
+  CircleAdditionSolid = 'CircleAdditionSolid',
   // (undocumented)
-  CircleFill = "CircleFill",
+  CircleFill = 'CircleFill',
   // (undocumented)
-  CircleHalfFull = "CircleHalfFull",
+  CircleHalfFull = 'CircleHalfFull',
   // (undocumented)
-  CirclePause = "CirclePause",
+  CirclePause = 'CirclePause',
   // (undocumented)
-  CirclePauseSolid = "CirclePauseSolid",
+  CirclePauseSolid = 'CirclePauseSolid',
   // (undocumented)
-  CirclePlus = "CirclePlus",
+  CirclePlus = 'CirclePlus',
   // (undocumented)
-  CircleRing = "CircleRing",
+  CircleRing = 'CircleRing',
   // (undocumented)
-  CircleShapeSolid = "CircleShapeSolid",
+  CircleShapeSolid = 'CircleShapeSolid',
   // (undocumented)
-  CircleStop = "CircleStop",
+  CircleStop = 'CircleStop',
   // (undocumented)
-  CircleStopSolid = "CircleStopSolid",
+  CircleStopSolid = 'CircleStopSolid',
   // (undocumented)
-  CityNext = "CityNext",
+  CityNext = 'CityNext',
   // (undocumented)
-  CityNext2 = "CityNext2",
+  CityNext2 = 'CityNext2',
   // (undocumented)
-  ClassNotebookLogo16 = "ClassNotebookLogo16",
+  ClassNotebookLogo16 = 'ClassNotebookLogo16',
   // (undocumented)
-  ClassNotebookLogo32 = "ClassNotebookLogo32",
+  ClassNotebookLogo32 = 'ClassNotebookLogo32',
   // (undocumented)
-  ClassNotebookLogoFill16 = "ClassNotebookLogoFill16",
+  ClassNotebookLogoFill16 = 'ClassNotebookLogoFill16',
   // (undocumented)
-  ClassNotebookLogoFill32 = "ClassNotebookLogoFill32",
+  ClassNotebookLogoFill32 = 'ClassNotebookLogoFill32',
   // (undocumented)
-  ClassNotebookLogoInverse = "ClassNotebookLogoInverse",
+  ClassNotebookLogoInverse = 'ClassNotebookLogoInverse',
   // (undocumented)
-  ClassNotebookLogoInverse16 = "ClassNotebookLogoInverse16",
+  ClassNotebookLogoInverse16 = 'ClassNotebookLogoInverse16',
   // (undocumented)
-  ClassNotebookLogoInverse32 = "ClassNotebookLogoInverse32",
+  ClassNotebookLogoInverse32 = 'ClassNotebookLogoInverse32',
   // (undocumented)
-  ClassroomLogo = "ClassroomLogo",
+  ClassroomLogo = 'ClassroomLogo',
   // (undocumented)
-  Clear = "Clear",
+  Clear = 'Clear',
   // (undocumented)
-  ClearFilter = "ClearFilter",
+  ClearFilter = 'ClearFilter',
   // (undocumented)
-  ClearFormatting = "ClearFormatting",
+  ClearFormatting = 'ClearFormatting',
   // (undocumented)
-  ClearFormattingA = "ClearFormattingA",
+  ClearFormattingA = 'ClearFormattingA',
   // (undocumented)
-  ClearFormattingEraser = "ClearFormattingEraser",
+  ClearFormattingEraser = 'ClearFormattingEraser',
   // (undocumented)
-  ClearNight = "ClearNight",
+  ClearNight = 'ClearNight',
   // (undocumented)
-  ClipboardList = "ClipboardList",
+  ClipboardList = 'ClipboardList',
   // (undocumented)
-  ClipboardListMirrored = "ClipboardListMirrored",
+  ClipboardListMirrored = 'ClipboardListMirrored',
   // (undocumented)
-  ClipboardSolid = "ClipboardSolid",
+  ClipboardSolid = 'ClipboardSolid',
   // (undocumented)
-  Clock = "Clock",
+  Clock = 'Clock',
   // (undocumented)
-  CloneToDesktop = "CloneToDesktop",
+  CloneToDesktop = 'CloneToDesktop',
   // (undocumented)
-  ClosedCaption = "ClosedCaption",
+  ClosedCaption = 'ClosedCaption',
   // (undocumented)
-  ClosePane = "ClosePane",
+  ClosePane = 'ClosePane',
   // (undocumented)
-  ClosePaneMirrored = "ClosePaneMirrored",
+  ClosePaneMirrored = 'ClosePaneMirrored',
   // (undocumented)
-  Cloud = "Cloud",
+  Cloud = 'Cloud',
   // (undocumented)
-  CloudAdd = "CloudAdd",
+  CloudAdd = 'CloudAdd',
   // (undocumented)
-  CloudDownload = "CloudDownload",
+  CloudDownload = 'CloudDownload',
   // (undocumented)
-  CloudUpload = "CloudUpload",
+  CloudUpload = 'CloudUpload',
   // (undocumented)
-  CloudWeather = "CloudWeather",
+  CloudWeather = 'CloudWeather',
   // (undocumented)
-  Cloudy = "Cloudy",
+  Cloudy = 'Cloudy',
   // (undocumented)
-  Cocktails = "Cocktails",
+  Cocktails = 'Cocktails',
   // (undocumented)
-  Code = "Code",
+  Code = 'Code',
   // (undocumented)
-  CodeEdit = "CodeEdit",
+  CodeEdit = 'CodeEdit',
   // (undocumented)
-  Coffee = "Coffee",
+  Coffee = 'Coffee',
   // (undocumented)
-  CoffeeScript = "CoffeeScript",
+  CoffeeScript = 'CoffeeScript',
   // (undocumented)
-  CollapseContent = "CollapseContent",
+  CollapseContent = 'CollapseContent',
   // (undocumented)
-  CollapseContentSingle = "CollapseContentSingle",
+  CollapseContentSingle = 'CollapseContentSingle',
   // (undocumented)
-  CollapseMenu = "CollapseMenu",
+  CollapseMenu = 'CollapseMenu',
   // (undocumented)
-  CollegeFootball = "CollegeFootball",
+  CollegeFootball = 'CollegeFootball',
   // (undocumented)
-  CollegeHoops = "CollegeHoops",
+  CollegeHoops = 'CollegeHoops',
   // (undocumented)
-  Color = "Color",
+  Color = 'Color',
   // (undocumented)
-  ColorSolid = "ColorSolid",
+  ColorSolid = 'ColorSolid',
   // (undocumented)
-  ColumnLeftTwoThirds = "ColumnLeftTwoThirds",
+  ColumnLeftTwoThirds = 'ColumnLeftTwoThirds',
   // (undocumented)
-  ColumnLeftTwoThirdsEdit = "ColumnLeftTwoThirdsEdit",
+  ColumnLeftTwoThirdsEdit = 'ColumnLeftTwoThirdsEdit',
   // (undocumented)
-  ColumnOptions = "ColumnOptions",
+  ColumnOptions = 'ColumnOptions',
   // (undocumented)
-  ColumnRightTwoThirds = "ColumnRightTwoThirds",
+  ColumnRightTwoThirds = 'ColumnRightTwoThirds',
   // (undocumented)
-  ColumnRightTwoThirdsEdit = "ColumnRightTwoThirdsEdit",
+  ColumnRightTwoThirdsEdit = 'ColumnRightTwoThirdsEdit',
   // (undocumented)
-  ColumnVerticalSection = "ColumnVerticalSection",
+  ColumnVerticalSection = 'ColumnVerticalSection',
   // (undocumented)
-  ColumnVerticalSectionEdit = "ColumnVerticalSectionEdit",
+  ColumnVerticalSectionEdit = 'ColumnVerticalSectionEdit',
   // (undocumented)
-  Combine = "Combine",
+  Combine = 'Combine',
   // (undocumented)
-  Combobox = "Combobox",
+  Combobox = 'Combobox',
   // (undocumented)
-  CommandPrompt = "CommandPrompt",
+  CommandPrompt = 'CommandPrompt',
   // (undocumented)
-  Comment = "Comment",
+  Comment = 'Comment',
   // (undocumented)
-  CommentActive = "CommentActive",
+  CommentActive = 'CommentActive',
   // (undocumented)
-  CommentAdd = "CommentAdd",
+  CommentAdd = 'CommentAdd',
   // (undocumented)
-  CommentNext = "CommentNext",
+  CommentNext = 'CommentNext',
   // (undocumented)
-  CommentPrevious = "CommentPrevious",
+  CommentPrevious = 'CommentPrevious',
   // (undocumented)
-  CommentUrgent = "CommentUrgent",
+  CommentUrgent = 'CommentUrgent',
   // (undocumented)
-  Commitments = "Commitments",
+  Commitments = 'Commitments',
   // (undocumented)
-  Communications = "Communications",
+  Communications = 'Communications',
   // (undocumented)
-  CompanyDirectory = "CompanyDirectory",
+  CompanyDirectory = 'CompanyDirectory',
   // (undocumented)
-  CompanyDirectoryMirrored = "CompanyDirectoryMirrored",
+  CompanyDirectoryMirrored = 'CompanyDirectoryMirrored',
   // (undocumented)
-  Compare = "Compare",
+  Compare = 'Compare',
   // (undocumented)
-  CompassNW = "CompassNW",
+  CompassNW = 'CompassNW',
   // (undocumented)
-  Completed = "Completed",
+  Completed = 'Completed',
   // (undocumented)
-  CompletedSolid = "CompletedSolid",
+  CompletedSolid = 'CompletedSolid',
   // (undocumented)
-  ConfigurationSolid = "ConfigurationSolid",
+  ConfigurationSolid = 'ConfigurationSolid',
   // (undocumented)
-  ConnectContacts = "ConnectContacts",
+  ConnectContacts = 'ConnectContacts',
   // (undocumented)
-  ConstructionCone = "ConstructionCone",
+  ConstructionCone = 'ConstructionCone',
   // (undocumented)
-  ConstructionConeSolid = "ConstructionConeSolid",
+  ConstructionConeSolid = 'ConstructionConeSolid',
   // (undocumented)
-  Contact = "Contact",
+  Contact = 'Contact',
   // (undocumented)
-  ContactCard = "ContactCard",
+  ContactCard = 'ContactCard',
   // (undocumented)
-  ContactCardSettings = "ContactCardSettings",
+  ContactCardSettings = 'ContactCardSettings',
   // (undocumented)
-  ContactCardSettingsMirrored = "ContactCardSettingsMirrored",
+  ContactCardSettingsMirrored = 'ContactCardSettingsMirrored',
   // (undocumented)
-  ContactInfo = "ContactInfo",
+  ContactInfo = 'ContactInfo',
   // (undocumented)
-  ContactLink = "ContactLink",
+  ContactLink = 'ContactLink',
   // (undocumented)
-  ContactList = "ContactList",
+  ContactList = 'ContactList',
   // (undocumented)
-  ContextMenu = "ContextMenu",
+  ContextMenu = 'ContextMenu',
   // (undocumented)
-  Contrast = "Contrast",
+  Contrast = 'Contrast',
   // (undocumented)
-  Copy = "Copy",
+  Copy = 'Copy',
   // (undocumented)
-  Cotton = "Cotton",
+  Cotton = 'Cotton',
   // (undocumented)
-  Coupon = "Coupon",
+  Coupon = 'Coupon',
   // (undocumented)
-  CPlusPlus = "CPlusPlus",
+  CPlusPlus = 'CPlusPlus',
   // (undocumented)
-  CPlusPlusLanguage = "CPlusPlusLanguage",
+  CPlusPlusLanguage = 'CPlusPlusLanguage',
   // (undocumented)
-  CreateMailRule = "CreateMailRule",
+  CreateMailRule = 'CreateMailRule',
   // (undocumented)
-  Cricket = "Cricket",
+  Cricket = 'Cricket',
   // (undocumented)
-  CRMCustomerInsightsApp = "CRMCustomerInsightsApp",
+  CRMCustomerInsightsApp = 'CRMCustomerInsightsApp',
   // (undocumented)
-  CRMProcesses = "CRMProcesses",
+  CRMProcesses = 'CRMProcesses',
   // (undocumented)
-  CRMReport = "CRMReport",
+  CRMReport = 'CRMReport',
   // (undocumented)
-  CRMServices = "CRMServices",
+  CRMServices = 'CRMServices',
   // (undocumented)
-  Crop = "Crop",
+  Crop = 'Crop',
   // (undocumented)
-  Crown = "Crown",
+  Crown = 'Crown',
   // (undocumented)
-  CrownSolid = "CrownSolid",
+  CrownSolid = 'CrownSolid',
   // (undocumented)
-  CSharp = "CSharp",
+  CSharp = 'CSharp',
   // (undocumented)
-  CSharpLanguage = "CSharpLanguage",
+  CSharpLanguage = 'CSharpLanguage',
   // (undocumented)
-  CSS = "CSS",
+  CSS = 'CSS',
   // (undocumented)
-  CustomizeToolbar = "CustomizeToolbar",
+  CustomizeToolbar = 'CustomizeToolbar',
   // (undocumented)
-  CustomList = "CustomList",
+  CustomList = 'CustomList',
   // (undocumented)
-  CustomListMirrored = "CustomListMirrored",
+  CustomListMirrored = 'CustomListMirrored',
   // (undocumented)
-  Cut = "Cut",
+  Cut = 'Cut',
   // (undocumented)
-  Cycling = "Cycling",
+  Cycling = 'Cycling',
   // (undocumented)
-  D365TalentHRCore = "D365TalentHRCore",
+  D365TalentHRCore = 'D365TalentHRCore',
   // (undocumented)
-  D365TalentInsight = "D365TalentInsight",
+  D365TalentInsight = 'D365TalentInsight',
   // (undocumented)
-  D365TalentLearn = "D365TalentLearn",
+  D365TalentLearn = 'D365TalentLearn',
   // (undocumented)
-  DashboardAdd = "DashboardAdd",
+  DashboardAdd = 'DashboardAdd',
   // (undocumented)
-  Database = "Database",
+  Database = 'Database',
   // (undocumented)
-  DatabaseSync = "DatabaseSync",
+  DatabaseSync = 'DatabaseSync',
   // (undocumented)
-  DataConnectionLibrary = "DataConnectionLibrary",
+  DataConnectionLibrary = 'DataConnectionLibrary',
   // (undocumented)
-  Dataflows = "Dataflows",
+  Dataflows = 'Dataflows',
   // (undocumented)
-  DataManagementSettings = "DataManagementSettings",
+  DataManagementSettings = 'DataManagementSettings',
   // (undocumented)
-  DateTime = "DateTime",
+  DateTime = 'DateTime',
   // (undocumented)
-  DateTime2 = "DateTime2",
+  DateTime2 = 'DateTime2',
   // (undocumented)
-  DateTimeMirrored = "DateTimeMirrored",
+  DateTimeMirrored = 'DateTimeMirrored',
   // (undocumented)
-  DeactivateOrders = "DeactivateOrders",
+  DeactivateOrders = 'DeactivateOrders',
   // (undocumented)
-  Decimals = "Decimals",
+  Decimals = 'Decimals',
   // (undocumented)
-  DecisionSolid = "DecisionSolid",
+  DecisionSolid = 'DecisionSolid',
   // (undocumented)
-  DeclineCall = "DeclineCall",
+  DeclineCall = 'DeclineCall',
   // (undocumented)
-  DecreaseIndentArrow = "DecreaseIndentArrow",
+  DecreaseIndentArrow = 'DecreaseIndentArrow',
   // (undocumented)
-  DecreaseIndentArrowMirrored = "DecreaseIndentArrowMirrored",
+  DecreaseIndentArrowMirrored = 'DecreaseIndentArrowMirrored',
   // (undocumented)
-  DecreaseIndentLegacy = "DecreaseIndentLegacy",
+  DecreaseIndentLegacy = 'DecreaseIndentLegacy',
   // (undocumented)
-  DecreaseIndentText = "DecreaseIndentText",
+  DecreaseIndentText = 'DecreaseIndentText',
   // (undocumented)
-  DecreaseIndentTextMirrored = "DecreaseIndentTextMirrored",
+  DecreaseIndentTextMirrored = 'DecreaseIndentTextMirrored',
   // (undocumented)
-  DefaultRatio = "DefaultRatio",
+  DefaultRatio = 'DefaultRatio',
   // (undocumented)
-  DefectSolid = "DefectSolid",
+  DefectSolid = 'DefectSolid',
   // (undocumented)
-  DefenderTVM = "DefenderTVM",
+  DefenderTVM = 'DefenderTVM',
   // (undocumented)
-  Delete = "Delete",
+  Delete = 'Delete',
   // (undocumented)
-  DeleteColumns = "DeleteColumns",
+  DeleteColumns = 'DeleteColumns',
   // (undocumented)
-  DeleteRows = "DeleteRows",
+  DeleteRows = 'DeleteRows',
   // (undocumented)
-  DeleteRowsMirrored = "DeleteRowsMirrored",
+  DeleteRowsMirrored = 'DeleteRowsMirrored',
   // (undocumented)
-  DeleteTable = "DeleteTable",
+  DeleteTable = 'DeleteTable',
   // (undocumented)
-  DeliveryTruck = "DeliveryTruck",
+  DeliveryTruck = 'DeliveryTruck',
   // (undocumented)
-  DelveAnalytics = "DelveAnalytics",
+  DelveAnalytics = 'DelveAnalytics',
   // (undocumented)
-  DelveAnalyticsLogo = "DelveAnalyticsLogo",
+  DelveAnalyticsLogo = 'DelveAnalyticsLogo',
   // (undocumented)
-  DelveLogo = "DelveLogo",
+  DelveLogo = 'DelveLogo',
   // (undocumented)
-  DelveLogoFill = "DelveLogoFill",
+  DelveLogoFill = 'DelveLogoFill',
   // (undocumented)
-  DelveLogoInverse = "DelveLogoInverse",
+  DelveLogoInverse = 'DelveLogoInverse',
   // (undocumented)
-  Deploy = "Deploy",
+  Deploy = 'Deploy',
   // (undocumented)
-  Descending = "Descending",
+  Descending = 'Descending',
   // (undocumented)
-  Design = "Design",
+  Design = 'Design',
   // (undocumented)
-  DesktopScreenshot = "DesktopScreenshot",
+  DesktopScreenshot = 'DesktopScreenshot',
   // (undocumented)
-  DeveloperTools = "DeveloperTools",
+  DeveloperTools = 'DeveloperTools',
   // (undocumented)
-  Devices2 = "Devices2",
+  Devices2 = 'Devices2',
   // (undocumented)
-  Devices3 = "Devices3",
+  Devices3 = 'Devices3',
   // (undocumented)
-  Devices4 = "Devices4",
+  Devices4 = 'Devices4',
   // (undocumented)
-  Diagnostic = "Diagnostic",
+  Diagnostic = 'Diagnostic',
   // (undocumented)
-  DiagnosticDataBarTooltip = "DiagnosticDataBarTooltip",
+  DiagnosticDataBarTooltip = 'DiagnosticDataBarTooltip',
   // (undocumented)
-  Dialpad = "Dialpad",
+  Dialpad = 'Dialpad',
   // (undocumented)
-  Diamond = "Diamond",
+  Diamond = 'Diamond',
   // (undocumented)
-  DiamondSolid = "DiamondSolid",
+  DiamondSolid = 'DiamondSolid',
   // (undocumented)
-  Dictionary = "Dictionary",
+  Dictionary = 'Dictionary',
   // (undocumented)
-  DictionaryRemove = "DictionaryRemove",
+  DictionaryRemove = 'DictionaryRemove',
   // (undocumented)
-  DietPlanNotebook = "DietPlanNotebook",
+  DietPlanNotebook = 'DietPlanNotebook',
   // (undocumented)
-  DiffInline = "DiffInline",
+  DiffInline = 'DiffInline',
   // (undocumented)
-  DiffSideBySide = "DiffSideBySide",
+  DiffSideBySide = 'DiffSideBySide',
   // (undocumented)
-  DisableUpdates = "DisableUpdates",
+  DisableUpdates = 'DisableUpdates',
   // (undocumented)
-  Dislike = "Dislike",
+  Dislike = 'Dislike',
   // (undocumented)
-  DislikeSolid = "DislikeSolid",
+  DislikeSolid = 'DislikeSolid',
   // (undocumented)
-  DistributeDown = "DistributeDown",
+  DistributeDown = 'DistributeDown',
   // (undocumented)
-  DockLeft = "DockLeft",
+  DockLeft = 'DockLeft',
   // (undocumented)
-  DockLeftMirrored = "DockLeftMirrored",
+  DockLeftMirrored = 'DockLeftMirrored',
   // (undocumented)
-  DockRight = "DockRight",
+  DockRight = 'DockRight',
   // (undocumented)
-  DocLibrary = "DocLibrary",
+  DocLibrary = 'DocLibrary',
   // (undocumented)
-  DocsLogoInverse = "DocsLogoInverse",
+  DocsLogoInverse = 'DocsLogoInverse',
   // (undocumented)
-  Document = "Document",
+  Document = 'Document',
   // (undocumented)
-  DocumentApproval = "DocumentApproval",
+  DocumentApproval = 'DocumentApproval',
   // (undocumented)
-  Documentation = "Documentation",
+  Documentation = 'Documentation',
   // (undocumented)
-  DocumentManagement = "DocumentManagement",
+  DocumentManagement = 'DocumentManagement',
   // (undocumented)
-  DocumentReply = "DocumentReply",
+  DocumentReply = 'DocumentReply',
   // (undocumented)
-  DocumentSearch = "DocumentSearch",
+  DocumentSearch = 'DocumentSearch',
   // (undocumented)
-  DocumentSet = "DocumentSet",
+  DocumentSet = 'DocumentSet',
   // (undocumented)
-  DOM = "DOM",
+  DOM = 'DOM',
   // (undocumented)
-  DonutChart = "DonutChart",
+  DonutChart = 'DonutChart',
   // (undocumented)
-  Door = "Door",
+  Door = 'Door',
   // (undocumented)
-  DoubleBookmark = "DoubleBookmark",
+  DoubleBookmark = 'DoubleBookmark',
   // (undocumented)
-  DoubleChevronDown = "DoubleChevronDown",
+  DoubleChevronDown = 'DoubleChevronDown',
   // (undocumented)
-  DoubleChevronDown12 = "DoubleChevronDown12",
+  DoubleChevronDown12 = 'DoubleChevronDown12',
   // (undocumented)
-  DoubleChevronDown8 = "DoubleChevronDown8",
+  DoubleChevronDown8 = 'DoubleChevronDown8',
   // (undocumented)
-  DoubleChevronLeft = "DoubleChevronLeft",
+  DoubleChevronLeft = 'DoubleChevronLeft',
   // (undocumented)
-  DoubleChevronLeft12 = "DoubleChevronLeft12",
+  DoubleChevronLeft12 = 'DoubleChevronLeft12',
   // (undocumented)
-  DoubleChevronLeft8 = "DoubleChevronLeft8",
+  DoubleChevronLeft8 = 'DoubleChevronLeft8',
   // (undocumented)
-  DoubleChevronLeftMed = "DoubleChevronLeftMed",
+  DoubleChevronLeftMed = 'DoubleChevronLeftMed',
   // (undocumented)
-  DoubleChevronLeftMedMirrored = "DoubleChevronLeftMedMirrored",
+  DoubleChevronLeftMedMirrored = 'DoubleChevronLeftMedMirrored',
   // (undocumented)
-  DoubleChevronRight = "DoubleChevronRight",
+  DoubleChevronRight = 'DoubleChevronRight',
   // (undocumented)
-  DoubleChevronRight12 = "DoubleChevronRight12",
+  DoubleChevronRight12 = 'DoubleChevronRight12',
   // (undocumented)
-  DoubleChevronRight8 = "DoubleChevronRight8",
+  DoubleChevronRight8 = 'DoubleChevronRight8',
   // (undocumented)
-  DoubleChevronUp = "DoubleChevronUp",
+  DoubleChevronUp = 'DoubleChevronUp',
   // (undocumented)
-  DoubleChevronUp12 = "DoubleChevronUp12",
+  DoubleChevronUp12 = 'DoubleChevronUp12',
   // (undocumented)
-  DoubleChevronUp8 = "DoubleChevronUp8",
+  DoubleChevronUp8 = 'DoubleChevronUp8',
   // (undocumented)
-  DoubleColumn = "DoubleColumn",
+  DoubleColumn = 'DoubleColumn',
   // (undocumented)
-  DoubleColumnEdit = "DoubleColumnEdit",
+  DoubleColumnEdit = 'DoubleColumnEdit',
   // (undocumented)
-  DoubleDownArrow = "DoubleDownArrow",
+  DoubleDownArrow = 'DoubleDownArrow',
   // (undocumented)
-  Down = "Down",
+  Down = 'Down',
   // (undocumented)
-  Download = "Download",
+  Download = 'Download',
   // (undocumented)
-  DownloadDocument = "DownloadDocument",
+  DownloadDocument = 'DownloadDocument',
   // (undocumented)
-  DragObject = "DragObject",
+  DragObject = 'DragObject',
   // (undocumented)
-  DrillDown = "DrillDown",
+  DrillDown = 'DrillDown',
   // (undocumented)
-  DrillDownSolid = "DrillDownSolid",
+  DrillDownSolid = 'DrillDownSolid',
   // (undocumented)
-  DrillExpand = "DrillExpand",
+  DrillExpand = 'DrillExpand',
   // (undocumented)
-  DrillShow = "DrillShow",
+  DrillShow = 'DrillShow',
   // (undocumented)
-  DrillThrough = "DrillThrough",
+  DrillThrough = 'DrillThrough',
   // (undocumented)
-  DRM = "DRM",
+  DRM = 'DRM',
   // (undocumented)
-  Drop = "Drop",
+  Drop = 'Drop',
   // (undocumented)
-  Dropdown = "Dropdown",
+  Dropdown = 'Dropdown',
   // (undocumented)
-  DropShapeSolid = "DropShapeSolid",
+  DropShapeSolid = 'DropShapeSolid',
   // (undocumented)
-  DuplicateRow = "DuplicateRow",
+  DuplicateRow = 'DuplicateRow',
   // (undocumented)
-  Duststorm = "Duststorm",
+  Duststorm = 'Duststorm',
   // (undocumented)
-  Dynamics365Logo = "Dynamics365Logo",
+  Dynamics365Logo = 'Dynamics365Logo',
   // (undocumented)
-  DynamicSMBLogo = "DynamicSMBLogo",
+  DynamicSMBLogo = 'DynamicSMBLogo',
   // (undocumented)
-  EaseOfAccess = "EaseOfAccess",
+  EaseOfAccess = 'EaseOfAccess',
   // (undocumented)
-  EatDrink = "EatDrink",
+  EatDrink = 'EatDrink',
   // (undocumented)
-  EdgeLogo = "EdgeLogo",
+  EdgeLogo = 'EdgeLogo',
   // (undocumented)
-  Edit = "Edit",
+  Edit = 'Edit',
   // (undocumented)
-  EditContact = "EditContact",
+  EditContact = 'EditContact',
   // (undocumented)
-  EditCreate = "EditCreate",
+  EditCreate = 'EditCreate',
   // (undocumented)
-  EditMail = "EditMail",
+  EditMail = 'EditMail',
   // (undocumented)
-  EditMirrored = "EditMirrored",
+  EditMirrored = 'EditMirrored',
   // (undocumented)
-  EditNote = "EditNote",
+  EditNote = 'EditNote',
   // (undocumented)
-  EditPhoto = "EditPhoto",
+  EditPhoto = 'EditPhoto',
   // (undocumented)
-  EditSolid12 = "EditSolid12",
+  EditSolid12 = 'EditSolid12',
   // (undocumented)
-  EditSolidMirrored12 = "EditSolidMirrored12",
+  EditSolidMirrored12 = 'EditSolidMirrored12',
   // (undocumented)
-  EditStyle = "EditStyle",
+  EditStyle = 'EditStyle',
   // (undocumented)
-  Education = "Education",
+  Education = 'Education',
   // (undocumented)
-  Ellipse = "Ellipse",
+  Ellipse = 'Ellipse',
   // (undocumented)
-  Embed = "Embed",
+  Embed = 'Embed',
   // (undocumented)
-  EMI = "EMI",
+  EMI = 'EMI',
   // (undocumented)
-  Emoji = "Emoji",
+  Emoji = 'Emoji',
   // (undocumented)
-  Emoji2 = "Emoji2",
+  Emoji2 = 'Emoji2',
   // (undocumented)
-  EmojiDisappointed = "EmojiDisappointed",
+  EmojiDisappointed = 'EmojiDisappointed',
   // (undocumented)
-  EmojiNeutral = "EmojiNeutral",
+  EmojiNeutral = 'EmojiNeutral',
   // (undocumented)
-  EmojiTabSymbols = "EmojiTabSymbols",
+  EmojiTabSymbols = 'EmojiTabSymbols',
   // (undocumented)
-  EmptyRecycleBin = "EmptyRecycleBin",
+  EmptyRecycleBin = 'EmptyRecycleBin',
   // (undocumented)
-  Encryption = "Encryption",
+  Encryption = 'Encryption',
   // (undocumented)
-  EngineeringGroup = "EngineeringGroup",
+  EngineeringGroup = 'EngineeringGroup',
   // (undocumented)
-  EntryDecline = "EntryDecline",
+  EntryDecline = 'EntryDecline',
   // (undocumented)
-  EntryView = "EntryView",
+  EntryView = 'EntryView',
   // (undocumented)
-  Equalizer = "Equalizer",
+  Equalizer = 'Equalizer',
   // (undocumented)
-  EraseTool = "EraseTool",
+  EraseTool = 'EraseTool',
   // (undocumented)
-  Error = "Error",
+  Error = 'Error',
   // (undocumented)
-  ErrorBadge = "ErrorBadge",
+  ErrorBadge = 'ErrorBadge',
   // (undocumented)
-  Event = "Event",
+  Event = 'Event',
   // (undocumented)
-  Event12 = "Event12",
+  Event12 = 'Event12',
   // (undocumented)
-  EventAccepted = "EventAccepted",
+  EventAccepted = 'EventAccepted',
   // (undocumented)
-  EventDate = "EventDate",
+  EventDate = 'EventDate',
   // (undocumented)
-  EventDateMissed12 = "EventDateMissed12",
+  EventDateMissed12 = 'EventDateMissed12',
   // (undocumented)
-  EventDeclined = "EventDeclined",
+  EventDeclined = 'EventDeclined',
   // (undocumented)
-  EventInfo = "EventInfo",
+  EventInfo = 'EventInfo',
   // (undocumented)
-  EventTentative = "EventTentative",
+  EventTentative = 'EventTentative',
   // (undocumented)
-  EventTentativeMirrored = "EventTentativeMirrored",
+  EventTentativeMirrored = 'EventTentativeMirrored',
   // (undocumented)
-  ExcelDocument = "ExcelDocument",
+  ExcelDocument = 'ExcelDocument',
   // (undocumented)
-  ExcelLogo = "ExcelLogo",
+  ExcelLogo = 'ExcelLogo',
   // (undocumented)
-  ExcelLogo16 = "ExcelLogo16",
+  ExcelLogo16 = 'ExcelLogo16',
   // (undocumented)
-  ExcelLogoFill = "ExcelLogoFill",
+  ExcelLogoFill = 'ExcelLogoFill',
   // (undocumented)
-  ExcelLogoFill16 = "ExcelLogoFill16",
+  ExcelLogoFill16 = 'ExcelLogoFill16',
   // (undocumented)
-  ExcelLogoInverse = "ExcelLogoInverse",
+  ExcelLogoInverse = 'ExcelLogoInverse',
   // (undocumented)
-  ExcelLogoInverse16 = "ExcelLogoInverse16",
+  ExcelLogoInverse16 = 'ExcelLogoInverse16',
   // (undocumented)
-  ExchangeLogo = "ExchangeLogo",
+  ExchangeLogo = 'ExchangeLogo',
   // (undocumented)
-  ExchangeLogoFill = "ExchangeLogoFill",
+  ExchangeLogoFill = 'ExchangeLogoFill',
   // (undocumented)
-  ExchangeLogoInverse = "ExchangeLogoInverse",
+  ExchangeLogoInverse = 'ExchangeLogoInverse',
   // (undocumented)
-  ExerciseTracker = "ExerciseTracker",
+  ExerciseTracker = 'ExerciseTracker',
   // (undocumented)
-  ExpandMenu = "ExpandMenu",
+  ExpandMenu = 'ExpandMenu',
   // (undocumented)
-  ExploreContent = "ExploreContent",
+  ExploreContent = 'ExploreContent',
   // (undocumented)
-  ExploreContentSingle = "ExploreContentSingle",
+  ExploreContentSingle = 'ExploreContentSingle',
   // (undocumented)
-  ExploreData = "ExploreData",
+  ExploreData = 'ExploreData',
   // (undocumented)
-  Export = "Export",
+  Export = 'Export',
   // (undocumented)
-  ExportMirrored = "ExportMirrored",
+  ExportMirrored = 'ExportMirrored',
   // (undocumented)
-  ExternalBuild = "ExternalBuild",
+  ExternalBuild = 'ExternalBuild',
   // (undocumented)
-  ExternalTFVC = "ExternalTFVC",
+  ExternalTFVC = 'ExternalTFVC',
   // (undocumented)
-  ExternalXAML = "ExternalXAML",
+  ExternalXAML = 'ExternalXAML',
   // (undocumented)
-  Eyedropper = "Eyedropper",
+  Eyedropper = 'Eyedropper',
   // (undocumented)
-  EyeShadow = "EyeShadow",
+  EyeShadow = 'EyeShadow',
   // (undocumented)
-  F12DevTools = "F12DevTools",
+  F12DevTools = 'F12DevTools',
   // (undocumented)
-  FabricAssetLibrary = "FabricAssetLibrary",
+  FabricAssetLibrary = 'FabricAssetLibrary',
   // (undocumented)
-  FabricDataConnectionLibrary = "FabricDataConnectionLibrary",
+  FabricDataConnectionLibrary = 'FabricDataConnectionLibrary',
   // (undocumented)
-  FabricDocLibrary = "FabricDocLibrary",
+  FabricDocLibrary = 'FabricDocLibrary',
   // (undocumented)
-  FabricFolder = "FabricFolder",
+  FabricFolder = 'FabricFolder',
   // (undocumented)
-  FabricFolderConfirm = "FabricFolderConfirm",
+  FabricFolderConfirm = 'FabricFolderConfirm',
   // (undocumented)
-  FabricFolderFill = "FabricFolderFill",
+  FabricFolderFill = 'FabricFolderFill',
   // (undocumented)
-  FabricFolderSearch = "FabricFolderSearch",
+  FabricFolderSearch = 'FabricFolderSearch',
   // (undocumented)
-  FabricFormLibrary = "FabricFormLibrary",
+  FabricFormLibrary = 'FabricFormLibrary',
   // (undocumented)
-  FabricFormLibraryMirrored = "FabricFormLibraryMirrored",
+  FabricFormLibraryMirrored = 'FabricFormLibraryMirrored',
   // (undocumented)
-  FabricMovetoFolder = "FabricMovetoFolder",
+  FabricMovetoFolder = 'FabricMovetoFolder',
   // (undocumented)
-  FabricNetworkFolder = "FabricNetworkFolder",
+  FabricNetworkFolder = 'FabricNetworkFolder',
   // (undocumented)
-  FabricNewFolder = "FabricNewFolder",
+  FabricNewFolder = 'FabricNewFolder',
   // (undocumented)
-  FabricOpenFolderHorizontal = "FabricOpenFolderHorizontal",
+  FabricOpenFolderHorizontal = 'FabricOpenFolderHorizontal',
   // (undocumented)
-  FabricPictureLibrary = "FabricPictureLibrary",
+  FabricPictureLibrary = 'FabricPictureLibrary',
   // (undocumented)
-  FabricPublicFolder = "FabricPublicFolder",
+  FabricPublicFolder = 'FabricPublicFolder',
   // (undocumented)
-  FabricReportLibrary = "FabricReportLibrary",
+  FabricReportLibrary = 'FabricReportLibrary',
   // (undocumented)
-  FabricReportLibraryMirrored = "FabricReportLibraryMirrored",
+  FabricReportLibraryMirrored = 'FabricReportLibraryMirrored',
   // (undocumented)
-  FabricSyncFolder = "FabricSyncFolder",
+  FabricSyncFolder = 'FabricSyncFolder',
   // (undocumented)
-  FabricTextHighlight = "FabricTextHighlight",
+  FabricTextHighlight = 'FabricTextHighlight',
   // (undocumented)
-  FabricTextHighlightComposite = "FabricTextHighlightComposite",
+  FabricTextHighlightComposite = 'FabricTextHighlightComposite',
   // (undocumented)
-  FabricUnsyncFolder = "FabricUnsyncFolder",
+  FabricUnsyncFolder = 'FabricUnsyncFolder',
   // (undocumented)
-  FabricUserFolder = "FabricUserFolder",
+  FabricUserFolder = 'FabricUserFolder',
   // (undocumented)
-  Family = "Family",
+  Family = 'Family',
   // (undocumented)
-  FangBody = "FangBody",
+  FangBody = 'FangBody',
   // (undocumented)
-  FastForward = "FastForward",
+  FastForward = 'FastForward',
   // (undocumented)
-  FastMode = "FastMode",
+  FastMode = 'FastMode',
   // (undocumented)
-  Favicon = "Favicon",
+  Favicon = 'Favicon',
   // (undocumented)
-  FavoriteList = "FavoriteList",
+  FavoriteList = 'FavoriteList',
   // (undocumented)
-  FavoriteStar = "FavoriteStar",
+  FavoriteStar = 'FavoriteStar',
   // (undocumented)
-  FavoriteStarFill = "FavoriteStarFill",
+  FavoriteStarFill = 'FavoriteStarFill',
   // (undocumented)
-  Fax = "Fax",
+  Fax = 'Fax',
   // (undocumented)
-  Feedback = "Feedback",
+  Feedback = 'Feedback',
   // (undocumented)
-  FeedbackRequestMirroredSolid = "FeedbackRequestMirroredSolid",
+  FeedbackRequestMirroredSolid = 'FeedbackRequestMirroredSolid',
   // (undocumented)
-  FeedbackRequestSolid = "FeedbackRequestSolid",
+  FeedbackRequestSolid = 'FeedbackRequestSolid',
   // (undocumented)
-  FeedbackResponseSolid = "FeedbackResponseSolid",
+  FeedbackResponseSolid = 'FeedbackResponseSolid',
   // (undocumented)
-  Ferry = "Ferry",
+  Ferry = 'Ferry',
   // (undocumented)
-  FerrySolid = "FerrySolid",
+  FerrySolid = 'FerrySolid',
   // (undocumented)
-  FieldChanged = "FieldChanged",
+  FieldChanged = 'FieldChanged',
   // (undocumented)
-  FieldEmpty = "FieldEmpty",
+  FieldEmpty = 'FieldEmpty',
   // (undocumented)
-  FieldFilled = "FieldFilled",
+  FieldFilled = 'FieldFilled',
   // (undocumented)
-  FieldNotChanged = "FieldNotChanged",
+  FieldNotChanged = 'FieldNotChanged',
   // (undocumented)
-  FieldReadOnly = "FieldReadOnly",
+  FieldReadOnly = 'FieldReadOnly',
   // (undocumented)
-  FieldRequired = "FieldRequired",
+  FieldRequired = 'FieldRequired',
   // (undocumented)
-  FileASPX = "FileASPX",
+  FileASPX = 'FileASPX',
   // (undocumented)
-  FileBug = "FileBug",
+  FileBug = 'FileBug',
   // (undocumented)
-  FileCode = "FileCode",
+  FileCode = 'FileCode',
   // (undocumented)
-  FileComment = "FileComment",
+  FileComment = 'FileComment',
   // (undocumented)
-  FileCSS = "FileCSS",
+  FileCSS = 'FileCSS',
   // (undocumented)
-  FileHTML = "FileHTML",
+  FileHTML = 'FileHTML',
   // (undocumented)
-  FileImage = "FileImage",
+  FileImage = 'FileImage',
   // (undocumented)
-  FileJAVA = "FileJAVA",
+  FileJAVA = 'FileJAVA',
   // (undocumented)
-  FileLess = "FileLess",
+  FileLess = 'FileLess',
   // (undocumented)
-  FilePDB = "FilePDB",
+  FilePDB = 'FilePDB',
   // (undocumented)
-  FileRequest = "FileRequest",
+  FileRequest = 'FileRequest',
   // (undocumented)
-  FileSass = "FileSass",
+  FileSass = 'FileSass',
   // (undocumented)
-  FileSQL = "FileSQL",
+  FileSQL = 'FileSQL',
   // (undocumented)
-  FileSymlink = "FileSymlink",
+  FileSymlink = 'FileSymlink',
   // (undocumented)
-  FileTemplate = "FileTemplate",
+  FileTemplate = 'FileTemplate',
   // (undocumented)
-  FileTypeSolution = "FileTypeSolution",
+  FileTypeSolution = 'FileTypeSolution',
   // (undocumented)
-  FileYML = "FileYML",
+  FileYML = 'FileYML',
   // (undocumented)
-  Filter = "Filter",
+  Filter = 'Filter',
   // (undocumented)
-  Filters = "Filters",
+  Filters = 'Filters',
   // (undocumented)
-  FilterSettings = "FilterSettings",
+  FilterSettings = 'FilterSettings',
   // (undocumented)
-  FilterSolid = "FilterSolid",
+  FilterSolid = 'FilterSolid',
   // (undocumented)
-  FiltersSolid = "FiltersSolid",
+  FiltersSolid = 'FiltersSolid',
   // (undocumented)
-  Financial = "Financial",
+  Financial = 'Financial',
   // (undocumented)
-  FinancialMirroredSolid = "FinancialMirroredSolid",
+  FinancialMirroredSolid = 'FinancialMirroredSolid',
   // (undocumented)
-  FinancialSolid = "FinancialSolid",
+  FinancialSolid = 'FinancialSolid',
   // (undocumented)
-  Fingerprint = "Fingerprint",
+  Fingerprint = 'Fingerprint',
   // (undocumented)
-  FitPage = "FitPage",
+  FitPage = 'FitPage',
   // (undocumented)
-  FitWidth = "FitWidth",
+  FitWidth = 'FitWidth',
   // (undocumented)
-  FiveTileGrid = "FiveTileGrid",
+  FiveTileGrid = 'FiveTileGrid',
   // (undocumented)
-  Flag = "Flag",
+  Flag = 'Flag',
   // (undocumented)
-  FlameSolid = "FlameSolid",
+  FlameSolid = 'FlameSolid',
   // (undocumented)
-  Flashlight = "Flashlight",
+  Flashlight = 'Flashlight',
   // (undocumented)
-  FlickDown = "FlickDown",
+  FlickDown = 'FlickDown',
   // (undocumented)
-  FlickLeft = "FlickLeft",
+  FlickLeft = 'FlickLeft',
   // (undocumented)
-  FlickRight = "FlickRight",
+  FlickRight = 'FlickRight',
   // (undocumented)
-  FlickUp = "FlickUp",
+  FlickUp = 'FlickUp',
   // (undocumented)
-  Flow = "Flow",
+  Flow = 'Flow',
   // (undocumented)
-  FlowChart = "FlowChart",
+  FlowChart = 'FlowChart',
   // (undocumented)
-  Flower = "Flower",
+  Flower = 'Flower',
   // (undocumented)
-  FocalPoint = "FocalPoint",
+  FocalPoint = 'FocalPoint',
   // (undocumented)
-  Focus = "Focus",
+  Focus = 'Focus',
   // (undocumented)
-  Fog = "Fog",
+  Fog = 'Fog',
   // (undocumented)
-  Folder = "Folder",
+  Folder = 'Folder',
   // (undocumented)
-  FolderFill = "FolderFill",
+  FolderFill = 'FolderFill',
   // (undocumented)
-  FolderHorizontal = "FolderHorizontal",
+  FolderHorizontal = 'FolderHorizontal',
   // (undocumented)
-  FolderList = "FolderList",
+  FolderList = 'FolderList',
   // (undocumented)
-  FolderListMirrored = "FolderListMirrored",
+  FolderListMirrored = 'FolderListMirrored',
   // (undocumented)
-  FolderOpen = "FolderOpen",
+  FolderOpen = 'FolderOpen',
   // (undocumented)
-  FolderQuery = "FolderQuery",
+  FolderQuery = 'FolderQuery',
   // (undocumented)
-  FolderSearch = "FolderSearch",
+  FolderSearch = 'FolderSearch',
   // (undocumented)
-  FollowUser = "FollowUser",
+  FollowUser = 'FollowUser',
   // (undocumented)
-  Font = "Font",
+  Font = 'Font',
   // (undocumented)
-  FontColor = "FontColor",
+  FontColor = 'FontColor',
   // (undocumented)
-  FontColorA = "FontColorA",
+  FontColorA = 'FontColorA',
   // (undocumented)
-  FontColorSwatch = "FontColorSwatch",
+  FontColorSwatch = 'FontColorSwatch',
   // (undocumented)
-  FontDecrease = "FontDecrease",
+  FontDecrease = 'FontDecrease',
   // (undocumented)
-  FontIncrease = "FontIncrease",
+  FontIncrease = 'FontIncrease',
   // (undocumented)
-  FontSize = "FontSize",
+  FontSize = 'FontSize',
   // (undocumented)
-  Footer = "Footer",
+  Footer = 'Footer',
   // (undocumented)
-  FormLibrary = "FormLibrary",
+  FormLibrary = 'FormLibrary',
   // (undocumented)
-  FormLibraryMirrored = "FormLibraryMirrored",
+  FormLibraryMirrored = 'FormLibraryMirrored',
   // (undocumented)
-  Forward = "Forward",
+  Forward = 'Forward',
   // (undocumented)
-  ForwardEvent = "ForwardEvent",
+  ForwardEvent = 'ForwardEvent',
   // (undocumented)
-  Freezing = "Freezing",
+  Freezing = 'Freezing',
   // (undocumented)
-  Frigid = "Frigid",
+  Frigid = 'Frigid',
   // (undocumented)
-  FrontCamera = "FrontCamera",
+  FrontCamera = 'FrontCamera',
   // (undocumented)
-  FSharp = "FSharp",
+  FSharp = 'FSharp',
   // (undocumented)
-  FSharpLanguage = "FSharpLanguage",
+  FSharpLanguage = 'FSharpLanguage',
   // (undocumented)
-  FullCircleMask = "FullCircleMask",
+  FullCircleMask = 'FullCircleMask',
   // (undocumented)
-  FullHistory = "FullHistory",
+  FullHistory = 'FullHistory',
   // (undocumented)
-  FullScreen = "FullScreen",
+  FullScreen = 'FullScreen',
   // (undocumented)
-  FullWidth = "FullWidth",
+  FullWidth = 'FullWidth',
   // (undocumented)
-  FullWidthEdit = "FullWidthEdit",
+  FullWidthEdit = 'FullWidthEdit',
   // (undocumented)
-  FunctionalManagerDashboard = "FunctionalManagerDashboard",
+  FunctionalManagerDashboard = 'FunctionalManagerDashboard',
   // (undocumented)
-  FunnelChart = "FunnelChart",
+  FunnelChart = 'FunnelChart',
   // (undocumented)
-  GallatinLogo = "GallatinLogo",
+  GallatinLogo = 'GallatinLogo',
   // (undocumented)
-  Game = "Game",
+  Game = 'Game',
   // (undocumented)
-  Generate = "Generate",
+  Generate = 'Generate',
   // (undocumented)
-  GenericScan = "GenericScan",
+  GenericScan = 'GenericScan',
   // (undocumented)
-  GenericScanFilled = "GenericScanFilled",
+  GenericScanFilled = 'GenericScanFilled',
   // (undocumented)
-  GIF = "GIF",
+  GIF = 'GIF',
   // (undocumented)
-  Giftbox = "Giftbox",
+  Giftbox = 'Giftbox',
   // (undocumented)
-  GiftboxOpen = "GiftboxOpen",
+  GiftboxOpen = 'GiftboxOpen',
   // (undocumented)
-  GiftBoxSolid = "GiftBoxSolid",
+  GiftBoxSolid = 'GiftBoxSolid',
   // (undocumented)
-  GiftCard = "GiftCard",
+  GiftCard = 'GiftCard',
   // (undocumented)
-  GitGraph = "GitGraph",
+  GitGraph = 'GitGraph',
   // (undocumented)
-  Glasses = "Glasses",
+  Glasses = 'Glasses',
   // (undocumented)
-  Glimmer = "Glimmer",
+  Glimmer = 'Glimmer',
   // (undocumented)
-  GlobalNavButton = "GlobalNavButton",
+  GlobalNavButton = 'GlobalNavButton',
   // (undocumented)
-  Globe = "Globe",
+  Globe = 'Globe',
   // (undocumented)
-  Globe2 = "Globe2",
+  Globe2 = 'Globe2',
   // (undocumented)
-  GlobeFavorite = "GlobeFavorite",
+  GlobeFavorite = 'GlobeFavorite',
   // (undocumented)
-  Go = "Go",
+  Go = 'Go',
   // (undocumented)
-  Golf = "Golf",
+  Golf = 'Golf',
   // (undocumented)
-  GoMirrored = "GoMirrored",
+  GoMirrored = 'GoMirrored',
   // (undocumented)
-  GotoToday = "GotoToday",
+  GotoToday = 'GotoToday',
   // (undocumented)
-  GridViewLarge = "GridViewLarge",
+  GridViewLarge = 'GridViewLarge',
   // (undocumented)
-  GridViewMedium = "GridViewMedium",
+  GridViewMedium = 'GridViewMedium',
   // (undocumented)
-  GridViewSmall = "GridViewSmall",
+  GridViewSmall = 'GridViewSmall',
   // (undocumented)
-  GripperBarHorizontal = "GripperBarHorizontal",
+  GripperBarHorizontal = 'GripperBarHorizontal',
   // (undocumented)
-  GripperBarVertical = "GripperBarVertical",
+  GripperBarVertical = 'GripperBarVertical',
   // (undocumented)
-  GripperDotsVertical = "GripperDotsVertical",
+  GripperDotsVertical = 'GripperDotsVertical',
   // (undocumented)
-  GripperTool = "GripperTool",
+  GripperTool = 'GripperTool',
   // (undocumented)
-  Group = "Group",
+  Group = 'Group',
   // (undocumented)
-  GroupedAscending = "GroupedAscending",
+  GroupedAscending = 'GroupedAscending',
   // (undocumented)
-  GroupedDescending = "GroupedDescending",
+  GroupedDescending = 'GroupedDescending',
   // (undocumented)
-  GroupedList = "GroupedList",
+  GroupedList = 'GroupedList',
   // (undocumented)
-  GroupObject = "GroupObject",
+  GroupObject = 'GroupObject',
   // (undocumented)
-  GUID = "GUID",
+  GUID = 'GUID',
   // (undocumented)
-  Guitar = "Guitar",
+  Guitar = 'Guitar',
   // (undocumented)
-  HailDay = "HailDay",
+  HailDay = 'HailDay',
   // (undocumented)
-  HailNight = "HailNight",
+  HailNight = 'HailNight',
   // (undocumented)
-  HalfAlpha = "HalfAlpha",
+  HalfAlpha = 'HalfAlpha',
   // (undocumented)
-  HalfCircle = "HalfCircle",
+  HalfCircle = 'HalfCircle',
   // (undocumented)
-  HandsFree = "HandsFree",
+  HandsFree = 'HandsFree',
   // (undocumented)
-  Handwriting = "Handwriting",
+  Handwriting = 'Handwriting',
   // (undocumented)
-  HardDrive = "HardDrive",
+  HardDrive = 'HardDrive',
   // (undocumented)
-  HardDriveGroup = "HardDriveGroup",
+  HardDriveGroup = 'HardDriveGroup',
   // (undocumented)
-  HardDriveLock = "HardDriveLock",
+  HardDriveLock = 'HardDriveLock',
   // (undocumented)
-  HardDriveUnlock = "HardDriveUnlock",
+  HardDriveUnlock = 'HardDriveUnlock',
   // (undocumented)
-  Header = "Header",
+  Header = 'Header',
   // (undocumented)
-  Header1 = "Header1",
+  Header1 = 'Header1',
   // (undocumented)
-  Header2 = "Header2",
+  Header2 = 'Header2',
   // (undocumented)
-  Header3 = "Header3",
+  Header3 = 'Header3',
   // (undocumented)
-  Header4 = "Header4",
+  Header4 = 'Header4',
   // (undocumented)
-  Headset = "Headset",
+  Headset = 'Headset',
   // (undocumented)
-  HeadsetSolid = "HeadsetSolid",
+  HeadsetSolid = 'HeadsetSolid',
   // (undocumented)
-  Health = "Health",
+  Health = 'Health',
   // (undocumented)
-  HealthSolid = "HealthSolid",
+  HealthSolid = 'HealthSolid',
   // (undocumented)
-  Heart = "Heart",
+  Heart = 'Heart',
   // (undocumented)
-  HeartBroken = "HeartBroken",
+  HeartBroken = 'HeartBroken',
   // (undocumented)
-  HeartFill = "HeartFill",
+  HeartFill = 'HeartFill',
   // (undocumented)
-  Help = "Help",
+  Help = 'Help',
   // (undocumented)
-  HelpMirrored = "HelpMirrored",
+  HelpMirrored = 'HelpMirrored',
   // (undocumented)
-  Hexagon = "Hexagon",
+  Hexagon = 'Hexagon',
   // (undocumented)
-  Hide = "Hide",
+  Hide = 'Hide',
   // (undocumented)
-  Hide2 = "Hide2",
+  Hide2 = 'Hide2',
   // (undocumented)
-  Hide3 = "Hide3",
+  Hide3 = 'Hide3',
   // (undocumented)
-  Highlight = "Highlight",
+  Highlight = 'Highlight',
   // (undocumented)
-  HighlightMappedShapes = "HighlightMappedShapes",
+  HighlightMappedShapes = 'HighlightMappedShapes',
   // (undocumented)
-  HintText = "HintText",
+  HintText = 'HintText',
   // (undocumented)
-  HistoricalWeather = "HistoricalWeather",
+  HistoricalWeather = 'HistoricalWeather',
   // (undocumented)
-  History = "History",
+  History = 'History',
   // (undocumented)
-  Home = "Home",
+  Home = 'Home',
   // (undocumented)
-  HomeGroup = "HomeGroup",
+  HomeGroup = 'HomeGroup',
   // (undocumented)
-  HomeSolid = "HomeSolid",
+  HomeSolid = 'HomeSolid',
   // (undocumented)
-  HomeVerify = "HomeVerify",
+  HomeVerify = 'HomeVerify',
   // (undocumented)
-  HorizontalDistributeCenter = "HorizontalDistributeCenter",
+  HorizontalDistributeCenter = 'HorizontalDistributeCenter',
   // (undocumented)
-  Hospital = "Hospital",
+  Hospital = 'Hospital',
   // (undocumented)
-  Hotel = "Hotel",
+  Hotel = 'Hotel',
   // (undocumented)
-  HourGlass = "HourGlass",
+  HourGlass = 'HourGlass',
   // (undocumented)
-  IconSetsFlag = "IconSetsFlag",
+  IconSetsFlag = 'IconSetsFlag',
   // (undocumented)
-  IDBadge = "IDBadge",
+  IDBadge = 'IDBadge',
   // (undocumented)
-  ImageCrosshair = "ImageCrosshair",
+  ImageCrosshair = 'ImageCrosshair',
   // (undocumented)
-  ImageDiff = "ImageDiff",
+  ImageDiff = 'ImageDiff',
   // (undocumented)
-  ImagePixel = "ImagePixel",
+  ImagePixel = 'ImagePixel',
   // (undocumented)
-  ImageSearch = "ImageSearch",
+  ImageSearch = 'ImageSearch',
   // (undocumented)
-  Import = "Import",
+  Import = 'Import',
   // (undocumented)
-  ImportAllMirrored = "ImportAllMirrored",
+  ImportAllMirrored = 'ImportAllMirrored',
   // (undocumented)
-  Important = "Important",
+  Important = 'Important',
   // (undocumented)
-  ImportMirrored = "ImportMirrored",
+  ImportMirrored = 'ImportMirrored',
   // (undocumented)
-  Inbox = "Inbox",
+  Inbox = 'Inbox',
   // (undocumented)
-  InboxCheck = "InboxCheck",
+  InboxCheck = 'InboxCheck',
   // (undocumented)
-  IncidentTriangle = "IncidentTriangle",
+  IncidentTriangle = 'IncidentTriangle',
   // (undocumented)
-  IncomingCall = "IncomingCall",
+  IncomingCall = 'IncomingCall',
   // (undocumented)
-  IncreaseIndentArrow = "IncreaseIndentArrow",
+  IncreaseIndentArrow = 'IncreaseIndentArrow',
   // (undocumented)
-  IncreaseIndentArrowMirrored = "IncreaseIndentArrowMirrored",
+  IncreaseIndentArrowMirrored = 'IncreaseIndentArrowMirrored',
   // (undocumented)
-  IncreaseIndentLegacy = "IncreaseIndentLegacy",
+  IncreaseIndentLegacy = 'IncreaseIndentLegacy',
   // (undocumented)
-  IncreaseIndentText = "IncreaseIndentText",
+  IncreaseIndentText = 'IncreaseIndentText',
   // (undocumented)
-  IncreaseIndentTextMirrored = "IncreaseIndentTextMirrored",
+  IncreaseIndentTextMirrored = 'IncreaseIndentTextMirrored',
   // (undocumented)
-  Info = "Info",
+  Info = 'Info',
   // (undocumented)
-  Info2 = "Info2",
+  Info2 = 'Info2',
   // (undocumented)
-  InformationBarriers = "InformationBarriers",
+  InformationBarriers = 'InformationBarriers',
   // (undocumented)
-  InfoSolid = "InfoSolid",
+  InfoSolid = 'InfoSolid',
   // (undocumented)
-  InkingTool = "InkingTool",
+  InkingTool = 'InkingTool',
   // (undocumented)
-  InsertColumnsLeft = "InsertColumnsLeft",
+  InsertColumnsLeft = 'InsertColumnsLeft',
   // (undocumented)
-  InsertColumnsRight = "InsertColumnsRight",
+  InsertColumnsRight = 'InsertColumnsRight',
   // (undocumented)
-  InsertRowsAbove = "InsertRowsAbove",
+  InsertRowsAbove = 'InsertRowsAbove',
   // (undocumented)
-  InsertRowsBelow = "InsertRowsBelow",
+  InsertRowsBelow = 'InsertRowsBelow',
   // (undocumented)
-  InsertSignatureLine = "InsertSignatureLine",
+  InsertSignatureLine = 'InsertSignatureLine',
   // (undocumented)
-  InsertTextBox = "InsertTextBox",
+  InsertTextBox = 'InsertTextBox',
   // (undocumented)
-  InstallToDrive = "InstallToDrive",
+  InstallToDrive = 'InstallToDrive',
   // (undocumented)
-  InternalInvestigation = "InternalInvestigation",
+  InternalInvestigation = 'InternalInvestigation',
   // (undocumented)
-  InternetSharing = "InternetSharing",
+  InternetSharing = 'InternetSharing',
   // (undocumented)
-  IRMForward = "IRMForward",
+  IRMForward = 'IRMForward',
   // (undocumented)
-  IRMForwardMirrored = "IRMForwardMirrored",
+  IRMForwardMirrored = 'IRMForwardMirrored',
   // (undocumented)
-  IRMReply = "IRMReply",
+  IRMReply = 'IRMReply',
   // (undocumented)
-  IRMReplyMirrored = "IRMReplyMirrored",
+  IRMReplyMirrored = 'IRMReplyMirrored',
   // (undocumented)
-  IssueSolid = "IssueSolid",
+  IssueSolid = 'IssueSolid',
   // (undocumented)
-  IssueTracking = "IssueTracking",
+  IssueTracking = 'IssueTracking',
   // (undocumented)
-  IssueTrackingMirrored = "IssueTrackingMirrored",
+  IssueTrackingMirrored = 'IssueTrackingMirrored',
   // (undocumented)
-  Italic = "Italic",
+  Italic = 'Italic',
   // (undocumented)
-  JavaScriptLanguage = "JavaScriptLanguage",
+  JavaScriptLanguage = 'JavaScriptLanguage',
   // (undocumented)
-  JoinOnlineMeeting = "JoinOnlineMeeting",
+  JoinOnlineMeeting = 'JoinOnlineMeeting',
   // (undocumented)
-  JS = "JS",
+  JS = 'JS',
   // (undocumented)
-  KaizalaLogo = "KaizalaLogo",
+  KaizalaLogo = 'KaizalaLogo',
   // (undocumented)
-  KeyboardClassic = "KeyboardClassic",
+  KeyboardClassic = 'KeyboardClassic',
   // (undocumented)
-  KnowledgeArticle = "KnowledgeArticle",
+  KnowledgeArticle = 'KnowledgeArticle',
   // (undocumented)
-  Label = "Label",
+  Label = 'Label',
   // (undocumented)
-  LadybugSolid = "LadybugSolid",
+  LadybugSolid = 'LadybugSolid',
   // (undocumented)
-  Lamp = "Lamp",
+  Lamp = 'Lamp',
   // (undocumented)
-  LandscapeOrientation = "LandscapeOrientation",
+  LandscapeOrientation = 'LandscapeOrientation',
   // (undocumented)
-  LaptopSecure = "LaptopSecure",
+  LaptopSecure = 'LaptopSecure',
   // (undocumented)
-  LaptopSelected = "LaptopSelected",
+  LaptopSelected = 'LaptopSelected',
   // (undocumented)
-  LargeGrid = "LargeGrid",
+  LargeGrid = 'LargeGrid',
   // (undocumented)
-  Leave = "Leave",
+  Leave = 'Leave',
   // (undocumented)
-  Library = "Library",
+  Library = 'Library',
   // (undocumented)
-  Lifesaver = "Lifesaver",
+  Lifesaver = 'Lifesaver',
   // (undocumented)
-  LifesaverLock = "LifesaverLock",
+  LifesaverLock = 'LifesaverLock',
   // (undocumented)
-  Light = "Light",
+  Light = 'Light',
   // (undocumented)
-  Lightbulb = "Lightbulb",
+  Lightbulb = 'Lightbulb',
   // (undocumented)
-  LightningBolt = "LightningBolt",
+  LightningBolt = 'LightningBolt',
   // (undocumented)
-  LightWeight = "LightWeight",
+  LightWeight = 'LightWeight',
   // (undocumented)
-  Like = "Like",
+  Like = 'Like',
   // (undocumented)
-  LikeSolid = "LikeSolid",
+  LikeSolid = 'LikeSolid',
   // (undocumented)
-  Line = "Line",
+  Line = 'Line',
   // (undocumented)
-  LineChart = "LineChart",
+  LineChart = 'LineChart',
   // (undocumented)
-  LineSpacing = "LineSpacing",
+  LineSpacing = 'LineSpacing',
   // (undocumented)
-  LineStyle = "LineStyle",
+  LineStyle = 'LineStyle',
   // (undocumented)
-  LineThickness = "LineThickness",
+  LineThickness = 'LineThickness',
   // (undocumented)
-  Link = "Link",
+  Link = 'Link',
   // (undocumented)
-  Link12 = "Link12",
+  Link12 = 'Link12',
   // (undocumented)
-  LinkedDatabase = "LinkedDatabase",
+  LinkedDatabase = 'LinkedDatabase',
   // (undocumented)
-  LinkedInLogo = "LinkedInLogo",
+  LinkedInLogo = 'LinkedInLogo',
   // (undocumented)
-  List = "List",
+  List = 'List',
   // (undocumented)
-  ListMirrored = "ListMirrored",
+  ListMirrored = 'ListMirrored',
   // (undocumented)
-  LocaleLanguage = "LocaleLanguage",
+  LocaleLanguage = 'LocaleLanguage',
   // (undocumented)
-  Location = "Location",
+  Location = 'Location',
   // (undocumented)
-  LocationCircle = "LocationCircle",
+  LocationCircle = 'LocationCircle',
   // (undocumented)
-  LocationDot = "LocationDot",
+  LocationDot = 'LocationDot',
   // (undocumented)
-  LocationFill = "LocationFill",
+  LocationFill = 'LocationFill',
   // (undocumented)
-  LocationOutline = "LocationOutline",
+  LocationOutline = 'LocationOutline',
   // (undocumented)
-  Lock = "Lock",
+  Lock = 'Lock',
   // (undocumented)
-  Lock12 = "Lock12",
+  Lock12 = 'Lock12',
   // (undocumented)
-  LockSolid = "LockSolid",
+  LockSolid = 'LockSolid',
   // (undocumented)
-  LogRemove = "LogRemove",
+  LogRemove = 'LogRemove',
   // (undocumented)
-  LookupEntities = "LookupEntities",
+  LookupEntities = 'LookupEntities',
   // (undocumented)
-  LowerBrightness = "LowerBrightness",
+  LowerBrightness = 'LowerBrightness',
   // (undocumented)
-  LyncLogo = "LyncLogo",
+  LyncLogo = 'LyncLogo',
   // (undocumented)
-  M365InvoicingLogo = "M365InvoicingLogo",
+  M365InvoicingLogo = 'M365InvoicingLogo',
   // (undocumented)
-  Mail = "Mail",
+  Mail = 'Mail',
   // (undocumented)
-  MailAlert = "MailAlert",
+  MailAlert = 'MailAlert',
   // (undocumented)
-  MailAttached = "MailAttached",
+  MailAttached = 'MailAttached',
   // (undocumented)
-  MailCheck = "MailCheck",
+  MailCheck = 'MailCheck',
   // (undocumented)
-  MailFill = "MailFill",
+  MailFill = 'MailFill',
   // (undocumented)
-  MailForward = "MailForward",
+  MailForward = 'MailForward',
   // (undocumented)
-  MailForwardMirrored = "MailForwardMirrored",
+  MailForwardMirrored = 'MailForwardMirrored',
   // (undocumented)
-  MailLowImportance = "MailLowImportance",
+  MailLowImportance = 'MailLowImportance',
   // (undocumented)
-  MailOptions = "MailOptions",
+  MailOptions = 'MailOptions',
   // (undocumented)
-  MailPause = "MailPause",
+  MailPause = 'MailPause',
   // (undocumented)
-  MailReminder = "MailReminder",
+  MailReminder = 'MailReminder',
   // (undocumented)
-  MailRepeat = "MailRepeat",
+  MailRepeat = 'MailRepeat',
   // (undocumented)
-  MailReply = "MailReply",
+  MailReply = 'MailReply',
   // (undocumented)
-  MailReplyAll = "MailReplyAll",
+  MailReplyAll = 'MailReplyAll',
   // (undocumented)
-  MailReplyAllMirrored = "MailReplyAllMirrored",
+  MailReplyAllMirrored = 'MailReplyAllMirrored',
   // (undocumented)
-  MailReplyMirrored = "MailReplyMirrored",
+  MailReplyMirrored = 'MailReplyMirrored',
   // (undocumented)
-  MailSchedule = "MailSchedule",
+  MailSchedule = 'MailSchedule',
   // (undocumented)
-  MailSolid = "MailSolid",
+  MailSolid = 'MailSolid',
   // (undocumented)
-  MailTentative = "MailTentative",
+  MailTentative = 'MailTentative',
   // (undocumented)
-  MailTentativeMirrored = "MailTentativeMirrored",
+  MailTentativeMirrored = 'MailTentativeMirrored',
   // (undocumented)
-  MailUndelivered = "MailUndelivered",
+  MailUndelivered = 'MailUndelivered',
   // (undocumented)
-  ManagerSelfService = "ManagerSelfService",
+  ManagerSelfService = 'ManagerSelfService',
   // (undocumented)
-  Manufacturing = "Manufacturing",
+  Manufacturing = 'Manufacturing',
   // (undocumented)
-  MapDirections = "MapDirections",
+  MapDirections = 'MapDirections',
   // (undocumented)
-  MapLayers = "MapLayers",
+  MapLayers = 'MapLayers',
   // (undocumented)
-  MapPin = "MapPin",
+  MapPin = 'MapPin',
   // (undocumented)
-  MapPinSolid = "MapPinSolid",
+  MapPinSolid = 'MapPinSolid',
   // (undocumented)
-  MarkAsProtected = "MarkAsProtected",
+  MarkAsProtected = 'MarkAsProtected',
   // (undocumented)
-  MarkDownLanguage = "MarkDownLanguage",
+  MarkDownLanguage = 'MarkDownLanguage',
   // (undocumented)
-  Market = "Market",
+  Market = 'Market',
   // (undocumented)
-  MarketDown = "MarketDown",
+  MarketDown = 'MarketDown',
   // (undocumented)
-  MasterDatabase = "MasterDatabase",
+  MasterDatabase = 'MasterDatabase',
   // (undocumented)
-  MaximumValue = "MaximumValue",
+  MaximumValue = 'MaximumValue',
   // (undocumented)
-  Medal = "Medal",
+  Medal = 'Medal',
   // (undocumented)
-  MedalSolid = "MedalSolid",
+  MedalSolid = 'MedalSolid',
   // (undocumented)
-  Media = "Media",
+  Media = 'Media',
   // (undocumented)
-  MediaAdd = "MediaAdd",
+  MediaAdd = 'MediaAdd',
   // (undocumented)
-  Medical = "Medical",
+  Medical = 'Medical',
   // (undocumented)
-  Megaphone = "Megaphone",
+  Megaphone = 'Megaphone',
   // (undocumented)
-  MegaphoneSolid = "MegaphoneSolid",
+  MegaphoneSolid = 'MegaphoneSolid',
   // (undocumented)
-  Memo = "Memo",
+  Memo = 'Memo',
   // (undocumented)
-  Merge = "Merge",
+  Merge = 'Merge',
   // (undocumented)
-  MergeDuplicate = "MergeDuplicate",
+  MergeDuplicate = 'MergeDuplicate',
   // (undocumented)
-  Message = "Message",
+  Message = 'Message',
   // (undocumented)
-  MessageFill = "MessageFill",
+  MessageFill = 'MessageFill',
   // (undocumented)
-  MicOff = "MicOff",
+  MicOff = 'MicOff',
   // (undocumented)
-  Microphone = "Microphone",
+  Microphone = 'Microphone',
   // (undocumented)
-  MicrosoftFlowLogo = "MicrosoftFlowLogo",
+  MicrosoftFlowLogo = 'MicrosoftFlowLogo',
   // (undocumented)
-  MicrosoftStaffhubLogo = "MicrosoftStaffhubLogo",
+  MicrosoftStaffhubLogo = 'MicrosoftStaffhubLogo',
   // (undocumented)
-  MicrosoftTranslatorLogo = "MicrosoftTranslatorLogo",
+  MicrosoftTranslatorLogo = 'MicrosoftTranslatorLogo',
   // (undocumented)
-  MicrosoftTranslatorLogoBlue = "MicrosoftTranslatorLogoBlue",
+  MicrosoftTranslatorLogoBlue = 'MicrosoftTranslatorLogoBlue',
   // (undocumented)
-  MicrosoftTranslatorLogoGreen = "MicrosoftTranslatorLogoGreen",
+  MicrosoftTranslatorLogoGreen = 'MicrosoftTranslatorLogoGreen',
   // (undocumented)
-  MiniContract = "MiniContract",
+  MiniContract = 'MiniContract',
   // (undocumented)
-  MiniContractMirrored = "MiniContractMirrored",
+  MiniContractMirrored = 'MiniContractMirrored',
   // (undocumented)
-  MiniExpand = "MiniExpand",
+  MiniExpand = 'MiniExpand',
   // (undocumented)
-  MiniExpandMirrored = "MiniExpandMirrored",
+  MiniExpandMirrored = 'MiniExpandMirrored',
   // (undocumented)
-  MiniLink = "MiniLink",
+  MiniLink = 'MiniLink',
   // (undocumented)
-  MinimumValue = "MinimumValue",
+  MinimumValue = 'MinimumValue',
   // (undocumented)
-  MobileReport = "MobileReport",
+  MobileReport = 'MobileReport',
   // (undocumented)
-  MobileSelected = "MobileSelected",
+  MobileSelected = 'MobileSelected',
   // (undocumented)
-  Money = "Money",
+  Money = 'Money',
   // (undocumented)
-  More = "More",
+  More = 'More',
   // (undocumented)
-  MoreSports = "MoreSports",
+  MoreSports = 'MoreSports',
   // (undocumented)
-  MoreVertical = "MoreVertical",
+  MoreVertical = 'MoreVertical',
   // (undocumented)
-  MountainClimbing = "MountainClimbing",
+  MountainClimbing = 'MountainClimbing',
   // (undocumented)
-  Move = "Move",
+  Move = 'Move',
   // (undocumented)
-  Movers = "Movers",
+  Movers = 'Movers',
   // (undocumented)
-  MoveToFolder = "MoveToFolder",
+  MoveToFolder = 'MoveToFolder',
   // (undocumented)
-  MSNLogo = "MSNLogo",
+  MSNLogo = 'MSNLogo',
   // (undocumented)
-  MSNVideos = "MSNVideos",
+  MSNVideos = 'MSNVideos',
   // (undocumented)
-  MSNVideosSolid = "MSNVideosSolid",
+  MSNVideosSolid = 'MSNVideosSolid',
   // (undocumented)
-  MultiSelect = "MultiSelect",
+  MultiSelect = 'MultiSelect',
   // (undocumented)
-  MultiSelectMirrored = "MultiSelectMirrored",
+  MultiSelectMirrored = 'MultiSelectMirrored',
   // (undocumented)
-  MusicInCollection = "MusicInCollection",
+  MusicInCollection = 'MusicInCollection',
   // (undocumented)
-  MusicInCollectionFill = "MusicInCollectionFill",
+  MusicInCollectionFill = 'MusicInCollectionFill',
   // (undocumented)
-  MusicNote = "MusicNote",
+  MusicNote = 'MusicNote',
   // (undocumented)
-  MyMoviesTV = "MyMoviesTV",
+  MyMoviesTV = 'MyMoviesTV',
   // (undocumented)
-  Nav2DMapView = "Nav2DMapView",
+  Nav2DMapView = 'Nav2DMapView',
   // (undocumented)
-  NavigateBack = "NavigateBack",
+  NavigateBack = 'NavigateBack',
   // (undocumented)
-  NavigateBackMirrored = "NavigateBackMirrored",
+  NavigateBackMirrored = 'NavigateBackMirrored',
   // (undocumented)
-  NavigateExternalInline = "NavigateExternalInline",
+  NavigateExternalInline = 'NavigateExternalInline',
   // (undocumented)
-  NavigateForward = "NavigateForward",
+  NavigateForward = 'NavigateForward',
   // (undocumented)
-  NavigateForwardMirrored = "NavigateForwardMirrored",
+  NavigateForwardMirrored = 'NavigateForwardMirrored',
   // (undocumented)
-  NavigationFlipper = "NavigationFlipper",
+  NavigationFlipper = 'NavigationFlipper',
   // (undocumented)
-  NetworkTower = "NetworkTower",
+  NetworkTower = 'NetworkTower',
   // (undocumented)
-  NewAnalyticsQuery = "NewAnalyticsQuery",
+  NewAnalyticsQuery = 'NewAnalyticsQuery',
   // (undocumented)
-  NewFolder = "NewFolder",
+  NewFolder = 'NewFolder',
   // (undocumented)
-  NewMail = "NewMail",
+  NewMail = 'NewMail',
   // (undocumented)
-  News = "News",
+  News = 'News',
   // (undocumented)
-  NewsSearch = "NewsSearch",
+  NewsSearch = 'NewsSearch',
   // (undocumented)
-  NewTeamProject = "NewTeamProject",
+  NewTeamProject = 'NewTeamProject',
   // (undocumented)
-  Next = "Next",
+  Next = 'Next',
   // (undocumented)
-  NormalWeight = "NormalWeight",
+  NormalWeight = 'NormalWeight',
   // (undocumented)
-  NoteForward = "NoteForward",
+  NoteForward = 'NoteForward',
   // (undocumented)
-  NotePinned = "NotePinned",
+  NotePinned = 'NotePinned',
   // (undocumented)
-  NoteReply = "NoteReply",
+  NoteReply = 'NoteReply',
   // (undocumented)
-  NotExecuted = "NotExecuted",
+  NotExecuted = 'NotExecuted',
   // (undocumented)
-  NotImpactedSolid = "NotImpactedSolid",
+  NotImpactedSolid = 'NotImpactedSolid',
   // (undocumented)
-  NugetLogo = "NugetLogo",
+  NugetLogo = 'NugetLogo',
   // (undocumented)
-  NumberedList = "NumberedList",
+  NumberedList = 'NumberedList',
   // (undocumented)
-  NumberedListNumber = "NumberedListNumber",
+  NumberedListNumber = 'NumberedListNumber',
   // (undocumented)
-  NumberedListNumberMirrored = "NumberedListNumberMirrored",
+  NumberedListNumberMirrored = 'NumberedListNumberMirrored',
   // (undocumented)
-  NumberedListText = "NumberedListText",
+  NumberedListText = 'NumberedListText',
   // (undocumented)
-  NumberedListTextMirrored = "NumberedListTextMirrored",
+  NumberedListTextMirrored = 'NumberedListTextMirrored',
   // (undocumented)
-  NumberField = "NumberField",
+  NumberField = 'NumberField',
   // (undocumented)
-  NumberSequence = "NumberSequence",
+  NumberSequence = 'NumberSequence',
   // (undocumented)
-  NumberSymbol = "NumberSymbol",
+  NumberSymbol = 'NumberSymbol',
   // (undocumented)
-  Octagon = "Octagon",
+  Octagon = 'Octagon',
   // (undocumented)
-  OEM = "OEM",
+  OEM = 'OEM',
   // (undocumented)
-  OfficeAddinsLogo = "OfficeAddinsLogo",
+  OfficeAddinsLogo = 'OfficeAddinsLogo',
   // (undocumented)
-  OfficeAssistantLogo = "OfficeAssistantLogo",
+  OfficeAssistantLogo = 'OfficeAssistantLogo',
   // (undocumented)
-  OfficeChat = "OfficeChat",
+  OfficeChat = 'OfficeChat',
   // (undocumented)
-  OfficeChatSolid = "OfficeChatSolid",
+  OfficeChatSolid = 'OfficeChatSolid',
   // (undocumented)
-  OfficeFormsLogo = "OfficeFormsLogo",
+  OfficeFormsLogo = 'OfficeFormsLogo',
   // (undocumented)
-  OfficeFormsLogo16 = "OfficeFormsLogo16",
+  OfficeFormsLogo16 = 'OfficeFormsLogo16',
   // (undocumented)
-  OfficeFormsLogo24 = "OfficeFormsLogo24",
+  OfficeFormsLogo24 = 'OfficeFormsLogo24',
   // (undocumented)
-  OfficeFormsLogoFill = "OfficeFormsLogoFill",
+  OfficeFormsLogoFill = 'OfficeFormsLogoFill',
   // (undocumented)
-  OfficeFormsLogoFill16 = "OfficeFormsLogoFill16",
+  OfficeFormsLogoFill16 = 'OfficeFormsLogoFill16',
   // (undocumented)
-  OfficeFormsLogoFill24 = "OfficeFormsLogoFill24",
+  OfficeFormsLogoFill24 = 'OfficeFormsLogoFill24',
   // (undocumented)
-  OfficeFormsLogoInverse = "OfficeFormsLogoInverse",
+  OfficeFormsLogoInverse = 'OfficeFormsLogoInverse',
   // (undocumented)
-  OfficeFormsLogoInverse16 = "OfficeFormsLogoInverse16",
+  OfficeFormsLogoInverse16 = 'OfficeFormsLogoInverse16',
   // (undocumented)
-  OfficeFormsLogoInverse24 = "OfficeFormsLogoInverse24",
+  OfficeFormsLogoInverse24 = 'OfficeFormsLogoInverse24',
   // (undocumented)
-  OfficeLogo = "OfficeLogo",
+  OfficeLogo = 'OfficeLogo',
   // (undocumented)
-  OfficeStoreLogo = "OfficeStoreLogo",
+  OfficeStoreLogo = 'OfficeStoreLogo',
   // (undocumented)
-  OfficeVideoLogo = "OfficeVideoLogo",
+  OfficeVideoLogo = 'OfficeVideoLogo',
   // (undocumented)
-  OfficeVideoLogoFill = "OfficeVideoLogoFill",
+  OfficeVideoLogoFill = 'OfficeVideoLogoFill',
   // (undocumented)
-  OfficeVideoLogoInverse = "OfficeVideoLogoInverse",
+  OfficeVideoLogoInverse = 'OfficeVideoLogoInverse',
   // (undocumented)
-  OfflineOneDriveParachute = "OfflineOneDriveParachute",
+  OfflineOneDriveParachute = 'OfflineOneDriveParachute',
   // (undocumented)
-  OfflineOneDriveParachuteDisabled = "OfflineOneDriveParachuteDisabled",
+  OfflineOneDriveParachuteDisabled = 'OfflineOneDriveParachuteDisabled',
   // (undocumented)
-  OfflineStorage = "OfflineStorage",
+  OfflineStorage = 'OfflineStorage',
   // (undocumented)
-  OfflineStorageSolid = "OfflineStorageSolid",
+  OfflineStorageSolid = 'OfflineStorageSolid',
   // (undocumented)
-  Onboarding = "Onboarding",
+  Onboarding = 'Onboarding',
   // (undocumented)
-  OneDriveAdd = "OneDriveAdd",
+  OneDriveAdd = 'OneDriveAdd',
   // (undocumented)
-  OneDriveFolder16 = "OneDriveFolder16",
+  OneDriveFolder16 = 'OneDriveFolder16',
   // (undocumented)
-  OneDriveLogo = "OneDriveLogo",
+  OneDriveLogo = 'OneDriveLogo',
   // (undocumented)
-  OneNoteEduLogoInverse = "OneNoteEduLogoInverse",
+  OneNoteEduLogoInverse = 'OneNoteEduLogoInverse',
   // (undocumented)
-  OneNoteLogo = "OneNoteLogo",
+  OneNoteLogo = 'OneNoteLogo',
   // (undocumented)
-  OneNoteLogo16 = "OneNoteLogo16",
+  OneNoteLogo16 = 'OneNoteLogo16',
   // (undocumented)
-  OneNoteLogoFill = "OneNoteLogoFill",
+  OneNoteLogoFill = 'OneNoteLogoFill',
   // (undocumented)
-  OneNoteLogoFill16 = "OneNoteLogoFill16",
+  OneNoteLogoFill16 = 'OneNoteLogoFill16',
   // (undocumented)
-  OneNoteLogoInverse = "OneNoteLogoInverse",
+  OneNoteLogoInverse = 'OneNoteLogoInverse',
   // (undocumented)
-  OneNoteLogoInverse16 = "OneNoteLogoInverse16",
+  OneNoteLogoInverse16 = 'OneNoteLogoInverse16',
   // (undocumented)
-  OpenEnrollment = "OpenEnrollment",
+  OpenEnrollment = 'OpenEnrollment',
   // (undocumented)
-  OpenFile = "OpenFile",
+  OpenFile = 'OpenFile',
   // (undocumented)
-  OpenFolderHorizontal = "OpenFolderHorizontal",
+  OpenFolderHorizontal = 'OpenFolderHorizontal',
   // (undocumented)
-  OpenInNewTab = "OpenInNewTab",
+  OpenInNewTab = 'OpenInNewTab',
   // (undocumented)
-  OpenInNewWindow = "OpenInNewWindow",
+  OpenInNewWindow = 'OpenInNewWindow',
   // (undocumented)
-  OpenPane = "OpenPane",
+  OpenPane = 'OpenPane',
   // (undocumented)
-  OpenPaneMirrored = "OpenPaneMirrored",
+  OpenPaneMirrored = 'OpenPaneMirrored',
   // (undocumented)
-  OpenSource = "OpenSource",
+  OpenSource = 'OpenSource',
   // (undocumented)
-  Org = "Org",
+  Org = 'Org',
   // (undocumented)
-  Orientation = "Orientation",
+  Orientation = 'Orientation',
   // (undocumented)
-  Orientation2 = "Orientation2",
+  Orientation2 = 'Orientation2',
   // (undocumented)
-  OutlookLogo = "OutlookLogo",
+  OutlookLogo = 'OutlookLogo',
   // (undocumented)
-  OutlookLogo16 = "OutlookLogo16",
+  OutlookLogo16 = 'OutlookLogo16',
   // (undocumented)
-  OutlookLogoFill = "OutlookLogoFill",
+  OutlookLogoFill = 'OutlookLogoFill',
   // (undocumented)
-  OutlookLogoFill16 = "OutlookLogoFill16",
+  OutlookLogoFill16 = 'OutlookLogoFill16',
   // (undocumented)
-  OutlookLogoInverse = "OutlookLogoInverse",
+  OutlookLogoInverse = 'OutlookLogoInverse',
   // (undocumented)
-  OutlookLogoInverse16 = "OutlookLogoInverse16",
+  OutlookLogoInverse16 = 'OutlookLogoInverse16',
   // (undocumented)
-  OutOfOffice = "OutOfOffice",
+  OutOfOffice = 'OutOfOffice',
   // (undocumented)
-  Package = "Package",
+  Package = 'Package',
   // (undocumented)
-  Packages = "Packages",
+  Packages = 'Packages',
   // (undocumented)
-  Padding = "Padding",
+  Padding = 'Padding',
   // (undocumented)
-  PaddingBottom = "PaddingBottom",
+  PaddingBottom = 'PaddingBottom',
   // (undocumented)
-  PaddingLeft = "PaddingLeft",
+  PaddingLeft = 'PaddingLeft',
   // (undocumented)
-  PaddingRight = "PaddingRight",
+  PaddingRight = 'PaddingRight',
   // (undocumented)
-  PaddingTop = "PaddingTop",
+  PaddingTop = 'PaddingTop',
   // (undocumented)
-  Page = "Page",
+  Page = 'Page',
   // (undocumented)
-  PageAdd = "PageAdd",
+  PageAdd = 'PageAdd',
   // (undocumented)
-  PageArrowRight = "PageArrowRight",
+  PageArrowRight = 'PageArrowRight',
   // (undocumented)
-  PageCheckedin = "PageCheckedin",
+  PageCheckedin = 'PageCheckedin',
   // (undocumented)
-  PageCheckedOut = "PageCheckedOut",
+  PageCheckedOut = 'PageCheckedOut',
   // (undocumented)
-  PageEdit = "PageEdit",
+  PageEdit = 'PageEdit',
   // (undocumented)
-  PageHeader = "PageHeader",
+  PageHeader = 'PageHeader',
   // (undocumented)
-  PageLeft = "PageLeft",
+  PageLeft = 'PageLeft',
   // (undocumented)
-  PageList = "PageList",
+  PageList = 'PageList',
   // (undocumented)
-  PageListFilter = "PageListFilter",
+  PageListFilter = 'PageListFilter',
   // (undocumented)
-  PageListMirroredSolid = "PageListMirroredSolid",
+  PageListMirroredSolid = 'PageListMirroredSolid',
   // (undocumented)
-  PageListSolid = "PageListSolid",
+  PageListSolid = 'PageListSolid',
   // (undocumented)
-  PageLock = "PageLock",
+  PageLock = 'PageLock',
   // (undocumented)
-  PageRemove = "PageRemove",
+  PageRemove = 'PageRemove',
   // (undocumented)
-  PageRight = "PageRight",
+  PageRight = 'PageRight',
   // (undocumented)
-  PageSolid = "PageSolid",
+  PageSolid = 'PageSolid',
   // (undocumented)
-  PanoIndicator = "PanoIndicator",
+  PanoIndicator = 'PanoIndicator',
   // (undocumented)
-  Parachute = "Parachute",
+  Parachute = 'Parachute',
   // (undocumented)
-  ParachuteSolid = "ParachuteSolid",
+  ParachuteSolid = 'ParachuteSolid',
   // (undocumented)
-  Parameter = "Parameter",
+  Parameter = 'Parameter',
   // (undocumented)
-  ParkingLocation = "ParkingLocation",
+  ParkingLocation = 'ParkingLocation',
   // (undocumented)
-  ParkingLocationMirrored = "ParkingLocationMirrored",
+  ParkingLocationMirrored = 'ParkingLocationMirrored',
   // (undocumented)
-  ParkingMirroredSolid = "ParkingMirroredSolid",
+  ParkingMirroredSolid = 'ParkingMirroredSolid',
   // (undocumented)
-  ParkingSolid = "ParkingSolid",
+  ParkingSolid = 'ParkingSolid',
   // (undocumented)
-  PartlyCloudyDay = "PartlyCloudyDay",
+  PartlyCloudyDay = 'PartlyCloudyDay',
   // (undocumented)
-  PartlyCloudyNight = "PartlyCloudyNight",
+  PartlyCloudyNight = 'PartlyCloudyNight',
   // (undocumented)
-  PartyLeader = "PartyLeader",
+  PartyLeader = 'PartyLeader',
   // (undocumented)
-  PassiveAuthentication = "PassiveAuthentication",
+  PassiveAuthentication = 'PassiveAuthentication',
   // (undocumented)
-  PasswordField = "PasswordField",
+  PasswordField = 'PasswordField',
   // (undocumented)
-  Paste = "Paste",
+  Paste = 'Paste',
   // (undocumented)
-  PasteAsCode = "PasteAsCode",
+  PasteAsCode = 'PasteAsCode',
   // (undocumented)
-  PasteAsText = "PasteAsText",
+  PasteAsText = 'PasteAsText',
   // (undocumented)
-  Pause = "Pause",
+  Pause = 'Pause',
   // (undocumented)
-  PaymentCard = "PaymentCard",
+  PaymentCard = 'PaymentCard',
   // (undocumented)
-  PC1 = "PC1",
+  PC1 = 'PC1',
   // (undocumented)
-  PDF = "PDF",
+  PDF = 'PDF',
   // (undocumented)
-  PencilReply = "PencilReply",
+  PencilReply = 'PencilReply',
   // (undocumented)
-  Pentagon = "Pentagon",
+  Pentagon = 'Pentagon',
   // (undocumented)
-  PenWorkspace = "PenWorkspace",
+  PenWorkspace = 'PenWorkspace',
   // (undocumented)
-  People = "People",
+  People = 'People',
   // (undocumented)
-  PeopleAdd = "PeopleAdd",
+  PeopleAdd = 'PeopleAdd',
   // (undocumented)
-  PeopleAlert = "PeopleAlert",
+  PeopleAlert = 'PeopleAlert',
   // (undocumented)
-  PeopleBlock = "PeopleBlock",
+  PeopleBlock = 'PeopleBlock',
   // (undocumented)
-  PeoplePause = "PeoplePause",
+  PeoplePause = 'PeoplePause',
   // (undocumented)
-  PeopleRepeat = "PeopleRepeat",
+  PeopleRepeat = 'PeopleRepeat',
   // (undocumented)
-  Permissions = "Permissions",
+  Permissions = 'Permissions',
   // (undocumented)
-  PermissionsSolid = "PermissionsSolid",
+  PermissionsSolid = 'PermissionsSolid',
   // (undocumented)
-  Personalize = "Personalize",
+  Personalize = 'Personalize',
   // (undocumented)
-  Phishing = "Phishing",
+  Phishing = 'Phishing',
   // (undocumented)
-  Phone = "Phone",
+  Phone = 'Phone',
   // (undocumented)
-  Photo = "Photo",
+  Photo = 'Photo',
   // (undocumented)
-  Photo2 = "Photo2",
+  Photo2 = 'Photo2',
   // (undocumented)
-  Photo2Add = "Photo2Add",
+  Photo2Add = 'Photo2Add',
   // (undocumented)
-  Photo2Fill = "Photo2Fill",
+  Photo2Fill = 'Photo2Fill',
   // (undocumented)
-  Photo2Remove = "Photo2Remove",
+  Photo2Remove = 'Photo2Remove',
   // (undocumented)
-  PhotoCollection = "PhotoCollection",
+  PhotoCollection = 'PhotoCollection',
   // (undocumented)
-  Picture = "Picture",
+  Picture = 'Picture',
   // (undocumented)
-  PictureCenter = "PictureCenter",
+  PictureCenter = 'PictureCenter',
   // (undocumented)
-  PictureFill = "PictureFill",
+  PictureFill = 'PictureFill',
   // (undocumented)
-  PictureLibrary = "PictureLibrary",
+  PictureLibrary = 'PictureLibrary',
   // (undocumented)
-  PicturePosition = "PicturePosition",
+  PicturePosition = 'PicturePosition',
   // (undocumented)
-  PictureStretch = "PictureStretch",
+  PictureStretch = 'PictureStretch',
   // (undocumented)
-  PictureTile = "PictureTile",
+  PictureTile = 'PictureTile',
   // (undocumented)
-  PieDouble = "PieDouble",
+  PieDouble = 'PieDouble',
   // (undocumented)
-  PieSingle = "PieSingle",
+  PieSingle = 'PieSingle',
   // (undocumented)
-  PieSingleSolid = "PieSingleSolid",
+  PieSingleSolid = 'PieSingleSolid',
   // (undocumented)
-  Pill = "Pill",
+  Pill = 'Pill',
   // (undocumented)
-  Pin = "Pin",
+  Pin = 'Pin',
   // (undocumented)
-  Pinned = "Pinned",
+  Pinned = 'Pinned',
   // (undocumented)
-  PinnedFill = "PinnedFill",
+  PinnedFill = 'PinnedFill',
   // (undocumented)
-  PivotChart = "PivotChart",
+  PivotChart = 'PivotChart',
   // (undocumented)
-  PlainText = "PlainText",
+  PlainText = 'PlainText',
   // (undocumented)
-  PlannerLogo = "PlannerLogo",
+  PlannerLogo = 'PlannerLogo',
   // (undocumented)
-  PlanView = "PlanView",
+  PlanView = 'PlanView',
   // (undocumented)
-  Play = "Play",
+  Play = 'Play',
   // (undocumented)
-  PlayerSettings = "PlayerSettings",
+  PlayerSettings = 'PlayerSettings',
   // (undocumented)
-  PlayResume = "PlayResume",
+  PlayResume = 'PlayResume',
   // (undocumented)
-  Plug = "Plug",
+  Plug = 'Plug',
   // (undocumented)
-  PlugConnected = "PlugConnected",
+  PlugConnected = 'PlugConnected',
   // (undocumented)
-  PlugDisconnected = "PlugDisconnected",
+  PlugDisconnected = 'PlugDisconnected',
   // (undocumented)
-  PlugSolid = "PlugSolid",
+  PlugSolid = 'PlugSolid',
   // (undocumented)
-  POI = "POI",
+  POI = 'POI',
   // (undocumented)
-  POISolid = "POISolid",
+  POISolid = 'POISolid',
   // (undocumented)
-  PostUpdate = "PostUpdate",
+  PostUpdate = 'PostUpdate',
   // (undocumented)
-  PowerApps = "PowerApps",
+  PowerApps = 'PowerApps',
   // (undocumented)
-  PowerApps2Logo = "PowerApps2Logo",
+  PowerApps2Logo = 'PowerApps2Logo',
   // (undocumented)
-  PowerAppsLogo = "PowerAppsLogo",
+  PowerAppsLogo = 'PowerAppsLogo',
   // (undocumented)
-  PowerBILogo = "PowerBILogo",
+  PowerBILogo = 'PowerBILogo',
   // (undocumented)
-  PowerBILogo16 = "PowerBILogo16",
+  PowerBILogo16 = 'PowerBILogo16',
   // (undocumented)
-  PowerBILogoBackplate16 = "PowerBILogoBackplate16",
+  PowerBILogoBackplate16 = 'PowerBILogoBackplate16',
   // (undocumented)
-  PowerButton = "PowerButton",
+  PowerButton = 'PowerButton',
   // (undocumented)
-  PowerPointDocument = "PowerPointDocument",
+  PowerPointDocument = 'PowerPointDocument',
   // (undocumented)
-  PowerPointLogo = "PowerPointLogo",
+  PowerPointLogo = 'PowerPointLogo',
   // (undocumented)
-  PowerPointLogo16 = "PowerPointLogo16",
+  PowerPointLogo16 = 'PowerPointLogo16',
   // (undocumented)
-  PowerPointLogoFill = "PowerPointLogoFill",
+  PowerPointLogoFill = 'PowerPointLogoFill',
   // (undocumented)
-  PowerPointLogoFill16 = "PowerPointLogoFill16",
+  PowerPointLogoFill16 = 'PowerPointLogoFill16',
   // (undocumented)
-  PowerPointLogoInverse = "PowerPointLogoInverse",
+  PowerPointLogoInverse = 'PowerPointLogoInverse',
   // (undocumented)
-  PowerPointLogoInverse16 = "PowerPointLogoInverse16",
+  PowerPointLogoInverse16 = 'PowerPointLogoInverse16',
   // (undocumented)
-  Precipitation = "Precipitation",
+  Precipitation = 'Precipitation',
   // (undocumented)
-  PresenceChickletVideo = "PresenceChickletVideo",
+  PresenceChickletVideo = 'PresenceChickletVideo',
   // (undocumented)
-  Presentation = "Presentation",
+  Presentation = 'Presentation',
   // (undocumented)
-  Presentation12 = "Presentation12",
+  Presentation12 = 'Presentation12',
   // (undocumented)
-  Preview = "Preview",
+  Preview = 'Preview',
   // (undocumented)
-  PreviewLink = "PreviewLink",
+  PreviewLink = 'PreviewLink',
   // (undocumented)
-  Previous = "Previous",
+  Previous = 'Previous',
   // (undocumented)
-  PrimaryCalendar = "PrimaryCalendar",
+  PrimaryCalendar = 'PrimaryCalendar',
   // (undocumented)
-  Print = "Print",
+  Print = 'Print',
   // (undocumented)
-  PrintfaxPrinterFile = "PrintfaxPrinterFile",
+  PrintfaxPrinterFile = 'PrintfaxPrinterFile',
   // (undocumented)
-  Processing = "Processing",
+  Processing = 'Processing',
   // (undocumented)
-  ProcessMetaTask = "ProcessMetaTask",
+  ProcessMetaTask = 'ProcessMetaTask',
   // (undocumented)
-  Product = "Product",
+  Product = 'Product',
   // (undocumented)
-  ProductRelease = "ProductRelease",
+  ProductRelease = 'ProductRelease',
   // (undocumented)
-  ProfileSearch = "ProfileSearch",
+  ProfileSearch = 'ProfileSearch',
   // (undocumented)
-  ProFootball = "ProFootball",
+  ProFootball = 'ProFootball',
   // (undocumented)
-  ProgressLoopInner = "ProgressLoopInner",
+  ProgressLoopInner = 'ProgressLoopInner',
   // (undocumented)
-  ProgressLoopOuter = "ProgressLoopOuter",
+  ProgressLoopOuter = 'ProgressLoopOuter',
   // (undocumented)
-  ProgressRingDots = "ProgressRingDots",
+  ProgressRingDots = 'ProgressRingDots',
   // (undocumented)
-  ProHockey = "ProHockey",
+  ProHockey = 'ProHockey',
   // (undocumented)
-  ProjectCollection = "ProjectCollection",
+  ProjectCollection = 'ProjectCollection',
   // (undocumented)
-  ProjectDocument = "ProjectDocument",
+  ProjectDocument = 'ProjectDocument',
   // (undocumented)
-  ProjectLogo16 = "ProjectLogo16",
+  ProjectLogo16 = 'ProjectLogo16',
   // (undocumented)
-  ProjectLogo32 = "ProjectLogo32",
+  ProjectLogo32 = 'ProjectLogo32',
   // (undocumented)
-  ProjectLogoFill16 = "ProjectLogoFill16",
+  ProjectLogoFill16 = 'ProjectLogoFill16',
   // (undocumented)
-  ProjectLogoFill32 = "ProjectLogoFill32",
+  ProjectLogoFill32 = 'ProjectLogoFill32',
   // (undocumented)
-  ProjectLogoInverse = "ProjectLogoInverse",
+  ProjectLogoInverse = 'ProjectLogoInverse',
   // (undocumented)
-  PromotedDatabase = "PromotedDatabase",
+  PromotedDatabase = 'PromotedDatabase',
   // (undocumented)
-  ProtectedDocument = "ProtectedDocument",
+  ProtectedDocument = 'ProtectedDocument',
   // (undocumented)
-  ProtectionCenterLogo32 = "ProtectionCenterLogo32",
+  ProtectionCenterLogo32 = 'ProtectionCenterLogo32',
   // (undocumented)
-  ProtectRestrict = "ProtectRestrict",
+  ProtectRestrict = 'ProtectRestrict',
   // (undocumented)
-  PublicCalendar = "PublicCalendar",
+  PublicCalendar = 'PublicCalendar',
   // (undocumented)
-  PublicContactCard = "PublicContactCard",
+  PublicContactCard = 'PublicContactCard',
   // (undocumented)
-  PublicContactCardMirrored = "PublicContactCardMirrored",
+  PublicContactCardMirrored = 'PublicContactCardMirrored',
   // (undocumented)
-  PublicEmail = "PublicEmail",
+  PublicEmail = 'PublicEmail',
   // (undocumented)
-  PublicFolder = "PublicFolder",
+  PublicFolder = 'PublicFolder',
   // (undocumented)
-  PublishContent = "PublishContent",
+  PublishContent = 'PublishContent',
   // (undocumented)
-  PublishCourse = "PublishCourse",
+  PublishCourse = 'PublishCourse',
   // (undocumented)
-  PublisherLogo = "PublisherLogo",
+  PublisherLogo = 'PublisherLogo',
   // (undocumented)
-  PublisherLogo16 = "PublisherLogo16",
+  PublisherLogo16 = 'PublisherLogo16',
   // (undocumented)
-  PublisherLogoFill = "PublisherLogoFill",
+  PublisherLogoFill = 'PublisherLogoFill',
   // (undocumented)
-  PublisherLogoFill16 = "PublisherLogoFill16",
+  PublisherLogoFill16 = 'PublisherLogoFill16',
   // (undocumented)
-  PublisherLogoInverse16 = "PublisherLogoInverse16",
+  PublisherLogoInverse16 = 'PublisherLogoInverse16',
   // (undocumented)
-  Puzzle = "Puzzle",
+  Puzzle = 'Puzzle',
   // (undocumented)
-  PY = "PY",
+  PY = 'PY',
   // (undocumented)
-  PythonLanguage = "PythonLanguage",
+  PythonLanguage = 'PythonLanguage',
   // (undocumented)
-  QRCode = "QRCode",
+  QRCode = 'QRCode',
   // (undocumented)
-  QuadColumn = "QuadColumn",
+  QuadColumn = 'QuadColumn',
   // (undocumented)
-  Quantity = "Quantity",
+  Quantity = 'Quantity',
   // (undocumented)
-  QuarterCircle = "QuarterCircle",
+  QuarterCircle = 'QuarterCircle',
   // (undocumented)
-  QueryList = "QueryList",
+  QueryList = 'QueryList',
   // (undocumented)
-  Questionnaire = "Questionnaire",
+  Questionnaire = 'Questionnaire',
   // (undocumented)
-  QuestionnaireMirrored = "QuestionnaireMirrored",
+  QuestionnaireMirrored = 'QuestionnaireMirrored',
   // (undocumented)
-  QuickNote = "QuickNote",
+  QuickNote = 'QuickNote',
   // (undocumented)
-  QuickNoteSolid = "QuickNoteSolid",
+  QuickNoteSolid = 'QuickNoteSolid',
   // (undocumented)
-  R = "R",
+  R = 'R',
   // (undocumented)
-  RadioBtnOff = "RadioBtnOff",
+  RadioBtnOff = 'RadioBtnOff',
   // (undocumented)
-  RadioBtnOn = "RadioBtnOn",
+  RadioBtnOn = 'RadioBtnOn',
   // (undocumented)
-  RadioBullet = "RadioBullet",
+  RadioBullet = 'RadioBullet',
   // (undocumented)
-  Rain = "Rain",
+  Rain = 'Rain',
   // (undocumented)
-  RainShowersDay = "RainShowersDay",
+  RainShowersDay = 'RainShowersDay',
   // (undocumented)
-  RainShowersNight = "RainShowersNight",
+  RainShowersNight = 'RainShowersNight',
   // (undocumented)
-  RainSnow = "RainSnow",
+  RainSnow = 'RainSnow',
   // (undocumented)
-  RawSource = "RawSource",
+  RawSource = 'RawSource',
   // (undocumented)
-  Read = "Read",
+  Read = 'Read',
   // (undocumented)
-  ReadingMode = "ReadingMode",
+  ReadingMode = 'ReadingMode',
   // (undocumented)
-  ReadingModeSolid = "ReadingModeSolid",
+  ReadingModeSolid = 'ReadingModeSolid',
   // (undocumented)
-  ReadOutLoud = "ReadOutLoud",
+  ReadOutLoud = 'ReadOutLoud',
   // (undocumented)
-  RealEstate = "RealEstate",
+  RealEstate = 'RealEstate',
   // (undocumented)
-  ReceiptCheck = "ReceiptCheck",
+  ReceiptCheck = 'ReceiptCheck',
   // (undocumented)
-  ReceiptForward = "ReceiptForward",
+  ReceiptForward = 'ReceiptForward',
   // (undocumented)
-  ReceiptReply = "ReceiptReply",
+  ReceiptReply = 'ReceiptReply',
   // (undocumented)
-  ReceiptTentative = "ReceiptTentative",
+  ReceiptTentative = 'ReceiptTentative',
   // (undocumented)
-  ReceiptTentativeMirrored = "ReceiptTentativeMirrored",
+  ReceiptTentativeMirrored = 'ReceiptTentativeMirrored',
   // (undocumented)
-  ReceiptUndelivered = "ReceiptUndelivered",
+  ReceiptUndelivered = 'ReceiptUndelivered',
   // (undocumented)
-  Recent = "Recent",
+  Recent = 'Recent',
   // (undocumented)
-  Record2 = "Record2",
+  Record2 = 'Record2',
   // (undocumented)
-  RecruitmentManagement = "RecruitmentManagement",
+  RecruitmentManagement = 'RecruitmentManagement',
   // (undocumented)
-  RectangleShape = "RectangleShape",
+  RectangleShape = 'RectangleShape',
   // (undocumented)
-  RectangleShapeSolid = "RectangleShapeSolid",
+  RectangleShapeSolid = 'RectangleShapeSolid',
   // (undocumented)
-  RectangularClipping = "RectangularClipping",
+  RectangularClipping = 'RectangularClipping',
   // (undocumented)
-  RecurringEvent = "RecurringEvent",
+  RecurringEvent = 'RecurringEvent',
   // (undocumented)
-  RecurringTask = "RecurringTask",
+  RecurringTask = 'RecurringTask',
   // (undocumented)
-  RecycleBin = "RecycleBin",
+  RecycleBin = 'RecycleBin',
   // (undocumented)
-  Redeploy = "Redeploy",
+  Redeploy = 'Redeploy',
   // (undocumented)
-  RedEye = "RedEye",
+  RedEye = 'RedEye',
   // (undocumented)
-  Redo = "Redo",
+  Redo = 'Redo',
   // (undocumented)
-  Refresh = "Refresh",
+  Refresh = 'Refresh',
   // (undocumented)
-  Relationship = "Relationship",
+  Relationship = 'Relationship',
   // (undocumented)
-  ReleaseDefinition = "ReleaseDefinition",
+  ReleaseDefinition = 'ReleaseDefinition',
   // (undocumented)
-  ReleaseGate = "ReleaseGate",
+  ReleaseGate = 'ReleaseGate',
   // (undocumented)
-  ReleaseGateCheck = "ReleaseGateCheck",
+  ReleaseGateCheck = 'ReleaseGateCheck',
   // (undocumented)
-  ReleaseGateError = "ReleaseGateError",
+  ReleaseGateError = 'ReleaseGateError',
   // (undocumented)
-  ReminderGroup = "ReminderGroup",
+  ReminderGroup = 'ReminderGroup',
   // (undocumented)
-  ReminderPerson = "ReminderPerson",
+  ReminderPerson = 'ReminderPerson',
   // (undocumented)
-  Remote = "Remote",
+  Remote = 'Remote',
   // (undocumented)
-  Remove = "Remove",
+  Remove = 'Remove',
   // (undocumented)
-  RemoveEvent = "RemoveEvent",
+  RemoveEvent = 'RemoveEvent',
   // (undocumented)
-  RemoveFilter = "RemoveFilter",
+  RemoveFilter = 'RemoveFilter',
   // (undocumented)
-  RemoveFromTrash = "RemoveFromTrash",
+  RemoveFromTrash = 'RemoveFromTrash',
   // (undocumented)
-  RemoveLink = "RemoveLink",
+  RemoveLink = 'RemoveLink',
   // (undocumented)
-  RemoveLinkChain = "RemoveLinkChain",
+  RemoveLinkChain = 'RemoveLinkChain',
   // (undocumented)
-  RemoveLinkX = "RemoveLinkX",
+  RemoveLinkX = 'RemoveLinkX',
   // (undocumented)
-  RemoveOccurrence = "RemoveOccurrence",
+  RemoveOccurrence = 'RemoveOccurrence',
   // (undocumented)
-  Rename = "Rename",
+  Rename = 'Rename',
   // (undocumented)
-  RenewalCurrent = "RenewalCurrent",
+  RenewalCurrent = 'RenewalCurrent',
   // (undocumented)
-  RenewalFuture = "RenewalFuture",
+  RenewalFuture = 'RenewalFuture',
   // (undocumented)
-  ReopenPages = "ReopenPages",
+  ReopenPages = 'ReopenPages',
   // (undocumented)
-  Repair = "Repair",
+  Repair = 'Repair',
   // (undocumented)
-  RepeatAll = "RepeatAll",
+  RepeatAll = 'RepeatAll',
   // (undocumented)
-  RepeatOne = "RepeatOne",
+  RepeatOne = 'RepeatOne',
   // (undocumented)
-  Reply = "Reply",
+  Reply = 'Reply',
   // (undocumented)
-  ReplyAll = "ReplyAll",
+  ReplyAll = 'ReplyAll',
   // (undocumented)
-  ReplyAllAlt = "ReplyAllAlt",
+  ReplyAllAlt = 'ReplyAllAlt',
   // (undocumented)
-  ReplyAllMirrored = "ReplyAllMirrored",
+  ReplyAllMirrored = 'ReplyAllMirrored',
   // (undocumented)
-  ReplyAlt = "ReplyAlt",
+  ReplyAlt = 'ReplyAlt',
   // (undocumented)
-  ReplyMirrored = "ReplyMirrored",
+  ReplyMirrored = 'ReplyMirrored',
   // (undocumented)
-  Repo = "Repo",
+  Repo = 'Repo',
   // (undocumented)
-  ReportAdd = "ReportAdd",
+  ReportAdd = 'ReportAdd',
   // (undocumented)
-  ReportDocument = "ReportDocument",
+  ReportDocument = 'ReportDocument',
   // (undocumented)
-  ReportHacked = "ReportHacked",
+  ReportHacked = 'ReportHacked',
   // (undocumented)
-  ReportLibrary = "ReportLibrary",
+  ReportLibrary = 'ReportLibrary',
   // (undocumented)
-  ReportLibraryMirrored = "ReportLibraryMirrored",
+  ReportLibraryMirrored = 'ReportLibraryMirrored',
   // (undocumented)
-  RepoSolid = "RepoSolid",
+  RepoSolid = 'RepoSolid',
   // (undocumented)
-  ReservationOrders = "ReservationOrders",
+  ReservationOrders = 'ReservationOrders',
   // (undocumented)
-  ResponsesMenu = "ResponsesMenu",
+  ResponsesMenu = 'ResponsesMenu',
   // (undocumented)
-  ReturnKey = "ReturnKey",
+  ReturnKey = 'ReturnKey',
   // (undocumented)
-  ReturnToSession = "ReturnToSession",
+  ReturnToSession = 'ReturnToSession',
   // (undocumented)
-  ReviewRequestMirroredSolid = "ReviewRequestMirroredSolid",
+  ReviewRequestMirroredSolid = 'ReviewRequestMirroredSolid',
   // (undocumented)
-  ReviewRequestSolid = "ReviewRequestSolid",
+  ReviewRequestSolid = 'ReviewRequestSolid',
   // (undocumented)
-  ReviewResponseSolid = "ReviewResponseSolid",
+  ReviewResponseSolid = 'ReviewResponseSolid',
   // (undocumented)
-  ReviewSolid = "ReviewSolid",
+  ReviewSolid = 'ReviewSolid',
   // (undocumented)
-  RevToggleKey = "RevToggleKey",
+  RevToggleKey = 'RevToggleKey',
   // (undocumented)
-  Rewind = "Rewind",
+  Rewind = 'Rewind',
   // (undocumented)
-  Ribbon = "Ribbon",
+  Ribbon = 'Ribbon',
   // (undocumented)
-  RibbonSolid = "RibbonSolid",
+  RibbonSolid = 'RibbonSolid',
   // (undocumented)
-  RightDoubleQuote = "RightDoubleQuote",
+  RightDoubleQuote = 'RightDoubleQuote',
   // (undocumented)
-  RightTriangle = "RightTriangle",
+  RightTriangle = 'RightTriangle',
   // (undocumented)
-  Ringer = "Ringer",
+  Ringer = 'Ringer',
   // (undocumented)
-  RingerOff = "RingerOff",
+  RingerOff = 'RingerOff',
   // (undocumented)
-  RingerRemove = "RingerRemove",
+  RingerRemove = 'RingerRemove',
   // (undocumented)
-  RingerSolid = "RingerSolid",
+  RingerSolid = 'RingerSolid',
   // (undocumented)
-  Robot = "Robot",
+  Robot = 'Robot',
   // (undocumented)
-  Rocket = "Rocket",
+  Rocket = 'Rocket',
   // (undocumented)
-  Room = "Room",
+  Room = 'Room',
   // (undocumented)
-  Rotate = "Rotate",
+  Rotate = 'Rotate',
   // (undocumented)
-  Rotate90Clockwise = "Rotate90Clockwise",
+  Rotate90Clockwise = 'Rotate90Clockwise',
   // (undocumented)
-  Rotate90CounterClockwise = "Rotate90CounterClockwise",
+  Rotate90CounterClockwise = 'Rotate90CounterClockwise',
   // (undocumented)
-  RowsChild = "RowsChild",
+  RowsChild = 'RowsChild',
   // (undocumented)
-  RowsGroup = "RowsGroup",
+  RowsGroup = 'RowsGroup',
   // (undocumented)
-  Rugby = "Rugby",
+  Rugby = 'Rugby',
   // (undocumented)
-  Running = "Running",
+  Running = 'Running',
   // (undocumented)
-  Sad = "Sad",
+  Sad = 'Sad',
   // (undocumented)
-  SadSolid = "SadSolid",
+  SadSolid = 'SadSolid',
   // (undocumented)
-  Save = "Save",
+  Save = 'Save',
   // (undocumented)
-  SaveAll = "SaveAll",
+  SaveAll = 'SaveAll',
   // (undocumented)
-  SaveAndClose = "SaveAndClose",
+  SaveAndClose = 'SaveAndClose',
   // (undocumented)
-  SaveAs = "SaveAs",
+  SaveAs = 'SaveAs',
   // (undocumented)
-  SaveTemplate = "SaveTemplate",
+  SaveTemplate = 'SaveTemplate',
   // (undocumented)
-  SaveToMobile = "SaveToMobile",
+  SaveToMobile = 'SaveToMobile',
   // (undocumented)
-  Savings = "Savings",
+  Savings = 'Savings',
   // (undocumented)
-  ScaleUp = "ScaleUp",
+  ScaleUp = 'ScaleUp',
   // (undocumented)
-  ScaleVolume = "ScaleVolume",
+  ScaleVolume = 'ScaleVolume',
   // (undocumented)
-  ScheduleEventAction = "ScheduleEventAction",
+  ScheduleEventAction = 'ScheduleEventAction',
   // (undocumented)
-  ScopeTemplate = "ScopeTemplate",
+  ScopeTemplate = 'ScopeTemplate',
   // (undocumented)
-  ScreenCast = "ScreenCast",
+  ScreenCast = 'ScreenCast',
   // (undocumented)
-  Script = "Script",
+  Script = 'Script',
   // (undocumented)
-  ScrollUpDown = "ScrollUpDown",
+  ScrollUpDown = 'ScrollUpDown',
   // (undocumented)
-  Search = "Search",
+  Search = 'Search',
   // (undocumented)
-  SearchAndApps = "SearchAndApps",
+  SearchAndApps = 'SearchAndApps',
   // (undocumented)
-  SearchBookmark = "SearchBookmark",
+  SearchBookmark = 'SearchBookmark',
   // (undocumented)
-  SearchCalendar = "SearchCalendar",
+  SearchCalendar = 'SearchCalendar',
   // (undocumented)
-  SearchIssue = "SearchIssue",
+  SearchIssue = 'SearchIssue',
   // (undocumented)
-  SearchIssueMirrored = "SearchIssueMirrored",
+  SearchIssueMirrored = 'SearchIssueMirrored',
   // (undocumented)
-  SearchNearby = "SearchNearby",
+  SearchNearby = 'SearchNearby',
   // (undocumented)
-  SecondaryNav = "SecondaryNav",
+  SecondaryNav = 'SecondaryNav',
   // (undocumented)
-  Section = "Section",
+  Section = 'Section',
   // (undocumented)
-  Sections = "Sections",
+  Sections = 'Sections',
   // (undocumented)
-  SecurityGroup = "SecurityGroup",
+  SecurityGroup = 'SecurityGroup',
   // (undocumented)
-  SeeDo = "SeeDo",
+  SeeDo = 'SeeDo',
   // (undocumented)
-  SelectAll = "SelectAll",
+  SelectAll = 'SelectAll',
   // (undocumented)
-  Sell = "Sell",
+  Sell = 'Sell',
   // (undocumented)
-  SemiboldWeight = "SemiboldWeight",
+  SemiboldWeight = 'SemiboldWeight',
   // (undocumented)
-  Send = "Send",
+  Send = 'Send',
   // (undocumented)
-  SendMirrored = "SendMirrored",
+  SendMirrored = 'SendMirrored',
   // (undocumented)
-  Separator = "Separator",
+  Separator = 'Separator',
   // (undocumented)
-  Server = "Server",
+  Server = 'Server',
   // (undocumented)
-  ServerEnviroment = "ServerEnviroment",
+  ServerEnviroment = 'ServerEnviroment',
   // (undocumented)
-  ServerProcesses = "ServerProcesses",
+  ServerProcesses = 'ServerProcesses',
   // (undocumented)
-  SetAction = "SetAction",
+  SetAction = 'SetAction',
   // (undocumented)
-  Settings = "Settings",
+  Settings = 'Settings',
   // (undocumented)
-  ShakeDevice = "ShakeDevice",
+  ShakeDevice = 'ShakeDevice',
   // (undocumented)
-  Shapes = "Shapes",
+  Shapes = 'Shapes',
   // (undocumented)
-  Share = "Share",
+  Share = 'Share',
   // (undocumented)
-  ShareiOS = "ShareiOS",
+  ShareiOS = 'ShareiOS',
   // (undocumented)
-  SharepointLogo = "SharepointLogo",
+  SharepointLogo = 'SharepointLogo',
   // (undocumented)
-  SharepointLogoFill = "SharepointLogoFill",
+  SharepointLogoFill = 'SharepointLogoFill',
   // (undocumented)
-  SharepointLogoInverse = "SharepointLogoInverse",
+  SharepointLogoInverse = 'SharepointLogoInverse',
   // (undocumented)
-  Shield = "Shield",
+  Shield = 'Shield',
   // (undocumented)
-  ShieldSolid = "ShieldSolid",
+  ShieldSolid = 'ShieldSolid',
   // (undocumented)
-  Shirt = "Shirt",
+  Shirt = 'Shirt',
   // (undocumented)
-  Shop = "Shop",
+  Shop = 'Shop',
   // (undocumented)
-  ShoppingCart = "ShoppingCart",
+  ShoppingCart = 'ShoppingCart',
   // (undocumented)
-  ShoppingCartSolid = "ShoppingCartSolid",
+  ShoppingCartSolid = 'ShoppingCartSolid',
   // (undocumented)
-  ShopServer = "ShopServer",
+  ShopServer = 'ShopServer',
   // (undocumented)
-  ShowGrid = "ShowGrid",
+  ShowGrid = 'ShowGrid',
   // (undocumented)
-  ShowResults = "ShowResults",
+  ShowResults = 'ShowResults',
   // (undocumented)
-  ShowResultsMirrored = "ShowResultsMirrored",
+  ShowResultsMirrored = 'ShowResultsMirrored',
   // (undocumented)
-  ShowTimeAs = "ShowTimeAs",
+  ShowTimeAs = 'ShowTimeAs',
   // (undocumented)
-  SidePanel = "SidePanel",
+  SidePanel = 'SidePanel',
   // (undocumented)
-  SidePanelMirrored = "SidePanelMirrored",
+  SidePanelMirrored = 'SidePanelMirrored',
   // (undocumented)
-  Signin = "Signin",
+  Signin = 'Signin',
   // (undocumented)
-  SignOut = "SignOut",
+  SignOut = 'SignOut',
   // (undocumented)
-  SingleBookmark = "SingleBookmark",
+  SingleBookmark = 'SingleBookmark',
   // (undocumented)
-  SingleBookmarkSolid = "SingleBookmarkSolid",
+  SingleBookmarkSolid = 'SingleBookmarkSolid',
   // (undocumented)
-  SingleColumn = "SingleColumn",
+  SingleColumn = 'SingleColumn',
   // (undocumented)
-  SingleColumnEdit = "SingleColumnEdit",
+  SingleColumnEdit = 'SingleColumnEdit',
   // (undocumented)
-  SIPMove = "SIPMove",
+  SIPMove = 'SIPMove',
   // (undocumented)
-  SiteScan = "SiteScan",
+  SiteScan = 'SiteScan',
   // (undocumented)
-  SixPointStar = "SixPointStar",
+  SixPointStar = 'SixPointStar',
   // (undocumented)
-  SizeLegacy = "SizeLegacy",
+  SizeLegacy = 'SizeLegacy',
   // (undocumented)
-  SkiResorts = "SkiResorts",
+  SkiResorts = 'SkiResorts',
   // (undocumented)
-  SkypeArrow = "SkypeArrow",
+  SkypeArrow = 'SkypeArrow',
   // (undocumented)
-  SkypeCheck = "SkypeCheck",
+  SkypeCheck = 'SkypeCheck',
   // (undocumented)
-  SkypeCircleArrow = "SkypeCircleArrow",
+  SkypeCircleArrow = 'SkypeCircleArrow',
   // (undocumented)
-  SkypeCircleCheck = "SkypeCircleCheck",
+  SkypeCircleCheck = 'SkypeCircleCheck',
   // (undocumented)
-  SkypeCircleClock = "SkypeCircleClock",
+  SkypeCircleClock = 'SkypeCircleClock',
   // (undocumented)
-  SkypeCircleMinus = "SkypeCircleMinus",
+  SkypeCircleMinus = 'SkypeCircleMinus',
   // (undocumented)
-  SkypeCircleSlash = "SkypeCircleSlash",
+  SkypeCircleSlash = 'SkypeCircleSlash',
   // (undocumented)
-  SkypeClock = "SkypeClock",
+  SkypeClock = 'SkypeClock',
   // (undocumented)
-  SkypeForBusinessLogo = "SkypeForBusinessLogo",
+  SkypeForBusinessLogo = 'SkypeForBusinessLogo',
   // (undocumented)
-  SkypeForBusinessLogo16 = "SkypeForBusinessLogo16",
+  SkypeForBusinessLogo16 = 'SkypeForBusinessLogo16',
   // (undocumented)
-  SkypeForBusinessLogoFill = "SkypeForBusinessLogoFill",
+  SkypeForBusinessLogoFill = 'SkypeForBusinessLogoFill',
   // (undocumented)
-  SkypeForBusinessLogoFill16 = "SkypeForBusinessLogoFill16",
+  SkypeForBusinessLogoFill16 = 'SkypeForBusinessLogoFill16',
   // (undocumented)
-  SkypeLogo = "SkypeLogo",
+  SkypeLogo = 'SkypeLogo',
   // (undocumented)
-  SkypeLogo16 = "SkypeLogo16",
+  SkypeLogo16 = 'SkypeLogo16',
   // (undocumented)
-  SkypeMessage = "SkypeMessage",
+  SkypeMessage = 'SkypeMessage',
   // (undocumented)
-  SkypeMinus = "SkypeMinus",
+  SkypeMinus = 'SkypeMinus',
   // (undocumented)
-  SkypeSlash = "SkypeSlash",
+  SkypeSlash = 'SkypeSlash',
   // (undocumented)
-  Slider = "Slider",
+  Slider = 'Slider',
   // (undocumented)
-  SliderHandleSize = "SliderHandleSize",
+  SliderHandleSize = 'SliderHandleSize',
   // (undocumented)
-  SliderThumb = "SliderThumb",
+  SliderThumb = 'SliderThumb',
   // (undocumented)
-  Slideshow = "Slideshow",
+  Slideshow = 'Slideshow',
   // (undocumented)
-  SmartGlassRemote = "SmartGlassRemote",
+  SmartGlassRemote = 'SmartGlassRemote',
   // (undocumented)
-  SnapToGrid = "SnapToGrid",
+  SnapToGrid = 'SnapToGrid',
   // (undocumented)
-  Snooze = "Snooze",
+  Snooze = 'Snooze',
   // (undocumented)
-  Snow = "Snow",
+  Snow = 'Snow',
   // (undocumented)
-  Snowflake = "Snowflake",
+  Snowflake = 'Snowflake',
   // (undocumented)
-  SnowShowerDay = "SnowShowerDay",
+  SnowShowerDay = 'SnowShowerDay',
   // (undocumented)
-  SnowShowerNight = "SnowShowerNight",
+  SnowShowerNight = 'SnowShowerNight',
   // (undocumented)
-  Soccer = "Soccer",
+  Soccer = 'Soccer',
   // (undocumented)
-  SocialListeningLogo = "SocialListeningLogo",
+  SocialListeningLogo = 'SocialListeningLogo',
   // (undocumented)
-  Sort = "Sort",
+  Sort = 'Sort',
   // (undocumented)
-  SortDown = "SortDown",
+  SortDown = 'SortDown',
   // (undocumented)
-  SortLines = "SortLines",
+  SortLines = 'SortLines',
   // (undocumented)
-  SortUp = "SortUp",
+  SortUp = 'SortUp',
   // (undocumented)
-  Source = "Source",
+  Source = 'Source',
   // (undocumented)
-  Spacer = "Spacer",
+  Spacer = 'Spacer',
   // (undocumented)
-  Speakers = "Speakers",
+  Speakers = 'Speakers',
   // (undocumented)
-  SpecialEvent = "SpecialEvent",
+  SpecialEvent = 'SpecialEvent',
   // (undocumented)
-  SpeedHigh = "SpeedHigh",
+  SpeedHigh = 'SpeedHigh',
   // (undocumented)
-  Split = "Split",
+  Split = 'Split',
   // (undocumented)
-  SplitObject = "SplitObject",
+  SplitObject = 'SplitObject',
   // (undocumented)
-  Sprint = "Sprint",
+  Sprint = 'Sprint',
   // (undocumented)
-  Squalls = "Squalls",
+  Squalls = 'Squalls',
   // (undocumented)
-  SquareShapeSolid = "SquareShapeSolid",
+  SquareShapeSolid = 'SquareShapeSolid',
   // (undocumented)
-  Stack = "Stack",
+  Stack = 'Stack',
   // (undocumented)
-  StackColumnChart = "StackColumnChart",
+  StackColumnChart = 'StackColumnChart',
   // (undocumented)
-  StackedBarChart = "StackedBarChart",
+  StackedBarChart = 'StackedBarChart',
   // (undocumented)
-  StackedColumnChart2 = "StackedColumnChart2",
+  StackedColumnChart2 = 'StackedColumnChart2',
   // (undocumented)
-  StackedColumnChart2Fill = "StackedColumnChart2Fill",
+  StackedColumnChart2Fill = 'StackedColumnChart2Fill',
   // (undocumented)
-  StackedLineChart = "StackedLineChart",
+  StackedLineChart = 'StackedLineChart',
   // (undocumented)
-  StackIndicator = "StackIndicator",
+  StackIndicator = 'StackIndicator',
   // (undocumented)
-  StaffNotebookLogo16 = "StaffNotebookLogo16",
+  StaffNotebookLogo16 = 'StaffNotebookLogo16',
   // (undocumented)
-  StaffNotebookLogo32 = "StaffNotebookLogo32",
+  StaffNotebookLogo32 = 'StaffNotebookLogo32',
   // (undocumented)
-  StaffNotebookLogoFill16 = "StaffNotebookLogoFill16",
+  StaffNotebookLogoFill16 = 'StaffNotebookLogoFill16',
   // (undocumented)
-  StaffNotebookLogoFill32 = "StaffNotebookLogoFill32",
+  StaffNotebookLogoFill32 = 'StaffNotebookLogoFill32',
   // (undocumented)
-  StaffNotebookLogoInverted16 = "StaffNotebookLogoInverted16",
+  StaffNotebookLogoInverted16 = 'StaffNotebookLogoInverted16',
   // (undocumented)
-  StaffNotebookLogoInverted32 = "StaffNotebookLogoInverted32",
+  StaffNotebookLogoInverted32 = 'StaffNotebookLogoInverted32',
   // (undocumented)
-  Starburst = "Starburst",
+  Starburst = 'Starburst',
   // (undocumented)
-  StarburstSolid = "StarburstSolid",
+  StarburstSolid = 'StarburstSolid',
   // (undocumented)
-  StatusCircleBlock = "StatusCircleBlock",
+  StatusCircleBlock = 'StatusCircleBlock',
   // (undocumented)
-  StatusCircleBlock2 = "StatusCircleBlock2",
+  StatusCircleBlock2 = 'StatusCircleBlock2',
   // (undocumented)
-  StatusCircleCheckmark = "StatusCircleCheckmark",
+  StatusCircleCheckmark = 'StatusCircleCheckmark',
   // (undocumented)
-  StatusCircleErrorX = "StatusCircleErrorX",
+  StatusCircleErrorX = 'StatusCircleErrorX',
   // (undocumented)
-  StatusCircleExclamation = "StatusCircleExclamation",
+  StatusCircleExclamation = 'StatusCircleExclamation',
   // (undocumented)
-  StatusCircleInfo = "StatusCircleInfo",
+  StatusCircleInfo = 'StatusCircleInfo',
   // (undocumented)
-  StatusCircleInner = "StatusCircleInner",
+  StatusCircleInner = 'StatusCircleInner',
   // (undocumented)
-  StatusCircleOuter = "StatusCircleOuter",
+  StatusCircleOuter = 'StatusCircleOuter',
   // (undocumented)
-  StatusCircleQuestionMark = "StatusCircleQuestionMark",
+  StatusCircleQuestionMark = 'StatusCircleQuestionMark',
   // (undocumented)
-  StatusCircleRing = "StatusCircleRing",
+  StatusCircleRing = 'StatusCircleRing',
   // (undocumented)
-  StatusCircleSync = "StatusCircleSync",
+  StatusCircleSync = 'StatusCircleSync',
   // (undocumented)
-  StatusErrorFull = "StatusErrorFull",
+  StatusErrorFull = 'StatusErrorFull',
   // (undocumented)
-  StatusTriangle = "StatusTriangle",
+  StatusTriangle = 'StatusTriangle',
   // (undocumented)
-  StatusTriangleExclamation = "StatusTriangleExclamation",
+  StatusTriangleExclamation = 'StatusTriangleExclamation',
   // (undocumented)
-  StatusTriangleInner = "StatusTriangleInner",
+  StatusTriangleInner = 'StatusTriangleInner',
   // (undocumented)
-  StatusTriangleOuter = "StatusTriangleOuter",
+  StatusTriangleOuter = 'StatusTriangleOuter',
   // (undocumented)
-  Step = "Step",
+  Step = 'Step',
   // (undocumented)
-  StepInsert = "StepInsert",
+  StepInsert = 'StepInsert',
   // (undocumented)
-  StepShared = "StepShared",
+  StepShared = 'StepShared',
   // (undocumented)
-  StepSharedAdd = "StepSharedAdd",
+  StepSharedAdd = 'StepSharedAdd',
   // (undocumented)
-  StepSharedInsert = "StepSharedInsert",
+  StepSharedInsert = 'StepSharedInsert',
   // (undocumented)
-  StockDown = "StockDown",
+  StockDown = 'StockDown',
   // (undocumented)
-  StockUp = "StockUp",
+  StockUp = 'StockUp',
   // (undocumented)
-  Stop = "Stop",
+  Stop = 'Stop',
   // (undocumented)
-  StopSolid = "StopSolid",
+  StopSolid = 'StopSolid',
   // (undocumented)
-  Stopwatch = "Stopwatch",
+  Stopwatch = 'Stopwatch',
   // (undocumented)
-  StorageOptical = "StorageOptical",
+  StorageOptical = 'StorageOptical',
   // (undocumented)
-  StoreLogo16 = "StoreLogo16",
+  StoreLogo16 = 'StoreLogo16',
   // (undocumented)
-  StoreLogoMed20 = "StoreLogoMed20",
+  StoreLogoMed20 = 'StoreLogoMed20',
   // (undocumented)
-  Storyboard = "Storyboard",
+  Storyboard = 'Storyboard',
   // (undocumented)
-  Streaming = "Streaming",
+  Streaming = 'Streaming',
   // (undocumented)
-  StreamingOff = "StreamingOff",
+  StreamingOff = 'StreamingOff',
   // (undocumented)
-  StreamLogo = "StreamLogo",
+  StreamLogo = 'StreamLogo',
   // (undocumented)
-  Street = "Street",
+  Street = 'Street',
   // (undocumented)
-  StreetsideSplitMinimize = "StreetsideSplitMinimize",
+  StreetsideSplitMinimize = 'StreetsideSplitMinimize',
   // (undocumented)
-  Strikethrough = "Strikethrough",
+  Strikethrough = 'Strikethrough',
   // (undocumented)
-  Subscribe = "Subscribe",
+  Subscribe = 'Subscribe',
   // (undocumented)
-  Subscript = "Subscript",
+  Subscript = 'Subscript',
   // (undocumented)
-  SubstitutionsIn = "SubstitutionsIn",
+  SubstitutionsIn = 'SubstitutionsIn',
   // (undocumented)
-  Suitcase = "Suitcase",
+  Suitcase = 'Suitcase',
   // (undocumented)
-  SunAdd = "SunAdd",
+  SunAdd = 'SunAdd',
   // (undocumented)
-  Sunny = "Sunny",
+  Sunny = 'Sunny',
   // (undocumented)
-  SunQuestionMark = "SunQuestionMark",
+  SunQuestionMark = 'SunQuestionMark',
   // (undocumented)
-  Superscript = "Superscript",
+  Superscript = 'Superscript',
   // (undocumented)
-  SurveyQuestions = "SurveyQuestions",
+  SurveyQuestions = 'SurveyQuestions',
   // (undocumented)
-  SwayLogo16 = "SwayLogo16",
+  SwayLogo16 = 'SwayLogo16',
   // (undocumented)
-  SwayLogo32 = "SwayLogo32",
+  SwayLogo32 = 'SwayLogo32',
   // (undocumented)
-  SwayLogoFill16 = "SwayLogoFill16",
+  SwayLogoFill16 = 'SwayLogoFill16',
   // (undocumented)
-  SwayLogoFill32 = "SwayLogoFill32",
+  SwayLogoFill32 = 'SwayLogoFill32',
   // (undocumented)
-  SwayLogoInverse = "SwayLogoInverse",
+  SwayLogoInverse = 'SwayLogoInverse',
   // (undocumented)
-  Switch = "Switch",
+  Switch = 'Switch',
   // (undocumented)
-  SwitcherStartEnd = "SwitcherStartEnd",
+  SwitcherStartEnd = 'SwitcherStartEnd',
   // (undocumented)
-  Sync = "Sync",
+  Sync = 'Sync',
   // (undocumented)
-  SyncFolder = "SyncFolder",
+  SyncFolder = 'SyncFolder',
   // (undocumented)
-  SyncOccurence = "SyncOccurence",
+  SyncOccurence = 'SyncOccurence',
   // (undocumented)
-  SyncStatus = "SyncStatus",
+  SyncStatus = 'SyncStatus',
   // (undocumented)
-  SyncStatusSolid = "SyncStatusSolid",
+  SyncStatusSolid = 'SyncStatusSolid',
   // (undocumented)
-  SyncToPC = "SyncToPC",
+  SyncToPC = 'SyncToPC',
   // (undocumented)
-  System = "System",
+  System = 'System',
   // (undocumented)
-  Tab = "Tab",
+  Tab = 'Tab',
   // (undocumented)
-  TabCenter = "TabCenter",
+  TabCenter = 'TabCenter',
   // (undocumented)
-  Table = "Table",
+  Table = 'Table',
   // (undocumented)
-  TableGroup = "TableGroup",
+  TableGroup = 'TableGroup',
   // (undocumented)
-  Tablet = "Tablet",
+  Tablet = 'Tablet',
   // (undocumented)
-  TabletMode = "TabletMode",
+  TabletMode = 'TabletMode',
   // (undocumented)
-  TabletSelected = "TabletSelected",
+  TabletSelected = 'TabletSelected',
   // (undocumented)
-  TabOneColumn = "TabOneColumn",
+  TabOneColumn = 'TabOneColumn',
   // (undocumented)
-  TabThreeColumn = "TabThreeColumn",
+  TabThreeColumn = 'TabThreeColumn',
   // (undocumented)
-  TabTwoColumn = "TabTwoColumn",
+  TabTwoColumn = 'TabTwoColumn',
   // (undocumented)
-  Tag = "Tag",
+  Tag = 'Tag',
   // (undocumented)
-  TagSolid = "TagSolid",
+  TagSolid = 'TagSolid',
   // (undocumented)
-  TagUnknown = "TagUnknown",
+  TagUnknown = 'TagUnknown',
   // (undocumented)
-  TagUnknown12 = "TagUnknown12",
+  TagUnknown12 = 'TagUnknown12',
   // (undocumented)
-  TagUnknown12Mirror = "TagUnknown12Mirror",
+  TagUnknown12Mirror = 'TagUnknown12Mirror',
   // (undocumented)
-  TagUnknownMirror = "TagUnknownMirror",
+  TagUnknownMirror = 'TagUnknownMirror',
   // (undocumented)
-  Taskboard = "Taskboard",
+  Taskboard = 'Taskboard',
   // (undocumented)
-  TaskGroup = "TaskGroup",
+  TaskGroup = 'TaskGroup',
   // (undocumented)
-  TaskGroupMirrored = "TaskGroupMirrored",
+  TaskGroupMirrored = 'TaskGroupMirrored',
   // (undocumented)
-  TaskLogo = "TaskLogo",
+  TaskLogo = 'TaskLogo',
   // (undocumented)
-  TaskManager = "TaskManager",
+  TaskManager = 'TaskManager',
   // (undocumented)
-  TaskManagerMirrored = "TaskManagerMirrored",
+  TaskManagerMirrored = 'TaskManagerMirrored',
   // (undocumented)
-  TaskSolid = "TaskSolid",
+  TaskSolid = 'TaskSolid',
   // (undocumented)
-  Taxi = "Taxi",
+  Taxi = 'Taxi',
   // (undocumented)
-  TeamFavorite = "TeamFavorite",
+  TeamFavorite = 'TeamFavorite',
   // (undocumented)
-  TeamsLogo = "TeamsLogo",
+  TeamsLogo = 'TeamsLogo',
   // (undocumented)
-  TeamsLogo16 = "TeamsLogo16",
+  TeamsLogo16 = 'TeamsLogo16',
   // (undocumented)
-  TeamsLogoFill = "TeamsLogoFill",
+  TeamsLogoFill = 'TeamsLogoFill',
   // (undocumented)
-  TeamsLogoFill16 = "TeamsLogoFill16",
+  TeamsLogoFill16 = 'TeamsLogoFill16',
   // (undocumented)
-  TeamsLogoInverse = "TeamsLogoInverse",
+  TeamsLogoInverse = 'TeamsLogoInverse',
   // (undocumented)
-  Teamwork = "Teamwork",
+  Teamwork = 'Teamwork',
   // (undocumented)
-  Teeth = "Teeth",
+  Teeth = 'Teeth',
   // (undocumented)
-  Telemarketer = "Telemarketer",
+  Telemarketer = 'Telemarketer',
   // (undocumented)
-  TemporaryUser = "TemporaryUser",
+  TemporaryUser = 'TemporaryUser',
   // (undocumented)
-  Tennis = "Tennis",
+  Tennis = 'Tennis',
   // (undocumented)
-  TestAutoSolid = "TestAutoSolid",
+  TestAutoSolid = 'TestAutoSolid',
   // (undocumented)
-  TestBeaker = "TestBeaker",
+  TestBeaker = 'TestBeaker',
   // (undocumented)
-  TestBeakerSolid = "TestBeakerSolid",
+  TestBeakerSolid = 'TestBeakerSolid',
   // (undocumented)
-  TestCase = "TestCase",
+  TestCase = 'TestCase',
   // (undocumented)
-  TestExploreSolid = "TestExploreSolid",
+  TestExploreSolid = 'TestExploreSolid',
   // (undocumented)
-  TestImpactSolid = "TestImpactSolid",
+  TestImpactSolid = 'TestImpactSolid',
   // (undocumented)
-  TestParameter = "TestParameter",
+  TestParameter = 'TestParameter',
   // (undocumented)
-  TestPlan = "TestPlan",
+  TestPlan = 'TestPlan',
   // (undocumented)
-  TestStep = "TestStep",
+  TestStep = 'TestStep',
   // (undocumented)
-  TestSuite = "TestSuite",
+  TestSuite = 'TestSuite',
   // (undocumented)
-  TestUserSolid = "TestUserSolid",
+  TestUserSolid = 'TestUserSolid',
   // (undocumented)
-  TextBox = "TextBox",
+  TextBox = 'TextBox',
   // (undocumented)
-  TextCallout = "TextCallout",
+  TextCallout = 'TextCallout',
   // (undocumented)
-  TextDocument = "TextDocument",
+  TextDocument = 'TextDocument',
   // (undocumented)
-  TextDocumentShared = "TextDocumentShared",
+  TextDocumentShared = 'TextDocumentShared',
   // (undocumented)
-  TextField = "TextField",
+  TextField = 'TextField',
   // (undocumented)
-  TextOverflow = "TextOverflow",
+  TextOverflow = 'TextOverflow',
   // (undocumented)
-  TFVCLogo = "TFVCLogo",
+  TFVCLogo = 'TFVCLogo',
   // (undocumented)
-  ThisPC = "ThisPC",
+  ThisPC = 'ThisPC',
   // (undocumented)
-  ThreeQuarterCircle = "ThreeQuarterCircle",
+  ThreeQuarterCircle = 'ThreeQuarterCircle',
   // (undocumented)
-  ThumbnailView = "ThumbnailView",
+  ThumbnailView = 'ThumbnailView',
   // (undocumented)
-  ThumbnailViewMirrored = "ThumbnailViewMirrored",
+  ThumbnailViewMirrored = 'ThumbnailViewMirrored',
   // (undocumented)
-  Thunderstorms = "Thunderstorms",
+  Thunderstorms = 'Thunderstorms',
   // (undocumented)
-  Ticket = "Ticket",
+  Ticket = 'Ticket',
   // (undocumented)
-  Tiles = "Tiles",
+  Tiles = 'Tiles',
   // (undocumented)
-  Tiles2 = "Tiles2",
+  Tiles2 = 'Tiles2',
   // (undocumented)
-  TimeEntry = "TimeEntry",
+  TimeEntry = 'TimeEntry',
   // (undocumented)
-  Timeline = "Timeline",
+  Timeline = 'Timeline',
   // (undocumented)
-  TimelineDelivery = "TimelineDelivery",
+  TimelineDelivery = 'TimelineDelivery',
   // (undocumented)
-  TimelineMatrixView = "TimelineMatrixView",
+  TimelineMatrixView = 'TimelineMatrixView',
   // (undocumented)
-  TimelineProgress = "TimelineProgress",
+  TimelineProgress = 'TimelineProgress',
   // (undocumented)
-  Timer = "Timer",
+  Timer = 'Timer',
   // (undocumented)
-  TimeSheet = "TimeSheet",
+  TimeSheet = 'TimeSheet',
   // (undocumented)
-  ToDoLogoBottom = "ToDoLogoBottom",
+  ToDoLogoBottom = 'ToDoLogoBottom',
   // (undocumented)
-  ToDoLogoInverse = "ToDoLogoInverse",
+  ToDoLogoInverse = 'ToDoLogoInverse',
   // (undocumented)
-  ToDoLogoOutline = "ToDoLogoOutline",
+  ToDoLogoOutline = 'ToDoLogoOutline',
   // (undocumented)
-  ToDoLogoTop = "ToDoLogoTop",
+  ToDoLogoTop = 'ToDoLogoTop',
   // (undocumented)
-  ToggleBorder = "ToggleBorder",
+  ToggleBorder = 'ToggleBorder',
   // (undocumented)
-  ToggleFilled = "ToggleFilled",
+  ToggleFilled = 'ToggleFilled',
   // (undocumented)
-  ToggleLeft = "ToggleLeft",
+  ToggleLeft = 'ToggleLeft',
   // (undocumented)
-  ToggleRight = "ToggleRight",
+  ToggleRight = 'ToggleRight',
   // (undocumented)
-  ToggleThumb = "ToggleThumb",
+  ToggleThumb = 'ToggleThumb',
   // (undocumented)
-  Toll = "Toll",
+  Toll = 'Toll',
   // (undocumented)
-  Touch = "Touch",
+  Touch = 'Touch',
   // (undocumented)
-  TouchPointer = "TouchPointer",
+  TouchPointer = 'TouchPointer',
   // (undocumented)
-  Trackers = "Trackers",
+  Trackers = 'Trackers',
   // (undocumented)
-  TrackersMirrored = "TrackersMirrored",
+  TrackersMirrored = 'TrackersMirrored',
   // (undocumented)
-  Train = "Train",
+  Train = 'Train',
   // (undocumented)
-  TrainSolid = "TrainSolid",
+  TrainSolid = 'TrainSolid',
   // (undocumented)
-  TransferCall = "TransferCall",
+  TransferCall = 'TransferCall',
   // (undocumented)
-  Transition = "Transition",
+  Transition = 'Transition',
   // (undocumented)
-  TransitionEffect = "TransitionEffect",
+  TransitionEffect = 'TransitionEffect',
   // (undocumented)
-  TransitionPop = "TransitionPop",
+  TransitionPop = 'TransitionPop',
   // (undocumented)
-  TransitionPush = "TransitionPush",
+  TransitionPush = 'TransitionPush',
   // (undocumented)
-  Translate = "Translate",
+  Translate = 'Translate',
   // (undocumented)
-  Trending12 = "Trending12",
+  Trending12 = 'Trending12',
   // (undocumented)
-  TriangleDown12 = "TriangleDown12",
+  TriangleDown12 = 'TriangleDown12',
   // (undocumented)
-  TriangleLeft12 = "TriangleLeft12",
+  TriangleLeft12 = 'TriangleLeft12',
   // (undocumented)
-  TriangleRight12 = "TriangleRight12",
+  TriangleRight12 = 'TriangleRight12',
   // (undocumented)
-  TriangleShape = "TriangleShape",
+  TriangleShape = 'TriangleShape',
   // (undocumented)
-  TriangleShapeSolid = "TriangleShapeSolid",
+  TriangleShapeSolid = 'TriangleShapeSolid',
   // (undocumented)
-  TriangleSolid = "TriangleSolid",
+  TriangleSolid = 'TriangleSolid',
   // (undocumented)
-  TriangleSolidDown12 = "TriangleSolidDown12",
+  TriangleSolidDown12 = 'TriangleSolidDown12',
   // (undocumented)
-  TriangleSolidLeft12 = "TriangleSolidLeft12",
+  TriangleSolidLeft12 = 'TriangleSolidLeft12',
   // (undocumented)
-  TriangleSolidRight12 = "TriangleSolidRight12",
+  TriangleSolidRight12 = 'TriangleSolidRight12',
   // (undocumented)
-  TriangleSolidUp12 = "TriangleSolidUp12",
+  TriangleSolidUp12 = 'TriangleSolidUp12',
   // (undocumented)
-  TriangleUp12 = "TriangleUp12",
+  TriangleUp12 = 'TriangleUp12',
   // (undocumented)
-  TriggerApproval = "TriggerApproval",
+  TriggerApproval = 'TriggerApproval',
   // (undocumented)
-  TriggerAuto = "TriggerAuto",
+  TriggerAuto = 'TriggerAuto',
   // (undocumented)
-  TriggerUser = "TriggerUser",
+  TriggerUser = 'TriggerUser',
   // (undocumented)
-  TripleColumn = "TripleColumn",
+  TripleColumn = 'TripleColumn',
   // (undocumented)
-  TripleColumnEdit = "TripleColumnEdit",
+  TripleColumnEdit = 'TripleColumnEdit',
   // (undocumented)
-  TripleColumnWide = "TripleColumnWide",
+  TripleColumnWide = 'TripleColumnWide',
   // (undocumented)
-  Trophy = "Trophy",
+  Trophy = 'Trophy',
   // (undocumented)
-  Trophy2 = "Trophy2",
+  Trophy2 = 'Trophy2',
   // (undocumented)
-  Trophy2Solid = "Trophy2Solid",
+  Trophy2Solid = 'Trophy2Solid',
   // (undocumented)
-  TurnRight = "TurnRight",
+  TurnRight = 'TurnRight',
   // (undocumented)
-  TVMonitor = "TVMonitor",
+  TVMonitor = 'TVMonitor',
   // (undocumented)
-  TVMonitorSelected = "TVMonitorSelected",
+  TVMonitorSelected = 'TVMonitorSelected',
   // (undocumented)
-  TwelvePointStar = "TwelvePointStar",
+  TwelvePointStar = 'TwelvePointStar',
   // (undocumented)
-  TypeScriptLanguage = "TypeScriptLanguage",
+  TypeScriptLanguage = 'TypeScriptLanguage',
   // (undocumented)
-  Umbrella = "Umbrella",
+  Umbrella = 'Umbrella',
   // (undocumented)
-  Underline = "Underline",
+  Underline = 'Underline',
   // (undocumented)
-  Undo = "Undo",
+  Undo = 'Undo',
   // (undocumented)
-  Uneditable = "Uneditable",
+  Uneditable = 'Uneditable',
   // (undocumented)
-  UneditableMirrored = "UneditableMirrored",
+  UneditableMirrored = 'UneditableMirrored',
   // (undocumented)
-  UneditableSolid12 = "UneditableSolid12",
+  UneditableSolid12 = 'UneditableSolid12',
   // (undocumented)
-  UneditableSolidMirrored12 = "UneditableSolidMirrored12",
+  UneditableSolidMirrored12 = 'UneditableSolidMirrored12',
   // (undocumented)
-  Unfavorite = "Unfavorite",
+  Unfavorite = 'Unfavorite',
   // (undocumented)
-  UngroupObject = "UngroupObject",
+  UngroupObject = 'UngroupObject',
   // (undocumented)
-  Unknown = "Unknown",
+  Unknown = 'Unknown',
   // (undocumented)
-  UnknownCall = "UnknownCall",
+  UnknownCall = 'UnknownCall',
   // (undocumented)
-  UnknownMirrored = "UnknownMirrored",
+  UnknownMirrored = 'UnknownMirrored',
   // (undocumented)
-  UnknownMirroredSolid = "UnknownMirroredSolid",
+  UnknownMirroredSolid = 'UnknownMirroredSolid',
   // (undocumented)
-  UnknownSolid = "UnknownSolid",
+  UnknownSolid = 'UnknownSolid',
   // (undocumented)
-  Unlock = "Unlock",
+  Unlock = 'Unlock',
   // (undocumented)
-  UnlockSolid = "UnlockSolid",
+  UnlockSolid = 'UnlockSolid',
   // (undocumented)
-  Unpin = "Unpin",
+  Unpin = 'Unpin',
   // (undocumented)
-  UnSetColor = "UnSetColor",
+  UnSetColor = 'UnSetColor',
   // (undocumented)
-  UnstackSelected = "UnstackSelected",
+  UnstackSelected = 'UnstackSelected',
   // (undocumented)
-  Unsubscribe = "Unsubscribe",
+  Unsubscribe = 'Unsubscribe',
   // (undocumented)
-  UnsyncFolder = "UnsyncFolder",
+  UnsyncFolder = 'UnsyncFolder',
   // (undocumented)
-  UnsyncOccurence = "UnsyncOccurence",
+  UnsyncOccurence = 'UnsyncOccurence',
   // (undocumented)
-  Up = "Up",
+  Up = 'Up',
   // (undocumented)
-  UpgradeAnalysis = "UpgradeAnalysis",
+  UpgradeAnalysis = 'UpgradeAnalysis',
   // (undocumented)
-  Upload = "Upload",
+  Upload = 'Upload',
   // (undocumented)
-  USB = "USB",
+  USB = 'USB',
   // (undocumented)
-  UserEvent = "UserEvent",
+  UserEvent = 'UserEvent',
   // (undocumented)
-  UserFollowed = "UserFollowed",
+  UserFollowed = 'UserFollowed',
   // (undocumented)
-  UserGauge = "UserGauge",
+  UserGauge = 'UserGauge',
   // (undocumented)
-  UserOptional = "UserOptional",
+  UserOptional = 'UserOptional',
   // (undocumented)
-  UserPause = "UserPause",
+  UserPause = 'UserPause',
   // (undocumented)
-  UserRemove = "UserRemove",
+  UserRemove = 'UserRemove',
   // (undocumented)
-  UserSync = "UserSync",
+  UserSync = 'UserSync',
   // (undocumented)
-  Vacation = "Vacation",
+  Vacation = 'Vacation',
   // (undocumented)
-  Variable = "Variable",
+  Variable = 'Variable',
   // (undocumented)
-  VariableGroup = "VariableGroup",
+  VariableGroup = 'VariableGroup',
   // (undocumented)
-  VB = "VB",
+  VB = 'VB',
   // (undocumented)
-  VennDiagram = "VennDiagram",
+  VennDiagram = 'VennDiagram',
   // (undocumented)
-  VerifiedBrand = "VerifiedBrand",
+  VerifiedBrand = 'VerifiedBrand',
   // (undocumented)
-  VerifiedBrandSolid = "VerifiedBrandSolid",
+  VerifiedBrandSolid = 'VerifiedBrandSolid',
   // (undocumented)
-  VersionControlPush = "VersionControlPush",
+  VersionControlPush = 'VersionControlPush',
   // (undocumented)
-  VerticalDistributeCenter = "VerticalDistributeCenter",
+  VerticalDistributeCenter = 'VerticalDistributeCenter',
   // (undocumented)
-  Video = "Video",
+  Video = 'Video',
   // (undocumented)
-  Video360Generic = "Video360Generic",
+  Video360Generic = 'Video360Generic',
   // (undocumented)
-  VideoLightOff = "VideoLightOff",
+  VideoLightOff = 'VideoLightOff',
   // (undocumented)
-  VideoOff = "VideoOff",
+  VideoOff = 'VideoOff',
   // (undocumented)
-  VideoSearch = "VideoSearch",
+  VideoSearch = 'VideoSearch',
   // (undocumented)
-  VideoSolid = "VideoSolid",
+  VideoSolid = 'VideoSolid',
   // (undocumented)
-  View = "View",
+  View = 'View',
   // (undocumented)
-  ViewAll = "ViewAll",
+  ViewAll = 'ViewAll',
   // (undocumented)
-  ViewAll2 = "ViewAll2",
+  ViewAll2 = 'ViewAll2',
   // (undocumented)
-  ViewDashboard = "ViewDashboard",
+  ViewDashboard = 'ViewDashboard',
   // (undocumented)
-  ViewList = "ViewList",
+  ViewList = 'ViewList',
   // (undocumented)
-  ViewListGroup = "ViewListGroup",
+  ViewListGroup = 'ViewListGroup',
   // (undocumented)
-  ViewListTree = "ViewListTree",
+  ViewListTree = 'ViewListTree',
   // (undocumented)
-  VisioDiagram = "VisioDiagram",
+  VisioDiagram = 'VisioDiagram',
   // (undocumented)
-  VisioDiagramSync = "VisioDiagramSync",
+  VisioDiagramSync = 'VisioDiagramSync',
   // (undocumented)
-  VisioDocument = "VisioDocument",
+  VisioDocument = 'VisioDocument',
   // (undocumented)
-  VisioLogo = "VisioLogo",
+  VisioLogo = 'VisioLogo',
   // (undocumented)
-  VisioLogo16 = "VisioLogo16",
+  VisioLogo16 = 'VisioLogo16',
   // (undocumented)
-  VisioLogoFill = "VisioLogoFill",
+  VisioLogoFill = 'VisioLogoFill',
   // (undocumented)
-  VisioLogoFill16 = "VisioLogoFill16",
+  VisioLogoFill16 = 'VisioLogoFill16',
   // (undocumented)
-  VisioLogoInverse = "VisioLogoInverse",
+  VisioLogoInverse = 'VisioLogoInverse',
   // (undocumented)
-  VisioLogoInverse16 = "VisioLogoInverse16",
+  VisioLogoInverse16 = 'VisioLogoInverse16',
   // (undocumented)
-  VisioOnlineLogo32 = "VisioOnlineLogo32",
+  VisioOnlineLogo32 = 'VisioOnlineLogo32',
   // (undocumented)
-  VisioOnlineLogoCloud32 = "VisioOnlineLogoCloud32",
+  VisioOnlineLogoCloud32 = 'VisioOnlineLogoCloud32',
   // (undocumented)
-  VisioOnlineLogoFill32 = "VisioOnlineLogoFill32",
+  VisioOnlineLogoFill32 = 'VisioOnlineLogoFill32',
   // (undocumented)
-  VisualBasicLanguage = "VisualBasicLanguage",
+  VisualBasicLanguage = 'VisualBasicLanguage',
   // (undocumented)
-  VisualsFolder = "VisualsFolder",
+  VisualsFolder = 'VisualsFolder',
   // (undocumented)
-  VisualsStore = "VisualsStore",
+  VisualsStore = 'VisualsStore',
   // (undocumented)
-  VisualStudioIDELogo32 = "VisualStudioIDELogo32",
+  VisualStudioIDELogo32 = 'VisualStudioIDELogo32',
   // (undocumented)
-  VisualStudioLogo = "VisualStudioLogo",
+  VisualStudioLogo = 'VisualStudioLogo',
   // (undocumented)
-  VoicemailForward = "VoicemailForward",
+  VoicemailForward = 'VoicemailForward',
   // (undocumented)
-  VoicemailIRM = "VoicemailIRM",
+  VoicemailIRM = 'VoicemailIRM',
   // (undocumented)
-  VoicemailReply = "VoicemailReply",
+  VoicemailReply = 'VoicemailReply',
   // (undocumented)
-  Volume0 = "Volume0",
+  Volume0 = 'Volume0',
   // (undocumented)
-  Volume1 = "Volume1",
+  Volume1 = 'Volume1',
   // (undocumented)
-  Volume2 = "Volume2",
+  Volume2 = 'Volume2',
   // (undocumented)
-  Volume3 = "Volume3",
+  Volume3 = 'Volume3',
   // (undocumented)
-  VolumeDisabled = "VolumeDisabled",
+  VolumeDisabled = 'VolumeDisabled',
   // (undocumented)
-  VSTSAltLogo1 = "VSTSAltLogo1",
+  VSTSAltLogo1 = 'VSTSAltLogo1',
   // (undocumented)
-  VSTSAltLogo2 = "VSTSAltLogo2",
+  VSTSAltLogo2 = 'VSTSAltLogo2',
   // (undocumented)
-  VSTSLogo = "VSTSLogo",
+  VSTSLogo = 'VSTSLogo',
   // (undocumented)
-  Waffle = "Waffle",
+  Waffle = 'Waffle',
   // (undocumented)
-  WaffleOffice365 = "WaffleOffice365",
+  WaffleOffice365 = 'WaffleOffice365',
   // (undocumented)
-  WaitlistConfirm = "WaitlistConfirm",
+  WaitlistConfirm = 'WaitlistConfirm',
   // (undocumented)
-  WaitlistConfirmMirrored = "WaitlistConfirmMirrored",
+  WaitlistConfirmMirrored = 'WaitlistConfirmMirrored',
   // (undocumented)
-  Warning = "Warning",
+  Warning = 'Warning',
   // (undocumented)
-  Warning12 = "Warning12",
+  Warning12 = 'Warning12',
   // (undocumented)
-  WarningSolid = "WarningSolid",
+  WarningSolid = 'WarningSolid',
   // (undocumented)
-  WavingHand = "WavingHand",
+  WavingHand = 'WavingHand',
   // (undocumented)
-  WebComponents = "WebComponents",
+  WebComponents = 'WebComponents',
   // (undocumented)
-  WebPublish = "WebPublish",
+  WebPublish = 'WebPublish',
   // (undocumented)
-  Website = "Website",
+  Website = 'Website',
   // (undocumented)
-  WebTemplate = "WebTemplate",
+  WebTemplate = 'WebTemplate',
   // (undocumented)
-  Weights = "Weights",
+  Weights = 'Weights',
   // (undocumented)
-  WhiteBoardApp16 = "WhiteBoardApp16",
+  WhiteBoardApp16 = 'WhiteBoardApp16',
   // (undocumented)
-  WhiteBoardApp32 = "WhiteBoardApp32",
+  WhiteBoardApp32 = 'WhiteBoardApp32',
   // (undocumented)
-  WifiEthernet = "WifiEthernet",
+  WifiEthernet = 'WifiEthernet',
   // (undocumented)
-  WifiWarning4 = "WifiWarning4",
+  WifiWarning4 = 'WifiWarning4',
   // (undocumented)
-  WindDirection = "WindDirection",
+  WindDirection = 'WindDirection',
   // (undocumented)
-  WindowEdit = "WindowEdit",
+  WindowEdit = 'WindowEdit',
   // (undocumented)
-  WindowsLogo = "WindowsLogo",
+  WindowsLogo = 'WindowsLogo',
   // (undocumented)
-  Wines = "Wines",
+  Wines = 'Wines',
   // (undocumented)
-  WipePhone = "WipePhone",
+  WipePhone = 'WipePhone',
   // (undocumented)
-  WordDocument = "WordDocument",
+  WordDocument = 'WordDocument',
   // (undocumented)
-  WordLogo = "WordLogo",
+  WordLogo = 'WordLogo',
   // (undocumented)
-  WordLogo16 = "WordLogo16",
+  WordLogo16 = 'WordLogo16',
   // (undocumented)
-  WordLogoFill = "WordLogoFill",
+  WordLogoFill = 'WordLogoFill',
   // (undocumented)
-  WordLogoFill16 = "WordLogoFill16",
+  WordLogoFill16 = 'WordLogoFill16',
   // (undocumented)
-  WordLogoInverse = "WordLogoInverse",
+  WordLogoInverse = 'WordLogoInverse',
   // (undocumented)
-  WordLogoInverse16 = "WordLogoInverse16",
+  WordLogoInverse16 = 'WordLogoInverse16',
   // (undocumented)
-  Work = "Work",
+  Work = 'Work',
   // (undocumented)
-  WorkFlow = "WorkFlow",
+  WorkFlow = 'WorkFlow',
   // (undocumented)
-  WorkforceManagement = "WorkforceManagement",
+  WorkforceManagement = 'WorkforceManagement',
   // (undocumented)
-  WorkItem = "WorkItem",
+  WorkItem = 'WorkItem',
   // (undocumented)
-  WorkItemAlert = "WorkItemAlert",
+  WorkItemAlert = 'WorkItemAlert',
   // (undocumented)
-  WorkItemBar = "WorkItemBar",
+  WorkItemBar = 'WorkItemBar',
   // (undocumented)
-  WorkItemBarSolid = "WorkItemBarSolid",
+  WorkItemBarSolid = 'WorkItemBarSolid',
   // (undocumented)
-  WorkItemBug = "WorkItemBug",
+  WorkItemBug = 'WorkItemBug',
   // (undocumented)
-  World = "World",
+  World = 'World',
   // (undocumented)
-  WorldClock = "WorldClock",
+  WorldClock = 'WorldClock',
   // (undocumented)
-  YammerLogo = "YammerLogo",
+  YammerLogo = 'YammerLogo',
   // (undocumented)
-  ZipFolder = "ZipFolder",
+  ZipFolder = 'ZipFolder',
   // (undocumented)
-  Zoom = "Zoom",
+  Zoom = 'Zoom',
   // (undocumented)
-  ZoomIn = "ZoomIn",
+  ZoomIn = 'ZoomIn',
   // (undocumented)
-  ZoomOut = "ZoomOut",
+  ZoomOut = 'ZoomOut',
   // (undocumented)
-  ZoomToFit = "ZoomToFit"
+  ZoomToFit = 'ZoomToFit'
 }
 
 // @public (undocumented)
-interface IContextualMenu {
-}
+interface IContextualMenu {}
 
 // @public (undocumented)
 interface IContextualMenuItem {
@@ -6558,7 +6708,19 @@ interface IContextualMenuItem {
   data?: any;
   disabled?: boolean;
   // @deprecated
-  getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
+  getItemClassNames?: (
+    theme: ITheme,
+    disabled: boolean,
+    expanded: boolean,
+    checked: boolean,
+    isAnchorLink: boolean,
+    knownIcon: boolean,
+    itemClassName?: string,
+    dividerClassName?: string,
+    iconClassName?: string,
+    subMenuClassName?: string,
+    primaryDisabled?: boolean
+  ) => IMenuItemClassNames;
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
   href?: string;
   iconProps?: IIconProps;
@@ -6781,7 +6943,7 @@ interface ICustomizations {
   // (undocumented)
   scopedSettings: {
     [key: string]: ISettings;
-  }
+  };
   // (undocumented)
   settings: ISettings;
 }
@@ -6925,8 +7087,7 @@ interface IDetailsCheckboxProps {
 }
 
 // @public (undocumented)
-interface IDetailsFooterBaseProps extends IDetailsItemProps {
-}
+interface IDetailsFooterBaseProps extends IDetailsItemProps {}
 
 // @public (undocumented)
 interface IDetailsFooterProps extends IDetailsFooterBaseProps {
@@ -6936,8 +7097,7 @@ interface IDetailsFooterProps extends IDetailsFooterBaseProps {
 }
 
 // @public (undocumented)
-interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {
-}
+interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
 
 // @public (undocumented)
 interface IDetailsGroupRenderProps extends IGroupRenderProps {
@@ -6996,14 +7156,18 @@ interface IDetailsItemProps {
 
 // @public (undocumented)
 interface IDetailsList extends IList {
-  focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
+  focusIndex: (
+    index: number,
+    forceIntoFirstElement?: boolean,
+    measureItem?: (itemIndex: number) => number,
+    scrollToMode?: ScrollToMode
+  ) => void;
   forceUpdate: () => void;
   getStartItemIndexInView: () => number;
 }
 
 // @public (undocumented)
-interface IDetailsListCheckboxProps extends IDetailsCheckboxProps, IGroupHeaderCheckboxProps {
-}
+interface IDetailsListCheckboxProps extends IDetailsCheckboxProps, IGroupHeaderCheckboxProps {}
 
 // @public (undocumented)
 interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
@@ -7056,9 +7220,9 @@ interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps
   onRowWillUnmount?: (item?: any, index?: number) => void;
   onShouldVirtualize?: (props: IListProps) => boolean;
   rowElementEventMap?: {
-          eventName: string;
-          callback: (context: IDragDropContext, event?: any) => void;
-      }[];
+    eventName: string;
+    callback: (context: IDragDropContext, event?: any) => void;
+  }[];
   selection?: ISelection;
   selectionMode?: SelectionMode;
   selectionPreservedOnEmptyClick?: boolean;
@@ -7105,14 +7269,13 @@ interface IDetailsListStyles {
 }
 
 // @public (undocumented)
-interface IDetailsRow {
-}
+interface IDetailsRow {}
 
 // @public (undocumented)
 interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
   cellsByColumn?: {
     [columnKey: string]: React.ReactNode;
-  }
+  };
   checkboxCellClassName?: string;
   checkButtonAriaLabel?: string;
   className?: string;
@@ -7122,9 +7285,9 @@ interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColu
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   eventsToRegister?: {
-          eventName: string;
-          callback: (item?: any, index?: number, event?: any) => void;
-      }[];
+    eventName: string;
+    callback: (item?: any, index?: number, event?: any) => void;
+  }[];
   getRowAriaDescribedBy?: (item: any) => string;
   getRowAriaLabel?: (item: any) => string;
   item: any;
@@ -7189,7 +7352,7 @@ interface IDetailsRowState {
     column: IColumn;
     index: number;
     onMeasureDone: (measuredWidth: number) => void;
-  }
+  };
   // (undocumented)
   groupNestingDepth?: number;
   // (undocumented)
@@ -7233,12 +7396,10 @@ interface IDetailsRowStyles {
 }
 
 // @public (undocumented)
-interface IDialog {
-}
+interface IDialog {}
 
 // @public (undocumented)
-interface IDialogContent {
-}
+interface IDialogContent {}
 
 // @public (undocumented)
 interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
@@ -7292,8 +7453,7 @@ interface IDialogContentStyles {
 }
 
 // @public (undocumented)
-interface IDialogFooter {
-}
+interface IDialogFooter {}
 
 // @public (undocumented)
 interface IDialogFooterProps extends React.Props<DialogFooterBase> {
@@ -7421,8 +7581,7 @@ interface IDocumentCard {
 }
 
 // @public (undocumented)
-interface IDocumentCardActions {
-}
+interface IDocumentCardActions {}
 
 // WARNING: The type "DocumentCardActionsBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
@@ -7454,8 +7613,7 @@ interface IDocumentCardActionsStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardActivity {
-}
+interface IDocumentCardActivity {}
 
 // @public (undocumented)
 interface IDocumentCardActivityPerson {
@@ -7501,8 +7659,7 @@ interface IDocumentCardActivityStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardDetails {
-}
+interface IDocumentCardDetails {}
 
 // WARNING: The type "DocumentCardDetailsBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
@@ -7526,8 +7683,7 @@ interface IDocumentCardDetailsStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardImage {
-}
+interface IDocumentCardImage {}
 
 // @public (undocumented)
 interface IDocumentCardImageProps extends IBaseProps<{}> {
@@ -7543,8 +7699,7 @@ interface IDocumentCardImageProps extends IBaseProps<{}> {
 }
 
 // @public (undocumented)
-interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {
-}
+interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {}
 
 // @public (undocumented)
 interface IDocumentCardImageStyles {
@@ -7559,8 +7714,7 @@ interface IDocumentCardImageStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardLocation {
-}
+interface IDocumentCardLocation {}
 
 // WARNING: The type "DocumentCardLocationBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
@@ -7588,8 +7742,7 @@ interface IDocumentCardLocationStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardLogo {
-}
+interface IDocumentCardLogo {}
 
 // WARNING: The type "DocumentCardLogoBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
@@ -7615,8 +7768,7 @@ interface IDocumentCardLogoStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardPreview {
-}
+interface IDocumentCardPreview {}
 
 // @public (undocumented)
 interface IDocumentCardPreviewImage {
@@ -7687,8 +7839,7 @@ interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTMLAttrib
 }
 
 // @public (undocumented)
-interface IDocumentCardStatus {
-}
+interface IDocumentCardStatus {}
 
 // WARNING: The type "DocumentCardStatusBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
@@ -7728,8 +7879,7 @@ interface IDocumentCardStyles {
 }
 
 // @public (undocumented)
-interface IDocumentCardTitle {
-}
+interface IDocumentCardTitle {}
 
 // WARNING: The type "DocumentCardTitleBase" needs to be exported by the package (e.g. added to index.ts)
 // @public (undocumented)
@@ -7763,8 +7913,7 @@ interface IDropdown {
 }
 
 // @public
-interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
-}
+interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {}
 
 // @public (undocumented)
 interface IDropdownOption extends ISelectableOption {
@@ -7892,8 +8041,7 @@ interface IEventRecordsByName {
 }
 
 // @public (undocumented)
-interface IExpandingCard {
-}
+interface IExpandingCard {}
 
 // @public
 interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
@@ -7928,8 +8076,7 @@ interface IExpandingCardStyles extends IBaseCardStyles {
 }
 
 // @public (undocumented)
-interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {
-}
+interface IExtendedPeoplePickerProps extends IBaseExtendedPickerProps<IPersonaProps> {}
 
 // @public (undocumented)
 interface IExtendedPersonaProps extends IPersonaProps {
@@ -7972,8 +8119,7 @@ interface IFabricStyles {
 }
 
 // @public (undocumented)
-interface IFacepile {
-}
+interface IFacepile {}
 
 // @public (undocumented)
 interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLDivElement> {
@@ -8159,8 +8305,7 @@ interface IGenericItem {
 }
 
 // @public (undocumented)
-interface IGrid {
-}
+interface IGrid {}
 
 // @public (undocumented)
 interface IGridCellProps<T> {
@@ -8168,7 +8313,17 @@ interface IGridCellProps<T> {
   cellIsSelectedStyle?: string[];
   className?: string;
   disabled?: boolean;
-  getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
+  getClassNames?: (
+    theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined
+  ) => IButtonClassNames;
   id: string;
   index?: number;
   item: T;
@@ -8278,9 +8433,9 @@ interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   eventsToRegister?: {
-          eventName: string;
-          callback: (context: IDragDropContext, event?: any) => void;
-      }[];
+    eventName: string;
+    callback: (context: IDragDropContext, event?: any) => void;
+  }[];
   getGroupHeight?: (group: IGroup, groupIndex: number) => number;
   groupProps?: IGroupRenderProps;
   groups?: IGroup[];
@@ -8401,8 +8556,7 @@ interface IGroupSpacerStyles {
 }
 
 // @public (undocumented)
-interface IHoverCard {
-}
+interface IHoverCard {}
 
 // @public
 interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -8528,14 +8682,13 @@ interface IIconSubset {
   // (undocumented)
   icons: {
     [key: string]: string | JSX.Element;
-  }
+  };
   // (undocumented)
   style?: IRawStyle;
 }
 
 // @public (undocumented)
-interface IImage {
-}
+interface IImage {}
 
 // @public (undocumented)
 interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -8592,17 +8745,15 @@ interface IImageStyles {
 // @public
 interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   // WARNING: The name "aria-label" contains unsupported characters; API names should use only letters, numbers, and underscores
-  aria-label?: string;
+  'aria-label'?: string;
   defaultVisibleValue?: string;
 }
 
 // @public (undocumented)
-interface IKeytip {
-}
+interface IKeytip {}
 
 // @public (undocumented)
-interface IKeytipLayer {
-}
+interface IKeytipLayer {}
 
 // @public (undocumented)
 interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
@@ -8627,8 +8778,7 @@ interface IKeytipLayerState {
 }
 
 // @public (undocumented)
-interface IKeytipLayerStyleProps {
-}
+interface IKeytipLayerStyleProps {}
 
 // @public (undocumented)
 interface IKeytipLayerStyles {
@@ -8668,8 +8818,7 @@ interface IKeytipStyles {
 }
 
 // @public (undocumented)
-interface ILabel {
-}
+interface ILabel {}
 
 // @public (undocumented)
 interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
@@ -8699,8 +8848,7 @@ interface ILabelStyles {
 }
 
 // @public (undocumented)
-interface ILayer {
-}
+interface ILayer {}
 
 // @public (undocumented)
 interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | LayerBase> {
@@ -8816,21 +8964,21 @@ interface IList {
 }
 
 // @public (undocumented)
-interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
+interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
   className?: string;
   componentRef?: IRefObject<IList>;
   getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
-  getKey?: (item: any, index?: number) => string;
+  getKey?: (item: T, index?: number) => string;
   getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
   getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
-  getPageStyle?: (page: IPage) => any;
-  items?: any[];
-  onPageAdded?: (page: IPage) => void;
-  onPageRemoved?: (page: IPage) => void;
-  onPagesUpdated?: (pages: IPage[]) => void;
-  onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
-  onRenderPage?: (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) => React.ReactNode;
-  onShouldVirtualize?: (props: IListProps) => boolean;
+  getPageStyle?: (page: IPage<T>) => any;
+  items?: T[];
+  onPageAdded?: (page: IPage<T>) => void;
+  onPageRemoved?: (page: IPage<T>) => void;
+  onPagesUpdated?: (pages: IPage<T>[]) => void;
+  onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
+  onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
+  onShouldVirtualize?: (props: IListProps<T>) => boolean;
   renderCount?: number;
   renderedWindowsAhead?: number;
   renderedWindowsBehind?: number;
@@ -8840,12 +8988,12 @@ interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
 }
 
 // @public (undocumented)
-interface IListState {
+interface IListState<T = any> {
   // (undocumented)
   isScrolling?: boolean;
   measureVersion?: number;
   // (undocumented)
-  pages?: IPage[];
+  pages?: IPage<T>[];
 }
 
 // @public (undocumented)
@@ -8858,7 +9006,7 @@ class ImageBase extends React.Component<IImageProps, IImageState> {
   // (undocumented)
   static defaultProps: {
     shouldFadeIn: boolean;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
 }
@@ -8888,8 +9036,7 @@ enum ImageLoadState {
 }
 
 // @public (undocumented)
-interface IMarqueeSelection {
-}
+interface IMarqueeSelection {}
 
 // @public (undocumented)
 interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -8942,8 +9089,7 @@ interface IMenuItemStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-interface IMessageBar {
-}
+interface IMessageBar {}
 
 // @public (undocumented)
 interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
@@ -9107,7 +9253,7 @@ interface INavState {
   // (undocumented)
   isGroupCollapsed?: {
     [key: string]: boolean;
-  }
+  };
   // (undocumented)
   isLinkExpandStateChanged?: boolean;
   // (undocumented)
@@ -9202,8 +9348,7 @@ interface IOverflowSetStyles {
 }
 
 // @public (undocumented)
-interface IOverlay {
-}
+interface IOverlay {}
 
 // @public (undocumented)
 interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
@@ -9230,7 +9375,7 @@ interface IOverlayStyles {
 }
 
 // @public (undocumented)
-interface IPage {
+interface IPage<T = any> {
   // (undocumented)
   data?: any;
   // (undocumented)
@@ -9240,7 +9385,7 @@ interface IPage {
   // (undocumented)
   itemCount: number;
   // (undocumented)
-  items: any[] | undefined;
+  items: T[] | undefined;
   // (undocumented)
   key: string;
   // (undocumented)
@@ -9252,8 +9397,8 @@ interface IPage {
 }
 
 // @public (undocumented)
-interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
-  page: IPage;
+interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
+  page: IPage<T>;
   role?: string;
 }
 
@@ -9407,17 +9552,19 @@ interface IPanelStyles {
 }
 
 // @public (undocumented)
-interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {
-}
+interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {}
 
 // @public (undocumented)
-interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {
-}
+interface IPeoplePickerItemProps extends IPickerItemProps<IExtendedPersonaProps> {}
 
 // @public
-interface IPeoplePickerItemSelectedProps extends IPickerItemProps<IPersonaProps & {
-    ValidationState: ValidationState;
-}>, IPeoplePickerItemSharedProps {
+interface IPeoplePickerItemSelectedProps
+  extends IPickerItemProps<
+      IPersonaProps & {
+        ValidationState: ValidationState;
+      }
+    >,
+    IPeoplePickerItemSharedProps {
   styles?: IStyleFunctionOrObject<IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles>;
 }
 
@@ -9463,12 +9610,10 @@ interface IPeoplePickerItemSuggestionStyles {
 }
 
 // @public @deprecated
-interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {
-}
+interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {}
 
 // @public
-interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
-}
+interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {}
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
@@ -9498,8 +9643,7 @@ interface IPerfSummary {
 }
 
 // @public (undocumented)
-interface IPersona {
-}
+interface IPersona {}
 
 // @public (undocumented)
 interface IPersonaCoinProps extends IPersonaSharedProps {
@@ -9637,8 +9781,7 @@ interface IPersonaWithMenu extends IPersonaProps {
 }
 
 // @public
-interface IPickerItem {
-}
+interface IPickerItem {}
 
 // @public
 interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement> {
@@ -9663,7 +9806,7 @@ interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: IRefObject<{}>;
   headerButtonProps?: {
     [key: string]: string | number | boolean;
-  }
+  };
   headerText?: string;
   itemCount?: number | string;
   itemIcon?: string;
@@ -9720,8 +9863,7 @@ interface IPivotStyles {
 }
 
 // @public (undocumented)
-interface IPlainCard {
-}
+interface IPlainCard {}
 
 // @public
 interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, IPlainCardStyleProps> {
@@ -9729,12 +9871,10 @@ interface IPlainCardProps extends IBaseCardProps<IPlainCard, IPlainCardStyles, I
 }
 
 // @public (undocumented)
-interface IPlainCardStyleProps extends IBaseCardStyleProps {
-}
+interface IPlainCardStyleProps extends IBaseCardStyleProps {}
 
 // @public (undocumented)
-interface IPlainCardStyles extends IBaseCardStyles {
-}
+interface IPlainCardStyles extends IBaseCardStyles {}
 
 // @public
 interface IPoint {
@@ -9745,8 +9885,7 @@ interface IPoint {
 }
 
 // @public (undocumented)
-interface IPopup {
-}
+interface IPopup {}
 
 // @public (undocumented)
 interface IPopupProps extends React.HTMLAttributes<Popup> {
@@ -9767,8 +9906,7 @@ interface IPopupState {
 }
 
 // @public (undocumented)
-interface IPositioningContainer {
-}
+interface IPositioningContainer {}
 
 // @public (undocumented)
 interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
@@ -9862,8 +10000,7 @@ interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> 
 }
 
 // @public (undocumented)
-interface IRating {
-}
+interface IRating {}
 
 // @public
 interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -9936,7 +10073,7 @@ interface IRawStyle extends IRawStyleBase {
   displayName?: string;
   selectors?: {
     [key: string]: IStyle;
-  }
+  };
 }
 
 // @public
@@ -10048,7 +10185,7 @@ interface IScrollablePaneContext {
     syncScrollSticky: (sticky: Sticky) => void;
     unsubscribe: (handler: (container: HTMLElement, stickyContainer: HTMLElement) => void) => void;
     updateStickyRefHeights: () => void;
-  }
+  };
 }
 
 // @public (undocumented)
@@ -10320,8 +10457,7 @@ interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   // (undocumented)
   isSelectedOnFocus?: boolean;
   // @deprecated (undocumented)
-  layout?: {
-  }
+  layout?: {};
   // (undocumented)
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
   // (undocumented)
@@ -10446,12 +10582,10 @@ interface ISerializableObject {
 }
 
 // @public (undocumented)
-interface IShimmer {
-}
+interface IShimmer {}
 
 // @public (undocumented)
-interface IShimmerCircle {
-}
+interface IShimmerCircle {}
 
 // @public
 interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -10485,8 +10619,7 @@ interface IShimmerElement {
 }
 
 // @public (undocumented)
-interface IShimmerElementsGroup {
-}
+interface IShimmerElementsGroup {}
 
 // @public
 interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -10512,8 +10645,7 @@ interface IShimmerElementsGroupStyles {
 }
 
 // @public (undocumented)
-interface IShimmerGap {
-}
+interface IShimmerGap {}
 
 // @public
 interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -10532,8 +10664,7 @@ interface IShimmerGapStyles {
 }
 
 // @public (undocumented)
-interface IShimmerLine {
-}
+interface IShimmerLine {}
 
 // @public
 interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -10709,7 +10840,14 @@ interface ISpinButtonProps {
   defaultValue?: string;
   disabled?: boolean;
   downArrowButtonStyles?: Partial<IButtonStyles>;
-  getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
+  getClassNames?: (
+    theme: ITheme,
+    disabled: boolean,
+    isFocused: boolean,
+    keyboardSpinDirection: KeyboardSpinDirection,
+    labelPosition?: Position,
+    className?: string
+  ) => ISpinButtonClassNames;
   iconProps?: IIconProps;
   incrementButtonAriaLabel?: string;
   incrementButtonIcon?: IIconProps;
@@ -10765,8 +10903,7 @@ interface ISpinButtonStyles {
 }
 
 // @public (undocumented)
-interface ISpinner {
-}
+interface ISpinner {}
 
 // @public
 interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
@@ -10819,11 +10956,13 @@ interface IStackItemSlots {
 }
 
 // @public (undocumented)
-interface IStackItemTokens {
-}
+interface IStackItemTokens {}
 
 // @public (undocumented)
-interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React.HTMLAttributes<HTMLElement> {
+interface IStackProps
+  extends IStackSlots,
+    IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>,
+    React.HTMLAttributes<HTMLElement> {
   as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
   disableShrink?: boolean;
   gap?: number | string;
@@ -10846,8 +10985,7 @@ interface IStackSlots {
 }
 
 // @public (undocumented)
-interface IStackTokens {
-}
+interface IStackTokens {}
 
 // @public (undocumented)
 interface IStickyContext {
@@ -10993,8 +11131,7 @@ interface ISuggestionsHeaderFooterProps {
 }
 
 // @public
-interface ISuggestionsItem {
-}
+interface ISuggestionsItem {}
 
 // @public
 interface ISuggestionsItemStyles {
@@ -11073,8 +11210,7 @@ export function isValidShade(shade?: Shade): boolean;
 export function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement;
 
 // @public (undocumented)
-interface ISwatchColorPicker {
-}
+interface ISwatchColorPicker {}
 
 // @public (undocumented)
 interface ISwatchColorPickerProps {
@@ -11158,8 +11294,7 @@ interface ITagItemSuggestionStyles {
 }
 
 // @public
-interface ITagPickerProps extends IBasePickerProps<ITag> {
-}
+interface ITagPickerProps extends IBasePickerProps<ITag> {}
 
 // @public (undocumented)
 interface ITeachingBubble {
@@ -11266,7 +11401,7 @@ interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTM
   maskChar?: string;
   maskFormat?: {
     [key: string]: RegExp;
-  }
+  };
   multiline?: boolean;
   onBeforeChange?: (newValue: any) => void;
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
@@ -11335,16 +11470,13 @@ interface ITextSlots {
 }
 
 // @public (undocumented)
-interface ITextTokens {
-}
+interface ITextTokens {}
 
 // @public (undocumented)
 interface ITheme extends IScheme {
   // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
   // @internal
-  schemes?: {
-          [P in ISchemeNames]?: IScheme;
-      };
+  schemes?: { [P in ISchemeNames]?: IScheme };
 }
 
 // @public (undocumented)
@@ -11438,12 +11570,10 @@ interface IToggleStyles {
 }
 
 // @public
-interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {
-}
+interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TViewProps, TTokens>> {}
 
 // @public (undocumented)
-interface ITooltip {
-}
+interface ITooltip {}
 
 // @public (undocumented)
 interface ITooltipHost {
@@ -11535,7 +11665,7 @@ interface IVirtualElement extends HTMLElement {
   _virtual: {
     children: IVirtualElement[];
     parent?: IVirtualElement;
-  }
+  };
 }
 
 // @public (undocumented)
@@ -11549,12 +11679,10 @@ enum KeyboardSpinDirection {
 }
 
 // @public
-export function keyframes(timeline: {
-    [key: string]: {};
-}): string;
+export function keyframes(timeline: { [key: string]: {} }): string;
 
 // @public
-class Keytip extends BaseComponent<IKeytipProps, {}>, implements IKeytip {
+class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
   // (undocumented)
   render(): JSX.Element;
 }
@@ -11633,7 +11761,7 @@ class LayerHost extends BaseComponent<ILayerHostProps> {
 }
 
 // @public (undocumented)
-class LinkBase extends BaseComponent<ILinkProps, any>, implements ILink {
+class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
   // (undocumented)
   focus(): void;
   // (undocumented)
@@ -11641,19 +11769,19 @@ class LinkBase extends BaseComponent<ILinkProps, any>, implements ILink {
 }
 
 // @public
-class List extends BaseComponent<IListProps, IListState>, implements IList {
-  constructor(props: IListProps);
+class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+  constructor(props: IListProps<T>);
   // (undocumented)
   componentDidMount(): void;
   // (undocumented)
-  componentWillReceiveProps(newProps: IListProps): void;
+  componentWillReceiveProps(newProps: IListProps<T>): void;
   // (undocumented)
   static defaultProps: {
     onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
     renderedWindowsAhead: number;
     renderedWindowsBehind: number;
     startIndex: number;
-  }
+  };
   // (undocumented)
   forceUpdate(): void;
   // (undocumented)
@@ -11661,12 +11789,12 @@ class List extends BaseComponent<IListProps, IListState>, implements IList {
   // (undocumented)
   refs: {
     [key: string]: React.ReactInstance;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
   scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
   // (undocumented)
-  shouldComponentUpdate(newProps: IListProps, newState: IListState): boolean;
+  shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
 }
 
 // @public
@@ -11675,17 +11803,20 @@ class ListPeoplePickerBase extends MemberListPeoplePicker {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
-  }
+  };
 }
 
 // @public
 export function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 
 // @public (undocumented)
-export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
+export function mapEnumByName<T>(
+  theEnum: any,
+  callback: (name?: string, value?: string | number) => T | undefined
+): (T | undefined)[] | undefined;
 
 // @public (undocumented)
-class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState>, implements ITextField {
+class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
   constructor(props: ITextFieldProps);
   protected _skipComponentRefResolution: boolean;
   // (undocumented)
@@ -11719,13 +11850,16 @@ class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextFieldSta
 }
 
 // @public (undocumented)
-class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {
-}
+class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {}
 
 // @public
-export function memoize<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
-    configurable: boolean;
-    get(): T;
+export function memoize<T extends Function>(
+  target: any,
+  key: string,
+  descriptor: TypedPropertyDescriptor<T>
+): {
+  configurable: boolean;
+  get(): T;
 };
 
 // @public
@@ -11780,7 +11914,7 @@ enum MessageBarType {
 }
 
 // @public (undocumented)
-class ModalBase extends BaseComponent<IModalProps, IDialogState>, implements IModal {
+class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
   constructor(props: IModalProps);
   // (undocumented)
   componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
@@ -11795,7 +11929,7 @@ class ModalBase extends BaseComponent<IModalProps, IDialogState>, implements IMo
 }
 
 // @public (undocumented)
-class NavBase extends BaseComponent<INavProps, INavState>, implements INav {
+class NavBase extends BaseComponent<INavProps, INavState> implements INav {
   constructor(props: INavProps);
   // (undocumented)
   componentWillReceiveProps(newProps: INavProps): void;
@@ -11813,7 +11947,7 @@ class NormalPeoplePickerBase extends BasePeoplePicker {
     createGenericItem: typeof createGenericItem;
     onRenderItem: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps<any> | undefined) => JSX.Element;
-  }
+  };
 }
 
 // @public
@@ -11837,7 +11971,7 @@ enum OverflowButtonType {
 }
 
 // @public (undocumented)
-class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}>, implements IOverflowSet {
+class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
   constructor(props: IOverflowSetProps);
   // (undocumented)
   componentDidMount(): void;
@@ -11958,7 +12092,8 @@ enum PersonaPresence {
 // WARNING: Export "size28" must specify a type
 // WARNING: Export "border" must specify a type
 // @public (undocumented)
-module personaPresenceSize {
+namespace personaPresenceSize {
+
 }
 
 // WARNING: Export "size10" must specify a type
@@ -11971,7 +12106,8 @@ module personaPresenceSize {
 // WARNING: Export "size72" must specify a type
 // WARNING: Export "size100" must specify a type
 // @public (undocumented)
-module personaSize {
+namespace personaSize {
+
 }
 
 // @public (undocumented)
@@ -12066,7 +12202,7 @@ class Popup extends BaseComponent<IPopupProps, IPopupState> {
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
 
 // @public (undocumented)
-class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState>, implements PositioningContainer {
+class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
   constructor(props: IPositioningContainerProps);
   // (undocumented)
   protected _dismissOnLostFocus(ev: Event): void;
@@ -12111,13 +12247,16 @@ class ProgressIndicatorBase extends React.Component<IProgressIndicatorProps, {}>
     description: string;
     label: string;
     width: number;
-  }
+  };
   // (undocumented)
   render(): JSX.Element;
 }
 
 // @public @deprecated (undocumented)
-export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
+export function provideContext<TContext, TProps>(
+  contextTypes: PropTypes.ValidationMap<TContext>,
+  mapPropsToContext: (props: TProps) => TContext
+): React.ComponentType<TProps>;
 
 // @public
 export function raiseClick(target: Element): void;
@@ -12206,7 +12345,7 @@ export function rgb2hex(r: number, g: number, b: number): string;
 export function rgb2hsv(r: number, g: number, b: number): IHSV;
 
 // @public (undocumented)
-class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState>, implements IScrollablePane {
+class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
   constructor(props: IScrollablePaneProps);
   // (undocumented)
   addSticky: (sticky: Sticky) => void;
@@ -12366,7 +12505,7 @@ class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     isMultiSelectEnabled: boolean;
     isSelectedOnFocus: boolean;
     selectionMode: SelectionMode;
-  }
+  };
   ignoreNextFocus: () => void;
   // (undocumented)
   render(): JSX.Element;
@@ -12505,7 +12644,7 @@ class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public (undocumented)
-class SliderBase extends BaseComponent<ISliderProps, ISliderState>, implements ISlider {
+class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   constructor(props: ISliderProps);
   componentWillReceiveProps(newProps: ISliderProps): void;
   // (undocumented)
@@ -12519,7 +12658,7 @@ class SliderBase extends BaseComponent<ISliderProps, ISliderState>, implements I
 }
 
 // @public (undocumented)
-class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState>, implements ISpinButton {
+class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   constructor(props: ISpinButtonProps);
   componentWillReceiveProps(newProps: ISpinButtonProps): void;
   // (undocumented)
@@ -12611,7 +12750,16 @@ enum StickyPositionType {
 }
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
+export function styled<
+  TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
+  TStyleProps,
+  TStyleSet extends IStyleSet<TStyleSet>
+>(
+  Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
+  baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
+  getProps?: (props: TComponentProps) => Partial<TComponentProps>,
+  customizable?: ICustomizableProps
+): React.StatelessComponent<TComponentProps>;
 
 // @public
 class Stylesheet {
@@ -12827,7 +12975,7 @@ class SuggestionsStore<T> {
 }
 
 // @public (undocumented)
-class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState>, implements ISwatchColorPicker {
+class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
   constructor(props: ISwatchColorPickerProps);
   // (undocumented)
   componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
@@ -12845,7 +12993,7 @@ class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   static defaultProps: {
     onRenderItem: (props: ITagItemProps) => JSX.Element;
     onRenderSuggestionsItem: (props: ITag) => JSX.Element;
-  }
+  };
 }
 
 // @public (undocumented)
@@ -12859,8 +13007,8 @@ class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBu
       doNotLayer: boolean;
       gapSpace: number;
       setInitialFocus: boolean;
-    }
-  }
+    };
+  };
   // (undocumented)
   focus(): void;
   // (undocumented)
@@ -12883,8 +13031,8 @@ class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITea
       height: number;
       imageFit: ImageFit;
       width: number;
-    }
-  }
+    };
+  };
   // (undocumented)
   focus(): void;
   // (undocumented)
@@ -12894,7 +13042,7 @@ class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITea
 }
 
 // @public (undocumented)
-class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState>, implements ITextField {
+class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   constructor(props: ITextFieldProps);
   blur(): void;
   // (undocumented)
@@ -12932,14 +13080,20 @@ class ThemeGenerator {
   // (undocumented)
   static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
   // (undocumented)
-  static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
+  static setSlot(
+    rule: IThemeSlotRule,
+    color: string | IColor,
+    isInverted?: boolean,
+    isCustomization?: boolean,
+    overwriteCustomColor?: boolean
+  ): void;
 }
 
 // @public (undocumented)
 export function themeRulesStandardCreator(): IThemeRules;
 
 // @public (undocumented)
-class ToggleBase extends BaseComponent<IToggleProps, IToggleState>, implements IToggle {
+class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
   constructor(props: IToggleProps);
   readonly checked: boolean;
   // (undocumented)
@@ -12972,14 +13126,14 @@ enum TooltipDelay {
 }
 
 // @public (undocumented)
-class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState>, implements ITooltipHost {
+class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
   constructor(props: ITooltipHostProps);
   // (undocumented)
   componentWillUnmount(): void;
   // (undocumented)
   static defaultProps: {
     delay: TooltipDelay;
-  }
+  };
   // (undocumented)
   dismiss: () => void;
   // (undocumented)
@@ -13031,7 +13185,7 @@ enum ValuePosition {
 export function values<T>(obj: any): T[];
 
 // @public (undocumented)
-class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}>, implements IComboBox {
+class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {
   // (undocumented)
   protected _onRenderList: (props: IComboBoxProps) => JSX.Element;
   // (undocumented)
@@ -13048,7 +13202,13 @@ class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}>, implements 
 export function warn(message: string): void;
 
 // @public
-export function warnConditionallyRequiredProps<P>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
+export function warnConditionallyRequiredProps<P>(
+  componentName: string,
+  props: P,
+  requiredProps: string[],
+  conditionalPropName: string,
+  condition: boolean
+): void;
 
 // @public
 export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;
@@ -13057,10 +13217,14 @@ export function warnDeprecations<P>(componentName: string, props: P, deprecation
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
 
 // @public
-export function withSlots<P>(type: ISlot<P> | React.SFC<P> | string, props?: React.Attributes & P | null, ...children: React.ReactNode[]): React.ReactElement<P> | JSX.Element | null;
+export function withSlots<P>(
+  type: ISlot<P> | React.SFC<P> | string,
+  props?: React.Attributes & P | null,
+  ...children: React.ReactNode[]
+): React.ReactElement<P> | JSX.Element | null;
 
 // @public (undocumented)
-module ZIndexes {
+namespace ZIndexes {
   // (undocumented)
   Coachmark: number;
 
@@ -13078,7 +13242,6 @@ module ZIndexes {
 
   // (undocumented)
   ScrollablePane: number;
-
 }
 
 // WARNING: Unsupported export: Announced
