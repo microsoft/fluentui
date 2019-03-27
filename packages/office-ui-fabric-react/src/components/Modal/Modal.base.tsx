@@ -7,7 +7,7 @@ import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import Draggable, { DraggableData } from 'react-draggable';
+import { DraggableCore, DraggableData } from 'react-draggable';
 import { ContextualMenu } from '../../ContextualMenu';
 import { DirectionalHint } from '../Callout/index';
 import { Icon } from '../Icon/index';
@@ -186,13 +186,15 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         componentRef={this._focusTrapZone}
         className={classNames.main}
         elementToFocusOnDismiss={elementToFocusOnDismiss}
-        isClickableOutsideFocusTrap={isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking}
+        isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
         ignoreExternalFocusing={ignoreExternalFocusing}
-        forceFocusInsideTrap={forceFocusInsideTrap}
+        forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={true}
         onKeyDown={isDraggable ? this._onDialogKeyDown : undefined}
+        onKeyUp={isDraggable ? this._onDialogKeyUp : undefined}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
+        style={isDraggable ? { transform: `translate(${x}px, ${y}px)` } : undefined}
       >
         {isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -238,15 +240,15 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             <div className={classNames.root}>
               {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
               {isDraggable ? (
-                <Draggable
+                <DraggableCore
                   handle={dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
                   cancel="button"
                   onStart={this._onDragStart}
+                  onDrag={this._onDrag}
                   onStop={this._onDragStop}
-                  position={{ x: x, y: y }}
                 >
                   {modalContent}
-                </Draggable>
+                </DraggableCore>
               ) : (
                 modalContent
               )}
@@ -301,20 +303,36 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
    * and return false so that Draggable's base stop logic still runs
    */
   private _onDragStop = (_: Event, ui: DraggableData): false => {
-    this.setState({ x: ui.x, y: ui.y });
-
     this.focus();
     return false;
+  };
+
+  private _onDrag = (_: Event, ui: DraggableData): void => {
+    const { x, y } = this.state;
+    this.setState({ x: x + ui.deltaX, y: y + ui.deltaY });
   };
 
   private _onDragStart = (_: Event, ui: DraggableData): void => {
     this.setState({ isModalMenuOpen: false, isInKeyboardMoveMode: false });
   };
 
-  private _onDialogKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+  private _onDialogKeyUp = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    // Need to handle the CTRL + ALT + SPACE key during keyup due to FireFox bug:
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
+    // Otherwise it would continue to fire a click even if the event was cancelled
+    // during mouseDown.
     if (event.altKey && event.ctrlKey && event.keyCode === KeyCodes.space) {
       this.setState({ isModalMenuOpen: !this.state.isModalMenuOpen });
       event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
+  private _onDialogKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (event.altKey && event.ctrlKey && event.keyCode === KeyCodes.space) {
+      // CTRL + ALT + SPACE is handled during keyUp
+      event.preventDefault();
+      event.stopPropagation();
       return;
     }
 
