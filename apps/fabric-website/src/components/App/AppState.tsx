@@ -915,7 +915,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'Keytips',
-              url: '#/components/Keytips',
+              url: '#/components/keytips',
               isFilterable: true,
               component: () => <LoadingComponent title="Keytips" />,
               getComponent: cb =>
