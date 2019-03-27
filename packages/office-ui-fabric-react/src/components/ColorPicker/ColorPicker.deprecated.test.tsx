@@ -5,7 +5,7 @@ import { setWarningCallback } from '@uifabric/utilities';
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
 import { IColorPicker, IColorPickerProps } from './ColorPicker.types';
-import { IColor } from '../../utilities/color/colors';
+import { IColor } from '../../utilities/color/interfaces';
 import { mockEvent } from '../../common/testUtilities';
 
 describe('ColorPicker deprecated', () => {

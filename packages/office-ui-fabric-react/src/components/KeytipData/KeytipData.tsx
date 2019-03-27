@@ -46,8 +46,8 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
 
   /**
    * Gets the aria- and data- attributes to attach to the component
-   * @param keytipProps
-   * @param describedByPrepend
+   * @param keytipProps - props for Keytip
+   * @param describedByPrepend - ariaDescribedBy value to prepend
    */
   private _getKtpAttrs(keytipProps: IKeytipProps, describedByPrepend?: string): any {
     if (keytipProps) {
