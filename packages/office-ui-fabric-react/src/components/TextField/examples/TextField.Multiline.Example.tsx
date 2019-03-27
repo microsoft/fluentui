@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import './TextField.Examples.scss';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export interface IState {
+export interface ITextFieldMultilineExampleState {
   multiline: boolean;
 }
 
-export class TextFieldMultilineExample extends React.Component<any, IState> {
+export class TextFieldMultilineExample extends React.Component<{}, ITextFieldMultilineExampleState> {
   private _lorem: string;
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
     this.state = { multiline: false };
     this._lorem = lorem(100);
@@ -17,10 +17,9 @@ export class TextFieldMultilineExample extends React.Component<any, IState> {
 
   public render(): JSX.Element {
     return (
-      <div className="docs-TextFieldExample">
-        <TextField label="Standard" multiline rows={4} />
-        <TextField label="Disabled" multiline rows={4} disabled={true} value={this._lorem} />
-        <TextField label="Required" multiline rows={4} required={true} />
+      <Stack gap={15} maxWidth={300}>
+        <TextField label="Standard" multiline rows={3} />
+        <TextField label="Disabled" multiline rows={3} disabled value={this._lorem} />
         <TextField label="Non-resizable" multiline resizable={false} />
         <TextField label="With auto adjusting height" multiline autoAdjustHeight />
         <TextField
@@ -28,7 +27,7 @@ export class TextFieldMultilineExample extends React.Component<any, IState> {
           multiline={this.state.multiline}
           onChange={this._onChange}
         />
-      </div>
+      </Stack>
     );
   }
 

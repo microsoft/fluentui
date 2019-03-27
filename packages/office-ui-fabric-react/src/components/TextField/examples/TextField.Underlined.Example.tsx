@@ -1,15 +1,13 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import './TextField.Examples.scss';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export class TextFieldUnderlinedExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    return (
-      <div className="docs-TextFieldExample">
-        <TextField label="Standard:" underlined />
-        <TextField label="Disabled:" underlined disabled={true} />
-        <TextField label="Required:" underlined required={true} />
-      </div>
-    );
-  }
-}
+export const TextFieldUnderlinedExample: React.StatelessComponent = () => {
+  return (
+    <Stack gap={15} maxWidth={300}>
+      <TextField label="Standard:" underlined />
+      <TextField label="Disabled:" underlined disabled={true} />
+      <TextField label="Required:" underlined required={true} placeholder="Enter text here" />
+    </Stack>
+  );
+};

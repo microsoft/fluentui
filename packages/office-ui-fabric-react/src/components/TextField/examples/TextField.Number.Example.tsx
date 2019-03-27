@@ -1,25 +1,25 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export interface INumberTextFieldProps {
+interface INumberTextFieldProps {
   label: string;
   initialValue: string;
 }
 
-export interface INumberTextFieldState {
+interface INumberTextFieldState {
   value: string;
 }
 
-export class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
+/**
+ * Custom extension of TextField which only accepts numbers as valid values.
+ */
+class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
   private _textField = React.createRef<ITextField>();
 
   constructor(props: INumberTextFieldProps) {
     super(props);
-
-    this._restore = this._restore.bind(this);
-    this._onChange = this._onChange.bind(this);
-    this._validateNumber = this._validateNumber.bind(this);
 
     this.state = {
       value: props.initialValue
@@ -44,17 +44,15 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
     );
   }
 
-  private _validateNumber(value: string): string {
+  private _validateNumber = (value: string): string => {
     return isNaN(Number(value)) ? `The value should be a number, actual is ${value}.` : '';
-  }
+  };
 
-  private _onChange(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void {
-    return this.setState({
-      value
-    });
-  }
+  private _onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string): void => {
+    this.setState({ value });
+  };
 
-  private _restore(): void {
+  private _restore = (): void => {
     this.setState(
       {
         value: this.props.initialValue
@@ -65,5 +63,14 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
         }
       }
     );
-  }
+  };
 }
+
+export const NumberTextFieldExample: React.StatelessComponent = () => {
+  return (
+    <Stack gap={15} maxWidth={300}>
+      <NumberTextField label="Number TextField with valid initial value" initialValue="100" />
+      <NumberTextField label="Number TextField with invalid initial value" initialValue="Not a number" />
+    </Stack>
+  );
+};
