@@ -1344,7 +1344,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         type: HoverCardType;
     };
     // (undocumented)
-    dismiss: () => void;
+    dismiss: (withTimeOut?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
     }
