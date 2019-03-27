@@ -4,22 +4,20 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IBoxExampleExampleState {
+const contentClass = mergeStyles({
+  border: '1px dashed #ababab'
+});
+
+export interface IFocusTrapZoneNoTabbableExampleState {
   isChecked: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
+export class FocusTrapZoneNoTabbableExample extends React.Component<{}, IFocusTrapZoneNoTabbableExampleState> {
+  public state: IFocusTrapZoneNoTabbableExampleState = { isChecked: false };
+
   private _toggle: IToggle;
-
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
-
-    this.state = {
-      isChecked: false
-    };
-  }
 
   public render() {
     const { isChecked } = this.state;
@@ -46,10 +44,10 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     const { isChecked } = this.state;
 
     return (
-      <div className="ms-FocusTrapZoneBoxExample">
-        <TextField placeholder="Not tabbable" className="" tabIndex={-1} />
-        <TextField placeholder="Not tabbable" className="" tabIndex={-1} />
-        <TextField placeholder="Not tabbable" className="" tabIndex={-1} />
+      <div className={contentClass}>
+        <TextField placeholder="Not tabbable" tabIndex={-1} />
+        <TextField placeholder="Not tabbable" tabIndex={-1} />
+        <TextField placeholder="Not tabbable" tabIndex={-1} />
         <Toggle
           componentRef={this._setRef}
           checked={isChecked}

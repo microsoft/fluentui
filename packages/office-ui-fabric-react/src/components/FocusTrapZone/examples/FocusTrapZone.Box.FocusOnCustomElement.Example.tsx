@@ -6,21 +6,17 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
 
-export interface IBoxExampleExampleState {
+export interface IFocusTrapZoneBoxCustomElementExampleState {
   isChecked: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
+export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IFocusTrapZoneBoxCustomElementExampleState> {
+  public state: IFocusTrapZoneBoxCustomElementExampleState = {
+    isChecked: false
+  };
+
   private _toggle: IToggle;
   private focusClassName = 'shouldFocusInput';
-
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
-
-    this.state = {
-      isChecked: false
-    };
-  }
 
   public render() {
     const { isChecked } = this.state;

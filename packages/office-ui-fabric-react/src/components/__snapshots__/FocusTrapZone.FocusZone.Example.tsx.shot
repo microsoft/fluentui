@@ -120,7 +120,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
   </button>
   <div>
     <div
-      className="ms-FocusTrapZoneBoxExample"
+      className=
+
+          {
+            border: 1px dashed #ababab;
+          }
     >
       <div
         className="ms-FocusZone"

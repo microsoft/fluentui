@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-/* tslint:disable:no-string-literal */
-
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -12,7 +10,7 @@ export interface IFocusTrapZoneDialogInPanelExampleState {
   showPanel: boolean;
 }
 
-export default class FocusTrapDialogInPanelExample extends React.Component<{}, IFocusTrapZoneDialogInPanelExampleState> {
+export class FocusTrapZoneDialogInPanelExample extends React.Component<{}, IFocusTrapZoneDialogInPanelExampleState> {
   constructor(props: {}) {
     super(props);
 
@@ -47,7 +45,7 @@ export default class FocusTrapDialogInPanelExample extends React.Component<{}, I
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
               isBlocking: false,
-              containerClassName: 'ms-dialogMainOverride'
+              styles: { main: { maxWidth: 450 } }
             }}
           >
             {null /** You can also include null values as the result of conditionals */}

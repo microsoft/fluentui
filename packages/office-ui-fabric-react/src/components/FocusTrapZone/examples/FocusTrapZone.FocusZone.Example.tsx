@@ -4,13 +4,17 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IBoxExampleExampleState {
+const contentClass = mergeStyles({
+  border: '1px dashed #ababab'
+});
+
+export interface IFocusTrapZoneFocusZoneExampleState {
   isChecked: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
+export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTrapZoneFocusZoneExampleState> {
   private _toggle: IToggle;
 
   constructor(props: React.HTMLAttributes<HTMLDivElement>) {
@@ -46,7 +50,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     const { isChecked } = this.state;
 
     return (
-      <div className="ms-FocusTrapZoneBoxExample">
+      <div className={contentClass}>
         <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
           <DefaultButton text="FZ1" />
           <DefaultButton text="FZ1" />

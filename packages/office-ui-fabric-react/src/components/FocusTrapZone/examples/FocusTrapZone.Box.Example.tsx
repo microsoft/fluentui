@@ -5,22 +5,22 @@ import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IBoxExampleExampleState {
+const contentClass = mergeStyles({
+  border: '1px dashed #ababab'
+});
+
+export interface IFocusTrapZoneBoxExampleState {
   isChecked: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
+export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneBoxExampleState> {
+  public state: IFocusTrapZoneBoxExampleState = {
+    isChecked: false
+  };
+
   private _toggle: IToggle;
-
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
-
-    this.state = {
-      isChecked: false
-    };
-  }
 
   public render() {
     const { isChecked } = this.state;
@@ -44,11 +44,9 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     const { isChecked } = this.state;
 
     return (
-      <div className="ms-FocusTrapZoneBoxExample">
+      <div className={contentClass}>
         <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
-        <Link href="" className="">
-          Hyperlink inside FocusTrapZone
-        </Link>
+        <Link href="">Hyperlink inside FocusTrapZone</Link>
         <br />
         <br />
         <Toggle

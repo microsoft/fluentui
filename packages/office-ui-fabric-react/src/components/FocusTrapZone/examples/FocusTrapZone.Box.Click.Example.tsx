@@ -5,22 +5,22 @@ import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IBoxNoClickExampleExampleState {
+const contentClass = mergeStyles({
+  border: '1px dashed #ababab'
+});
+
+export interface IFocusTrapZoneBoxClickExampleState {
   isToggled: boolean;
 }
 
-export default class BoxNoClickExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxNoClickExampleExampleState> {
+export class FocusTrapZoneBoxClickExample extends React.Component<{}, IFocusTrapZoneBoxClickExampleState> {
+  public state: IFocusTrapZoneBoxClickExampleState = {
+    isToggled: false
+  };
+
   private _toggle: IToggle;
-
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
-
-    this.state = {
-      isToggled: false
-    };
-  }
 
   public render() {
     const { isToggled } = this.state;
@@ -48,11 +48,9 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
     const { isToggled } = this.state;
 
     return (
-      <div className="ms-FocusTrapZoneBoxExample">
-        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
-        <Link href="" className="">
-          Hyperlink inside FocusTrapZone
-        </Link>
+      <div className={contentClass}>
+        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" />
+        <Link href="">Hyperlink inside FocusTrapZone</Link>
         <br />
         <br />
         <Toggle

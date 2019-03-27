@@ -1,11 +1,14 @@
 import * as React from 'react';
 
-/* tslint:disable:no-string-literal */
-
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+const contentClass = mergeStyles({
+  border: '2px solid black',
+  padding: 5
+});
 
 interface IFocusTrapComponentProps {
   name: string;
@@ -13,12 +16,14 @@ interface IFocusTrapComponentProps {
   setIsActive: (name: string, isActive: boolean) => void;
 }
 
-interface IFocusTrapComponentState {}
+interface IFocusTrapComponentState {
+  stateMap: { [key: string]: boolean };
+}
 
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
   public render() {
     const contents = (
-      <div className="ms-FocusTrapComponent">
+      <div className={contentClass}>
         <DefaultButton onClick={this._onStringButtonClicked} text={this.props.name} />
         <Toggle
           defaultChecked={this.props.isActive}
@@ -47,40 +52,33 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
 }
 
 export interface IFocusTrapZoneNestedExampleState {
-  stateMap: {
-    [key: string]: boolean;
-  };
+  stateMap: { One?: boolean; Two?: boolean; Three?: boolean; Four?: boolean; Five?: boolean };
 }
 
-const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
+type Name = keyof IFocusTrapZoneNestedExampleState['stateMap'];
+const NAMES: Name[] = ['One', 'Two', 'Three', 'Four', 'Five'];
 
-export default class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      stateMap: {}
-    };
-  }
+export class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
+  public state: IFocusTrapZoneNestedExampleState = { stateMap: {} };
 
   public render() {
     const { stateMap } = this.state;
 
     return (
       <div>
-        <FocusTrapComponent name={'One'} isActive={!!stateMap['One']} setIsActive={this._setIsActive}>
-          <FocusTrapComponent name={'Two'} isActive={!!stateMap['Two']} setIsActive={this._setIsActive}>
-            <FocusTrapComponent name={'Three'} isActive={!!stateMap['Three']} setIsActive={this._setIsActive} />
-            <FocusTrapComponent name={'Four'} isActive={!!stateMap['Four']} setIsActive={this._setIsActive} />
+        <FocusTrapComponent name="One" isActive={!!stateMap.One} setIsActive={this._setIsActive}>
+          <FocusTrapComponent name="Two" isActive={!!stateMap.Two} setIsActive={this._setIsActive}>
+            <FocusTrapComponent name="Three" isActive={!!stateMap.Three} setIsActive={this._setIsActive} />
+            <FocusTrapComponent name="Four" isActive={!!stateMap.Four} setIsActive={this._setIsActive} />
           </FocusTrapComponent>
-          <FocusTrapComponent name={'Five'} isActive={!!stateMap['Five']} setIsActive={this._setIsActive} />
+          <FocusTrapComponent name="Five" isActive={!!stateMap.Five} setIsActive={this._setIsActive} />
         </FocusTrapComponent>
         <DefaultButton onClick={this._randomize}>Randomize</DefaultButton>
       </div>
     );
   }
 
-  private _setIsActive = (name: string, isActive: boolean): void => {
+  private _setIsActive = (name: Name, isActive: boolean): void => {
     this.state.stateMap[name] = isActive;
     this.forceUpdate();
   };
