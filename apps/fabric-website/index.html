@@ -63,21 +63,17 @@
       // Update as new fabric versions and its documentation are supported
       var fabricVersions = [5, 6];
 
-      // Check if query is set, or if query and session storage are null
-      if ((fabricVersion !== null) || (fabricVersion === null && window.sessionStorage.getItem('fabricVer') === null)) {
-        // If url param is null, set as latest version
-        if (fabricVersion === null) {
-          fabricVersion = fabricVersions[fabricVersions.length - 1];
-        }
+      // Get fabricVer from URL param, session value, or latest version in array
+      fabricVersion = Number(
+        getParameterByName('fabricVer') ||
+        window.sessionStorage.getItem('fabricVer') ||
+        fabricVersions[fabricVersions.length - 1]
+      );
 
-        // Set session value if it's in array
-        if (fabricVersions.indexOf(Number(fabricVersion)) > -1) {
-          window.sessionStorage.setItem('fabricVer', fabricVersion);
-        }
+      // Set session value if it's in array
+      if (fabricVersions.indexOf(fabricVersion) > -1) {
+        window.sessionStorage.setItem('fabricVer', fabricVersion);
       }
-
-      // Get value from session storage
-      fabricVersion = Number(window.sessionStorage.getItem('fabricVer'));
 
       var prefixVer = fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ?
         'v' + fabricVersion + '-' :
