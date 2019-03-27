@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 19 Mar 2019 12:36:45 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+
+## 0.16.3
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- IconButton style fixes and removing the SwatchColorPicker styles.
 
 ## 0.16.2
 Tue, 19 Mar 2019 12:36:45 GMT

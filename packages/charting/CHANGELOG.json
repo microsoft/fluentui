@@ -2,6 +2,28 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.11",
+      "tag": "@uifabric/charting_v0.28.11",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace custom high contrast selector with constant",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "bbb924c6ca7e0379cfce4dba835fe4ee3e9326ea"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.3 <7.0.0` to `>=6.12.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.10",
       "tag": "@uifabric/charting_v0.28.10",
       "date": "Tue, 26 Mar 2019 12:32:51 GMT",
