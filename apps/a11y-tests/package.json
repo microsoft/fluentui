@@ -9,6 +9,7 @@
     "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "dependencies": {
+    "@uifabric/fabric-website": "^6.12.4",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "office-ui-fabric-react": ">=6.160.0 <7.0.0",
