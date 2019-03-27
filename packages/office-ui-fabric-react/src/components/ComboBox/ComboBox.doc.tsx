@@ -3,7 +3,6 @@ import { ComboBoxBasicExample } from './examples/ComboBox.Basic.Example';
 import { ComboBoxTogglesExample } from './examples/ComboBox.Toggles.Example';
 import { ComboBoxControlledExample } from './examples/ComboBox.Controlled.Example';
 import { ComboBoxVirtualizedExample } from './examples/ComboBox.Virtualized.Example';
-import { ComboBoxRequiredExample } from './examples/ComboBox.Required.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
@@ -23,9 +22,6 @@ const ComboBoxVirtualizedExampleCodepen = require('!@uifabric/codepen-loader!off
 
 const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
 const ComboBoxCustomStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
-
-const ComboBoxRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Required.Example.tsx') as string;
-const ComboBoxRequiredExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Required.Example.tsx') as string;
 
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
@@ -62,12 +58,6 @@ export const ComboBoxPageProps: IDocPageProps = {
       code: ComboBoxCustomStyledExampleCode,
       view: <ComboBoxCustomStyledExample />,
       codepenJS: ComboBoxCustomStyledExampleCodepen
-    },
-    {
-      title: 'ComboBox with required input',
-      code: ComboBoxRequiredExampleCode,
-      view: <ComboBoxRequiredExample />,
-      codepenJS: ComboBoxRequiredExampleCodepen
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/ComboBox.types.ts')],
