@@ -34,7 +34,7 @@ export class InterfaceParserHelper extends BaseParser {
     let comment = '';
     let identifierName = '';
     let type = '';
-    let returnResult: IInterfaceProperty[] = [];
+    const returnResult: IInterfaceProperty[] = [];
     let defaultValue = '';
     let isDeprecated = false;
     let deprecatedMessage = '';
@@ -67,7 +67,7 @@ export class InterfaceParserHelper extends BaseParser {
         case ParseState.comment:
           {
             // the initial * are always the first * of a comment, and will be treated as decorative
-            let asterisk = this.eatWhile('*');
+            const asterisk = this.eatWhile('*');
             if ((noClosingSymbolAsteriskPrereq || asterisk.length > 0) && this.eat('/')) {
               // encountered closing comment tag
               comment = bank.join('').trim();
@@ -125,12 +125,12 @@ export class InterfaceParserHelper extends BaseParser {
 
             this.eat(';'); // actually eat the semicolon
 
-            let isOptional = identifierName[identifierName.length - 1] === '?';
-            let propType = isDeprecated
+            const isOptional = identifierName[identifierName.length - 1] === '?';
+            const propType = isDeprecated
               ? InterfacePropertyType.deprecated
               : isOptional
-                ? InterfacePropertyType.optional
-                : InterfacePropertyType.required;
+              ? InterfacePropertyType.optional
+              : InterfacePropertyType.required;
 
             if (isOptional) {
               identifierName = identifierName.substr(0, identifierName.length - 1);
