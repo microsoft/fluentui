@@ -14,11 +14,21 @@ const reactPackageData = require('office-ui-fabric-react/package.json');
 const versionLinkId = getId('versionLink');
 
 // Update as new Fabric versions are released
-const fabricVersionOptions: IContextualMenuItem[] = [{ key: 'A', text: 'Fabric 6', data: '6' }, { key: 'B', text: 'Fabric 5', data: '5' }];
+const fabricVersionOptions: IContextualMenuItem[] = [
+  {
+    key: 'A',
+    text: 'Fabric 6',
+    data: '6'
+  },
+  {
+    key: 'B',
+    text: 'Fabric 5',
+    data: '5'
+  }
+];
 
 export interface IHomepageState {
   fabricVer: string;
-  isVersionMenuOpen: boolean;
 }
 
 export class HomePage extends React.Component<any, IHomepageState> {
@@ -27,8 +37,7 @@ export class HomePage extends React.Component<any, IHomepageState> {
     const version = getParameterByName('fabricVer');
 
     this.state = {
-      fabricVer: !!version ? version : fabricVersionOptions[0].data,
-      isVersionMenuOpen: false
+      fabricVer: !!version ? version : fabricVersionOptions[0].data
     };
   }
 
