@@ -76,6 +76,7 @@ dependencies:
   auto-fontsize: 1.0.18
   autoprefixer: 7.2.6
   awesome-typescript-loader: 3.5.0
+  axe-core: 3.2.2
   axe-puppeteer: 1.0.0
   babel-core: 6.26.3
   babel-loader: 7.1.5
@@ -14810,13 +14811,14 @@ packages:
     dependencies:
       '@types/jest': 23.0.0
       '@types/puppeteer': 1.12.3
+      axe-core: 3.2.2
       axe-puppeteer: /axe-puppeteer/1.0.0/puppeteer@1.13.0
       puppeteer: 1.13.0
       tslib: 1.9.3
     dev: false
     name: '@rush-temp/a11y-tests'
     resolution:
-      integrity: sha512-czwjBZCvA90ge3i3dmt+ypnGBhUIjagGIy9z+Sd45HF76BrDvQnBe/nlWdrumt8lsMGilauND0wlfDtC6wT0xw==
+      integrity: sha512-DkRk7Rpj+bxvfTl9i1KYk137vooJAECb8JCHoQehem8ukpiNaX05N8wU6dkAq/wcnm1nkNDL7CAUc1l2VtV8/w==
       tarball: 'file:projects/a11y-tests.tgz'
     version: 0.0.0
   'file:projects/azure-themes.tgz':
@@ -15663,6 +15665,7 @@ specifiers:
   auto-fontsize: ^1.0.18
   autoprefixer: ^7.1.5
   awesome-typescript-loader: ^3.2.3
+  axe-core: ^3.2.2
   axe-puppeteer: ^1.0.0
   babel-core: ^6.26.3
   babel-loader: ^7.1.5
