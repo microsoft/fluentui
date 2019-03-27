@@ -6,5 +6,5 @@ export async function testComponent(component: { name: string; url: string }) {
     const report = await getAxeReport(component.url);
     const sarifReport = axeToSarif(report);
     expect(sarifReport.runs[0].results).toMatchSnapshot();
-  }, 20000);
+  }, 60000);
 }
