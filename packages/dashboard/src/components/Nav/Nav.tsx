@@ -10,7 +10,6 @@ const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 class NavComponent extends BaseComponent<INavProps, INavState> {
   private containerRef: React.RefObject<HTMLDivElement>;
-  private fireCollapse: boolean = false;
 
   constructor(props: INavProps) {
     super(props);
@@ -107,13 +106,6 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     this._setScrollLayout();
   }
 
-  public componentDidUpdate(): void {
-    if (this.fireCollapse) {
-      this.fireCollapse = false;
-      this._setScrollLayout();
-    }
-  }
-
   private _setScrollLayout(): void {
     // We need to call this from window resize so when the viewport is changed we can adjust whether we scroll or not
     // use _async and _events to debounce resize events with RAF
@@ -125,16 +117,19 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
   // Event handlers
   //
   private _onNavCollapseClicked(ev: React.MouseEvent<HTMLElement>): void {
-    this.fireCollapse = true;
-
     // inform the caller about the collapse event
     if (!!this.props.onNavCollapsedCallback) {
       this.props.onNavCollapsedCallback(!this.state.isNavCollapsed);
     }
 
-    this.setState({
-      isNavCollapsed: !this.state.isNavCollapsed
-    });
+    this.setState(
+      {
+        isNavCollapsed: !this.state.isNavCollapsed
+      },
+      () => {
+        this._setScrollLayout();
+      }
+    );
 
     ev.preventDefault();
     ev.stopPropagation();

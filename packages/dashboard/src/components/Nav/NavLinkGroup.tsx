@@ -10,7 +10,6 @@ const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupS
 export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
   private navLinkGroupRef: React.RefObject<HTMLDivElement>;
   private navRootRef: React.RefObject<HTMLDivElement>;
-  private fireCollapseUpdate: boolean = false;
 
   constructor(props: INavLinkGroupProps) {
     super(props);
@@ -114,19 +113,18 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
     );
   }
 
-  public componentDidUpdate(prevProps: INavLinkGroupProps): void {
-    if (this.fireCollapseUpdate && this.props.onCollapse) {
-      this.props.onCollapse();
-      this.fireCollapseUpdate = false;
-    }
-  }
-
   private _onLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
-    this.fireCollapseUpdate = true;
-    this.setState({
-      isExpanded: !this.state.isExpanded,
-      isKeyboardExpanded: !this.state.isKeyboardExpanded
-    });
+    this.setState(
+      {
+        isExpanded: !this.state.isExpanded,
+        isKeyboardExpanded: !this.state.isKeyboardExpanded
+      },
+      () => {
+        if (this.props.onCollapse) {
+          this.props.onCollapse();
+        }
+      }
+    );
     if (this.props.isNavCollapsed) {
       this._offsetUpdated();
     }
@@ -150,8 +148,6 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
   }
 
   private _nestedNavBlur(event: React.FocusEvent<HTMLElement>): void {
-    console.log(event.currentTarget);
-    console.log(event.currentTarget.contains(event.relatedTarget as HTMLElement));
     if (event.relatedTarget === null || !event.currentTarget.contains(event.relatedTarget as HTMLElement)) {
       this.setState({
         isKeyboardExpanded: false
