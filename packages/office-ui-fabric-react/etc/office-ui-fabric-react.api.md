@@ -4705,10 +4705,6 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 }
 
 // @public (undocumented)
-export interface IKeytip {
-}
-
-// @public (undocumented)
 export interface IKeytipLayer {
 }
 
@@ -4748,7 +4744,6 @@ export interface IKeytipLayerStyles {
 // @public (undocumented)
 export interface IKeytipProps {
     calloutProps?: ICalloutProps;
-    componentRef?: IRefObject<IKeytip>;
     content: string;
     disabled?: boolean;
     hasDynamicChildren?: boolean;
@@ -7444,7 +7439,7 @@ export enum KeyboardSpinDirection {
 }
 
 // @public
-export class Keytip extends BaseComponent<IKeytipProps, {}> implements IKeytip {
+export class Keytip extends React.Component<IKeytipProps, {}> {
     // (undocumented)
     render(): JSX.Element;
 }
@@ -8004,7 +7999,7 @@ export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
 }
 
 // @public
-export class Popup extends BaseComponent<IPopupProps, IPopupState> {
+export class Popup extends React.Component<IPopupProps, IPopupState> {
     constructor(props: IPopupProps);
     // (undocumented)
     componentDidMount(): void;
