@@ -13,7 +13,7 @@ export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { text, styles, theme, className, vertical, alignText } = this.props;
+    const { styles, theme, className, vertical, alignText } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -24,8 +24,8 @@ export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
 
     return (
       <div className={this._classNames.root}>
-        <div className={this._classNames.text} role="separator" aria-orientation={vertical ? 'vertical' : 'horizontal'}>
-          {text}
+        <div className={this._classNames.content} role="separator" aria-orientation={vertical ? 'vertical' : 'horizontal'}>
+          {this.props.children}
         </div>
       </div>
     );

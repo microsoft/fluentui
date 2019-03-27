@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Separator } from '../Separator';
-import { mergeStyles } from 'office-ui-fabric-react';
+import { Separator } from '@uifabric/experiments/lib/Separator';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 
 export class SeparatorBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -11,26 +13,56 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
     });
 
     return (
-      <div>
-        <p>Horizontal center aligned</p>
-        <Separator text={message} alignText="center" />
-        <p>Horizontal left aligned</p>
-        <Separator text={message} alignText="start" />
-        <p>Horizontal right aligned</p>
-        <Separator text={message} alignText="end" />
-        <p>Empty horizontal</p>
-        <Separator />
-        <div className={verticalStyle}>
-          <p>Vertical center aligned</p>
-          <Separator vertical text={message} alignText="center" />
-          <p>Vertical start aligned</p>
-          <Separator vertical text={message} alignText="start" />
-          <p>Vertical end aligned</p>
-          <Separator vertical text={message} alignText="end" />
-          <p>Empty vertical</p>
-          <Separator vertical />
-        </div>
-      </div>
+      <Stack gap={15}>
+        <Stack gap={10}>
+          <Text>Horizontal center aligned</Text>
+          <Separator alignText="center">Today</Separator>
+        </Stack>
+        <Stack gap={10}>
+          <Text>Horizontal left aligned</Text>
+          <Separator alignText="start">{message}</Separator>
+        </Stack>
+        <Stack gap={10}>
+          <Text>Horizontal right aligned</Text>
+          <Separator alignText="end">{message}</Separator>
+        </Stack>
+        <Stack gap={10}>
+          <Text>Empty horizontal</Text>
+          <Separator />
+        </Stack>
+        <Stack horizontal horizontalAlign="space-evenly">
+          <Stack horizontalAlign="center" gap={15}>
+            <Text>Vertical center aligned</Text>
+            <Stack.Item className={verticalStyle}>
+              <Separator vertical alignText="center">
+                {message}
+              </Separator>
+            </Stack.Item>
+          </Stack>
+          <Stack horizontalAlign="center" gap={15}>
+            <Text>Vertical start aligned</Text>
+            <Stack.Item className={verticalStyle}>
+              <Separator vertical alignText="start">
+                {message}
+              </Separator>
+            </Stack.Item>
+          </Stack>
+          <Stack horizontalAlign="center" gap={15}>
+            <Text>Vertical end aligned</Text>
+            <Stack.Item className={verticalStyle}>
+              <Separator vertical alignText="end">
+                {message}
+              </Separator>
+            </Stack.Item>
+          </Stack>
+          <Stack horizontalAlign="center" gap={15}>
+            <Text>Empty vertical</Text>
+            <Stack.Item className={verticalStyle}>
+              <Separator vertical />
+            </Stack.Item>
+          </Stack>
+        </Stack>
+      </Stack>
     );
   }
 }

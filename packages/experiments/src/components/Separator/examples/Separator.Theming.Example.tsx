@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Separator } from '../Separator';
-import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { Separator } from '@uifabric/experiments/lib/Separator';
+import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 
 const theme: ITheme = createTheme({
   fonts: {
@@ -16,10 +18,12 @@ export class SeparatorThemingExample extends React.Component<{}, {}> {
     const message = 'Today';
 
     return (
-      <div>
-        <p>Horizontal center aligned with custom theme</p>
-        <Separator text={message} alignText="center" theme={theme} />
-      </div>
+      <Stack gap={5}>
+        <Text>Horizontal center aligned with custom theme</Text>
+        <Separator alignText="center" theme={theme}>
+          {message}
+        </Separator>
+      </Stack>
     );
   }
 }

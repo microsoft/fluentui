@@ -23,11 +23,6 @@ export interface ISeparatorProps extends React.Props<SeparatorBase> {
   styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
 
   /**
-   * Optional text to display in the separator.
-   */
-  text?: string;
-
-  /**
    * Whether the element is a vertical separator.
    */
   vertical?: boolean;
@@ -52,7 +47,7 @@ export interface ISeparatorStyles {
   root: IStyle;
 
   /**
-   * Style for the text element
+   * Style for the content
    */
-  text: IStyle;
+  content: IStyle;
 }

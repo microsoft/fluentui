@@ -68,7 +68,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       },
       className
     ],
-    text: [
+    content: [
       {
         position: 'relative',
         display: 'inline-block',
