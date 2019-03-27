@@ -83,14 +83,16 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     }
   }
 
-  public dismiss = (): void => {
+  public dismiss = (withTimeOut?: boolean): void => {
     this._async.clearTimeout(this._openTimerId);
     this._async.clearTimeout(this._dismissTimerId);
-    this.setState({
-      isHoverCardVisible: false,
-      mode: ExpandingCardMode.compact,
-      openMode: OpenCardMode.hover
-    });
+    if (!withTimeOut) {
+      this._setDismissedState();
+    } else {
+      this._dismissTimerId = this._async.setTimeout(() => {
+        this._setDismissedState();
+      }, this.props.cardDismissDelay!);
+    }
   };
 
   // Render
@@ -213,7 +215,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
       // Dismiss if not sticky and currentTarget is the same element that mouse last entered
       if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
-        this._executeCardDismiss();
+        this.dismiss(true);
       }
     } else {
       // If this is a mouseleave event and the component is sticky, do not dismiss.
@@ -221,20 +223,16 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         return;
       }
 
-      this._executeCardDismiss();
+      this.dismiss(true);
     }
   };
 
-  private _executeCardDismiss = (): void => {
-    this._async.clearTimeout(this._openTimerId);
-    this._async.clearTimeout(this._dismissTimerId);
-    this._dismissTimerId = this._async.setTimeout(() => {
-      this.setState({
-        isHoverCardVisible: false,
-        mode: ExpandingCardMode.compact,
-        openMode: OpenCardMode.hover
-      });
-    }, this.props.cardDismissDelay!);
+  private _setDismissedState = () => {
+    this.setState({
+      isHoverCardVisible: false,
+      mode: ExpandingCardMode.compact,
+      openMode: OpenCardMode.hover
+    });
   };
 
   private _instantOpenAsExpanded = (ev: React.MouseEvent<HTMLDivElement>): void => {
