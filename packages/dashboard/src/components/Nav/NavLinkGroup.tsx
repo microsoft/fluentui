@@ -3,13 +3,14 @@ import { INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavL
 import { NavLink } from './NavLink';
 import { getStyles } from './NavLinkGroup.styles';
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, FocusZone, IFocusZone } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupStyles>();
 
 export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
   private navLinkGroupRef: React.RefObject<HTMLDivElement>;
   private navRootRef: React.RefObject<HTMLDivElement>;
+  private focusZone: React.RefObject<IFocusZone>;
   private fireCollapseUpdate: boolean = false;
 
   constructor(props: INavLinkGroupProps) {
@@ -22,6 +23,7 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
     };
     this.navLinkGroupRef = React.createRef<HTMLDivElement>();
     this.navRootRef = React.createRef<HTMLDivElement>();
+    this.focusZone = React.createRef<IFocusZone>();
     this._onLinkClicked = this._onLinkClicked.bind(this);
     this._offsetUpdated = this._offsetUpdated.bind(this);
   }
@@ -63,7 +65,13 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
             )}
             <div className={classNames.nestedNavLinksWrapper}>
               {/* This one has the blur. */}
-              <ul className={classNames.nestedNavLinks} role="menu" aria-labelledby={link.name + '_id'}>
+              <FocusZone
+                elementType="ul"
+                componentRef={this.focusZone}
+                className={classNames.nestedNavLinks}
+                role="menu"
+                aria-labelledby={link.name + '_id'}
+              >
                 {link.links.map((nestedLink: INavLink, linkIndex: number) => {
                   return (
                     <li role="none" key={linkIndex}>
@@ -87,7 +95,7 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
                     </li>
                   );
                 })}
-              </ul>
+              </FocusZone>
             </div>
           </div>
         )}
@@ -95,7 +103,7 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
     );
   }
 
-  public componentDidUpdate(): void {
+  public componentDidUpdate(prevProps: INavLinkGroupProps): void {
     if (this.fireCollapseUpdate && this.props.onCollapse) {
       this.props.onCollapse();
       this.fireCollapseUpdate = false;
@@ -105,14 +113,24 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
   private _onLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
     this.fireCollapseUpdate = true;
     this.setState({
-      isExpanded: !this.state.isExpanded
+      isExpanded: !this.state.isExpanded,
+      isKeyboardExpanded: !this.state.isKeyboardExpanded
     });
+    if (this.props.isNavCollapsed) {
+      this._offsetUpdated();
+      // we need to then focus on the FocusZone within our nested nav
+      // on esc we need to pop back out to the menu button that owns the nav
+      if (this.focusZone.current) {
+        // this isn't working because of the async nature of the state change so it can't focus on what isn't in the dom.
+        console.log(this.focusZone.current.focus(true));
+      }
+    }
     ev.preventDefault();
     ev.stopPropagation();
   }
 
   // calculate the offset due to scroll so we always position the sub nav correctly
-  private _offsetUpdated(ev: React.MouseEvent<HTMLElement>): void {
+  private _offsetUpdated(_ev?: React.MouseEvent<HTMLElement>): void {
     if (this.navRootRef.current && this.navLinkGroupRef.current && this.props.navRef.current) {
       this.navLinkGroupRef.current.style.top = this.navRootRef.current.offsetTop - this.props.navRef.current.scrollTop + 'px';
     }
