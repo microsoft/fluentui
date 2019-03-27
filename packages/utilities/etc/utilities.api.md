@@ -149,7 +149,7 @@ export class Customizations {
 }
 
 // @public
-export class Customizer extends BaseComponent<ICustomizerProps> {
+export class Customizer extends React_2.Component<ICustomizerProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
