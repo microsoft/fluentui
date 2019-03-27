@@ -24,10 +24,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
             border-color: #f3f2f1;
-            border-radius: 0px;
+            border-radius: 2px;
             border: none;
             box-sizing: border-box;
-            color: #a19f9d;
+            color: #c8c6c4;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -147,10 +147,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
             border-color: #f3f2f1;
-            border-radius: 0px;
+            border-radius: 2px;
             border: none;
             box-sizing: border-box;
-            color: #a19f9d;
+            color: #c8c6c4;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -797,10 +797,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: transparent;
-            border-radius: 0px;
+            border-radius: 2px;
             border: none;
             box-sizing: border-box;
-            color: #323130;
+            color: #0078d4;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -847,14 +847,16 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            color: #201f1e;
+            background-color: #f3f2f1;
+            color: #106ebe;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            color: #0078d4;
+            background-color: #edebe9;
+            color: #005a9e;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -926,10 +928,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #323130;
+              color: #0078d4;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -976,14 +978,16 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              color: #201f1e;
+              background-color: #f3f2f1;
+              color: #106ebe;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              color: #0078d4;
+              background-color: #edebe9;
+              color: #005a9e;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -1068,10 +1072,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           background-color: #f3f2f1;
           border-color: #f3f2f1;
-          border-radius: 0px;
+          border-radius: 2px;
           border: none;
           box-sizing: border-box;
-          color: #a19f9d;
+          color: #c8c6c4;
           cursor: default;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1191,10 +1195,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           background-color: #f3f2f1;
           border-color: #f3f2f1;
-          border-radius: 0px;
+          border-radius: 2px;
           border: none;
           box-sizing: border-box;
-          color: #a19f9d;
+          color: #c8c6c4;
           cursor: default;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1464,7 +1468,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
               color: #605e5c;
@@ -1597,10 +1601,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: transparent;
-          border-radius: 0px;
+          border-radius: 2px;
           border: none;
           box-sizing: border-box;
-          color: #323130;
+          color: #0078d4;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1647,14 +1651,16 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 0px;
         }
         &:hover {
-          color: #201f1e;
+          background-color: #f3f2f1;
+          color: #106ebe;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          color: #0078d4;
+          background-color: #edebe9;
+          color: #005a9e;
         }
     data-is-focusable={true}
     onClick={[Function]}
@@ -1714,10 +1720,10 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: transparent;
-          border-radius: 0px;
+          border-radius: 2px;
           border: none;
           box-sizing: border-box;
-          color: #323130;
+          color: #0078d4;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1764,14 +1770,16 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 0px;
         }
         &:hover {
-          color: #201f1e;
+          background-color: #f3f2f1;
+          color: #106ebe;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          color: #0078d4;
+          background-color: #edebe9;
+          color: #005a9e;
         }
     data-is-focusable={true}
     onClick={[Function]}
