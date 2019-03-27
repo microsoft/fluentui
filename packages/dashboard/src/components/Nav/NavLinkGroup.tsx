@@ -53,7 +53,11 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
             so those elements need to be separated. This one has the shadow.
         */}
         {link.links && (
-          <div className={classNames.nestedNav} role="none" {...isNavCollapsed && { ref: this.navLinkGroupRef }}>
+          <div
+            className={classNames.nestedNav}
+            role="none"
+            {...isNavCollapsed && { ref: this.navLinkGroupRef, 'data-is-focusable': false }}
+          >
             {isNavCollapsed && (
               <NavLink
                 isNavCollapsed={isNavCollapsed}
