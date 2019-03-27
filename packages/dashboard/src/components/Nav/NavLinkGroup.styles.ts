@@ -57,8 +57,6 @@ sort out extensibility */
         listStyle: 'none'
       },
       isNavCollapsed && {
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
         width: `${flyoutNavWidth}px`,
         marginTop: `-${navItemHeight}px`,
         paddingTop: `${navItemHeight}px`,

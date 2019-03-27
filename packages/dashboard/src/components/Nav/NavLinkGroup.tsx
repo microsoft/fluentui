@@ -7,7 +7,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupStyles>();
 
-export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLinkGroupStates> {
+export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
   private navLinkGroupRef: React.RefObject<HTMLDivElement>;
   private navRootRef: React.RefObject<HTMLDivElement>;
   private fireCollapseUpdate: boolean = false;
@@ -38,14 +38,14 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
           onClick={this._onLinkClicked}
           data-value={link.name}
           aria-label={link.ariaLabel ? link.ariaLabel : link.name}
-          aria-expanded={isExpanded}
-          aria-haspopup={!!link.links}
+          {...isNavCollapsed && link.links && { 'aria-expanded': isKeyboardExpanded, 'aria-haspopup': true }}
           primaryIconName={link.icon}
           isSelected={hasSelectedNestedLink}
           hasSelectedNestedLink={hasSelectedNestedLink}
           hasNestedMenu={true}
           isExpanded={isExpanded}
           role="menuitem"
+          id={link.name + '_id'}
         />
         {/* If you apply backdrop-filter to an element with box-shadow, the filter will also apply to the shadow,
             so those elements need to be separated. This one has the shadow.
@@ -63,7 +63,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
             )}
             <div className={classNames.nestedNavLinksWrapper}>
               {/* This one has the blur. */}
-              <ul className={classNames.nestedNavLinks} role="menu">
+              <ul className={classNames.nestedNavLinks} role="menu" aria-labelledby={link.name + '_id'}>
                 {link.links.map((nestedLink: INavLink, linkIndex: number) => {
                   return (
                     <li role="none" key={linkIndex}>
@@ -111,6 +111,7 @@ export class NavLinkGroup extends React.PureComponent<INavLinkGroupProps, INavLi
     ev.stopPropagation();
   }
 
+  // calculate the offset due to scroll so we always position the sub nav correctly
   private _offsetUpdated(ev: React.MouseEvent<HTMLElement>): void {
     if (this.navRootRef.current && this.navLinkGroupRef.current && this.props.navRef.current) {
       this.navLinkGroupRef.current.style.top = this.navRootRef.current.offsetTop - this.props.navRef.current.scrollTop + 'px';
