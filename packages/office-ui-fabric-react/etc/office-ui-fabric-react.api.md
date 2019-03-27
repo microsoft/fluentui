@@ -507,8 +507,6 @@ export class CheckBase extends React.PureComponent<ICheckProps, {}> {
     static defaultProps: ICheckProps;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    shouldComponentUpdate(newProps: ICheckProps): boolean;
 }
 
 // @public (undocumented)
