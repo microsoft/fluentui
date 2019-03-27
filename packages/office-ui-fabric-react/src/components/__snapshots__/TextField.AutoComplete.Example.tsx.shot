@@ -99,6 +99,7 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
             {
               align-items: stretch;
               background: #ffffff;
+              border-radius: 2px;
               border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
@@ -149,8 +150,8 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -199,8 +200,8 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid #8a8886;
+          border-radius: 2px;
+          border: none;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -225,14 +226,15 @@ exports[`Component Examples renders TextField.AutoComplete.Example.tsx correctly
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border-color: #ffffff;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #605e5c;
+          left: 2px;
+          outline: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

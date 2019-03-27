@@ -73,6 +73,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   background-color: #f3f2f1;
                   background: #ffffff;
                   border-color: #f3f2f1;
+                  border-radius: 2px;
                   border: 1px solid #a19f9d;
                   box-shadow: none;
                   box-sizing: border-box;
@@ -120,7 +121,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
+                    padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
                     text-overflow: ellipsis;
@@ -296,6 +297,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   background-color: #f3f2f1;
                   background: #ffffff;
                   border-color: #f3f2f1;
+                  border-radius: 2px;
                   border: 1px solid #a19f9d;
                   box-shadow: none;
                   box-sizing: border-box;
@@ -343,7 +345,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
+                    padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
                     text-overflow: ellipsis;

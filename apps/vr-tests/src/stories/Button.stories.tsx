@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorTall } from '../utilities/FluentDecorator';
+import { FabricDecorator, FabricDecoratorTall } from '../utilities';
 import {
   DefaultButton,
   ActionButton,

@@ -9,8 +9,8 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f3f2f1;
-          border-radius: 0px;
+          background-color: #ffffff;
+          border-radius: 2px;
           border: 1px solid #8a8886;
           box-sizing: border-box;
           color: #323130;
@@ -36,14 +36,14 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
+          left: 2px;
           outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -60,7 +60,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           top: 0px;
         }
         &:hover {
-          background-color: #edebe9;
+          background-color: #f3f2f1;
           color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
@@ -68,7 +68,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           color: Highlight;
         }
         &:active {
-          background-color: #c8c6c4;
+          background-color: #edebe9;
           color: #201f1e;
         }
     data-is-focusable={true}
@@ -284,7 +284,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
-                        border-radius: 0px;
+                        border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
                         color: #605e5c;
@@ -310,14 +310,14 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 2px;
                         content: "";
-                        left: 0px;
+                        left: 2px;
                         outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 2px;
+                        top: 2px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -334,6 +334,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         top: 0px;
                       }
                       &:hover {
+                        background-color: #f3f2f1;
                         color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
@@ -341,7 +342,8 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         color: Highlight;
                       }
                       &:active {
-                        color: #0078d4;
+                        background-color: #edebe9;
+                        color: #005a9e;
                       }
                   data-is-focusable={true}
                   data-is-visible={true}
