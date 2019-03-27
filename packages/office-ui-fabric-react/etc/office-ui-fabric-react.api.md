@@ -489,7 +489,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 // Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
-export class Callout extends BaseComponent<ICalloutProps, ICalloutState> {
+export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     constructor(props: ICalloutProps);
     // (undocumented)
     render(): JSX.Element;
@@ -1171,7 +1171,8 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
 export const FocusTrapCallout: React.StatelessComponent<IFocusTrapCalloutProps>;
 
 // @public (undocumented)
-export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+    constructor(props: IFocusTrapZoneProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -7447,7 +7448,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
 // 
 // @public
-export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponent<{}>, {}> {
+export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)

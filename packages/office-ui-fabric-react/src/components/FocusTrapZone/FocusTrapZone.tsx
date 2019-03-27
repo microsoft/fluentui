@@ -1,17 +1,18 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  initializeComponentRef,
   elementContains,
   getNativeProps,
   divProperties,
   getFirstTabbable,
   getLastTabbable,
   getNextElement,
-  focusAsync
+  focusAsync,
+  on
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
-export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
   private static _focusStack: FocusTrapZone[] = [];
 
   private _root = React.createRef<HTMLDivElement>();
@@ -23,7 +24,12 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _previouslyFocusedElementInTrapZone?: HTMLElement;
   private _hasFocusHandler: boolean;
   private _hasClickHandler: boolean;
+  private _disposables: (() => void)[] = [];
 
+  constructor(props: IFocusTrapZoneProps) {
+    super(props);
+    initializeComponentRef(this);
+  }
   public componentDidMount(): void {
     this._bringFocusIntoZone();
     this._updateEventHandlers(this.props);
@@ -52,8 +58,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentWillUnmount(): void {
-    this._events.dispose();
     this._returnFocusToInitiator();
+    this._disposables.forEach((dispose: () => void) => dispose());
   }
 
   public render(): JSX.Element {
@@ -216,16 +222,18 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = newProps;
 
     if (forceFocusInsideTrap && !this._hasFocusHandler) {
-      this._events.on(window, 'focus', this._forceFocusInTrap, true);
+      this._disposables.push(on(window, 'focus', this._forceFocusInTrap, true));
     } else if (!forceFocusInsideTrap && this._hasFocusHandler) {
-      this._events.off(window, 'focus', this._forceFocusInTrap, true);
+      this._disposables.forEach(dispose => dispose());
+      this._disposables = [];
     }
     this._hasFocusHandler = forceFocusInsideTrap;
 
     if (!isClickableOutsideFocusTrap && !this._hasClickHandler) {
-      this._events.on(window, 'click', this._forceClickInTrap, true);
+      this._disposables.push(on(window, 'click', this._forceClickInTrap, true));
     } else if (isClickableOutsideFocusTrap && this._hasClickHandler) {
-      this._events.off(window, 'click', this._forceClickInTrap, true);
+      this._disposables.forEach(dispose => dispose());
+      this._disposables = [];
     }
     this._hasClickHandler = !isClickableOutsideFocusTrap;
   }
