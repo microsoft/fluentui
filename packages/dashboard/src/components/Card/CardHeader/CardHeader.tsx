@@ -13,8 +13,9 @@ export class CardHeader extends React.Component<ICardHeaderProps, {}> {
     const getClassNames = classNamesFunction<ICardHeaderProps, ICardHeaderStyles>();
     const fontSize = this.props.fontSize;
     const headerText = this.props.headerText;
+    const cardHeaderCallback = this.props.cardHeaderCallback;
     const annotationText = this.props.annotationText;
-    const classNames = getClassNames(getStyles, { fontSize });
+    const classNames = getClassNames(getStyles, { fontSize, cardHeaderCallback });
 
     let fontSizeMapping = [{ fontSize: 28, lineHeight: '36px' }, { fontSize: 16, lineHeight: '21px' }];
     if (fontSize === FontSize.medium) {
@@ -23,11 +24,15 @@ export class CardHeader extends React.Component<ICardHeaderProps, {}> {
 
     return (
       <div className={classNames.root}>
-        <div className={classNames.headerText} title={headerText}>
+        <div className={classNames.headerText} title={headerText} onClick={this._handleHeaderClick}>
           <AutoFontSize text={headerText!} targetLines={2} fontSizeMapping={fontSizeMapping} ellipsisOverflow />
         </div>
         <span className={classNames.annotationText}>{annotationText}</span>
       </div>
     );
   }
+
+  private _handleHeaderClick = () => {
+    this.props.cardHeaderCallback ? this.props.cardHeaderCallback() : '';
+  };
 }
