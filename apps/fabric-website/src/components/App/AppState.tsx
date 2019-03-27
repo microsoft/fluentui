@@ -912,6 +912,14 @@ export const AppState: IAppState = {
                     )
                 }
               ]
+            },
+            {
+              title: 'Keytips',
+              url: '#/components/Keytips',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Keytips" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/KeytipsComponentPage').KeytipsComponentPage))
             }
           ]
         }
