@@ -11,10 +11,6 @@ export class CheckBase extends React.PureComponent<ICheckProps, {}> {
     checked: false
   };
 
-  public shouldComponentUpdate(newProps: ICheckProps): boolean {
-    return this.props.checked !== newProps.checked || this.props.theme !== newProps.theme || this.props.className !== newProps.className;
-  }
-
   public render(): JSX.Element {
     const { checked, className, theme, styles } = this.props;
 
