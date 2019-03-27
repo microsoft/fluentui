@@ -4540,7 +4540,7 @@ export interface IGroupSpacerStyles {
 
 // @public (undocumented)
 export interface IHoverCard {
-    dismiss: () => void;
+    dismiss: (withTimeOut?: boolean) => void;
 }
 
 // @public

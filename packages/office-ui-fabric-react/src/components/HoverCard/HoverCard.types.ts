@@ -7,9 +7,10 @@ import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
 export interface IHoverCard {
   /**
-   * Forces the HoverCard to be immediately to be dismissed bypassing the delay.
+   * Public `dismiss` method to be used through `componentRef` of the HoverCard.
+   * Boolean argument controls if the dismiss happens with a timeout delay.
    */
-  dismiss: () => void;
+  dismiss: (withTimeOut?: boolean) => void;
 }
 
 /**
