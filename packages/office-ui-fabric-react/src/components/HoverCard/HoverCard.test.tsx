@@ -140,11 +140,20 @@ describe('HoverCard', () => {
 
     expect(hoverCard).toBeDefined();
 
+    // firing the onCardVisible callback after the component is updated.
     component.setState({ isHoverCardVisible: true });
     expect(cardVisible).toEqual(true);
 
+    // firing the onCardHide callback after the component is updated.
     component.setState({ isHoverCardVisible: false });
     expect(cardHidden).toEqual(true);
+
+    // firing the onCardHide callback after the component is dismissed directly.
+    component.setState({ isHoverCardVisible: true });
+    cardHidden = false;
+    hoverCard.dismiss();
+    expect(cardHidden).toEqual(true);
+
     component.unmount();
   });
 });

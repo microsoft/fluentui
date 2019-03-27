@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
-import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType } from './HoverCard.types';
+import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
 import { PlainCard } from './PlainCard/PlainCard';
@@ -15,7 +15,7 @@ export interface IHoverCardState {
   openMode?: OpenCardMode;
 }
 
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
+export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
   public static defaultProps = {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
@@ -60,6 +60,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       this._events.off();
       this._setEventListeners();
     }
+
     if (prevState.isHoverCardVisible !== this.state.isHoverCardVisible) {
       if (this.state.isHoverCardVisible) {
         this._async.setTimeout(() => {
@@ -81,6 +82,16 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       }
     }
   }
+
+  public dismiss = (): void => {
+    this._async.clearTimeout(this._openTimerId);
+    this._async.clearTimeout(this._dismissTimerId);
+    this.setState({
+      isHoverCardVisible: false,
+      mode: ExpandingCardMode.compact,
+      openMode: OpenCardMode.hover
+    });
+  };
 
   // Render
   public render(): JSX.Element {

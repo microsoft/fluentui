@@ -5,7 +5,12 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
-export interface IHoverCard {}
+export interface IHoverCard {
+  /**
+   * Forces the HoverCard to be immediately to be dismissed bypassing the delay.
+   */
+  dismiss: () => void;
+}
 
 /**
  * HoverCard component props.
