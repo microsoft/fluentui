@@ -18,6 +18,19 @@ import { IProcessedStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
+const DEFAULT_STRINGS = {
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker'
+};
+
 const leftArrow = 'Up';
 const rightArrow = 'Down';
 const closeIcon = 'CalculatorMultiply';
@@ -72,7 +85,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     firstDayOfWeek: DayOfWeek.Sunday,
     dateRangeType: DateRangeType.Day,
     showGoToToday: true,
-    strings: null,
+    strings: DEFAULT_STRINGS,
     highlightCurrentMonth: false,
     highlightSelectedMonth: false,
     navigationIcons: defaultIconStrings,
