@@ -3,14 +3,13 @@ import { INavLinkGroupProps, INavLinkGroupStates, INavLinkGroupStyleProps, INavL
 import { NavLink } from './NavLink';
 import { getStyles } from './NavLinkGroup.styles';
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
-import { classNamesFunction, FocusZone, IFocusZone } from 'office-ui-fabric-react';
+import { classNamesFunction, FocusZone, IFocusZone, KeyCodes } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<INavLinkGroupStyleProps, INavLinkGroupStyles>();
 
 export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGroupStates> {
   private navLinkGroupRef: React.RefObject<HTMLDivElement>;
   private navRootRef: React.RefObject<HTMLDivElement>;
-  private focusZone: React.RefObject<IFocusZone>;
   private fireCollapseUpdate: boolean = false;
 
   constructor(props: INavLinkGroupProps) {
@@ -23,15 +22,17 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
     };
     this.navLinkGroupRef = React.createRef<HTMLDivElement>();
     this.navRootRef = React.createRef<HTMLDivElement>();
-    this.focusZone = React.createRef<IFocusZone>();
     this._onLinkClicked = this._onLinkClicked.bind(this);
     this._offsetUpdated = this._offsetUpdated.bind(this);
+    this._nestedNavBlur = this._nestedNavBlur.bind(this);
+    this._escapeSubNavFocus = this._escapeSubNavFocus.bind(this);
   }
 
   public render(): JSX.Element {
     const { link, isNavCollapsed } = this.props;
     const { hasSelectedNestedLink, isExpanded, isKeyboardExpanded } = this.state;
     const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed, isKeyboardExpanded });
+    const NestedComponent = isNavCollapsed && isKeyboardExpanded ? FocusZone : 'ul';
     return (
       <div className={classNames.root} {...isNavCollapsed && link.links && { onMouseEnter: this._offsetUpdated, ref: this.navRootRef }}>
         <NavLink
@@ -69,12 +70,18 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
             )}
             <div className={classNames.nestedNavLinksWrapper}>
               {/* This one has the blur. */}
-              <FocusZone
-                elementType="ul"
-                componentRef={this.focusZone}
+              <NestedComponent
                 className={classNames.nestedNavLinks}
                 role="menu"
                 aria-labelledby={link.name + '_id'}
+                {...isKeyboardExpanded &&
+                  isNavCollapsed && {
+                    componentRef: this._keyboardFocusSubNav,
+                    onKeyDown: this._escapeSubNavFocus,
+                    isCircularNavigation: true,
+                    elementType: 'ul',
+                    onBlur: this._nestedNavBlur
+                  }}
               >
                 {link.links.map((nestedLink: INavLink, linkIndex: number) => {
                   return (
@@ -99,7 +106,7 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
                     </li>
                   );
                 })}
-              </FocusZone>
+              </NestedComponent>
             </div>
           </div>
         )}
@@ -122,15 +129,34 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
     });
     if (this.props.isNavCollapsed) {
       this._offsetUpdated();
-      // we need to then focus on the FocusZone within our nested nav
-      // on esc we need to pop back out to the menu button that owns the nav
-      if (this.focusZone.current) {
-        // this isn't working because of the async nature of the state change so it can't focus on what isn't in the dom.
-        console.log(this.focusZone.current.focus(true));
-      }
     }
     ev.preventDefault();
     ev.stopPropagation();
+  }
+
+  // We're using the ref callback to focus the element so we can guarantee the element exists
+  private _keyboardFocusSubNav(focusZone: IFocusZone): void {
+    if (focusZone) {
+      focusZone.focus(true);
+    }
+  }
+
+  private _escapeSubNavFocus(event: React.KeyboardEvent<HTMLElement>): void {
+    if (event.which === KeyCodes.escape) {
+      this.setState({
+        isKeyboardExpanded: false
+      });
+    }
+  }
+
+  private _nestedNavBlur(event: React.FocusEvent<HTMLElement>): void {
+    console.log(event.currentTarget);
+    console.log(event.currentTarget.contains(event.relatedTarget as HTMLElement));
+    if (event.relatedTarget === null || !event.currentTarget.contains(event.relatedTarget as HTMLElement)) {
+      this.setState({
+        isKeyboardExpanded: false
+      });
+    }
   }
 
   // calculate the offset due to scroll so we always position the sub nav correctly
