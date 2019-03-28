@@ -52,6 +52,7 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
                   onClick={link.onClick}
                   data-value={link.name}
                   aria-label={link.ariaLabel ? link.ariaLabel : link.name}
+                  {...link.isSelected && { 'aria-current': 'page' }}
                   primaryIconName={link.icon}
                   hasNestedMenu={false}
                   isNested={false}

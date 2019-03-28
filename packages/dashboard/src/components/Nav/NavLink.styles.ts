@@ -83,12 +83,13 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
       fontSize: navIconSize,
       color: DefaultPalette.black
     },
-    secondaryItemContainer: {},
     secondaryIcon: [
       {
+        flex: '0 0 48px',
         fontSize: navIconSize,
         color: DefaultPalette.black,
-        transition: 'transform 200ms'
+        transition: 'transform 200ms',
+        textAlign: 'center'
       },
       isExpanded && {
         transform: 'rotate(-180deg)'

@@ -47,14 +47,14 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
       <FocusZone isCircularNavigation direction={FocusZoneDirection.vertical} className={classNames.root} componentRef={this.focusRef}>
         <div className={classNames.navWrapper}>
           <nav role="navigation" className={classNames.navContainer} ref={this.containerRef} aria-expanded={!navCollapsed}>
-            <ul role="menubar" className={classNames.navGroup}>
+            <ul role="menubar" aria-orientation="vertical" className={classNames.navGroup}>
               <li role="none" title={'NavToggle'}>
                 {/** TODO convert this to an actual checkbox and hook into changed event instead */}
                 <NavLink
                   onClick={this._onNavCollapseClicked}
                   data-hint={dataHint}
                   data-value={'NavToggle'}
-                  aria-label="Navigation Collapse Toggle"
+                  aria-label="Navigation Collapse"
                   primaryIconName={'GlobalNavButton'}
                   role="switch"
                   aria-checked={navCollapsed}

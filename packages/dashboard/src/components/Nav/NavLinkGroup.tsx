@@ -44,7 +44,9 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
           onClick={this._onLinkClicked}
           data-value={link.name}
           aria-label={link.ariaLabel ? link.ariaLabel : link.name}
-          {...isNavCollapsed && link.links && { 'aria-expanded': isKeyboardExpanded, 'aria-haspopup': true }}
+          aria-controls={link.name + 'menu_id'}
+          aria-expanded={isExpanded}
+          {...isNavCollapsed && link.links && { 'aria-haspopup': true, 'aria-expanded': isKeyboardExpanded }}
           primaryIconName={link.icon}
           isSelected={hasSelectedNestedLink}
           hasSelectedNestedLink={hasSelectedNestedLink}
@@ -75,8 +77,9 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
               {/* This one has the blur. */}
               <NestedComponent
                 className={classNames.nestedNavLinks}
-                role="menu"
                 aria-labelledby={link.name + '_id'}
+                role={isNavCollapsed ? 'menu' : 'region'}
+                id={link.name + 'menu_id'}
                 {...isKeyboardExpanded &&
                   isNavCollapsed && {
                     componentRef: this._keyboardFocusSubNav,
@@ -88,17 +91,16 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
               >
                 {link.links.map((nestedLink: INavLink, linkIndex: number) => {
                   return (
-                    <li role="none" key={linkIndex}>
+                    <li role="none" key={nestedLink.name + '_key'}>
                       <NavLink
-                        key={linkIndex * 100}
                         isNavCollapsed={isNavCollapsed}
-                        id={nestedLink.name}
                         name={nestedLink.name}
                         href={nestedLink.url}
                         target={nestedLink.target}
                         onClick={nestedLink.onClick}
                         data-value={nestedLink.name}
                         aria-label={nestedLink.ariaLabel ? nestedLink.ariaLabel : nestedLink.name}
+                        {...nestedLink.isSelected && { 'aria-current': 'page' }}
                         primaryIconName={nestedLink.icon}
                         hasNestedMenu={false}
                         hasSelectedNestedLink={false}

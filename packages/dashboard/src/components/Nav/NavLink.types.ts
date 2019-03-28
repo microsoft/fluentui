@@ -48,7 +48,6 @@ export interface INavLinkStyles {
   icon: IStyle;
   text: IStyle;
   secondaryIcon: IStyle;
-  secondaryItemContainer: IStyle;
 }
 
 export interface INavLinkStyleProps {
