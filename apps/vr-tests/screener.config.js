@@ -1,18 +1,8 @@
 const cp = require('child_process');
 
-function execSync(command) {
-  return cp.execSync(command, {
-    stdio: ['pipe', 'pipe', process.stderr]
-  });
-}
-
-function runGit(command) {
-  return execSync(`git ${command}`);
-}
-
-export function getCurrentHash() {
+function getCurrentHash() {
   try {
-    const buffer = runGit('rev-parse HEAD');
+    const buffer = cp.execSync('git rev-parse HEAD', { stdio: ['pipe', 'pipe', process.stderr] });
 
     if (buffer) {
       return buffer.toString().trim();
