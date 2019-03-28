@@ -145,7 +145,7 @@ module.exports = {
           new ForkTsCheckerWebpackPlugin()
           // This sends output to stderr for some reason, which makes rush build say
           // "succeeded with warnings" when there were no real warnings
-          // ...(process.env.TRAVIS ? [] : [new webpack.ProgressPlugin()])
+          // ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()])
         ]
       },
       customConfig
