@@ -190,7 +190,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       vertical-align: top;
                     }
               >
-
+                 
                 Pivot 1
               </span>
             </span>
@@ -342,7 +342,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       vertical-align: top;
                     }
               >
-
+                 
                 Pivot 2
               </span>
             </span>
@@ -494,7 +494,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       vertical-align: top;
                     }
               >
-
+                 
                 Pivot 3
               </span>
             </span>
@@ -781,6 +781,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -907,6 +908,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -1076,7 +1078,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
           </div>
           <span>
             Go to
-
+             
             <a
               aria-describedby="ktp-layer-id ktp-a-2"
               className=
