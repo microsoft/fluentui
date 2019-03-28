@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { Dropdown, IDropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export const DropdownRequiredExample: React.StatelessComponent = () => {
   const dropdownRef = React.createRef<IDropdown>();
   const onSetFocus = () => dropdownRef.current!.focus(true);
 
+  const stackTokens: IStackTokens = { childrenGap: 20 };
+
   return (
-    <Stack horizontal gap={20} verticalAlign="end">
+    <Stack horizontal tokens={stackTokens} verticalAlign="end">
       <Dropdown
         componentRef={dropdownRef}
         placeholder="Select an option"
