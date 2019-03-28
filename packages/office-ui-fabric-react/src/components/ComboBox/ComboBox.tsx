@@ -388,6 +388,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
                 aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 aria-activedescendant={this._getAriaActiveDescentValue()}
+                aria-required={required}
                 aria-disabled={disabled}
                 aria-owns={isOpen ? id + '-list' : undefined}
                 spellCheck={false}

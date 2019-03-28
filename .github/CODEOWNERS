@@ -24,7 +24,7 @@ jest.config.js @kenotron @ecraig12345
 tsconfig.json @kenotron @ecraig12345
 rush.json @kenotron @ecraig12345
 LICENSE @kenotron @ecraig12345
-.travis.yml @kenotron @ecraig12345
+azure-pipelines.yml @ecraig12345 @kenotron
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
