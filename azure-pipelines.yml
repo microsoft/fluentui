@@ -10,29 +10,13 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+- task: ms.vss-keros-publishTestResultTask.KerosQueuePublishTestResultJobTask.Publish Accessibility Check Results@0
+  displayName: 'Publish Accessibility Check Results'
+  inputs:
+    threshold: 40
+    searchfolder: '$(Agent.BuildDirectory)/apps/a11y-tests/src/tests/sarif/'
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/WDIO*.xml'
+  inputs:
+    testResultsFiles: '**/WDIO*.xml'
 
-  - script: |
-      node common/scripts/install-run-rush.js install --bypass-policy
-    displayName: rush install
-
-  - script: |
-      npm run checkchange
-    displayName: check change
-
-  - script: |
-      npm run buildci
-    displayName: build ci
-
-  - script: |
-      npm run vrtest
-    displayName: run VR Test
-    env:
-      SCREENER_API_KEY: $(screener.key)
-
-  - script: |
-      npm run check-for-changed-files
-    displayName: check for change file
