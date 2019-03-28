@@ -6,6 +6,7 @@ import { IDictionaryStringTo } from './dictionary-types';
 export type ImageCodedAs = 'Decorative' | 'Meaningful';
 
 export function getMatchesFromRule(ruleId: string): (node: any, virtualNode: any) => boolean {
+  // @ts-ignore
   return axe._audit.defaultConfig.rules.filter(rule => rule.id === ruleId)[0].matches;
 }
 
@@ -32,6 +33,7 @@ export function getPropertyValuesMatching(node: HTMLElement, regex: RegExp): IDi
     for (let i = 0; i < attrs.length; i++) {
       const name = attrs[i].name;
       if (regex.test(name)) {
+        // @ts-ignore
         dictionary[name] = node.getAttribute(name);
       }
     }
@@ -45,6 +47,7 @@ export function getAttributes(node: HTMLElement, attributes: string[]): IDiction
     .filter(atributeName => node.hasAttribute(atributeName))
     .forEach(attributeName => {
       const attributeValue = node.getAttribute(attributeName);
+      // @ts-ignore
       retDict[attributeName] = attributeValue.length > 0 ? attributeValue : null;
     });
 
@@ -66,14 +69,17 @@ export function getImageCodedAs(node: HTMLElement): ImageCodedAs {
     return 'Decorative';
   }
 
+  // @ts-ignore
   if (getAccessibleText(node, false) !== '' || isWhiteSpace(alt)) {
     return 'Meaningful';
   }
 
+  // @ts-ignore
   return null;
 }
 
 export function isWhiteSpace(text: string): boolean {
+  // @ts-ignore
   return text && text.length > 0 && text.trim() === '';
 }
 
@@ -94,5 +100,6 @@ export function getImageType(node: HTMLElement): string {
     imageType = 'CSS background-image';
   }
 
+  // @ts-ignore
   return imageType;
 }

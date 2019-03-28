@@ -45,7 +45,7 @@ function createSelector(): string {
     'treegrid'
   ];
 
-  const selectors = [];
+  const selectors: string[] = [];
   roles.forEach((role: string) => {
     selectors.push('[role=' + role + ']');
   });

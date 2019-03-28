@@ -8,6 +8,7 @@ import { Processor } from './processor';
 
 export class ResultDecorator {
   private _masConfiguration!: IDictionaryStringTo<IMas[]>;
+  // @ts-ignore
   private _documentUtils: DocumentUtils;
   private _messageDecorator: MessageDecorator;
 

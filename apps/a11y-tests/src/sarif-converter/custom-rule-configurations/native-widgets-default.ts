@@ -56,5 +56,6 @@ export function getNativeWidgetElementType(node: HTMLElement): string {
     return `input type="${node.getAttribute('type')}"`;
   }
 
+  // @ts-ignore
   return undefined;
 }
