@@ -1,19 +1,17 @@
 import * as React from 'react';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
-import './TextField.Examples.scss';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export class TextFieldBasicExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    return (
-      <div className="docs-TextFieldExample">
-        <TextField label="Standard" />
-        <TextField label="Disabled" disabled={true} />
-        <TextField label="Read Only" readOnly={true} />
-        <TextField label="Required " required={true} />
-        <TextField label="With error message" errorMessage="Error message" />
-        <MaskedTextField label="With number mask" mask="99999" />
-        <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />
-      </div>
-    );
-  }
-}
+export const TextFieldBasicExample: React.StatelessComponent = () => {
+  return (
+    <Stack gap={15} maxWidth={300}>
+      <TextField label="Standard" />
+      <TextField label="Disabled" disabled />
+      <TextField label="Read-only" readOnly />
+      <TextField label="Required " required />
+      <TextField label="With error message" errorMessage="Error message" />
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />
+      <TextField label="With an icon" iconProps={{ iconName: 'Calendar' }} />
+    </Stack>
+  );
+};
