@@ -4,7 +4,8 @@ import {
   IDashboardGridLayoutStyles,
   IDashboardCardLayout,
   DashboardSectionMapping,
-  IDashboardGridLayoutProps
+  IDashboardGridLayoutProps,
+  DashboardGridBreakpointLayouts
 } from './DashboardGridLayout.types';
 import { DashboardGridLayoutBase } from './DashboardGridLayoutBase';
 import { ICard, CardSize } from '../Card/Card.types';
@@ -225,7 +226,8 @@ export class DashboardGridSectionLayout extends React.Component<IDashboardGridLa
   private _createLayout = (): Layouts => {
     const layouts: Layouts = {};
     if (this.props.layout) {
-      for (const [breakpoint, value] of Object.entries(this.props.layout)) {
+      for (const breakpoint of Object.keys(this.props.layout)) {
+        const value = this.props.layout[breakpoint as keyof DashboardGridBreakpointLayouts];
         if (value === undefined) {
           continue;
         }

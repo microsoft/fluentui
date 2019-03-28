@@ -1,6 +1,20 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 21 Mar 2019 12:36:29 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+
+## 0.28.11
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Replace custom high contrast selector with constant
+
+## 0.28.10
+Tue, 26 Mar 2019 12:32:51 GMT
+
+### Patches
+
+- Remove IE 11-incompatible constructs
 
 ## 0.28.9
 Thu, 21 Mar 2019 12:36:29 GMT

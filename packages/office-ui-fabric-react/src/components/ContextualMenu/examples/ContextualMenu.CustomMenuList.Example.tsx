@@ -65,10 +65,6 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
   constructor(props: {}) {
     super(props);
 
-    this._renderMenuList = this._renderMenuList.bind(this);
-    this._onAbort = this._onAbort.bind(this);
-    this._onChange = this._onChange.bind(this);
-
     this.state = {
       items: ITEMS
     };
@@ -90,12 +86,12 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     );
   }
 
-  private _onAbort() {
+  private _onAbort = () => {
     this.setState({ items: ITEMS });
-  }
+  };
 
-  private _onChange(newValue: any) {
-    const filteredItems = ITEMS.filter(item => item.text && item.text.toLowerCase().includes(newValue.toLowerCase()));
+  private _onChange = (newValue: string) => {
+    const filteredItems = ITEMS.filter(item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1);
 
     if (!filteredItems || !filteredItems.length) {
       filteredItems.push({
@@ -121,9 +117,9 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
     this.setState((prevState, props) => ({
       items: filteredItems
     }));
-  }
+  };
 
-  private _renderMenuList(menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) {
+  private _renderMenuList = (menuListProps: IContextualMenuListProps, defaultRender: IRenderFunction<IContextualMenuListProps>) => {
     return (
       <div>
         <div style={{ borderBottom: '1px solid #ccc' }}>
@@ -140,5 +136,5 @@ export class ContextualMenuWithCustomMenuListExample extends React.Component<
         {defaultRender(menuListProps)}
       </div>
     );
-  }
+  };
 }

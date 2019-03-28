@@ -525,6 +525,26 @@ describe.only('ComboBox', () => {
     expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
   });
 
+  it('adds aria-required to the DOM when the required prop is set to true', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} required={true} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
+    expect(ariaRequiredAttribute).toEqual('true');
+  });
+
+  it('does not add aria-required to the DOM when the required prop is not set', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
+    expect(ariaRequiredAttribute).toBeNull();
+  });
+
   it('test persistMenu, callout should exist before and after opening menu', () => {
     const onMenuOpenMock = jest.fn();
     const onMenuDismissedMock = jest.fn();
