@@ -1,17 +1,10 @@
 import * as React from 'react';
-import { SeparatorBase } from './Separator.base';
-import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
 export interface ISeparator {}
 
-export interface ISeparatorProps extends React.Props<SeparatorBase> {
-  /**
-   * Optional callback to access the ISeparator interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ISeparator>;
-
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Theme (provided through customization.)
    */
@@ -32,11 +25,6 @@ export interface ISeparatorProps extends React.Props<SeparatorBase> {
    * @defaultValue 'center'
    */
   alignContent?: 'start' | 'center' | 'end';
-
-  /**
-   * Optional class for separator.
-   */
-  className?: string;
 }
 
 export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> &

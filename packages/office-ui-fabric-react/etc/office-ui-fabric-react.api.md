@@ -6325,10 +6325,8 @@ export interface ISeparator {
 }
 
 // @public (undocumented)
-export interface ISeparatorProps extends React.Props<SeparatorBase> {
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
     alignContent?: 'start' | 'center' | 'end';
-    className?: string;
-    componentRef?: IRefObject<ISeparator>;
     styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
     theme?: ITheme;
     vertical?: boolean;
@@ -8368,11 +8366,7 @@ export enum SemanticColorSlots {
 export const Separator: React_2.StatelessComponent<ISeparatorProps>;
 
 // @public (undocumented)
-export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
-    constructor(props: ISeparatorProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const SeparatorBase: React.StatelessComponent<ISeparatorProps>;
 
 // @public
 export enum Shade {

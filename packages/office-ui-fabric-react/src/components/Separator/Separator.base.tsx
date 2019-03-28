@@ -1,33 +1,24 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
 import { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separator.types';
 
 const getClassNames = classNamesFunction<ISeparatorStyleProps, ISeparatorStyles>();
 
-export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
-  private _classNames: IProcessedStyleSet<ISeparatorStyles>;
+export const SeparatorBase: React.StatelessComponent<ISeparatorProps> = (props: ISeparatorProps): JSX.Element => {
+  const { styles, theme, className, vertical, alignContent } = props;
 
-  constructor(props: ISeparatorProps) {
-    super(props);
-  }
+  const _classNames = getClassNames(styles!, {
+    theme: theme!,
+    className,
+    alignContent: alignContent,
+    vertical: vertical
+  });
 
-  public render(): JSX.Element {
-    const { styles, theme, className, vertical, alignContent } = this.props;
-
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      className,
-      alignContent: alignContent,
-      vertical: vertical
-    });
-
-    return (
-      <div className={this._classNames.root}>
-        <div className={this._classNames.content} role="separator" aria-orientation={vertical ? 'vertical' : 'horizontal'}>
-          {this.props.children}
-        </div>
+  return (
+    <div className={_classNames.root}>
+      <div className={_classNames.content} role="separator" aria-orientation={vertical ? 'vertical' : 'horizontal'}>
+        {props.children}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
