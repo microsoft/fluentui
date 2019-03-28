@@ -1292,6 +1292,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onMouseLeave={[Function]}
                 >
                   <span
+                    aria-hidden="true"
                     style={
                       Object {
                         "cursor": "pointer",
@@ -1448,6 +1449,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onMouseLeave={[Function]}
                 >
                   <span
+                    aria-hidden="true"
                     style={
                       Object {
                         "cursor": "pointer",
@@ -1604,6 +1606,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onMouseLeave={[Function]}
                 >
                   <span
+                    aria-hidden="true"
                     style={
                       Object {
                         "cursor": "pointer",
@@ -1760,6 +1763,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onMouseLeave={[Function]}
                 >
                   <span
+                    aria-hidden="true"
                     style={
                       Object {
                         "cursor": "pointer",
@@ -1916,6 +1920,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   onMouseLeave={[Function]}
                 >
                   <span
+                    aria-hidden="true"
                     style={
                       Object {
                         "cursor": "pointer",

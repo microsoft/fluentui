@@ -7,6 +7,7 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { relativeDates } from './relativeDates';
+import { classNames } from './FeedbackList.styles';
 
 export interface IFeedbackListProps {
   title: string;
@@ -67,14 +68,13 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
   }
 
   public render(): JSX.Element | null {
-    let { openIssues, closedIssues } = this.state;
+    const { openIssues, closedIssues } = this.state;
 
-    let submitButton = (
+    const submitButton = (
       <div>
         <PrimaryButton
           href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
           target="_blank"
-          primary={true}
           className="FeedbackList-button"
         >
           Submit GitHub Issue
@@ -100,10 +100,10 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     );
   }
 
-  private _onRenderCell(item: IListItem, index: number, isScrolling: boolean): JSX.Element {
+  private _onRenderCell = (item: IListItem): JSX.Element => {
     return (
-      <div className="ms-ListGhostingExample-itemCell" data-is-focusable={true}>
-        <div className="ms-ListGhostingExample-itemName">
+      <div className={classNames.itemCell} data-is-focusable={true}>
+        <div className={classNames.itemName}>
           <Link href={'https://github.com/OfficeDev/office-ui-fabric-react/issues/' + item.issueNum} target="_blank">
             <Label className="FeedbackList-listElement">{item.issueTitle}</Label>
           </Link>
@@ -116,5 +116,5 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
         </div>
       </div>
     );
-  }
+  };
 }

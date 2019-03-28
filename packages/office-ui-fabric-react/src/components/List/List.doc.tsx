@@ -11,6 +11,7 @@ const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
 const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
+const ListGhostingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
 
 const _cachedItems = createListItems(5000);
 
@@ -37,6 +38,7 @@ export const ListPageProps: IDocPageProps = {
     {
       title: 'Rendering ghost items while the list is scrolling',
       code: ListGhostingExampleCode,
+      codepenJS: ListGhostingExampleCodepen,
       view: <ListGhostingExample items={_cachedItems} />
     }
   ],

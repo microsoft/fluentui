@@ -5,39 +5,32 @@ import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 export interface IEditSection {}
 
 export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
-  /**
-   * Optional callback to access the IPersona interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
+  /** @deprecated Not used */
   componentRef?: IRefObject<IEditSection>;
 
   /** Optional className for the root element. */
   className?: string;
 
   /**
-   * The name of the Component
+   * The name of the component
    */
   title: string;
 
   /**
-   * The section id of the page.
+   * The section ID this button is used to edit.
    */
   section: string;
 
-  /**
-   * Pass the prop that has the content of the section.
-   * This checks if the content is a function before showing
-   * the EditSection button.
-   */
+  /** @deprecated Not used */
   sectionContent?: React.ReactNode;
 
   /**
-   * Override for section name.
+   * Override for section ID. Use this if the section ID is not pronounceable.
    */
   readableSection?: string;
 
   /**
-   * Url for the edit button.
+   * Link to edit the markdown page on GitHub.
    */
   url: string;
 }

@@ -11,7 +11,6 @@ export interface IPhoto {
   url: string;
   width: number;
   height: number;
-  onClick: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
 export class FocusZonePhotosExample extends React.Component<{}, { items: IPhoto[] }> {
@@ -27,7 +26,6 @@ export class FocusZonePhotosExample extends React.Component<{}, { items: IPhoto[
 
     return (
       <FocusZone as="ul" className="ms-FocusZoneExamples-photoList">
-        <p>Note: clicking on the items below will remove them, illustrating how FocusZone will retain focus even when items are removed.</p>
         {items.map((item: IPhoto, index) => (
           <li
             key={item.id}
@@ -36,7 +34,6 @@ export class FocusZonePhotosExample extends React.Component<{}, { items: IPhoto[
             aria-setsize={items.length}
             aria-label="Photo"
             data-is-focusable={true}
-            onClick={item.onClick}
           >
             <Image src={item.url} width={item.width} height={item.height} />
           </li>
@@ -63,20 +60,7 @@ export class FocusZonePhotosExample extends React.Component<{}, { items: IPhoto[
       id,
       url: `http://placehold.it/${randomWidth}x100`,
       width: randomWidth,
-      height: 100,
-      onClick: (ev: React.MouseEvent<HTMLElement>) => {
-        const items: IPhoto[] = this.state.items.filter((item: IPhoto) => item.id !== id);
-
-        this.setState({ items });
-
-        // If we have run out of items, repopulate in a couple seconds.
-        if (items.length === 0) {
-          setTimeout(() => this.setState({ items: this._getInitialItems() }), 2000);
-        }
-
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
+      height: 100
     };
   }
 }

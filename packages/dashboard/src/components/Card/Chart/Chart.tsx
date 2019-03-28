@@ -187,28 +187,28 @@ export class Chart extends React.Component<IChartInternalProps, { _width: number
       // comparing prop with string union type 7Days | 30Days | 90Days | 180Days
       if (timeRange === '7Days') {
         for (let i = 0; i < 6; i++) {
-          const nextDate = new Date(sDate);
+          const nextDate = new Date(sDate.valueOf());
           nextDate.setDate(sDate.getDate() + 1);
           sDate = nextDate;
           tickValues.push(nextDate);
         }
       } else if (timeRange === '30Days') {
         for (let i = 0; i < 5; i++) {
-          const nextDate = new Date(sDate);
+          const nextDate = new Date(sDate.valueOf());
           nextDate.setDate(sDate.getDate() + 5);
           sDate = nextDate;
           tickValues.push(nextDate);
         }
       } else if (timeRange === '90Days') {
         for (let i = 0; i < 5; i++) {
-          const nextDate = new Date(sDate);
+          const nextDate = new Date(sDate.valueOf());
           nextDate.setDate(sDate.getDate() + 15);
           sDate = nextDate;
           tickValues.push(nextDate);
         }
       } else {
         for (let i = 0; i < 5; i++) {
-          const nextDate = new Date(sDate);
+          const nextDate = new Date(sDate.valueOf());
           nextDate.setMonth(sDate.getMonth() + 1);
           sDate = nextDate;
           tickValues.push(nextDate);

@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IColor, getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/index';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
+import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 
 import {
   ThemeGenerator,

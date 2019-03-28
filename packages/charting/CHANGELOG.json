@@ -2,6 +2,66 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.28.11",
+      "tag": "@uifabric/charting_v0.28.11",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace custom high contrast selector with constant",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "bbb924c6ca7e0379cfce4dba835fe4ee3e9326ea"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.3 <7.0.0` to `>=6.12.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.10",
+      "tag": "@uifabric/charting_v0.28.10",
+      "date": "Tue, 26 Mar 2019 12:32:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove IE 11-incompatible constructs",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "91c57199029cb06ab7dce676a00f35bdd5537d1f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.160.0 <7.0.0` to `>=6.161.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.28.9",
+      "tag": "@uifabric/charting_v0.28.9",
+      "date": "Thu, 21 Mar 2019 12:36:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "\"added the background color and opacity for legends in the high contrast mode \"",
+            "author": "shivasai09 <33802398+shivasai09@users.noreply.github.com>",
+            "commit": "62077c018f111a8223b2b1cc51327a8118deda72"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.157.3 <7.0.0` to `>=6.158.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.8",
       "tag": "@uifabric/charting_v0.28.8",
       "date": "Tue, 05 Mar 2019 17:33:41 GMT",
