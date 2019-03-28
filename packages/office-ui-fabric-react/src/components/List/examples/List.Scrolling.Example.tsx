@@ -25,7 +25,7 @@ const oddItemHeight = 50;
 const numberOfItemsOnPage = 10;
 
 export class ListScrollingExample extends React.Component<IListScrollingExampleProps, IListScrollingExampleState> {
-  private _list: List;
+  private _list: List<IExampleItem>;
 
   constructor(props: IListScrollingExampleProps) {
     super(props);
@@ -157,7 +157,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     );
   };
 
-  private _resolveList = (list: List): void => {
+  private _resolveList = (list: List<IExampleItem>): void => {
     this._list = list;
   };
 
