@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './BlogPost.scss';
+import { getParameterByName } from '../../utilities/location';
 
 const blogData = require('../../data/blog-posts.json');
 
@@ -8,7 +9,7 @@ export class BlogPost extends React.Component<{}, {}> {
 
   constructor(props: {}) {
     super(props);
-    this._postId = this._getParameterByName('id');
+    this._postId = getParameterByName('id');
   }
 
   public render(): JSX.Element {
@@ -29,23 +30,5 @@ export class BlogPost extends React.Component<{}, {}> {
         />
       </div>
     );
-  }
-
-  private _getParameterByName(name: string, url?: string): string {
-    if (!url) {
-      url = window.location.href;
-    }
-
-    name = name.replace(/[\[\]]/g, '\\$&');
-    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
-    if (!results) {
-      return null;
-    }
-
-    if (!results[2]) {
-      return '';
-    }
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 }
