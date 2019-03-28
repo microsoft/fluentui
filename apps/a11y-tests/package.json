@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node ../../scripts/just.js build-commonjs-only && npm run start-generate-reports",
+    "build": "node ../../scripts/just.js build-commonjs-only",
     "test": "node ../../scripts/just.js jest",
     "update-snapshots": "node ../../scripts/just.js jest -u",
     "generate-reports": "node ./scripts/generate-sarif-reports.js",
