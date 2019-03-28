@@ -6,7 +6,7 @@ import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 import { IKeytipProps } from '../../Keytip';
 
-export interface IFacepile { }
+export interface IFacepile {}
 
 export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /**
