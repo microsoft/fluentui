@@ -108,22 +108,26 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   }
 
   public toggleCollapseAll(allCollapsed: boolean): void {
-    const { groups } = this.state;
+    const { groups = [] } = this.state;
     const { groupProps } = this.props;
     const onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
 
-    if (groups) {
+    if (groups.length > 0) {
       if (onToggleCollapseAll) {
         onToggleCollapseAll(allCollapsed);
       }
 
-      for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
-        groups[groupIndex].isCollapsed = allCollapsed;
-      }
+      this._setCollapseAllGroups(groups, allCollapsed);
 
       this._updateIsSomeGroupExpanded();
 
       this.forceUpdate();
+    }
+  }
+
+  private _setCollapseAllGroups(groups: IGroup[], isCollapsed: boolean): void {
+    for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+      groups[groupIndex].isCollapsed = isCollapsed;
     }
   }
 
