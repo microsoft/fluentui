@@ -15,8 +15,17 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env"]
+    "lib": [
+      "es5",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "webpack-env",
+      "puppeteer",
+    ]
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
