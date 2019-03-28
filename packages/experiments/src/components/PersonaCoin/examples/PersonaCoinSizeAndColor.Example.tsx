@@ -3,18 +3,26 @@ import { PersonaCoin } from '../index';
 import { Stack, Text } from 'office-ui-fabric-react';
 import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 
-const sectionGap = 32;
-const headingGap = 16;
-const personaCoinGap = 12;
+const tokens = {
+  sectionStack: {
+    childrenGap: 32
+  },
+  headingStack: {
+    childrenGap: 16
+  },
+  personaCoinStack: {
+    childrenGap: 12
+  }
+};
 
 export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack tokens={{ childrenGap: sectionGap }}>
-        <Stack tokens={{ childrenGap: headingGap }} padding={8}>
-          <Stack tokens={{ childrenGap: personaCoinGap }}>
+      <Stack tokens={tokens.sectionStack}>
+        <Stack tokens={tokens.headingStack} padding={8}>
+          <Stack tokens={tokens.personaCoinStack}>
             <Text>Sizes</Text>
-            <Stack horizontal disableShrink tokens={{ childrenGap: personaCoinGap }}>
+            <Stack horizontal disableShrink tokens={tokens.personaCoinStack}>
               <PersonaCoin text="Kevin Jameson" size={10} />
               <PersonaCoin text="Kevin Jameson" size={24} />
               <PersonaCoin text="Kevin Jameson" size={28} />
@@ -24,7 +32,7 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
               <PersonaCoin text="Kevin Jameson" size={72} />
               <PersonaCoin text="Kevin Jameson" size={100} />
             </Stack>
-            <Stack horizontal disableShrink tokens={{ childrenGap: personaCoinGap }}>
+            <Stack horizontal disableShrink tokens={tokens.personaCoinStack}>
               <PersonaCoin text="Kevin Jameson" size={10} imageUrl={PersonaTestImages.personMale} />
               <PersonaCoin text="Kevin Jameson" size={24} imageUrl={PersonaTestImages.personMale} presence={1} />
               <PersonaCoin text="Kevin Jameson" size={28} imageUrl={PersonaTestImages.personMale} />
@@ -35,9 +43,9 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
               <PersonaCoin text="Kevin Jameson" size={100} imageUrl={PersonaTestImages.personMale} presence={4} />
             </Stack>
           </Stack>
-          <Stack tokens={{ childrenGap: personaCoinGap }}>
+          <Stack tokens={tokens.personaCoinStack}>
             <Text>Custom colors</Text>
-            <Stack horizontal disableShrink tokens={{ childrenGap: personaCoinGap }}>
+            <Stack horizontal disableShrink tokens={tokens.personaCoinStack}>
               <PersonaCoin text="Kevin Jameson" coinColor="red" initialsColor="black" />
               <PersonaCoin text="Kevin Jameson" coinColor="beige" initialsColor="black" />
               <PersonaCoin text="Kevin Jameson" coinColor="blue" />

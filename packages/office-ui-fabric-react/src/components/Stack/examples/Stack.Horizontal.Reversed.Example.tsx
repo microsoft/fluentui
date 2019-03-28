@@ -16,8 +16,17 @@ export class HorizontalStackReversedExample extends React.Component<{}, {}> {
       }
     });
 
+    const tokens = {
+      fiveGapStack: {
+        childrenGap: 5
+      },
+      tenGapStack: {
+        childrenGap: 10
+      }
+    };
+
     return (
-      <Stack tokens={{ childrenGap: 5 }}>
+      <Stack tokens={tokens.fiveGapStack}>
         <span>Default horizontal stack</span>
         <Stack horizontal reversed disableShrink className={styles.root}>
           <span>Item One</span>
@@ -26,7 +35,7 @@ export class HorizontalStackReversedExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Horizontal gap between items</span>
-        <Stack horizontal reversed disableShrink tokens={{ childrenGap: 10 }} padding={10} className={styles.root}>
+        <Stack horizontal reversed disableShrink tokens={tokens.tenGapStack} padding={10} className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
@@ -37,7 +46,7 @@ export class HorizontalStackReversedExample extends React.Component<{}, {}> {
           horizontal
           reversed
           disableShrink
-          tokens={{ childrenGap: 5 }}
+          tokens={tokens.fiveGapStack}
           padding={10}
           className={styles.root}
           styles={{ root: { height: 100 } }}

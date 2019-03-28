@@ -96,9 +96,18 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       }
     });
 
+    const tokens = {
+      sectionStack: {
+        childrenGap: 10
+      },
+      configureStack: {
+        childrenGap: 20
+      }
+    };
+
     return (
-      <Stack tokens={{ childrenGap: 10 }}>
-        <Stack horizontal tokens={{ childrenGap: 20 }}>
+      <Stack tokens={tokens.sectionStack}>
+        <Stack horizontal tokens={tokens.configureStack}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -135,7 +144,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal tokens={{ childrenGap: 20 }}>
+        <Stack horizontal tokens={tokens.configureStack}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -147,7 +156,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <Stack horizontal tokens={{ childrenGap: 20 }} verticalAlign="end">
+              <Stack horizontal tokens={tokens.configureStack} verticalAlign="end">
                 <Stack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}

@@ -33,8 +33,17 @@ export class CardBasicExample extends React.Component<{}, {}> {
       }
     });
 
+    const tokens = {
+      sectionStack: {
+        childrenGap: 30
+      },
+      cardFooterStack: {
+        childrenGap: 16
+      }
+    };
+
     return (
-      <Stack horizontal tokens={{ childrenGap: 30 }}>
+      <Stack horizontal tokens={tokens.sectionStack}>
         <Card>
           <Text>Basic card</Text>
         </Card>
@@ -48,7 +57,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
           <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
           <Card.Item>
-            <Stack horizontal tokens={{ childrenGap: 16 }} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
+            <Stack horizontal tokens={tokens.cardFooterStack} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
               <Icon iconName="RedEye" className={styles.icon} />
               <Icon iconName="SingleBookmark" className={styles.icon} />
               <Stack.Item grow={1}>
