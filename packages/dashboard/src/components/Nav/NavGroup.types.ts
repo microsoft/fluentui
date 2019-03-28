@@ -1,4 +1,4 @@
-import { INavLink, IStyle } from 'office-ui-fabric-react';
+import { INavLink, IStyle, IFocusZone } from 'office-ui-fabric-react';
 
 export interface INavGroupProps {
   /**
@@ -35,6 +35,11 @@ export interface INavGroupProps {
    * Ref to the scrolling container of the navigation
    */
   navRef: React.RefObject<HTMLDivElement>;
+
+  /**
+   * Ref to the main FocusZone of the navigation
+   */
+  focusZoneRef: React.RefObject<IFocusZone>;
 }
 
 export interface INavGroupStyles {

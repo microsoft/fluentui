@@ -1,4 +1,4 @@
-import { IStyle, INavLink } from 'office-ui-fabric-react';
+import { IStyle, INavLink, IFocusZone } from 'office-ui-fabric-react';
 export interface INavLinkGroupProps {
   /**
    * L1 link which contains all NavLink data and L2 links array
@@ -34,13 +34,18 @@ export interface INavLinkGroupProps {
    * Ref to the scrolling container of the navigation
    */
   navRef: React.RefObject<HTMLDivElement>;
+
+  /**
+   * Ref to the main FocusZone of the navigation
+   */
+  focusZoneRef: React.RefObject<IFocusZone>;
 }
 
 export interface INavLinkGroupStates {
   /**
    * Should be set on a link group when one of it's NavLink's is selected. NavLinkGroup reads this for default value for it's own state.
    */
-  isExpanded: boolean;
+  isExpanded?: boolean;
   /**
    * Set to true when one of it's NavLink's is selected. This is used to manage when the selected indicator is visible or not.
    */
@@ -49,7 +54,7 @@ export interface INavLinkGroupStates {
   /** Boolean to track whether or not a keyboard user has expanded the nav item
    * while the nav itself is collapsed
    */
-  isKeyboardExpanded: boolean;
+  isKeyboardExpanded?: boolean;
 }
 
 export interface INavLinkGroupStyleProps {

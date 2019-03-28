@@ -14,7 +14,7 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { groupIndex, groupName, links, isNavCollapsed, onCollapse, navRef } = this.props;
+    const { groupIndex, groupName, links, isNavCollapsed, onCollapse, navRef, focusZoneRef } = this.props;
     const classNames = getClassNames(getStyles, { isNavCollapsed });
 
     return (
@@ -41,6 +41,7 @@ export class NavGroup extends React.PureComponent<INavGroupProps, {}> {
                   hasSelectedNestedLink={hasSelectedNestedLink}
                   onCollapse={onCollapse}
                   navRef={navRef}
+                  focusZoneRef={focusZoneRef}
                 />
               ) : (
                 <NavLink

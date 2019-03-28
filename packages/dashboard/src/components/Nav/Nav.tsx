@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { INavLinkGroup, styled, classNamesFunction, BaseComponent, FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
+import {
+  INavLinkGroup,
+  styled,
+  classNamesFunction,
+  BaseComponent,
+  FocusZone,
+  FocusZoneDirection,
+  IFocusZone
+} from 'office-ui-fabric-react';
 
 import { INavProps, INavStyleProps, INavStyles, INavState } from './Nav.types';
 import { getStyles } from './Nav.styles';
@@ -10,6 +18,7 @@ const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 class NavComponent extends BaseComponent<INavProps, INavState> {
   private containerRef: React.RefObject<HTMLDivElement>;
+  private focusRef: React.RefObject<IFocusZone>;
 
   constructor(props: INavProps) {
     super(props);
@@ -19,6 +28,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     };
 
     this.containerRef = React.createRef<HTMLDivElement>();
+    this.focusRef = React.createRef<IFocusZone>();
     this._onNavCollapseClicked = this._onNavCollapseClicked.bind(this);
     this._editClicked = this._editClicked.bind(this);
     this._toggleMore = this._toggleMore.bind(this);
@@ -34,7 +44,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
     const classNames = getClassNames(getStyles, { isNavCollapsed: navCollapsed, shouldScroll });
 
     return (
-      <FocusZone isCircularNavigation direction={FocusZoneDirection.vertical} className={classNames.root}>
+      <FocusZone isCircularNavigation direction={FocusZoneDirection.vertical} className={classNames.root} componentRef={this.focusRef}>
         <div className={classNames.navWrapper}>
           <nav role="navigation" className={classNames.navContainer} ref={this.containerRef} aria-expanded={!navCollapsed}>
             <ul role="menubar" className={classNames.navGroup}>
@@ -61,6 +71,7 @@ class NavComponent extends BaseComponent<INavProps, INavState> {
                   isNavCollapsed={navCollapsed}
                   onCollapse={this._setScrollLayout}
                   navRef={this.containerRef}
+                  focusZoneRef={this.focusRef}
                 />
               ))}
 

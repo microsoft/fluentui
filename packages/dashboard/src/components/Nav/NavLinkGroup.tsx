@@ -30,7 +30,11 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
   public render(): JSX.Element {
     const { link, isNavCollapsed } = this.props;
     const { hasSelectedNestedLink, isExpanded, isKeyboardExpanded } = this.state;
-    const classNames = getClassNames(getStyles, { isExpanded, isNavCollapsed, isKeyboardExpanded });
+    const classNames = getClassNames(getStyles, {
+      isExpanded: isExpanded!,
+      isNavCollapsed: isNavCollapsed!,
+      isKeyboardExpanded: isKeyboardExpanded!
+    });
     const NestedComponent = isNavCollapsed && isKeyboardExpanded ? FocusZone : 'ul';
     return (
       <div className={classNames.root} {...isNavCollapsed && link.links && { onMouseEnter: this._offsetUpdated, ref: this.navRootRef }}>
@@ -116,8 +120,8 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
   private _onLinkClicked(ev: React.MouseEvent<HTMLElement>): void {
     this.setState(
       {
-        isExpanded: !this.state.isExpanded,
-        isKeyboardExpanded: !this.state.isKeyboardExpanded
+        ...(!this.props.isNavCollapsed && { isExpanded: !this.state.isExpanded }),
+        ...(this.props.isNavCollapsed && { isKeyboardExpanded: !this.state.isKeyboardExpanded })
       },
       () => {
         if (this.props.onCollapse) {
@@ -144,6 +148,9 @@ export class NavLinkGroup extends React.Component<INavLinkGroupProps, INavLinkGr
       this.setState({
         isKeyboardExpanded: false
       });
+      if (this.props.focusZoneRef.current) {
+        this.props.focusZoneRef.current.focus();
+      }
     }
   }
 
