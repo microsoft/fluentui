@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 15 Mar 2019 11:27:10 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Mar 2019 11:24:20 GMT and should not be manually modified.
+
+## 5.8.2
+Thu, 28 Mar 2019 11:24:20 GMT
+
+### Patches
+
+- Cherry pick HomePage changes from master for version switching with ContextualMenu
 
 ## 5.8.1
 Fri, 15 Mar 2019 11:27:10 GMT

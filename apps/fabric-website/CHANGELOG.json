@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.2",
+      "tag": "@uifabric/fabric-website_v5.8.2",
+      "date": "Thu, 28 Mar 2019 11:24:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "df07d9736165e7396dcfbd847732078cb335c254",
+            "comment": "Cherry pick HomePage changes from master for version switching with ContextualMenu"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.1",
       "tag": "@uifabric/fabric-website_v5.8.1",
       "date": "Fri, 15 Mar 2019 11:27:10 GMT",
