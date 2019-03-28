@@ -133,6 +133,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentTop) ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentBottom) ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder) ||
+      _isOffsetWidthDifferent(this._nonStickyContent, this._placeHolder) ||
       _isScrollWidthDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
   }
 
@@ -217,8 +218,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       let height = 0,
         width = 0;
       if (this.nonStickyContent && this.nonStickyContent.firstElementChild) {
-        height = this.nonStickyContent.firstElementChild.clientHeight;
-        width = this.nonStickyContent.firstElementChild.clientWidth;
+        height = (this.nonStickyContent.firstElementChild as HTMLElement).offsetHeight;
+        width = (this.nonStickyContent.firstElementChild as HTMLElement).offsetWidth;
       }
       return {
         height: height,
@@ -325,6 +326,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
 function _isOffsetHeightDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
   return (a && b && a.current && b.current && a.current.offsetHeight !== b.current.offsetHeight) as boolean;
+}
+
+function _isOffsetWidthDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
+  return (a && b && a.current && b.current && a.current.offsetWidth !== b.current.offsetWidth) as boolean;
 }
 
 function _isScrollWidthDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
