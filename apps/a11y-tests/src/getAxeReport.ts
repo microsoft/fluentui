@@ -1,9 +1,10 @@
+import * as Axe from 'axe-core';
 import { AxePuppeteer } from 'axe-puppeteer';
 import * as puppeteer from 'puppeteer';
 
 const TEST_URL_ROOT = 'http://localhost:4322/';
 
-export async function getAxeReport(subUrl: string) {
+export async function getAxeReport(subUrl: string): Promise<Axe.AxeResults> {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setBypassCSP(true);

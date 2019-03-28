@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node -v",
+    "build": "node ../../scripts/just.js build-commonjs-only",
     "test": "node ../../scripts/just.js jest",
     "start-test": "concurrently \"cd ../fabric-website-resources && npm run start\" \"npm run test\" --kill-others",
     "update-snapshots": "node ../../scripts/just.js jest -u"

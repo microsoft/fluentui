@@ -20,6 +20,7 @@ export const headingConfiguration: IKerosRuleConfiguration = {
 function evaluateCodedHeadings(node: HTMLElement, options: any): boolean {
   const headingText: string = node.innerText;
   let headingLevel: number;
+  // @ts-ignore
   const ariaHeadingLevel: string = node.getAttribute('aria-level');
   if (ariaHeadingLevel !== null) {
     headingLevel = parseInt(ariaHeadingLevel, 10);
@@ -30,6 +31,7 @@ function evaluateCodedHeadings(node: HTMLElement, options: any): boolean {
     }
   }
   const headingResultData: IAxeCheckResultExtraData = {
+    // @ts-ignore
     headingLevel: headingLevel,
     headingText: headingText
   };

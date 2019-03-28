@@ -26,6 +26,7 @@ export const linkFunctionConfiguration: IKerosRuleConfiguration = {
     matches: matches,
     decorateNode: (node: AxeNodeResult) => {
       if (node.any.length > 0) {
+        // @ts-ignore
         node.snippet = node.any[0].data[snippetKey];
       }
     },
@@ -54,8 +55,10 @@ function evaluateLinkFunction(node: HTMLElement, options: any, virtualNode: any,
   };
 
   const missingNameOrUrl = !accessibleName || !url;
+  // @ts-ignore
   const snippet = missingNameOrUrl ? node.parentElement.outerHTML : node.outerHTML;
 
+  // @ts-ignore
   data[snippetKey] = snippet;
   this.data(data);
 

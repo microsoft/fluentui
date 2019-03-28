@@ -1,5 +1,4 @@
 /// <reference path="../axe-extension.d.ts" />
-import * as axe from 'axe-core';
 import * as AxeUtils from '../axe-utils';
 
 import { isImage } from './image-rule';
@@ -23,6 +22,7 @@ export const textAlternativeConfiguration: IKerosRuleConfiguration = {
 };
 
 function matches(node: HTMLElement, virtualNode: HTMLElement): boolean {
+  // @ts-ignore
   return isImage(node, null) && AxeUtils.getImageCodedAs(node) === 'Meaningful';
 }
 
