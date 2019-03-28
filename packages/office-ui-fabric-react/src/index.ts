@@ -63,6 +63,7 @@ export * from './SearchBox';
 export * from './SelectableOption';
 export * from './SelectedItemsList';
 export * from './Selection';
+export * from './Separator';
 export * from './Shimmer';
 export * from './ShimmeredDetailsList';
 export * from './Slider';

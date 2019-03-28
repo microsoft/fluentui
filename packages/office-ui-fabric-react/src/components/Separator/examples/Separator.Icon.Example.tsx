@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Separator } from '@uifabric/experiments/lib/Separator';
+import { Separator } from 'office-ui-fabric-react/lib/Separator';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';

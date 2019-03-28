@@ -8341,6 +8341,18 @@ export enum SemanticColorSlots {
     disabledText = 3,
 }
 
+// Warning: (ae-forgotten-export) The symbol "ISeparatorProps" needs to be exported by the entry point index.d.ts
+// 
+// @public (undocumented)
+export const Separator: React_2.StatelessComponent<ISeparatorProps>;
+
+// @public (undocumented)
+export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
+    constructor(props: ISeparatorProps);
+    // (undocumented)
+    render(): JSX.Element;
+}
+
 // @public
 export enum Shade {
     // (undocumented)

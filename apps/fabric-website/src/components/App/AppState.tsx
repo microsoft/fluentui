@@ -544,6 +544,14 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="Persona" />,
               getComponent: cb =>
                 require.ensure([], require => cb(require<any>('../../pages/Components/PersonaComponentPage').PersonaComponentPage))
+            },
+            {
+              title: 'Separator',
+              url: '#/components/separator',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Separator" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/SeparatorComponentPage').SeparatorComponentPage))
             }
           ]
         },
