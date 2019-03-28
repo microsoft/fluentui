@@ -67,10 +67,43 @@
 }
 
 .version {
+  margin-top: 16px;
+}
+
+.version,
+.versionLink,
+.versionText {
   color: $color-home-lighter;
   font-size: $ms-font-size-xs;
   font-weight: $ms-font-weight-regular;
-  margin-top: 16px;
+}
+
+.versionText {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.versionLink {
+  border: 0;
+  padding: 0;
+  height: 15px;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:active:hover {
+    color: $ms-color-white;
+  }
+
+  :global {
+    .ms-Button-flexContainer {
+      align-items: flex-start;
+    }
+
+    .ms-Button-menuIcon {
+      color: inherit;
+    }
+  }
 }
 
 @media screen and (min-width: $uhf-screen-min-mobile) {

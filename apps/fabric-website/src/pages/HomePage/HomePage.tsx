@@ -1,12 +1,53 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { Dropdown, IDropdownOption, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 import * as stylesImport from './HomePage.module.scss';
+import { getParameterByName, updateUrlParameter } from '../../utilities/location';
+import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { IContextualMenuItem, IContextualMenuStyles } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+
 const styles: any = stylesImport;
 
 const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
 const reactPackageData = require('../../../node_modules/office-ui-fabric-react/package.json');
 
-export class HomePage extends React.Component<any, any> {
+const versionLinkId = getId('versionLink');
+
+// Update as new Fabric versions are released
+const fabricVersionOptions: IContextualMenuItem[] = [
+  {
+    key: 'A',
+    name: 'Fabric 6',
+    data: '6'
+  },
+  {
+    key: 'B',
+    name: 'Fabric 5',
+    data: '5'
+  }
+];
+
+export interface IHomepageState {
+  fabricVer: string;
+}
+
+export class HomePage extends React.Component<any, IHomepageState> {
+  constructor(props: {}) {
+    super(props);
+    const version = getParameterByName('fabricVer');
+
+    this.state = {
+      fabricVer: !!version ? version : fabricVersionOptions[0].data
+    };
+  }
+
+  public componentDidUpdate(prevProps: any, prevState: IHomepageState): void {
+    if (prevState.fabricVer !== this.state.fabricVer) {
+      window.location.href = updateUrlParameter('fabricVer', this.state.fabricVer);
+    }
+  }
+
   public render(): JSX.Element {
     return (
       <div>
@@ -14,7 +55,23 @@ export class HomePage extends React.Component<any, any> {
           <h1 className={ styles.title }>Office UI Fabric</h1>
           <span className={ styles.tagline }>The official front-end framework for building experiences that fit seamlessly into Office and Office 365.</span>
           <a href='#/get-started' className={ css(styles.button, styles.primaryButton) }>Get started</a>
-          <span className={ styles.version }>Fabric Core { corePackageData.version } and Fabric React { reactPackageData.version }</span>
+          <span className={ styles.version }>
+            Fabric Core { corePackageData.version } and&nbsp;
+            <ActionButton
+              className={ styles.versionLink }
+              menuProps={ {
+                gapSpace: 3,
+                beakWidth: 8,
+                isBeakVisible: true,
+                shouldFocusOnMount: true,
+                items: fabricVersionOptions,
+                directionalHint: DirectionalHint.bottomAutoEdge,
+                onItemClick: this._onVersionMenuClick
+              } }
+            >
+              <span className={ styles.versionText }>Fabric React { reactPackageData.version }</span>
+            </ActionButton>
+          </span>
         </div>
 
         <div className={ styles.flavors }>
@@ -89,4 +146,7 @@ export class HomePage extends React.Component<any, any> {
     );
   }
 
+  private _onVersionMenuClick = (event, item: IContextualMenuItem): void => {
+    this.setState({ fabricVer: item.data });
+  }
 }
