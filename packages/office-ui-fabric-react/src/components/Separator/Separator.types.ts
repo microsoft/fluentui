@@ -29,7 +29,7 @@ export interface ISeparatorProps extends React.Props<SeparatorBase> {
 
   /**
    * Where the content should be aligned in the separator.
-   * @default 'center'
+   * @defaultValue 'center'
    */
   alignContent?: 'start' | 'center' | 'end';
 

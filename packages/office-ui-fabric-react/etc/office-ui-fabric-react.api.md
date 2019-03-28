@@ -6321,6 +6321,29 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 }
 
 // @public (undocumented)
+export interface ISeparator {
+}
+
+// @public (undocumented)
+export interface ISeparatorProps extends React.Props<SeparatorBase> {
+    alignContent?: 'start' | 'center' | 'end';
+    className?: string;
+    componentRef?: IRefObject<ISeparator>;
+    styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
+    theme?: ITheme;
+    vertical?: boolean;
+}
+
+// @public (undocumented)
+export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> & Pick<ISeparatorProps, 'className' | 'alignContent' | 'vertical'>;
+
+// @public (undocumented)
+export interface ISeparatorStyles {
+    content: IStyle;
+    root: IStyle;
+}
+
+// @public (undocumented)
 export interface IShimmer {
 }
 
@@ -8341,8 +8364,6 @@ export enum SemanticColorSlots {
     disabledText = 3,
 }
 
-// Warning: (ae-forgotten-export) The symbol "ISeparatorProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export const Separator: React_2.StatelessComponent<ISeparatorProps>;
 
