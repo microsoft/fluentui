@@ -11,7 +11,7 @@ const alignMap: { [key: string]: string } = {
 };
 
 export const styles: IStackItemComponent['styles'] = (props, theme): IStackItemStylesReturnType => {
-  const { grow, shrink, disableShrink, align, verticalFill, className } = props;
+  const { grow, shrink, disableShrink, align, verticalFill, className, order } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -34,7 +34,10 @@ export const styles: IStackItemComponent['styles'] = (props, theme): IStackItemS
       align && {
         alignSelf: alignMap[align] || align
       },
-      className
+      className,
+      order && {
+        order: order
+      }
     ]
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
