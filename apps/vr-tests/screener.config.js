@@ -3,9 +3,7 @@ module.exports = {
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
-  baseBranch:
-    (process.env['Build.Reason'] === 'PullRequest' && process.env['Build.SourceBranchName']) ||
-    'master',
+  baseBranch: process.env['System.PullRequest.TargetBranch'] || 'master',
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true
 };
