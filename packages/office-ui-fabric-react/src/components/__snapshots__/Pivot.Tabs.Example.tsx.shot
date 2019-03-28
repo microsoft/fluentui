@@ -49,7 +49,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #0078d4;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #ffffff;
@@ -215,7 +215,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #f3f2f1;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;
@@ -374,7 +374,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #f3f2f1;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;
@@ -533,7 +533,7 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: #f3f2f1;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;

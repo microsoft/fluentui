@@ -13,7 +13,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
-          height: 109px;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;
@@ -566,7 +566,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
-          height: 109px;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;
@@ -919,7 +919,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
-          height: 109px;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;
@@ -1230,7 +1230,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
-          height: 109px;
+          height: 108px;
           max-width: 480px;
           min-width: 206px;
           position: relative;

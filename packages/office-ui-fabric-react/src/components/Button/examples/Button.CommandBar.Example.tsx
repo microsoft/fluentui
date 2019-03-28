@@ -11,7 +11,7 @@ export class ButtonCommandBarExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div>
-        <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>
+        <div style={{ display: 'flex', alignItems: 'stretch', height: '44px' }}>
           <CommandBarButton
             data-automation-id="test"
             disabled={disabled}

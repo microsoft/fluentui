@@ -52,6 +52,7 @@ exports[`ToggleView renders toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
+      checked={false}
       className=
           ms-Toggle-background
           {

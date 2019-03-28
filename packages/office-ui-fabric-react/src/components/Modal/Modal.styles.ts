@@ -24,7 +24,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     topOffsetFixed,
     isModeless
   } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -58,7 +58,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     main: [
       classNames.main,
       {
-        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)',
+        boxShadow: effects.elevation64,
+        borderRadius: effects.roundedCorner2,
         backgroundColor: palette.white,
         boxSizing: 'border-box',
         position: 'relative',

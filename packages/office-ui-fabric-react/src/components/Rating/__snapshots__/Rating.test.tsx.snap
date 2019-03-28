@@ -15,7 +15,7 @@ exports[`Rating Renders Rating correctly 1`] = `
         font-weight: 400;
       }
       &:hover .ms-RatingStar-back {
-        color: #000000;
+        color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
         color: Highlight;
@@ -171,7 +171,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -326,7 +326,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -481,7 +481,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -636,7 +636,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -791,7 +791,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;

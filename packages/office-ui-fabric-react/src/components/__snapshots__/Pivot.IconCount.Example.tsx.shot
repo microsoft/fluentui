@@ -48,7 +48,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;
@@ -75,14 +75,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
+                left: 2px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -239,7 +239,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;
@@ -266,14 +266,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
+                left: 2px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -414,7 +414,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;
@@ -441,14 +441,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
+                left: 2px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -576,7 +576,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;
@@ -603,14 +603,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
+                left: 2px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -763,7 +763,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: 0px;
                 box-sizing: border-box;
                 color: #323130;
@@ -790,14 +790,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
+                left: 2px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

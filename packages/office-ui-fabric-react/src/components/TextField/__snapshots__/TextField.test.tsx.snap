@@ -63,6 +63,7 @@ exports[`TextField renders TextField correctly 1`] = `
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
             border: 1px solid #a19f9d;
             box-shadow: none;
             box-sizing: border-box;
@@ -112,8 +113,8 @@ exports[`TextField renders TextField correctly 1`] = `
               min-width: 0px;
               outline: 0px;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 0;
               text-overflow: ellipsis;
               width: 100%;
@@ -218,6 +219,7 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
             border: 1px solid #a19f9d;
             box-shadow: none;
             box-sizing: border-box;
@@ -270,9 +272,9 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
               min-width: 0px;
               outline: 0px;
               overflow: auto;
-              padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-bottom: 6px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 6px;
               text-overflow: ellipsis;
               width: 100%;
@@ -376,6 +378,7 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
           {
             align-items: stretch;
             background: #ffffff;
+            border-radius: 2px;
             border: 1px solid #a19f9d;
             box-shadow: none;
             box-sizing: border-box;
@@ -429,9 +432,9 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
               min-width: 0px;
               outline: 0px;
               overflow: auto;
-              padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-bottom: 6px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 6px;
               resize: none;
               text-overflow: ellipsis;
@@ -551,6 +554,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
             align-items: stretch;
             background: #ffffff;
             border-color: #a80000;
+            border-radius: 2px;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -588,6 +592,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -608,7 +613,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -631,8 +636,8 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
               min-width: 0px;
               outline: 0px;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 0;
               text-align: left;
               text-overflow: ellipsis;
@@ -678,6 +683,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -786,6 +792,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
             align-items: stretch;
             background: #ffffff;
             border-color: #a80000;
+            border-radius: 2px;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -823,6 +830,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -843,7 +851,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -866,8 +874,8 @@ exports[`TextField renders multiline TextField correctly with props affecting st
               min-width: 0px;
               outline: 0px;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 0;
               text-align: left;
               text-overflow: ellipsis;
@@ -913,6 +921,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -1023,6 +1032,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
             align-items: stretch;
             background: #ffffff;
             border-color: #a80000;
+            border-radius: 2px;
             border: none;
             box-shadow: none;
             box-sizing: border-box;
@@ -1060,6 +1070,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
@@ -1080,7 +1091,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
       </div>
       <input
         aria-describedby="TextFieldDescription1"
-        aria-invalid={false}
+        aria-invalid={true}
         className=
             ms-TextField-field
             {
@@ -1103,8 +1114,8 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
               min-width: 0px;
               outline: 0px;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 0;
               text-align: left;
               text-overflow: ellipsis;
@@ -1150,6 +1161,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
               background: #f3f2f1;
               color: #605e5c;
               display: flex;
+              flex-shrink: 0;
               line-height: 1px;
               padding-bottom: 0;
               padding-left: 10px;
