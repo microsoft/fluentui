@@ -20,9 +20,7 @@ export class SeparatorThemingExample extends React.Component<{}, {}> {
     return (
       <Stack gap={5}>
         <Text>Horizontal center aligned with custom theme</Text>
-        <Separator alignText="center" theme={theme}>
-          {message}
-        </Separator>
+        <Separator theme={theme}>{message}</Separator>
       </Stack>
     );
   }

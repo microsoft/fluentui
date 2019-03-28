@@ -13,12 +13,12 @@ export class SeparatorBase extends BaseComponent<ISeparatorProps, {}> {
   }
 
   public render(): JSX.Element {
-    const { styles, theme, className, vertical, alignText } = this.props;
+    const { styles, theme, className, vertical, alignContent } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      alignText: alignText,
+      alignContent: alignContent,
       vertical: vertical
     });
 

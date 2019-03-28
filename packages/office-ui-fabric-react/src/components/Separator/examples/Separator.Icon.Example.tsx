@@ -17,7 +17,7 @@ export class SeparatorIconExample extends React.Component<{}, {}> {
     return (
       <Stack gap={5}>
         <Text>Horizontal center aligned with an icon as content</Text>
-        <Separator alignText="center">
+        <Separator>
           <Icon iconName="Clock" styles={iconStyles} />
         </Separator>
       </Stack>

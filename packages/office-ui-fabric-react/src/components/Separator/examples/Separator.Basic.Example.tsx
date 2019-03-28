@@ -16,15 +16,15 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
       <Stack gap={15}>
         <Stack gap={10}>
           <Text>Horizontal center aligned</Text>
-          <Separator alignText="center">Today</Separator>
+          <Separator>Today</Separator>
         </Stack>
         <Stack gap={10}>
           <Text>Horizontal left aligned</Text>
-          <Separator alignText="start">{message}</Separator>
+          <Separator alignContent="start">{message}</Separator>
         </Stack>
         <Stack gap={10}>
           <Text>Horizontal right aligned</Text>
-          <Separator alignText="end">{message}</Separator>
+          <Separator alignContent="end">{message}</Separator>
         </Stack>
         <Stack gap={10}>
           <Text>Empty horizontal</Text>
@@ -34,15 +34,13 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
           <Stack horizontalAlign="center" gap={15}>
             <Text>Vertical center aligned</Text>
             <Stack.Item className={verticalStyle}>
-              <Separator vertical alignText="center">
-                {message}
-              </Separator>
+              <Separator vertical>{message}</Separator>
             </Stack.Item>
           </Stack>
           <Stack horizontalAlign="center" gap={15}>
             <Text>Vertical start aligned</Text>
             <Stack.Item className={verticalStyle}>
-              <Separator vertical alignText="start">
+              <Separator vertical alignContent="start">
                 {message}
               </Separator>
             </Stack.Item>
@@ -50,7 +48,7 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
           <Stack horizontalAlign="center" gap={15}>
             <Text>Vertical end aligned</Text>
             <Stack.Item className={verticalStyle}>
-              <Separator vertical alignText="end">
+              <Separator vertical alignContent="end">
                 {message}
               </Separator>
             </Stack.Item>

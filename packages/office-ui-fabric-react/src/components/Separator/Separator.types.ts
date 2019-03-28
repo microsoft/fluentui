@@ -28,9 +28,10 @@ export interface ISeparatorProps extends React.Props<SeparatorBase> {
   vertical?: boolean;
 
   /**
-   * Where the text should be aligned in the separator.
+   * Where the content should be aligned in the separator.
+   * @default 'center'
    */
-  alignText?: 'start' | 'center' | 'end';
+  alignContent?: 'start' | 'center' | 'end';
 
   /**
    * Optional class for separator.
@@ -38,7 +39,8 @@ export interface ISeparatorProps extends React.Props<SeparatorBase> {
   className?: string;
 }
 
-export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> & Pick<ISeparatorProps, 'className' | 'alignText' | 'vertical'>;
+export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> &
+  Pick<ISeparatorProps, 'className' | 'alignContent' | 'vertical'>;
 
 export interface ISeparatorStyles {
   /**
