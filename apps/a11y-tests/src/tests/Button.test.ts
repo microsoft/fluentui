@@ -1,4 +1,4 @@
-import { testComponent } from '../testComponent';
+import { testComponent } from './testComponent';
 
 testComponent({
   name: 'Button',
