@@ -412,7 +412,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -551,7 +550,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -678,7 +676,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -805,7 +802,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -942,7 +938,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 }
                             href="http://bing.com"
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             onMouseMove={[Function]}
@@ -1079,7 +1074,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 }
                             href="http://bing.com"
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             onMouseMove={[Function]}
@@ -1219,7 +1213,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                             href="http://bing.com"
                             name="Link click"
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             onMouseMove={[Function]}
@@ -1324,7 +1317,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 opacity: 1;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}

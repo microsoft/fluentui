@@ -187,7 +187,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
 
   /**
    * Validate incoming props
-   * @param props Props to validate
+   * @param props - Props to validate
    */
   private _validateProps(props: IBreadcrumbProps): void {
     const { maxDisplayedItems, overflowIndex, items } = props;

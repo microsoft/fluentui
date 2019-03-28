@@ -448,7 +448,7 @@ export interface IContextualMenuItem {
    * be used to interrupt native on click events as well. The click event should still handle
    * the commands. This should only be used in special cases when react and non-react are mixed.
    */
-  onMouseDown?: (item: IContextualMenuItem, event: any) => void;
+  onMouseDown?: (item: IContextualMenuItem, event: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * Optional override for the role attribute on the menu button. If one is not provided, it will
