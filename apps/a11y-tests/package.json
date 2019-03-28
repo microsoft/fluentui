@@ -10,7 +10,7 @@
     "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "dependencies": {
-    "@uifabric/fabric-website": "^6.12.4",
+    "@uifabric/fabric-website-resources": ">=6.13.0 <7.0.0",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "concurrently": "^4.1.0",
