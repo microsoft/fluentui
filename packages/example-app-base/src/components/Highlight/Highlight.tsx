@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { registerLanguage, highlightBlock } from 'highlight.js';
+// @ts-ignore
 import * as javascript from 'highlight.js/lib/languages/javascript';
 import { createRef, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 

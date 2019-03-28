@@ -31,15 +31,15 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     };
   }
 
-  public componentWillReceiveProps(newProps: any): void {
+  public componentWillReceiveProps(newProps: IGroupHeaderProps): void {
     if (newProps.group) {
       const newCollapsed = newProps.group.isCollapsed;
-      const isGroupLoading = newProps.headerProps && newProps.headerProps.isGroupLoading;
+      const isGroupLoading = newProps.isGroupLoading;
       const newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(newProps.group);
 
       this.setState({
-        isCollapsed: newCollapsed,
-        isLoadingVisible: newLoadingVisible
+        isCollapsed: newCollapsed || false,
+        isLoadingVisible: newLoadingVisible || false
       });
     }
   }
