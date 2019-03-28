@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 
 export interface INumberTextFieldProps {
   label: string;
@@ -12,6 +12,8 @@ export interface INumberTextFieldState {
 }
 
 export class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
+  private _textField = React.createRef<ITextField>();
+
   constructor(props: INumberTextFieldProps) {
     super(props);
 
@@ -33,6 +35,7 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
           value={this.state.value}
           onChange={this._onChange}
           onGetErrorMessage={this._validateNumber}
+          componentRef={this._textField}
         />
         <div className="NumberTextField-restoreButton">
           <DefaultButton onClick={this._restore}>Restore</DefaultButton>
@@ -52,8 +55,15 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
   }
 
   private _restore(): void {
-    this.setState({
-      value: this.props.initialValue
-    });
+    this.setState(
+      {
+        value: this.props.initialValue
+      },
+      () => {
+        if (this._textField && this._textField.current) {
+          this._textField.current.focus();
+        }
+      }
+    );
   }
 }

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+
+## 6.13.1
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Improve imports of color utilities
 
 ## 6.13.0
 Tue, 05 Mar 2019 04:25:07 GMT

@@ -681,7 +681,6 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   background: inherit;
                                 }
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseDown={[Function]}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
@@ -844,7 +843,6 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   background: inherit;
                                 }
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseDown={[Function]}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}

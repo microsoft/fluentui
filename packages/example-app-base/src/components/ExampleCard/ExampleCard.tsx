@@ -4,17 +4,14 @@ import {
   css,
   Customizer,
   Dropdown,
-  getThemedContext,
-  ICustomizerContext,
-  ICustomizerProps,
   IDropdownOption,
   IDropdownStyles,
   ISchemeNames,
-  ITheme
+  Stack,
+  IStackComponent,
+  ThemeProvider
 } from 'office-ui-fabric-react';
-import { IThemeProviderProps, ThemeProvider } from '@uifabric/foundation';
 import './ExampleCard.scss';
-import { ExampleCardComponent, IExampleCardComponent } from './ExampleCardComponent';
 import { Highlight } from '../Highlight/Highlight';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
@@ -52,8 +49,7 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
   text: 'Scheme: ' + item
 }));
 
-// tslint:disable-next-line:typedef
-const regionStyles: IExampleCardComponent['styles'] = (props, theme) => ({
+const regionStyles: IStackComponent['styles'] = (props, theme) => ({
   root: {
     backgroundColor: theme.semanticColors.bodyBackground,
     color: theme.semanticColors.bodyText
@@ -88,15 +84,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
       schemeIndex: 0,
       themeIndex: 0
     };
-
-    this._onToggleCodeClick = this._onToggleCodeClick.bind(this);
   }
 
   public render(): JSX.Element {
     const { title, code, children, isRightAligned = false, isScrollable = true, codepenJS } = this.props;
     const { isCodeVisible, schemeIndex, themeIndex } = this.state;
-
-    const rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -128,7 +120,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           );
 
           const exampleCard = (
-            <div className={rootClass}>
+            <div className={css('ExampleCard', this.state.isCodeVisible && 'is-codeVisible')}>
               <div className="ExampleCard-header">
                 <span className="ExampleCard-title">{title}</span>
                 <div className="ExampleCard-toggleButtons">
@@ -158,7 +150,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               {activeCustomizations ? (
                 <Customizer {...activeCustomizations}>
                   <ThemeProvider scheme={_schemes[schemeIndex]}>
-                    <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
+                    <Stack styles={regionStyles}>{exampleCardContent}</Stack>
                   </ThemeProvider>
                 </Customizer>
               ) : (
@@ -200,9 +192,9 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     this.setState({ themeIndex: value.key as number });
   };
 
-  private _onToggleCodeClick(): void {
+  private _onToggleCodeClick = () => {
     this.setState({
       isCodeVisible: !this.state.isCodeVisible
     });
-  }
+  };
 }

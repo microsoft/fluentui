@@ -473,7 +473,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Make sure that we have stopped spinning on keyUp
    * if the up or down arrow fired this event
-   * @param event stop spinning if we
+   * @param event - keyboard event
    */
   private _handleKeyUp = (event: React.KeyboardEvent<HTMLElement>): void => {
     if (this.props.disabled || event.which === KeyCodes.up || event.which === KeyCodes.down) {

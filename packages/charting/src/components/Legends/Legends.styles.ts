@@ -1,4 +1,5 @@
 import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
+import { HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
   const { className, theme } = props;
@@ -20,7 +21,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
     },
     rect: {
       selectors: {
-        '@media screen and (-ms-high-contrast: active)': {
+        [HighContrastSelector]: {
           backgroundColor: props.colorOnSelectedState,
           opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
         }

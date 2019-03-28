@@ -1,6 +1,21 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 13 Mar 2019 00:42:29 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Enable stricter lint and compiler options
+- ExampleCard: Remove dependency on styles from random example, and remove utility CSS classes
+
+## 6.12.3
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- Remove ExampleCardComponent now that Stack has been promoted.
 
 ## 6.12.2
 Wed, 13 Mar 2019 00:42:29 GMT
