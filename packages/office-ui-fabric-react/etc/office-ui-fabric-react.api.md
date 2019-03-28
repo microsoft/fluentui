@@ -1327,7 +1327,7 @@ export const groupTwo: IExtendedPersonaProps[];
 export const HoverCard: React_2.StatelessComponent<IHoverCardProps>;
 
 // @public (undocumented)
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
+export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
     constructor(props: IHoverCardProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1343,6 +1343,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         openHotKey: number;
         type: HoverCardType;
     };
+    // (undocumented)
+    dismiss: (withTimeOut?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
     }
@@ -4540,6 +4542,7 @@ export interface IGroupSpacerStyles {
 
 // @public (undocumented)
 export interface IHoverCard {
+    dismiss: (withTimeOut?: boolean) => void;
 }
 
 // @public
