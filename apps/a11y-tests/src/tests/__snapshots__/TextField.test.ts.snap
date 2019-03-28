@@ -9,11 +9,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-Toggle-background pill-201\\" id=\\"Toggle147\\" type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" data-is-focusable=\\"true\\"><div class=\\"ms-Toggle-thumb thumb-202\\"></div></button>",
+              "text": "<button class=\\"ms-Toggle-background pill-212\\" id=\\"Toggle128\\" type=\\"button\\" role=\\"switch\\" aria-checked=\\"false\\" data-is-focusable=\\"true\\"><div class=\\"ms-Toggle-thumb thumb-213\\"></div></button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": "#Toggle147",
+        "fullyQualifiedLogicalName": "#Toggle128",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "http://localhost:4322/#/examples/textfield",
@@ -37,7 +37,7 @@ Fix any of the following:
       "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#Toggle147",
+      "fullyQualifiedLogicalName": "#Toggle128",
       "ruleId": "button-name",
     },
     "properties": Object {
@@ -58,7 +58,7 @@ Fix any of the following:
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ExampleCard:nth-child(1) > .ms-Stack.css-155 > .ExampleCard-example.is-scrollable[data-is-scrollable=\\"true\\"] > .docs-TextFieldExample > .is-disabled.ms-TextField.root-157 > .wrapper-158.ms-TextField-wrapper > .fieldGroup-167.ms-TextField-fieldGroup > .prefix-170.ms-TextField-prefix > span",
+        "fullyQualifiedLogicalName": ".prefix-179 > span",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "http://localhost:4322/#/examples/textfield",
@@ -72,7 +72,7 @@ Fix any of the following:
       "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ExampleCard:nth-child(1) > .ms-Stack.css-155 > .ExampleCard-example.is-scrollable[data-is-scrollable=\\"true\\"] > .docs-TextFieldExample > .is-disabled.ms-TextField.root-157 > .wrapper-158.ms-TextField-wrapper > .fieldGroup-167.ms-TextField-fieldGroup > .prefix-170.ms-TextField-prefix > span",
+      "fullyQualifiedLogicalName": ".prefix-179 > span",
       "ruleId": "color-contrast",
     },
     "properties": Object {
@@ -89,81 +89,11 @@ Fix any of the following:
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<span style=\\"padding-bottom: 1px;\\">https://</span>",
+              "text": "<input type=\\"text\\" id=\\"TextField113\\" class=\\"ms-TextField-field field-169\\" aria-describedby=\\"TextFieldDescription114\\" aria-invalid=\\"false\\" value=\\"\\">",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ExampleCard:nth-child(3) > .ms-Stack.css-155 > .ExampleCard-example.is-scrollable[data-is-scrollable=\\"true\\"] > .docs-TextFieldExample > .is-disabled.ms-TextField.root-157 > .wrapper-158.ms-TextField-wrapper > .fieldGroup-167.ms-TextField-fieldGroup > .prefix-170.ms-TextField-prefix > span",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/textfield",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ExampleCard:nth-child(3) > .ms-Stack.css-155 > .ExampleCard-example.is-scrollable[data-is-scrollable=\\"true\\"] > .docs-TextFieldExample > .is-disabled.ms-TextField.root-157 > .wrapper-158.ms-TextField-wrapper > .fieldGroup-167.ms-TextField-fieldGroup > .prefix-170.ms-TextField-prefix > span",
-      "ruleId": "color-contrast",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "color-contrast",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<span style=\\"padding-bottom: 1px;\\">.com</span>",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".suffix-171 > span",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/textfield",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".suffix-171 > span",
-      "ruleId": "color-contrast",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "color-contrast",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField140\\" class=\\"ms-TextField-field field-160\\" aria-describedby=\\"TextFieldDescription141\\" aria-invalid=\\"false\\" value=\\"\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": "#TextField140",
+        "fullyQualifiedLogicalName": "#TextField113",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "http://localhost:4322/#/examples/textfield",
@@ -177,7 +107,7 @@ Fix any of the following:
       "text": "Fix all of the following: Only title used to generate label for form element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#TextField140",
+      "fullyQualifiedLogicalName": "#TextField113",
       "ruleId": "label-title-only",
     },
     "properties": Object {
@@ -194,11 +124,11 @@ Fix any of the following:
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField130\\" class=\\"ms-TextField-field field-160\\" aria-invalid=\\"false\\" value=\\"\\">",
+              "text": "<input type=\\"text\\" id=\\"TextField113\\" class=\\"ms-TextField-field field-169\\" aria-describedby=\\"TextFieldDescription114\\" aria-invalid=\\"false\\" value=\\"\\">",
             },
           },
         ],
-        "fullyQualifiedLogicalName": "#TextField130",
+        "fullyQualifiedLogicalName": "#TextField113",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "http://localhost:4322/#/examples/textfield",
@@ -216,46 +146,7 @@ Fix any of the following:
       "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#TextField130",
-      "ruleId": "label",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "label",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField140\\" class=\\"ms-TextField-field field-160\\" aria-describedby=\\"TextFieldDescription141\\" aria-invalid=\\"false\\" value=\\"\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": "#TextField140",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/textfield",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- aria-label attribute does not exist or is empty
-- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-- Form element does not have an implicit (wrapped) &lt;label>
-- Form element does not have an explicit &lt;label>
-- Element has no title attribute or the title attribute is empty",
-      "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#TextField140",
+      "fullyQualifiedLogicalName": "#TextField113",
       "ruleId": "label",
     },
     "properties": Object {
