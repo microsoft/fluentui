@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 21 Mar 2019 12:36:30 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+
+## 6.65.0
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Minor changes
+
+- Add support for maxRowCount in TilesList
 
 ## 6.64.2
 Thu, 21 Mar 2019 12:36:30 GMT

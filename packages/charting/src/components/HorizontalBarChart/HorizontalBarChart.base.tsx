@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles, IChartDataPoint } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
@@ -129,7 +129,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _hoverOn(hoverValue: string | number | Date | null, lineColor: string, legend: string): void {
     if (!this.state.isCalloutVisible || this.state.legend !== legend) {
       const refArray = this.state.refArray;
-      const currentHoveredElement = refArray.find((currentElement: IRefArrayData) => currentElement.legendText === legend);
+      const currentHoveredElement = find(refArray, (currentElement: IRefArrayData) => currentElement.legendText === legend);
       this.setState({
         isCalloutVisible: true,
         hoverValue: hoverValue,
