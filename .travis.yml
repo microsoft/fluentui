@@ -1,10 +1,6 @@
 language: node_js
 node_js:
   - '10'
-branches:
-  only:
-  - master
-  - axe-tests
 script:
   - node common/scripts/install-run-rush.js install --bypass-policy
   - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST != "false" ];
