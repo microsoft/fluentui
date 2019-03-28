@@ -1,6 +1,21 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 22 Mar 2019 02:41:50 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Mar 2019 12:36:39 GMT and should not be manually modified.
+
+## 6.12.5
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- Remove unused state in HomePage.tsx
+- Keytips: Adding component page to AppState.
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- HomePage: Add ContextualMenu to enable switching documentation versions
 
 ## 6.12.3
 Fri, 22 Mar 2019 02:41:50 GMT

@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/fabric-website-resources",
-      "comment": "Improve imports of color utilities",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/fabric-website-resources",
-  "email": "odbuild@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

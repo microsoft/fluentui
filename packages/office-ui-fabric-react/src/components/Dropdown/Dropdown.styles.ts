@@ -1,6 +1,15 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction } from '../../Utilities';
-import { FontSizes, FontWeights, HighContrastSelector, IRawStyle, IStyle, getGlobalClassNames, normalize } from '../../Styling';
+import {
+  FontSizes,
+  FontWeights,
+  HighContrastSelector,
+  IRawStyle,
+  IStyle,
+  getGlobalClassNames,
+  normalize,
+  HighContrastSelectorWhite
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Dropdown-container',
@@ -24,8 +33,7 @@ const DROPDOWN_HEIGHT = 32;
 const DROPDOWN_ITEM_HEIGHT = 32;
 
 const highContrastAdjustMixin = {
-  // highContrastAdjust mixin
-  '@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white)': {
+  [`${HighContrastSelector}, ${HighContrastSelectorWhite.replace('@media ', '')}`]: {
     MsHighContrastAdjust: 'none'
   }
 };
