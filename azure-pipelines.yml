@@ -15,24 +15,24 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-script: |
+- script: |
   - node common/scripts/install-run-rush.js install --bypass-policy
   displayName: rush install
 
-script: |
+- script: |
   - npm run checkchange
   displayName: check change
 
-script: |
+- script: |
   - npm run buildci
   displayName: build ci
 
-script: |
+- script: |
   - npm run vrtest
   displayName: run VR Test
   env:
     SCREENER_API_KEY: $(screener.key)
 
-script: |
+- script: |
   - npm run check-for-changed-files
   displayName: check for change file
