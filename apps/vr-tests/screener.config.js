@@ -1,32 +1,37 @@
+const cp = require('child_process');
+
+function execSync(command) {
+  return cp.execSync(command, {
+    stdio: ['pipe', 'pipe', process.stderr]
+  });
+}
+
+function runGit(command) {
+  return execSync(`git ${command}`);
+}
+
+export function getCurrentHash() {
+  try {
+    const buffer = runGit('rev-parse HEAD');
+
+    if (buffer) {
+      return buffer.toString().trim();
+    }
+  } catch (e) {
+    console.error('Cannot get current git hash');
+  }
+
+  return '';
+}
+
 module.exports = {
   projectRepo: 'OfficeDev/office-ui-fabric-react',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
-  baseBranch: process.env['System.PullRequest.TargetBranch'] || 'master',
+  baseBranch:
+    process.env['SYSTEM_PULLREQUEST_TARGETBRANCH'].replace(/^refs\/heads\//, '') || 'master',
   failureExitCode: 0,
-  alwaysAcceptBaseBranch: true
+  alwaysAcceptBaseBranch: true,
+  commit: getCurrentHash()
 };
-
-// if (process.env['Build.SourceBranchName'] === 'master') {
-// config.browsers = [
-//   {
-//     browserName: 'internet explorer',
-//     version: '11.103'
-//   },
-//   {
-//     browserName: 'chrome'
-//   },
-// {
-//   browserName: 'firefox'
-// },
-// {
-//   browserName: 'microsoftedge'
-// }
-// ];
-
-// config.sauce = {
-//   username: 'dzearing',
-//   accessKey: process.env.SAUCE_API_KEY
-// };
-// }

@@ -28,6 +28,8 @@ steps:
     displayName: build ci
 
   - script: |
+      git config --global user.email "fabrictactical@microsoft.com"
+      git config --global user.name "Fabric Tactical"
       npm run vrtest
     displayName: run VR Test
     env:
