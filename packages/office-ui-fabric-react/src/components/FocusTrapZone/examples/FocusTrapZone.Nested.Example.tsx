@@ -16,9 +16,9 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps> {
     const { isActive, zoneNumber, children } = this.props;
     const contents = (
       <Stack
-        gap={10}
         horizontal={zoneNumber === 2}
         horizontalAlign="start"
+        tokens={{ childrenGap: 10 }}
         styles={{
           root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 }
         }}

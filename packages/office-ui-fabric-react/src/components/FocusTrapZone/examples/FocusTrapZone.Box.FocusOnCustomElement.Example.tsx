@@ -36,8 +36,8 @@ export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IF
 
     return (
       <Stack
-        gap={15}
         horizontalAlign="start"
+        tokens={{ childrenGap: 15 }}
         styles={{
           root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
         }}

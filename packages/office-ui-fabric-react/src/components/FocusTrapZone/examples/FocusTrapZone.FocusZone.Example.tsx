@@ -4,7 +4,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
 export interface IFocusTrapZoneFocusZoneExampleState {
   useTrapZone: boolean;
@@ -36,9 +36,10 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
     const padding = 10;
     const border = '2px dashed #ababab';
     const rootBorder = `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`;
+    const tokens: IStackTokens = { childrenGap: 10 };
 
     return (
-      <Stack gap={15} horizontalAlign="start" styles={{ root: { border: rootBorder, padding } }}>
+      <Stack tokens={tokens} horizontalAlign="start" styles={{ root: { border: rootBorder, padding } }}>
         <Toggle
           label="Use trap zone"
           componentRef={this._toggle}
@@ -49,7 +50,7 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
         />
 
         <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-          <Stack horizontal gap={10} styles={{ root: { border, padding } }}>
+          <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
             <DefaultButton text="FZ1" />
             <DefaultButton text="FZ1" />
             <DefaultButton text="FZ1" />
@@ -59,7 +60,7 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
         <DefaultButton text="No FZ" />
 
         <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-          <Stack horizontal gap={10} styles={{ root: { border, padding } }}>
+          <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
             <DefaultButton text="FZ2" />
             <DefaultButton text="FZ2" />
             <DefaultButton text="FZ2" />

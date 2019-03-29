@@ -35,8 +35,8 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
 
     return (
       <Stack
-        gap={15}
         horizontalAlign="start"
+        tokens={{ childrenGap: 15 }}
         styles={{
           root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
         }}

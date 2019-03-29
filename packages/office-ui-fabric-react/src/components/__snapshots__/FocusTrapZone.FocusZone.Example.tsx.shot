@@ -23,7 +23,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 15px;
+          margin-top: 10px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;

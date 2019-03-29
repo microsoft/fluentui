@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -34,8 +33,8 @@ export class FocusTrapZoneNoTabbableExample extends React.Component<{}, IFocusTr
 
     return (
       <Stack
-        gap={15}
         horizontalAlign="start"
+        tokens={{ childrenGap: 15 }}
         styles={{
           root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
         }}
