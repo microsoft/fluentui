@@ -83,21 +83,8 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
       classNames.content,
       {
         position: 'relative',
-        width: '100%',
-
-        selectors: {
-          '.ms-Button.ms-Button--compount': {
-            marginBottom: '20px',
-
-            selectors: {
-              '&:last-child': {
-                marginBottom: '0'
-              }
-            }
-          }
-        }
-      },
-      className
+        width: '100%'
+      }
     ],
 
     title: [
@@ -112,12 +99,13 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         lineHeight: 'normal'
       },
       isLargeHeader && [
+        fonts.xxLarge,
         {
           color: palette.white,
           marginBottom: '8px',
-          padding: '26px 28px 28px'
-        },
-        fonts.xxLarge
+          padding: '22px 24px',
+          fontWeight: FontWeights.semibold
+        }
       ],
       isMultiline && fonts.xxLarge
     ],
