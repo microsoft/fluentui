@@ -2,6 +2,71 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.163.0",
+      "tag": "office-ui-fabric-react_v6.163.0",
+      "date": "Fri, 29 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persisted callout fixes",
+            "author": "David De La Brena <36862912+ddlbrena@users.noreply.github.com>",
+            "commit": "9a7397d3385e740654d78ebf1086e75aea331ce9"
+          },
+          {
+            "comment": "DocPage: add separate prop for overriding native props component name",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "35df0a3a86868a4dd6069e6e7dbd29ea7f12ad64"
+          },
+          {
+            "comment": "Pickers: condionally render the list of the selected items only if there are any items to display. Fixes the aria role=\"list\" bug where a list must contain one or more list items.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "d72220e6a41f6cd6a27033434b2bf00da211ecd2"
+          },
+          {
+            "comment": "Spinner and Slider example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "98ba37a1eea27c121bc09fd6975841d94325afe9"
+          },
+          {
+            "comment": "TextField example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "2921eadc749c31276fac1a81c4ad1744f35d3308"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dropdown: add correctly cased onRenderPlaceholder prop and deprecate onRenderPlaceHolder, plus example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "58110837699940239dbd68591c9f0026e7aea57b"
+          },
+          {
+            "comment": "Added order property to StackItem",
+            "author": "jpalo <jpalo@users.noreply.github.com>",
+            "commit": "dfaea436836fc0bac50413e68424cedd4874df38"
+          },
+          {
+            "comment": "HoverCard: adds a public `dismiss` method to allow instant dismiss of the card.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "30bea805e3c1fc69010e827799e068a8813fa689"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.162.1",
+      "tag": "office-ui-fabric-react_v6.162.1",
+      "date": "Thu, 28 Mar 2019 12:36:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Add aria-required field to assist screen readers to read out required field",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "adca78be488aca5825846841ed2a13d291dcfdd0"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.162.0",
       "tag": "office-ui-fabric-react_v6.162.0",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",

@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 6.163.0
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Dropdown: add correctly cased onRenderPlaceholder prop and deprecate onRenderPlaceHolder, plus example updates
+- Added order property to StackItem
+- HoverCard: adds a public `dismiss` method to allow instant dismiss of the card.
+
+### Patches
+
+- Persisted callout fixes
+- DocPage: add separate prop for overriding native props component name
+- Pickers: condionally render the list of the selected items only if there are any items to display. Fixes the aria role="list" bug where a list must contain one or more list items.
+- Spinner and Slider example updates
+- TextField example updates
+
+## 6.162.1
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- ComboBox: Add aria-required field to assist screen readers to read out required field
 
 ## 6.162.0
 Wed, 27 Mar 2019 12:34:02 GMT

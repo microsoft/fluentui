@@ -15,27 +15,7 @@ import './ExampleCard.scss';
 import { Highlight } from '../Highlight/Highlight';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
-
-export interface IExampleCardProps {
-  /* Example Title */
-  title: string;
-  /* Experimental Component? */
-  isOptIn?: boolean;
-  /* Example Code as a string */
-  code?: string;
-  /* Children of the Example */
-  children?: React.ReactNode;
-  /* Example is Right-Aligned ? */
-  isRightAligned?: boolean;
-  /* Example dos */
-  dos?: JSX.Element;
-  /* Example don'ts */
-  donts?: JSX.Element;
-  /* Example is scrollable ? */
-  isScrollable?: boolean;
-  /* JS string for Codepen portion of Example */
-  codepenJS?: string;
-}
+import { IExampleCardProps } from './ExampleCard.types';
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;

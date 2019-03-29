@@ -2,7 +2,26 @@
 
 exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1`] = `
 <div
-  className="docs-TextFieldExample"
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        max-width: 300px;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 15px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
@@ -508,6 +527,7 @@ exports[`Component Examples renders TextField.Underlined.Example.tsx correctly 1
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          placeholder="Enter text here"
           required={true}
           type="text"
           value=""

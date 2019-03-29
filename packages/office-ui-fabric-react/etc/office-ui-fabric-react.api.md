@@ -1327,7 +1327,7 @@ export const groupTwo: IExtendedPersonaProps[];
 export const HoverCard: React_2.StatelessComponent<IHoverCardProps>;
 
 // @public (undocumented)
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
+export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
     constructor(props: IHoverCardProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1343,6 +1343,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         openHotKey: number;
         type: HoverCardType;
     };
+    // (undocumented)
+    dismiss: (withTimeOut?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
     }
@@ -3974,7 +3976,9 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    // @deprecated
     onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
+    onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
     onRenderTitle?: IRenderFunction<IDropdownOption[]>;
     options: IDropdownOption[];
     // @deprecated
@@ -4538,6 +4542,7 @@ export interface IGroupSpacerStyles {
 
 // @public (undocumented)
 export interface IHoverCard {
+    dismiss: (withTimeOut?: boolean) => void;
 }
 
 // @public
@@ -6688,6 +6693,7 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
     className?: string;
     disableShrink?: boolean;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+    order?: number | string;
     shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
     verticalFill?: boolean;
 }

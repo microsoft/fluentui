@@ -1,6 +1,22 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 6.12.6
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add session storage to index to preserve fabricVer between page navigation
+- Fix key errors from Nav
+
+## 6.12.5
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- Remove unused state in HomePage.tsx
+- Keytips: Adding component page to AppState.
 
 ## 6.12.4
 Wed, 27 Mar 2019 12:34:02 GMT
