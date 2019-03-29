@@ -13,6 +13,9 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
       & .ms-Label {
         margin-bottom: 10px;
       }
+      & .ms-Button {
+        color: #CCC;
+      }
 >
   <div>
     <label

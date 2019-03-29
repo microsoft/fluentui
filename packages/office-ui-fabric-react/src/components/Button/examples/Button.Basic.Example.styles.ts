@@ -29,6 +29,9 @@ export function getStyles(props: IButtonBasicExampleStyleProps): IButtonBasicExa
           },
           '.ms-Label': {
             marginBottom: '10px'
+          },
+          '.ms-Button': {
+            color: '#CCC'
           }
         }
       }
