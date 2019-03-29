@@ -90,11 +90,13 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
-    if (newProps.mask !== this.props.mask) {
+    if (newProps.mask !== this.props.mask || newProps.value !== this.props.value) {
       this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
-      this.state = {
+      newProps.value && this.setValue(newProps.value);
+
+      this.setState({
         displayValue: getMaskDisplay(newProps.mask, this._maskCharData, newProps.maskChar)
-      };
+      });
     }
   }
 
