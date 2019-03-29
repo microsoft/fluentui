@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 28 Mar 2019 11:24:20 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Mar 2019 11:24:51 GMT and should not be manually modified.
+
+## 5.8.3
+Fri, 29 Mar 2019 11:24:51 GMT
+
+### Patches
+
+- Remove check for localhost in _renderLink of Nav
 
 ## 5.8.2
 Thu, 28 Mar 2019 11:24:20 GMT

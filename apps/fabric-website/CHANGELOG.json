@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.3",
+      "tag": "@uifabric/fabric-website_v5.8.3",
+      "date": "Fri, 29 Mar 2019 11:24:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "2d4a290397f2467bf06cb7ede90dd856a80a89d6",
+            "comment": "Remove check for localhost in _renderLink of Nav"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.2",
       "tag": "@uifabric/fabric-website_v5.8.2",
       "date": "Thu, 28 Mar 2019 11:24:20 GMT",
