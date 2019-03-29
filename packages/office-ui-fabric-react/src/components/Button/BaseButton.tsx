@@ -190,7 +190,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-label': resolvedAriaLabel,
       'aria-labelledby': ariaLabelledBy,
       'aria-describedby': ariaDescribedBy,
-      'aria-wrongtag': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
       'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
