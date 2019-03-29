@@ -2,21 +2,19 @@ import * as React from 'react';
 import { ITextFieldStyleProps, ITextFieldStyles, TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ILabelStyles, ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import './TextField.Styled.Example.scss';
 
 export const TextFieldStyledExample: React.StatelessComponent = () => {
-  const stackTokens: IStackTokens = { childrenGap: 15 };
-
   return (
-    <Stack tokens={stackTokens}>
+    <Stack tokens={{ childrenGap: 15 }}>
       <Text styles={{ root: { maxWidth: 600 } }}>
         These examples show how components that used to be styled using CSS can be styled using JS styling. The preferred method is JS
         styling for several reasons: type safety for styling, more predictable behavior, and clear feedback via typing when component
         changes affect existing styling code.
       </Text>
-      <TextField label="Theme Primary Label, Red Top Border (JS):" required={true} styles={getStyles} />
-      <TextField label="Theme Primary Label, Red Top Border (CSS):" required={true} className="textField-cssStyled" />
+      <TextField label="Theme Primary Label, Red Top Border (JS):" required styles={getStyles} />
+      <TextField label="Theme Primary Label, Red Top Border (CSS):" required className="textField-cssStyled" />
     </Stack>
   );
 };
