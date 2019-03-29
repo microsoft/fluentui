@@ -7,7 +7,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 const HorizontalSeparatorStack = (props: { children: JSX.Element[] }) => (
   <>
     {React.Children.map(props.children, child => {
-      return <Stack gap={10}>{child}</Stack>;
+      return <Stack gap={12}>{child}</Stack>;
     })}
   </>
 );
@@ -16,7 +16,7 @@ const VerticalSeparatorStack = (props: { children: JSX.Element[] }) => (
   <Stack horizontal horizontalAlign="space-evenly">
     {React.Children.map(props.children, child => {
       return (
-        <Stack gap={10} horizontalAlign="center">
+        <Stack gap={12} horizontalAlign="center">
           {child}
         </Stack>
       );
@@ -33,7 +33,7 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
     const content = 'Today';
 
     return (
-      <Stack gap={15}>
+      <Stack gap={12}>
         <HorizontalSeparatorStack>
           <>
             <Text>Horizontal center aligned</Text>

@@ -16,7 +16,7 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
         text-overflow: ellipsis;
       }
       & > *:not(:first-child) {
-        margin-top: 10px;
+        margin-top: 12px;
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
@@ -91,12 +91,12 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               display: inline-block;
               font-family: "FabricMDL2Icons-2";
-              font-size: 25px;
+              font-size: 24px;
               font-style: normal;
               font-weight: normal;
-              height: 25px;
+              height: 24px;
               speak: none;
-              width: 25px;
+              width: 24px;
             }
         data-icon-name="Clock"
         role="presentation"
