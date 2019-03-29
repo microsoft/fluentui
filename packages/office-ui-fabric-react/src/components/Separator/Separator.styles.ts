@@ -38,7 +38,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         zIndex: 1,
         selectors: {
           ':after': {
-            backgroundColor: theme.palette.neutralLight,
+            backgroundColor: theme.palette.neutralLighter,
             width: '1px',
             content: '""',
             position: 'absolute',
@@ -54,7 +54,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         padding: '4px 0',
         selectors: {
           ':before': {
-            backgroundColor: theme.palette.neutralLight,
+            backgroundColor: theme.palette.neutralLighter,
             height: '1px',
             content: '""',
             display: 'block',
