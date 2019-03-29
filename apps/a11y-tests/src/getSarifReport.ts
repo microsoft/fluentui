@@ -7,6 +7,7 @@ const TEST_URL_ROOT = 'http://localhost:4322/';
 
 export async function getSarifReport(subUrl: string): Promise<ISarifLog> {
   const browser = await puppeteer.launch();
+
   const page = await browser.newPage();
   await page.setBypassCSP(true);
   await page.goto(`${TEST_URL_ROOT}${subUrl}`);
