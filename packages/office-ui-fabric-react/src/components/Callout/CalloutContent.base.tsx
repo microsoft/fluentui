@@ -131,7 +131,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
 
     // Ensure positioning is recalculated when we are about to show a persisted menu.
-    if (!newProps.hidden && newProps.hidden !== this.props.hidden) {
+    if (!newProps.hidden && (newProps.hidden !== this.props.hidden)) {
       this._maxHeight = undefined;
       // Target might have been updated while hidden.
       this._setTargetWindowAndElement(newTarget);
