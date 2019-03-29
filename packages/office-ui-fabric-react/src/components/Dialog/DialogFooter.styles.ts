@@ -20,7 +20,7 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
         width: '100%',
         minHeight: '24px',
         lineHeight: '24px',
-        margin: '20px 0 0',
+        margin: '16px 0 0',
         fontSize: '0',
 
         selectors: {

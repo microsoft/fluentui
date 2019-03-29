@@ -14,7 +14,7 @@ const TAG_HEIGHT = 26;
 export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
   const { className, theme, selected, disabled } = props;
 
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -33,6 +33,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         display: 'flex',
         flexWrap: 'nowrap',
         maxWidth: 300,
+        borderRadius: effects.roundedCorner2,
         background: !selected || disabled ? palette.neutralLighter : palette.themePrimary,
         selectors: {
           ':hover': [
@@ -93,10 +94,14 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         width: 30,
         height: '100%',
         flex: '0 0 auto',
+        borderRadius: `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
         selectors: {
           ':hover': {
             background: palette.neutralQuaternaryAlt,
             color: palette.neutralPrimary
+          },
+          ':active': {
+            color: palette.white
           }
         }
       },

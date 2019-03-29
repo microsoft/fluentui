@@ -71,6 +71,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
               ms-BasePicker-text
               {
                 align-items: center;
+                border-radius: 2px;
                 border: 1px solid #a19f9d;
                 box-sizing: border-box;
                 display: flex;
@@ -106,6 +107,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 ms-BasePicker-input
                 {
                   align-self: flex-end;
+                  border-radius: 2px;
                   border: none;
                   flex-grow: 1;
                   height: 30px;
