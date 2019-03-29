@@ -7,8 +7,6 @@ import { mockEvent } from '../../../common/testUtilities';
 import { MaskedTextField } from './MaskedTextField';
 
 describe('MaskedTextField', () => {
-  const maskedTextFieldRef = React.createRef<MaskedTextField>();
-
   it('renders TextField correctly', () => {
     const component = renderer.create(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />);
     const tree = component.toJSON();
