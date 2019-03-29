@@ -7,15 +7,13 @@ const getClassNames = classNamesFunction<INavLinkProps, INavLinkStyles>();
 
 export class NavLink extends React.PureComponent<INavLinkProps, {}> {
   public render(): JSX.Element {
-    const { name, hasNestedMenu, isNested, target, isNavCollapsed, isExpanded, isSelected, hasSelectedNestedLink } = this.props;
+    const { name, hasNestedMenu, isNested, isNavCollapsed, isExpanded, isSelected, hasSelectedNestedLink } = this.props;
     const classNames = getClassNames(getStyles, { isNavCollapsed, hasNestedMenu, isExpanded, isSelected, hasSelectedNestedLink, isNested });
     const { className, ...nativeProps } = getNativeProps(this.props, this.props.href ? anchorProperties : buttonProperties);
 
     let iconName = undefined;
     if (hasNestedMenu) {
       iconName = 'ChevronUp';
-    } else if (target === '_blank') {
-      iconName = 'OpenInNewWindow';
     }
 
     const navContent: JSX.Element = (

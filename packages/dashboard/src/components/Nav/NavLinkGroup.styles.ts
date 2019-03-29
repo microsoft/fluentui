@@ -39,6 +39,10 @@ sort out extensibility */
         }
       }
     ],
+    nestedNavHeaderItem: {
+      zIndex: 1,
+      backgroundColor: '#ccc'
+    },
     nestedNavLinksWrapper: [
       !isNavCollapsed && isExpanded && [AnimationClassNames.fadeIn400, AnimationClassNames.slideDownIn20],
       !isNavCollapsed &&
@@ -60,6 +64,7 @@ sort out extensibility */
         width: `${flyoutNavWidth}px`,
         marginTop: `-${navItemHeight}px`,
         paddingTop: `${navItemHeight}px`,
+        backgroundColor: '#F1F1F1',
         boxShadow: '0 1.2px 3.6px rgba(0, 0, 0, 0.09), 0 6.4px 14.4px rgba(0, 0, 0, 0.11)'
       },
       isNavCollapsed && AnimationClassNames.slideRightIn10
