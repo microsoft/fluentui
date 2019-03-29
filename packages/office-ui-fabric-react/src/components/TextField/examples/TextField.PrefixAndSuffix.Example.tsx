@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export const TextFieldPrefixAndSuffixExample: React.StatelessComponent = () => {
+  const stackTokens: IStackTokens = { childrenGap: 15 };
+
   return (
-    <Stack maxWidth={300} gap={15}>
+    <Stack maxWidth={300} tokens={stackTokens}>
       <TextField // prettier-ignore
         label="With prefix"
         prefix="https://"

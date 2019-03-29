@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 interface INumberTextFieldProps {
   label: string;
@@ -67,8 +67,10 @@ class NumberTextField extends React.Component<INumberTextFieldProps, INumberText
 }
 
 export const NumberTextFieldExample: React.StatelessComponent = () => {
+  const stackTokens: IStackTokens = { childrenGap: 15 };
+
   return (
-    <Stack gap={15} maxWidth={300}>
+    <Stack tokens={stackTokens} maxWidth={300}>
       <NumberTextField label="Number TextField with valid initial value" initialValue="100" />
       <NumberTextField label="Number TextField with invalid initial value" initialValue="Not a number" />
     </Stack>

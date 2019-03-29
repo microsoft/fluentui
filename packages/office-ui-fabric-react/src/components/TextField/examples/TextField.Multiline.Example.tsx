@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface ITextFieldMultilineExampleState {
   multiline: boolean;
@@ -16,8 +16,10 @@ export class TextFieldMultilineExample extends React.Component<{}, ITextFieldMul
   }
 
   public render(): JSX.Element {
+    const stackTokens: IStackTokens = { childrenGap: 15 };
+
     return (
-      <Stack gap={15} maxWidth={300}>
+      <Stack tokens={stackTokens} maxWidth={300}>
         <TextField label="Standard" multiline rows={3} />
         <TextField label="Disabled" multiline rows={3} disabled value={this._lorem} />
         <TextField label="Non-resizable" multiline resizable={false} />
