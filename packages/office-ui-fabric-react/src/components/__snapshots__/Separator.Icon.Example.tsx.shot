@@ -48,10 +48,10 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          padding-bottom: 5px;
+          padding-bottom: 4px;
           padding-left: 0;
           padding-right: 0;
-          padding-top: 5px;
+          padding-top: 4px;
           position: relative;
           text-align: center;
         }
@@ -76,8 +76,8 @@ exports[`Component Examples renders Separator.Icon.Example.tsx correctly 1`] = `
             color: #333333;
             display: inline-block;
             padding-bottom: 0;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 12px;
+            padding-right: 12px;
             padding-top: 0;
             position: relative;
           }

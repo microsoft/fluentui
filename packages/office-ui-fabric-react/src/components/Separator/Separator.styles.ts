@@ -32,7 +32,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
           verticalAlign: 'bottom'
         },
       vertical && {
-        padding: '0 5px',
+        padding: '0 4px',
         height: 'inherit',
         display: 'table-cell',
         zIndex: 1,
@@ -51,7 +51,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         }
       },
       !vertical && {
-        padding: '5px 0',
+        padding: '4px 0',
         selectors: {
           ':before': {
             backgroundColor: theme.palette.neutralLight,
@@ -72,12 +72,12 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       {
         position: 'relative',
         display: 'inline-block',
-        padding: '0 20px',
+        padding: '0 12px',
         color: theme.semanticColors.bodyText,
         background: theme.semanticColors.bodyBackground
       },
       vertical && {
-        padding: '20px 0'
+        padding: '12px 0'
       }
     ]
   };
