@@ -18,7 +18,7 @@ export class SeparatorThemingExample extends React.Component<{}, {}> {
     const content = 'Today';
 
     return (
-      <Stack gap={5}>
+      <Stack gap={10}>
         <Text>Horizontal center aligned with custom theme</Text>
         <Separator theme={theme}>{content}</Separator>
       </Stack>

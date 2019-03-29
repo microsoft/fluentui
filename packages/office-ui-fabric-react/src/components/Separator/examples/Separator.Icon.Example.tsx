@@ -15,7 +15,7 @@ const iconStyles: IIconStyles = {
 export class SeparatorIconExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={5}>
+      <Stack gap={10}>
         <Text>Horizontal center aligned with an icon as content</Text>
         <Separator>
           <Icon iconName="Clock" styles={iconStyles} />
