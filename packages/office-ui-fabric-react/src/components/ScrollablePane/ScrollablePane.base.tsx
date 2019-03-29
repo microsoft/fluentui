@@ -239,7 +239,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       sticky.setDistanceFromTop(this.contentContainer);
       this.sortSticky(sticky);
     }
-    this.notifySubscribers();
   };
 
   public removeSticky = (sticky: Sticky): void => {
