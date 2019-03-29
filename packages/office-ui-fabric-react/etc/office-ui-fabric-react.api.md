@@ -6057,9 +6057,9 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
 // @public (undocumented)
 export interface IScrollablePaneState {
     // (undocumented)
-    scrollbarHeight: number | undefined;
+    scrollbarHeight: number;
     // (undocumented)
-    scrollbarWidth: number | undefined;
+    scrollbarWidth: number;
     // (undocumented)
     stickyBottomHeight: number;
     // (undocumented)
@@ -6769,6 +6769,8 @@ export interface IStickyProps extends React.Props<Sticky> {
 
 // @public (undocumented)
 export interface IStickyState {
+    // (undocumented)
+    distanceFromTop: number;
     // (undocumented)
     isStickyBottom: boolean;
     // (undocumented)
@@ -8576,7 +8578,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     readonly stickyContentTop: HTMLDivElement | null;
     // (undocumented)
     syncScroll: (container: HTMLElement) => void;
-}
+    }
 
 // @public (undocumented)
 export enum StickyPositionType {
