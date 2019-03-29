@@ -11,7 +11,7 @@ const alignMap: { [key: string]: string } = {
 };
 
 export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tokens): IStackItemStylesReturnType => {
-  const { grow, shrink, disableShrink, align, verticalFill, className } = props;
+  const { grow, shrink, disableShrink, align, verticalFill, order, className } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -34,6 +34,9 @@ export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tok
         },
       align && {
         alignSelf: alignMap[align] || align
+      },
+      order && {
+        order: order
       },
       className
     ]

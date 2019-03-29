@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.13.2",
+      "tag": "@uifabric/fabric-website-resources_v6.13.2",
+      "date": "Fri, 29 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DemoPage: pass all extra props to ComponentPage",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "35df0a3a86868a4dd6069e6e7dbd29ea7f12ad64"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.4 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.162.1 <7.0.0` to `>=6.163.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.1",
       "tag": "@uifabric/fabric-website-resources_v6.13.1",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",

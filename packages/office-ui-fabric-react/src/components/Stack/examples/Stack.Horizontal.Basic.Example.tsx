@@ -34,6 +34,19 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
           <span>Item Three</span>
         </Stack>
 
+        <span>Ordered stack</span>
+        <Stack horizontal disableShrink className={styles.root}>
+          <Stack.Item order={2}>
+            <span>Item One</span>
+          </Stack.Item>
+          <Stack.Item order={3}>
+            <span>Item Two</span>
+          </Stack.Item>
+          <Stack.Item order={1}>
+            <span>Item Three</span>
+          </Stack.Item>
+        </Stack>
+
         <span>Horizontal gap between items</span>
         <Stack horizontal disableShrink tokens={tokens.tenGapStack} padding={10} className={styles.root}>
           <span>Item One</span>
