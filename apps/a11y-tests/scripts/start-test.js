@@ -7,7 +7,9 @@ concurrently(
     successCondition: 'first'
   }
 ).then(
-  () => {},
+  () => {
+    exit(1);
+  },
   () => {
     exit(1);
   }
