@@ -15,12 +15,12 @@ const theme: ITheme = createTheme({
 
 export class SeparatorThemingExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const message = 'Today';
+    const content = 'Today';
 
     return (
       <Stack gap={5}>
         <Text>Horizontal center aligned with custom theme</Text>
-        <Separator theme={theme}>{message}</Separator>
+        <Separator theme={theme}>{content}</Separator>
       </Stack>
     );
   }
