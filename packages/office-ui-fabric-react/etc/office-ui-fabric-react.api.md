@@ -1281,6 +1281,8 @@ export const GroupedList: React_2.StatelessComponent<IGroupedListProps>;
 export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
     componentWillReceiveProps(newProps: IGroupedListProps): void;
     // (undocumented)
     static defaultProps: {
