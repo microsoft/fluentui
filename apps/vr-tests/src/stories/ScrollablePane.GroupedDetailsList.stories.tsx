@@ -205,8 +205,9 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
           }}
           itemIndex={-1}
           selection={props.selection}
-          selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
+          selectionMode={SelectionMode.single}
           viewport={props.viewport}
+          groupNestingDepth={props.groupNestingDepth}
           onRenderCheck={_onRenderCheckForFooterRow}
         />
       </div>
@@ -254,6 +255,24 @@ storiesOf('ScrollablePane Grouped Details List', module)
         .executeScript(`${getElement}.scrollTop = 0`)
         .snapshot(
           'Scrollbars visibility after scrolling up to the top with non-zero scrollLeft',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollLeft = 0`)
+        .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[0].click()`)
+        .snapshot(
+          'On expanding a group, horizontal scrollbar should be visible',
+          cropTo
+        )
+        .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[1].click()`)
+        .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[2].click()`)
+        .executeScript(`${getElement}.scrollTop = 50`)
+        .snapshot(
+          'If groups are expanded, when header becomes sticky, horizontal scrollbar should be visible',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollLeft = 99999`)
+        .snapshot(
+          'If groups are expanded, on horizontal scroll, over scroll should not happen for content container',
           cropTo
         )
         .end()}
