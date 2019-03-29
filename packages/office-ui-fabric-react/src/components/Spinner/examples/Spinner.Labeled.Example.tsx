@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export const SpinnerLabeledExample: React.StatelessComponent = () => {
+  const stackTokens: IStackTokens = { childrenGap: 20 };
+
   return (
-    <Stack gap={20} maxWidth={250}>
+    <Stack tokens={stackTokens} maxWidth={250}>
       <div>
         <Label>Spinner with label positioned below</Label>
         <Spinner label="I am definitely loading..." />

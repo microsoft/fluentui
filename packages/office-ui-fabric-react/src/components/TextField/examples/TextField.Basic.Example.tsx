@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export const TextFieldBasicExample: React.StatelessComponent = () => {
+  const stackTokens: IStackTokens = { childrenGap: 15 };
+
   return (
-    <Stack gap={15} maxWidth={300}>
+    <Stack tokens={stackTokens} maxWidth={300}>
       <TextField label="Standard" />
       <TextField label="Disabled" disabled />
       <TextField label="Read-only" readOnly />

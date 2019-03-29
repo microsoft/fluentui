@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Stack } from '../Stack';
+import { IStackTokens } from '../Stack.types';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class HorizontalStackGrowExample extends React.Component<{}, {}> {
@@ -19,8 +20,10 @@ export class HorizontalStackGrowExample extends React.Component<{}, {}> {
       }
     });
 
+    const stackTokens: IStackTokens = { childrenGap: 5 };
+
     return (
-      <Stack horizontal gap={5} padding={10} className={styles.root}>
+      <Stack horizontal tokens={stackTokens} padding={10} className={styles.root}>
         <Stack.Item grow={3} className={styles.item}>
           Grow is 3
         </Stack.Item>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface ISliderVerticalExampleState {
   value: number;
@@ -8,8 +8,10 @@ export interface ISliderVerticalExampleState {
 
 // tslint:disable:jsx-no-lambda
 export const SliderVerticalExample: React.StatelessComponent = () => {
+  const stackTokens: IStackTokens = { childrenGap: 20 };
+
   return (
-    <Stack horizontal gap={20} styles={{ root: { height: 200 } }}>
+    <Stack horizontal tokens={stackTokens} styles={{ root: { height: 200 } }}>
       <Slider // prettier-ignore
         label="Basic"
         min={1}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
@@ -10,6 +10,8 @@ import { getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
 }
+
+const stackTokens: IStackTokens = { childrenGap: 20 };
 
 export class TextFieldCustomRenderExample extends React.Component<{}, ITextFieldCustomRenderExampleState> {
   public state: ITextFieldCustomRenderExampleState = { isCalloutVisible: false };
@@ -19,7 +21,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
 
   public render(): JSX.Element {
     return (
-      <Stack gap={20} maxWidth={300}>
+      <Stack tokens={stackTokens} maxWidth={300}>
         <TextField label="Custom label rendering" onRenderLabel={this._onRenderLabel} description="Click the (i) icon!" />
 
         <TextField
@@ -62,7 +64,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
             ariaDescribedBy={this._descriptionId}
             role="alertdialog"
           >
-            <Stack gap={20} horizontalAlign="start" maxWidth={300} styles={{ root: { padding: 20 } }}>
+            <Stack tokens={stackTokens} horizontalAlign="start" maxWidth={300} styles={{ root: { padding: 20 } }}>
               <span id={this._descriptionId}>The custom label includes an IconButton that displays this Callout on click.</span>
               <DefaultButton onClick={this._onDismiss}>Close</DefaultButton>
             </Stack>

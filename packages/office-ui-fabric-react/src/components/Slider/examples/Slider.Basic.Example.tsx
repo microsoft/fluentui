@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface ISliderBasicExampleState {
   value: number;
@@ -11,8 +11,10 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
   public state: ISliderBasicExampleState = { value: 0 };
 
   public render(): JSX.Element {
+    const stackTokens: IStackTokens = { childrenGap: 20 };
+
     return (
-      <Stack gap={20} styles={{ root: { maxWidth: 300 } }}>
+      <Stack tokens={stackTokens} styles={{ root: { maxWidth: 300 } }}>
         <Slider
           label="Basic example"
           min={1}

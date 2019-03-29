@@ -16,8 +16,17 @@ export class VerticalStackReversedExample extends React.Component<{}, {}> {
       }
     });
 
+    const tokens = {
+      fiveGapStack: {
+        childrenGap: 5
+      },
+      tenGapStack: {
+        childrenGap: 10
+      }
+    };
+
     return (
-      <Stack gap={5}>
+      <Stack tokens={tokens.fiveGapStack}>
         <span>Default vertical stack</span>
         <Stack reversed className={styles.root}>
           <span>Item One</span>
@@ -26,14 +35,14 @@ export class VerticalStackReversedExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Vertical gap between items</span>
-        <Stack reversed gap={10} padding={10} className={styles.root}>
+        <Stack reversed tokens={tokens.tenGapStack} padding={10} className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack reversed gap={5} padding={10} className={styles.root}>
+        <Stack reversed tokens={tokens.fiveGapStack} padding={10} className={styles.root}>
           <Stack.Item align="auto" className={styles.item}>
             <span>Auto-aligned item</span>
           </Stack.Item>

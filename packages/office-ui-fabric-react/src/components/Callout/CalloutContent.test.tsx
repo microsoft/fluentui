@@ -17,7 +17,7 @@ describe('CalloutContentBase', () => {
     };
 
     const callout = mount(
-      <CalloutContent {...props} >
+      <CalloutContent {...props}>
         <div>Content</div>
       </CalloutContent>
     );

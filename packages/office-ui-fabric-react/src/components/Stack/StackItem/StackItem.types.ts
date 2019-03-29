@@ -53,6 +53,8 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
   order?: number | string;
 }
 
-export interface IStackItemTokens {}
+export interface IStackItemTokens {
+  margin?: number | string;
+}
 
 export type IStackItemStyles = IComponentStyles<IStackItemSlots>;

@@ -6715,10 +6715,12 @@ export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['
 
 // @public (undocumented)
 export interface IStackItemTokens {
+    // (undocumented)
+    margin?: number | string;
 }
 
 // @public (undocumented)
-export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React_2.HTMLAttributes<HTMLElement> {
+export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
     gap?: number | string;
@@ -6754,6 +6756,8 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 
 // @public (undocumented)
 export interface IStackTokens {
+    // (undocumented)
+    childrenGap?: number | string;
 }
 
 // @public (undocumented)
