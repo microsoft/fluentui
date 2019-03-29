@@ -30,7 +30,7 @@ steps:
 
   - script: |
       cd ./apps/a11y-tests
-      npm run a11ytest
+      npm run start-generate-reports
     displayName: generate sarif a11y reports
 
   - task: PublishBuildArtifacts@1
