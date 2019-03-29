@@ -179,3 +179,5 @@ Array [
   },
 ]
 `;
+
+exports[`runs Axe on Button 2`] = `"Found 5 a11y errors for Button. Please check the 'Scan' tab in 'office-ui-fabric-react' on Azure DevOps"`;

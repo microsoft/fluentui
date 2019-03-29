@@ -11,6 +11,14 @@ function dehydrateSarifReport(report: ISarifLog): Result[] {
 export async function testComponent(component: { name: string; url: string }) {
   it(`runs Axe on ${component.name}`, async () => {
     const report = await getSarifReport(component.url);
-    expect(dehydrateSarifReport(report)).toMatchSnapshot();
+
+    const errors = dehydrateSarifReport(report);
+    expect(errors).toMatchSnapshot();
+
+    const errorCount = errors.length;
+    const errorCountMessage = `Found ${errorCount} a11y errors for ${
+      component.name
+    }. Please check the 'Scan' tab in 'office-ui-fabric-react' on Azure DevOps`;
+    expect(errorCountMessage).toMatchSnapshot();
   }, 60000);
 }

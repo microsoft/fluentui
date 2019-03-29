@@ -158,3 +158,5 @@ Fix any of the following:
   },
 ]
 `;
+
+exports[`runs Axe on TextField 2`] = `"Found 4 a11y errors for TextField. Please check the 'Scan' tab in 'office-ui-fabric-react' on Azure DevOps"`;
