@@ -6723,7 +6723,6 @@ export interface IStackItemTokens {
 export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
-    // @deprecated
     gap?: number | string;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
     horizontal?: boolean;

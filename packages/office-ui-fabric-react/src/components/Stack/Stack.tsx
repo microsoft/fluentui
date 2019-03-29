@@ -5,15 +5,11 @@ import StackItem from './StackItem/StackItem';
 import { IStackItemProps } from './StackItem/StackItem.types';
 import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import { styles } from './Stack.styles';
-import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
+import { getNativeProps, htmlElementProperties } from '../../Utilities';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
 const view: IStackComponent['view'] = props => {
-  warnDeprecations('Stack', props, {
-    gap: 'childrenGap'
-  });
-
   const { as: RootType = 'div', disableShrink, wrap, ...rest } = props;
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
