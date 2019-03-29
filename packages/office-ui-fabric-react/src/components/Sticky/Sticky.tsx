@@ -7,6 +7,7 @@ import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
+  distanceFromTop: number;
 }
 
 export interface IStickyContext {
@@ -38,7 +39,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     super(props);
     this.state = {
       isStickyTop: false,
-      isStickyBottom: false
+      isStickyBottom: false,
+      distanceFromTop: 0
     };
     this.distanceFromTop = 0;
     this._activeElement = undefined;
@@ -124,16 +126,20 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return true;
     }
 
-    const { isStickyTop, isStickyBottom } = this.state;
+    const { isStickyTop, isStickyBottom, distanceFromTop } = this.state;
 
     return (isStickyTop !== nextState.isStickyTop ||
       isStickyBottom !== nextState.isStickyBottom ||
       this.props.stickyPosition !== nextProps.stickyPosition ||
       this.props.children !== nextProps.children ||
+      distanceFromTop !== nextState.distanceFromTop ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentTop) ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentBottom) ||
-      _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder) ||
-      _isScrollWidthDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
+      _isOffsetHeightDifferent(
+        this._nonStickyContent,
+        this._placeHolder
+      )) as // _isScrollWidthDifferent(this._nonStickyContent, this._placeHolder) // ||
+    boolean;
   }
 
   public render(): JSX.Element {
@@ -186,13 +192,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _setDistanceFromTop(distance: number): void {
-    const { scrollablePane } = this.context;
-
-    if (this.distanceFromTop !== distance && scrollablePane) {
+    if (this.distanceFromTop !== distance) {
       this.distanceFromTop = distance;
-      scrollablePane.sortSticky(this, true);
-      this.forceUpdate();
-      scrollablePane.syncScrollSticky(this);
+      this._updateStickyState(true);
     }
   }
 
@@ -231,7 +233,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
     if (this.root && this.nonStickyContent) {
-      this._setDistanceFromTop(this._getNonStickyDistanceFromTop(container));
+      this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
+      const hasDistanceFromTopChanged = this.distanceFromTop !== this.state.distanceFromTop;
       let isStickyTop = false;
       let isStickyBottom = false;
 
@@ -257,12 +260,31 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         this._activeElement = undefined;
       }
 
-      this.setState({
-        isStickyTop: this.canStickyTop && isStickyTop,
-        isStickyBottom: isStickyBottom
-      });
+      this._updateStickyState(hasDistanceFromTopChanged, this.canStickyTop && isStickyTop, isStickyBottom);
     }
   };
+
+  private _updateStickyState(hasDistanceFromTopChanged: boolean, isStickyTop?: boolean, isStickyBottom?: boolean) {
+    const { scrollablePane } = this.context;
+
+    if (hasDistanceFromTopChanged && scrollablePane) {
+      scrollablePane.sortSticky(this, true);
+    }
+
+    if (isStickyTop === undefined && isStickyBottom === undefined) {
+      this.setState({ distanceFromTop: this.distanceFromTop });
+    } else {
+      this.setState({
+        isStickyTop: this.canStickyTop && !!isStickyTop,
+        isStickyBottom: !!isStickyBottom,
+        distanceFromTop: this.distanceFromTop
+      });
+    }
+
+    if (hasDistanceFromTopChanged && scrollablePane) {
+      scrollablePane.syncScrollSticky(this);
+    }
+  }
 
   private _getStickyDistanceFromTop = (): number => {
     let distance = 0;
@@ -325,8 +347,4 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
 function _isOffsetHeightDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
   return (a && b && a.current && b.current && a.current.offsetHeight !== b.current.offsetHeight) as boolean;
-}
-
-function _isScrollWidthDifferent(a: React.RefObject<HTMLElement>, b: React.RefObject<HTMLDivElement>): boolean {
-  return (a && b && a.current && b.current && a.current.scrollWidth !== b.current.scrollWidth) as boolean;
 }
