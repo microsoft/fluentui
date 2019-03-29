@@ -11,7 +11,9 @@ import {
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
-  DetailsRow
+  DetailsRow,
+  IDetailsRowCheckProps,
+  DetailsRowCheck
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
@@ -23,6 +25,7 @@ import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/in
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const columnMidWidth = 200;
 const columnMaxWidth = 300;
@@ -94,6 +97,21 @@ interface IItem {
 }
 const _groups = createGroups(100, 0, 0, 1, 0, '', true);
 
+const classNames = mergeStyleSets({
+  wrapper: {
+    height: '80vh',
+    position: 'relative',
+    maxHeight: 'inherit',
+    width: '800px'
+  },
+  footerDetailsRow: {
+    display: 'inline-block'
+  },
+  detailsListContent: {
+    padding: '0 64px'
+  }
+});
+
 class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
   private _selection: Selection;
   private readonly _items: IItem[];
@@ -119,14 +137,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div
-        style={{
-          height: '80vh',
-          position: 'relative',
-          maxHeight: 'inherit',
-          width: '800px'
-        }}
-      >
+      <div className={classNames.wrapper} >
         <Fabric>
           <ScrollablePane
             scrollbarVisibility={ScrollbarVisibility.auto}
@@ -141,6 +152,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
             </Sticky>
             <MarqueeSelection selection={this._selection}>
               <DetailsList
+                className={classNames.detailsListContent}
                 items={this._items}
                 groups={_groups}
                 columns={_columns}
@@ -165,7 +177,7 @@ function onRenderDetailsHeader(
   defaultRender?: IRenderFunction<IDetailsHeaderProps>
 ): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
+    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
       {defaultRender!({
         ...props,
         onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
@@ -178,8 +190,8 @@ function onRenderDetailsHeader(
 
 function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
-      <div style={{ display: 'inline-block' }}>
+    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
+      <div className={classNames.footerDetailsRow}>
         <DetailsRow
           columns={props.columns}
           item={{
@@ -195,9 +207,23 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
           selection={props.selection}
           selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
           viewport={props.viewport}
+          onRenderCheck={_onRenderCheckForFooterRow}
         />
       </div>
     </Sticky>
+  );
+}
+
+function _onRenderCheckForFooterRow(
+  props: IDetailsRowCheckProps,
+  DefaultRender: React.ComponentType<IDetailsRowCheckProps> = DetailsRowCheck
+): JSX.Element {
+  return (
+    <DefaultRender
+      {...props}
+      style={{ visibility: 'hidden' }}
+      selected={true}
+    />
   );
 }
 
