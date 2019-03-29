@@ -163,15 +163,17 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         position: 'absolute',
         right: 0,
         top: 0,
+        borderRadius: 0,
         color: palette.white,
         fontSize: FontSizes.small,
         selectors: {
           ':hover': {
-            background: 'transparent'
+            background: palette.themeDarkAlt,
+            color: palette.white
           },
           ':active': {
-            background: palette.themeDarkAlt,
-            color: palette.neutralDark
+            background: palette.themeDark,
+            color: palette.white
           }
         }
       }

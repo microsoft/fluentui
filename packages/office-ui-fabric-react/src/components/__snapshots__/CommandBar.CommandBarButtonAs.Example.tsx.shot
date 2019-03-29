@@ -2230,7 +2230,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               -moz-osx-font-smoothing: grayscale;
                                               -webkit-font-smoothing: antialiased;
                                               background-color: transparent;
-                                              border-radius: 2px;
+                                              border-radius: 0px;
                                               border: none;
                                               box-sizing: border-box;
                                               color: #ffffff;
@@ -2283,8 +2283,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             }
                                             &:hover {
                                               background-color: #f3f2f1;
-                                              background: transparent;
-                                              color: #106ebe;
+                                              background: #106ebe;
+                                              color: #ffffff;
                                             }
                                             @media screen and (-ms-high-contrast: active){&:hover {
                                               border-color: Highlight;
@@ -2292,8 +2292,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             }
                                             &:active {
                                               background-color: #edebe9;
-                                              background: #106ebe;
-                                              color: #201f1e;
+                                              background: #005a9e;
+                                              color: #ffffff;
                                             }
                                         data-is-focusable={true}
                                         onClick={[Function]}
