@@ -11,19 +11,15 @@ export interface IFocusTrapZoneDialogInPanelExampleState {
 }
 
 export class FocusTrapZoneDialogInPanelExample extends React.Component<{}, IFocusTrapZoneDialogInPanelExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      hideDialog: true,
-      showPanel: false
-    };
-  }
+  public state: IFocusTrapZoneDialogInPanelExampleState = {
+    hideDialog: true,
+    showPanel: false
+  };
 
   public render() {
     return (
       <div>
-        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />
+        <DefaultButton text="Open Panel" secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} />
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
@@ -31,7 +27,7 @@ export class FocusTrapZoneDialogInPanelExample extends React.Component<{}, IFocu
           headerText="This panel makes use of FocusTrapZone. Focus should be trapped in the panel."
           closeButtonAriaLabel="Close"
         >
-          <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
+          <DefaultButton text="Open Dialog" secondaryText="Opens the Sample Dialog" onClick={this._showDialog} />
           <Dialog
             hidden={this.state.hideDialog}
             onDismiss={this._closeDialog}
@@ -48,7 +44,6 @@ export class FocusTrapZoneDialogInPanelExample extends React.Component<{}, IFocu
               styles: { main: { maxWidth: 450 } }
             }}
           >
-            {null /** You can also include null values as the result of conditionals */}
             <DialogFooter>
               <PrimaryButton onClick={this._closeDialog} text="OK" />
               <DefaultButton onClick={this._closeDialog} text="Cancel" />
