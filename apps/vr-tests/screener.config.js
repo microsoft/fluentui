@@ -2,10 +2,17 @@ const cp = require('child_process');
 
 function getCurrentHash() {
   try {
-    const buffer = cp.execSync('git rev-parse HEAD', { stdio: ['pipe', 'pipe', process.stderr] });
+    const buffer = cp.execSync('git rev-list --parents -n 1 HEAD', {
+      stdio: ['pipe', 'pipe', process.stderr]
+    });
 
     if (buffer) {
-      return buffer.toString().trim();
+      // The command returns a list of hashes, the last one is the one we want
+      return buffer
+        .toString()
+        .trim()
+        .split(' ')
+        .pop();
     }
   } catch (e) {
     console.error('Cannot get current git hash');
@@ -26,5 +33,7 @@ module.exports = {
   baseBranch,
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
-  commit: getCurrentHash()
+  ...(process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
+    ? { commit: getCurrentHash() }
+    : null)
 };
