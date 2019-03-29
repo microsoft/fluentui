@@ -484,7 +484,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     border-radius: 15px;
                     border: none;
                     box-sizing: border-box;
-                    color: #0078d4;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     flex-basis: 24;
@@ -543,7 +543,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   }
                   &:active {
                     background-color: #edebe9;
-                    color: #ffffff;
+                    color: #005a9e;
                   }
               data-is-focusable={true}
               onClick={[Function]}
