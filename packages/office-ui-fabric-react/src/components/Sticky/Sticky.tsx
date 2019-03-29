@@ -135,11 +135,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       distanceFromTop !== nextState.distanceFromTop ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentTop) ||
       _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentBottom) ||
-      _isOffsetHeightDifferent(
-        this._nonStickyContent,
-        this._placeHolder
-      )) as // _isScrollWidthDifferent(this._nonStickyContent, this._placeHolder) // ||
-    boolean;
+      _isOffsetHeightDifferent(this._nonStickyContent, this._placeHolder)) as boolean;
   }
 
   public render(): JSX.Element {
@@ -218,9 +214,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (isStickyTop || isStickyBottom) {
       let height = 0,
         width = 0;
-      if (this.nonStickyContent) {
+      if (this.nonStickyContent && this.nonStickyContent.firstElementChild) {
         height = this.nonStickyContent.offsetHeight;
-        width = this.nonStickyContent.scrollWidth;
+        width =
+          this.nonStickyContent.firstElementChild.scrollWidth +
+          ((this.nonStickyContent.firstElementChild as HTMLElement).offsetWidth - this.nonStickyContent.firstElementChild.clientWidth);
       }
       return {
         height: height,
