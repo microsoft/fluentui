@@ -15,14 +15,14 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
-      '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
-      '@uifabric/experiments/src': path.join(__dirname, '../../packages/experiments/src'),
-      '@uifabric/experiments/lib': path.join(__dirname, '../../packages/experiments/src'),
-      '@uifabric/experiments': path.join(__dirname, '../../packages/experiments/src'),
-      '@uifabric/foundation$': path.join(__dirname, '../../packages/foundation/src'),
-      '@uifabric/react-cards/src': path.join(__dirname, 'src'),
-      '@uifabric/react-cards/lib': path.join(__dirname, 'src'),
-      '@uifabric/react-cards': path.join(__dirname, 'src'),
+      '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
+      '@uifabric/experiments/src': path.resolve(__dirname, '../../packages/experiments/src'),
+      '@uifabric/experiments/lib': path.resolve(__dirname, '../../packages/experiments/src'),
+      '@uifabric/experiments': path.resolve(__dirname, '../../packages/experiments/src'),
+      '@uifabric/foundation$': path.resolve(__dirname, '../../packages/foundation/src'),
+      '@uifabric/react-cards/src': path.resolve(__dirname, 'src'),
+      '@uifabric/react-cards/lib': path.resolve(__dirname, 'src'),
+      '@uifabric/react-cards': path.resolve(__dirname, 'src'),
       'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
