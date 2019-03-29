@@ -33,6 +33,7 @@ exports[`PeoplePicker renders correctly 1`] = `
             ms-BasePicker-text
             {
               align-items: center;
+              border-radius: 2px;
               border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
@@ -67,6 +68,7 @@ exports[`PeoplePicker renders correctly 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                border-radius: 2px;
                 border: none;
                 flex-grow: 1;
                 height: 30px;
@@ -128,6 +130,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             ms-BasePicker-text
             {
               align-items: center;
+              border-radius: 2px;
               border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
@@ -540,7 +543,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   }
                   &:active {
                     background-color: #edebe9;
-                    color: #005a9e;
+                    color: #ffffff;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -605,6 +608,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                border-radius: 2px;
                 border: none;
                 flex-grow: 1;
                 height: 30px;
