@@ -192,6 +192,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
                 {
                   display: flex;
                   flex-wrap: wrap;
+                  max-width: 100%;
                 }
             id="selected-items-id__1"
             role="list"
@@ -288,6 +289,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
                 {
                   display: flex;
                   flex-wrap: wrap;
+                  max-width: 100%;
                 }
             id="selected-items-id__3"
             role="list"

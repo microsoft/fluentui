@@ -53,6 +53,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 {
                   display: flex;
                   flex-wrap: wrap;
+                  max-width: 100%;
                 }
             id="selected-items-id__0"
             role="list"

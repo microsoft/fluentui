@@ -89,6 +89,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 {
                   display: flex;
                   flex-wrap: wrap;
+                  max-width: 100%;
                 }
             id="selected-items-id__0"
             role="list"
