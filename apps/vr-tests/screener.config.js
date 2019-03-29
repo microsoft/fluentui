@@ -16,6 +16,7 @@ function getCurrentHash() {
     }
   } catch (e) {
     console.error('Cannot get current git hash');
+    process.exit(1);
   }
 
   return '';
