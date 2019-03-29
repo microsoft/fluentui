@@ -72,7 +72,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     this._warnDeprecations({
       isDisabled: 'disabled',
       onChanged: 'onChange',
-      placeHolder: 'placeholder'
+      placeHolder: 'placeholder',
+      onRenderPlaceHolder: 'onRenderPlaceholder'
     });
 
     this._warnMutuallyExclusive({
@@ -159,6 +160,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   public render(): JSX.Element {
     const id = this._id;
 
+    const props = this.props;
     const {
       className,
       label,
@@ -174,13 +176,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       calloutProps,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
-      onRenderPlaceHolder = this._onRenderPlaceholder,
       onRenderCaretDown = this._onRenderCaretDown
-    } = this.props;
+    } = props;
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
+    const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
 
@@ -209,7 +211,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
-      hasError: Boolean(errorMessage && errorMessage.length > 0),
+      hasError: !!(errorMessage && errorMessage.length > 0),
       isOpen,
       required,
       disabled,
@@ -269,13 +271,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                  : onRenderPlaceHolder(this.props, this._onRenderPlaceholder)}
+                  : onRenderPlaceholder(props, this._onRenderPlaceholder)}
               </span>
-              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(this.props, this._onRenderCaretDown)}</span>
+              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
             </div>
           )}
         </KeytipData>
-        {isOpen && onRenderContainer(this.props, this._onRenderContainer)}
+        {isOpen && onRenderContainer(props, this._onRenderContainer)}
         {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
       </div>
     );

@@ -45,7 +45,6 @@
     var productionParam = getParameterByName('isProduction');
     var noCompress = isLocal || getParameterByName('noCompress');
     var devhost = getParameterByName('devhost');
-    var fabricVersion = getParameterByName('fabricVer');
 
     var entryPointFilename = 'fabric-sitev5';
     var appPath = '';
@@ -62,7 +61,18 @@
     if (!isLocal) {
       // Update as new fabric versions and its documentation are supported
       var fabricVersions = [5, 6];
-      fabricVersion = Number(fabricVersion);
+
+      // Get fabricVer from URL param, session value, or latest version in array
+      var fabricVersion = Number(
+        getParameterByName('fabricVer') ||
+        window.sessionStorage.getItem('fabricVer') ||
+        fabricVersions[fabricVersions.length - 1]
+      );
+
+      // Set session value if it's in array
+      if (fabricVersions.indexOf(fabricVersion) > -1) {
+        window.sessionStorage.setItem('fabricVer', fabricVersion);
+      }
 
       var prefixVer = fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ?
         'v' + fabricVersion + '-' :

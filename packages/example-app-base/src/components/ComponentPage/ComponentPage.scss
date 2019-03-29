@@ -38,12 +38,6 @@ $dontColor: #a61e22;
     margin-bottom: $componentSubHeadMargin;
   }
 
-  .ComponentPage-smallSubHeading {
-    @include ms-font-l;
-    line-height: $ms-font-size-xl;
-    margin-bottom: 18px;
-  }
-
   .ComponentPage-overviewSectionContent {
     display: flex;
     flex-direction: column;

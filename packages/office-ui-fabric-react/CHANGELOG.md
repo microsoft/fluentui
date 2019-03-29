@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Mar 2019 12:36:39 GMT and should not be manually modified.
+
+## 6.162.1
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- ComboBox: Add aria-required field to assist screen readers to read out required field
 
 ## 6.162.0
 Wed, 27 Mar 2019 12:34:02 GMT

@@ -2,7 +2,26 @@
 
 exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = `
 <div
-  className="docs-TextFieldExample"
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        max-width: 300px;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 15px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
@@ -362,7 +381,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
         htmlFor="TextField4"
       >
-        Read Only
+        Read-only
       </label>
       <div
         className=
@@ -833,7 +852,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
         htmlFor="TextField10"
       >
-        With number mask
+        With input mask
       </label>
       <div
         className=
@@ -929,7 +948,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onMouseUp={[Function]}
           onPaste={[Function]}
           type="text"
-          value="_____"
+          value="mask: (___) ___ - ____"
         />
       </div>
     </div>
@@ -987,7 +1006,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             }
         htmlFor="TextField12"
       >
-        With input mask
+        With an icon
       </label>
       <div
         className=
@@ -1044,7 +1063,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 outline: 0px;
                 padding-bottom: 0;
                 padding-left: 12px;
-                padding-right: 12px;
+                padding-right: 24px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -1078,13 +1097,33 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          onPaste={[Function]}
           type="text"
-          value="mask: (___) ___ - ____"
+          value=""
         />
+        <i
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                bottom: 5px;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-size: 16px;
+                font-style: normal;
+                font-weight: normal;
+                line-height: 18px;
+                pointer-events: none;
+                position: absolute;
+                right: 8px;
+                speak: none;
+                top: auto;
+              }
+          data-icon-name="Calendar"
+          role="presentation"
+        >
+          
+        </i>
       </div>
     </div>
   </div>
