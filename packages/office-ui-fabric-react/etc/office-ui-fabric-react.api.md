@@ -6693,6 +6693,7 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
     className?: string;
     disableShrink?: boolean;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+    order?: number | string;
     shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
     verticalFill?: boolean;
 }

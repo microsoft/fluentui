@@ -2,6 +2,36 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.12.6",
+      "tag": "@uifabric/fabric-website_v6.12.6",
+      "date": "Fri, 29 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add session storage to index to preserve fabricVer between page navigation",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e361311b4517329ecbd4e7440bde43f46f22fac9"
+          },
+          {
+            "comment": "Fix key errors from Nav",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "35df0a3a86868a4dd6069e6e7dbd29ea7f12ad64"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.13.1 <7.0.0` to `>=6.13.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.4 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.162.1 <7.0.0` to `>=6.163.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.5",
       "tag": "@uifabric/fabric-website_v6.12.5",
       "date": "Thu, 28 Mar 2019 12:36:39 GMT",
