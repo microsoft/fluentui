@@ -23,6 +23,7 @@
       "jest",
       "webpack-env",
       "puppeteer",
+      "es6-promise"
     ]
   },
   "include": [
