@@ -13,6 +13,9 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
       & .ms-Label {
         margin-bottom: 10px;
       }
+      & .ms-Button {
+        color: #CCC;
+      }
 >
   <div>
     <label
