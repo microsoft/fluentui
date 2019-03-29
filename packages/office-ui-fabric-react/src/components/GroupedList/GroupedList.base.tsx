@@ -76,7 +76,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     const { groupProps, groups = [] } = this.props;
 
     if (groupProps && groupProps.isAllGroupsCollapsed) {
-      this._setCollapseAllGroups(groups, groupProps.isAllGroupsCollapsed);
+      this._setGroupsCollapsedState(groups, groupProps.isAllGroupsCollapsed);
     }
   }
 
@@ -125,7 +125,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
         onToggleCollapseAll(allCollapsed);
       }
 
-      this._setCollapseAllGroups(groups, allCollapsed);
+      this._setGroupsCollapsedState(groups, allCollapsed);
 
       this._updateIsSomeGroupExpanded();
 
@@ -133,7 +133,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
     }
   }
 
-  private _setCollapseAllGroups(groups: IGroup[], isCollapsed: boolean): void {
+  private _setGroupsCollapsedState(groups: IGroup[], isCollapsed: boolean): void {
     for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
       groups[groupIndex].isCollapsed = isCollapsed;
     }
