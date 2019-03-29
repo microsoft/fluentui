@@ -330,7 +330,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       // for single-select, option passed in will always be selected.
       // for multi-select, flip the checked value
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChange(event, changedOpt, index);
+
+      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
     }
 
     if (onChanged) {
