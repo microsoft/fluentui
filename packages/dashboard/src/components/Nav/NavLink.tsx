@@ -1,42 +1,10 @@
-import * as React from 'react';
-import { classNamesFunction, Icon, anchorProperties, buttonProperties, getNativeProps, mergeStyles } from 'office-ui-fabric-react';
-import { INavLinkStyles, INavLinkProps } from './NavLink.types';
+import { styled } from 'office-ui-fabric-react';
+import { NavLinkBase } from './NavLinkBase';
 import { getStyles } from './NavLink.styles';
+import { INavLinkProps, INavLinkStyleProps, INavLinkStyles } from './NavLink.types';
 
-const getClassNames = classNamesFunction<INavLinkProps, INavLinkStyles>();
-
-export class NavLink extends React.PureComponent<INavLinkProps, {}> {
-  public render(): JSX.Element {
-    const { name, hasNestedMenu, isNested, isNavCollapsed, isExpanded, isSelected, hasSelectedNestedLink } = this.props;
-    const classNames = getClassNames(getStyles, { isNavCollapsed, hasNestedMenu, isExpanded, isSelected, hasSelectedNestedLink, isNested });
-    const { className, ...nativeProps } = getNativeProps(this.props, this.props.href ? anchorProperties : buttonProperties);
-
-    let iconName = undefined;
-    if (hasNestedMenu) {
-      iconName = 'ChevronUp';
-    }
-
-    const navContent: JSX.Element = (
-      <>
-        <div className={classNames.iconContainer} aria-hidden="true">
-          {this.props.primaryIconName && <Icon iconName={this.props.primaryIconName} className={classNames.icon} />}
-        </div>
-        <div className={classNames.text} aria-hidden="true" data-is-focusable="false">
-          {name}
-        </div>
-        {!(isNavCollapsed && !isNested) && <Icon iconName={iconName} className={classNames.secondaryIcon} aria-hidden="true" />}
-      </>
-    );
-
-    const rootStyle = mergeStyles(classNames.root, className);
-    return this.props.onClick ? (
-      <button {...nativeProps} className={rootStyle}>
-        {navContent}
-      </button>
-    ) : (
-      <a {...nativeProps} className={rootStyle}>
-        {navContent}
-      </a>
-    );
-  }
-}
+export const NavLink: (props: INavLinkProps) => JSX.Element = styled<INavLinkProps, INavLinkStyleProps, INavLinkStyles>(
+  NavLinkBase,
+  getStyles,
+  undefined
+);

@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react';
+import { IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
 
 export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
   /**
@@ -40,6 +40,11 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * Pays attention to Nav collapsed state to render the right selected indicator and nested menu
    */
   isNavCollapsed?: boolean;
+
+  /**
+   * Styles function or object that drives rendering of the step
+   */
+  styles?: IStyleFunctionOrObject<INavLinkStyleProps, INavLinkStyles>;
 }
 
 export interface INavLinkStyles {
