@@ -121,6 +121,7 @@ ProgressIndicator/ @aneeshack4
 Rating/ @jdhuntington
 ResizeGroup/ @micahgodbolt
 SearchBox/ @ecraig12345
+Separator/ @natalieethell
 Shimmer/ @Vitalius1 @atneik
 Signals/ @ThomasMichon
 Slider/ @aneeshack4
@@ -185,6 +186,7 @@ pickers/docs/  @joschect
 # Rating/docs/
 ResizeGroup/docs/  @micahgodbolt
 # SearchBox/docs/
+Separator/docs/ @natalieethell
 Shimmer/docs/ @Vitalius1 @atneik
 # Slider/docs/
 # SpinButton/docs/

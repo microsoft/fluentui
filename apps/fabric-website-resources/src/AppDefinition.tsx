@@ -361,6 +361,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/selectedpeoplelist'
         },
         {
+          component: require<any>('./components/pages/SeparatorPage').SeparatorPage,
+          key: 'Separator',
+          name: 'Separator',
+          url: '#examples/separator'
+        },
+        {
           component: require<any>('./components/pages/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',

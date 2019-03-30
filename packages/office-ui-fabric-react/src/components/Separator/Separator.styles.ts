@@ -1,11 +1,11 @@
 import { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
 
 export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
-  const { theme, alignText, vertical, className } = props;
+  const { theme, alignContent, vertical, className } = props;
 
-  const alignStart = alignText === 'start';
-  const alignCenter = alignText === 'center';
-  const alignEnd = alignText === 'end';
+  const alignStart = alignContent === 'start';
+  const alignCenter = alignContent === 'center';
+  const alignEnd = alignContent === 'end';
 
   return {
     root: [
@@ -13,14 +13,14 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       {
         position: 'relative'
       },
-      alignText && {
-        textAlign: alignText
+      alignContent && {
+        textAlign: alignContent
       },
-      !alignText && {
+      !alignContent && {
         textAlign: 'center'
       },
       vertical &&
-        (alignCenter || !alignText) && {
+        (alignCenter || !alignContent) && {
           verticalAlign: 'middle'
         },
       vertical &&
@@ -32,13 +32,13 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
           verticalAlign: 'bottom'
         },
       vertical && {
-        padding: '0 5px',
+        padding: '0 4px',
         height: 'inherit',
         display: 'table-cell',
         zIndex: 1,
         selectors: {
           ':after': {
-            backgroundColor: theme.palette.neutralLight,
+            backgroundColor: theme.palette.neutralLighter,
             width: '1px',
             content: '""',
             position: 'absolute',
@@ -51,10 +51,10 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         }
       },
       !vertical && {
-        padding: '5px 0',
+        padding: '4px 0',
         selectors: {
           ':before': {
-            backgroundColor: theme.palette.neutralLight,
+            backgroundColor: theme.palette.neutralLighter,
             height: '1px',
             content: '""',
             display: 'block',
@@ -68,16 +68,16 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
       },
       className
     ],
-    text: [
+    content: [
       {
         position: 'relative',
         display: 'inline-block',
-        padding: '0 20px',
+        padding: '0 12px',
         color: theme.semanticColors.bodyText,
         background: theme.semanticColors.bodyBackground
       },
       vertical && {
-        padding: '20px 0'
+        padding: '12px 0'
       }
     ]
   };
