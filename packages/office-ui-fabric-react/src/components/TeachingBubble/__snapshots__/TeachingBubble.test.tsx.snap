@@ -839,6 +839,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
             is-notLoaded
             is-fadeIn
             {
+              backface-visibility: hidden;
               display: block;
               opacity: 0;
             }

@@ -130,6 +130,7 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             is-notLoaded
             is-fadeIn
             {
+              backface-visibility: hidden;
               display: block;
               height: 100%;
               left: 50% /* @noflip */;

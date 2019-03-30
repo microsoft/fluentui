@@ -456,6 +456,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
               is-notLoaded
               is-fadeIn
               {
+                backface-visibility: hidden;
                 display: block;
                 height: 100%;
                 left: 50% /* @noflip */;
@@ -1289,6 +1290,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               is-notLoaded
               is-fadeIn
               {
+                backface-visibility: hidden;
                 display: block;
                 height: 100%;
                 left: 50% /* @noflip */;
@@ -1569,6 +1571,7 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
             is-notLoaded
             is-fadeIn
             {
+              backface-visibility: hidden;
               display: block;
               height: 100%;
               left: 50% /* @noflip */;
@@ -1718,6 +1721,7 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             is-notLoaded
             is-fadeIn
             {
+              backface-visibility: hidden;
               display: block;
               height: 100%;
               left: 50% /* @noflip */;
@@ -1986,6 +1990,7 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             is-notLoaded
             is-fadeIn
             {
+              backface-visibility: hidden;
               display: block;
               height: 100%;
               left: 50% /* @noflip */;

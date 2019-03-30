@@ -113,6 +113,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     is-notLoaded
                     is-fadeIn
                     {
+                      backface-visibility: hidden;
                       display: block;
                       height: 100%;
                       opacity: 0;
@@ -191,6 +192,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     is-notLoaded
                     is-fadeIn
                     {
+                      backface-visibility: hidden;
                       display: block;
                       height: 100%;
                       opacity: 0;
@@ -269,6 +271,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     is-notLoaded
                     is-fadeIn
                     {
+                      backface-visibility: hidden;
                       display: block;
                       height: 100%;
                       opacity: 0;
@@ -569,6 +572,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       is-notLoaded
                       is-fadeIn
                       {
+                        backface-visibility: hidden;
                         display: block;
                         height: 100%;
                         left: 50% /* @noflip */;
@@ -1440,6 +1444,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       is-notLoaded
                       is-fadeIn
                       {
+                        backface-visibility: hidden;
                         display: block;
                         height: 100%;
                         left: 50% /* @noflip */;
@@ -1853,6 +1858,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       is-notLoaded
                       is-fadeIn
                       {
+                        backface-visibility: hidden;
                         display: block;
                         height: 100%;
                         left: 50% /* @noflip */;
@@ -2225,6 +2231,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       is-notLoaded
                       is-fadeIn
                       {
+                        backface-visibility: hidden;
                         display: block;
                         height: 100%;
                         left: 50% /* @noflip */;
@@ -2514,6 +2521,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                         is-notLoaded
                         is-fadeIn
                         {
+                          backface-visibility: hidden;
                           display: block;
                           height: 100%;
                           left: 50% /* @noflip */;
@@ -2658,6 +2666,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               is-notLoaded
               is-fadeIn
               {
+                backface-visibility: hidden;
                 display: block;
                 height: 100%;
                 left: 50% /* @noflip */;
@@ -2932,6 +2941,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                       is-notLoaded
                       is-fadeIn
                       {
+                        backface-visibility: hidden;
                         display: block;
                         height: 100%;
                         left: 50% /* @noflip */;

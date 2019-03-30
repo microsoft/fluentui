@@ -734,6 +734,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-notLoaded
                 is-fadeIn
                 {
+                  backface-visibility: hidden;
                   display: block;
                   height: 100%;
                   left: 50% /* @noflip */;
@@ -1023,6 +1024,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-notLoaded
                 is-fadeIn
                 {
+                  backface-visibility: hidden;
                   display: block;
                   height: 100%;
                   left: 50% /* @noflip */;
@@ -1312,6 +1314,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-notLoaded
                 is-fadeIn
                 {
+                  backface-visibility: hidden;
                   display: block;
                   height: 100%;
                   left: 50% /* @noflip */;
@@ -1601,6 +1604,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-notLoaded
                 is-fadeIn
                 {
+                  backface-visibility: hidden;
                   display: block;
                   height: 100%;
                   left: 50% /* @noflip */;
@@ -1916,6 +1920,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-notLoaded
                 is-fadeIn
                 {
+                  backface-visibility: hidden;
                   display: block;
                   height: 100%;
                   left: 50% /* @noflip */;
@@ -2223,6 +2228,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-notLoaded
                 is-fadeIn
                 {
+                  backface-visibility: hidden;
                   display: block;
                   height: 100%;
                   left: 50% /* @noflip */;
@@ -2536,6 +2542,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-notLoaded
                 is-fadeIn
                 {
+                  backface-visibility: hidden;
                   display: block;
                   height: 100%;
                   left: 50% /* @noflip */;
