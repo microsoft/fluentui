@@ -73,7 +73,8 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
       classNames.image,
       {
         display: 'block',
-        opacity: 0
+        opacity: 0,
+        backfaceVisibility: 'hidden'
       },
       isLoaded && [
         'is-loaded',
