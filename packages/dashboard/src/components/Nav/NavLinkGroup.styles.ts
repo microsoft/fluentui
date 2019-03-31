@@ -41,7 +41,19 @@ sort out extensibility */
     ],
     nestedNavHeaderItem: {
       zIndex: 1,
-      backgroundColor: '#ccc'
+      backgroundColor: '#ccc',
+      cursor: 'default',
+      selectors: {
+        ':hover': {
+          backgroundColor: 'inheret'
+        },
+        ':active': {
+          backgroundColor: 'inheret'
+        },
+        ':focus': {
+          backgroundColor: 'inheret'
+        }
+      }
     },
     nestedNavLinksWrapper: [
       !isNavCollapsed && isExpanded && [AnimationClassNames.fadeIn400, AnimationClassNames.slideDownIn20],
