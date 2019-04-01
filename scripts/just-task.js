@@ -79,8 +79,7 @@ task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
-task('webpack-dev-server-with-compile-resolution', async () => await webpackDevServerWithCompileResolution());
-task('jest-dom-with-webpack', series('webpack-dev-server-with-compile-resolution', 'jest-dom'));
+task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom'));
 // Utility functions
 
 function getPackage() {
