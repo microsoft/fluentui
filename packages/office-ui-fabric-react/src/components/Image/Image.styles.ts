@@ -64,6 +64,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
           width: '100%'
         }
       ],
+      isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
       (isCenter || isContain || isCover || isCenterCover) && {
         position: 'relative'
       },
@@ -73,8 +74,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
       classNames.image,
       {
         display: 'block',
-        opacity: 0,
-        backfaceVisibility: 'hidden'
+        opacity: 0
       },
       isLoaded && [
         'is-loaded',
@@ -137,7 +137,6 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
             width: '100%'
           }
       ],
-      isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
       isLandscape && classNames.imageLandscape,
       !isLandscape && classNames.imagePortrait,
       !isLoaded && 'is-notLoaded',
