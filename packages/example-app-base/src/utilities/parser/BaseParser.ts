@@ -56,7 +56,7 @@ export class BaseParser {
   protected eatWord(word: string): string | undefined {
     const len = word.length;
 
-    if (this.peekAhead(len) === word) {
+    if (this.peekAhead(len).toLowerCase() === word) {
       this._currLocation += len;
       return word;
     }
