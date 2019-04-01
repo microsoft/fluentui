@@ -9,7 +9,7 @@ export const IconButtonStyles = (props: IButtonProps): Partial<IButtonStyles> =>
 
   return {
     root: {
-      backgroundColor: palette.white,
+      backgroundColor: 'transparent',
       color: palette.themePrimary
     },
     rootHovered: {

@@ -1,19 +1,32 @@
 import * as React from 'react';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
-import './TextField.Examples.scss';
+import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 
-export class TextFieldBasicExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    return (
-      <div className="docs-TextFieldExample">
+export const TextFieldBasicExample: React.StatelessComponent = () => {
+  // TextFields don't have to be inside Stacks, we're just using Stacks for layout
+  const columnProps: Partial<IStackProps> = {
+    tokens: { childrenGap: 15 },
+    styles: { root: { width: 300 } }
+  };
+
+  return (
+    <Stack horizontal tokens={{ childrenGap: 50 }} styles={{ root: { width: 650 } }}>
+      <Stack {...columnProps}>
         <TextField label="Standard" />
-        <TextField label="Disabled" disabled={true} />
-        <TextField label="Read Only" readOnly={true} />
-        <TextField label="Required " required={true} />
+        <TextField label="Disabled" disabled defaultValue="I am disabled" />
+        <TextField label="Read-only" readOnly defaultValue="I am read-only" />
+        <TextField label="Required " required />
         <TextField label="With error message" errorMessage="Error message" />
-        <MaskedTextField label="With number mask" mask="99999" />
+      </Stack>
+
+      <Stack {...columnProps}>
         <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />
-      </div>
-    );
-  }
-}
+
+        <TextField label="With an icon" iconProps={{ iconName: 'Calendar' }} />
+
+        <TextField label="With placeholder" placeholder="Please enter text here" />
+        <TextField label="Disabled with placeholder" disabled placeholder="I am disabled" />
+      </Stack>
+    </Stack>
+  );
+};

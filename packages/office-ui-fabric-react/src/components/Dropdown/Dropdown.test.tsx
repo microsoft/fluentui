@@ -162,7 +162,10 @@ describe('Dropdown', () => {
       const onChangeSpy = jest.fn();
 
       try {
-        ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
+        ReactDOM.render(
+          <Dropdown id="foo" label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+          container
+        );
         dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
         ReactTestUtils.Simulate.click(dropdownRoot);
@@ -171,6 +174,7 @@ describe('Dropdown', () => {
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
         expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[2], 2);
+        expect(onChangeSpy.mock.calls[0][0].target.id).toEqual('foo');
       }
     });
 

@@ -1,36 +1,31 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { Dropdown, IDropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export class DropdownRequiredExample extends BaseComponent<{}, {}> {
-  constructor(props: {}) {
-    super(props);
-  }
+export const DropdownRequiredExample: React.StatelessComponent = () => {
+  const dropdownRef = React.createRef<IDropdown>();
+  const onSetFocus = () => dropdownRef.current!.focus(true);
 
-  public render(): JSX.Element {
-    return (
-      <div className="docs-DropdownExample">
-        <Dropdown
-          placeholder="Select an Option"
-          label="Required dropdown example:"
-          options={[
-            { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
-            { key: 'A', text: 'Option a', title: 'I am option a.' },
-            { key: 'B', text: 'Option b' },
-            { key: 'C', text: 'Option c', disabled: true },
-            { key: 'D', text: 'Option d' },
-            { key: 'E', text: 'Option e' },
-            { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-            { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
-            { key: 'F', text: 'Option f' },
-            { key: 'G', text: 'Option g' },
-            { key: 'H', text: 'Option h' },
-            { key: 'I', text: 'Option i' },
-            { key: 'J', text: 'Option j' }
-          ]}
-          required={true}
-        />
-      </div>
-    );
-  }
-}
+  const stackTokens: IStackTokens = { childrenGap: 20 };
+
+  return (
+    <Stack horizontal tokens={stackTokens} verticalAlign="end">
+      <Dropdown
+        componentRef={dropdownRef}
+        placeholder="Select an option"
+        label="Required dropdown example"
+        options={[
+          { key: 'A', text: 'Option a', title: 'I am option a.' },
+          { key: 'B', text: 'Option b' },
+          { key: 'C', text: 'Option c', disabled: true },
+          { key: 'D', text: 'Option d' },
+          { key: 'E', text: 'Option e' }
+        ]}
+        required={true}
+        styles={{ dropdown: { width: 300 } }}
+      />
+      <PrimaryButton text="Set focus" onClick={onSetFocus} />
+    </Stack>
+  );
+};

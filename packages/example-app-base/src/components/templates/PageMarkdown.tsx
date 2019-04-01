@@ -73,7 +73,7 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
       },
       ul: {
         component: (props: React.HTMLAttributes<HTMLElement>) => {
-          let imageSetProps = _getImageSetProps(props, markdownProps);
+          const imageSetProps = _getImageSetProps(props, markdownProps);
 
           if (imageSetProps) {
             return <PageImageSet {...imageSetProps} />;

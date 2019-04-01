@@ -1,6 +1,25 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 22 Mar 2019 12:34:41 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Mar 2019 12:36:45 GMT and should not be manually modified.
+
+## 6.13.0
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Code and documentation cleanup
+
+### Patches
+
+- Make CodepenComponent specify SCSS preprocessor
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Enable stricter lint and compiler options
+- ExampleCard: Remove dependency on styles from random example, and remove utility CSS classes
 
 ## 6.12.3
 Fri, 22 Mar 2019 12:34:41 GMT

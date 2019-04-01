@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelectorWhite, HighContrastSelectorBlack } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelectorWhite, HighContrastSelectorBlack, HighContrastSelector } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -34,12 +34,12 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             // and helps the focus rect avoid getting clipped.
             boxShadow: `0 0 0 1px ${focusBorderColor} inset`,
             selectors: {
-              '@media screen and (-ms-high-contrast: active)': {
+              [HighContrastSelector]: {
                 outline: '1px solid WindowText'
               }
             }
           },
-          '@media screen and (-ms-high-contrast: active)': {
+          [HighContrastSelector]: {
             // For IE high contrast mode
             borderBottom: 'none'
           }

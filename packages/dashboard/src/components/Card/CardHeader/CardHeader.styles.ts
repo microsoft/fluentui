@@ -3,7 +3,7 @@ import { FontSize } from './CardHeader.types';
 import { DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
-  const { fontSize } = props;
+  const { fontSize, cardHeaderCallback } = props;
 
   return {
     root: {
@@ -19,7 +19,8 @@ export const getStyles = (props: ICardHeaderProps): ICardHeaderStyles => {
       fontFamily: DefaultFontStyles.medium.fontFamily,
       marginRight: '16px',
       color: '#000000',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      cursor: cardHeaderCallback ? 'pointer' : 'auto'
     },
     annotationText: {
       whiteSpace: 'noWrap',

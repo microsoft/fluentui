@@ -280,7 +280,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                   onFocusCapture={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
-                  role="menu"
                   tabIndex={0}
                 >
                   <div

@@ -4,6 +4,9 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, Prop
 import { CardBasicExample } from './examples/Card.Basic.Example';
 const CardBasicExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Basic.Example.tsx') as string;
 
+import { CardCompactExample } from './examples/Card.Compact.Example';
+const CardCompactExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
+
 export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -14,6 +17,9 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ExampleCard title="Basic Card" code={CardBasicExampleCode}>
               <CardBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Compact Card" code={CardCompactExampleCode}>
+              <CardCompactExample />
             </ExampleCard>
           </div>
         }

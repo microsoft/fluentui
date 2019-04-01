@@ -4,7 +4,7 @@ import { createArray, createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
@@ -73,9 +73,10 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
 
   public render(): JSX.Element {
     const { percentComplete } = this.state;
+    const stackTokens: IStackTokens = { childrenGap: 10 };
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={stackTokens}>
         <Text>
           Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
           seconds, as that is the delay chosen for this example.
