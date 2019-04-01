@@ -4,4 +4,4 @@ When considering their place in a layout, contemplate the order in which a user 
 
 While buttons can technically be used to navigate a user to another part of the experience, this is not recommended unless that navigation is part of an action or their flow.
 
-Note that both iconProps and menuIconProps take <a href='#/components/icon'>IIconProps</a> to specify name and type.
+Note that both `iconProps` and `menuIconProps` take <a href='#/components/icon'>`IIconProps`</a> to specify icon name and type.
