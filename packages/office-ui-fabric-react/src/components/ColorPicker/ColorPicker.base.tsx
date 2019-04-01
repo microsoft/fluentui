@@ -4,7 +4,12 @@ import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPi
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
-import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH } from '../../utilities/color/colors';
+import { IColor } from '../../utilities/color/interfaces';
+import { MAX_COLOR_HUE } from '../../utilities/color/consts';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
+import { getColorFromRGBA } from '../../utilities/color/getColorFromRGBA';
+import { updateA } from '../../utilities/color/updateA';
+import { updateH } from '../../utilities/color/updateH';
 
 type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 
@@ -171,8 +176,8 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
 
   /**
    * Update the displayed color and call change handlers if appropriate.
-   * @param ev Event if call was triggered by an event (undefined if triggered by props change)
-   * @param newColor Updated color
+   * @param ev - Event if call was triggered by an event (undefined if triggered by props change)
+   * @param newColor - Updated color
    */
   private _updateColor(ev: React.SyntheticEvent<HTMLElement> | undefined, newColor: IColor | undefined): void {
     if (!newColor) {

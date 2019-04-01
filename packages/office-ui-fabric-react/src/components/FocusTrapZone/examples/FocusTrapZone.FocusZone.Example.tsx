@@ -4,105 +4,76 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
-export interface IBoxExampleExampleState {
-  isChecked: boolean;
+export interface IFocusTrapZoneFocusZoneExampleState {
+  useTrapZone: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
-  private _toggle: IToggle;
+export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTrapZoneFocusZoneExampleState> {
+  public state: IFocusTrapZoneFocusZoneExampleState = {
+    useTrapZone: false
+  };
 
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
-
-    this.state = {
-      isChecked: false
-    };
-  }
+  private _toggle = React.createRef<IToggle>();
 
   public render() {
-    const { isChecked } = this.state;
-
     return (
       <div>
-        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
-        {(() => {
-          if (isChecked) {
-            return (
-              <FocusTrapZone forceFocusInsideTrap={true} focusPreviouslyFocusedInnerElement={true}>
-                {this._internalContents()}
-              </FocusTrapZone>
-            );
-          } else {
-            return <div>{this._internalContents()}</div>;
-          }
-        })()}
+        {this.state.useTrapZone ? (
+          <FocusTrapZone forceFocusInsideTrap={true} focusPreviouslyFocusedInnerElement={true}>
+            {this._internalContents()}
+          </FocusTrapZone>
+        ) : (
+          this._internalContents()
+        )}
       </div>
     );
   }
 
   private _internalContents() {
-    const { isChecked } = this.state;
+    const { useTrapZone } = this.state;
+    const padding = 10;
+    const border = '2px dashed #ababab';
+    const rootBorder = `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`;
+    const tokens: IStackTokens = { childrenGap: 10 };
 
     return (
-      <div className="ms-FocusTrapZoneBoxExample">
-        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-          <DefaultButton text="FZ1" />
-          <DefaultButton text="FZ1" />
-          <DefaultButton text="FZ1" />
-        </FocusZone>
-        <br />
-        <DefaultButton text="No FZ" />
-        <br />
-        <br />
-        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-          <DefaultButton text="FZ2" />
-          <DefaultButton text="FZ2" />
-          <DefaultButton text="FZ2" />
-        </FocusZone>
-        <br />
+      <Stack tokens={tokens} horizontalAlign="start" styles={{ root: { border: rootBorder, padding } }}>
         <Toggle
-          componentRef={this._setRef}
-          checked={isChecked}
+          label="Use trap zone"
+          componentRef={this._toggle}
+          checked={useTrapZone}
           onChange={this._onFocusTrapZoneToggleChanged}
-          label="Focus Trap Zone"
-          onText="On"
+          onText="On (toggle to exit)"
           offText="Off"
         />
-        {(() => {
-          if (isChecked) {
-            return (
-              <DefaultButton secondaryText="Exit Focus Trap Zone" onClick={this._onExitButtonClickHandler} text="Exit Focus Trap Zone" />
-            );
-          }
-        })()}
-      </div>
+
+        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+          <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
+            <DefaultButton text="FZ1" />
+            <DefaultButton text="FZ1" />
+            <DefaultButton text="FZ1" />
+          </Stack>
+        </FocusZone>
+
+        <DefaultButton text="No FZ" />
+
+        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+          <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
+            <DefaultButton text="FZ2" />
+            <DefaultButton text="FZ2" />
+            <DefaultButton text="FZ2" />
+          </Stack>
+        </FocusZone>
+      </Stack>
     );
   }
 
-  private _onButtonClickHandler = (): void => {
-    this.setState({
-      isChecked: true
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
+    this.setState({ useTrapZone: !!checked }, () => {
+      // Restore focus to toggle after re-rendering
+      this._toggle.current!.focus();
     });
-  };
-
-  private _onExitButtonClickHandler = (): void => {
-    this.setState({
-      isChecked: false
-    });
-  };
-
-  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState(
-      {
-        isChecked: isChecked
-      },
-      () => this._toggle.focus()
-    );
-  };
-
-  private _setRef = (toggle: IToggle): void => {
-    this._toggle = toggle;
   };
 }

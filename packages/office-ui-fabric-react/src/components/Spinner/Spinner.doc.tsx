@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { SpinnerStatus } from './Spinner.checklist';
+import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
+import { SpinnerLabeledExample } from './examples/Spinner.Labeled.Example';
 
 const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
 const SpinnerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
+const SpinnerLabeledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Labeled.Example.tsx') as string;
+const SpinnerLabeledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Labeled.Example.tsx') as string;
 
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',
@@ -14,10 +17,16 @@ export const SpinnerPageProps: IDocPageProps = {
   componentStatus: SpinnerStatus,
   examples: [
     {
-      title: 'Various Spinner Types',
+      title: 'Spinner sizes',
       code: SpinnerBasicExampleCode,
       view: <SpinnerBasicExample />,
       codepenJS: SpinnerBasicExampleCodepen
+    },
+    {
+      title: 'Spinner label positioning',
+      code: SpinnerLabeledExampleCode,
+      view: <SpinnerLabeledExample />,
+      codepenJS: SpinnerLabeledExampleCodepen
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')],

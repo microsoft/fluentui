@@ -388,6 +388,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
                 aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 aria-activedescendant={this._getAriaActiveDescentValue()}
+                aria-required={required}
                 aria-disabled={disabled}
                 aria-owns={isOpen ? id + '-list' : undefined}
                 spellCheck={false}
@@ -1411,7 +1412,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns - an array of the indices of the selected options, empty array if nothing is selected
    */
   private _getSelectedIndices(options: IComboBoxOption[] | undefined, selectedKeys: (string | number | undefined)[]): number[] {
-    if (options === undefined || selectedKeys === undefined) {
+    if (!options || !selectedKeys) {
       return [];
     }
 
@@ -1951,7 +1952,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   /**
    * Get the styles for the current option.
-   * @param item Item props for the current option
+   * @param item - Item props for the current option
    */
   private _getCaretButtonStyles(): IButtonStyles {
     const { caretDownButtonStyles: customCaretDownButtonStyles } = this.props;
@@ -1960,7 +1961,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   /**
    * Get the styles for the current option.
-   * @param item Item props for the current option
+   * @param item - Item props for the current option
    */
   private _getCurrentOptionStyles(item: IComboBoxOption): Partial<IComboBoxOptionStyles> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;

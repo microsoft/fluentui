@@ -218,7 +218,14 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
     if (header === null || header === undefined) {
       return null;
     }
-    return <CardHeader headerText={header.headerText} annotationText={header.annotationText} fontSize={header.fontSize} />;
+    return (
+      <CardHeader
+        headerText={header.headerText}
+        annotationText={header.annotationText}
+        fontSize={header.fontSize}
+        cardHeaderCallback={header.cardHeaderCallback}
+      />
+    );
   }
 
   private _generateFooter(
@@ -234,6 +241,7 @@ export class Layout extends React.Component<ILayoutProps, { _width: number; _hei
     return (
       <div className={className}>
         <ActionBar
+          focusZoneProps={this.props.focusZoneProps}
           actions={actions}
           actionBarOverflowButtonTitle={actionBarOverflowButtonTitle}
           actionBarOverflowButtonAriaLabel={actionBarOverflowButtonAriaLabel}

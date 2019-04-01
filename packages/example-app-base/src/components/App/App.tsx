@@ -3,43 +3,12 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
-import { AppCustomizationsContext, IAppCustomizations } from '../../utilities/customizations';
+import { AppCustomizationsContext } from '../../utilities/customizations';
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { Header } from '../Header/Header';
 import './App.scss';
-
-export enum ExampleStatus {
-  placeholder = 0,
-  started = 1,
-  beta = 2,
-  release = 3
-}
-export interface IAppLink extends INavLink {
-  // tslint:disable-next-line:no-any
-  getComponent?: (cb: (obj: any) => void) => any;
-  component?: React.ComponentClass | (() => JSX.Element);
-}
-
-export interface IAppLinkGroup extends INavLinkGroup {
-  links: IAppLink[];
-}
-
-export interface IAppDefinition {
-  appTitle: string;
-  testPages: IAppLink[];
-  examplePages: IAppLinkGroup[];
-  headerLinks: IAppLink[];
-  /**
-   * Optional customizations to apply to the application.
-   */
-  customizations?: IAppCustomizations;
-}
-
-export interface IAppProps extends React.Props<App> {
-  responsiveMode?: ResponsiveMode;
-  appDefinition: IAppDefinition;
-}
+import { IAppProps, ExampleStatus } from './App.types';
 
 export interface IAppState {
   isMenuVisible: boolean;
@@ -60,7 +29,16 @@ export class App extends React.Component<IAppProps, IAppState> {
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const navPanel = <Nav groups={appDefinition.examplePages} onLinkClick={this._onLinkClick} onRenderLink={this._onRenderLink} />;
+    const isLargeDown = responsiveMode <= ResponsiveMode.large;
+
+    const navPanel = (
+      <Nav
+        groups={appDefinition.examplePages}
+        onLinkClick={this._onLinkClick}
+        onRenderLink={this._onRenderLink}
+        styles={{ root: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 } }}
+      />
+    );
 
     const app = (
       <Fabric className={css('ms-App', 'ms-App--' + ResponsiveMode[responsiveMode])}>
@@ -73,23 +51,30 @@ export class App extends React.Component<IAppProps, IAppState> {
           />
         </div>
 
-        {responsiveMode > ResponsiveMode.large ? <div className="ms-App-nav">{navPanel}</div> : null}
+        {!isLargeDown && <div className="ms-App-nav">{navPanel}</div>}
 
         <div className="ms-App-content" data-is-scrollable="true">
           {this.props.children}
         </div>
 
-        {responsiveMode <= ResponsiveMode.large ? (
+        {isLargeDown && (
           <Panel
-            className="ms-App-navPanel"
             isOpen={isMenuVisible}
             isLightDismiss={true}
             type={PanelType.smallFixedNear}
-            onDismiss={this._onIsMenuVisibleChanged.bind(this, false)}
+            // Close by tapping outside the panel
+            hasCloseButton={false}
+            // Use onDismissed (not onDismiss) to prevent _onIsMenuVisibleChanged being called twice
+            // (once by the panel and once by the header button)
+            onDismissed={this._onIsMenuVisibleChanged.bind(this, false)}
+            styles={{
+              root: { top: 50 },
+              contentInner: { padding: 0 }
+            }}
           >
             {navPanel}
           </Panel>
-        ) : null}
+        )}
       </Fabric>
     );
 
@@ -104,17 +89,17 @@ export class App extends React.Component<IAppProps, IAppState> {
     this.setState({ isMenuVisible: false });
   };
 
-  // tslint:disable-next-line:no-any
-  private _onRenderLink = (link: INavLink): any => {
-    return [
-      <span key={1} className="Nav-linkText">
-        {link.name}
-      </span>,
-      link.status !== undefined ? (
-        <span key={2} className={'Nav-linkFlair ' + 'is-state' + link.status}>
-          {ExampleStatus[link.status]}
-        </span>
-      ) : null
-    ];
+  private _onRenderLink = (link: INavLink): JSX.Element => {
+    // Nav-linkText is a class name from the Fabric nav
+    return (
+      <>
+        <span className="Nav-linkText">{link.name}</span>
+        {link.status !== undefined && (
+          <span key={2} className={'Nav-linkFlair ' + 'is-state' + link.status}>
+            {ExampleStatus[link.status]}
+          </span>
+        )}
+      </>
+    );
   };
 }

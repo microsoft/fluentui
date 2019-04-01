@@ -2,7 +2,25 @@
 
 exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
 <div
-  className="docs-DropdownExample"
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
@@ -37,12 +55,12 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       htmlFor="Dropdown0"
       id="Dropdown0-label"
     >
-      Basic uncontrolled example:
+      Basic uncontrolled example
     </label>
     <div
       aria-describedby="Dropdown0-option"
       aria-expanded="false"
-      aria-label="Basic dropdown example"
+      aria-labelledby="Dropdown0-label"
       className=
           ms-Dropdown
           {
@@ -65,6 +83,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 0px;
             position: relative;
             user-select: none;
+            width: 300px;
           }
           &:hover .ms-Dropdown-title {
             border-color: #212121;
@@ -135,15 +154,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      placeholder="Select an Option"
+      placeholder="Select an option"
       role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Select an Option"
+        aria-label="Select an option"
         aria-live="off"
-        aria-setsize={10}
+        aria-setsize={7}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
@@ -176,7 +195,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
         role="option"
       >
         <span>
-          Select an Option
+          Select an option
         </span>
       </span>
       <span
@@ -214,130 +233,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
       </span>
     </div>
   </div>
-  <button
-    className=
-        ms-Button
-        ms-Button--primary
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid transparent;
-          box-sizing: border-box;
-          color: #ffffff;
-          cursor: pointer;
-          display: inline-block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 32px;
-          min-width: 80px;
-          outline: transparent;
-          padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0;
-          position: relative;
-          text-align: center;
-          text-decoration: none;
-          user-select: none;
-          vertical-align: top;
-        }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          z-index: 1;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
-          bottom: -2px;
-          left: -2px;
-          outline-color: ButtonText;
-          right: -2px;
-          top: -2px;
-        }
-        &:active > * {
-          left: 0px;
-          position: relative;
-          top: 0px;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          -ms-high-contrast-adjust: none;
-          background-color: WindowText;
-          color: Window;
-        }
-        &:hover {
-          background-color: #106ebe;
-          color: #ffffff;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          background-color: Highlight;
-          color: Window;
-        }
-        &:active {
-          background-color: #005a9e;
-          color: #ffffff;
-        }
-        @media screen and (-ms-high-contrast: active){&:active {
-          -ms-high-contrast-adjust: none;
-          background-color: WindowText;
-          color: Window;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    type="button"
-  >
-    <div
-      className=
-          ms-Button-flexContainer
-          {
-            align-items: center;
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100%;
-            justify-content: center;
-          }
-    >
-      <div
-        className=
-            ms-Button-textContainer
-            {
-              flex-grow: 1;
-            }
-      >
-        <div
-          className=
-              ms-Button-label
-              {
-                font-weight: 600;
-                line-height: 100%;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-              }
-          id="id__1"
-        >
-          Set focus
-        </div>
-      </div>
-    </div>
-  </button>
   <div
     className=
         ms-Dropdown-container
@@ -368,16 +263,16 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown4"
-      id="Dropdown4-label"
+      htmlFor="Dropdown1"
+      id="Dropdown1-label"
     >
-      Disabled uncontrolled example with defaultSelectedKey:
+      Disabled example with defaultSelectedKey
     </label>
     <div
-      aria-describedby="Dropdown4-option"
+      aria-describedby="Dropdown1-option"
       aria-disabled={true}
       aria-expanded="false"
-      aria-labelledby="Dropdown4-label"
+      aria-labelledby="Dropdown1-label"
       className=
           ms-Dropdown
           is-disabled
@@ -401,6 +296,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 0px;
             position: relative;
             user-select: none;
+            width: 300px;
           }
           &:hover .ms-Dropdown-title {
             border-color: #212121;
@@ -453,7 +349,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             border-color: #a80000;
           }
       data-is-focusable={false}
-      id="Dropdown4"
+      id="Dropdown1"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -463,7 +359,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     >
       <span
         aria-atomic={true}
-        aria-label="Option d"
+        aria-label="Broccoli"
         aria-live="off"
         className=
             ms-Dropdown-title
@@ -497,10 +393,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               border: 1px solid GrayText;
               color: GrayText;
             }
-        id="Dropdown4-option"
+        id="Dropdown1-option"
       >
         <span>
-          Option d
+          Broccoli
         </span>
       </span>
       <span
@@ -570,15 +466,15 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown5"
-      id="Dropdown5-label"
+      htmlFor="Dropdown2"
+      id="Dropdown2-label"
     >
-      Controlled example:
+      Multi-select uncontrolled example
     </label>
     <div
-      aria-describedby="Dropdown5-option"
+      aria-describedby="Dropdown2-option"
       aria-expanded="false"
-      aria-labelledby="Dropdown5-label"
+      aria-labelledby="Dropdown2-label"
       className=
           ms-Dropdown
           {
@@ -601,6 +497,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             padding-top: 0px;
             position: relative;
             user-select: none;
+            width: 300px;
           }
           &:hover .ms-Dropdown-title {
             border-color: #212121;
@@ -665,218 +562,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             border-color: #a80000;
           }
       data-is-focusable={true}
-      id="Dropdown5"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      placeholder="Select an Option"
-      role="listbox"
-      tabIndex={0}
-    >
-      <span
-        aria-atomic={true}
-        aria-label="Select an Option"
-        aria-live="off"
-        aria-setsize={7}
-        className=
-            ms-Dropdown-title
-            ms-Dropdown-titleIsPlaceHolder
-            {
-              background-color: #ffffff;
-              border-color: #a6a6a6;
-              border-style: solid;
-              border-width: 1px;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #666666;
-              cursor: pointer;
-              display: block;
-              height: 32px;
-              line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow: hidden;
-              padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 32px;
-              padding-top: 0;
-              position: relative;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-        id="Dropdown5-option"
-        role="option"
-      >
-        <span>
-          Select an Option
-        </span>
-      </span>
-      <span
-        className=
-            ms-Dropdown-caretDownWrapper
-            {
-              cursor: pointer;
-              height: 32px;
-              line-height: 30px;
-              position: absolute;
-              right: 12px;
-              top: 1px;
-            }
-      >
-        <i
-          className=
-              ms-Dropdown-caretDown
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
-                font-family: "FabricMDL2Icons";
-                font-size: 12px;
-                font-style: normal;
-                font-weight: normal;
-                pointer-events: none;
-                speak: none;
-              }
-          data-icon-name="ChevronDown"
-          role="presentation"
-        >
-          
-        </i>
-      </span>
-    </div>
-  </div>
-  <div
-    className=
-        ms-Dropdown-container
-
-  >
-    <label
-      className=
-          ms-Label
-          ms-Dropdown-label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="Dropdown6"
-      id="Dropdown6-label"
-    >
-      Multi-Select uncontrolled example:
-    </label>
-    <div
-      aria-describedby="Dropdown6-option"
-      aria-expanded="false"
-      aria-labelledby="Dropdown6-label"
-      className=
-          ms-Dropdown
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            outline: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            user-select: none;
-          }
-          &:hover .ms-Dropdown-title {
-            border-color: #212121;
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
-            border-color: Highlight;
-          }
-          &:focus .ms-Dropdown-title {
-            border-color: #0078d4;
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-            background-color: Highlight;
-            border-color: Highlight;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-            -ms-high-contrast-adjust: none;
-          }
-          &:active .ms-Dropdown-title {
-            border-color: #005a9e;
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
-            border-color: Highlight;
-          }
-          &:hover .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          &:focus .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-            -ms-high-contrast-adjust: none;
-          }
-          &:active .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          &:hover .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:focus .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:active .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-          &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-      data-is-focusable={true}
-      id="Dropdown6"
+      id="Dropdown2"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -887,7 +573,7 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
     >
       <span
         aria-atomic={true}
-        aria-label="apple"
+        aria-label="Apple"
         aria-live="off"
         className=
             ms-Dropdown-title
@@ -915,10 +601,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Dropdown6-option"
+        id="Dropdown2-option"
       >
         <span>
-          apple, banana, orange
+          Apple, Banana, Grape
         </span>
       </span>
       <span
@@ -947,416 +633,6 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 font-weight: normal;
                 pointer-events: none;
                 speak: none;
-              }
-          data-icon-name="ChevronDown"
-          role="presentation"
-        >
-          
-        </i>
-      </span>
-    </div>
-  </div>
-  <div
-    className=
-        ms-Dropdown-container
-
-  >
-    <label
-      className=
-          ms-Label
-          ms-Dropdown-label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="Dropdown7"
-      id="Dropdown7-label"
-    >
-      Multi-Select controlled example:
-    </label>
-    <div
-      aria-describedby="Dropdown7-option"
-      aria-expanded="false"
-      aria-labelledby="Dropdown7-label"
-      className=
-          ms-Dropdown
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            outline: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            user-select: none;
-          }
-          &:hover .ms-Dropdown-title {
-            border-color: #212121;
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
-            border-color: Highlight;
-          }
-          &:focus .ms-Dropdown-title {
-            border-color: #0078d4;
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-            background-color: Highlight;
-            border-color: Highlight;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-            -ms-high-contrast-adjust: none;
-          }
-          &:active .ms-Dropdown-title {
-            border-color: #005a9e;
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
-            border-color: Highlight;
-          }
-          &:hover .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          &:focus .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-            -ms-high-contrast-adjust: none;
-          }
-          &:active .ms-Dropdown-caretDown {
-            color: #212121;
-          }
-          &:hover .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:focus .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:active .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-          &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-      data-is-focusable={true}
-      id="Dropdown7"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      placeholder="Select options"
-      tabIndex={0}
-    >
-      <span
-        aria-atomic={true}
-        aria-label="Select options"
-        aria-live="off"
-        className=
-            ms-Dropdown-title
-            ms-Dropdown-titleIsPlaceHolder
-            {
-              background-color: #ffffff;
-              border-color: #a6a6a6;
-              border-style: solid;
-              border-width: 1px;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #666666;
-              cursor: pointer;
-              display: block;
-              height: 32px;
-              line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow: hidden;
-              padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 32px;
-              padding-top: 0;
-              position: relative;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-        id="Dropdown7-option"
-      >
-        <span>
-          Select options
-        </span>
-      </span>
-      <span
-        className=
-            ms-Dropdown-caretDownWrapper
-            {
-              cursor: pointer;
-              height: 32px;
-              line-height: 30px;
-              position: absolute;
-              right: 12px;
-              top: 1px;
-            }
-      >
-        <i
-          className=
-              ms-Dropdown-caretDown
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #666666;
-                display: inline-block;
-                font-family: "FabricMDL2Icons";
-                font-size: 12px;
-                font-style: normal;
-                font-weight: normal;
-                pointer-events: none;
-                speak: none;
-              }
-          data-icon-name="ChevronDown"
-          role="presentation"
-        >
-          
-        </i>
-      </span>
-    </div>
-  </div>
-  <div
-    className=
-        ms-Dropdown-container
-
-  >
-    <label
-      className=
-          ms-Label
-          ms-Dropdown-label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="Dropdown8"
-      id="Dropdown8-label"
-    >
-      Disabled uncontrolled example with defaultSelectedKey:
-    </label>
-    <div
-      aria-describedby="Dropdown8-option"
-      aria-disabled={true}
-      aria-expanded="false"
-      aria-labelledby="Dropdown8-label"
-      className=
-          ms-Dropdown
-          is-disabled
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            outline: 0px;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-            position: relative;
-            user-select: none;
-          }
-          &:hover .ms-Dropdown-title {
-            border-color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
-            border-color: Highlight;
-          }
-          &:focus .ms-Dropdown-title {
-            border-color: #0078d4;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
-            background-color: Highlight;
-            border-color: Highlight;
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title:hover {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-title {
-            -ms-high-contrast-adjust: none;
-          }
-          &:active .ms-Dropdown-title {
-            border-color: #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
-            border-color: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
-            color: HighlightText;
-          }
-          @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white){&:focus .ms-Dropdown-caretDown {
-            -ms-high-contrast-adjust: none;
-          }
-          &:hover .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:focus .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:active .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
-          }
-          &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-          &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-          &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
-          }
-      data-is-focusable={false}
-      id="Dropdown8"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      tabIndex={-1}
-    >
-      <span
-        aria-atomic={true}
-        aria-label="Option g"
-        aria-live="off"
-        className=
-            ms-Dropdown-title
-            {
-              background-color: #f4f4f4;
-              border-color: #a6a6a6;
-              border-style: solid;
-              border-width: 1px;
-              border: none;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #a6a6a6;
-              cursor: default;
-              display: block;
-              height: 32px;
-              line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow: hidden;
-              padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 32px;
-              padding-top: 0;
-              position: relative;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              border: 1px solid GrayText;
-              color: GrayText;
-            }
-        id="Dropdown8-option"
-      >
-        <span>
-          Option g, Option f
-        </span>
-      </span>
-      <span
-        className=
-            ms-Dropdown-caretDownWrapper
-            {
-              height: 32px;
-              line-height: 30px;
-              position: absolute;
-              right: 12px;
-              top: 1px;
-            }
-      >
-        <i
-          className=
-              ms-Dropdown-caretDown
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
-                display: inline-block;
-                font-family: "FabricMDL2Icons";
-                font-size: 12px;
-                font-style: normal;
-                font-weight: normal;
-                pointer-events: none;
-                speak: none;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: GrayText;
               }
           data-icon-name="ChevronDown"
           role="presentation"

@@ -268,7 +268,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         [HighContrastSelector]: {
           background: 'Highlight',
           color: 'HighlightText',
-          '-ms-high-contrast-adjust': 'none',
+          MsHighContrastAdjust: 'none',
           selectors: {
             a: {
               color: 'HighlightText'

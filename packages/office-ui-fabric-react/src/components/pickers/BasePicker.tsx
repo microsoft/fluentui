@@ -192,7 +192,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   public render(): JSX.Element {
-    const { suggestedDisplayValue, isFocused } = this.state;
+    const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, theme, styles } = this.props;
 
     const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
@@ -233,9 +233,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
             <div className={classNames.text}>
-              <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
-                {this.renderItems()}
-              </span>
+              {items.length > 0 && (
+                <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
+                  {this.renderItems()}
+                </span>
+              )}
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}

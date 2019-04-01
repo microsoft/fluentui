@@ -415,6 +415,26 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
 }
 
 /**
+ * Retrieve the final value for the return edge of elementRectangle.
+ * If the elementRectangle is closer to one side of the bounds versus the other, the return edge is flipped to grow inward.
+ *
+ * @param elementRectangle
+ * @param targetEdge
+ * @param bounds
+ */
+function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleEdge, bounds?: Rectangle): RectangleEdge {
+  if (
+    bounds &&
+    Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge)) >
+      Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
+  ) {
+    return returnEdge * -1;
+  }
+
+  return returnEdge;
+}
+
+/**
  * Finalizes the element positon based on the hostElement. Only returns the
  * rectangle values to position such that they are anchored to the target.
  * This helps prevent resizing from looking very strange.
@@ -442,16 +462,11 @@ function _finalizeElementPosition(
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   const elementEdgeString = RectangleEdge[elementEdge];
-  let returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
-
-  // if the element is closer to one side of the bounds than the other, flip the return edge to ensure it grows inwards
-  if (
-    bounds &&
-    Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge)) >
-      Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
-  ) {
-    returnEdge = returnEdge * -1;
-  }
+  const returnEdge = _finalizeReturnEdge(
+    elementRectangle,
+    alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge,
+    bounds
+  );
 
   returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
@@ -558,12 +573,20 @@ function _positionElementWithinBounds(
   }
 }
 
-function _finalizeBeakPosition(elementPosition: IElementPosition, positionedBeak: Rectangle): ICalloutBeakPositionedInfo {
+function _finalizeBeakPosition(
+  elementPosition: IElementPosition,
+  positionedBeak: Rectangle,
+  bounds?: Rectangle
+): ICalloutBeakPositionedInfo {
   const targetEdge = elementPosition.targetEdge * -1;
   // The "host" element that we will use to help position the beak.
   const actualElement = new Rectangle(0, elementPosition.elementRectangle.width, 0, elementPosition.elementRectangle.height);
-  const returnEdge = elementPosition.alignmentEdge ? elementPosition.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
   const returnValue: IPartialIRectangle = {};
+  const returnEdge = _finalizeReturnEdge(
+    elementPosition.elementRectangle,
+    elementPosition.alignmentEdge ? elementPosition.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge,
+    bounds
+  );
 
   returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(positionedBeak, targetEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualElement, returnEdge);
@@ -756,7 +779,7 @@ function _positionCallout(
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, callout, boundingRect, previousPositions);
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
-  const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned);
+  const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned, boundingRect);
   return {
     ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget),
     beakPosition: finalizedBeakPosition
@@ -767,6 +790,7 @@ function _positionCallout(
 /* tslint:disable:variable-name */
 export const __positioningTestPackage = {
   _finalizePositionData,
+  _finalizeBeakPosition,
   _calculateActualBeakWidthInPixels,
   _positionElementWithinBounds,
   _positionBeak,

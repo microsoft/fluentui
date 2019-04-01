@@ -2,6 +2,105 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.58.1",
+      "tag": "@uifabric/dashboard_v0.58.1",
+      "date": "Thu, 28 Mar 2019 12:36:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Click event for card header and provide a prop for dashboard card",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "477b4783790d18a105128229591973a9857efea0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.162.0 <7.0.0` to `>=6.162.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.58.0",
+      "tag": "@uifabric/dashboard_v0.58.0",
+      "date": "Tue, 26 Mar 2019 12:32:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove IE 11-incompatible constructs",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "91c57199029cb06ab7dce676a00f35bdd5537d1f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.9` to `^0.28.10`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.160.0 <7.0.0` to `>=6.161.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.57.2",
+      "tag": "@uifabric/dashboard_v0.57.2",
+      "date": "Mon, 25 Mar 2019 12:33:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "expose FocuseZone component props in dashboard Card component",
+            "author": "dkishmareishvili <dkishmareishvili@gmail.com>",
+            "commit": "bf2585097551cde9fc58faa5b07c884bd5733ce6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.159.1 <7.0.0` to `>=6.160.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.57.1",
+      "tag": "@uifabric/dashboard_v0.57.1",
+      "date": "Thu, 21 Mar 2019 17:21:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue with add card from panel using drag and drop",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "e52018e8c51879b5fe4396e47c5e53d26f94965b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.57.0",
+      "tag": "@uifabric/dashboard_v0.57.0",
+      "date": "Thu, 21 Mar 2019 12:36:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add title native tool-tip for the refresh icon and close icon in DetailPanel with pivot",
+            "author": "shivasai09 <33802398+shivasai09@users.noreply.github.com>",
+            "commit": "80ad26d734d5089254395a7e1e85a0b4314665af"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.8` to `^0.28.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.64.1 <7.0.0` to `>=6.64.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.157.3 <7.0.0` to `>=6.158.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.56.0",
       "tag": "@uifabric/dashboard_v0.56.0",
       "date": "Tue, 19 Mar 2019 12:36:45 GMT",

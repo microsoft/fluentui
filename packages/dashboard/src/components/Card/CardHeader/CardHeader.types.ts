@@ -20,6 +20,11 @@ export interface ICardHeaderProps {
    * Annotation Text for the card header
    */
   annotationText?: string;
+
+  /**
+   * the call back triggered upon clicking card header
+   */
+  cardHeaderCallback?: VoidFunction;
 }
 
 export interface ICardHeaderStyles {

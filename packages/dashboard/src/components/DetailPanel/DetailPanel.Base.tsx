@@ -76,7 +76,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
 
   public render(): JSX.Element | null {
     const { pageReady, messageBanner, loadingElement, contentElement, currentL2Id, inlineLoading, actionBar, confirmation } = this.state;
-    const { onRefresh, panelSetting, globalMessageBanner } = this.props;
+    const { onRefresh, panelSetting, globalMessageBanner, refreshTooltip, closeTooltip } = this.props;
 
     // Render loading element
     if (!pageReady && !loadingElement) {
@@ -95,6 +95,8 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
           actionBar={confirmation.actionBar}
           inlineLoading={inlineLoading}
           loadingElement={loadingElement}
+          refreshTooltip={refreshTooltip}
+          closeTooltip={closeTooltip}
         />
       );
     }
@@ -115,6 +117,8 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
         actionBar={actionBar}
         loadingElement={loadingElement}
         inlineLoading={inlineLoading}
+        refreshTooltip={refreshTooltip}
+        closeTooltip={closeTooltip}
       />
     );
   }
@@ -143,7 +147,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
           .catch((err: IDetailPanelErrorResult) => {
             // set message bar
             if (err && err.messageBannerSetting) {
-              const messageBannerSetting = Object.assign({}, err.messageBannerSetting);
+              const messageBannerSetting = { ...err.messageBannerSetting };
               if (messageBannerSetting.messageType === undefined) {
                 messageBannerSetting.messageType = MessageBarType.error;
               }
