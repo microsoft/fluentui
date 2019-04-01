@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Dropdown: The `onChange` callback's event target should always be the dropdown element, which contains the id attribute passed in through props.",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
