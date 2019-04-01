@@ -236,7 +236,7 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   // (undocumented)
   componentDidUpdate(): void;
   // (undocumented)
-  componentWillReceiveProps(newProps: P): void;
+  componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
   // (undocumented)
   componentWillUnmount(): void;
   // (undocumented)
@@ -249,6 +249,8 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   hidePicker: () => void;
   // (undocumented)
   readonly inputText: string;
+  // (undocumented)
+  protected isComponentMounted: boolean;
   // (undocumented)
   readonly isSuggestionsShown: boolean;
   // (undocumented)
@@ -276,7 +278,7 @@ class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseC
   // (undocumented)
   readonly suggestions: any[];
   // (undocumented)
-  protected suggestionsControl: SuggestionsControl<T>;
+  protected suggestionsControl: React.RefObject<SuggestionsControl<T>>;
   // (undocumented)
   protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   // (undocumented)
