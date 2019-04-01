@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/azure-themes",
+      "comment": "Use ^ ranges instead of >=",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/azure-themes",
+  "email": "elcraig@microsoft.com"
+}

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/test-utilities",
+      "comment": "Use ^ ranges instead of >=",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/test-utilities",
+  "email": "elcraig@microsoft.com"
+}
