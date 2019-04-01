@@ -79,7 +79,7 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
     // Translate mask into charData
     this._maskCharData = parseMask(props.mask, props.maskFormat);
     // If an initial value is provided, use it to populate the format chars
-    props.value && this.setValue(props.value);
+    props.value !== undefined && this.setValue(props.value);
 
     this._isFocused = false;
     this._moveCursorOnMouseUp = false;
@@ -90,11 +90,13 @@ export class MaskedTextField extends BaseComponent<ITextFieldProps, IMaskedTextF
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
-    if (newProps.mask !== this.props.mask) {
+    if (newProps.mask !== this.props.mask || newProps.value !== this.props.value) {
       this._maskCharData = parseMask(newProps.mask, newProps.maskFormat);
-      this.state = {
+      newProps.value !== undefined && this.setValue(newProps.value);
+
+      this.setState({
         displayValue: getMaskDisplay(newProps.mask, this._maskCharData, newProps.maskChar)
-      };
+      });
     }
   }
 

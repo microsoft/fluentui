@@ -2,29 +2,26 @@
 
 exports[`CardView renders correctly 1`] = `
 <div
-  className=""
->
-  <div
-    className=
-        ms-Stack
-        {
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: column;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: space-between;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-top: 0px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 0;
-        }
-  />
-</div>
+  className=
+      ms-Stack
+      {
+        align-items: space-between;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: space-between;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+/>
 `;

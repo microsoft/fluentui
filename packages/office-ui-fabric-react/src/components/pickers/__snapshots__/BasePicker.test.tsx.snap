@@ -29,10 +29,6 @@ exports[`BasePicker renders correctly 1`] = `
       <div
         className="ms-BasePicker-text"
       >
-        <span
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "
@@ -90,10 +86,6 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
       <div
         className="ms-BasePicker-text"
       >
-        <span
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "

@@ -1,0 +1,41 @@
+pr:
+  - master
+
+trigger:
+  - master
+
+variables:
+  - group: fabric-variables
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      node common/scripts/install-run-rush.js install --bypass-policy
+    displayName: rush install
+
+  - script: |
+      npm run checkchange
+    displayName: check change
+
+  - script: |
+      npm run buildci
+    displayName: build ci
+
+  - script: |
+      git config --global user.email "fabrictactical@microsoft.com"
+      git config --global user.name "Fabric Tactical"
+      npm run vrtest
+    displayName: run VR Test
+    env:
+      SCREENER_API_KEY: $(screener.key)
+
+  - script: |
+      npm run check-for-changed-files
+    displayName: check for change file
