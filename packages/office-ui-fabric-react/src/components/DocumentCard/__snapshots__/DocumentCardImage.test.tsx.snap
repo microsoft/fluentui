@@ -40,7 +40,6 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
           is-notLoaded
           is-fadeIn
           {
-            backface-visibility: hidden;
             display: block;
             height: 100%;
             left: 50% /* @noflip */;
@@ -134,7 +133,6 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
           is-notLoaded
           is-fadeIn
           {
-            backface-visibility: hidden;
             display: block;
             height: 100%;
             opacity: 0;

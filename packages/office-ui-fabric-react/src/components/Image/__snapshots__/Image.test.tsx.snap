@@ -26,7 +26,6 @@ exports[`Image renders Image correctly 1`] = `
         is-notLoaded
         is-fadeIn
         {
-          backface-visibility: hidden;
           display: block;
           opacity: 0;
         }
@@ -65,7 +64,6 @@ exports[`Image renders ImageFit.centerCover correctly 1`] = `
         is-notLoaded
         is-fadeIn
         {
-          backface-visibility: hidden;
           display: block;
           left: 50% /* @noflip */;
           max-width: 100%;
