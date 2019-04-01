@@ -220,7 +220,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
 
   protected onChange(item: TItem): void {
     if (this.props.onChange) {
-      (this.props.onChange as ((items: TItem) => void))(item);
+      this.props.onChange(item);
     }
   }
 
@@ -231,7 +231,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
 
   protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: TItem, index: number): void => {
     if (this.props.onRemoveSuggestion) {
-      (this.props.onRemoveSuggestion as ((item: TItem) => void))(item);
+      this.props.onRemoveSuggestion(item);
     }
 
     if (this.suggestionsControl) {
@@ -242,7 +242,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
   protected onKeyDown = (ev: MouseEvent): void => {
     if (
       !this.state.suggestionsVisible ||
-      (this.props.inputElement && !(this.props.inputElement as HTMLElement).contains(ev.target as HTMLElement))
+      (this.props.inputElement && ev.target instanceof Node && !this.props.inputElement.contains(ev.target))
     ) {
       return;
     }
@@ -272,7 +272,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
           this.suggestionsControl.currentSuggestion &&
           ev.shiftKey
         ) {
-          (this.props.onRemoveSuggestion as ((item: TItem) => void))(this.suggestionsControl.currentSuggestion!.item);
+          this.props.onRemoveSuggestion(this.suggestionsControl.currentSuggestion!.item);
 
           this.suggestionsControl.removeSuggestion();
           this.forceUpdate();
@@ -302,7 +302,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
     if (this.props.inputElement && this.suggestionsControl && this.suggestionsControl.selectedElement) {
       const selectedElId = this.suggestionsControl.selectedElement.getAttribute('id');
       if (selectedElId) {
-        this.props.inputElement.setAttribute('aria-activedescendant', selectedElId as string);
+        this.props.inputElement.setAttribute('aria-activedescendant', selectedElId);
       }
     }
   }
@@ -318,12 +318,9 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
 
   private _onValidateInput = (): void => {
     if (this.state.queryString && this.props.onValidateInput && this.props.createGenericItem) {
-      const itemToConvert: ISuggestionModel<TItem> = (this.props.createGenericItem as ((
-        input: string,
-        isValid: boolean
-      ) => ISuggestionModel<TItem>))(
+      const itemToConvert: ISuggestionModel<TItem> = this.props.createGenericItem(
         this.state.queryString,
-        (this.props.onValidateInput as ((input: string) => boolean))(this.state.queryString)
+        this.props.onValidateInput(this.state.queryString)
       );
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this.onChange(convertedItems[0].item);
