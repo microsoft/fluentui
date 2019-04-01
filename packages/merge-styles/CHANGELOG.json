@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.16.3",
+      "tag": "@uifabric/merge-styles_v6.16.3",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deleting .api.ts file.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "df359770c046490ac1d7cb17a783cbb7e0cbcdcf"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.2",
       "tag": "@uifabric/merge-styles_v6.16.2",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",

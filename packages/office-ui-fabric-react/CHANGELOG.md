@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 29 Mar 2019 12:36:45 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Apr 2019 12:37:03 GMT and should not be manually modified.
+
+## 6.164.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- Stack: Adding margin as a token of StackItem and childrenGap as a token of Stack and updating examples accordingly.
+- Separator: promote to OUFR
+
+### Patches
+
+- ContextualMenu: Remove extra role=menu
+- MaskedTextField: fixes the state update when the value it's controlled by the host app.
+- More TextField example updates
 
 ## 6.163.0
 Fri, 29 Mar 2019 12:36:45 GMT
