@@ -22,6 +22,7 @@
     "code-style": "node ../../scripts/just.js code-style",
     "start": "node ../../scripts/just.js dev",
     "start-test": "node ../../scripts/just.js jest-watch",
+    "jest-dom": "node ../../scripts/just.js jest-dom-with-webpack",
     "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/jest": "23.0.0",
     "@types/prop-types": "15.5.9",
+    "@types/puppeteer": "1.12.3",
     "@types/react": "16.8.3",
     "@types/react-dom": "16.8.1",
     "@types/react-test-renderer": "^16.0.0",
@@ -67,7 +69,12 @@
     "@uifabric/theme-samples": ">=0.1.4 <1.0.0",
     "@uifabric/utilities": ">=6.35.2 <7.0.0",
     "@uifabric/variants": ">=6.14.0 <7.0.0",
+    "expect-puppeteer": "4.1.0",
+    "jest-environment-node": "24.5.0",
+    "jest-environment-puppeteer": "4.1.0",
+    "jest-puppeteer": "^4.0.0",
     "prop-types": "^15.5.10",
+    "puppeteer": "^1.13.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
