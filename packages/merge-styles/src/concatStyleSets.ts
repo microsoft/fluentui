@@ -189,7 +189,7 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
           return concatStyleSets(
             ...workingSet.map(
               (styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
-              typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
+               typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
             )
           );
         };
