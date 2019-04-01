@@ -280,6 +280,8 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!day.isInBounds}
           type="button"
+          role="gridcell" // create grid structure
+          aria-readonly={true} // prevent grid from being "editable"
         >
           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         </button>
