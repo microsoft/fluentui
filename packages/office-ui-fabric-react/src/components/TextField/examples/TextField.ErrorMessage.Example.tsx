@@ -1,7 +1,7 @@
 import { Promise } from 'es6-promise';
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export interface ITextFieldErrorMessageExampleState {
@@ -21,10 +21,8 @@ export class TextFieldErrorMessageExample extends React.Component<{}, ITextField
   public render(): JSX.Element {
     const { showFields } = this.state;
 
-    const stackTokens: IStackTokens = { childrenGap: 20 };
-
     return (
-      <Stack tokens={stackTokens} maxWidth={350}>
+      <Stack tokens={{ childrenGap: 20 }} maxWidth={350}>
         <Toggle label="Show text fields" inlineLabel checked={showFields} onChange={this._toggleShowFields} />
         {showFields && (
           <>

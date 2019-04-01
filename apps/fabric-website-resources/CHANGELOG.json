@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.14.0",
+      "tag": "@uifabric/fabric-website-resources_v6.14.0",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Separator page",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8db1d9bfc880dfbe533fb469dda8aa87f468a503"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.2 <7.0.0` to `>=6.16.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.163.0 <7.0.0` to `>=6.164.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.2",
       "tag": "@uifabric/fabric-website-resources_v6.13.2",
       "date": "Fri, 29 Mar 2019 12:36:45 GMT",

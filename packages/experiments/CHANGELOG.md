@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Apr 2019 12:37:03 GMT and should not be manually modified.
+
+## 6.66.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- Separator: remove from experiments and promote to OUFR
+
+### Patches
+
+- Updating examples using Stack to use childrenGap token instead of gap prop.
 
 ## 6.65.0
 Wed, 27 Mar 2019 12:34:02 GMT

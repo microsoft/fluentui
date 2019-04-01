@@ -1,34 +1,39 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 
 export interface ITextFieldMultilineExampleState {
   multiline: boolean;
 }
 
 export class TextFieldMultilineExample extends React.Component<{}, ITextFieldMultilineExampleState> {
-  private _lorem: string;
-  constructor(props: {}) {
-    super(props);
-    this.state = { multiline: false };
-    this._lorem = lorem(100);
-  }
+  public state: ITextFieldMultilineExampleState = { multiline: false };
+  private _lorem: string = lorem(100);
 
   public render(): JSX.Element {
-    const stackTokens: IStackTokens = { childrenGap: 15 };
+    // TextFields don't have to be inside Stacks, we're just using Stacks for layout
+    const columnProps: Partial<IStackProps> = {
+      tokens: { childrenGap: 15 },
+      styles: { root: { width: 300 } }
+    };
 
     return (
-      <Stack tokens={stackTokens} maxWidth={300}>
-        <TextField label="Standard" multiline rows={3} />
-        <TextField label="Disabled" multiline rows={3} disabled value={this._lorem} />
-        <TextField label="Non-resizable" multiline resizable={false} />
-        <TextField label="With auto adjusting height" multiline autoAdjustHeight />
-        <TextField
-          label="Switches from single to multiline if more than 50 characters are entered"
-          multiline={this.state.multiline}
-          onChange={this._onChange}
-        />
+      <Stack horizontal tokens={{ childrenGap: 50 }} styles={{ root: { width: 650 } }}>
+        <Stack {...columnProps}>
+          <TextField label="Standard" multiline rows={3} />
+          <TextField label="Disabled" multiline rows={3} disabled defaultValue={this._lorem} />
+          <TextField label="Non-resizable" multiline resizable={false} />
+        </Stack>
+
+        <Stack {...columnProps}>
+          <TextField label="With auto adjusting height" multiline autoAdjustHeight />
+          <TextField
+            label="Switches from single to multiline if more than 50 characters are entered"
+            multiline={this.state.multiline}
+            onChange={this._onChange}
+          />
+        </Stack>
       </Stack>
     );
   }

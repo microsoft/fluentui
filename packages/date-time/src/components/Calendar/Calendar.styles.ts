@@ -58,6 +58,10 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
           },
           '&:active': {
             color: palette.themeDark
+          },
+          '&:disabled': {
+            color: palette.neutralTertiaryAlt,
+            pointerEvents: 'none'
           }
         }
       }

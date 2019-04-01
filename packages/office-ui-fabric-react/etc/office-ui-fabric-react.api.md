@@ -1281,6 +1281,8 @@ export const GroupedList: React_2.StatelessComponent<IGroupedListProps>;
 export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
     componentWillReceiveProps(newProps: IGroupedListProps): void;
     // (undocumented)
     static defaultProps: {
@@ -6326,6 +6328,27 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 }
 
 // @public (undocumented)
+export interface ISeparator {
+}
+
+// @public (undocumented)
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
+    alignContent?: 'start' | 'center' | 'end';
+    styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
+    theme?: ITheme;
+    vertical?: boolean;
+}
+
+// @public (undocumented)
+export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> & Pick<ISeparatorProps, 'className' | 'alignContent' | 'vertical'>;
+
+// @public (undocumented)
+export interface ISeparatorStyles {
+    content: IStyle;
+    root: IStyle;
+}
+
+// @public (undocumented)
 export interface IShimmer {
 }
 
@@ -8350,6 +8373,12 @@ export enum SemanticColorSlots {
     // (undocumented)
     disabledText = 3,
 }
+
+// @public (undocumented)
+export const Separator: React_2.StatelessComponent<ISeparatorProps>;
+
+// @public (undocumented)
+export const SeparatorBase: React.StatelessComponent<ISeparatorProps>;
 
 // @public
 export enum Shade {

@@ -318,7 +318,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           hidden={this.props.hidden}
         >
           <div
-            role="menu"
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
