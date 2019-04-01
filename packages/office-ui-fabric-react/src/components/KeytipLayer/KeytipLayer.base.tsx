@@ -447,9 +447,15 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // Add the keytip to the queue to show later
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
-      // Update current keytip to reflect change in children array if hasDynamicChildren is true for current keytip
-      if (this._keytipTree.currentKeytip && this._keytipTree.currentKeytip.hasDynamicChildren) {
-        this._keytipTree.currentKeytip = this._keytipTree.getNode(sequencesToID(this._keytipTree.currentKeytip.keySequences));
+      // Check to make sure that child of currentKeytip is successfully added to currentKeytip's children and update it if not
+      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node in currentKeytip
+      // when that parent is the currentKeytip
+      if (
+        this._keytipTree.currentKeytip &&
+        this._keytipTree.currentKeytip.hasDynamicChildren &&
+        this._keytipTree.currentKeytip.children.indexOf(keytipProps.id) < 0
+      ) {
+        this._keytipTree.currentKeytip = this._keytipTree.getNode(sequencesToID(keytipProps.keySequences));
       }
     }
 
