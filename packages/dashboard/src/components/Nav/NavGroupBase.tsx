@@ -3,11 +3,11 @@ import { INavGroupProps, INavGroupStyles } from './NavGroup.types';
 import { NavLink } from './NavLink';
 import { NavLinkGroup } from './NavLinkGroup';
 import { INavLink } from 'office-ui-fabric-react/lib/Nav';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, BaseComponent } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<{}, INavGroupStyles>();
 
-export class NavGroupBase extends React.PureComponent<INavGroupProps, {}> {
+export class NavGroupBase extends BaseComponent<INavGroupProps, {}> {
   constructor(props: INavGroupProps) {
     super(props);
   }

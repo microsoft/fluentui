@@ -1,6 +1,6 @@
-import { INavLink, IStyle, IFocusZone, IStyleFunctionOrObject } from 'office-ui-fabric-react';
+import { INavLink, IStyle, IFocusZone, IStyleFunctionOrObject, IBaseProps } from 'office-ui-fabric-react';
 
-export interface INavGroupProps {
+export interface INavGroupProps extends IBaseProps {
   /**
    * Title of the group. Is hidden for the first nav group.
    */
