@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CommandBar, Customizer, Stack, Toggle, Text } from 'office-ui-fabric-react';
+import { CommandBar, Customizer, IStackTokens, Stack, Toggle, Text } from 'office-ui-fabric-react';
 import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
 
 // tslint:disable:max-line-length
@@ -38,13 +38,15 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
     const sideCaption = 'Scheme: ' + sideScheme;
     const topCaption = 'Scheme: ' + topScheme;
 
+    const stackTokens: IStackTokens = { childrenGap: 10 };
+
     // TODO: Even though this styles function is the same for all regions, it has to be provided whenever the scheme
     //        is changed to apply the new semanticColors. Is this the best way we can do this?
     return (
-      <Stack horizontal gap={10}>
+      <Stack horizontal tokens={stackTokens}>
         <Stack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
           <ThemeProvider scheme={sideScheme}>
-            <Stack styles={regionStyles} gap={10} padding={5}>
+            <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
               <Text>{sideCaption}</Text>
               <Toggle offText={sideCaption} onText={sideCaption} onChange={this.toggleSide} />
               <CollapsibleSectionRecursiveExample />
@@ -54,7 +56,7 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
         <Stack.Item grow={true} styles={{ root: { height: 'auto' } }}>
           <Stack grow={true} verticalFill={true}>
             <ThemeProvider scheme={topScheme}>
-              <Stack styles={regionStyles} gap={10} padding={5}>
+              <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
                 <Stack horizontal horizontalAlign="space-between">
                   <Text>{topCaption}</Text>
                   <Toggle offText={topCaption} onText={topCaption} onChange={this.toggleTop} />

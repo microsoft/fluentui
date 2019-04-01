@@ -156,13 +156,17 @@ class NavComponent extends NavBase {
     return (
       <ul role="list">
         {links.map((link: INavLink, linkIndex: number) => {
+          if (enableCustomization && link.isHidden) {
+            // atleast one link is hidden
+            this._hasAtleastOneHiddenLink = true;
+          }
           if (enableCustomization && link.isHidden && !showMore) {
             // atleast one link is hidden
             this._hasAtleastOneHiddenLink = true;
 
             // "Show more" overrides isHidden property
             return null;
-          } else if (link.isShowMoreLink && !this._hasAtleastOneHiddenLink && !showMore) {
+          } else if (link.isShowMoreLink && !this._hasAtleastOneHiddenLink) {
             // there is no hidden link, hide "Show more" link
             return null;
           } else {

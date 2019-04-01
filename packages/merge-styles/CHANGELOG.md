@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Apr 2019 12:37:03 GMT and should not be manually modified.
+
+## 6.16.3
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Patches
+
+- Deleting .api.ts file.
 
 ## 6.16.2
 Wed, 27 Mar 2019 12:34:02 GMT

@@ -83,16 +83,6 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 border-color: #333333;
               }
         >
-          <span
-            className=
-                ms-BasePicker-itemsWrapper
-                {
-                  display: flex;
-                  flex-wrap: wrap;
-                }
-            id="selected-items-id__0"
-            role="list"
-          />
           <input
             aria-autocomplete="both"
             aria-controls=" "

@@ -9,16 +9,7 @@ import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
 
 import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-
-export interface IHeaderProps {
-  title: string;
-  sideLinks: { name: string; url: string }[];
-
-  isMenuVisible: boolean;
-  onIsMenuVisibleChanged?: (isMenuVisible: boolean) => void;
-
-  responsiveMode?: ResponsiveMode;
-}
+import { IHeaderProps } from './Header.types';
 
 export interface IHeaderState {
   contextMenu?: {
@@ -60,8 +51,8 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
           <div className="Header-buttons">
             <FocusZone direction={FocusZoneDirection.horizontal}>
               {sideLinks
-                .map((link: { name: string; url: string }, linkIndex: number) => (
-                  <a key={linkIndex} className="Header-button" href={link.url}>
+                .map(link => (
+                  <a key={link.url} className="Header-button" href={link.url}>
                     {link.name}
                   </a>
                 ))

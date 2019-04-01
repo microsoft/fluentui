@@ -2,6 +2,31 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.2.0",
+      "tag": "@uifabric/react-cards_v0.2.0",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Improving styling and adding compact Card styling and examples.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "df359770c046490ac1d7cb17a783cbb7e0cbcdcf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.163.0 <7.0.0` to `>=6.164.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.2",
       "tag": "@uifabric/react-cards_v0.1.2",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",

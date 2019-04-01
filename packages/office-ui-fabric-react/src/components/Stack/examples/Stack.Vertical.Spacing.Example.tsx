@@ -20,12 +20,39 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
       }
     });
 
+    const tokens = {
+      sectionStack: {
+        childrenGap: 50
+      },
+      numericalSpacing: {
+        childrenGap: 10
+      },
+      customSpacing: {
+        childrenGap: '20%'
+      },
+      themedExtraSmall: {
+        childrenGap: 's2'
+      },
+      themedSmall: {
+        childrenGap: 's1'
+      },
+      themedMedium: {
+        childrenGap: 'm'
+      },
+      themedLarge: {
+        childrenGap: 'l1'
+      },
+      themedExtraLarge: {
+        childrenGap: 'l2'
+      }
+    };
+
     return (
-      <Stack gap={10}>
-        <Stack horizontal disableShrink gap={50}>
+      <Stack tokens={tokens.numericalSpacing}>
+        <Stack horizontal disableShrink tokens={tokens.sectionStack}>
           <Stack>
             <span>Numerical spacing</span>
-            <Stack className={styles.root} gap={10} padding={10}>
+            <Stack className={styles.root} tokens={tokens.numericalSpacing} padding={10}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -34,7 +61,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Custom spacing</span>
-            <Stack className={styles.root} gap="20%" padding="m 40px">
+            <Stack className={styles.root} tokens={tokens.customSpacing} padding="m 40px">
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -45,7 +72,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
         <Stack horizontal disableShrink horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (extra small)</span>
-            <Stack className={styles.root} gap="s2" padding="s2">
+            <Stack className={styles.root} tokens={tokens.themedExtraSmall} padding="s2">
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -54,7 +81,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (small)</span>
-            <Stack className={styles.root} gap="s1" padding="s2">
+            <Stack className={styles.root} tokens={tokens.themedSmall} padding="s2">
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -63,7 +90,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (medium)</span>
-            <Stack className={styles.root} gap="m" padding="m">
+            <Stack className={styles.root} tokens={tokens.themedMedium} padding="m">
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -72,7 +99,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (large)</span>
-            <Stack className={styles.root} gap="l1" padding="l1">
+            <Stack className={styles.root} tokens={tokens.themedLarge} padding="l1">
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -81,7 +108,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (extra large)</span>
-            <Stack className={styles.root} gap="l2" padding="l2">
+            <Stack className={styles.root} tokens={tokens.themedExtraLarge} padding="l2">
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>

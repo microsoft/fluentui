@@ -7,11 +7,8 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { relativeDates } from './relativeDates';
+import { IFeedbackListProps } from './FeedbackList.types';
 import { classNames } from './FeedbackList.styles';
-
-export interface IFeedbackListProps {
-  title: string;
-}
 
 export interface IFeedbackListState {
   openIssues: IListItem[];
@@ -50,8 +47,7 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     const response = await fetch(url);
     const responseText = await response.text();
 
-    const myObj = JSON.parse(responseText);
-    const { items = [] } = myObj;
+    const { items = [] } = JSON.parse(responseText);
 
     // Intentionally render the first 30 issues until pagination support is added for
     // https://github.com/OfficeDev/office-ui-fabric-react/issues/8284
@@ -70,32 +66,27 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
   public render(): JSX.Element | null {
     const { openIssues, closedIssues } = this.state;
 
-    const submitButton = (
-      <div>
-        <PrimaryButton
-          href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
-          target="_blank"
-          className="FeedbackList-button"
-        >
-          Submit GitHub Issue
-        </PrimaryButton>
-      </div>
-    );
-
-    if (openIssues.length === 0 && closedIssues.length === 0) {
-      return submitButton;
-    }
     return (
       <div>
-        {submitButton}
-        <Pivot className="FeedbackList-pivot">
-          <PivotItem headerText="Open Issues">
-            <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
-          </PivotItem>
-          <PivotItem headerText="Closed Issues">
-            <List items={closedIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
-          </PivotItem>
-        </Pivot>
+        <div>
+          <PrimaryButton
+            href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
+            target="_blank"
+            className="FeedbackList-button"
+          >
+            Submit GitHub Issue
+          </PrimaryButton>
+        </div>
+        {(openIssues.length > 0 || closedIssues.length > 0) && (
+          <Pivot className="FeedbackList-pivot">
+            <PivotItem headerText="Open Issues">
+              <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
+            </PivotItem>
+            <PivotItem headerText="Closed Issues">
+              <List items={closedIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
+            </PivotItem>
+          </Pivot>
+        )}
       </div>
     );
   }

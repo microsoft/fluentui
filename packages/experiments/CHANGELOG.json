@@ -2,6 +2,38 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.66.0",
+      "tag": "@uifabric/experiments_v6.66.0",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Separator: remove from experiments and promote to OUFR",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8db1d9bfc880dfbe533fb469dda8aa87f468a503"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updating examples using Stack to use childrenGap token instead of gap prop.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "df359770c046490ac1d7cb17a783cbb7e0cbcdcf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.2 <7.0.0` to `>=6.16.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.163.0 <7.0.0` to `>=6.164.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.65.0",
       "tag": "@uifabric/experiments_v6.65.0",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",
