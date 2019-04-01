@@ -27,7 +27,19 @@ export class NavExample extends React.Component<{}, {}> {
               {
                 name: 'Contacts - test with long name to show ellipse',
                 url: 'http://msn.com',
-                target: '_blank'
+                target: '_blank',
+                onClick: () => {
+                  console.log('some telemetry here');
+                }
+              },
+              {
+                name: 'Item with click and force <a>',
+                url: 'http://msn.com',
+                target: '_blank',
+                onClick: () => {
+                  console.log('some telemetry here');
+                },
+                forceAnchor: true
               },
               { name: 'Guest users', url: '#/examples/nav' },
               { name: 'Deleted users', url: '#/examples/nav' }

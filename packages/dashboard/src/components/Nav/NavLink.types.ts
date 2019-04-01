@@ -45,6 +45,8 @@ export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement
    * Styles function or object that drives rendering of the step
    */
   styles?: IStyleFunctionOrObject<INavLinkStyleProps, INavLinkStyles>;
+
+  forceAnchor?: boolean;
 }
 
 export interface INavLinkStyles {

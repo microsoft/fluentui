@@ -6,9 +6,22 @@ const getClassNames = classNamesFunction<INavLinkProps, INavLinkStyles>();
 
 export class NavLinkBase extends React.PureComponent<INavLinkProps, {}> {
   public render(): JSX.Element {
-    const { name, hasNestedMenu, isNested, isNavCollapsed, isExpanded, isSelected, hasSelectedNestedLink, styles } = this.props;
+    const {
+      name,
+      hasNestedMenu,
+      isNested,
+      isNavCollapsed,
+      isExpanded,
+      isSelected,
+      hasSelectedNestedLink,
+      styles,
+      primaryIconName,
+      onClick,
+      href,
+      forceAnchor
+    } = this.props;
     const classNames = getClassNames(styles!, { isNavCollapsed, hasNestedMenu, isExpanded, isSelected, hasSelectedNestedLink, isNested });
-    const { className, ...nativeProps } = getNativeProps(this.props, this.props.href ? anchorProperties : buttonProperties);
+    const { className, ...nativeProps } = getNativeProps(this.props, href ? anchorProperties : buttonProperties);
 
     let iconName = undefined;
     if (hasNestedMenu) {
@@ -18,7 +31,7 @@ export class NavLinkBase extends React.PureComponent<INavLinkProps, {}> {
     const navContent: JSX.Element = (
       <>
         <div className={classNames.iconContainer} aria-hidden="true">
-          {this.props.primaryIconName && <Icon iconName={this.props.primaryIconName} className={classNames.icon} />}
+          {primaryIconName && <Icon iconName={primaryIconName} className={classNames.icon} />}
         </div>
         <div className={classNames.text} aria-hidden="true" data-is-focusable="false">
           {name}
@@ -28,7 +41,7 @@ export class NavLinkBase extends React.PureComponent<INavLinkProps, {}> {
     );
 
     const rootStyle = mergeStyles(classNames.root, className);
-    return this.props.onClick ? (
+    return onClick && !forceAnchor ? (
       <button {...nativeProps} className={rootStyle}>
         {navContent}
       </button>

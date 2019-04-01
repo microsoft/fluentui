@@ -92,11 +92,9 @@ export class NavLinkGroupBase extends React.Component<INavLinkGroupProps, INavLi
                   return (
                     <li role="none" key={nestedLink.name + '_key'}>
                       <NavLink
+                        {...nestedLink}
                         isNavCollapsed={isNavCollapsed}
-                        name={nestedLink.name}
                         href={nestedLink.url}
-                        target={nestedLink.target}
-                        onClick={nestedLink.onClick}
                         data-value={nestedLink.name}
                         aria-label={nestedLink.ariaLabel ? nestedLink.ariaLabel : nestedLink.name}
                         {...nestedLink.isSelected && { 'aria-current': 'page' }}
@@ -104,7 +102,6 @@ export class NavLinkGroupBase extends React.Component<INavLinkGroupProps, INavLi
                         hasNestedMenu={false}
                         hasSelectedNestedLink={false}
                         isNested={true}
-                        isSelected={nestedLink.isSelected}
                         role="menuitem"
                       />
                     </li>
