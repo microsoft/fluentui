@@ -1,4 +1,4 @@
-import { INavLink, IStyle, IFocusZone } from 'office-ui-fabric-react';
+import { INavLink, IStyle, IFocusZone, IStyleFunctionOrObject } from 'office-ui-fabric-react';
 
 export interface INavGroupProps {
   /**
@@ -40,6 +40,11 @@ export interface INavGroupProps {
    * Ref to the main FocusZone of the navigation
    */
   focusZoneRef: React.RefObject<IFocusZone>;
+
+  /**
+   * Styles function or object that drives rendering of the step
+   */
+  styles?: IStyleFunctionOrObject<{}, INavGroupStyles>;
 }
 
 export interface INavGroupStyles {
