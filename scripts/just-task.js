@@ -79,6 +79,7 @@ task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom'));
 // Utility functions
 
