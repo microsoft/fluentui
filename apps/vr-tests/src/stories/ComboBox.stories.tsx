@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTallFixedWidth } from '../utilities/FluentDecorator';
+import { FabricDecoratorTallFixedWidth } from '../utilities';
 import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from 'office-ui-fabric-react';
 
 const testOptions = [
