@@ -19,7 +19,7 @@ sort out extensibility */
     root: [
       isNavCollapsed && {
         selectors: {
-          '& button:hover + $nestedNav': {
+          '& *:hover + $nestedNav': {
             display: 'flex'
           }
         }

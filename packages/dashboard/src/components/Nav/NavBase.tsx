@@ -44,7 +44,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
         <div className={classNames.navWrapper}>
           <nav role="navigation" className={classNames.navContainer} ref={this.containerRef}>
             <ul role="menubar" aria-orientation="vertical" className={classNames.navGroup}>
-              <li role="none" title={'NavToggle'}>
+              <li role="none">
                 <NavLink
                   onClick={this._onNavCollapseClicked}
                   data-hint={dataHint}
@@ -53,6 +53,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                   primaryIconName={'GlobalNavButton'}
                   role="switch"
                   aria-checked={isNavCollapsed}
+                  title={'Navigation Collapse Button'}
                 />
               </li>
 
@@ -73,7 +74,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
               {enableCustomization && (
                 // If enableCustomization
                 <>
-                  <li role="none" title={'Edit navigation'}>
+                  <li role="none">
                     <NavLink
                       name={editString}
                       onClick={this._editClicked}
@@ -82,10 +83,11 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                       aria-label={'Edit navigation'}
                       primaryIconName={'Edit'}
                       role="menuitem"
+                      title={'Edit navigation'}
                     />
                   </li>
                   {showMore && (
-                    <li role="none" title={'Show more'}>
+                    <li role="none">
                       <NavLink
                         name={this.props.showMore ? showMoreString : showLessString}
                         onClick={this._toggleMore}
@@ -94,6 +96,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                         aria-label={'Show more'}
                         primaryIconName={'More'}
                         role="menuitem"
+                        title={'Show more'}
                       />
                     </li>
                   )}

@@ -44,11 +44,9 @@ export class NavGroupBase extends BaseComponent<INavGroupProps, {}> {
                 />
               ) : (
                 <NavLink
+                  {...link}
                   isNavCollapsed={isNavCollapsed}
-                  name={link.name}
                   href={link.url}
-                  target={link.target}
-                  onClick={link.onClick}
                   data-value={link.name}
                   aria-label={link.ariaLabel ? link.ariaLabel : link.name}
                   {...link.isSelected && { 'aria-current': 'page' }}

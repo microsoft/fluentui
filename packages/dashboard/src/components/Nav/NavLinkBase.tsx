@@ -1,10 +1,21 @@
 import * as React from 'react';
-import { classNamesFunction, Icon, anchorProperties, buttonProperties, getNativeProps, mergeStyles } from 'office-ui-fabric-react';
+import {
+  classNamesFunction,
+  Icon,
+  anchorProperties,
+  buttonProperties,
+  getNativeProps,
+  mergeStyles,
+  getId,
+  TooltipHost,
+  DirectionalHint
+} from 'office-ui-fabric-react';
 import { INavLinkStyles, INavLinkProps } from './NavLink.types';
 
 const getClassNames = classNamesFunction<INavLinkProps, INavLinkStyles>();
 
 export class NavLinkBase extends React.PureComponent<INavLinkProps, {}> {
+  private _linkTipId: string = getId('linkTip');
   public render(): JSX.Element {
     const {
       name,
@@ -21,7 +32,7 @@ export class NavLinkBase extends React.PureComponent<INavLinkProps, {}> {
       forceAnchor
     } = this.props;
     const classNames = getClassNames(styles!, { isNavCollapsed, hasNestedMenu, isExpanded, isSelected, hasSelectedNestedLink, isNested });
-    const { className, ...nativeProps } = getNativeProps(this.props, href ? anchorProperties : buttonProperties);
+    const { className, title, ...nativeProps } = getNativeProps(this.props, href ? anchorProperties : buttonProperties);
 
     let iconName = undefined;
     if (hasNestedMenu) {
@@ -41,14 +52,23 @@ export class NavLinkBase extends React.PureComponent<INavLinkProps, {}> {
     );
 
     const rootStyle = mergeStyles(classNames.root, className);
-    return onClick && !forceAnchor ? (
-      <button {...nativeProps} className={rootStyle}>
-        {navContent}
-      </button>
+    const linkBase =
+      onClick && !forceAnchor ? (
+        <button {...nativeProps} className={rootStyle}>
+          {navContent}
+        </button>
+      ) : (
+        <a {...nativeProps} className={rootStyle}>
+          {navContent}
+        </a>
+      );
+
+    return !href && !onClick ? (
+      linkBase
     ) : (
-      <a {...nativeProps} className={rootStyle}>
-        {navContent}
-      </a>
+      <TooltipHost id={this._linkTipId} content={title} directionalHint={DirectionalHint.rightCenter}>
+        {linkBase}
+      </TooltipHost>
     );
   }
 }

@@ -37,8 +37,8 @@ export class NavLinkGroupBase extends React.Component<INavLinkGroupProps, INavLi
     return (
       <div className={classNames.root} {...isNavCollapsed && link.links && { onMouseEnter: this._offsetUpdated, ref: this.navRootRef }}>
         <NavLink
+          {...link}
           isNavCollapsed={isNavCollapsed}
-          name={link.name}
           onClick={this._onLinkClicked}
           data-value={link.name}
           aria-label={link.ariaLabel ? link.ariaLabel : link.name}

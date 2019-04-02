@@ -24,6 +24,7 @@ export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }>
             url: 'http://example.com',
             isExpanded: true,
             icon: 'Contact',
+            title: 'Users menu item',
             links: [
               { name: 'Active users', url: 'http://msn.com', isSelected: true },
               {
