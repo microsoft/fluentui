@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 12:36:20 GMT and should not be manually modified.
+
+## 6.164.2
+Tue, 02 Apr 2019 12:36:20 GMT
+
+### Patches
+
+- FocusZone: fixing logic to track outer FZ components correctly.
+- Image: fixes a visual bug where during fade in animation the image was shifted slightly.
 
 ## 6.164.1
 Tue, 02 Apr 2019 00:38:15 GMT
