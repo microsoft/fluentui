@@ -494,8 +494,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    *
    * The styles will probably already calculated since we're running in a click handler,
    * so this is less likely to cause layout thrashing then doing it in mount.
-   *
-   * @param ev the click event
    */
   private _findScrollParentAndTryClearOnEmptyClick(ev: MouseEvent) {
     const scrollParent = findScrollableParent(this._root.current);
