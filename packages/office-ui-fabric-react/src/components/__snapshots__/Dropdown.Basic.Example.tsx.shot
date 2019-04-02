@@ -139,13 +139,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             color: #605e5c;
           }
           &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
       data-is-focusable={true}
       id="Dropdown0"
@@ -340,13 +340,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             color: #605e5c;
           }
           &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
       data-is-focusable={false}
       id="Dropdown1"
@@ -553,13 +553,13 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             color: #605e5c;
           }
           &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
       data-is-focusable={true}
       id="Dropdown2"

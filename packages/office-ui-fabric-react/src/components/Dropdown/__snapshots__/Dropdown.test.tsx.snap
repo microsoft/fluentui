@@ -86,13 +86,13 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           color: #605e5c;
         }
         &:hover .ms-Dropdown-title--hasError {
-          border-color: #a80000;
+          border-color: #a4262c;
         }
         &:active .ms-Dropdown-title--hasError {
-          border-color: #a80000;
+          border-color: #a4262c;
         }
         &:focus .ms-Dropdown-title--hasError {
-          border-color: #a80000;
+          border-color: #a4262c;
         }
     data-is-focusable={true}
     id="Dropdown0"
@@ -259,13 +259,13 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
           color: #605e5c;
         }
         &:hover .ms-Dropdown-title--hasError {
-          border-color: #a80000;
+          border-color: #a4262c;
         }
         &:active .ms-Dropdown-title--hasError {
-          border-color: #a80000;
+          border-color: #a4262c;
         }
         &:focus .ms-Dropdown-title--hasError {
-          border-color: #a80000;
+          border-color: #a4262c;
         }
     data-is-focusable={true}
     id="Dropdown0"

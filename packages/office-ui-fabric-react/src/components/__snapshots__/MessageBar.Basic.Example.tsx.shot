@@ -301,7 +301,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a80000;
+                color: #a4262c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-3";
                 font-style: normal;
@@ -662,7 +662,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a80000;
+                color: #a4262c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-5";
                 font-style: normal;
@@ -1162,7 +1162,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a80000;
+                color: #a4262c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-0";
                 font-style: normal;
@@ -3261,7 +3261,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a80000;
+                color: #a4262c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-3";
                 font-style: normal;
@@ -3623,7 +3623,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a80000;
+                color: #a4262c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-5";
                 font-style: normal;

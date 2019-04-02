@@ -45,7 +45,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             word-wrap: break-word;
           }
           &::after {
-            color: #a80000;
+            color: #a4262c;
             content: ' *';
             padding-right: 12px;
           }
