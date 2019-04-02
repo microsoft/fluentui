@@ -93,7 +93,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   word-wrap: break-word;
                 }
                 &::after {
-                  color: #a80000;
+                  color: #a4262c;
                   content: ' *';
                   padding-right: 12px;
                 }
@@ -325,7 +325,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   border-color: Highlight;
                 }
                 &:after {
-                  color: #a80000;
+                  color: #a4262c;
                   content: '*';
                   position: absolute;
                   right: -10px;

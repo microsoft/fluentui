@@ -2,12 +2,19 @@
 
 const { argv } = require('just-task');
 const { jestTask } = require('just-scripts');
+const path = require('path');
 
 exports.jest = () =>
   jestTask({
     ...(process.env.TF_BUILD && { runInBand: true }),
     ...(process.env.TF_BUILD || argv().production ? { coverage: true } : undefined),
     ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined)
+  });
+
+exports.jestDom = () =>
+  jestTask({
+    runInBand: true,
+    config: path.join(process.cwd(), 'jest.dom.config.js')
   });
 
 exports.jestWatch = () => {

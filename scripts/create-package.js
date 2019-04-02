@@ -60,6 +60,7 @@ const steps = [
   { template: 'Readme', output: 'README.md' },
   { template: 'IndexHtml', output: 'index.html' },
   { template: 'JestConfig', output: 'jest.config.js' },
+  { template: 'JestDomConfig', output: 'jest.dom.config.js' },
   { template: 'JsConfig', output: 'jsconfig.json' },
   { template: 'PackageJson', output: 'package.json' },
   { template: 'PrettierConfig', output: 'prettier.config.js' },
