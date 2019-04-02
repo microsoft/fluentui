@@ -1,8 +1,10 @@
 pr:
   - master
+  - fabric-7
 
 trigger:
   - master
+  - fabric-7
 
 variables:
   - group: fabric-variables
