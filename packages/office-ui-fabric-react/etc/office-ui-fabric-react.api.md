@@ -774,7 +774,7 @@ export function createGenericItem(name: string, currentValidationState: Validati
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps>;
 
 // @public
-export function cssColor(color: string): IRGB | undefined;
+export function cssColor(color?: string): IRGB | undefined;
 
 // @public
 export const DatePicker: React_2.StatelessComponent<IDatePickerProps>;
