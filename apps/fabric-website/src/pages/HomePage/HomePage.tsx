@@ -66,7 +66,8 @@ export class HomePage extends React.Component<any, IHomepageState> {
                 shouldFocusOnMount: true,
                 items: fabricVersionOptions,
                 directionalHint: DirectionalHint.bottomAutoEdge,
-                onItemClick: this._onVersionMenuClick
+                onItemClick: this._onVersionMenuClick,
+                className: 'versionSelector'
               } }
             >
               <span className={ styles.versionText }>Fabric React { reactPackageData.version }</span>
