@@ -15,22 +15,32 @@ export function cssColor(color?: string): IRGB | undefined {
 
   // Need to check the following valid color formats: RGB(A), HSL(A), hex, named color
 
-  // First check for RGB(A) and HSL(A) formats at the start.
+  // First check for well formatted RGB(A), HSL(A), and hex formats at the start.
   // This is for perf (no creating an element) and catches the intentional "transparent" color
   //   case early on.
-  const rgbaColor = _rgba(color);
-  if (rgbaColor) {
-    return rgbaColor;
-  }
-  const hslaColor = _hsla(color);
-  if (hslaColor) {
-    return hslaColor;
+  const easyColor: IRGB | undefined = _rgba(color) || _hex6(color) || _hex3(color) || _hsla(color);
+  if (easyColor) {
+    return easyColor;
   }
 
-  // Otherwise, do a catch-all for hex and named colors
-  // This element must be attached to the DOM for getComputedStyle() to have a value
+  // if the above fails, do the more expensive catch-all
+  return _browserCompute(color);
+}
+
+/**
+ * Uses the browser's getComputedStyle() to determine what the passed-in color is.
+ * This assumes _rgba, _hex6, _hex3, and _hsla have already been tried and all failed.
+ * This works by attaching an element to the DOM, which may fail in server-side rendering
+ *   or with headless browsers.
+ */
+function _browserCompute(str: string) {
+  if (!document) {
+    // don't throw an error when used server-side
+    return undefined;
+  }
   const elem = document.createElement('div');
-  elem.style.backgroundColor = color;
+  elem.style.backgroundColor = str;
+  // This element must be attached to the DOM for getComputedStyle() to have a value
   elem.style.position = 'absolute';
   elem.style.top = '-9999px';
   elem.style.left = '-9999px';
@@ -45,11 +55,11 @@ export function cssColor(color?: string): IRGB | undefined {
   // browsers return one of these if the color string is invalid,
   // so need to differentiate between an actual error and intentionally passing in this color
   if (computedColor === 'rgba(0, 0, 0, 0)' || computedColor === 'transparent') {
-    switch (color.trim()) {
+    switch (str.trim()) {
+      // RGB and HSL were already checked at the start of the function
       case 'transparent':
       case '#0000':
       case '#00000000':
-        // RGB and HSL were already checked at the start of the function
         return { r: 0, g: 0, b: 0, a: 0 };
     }
     return undefined;
@@ -100,5 +110,35 @@ function _hsla(str: string): IRGB | undefined {
       rgba.a = hasAlpha ? parts[3] * 100 : MAX_COLOR_ALPHA;
       return rgba;
     }
+  }
+}
+
+/**
+ * If `str` is in valid 6-digit hex format *with* # prefix, returns an RGB color (with alpha 100).
+ * Otherwise returns undefined.
+ */
+function _hex6(str: string): IRGB | undefined {
+  if ('#' === str[0] && 7 === str.length && /^#[\da-fA-F]{6}$/.test(str)) {
+    return {
+      r: parseInt(str.slice(1, 3), 16),
+      g: parseInt(str.slice(3, 5), 16),
+      b: parseInt(str.slice(5, 7), 16),
+      a: MAX_COLOR_ALPHA
+    };
+  }
+}
+
+/**
+ * If `str` is in valid 3-digit hex format *with* # prefix, returns an RGB color (with alpha 100).
+ * Otherwise returns undefined.
+ */
+function _hex3(str: string): IRGB | undefined {
+  if ('#' === str[0] && 4 === str.length && /^#[\da-fA-F]{3}$/.test(str)) {
+    return {
+      r: parseInt(str[1] + str[1], 16),
+      g: parseInt(str[2] + str[2], 16),
+      b: parseInt(str[3] + str[3], 16),
+      a: MAX_COLOR_ALPHA
+    };
   }
 }
