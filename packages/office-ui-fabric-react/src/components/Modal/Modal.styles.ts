@@ -78,7 +78,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       classNames.scrollableContent,
       {
         overflowY: 'auto',
-        flexGrow: 1
+        flexGrow: 1,
+        maxHeight: window.innerHeight
       },
       scrollableContentClassName
     ],
