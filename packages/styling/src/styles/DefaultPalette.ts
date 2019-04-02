@@ -34,7 +34,7 @@ export const DefaultPalette: IPalette = {
   orange: '#d83b01',
   orangeLight: '#ea4300',
   orangeLighter: '#ff8c00',
-  redDark: '#a80000',
+  redDark: '#a4262c',
   red: '#e81123',
   magentaDark: '#5c005c',
   magenta: '#b4009e',
