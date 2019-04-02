@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "GroupedList: Respect groupProps isAllGroupsCollapsed on initial render",
+      "comment": "BaseFloatingPicker: do not update unmounted component on promise resolution",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "keco@microsoft.com"
+  "email": "mhuan13@gmail.com"
 }

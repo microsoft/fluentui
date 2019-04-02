@@ -2,16 +2,44 @@ import { getFocusStyle } from '../../../Styling';
 import { ISplitMenuButtonComponent, ISplitMenuButtonStylesReturnType, ISplitMenuButtonTokenReturnType } from './SplitMenuButton.types';
 
 const baseTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => {
+  const { semanticColors } = theme;
   return {
-    contentPadding: '8px 0px 8px 10px'
+    backgroundColor: semanticColors.buttonBackground,
+    color: semanticColors.buttonText,
+    contentPadding: '8px 10px'
   };
 };
 
-export const SplitMenuButtonTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => [baseTokens];
+const primaryTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.primaryButtonBackground,
+    color: semanticColors.primaryButtonText
+  };
+};
+
+const disabledTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.buttonBackgroundDisabled,
+    color: semanticColors.disabledText
+  };
+};
+
+export const SplitMenuButtonTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => [
+  baseTokens,
+  props.primary && primaryTokens,
+  (props.primaryActionDisabled || props.disabled) && disabledTokens
+];
 
 export const SplitMenuButtonStyles: ISplitMenuButtonComponent['styles'] = (props, theme, tokens): ISplitMenuButtonStylesReturnType => {
   return {
-    root: [getFocusStyle(theme)],
+    root: [
+      getFocusStyle(theme),
+      {
+        backgroundColor: tokens.backgroundColor
+      }
+    ],
     button: {
       selectors: {
         '> *': {
@@ -20,11 +48,11 @@ export const SplitMenuButtonStyles: ISplitMenuButtonComponent['styles'] = (props
       }
     },
     splitDivider: {
-      borderColor: tokens.color,
       borderRight: '1px solid',
+      borderColor: tokens.color,
       boxSizing: 'border-box',
-      height: '100%',
-      padding: '8px 0px',
+      height: 'calc(100% - 16px)',
+      margin: '8px 0px',
       width: 1
     }
   };

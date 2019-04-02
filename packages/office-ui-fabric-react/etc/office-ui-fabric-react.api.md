@@ -207,6 +207,8 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
     // (undocumented)
     readonly inputText: string;
     // (undocumented)
+    protected isComponentMounted: boolean;
+    // (undocumented)
     readonly isSuggestionsShown: boolean;
     // (undocumented)
     protected onChange(item: TItem): void;
@@ -233,7 +235,7 @@ export class BaseFloatingPicker<TItem, TProps extends IBaseFloatingPickerProps<T
     // (undocumented)
     readonly suggestions: any[];
     // (undocumented)
-    protected suggestionsControl: SuggestionsControl<TItem>;
+    protected suggestionsControl: React.RefObject<SuggestionsControl<TItem>>;
     // (undocumented)
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<TItem>) => SuggestionsControl<TItem>;
     // (undocumented)
@@ -1214,6 +1216,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static defaultProps: IFocusZoneProps;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(element: HTMLElement): boolean;
+    static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
     }

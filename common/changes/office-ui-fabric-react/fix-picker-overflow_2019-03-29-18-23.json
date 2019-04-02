@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusZone and FocusTrapZone example improvements",
+      "comment": "PeoplePicker: Fix persona overflowing container",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "joschect@microsoft.com"
 }

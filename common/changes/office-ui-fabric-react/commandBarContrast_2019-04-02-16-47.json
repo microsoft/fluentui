@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "List and other example updates",
+      "comment": "CommandBar: Meeting color contrast accessibility standards in examples.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "Humberto.Morimoto@microsoft.com"
 }

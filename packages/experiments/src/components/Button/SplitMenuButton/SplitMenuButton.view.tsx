@@ -39,8 +39,6 @@ export const SplitMenuButtonView: ISplitMenuButtonComponent['view'] = props => {
   return (
     <Slots.root role="button" aria-disabled={disabled} horizontal as="span" verticalAlign="stretch">
       <Slots.button
-        styles={styles}
-        tokens={tokens}
         primary={primary}
         disabled={primaryActionDisabled || disabled}
         aria-disabled={primaryActionDisabled || disabled}
@@ -48,17 +46,11 @@ export const SplitMenuButtonView: ISplitMenuButtonComponent['view'] = props => {
         {...rest}
       >
         {children}
-        <Slots.splitDivider />
       </Slots.button>
 
-      <Slots.menuButton
-        styles={styles}
-        tokens={tokens}
-        primary={primary}
-        disabled={disabled}
-        onClick={onSecondaryActionClick}
-        menu={Menu}
-      />
+      <Slots.splitDivider />
+
+      <Slots.menuButton primary={primary} disabled={disabled} onClick={onSecondaryActionClick} menu={Menu} />
     </Slots.root>
   );
 };
