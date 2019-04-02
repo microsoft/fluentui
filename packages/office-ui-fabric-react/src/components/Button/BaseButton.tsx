@@ -677,10 +677,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {
-      if (this.state.menuProps) {
-        const menuProps = { ...this.state.menuProps, shouldFocusOnMount: true };
-        this.setState({ menuProps: menuProps });
-      }
+      this.setState(state => {
+        if (state.menuProps) {
+          return { menuProps: { ...state.menuProps, shouldFocusOnMount: true } };
+        }
+        return state;
+      });
 
       ev.preventDefault();
       ev.stopPropagation;
