@@ -8,9 +8,17 @@ export interface INavProps extends IBaseProps {
   groups: INavLinkGroup[];
 
   /**
-   * Used to toggle the nav component between expanded and collapsed state
+   * Mutually exclusive to "defaultIsNavCollapsed".
+   * Use this if you control the collapsed state at a higher level and plan to pass in the correct value
+   * based on handling onNavCollapsed events and re-rendering.
    */
   isNavCollapsed?: boolean;
+
+  /**
+   * Mutually exclusive to "isNavCollapsed". Use this if you want an uncontrolled component, and
+   * want the Checkbox instance to maintain its own state.
+   */
+  defaultIsNavCollapsed?: boolean;
 
   /**
    * If used inside a parent element with scrollbar, provide the parent element id to properly position
@@ -56,7 +64,7 @@ export interface INavProps extends IBaseProps {
   /**
    * Callback for the parent component when the nav component is toggled between expanded and collapsed state
    */
-  onNavCollapsedCallback?(isCollapsed: boolean): void;
+  onNavCollapsed?(isCollapsed: boolean): void;
 
   /**
    * Callback for the Nav and when the "Show more" / "Show less" nav link is clicked.

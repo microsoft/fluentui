@@ -13,8 +13,13 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
 
   constructor(props: INavProps) {
     super(props);
+
+    this._warnMutuallyExclusive({
+      isNavCollapsed: 'defaultIsNavCollapsed'
+    });
+
     this.state = {
-      isNavCollapsed: this.props.isNavCollapsed ? this.props.isNavCollapsed : false,
+      isNavCollapsed: !!(props.isNavCollapsed !== undefined ? props.isNavCollapsed : props.defaultIsNavCollapsed),
       shouldScroll: false
     };
 
@@ -27,22 +32,12 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
   }
 
   public render(): JSX.Element {
-    const {
-      groups,
-      enableCustomization,
-      showMore,
-      editString,
-      showMoreString,
-      showLessString,
-      dataHint,
-      isNavCollapsed,
-      styles
-    } = this.props;
+    const { groups, enableCustomization, showMore, editString, showMoreString, showLessString, dataHint, styles } = this.props;
     const { shouldScroll } = this.state;
 
-    const navCollapsed = isNavCollapsed ? isNavCollapsed : this.state.isNavCollapsed;
+    const isNavCollapsed = this.props.isNavCollapsed === undefined ? this.state.isNavCollapsed : this.props.isNavCollapsed;
 
-    const classNames = getClassNames(styles, { isNavCollapsed: navCollapsed, shouldScroll });
+    const classNames = getClassNames(styles, { isNavCollapsed, shouldScroll });
 
     return (
       <FocusZone isCircularNavigation direction={FocusZoneDirection.vertical} className={classNames.root} componentRef={this.focusRef}>
@@ -50,7 +45,6 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
           <nav role="navigation" className={classNames.navContainer} ref={this.containerRef}>
             <ul role="menubar" aria-orientation="vertical" className={classNames.navGroup}>
               <li role="none" title={'NavToggle'}>
-                {/** TODO convert this to an actual checkbox and hook into changed event instead */}
                 <NavLink
                   onClick={this._onNavCollapseClicked}
                   data-hint={dataHint}
@@ -58,7 +52,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                   aria-label="Navigation Collapse"
                   primaryIconName={'GlobalNavButton'}
                   role="switch"
-                  aria-checked={navCollapsed}
+                  aria-checked={isNavCollapsed}
                 />
               </li>
 
@@ -69,7 +63,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                   groupName={group.name}
                   links={group.links}
                   dataHint={this.props.dataHint}
-                  isNavCollapsed={navCollapsed}
+                  isNavCollapsed={isNavCollapsed}
                   onCollapse={this._setScrollLayout}
                   navRef={this.containerRef}
                   focusZoneRef={this.focusRef}
@@ -118,6 +112,10 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
     this._setScrollLayout();
   }
 
+  public componentDidUpdate(): void {
+    this._setScrollLayout();
+  }
+
   private _setScrollLayout(): void {
     // We need to call this from window resize so when the viewport is changed we can adjust whether we scroll or not
     // use _async and _events to debounce resize events with RAF
@@ -130,18 +128,15 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
   //
   private _onNavCollapseClicked(ev: React.MouseEvent<HTMLElement>): void {
     // inform the caller about the collapse event
-    if (!!this.props.onNavCollapsedCallback) {
-      this.props.onNavCollapsedCallback(!this.state.isNavCollapsed);
+    if (this.props.onNavCollapsed) {
+      this.props.onNavCollapsed(!this.state.isNavCollapsed);
     }
 
-    this.setState(
-      {
+    if (this.props.isNavCollapsed === undefined) {
+      this.setState({
         isNavCollapsed: !this.state.isNavCollapsed
-      },
-      () => {
-        this._setScrollLayout();
-      }
-    );
+      });
+    }
 
     ev.preventDefault();
     ev.stopPropagation();
