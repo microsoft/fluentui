@@ -1,14 +1,15 @@
-import './FeedbackList.scss';
-
 import * as React from 'react';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+
 import { relativeDates } from './relativeDates';
-import { IFeedbackListProps } from './FeedbackList.types';
-import { classNames } from './FeedbackList.styles';
+import { IFeedbackListProps, IFeedbackListStyleProps, IFeedbackListStyles } from './FeedbackList.types';
+import { getStyles } from './FeedbackList.styles';
 
 export interface IFeedbackListState {
   openIssues: IListItem[];
@@ -21,7 +22,11 @@ export interface IListItem {
   issueCreated: string;
 }
 
-export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackListState, IListItem> {
+const getClassNames = classNamesFunction<IFeedbackListStyleProps, IFeedbackListStyles>();
+
+export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedbackListState, IListItem> {
+  private _classNames: IProcessedStyleSet<IFeedbackListStyles>;
+
   constructor(props: IFeedbackListProps) {
     super(props);
     this.state = {
@@ -64,26 +69,29 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
   }
 
   public render(): JSX.Element | null {
+    const { styles } = this.props;
     const { openIssues, closedIssues } = this.state;
 
+    const classNames = (this._classNames = getClassNames(styles, {}));
+
     return (
-      <div>
+      <div className={classNames.root}>
         <div>
           <PrimaryButton
             href="https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose"
             target="_blank"
-            className="FeedbackList-button"
+            className={classNames.button}
           >
             Submit GitHub Issue
           </PrimaryButton>
         </div>
         {(openIssues.length > 0 || closedIssues.length > 0) && (
-          <Pivot className="FeedbackList-pivot">
+          <Pivot className={classNames.pivot}>
             <PivotItem headerText="Open Issues">
-              <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
+              <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className={classNames.issueList} />
             </PivotItem>
             <PivotItem headerText="Closed Issues">
-              <List items={closedIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className="FeedbackList-issueList" />
+              <List items={closedIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className={classNames.issueList} />
             </PivotItem>
           </Pivot>
         )}
@@ -92,13 +100,14 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
   }
 
   private _onRenderCell = (item: IListItem): JSX.Element => {
+    const classNames = this._classNames;
     return (
       <div className={classNames.itemCell} data-is-focusable={true}>
         <div className={classNames.itemName}>
           <Link href={'https://github.com/OfficeDev/office-ui-fabric-react/issues/' + item.issueNum} target="_blank">
-            <Label className="FeedbackList-listElement">{item.issueTitle}</Label>
+            <Label className={classNames.itemLabel}>{item.issueTitle}</Label>
           </Link>
-          <Label className="FeedbackList-timeStamp">
+          <Label className={classNames.timeStamp}>
             <Link href={'https://github.com/OfficeDev/office-ui-fabric-react/issues/' + item.issueNum} target="_blank">
               {'#' + item.issueNum}
             </Link>
@@ -109,3 +118,11 @@ export class FeedbackList extends React.Component<IFeedbackListProps, IFeedbackL
     );
   };
 }
+
+export const FeedbackList: React.StatelessComponent<IFeedbackListProps> = styled<
+  IFeedbackListProps,
+  IFeedbackListStyleProps,
+  IFeedbackListStyles
+>(FeedbackListBase, getStyles, undefined, {
+  scope: 'FeedbackList'
+});

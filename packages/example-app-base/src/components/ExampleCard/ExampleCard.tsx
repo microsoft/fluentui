@@ -1,27 +1,24 @@
 import * as React from 'react';
-import {
-  CommandButton,
-  css,
-  Customizer,
-  Dropdown,
-  IDropdownOption,
-  IDropdownStyles,
-  ISchemeNames,
-  Stack,
-  IStackComponent,
-  ThemeProvider
-} from 'office-ui-fabric-react';
-import './ExampleCard.scss';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
+import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { styled, classNamesFunction, Customizer, css } from 'office-ui-fabric-react/lib/Utilities';
+import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+
 import { Highlight } from '../Highlight/Highlight';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
-import { IExampleCardProps } from './ExampleCard.types';
+import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
+import { getStyles, getDropdownStyles } from './ExampleCard.styles';
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;
   schemeIndex: number;
   themeIndex: number;
 }
+
+const getClassNames = classNamesFunction<IExampleCardStyleProps, IExampleCardStyles>();
 
 const _schemes: ISchemeNames[] = ['default', 'strong', 'soft', 'neutral'];
 const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: number) => ({
@@ -36,25 +33,10 @@ const regionStyles: IStackComponent['styles'] = (props, theme) => ({
   }
 });
 
-// Match styling of button tabs
-const dropdownStyles: Partial<IDropdownStyles> = {
-  caretDownWrapper: {
-    top: '6px'
-  },
-  title: [
-    {
-      alignItems: 'center',
-      display: 'flex',
-      height: 40,
-      width: 150
-    },
-    'ExampleCard-themeDropdown'
-  ]
-};
-
-export class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
+export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
+  private _classNames: IProcessedStyleSet<IExampleCardStyles>;
 
   constructor(props: IExampleCardProps) {
     super(props);
@@ -67,7 +49,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   }
 
   public render(): JSX.Element {
-    const { title, code, children, isRightAligned = false, isScrollable = true, codepenJS } = this.props;
+    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS } = this.props;
     const { isCodeVisible, schemeIndex, themeIndex } = this.state;
 
     return (
@@ -87,24 +69,23 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               : [];
           }
 
+          const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, isCodeVisible };
+          const classNames = (this._classNames = getClassNames(styles, styleProps));
+          const dropdownStyles = getDropdownStyles(styleProps);
+
           const exampleCardContent = (
-            <div
-              className={css('ExampleCard-example', {
-                'is-right-aligned': isRightAligned,
-                'is-scrollable': isScrollable
-              })}
-              data-is-scrollable={isScrollable}
-            >
+            <div className={classNames.example} data-is-scrollable={isScrollable}>
               {children}
             </div>
           );
 
           const exampleCard = (
-            <div className={css('ExampleCard', this.state.isCodeVisible && 'is-codeVisible')}>
-              <div className="ExampleCard-header">
-                <span className="ExampleCard-title">{title}</span>
-                <div className="ExampleCard-toggleButtons">
-                  {codepenJS && <CodepenComponent jsContent={codepenJS} />}
+            <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
+              <div className={classNames.header}>
+                <span className={classNames.title}>{title}</span>
+                <div className={classNames.toggleButtons}>
+                  {codepenJS && <CodepenComponent jsContent={codepenJS} buttonClassName={classNames.codeButton} />}
+
                   {exampleCardCustomizations && (
                     <Dropdown defaultSelectedKey={0} onChange={this._onThemeChange} options={this._themeOptions} styles={dropdownStyles} />
                   )}
@@ -115,9 +96,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
 
                   {code && (
                     <CommandButton
-                      iconProps={{ iconName: 'Embed' }}
+                      iconProps={{
+                        iconName: 'Embed'
+                      }}
                       onClick={this._onToggleCodeClick}
-                      className={css('ExampleCard-codeButton', isCodeVisible && 'is-active')}
+                      className={classNames.codeButton}
                     >
                       {isCodeVisible ? 'Hide code' : 'Show code'}
                     </CommandButton>
@@ -125,7 +108,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
                 </div>
               </div>
 
-              <div className="ExampleCard-code">{isCodeVisible && <Highlight>{code}</Highlight>}</div>
+              <div className={classNames.code}>{isCodeVisible && <Highlight>{code}</Highlight>}</div>
 
               {activeCustomizations ? (
                 <Customizer {...activeCustomizations}>
@@ -148,14 +131,15 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   }
 
   private _getDosAndDonts(): JSX.Element | void {
+    const classNames = this._classNames;
     if (this.props.dos && this.props.donts) {
       return (
-        <div className="ExampleCard-dosAndDonts">
-          <div className="ExampleCard-dos">
+        <div className={classNames.dosAndDonts}>
+          <div className={classNames.dos}>
             <h4>Do</h4>
             {this.props.dos}
           </div>
-          <div className="ExampleCard-donts">
+          <div className={classNames.donts}>
             <h4>Do not</h4>
             {this.props.donts}
           </div>
@@ -178,3 +162,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     });
   };
 }
+
+export const ExampleCard: React.StatelessComponent<IExampleCardProps> = styled<
+  IExampleCardProps,
+  IExampleCardStyleProps,
+  IExampleCardStyles
+>(ExampleCardBase, getStyles, undefined, {
+  scope: 'ExampleCard'
+});

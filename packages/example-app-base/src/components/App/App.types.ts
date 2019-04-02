@@ -1,3 +1,5 @@
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { IAppCustomizations } from '../../utilities/customizations';
@@ -32,4 +34,24 @@ export interface IAppDefinition {
 
 export interface IAppProps extends IWithResponsiveModeState {
   appDefinition: IAppDefinition;
+  /** Optional override styles */
+  styles?: IStyleFunctionOrObject<IAppStyleProps, IAppStyles>;
+}
+
+export type IAppStyleProps = Pick<IAppProps, 'responsiveMode'>;
+
+export interface IAppStyles {
+  root: IStyle;
+  header: IStyle;
+  /** Styles for the Nav itself, applied regardless of screen size */
+  nav: IStyle;
+  /** Styles for the container when the nav is displayed on the left */
+  leftNavContainer: IStyle;
+  /** Styles for the container when the nav is displayed in a panel */
+  panelNavContainer: IStyle;
+  content: IStyle;
+  linkFlair: IStyle;
+  linkFlairStarted: IStyle;
+  linkFlairBeta: IStyle;
+  linkFlairRelease: IStyle;
 }

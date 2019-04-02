@@ -1,3 +1,6 @@
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+
 export interface IComponentPageSection {
   title: string;
   section: JSX.Element;
@@ -20,7 +23,10 @@ export interface IComponentPageProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview?: JSX.Element;
-  /** Related link */
+  /**
+   * Related link
+   * @deprecated No longer shown
+   */
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
@@ -80,4 +86,41 @@ export interface IComponentPageProps {
    * Overrides URL from componentUrl.
    */
   editOverviewUrl?: string;
+
+  /** Optional override styles */
+  styles?: IStyleFunctionOrObject<IComponentPageStyleProps, IComponentPageStyles>;
+}
+
+export type IComponentPageStyleProps = {};
+
+export interface IComponentPageStyles {
+  root: IStyle;
+  body: IStyle;
+  header: IStyle;
+  title: IStyle;
+  navigation: IStyle;
+  navLink: IStyle;
+  subHeading: IStyle;
+  overviewSection: IStyle;
+  overviewText: IStyle;
+  overviewHeading: IStyle;
+  usageSection: IStyle;
+  usageHeading: IStyle;
+  variantsSection: IStyle;
+  variantsTitle: IStyle;
+  variantsList: IStyle;
+  implementationSection: IStyle;
+  implementationExamplesSection: IStyle;
+  feedbackSection: IStyle;
+  bestPracticesSection: IStyle;
+  /** Used on wrapper for the dos/don'ts sections */
+  doSections: IStyle;
+  /** Used on each of the dos and don'ts sections */
+  dosDontsSection: IStyle;
+  dosDontsHeading: IStyle;
+  dosDontsLine: IStyle;
+  dosLine: IStyle;
+  dontsSection: IStyle;
+  dontsLine: IStyle;
+  statusSection: IStyle;
 }
