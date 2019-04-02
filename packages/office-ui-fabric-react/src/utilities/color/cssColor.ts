@@ -34,7 +34,7 @@ export function cssColor(color?: string): IRGB | undefined {
  *   or with headless browsers.
  */
 function _browserCompute(str: string): IRGB | undefined {
-  if (!document) {
+  if (typeof document === 'undefined') {
     // don't throw an error when used server-side
     return undefined;
   }
