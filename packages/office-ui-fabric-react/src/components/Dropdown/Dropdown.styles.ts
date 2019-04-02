@@ -1,5 +1,6 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
-import { IStyleFunction } from '../../Utilities';
+import { IStyleFunction, IsFocusVisibleClassName } from '../../Utilities';
+import { RectangleEdge } from '../../utilities/positioning';
 import {
   FontSizes,
   FontWeights,
@@ -30,7 +31,7 @@ const GlobalClassNames = {
 };
 
 const DROPDOWN_HEIGHT = 32;
-const DROPDOWN_ITEM_HEIGHT = 32;
+const DROPDOWN_ITEM_HEIGHT = 36;
 
 const highContrastAdjustMixin = {
   [`${HighContrastSelector}, ${HighContrastSelectorWhite.replace('@media ', '')}`]: {
@@ -63,21 +64,32 @@ const highContrastBorderState: IRawStyle = {
 };
 
 export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
-  const { theme, hasError, className, isOpen, disabled, required, isRenderingPlaceholder, panelClassName, calloutClassName } = props;
+  const {
+    theme,
+    hasError,
+    className,
+    isOpen,
+    disabled,
+    required,
+    isRenderingPlaceholder,
+    panelClassName,
+    calloutClassName,
+    calloutRenderEdge
+  } = props;
 
   if (!theme) {
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');
   }
 
   const globalClassnames = getGlobalClassNames(GlobalClassNames, theme);
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, effects } = theme;
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
     color: palette.neutralDark
   };
 
-  const rootHoverFocusActiveSelectorBodySubtextMixin: IStyle = {
-    color: semanticColors.bodySubtext
+  const rootHoverFocusActiveSelectorNeutralPrimaryMixin: IStyle = {
+    color: palette.neutralPrimary
   };
 
   const borderColorError: IStyle = {
@@ -90,26 +102,56 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       backgroundColor: 'transparent',
       boxSizing: 'border-box',
       cursor: 'pointer',
-      display: 'block',
-      padding: '4px 16px',
+      display: 'flex',
+      alignItems: 'center',
+      padding: '0 8px',
       width: '100%',
       minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
       height: 'auto',
       position: 'relative',
       border: '1px solid transparent',
+      borderRadius: 0,
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
       textAlign: 'left'
     }
   ];
 
+  const itemSelectors = (isSelected: boolean = false) => {
+    return {
+      selectors: {
+        '&:hover:focus': {
+          color: palette.neutralDark,
+          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+        },
+        '&:focus': {
+          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
+        },
+        '&:active': {
+          color: palette.neutralDark,
+          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+        },
+        [HighContrastSelector]: {
+          borderColor: 'Window'
+        },
+        [`.${IsFocusVisibleClassName} &:focus:after`]: {
+          left: 0,
+          top: 0,
+          bottom: 0,
+          right: 0
+        }
+      }
+    };
+  };
+
   const dropdownItemSelected: IStyle = [
     ...dropdownItemStyle,
     {
-      backgroundColor: palette.neutralQuaternaryAlt,
-      color: palette.black
+      backgroundColor: palette.neutralLight,
+      color: palette.neutralDark
     },
+    itemSelectors(true),
     highContrastItemAndTitleStateMixin
   ];
 
@@ -121,6 +163,16 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     }
   ];
 
+  const titleOpenBorderRadius =
+    calloutRenderEdge === RectangleEdge.bottom
+      ? `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`
+      : `0 0 ${effects.roundedCorner2} ${effects.roundedCorner2}`;
+
+  const calloutOpenBorderRadius =
+    calloutRenderEdge === RectangleEdge.bottom
+      ? `0 0 ${effects.roundedCorner2} ${effects.roundedCorner2}`
+      : `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`;
+
   return {
     root: globalClassnames.root,
     label: globalClassnames.label,
@@ -130,13 +182,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       {
         ...theme.fonts.medium,
         color: palette.neutralPrimary,
+        borderColor: palette.neutralSecondary,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
         selectors: {
           ['&:hover .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.neutralDark },
+            { borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary },
             highContrastBorderState
           ],
           ['&:focus .' + globalClassnames.title]: [
@@ -146,20 +199,20 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ],
           ['&:active .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.themeDark },
+            { borderColor: palette.themePrimary },
             highContrastBorderState
           ],
 
-          ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:hover .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
           ['&:focus .' + globalClassnames.caretDown]: [
-            !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+            !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
             { selectors: { [HighContrastSelector]: { color: 'HighlightText' }, ...highContrastAdjustMixin } }
           ],
-          ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
+          ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
-          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
-          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
-          ['&:active .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorBodySubtextMixin,
+          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+          ['&:active .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
           ['&:hover .' + globalClassnames.titleHasError]: borderColorError,
           ['&:active .' + globalClassnames.titleHasError]: borderColorError,
@@ -179,11 +232,12 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: semanticColors.inputBorder,
+        borderRadius: isOpen ? titleOpenBorderRadius : effects.roundedCorner2,
         cursor: 'pointer',
         display: 'block',
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2,
-        padding: `0 ${DROPDOWN_HEIGHT}px 0 12px`,
+        padding: `0 28px 0 8px`,
         position: 'relative',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -204,7 +258,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       {
         position: 'absolute',
         top: 1,
-        right: 12,
+        right: 8,
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2 // height minus the border
       },
@@ -221,33 +275,17 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     callout: [
       globalClassnames.callout,
       {
-        boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
-        border: `1px solid ${palette.neutralLight}`
+        boxShadow: effects.elevation8,
+        borderRadius: calloutOpenBorderRadius,
+        selectors: {
+          ['.ms-Callout-main']: { borderRadius: calloutOpenBorderRadius }
+        }
       },
       calloutClassName
     ],
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
-    dropdownItem: [
-      ...dropdownItemStyle,
-      {
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Window'
-          },
-          '&:hover': {
-            color: 'inherit'
-          },
-          '&:focus': {
-            backgroundColor: semanticColors.listItemBackgroundHovered
-          },
-          '&:active': {
-            backgroundColor: semanticColors.listHeaderBackgroundHovered,
-            color: palette.black
-          }
-        }
-      }
-    ],
+    dropdownItem: [...dropdownItemStyle, itemSelectors()],
     dropdownItemSelected: dropdownItemSelected,
     dropdownItemDisabled: dropdownItemDisabled,
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
@@ -277,7 +315,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         height: DROPDOWN_ITEM_HEIGHT,
         lineHeight: DROPDOWN_ITEM_HEIGHT,
         cursor: 'default',
-        padding: '0px 16px',
+        padding: '0 8px',
         userSelect: 'none',
         textAlign: 'left'
       }
