@@ -3,13 +3,13 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 
 import { ButtonExample } from './examples/Button.Example';
 import { MenuButtonExample } from './MenuButton/examples/MenuButton.Example';
-import { SplitMenuButtonExample } from './SplitMenuButton/examples/SplitMenuButton.Example';
+import { SplitButtonExample } from './SplitButton/examples/SplitButton.Example';
 import { ButtonStylesExample } from './examples/Button.Styles.Example';
 import { ButtonTokensExample } from './examples/Button.Tokens.Example';
 
 const ButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Example.tsx') as string;
 const MenuButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/MenuButton/examples/MenuButton.Example.tsx') as string;
-const SplitMenuButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/SplitMenuButton/examples/SplitMenuButton.Example.tsx') as string;
+const SplitButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/SplitButton/examples/SplitButton.Example.tsx') as string;
 const ButtonStylesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Styles.Example.tsx') as string;
 const ButtonTokensExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
 
@@ -27,8 +27,8 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Menu Button Examples" code={MenuButtonExampleCode}>
               <MenuButtonExample />
             </ExampleCard>
-            <ExampleCard title="Split Button with two focus stops" code={SplitMenuButtonExampleCode}>
-              <SplitMenuButtonExample />
+            <ExampleCard title="Split Button with two focus stops" code={SplitButtonExampleCode}>
+              <SplitButtonExample />
             </ExampleCard>
             <ExampleCard title="Button Styles" code={ButtonStylesExampleCode}>
               <ButtonStylesExample />

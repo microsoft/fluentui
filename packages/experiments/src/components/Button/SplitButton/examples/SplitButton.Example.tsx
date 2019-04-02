@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SplitMenuButton, ISplitMenuButtonProps } from '@uifabric/experiments';
+import { SplitButton, ISplitButtonProps } from '@uifabric/experiments';
 import { Stack } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: ISplitMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const buttonMenu: ISplitButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const tokens = {
   sectionStack: {
@@ -28,7 +28,7 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 );
 
 // tslint:disable:jsx-no-lambda
-export class SplitMenuButtonExample extends React.Component<{}, {}> {
+export class SplitButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>
@@ -36,27 +36,20 @@ export class SplitMenuButtonExample extends React.Component<{}, {}> {
           <div>
             <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
-                <SplitMenuButton icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitMenuButton disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitMenuButton primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitMenuButton
-                  disabled
-                  primary
-                  icon="Add"
-                  content="Disabled primary split button"
-                  menu={buttonMenu}
-                  onClick={alertClicked}
-                />
+                <SplitButton icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
+                <SplitButton disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
+                <SplitButton primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
+                <SplitButton disabled primary icon="Add" content="Disabled primary split button" menu={buttonMenu} onClick={alertClicked} />
               </ButtonStack>
               <ButtonStack>
-                <SplitMenuButton
+                <SplitButton
                   primaryActionDisabled
                   icon="Add"
                   content="First action disabled split button"
                   menu={buttonMenu}
                   onClick={alertClicked}
                 />
-                <SplitMenuButton
+                <SplitButton
                   primaryActionDisabled
                   primary
                   icon="Add"

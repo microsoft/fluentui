@@ -5,9 +5,9 @@ import { Icon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { ISplitMenuButtonComponent, ISplitMenuButtonProps, ISplitMenuButtonSlots } from './SplitMenuButton.types';
+import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots } from './SplitButton.types';
 
-export const SplitMenuButtonView: ISplitMenuButtonComponent['view'] = props => {
+export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   const {
     styles,
     tokens,
@@ -24,7 +24,7 @@ export const SplitMenuButtonView: ISplitMenuButtonComponent['view'] = props => {
     ...rest
   } = props;
 
-  const Slots = getSlots<ISplitMenuButtonProps, ISplitMenuButtonSlots>(props, {
+  const Slots = getSlots<ISplitButtonProps, ISplitButtonSlots>(props, {
     root: Stack,
     button: Button,
     menuButton: MenuButton,
