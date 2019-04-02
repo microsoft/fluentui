@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 29 Mar 2019 12:36:45 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+
+## 6.13.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 6.13.0
 Fri, 29 Mar 2019 12:36:45 GMT

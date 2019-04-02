@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 01 Apr 2019 12:37:03 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+
+## 6.164.1
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Dropdown: The `onChange` callback's event target should always be the dropdown element, which contains the id attribute passed in through props.
+- Fixed a problem with Pivot showing the wrong PivotItems when using JSX expressions. Extended the test case
+- FocusZone and FocusTrapZone example improvements
+- GroupedList: Respect groupProps isAllGroupsCollapsed on initial render
+- List and other example updates
+- Use ^ ranges instead of >=
 
 ## 6.164.0
 Mon, 01 Apr 2019 12:37:03 GMT

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+
+## 0.3.5
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- fixing keros errors and some accessibility semantic issues with grids
+- Use ^ ranges instead of >=
 
 ## 0.3.4
 Wed, 27 Mar 2019 12:34:02 GMT

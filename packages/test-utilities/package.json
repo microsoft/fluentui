@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/test-utilities",
-  "version": "6.0.2",
+  "version": "6.0.3",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@types/react-dom": "16.0.5",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/jest-serializer-merge-styles": "^6.0.7",
+    "@uifabric/jest-serializer-merge-styles": "^6.0.8",
     "@uifabric/prettier-rules": "^1.0.1",
     "@uifabric/tslint-rules": "^1.0.1",
     "enzyme": "^3.4.1",

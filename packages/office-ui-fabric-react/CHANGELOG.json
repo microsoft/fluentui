@@ -2,6 +2,74 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.164.1",
+      "tag": "office-ui-fabric-react_v6.164.1",
+      "date": "Tue, 02 Apr 2019 00:38:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: The `onChange` callback's event target should always be the dropdown element, which contains the id attribute passed in through props.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ac9cc960f0a34a4e4b3207a404238b616965d699"
+          },
+          {
+            "comment": "Fixed a problem with Pivot showing the wrong PivotItems when using JSX expressions. Extended the test case",
+            "author": "Sebastian Mattar <sebastian.mattar@gmail.com>",
+            "commit": "c5bd15cac8d0ac94021ce5d6478661991c40d7d0"
+          },
+          {
+            "comment": "FocusZone and FocusTrapZone example improvements",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "2a358d738dff8ff56e926e249eff3875d1d0d926"
+          },
+          {
+            "comment": "GroupedList: Respect groupProps isAllGroupsCollapsed on initial render",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "bdbad01d52231f7d49e4c3abb9c00755e3b83d57"
+          },
+          {
+            "comment": "List and other example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "07fddfcb3946ed4f87c2e7c170be958203d43dae"
+          },
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.3` to `^0.7.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.2` to `^6.35.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.3` to `^0.7.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.2` to `^6.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/webpack-utils\" from `^0.8.0` to `^0.8.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.164.0",
       "tag": "office-ui-fabric-react_v6.164.0",
       "date": "Mon, 01 Apr 2019 12:37:03 GMT",

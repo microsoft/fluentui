@@ -1,6 +1,13 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Tue, 15 Jan 2019 13:36:45 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+
+## 0.1.5
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 0.1.4
 Tue, 15 Jan 2019 13:36:45 GMT
