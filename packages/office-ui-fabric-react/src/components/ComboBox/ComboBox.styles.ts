@@ -4,10 +4,10 @@ import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
 
-const ComboBoxHeight = '32px';
-const ComboBoxLineHeight = '30px';
-const ComboBoxCaretDownWidth = '32px';
-const ComboBoxOptionHeight = '32px';
+const ComboBoxHeight = 32;
+const ComboBoxLineHeight = 30;
+const ComboBoxCaretDownWidth = 32;
+const ComboBoxOptionHeight = 36;
 
 const getDisabledStyles = memoizeFunction(
   (theme: ITheme): IRawStyle => {
@@ -70,11 +70,12 @@ export const getOptionStyles = memoizeFunction(
           height: 'auto',
           minHeight: ComboBoxOptionHeight,
           lineHeight: '20px',
-          padding: '5px 8px',
+          padding: '0 8px',
           position: 'relative',
           borderWidth: '1px',
           borderStyle: 'solid',
           borderColor: 'transparent',
+          borderRadius: 0,
           wordWrap: 'break-word',
           overflowWrap: 'break-word',
           textAlign: 'left',
@@ -83,6 +84,8 @@ export const getOptionStyles = memoizeFunction(
               borderColor: 'Background'
             },
             '&.ms-Checkbox': {
+              display: 'flex',
+              alignItems: 'center',
               selectors: {
                 ':hover': {
                   backgroundColor: palette.neutralLighter
@@ -121,12 +124,7 @@ export const getOptionStyles = memoizeFunction(
       rootDisabled: {
         backgroundColor: ComboBoxOptionBackgroundDisabled,
         color: ComboBoxOptionTextColorDisabled,
-        cursor: 'default',
-        selectors: {
-          '& .ms-Button-flexContainer': {
-            justifyContent: 'flex-start'
-          }
-        }
+        cursor: 'default'
       },
       optionText: {
         overflow: 'hidden',
@@ -136,11 +134,12 @@ export const getOptionStyles = memoizeFunction(
         maxWidth: '100%',
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
-        margin: '1px',
         display: 'inline-block'
       },
       optionTextWrapper: {
-        maxWidth: '100%'
+        maxWidth: '100%',
+        display: 'flex',
+        alignItems: 'center'
       }
     };
 
@@ -364,16 +363,15 @@ export const getStyles = memoizeFunction(
           height: ComboBoxOptionHeight,
           lineHeight: ComboBoxOptionHeight,
           cursor: 'default',
-          padding: '0px 16px',
+          padding: '0 8px',
           userSelect: 'none',
           textAlign: 'left'
         }
       ],
 
       divider: {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: ComboBoxOptionDividerBorderColor
+        height: 1,
+        backgroundColor: ComboBoxOptionDividerBorderColor
       }
     };
 
