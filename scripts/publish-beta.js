@@ -17,5 +17,5 @@ for (const package of packages) {
   const packagePath = path.resolve(__dirname, '..', package.projectFolder);
 
   console.log(`Publishing ${chalk.magenta(package.packageName)} in ${packagePath}`);
-  execSync('npm publish --tag beta', undefined, packagePath);
+  execSync('npm publish --tag next', undefined, packagePath);
 }
