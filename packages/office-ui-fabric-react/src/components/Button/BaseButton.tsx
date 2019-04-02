@@ -678,7 +678,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {
       this.setState(state => {
-        if (state.menuProps) {
+        if (state.menuProps && !state.menuProps.shouldFocusOnMount) {
           return { menuProps: { ...state.menuProps, shouldFocusOnMount: true } };
         }
         return state;
