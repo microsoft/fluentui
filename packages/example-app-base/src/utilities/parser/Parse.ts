@@ -11,7 +11,7 @@ import { EnumParserHelper } from './EnumParserHelper';
  *       It should otherwise be reasonably robust to handle various commenting or even code layout
  *       styles within the interface or enum.
  *
- * To specify default values for interfaces, use the JSDoc @default or @defaultvalue markup.
+ * To specify default values for interfaces, use the JSDoc @default or @defaultvalue or TSDoc @defaultValue markup.
  * The rest of the line after @default will be captured as the default value.
  *
  * @export
