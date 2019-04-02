@@ -33,7 +33,7 @@ export function cssColor(color?: string): IRGB | undefined {
  * This works by attaching an element to the DOM, which may fail in server-side rendering
  *   or with headless browsers.
  */
-function _browserCompute(str: string) {
+function _browserCompute(str: string): IRGB | undefined {
   if (!document) {
     // don't throw an error when used server-side
     return undefined;
