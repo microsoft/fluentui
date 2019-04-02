@@ -145,6 +145,8 @@ describe('color utilities', () => {
     // thus, we cannot fully test all cases here, such as for named colors
 
     it('handles invalid hex input', () => {
+      expect(cssColor(undefined as any)).toBeUndefined();
+      expect(cssColor(null as any)).toBeUndefined();
       expect(cssColor('')).toBeUndefined();
       expect(cssColor('000')).toBeUndefined(); // missing #
       expect(cssColor('#0000')).toBeUndefined(); // wrong length

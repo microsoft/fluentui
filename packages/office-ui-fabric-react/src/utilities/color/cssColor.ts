@@ -8,10 +8,16 @@ import { hsl2rgb } from './hsl2rgb';
  * Alpha in returned color defaults to 100.
  * Four and eight digit hex values (with alpha) are supported if the current browser supports them.
  */
-export function cssColor(color: string): IRGB | undefined {
+export function cssColor(color?: string): IRGB | undefined {
+  if (!color) {
+    return undefined;
+  }
+
   // Need to check the following valid color formats: RGB(A), HSL(A), hex, named color
 
-  // First check for RGB(A) and HSL(A) formats
+  // First check for RGB(A) and HSL(A) formats at the start.
+  // This is for perf (no creating an element) and catches the intentional "transparent" color
+  //   case early on.
   const rgbaColor = _rgba(color);
   if (rgbaColor) {
     return rgbaColor;
@@ -33,9 +39,8 @@ export function cssColor(color: string): IRGB | undefined {
   document.body.appendChild(elem);
   const eComputedStyle = getComputedStyle(elem);
   const computedColor = eComputedStyle && eComputedStyle.backgroundColor;
-  // console.error('input: ' + color + '\ncomputed color: ' + eComputedStyle.backgroundColor);
   document.body.removeChild(elem);
-  // computedColor is always an RGB string, except for invalid colors in IE/Edge which return 'transparent'
+  // computedColor is always an RGB(A) string, except for invalid colors in IE/Edge which return 'transparent'
 
   // browsers return one of these if the color string is invalid,
   // so need to differentiate between an actual error and intentionally passing in this color
