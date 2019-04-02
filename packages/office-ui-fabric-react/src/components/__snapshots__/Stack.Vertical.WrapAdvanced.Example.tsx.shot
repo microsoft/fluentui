@@ -718,13 +718,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #605e5c;
               }
               &:hover .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:focus .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
           data-is-focusable={true}
           id="Dropdown2"
@@ -945,13 +945,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #605e5c;
               }
               &:hover .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:focus .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
           data-is-focusable={true}
           id="Dropdown3"
@@ -1172,13 +1172,13 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 color: #605e5c;
               }
               &:hover .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:focus .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
           data-is-focusable={true}
           id="Dropdown4"

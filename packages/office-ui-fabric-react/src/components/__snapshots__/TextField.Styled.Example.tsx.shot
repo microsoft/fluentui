@@ -93,7 +93,7 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
               word-wrap: break-word;
             }
             &::after {
-              color: #a80000;
+              color: #a4262c;
               content: ' *';
               padding-right: 12px;
             }
@@ -109,7 +109,7 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
               align-items: stretch;
               background: #ffffff;
               border-radius: 2px;
-              border-top-color: #a80000;
+              border-top-color: #a4262c;
               border: 1px solid #a19f9d;
               box-shadow: none;
               box-sizing: border-box;
@@ -255,7 +255,7 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
               word-wrap: break-word;
             }
             &::after {
-              color: #a80000;
+              color: #a4262c;
               content: ' *';
               padding-right: 12px;
             }

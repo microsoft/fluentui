@@ -555,7 +555,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 word-wrap: break-word;
               }
               &::after {
-                color: #a80000;
+                color: #a4262c;
                 content: ' *';
                 padding-right: 12px;
               }
@@ -722,7 +722,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               {
                 align-items: stretch;
                 background: #ffffff;
-                border-color: #a80000;
+                border-color: #a4262c;
                 border-radius: 2px;
                 border: 1px solid #a19f9d;
                 box-shadow: none;
@@ -748,7 +748,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 border-color: Highlight;
               }
               &:focus, &:hover {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
         >
           <input
