@@ -1200,6 +1200,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(element: HTMLElement): boolean;
     // (undocumented)
+    static getOuterZones(): number;
+    // (undocumented)
     render(): JSX.Element;
     }
 
@@ -1280,8 +1282,6 @@ export const GroupedList: React_2.StatelessComponent<IGroupedListProps>;
 // @public (undocumented)
 export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
-    // (undocumented)
-    componentDidMount(): void;
     // (undocumented)
     componentWillReceiveProps(newProps: IGroupedListProps): void;
     // (undocumented)
@@ -6328,27 +6328,6 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 }
 
 // @public (undocumented)
-export interface ISeparator {
-}
-
-// @public (undocumented)
-export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
-    alignContent?: 'start' | 'center' | 'end';
-    styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
-    theme?: ITheme;
-    vertical?: boolean;
-}
-
-// @public (undocumented)
-export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> & Pick<ISeparatorProps, 'className' | 'alignContent' | 'vertical'>;
-
-// @public (undocumented)
-export interface ISeparatorStyles {
-    content: IStyle;
-    root: IStyle;
-}
-
-// @public (undocumented)
 export interface IShimmer {
 }
 
@@ -6738,12 +6717,10 @@ export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['
 
 // @public (undocumented)
 export interface IStackItemTokens {
-    // (undocumented)
-    margin?: number | string;
 }
 
 // @public (undocumented)
-export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
+export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
     gap?: number | string;
@@ -6779,8 +6756,6 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 
 // @public (undocumented)
 export interface IStackTokens {
-    // (undocumented)
-    childrenGap?: number | string;
 }
 
 // @public (undocumented)
@@ -8373,12 +8348,6 @@ export enum SemanticColorSlots {
     // (undocumented)
     disabledText = 3,
 }
-
-// @public (undocumented)
-export const Separator: React_2.StatelessComponent<ISeparatorProps>;
-
-// @public (undocumented)
-export const SeparatorBase: React.StatelessComponent<ISeparatorProps>;
 
 // @public
 export enum Shade {

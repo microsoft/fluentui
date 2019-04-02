@@ -79,6 +79,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   /** Used to allow us to move to next focusable element even when we're focusing on a input element when pressing tab */
   private _processingTabKey: boolean;
 
+  public static getOuterZones(): number {
+    return _outerZones.size;
+  }
+
   constructor(props: IFocusZoneProps) {
     super(props);
 
@@ -108,10 +112,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
     _allInstances[this._id] = this;
 
-    if (!this._isInnerZone) {
-      _outerZones.add(this);
-    }
-
     if (root) {
       const windowElement = root.ownerDocument!.defaultView;
 
@@ -123,6 +123,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           break;
         }
         parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
+      }
+
+      if (!this._isInnerZone) {
+        _outerZones.add(this);
       }
 
       if (windowElement && _outerZones.size === 1) {
