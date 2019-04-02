@@ -8,7 +8,7 @@ import { hsl2rgb } from './hsl2rgb';
  * Alpha in returned color defaults to 100.
  * Four and eight digit hex values (with alpha) are supported if the current browser supports them.
  */
-export function cssColor(color?: string): IRGB | undefined {
+export function cssColor(color: string): IRGB | undefined {
   // Need to check the following valid color formats: RGB(A), HSL(A), hex, named color
 
   // First check for RGB(A) and HSL(A) formats
@@ -22,6 +22,7 @@ export function cssColor(color?: string): IRGB | undefined {
   }
 
   // Otherwise, do a catch-all for hex and named colors
+  // This element must be attached to the DOM for getComputedStyle() to have a value
   const elem = document.createElement('div');
   elem.style.backgroundColor = color;
   elem.style.position = 'absolute';
