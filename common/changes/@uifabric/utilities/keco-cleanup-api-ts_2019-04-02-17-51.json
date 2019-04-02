@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Remove outdated *.api.ts generated files",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "keco@microsoft.com"
+}
