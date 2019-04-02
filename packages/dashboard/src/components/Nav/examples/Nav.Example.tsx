@@ -2,9 +2,11 @@ import * as React from 'react';
 import { INavLinkGroup, mergeStyles } from 'office-ui-fabric-react';
 import { Nav } from '../Nav';
 
-export class NavExample extends React.Component<{}, {}> {
+export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }> {
   constructor(props: {}) {
     super(props);
+    this.state = { isNavCollapsed: true };
+    this._onNavCollapsed = this._onNavCollapsed.bind(this);
   }
 
   public render(): JSX.Element {
@@ -104,9 +106,18 @@ export class NavExample extends React.Component<{}, {}> {
           editString={'Edit navigation'}
           showMoreString={'Show more'}
           showLessString={'Show less'}
+          isNavCollapsed={this.state.isNavCollapsed}
+          onNavCollapsed={this._onNavCollapsed}
         />
         <div className={contentStyle}>Content Here</div>
       </div>
     );
+  }
+
+  // handle onNavCollapsed since we are using the managed pattern
+  // the callback passes the internal state of isNavCollapsed back but since
+  // we are handling it on our own we don't need it hence the "_"
+  private _onNavCollapsed(_isNavCollapsed: boolean): void {
+    this.setState({ isNavCollapsed: !this.state.isNavCollapsed });
   }
 }
