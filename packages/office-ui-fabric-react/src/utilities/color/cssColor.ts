@@ -8,7 +8,7 @@ import { hsl2rgb } from './hsl2rgb';
  * Alpha in returned color defaults to 100.
  * Four and eight digit hex values (with alpha) are supported if the current browser supports them.
  */
-export function cssColor(color: string): IRGB | undefined {
+export function cssColor(color?: string): IRGB | undefined {
   // Need to check the following valid color formats: RGB(A), HSL(A), hex, named color
 
   // First check for RGB(A) and HSL(A) formats
@@ -31,8 +31,8 @@ export function cssColor(color: string): IRGB | undefined {
   elem.style.width = '1px';
   document.body.appendChild(elem);
   const eComputedStyle = getComputedStyle(elem);
-  const computedColor = eComputedStyle && eComputedStyle.backgroundColor!;
-  console.error('input: ' + color + '\ncomputed color: ' + eComputedStyle.backgroundColor);
+  const computedColor = eComputedStyle && eComputedStyle.backgroundColor;
+  // console.error('input: ' + color + '\ncomputed color: ' + eComputedStyle.backgroundColor);
   document.body.removeChild(elem);
   // computedColor is always an RGB string, except for invalid colors in IE/Edge which return 'transparent'
 
@@ -56,7 +56,11 @@ export function cssColor(color: string): IRGB | undefined {
  * If `str` is in valid `rgb()` or `rgba()` format, returns an RGB color (alpha defaults to 100).
  * Otherwise returns undefined.
  */
-function _rgba(str: string): IRGB | undefined {
+function _rgba(str?: string | null): IRGB | undefined {
+  if (!str) {
+    return undefined;
+  }
+
   const match = str.match(/^rgb(a?)\(([\d., ]+)\)$/);
   if (match) {
     const hasAlpha = !!match[1];
