@@ -1685,6 +1685,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      border-color: #605e5c;
                       box-shadow: none;
                       box-sizing: border-box;
                       color: #323130;
@@ -1704,7 +1705,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       user-select: none;
                     }
                     &:hover .ms-Dropdown-title {
-                      border-color: #201f1e;
+                      border-color: #323130;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
@@ -1726,17 +1727,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-title {
-                      border-color: #005a9e;
+                      border-color: #0078d4;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                       border-color: Highlight;
                     }
                     &:hover .ms-Dropdown-caretDown {
-                      color: #201f1e;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-caretDown {
-                      color: #201f1e;
+                      color: #323130;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                       color: HighlightText;
@@ -1745,16 +1746,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-caretDown {
-                      color: #201f1e;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-titleIsPlaceHolder {
-                      color: #605e5c;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-titleIsPlaceHolder {
-                      color: #605e5c;
+                      color: #323130;
                     }
                     &:active .ms-Dropdown-titleIsPlaceHolder {
-                      color: #605e5c;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-title--hasError {
                       border-color: #a80000;
@@ -1789,6 +1790,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background-color: #ffffff;
                         border-color: #a19f9d;
+                        border-radius: 2px;
                         border-style: solid;
                         border-width: 1px;
                         box-shadow: none;
@@ -1803,8 +1805,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         margin-top: 0px;
                         overflow: hidden;
                         padding-bottom: 0;
-                        padding-left: 12px;
-                        padding-right: 32px;
+                        padding-left: 8px;
+                        padding-right: 28px;
                         padding-top: 0;
                         position: relative;
                         text-overflow: ellipsis;
@@ -1825,7 +1827,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         height: 32px;
                         line-height: 30px;
                         position: absolute;
-                        right: 12px;
+                        right: 8px;
                         top: 1px;
                       }
                 >
@@ -1912,6 +1914,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
+                      border-color: #605e5c;
                       box-shadow: none;
                       box-sizing: border-box;
                       color: #323130;
@@ -1931,7 +1934,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       user-select: none;
                     }
                     &:hover .ms-Dropdown-title {
-                      border-color: #201f1e;
+                      border-color: #323130;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
@@ -1953,17 +1956,17 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-title {
-                      border-color: #005a9e;
+                      border-color: #0078d4;
                       color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                       border-color: Highlight;
                     }
                     &:hover .ms-Dropdown-caretDown {
-                      color: #201f1e;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-caretDown {
-                      color: #201f1e;
+                      color: #323130;
                     }
                     @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                       color: HighlightText;
@@ -1972,16 +1975,16 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       -ms-high-contrast-adjust: none;
                     }
                     &:active .ms-Dropdown-caretDown {
-                      color: #201f1e;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-titleIsPlaceHolder {
-                      color: #605e5c;
+                      color: #323130;
                     }
                     &:focus .ms-Dropdown-titleIsPlaceHolder {
-                      color: #605e5c;
+                      color: #323130;
                     }
                     &:active .ms-Dropdown-titleIsPlaceHolder {
-                      color: #605e5c;
+                      color: #323130;
                     }
                     &:hover .ms-Dropdown-title--hasError {
                       border-color: #a80000;
@@ -2016,6 +2019,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background-color: #ffffff;
                         border-color: #a19f9d;
+                        border-radius: 2px;
                         border-style: solid;
                         border-width: 1px;
                         box-shadow: none;
@@ -2030,8 +2034,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         margin-top: 0px;
                         overflow: hidden;
                         padding-bottom: 0;
-                        padding-left: 12px;
-                        padding-right: 32px;
+                        padding-left: 8px;
+                        padding-right: 28px;
                         padding-top: 0;
                         position: relative;
                         text-overflow: ellipsis;
@@ -2052,7 +2056,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         height: 32px;
                         line-height: 30px;
                         position: absolute;
-                        right: 12px;
+                        right: 8px;
                         top: 1px;
                       }
                 >

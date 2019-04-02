@@ -79,6 +79,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               background-color: #ffffff;
               border-color: #a19f9d;
+              border-radius: 2px;
               border-style: solid;
               border-width: 1px;
               box-shadow: none;
@@ -94,7 +95,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline: 0;
               overflow: hidden;
               padding-bottom: 1px;
-              padding-left: 12px;
+              padding-left: 8px;
               padding-right: 32px;
               padding-top: 1px;
               position: relative;
@@ -128,6 +129,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &:hover {
               border-color: #323130;
+            }
+            &:hover .ms-ComboBox-Input {
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               -ms-high-contrast-adjust: none;
@@ -521,6 +525,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
             border-color: #a19f9d;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
@@ -536,7 +541,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -570,6 +575,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:hover {
             border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -832,6 +840,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
             border-color: #a19f9d;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
@@ -847,7 +856,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -881,6 +890,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:hover {
             border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1143,6 +1155,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
             border-color: #a19f9d;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
@@ -1158,7 +1171,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -1192,6 +1205,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:hover {
             border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1489,11 +1505,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border-color: #edebe9;
                   border-radius: 2px;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                   box-sizing: border-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -1565,12 +1578,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
                           font-weight: 600;
-                          height: 32px;
-                          line-height: 32px;
-                          padding-bottom: 0px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 0px;
+                          height: 36px;
+                          line-height: 36px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           text-align: left;
                           user-select: none;
                         }
@@ -1580,10 +1593,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           ms-ComboBox-optionText
                           {
                             display: inline-block;
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
                             max-width: 100%;
                             min-width: 0px;
                             overflow-wrap: break-word;
@@ -1610,7 +1619,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -1623,13 +1632,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -1667,6 +1676,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -1720,6 +1745,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -1728,10 +1755,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -1761,7 +1784,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: #f3f2f1;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -1774,13 +1797,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -1822,15 +1845,31 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-color: Highlight;
                           color: HighlightText;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         .ms-Fabric--isFocusVisible &:after {
                           border: 1px solid #ffffff;
-                          bottom: 1px;
+                          bottom: 0px;
                           content: "";
-                          left: 1px;
+                          left: 0px;
                           outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 1px;
-                          top: 1px;
+                          right: 0px;
+                          top: 0px;
                           z-index: 1;
                         }
                     data-index={2}
@@ -1865,6 +1904,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -1873,10 +1914,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -1905,7 +1942,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -1918,13 +1955,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -1962,6 +1999,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2015,6 +2068,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2023,10 +2078,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2055,7 +2106,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -2068,13 +2119,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2112,6 +2163,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2165,6 +2232,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2173,10 +2242,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2195,9 +2260,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                     className=
                         ms-ComboBox-divider
                         {
-                          border-color: #edebe9;
-                          border-style: solid;
-                          border-width: 1px;
+                          background-color: #edebe9;
+                          height: 1px;
                         }
                     role="separator"
                   />
@@ -2214,12 +2278,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
                           font-weight: 600;
-                          height: 32px;
-                          line-height: 32px;
-                          padding-bottom: 0px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 0px;
+                          height: 36px;
+                          line-height: 36px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           text-align: left;
                           user-select: none;
                         }
@@ -2229,10 +2293,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           ms-ComboBox-optionText
                           {
                             display: inline-block;
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
                             max-width: 100%;
                             min-width: 0px;
                             overflow-wrap: break-word;
@@ -2259,7 +2319,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -2272,13 +2332,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2316,6 +2376,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2369,6 +2445,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2377,10 +2455,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2411,7 +2485,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: #ffffff;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -2424,13 +2498,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           pointer-events: none;
                           position: relative;
                           text-align: left;
@@ -2471,14 +2545,27 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-color: grayText;
                           color: grayText;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
                           outline: 0px;
                         }
                         &:focus {
                           outline: 0px;
-                        }
-                        & .ms-Button-flexContainer {
-                          justify-content: flex-start;
                         }
                     data-index={8}
                     data-is-focusable={false}
@@ -2513,6 +2600,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2521,10 +2610,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2553,7 +2638,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -2566,13 +2651,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2610,6 +2695,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2663,6 +2764,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2671,10 +2774,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2703,7 +2802,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -2716,13 +2815,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2760,6 +2859,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2813,6 +2928,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2821,10 +2938,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2853,7 +2966,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -2866,13 +2979,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2910,6 +3023,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -2963,6 +3092,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2971,10 +3102,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -3003,7 +3130,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           border-color: transparent;
-                          border-radius: 2px;
+                          border-radius: 0px;
                           border-style: solid;
                           border-width: 1px;
                           border: 1px solid transparent;
@@ -3016,13 +3143,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -3060,6 +3187,22 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
@@ -3113,6 +3256,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -3121,10 +3266,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -3188,6 +3329,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
             border-color: #a80000;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
@@ -3204,7 +3346,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -3481,6 +3623,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             background-color: #f3f2f1;
             border-color: #f3f2f1;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
@@ -3496,7 +3639,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
