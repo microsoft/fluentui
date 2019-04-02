@@ -1,10 +1,8 @@
 /* tslint:disable:jsx-no-lambda */
 
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
-import { App, IAppDefinition, IAppLink } from '../components/App/App';
+import { App, IAppDefinition, IAppLink } from '../components/App/index';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';

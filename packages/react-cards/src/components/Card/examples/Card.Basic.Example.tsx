@@ -1,50 +1,73 @@
 import * as React from 'react';
-import { Card } from '../Card';
 import { Persona, Text } from '@uifabric/experiments';
-import { PersonaTestImages } from '@uifabric/experiments/lib/common/TestImages';
 import { Icon, Image, Stack } from 'office-ui-fabric-react';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { Card } from '../Card';
+
+const alertClicked = (): void => {
+  alert('Clicked');
+};
 
 export class CardBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const styles = mergeStyleSets({
-      textLarge: {
-        color: 'teal',
-        fontWeight: 'bolder'
+      siteText: {
+        color: '#025F52',
+        fontSize: 12,
+        fontWeight: FontWeights.semibold
       },
-      textBold: {
-        fontWeight: 'bold'
+      descriptionText: {
+        color: '#333333',
+        fontSize: 14,
+        fontWeight: FontWeights.regular
+      },
+      helpfulText: {
+        color: '#333333',
+        fontSize: 12,
+        fontWeight: FontWeights.regular
+      },
+      icon: {
+        color: '#0078D4',
+        fontSize: 16,
+        fontWeight: FontWeights.regular
       }
     });
 
+    const tokens = {
+      sectionStack: {
+        childrenGap: 30
+      },
+      cardFooterStack: {
+        childrenGap: 16
+      }
+    };
+
     return (
-      <Card>
-        <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" coin={{ imageUrl: PersonaTestImages.personMale }} />
-        <Card.Item disableChildPadding>
-          <Image
-            src="https://placehold.it/250x120"
-            alt="Example implementation of the property image fit using the center value on an image larger than the frame."
-            width="100%"
-            height="120px"
-          />
-        </Card.Item>
-        <Text variant="large" className={styles.textLarge}>
-          Contoso
-        </Text>
-        <Text variant="large">Contoso Denver expansion design marketing hero guidelines</Text>
-        <Text className={styles.textBold}>Is this recommendation helpful?</Text>
-        <Card.Item disableChildPadding>
-          <Stack
-            horizontal
-            horizontalAlign="space-between"
-            padding="10px 10px -2px 10px"
-            styles={{ root: { borderTop: '1px solid lightgray' } }}
-          >
-            <Icon iconName="RedEye" styles={{ root: { color: 'mediumturquoise', fontSize: '20px' } }} />
-            <Icon iconName="MoreVertical" styles={{ root: { color: 'mediumturquoise', fontSize: '20px' } }} />
-          </Stack>
-        </Card.Item>
-      </Card>
+      <Stack horizontal tokens={tokens.sectionStack}>
+        <Card>
+          <Text>Basic card</Text>
+        </Card>
+
+        <Card onClick={alertClicked}>
+          <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
+          <Card.Item tokens={{ margin: '0 -13px' }}>
+            <Image src="https://placehold.it/286x144" width="100%" />
+          </Card.Item>
+          <Text className={styles.siteText}>Contoso</Text>
+          <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
+          <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
+          <Card.Item>
+            <Stack horizontal tokens={tokens.cardFooterStack} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
+              <Icon iconName="RedEye" className={styles.icon} />
+              <Icon iconName="SingleBookmark" className={styles.icon} />
+              <Stack.Item grow={1}>
+                <span />
+              </Stack.Item>
+              <Icon iconName="MoreVertical" className={styles.icon} />
+            </Stack>
+          </Card.Item>
+        </Card>
+      </Stack>
     );
   }
 }

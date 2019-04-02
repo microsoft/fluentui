@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
-import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType } from './HoverCard.types';
+import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
 import { PlainCard } from './PlainCard/PlainCard';
@@ -15,7 +15,7 @@ export interface IHoverCardState {
   openMode?: OpenCardMode;
 }
 
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
+export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
   public static defaultProps = {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
@@ -60,6 +60,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       this._events.off();
       this._setEventListeners();
     }
+
     if (prevState.isHoverCardVisible !== this.state.isHoverCardVisible) {
       if (this.state.isHoverCardVisible) {
         this._async.setTimeout(() => {
@@ -81,6 +82,18 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       }
     }
   }
+
+  public dismiss = (withTimeOut?: boolean): void => {
+    this._async.clearTimeout(this._openTimerId);
+    this._async.clearTimeout(this._dismissTimerId);
+    if (!withTimeOut) {
+      this._setDismissedState();
+    } else {
+      this._dismissTimerId = this._async.setTimeout(() => {
+        this._setDismissedState();
+      }, this.props.cardDismissDelay!);
+    }
+  };
 
   // Render
   public render(): JSX.Element {
@@ -202,7 +215,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
       // Dismiss if not sticky and currentTarget is the same element that mouse last entered
       if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
-        this._executeCardDismiss();
+        this.dismiss(true);
       }
     } else {
       // If this is a mouseleave event and the component is sticky, do not dismiss.
@@ -210,20 +223,16 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         return;
       }
 
-      this._executeCardDismiss();
+      this.dismiss(true);
     }
   };
 
-  private _executeCardDismiss = (): void => {
-    this._async.clearTimeout(this._openTimerId);
-    this._async.clearTimeout(this._dismissTimerId);
-    this._dismissTimerId = this._async.setTimeout(() => {
-      this.setState({
-        isHoverCardVisible: false,
-        mode: ExpandingCardMode.compact,
-        openMode: OpenCardMode.hover
-      });
-    }, this.props.cardDismissDelay!);
+  private _setDismissedState = () => {
+    this.setState({
+      isHoverCardVisible: false,
+      mode: ExpandingCardMode.compact,
+      openMode: OpenCardMode.hover
+    });
   };
 
   private _instantOpenAsExpanded = (ev: React.MouseEvent<HTMLDivElement>): void => {

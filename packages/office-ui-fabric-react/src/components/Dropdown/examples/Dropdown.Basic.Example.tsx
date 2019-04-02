@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Dropdown, DropdownMenuItemType, IDropdownStyles, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
 const dropdownStyles: Partial<IDropdownStyles> = {
@@ -19,9 +19,11 @@ const options: IDropdownOption[] = [
   { key: 'lettuce', text: 'Lettuce' }
 ];
 
+const stackTokens: IStackTokens = { childrenGap: 20 };
+
 export const DropdownBasicExample: React.StatelessComponent = () => {
   return (
-    <Stack gap={20}>
+    <Stack tokens={stackTokens}>
       <Dropdown placeholder="Select an option" label="Basic uncontrolled example" options={options} styles={dropdownStyles} />
 
       <Dropdown

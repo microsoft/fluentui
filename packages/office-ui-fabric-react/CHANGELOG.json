@@ -2,6 +2,172 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.164.1",
+      "tag": "office-ui-fabric-react_v6.164.1",
+      "date": "Tue, 02 Apr 2019 00:38:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: The `onChange` callback's event target should always be the dropdown element, which contains the id attribute passed in through props.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ac9cc960f0a34a4e4b3207a404238b616965d699"
+          },
+          {
+            "comment": "Fixed a problem with Pivot showing the wrong PivotItems when using JSX expressions. Extended the test case",
+            "author": "Sebastian Mattar <sebastian.mattar@gmail.com>",
+            "commit": "c5bd15cac8d0ac94021ce5d6478661991c40d7d0"
+          },
+          {
+            "comment": "FocusZone and FocusTrapZone example improvements",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "2a358d738dff8ff56e926e249eff3875d1d0d926"
+          },
+          {
+            "comment": "GroupedList: Respect groupProps isAllGroupsCollapsed on initial render",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "bdbad01d52231f7d49e4c3abb9c00755e3b83d57"
+          },
+          {
+            "comment": "List and other example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "07fddfcb3946ed4f87c2e7c170be958203d43dae"
+          },
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.3` to `^0.7.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.2` to `^6.35.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.3` to `^0.7.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.2` to `^6.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/webpack-utils\" from `^0.8.0` to `^0.8.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.164.0",
+      "tag": "office-ui-fabric-react_v6.164.0",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Adding margin as a token of StackItem and childrenGap as a token of Stack and updating examples accordingly.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "df359770c046490ac1d7cb17a783cbb7e0cbcdcf"
+          },
+          {
+            "comment": "Separator: promote to OUFR",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8db1d9bfc880dfbe533fb469dda8aa87f468a503"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ContextualMenu: Remove extra role=menu",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "d0ebc5c663868f7d60457ade9e62841caf6f3bae"
+          },
+          {
+            "comment": "MaskedTextField: fixes the state update when the value it's controlled by the host app.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "95138d1b4ae7558733282273908b9f6e095fbda1"
+          },
+          {
+            "comment": "More TextField example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "086e5d0a452fcb9dc21ff44d80634bdb2ff0b5d5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.2 <7.0.0` to `>=6.16.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.163.0",
+      "tag": "office-ui-fabric-react_v6.163.0",
+      "date": "Fri, 29 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persisted callout fixes",
+            "author": "David De La Brena <36862912+ddlbrena@users.noreply.github.com>",
+            "commit": "9a7397d3385e740654d78ebf1086e75aea331ce9"
+          },
+          {
+            "comment": "DocPage: add separate prop for overriding native props component name",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "35df0a3a86868a4dd6069e6e7dbd29ea7f12ad64"
+          },
+          {
+            "comment": "Pickers: condionally render the list of the selected items only if there are any items to display. Fixes the aria role=\"list\" bug where a list must contain one or more list items.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "d72220e6a41f6cd6a27033434b2bf00da211ecd2"
+          },
+          {
+            "comment": "Spinner and Slider example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "98ba37a1eea27c121bc09fd6975841d94325afe9"
+          },
+          {
+            "comment": "TextField example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "2921eadc749c31276fac1a81c4ad1744f35d3308"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dropdown: add correctly cased onRenderPlaceholder prop and deprecate onRenderPlaceHolder, plus example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "58110837699940239dbd68591c9f0026e7aea57b"
+          },
+          {
+            "comment": "Added order property to StackItem",
+            "author": "jpalo <jpalo@users.noreply.github.com>",
+            "commit": "dfaea436836fc0bac50413e68424cedd4874df38"
+          },
+          {
+            "comment": "HoverCard: adds a public `dismiss` method to allow instant dismiss of the card.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "30bea805e3c1fc69010e827799e068a8813fa689"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.162.1",
       "tag": "office-ui-fabric-react_v6.162.1",
       "date": "Thu, 28 Mar 2019 12:36:39 GMT",

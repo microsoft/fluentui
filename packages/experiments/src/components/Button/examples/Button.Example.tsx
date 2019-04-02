@@ -2,16 +2,24 @@ import * as React from 'react';
 import { Button } from '../index';
 import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
-const sectionGap = 32;
-const headingGap = 16;
-const buttonGap = 12;
+const tokens = {
+  sectionStack: {
+    childrenGap: 32
+  },
+  headingStack: {
+    childrenGap: 16
+  },
+  buttonStack: {
+    childrenGap: 12
+  }
+};
 
 const alertClicked = (): void => {
   alert('Clicked');
 };
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal disableShrink gap={buttonGap}>
+  <Stack horizontal disableShrink tokens={tokens.buttonStack}>
     {props.children}
   </Stack>
 );
@@ -20,10 +28,10 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
+      <Stack tokens={tokens.sectionStack}>
+        <Stack tokens={tokens.headingStack} padding={8}>
           <div>
-            <Stack gap={buttonGap}>
+            <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
                 <Button content="Default button" onClick={alertClicked} />
                 <Button disabled content="Disabled default button" onClick={alertClicked} />

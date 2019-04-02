@@ -22,9 +22,18 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
       }
     });
 
+    const tokens = {
+      sectionStack: {
+        childrenGap: 10
+      },
+      headingStack: {
+        childrenGap: 30
+      }
+    };
+
     return (
-      <Stack gap={10}>
-        <Stack horizontal disableShrink gap={30} horizontalAlign="space-between">
+      <Stack tokens={tokens.sectionStack}>
+        <Stack horizontal disableShrink tokens={tokens.headingStack} horizontalAlign="space-between">
           <Stack grow>
             <span>Top-aligned</span>
             <Stack verticalAlign="start" className={styles.root}>
@@ -53,7 +62,7 @@ export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
           </Stack>
         </Stack>
 
-        <Stack horizontal disableShrink gap={30} horizontalAlign="space-between">
+        <Stack horizontal disableShrink tokens={tokens.headingStack} horizontalAlign="space-between">
           <Stack grow>
             <span>Vertical space around items</span>
             <Stack verticalAlign="space-around" className={styles.root}>

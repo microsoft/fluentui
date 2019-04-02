@@ -14,6 +14,7 @@ const SearchBoxUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-rea
 const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
 const SearchBoxCustomIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.CustomIcon.Example.tsx') as string;
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
+const SearchBoxSmallExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
@@ -45,6 +46,7 @@ export const SearchBoxPageProps: IDocPageProps = {
     {
       title: 'SearchBox with fixed width and custom event handling',
       code: SearchBoxSmallExampleCode,
+      codepenJS: SearchBoxSmallExampleCodepen,
       view: <SearchBoxSmallExample />
     }
   ],

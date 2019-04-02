@@ -2,6 +2,20 @@
   "name": "@uifabric/webpack-utils",
   "entries": [
     {
+      "version": "0.8.1",
+      "tag": "@uifabric/webpack-utils_v0.8.1",
+      "date": "Tue, 02 Apr 2019 00:38:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.8.0",
       "tag": "@uifabric/webpack-utils_v0.8.0",
       "date": "Fri, 15 Mar 2019 12:34:07 GMT",

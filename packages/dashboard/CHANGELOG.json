@@ -2,6 +2,45 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.58.2",
+      "tag": "@uifabric/dashboard_v0.58.2",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue show less on the left nav shows up all items selected  in customize navigation",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "a787974e7c72b0db21034f7e2a518d950b3a45c8"
+          },
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.11` to `^0.28.12`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.66.0` to `^6.66.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.3` to `^0.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.0` to `^6.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.58.1",
       "tag": "@uifabric/dashboard_v0.58.1",
       "date": "Thu, 28 Mar 2019 12:36:39 GMT",
