@@ -39,6 +39,9 @@ export class CardBasicExample extends React.Component<{}, {}> {
       },
       cardFooterStack: {
         childrenGap: 16
+      },
+      narrowCard: {
+        width: 212
       }
     };
 
@@ -48,10 +51,30 @@ export class CardBasicExample extends React.Component<{}, {}> {
           <Text>Basic card</Text>
         </Card>
 
+        <Card onClick={alertClicked} tokens={tokens.narrowCard}>
+          <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
+          <Card.Item tokens={{ margin: '0 -13px' }}>
+            <Image src="https://placehold.it/256x144" width="100%" />
+          </Card.Item>
+          <Text className={styles.siteText}>Contoso</Text>
+          <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
+          <Text className={styles.helpfulText}>Is this recommendation helpful?</Text>
+          <Card.Item>
+            <Stack horizontal tokens={tokens.cardFooterStack} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
+              <Icon iconName="RedEye" className={styles.icon} />
+              <Icon iconName="SingleBookmark" className={styles.icon} />
+              <Stack.Item grow={1}>
+                <span />
+              </Stack.Item>
+              <Icon iconName="MoreVertical" className={styles.icon} />
+            </Stack>
+          </Card.Item>
+        </Card>
+
         <Card onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           <Card.Item tokens={{ margin: '0 -13px' }}>
-            <Image src="https://placehold.it/286x144" width="100%" />
+            <Image src="https://placehold.it/256x144" width="100%" />
           </Card.Item>
           <Text className={styles.siteText}>Contoso</Text>
           <Text className={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
