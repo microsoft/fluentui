@@ -63,7 +63,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                   groupIndex={groupIndex}
                   groupName={group.name}
                   links={group.links}
-                  dataHint={this.props.dataHint}
+                  dataHint={dataHint}
                   isNavCollapsed={isNavCollapsed}
                   onCollapse={this._setScrollLayout}
                   navRef={this.containerRef}
@@ -89,7 +89,7 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                   {showMore && (
                     <li role="none">
                       <NavLink
-                        name={this.props.showMore ? showMoreString : showLessString}
+                        name={showMore ? showMoreString : showLessString}
                         onClick={this._toggleMore}
                         data-hint={'Show more'}
                         data-value={'Show more'}

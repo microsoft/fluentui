@@ -21,12 +21,6 @@ export interface INavProps extends IBaseProps {
   defaultIsNavCollapsed?: boolean;
 
   /**
-   * If used inside a parent element with scrollbar, provide the parent element id to properly position
-   * the floating nav by considering the scroll bar.
-   */
-  navScrollerId?: string;
-
-  /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
   styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
