@@ -95,11 +95,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
             { id: 'i', label: 'magentaPink', color: '#9b0062' },
             { id: 'j', label: 'black', color: '#000000' },
             { id: 'k', label: 'gray', color: '#7a7574' },
-            { id: 'l', label: 'gray20', color: '#69797e' },
-            { id: 'm', label: 'white', color: 'white' },
-            { id: 'n', label: 'a', color: '#1234' },
-            { id: 'o', label: 'b', color: 'rgb(50, 100, 150, .5)' },
-            { id: 'p', label: 'c', color: 'hsl(30, 80%, 20%, .7)' }
+            { id: 'l', label: 'gray20', color: '#69797e' }
           ]}
         />
         <div>Simple disabled circle swatch color picker:</div>
