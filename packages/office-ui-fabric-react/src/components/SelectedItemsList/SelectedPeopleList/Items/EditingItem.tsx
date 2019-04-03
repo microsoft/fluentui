@@ -72,7 +72,6 @@ export class EditingItem<TItem = IPersonaProps> extends React.PureComponent<IEdi
   }
 
   public componentDidMount(): void {
-    // TODO remove this cast and make the item required in types.
     const itemText: string = this.props.getEditingItemText(this.props.item);
 
     this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(itemText);
