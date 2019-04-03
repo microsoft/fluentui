@@ -38,27 +38,30 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     this.state = {
       value: value,
-      renderedValue: value
+      renderedValue: undefined
     };
   }
 
-  /**
-   * Invoked when a component is receiving new props. This method is not called for the initial render.
-   */
-  public componentWillReceiveProps(newProps: ISliderProps): void {
-    if (newProps.value !== undefined) {
-      const value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
-
-      this.setState({
-        value: value,
-        renderedValue: value
-      });
-    }
-  }
-
   public render(): React.ReactElement<{}> {
-    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, valueFormat, styles, theme } = this.props;
-    const { value, renderedValue } = this.state;
+    const {
+      ariaLabel,
+      className,
+      disabled,
+      label,
+      max,
+      min,
+      showValue,
+      buttonProps,
+      vertical,
+      valueFormat,
+      styles,
+      theme,
+      value: propsValue
+    } = this.props;
+    const { value: stateValue, renderedValue: renderedValueState } = this.state;
+    const value = propsValue !== undefined ? propsValue : stateValue;
+    const renderedValue = renderedValueState !== undefined ? renderedValueState : value;
+
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
@@ -236,9 +239,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
-    // Synchronize the renderedValue to the actual value.
+    // Disable renderedValue override.
     this.setState({
-      renderedValue: this.state.value
+      renderedValue: undefined
     });
 
     if (this.props.onChanged) {
