@@ -12,7 +12,7 @@ const getClassName = classNamesFunction<{}, { containerHeight: IStyle }>();
 export class SetupWizardSubStepsExample extends WizardExampleBase<ISetupWizardState> {
   constructor(props: {}) {
     super(props);
-    const steps = this.getTestSteps(false);
+    const steps = this.getTestSteps();
     this.state = {
       steps: steps,
       currentStepId: steps[0].id
@@ -29,6 +29,7 @@ export class SetupWizardSubStepsExample extends WizardExampleBase<ISetupWizardSt
           wizardProps={{
             steps: this.state.steps
           }}
+          title="Setup Wizard"
         />
       </div>
     );

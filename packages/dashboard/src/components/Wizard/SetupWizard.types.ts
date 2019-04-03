@@ -8,6 +8,8 @@ export interface ISetupWizardProps {
   styles?: ISetupWizardStyles;
 
   theme?: ITheme;
+
+  title: string;
 }
 
 export interface ISetupWizardTitleProps {
