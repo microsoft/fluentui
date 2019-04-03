@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Button: Adding missing parenthesis.",
+      "comment": "Button: Adding missing parenthesis in ev.stopPropagation function call.",
       "type": "patch"
     }
   ],
