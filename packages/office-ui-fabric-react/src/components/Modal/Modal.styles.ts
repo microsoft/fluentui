@@ -79,7 +79,12 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       {
         overflowY: 'auto',
         flexGrow: 1,
-        maxHeight: window.innerHeight
+        maxHeight: '100vh',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: window.innerHeight
+          }
+        }
       },
       scrollableContentClassName
     ],
