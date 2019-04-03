@@ -1,3 +1,5 @@
+// @ts-check
+
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
@@ -9,7 +11,7 @@ const components = [
     url: '#/examples/button'
   },
   {
-    name: 'Textfield',
+    name: 'TextField',
     url: '#/examples/textfield'
   }
 ];
