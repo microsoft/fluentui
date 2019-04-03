@@ -1,6 +1,6 @@
 import { IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
 
-export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement> {
+export interface INavLinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement> {
   /**
    * Icon name for the icon shown on the left side of the nav link
    */

@@ -47,7 +47,6 @@ export class NavGroupBase extends BaseComponent<INavGroupProps, {}> {
                   {...link}
                   isNavCollapsed={isNavCollapsed}
                   href={link.url}
-                  data-value={link.name}
                   aria-label={link.ariaLabel ? link.ariaLabel : link.name}
                   {...link.isSelected && { 'aria-current': 'page' }}
                   primaryIconName={link.icon}

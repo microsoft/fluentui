@@ -104,9 +104,6 @@ export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }>
           dataHint="PrimaryNavigation"
           enableCustomization={true}
           showMore={true}
-          editString={'Edit navigation'}
-          showMoreString={'Show more'}
-          showLessString={'Show less'}
           isNavCollapsed={this.state.isNavCollapsed}
           onNavCollapsed={this._onNavCollapsed}
         />

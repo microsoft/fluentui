@@ -26,13 +26,11 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
     this.containerRef = React.createRef<HTMLDivElement>();
     this.focusRef = React.createRef<IFocusZone>();
     this._onNavCollapseClicked = this._onNavCollapseClicked.bind(this);
-    this._editClicked = this._editClicked.bind(this);
-    this._toggleMore = this._toggleMore.bind(this);
     this._setScrollLayout = this._setScrollLayout.bind(this);
   }
 
   public render(): JSX.Element {
-    const { groups, enableCustomization, showMore, editString, showMoreString, showLessString, dataHint, styles } = this.props;
+    const { groups, enableCustomization, showMore, dataHint, styles, showMoreLinkProps, editLinkProps, collapseNavLinkProps } = this.props;
     const { shouldScroll } = this.state;
 
     const isNavCollapsed = this.props.isNavCollapsed === undefined ? this.state.isNavCollapsed : this.props.isNavCollapsed;
@@ -46,14 +44,13 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
             <ul role="menubar" aria-orientation="vertical" className={classNames.navGroup}>
               <li role="none">
                 <NavLink
-                  onClick={this._onNavCollapseClicked}
-                  data-hint={dataHint}
-                  data-value={'NavToggle'}
                   aria-label="Navigation Collapse"
                   primaryIconName={'GlobalNavButton'}
+                  title={'Navigation Collapse Button'}
+                  {...collapseNavLinkProps}
+                  onClick={this._onNavCollapseClicked}
                   role="switch"
                   aria-checked={isNavCollapsed}
-                  title={'Navigation Collapse Button'}
                 />
               </li>
 
@@ -76,27 +73,21 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
                 <>
                   <li role="none">
                     <NavLink
-                      name={editString}
-                      onClick={this._editClicked}
-                      data-hint={'Edit navigation'}
-                      data-value={'NavToggle'}
                       aria-label={'Edit navigation'}
                       primaryIconName={'Edit'}
-                      role="menuitem"
                       title={'Edit navigation'}
+                      {...editLinkProps}
+                      role="menuitem"
                     />
                   </li>
                   {showMore && (
                     <li role="none">
                       <NavLink
-                        name={showMore ? showMoreString : showLessString}
-                        onClick={this._toggleMore}
-                        data-hint={'Show more'}
-                        data-value={'Show more'}
                         aria-label={'Show more'}
                         primaryIconName={'More'}
-                        role="menuitem"
                         title={'Show more'}
+                        {...showMoreLinkProps}
+                        role="menuitem"
                       />
                     </li>
                   )}
@@ -131,10 +122,17 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
   //
   // Event handlers
   //
-  private _onNavCollapseClicked(ev: React.MouseEvent<HTMLElement>): void {
+  private _onNavCollapseClicked(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void {
     // inform the caller about the collapse event
+
+    // collapse this into a single call by extending interface and overriding sig
     if (this.props.onNavCollapsed) {
       this.props.onNavCollapsed(!this.state.isNavCollapsed);
+    }
+
+    // additionally call onClick if it was provided in props
+    if (this.props.collapseNavLinkProps && this.props.collapseNavLinkProps.onClick) {
+      this.props.collapseNavLinkProps.onClick(ev);
     }
 
     if (this.props.isNavCollapsed === undefined) {
@@ -145,20 +143,5 @@ export class NavBase extends BaseComponent<INavProps, INavState> {
 
     ev.preventDefault();
     ev.stopPropagation();
-  }
-
-  // TODO: make this a callback
-  private _editClicked(ev: React.MouseEvent<HTMLElement>): void {
-    ev.preventDefault();
-    ev.stopPropagation();
-  }
-
-  // TODO: make this a callback
-  private _toggleMore(ev: React.MouseEvent<HTMLElement>): void {
-    ev.preventDefault();
-    ev.stopPropagation();
-    if (this.props.onShowMoreLinkClicked) {
-      this.props.onShowMoreLinkClicked(ev);
-    }
   }
 }

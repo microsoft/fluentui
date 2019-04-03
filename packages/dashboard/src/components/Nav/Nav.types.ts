@@ -1,5 +1,5 @@
-﻿import * as React from 'react';
-import { IStyle, IStyleFunctionOrObject, IBaseProps, INavLinkGroup } from 'office-ui-fabric-react';
+﻿import { IStyle, IStyleFunctionOrObject, IBaseProps, INavLinkGroup } from 'office-ui-fabric-react';
+import { INavLinkProps } from './NavLink.types';
 
 export interface INavProps extends IBaseProps {
   /**
@@ -41,40 +41,24 @@ export interface INavProps extends IBaseProps {
   showMore?: boolean;
 
   /**
-   * Enables custom string for the Edit link
+   * Props to pass into the show more link
    */
-  editString?: string;
+  showMoreLinkProps?: INavLinkProps;
 
   /**
-   * Enables custom string for the Show more link
+   * Props to pass into the edit link
    */
-  showMoreString?: string;
+  editLinkProps?: INavLinkProps;
 
   /**
-   * Enables custom string for the Show less link
+   * Props to pass into the edit link
    */
-  showLessString?: string;
+  collapseNavLinkProps?: INavLinkProps;
 
   /**
    * Callback for the parent component when the nav component is toggled between expanded and collapsed state
    */
   onNavCollapsed?(isCollapsed: boolean): void;
-
-  /**
-   * Callback for the Nav and when the "Show more" / "Show less" nav link is clicked.
-   * The state "showMore" stays in the parent NavToggler component to keep show more/less state of Nav and SlimNav component in sync.
-   */
-  onShowMoreLinkClicked?(ev: React.MouseEvent<HTMLElement>): void;
-
-  /**
-   * Callback for the parent component when the nav node is toggled between expanded and collapsed state
-   */
-  onNavLinkGroupExpandedCallback?(nodeKey: string, isExpanded: boolean): void;
-
-  /**
-   * Callback for the parent component when the edit nav node is clicked
-   */
-  onEditNavClickedCallback?(): void;
 }
 
 export interface INavState {
