@@ -142,4 +142,54 @@ describe('Toggle', () => {
     expect((component as React.Component<any, any>).state.checked).toEqual(true);
     expect(onSubmit.called).toEqual(false);
   });
+
+  describe('aria-labelledby', () => {
+    it('has no aria-labelledby attribute if ariaLabel is provided', () => {
+      const component = mount(<Toggle label="Label" ariaLabel="AriaLabel" />);
+
+      expect(
+        component
+          .find('button')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-labelledby')
+      ).toBeNull();
+    });
+
+    it('is labelled by the label element if no aria labels are provided', () => {
+      const component = mount(<Toggle label="Label" id="ToggleId" />);
+
+      expect(
+        component
+          .find('button')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-labelledby')
+      ).toBe('ToggleId-label');
+    });
+
+    it('is labelled by the state text element if no aria labels are provided and no label is provided', () => {
+      const component = mount(<Toggle onText="On" offText="Off" id="ToggleId" />);
+
+      expect(
+        component
+          .find('button')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-labelledby')
+      ).toBe('ToggleId-stateText');
+    });
+
+    it('is labelled by the state text element if no aria labels are provided and no label is provided', () => {
+      const component = mount(<Toggle onText="On" offText="Off" id="ToggleId" />);
+
+      expect(
+        component
+          .find('button')
+          .first()
+          .getDOMNode()
+          .getAttribute('aria-labelledby')
+      ).toBe('ToggleId-stateText');
+    });
+  });
 });
