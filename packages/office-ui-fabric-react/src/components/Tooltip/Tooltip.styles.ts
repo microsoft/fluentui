@@ -27,8 +27,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
     content: [
       'ms-Tooltip-content',
       fonts.small,
-      palette.neutralPrimary,
       {
+        color: palette.neutralPrimary,
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
         overflow: 'hidden'
@@ -37,6 +37,7 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
     subText: [
       'ms-Tooltip-subtext',
       {
+        fontSize: fonts.small.fontSize,
         margin: 0
       }
     ]
