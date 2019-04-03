@@ -245,6 +245,16 @@ describe('SelectionZone', () => {
     expect(_selection.getSelectedCount()).toEqual(0);
   });
 
+  it('can remove selection after the first click event rebinding', () => {
+    _selection.setAllSelected(true);
+
+    _simulateClick(_toggle0);
+    // Raise real browser event.
+    document.documentElement.click();
+
+    expect(_selection.getSelectedCount()).toEqual(0);
+  });
+
   it('does not select an item on mousedown of the surface with no modifiers', () => {
     ReactTestUtils.Simulate.mouseDown(_invoke0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
