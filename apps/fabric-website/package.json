@@ -46,13 +46,13 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/example-app-base": "^6.13.2",
-    "@uifabric/experiments": "^6.66.1",
+    "@uifabric/experiments": "^6.67.0",
     "@uifabric/fabric-website-resources": "^6.14.1",
     "@uifabric/icons": "^6.5.1",
     "@uifabric/set-version": "^1.1.3",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^6.164.2",
+    "office-ui-fabric-react": "^6.164.3",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

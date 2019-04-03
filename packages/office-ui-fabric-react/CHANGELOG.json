@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.164.3",
+      "tag": "office-ui-fabric-react_v6.164.3",
+      "date": "Wed, 03 Apr 2019 12:38:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Adding missing parenthesis in ev.stopPropagation function call.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "a35bc098fb3362de69605af6796de91e07b901d6"
+          },
+          {
+            "comment": "CommandBar: Meeting color contrast accessibility standards in examples.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "666b604d53b95adba4d3974765292f78f1d05529"
+          },
+          {
+            "comment": "Button: Allowing menu navigation with keyboard when shouldFocusOnMount is set to false.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "36e932d26b40014e234a3fff1d44192598e4bcaa"
+          },
+          {
+            "comment": "PeoplePicker: Fix persona overflowing container",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "211a1a51580fd98b97e775e36da6468c659d9a80"
+          },
+          {
+            "comment": "Small bug fixes for keytips",
+            "author": "jofrey-a-msft-production <44853701+jofrey-a-msft-production@users.noreply.github.com>",
+            "commit": "9397e54c5eb85ef2659c81a72c10b20f3477621d"
+          },
+          {
+            "comment": "BaseFloatingPicker: do not update unmounted component on promise resolution",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "1f841ea38ff72b7e0988a6a2e076c3d6cfe52d78"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.164.2",
       "tag": "office-ui-fabric-react_v6.164.2",
       "date": "Tue, 02 Apr 2019 12:36:20 GMT",
