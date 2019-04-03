@@ -21,7 +21,7 @@ export interface IButtonSlots {
   root?: IHTMLElementSlot<'button'>;
 
   /**
-   * Defines the horizontal stack used for specifying inner layout of Button.
+   * Defines the horizontal stack used for specifying the inner layout of the Button.
    */
   stack?: IStackSlot;
 

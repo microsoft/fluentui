@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Apr 2019 12:36:20 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Apr 2019 12:38:51 GMT and should not be manually modified.
+
+## 6.164.3
+Wed, 03 Apr 2019 12:38:51 GMT
+
+### Patches
+
+- Button: Adding missing parenthesis in ev.stopPropagation function call.
+- CommandBar: Meeting color contrast accessibility standards in examples.
+- Button: Allowing menu navigation with keyboard when shouldFocusOnMount is set to false.
+- PeoplePicker: Fix persona overflowing container
+- Small bug fixes for keytips
+- BaseFloatingPicker: do not update unmounted component on promise resolution
 
 ## 6.164.2
 Tue, 02 Apr 2019 12:36:20 GMT

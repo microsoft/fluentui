@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseFloatingPicker: do not update unmounted component on promise resolution",
+      "comment": "SelectionZone: Defer dom inspection until interaction",
       "type": "patch"
     }
   ],

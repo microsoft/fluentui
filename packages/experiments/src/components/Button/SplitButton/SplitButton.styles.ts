@@ -1,7 +1,7 @@
 import { getFocusStyle } from '../../../Styling';
-import { ISplitMenuButtonComponent, ISplitMenuButtonStylesReturnType, ISplitMenuButtonTokenReturnType } from './SplitMenuButton.types';
+import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
-const baseTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => {
+const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackground,
@@ -10,7 +10,7 @@ const baseTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMe
   };
 };
 
-const primaryTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => {
+const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
@@ -18,7 +18,7 @@ const primaryTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISpli
   };
 };
 
-const disabledTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => {
+const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundDisabled,
@@ -26,13 +26,13 @@ const disabledTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISpl
   };
 };
 
-export const SplitMenuButtonTokens: ISplitMenuButtonComponent['tokens'] = (props, theme): ISplitMenuButtonTokenReturnType => [
+export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => [
   baseTokens,
   props.primary && primaryTokens,
   (props.primaryActionDisabled || props.disabled) && disabledTokens
 ];
 
-export const SplitMenuButtonStyles: ISplitMenuButtonComponent['styles'] = (props, theme, tokens): ISplitMenuButtonStylesReturnType => {
+export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
   return {
     root: [
       getFocusStyle(theme),

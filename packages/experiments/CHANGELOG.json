@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.67.0",
+      "tag": "@uifabric/experiments_v6.67.0",
+      "date": "Wed, 03 Apr 2019 12:38:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Improvements on Button docs.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1638c988fadd418537debd78d4244144d3b63527"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Fixing SplitButton styling issues and correctly placing divider.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "bfe9b414a7620ea54351f98c805aef36bf3567d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.2` to `^6.164.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.66.1",
       "tag": "@uifabric/experiments_v6.66.1",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",
