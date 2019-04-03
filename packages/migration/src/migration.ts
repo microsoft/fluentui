@@ -24,3 +24,7 @@ export function applyRegisteredMigrations() {
   });
   console.log('Finished!');
 }
+
+export function warn(message: string) {
+  console.error(`  ${message}`);
+}

@@ -9,14 +9,6 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
-/**
- * @deprecated Unused.
- */
-export enum ValuePosition {
-  Previous = 0,
-  Next = 1
-}
-
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
