@@ -55,6 +55,9 @@ sort out extensibility */
         }
       }
     },
+    nestedNavHeaderItemText: {
+      margin: '0px 12px'
+    },
     nestedNavLinksWrapper: [
       !isNavCollapsed && isExpanded && [AnimationClassNames.fadeIn400, AnimationClassNames.slideDownIn20],
       !isNavCollapsed &&

@@ -27,6 +27,7 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
       background: 'transparent',
       border: 'none',
       padding: 0,
+      textAlign: 'inherit',
       selectors: {
         ':hover': {
           backgroundColor: hasNestedMenu ? navItemWithChildBgColor : navItemHoverColor
@@ -101,8 +102,7 @@ export const getStyles = (props: INavLinkStyleProps): INavLinkStyles => {
         textOverflow: 'ellipsis',
         overflowX: 'hidden',
         whiteSpace: 'nowrap',
-        color: DefaultPalette.black,
-        textAlign: 'left'
+        color: DefaultPalette.black
       }
     ]
   };

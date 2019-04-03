@@ -84,4 +84,5 @@ export interface INavLinkGroupStyles {
   nestedNavLinksWrapper: IStyle;
   nestedNavLinks: IStyle;
   nestedNavHeaderItem: IStyle;
+  nestedNavHeaderItemText: IStyle;
 }

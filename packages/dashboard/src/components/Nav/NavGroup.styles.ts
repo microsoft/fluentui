@@ -29,7 +29,7 @@ export const getStyles = (): INavGroupStyles => {
       lineHeight: navItemHeight,
       color: DefaultPalette.black,
       fontWeight: FontWeights.bold,
-      marginLeft: '16px',
+      margin: '0px 16px',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap'

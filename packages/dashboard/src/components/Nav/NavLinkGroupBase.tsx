@@ -68,7 +68,7 @@ export class NavLinkGroupBase extends React.Component<INavLinkGroupProps, INavLi
                 data-is-focusable={false}
                 aria-hidden={true}
                 primaryIconName={link.icon}
-                styles={{ root: classNames.nestedNavHeaderItem }}
+                styles={{ root: classNames.nestedNavHeaderItem, text: classNames.nestedNavHeaderItemText }}
               />
             )}
             <div className={classNames.nestedNavLinksWrapper}>
