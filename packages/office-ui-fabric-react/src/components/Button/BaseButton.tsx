@@ -685,7 +685,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       });
 
       ev.preventDefault();
-      ev.stopPropagation;
+      ev.stopPropagation();
     }
   };
 
