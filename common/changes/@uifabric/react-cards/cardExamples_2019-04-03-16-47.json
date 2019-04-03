@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/react-cards",
-      "comment": "Card: Updating examples to show narrow card with contents.",
+      "comment": "Card: Updating examples to show narrow card with contents and to remove use of mergeStyleSets and gap.",
       "type": "patch"
     }
   ],
