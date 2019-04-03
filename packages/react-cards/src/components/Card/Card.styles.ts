@@ -1,4 +1,4 @@
-import { getGlobalClassNames } from '@uifabric/styling';
+import { getGlobalClassNames, HighContrastSelector } from '@uifabric/styling';
 import { Depths } from '@uifabric/fluent-theme';
 import { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
 
@@ -51,7 +51,15 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
 
         selectors: {
           ':hover': {
-            boxShadow: tokens.boxShadowHovered
+            boxShadow: tokens.boxShadowHovered,
+            selectors: {
+              [HighContrastSelector]: {
+                boxShadow: '0 3.2px 7.2px 0 Highlight, 0 0.6px 1.8px 0 Highlight'
+              }
+            }
+          },
+          [HighContrastSelector]: {
+            boxShadow: '0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight'
           }
         }
       }
