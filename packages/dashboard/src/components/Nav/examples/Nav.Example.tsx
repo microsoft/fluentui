@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { INavLinkGroup, mergeStyles } from 'office-ui-fabric-react';
+import { INavLinkGroup, mergeStyles, DefaultButton } from 'office-ui-fabric-react';
 import { Nav } from '../Nav';
 
-export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }> {
+export class NavExample extends React.Component<{}, { isNavCollapsed: boolean; dir: string }> {
   constructor(props: {}) {
     super(props);
-    this.state = { isNavCollapsed: true };
+    this.state = { isNavCollapsed: true, dir: 'ltr' };
     this._onNavCollapsed = this._onNavCollapsed.bind(this);
+    this._switchRTL = this._switchRTL.bind(this);
   }
 
   public render(): JSX.Element {
@@ -33,7 +34,8 @@ export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }>
                 target: '_blank',
                 onClick: () => {
                   console.log('some telemetry here');
-                }
+                },
+                title: 'contacs stuff'
               },
               {
                 name: 'Item with click and force <a>',
@@ -98,7 +100,7 @@ export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }>
     const mainStyle = mergeStyles({ display: 'flex', height: '800px' });
     const contentStyle = mergeStyles({ flex: '1 1 auto', padding: '24px', backgroundColor: 'pink' });
     return (
-      <div className={mainStyle}>
+      <div className={mainStyle} dir={this.state.dir}>
         <Nav
           groups={navLinkGroups}
           dataHint="PrimaryNavigation"
@@ -107,7 +109,10 @@ export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }>
           isNavCollapsed={this.state.isNavCollapsed}
           onNavCollapsed={this._onNavCollapsed}
         />
-        <div className={contentStyle}>Content Here</div>
+        <div className={contentStyle}>
+          <h1>Content Here</h1>
+          <DefaultButton onClick={this._switchRTL}>Switch Dir</DefaultButton>
+        </div>
       </div>
     );
   }
@@ -117,5 +122,9 @@ export class NavExample extends React.Component<{}, { isNavCollapsed: boolean }>
   // we are handling it on our own we don't need it hence the "_"
   private _onNavCollapsed(_isNavCollapsed: boolean): void {
     this.setState({ isNavCollapsed: !this.state.isNavCollapsed });
+  }
+
+  private _switchRTL(): void {
+    this.setState({ dir: this.state.dir === 'ltr' ? 'rtl' : 'ltr' });
   }
 }

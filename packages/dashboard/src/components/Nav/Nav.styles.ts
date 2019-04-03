@@ -43,7 +43,10 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         selectors: {
           ':hover': {
             overflow: 'unset',
-            marginRight: -scrollBarWidth + 'px'
+            margin: `0px -${scrollBarWidth}px 0px 0px`
+          },
+          '*[dir="rtl"] &:hover': {
+            margin: `0px 0px 0px -${scrollBarWidth}px`
           }
         }
       }
@@ -59,8 +62,13 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         fontSize: navFontSize,
         overflowY: 'scroll',
         overflowX: 'hidden',
-        marginRight: -scrollBarWidth + 'px',
-        height: '100%'
+        margin: `0px -${scrollBarWidth}px 0px 0px`,
+        height: '100%',
+        selectors: {
+          '*[dir="rtl"] &': {
+            margin: `0px 0px 0px -${scrollBarWidth}px`
+          }
+        }
       },
       isNavCollapsed && {
         width: navCollapsedWidth + scrollBarWidth
@@ -68,7 +76,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       shouldScroll && {
         selectors: {
           ':hover': {
-            marginRight: '0px'
+            margin: '0px'
           }
         }
       }
@@ -76,7 +84,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     // NavGroup
     navGroup: {
       margin: 0,
-      paddingLeft: 0,
+      padding: 0,
       listStyle: 'none'
     }
   };
