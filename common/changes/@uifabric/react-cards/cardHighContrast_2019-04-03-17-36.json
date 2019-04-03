@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "Card: Supporting High Contrast mode.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
