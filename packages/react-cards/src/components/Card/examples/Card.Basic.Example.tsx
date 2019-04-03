@@ -62,7 +62,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
         <Card onClick={alertClicked} tokens={tokens.narrowCard}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           <Card.Item tokens={{ margin: '0 -13px' }}>
-            <Image src="https://placehold.it/256x144" width="100%" />
+            <Image src="https://placehold.it/256x144" width="100%" alt="Placeholder image." />
           </Card.Item>
           <Text styles={styles.siteText}>Contoso</Text>
           <Text styles={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
@@ -82,7 +82,7 @@ export class CardBasicExample extends React.Component<{}, {}> {
         <Card onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
           <Card.Item tokens={{ margin: '0 -13px' }}>
-            <Image src="https://placehold.it/256x144" width="100%" />
+            <Image src="https://placehold.it/256x144" width="100%" alt="Placeholder image." />
           </Card.Item>
           <Text styles={styles.siteText}>Contoso</Text>
           <Text styles={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>

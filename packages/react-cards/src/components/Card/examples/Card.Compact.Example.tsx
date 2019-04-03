@@ -61,7 +61,7 @@ export class CardCompactExample extends React.Component<{}, {}> {
 
         <Card compact={true} onClick={alertClicked}>
           <Card.Item tokens={{ margin: '-12px 0 -12px -12px' }}>
-            <Image src="https://placehold.it/180x135" />
+            <Image src="https://placehold.it/180x135" alt="Placeholder image." />
           </Card.Item>
           <Stack tokens={tokens.contentStack}>
             <Text styles={styles.siteText}>Contoso</Text>
