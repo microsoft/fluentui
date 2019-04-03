@@ -1,5 +1,13 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
-import { AnimationClassNames, FontSizes, HighContrastSelector, IStyle, getFocusStyle, getGlobalClassNames } from '../../Styling';
+import {
+  AnimationClassNames,
+  FontSizes,
+  HighContrastSelector,
+  IStyle,
+  getFocusStyle,
+  getGlobalClassNames,
+  FontWeights
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
@@ -12,6 +20,7 @@ const GlobalClassNames = {
   isContentUnselectable: 'is-contentUnselectable',
   isSelected: 'is-selected',
   isCheckVisible: 'is-check-visible',
+  isRowHeader: 'is-row-header',
   fields: 'ms-DetailsRow-fields'
 };
 
@@ -68,38 +77,42 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
   const colors = {
     // Default
-    defaultHeaderTextColor: neutralPrimary,
-    defaultMetaTextColor: neutralSecondary,
-    defaultBackgroundColor: white,
+    defaultHeaderText: neutralPrimary,
+    defaultMetaText: neutralSecondary,
+    defaultBackground: white,
 
-    // Hover
-    hoverTextColor: neutralPrimary,
-    hoverColorBackground: neutralLighter,
+    // Default Hover
+    defaultHoverHeaderText: neutralDark,
+    defaultHoverMetaText: neutralPrimary,
+    defaultHoverBackground: neutralLighter,
 
     // Selected
-    selectedTextColor: neutralDark,
-    selectedMetaTextColor: neutralPrimary,
-    selectedBackgroundColor: neutralLight,
+    selectedHeaderText: neutralDark,
+    selectedMetaText: neutralPrimary,
+    selectedBackground: neutralLight,
 
     // Selected Hover
-    selectedHoverTextColor: black,
-    selectedHoverMetaTextColor: neutralDark,
-    selectedHoverBackgroundColor: neutralQuaternaryAlt,
+    selectedHoverHeaderText: neutralDark,
+    selectedHoverMetaText: neutralPrimary,
+    selectedHoverBackground: neutralQuaternaryAlt,
 
     // Focus
-    focusHeaderTextColor: black,
-    focusBackgroundColor: neutralQuaternaryAlt,
-    focusMetaTextColor: neutralDark
+    focusHeaderText: black,
+    focusMetaText: neutralDark,
+    focusBackground: neutralLight,
+    focusHoverBackground: neutralQuaternaryAlt
   };
 
-  const shimmerRightBorderStyle = `${cellStyleProps.cellRightPadding * 4}px solid ${colors.defaultBackgroundColor}`;
-  const shimmerLeftBorderStyle = `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackgroundColor}`;
+  const shimmerRightBorderStyle = `${cellStyleProps.cellRightPadding * 4}px solid ${colors.defaultBackground}`;
+  const shimmerLeftBorderStyle = `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackground}`;
+
+  // Selected row styles
   const selectedStyles: IStyle = [
     getFocusStyle(theme, -1, undefined, undefined, focusBorder, white),
     classNames.isSelected,
     {
-      color: colors.selectedMetaTextColor,
-      background: colors.selectedBackgroundColor,
+      color: colors.selectedMetaText,
+      background: colors.selectedBackground,
       borderBottom: `1px solid ${white}`,
       selectors: {
         '&:before': {
@@ -116,11 +129,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
         // Selected State hover
         '&:hover': {
-          background: colors.selectedHoverBackgroundColor,
+          background: colors.selectedHoverBackground,
           selectors: {
             // Selected State hover meta cell
             $cell: {
-              color: colors.selectedHoverMetaTextColor,
+              color: colors.selectedHoverMetaText,
 
               selectors: {
                 [HighContrastSelector]: {
@@ -134,7 +147,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
                 // Selected State hover Header cell
                 '&.$isRowHeader': {
-                  color: colors.selectedHoverTextColor,
+                  color: 'red',
                   selectors: {
                     [HighContrastSelector]: {
                       color: 'HighlightText'
@@ -148,12 +161,12 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
         // Focus state
         '&:focus': {
-          background: colors.focusBackgroundColor,
+          background: colors.focusBackground,
 
           selectors: {
             // Selected State hover meta cell
             $cell: {
-              color: colors.focusMetaTextColor,
+              color: colors.focusMetaText,
               [HighContrastSelector]: {
                 color: 'HighlightText',
                 selectors: {
@@ -165,7 +178,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
               // Row header cell
               '&.$isRowHeader': {
-                color: colors.focusHeaderTextColor,
+                color: colors.focusHeaderText,
                 selectors: {
                   [HighContrastSelector]: {
                     color: 'HighlightText'
@@ -174,6 +187,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
               }
             }
           }
+        },
+
+        // Focus and hover state
+        '&:focus:hover': {
+          background: colors.focusHoverBackground
         }
       }
     }
@@ -203,15 +221,15 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         padding: 0,
         borderLeft: shimmerLeftBorderStyle,
         borderRight: shimmerRightBorderStyle,
-        borderTop: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
-        borderBottom: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`
+        borderTop: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackground}`,
+        borderBottom: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackground}`
       },
 
       // Masking the running shimmer background with borders when it's an Icon placeholder
       [`&$shimmerIconPlaceholder`]: {
-        borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
-        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`,
-        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`
+        borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackground}`,
+        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`,
+        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`
       }
     }
   };
@@ -242,29 +260,20 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           padding: 0,
           borderLeft: shimmerLeftBorderStyle,
           borderRight: shimmerRightBorderStyle,
-          borderTop: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`,
-          borderBottom: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackgroundColor}`
+          borderTop: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackground}`,
+          borderBottom: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackground}`
         },
 
         '&$shimmerIconPlaceholder': {
-          borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
-          borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`,
-          borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`
+          borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackground}`,
+          borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`,
+          borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`
         }
       }
     },
 
     isSelected && {
       selectors: {
-        '&.$isRowHeader': {
-          color: colors.selectedTextColor,
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'HighlightText'
-            }
-          }
-        },
-
         [HighContrastSelector]: {
           background: 'Highlight',
           color: 'HighlightText',
@@ -291,8 +300,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       getFocusStyle(theme, 0, undefined, undefined, focusBorder, white),
       {
         borderBottom: `1px solid ${neutralLighter}`,
-        background: colors.defaultBackgroundColor,
-        color: colors.defaultMetaTextColor,
+        background: colors.defaultBackground,
+        color: colors.defaultMetaText,
         display: 'inline-flex', // This ensures that the row always tries to consume is minimum width and does not compress.
         minWidth: '100%',
         minHeight: values.rowHeight,
@@ -307,10 +316,14 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           },
 
           '&:hover': {
-            background: colors.hoverColorBackground
+            background: colors.defaultHoverBackground
           },
 
           '&:hover $check': {
+            opacity: 1
+          },
+
+          '&:focus $check': {
             opacity: 1
           }
         }
@@ -381,9 +394,19 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     ],
     isRowHeader: [
+      classNames.isRowHeader,
       {
-        color: colors.defaultHeaderTextColor,
+        color: colors.defaultHeaderText,
         fontSize: FontSizes.medium
+      },
+      isSelected && {
+        color: 'red',
+        fontWeight: FontWeights.semibold,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'HighlightText'
+          }
+        }
       }
     ],
     isMultiline: [
@@ -399,13 +422,13 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     shimmerLeftBorder: [
       {
         // 40px to take into account the checkbox of items if present.
-        borderLeft: `40px solid ${colors.defaultBackgroundColor}`
+        borderLeft: `40px solid ${colors.defaultBackground}`
       }
     ],
     shimmerBottomBorder: [
       {
         // 1px to take into account the border-bottom when items replace shimmer lines and in default state.
-        borderBottom: `1px solid ${colors.defaultBackgroundColor}`
+        borderBottom: `1px solid ${colors.defaultBackground}`
       }
     ],
     check: []
