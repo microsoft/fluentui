@@ -1,15 +1,17 @@
 import { IWizardProps } from './Wizard.types';
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IFullParentWizardProps {
+export interface IFullPageWizardProps {
   wizardProps: IWizardProps;
 
-  styles?: IFullParentWizardStyles;
+  styles?: IFullPageWizardStyles;
 
   theme?: ITheme;
+
+  title: string;
 }
 
-export interface IFullParentWizardStyles {
+export interface IFullPageWizardStyles {
   headerContainer: IStyle;
 
   footerContainer: IStyle;
@@ -17,6 +19,6 @@ export interface IFullParentWizardStyles {
   parentContainer: IStyle;
 }
 
-export interface IFullParentWizardStyleProps {
+export interface IFullPageWizardStyleProps {
   theme: ITheme;
 }

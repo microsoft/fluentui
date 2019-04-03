@@ -36,36 +36,22 @@ const SLIDE_DOWN_OUT: string = _createSlideOutY(790);
 function _createSlideInY(fromY: number): string {
   return keyframes({
     from: { transform: `translateY(${fromY}px)` },
-    to: { transform: `translateY(0)` }
-    /*from: { transform: `translate3d(0,${fromY}px,0)` },
-    to: { transform: `translate3d(0,0,0)` }*/
+    to: { transform: `translateY(0px)` }
   });
 }
 
 function _createSlideOutY(toY: number): string {
   return keyframes({
-    from: { transform: `translateY(0)` },
     to: { transform: `translateY(${toY}px)` }
-    /*from: { transform: `translate3d(0,0,0)` },
-    to: { transform: `translate3d(0,${toY}px,0)` }*/
   });
 }
 
 const FADE_IN: string = keyframes({
-  from: { opacity: 0 },
   to: { opacity: 1 }
 });
 
 const FADE_OUT: string = keyframes({
-  from: { opacity: 1 },
   to: { opacity: 0 }
-});
-
-// Check why from 0x is not starting at correct position?
-// Hence using slideUpOutKeyframes instead of "SLIDE_UP_OUT"
-const slideUpOutKeyframes = keyframes({
-  from: { transform: `translateY(-790px)` },
-  to: { transform: `translateY(-1270px)` }
 });
 
 export const wizardAnimationDurationMilliSec = 667 + testTiming * 1000;
@@ -185,7 +171,7 @@ export const contentSlideUpOutAnimation = _createAnimation(
   fadeAnimDuration,
   fadeOutTimingFunction,
   animationOutDelay,
-  slideUpOutKeyframes, // `${SLIDE_UP_OUT}`,
+  SLIDE_UP_OUT,
   contentOutAnimDuration,
   slideOutTimingFunction,
   animationOutDelay

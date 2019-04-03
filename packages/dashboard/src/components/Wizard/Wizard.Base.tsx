@@ -3,17 +3,10 @@ import { IWizardProps, IWizardStyles, IWizardStyleProps } from './Wizard.types';
 import { SubwayNav } from '../SubwayNav/SubwayNav';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { TransitionGroup, Transition, TransitionStatus } from 'react-transition-group';
 import { wizardAnimationDurationMilliSec } from './Wizard.animation';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
-
-// This returns a childFactory to provide to TransitionGroup
-// tslint:disable:no-any
-const childFactoryCreator = (classNames: any) => (child: any) =>
-  React.cloneElement(child, {
-    classNames
-  });
 
 /** Component for Wizard Base */
 export class WizardBase extends React.Component<IWizardProps, {}> {
@@ -52,46 +45,39 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
     const contentSectionKey = 'contentSection-' + wizardStepProps.id;
     const contentTitleKey = 'contentTitle-' + wizardStepProps.id;
     const contentKey = 'content-' + wizardStepProps.id;
-
-    let mainStepTransitionClass;
-    if (wizardStyleProps.clickedForward) {
-      mainStepTransitionClass = {
-        enter: classNames.stepSlideUpEnter,
-        enterActive: classNames.stepSlideUpEnterActive,
-        exit: classNames.stepSlideUpExit,
-        exitActive: classNames.stepSlideUpExitActive
-      };
-    } else {
-      mainStepTransitionClass = {
-        enter: classNames.stepSlideDownEnter,
-        enterActive: classNames.stepSlideDownEnterActive,
-        exit: classNames.stepSlideDownExit,
-        exitActive: classNames.stepSlideDownExitActive
-      };
-    }
-
+    let animationToApply: string;
     return (
       <div className={classNames.wizardContentNavContainer}>
         <div className={classNames.subwayNavSection}>
           <SubwayNav steps={steps} wizardComplete={this.props.wizardComplete} />
         </div>
         <div className={classNames.contentSectionContainer}>
-          <TransitionGroup childFactory={childFactoryCreator(mainStepTransitionClass)}>
-            <CSSTransition
-              key={contentAnimKey}
-              className={classNames.contentSection}
-              classNames={mainStepTransitionClass}
-              timeout={wizardAnimationDurationMilliSec}
-            >
-              <div key={contentSectionKey}>
-                <div key={contentTitleKey} className={classNames.contentTitle}>
-                  {wizardStepProps.wizardContent!.contentTitleElement}
-                </div>
-                <div key={contentKey} className={classNames.content}>
-                  {wizardStepProps.wizardContent!.content}
-                </div>
-              </div>
-            </CSSTransition>
+          <TransitionGroup component={null}>
+            <Transition timeout={wizardAnimationDurationMilliSec} key={contentAnimKey}>
+              {(state: TransitionStatus) => {
+                let hideScroll;
+                if (state === 'entering' || state === 'exiting') {
+                  animationToApply = state === 'entering' ? classNames.stepSlideUpEnterActive : classNames.stepSlideUpExitActive;
+                  hideScroll = true;
+                } else if (state === 'exited') {
+                  hideScroll = false;
+                }
+                return (
+                  <div
+                    key={contentSectionKey}
+                    className={classNames.contentSection + ` ${animationToApply}`}
+                    {...hideScroll && { style: { overflow: 'hidden' } }}
+                  >
+                    <div key={contentTitleKey} className={classNames.contentTitle}>
+                      {wizardStepProps.wizardContent!.contentTitleElement}
+                    </div>
+                    <div key={contentKey} className={classNames.content}>
+                      {wizardStepProps.wizardContent!.content}
+                    </div>
+                  </div>
+                );
+              }}
+            </Transition>
           </TransitionGroup>
         </div>
       </div>

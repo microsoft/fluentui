@@ -27,11 +27,10 @@ declare module 'react-transition-group' {
   }
 
   export type TransitionStatus =
-      typeof ENTERING |
-      typeof ENTERED |
-      typeof EXITING |
-      typeof EXITED |
-      typeof UNMOUNTED;
+  'entering'|
+  'entered'|
+  'exiting'|
+  'exited';
   export type TransitionChildren = React.ReactNode | ((status: TransitionStatus) => React.ReactNode);
   export interface ITransitionProps extends ITransitionActions {
       in?: boolean;

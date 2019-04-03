@@ -33,6 +33,7 @@ export class SetupWizardCompleteExample extends WizardExampleBase<ISetupWizardSt
             wizardComplete: true,
             wizardCompleteStep: wizardCompleteStep
           }}
+          title="Complete Setup Wizard"
         />
       </div>
     );
