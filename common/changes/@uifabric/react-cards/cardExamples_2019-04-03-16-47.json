@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "Card: Updating examples to show narrow card with contents.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
