@@ -36,8 +36,9 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
     ],
     subText: [
       'ms-Tooltip-subtext',
+      fonts.small,
       {
-        fontSize: fonts.small.fontSize,
+        color: palette.neutralPrimary,
         margin: 0
       }
     ]
