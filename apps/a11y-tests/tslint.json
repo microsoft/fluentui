@@ -1,0 +1,13 @@
+{
+  "extends": ["@uifabric/tslint-rules"],
+  "rules": {
+    "no-any": false,
+    "typedef": [false],
+    "jsx-no-lambda": false
+  },
+  "linterOptions": {
+    "exclude": [
+        "src/axe-sarif-converter/**"
+    ]
+  }
+}
