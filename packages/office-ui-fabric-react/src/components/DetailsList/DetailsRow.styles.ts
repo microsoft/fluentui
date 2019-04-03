@@ -70,7 +70,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS
   } = props;
 
-  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt, black } = theme.palette;
+  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } = theme.palette;
   const { focusBorder } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -97,8 +97,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     selectedHoverBackground: neutralQuaternaryAlt,
 
     // Focus
-    focusHeaderText: black,
-    focusMetaText: neutralDark,
+    focusHeaderText: neutralDark,
+    focusMetaText: neutralPrimary,
     focusBackground: neutralLight,
     focusHoverBackground: neutralQuaternaryAlt
   };
@@ -130,11 +130,10 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         // Selected State hover
         '&:hover': {
           background: colors.selectedHoverBackground,
+          color: colors.selectedHoverMetaText,
           selectors: {
             // Selected State hover meta cell
-            $cell: {
-              color: colors.selectedHoverMetaText,
-
+            [`.${classNames.cell}`]: {
               selectors: {
                 [HighContrastSelector]: {
                   color: 'HighlightText',
@@ -143,16 +142,16 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                       color: 'HighlightText'
                     }
                   }
-                },
+                }
+              }
+            },
 
-                // Selected State hover Header cell
-                '&.$isRowHeader': {
-                  color: 'red',
-                  selectors: {
-                    [HighContrastSelector]: {
-                      color: 'HighlightText'
-                    }
-                  }
+            // Selected State hover Header cell
+            [`.${classNames.isRowHeader}`]: {
+              color: colors.selectedHoverHeaderText,
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'HighlightText'
                 }
               }
             }
@@ -162,27 +161,28 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         // Focus state
         '&:focus': {
           background: colors.focusBackground,
-
           selectors: {
             // Selected State hover meta cell
-            $cell: {
+            [`.${classNames.cell}`]: {
               color: colors.focusMetaText,
-              [HighContrastSelector]: {
-                color: 'HighlightText',
-                selectors: {
-                  '> a': {
-                    color: 'HighlightText'
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'HighlightText',
+                  selectors: {
+                    '> a': {
+                      color: 'HighlightText'
+                    }
                   }
                 }
-              },
+              }
+            },
 
-              // Row header cell
-              '&.$isRowHeader': {
-                color: colors.focusHeaderText,
-                selectors: {
-                  [HighContrastSelector]: {
-                    color: 'HighlightText'
-                  }
+            // Row header cell
+            [`.${classNames.isRowHeader}`]: {
+              color: colors.focusHeaderText,
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'HighlightText'
                 }
               }
             }
@@ -311,12 +311,18 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         verticalAlign: 'top',
         textAlign: 'left',
         selectors: {
-          [`${classNames.listCellFirstChild} &:before`]: {
+          [`.${classNames.listCellFirstChild} &:before`]: {
             display: 'none'
           },
 
           '&:hover': {
-            background: colors.defaultHoverBackground
+            background: colors.defaultHoverBackground,
+            color: colors.defaultHoverMetaText,
+            selectors: {
+              [`.${classNames.isRowHeader}`]: {
+                color: colors.defaultHoverHeaderText
+              }
+            }
           },
 
           '&:hover $check': {
@@ -400,7 +406,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         fontSize: FontSizes.medium
       },
       isSelected && {
-        color: 'red',
+        color: colors.selectedHeaderText,
         fontWeight: FontWeights.semibold,
         selectors: {
           [HighContrastSelector]: {
