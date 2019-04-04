@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Modal: constrain scrollableContent height to window.innerHeight (fix for DetailsList virtualization)",
+      "comment": "Modal: constrain scrollableContent height to 100vh and window.innerHeight for mobile Safari to support DetailsList virtualization",
       "type": "patch"
     }
   ],
