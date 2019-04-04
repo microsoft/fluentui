@@ -8518,7 +8518,6 @@ export const Slider: React_2.StatelessComponent<ISliderProps>;
 // @public (undocumented)
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
     constructor(props: ISliderProps);
-    componentWillReceiveProps(newProps: ISliderProps): void;
     // (undocumented)
     static defaultProps: ISliderProps;
     // (undocumented)
@@ -9057,14 +9056,6 @@ export enum ValidationState {
     invalid = 2,
     valid = 0,
     warning = 1
-}
-
-// @public @deprecated (undocumented)
-export enum ValuePosition {
-    // (undocumented)
-    Next = 1,
-    // (undocumented)
-    Previous = 0
 }
 
 // @public (undocumented)
