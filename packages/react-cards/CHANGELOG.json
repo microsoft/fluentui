@@ -2,6 +2,25 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.2.2",
+      "tag": "@uifabric/react-cards_v0.2.2",
+      "date": "Thu, 04 Apr 2019 12:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Updating examples to show narrow card with contents and to remove use of mergeStyleSets and gap.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "2f4325c421679bc9f0c9a2b8f032e9d128150990"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.3` to `^6.164.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.1",
       "tag": "@uifabric/react-cards_v0.2.1",
       "date": "Tue, 02 Apr 2019 00:38:15 GMT",
