@@ -20,6 +20,8 @@ module.exports = {
           '.(ts|tsx)': resolve.sync('ts-jest/dist')
         },
 
+        transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
+
         reporters: [path.resolve(__dirname, './jest-reporter.js')],
 
         testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
@@ -32,6 +34,7 @@ module.exports = {
         globals: {
           'ts-jest': {
             tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
+            packageJson: path.resolve(process.cwd(), 'package.json'),
             diagnostics: false
           }
         },
