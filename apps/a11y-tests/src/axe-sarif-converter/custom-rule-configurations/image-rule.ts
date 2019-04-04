@@ -43,7 +43,6 @@ export function evaluateImageFunction(node: HTMLElement): boolean {
   const codedAs: string = AxeUtils.getImageCodedAs(node);
   const imageType: string = AxeUtils.getImageType(node);
 
-  //@ts-ignore
   this.data({
     imageType,
     accessibleName,

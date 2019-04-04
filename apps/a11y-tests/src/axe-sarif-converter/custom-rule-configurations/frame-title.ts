@@ -26,7 +26,6 @@ function evaluateTitle(node: HTMLElement, options: any): boolean {
     frameType: node.tagName.toLowerCase(),
     frameTitle
   };
-  //@ts-ignore
   this.data(frameResultData);
 
   return !!frameTitle;

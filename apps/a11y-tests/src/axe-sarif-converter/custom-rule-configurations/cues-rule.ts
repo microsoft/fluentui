@@ -8,7 +8,6 @@ import { createNativeWidgetConfiguration, getNativeWidgetElementType } from './n
 export const cuesConfiguration: RulesConfiguration = createNativeWidgetConfiguration('cues', 'cues-collector', evaluateCues);
 
 export function evaluateCues(node: HTMLElement): boolean {
-  //@ts-ignore
   this.data({
     element: getNativeWidgetElementType(node),
     accessibleName: AxeUtils.getAccessibleText(node, false),

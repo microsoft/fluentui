@@ -32,7 +32,6 @@ function evaluateTextAlternative(node: HTMLElement): boolean {
   const accessibleDescription: string = AxeUtils.getAccessibleDescription(node);
   const imageType: string = AxeUtils.getImageType(node);
 
-  //@ts-ignore
   this.data({
     imageType,
     accessibleName,

@@ -28,7 +28,6 @@ export const linkFunctionConfiguration: RulesConfiguration = {
     matches: matches,
     decorateNode: (node: AxeNodeResult) => {
       if (node.any.length > 0) {
-        // @ts-ignore
         node.snippet = node.any[0].data[snippetKey];
       }
     },
@@ -54,7 +53,6 @@ function evaluateLinkFunction(node: HTMLElement, options: any, virtualNode: any,
 
   const snippet = missingNameOrUrl ? parentOuterHtml : node.outerHTML;
 
-  // @ts-ignore
   this.data({
     accessibleName,
     ariaAttributes: ariaValues,

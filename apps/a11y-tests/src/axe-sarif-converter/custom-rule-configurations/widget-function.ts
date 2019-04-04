@@ -35,7 +35,6 @@ export function evaluateWidgetFunction(node: HTMLElement): boolean {
     'aria-valuetext'
   ];
 
-  //@ts-ignore
   this.data({
     element: getNativeWidgetElementType(node),
     accessibleName: AxeUtils.getAccessibleText(node, false),

@@ -38,7 +38,6 @@ function evaluateCodedHeadings(node: HTMLElement, options: any): boolean {
     headingText: headingText
   };
 
-  //@ts-ignore
   this.data(headingResultData);
   return true;
 }

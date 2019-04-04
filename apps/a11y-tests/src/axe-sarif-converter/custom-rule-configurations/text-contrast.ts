@@ -27,14 +27,7 @@ export const textContrastConfiguration: RulesConfiguration = {
 };
 
 function evaluateTextContrast(node: HTMLElement, options: any, virtualNode: any, context: any): boolean {
-  const checkResult = AxeUtils.getEvaluateFromCheck('color-contrast').call(
-    //@ts-ignore
-    this,
-    node,
-    options,
-    virtualNode,
-    context
-  );
+  const checkResult = AxeUtils.getEvaluateFromCheck('color-contrast').call(this, node, options, virtualNode, context);
   const nodeStyle = window.getComputedStyle(node);
   const fontSize = parseFloat(nodeStyle.getPropertyValue('font-size'));
   const fontWeight = nodeStyle.getPropertyValue('font-weight');
@@ -45,7 +38,6 @@ function evaluateTextContrast(node: HTMLElement, options: any, virtualNode: any,
     size: isLargeText(fontSize, bold) ? 'large' : 'regular'
   };
 
-  //@ts-ignore
   this.data(data);
   return checkResult;
 }

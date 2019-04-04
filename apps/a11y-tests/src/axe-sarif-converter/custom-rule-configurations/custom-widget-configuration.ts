@@ -70,7 +70,6 @@ function evaluateCustomWidget(node: HTMLElement): boolean {
     ariaCues
   };
 
-  //@ts-ignore
   this.data(data);
 
   return true;

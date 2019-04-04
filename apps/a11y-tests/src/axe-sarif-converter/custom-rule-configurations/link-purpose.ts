@@ -40,7 +40,6 @@ function evaluateLinkPurpose(node: HTMLElement, options: any, virtualNode: any, 
     url
   };
 
-  // @ts-ignore
   this.data(data);
   return true;
 }
