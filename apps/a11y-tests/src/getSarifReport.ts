@@ -10,7 +10,13 @@ export async function getSarifReport(subUrl: string): Promise<SarifLog> {
 
   const page = await browser.newPage();
   await page.setBypassCSP(true);
-  await page.goto(`${TEST_URL_ROOT}${subUrl}`);
+
+  try {
+    await page.goto(`${TEST_URL_ROOT}${subUrl}`);
+  } catch (e) {
+    browser.close();
+    throw e;
+  }
 
   const axeReport = await new AxePuppeteer(page).include(['.ExampleCard-example']).analyze();
   const sarifReport = axeToSarif(axeReport);
