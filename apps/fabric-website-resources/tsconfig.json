@@ -22,9 +22,9 @@
     "types": [
       "jest",
       "webpack-env",
-      "puppeteer",
-      "es6-promise",
-    ]
+      "puppeteer"
+    ],
+    "skipLibCheck": true
   },
   "include": [
     "src"
