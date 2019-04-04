@@ -41,6 +41,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
             word-wrap: break-word;
           }
       htmlFor="Toggle0"
+      id="Toggle0-label"
     >
       Toggle to load content
     </label>
@@ -54,6 +55,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle0-label"
         checked={false}
         className=
             ms-Toggle-background
@@ -166,6 +168,8 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
               padding-top: 0;
               user-select: none;
             }
+        htmlFor="Toggle0"
+        id="Toggle0-stateText"
       >
         Shimmer
       </label>
