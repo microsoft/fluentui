@@ -2769,7 +2769,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 2px;
+              border-radius: 0px;
               border: 0px;
               box-sizing: border-box;
               color: #323130;
@@ -2778,8 +2778,8 @@ exports[`Pivot supports JSX expressions 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 40px;
-              line-height: 40px;
+              height: 44px;
+              line-height: 44px;
               margin-right: 8px;
               outline: transparent;
               padding-bottom: 0;
@@ -2820,6 +2820,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               top: 0px;
             }
             &:hover {
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2834,6 +2835,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               outline: none;
             }
             &:active {
+              background-color: #edebe9;
               color: #000000;
             }
             &:active .ms-Button-icon {
@@ -2847,7 +2849,8 @@ exports[`Pivot supports JSX expressions 1`] = `
               left: 8px;
               position: absolute;
               right: 8px;
-              transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+              transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                  right 0.267s cubic-bezier(.1,.25,.75,.9);
             }
             &:after {
               color: transparent;
@@ -2860,10 +2863,6 @@ exports[`Pivot supports JSX expressions 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus {
               outline: 1px solid #605e5c;
-            }
-            &:hover::before {
-              border-bottom: 2px solid transparent;
-              box-sizing: border-box;
             }
         data-is-focusable={true}
         id="Pivot0-Tab0"
