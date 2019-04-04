@@ -70,6 +70,11 @@ export interface IButtonProps
    * Defines an event callback that is triggered when the Button is clicked.
    */
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+
+  /**
+   * The aria label that the screen readers use when focus goes on the Button.
+   */
+  ariaLabel?: string;
 }
 
 export interface IButtonViewProps extends IButtonProps {}

@@ -15,6 +15,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     primary,
     disabled,
     onClick,
+    ariaLabel,
     expanded,
     menu: Menu,
     primaryActionDisabled,
@@ -37,11 +38,12 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   });
 
   return (
-    <Slots.root role="button" aria-disabled={disabled} horizontal as="span" verticalAlign="stretch">
+    <Slots.root role="button" aria-disabled={disabled} aria-label={ariaLabel} horizontal as="span" verticalAlign="stretch">
       <Slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}
         aria-disabled={primaryActionDisabled || disabled}
+        aria-label={ariaLabel}
         onClick={onClick}
         {...rest}
       >
@@ -50,7 +52,14 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
 
       <Slots.splitDivider />
 
-      <Slots.menuButton primary={primary} disabled={disabled} onClick={onSecondaryActionClick} menu={Menu} />
+      <Slots.menuButton
+        primary={primary}
+        disabled={disabled}
+        aria-disabled={disabled}
+        aria-label={ariaLabel}
+        onClick={onSecondaryActionClick}
+        menu={Menu}
+      />
     </Slots.root>
   );
 };
