@@ -235,7 +235,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 @supports (-webkit-overflow-scrolling: touch){& {
                   max-height: 768px;
                 }
-                @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+                @media screen and (-ms-high-contrast: active){& {
                   border-left: 1px solid #eaeaea;
                   border-right: 1px solid #eaeaea;
                 }

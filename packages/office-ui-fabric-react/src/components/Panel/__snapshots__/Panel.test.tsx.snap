@@ -150,7 +150,7 @@ exports[`Panel renders Panel correctly 1`] = `
               @supports (-webkit-overflow-scrolling: touch){& {
                 max-height: 768px;
               }
-              @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
+              @media screen and (-ms-high-contrast: active){& {
                 border-left: 1px solid #eaeaea;
                 border-right: 1px solid #eaeaea;
               }

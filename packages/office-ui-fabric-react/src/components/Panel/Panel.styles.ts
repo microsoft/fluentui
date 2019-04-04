@@ -4,6 +4,7 @@ import {
   AnimationVariables,
   DefaultFontStyles,
   getGlobalClassNames,
+  HighContrastSelector,
   ScreenWidthMinMedium,
   ScreenWidthMinLarge,
   ScreenWidthMinXLarge,
@@ -258,8 +259,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
             maxHeight: windowHeight
           },
-          '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
-            // For IE high contrast mode
+          [HighContrastSelector]: {
             borderLeft: `1px solid ${palette.neutralLight}`,
             borderRight: `1px solid ${palette.neutralLight}`
           },
