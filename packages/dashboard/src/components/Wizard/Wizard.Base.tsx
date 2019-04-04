@@ -5,6 +5,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStepToShow } from './Wizard.utils';
 import { TransitionGroup, Transition, TransitionStatus } from 'react-transition-group';
 import { wizardAnimationDurationMilliSec } from './Wizard.animation';
+import { IProcessedStyleSet } from 'office-ui-fabric-react';
 
 const getClassNames = classNamesFunction<IWizardStyleProps, IWizardStyles>();
 
@@ -46,6 +47,7 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
     const contentTitleKey = 'contentTitle-' + wizardStepProps.id;
     const contentKey = 'content-' + wizardStepProps.id;
     let animationToApply: string;
+
     return (
       <div className={classNames.wizardContentNavContainer}>
         <div className={classNames.subwayNavSection}>
@@ -57,7 +59,7 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
               {(state: TransitionStatus) => {
                 let hideScroll;
                 if (state === 'entering' || state === 'exiting') {
-                  animationToApply = state === 'entering' ? classNames.stepSlideUpEnterActive : classNames.stepSlideUpExitActive;
+                  animationToApply = this._getAnimationToApply(state, wizardStyleProps.clickedForward, classNames);
                   hideScroll = true;
                 } else if (state === 'exited') {
                   hideScroll = false;
@@ -82,5 +84,16 @@ export class WizardBase extends React.Component<IWizardProps, {}> {
         </div>
       </div>
     );
+  }
+
+  private _getAnimationToApply(state: string, clickedForward: boolean, classNames: IProcessedStyleSet<IWizardStyles>): string {
+    let animationToApply;
+    if (clickedForward) {
+      animationToApply = state === 'entering' ? classNames.stepSlideUpEnterActive : classNames.stepSlideUpExitActive;
+    } else {
+      animationToApply = state === 'entering' ? classNames.stepSlideDownEnterActive : classNames.stepSlideDownExitActive;
+    }
+
+    return animationToApply;
   }
 }
