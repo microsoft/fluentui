@@ -662,6 +662,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
+    const isUp = ev.which === KeyCodes.up;
+    const isDown = ev.which === KeyCodes.down;
+
     if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
       const { onMenuClick } = this.props;
       if (onMenuClick) {
@@ -669,6 +672,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       }
 
       this._onToggleMenu(false);
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+
+    if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {
+      this.setState(state => {
+        if (state.menuProps && !state.menuProps.shouldFocusOnMount) {
+          return { menuProps: { ...state.menuProps, shouldFocusOnMount: true } };
+        }
+        return state;
+      });
+
       ev.preventDefault();
       ev.stopPropagation();
     }

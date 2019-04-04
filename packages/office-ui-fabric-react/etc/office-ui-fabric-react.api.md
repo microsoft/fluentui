@@ -193,7 +193,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     componentDidUpdate(): void;
     // (undocumented)
-    componentWillReceiveProps(newProps: P): void;
+    componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -206,6 +206,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     hidePicker: () => void;
     // (undocumented)
     readonly inputText: string;
+    // (undocumented)
+    protected isComponentMounted: boolean;
     // (undocumented)
     readonly isSuggestionsShown: boolean;
     // (undocumented)
@@ -233,7 +235,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     readonly suggestions: any[];
     // (undocumented)
-    protected suggestionsControl: SuggestionsControl<T>;
+    protected suggestionsControl: React.RefObject<SuggestionsControl<T>>;
     // (undocumented)
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
     // (undocumented)
@@ -774,7 +776,7 @@ export function createGenericItem(name: string, currentValidationState: Validati
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps>;
 
 // @public
-export function cssColor(color: string): IRGB | undefined;
+export function cssColor(color?: string): IRGB | undefined;
 
 // @public
 export const DatePicker: React_2.StatelessComponent<IDatePickerProps>;
@@ -1199,6 +1201,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static defaultProps: IFocusZoneProps;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(element: HTMLElement): boolean;
+    static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
     }
@@ -1280,6 +1283,8 @@ export const GroupedList: React_2.StatelessComponent<IGroupedListProps>;
 // @public (undocumented)
 export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
+    // (undocumented)
+    componentDidMount(): void;
     // (undocumented)
     componentWillReceiveProps(newProps: IGroupedListProps): void;
     // (undocumented)

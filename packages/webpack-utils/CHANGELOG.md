@@ -1,6 +1,13 @@
 # Change Log - @uifabric/webpack-utils
 
-This log was last generated on Fri, 15 Mar 2019 12:34:07 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+
+## 0.8.1
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 0.8.0
 Fri, 15 Mar 2019 12:34:07 GMT

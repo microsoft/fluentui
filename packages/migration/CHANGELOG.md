@@ -1,6 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Fri, 22 Mar 2019 17:56:40 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+
+## 0.2.1
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 0.2.0
 Fri, 22 Mar 2019 17:56:40 GMT

@@ -2,7 +2,7 @@
 
 exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
 <div
-  className="ms-FocusZone ms-FocusZoneListExample"
+  className="ms-FocusZone"
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -11,7 +11,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
 >
   <div
     aria-rowindex={1}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -26,7 +25,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -41,6 +40,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -56,20 +56,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -90,222 +83,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -316,7 +93,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -387,7 +164,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-0
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -491,7 +268,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -693,7 +470,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={2}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -708,7 +484,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -723,6 +499,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -738,20 +515,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -772,222 +542,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -998,7 +552,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -1069,7 +623,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-1
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -1173,7 +727,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -1375,7 +929,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={3}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -1390,7 +943,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -1405,6 +958,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1420,20 +974,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -1454,222 +1001,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -1680,7 +1011,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -1751,7 +1082,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-2
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -1855,7 +1186,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -2057,7 +1388,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={4}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -2072,7 +1402,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -2087,6 +1417,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -2102,20 +1433,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -2136,222 +1460,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -2362,7 +1470,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -2433,7 +1541,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-3
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -2537,7 +1645,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -2739,7 +1847,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={5}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -2754,7 +1861,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -2769,6 +1876,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -2784,20 +1892,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -2818,222 +1919,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -3044,7 +1929,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -3115,7 +2000,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-4
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -3219,7 +2104,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -3421,7 +2306,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={6}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -3436,7 +2320,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -3451,6 +2335,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -3466,20 +2351,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -3500,222 +2378,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -3726,7 +2388,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -3797,7 +2459,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-5
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -3901,7 +2563,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -4103,7 +2765,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={7}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -4118,7 +2779,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -4133,6 +2794,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -4148,20 +2810,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -4182,222 +2837,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -4408,7 +2847,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -4479,7 +2918,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-6
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -4583,7 +3022,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -4785,7 +3224,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={8}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -4800,7 +3238,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -4815,6 +3253,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -4830,20 +3269,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -4864,222 +3296,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -5090,7 +3306,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -5161,7 +3377,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-7
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -5265,7 +3481,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -5467,7 +3683,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={9}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -5482,7 +3697,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -5497,6 +3712,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -5512,20 +3728,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -5546,222 +3755,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -5772,7 +3765,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -5843,7 +3836,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-8
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -5947,7 +3940,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
@@ -6149,7 +4142,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
   </div>
   <div
     aria-rowindex={10}
-    aria-selected={false}
     className=
         ms-FocusZone
         ms-DetailsRow
@@ -6164,7 +4156,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
           color: #605e5c;
-          display: inline-flex;
+          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -6179,6 +4171,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           text-align: left;
           vertical-align: top;
           white-space: nowrap;
+          width: 100%;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -6194,20 +4187,13 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        .ms-List-cell:first-child &:before {
+        ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
-          color: #323130;
-        }
-        &:hover .is-row-header {
-          color: #201f1e;
         }
         &:hover $check {
-          opacity: 1;
-        }
-        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -6228,222 +4214,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
     }
   >
     <div
-      aria-colindex={1}
-      className=
-          ms-DetailsRow-cell
-          ms-DetailsRow-cellCheck
-          {
-            box-sizing: border-box;
-            display: inline-block;
-            flex-shrink: 0;
-            margin-top: -1px;
-            min-height: 42px;
-            outline: transparent;
-            overflow: hidden;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 1px;
-            position: relative;
-            text-overflow: ellipsis;
-            vertical-align: top;
-            white-space: nowrap;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #605e5c;
-            bottom: 0px;
-            content: "";
-            left: 0px;
-            outline: 1px solid #ffffff;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            z-index: 1;
-          }
-          & > button {
-            max-width: 100%;
-          }
-          & [data-is-focusable='true'] {
-            outline: transparent;
-            position: relative;
-          }
-          & [data-is-focusable='true']::-moz-focus-inner {
-            border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
-          }
-      data-selection-toggle={true}
-      role="gridcell"
-    >
-      <div
-        aria-checked={false}
-        className=
-            ms-DetailsRow-check
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: center;
-              background-color: transparent;
-              background: none;
-              border: none;
-              box-sizing: border-box;
-              cursor: default;
-              display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 12px;
-              font-weight: 400;
-              height: 42px;
-              justify-content: center;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              opacity: 0;
-              outline: transparent;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-              position: relative;
-              vertical-align: top;
-              width: 48px;
-            }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
-              outline: 1px solid #605e5c;
-              position: absolute;
-              right: 1px;
-              top: 1px;
-              z-index: 1;
-            }
-            &:hover {
-              opacity: 1;
-            }
-
-        data-automationid="DetailsRowCheck"
-        data-selection-toggle={true}
-        role="checkbox"
-      >
-        <div
-          className=
-              ms-Check
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 18px;
-                line-height: 1;
-                position: relative;
-                user-select: none;
-                vertical-align: top;
-                width: 18px;
-              }
-              &:before {
-                background: #ffffff;
-                border-radius: 50%;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                opacity: 1;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-              }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
-                opacity: 1;
-              }
-        >
-          <i
-            className=
-                ms-Check-circle
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: 0px;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  color: WindowText;
-                }
-            data-icon-name="CircleRing"
-            role="presentation"
-          >
-            
-          </i>
-          <i
-            className=
-                ms-Check-check
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-size: 16px;
-                  font-style: normal;
-                  font-weight: normal;
-                  height: 18px;
-                  left: .5px;
-                  opacity: 0;
-                  position: absolute;
-                  speak: none;
-                  text-align: center;
-                  top: 0px;
-                  vertical-align: middle;
-                  width: 18px;
-                }
-                &:hover {
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                }
-            data-icon-name="StatusCircleCheckmark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-      </div>
-    </div>
-    <div
       className=
           ms-DetailsRow-fields
           {
@@ -6454,7 +4224,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
       role="presentation"
     >
       <div
-        aria-colindex={2}
+        aria-colindex={1}
         className=
             ms-DetailsRow-cell
             {
@@ -6525,7 +4295,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         Item-9
       </div>
       <div
-        aria-colindex={3}
+        aria-colindex={2}
         className=
             ms-DetailsRow-cell
             {
@@ -6629,7 +4399,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         </a>
       </div>
       <div
-        aria-colindex={4}
+        aria-colindex={3}
         className=
             ms-DetailsRow-cell
             {
