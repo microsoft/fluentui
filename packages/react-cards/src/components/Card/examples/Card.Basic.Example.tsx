@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Persona, Text } from '@uifabric/experiments';
-import { Icon, Image, Stack } from 'office-ui-fabric-react';
+import { Persona } from '@uifabric/experiments';
+import { Icon, Image, Stack, Text } from 'office-ui-fabric-react';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { Card } from '../Card';
+import { Card } from '@uifabric/react-cards';
 
 const alertClicked = (): void => {
   alert('Clicked');
@@ -38,6 +38,11 @@ export class CardBasicExample extends React.Component<{}, {}> {
           fontSize: 16,
           fontWeight: FontWeights.regular
         }
+      },
+      footerStack: {
+        root: {
+          borderTop: '1px solid #F3F2F1'
+        }
       }
     };
 
@@ -45,11 +50,14 @@ export class CardBasicExample extends React.Component<{}, {}> {
       sectionStack: {
         childrenGap: 30
       },
-      cardFooterStack: {
-        childrenGap: 16
-      },
       narrowCard: {
         width: 212
+      },
+      imageCardItem: {
+        margin: '0px -13px'
+      },
+      cardFooterStack: {
+        childrenGap: 16
       }
     };
 
@@ -61,14 +69,14 @@ export class CardBasicExample extends React.Component<{}, {}> {
 
         <Card onClick={alertClicked} tokens={tokens.narrowCard}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
-          <Card.Item tokens={{ margin: '0 -13px' }}>
+          <Card.Item tokens={tokens.imageCardItem}>
             <Image src="https://placehold.it/256x144" width="100%" alt="Placeholder image." />
           </Card.Item>
           <Text styles={styles.siteText}>Contoso</Text>
           <Text styles={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
           <Text styles={styles.helpfulText}>Is this recommendation helpful?</Text>
           <Card.Item>
-            <Stack horizontal tokens={tokens.cardFooterStack} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
+            <Stack horizontal tokens={tokens.cardFooterStack} padding="12px 0 0" styles={styles.footerStack}>
               <Icon iconName="RedEye" styles={styles.icon} />
               <Icon iconName="SingleBookmark" styles={styles.icon} />
               <Stack.Item grow={1}>
@@ -81,14 +89,14 @@ export class CardBasicExample extends React.Component<{}, {}> {
 
         <Card onClick={alertClicked}>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
-          <Card.Item tokens={{ margin: '0 -13px' }}>
+          <Card.Item tokens={tokens.imageCardItem}>
             <Image src="https://placehold.it/256x144" width="100%" alt="Placeholder image." />
           </Card.Item>
           <Text styles={styles.siteText}>Contoso</Text>
           <Text styles={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
           <Text styles={styles.helpfulText}>Is this recommendation helpful?</Text>
           <Card.Item>
-            <Stack horizontal tokens={tokens.cardFooterStack} padding="12px 0 0" styles={{ root: { borderTop: '1px solid #F3F2F1' } }}>
+            <Stack horizontal tokens={tokens.cardFooterStack} padding="12px 0 0" styles={styles.footerStack}>
               <Icon iconName="RedEye" styles={styles.icon} />
               <Icon iconName="SingleBookmark" styles={styles.icon} />
               <Stack.Item grow={1}>
