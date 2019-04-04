@@ -27,6 +27,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/highlight.js": "9.12.2",
     "@types/jest": "23.0.0",
+    "@types/markdown-to-jsx": "6.9.0",
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
     "@types/webpack-env": "1.13.0",
