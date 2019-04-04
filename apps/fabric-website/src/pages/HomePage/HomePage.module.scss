@@ -66,6 +66,12 @@
   }
 }
 
+:global {
+  .versionSelector .ms-ContextualMenu {
+    min-width: 100px;
+  }
+}
+
 .version {
   margin-top: 16px;
 }

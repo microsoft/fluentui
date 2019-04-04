@@ -35,10 +35,10 @@ export interface IHomepageState {
 export class HomePage extends React.Component<any, IHomepageState> {
   constructor(props: {}) {
     super(props);
-    const version = getParameterByName('fabricVer');
+    const version: string = getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersionOptions[0].data;
 
     this.state = {
-      fabricVer: !!version ? version : fabricVersionOptions[0].data
+      fabricVer: version
     };
   }
 
@@ -66,7 +66,8 @@ export class HomePage extends React.Component<any, IHomepageState> {
                 shouldFocusOnMount: true,
                 items: fabricVersionOptions,
                 directionalHint: DirectionalHint.bottomAutoEdge,
-                onItemClick: this._onVersionMenuClick
+                onItemClick: this._onVersionMenuClick,
+                className: 'versionSelector'
               } }
             >
               <span className={ styles.versionText }>Fabric React { reactPackageData.version }</span>
