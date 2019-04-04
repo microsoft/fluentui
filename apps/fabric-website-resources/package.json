@@ -41,7 +41,7 @@
     "@uifabric/jest-serializer-merge-styles": "^6.0.8",
     "@uifabric/prettier-rules": "^1.0.1",
     "@uifabric/tslint-rules": "^1.0.1",
-    "jest-environment-node": "24.5.0",
+    "jest-environment-node": "23.4.0",
     "jest-environment-puppeteer": "3.9.0",
     "jest-puppeteer": "3.5.1",
     "enzyme": "^3.4.1",
