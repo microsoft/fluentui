@@ -24,9 +24,14 @@ describe('Pivot', () => {
 
   it('supports JSX expressions', () => {
     const component = renderer.create(
-      <Pivot>
-        <PivotItem headerText="Test Link 1" />
-        {false && <PivotItem headerText="" />}
+      <Pivot defaultSelectedIndex={1}>
+        <PivotItem headerText="Test Link 1">
+          <div>This is item 1</div>
+        </PivotItem>
+        {false && <PivotItem headerText="Test Link 2" />}
+        <PivotItem headerText="Test Link 3">
+          <div>This is Item 3</div>
+        </PivotItem>
       </Pivot>
     );
     const tree = component.toJSON();

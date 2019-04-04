@@ -5,6 +5,7 @@ import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Ex
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonActionExample } from './examples/Button.Action.Example';
 import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
+import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
@@ -25,6 +26,7 @@ const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 const ButtonToggleExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
+const ButtonCommandExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Command.Example.tsx') as string;
 
 export interface IButtonDocPageProps {
   areButtonsDisabled: boolean;
@@ -75,6 +77,13 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       code: ButtonActionExampleCode,
       view: <ButtonActionExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
+    {
+      title: 'Command Button',
+      code: ButtonCommandExampleCode,
+      view: <ButtonCommandExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
+    }
+  ],
+  implementationExamples: [
     {
       title: 'Button Like Anchor',
       code: ButtonAnchorExampleCode,

@@ -79,7 +79,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
       classNames.itemsWrapper,
       {
         display: 'flex',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        maxWidth: '100%'
       }
     ],
     input: [
