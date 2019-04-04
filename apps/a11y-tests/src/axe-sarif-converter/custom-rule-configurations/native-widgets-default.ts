@@ -49,7 +49,7 @@ export function evaluateNativeWidget(node: HTMLElement): boolean {
   return true;
 }
 
-export function getNativeWidgetElementType(node: HTMLElement): string {
+export function getNativeWidgetElementType(node: HTMLElement): string | undefined {
   if (node.tagName === 'BUTTON' || node.tagName === 'SELECT' || node.tagName === 'TEXTAREA') {
     return node.tagName.toLowerCase();
   } else if (node.tagName === 'INPUT' && node.hasAttribute('list')) {

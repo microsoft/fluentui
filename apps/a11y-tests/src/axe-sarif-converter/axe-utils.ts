@@ -5,9 +5,9 @@ import * as axe from 'axe-core';
 
 import { DictionaryStringTo } from './dictionary-types';
 
-export type ImageCodedAs = 'Decorative' | 'Meaningful';
+export type ImageCodedAs = 'Decorative' | 'Meaningful' | '';
 
-export function getMatchesFromRule(ruleId: string): (node: any, virtualNode: any) => boolean {
+export function getMatchesFromRule(ruleId: string): ((node: any, virtualNode: any) => boolean) | undefined {
   return axe._audit.defaultConfig.rules.filter(rule => rule.id === ruleId)[0].matches;
 }
 
@@ -34,7 +34,7 @@ export function getPropertyValuesMatching(node: HTMLElement, regex: RegExp): Dic
     for (let i = 0; i < attrs.length; i++) {
       const name = attrs[i].name;
       if (regex.test(name)) {
-        dictionary[name] = node.getAttribute(name);
+        dictionary[name] = node.getAttribute(name)!;
       }
     }
   }
@@ -44,11 +44,11 @@ export function getPropertyValuesMatching(node: HTMLElement, regex: RegExp): Dic
 export function getAttributes(node: HTMLElement, attributes: string[]): DictionaryStringTo<string> {
   const retDict: DictionaryStringTo<string> = {};
   attributes
-    .filter(atributeName => node.hasAttribute(atributeName))
+    .filter(attributeName => node.hasAttribute(attributeName))
     .forEach((attributeName: string) => {
-      const attributeValue = node.getAttribute(attributeName);
+      const attributeValue = node.getAttribute(attributeName)!;
 
-      retDict[attributeName] = attributeValue || null;
+      retDict[attributeName] = attributeValue;
     });
 
   return retDict;
@@ -73,11 +73,11 @@ export function getImageCodedAs(node: HTMLElement): ImageCodedAs {
     return 'Meaningful';
   }
 
-  return null;
+  return '';
 }
 
-export function isWhiteSpace(text: string): boolean {
-  return text && text.length > 0 && text.trim() === '';
+export function isWhiteSpace(text: string | null): boolean {
+  return text !== null && text.length > 0 && text.trim() === '';
 }
 
 export function hasBackgoundImage(node: HTMLElement): boolean {
@@ -86,7 +86,8 @@ export function hasBackgoundImage(node: HTMLElement): boolean {
 }
 
 export function getImageType(node: HTMLElement): string {
-  let imageType: string;
+  let imageType: string = '';
+
   if (node.tagName.toLowerCase() === 'img') {
     imageType = '<img>';
   } else if (node.tagName.toLowerCase() === 'i') {

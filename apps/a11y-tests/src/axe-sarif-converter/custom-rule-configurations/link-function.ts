@@ -28,7 +28,7 @@ export const linkFunctionConfiguration: RulesConfiguration = {
     matches: matches,
     decorateNode: (node: AxeNodeResult) => {
       if (node.any.length > 0) {
-        node.snippet = node.any[0].data[snippetKey];
+        node.snippet = (node.any[0].data as any)[snippetKey];
       }
     },
     enabled: false
