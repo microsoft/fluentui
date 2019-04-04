@@ -56,13 +56,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -178,7 +185,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -239,7 +246,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -268,7 +275,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -731,13 +738,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -853,7 +867,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -914,7 +928,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -943,7 +957,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -1406,13 +1420,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -1528,7 +1549,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1589,7 +1610,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -1618,7 +1639,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -2081,13 +2102,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -2203,7 +2231,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -2264,7 +2292,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -2293,7 +2321,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -2756,13 +2784,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -2878,7 +2913,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -2939,7 +2974,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -2968,7 +3003,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -3431,13 +3466,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -3553,7 +3595,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -3614,7 +3656,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -3643,7 +3685,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -4106,13 +4148,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -4228,7 +4277,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -4289,7 +4338,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -4318,7 +4367,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -4781,13 +4830,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -4903,7 +4959,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -4964,7 +5020,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -4993,7 +5049,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -5456,13 +5512,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -5578,7 +5641,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -5639,7 +5702,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -5668,7 +5731,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -6131,13 +6194,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
           background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -6253,7 +6323,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -6314,7 +6384,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -6343,7 +6413,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
