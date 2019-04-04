@@ -230,6 +230,28 @@ describe('FocusZone', () => {
     expect(document.activeElement).toBe(host.querySelector('#b'));
   });
 
+  it('only adds outerzones to be updated for tab changes', () => {
+    const activeZones = FocusZone.getOuterZones();
+
+    host = document.createElement('div');
+
+    // Render component without button A.
+    ReactDOM.render(
+      <FocusZone>
+        <FocusZone>
+          <button>ok</button>
+        </FocusZone>
+      </FocusZone>,
+      host
+    );
+
+    expect(FocusZone.getOuterZones()).toEqual(activeZones + 1);
+
+    ReactDOM.unmountComponentAtNode(host);
+
+    expect(FocusZone.getOuterZones()).toEqual(activeZones);
+  });
+
   it('can call onActiveItemChanged when the active item is changed', () => {
     let called = false;
     const component = ReactTestUtils.renderIntoDocument(

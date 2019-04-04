@@ -169,7 +169,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: red;
+                          color: #E20000;
                           display: inline-block;
                           flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
@@ -356,7 +356,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: red;
+                          color: #E20000;
                           display: inline-block;
                           flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
@@ -514,7 +514,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: red;
+                          color: #E20000;
                           display: inline-block;
                           flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
@@ -672,7 +672,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: red;
+                          color: #E20000;
                           display: inline-block;
                           flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
@@ -979,7 +979,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: red;
+                          color: #E20000;
                           display: inline-block;
                           flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
@@ -1149,7 +1149,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: red;
+                            color: #E20000;
                             display: inline-block;
                             flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
@@ -1295,7 +1295,7 @@ exports[`Component Examples renders CommandBar.ButtonAs.Example.tsx correctly 1`
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: red;
+                            color: #E20000;
                             display: inline-block;
                             flex-shrink: 0;
                             font-family: "FabricMDL2Icons";

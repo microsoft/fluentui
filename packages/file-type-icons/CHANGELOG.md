@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 12 Mar 2019 12:31:43 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+
+## 6.4.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 6.4.3
 Tue, 12 Mar 2019 12:31:43 GMT

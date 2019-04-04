@@ -2,6 +2,25 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.8",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.8",
+      "date": "Tue, 02 Apr 2019 00:38:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.7",
       "tag": "@uifabric/jest-serializer-merge-styles_v6.0.7",
       "date": "Tue, 15 Jan 2019 13:36:45 GMT",

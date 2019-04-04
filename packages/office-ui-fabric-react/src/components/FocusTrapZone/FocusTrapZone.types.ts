@@ -46,7 +46,8 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   forceFocusInsideTrap?: boolean;
 
   /**
-   * Indicates the selector for first focusable item.  Only applies if focusPreviouslyFocusedInnerElement == false.
+   * Class name for first focusable item (do not append a dot).
+   * Only applies if `focusPreviouslyFocusedInnerElement` is false.
    */
   firstFocusableSelector?: string | (() => string);
 

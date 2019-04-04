@@ -1,37 +1,69 @@
 import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Image } from 'office-ui-fabric-react/lib/Image';
-import './FocusZone.Photos.Example.scss';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
+
+const theme = getTheme();
+const classNames = mergeStyleSets({
+  photoList: {
+    display: 'inline-block',
+    border: '1px solid ' + theme.palette.neutralTertiary,
+    padding: 10,
+    lineHeight: 0,
+    overflow: 'hidden'
+  },
+  photoCell: {
+    position: 'relative',
+    display: 'inline-block',
+    padding: 2,
+    boxSizing: 'border-box',
+    selectors: {
+      '&:focus': {
+        outline: 'none',
+        selectors: {
+          '&:after': {
+            content: '',
+            position: 'absolute',
+            right: 4,
+            left: 4,
+            top: 4,
+            bottom: 4,
+            border: '1px solid ' + theme.palette.white,
+            outline: '2px solid ' + theme.palette.themePrimary
+          }
+        }
+      }
+    }
+  }
+});
 
 const MAX_COUNT = 20;
-let _counter = 0;
 
-export interface IPhoto {
-  id: number;
+interface IPhoto {
+  id: string;
   url: string;
   width: number;
   height: number;
 }
 
-export class FocusZonePhotosExample extends React.Component<{}, { items: IPhoto[] }> {
+export class FocusZonePhotosExample extends React.PureComponent<{}> {
+  private _items: IPhoto[];
+
   constructor(props: {}) {
     super(props);
-    this.state = {
-      items: this._getInitialItems()
-    };
+    this._items = this._getItems();
   }
 
   public render() {
-    const { items } = this.state;
-
     return (
-      <FocusZone as="ul" className="ms-FocusZoneExamples-photoList">
-        {items.map((item: IPhoto, index) => (
+      <FocusZone as="ul" className={classNames.photoList}>
+        {this._items.map((item: IPhoto, index) => (
           <li
             key={item.id}
-            className="ms-FocusZoneExamples-photoCell"
+            className={classNames.photoCell}
             aria-posinset={index + 1}
-            aria-setsize={items.length}
+            aria-setsize={this._items.length}
             aria-label="Photo"
             data-is-focusable={true}
           >
@@ -42,25 +74,20 @@ export class FocusZonePhotosExample extends React.Component<{}, { items: IPhoto[
     );
   }
 
-  private _getInitialItems(): IPhoto[] {
+  private _getItems(): IPhoto[] {
     const items: IPhoto[] = [];
 
     for (let i = 0; i < MAX_COUNT; i++) {
-      items.push(this._createItem());
+      const randomWidth = 50 + Math.floor(Math.random() * 150);
+
+      items.push({
+        id: getId('photo'),
+        url: `http://placehold.it/${randomWidth}x100`,
+        width: randomWidth,
+        height: 100
+      });
     }
 
     return items;
-  }
-
-  private _createItem(): IPhoto {
-    const randomWidth = 50 + Math.floor(Math.random() * 150);
-    const id = _counter++;
-
-    return {
-      id,
-      url: `http://placehold.it/${randomWidth}x100`,
-      width: randomWidth,
-      height: 100
-    };
   }
 }

@@ -139,6 +139,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               {
                 display: flex;
                 flex-wrap: wrap;
+                max-width: 100%;
               }
           id="selected-items-id__0"
           role="list"
@@ -158,6 +159,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   margin-right: 2px;
                   margin-top: 1px;
                   max-width: 300px;
+                  min-width: 0px;
                   outline: transparent;
                   position: relative;
                   user-select: none;
