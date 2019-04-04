@@ -214,8 +214,25 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (isStickyTop || isStickyBottom) {
       let height = 0,
         width = 0;
+      // Why is placeHolder width needed?
+      // ScrollablePane content--container is reponsible for providing scrollbars depending on content overflow.
+      // If the overflow is caused by content of sticky component when it is in non-sticky state,
+      // ScrollablePane content--conatiner will provide horizontal scrollbar.
+      // If the component becomes sticky, i.e., when state.isStickyTop || state.isStickyBottom becomes true,
+      // it's actual content is no more inside ScrollablePane content--container.
+      // ScrollablePane content--conatiner will see no need for horizontal scrollbar. (Assuming no other content is causing overflow)
+      // The complete content of sticky component will not be viewable.
+      // It is necessary to provide a placeHolder of a certain width (height is already being set) in the content--container,
+      // to get a horizontal scrollbar & be able to view the complete content of sticky component.
       if (this.nonStickyContent && this.nonStickyContent.firstElementChild) {
         height = this.nonStickyContent.offsetHeight;
+        // What value should be substituted for placeHolder width?
+        // Assumption:
+        //    1. Content inside <Sticky> should always be wrapped in a single div.
+        //        <Sticky><div id={'firstElementChild'}>{intended_content}</div><Sticky/>
+        //    2. -ve padding, margin, etc. are not be used.
+        //    3. scrollWidth of a parent is greater than or equal to max of scrollWidths of it's children and same holds for children.
+        // placeHolder width should be computed in the best possible way to prevent overscroll/underscroll.
         width =
           this.nonStickyContent.firstElementChild.scrollWidth +
           ((this.nonStickyContent.firstElementChild as HTMLElement).offsetWidth - this.nonStickyContent.firstElementChild.clientWidth);
