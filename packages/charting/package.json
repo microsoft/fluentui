@@ -63,7 +63,7 @@
     "d3-selection": "1.3.0",
     "d3-shape": "^1.2.0",
     "d3-time-format": "^2.1.3",
-    "office-ui-fabric-react": "^6.164.3",
+    "office-ui-fabric-react": "^6.164.4",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
