@@ -847,7 +847,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="green"
+                fill="#01ff01"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1010,7 +1010,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="orange"
+                fill="#ffa501"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1173,7 +1173,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="blue"
+                fill="#0101ff"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1336,7 +1336,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="red"
+                fill="#ff0101"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1503,7 +1503,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="black"
+                fill="#000"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1666,7 +1666,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="grey"
+                fill="#888"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1690,7 +1690,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-label="purple"
+            aria-label="white"
             aria-selected={false}
             className=
                 ms-Button
@@ -1699,7 +1699,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #ffffff;
+                  background-color: #eaeaea;
                   border-radius: 50%;
                   border: none;
                   box-sizing: border-box;
@@ -1711,10 +1711,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
+                  padding-bottom: 1px;
+                  padding-left: 1px;
+                  padding-right: 1px;
+                  padding-top: 1px;
                   position: relative;
                   text-align: center;
                   text-decoration: none;
@@ -1807,7 +1807,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseMove={[Function]}
             onMouseUp={[Function]}
             role="gridcell"
-            title="purple"
+            title="white"
             type="button"
           >
             <div
@@ -1829,7 +1829,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="purple"
+                fill="#fff"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1853,7 +1853,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
           role="presentation"
         >
           <button
-            aria-label="yellow"
+            aria-label="something"
             aria-selected={false}
             className=
                 ms-Button
@@ -1970,7 +1970,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseMove={[Function]}
             onMouseUp={[Function]}
             role="gridcell"
-            title="yellow"
+            title="something"
             type="button"
           >
             <div
@@ -1992,7 +1992,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       height: 100%;
                       width: 100%;
                     }
-                fill="yellow"
+                fill="#123"
                 viewBox="0 0 20 20"
               >
                 <circle

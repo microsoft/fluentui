@@ -1,6 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Apr 2019 12:38:51 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Apr 2019 12:34:57 GMT and should not be manually modified.
+
+## 6.164.4
+Thu, 04 Apr 2019 12:34:57 GMT
+
+### Patches
+
+- List and other example updates
+- Nav and MessageBar example updates
+- Colors: reduce size of utility file by changing implementation
+- SelectionZone: Defer dom inspection until interaction
 
 ## 6.164.3
 Wed, 03 Apr 2019 12:38:51 GMT

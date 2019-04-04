@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.164.4",
+      "tag": "office-ui-fabric-react_v6.164.4",
+      "date": "Thu, 04 Apr 2019 12:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "List and other example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "414fb690fd6e185e37c44ea323c086c7012a72c4"
+          },
+          {
+            "comment": "Nav and MessageBar example updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "414fb690fd6e185e37c44ea323c086c7012a72c4"
+          },
+          {
+            "comment": "Colors: reduce size of utility file by changing implementation",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "ee9b6edfc408e4073abf3bdfb96b03e589e78692"
+          },
+          {
+            "comment": "SelectionZone: Defer dom inspection until interaction",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "9747421f81dcb5bbfc25dcd8b26ac401b6d93c64"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.164.3",
       "tag": "office-ui-fabric-react_v6.164.3",
       "date": "Wed, 03 Apr 2019 12:38:51 GMT",
