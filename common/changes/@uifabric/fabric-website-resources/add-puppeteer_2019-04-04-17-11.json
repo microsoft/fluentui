@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Integrate puppeteer to be able to run tests that require browser.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "anpablo@microsoft.com"
+}
