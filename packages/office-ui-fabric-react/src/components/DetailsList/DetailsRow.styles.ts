@@ -8,6 +8,8 @@ import {
   getGlobalClassNames,
   FontWeights
 } from '../../Styling';
+import { CHECK_CELL_WIDTH } from './DetailsRowCheck.styles';
+import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
@@ -329,7 +331,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             opacity: 1
           },
 
-          '&:focus $check': {
+          [`.${IsFocusVisibleClassName} &:focus $check`]: {
             opacity: 1
           }
         }
@@ -427,8 +429,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     shimmerIconPlaceholder: [],
     shimmerLeftBorder: [
       {
-        // 40px to take into account the checkbox of items if present.
-        borderLeft: `40px solid ${colors.defaultBackground}`
+        // 48px to take into account the checkbox of items if present.
+        borderLeft: `${CHECK_CELL_WIDTH}px solid ${colors.defaultBackground}`
       }
     ],
     shimmerBottomBorder: [
