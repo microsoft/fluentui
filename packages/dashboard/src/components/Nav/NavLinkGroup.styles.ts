@@ -67,7 +67,13 @@ sort out extensibility */
       isNavCollapsed && {
         overflow: 'hidden',
         padding: `${shadowOffset + navItemHeight}px ${shadowOffset}px ${shadowOffset}px 0px`,
-        margin: `-${shadowOffset + navItemHeight}px -${shadowOffset}px -${shadowOffset}px 0px`
+        margin: `-${shadowOffset + navItemHeight}px -${shadowOffset}px -${shadowOffset}px 0px`,
+        selectors: {
+          '*[dir="rtl"] &': {
+            padding: `${shadowOffset + navItemHeight}px 0px ${shadowOffset}px ${shadowOffset}px`,
+            margin: `-${shadowOffset + navItemHeight}px 0px -${shadowOffset}px -${shadowOffset}px`
+          }
+        }
       }
     ],
     nestedNavLinks: [
@@ -82,7 +88,14 @@ sort out extensibility */
         backgroundColor: '#F1F1F1',
         boxShadow: '0 1.2px 3.6px rgba(0, 0, 0, 0.09), 0 6.4px 14.4px rgba(0, 0, 0, 0.11)'
       },
-      isNavCollapsed && AnimationClassNames.slideRightIn10
+      isNavCollapsed && [
+        AnimationClassNames.slideRightIn10,
+        {
+          selectors: {
+            '[dir="rtl"] &': [AnimationClassNames.slideLeftIn10]
+          }
+        }
+      ]
     ]
   };
 };
