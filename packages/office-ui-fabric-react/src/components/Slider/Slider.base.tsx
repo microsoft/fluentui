@@ -43,24 +43,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public render(): React.ReactElement<{}> {
-    const {
-      ariaLabel,
-      className,
-      disabled,
-      label,
-      max,
-      min,
-      showValue,
-      buttonProps,
-      vertical,
-      valueFormat,
-      styles,
-      theme,
-      value: propsValue
-    } = this.props;
-    const { value: stateValue, renderedValue: renderedValueState } = this.state;
-    const value = propsValue !== undefined ? propsValue : stateValue;
-    const renderedValue = renderedValueState !== undefined ? renderedValueState : value;
+    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, valueFormat, styles, theme } = this.props;
+    const value = this.value;
+    const renderedValue = this.renderedValue;
 
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
@@ -119,6 +104,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       </div>
     ) as React.ReactElement<{}>;
   }
+
   public focus(): void {
     if (this._thumb.current) {
       this._thumb.current.focus();
@@ -126,7 +112,18 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public get value(): number | undefined {
-    return this.state.value;
+    const { value = this.state.value } = this.props;
+    if (this.props.min === undefined || this.props.max === undefined || value === undefined) {
+      return undefined;
+    } else {
+      return Math.max(this.props.min, Math.min(this.props.max, value));
+    }
+  }
+
+  private get renderedValue(): number | undefined {
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
+    const { renderedValue = this.value } = this.state;
+    return renderedValue;
   }
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
