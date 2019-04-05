@@ -95,10 +95,6 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
       >
         I am definitely loading...
       </div>
-      <div
-        aria-live="polite"
-        role="status"
-      />
     </div>
   </div>
   <div>
@@ -173,10 +169,6 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
       >
         Seriously, still loading...
       </div>
-      <div
-        aria-live="assertive"
-        role="status"
-      />
     </div>
   </div>
   <div>
@@ -251,10 +243,6 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
       >
         Wait, wait...
       </div>
-      <div
-        aria-live="assertive"
-        role="status"
-      />
     </div>
   </div>
   <div>
@@ -329,10 +317,6 @@ exports[`Component Examples renders Spinner.Labeled.Example.tsx correctly 1`] = 
       >
         Nope, still loading...
       </div>
-      <div
-        aria-live="assertive"
-        role="status"
-      />
     </div>
   </div>
 </div>
