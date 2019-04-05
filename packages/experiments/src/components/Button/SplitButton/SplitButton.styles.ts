@@ -1,4 +1,4 @@
-import { getFocusStyle } from '../../../Styling';
+import { getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
@@ -14,7 +14,8 @@ const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBut
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
-    color: semanticColors.primaryButtonText
+    color: semanticColors.primaryButtonText,
+    highContrastColor: 'Window'
   };
 };
 
@@ -22,7 +23,8 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundDisabled,
-    color: semanticColors.disabledText
+    color: semanticColors.disabledText,
+    highContrastColor: 'GrayText'
   };
 };
 
@@ -53,7 +55,13 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       boxSizing: 'border-box',
       height: 'calc(100% - 16px)',
       margin: '8px 0px',
-      width: 1
+      width: 1,
+
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: tokens.highContrastColor
+        }
+      }
     }
   };
 };
