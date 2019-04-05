@@ -103,6 +103,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             word-wrap: break-word;
           }
       htmlFor="Toggle1"
+      id="Toggle1-label"
     >
       Controlled component
     </label>
@@ -116,6 +117,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle1-label"
         className=
             ms-Toggle-background
             {

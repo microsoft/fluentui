@@ -42,7 +42,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 0px;
+            margin-right: 10px;
             margin-top: 0px;
             outline: none;
             overflow: inherit;
@@ -110,7 +110,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 0px;
+            margin-right: 10px;
             margin-top: 0px;
             outline: none;
             overflow: inherit;
@@ -178,7 +178,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 0px;
+            margin-right: 10px;
             margin-top: 0px;
             outline: none;
             overflow: inherit;
@@ -238,6 +238,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-self: stretch;
             background-color: transparent;
             border-radius: 0px;
             border: none;
@@ -248,7 +249,8 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
+            height: auto;
+            min-width: 0px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;

@@ -2,6 +2,28 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.2.3",
+      "tag": "@uifabric/react-cards_v0.2.3",
+      "date": "Fri, 05 Apr 2019 12:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Supporting High Contrast mode.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "0f51e419a3934462e5cc8773fd79fa7c1bd5eba4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.67.0` to `^6.67.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.4` to `^6.164.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@uifabric/react-cards_v0.2.2",
       "date": "Thu, 04 Apr 2019 12:34:57 GMT",
