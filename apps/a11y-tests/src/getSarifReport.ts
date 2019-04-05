@@ -12,7 +12,7 @@ export async function getSarifReport(subUrl: string): Promise<SarifLog> {
   await page.setBypassCSP(true);
 
   try {
-    await page.goto(`${TEST_URL_ROOT}${subUrl}`);
+    await page.goto(`${TEST_URL_ROOT}${subUrl}`, { waitUntil: 'load', timeout: 60000 });
   } catch (e) {
     browser.close();
     throw e;
