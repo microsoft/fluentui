@@ -260,8 +260,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             maxHeight: windowHeight
           },
           [HighContrastSelector]: {
-            borderLeft: `1px solid ${palette.neutralLight}`,
-            borderRight: `1px solid ${palette.neutralLight}`
+            borderLeft: `3px solid ${palette.neutralLight}`,
+            borderRight: `3px solid ${palette.neutralLight}`
           },
           ...getPanelBreakpoints(type)
         }

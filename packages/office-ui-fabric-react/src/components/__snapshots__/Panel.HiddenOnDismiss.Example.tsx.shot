@@ -236,8 +236,8 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   max-height: 768px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
-                  border-left: 1px solid #eaeaea;
-                  border-right: 1px solid #eaeaea;
+                  border-left: 3px solid #eaeaea;
+                  border-right: 3px solid #eaeaea;
                 }
                 @media (min-width: 480px){& {
                   width: 340px;
