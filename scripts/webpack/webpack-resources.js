@@ -40,6 +40,9 @@ module.exports = {
               path: path.resolve(process.cwd(), 'dist'),
               pathinfo: false
             },
+            optimization: {
+              concatenateModules: false
+            },
             resolveLoader,
             module,
             devtool,
@@ -59,7 +62,9 @@ module.exports = {
               filename: `[name].min.js`,
               path: path.resolve(process.cwd(), 'dist')
             },
-
+            optimization: {
+              concatenateModules: false
+            },
             resolveLoader,
             module,
             devtool: excludeSourceMaps ? undefined : devtool,
