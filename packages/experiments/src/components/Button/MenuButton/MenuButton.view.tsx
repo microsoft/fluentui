@@ -7,7 +7,7 @@ import { Button } from '../Button';
 import { IMenuButtonComponent, IMenuButtonProps, IMenuButtonSlots } from './MenuButton.types';
 
 export const MenuButtonView: IMenuButtonComponent['view'] = props => {
-  const { children, disabled, onClick, ariaLabel, expanded, onMenuDismiss, menuTarget, ...rest } = props;
+  const { children, disabled, onClick, expanded, onMenuDismiss, menuTarget, ...rest } = props;
 
   const Slots = getSlots<IMenuButtonProps, IMenuButtonSlots>(props, {
     root: 'div',
@@ -20,13 +20,8 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
   });
 
   return (
-    <Slots.root
-      type="button" // stack doesn't take in native button props
-      role="button"
-      aria-disabled={disabled}
-      aria-label={ariaLabel}
-    >
-      <Slots.button onClick={onClick} disabled={disabled} {...rest}>
+    <Slots.root>
+      <Slots.button aria-expanded={expanded} onClick={onClick} disabled={disabled} {...rest}>
         {children}
         <Stack.Item>
           <Slots.menuIcon iconName="ChevronDown" />
