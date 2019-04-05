@@ -62,6 +62,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
             word-wrap: break-word;
           }
       htmlFor="Toggle0"
+      id="Toggle0-label"
     >
       Wrap the content box below in a Layer
     </label>
@@ -75,6 +76,7 @@ exports[`Component Examples renders Layer.Basic.Example.tsx correctly 2`] = `
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle0-label"
         checked={false}
         className=
             ms-Toggle-background
