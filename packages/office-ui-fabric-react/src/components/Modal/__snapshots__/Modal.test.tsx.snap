@@ -152,7 +152,11 @@ exports[`Modal renders Modal correctly 1`] = `
                 ms-Modal-scrollableContent
                 {
                   flex-grow: 1;
+                  max-height: 100vh;
                   overflow-y: auto;
+                }
+                @supports (-webkit-overflow-scrolling: touch){& {
+                  max-height: 768px;
                 }
             data-is-scrollable={true}
           >
@@ -308,7 +312,11 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                 ms-Modal-scrollableContent
                 {
                   flex-grow: 1;
+                  max-height: 100vh;
                   overflow-y: auto;
+                }
+                @supports (-webkit-overflow-scrolling: touch){& {
+                  max-height: 768px;
                 }
             data-is-scrollable={true}
           >

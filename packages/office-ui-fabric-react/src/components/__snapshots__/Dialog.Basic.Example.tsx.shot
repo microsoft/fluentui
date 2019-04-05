@@ -119,13 +119,45 @@ exports[`Component Examples renders Dialog.Basic.Example.tsx correctly 1`] = `
     </div>
   </button>
   <label
-    className="screenReaderOnly"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          width: 1px;
+        }
     id="dialogLabel0"
   >
     My sample Label
   </label>
   <label
-    className="screenReaderOnly"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          width: 1px;
+        }
     id="subTextLabel1"
   >
     My Sample description

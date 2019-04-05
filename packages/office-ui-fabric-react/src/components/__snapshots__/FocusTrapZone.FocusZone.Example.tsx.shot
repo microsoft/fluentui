@@ -68,6 +68,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               word-wrap: break-word;
             }
         htmlFor="Toggle0"
+        id="Toggle0-label"
       >
         Use trap zone
       </label>
@@ -81,6 +82,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle0-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -189,6 +191,8 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 padding-top: 0;
                 user-select: none;
               }
+          htmlFor="Toggle0"
+          id="Toggle0-stateText"
         >
           Off
         </label>

@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Apr 2019 12:38:51 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+
+## 6.164.5
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- SelectionZone: Disallow selection when selection mode is SelectionMode.none
+- Dialog, Layer, and Modal partial css-in-js conversions
+- Modal: constrain scrollableContent height to 100vh and window.innerHeight for mobile Safari to support DetailsList virtualization
+- Convert OverflowSet examples and one Panel example to css-in-js
+- Fix for  scrolling functionality in Suggestions component.
+- Toggle: make on/off text clickable
+- Tooltip: fixing the color and font size of subText not to be overriden by external UHF css.
+
+## 6.164.4
+Thu, 04 Apr 2019 12:34:57 GMT
+
+### Patches
+
+- List and other example updates
+- Nav and MessageBar example updates
+- Colors: reduce size of utility file by changing implementation
+- SelectionZone: Defer dom inspection until interaction
 
 ## 6.164.3
 Wed, 03 Apr 2019 12:38:51 GMT

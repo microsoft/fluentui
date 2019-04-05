@@ -183,6 +183,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               word-wrap: break-word;
             }
         htmlFor="Toggle3"
+        id="Toggle3-label"
       >
         Enable trap zone 1
       </label>
@@ -196,6 +197,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle3-label"
           className=
               ms-Toggle-background
               {
@@ -303,6 +305,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 padding-top: 0;
                 user-select: none;
               }
+          htmlFor="Toggle3"
+          id="Toggle3-stateText"
         >
           Off
         </label>
@@ -489,6 +493,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 word-wrap: break-word;
               }
           htmlFor="Toggle7"
+          id="Toggle7-label"
         >
           Enable trap zone 2
         </label>
@@ -502,6 +507,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         >
           <button
             aria-checked={false}
+            aria-labelledby="Toggle7-label"
             className=
                 ms-Toggle-background
                 {
@@ -609,6 +615,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   padding-top: 0;
                   user-select: none;
                 }
+            htmlFor="Toggle7"
+            id="Toggle7-stateText"
           >
             Off
           </label>
@@ -795,6 +803,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   word-wrap: break-word;
                 }
             htmlFor="Toggle11"
+            id="Toggle11-label"
           >
             Enable trap zone 3
           </label>
@@ -808,6 +817,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <button
               aria-checked={false}
+              aria-labelledby="Toggle11-label"
               className=
                   ms-Toggle-background
                   {
@@ -915,6 +925,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 0;
                     user-select: none;
                   }
+              htmlFor="Toggle11"
+              id="Toggle11-stateText"
             >
               Off
             </label>
@@ -1102,6 +1114,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   word-wrap: break-word;
                 }
             htmlFor="Toggle15"
+            id="Toggle15-label"
           >
             Enable trap zone 4
           </label>
@@ -1115,6 +1128,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <button
               aria-checked={false}
+              aria-labelledby="Toggle15-label"
               className=
                   ms-Toggle-background
                   {
@@ -1222,6 +1236,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 0;
                     user-select: none;
                   }
+              htmlFor="Toggle15"
+              id="Toggle15-stateText"
             >
               Off
             </label>
@@ -1409,6 +1425,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 word-wrap: break-word;
               }
           htmlFor="Toggle19"
+          id="Toggle19-label"
         >
           Enable trap zone 5
         </label>
@@ -1422,6 +1439,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         >
           <button
             aria-checked={false}
+            aria-labelledby="Toggle19-label"
             className=
                 ms-Toggle-background
                 {
@@ -1529,6 +1547,8 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   padding-top: 0;
                   user-select: none;
                 }
+            htmlFor="Toggle19"
+            id="Toggle19-stateText"
           >
             Off
           </label>

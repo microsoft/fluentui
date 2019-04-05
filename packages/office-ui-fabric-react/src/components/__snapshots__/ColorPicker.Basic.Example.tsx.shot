@@ -1068,6 +1068,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               word-wrap: break-word;
             }
         htmlFor="Toggle10"
+        id="Toggle10-label"
       >
         Hide alpha slider
       </label>
@@ -1081,6 +1082,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle10-label"
           checked={false}
           className=
               ms-Toggle-background

@@ -1,13 +1,11 @@
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
-import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import './Layer.Example.scss';
-const exampleStyles: any = exampleStylesImport;
+import * as styles from './Layer.Example.scss';
 
 export interface ILayerContentExampleState {
   time: string;
@@ -36,8 +34,8 @@ export class LayerContentExample extends BaseComponent<{}, ILayerContentExampleS
 
   public render() {
     return (
-      <div className={`LayerExample-content ${AnimationClassNames.scaleUpIn100}`}>
-        <div className="LayerExample-textContent">{this.context.message}</div>
+      <div className={css(styles.content, AnimationClassNames.scaleUpIn100)}>
+        <div className={styles.textContent}>{this.context.message}</div>
         <div>{this.state.time}</div>
       </div>
     );
@@ -67,12 +65,7 @@ export class LayerBasicExample extends BaseComponent<{}, ILayerBasicExampleState
     const { showLayer } = this.state;
     return (
       <div>
-        <Checkbox
-          className={exampleStyles.exampleCheckbox}
-          label="Wrap the content box belowed in a Layer"
-          checked={showLayer}
-          onChange={this._onChange}
-        />
+        <Toggle label="Wrap the content box below in a Layer" inlineLabel checked={showLayer} onChange={this._onChange} />
 
         {showLayer ? (
           <Layer>

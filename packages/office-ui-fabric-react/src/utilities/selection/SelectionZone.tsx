@@ -279,6 +279,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   };
 
   private _isSelectionDisabled(target: HTMLElement): boolean {
+    if (this._getSelectionMode() === SelectionMode.none) {
+      return true;
+    }
+
     while (target !== this._root.current) {
       if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
         return true;

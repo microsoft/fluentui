@@ -140,6 +140,7 @@ exports[`Toggle renders toggle correctly 1`] = `
           word-wrap: break-word;
         }
     htmlFor="Toggle1"
+    id="Toggle1-label"
   >
     Label
   </label>
@@ -153,6 +154,7 @@ exports[`Toggle renders toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
+      aria-labelledby="Toggle1-label"
       className=
           ms-Toggle-background
           {
@@ -270,6 +272,7 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
           word-wrap: break-word;
         }
     htmlFor="Toggle2"
+    id="Toggle2-label"
   >
     Label
   </label>
@@ -283,6 +286,7 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
   >
     <button
       aria-checked={false}
+      aria-labelledby="Toggle2-label"
       className=
           ms-Toggle-background
           {
@@ -399,6 +403,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           word-wrap: break-word;
         }
     htmlFor="Toggle3"
+    id="Toggle3-label"
   >
     Label
   </label>
@@ -412,6 +417,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
+      aria-labelledby="Toggle3-label"
       className=
           ms-Toggle-background
           {
@@ -519,6 +525,8 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             padding-top: 0;
             user-select: none;
           }
+      htmlFor="Toggle3"
+      id="Toggle3-stateText"
     >
       Off
     </label>
