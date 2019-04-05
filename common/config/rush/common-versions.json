@@ -43,7 +43,6 @@
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
     "react": ["~16.8.0"],
-    "react-dom": ["~16.8.0"],
-    "typescript": ["3.3.3"]
+    "react-dom": ["~16.8.0"]
   }
 }
