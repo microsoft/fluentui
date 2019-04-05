@@ -111,11 +111,17 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return;
     }
 
-    if (prevState.isStickyTop !== this.state.isStickyTop || prevState.isStickyBottom !== this.state.isStickyBottom) {
+    const { isStickyBottom, isStickyTop, distanceFromTop } = this.state;
+    // stickyStateChanged is true, if component has become sticky from non-sticky or vice-versa.
+    // else false.
+    const stickyStateChanged = prevState.isStickyTop !== isStickyTop || prevState.isStickyBottom !== isStickyBottom;
+    if (stickyStateChanged) {
       if (this._activeElement) {
         this._activeElement.focus();
       }
       scrollablePane.updateStickyRefHeights();
+    }
+    if (stickyStateChanged || prevState.distanceFromTop !== distanceFromTop) {
       // Sync Sticky scroll position with content container on each update
       scrollablePane.syncScrollSticky(this);
     }
@@ -290,14 +296,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.setState({ distanceFromTop: this.distanceFromTop });
     } else {
       this.setState({
-        isStickyTop: this.canStickyTop && !!isStickyTop,
+        isStickyTop: !!isStickyTop,
         isStickyBottom: !!isStickyBottom,
         distanceFromTop: this.distanceFromTop
       });
-    }
-
-    if (hasDistanceFromTopChanged && scrollablePane) {
-      scrollablePane.syncScrollSticky(this);
     }
   }
 
