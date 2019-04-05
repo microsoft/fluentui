@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 22:09:48 GMT and should not be manually modified.
+
+## 6.68.0
+Fri, 05 Apr 2019 22:09:48 GMT
+
+### Minor changes
+
+- Button: Adding ariaLabel prop and updating examples to fix accessibility issues.
 
 ## 6.67.1
 Fri, 05 Apr 2019 12:36:12 GMT
