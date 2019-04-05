@@ -33,6 +33,7 @@ const PanelCustomLeftExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const PanelHiddenOnDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HiddenOnDismiss.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
+const PanelLightDismissCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 const PanelNavigationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Navigation.Example.tsx') as string;
@@ -105,6 +106,7 @@ export const PanelPageProps: IDocPageProps = {
     {
       title: 'Panel - Custom Light Dismiss',
       code: PanelLightDismissCustomExampleCode,
+      codepenJS: PanelLightDismissCustomExampleCodepen,
       view: <PanelLightDismissCustomExample />
     },
     {
