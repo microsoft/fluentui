@@ -52,7 +52,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         },
         ':after': {
           color: 'transparent',
-          content: 'attr(title)',
+          content: 'attr(name)',
           display: 'block',
           fontWeight: FontWeights.bold,
           height: '1px',
