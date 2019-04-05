@@ -28,7 +28,7 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
             subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           }}
           modalProps={{
-            containerClassName: 'ms-dialogMainOverride',
+            styles: { main: { maxWidth: 450 } },
             isModeless: true
           }}
         >

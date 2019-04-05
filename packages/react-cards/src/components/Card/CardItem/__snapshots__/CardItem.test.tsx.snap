@@ -33,6 +33,9 @@ exports[`Card Item renders correctly 1`] = `
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
       }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
 >
   <div
     className=
@@ -85,6 +88,9 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
       }
       & > *:not(.ms-StackItem) {
         flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
       }
 >
   <div

@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.13.2",
+      "tag": "@uifabric/fabric-website_v6.13.2",
+      "date": "Thu, 04 Apr 2019 12:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "HomePage: check sessionStorage for fabricVer",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "4cff270986c765ce25555bac6062be6dc05d1550"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.3` to `^6.164.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.1",
       "tag": "@uifabric/fabric-website_v6.13.1",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",

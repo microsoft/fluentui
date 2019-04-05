@@ -27,8 +27,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
     content: [
       'ms-Tooltip-content',
       fonts.small,
-      palette.neutralPrimary,
       {
+        color: palette.neutralPrimary,
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
         overflow: 'hidden'
@@ -37,6 +37,10 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
     subText: [
       'ms-Tooltip-subtext',
       {
+        // Using inherit here to avoid unintentional global overrides of the <p> tag.
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
+        color: 'inherit',
         margin: 0
       }
     ]

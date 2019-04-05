@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import './Dialog.Basic.Example.scss';
+import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+const screenReaderOnly = mergeStyles(hiddenContentStyle);
 
 export interface IDialogBasicExampleState {
   hideDialog: boolean;
@@ -21,10 +23,10 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
-        <label id={this._labelId} className="screenReaderOnly">
+        <label id={this._labelId} className={screenReaderOnly}>
           My sample Label
         </label>
-        <label id={this._subTextId} className="screenReaderOnly">
+        <label id={this._subTextId} className={screenReaderOnly}>
           My Sample description
         </label>
 
@@ -40,7 +42,7 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
             titleAriaId: this._labelId,
             subtitleAriaId: this._subTextId,
             isBlocking: false,
-            containerClassName: 'ms-dialogMainOverride'
+            styles: { main: { maxWidth: 450 } }
           }}
         >
           <DialogFooter>
