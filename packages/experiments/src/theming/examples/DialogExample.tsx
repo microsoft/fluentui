@@ -36,7 +36,7 @@ export class DialogExample extends React.Component<IDialogExampleProps, IDialogE
           }}
           modalProps={{
             isBlocking: false,
-            containerClassName: 'ms-dialogMainOverride'
+            styles: { main: { maxWidth: 450 } }
           }}
         >
           <ChoiceGroup
