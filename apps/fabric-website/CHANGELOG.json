@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.4",
+      "tag": "@uifabric/fabric-website_v5.8.4",
+      "date": "Fri, 05 Apr 2019 11:26:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "0d43c600fea10f5c55a3505a819fb7c3172a3a83",
+            "comment": "HomePage: check sessionStorage for fabricVer"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.3",
       "tag": "@uifabric/fabric-website_v5.8.3",
       "date": "Fri, 29 Mar 2019 11:24:51 GMT",

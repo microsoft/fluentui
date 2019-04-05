@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 29 Mar 2019 11:24:51 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 11:26:52 GMT and should not be manually modified.
+
+## 5.8.4
+Fri, 05 Apr 2019 11:26:52 GMT
+
+### Patches
+
+- HomePage: check sessionStorage for fabricVer
 
 ## 5.8.3
 Fri, 29 Mar 2019 11:24:51 GMT
