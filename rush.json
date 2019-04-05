@@ -18,7 +18,7 @@
   "rushVersion": "5.6.0",
   /**
    * The next field selects which package manager should be installed and determines its version.
-   * Rush installs its own local copy of the package manager to ensure that your build process
+   * Rush installs its own local copy of the package managƒer to ensure that your build process
    * is fully isolated from whatever tools are present in the local environment.
    *
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
@@ -94,7 +94,7 @@
    * version. In those cases, you will need to add an entry to the "allowedAlternateVersions"
    * section of the common-versions.json.
    */
-  "ensureConsistentVersions": true,
+  "ensureConsistentVersions": false,
   /**
    * Large monorepos can become intimidating for newcomers if project folder paths don't follow
    * a consistent and recognizable pattern.  When the system allows nested folder trees,
