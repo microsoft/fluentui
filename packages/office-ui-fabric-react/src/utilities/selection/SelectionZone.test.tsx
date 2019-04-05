@@ -277,6 +277,16 @@ describe('SelectionZone', () => {
   });
 });
 
+describe('SelectionZone - SelectionMode.none', () => {
+  beforeEach(() => _initializeSelection(SelectionMode.none));
+
+  it('does not select an item when selection mode is SelectionMode.none', () => {
+    ReactTestUtils.Simulate.mouseDown(_surface0);
+    expect(_selection.isIndexSelected(0)).toEqual(false);
+    expect(_selection.getSelectedCount()).toEqual(0);
+  });
+});
+
 function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData): void {
   ReactTestUtils.Simulate.mouseDown(el, eventData);
   ReactTestUtils.Simulate.focus(el, eventData);

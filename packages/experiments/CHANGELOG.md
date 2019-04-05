@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 03 Apr 2019 12:38:51 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+
+## 6.67.1
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- Use styles instead of className on theming example dialog
 
 ## 6.67.0
 Wed, 03 Apr 2019 12:38:51 GMT

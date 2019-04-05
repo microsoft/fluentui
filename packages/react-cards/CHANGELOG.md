@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 04 Apr 2019 12:34:57 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+
+## 0.2.3
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- Card: Supporting High Contrast mode.
 
 ## 0.2.2
 Thu, 04 Apr 2019 12:34:57 GMT
