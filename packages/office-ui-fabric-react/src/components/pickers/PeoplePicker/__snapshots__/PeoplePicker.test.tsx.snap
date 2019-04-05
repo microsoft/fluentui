@@ -362,6 +362,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -389,6 +390,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -416,6 +418,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -443,6 +446,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
