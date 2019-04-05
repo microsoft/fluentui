@@ -7209,7 +7209,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
         [key: string]: RegExp;
     };
     multiline?: boolean;
-    onBeforeChange?: (newValue: any) => void;
+    onBeforeChange?: (newValue?: string) => void;
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     // @deprecated (undocumented)
     onChanged?: (newValue: any) => void;
