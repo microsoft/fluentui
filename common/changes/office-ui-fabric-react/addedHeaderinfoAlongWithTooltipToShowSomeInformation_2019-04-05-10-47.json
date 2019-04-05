@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "added the headerInfo prop to the detailsColumn to give more information about that column in the tooltip",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "saishiva99@gmail.com"
+}
