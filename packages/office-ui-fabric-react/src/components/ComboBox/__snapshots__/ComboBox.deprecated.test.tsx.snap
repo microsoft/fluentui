@@ -13,6 +13,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border-color: #a19f9d;
+          border-radius: 2px;
           border-style: solid;
           border-width: 1px;
           box-shadow: none;
@@ -28,7 +29,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
           outline: 0;
           overflow: hidden;
           padding-bottom: 1px;
-          padding-left: 12px;
+          padding-left: 8px;
           padding-right: 32px;
           padding-top: 1px;
           position: relative;
@@ -62,6 +63,9 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
         }
         &:hover {
           border-color: #323130;
+        }
+        &:hover .ms-ComboBox-Input {
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
