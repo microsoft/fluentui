@@ -11,18 +11,10 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "strict": true,
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "webpack-env"
-    ]
+    "lib": ["es6", "dom"],
+    "typeRoots": ["node_modules/@types"],
+    "types": ["webpack-env"],
+    "skipLibCheck": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
