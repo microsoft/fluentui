@@ -16,8 +16,8 @@ exports[`DetailsHeader can render 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         font-weight: 400;
-        height: 32px;
-        line-height: 32px;
+        height: 42px;
+        line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
         padding-top: 1px;
@@ -57,7 +57,7 @@ exports[`DetailsHeader can render 1`] = `
           box-sizing: border-box;
           color: #323130;
           display: inline-flex;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0px;
           margin-left: 0px;
@@ -102,7 +102,7 @@ exports[`DetailsHeader can render 1`] = `
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
             {
-              height: 32px;
+              height: 42px;
             }
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
@@ -120,7 +120,7 @@ exports[`DetailsHeader can render 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 32px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -134,7 +134,7 @@ exports[`DetailsHeader can render 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -197,7 +197,7 @@ exports[`DetailsHeader can render 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -226,7 +226,7 @@ exports[`DetailsHeader can render 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -272,7 +272,7 @@ exports[`DetailsHeader can render 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -379,6 +379,8 @@ exports[`DetailsHeader can render 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -461,7 +463,7 @@ exports[`DetailsHeader can render 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -568,6 +570,8 @@ exports[`DetailsHeader can render 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -671,7 +675,7 @@ exports[`DetailsHeader can render 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -779,6 +783,8 @@ exports[`DetailsHeader can render 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -796,9 +802,10 @@ exports[`DetailsHeader can render 1`] = `
                 color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 4px;
+                padding-left: 6px;
                 speak: none;
                 vertical-align: middle;
               }
@@ -885,8 +892,8 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         font-weight: 400;
-        height: 32px;
-        line-height: 32px;
+        height: 42px;
+        line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
         padding-top: 1px;
@@ -929,7 +936,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           box-sizing: border-box;
           color: #323130;
           display: inline-flex;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0px;
           margin-left: 0px;
@@ -973,7 +980,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
             ms-DetailsRow-check--isDisabled
             ms-DetailsRow-check--isHeader
             {
-              height: 32px;
+              height: 42px;
             }
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
@@ -991,7 +998,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 32px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -1005,7 +1012,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1043,7 +1050,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -1150,6 +1157,8 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -1232,7 +1241,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -1339,6 +1348,8 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -1442,7 +1453,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -1550,6 +1561,8 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -1567,9 +1580,10 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
                 color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 4px;
+                padding-left: 6px;
                 speak: none;
                 vertical-align: middle;
               }
@@ -1656,8 +1670,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
         font-weight: 400;
-        height: 32px;
-        line-height: 32px;
+        height: 42px;
+        line-height: 42px;
         min-width: 100%;
         padding-bottom: 1px;
         padding-top: 1px;
@@ -1697,7 +1711,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           box-sizing: border-box;
           color: #323130;
           display: inline-flex;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0px;
           margin-left: 0px;
@@ -1742,7 +1756,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
             ms-DetailsRow-check
             ms-DetailsRow-check--isHeader
             {
-              height: 32px;
+              height: 42px;
             }
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
@@ -1760,7 +1774,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
-              height: 32px;
+              height: 42px;
               justify-content: center;
               margin-bottom: 0px;
               margin-left: 0px;
@@ -1774,7 +1788,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               padding-top: 0px;
               position: relative;
               vertical-align: top;
-              width: 40px;
+              width: 48px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1837,7 +1851,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 18px;
@@ -1866,7 +1880,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c6c4;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 16px;
@@ -1912,7 +1926,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -2019,6 +2033,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -2101,7 +2117,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -2209,6 +2225,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -2336,7 +2354,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
-          height: 32px;
+          height: 42px;
           line-height: inherit;
           margin-bottom: 0;
           margin-left: 0;
@@ -2445,6 +2463,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               ms-DetailsHeader-cellName
               {
                 flex: 0 1 auto;
+                font-size: 14px;
+                font-weight: 600;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -2502,9 +2522,10 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
+                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 4px;
+                padding-left: 6px;
                 speak: none;
                 vertical-align: middle;
               }

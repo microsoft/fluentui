@@ -62,8 +62,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -103,7 +103,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   box-sizing: border-box;
                   color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -148,7 +148,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -166,7 +166,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -180,7 +180,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -243,7 +243,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -272,7 +272,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -379,7 +379,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -524,7 +524,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -669,7 +669,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -814,7 +814,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -959,7 +959,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -1104,7 +1104,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -1249,7 +1249,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -1394,7 +1394,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -1539,7 +1539,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;
@@ -1684,7 +1684,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
+                            border-left: 48px solid #ffffff;
                           }
                           {
                             border-bottom: 1px solid #ffffff;

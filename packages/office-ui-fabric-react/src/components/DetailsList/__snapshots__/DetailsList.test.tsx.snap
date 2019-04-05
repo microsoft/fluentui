@@ -62,8 +62,8 @@ exports[`DetailsList renders List correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -103,7 +103,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   box-sizing: border-box;
                   color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -148,7 +148,7 @@ exports[`DetailsList renders List correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -166,7 +166,7 @@ exports[`DetailsList renders List correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -180,7 +180,7 @@ exports[`DetailsList renders List correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -243,7 +243,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -272,7 +272,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -318,7 +318,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -425,6 +425,8 @@ exports[`DetailsList renders List correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -643,8 +645,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -684,7 +686,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   box-sizing: border-box;
                   color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -729,7 +731,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -747,7 +749,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -761,7 +763,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -824,7 +826,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -853,7 +855,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -899,7 +901,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1007,6 +1009,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1054,7 +1058,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1162,6 +1166,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1209,7 +1215,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1317,6 +1323,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1364,7 +1372,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1472,6 +1480,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1519,7 +1529,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1627,6 +1637,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1812,8 +1824,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -1853,7 +1865,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   box-sizing: border-box;
                   color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1898,7 +1910,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -1916,7 +1928,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -1930,7 +1942,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1993,7 +2005,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -2022,7 +2034,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -2068,7 +2080,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2175,6 +2187,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2394,8 +2408,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -2435,7 +2449,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   box-sizing: border-box;
                   color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -2480,7 +2494,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -2498,7 +2512,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -2512,7 +2526,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -2575,7 +2589,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -2604,7 +2618,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -2650,7 +2664,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2757,6 +2771,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2838,7 +2854,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2945,6 +2961,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3026,7 +3044,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3133,6 +3151,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3351,8 +3371,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -3392,7 +3412,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   box-sizing: border-box;
                   color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -3437,7 +3457,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -3455,7 +3475,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -3469,7 +3489,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -3532,7 +3552,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -3561,7 +3581,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c6c4;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -3607,7 +3627,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3715,6 +3735,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3765,7 +3787,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3873,6 +3895,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3923,7 +3947,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -4031,6 +4055,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4081,7 +4107,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -4189,6 +4215,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4239,7 +4267,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -4347,6 +4375,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4534,8 +4564,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -4574,7 +4604,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   color: #605e5c;
                   display: inline-flex;
                   font-size: 12px;
-                  height: 32px;
+                  height: 42px;
                   justify-content: center;
                   line-height: inherit;
                   margin-bottom: 0;
@@ -4591,7 +4621,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   text-overflow: ellipsis;
                   vertical-align: top;
                   white-space: nowrap;
-                  width: 32px;
+                  width: 36px;
                 }
                 &::-moz-focus-inner {
                   border: 0;
@@ -4652,7 +4682,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -4759,6 +4789,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4942,7 +4974,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               &:hover $check {
                                 opacity: 1;
                               }
-                              &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                               .ms-GroupedList-group.is-dropping > $root $dropIcon {
@@ -4964,7 +4996,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 {
                                   align-items: center;
                                   display: flex;
-                                  height: 42px;
+                                  height: 48px;
                                 }
                             data-focuszone-id="FocusZone19"
                             onFocus={[Function]}
@@ -5021,8 +5053,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     color: #605e5c;
                                     cursor: default;
                                     display: flex;
-                                    font-size: 18px;
-                                    height: 42px;
+                                    font-size: 12px;
+                                    height: 48px;
                                     justify-content: center;
                                     outline: transparent;
                                     padding-bottom: 0px;
@@ -5030,7 +5062,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     padding-right: 0px;
                                     padding-top: 0px;
                                     position: relative;
-                                    width: 32px;
+                                    width: 36px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -5081,8 +5113,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   ms-GroupHeader-title
                                   {
                                     cursor: pointer;
-                                    font-size: 21px;
-                                    font-weight: 300;
+                                    font-size: 16px;
+                                    font-weight: 600;
                                     outline: 0px;
                                     padding-left: 12px;
                                     text-overflow: ellipsis;
@@ -5179,13 +5211,20 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
                                         background: #f3f2f1;
+                                        color: #323130;
+                                      }
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
                                       }
                                       &:hover $check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus $check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -5210,7 +5249,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     style={
                                       Object {
                                         "display": "inline-block",
-                                        "width": 32,
+                                        "width": 36,
                                       }
                                     }
                                   />
@@ -5369,13 +5408,20 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
                                         background: #f3f2f1;
+                                        color: #323130;
+                                      }
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
                                       }
                                       &:hover $check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus $check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -5400,7 +5446,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     style={
                                       Object {
                                         "display": "inline-block",
-                                        "width": 32,
+                                        "width": 36,
                                       }
                                     }
                                   />
@@ -5564,7 +5610,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               &:hover $check {
                                 opacity: 1;
                               }
-                              &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                               .ms-GroupedList-group.is-dropping > $root $dropIcon {
@@ -5586,7 +5632,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 {
                                   align-items: center;
                                   display: flex;
-                                  height: 42px;
+                                  height: 48px;
                                 }
                             data-focuszone-id="FocusZone21"
                             onFocus={[Function]}
@@ -5643,8 +5689,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     color: #605e5c;
                                     cursor: default;
                                     display: flex;
-                                    font-size: 18px;
-                                    height: 42px;
+                                    font-size: 12px;
+                                    height: 48px;
                                     justify-content: center;
                                     outline: transparent;
                                     padding-bottom: 0px;
@@ -5652,7 +5698,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     padding-right: 0px;
                                     padding-top: 0px;
                                     position: relative;
-                                    width: 32px;
+                                    width: 36px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -5703,8 +5749,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   ms-GroupHeader-title
                                   {
                                     cursor: pointer;
-                                    font-size: 21px;
-                                    font-weight: 300;
+                                    font-size: 16px;
+                                    font-weight: 600;
                                     outline: 0px;
                                     padding-left: 12px;
                                     text-overflow: ellipsis;
@@ -5801,13 +5847,20 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
                                         background: #f3f2f1;
+                                        color: #323130;
+                                      }
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
                                       }
                                       &:hover $check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus $check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -5832,7 +5885,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     style={
                                       Object {
                                         "display": "inline-block",
-                                        "width": 32,
+                                        "width": 36,
                                       }
                                     }
                                   />
@@ -5991,13 +6044,20 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
                                         background: #f3f2f1;
+                                        color: #323130;
+                                      }
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
                                       }
                                       &:hover $check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus $check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -6022,7 +6082,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     style={
                                       Object {
                                         "display": "inline-block",
-                                        "width": 32,
+                                        "width": 36,
                                       }
                                     }
                                   />
@@ -6181,13 +6241,20 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
                                         background: #f3f2f1;
+                                        color: #323130;
+                                      }
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
                                       }
                                       &:hover $check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus $check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -6212,7 +6279,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     style={
                                       Object {
                                         "display": "inline-block",
-                                        "width": 32,
+                                        "width": 36,
                                       }
                                     }
                                   />
