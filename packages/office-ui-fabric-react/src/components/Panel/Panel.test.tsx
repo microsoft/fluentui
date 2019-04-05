@@ -25,6 +25,43 @@ describe('Panel', () => {
     ReactDOM.createPortal.mockClear();
   });
 
+  describe('open', () => {
+    beforeEach(() => {
+      div = document.createElement('div');
+    });
+
+    afterEach(() => {
+      ReactDOM.unmountComponentAtNode(div);
+    });
+
+    it('fires the correct events when opening', done => {
+      let openedCalled = false;
+      let openCalled = false;
+      const setOpenTrue = (): void => {
+        openCalled = true;
+      };
+      const setOpenedTrue = (): void => {
+        openedCalled = true;
+      };
+
+      const panel: PanelBase = ReactDOM.render(<PanelBase isOpen={false} onOpen={setOpenTrue} onOpened={setOpenedTrue} />, div) as any;
+
+      panel.open();
+
+      expect(openCalled).toEqual(true);
+      expect(openedCalled).toEqual(false);
+
+      setTimeout(() => {
+        try {
+          expect(openedCalled).toEqual(true);
+          done();
+        } catch (e) {
+          done(e);
+        }
+      }, 250);
+    });
+  });
+
   describe('onClose', () => {
     beforeEach(() => {
       div = document.createElement('div');
