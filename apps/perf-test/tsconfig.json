@@ -15,9 +15,11 @@
       "es6",
       "dom"
     ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "types": [
-      "webpack-env",
-      "react"
+      "webpack-env"
     ]
   },
   "include": [
