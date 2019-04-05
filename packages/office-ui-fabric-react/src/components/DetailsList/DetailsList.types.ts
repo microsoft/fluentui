@@ -473,6 +473,10 @@ export interface IColumn {
    * Indicates whether a dropdown menu is open so that the appropriate ARIA attributes are rendered.
    */
   isMenuOpen?: boolean;
+  /**
+   *  it will give the Header info in the tooltip
+   */
+  headerInfo?: string;
 }
 
 /**

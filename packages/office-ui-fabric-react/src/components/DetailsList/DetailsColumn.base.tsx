@@ -8,6 +8,7 @@ import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { IDetailsColumnStyles } from './DetailsColumn.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.types';
+import { TooltipHost } from '../Tooltip';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
@@ -116,6 +117,12 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
                     <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                  )}
+
+                  {!!column.headerInfo && (
+                    <TooltipHost content={column.headerInfo} calloutProps={{ gapSpace: 0 }}>
+                      <Icon iconName={'Info'} className={classNames.nearIcon} ariaLabel={column.headerInfo} />
+                    </TooltipHost>
                   )}
                 </span>
               )

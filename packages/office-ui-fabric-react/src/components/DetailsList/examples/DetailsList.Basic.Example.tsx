@@ -44,7 +44,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     }
 
     this._columns = [
-      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true, headerInfo: 'name column' },
       { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
     ];
 
