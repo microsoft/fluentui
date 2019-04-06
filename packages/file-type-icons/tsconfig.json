@@ -12,7 +12,8 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": false,
-    "types": []
+    "typeRoots": ["node_modules/@types", "./typings"],
+    "types": ["import-json"]
   },
   "include": ["src"]
 }
