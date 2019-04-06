@@ -24,7 +24,7 @@ if (!ICONS_FOLDER_PATH) {
   );
 }
 
-if (!PATH_TO_SAVE_CATALOGn) {
+if (!PATH_TO_SAVE_CATALOG) {
   throw new Error('Must specify path to save the generated asset catalog. Use --out=<out> to provide a path.');
 }
 
