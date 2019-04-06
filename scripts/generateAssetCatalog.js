@@ -9,10 +9,11 @@
 const fs = require('fs');
 const path = require('path');
 const argv = require('yargs').argv;
+const fileIconMap = require('../packages/file-type-icons/fileTypeIconMap.json');
 
 const assetCatalogContentsJsonFileName = 'Contents.json';
 const catalogFolderName = './app-min/assets/FabricFileTypeIcons.xcassets';
-const fileIconMap = require('../packages/file-type-icons/fileTypeIconMap.json');
+const imageAssetPrefix = 'filetype_';
 
 const ICONS_FOLDER_PATH = argv.icons;
 const PATH_TO_SAVE_CATALOG = argv.out;
@@ -66,7 +67,7 @@ function main(iconsFolderPath, pathToSaveCatalog) {
         .pop();
 
       // create asset ImageSet folder
-      const iconGroupingAssetFolderPath = catalogFilePath + path.sep + 'filetype_' + iconGroupingToProcess + '_' + size + '.imageset';
+      const iconGroupingAssetFolderPath = catalogFilePath + path.sep + imageAssetPrefix + iconGroupingToProcess + '_' + size + '.imageset';
       createFolder(iconGroupingAssetFolderPath);
 
       // copy ImageSet
@@ -83,8 +84,7 @@ function copyFile(sourceFilePath, destinationFolderPath, size) {
   const destinationFilePath =
     destinationFolderPath +
     path.sep +
-    path.sep +
-    'filetype_' +
+    imageAssetPrefix +
     path
       .basename(sourceFilePath)
       .split('.')
@@ -137,7 +137,7 @@ function generateImageAssetContentsJsonForIconGrouping(iconGroupingName, imageAs
     images: [
       {
         idiom: 'universal',
-        filename: 'filetype_' + iconGroupingName + '_' + size + imageAssetExt
+        filename: imageAssetPrefix + iconGroupingName + '_' + size + imageAssetExt
       }
     ],
     info: {
