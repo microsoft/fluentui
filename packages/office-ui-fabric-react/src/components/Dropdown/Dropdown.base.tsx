@@ -12,6 +12,7 @@ import {
   getId,
   getLastFocusable,
   getNativeProps,
+  initializeComponentRef,
   isIOS,
   isMac,
   mergeAriaAttributeValues,
@@ -73,6 +74,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   constructor(props: IDropdownProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
       warnDeprecations('Dropdown', props, {
