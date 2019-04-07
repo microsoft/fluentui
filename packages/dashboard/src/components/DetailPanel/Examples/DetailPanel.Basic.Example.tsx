@@ -20,9 +20,16 @@ export class DetailPanelBasicExample extends React.PureComponent<{}, IDetailPane
 
       return (
         <DetailPanel
+          panelSetting={{
+            isLightDismiss: true,
+            onLightDismiss: () => {
+              console.log('light dismiss triggered');
+              this.setState({ show: false });
+            }
+          }}
           mainHeader={header}
           mainContent={<div>Main content!</div>}
-          onDetailPanelDimiss={() => {
+          onDetailPanelDismiss={() => {
             this.setState({ show: false });
           }}
         />

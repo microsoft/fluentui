@@ -24,7 +24,7 @@ jest.config.js @kenotron @ecraig12345
 tsconfig.json @kenotron @ecraig12345
 rush.json @kenotron @ecraig12345
 LICENSE @kenotron @ecraig12345
-.travis.yml @kenotron @ecraig12345
+azure-pipelines.yml @ecraig12345 @kenotron
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
@@ -117,13 +117,14 @@ Persona/PersonaConsts.tsx @mtennoe @jakob101
 pickers/  @joschect
 Pivot/ @jdhuntington
 Popup/ @JasonGore
-ProgressIndicator/ @aneeshak
+ProgressIndicator/ @aneeshack4
 Rating/ @jdhuntington
 ResizeGroup/ @micahgodbolt
 SearchBox/ @ecraig12345
+Separator/ @natalieethell
 Shimmer/ @Vitalius1 @atneik
 Signals/ @ThomasMichon
-Slider/ @aneeshak
+Slider/ @aneeshack4
 SpinButton/ @aneeshack4
 Spinner/ @aneeshack4
 Stack/  @khmakoto @kkjeer
@@ -185,6 +186,7 @@ pickers/docs/  @joschect
 # Rating/docs/
 ResizeGroup/docs/  @micahgodbolt
 # SearchBox/docs/
+Separator/docs/ @natalieethell
 Shimmer/docs/ @Vitalius1 @atneik
 # Slider/docs/
 # SpinButton/docs/

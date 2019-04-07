@@ -5,34 +5,28 @@ import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
 import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
-import { TextFieldIconExample } from './examples/TextField.Icon.Example';
 import { TextFieldMultilineExample } from './examples/TextField.Multiline.Example';
-import { TextFieldPlaceholderExample } from './examples/TextField.Placeholder.Example';
-import { TextFieldPrefixExample } from './examples/TextField.Prefix.Example';
+import { TextFieldControlledExample } from './examples/TextField.Controlled.Example';
 import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndSuffix.Example';
 import { TextFieldStatus } from './TextField.checklist';
 import { TextFieldStyledExample } from './examples/TextField.Styled.Example';
-import { TextFieldSuffixExample } from './examples/TextField.Suffix.Example';
-import { TextFieldUnderlinedExample } from './examples/TextField.Underlined.Example';
-import { TextFieldOnRenderDescriptionExample } from './examples/TextField.OnRenderDescription.Example';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
 const TextFieldBorderlessExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
 const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
+const TextFieldCustomRenderExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
-const TextFieldIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Icon.Example.tsx') as string;
+const TextFieldErrorMessageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
 const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
-const TextFieldPlaceholderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
-const TextFieldPlaceholderExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Placeholder.Example.tsx') as string;
-const TextFieldPrefixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Prefix.Example.tsx') as string;
+const TextFieldMultilineExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
+const TextFieldControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
+const TextFieldControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
 const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
+const TextFieldPrefixAndSuffixExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
 const TextFieldStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
-const TextFieldSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Suffix.Example.tsx') as string;
-const TextFieldUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
-const TextFieldUnderlinedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Underlined.Example.tsx') as string;
-const TextFieldOnRenderDescriptionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.OnRenderDescription.Example.tsx') as string;
+const TextFieldStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
 
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
@@ -41,74 +35,51 @@ export const TextFieldPageProps: IDocPageProps = {
   componentStatus: TextFieldStatus,
   examples: [
     {
-      title: 'Default TextField with Label',
+      title: 'Basic TextFields',
       code: TextFieldBasicExampleCode,
       view: <TextFieldBasicExample />,
       codepenJS: TextFieldBasicExampleCodepen
     },
     {
-      title: 'TextField with Placeholder',
-      code: TextFieldPlaceholderExampleCode,
-      view: <TextFieldPlaceholderExample />,
-      codepenJS: TextFieldPlaceholderExampleCodepen
+      title: 'Controlled TextFields',
+      code: TextFieldControlledExampleCode,
+      view: <TextFieldControlledExample />,
+      codepenJS: TextFieldControlledExampleCodepen
     },
     {
       title: 'Multiline TextField',
       code: TextFieldMultilineExampleCode,
+      codepenJS: TextFieldMultilineExampleCodepen,
       view: <TextFieldMultilineExample />
     },
     {
-      title: 'Underlined TextField',
-      code: TextFieldUnderlinedExampleCode,
-      view: <TextFieldUnderlinedExample />,
-      codepenJS: TextFieldUnderlinedExampleCodepen
-    },
-    {
-      title: 'Borderless TextField',
+      title: 'Underlined and borderless TextFields',
       code: TextFieldBorderlessExampleCode,
       view: <TextFieldBorderlessExample />,
       codepenJS: TextFieldBorderlessExampleCodepen
-    }
-  ],
-  implementationExamples: [
-    {
-      title: 'Textfield with a prefix',
-      code: TextFieldPrefixExampleCode,
-      view: <TextFieldPrefixExample />
     },
     {
-      title: 'Textfield with a suffix',
-      code: TextFieldSuffixExampleCode,
-      view: <TextFieldSuffixExample />
-    },
-    {
-      title: 'Textfield with a prefix and a suffix',
+      title: 'TextField with prefix and/or suffix',
       code: TextFieldPrefixAndSuffixExampleCode,
+      codepenJS: TextFieldPrefixAndSuffixExampleCodepen,
       view: <TextFieldPrefixAndSuffixExample />
     },
     {
-      title: 'TextField with an icon',
-      code: TextFieldIconExampleCode,
-      view: <TextFieldIconExample />
-    },
-    {
-      title: 'TextField with custom Label',
+      title: 'TextFields with custom rendering',
       code: TextFieldCustomRenderExampleCode,
+      codepenJS: TextFieldCustomRenderExampleCodepen,
       view: <TextFieldCustomRenderExample />
-    },
-    {
-      title: 'TextField with custom description',
-      code: TextFieldOnRenderDescriptionExampleCode,
-      view: <TextFieldOnRenderDescriptionExample />
     },
     {
       title: 'TextField error message variations',
       code: TextFieldErrorMessageExampleCode,
+      codepenJS: TextFieldErrorMessageExampleCodepen,
       view: <TextFieldErrorMessageExample />
     },
     {
-      title: 'TextField Subcomponent Styling',
+      title: 'TextField subcomponent styling',
       code: TextFieldStyledExampleCode,
+      codepenJS: TextFieldStyledExampleCodepen,
       view: <TextFieldStyledExample />
     }
   ],

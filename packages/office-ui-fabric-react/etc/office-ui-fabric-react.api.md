@@ -193,7 +193,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     componentDidUpdate(): void;
     // (undocumented)
-    componentWillReceiveProps(newProps: P): void;
+    componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -206,6 +206,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     hidePicker: () => void;
     // (undocumented)
     readonly inputText: string;
+    // (undocumented)
+    protected isComponentMounted: boolean;
     // (undocumented)
     readonly isSuggestionsShown: boolean;
     // (undocumented)
@@ -233,7 +235,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     readonly suggestions: any[];
     // (undocumented)
-    protected suggestionsControl: SuggestionsControl<T>;
+    protected suggestionsControl: React.RefObject<SuggestionsControl<T>>;
     // (undocumented)
     protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
     // (undocumented)
@@ -772,7 +774,7 @@ export function createGenericItem(name: string, currentValidationState: Validati
 export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps>;
 
 // @public
-export function cssColor(color: string): IRGB | undefined;
+export function cssColor(color?: string): IRGB | undefined;
 
 // @public
 export const DatePicker: React_2.StatelessComponent<IDatePickerProps>;
@@ -1200,6 +1202,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static defaultProps: IFocusZoneProps;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(element: HTMLElement): boolean;
+    static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
     }
@@ -1282,6 +1285,8 @@ export const GroupedList: React_2.StatelessComponent<IGroupedListProps>;
 export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
     componentWillReceiveProps(newProps: IGroupedListProps): void;
     // (undocumented)
     static defaultProps: {
@@ -1328,7 +1333,7 @@ export const groupTwo: IExtendedPersonaProps[];
 export const HoverCard: React_2.StatelessComponent<IHoverCardProps>;
 
 // @public (undocumented)
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> {
+export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
     constructor(props: IHoverCardProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1344,6 +1349,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         openHotKey: number;
         type: HoverCardType;
     };
+    // (undocumented)
+    dismiss: (withTimeOut?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
     }
@@ -3975,7 +3982,9 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    // @deprecated
     onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
+    onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
     onRenderTitle?: IRenderFunction<IDropdownOption[]>;
     options: IDropdownOption[];
     // @deprecated
@@ -4539,6 +4548,7 @@ export interface IGroupSpacerStyles {
 
 // @public (undocumented)
 export interface IHoverCard {
+    dismiss: (withTimeOut?: boolean) => void;
 }
 
 // @public
@@ -6317,6 +6327,27 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
 }
 
 // @public (undocumented)
+export interface ISeparator {
+}
+
+// @public (undocumented)
+export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
+    alignContent?: 'start' | 'center' | 'end';
+    styles?: IStyleFunctionOrObject<ISeparatorStyleProps, ISeparatorStyles>;
+    theme?: ITheme;
+    vertical?: boolean;
+}
+
+// @public (undocumented)
+export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> & Pick<ISeparatorProps, 'className' | 'alignContent' | 'vertical'>;
+
+// @public (undocumented)
+export interface ISeparatorStyles {
+    content: IStyle;
+    root: IStyle;
+}
+
+// @public (undocumented)
 export interface IShimmer {
 }
 
@@ -6684,6 +6715,7 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
     className?: string;
     disableShrink?: boolean;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
+    order?: number | string;
     shrink?: boolean | number | 'inherit' | 'initial' | 'unset';
     verticalFill?: boolean;
 }
@@ -6705,10 +6737,12 @@ export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['
 
 // @public (undocumented)
 export interface IStackItemTokens {
+    // (undocumented)
+    margin?: number | string;
 }
 
 // @public (undocumented)
-export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackStyles, IStackTokens>, React_2.HTMLAttributes<HTMLElement> {
+export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
     gap?: number | string;
@@ -6744,6 +6778,8 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 
 // @public (undocumented)
 export interface IStackTokens {
+    // (undocumented)
+    childrenGap?: number | string;
 }
 
 // @public (undocumented)
@@ -7169,7 +7205,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
         [key: string]: RegExp;
     };
     multiline?: boolean;
-    onBeforeChange?: (newValue: any) => void;
+    onBeforeChange?: (newValue?: string) => void;
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     // @deprecated (undocumented)
     onChanged?: (newValue: any) => void;
@@ -8336,6 +8372,12 @@ export enum SemanticColorSlots {
     // (undocumented)
     disabledText = 3,
 }
+
+// @public (undocumented)
+export const Separator: React_2.StatelessComponent<ISeparatorProps>;
+
+// @public (undocumented)
+export const SeparatorBase: React.StatelessComponent<ISeparatorProps>;
 
 // @public
 export enum Shade {

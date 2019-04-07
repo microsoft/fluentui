@@ -5,6 +5,7 @@ import { IInterfaceProperty, InterfacePropertyType } from './interfaces';
 
 const JSDOC_DEFAULT = '@default';
 const JSDOC_DEFAULTVALUE = '@defaultvalue';
+const TSDOC_DEFAULTVALUE = '@defaultValue';
 const JSDOC_DEPRECATED = '@deprecated';
 /**
  * Supporting enum for the parser, used internally within the parser only.
@@ -95,7 +96,7 @@ export class InterfaceParserHelper extends BaseParser {
               // go to next line
               this.eatSpacesAndNewlines();
             } else if (this.peek() === '@') {
-              if (this.eatWord(JSDOC_DEFAULTVALUE) || this.eatWord(JSDOC_DEFAULT)) {
+              if (this.eatWord(JSDOC_DEFAULTVALUE) || this.eatWord(TSDOC_DEFAULTVALUE) || this.eatWord(JSDOC_DEFAULT)) {
                 // this parser assumes @default values won't have a bunch of asterisks in the middle of it.
                 tmp = this.eatUntil(/[\*\n]/);
                 defaultValue = tmp;

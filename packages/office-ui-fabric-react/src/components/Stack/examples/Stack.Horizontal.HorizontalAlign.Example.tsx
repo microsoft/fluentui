@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Stack } from '../Stack';
+import { IStackTokens } from '../Stack.types';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class HorizontalStackHorizontalAlignExample extends React.Component<{}, {}> {
@@ -21,8 +22,10 @@ export class HorizontalStackHorizontalAlignExample extends React.Component<{}, {
       }
     });
 
+    const stackTokens: IStackTokens = { childrenGap: 5 };
+
     return (
-      <Stack gap={5}>
+      <Stack tokens={stackTokens}>
         <span>Left-aligned</span>
         <Stack horizontal horizontalAlign="start" className={styles.root}>
           <span>1</span>

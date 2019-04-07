@@ -91,5 +91,6 @@ export const PivotPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: 'PivotItem'
+  allowNativePropsForComponentName: 'PivotItem',
+  allowNativeProps: true
 };

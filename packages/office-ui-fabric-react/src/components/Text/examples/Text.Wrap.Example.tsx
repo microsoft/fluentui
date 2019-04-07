@@ -2,9 +2,18 @@ import * as React from 'react';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
+const tokens = {
+  sectionStack: {
+    childrenGap: 10
+  },
+  headingStack: {
+    childrenGap: 5
+  }
+};
+
 export const TextWrapExample = () => (
-  <Stack gap={10}>
-    <Stack gap={5}>
+  <Stack tokens={tokens.sectionStack}>
+    <Stack tokens={tokens.headingStack}>
       <Text variant={'large'} block>
         Wrap (Default)
       </Text>
@@ -15,7 +24,7 @@ export const TextWrapExample = () => (
         in culpa qui officia deserunt mollit anim id est laborum.
       </Text>
     </Stack>
-    <Stack gap={5}>
+    <Stack tokens={tokens.headingStack}>
       <Text variant={'large'} block>
         No Wrap
       </Text>

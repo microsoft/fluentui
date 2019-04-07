@@ -1,5 +1,5 @@
 import { Customizer, getId } from '@uifabric/utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
@@ -22,11 +22,11 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
     return (
       <div>
         <p>
-          A <code>Panel</code> is rendered, trapped in a specified container. Use 'Show panel' to show/hide the panel (or click the X to
-          dismiss it). Use 'Trap panel' to release the panel from its bounds.
+          A <code>Panel</code> is rendered, trapped in a specified container. Use <b>Show panel</b> to show/hide the panel (or click the X
+          to dismiss it). Use <b>Trap panel</b> to release the panel from its bounds.
         </p>
-        <Checkbox label="Show panel" checked={this.state.showPanel} onChange={this._onShowPanelChange} />
-        <Checkbox label="Trap panel" checked={this.state.trapPanel} onChange={this._onTrapPanelChange} />
+        <Toggle label="Show panel" inlineLabel checked={this.state.showPanel} onChange={this._onShowPanelChange} />
+        <Toggle label="Trap panel" inlineLabel checked={this.state.trapPanel} onChange={this._onTrapPanelChange} />
         <Customizer
           scopedSettings={
             this.state.trapPanel

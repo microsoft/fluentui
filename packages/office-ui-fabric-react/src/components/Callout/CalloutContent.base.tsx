@@ -106,6 +106,14 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
   }
 
+  public shouldComponentUpdate(newProps: ICalloutProps): boolean {
+    if (this.props.hidden && newProps.hidden) {
+      // Do not update when hidden.
+      return false;
+    }
+    return true;
+  }
+
   public componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
   }
@@ -132,8 +140,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       this._setHeightOffsetEveryFrame();
     }
 
-    // if the callout becomes hidden, then remove any positions, bounds that were placed on it.
-    if (newProps.hidden && newProps.hidden !== this.props.hidden) {
+    // Ensure positioning is recalculated when we are about to show a persisted menu.
+    if (!newProps.hidden && newProps.hidden !== this.props.hidden) {
+      this._maxHeight = undefined;
+      // Target might have been updated while hidden.
+      this._setTargetWindowAndElement(newTarget);
       this.setState({
         positions: undefined
       });
