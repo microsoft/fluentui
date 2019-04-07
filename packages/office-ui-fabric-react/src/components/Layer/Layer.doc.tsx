@@ -10,9 +10,9 @@ import { LayerStatus } from './Layer.checklist';
 const LayerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Basic.Example.tsx') as string;
 const LayerHostedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Hosted.Example.tsx') as string;
 const LayerCustomizedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
-const LayerCustomizedExampleCodepen = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
+const LayerCustomizedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Customized.Example.tsx') as string;
 const LayerNestedLayersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.NestedLayers.Example.tsx') as string;
-const LayerNestedLayersExampleCodepen = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.NestedLayers.Example.tsx') as string;
+const LayerNestedLayersExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.NestedLayers.Example.tsx') as string;
 
 export const LayerPageProps: IDocPageProps = {
   title: 'Layer',

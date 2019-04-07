@@ -1,6 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 22:09:49 GMT and should not be manually modified.
+
+## 6.164.6
+Fri, 05 Apr 2019 22:09:49 GMT
+
+### Patches
+
+- Persona: now sets dir=auto for text fields rendered in persona.
+- Fix layer and modal codepen links
+- Fixing submenu dismissal when parent menu has a hidden prop
+- Panel: add border to main div in high contrast
 
 ## 6.164.5
 Fri, 05 Apr 2019 12:36:12 GMT
