@@ -40,7 +40,7 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public (undocumented)
-export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
+export class ActivityItem extends React.Component<IActivityItemProps, {}> {
     constructor(props: IActivityItemProps);
     // (undocumented)
     render(): JSX.Element;
@@ -492,7 +492,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 // 
 // @public (undocumented)
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
-    constructor(props: ICalloutProps);
     // (undocumented)
     render(): JSX.Element;
 }
@@ -1012,12 +1011,14 @@ export enum DocumentCardType {
 export const Dropdown: React_2.StatelessComponent<IDropdownProps>;
 
 // @public (undocumented)
-export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdownState> {
+export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
     constructor(props: IDropdownProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState): void;
     // (undocumented)
     componentWillReceiveProps(newProps: IDropdownProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
         options: any[];
@@ -1389,7 +1390,6 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
     comments?: React.ReactNode[] | React.ReactNode;
     // @deprecated
     commentText?: string;
-    componentRef?: IRefObject<{}>;
     isCompact?: boolean;
     onRenderActivityDescription?: IRenderFunction<IActivityItemProps>;
     onRenderComments?: IRenderFunction<IActivityItemProps>;
@@ -1420,12 +1420,7 @@ export interface IActivityItemStyles {
 }
 
 // @public (undocumented)
-export interface IAnnounced {
-}
-
-// @public (undocumented)
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
-    componentRef?: (component: IAnnounced) => void;
     message?: string;
     styles?: IStyleFunctionOrObject<{}, IAnnouncedStyles>;
 }
@@ -1967,10 +1962,6 @@ export interface ICalendarStrings {
 }
 
 // @public (undocumented)
-export interface ICallout {
-}
-
-// @public (undocumented)
 export interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
@@ -2005,7 +1996,6 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement> {
     calloutMaxWidth?: number;
     calloutWidth?: number;
     className?: string;
-    componentRef?: IRefObject<ICallout>;
     coverTarget?: boolean;
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
@@ -5802,16 +5792,11 @@ export interface IPlainCardStyles extends IBaseCardStyles {
 }
 
 // @public (undocumented)
-export interface IPopup {
-}
-
-// @public (undocumented)
 export interface IPopupProps extends React.HTMLAttributes<Popup> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     className?: string;
-    componentRef?: IRefObject<IPopup>;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
     role?: string;
     shouldRestoreFocus?: boolean;
@@ -6994,10 +6979,6 @@ export interface ISuggestionsSubComponentStyles {
 export function isValidShade(shade?: Shade): boolean;
 
 // @public (undocumented)
-export interface ISwatchColorPicker {
-}
-
-// @public (undocumented)
 export interface ISwatchColorPickerProps {
     cellBorderWidth?: number;
     cellHeight?: number;
@@ -7007,7 +6988,6 @@ export interface ISwatchColorPickerProps {
     className?: string;
     colorCells: IColorCellProps[];
     columnCount: number;
-    componentRef?: IRefObject<ISwatchColorPicker>;
     disabled?: boolean;
     doNotContainWithinFocusZone?: boolean;
     focusOnHover?: boolean;
@@ -7731,7 +7711,7 @@ export const mru: IExtendedPersonaProps[];
 export const Nav: React_2.StatelessComponent<INavProps>;
 
 // @public (undocumented)
-export class NavBase extends BaseComponent<INavProps, INavState> implements INav {
+export class NavBase extends React.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
     componentWillReceiveProps(newProps: INavProps): void;
@@ -8823,7 +8803,7 @@ export class SuggestionsStore<T> {
 export const SwatchColorPicker: React_2.StatelessComponent<ISwatchColorPickerProps>;
 
 // @public (undocumented)
-export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
+export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
     constructor(props: ISwatchColorPickerProps);
     // (undocumented)
     componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
@@ -8986,7 +8966,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
 export const Tooltip: React_2.StatelessComponent<ITooltipProps>;
 
 // @public (undocumented)
-export class TooltipBase extends BaseComponent<ITooltipProps, any> {
+export class TooltipBase extends React.Component<ITooltipProps, any> {
     // (undocumented)
     static defaultProps: Partial<ITooltipProps>;
     // (undocumented)

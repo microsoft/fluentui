@@ -31,13 +31,11 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   }
 
   public componentDidMount(): void {
-    if (!this._root.current) {
-      return;
-    }
-
-    this._disposables.push(on(this._root.current, 'focus', this._onFocus, true), on(this._root.current, 'blur', this._onBlur, true));
-    if (doesElementContainFocus(this._root.current)) {
-      this._containsFocus = true;
+    if (this._root.current) {
+      this._disposables.push(on(this._root.current, 'focus', this._onFocus, true), on(this._root.current, 'blur', this._onBlur, true));
+      if (doesElementContainFocus(this._root.current)) {
+        this._containsFocus = true;
+      }
     }
 
     this._updateScrollBarAsync();
@@ -135,9 +133,9 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     }
   }
 
-  private _onFocus(): void {
+  private _onFocus = (): void => {
     this._containsFocus = true;
-  }
+  };
 
   private _onBlur = (ev: FocusEvent): void => {
     if (this._root.current && this._root.current.contains(ev.relatedTarget as HTMLElement)) {

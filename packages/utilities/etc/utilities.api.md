@@ -887,6 +887,12 @@ export function resetIds(counter?: number): void;
 export function resetMemoizations(): void;
 
 // @public
+export const safeRequestAnimationFrame: (component: React_2.Component<{}, {}, any>) => (cb: Function) => void;
+
+// @public
+export const safeSetTimeout: (component: React_2.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
+
+// @public
 export function setBaseUrl(baseUrl: string): void;
 
 // @public

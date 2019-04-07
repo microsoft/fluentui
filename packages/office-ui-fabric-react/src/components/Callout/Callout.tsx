@@ -5,10 +5,6 @@ import { CalloutContent } from './CalloutContent';
 import { Layer } from '../../Layer';
 
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
-  constructor(props: ICalloutProps) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const { layerProps, ...rest } = this.props;
     const content = <CalloutContent {...rest} />;
