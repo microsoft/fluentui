@@ -142,6 +142,11 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
       linkContent = this._renderLinkContent(link);
     }
 
+    let contentString = link.headerText || '';
+    contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
+    // Adding space supplementary for icon
+    contentString += link.itemIcon ? ' xx' : '';
+
     return (
       <CommandButton
         {...headerButtonProps}
@@ -155,6 +160,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
         aria-selected={isSelected}
         name={link.headerText}
         keytipProps={link.keytipProps}
+        data-content={contentString}
       >
         {linkContent}
       </CommandButton>

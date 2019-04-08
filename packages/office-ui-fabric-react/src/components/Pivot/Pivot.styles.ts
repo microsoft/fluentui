@@ -52,7 +52,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         },
         ':after': {
           color: 'transparent',
-          content: 'attr(name)',
+          content: 'attr(data-content)',
           display: 'block',
           fontWeight: FontWeights.bold,
           height: '1px',
@@ -70,7 +70,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           outline: `1px solid ${semanticColors.focusBorder}`
         },
         [`.${IsFocusVisibleClassName} &:focus:after`]: {
-          content: 'attr(name)',
+          content: 'attr(data-content)',
           position: 'relative',
           border: 0
         }
@@ -80,7 +80,6 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
       fontSize: FontSizes.large
     },
     rootIsTabs && [
-      getFocusStyle(theme),
       {
         marginRight: 0,
         height: '40px',
