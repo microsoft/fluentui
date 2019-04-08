@@ -1,6 +1,13 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Apr 2019 12:37:15 GMT and should not be manually modified.
+
+## 0.59.0
+Mon, 08 Apr 2019 12:37:14 GMT
+
+### Minor changes
+
+- DetailPanel: Update typo property name: onDetailPanelDimiss -> onDetailPanelDismiss
 
 ## 0.58.2
 Tue, 02 Apr 2019 00:38:14 GMT

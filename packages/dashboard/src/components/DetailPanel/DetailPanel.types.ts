@@ -212,7 +212,7 @@ export interface IDetailPanelBaseProps {
   /**
    * Callback on close the detail panel
    */
-  onDetailPanelDimiss?: () => void;
+  onDetailPanelDismiss?: () => void;
 
   /**
    * On pivot link click

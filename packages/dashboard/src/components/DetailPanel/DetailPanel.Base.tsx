@@ -330,7 +330,7 @@ class DetailPanelBase extends React.PureComponent<IDetailPanelBaseProps, IMainBo
   };
 
   private _onDismissAction = () => {
-    const { onDetailPanelDimiss } = this.props;
+    const { onDetailPanelDismiss: onDetailPanelDimiss } = this.props;
     if (onDetailPanelDimiss) {
       onDetailPanelDimiss();
     }

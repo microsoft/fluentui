@@ -80,7 +80,7 @@ export class DetailPanelPivotExample extends React.PureComponent<{}, IDetailPane
           }}
           mainHeader={header}
           mainContent={this.getMainContent()}
-          onDetailPanelDimiss={() => {
+          onDetailPanelDismiss={() => {
             this.setState({ show: false, currentL2Id: undefined });
           }}
           onL2BackClick={() => {
