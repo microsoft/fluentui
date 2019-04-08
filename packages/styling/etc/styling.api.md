@@ -110,8 +110,11 @@ export namespace FontWeights {
 // @public
 export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
 
-// @public
+// @public @deprecated
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
+
+// @public
+export function getFocusStyles(theme: ITheme, options?: IGetFocusStylesOptions): IRawStyle;
 
 // @public
 export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>>;
@@ -296,6 +299,16 @@ export interface IFontStyles {
 }
 
 export { IFontWeight }
+
+// @public (undocumented)
+export interface IGetFocusStylesOptions {
+    borderColor?: string;
+    highContrastStyle?: IRawStyle;
+    inset?: number;
+    isFocusedOnly?: boolean;
+    outlineColor?: string;
+    position?: 'relative' | 'absolute';
+}
 
 // @public (undocumented)
 export interface IIconOptions {
