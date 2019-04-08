@@ -1,7 +1,7 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import {
   AnimationVariables,
-  getFocusStyles,
+  getFocusStyle,
   getGlobalClassNames,
   HighContrastSelector,
   IStyle,
@@ -82,7 +82,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
       fontSize: FontSizes.large
     },
     rootIsTabs && [
-      getFocusStyles(theme),
+      getFocusStyle(theme),
       {
         marginRight: 0,
         height: 44,

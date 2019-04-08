@@ -1,4 +1,4 @@
-import { getFocusStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
@@ -9,7 +9,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
 
   return {
     root: {
-      ...getFocusStyles(theme, { inset: 2 })
+      ...getFocusStyle(theme, { inset: 2 })
     }
   };
 };

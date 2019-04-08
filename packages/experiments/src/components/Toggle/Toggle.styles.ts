@@ -1,5 +1,5 @@
 import { IToggleComponent, IToggleStylesReturnType, IToggleTokenReturnType } from './Toggle.types';
-import { getFocusStyles, getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Toggle',
@@ -128,7 +128,7 @@ export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): 
     ],
     pill: [
       classNames.pill,
-      getFocusStyles(theme, { inset: -3 }),
+      getFocusStyle(theme, { inset: -3 }),
       {
         fontSize: '20px',
         boxSizing: 'border-box',

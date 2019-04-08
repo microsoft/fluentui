@@ -1,7 +1,7 @@
 import {
   concatStyleSets,
   FontSizes,
-  getFocusStyles,
+  getFocusStyle,
   HighContrastSelector,
   IRawStyle,
   ITheme,
@@ -55,7 +55,7 @@ export const getMenuItemStyles = memoizeFunction(
         position: 'relative'
       },
       root: [
-        getFocusStyles(theme),
+        getFocusStyle(theme),
         fonts.medium,
         {
           color: semanticColors.bodyText,
@@ -227,7 +227,7 @@ export const getMenuItemStyles = memoizeFunction(
         }
       },
       splitButtonFlexContainer: [
-        getFocusStyles(theme),
+        getFocusStyle(theme),
         {
           display: 'flex',
           height: CONTEXTUAL_MENU_ITEM_HEIGHT,

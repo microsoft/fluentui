@@ -1,4 +1,4 @@
-import { getFocusStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
@@ -10,7 +10,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
 
   return {
     root: {
-      ...getFocusStyles(theme, { inset: 2 }),
+      ...getFocusStyle(theme, { inset: 2 }),
       backgroundColor: palette.white,
       border: `1px solid ${palette.neutralSecondaryAlt}`,
       borderRadius: effects.roundedCorner2,

@@ -4,7 +4,7 @@ import {
   ScreenWidthMaxMedium,
   ScreenWidthMaxSmall,
   ScreenWidthMinMedium,
-  getFocusStyles,
+  getFocusStyle,
   getScreenSelector,
   getGlobalClassNames,
   FontWeights
@@ -159,7 +159,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
 
     overflowButton: [
       classNames.overflowButton,
-      getFocusStyles(theme),
+      getFocusStyle(theme),
       SingleLineTextStyle,
       {
         fontSize: overflowButtonFontSize,
@@ -180,7 +180,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
 
     itemLink: [
       classNames.itemLink,
-      getFocusStyles(theme),
+      getFocusStyle(theme),
       SingleLineTextStyle,
       {
         ...commonItemStyles,

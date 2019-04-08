@@ -3,7 +3,7 @@ import { IButtonStyles } from '../../Button';
 import {
   AnimationClassNames,
   DefaultFontStyles,
-  getFocusStyles,
+  getFocusStyle,
   FontSizes,
   FontWeights,
   ZIndexes,
@@ -101,7 +101,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     ],
     link: [
       classNames.link,
-      getFocusStyles(theme),
+      getFocusStyle(theme),
       {
         display: 'block',
         position: 'relative',
@@ -150,7 +150,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     ],
     chevronButton: [
       classNames.chevronButton,
-      getFocusStyles(theme),
+      getFocusStyle(theme),
       {
         display: 'block',
         fontWeight: FontWeights.regular,

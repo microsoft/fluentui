@@ -1,4 +1,4 @@
-import { getFocusStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
@@ -13,7 +13,7 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
       borderRadius: effects.roundedCorner2,
       backgroundColor: palette.white,
       border: `1px solid ${palette.neutralSecondaryAlt}`,
-      ...getFocusStyles(theme, { inset: 1 })
+      ...getFocusStyle(theme, { inset: 1 })
     },
     rootHovered: {
       backgroundColor: palette.neutralLighter,

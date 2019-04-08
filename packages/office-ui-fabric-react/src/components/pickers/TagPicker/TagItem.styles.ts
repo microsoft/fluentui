@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getFocusStyles, HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
@@ -21,7 +21,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
   return {
     root: [
       classNames.root,
-      getFocusStyles(theme),
+      getFocusStyle(theme),
       {
         boxSizing: 'content-box',
         flexShrink: '1',

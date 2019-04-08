@@ -1,5 +1,5 @@
 import { BaseComponent, IBaseProps, autobind, customizable } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, IStyle, mergeStyleSets, getFocusStyles, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IStyle, mergeStyleSets, getFocusStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import { TypeScriptSnippet } from './TypeScriptSnippet';
 import { PageHeader } from './PageHeader';
@@ -42,7 +42,7 @@ const getDefaultStyles = (props: IPageExampleCardStyleProps): IPageExampleCardSt
 
   showCodeButton: [
     props.theme.fonts.small,
-    getFocusStyles(props.theme),
+    getFocusStyle(props.theme),
     {
       background: 'transparent',
       border: '1px solid ' + props.theme.palette.neutralLight,

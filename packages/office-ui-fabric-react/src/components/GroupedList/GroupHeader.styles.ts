@@ -1,5 +1,5 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import { getGlobalClassNames, getFocusStyles, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
+import { getGlobalClassNames, getFocusStyle, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
 import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
@@ -39,7 +39,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
   const classNames = getGlobalClassNames(GlobalClassNames, theme!);
 
   const checkExpandResetStyles: IStyle = [
-    getFocusStyles(theme),
+    getFocusStyle(theme),
     {
       cursor: 'default',
       background: 'none',
@@ -52,7 +52,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
   return {
     root: [
       classNames.root,
-      getFocusStyles(theme),
+      getFocusStyle(theme),
       theme.fonts.medium,
       {
         borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.

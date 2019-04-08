@@ -1,5 +1,5 @@
 import { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
-import { normalize, FontSizes, getFocusStyles } from '@uifabric/styling';
+import { normalize, FontSizes, getFocusStyle } from '@uifabric/styling';
 
 export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { className, theme, isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = props;
@@ -34,7 +34,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
       }
     ],
     goTodayButton: [
-      getFocusStyles(theme, { inset: -1 }),
+      getFocusStyle(theme, { inset: -1 }),
       {
         bottom: 0,
         color: palette.neutralPrimary,

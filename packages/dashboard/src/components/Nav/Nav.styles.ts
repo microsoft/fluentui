@@ -1,5 +1,5 @@
 /* tslint:disable */
-import { IStyle, AnimationClassNames, getFocusStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, AnimationClassNames, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { INavStyleProps, INavStyles } from './Nav.types';
 
 export type INavItemStyle = {
@@ -175,7 +175,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       textAlign: 'left'
     },
     focusedStyle: [
-      getFocusStyles(theme, { borderColor: 'transparent' }),
+      getFocusStyle(theme, { borderColor: 'transparent' }),
       {
         display: 'block',
         position: 'relative',

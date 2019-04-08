@@ -1,5 +1,5 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
-import { DefaultPalette, FontSizes, getFocusStyles, getTheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, FontSizes, getFocusStyle, getTheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 const theme = getTheme();
@@ -8,12 +8,12 @@ const listRowActionButtonMargin = -10;
 
 export const getListRowFocusStyles = (): IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles> => {
   return {
-    root: [getFocusStyles(theme, { borderColor: 'transparent' })]
+    root: [getFocusStyle(theme, { borderColor: 'transparent' })]
   };
 };
 
 export const getfocusStyle = (): IStyle => {
-  return [getFocusStyles(theme, { borderColor: 'transparent' })];
+  return [getFocusStyle(theme, { borderColor: 'transparent' })];
 };
 
 export const getListActionColumnStyle = (isCompactMode: boolean): IStyle => {

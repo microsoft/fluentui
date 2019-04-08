@@ -1,4 +1,4 @@
-import { HighContrastSelector, getFocusStyles, FontWeights } from '../../Styling';
+import { HighContrastSelector, getFocusStyle, FontWeights } from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;
@@ -73,7 +73,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
 
     pill: [
       'ms-Toggle-background',
-      getFocusStyles(theme, { inset: -3 }),
+      getFocusStyle(theme, { inset: -3 }),
       {
         fontSize: '20px',
         boxSizing: 'border-box',

@@ -1,5 +1,5 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, getFocusStyles, HighContrastSelector } from '../../../Styling';
+import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
@@ -21,7 +21,7 @@ export const getStyles = memoizeFunction(
 
     const commandButtonStyles: IButtonStyles = {
       root: [
-        getFocusStyles(theme, { inset: 2, highContrastStyle: commandButtonHighContrastFocus, borderColor: 'transparent' }),
+        getFocusStyle(theme, { inset: 2, highContrastStyle: commandButtonHighContrastFocus, borderColor: 'transparent' }),
         theme.fonts.medium,
         {
           minWidth: '40px',

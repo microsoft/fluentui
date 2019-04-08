@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getFocusStyles, HighContrastSelector, IStyle } from '../../../../Styling';
+import { getGlobalClassNames, getFocusStyle, HighContrastSelector, IStyle } from '../../../../Styling';
 import { ButtonGlobalClassNames } from '../../../Button/BaseButton.classNames';
 import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
@@ -64,7 +64,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
   return {
     root: [
       classNames.root,
-      getFocusStyles(theme, { inset: -2 }),
+      getFocusStyle(theme, { inset: -2 }),
       {
         borderRadius: 15,
         display: 'inline-flex',
