@@ -135,7 +135,7 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
 
 export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
-  props.href !== undefined && hrefTokens,
+  !!props.href && hrefTokens,
   !props.disabled && enabledTokens,
   props.primary && primaryEnabledTokens,
   props.circular && circularTokens,
