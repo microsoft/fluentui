@@ -68,6 +68,11 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
           outline: `1px solid ${semanticColors.focusBorder}`
+        },
+        [`.${IsFocusVisibleClassName} &:focus:after`]: {
+          content: 'attr(name)',
+          position: 'relative',
+          border: 0
         }
       }
     },
