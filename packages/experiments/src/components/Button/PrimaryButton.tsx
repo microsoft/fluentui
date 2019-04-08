@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { ButtonVariantsType } from './ButtonVariants.types';
 
 export const PrimaryButton: ButtonVariantsType = props => {
-  const { text, ...rest } = props;
+  const { text, iconProps, ...rest } = props;
 
-  return <Button primary content={text} {...rest} />;
+  return <Button primary content={text} icon={iconProps} {...rest} />;
 };

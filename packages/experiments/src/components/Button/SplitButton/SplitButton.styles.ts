@@ -50,11 +50,10 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     },
     splitDivider: {
-      borderRight: '1px solid',
-      borderColor: tokens.color,
+      backgroundColor: tokens.color,
       boxSizing: 'border-box',
-      height: 'calc(100% - 16px)',
-      margin: '8px 0px',
+      height: 'calc(100% - 14px)',
+      margin: '7px 0px',
       width: 1,
 
       selectors: {

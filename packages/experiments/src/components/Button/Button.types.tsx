@@ -111,6 +111,7 @@ export interface IButtonTokens {
   borderWidth?: number | string;
   contentPadding?: number | string;
   contentPaddingFocused?: number | string;
+  cursor?: string | undefined;
   textFamily?: string;
   textSize?: number | string;
   textWeight?: IFontWeight;
