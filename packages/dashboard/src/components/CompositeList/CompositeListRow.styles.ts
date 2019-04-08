@@ -12,7 +12,7 @@ export const getListRowFocusStyles = (): IStyleFunctionOrObject<IDetailsRowStyle
   };
 };
 
-export const getfocusStyles = (): IStyle => {
+export const getfocusStyle = (): IStyle => {
   return [getFocusStyles(theme, { borderColor: 'transparent' })];
 };
 
