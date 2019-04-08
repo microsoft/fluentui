@@ -74,12 +74,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -131,7 +131,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -147,6 +147,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="test"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="test"
@@ -227,12 +228,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -282,7 +283,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -296,6 +297,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Test Link (20+)"
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name="Test Link"
@@ -438,12 +440,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -495,7 +497,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -511,6 +513,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -591,12 +594,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -646,7 +649,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -660,6 +663,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Test Link 2"
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name="Test Link 2"
@@ -789,12 +793,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -846,7 +850,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -862,6 +866,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content=" (12)"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         onClick={[Function]}
@@ -943,12 +948,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -998,7 +1003,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1012,6 +1017,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Test Link (12)"
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name="Test Link"
@@ -1105,12 +1111,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -1160,7 +1166,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1174,6 +1180,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Text with icon xx"
         data-is-focusable={true}
         id="Pivot0-Tab2"
         name="Text with icon"
@@ -1327,12 +1334,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -1384,7 +1391,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1400,6 +1407,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -1480,12 +1488,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -1535,7 +1543,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1549,6 +1557,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -1678,14 +1687,14 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1737,7 +1746,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1764,6 +1773,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             &:active, &:hover {
               color: #ffffff;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -1844,14 +1854,14 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1901,7 +1911,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1923,6 +1933,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             &:hover, &:focus {
               color: #000000;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -2050,12 +2061,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -2107,7 +2118,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2123,6 +2134,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -2203,12 +2215,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -2258,7 +2270,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2272,6 +2284,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -2400,14 +2413,14 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2459,7 +2472,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2486,6 +2499,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             &:active, &:hover {
               color: #ffffff;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -2566,14 +2580,14 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2623,7 +2637,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2645,6 +2659,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             &:hover, &:focus {
               color: #000000;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -2771,12 +2786,12 @@ exports[`Pivot supports JSX expressions 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -2826,7 +2841,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2840,6 +2855,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -2921,12 +2937,12 @@ exports[`Pivot supports JSX expressions 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -2978,7 +2994,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2994,6 +3010,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 3"
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name="Test Link 3"

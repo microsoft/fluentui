@@ -74,12 +74,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -131,7 +131,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -147,6 +147,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -227,12 +228,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -282,7 +283,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -296,6 +297,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
