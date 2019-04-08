@@ -1,5 +1,5 @@
 import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
-import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, FontWeights, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const baseTokens: IButtonComponent['tokens'] = {
@@ -8,11 +8,16 @@ const baseTokens: IButtonComponent['tokens'] = {
   minWidth: 100,
   minHeight: 32,
   lineHeight: 1,
-  contentPadding: '8px 16px',
+  contentPadding: '0px 16px',
   textFamily: 'default',
   textSize: 14,
+  textWeight: FontWeights.semibold,
   iconSize: 14,
   iconWeight: 400
+};
+
+const hrefTokens: IButtonComponent['tokens'] = {
+  contentPadding: '8px 16px'
 };
 
 const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
@@ -130,6 +135,7 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
 
 export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
+  !!props.href && hrefTokens,
   !props.disabled && enabledTokens,
   props.primary && primaryEnabledTokens,
   props.circular && circularTokens,
@@ -263,7 +269,8 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
       globalClassNames.icon
     ],
     content: {
-      overflow: 'visible'
+      overflow: 'visible',
+      fontWeight: tokens.textWeight
     }
   };
 };
