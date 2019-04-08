@@ -164,7 +164,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}
-              forceFocusInsideTrap={isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap}
+              forceFocusInsideTrap={!isBlocking || (isHiddenOnDismiss && !isOpen) ? false : forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
               isClickableOutsideFocusTrap={true}
               {...focusTrapZoneProps}
