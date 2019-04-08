@@ -7,7 +7,7 @@ import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
-  distanceFromTop: number;
+  distanceFromTop?: number;
 }
 
 export interface IStickyContext {
@@ -26,8 +26,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public context: IScrollablePaneContext;
 
-  public distanceFromTop: number;
-
   private _root = React.createRef<HTMLDivElement>();
   private _stickyContentTop = React.createRef<HTMLDivElement>();
   private _stickyContentBottom = React.createRef<HTMLDivElement>();
@@ -40,9 +38,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.state = {
       isStickyTop: false,
       isStickyBottom: false,
-      distanceFromTop: 0
+      distanceFromTop: undefined
     };
-    this.distanceFromTop = 0;
     this._activeElement = undefined;
   }
 
@@ -112,16 +109,19 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     const { isStickyBottom, isStickyTop, distanceFromTop } = this.state;
-    // stickyStateChanged is true, if component has become sticky from non-sticky or vice-versa.
-    // else false.
-    const stickyStateChanged = prevState.isStickyTop !== isStickyTop || prevState.isStickyBottom !== isStickyBottom;
-    if (stickyStateChanged) {
+    let syncScroll: boolean = false;
+    if (prevState.distanceFromTop !== distanceFromTop) {
+      scrollablePane.sortSticky(this, true);
+      syncScroll = true;
+    }
+    if (prevState.isStickyTop !== isStickyTop || prevState.isStickyBottom !== isStickyBottom) {
       if (this._activeElement) {
         this._activeElement.focus();
       }
       scrollablePane.updateStickyRefHeights();
+      syncScroll = true;
     }
-    if (stickyStateChanged || prevState.distanceFromTop !== distanceFromTop) {
+    if (syncScroll) {
       // Sync Sticky scroll position with content container on each update
       scrollablePane.syncScrollSticky(this);
     }
@@ -194,10 +194,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _setDistanceFromTop(distance: number): void {
-    if (this.distanceFromTop !== distance) {
-      this.distanceFromTop = distance;
-      this._updateStickyState(true);
-    }
+    this.setState({ distanceFromTop: distance });
   }
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
@@ -254,21 +251,19 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
     if (this.root && this.nonStickyContent) {
-      this.distanceFromTop = this._getNonStickyDistanceFromTop(container);
-      const hasDistanceFromTopChanged = this.distanceFromTop !== this.state.distanceFromTop;
+      const distanceFromTop = this._getNonStickyDistanceFromTop(container);
       let isStickyTop = false;
       let isStickyBottom = false;
 
       if (this.canStickyTop) {
-        const distanceToStickTop = this.distanceFromTop - this._getStickyDistanceFromTop();
+        const distanceToStickTop = distanceFromTop - this._getStickyDistanceFromTop();
         isStickyTop = distanceToStickTop < container.scrollTop;
       }
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
-      if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= this.distanceFromTop) {
+      if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= distanceFromTop) {
         isStickyBottom =
-          this.distanceFromTop - Math.floor(container.scrollTop) >=
-          this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
+          distanceFromTop - Math.floor(container.scrollTop) >= this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
 
       if (
@@ -281,27 +276,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         this._activeElement = undefined;
       }
 
-      this._updateStickyState(hasDistanceFromTopChanged, this.canStickyTop && isStickyTop, isStickyBottom);
-    }
-  };
-
-  private _updateStickyState(hasDistanceFromTopChanged: boolean, isStickyTop?: boolean, isStickyBottom?: boolean) {
-    const { scrollablePane } = this.context;
-
-    if (hasDistanceFromTopChanged && scrollablePane) {
-      scrollablePane.sortSticky(this, true);
-    }
-
-    if (isStickyTop === undefined && isStickyBottom === undefined) {
-      this.setState({ distanceFromTop: this.distanceFromTop });
-    } else {
       this.setState({
-        isStickyTop: !!isStickyTop,
-        isStickyBottom: !!isStickyBottom,
-        distanceFromTop: this.distanceFromTop
+        isStickyTop: this.canStickyTop && isStickyTop,
+        isStickyBottom: isStickyBottom,
+        distanceFromTop: distanceFromTop
       });
     }
-  }
+  };
 
   private _getStickyDistanceFromTop = (): number => {
     let distance = 0;

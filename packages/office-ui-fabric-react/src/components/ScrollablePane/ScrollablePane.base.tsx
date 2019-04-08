@@ -350,7 +350,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
         const stickyListSorted = stickyList
           .sort((a, b) => {
-            return a.distanceFromTop - b.distanceFromTop;
+            return (a.state.distanceFromTop || 0) - (b.state.distanceFromTop || 0);
           })
           .filter(item => {
             const stickyContent = stickyContainer === this.stickyAbove ? item.stickyContentTop : item.stickyContentBottom;
@@ -362,7 +362,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         // Get first element that has a distance from top that is further than our sticky that is being added
         let targetStickyToAppendBefore: Sticky | undefined = undefined;
         for (const i in stickyListSorted) {
-          if (stickyListSorted[i].distanceFromTop >= sticky.distanceFromTop) {
+          if ((stickyListSorted[i].state.distanceFromTop || 0) >= (sticky.state.distanceFromTop || 0)) {
             targetStickyToAppendBefore = stickyListSorted[i];
             break;
           }
