@@ -26,7 +26,7 @@ export class ResultDecorator {
       incomplete: this.decorateAxeRuleResults(results.incomplete),
       timestamp: results.timestamp,
       targetPageUrl: results.url,
-      targetPageTitle: '' // TODO - missing title
+      targetPageTitle: this._documentUtils.title()
     };
   }
 

@@ -22,7 +22,7 @@ export const pageConfiguration: RulesConfiguration = {
 };
 
 function evaluateTitle(node: HTMLElement, options: any): boolean {
-  const docUtil = new DocumentUtils(document);
+  const docUtil = new DocumentUtils();
   const title = docUtil.title();
   if (title) {
     this.data({ pageTitle: title });
