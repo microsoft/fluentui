@@ -12,7 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": false,
-    "typeRoots": ["node_modules/@types", "./typings"],
     "types": [
       "webpack-env"
     ]
