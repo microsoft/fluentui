@@ -449,6 +449,11 @@
       "packageName": "@uifabric/migration",
       "projectFolder": "packages/migration",
       "shouldPublish": true
+    },
+    {
+      "packageName": "a11y-tests",
+      "projectFolder": "apps/a11y-tests",
+      "shouldPublish": false
     }
   ]
 }
