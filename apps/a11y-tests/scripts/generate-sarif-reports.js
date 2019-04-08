@@ -19,8 +19,8 @@ const components = [
 components.forEach(async component => {
   try {
     const report = await getSarifReport(component.url);
-    mkdirp.sync(path.join(__dirname, '../dist/reports/'));
-    fs.writeFileSync(path.join(__dirname, `../dist/reports/${component.name}.sarif`), JSON.stringify(report), { encoding: 'utf8' });
+    mkdirp.sync(path.resolve(__dirname, '../dist/reports/'));
+    fs.writeFileSync(path.resolve(__dirname, `../dist/reports/${component.name}.sarif`), JSON.stringify(report), { encoding: 'utf8' });
   } catch (e) {
     console.error(`Error while generating SARIF report for ${component.name}: ${e}`);
   }
