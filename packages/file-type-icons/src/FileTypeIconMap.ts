@@ -1,4 +1,4 @@
-import * as data from '../fileTypeIconMap.json';
+const data: { [key: string]: { extensions?: string[]; _comment?: string } } = require('../fileTypeIconMap.json');
 
 /**
  * Enumeration of icon file names, and what extensions they map to.

@@ -13,7 +13,9 @@
     "moduleResolution": "node",
     "preserveConstEnums": false,
     "typeRoots": ["node_modules/@types", "./typings"],
-    "types": ["import-json"]
+    "types": [
+      "webpack-env"
+    ]
   },
   "include": ["src"]
 }
