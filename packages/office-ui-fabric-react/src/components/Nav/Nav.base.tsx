@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
+import { classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -28,7 +28,7 @@ export interface INavState {
   selectedKey?: string;
 }
 
-export class NavBase extends BaseComponent<INavProps, INavState> implements INav {
+export class NavBase extends React.Component<INavProps, INavState> implements INav {
   public static defaultProps: INavProps = {
     groups: null
   };

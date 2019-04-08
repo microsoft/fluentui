@@ -128,7 +128,11 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     renderFunction: IRenderFunction<IPersonaProps> | undefined,
     defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
   ): JSX.Element {
-    return <div className={classNames}>{renderFunction && renderFunction(this.props, defaultRenderFunction)}</div>;
+    return (
+      <div dir="auto" className={classNames}>
+        {renderFunction && renderFunction(this.props, defaultRenderFunction)}
+      </div>
+    );
   }
 
   /**

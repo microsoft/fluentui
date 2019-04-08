@@ -54,6 +54,8 @@ export * from './overflow';
 export * from './properties';
 export * from './resources';
 export * from './rtl';
+export * from './safeRequestAnimationFrame';
+export * from './safeSetTimeout';
 export * from './scroll';
 export * from './string';
 export * from './styled';

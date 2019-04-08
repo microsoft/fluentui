@@ -2,6 +2,59 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.164.7",
+      "tag": "office-ui-fabric-react_v6.164.7",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "A number of components have been updated to reduce the dependencies, lowering bundle size impact for a variety of scenarios.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c352f028d072a7ead8c9d25ee06975f4f7d02beb"
+          },
+          {
+            "comment": "TextField: clarify onBeforeChange documentation",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "00b18d94bc2a324e2b8a2b10802900222bf232d3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.3` to `^6.35.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.164.6",
+      "tag": "office-ui-fabric-react_v6.164.6",
+      "date": "Fri, 05 Apr 2019 22:09:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persona: now sets dir=auto for text fields rendered in persona.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ff218f860ea02790a1be1e91613113f5e579d0c4"
+          },
+          {
+            "comment": "Fix layer and modal codepen links",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8ffd8134f6ebbf9ee0785e559e28b146d9de2edf"
+          },
+          {
+            "comment": "Fixing submenu dismissal when parent menu has a hidden prop",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "263754b7661d47b17d183c9b2ea668d1de00e96a"
+          },
+          {
+            "comment": "Panel: add border to main div in high contrast",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "296ec37fcc849f4ffb1f91d1e33fe5aaa7a17068"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.164.5",
       "tag": "office-ui-fabric-react_v6.164.5",
       "date": "Fri, 05 Apr 2019 12:36:12 GMT",
